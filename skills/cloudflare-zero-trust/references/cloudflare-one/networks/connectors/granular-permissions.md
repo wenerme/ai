@@ -1,7 +1,7 @@
 ---
 title: Granular permissions for Tunnels and Mesh nodes
 description: Scope Cloudflare member permissions to individual Cloudflare Tunnel instances and Cloudflare Mesh nodes.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ Members with an account-level role that covers Tunnels and Mesh continue to see 
 * [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/#page","headline":"Granular permissions for Tunnels and Mesh nodes · Cloudflare One docs","description":"Scope Cloudflare member permissions to individual Cloudflare Tunnel instances and Cloudflare Mesh nodes.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/#page","headline":"Granular permissions for Tunnels and Mesh nodes · Cloudflare One docs","description":"Scope Cloudflare member permissions to individual Cloudflare Tunnel instances and Cloudflare Mesh nodes.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/granular-permissions/","name":"Granular permissions for Tunnels and Mesh nodes"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Respond with another site
 description: Respond to the Worker request with the response from another website (example.com in this example).
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,7 +44,7 @@ export default {
 };
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAGwBmAJwAOQQBZJgyZIBcLFm2Ac4XGnwEiJM+YuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1sB1Ly+VCQAsofHYwBy6AgAEEwGB0AB3ey4c5XG53R4bF4vC4QEAIT5UewQkgAJVuniobnspwABj8IH9cCQACRrC7XW4QRIRSljAC+oSB2zBkOhiVJABonsjkXcCCA3P45IIAKyC56ikjHexwBYIKUipUvUHgiH+KIAcQAopUogrtSR2RbRez7kRFVbHchkCQAPJUMB0EgmyokBnwiBuEgQzAAaxDPmOJEp7hIMAQ6HidESjqgqBIsMZdxZvzGJAAhAwGCQjaaoo9UejPhSqYCQbyoTCA0z7Y6qxiDkczqTjhAIDApS6EuEmvZErx0MBSW2ttaLOyiJZ1MxNNpdDx+EIxFJZAolJISrYHE5XB4vD42lR-IFtKQwhFoqy1cF0gEsjlH1EyOCyMVrMe5RVDUdTbI0zS8K07SpLYUwWGsUTAHAsQAPqjOM2RRCo+QLIUaTssuK5rsEG76NuRh7qYkjMJYQA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAOAKwBGQQCZJATgAs82QC4WLNsA5wuNPgJETpcxbICwAKADC6KhACmt7ABEoAZxjpXUaDeUkNeATEJFRwwHYMAERQNHYAHgB0AFaukaSoUGAOYRHRsYkpkRbWtg4Q2AAqdDB2fnAwMGB8BFA2yElwAG5wrrwIsBAA1MDouOB2FhbxHkgkuHaocOAQJADe5iQkPXRUvP52ELwAFgAUCHYAjiB2rhAAlGsbm-7UvD5UJACyB0ejAHLoCAAQTAYHQAHc7LgzpdrrcHutns9zhAQAgPlQ7OCSAAlG4eKiuOwnAAG3wgv1wJAAJKtzlcbhAEuEKaMAL4hQFbUEQqEJEkAGkeSKRtwIIFcfnkglEAqeIpIRzscHmCElwoVzxBYPBfkiAHEAKIVSJyzUkNlmkVsu5EeUW+3IZAkADyVDAdBIRoqJHpcIgrhI4MwAGsg94jiQKW4SDAEOg4nQEvaoKgSDCGbdmT9RiQAIQMBgkA3GyIPFFoj7kykA4E8yHQv2M232ivo-aHU4ko4QCAwSVO+JhRp2BK8dDAEktzaW8xsogWNTMDRaHQ8fhCMSSGSCBRKYo2eyOFzuTzeVpUPwBLSkULhKIslVBNL+TLZe+RMhgshFKyHsqVNUtRbA0TS8C0bQpDYkzmKskTAHAMQAPojGMWSRMoeTzAUqRsouS4rkEa56Juhg7nusjMBYQA)
 
 **TypeScript**
 
@@ -89,6 +89,6 @@ class Default(WorkerEntrypoint):
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/respond-with-another-site/#page","headline":"Respond with another site · Cloudflare Workers docs","description":"Respond to the Worker request with the response from another website (example.com in this example).","url":"https://developers.cloudflare.com/workers/examples/respond-with-another-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/respond-with-another-site/#page","headline":"Respond with another site · Cloudflare Workers docs","description":"Respond to the Worker request with the response from another website (example.com in this example).","url":"https://developers.cloudflare.com/workers/examples/respond-with-another-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/respond-with-another-site/","name":"Respond with another site"}}]}
 ```

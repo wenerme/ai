@@ -1,7 +1,7 @@
 ---
 title: Grok Imagine Video
 description: xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ xAI's video generation model. Generates, edits, and extends videos from text and
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-2088)
-* [ cURL ](#tab-panel-2089)
+* [ TypeScript ](#tab-panel-2234)
+* [ cURL ](#tab-panel-2235)
 
 **TypeScript**
 
@@ -61,8 +61,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2084)
-* [ Raw response ](#tab-panel-2085)
+* [ Output ](#tab-panel-2230)
+* [ Raw response ](#tab-panel-2231)
 
 ```json
 {
@@ -80,8 +80,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media
 
-* [ TypeScript ](#tab-panel-2092)
-* [ cURL ](#tab-panel-2093)
+* [ TypeScript ](#tab-panel-2238)
+* [ cURL ](#tab-panel-2239)
 
 **TypeScript**
 
@@ -113,8 +113,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2086)
-* [ Raw response ](#tab-panel-2087)
+* [ Output ](#tab-panel-2232)
+* [ Raw response ](#tab-panel-2233)
 
 ```json
 {
@@ -130,8 +130,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Landscape**  — Widescreen cinematic shot at extended duration
 
-* [ TypeScript ](#tab-panel-2094)
-* [ cURL ](#tab-panel-2095)
+* [ TypeScript ](#tab-panel-2240)
+* [ cURL ](#tab-panel-2241)
 
 **TypeScript**
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2090)
-* [ Raw response ](#tab-panel-2091)
+* [ Output ](#tab-panel-2236)
+* [ Raw response ](#tab-panel-2237)
 
 ```json
 {
@@ -181,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2096)
-* [ Output ](#tab-panel-2097)
+* [ Input ](#tab-panel-2242)
+* [ Output ](#tab-panel-2243)
 
 \_operation
 
@@ -239,6 +239,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/sch
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/#page","headline":"Grok Imagine Video (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/#page","headline":"Grok Imagine Video (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

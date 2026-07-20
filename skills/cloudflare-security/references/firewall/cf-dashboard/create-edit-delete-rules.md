@@ -1,7 +1,7 @@
 ---
 title: Create, edit, and delete rules
 description: Create, edit, and delete firewall rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -75,6 +75,6 @@ Rule Preview allows customers on an Enterprise plan to understand the potential 
 Rule Preview is built into the **Create firewall rule** and **Edit firewall rule** panels so that you can test a rule as you edit it. For more information, refer to [Preview rules](https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/#page","headline":"Create, edit, and delete rules · Cloudflare Firewall Rules (deprecated) docs","description":"Create, edit, and delete firewall rules.","url":"https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/#page","headline":"Create, edit, and delete rules · Cloudflare Firewall Rules (deprecated) docs","description":"Create, edit, and delete firewall rules.","url":"https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/cf-dashboard/","name":"Manage rules in the dashboard"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/cf-dashboard/create-edit-delete-rules/","name":"Create, edit, and delete rules"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Add multiple sites via automation
 description: To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -245,6 +245,6 @@ In addition, if you have over 50 domains and, of those domains, more are pending
 If any errors were returned in this process, the domain may not be registered (or only just registered), be a subdomain, or be otherwise invalid. For more details, refer to [Cannot add domain](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/#page","headline":"Add multiple sites via automation · Cloudflare Fundamentals docs","description":"To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/#page","headline":"Add multiple sites via automation · Cloudflare Fundamentals docs","description":"To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/add-multiple-sites-automation/","name":"Add multiple sites via automation"}}]}
 ```

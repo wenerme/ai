@@ -1,7 +1,7 @@
 ---
 title: Prefix delegations
 description: Delegate IP prefixes to other Cloudflare accounts.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ To bind an IP from one service to another, use the API.
 6. Bind IPs to a service via the [Service Bindings API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/) as needed.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/prefix-delegations/#page","headline":"Prefix delegations · Cloudflare BYOIP docs","description":"Delegate IP prefixes to other Cloudflare accounts.","url":"https://developers.cloudflare.com/byoip/concepts/prefix-delegations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/prefix-delegations/#page","headline":"Prefix delegations · Cloudflare BYOIP docs","description":"Delegate IP prefixes to other Cloudflare accounts.","url":"https://developers.cloudflare.com/byoip/concepts/prefix-delegations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/concepts/prefix-delegations/","name":"Prefix delegations"}}]}
 ```

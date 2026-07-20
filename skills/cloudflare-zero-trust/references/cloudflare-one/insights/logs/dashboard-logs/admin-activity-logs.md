@@ -1,7 +1,7 @@
 ---
 title: Admin activity logs
 description: Monitor when a member on your account creates, updates, or deletes configurations.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,6 +36,6 @@ To view admin activity logs, log in to the [Cloudflare dashboard ↗](https://da
 Enterprise users can export admin activity logs to a third-party storage destination or SIEM using [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/). For a list of all available fields, refer to [Audit Logs V2](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/admin-activity-logs/#page","headline":"Admin activity logs · Cloudflare One docs","description":"Monitor when a member on your account creates, updates, or deletes configurations.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/admin-activity-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/admin-activity-logs/#page","headline":"Admin activity logs · Cloudflare One docs","description":"Monitor when a member on your account creates, updates, or deletes configurations.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/admin-activity-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/","name":"Dashboard logs"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/admin-activity-logs/","name":"Admin activity logs"}}]}
 ```

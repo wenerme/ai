@@ -1,7 +1,7 @@
 ---
 title: Supported options
 description: Learn which options are supported for Geo Key Manager.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -66,6 +66,6 @@ Interior points of ingress/egress are controlled by the access control subsystem
 Exterior walls are airtight and may incorporate additional security measures such as reinforced concrete, Kevlar bullet board, vapor barriers, or bullet-proof front doors.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/#page","headline":"Supported options - Geo Key Manager · Cloudflare SSL/TLS docs","description":"Learn which options are supported for Geo Key Manager.","url":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation","Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/#page","headline":"Supported options - Geo Key Manager · Cloudflare SSL/TLS docs","description":"Learn which options are supported for Geo Key Manager.","url":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation","Compliance"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/geokey-manager/","name":"Geo Key Manager"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/geokey-manager/supported-options/","name":"Supported options"}}]}
 ```

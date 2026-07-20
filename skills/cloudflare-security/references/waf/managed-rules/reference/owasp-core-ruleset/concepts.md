@@ -1,7 +1,7 @@
 ---
 title: Concepts
 description: Concepts for the OWASP ModSecurity Core Ruleset on Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ When the OWASP Anomaly Score Threshold is set to _High_, file uploads may trigge
 For an example, refer to [OWASP evaluation example](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#page","headline":"OWASP ruleset concepts · Cloudflare Web Application Firewall (WAF) docs","description":"Concepts for the OWASP ModSecurity Core Ruleset on Cloudflare.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#page","headline":"OWASP ruleset concepts · Cloudflare Web Application Firewall (WAF) docs","description":"Concepts for the OWASP ModSecurity Core Ruleset on Cloudflare.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/reference/","name":"Rulesets reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/reference/owasp-core-ruleset/","name":"Cloudflare OWASP Core Ruleset"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/managed-rules/reference/owasp-core-ruleset/concepts/","name":"Concepts"}}]}
 ```

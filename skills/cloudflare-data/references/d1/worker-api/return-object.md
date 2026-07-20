@@ -1,7 +1,7 @@
 ---
 title: Return objects
 description: Understand the D1Result and D1ExecResult objects returned by D1 Worker Binding API query methods.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -54,8 +54,8 @@ The methods [D1PreparedStatement::run](https://developers.cloudflare.com/d1/work
 
 ### Example
 
-* [  JavaScript ](#tab-panel-8358)
-* [  Python ](#tab-panel-8359)
+* [  JavaScript ](#tab-panel-8698)
+* [  Python ](#tab-panel-8699)
 
 **JavaScript**
 
@@ -129,8 +129,8 @@ The method [D1Database::exec](https://developers.cloudflare.com/d1/worker-api/d1
 
 ### Example
 
-* [  JavaScript ](#tab-panel-8360)
-* [  Python ](#tab-panel-8361)
+* [  JavaScript ](#tab-panel-8700)
+* [  Python ](#tab-panel-8701)
 
 **JavaScript**
 
@@ -161,6 +161,6 @@ Storing large numbers
 Any numeric value in a column is affected by JavaScript's 52-bit precision for numbers. If you store a very large number (in `int64`), then retrieve the same value, the returned value may be less precise than your original number.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/return-object/#page","headline":"Return objects · Cloudflare D1 docs","description":"Understand the D1Result and D1ExecResult objects returned by D1 Worker Binding API query methods.","url":"https://developers.cloudflare.com/d1/worker-api/return-object/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/return-object/#page","headline":"Return objects · Cloudflare D1 docs","description":"Understand the D1Result and D1ExecResult objects returned by D1 Worker Binding API query methods.","url":"https://developers.cloudflare.com/d1/worker-api/return-object/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/worker-api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/worker-api/return-object/","name":"Return objects"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: EventSource
 description: EventSource is a server-sent event API that allows a server to push events to a client.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -77,6 +77,6 @@ Note that the `fetcher` option is a Cloudflare Workers specific extension.
   * This is a Cloudflare Workers specific extension that creates a new `EventSource` object from an existing `ReadableStream`. Such an instance does not initiate a new connection but instead attaches to the provided stream.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/eventsource/#page","headline":"EventSource · Cloudflare Workers docs","description":"EventSource is a server-sent event API that allows a server to push events to a client.","url":"https://developers.cloudflare.com/workers/runtime-apis/eventsource/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/eventsource/#page","headline":"EventSource · Cloudflare Workers docs","description":"EventSource is a server-sent event API that allows a server to push events to a client.","url":"https://developers.cloudflare.com/workers/runtime-apis/eventsource/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/eventsource/","name":"EventSource"}}]}
 ```

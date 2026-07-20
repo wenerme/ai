@@ -1,7 +1,7 @@
 ---
 title: Randomness Generation
 description: Understand how randomness is generated with BLS signatures.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -95,6 +95,6 @@ drand beacons can also be configured to use unchained randomness. To extend this
 This process allows for a direct precomputation of message `𝑚` for round `𝑟=i`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/#page","headline":"Randomness Generation · Cloudflare Randomness Beacon docs","description":"Understand how randomness is generated with BLS signatures.","url":"https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/#page","headline":"Randomness Generation · Cloudflare Randomness Beacon docs","description":"Understand how randomness is generated with BLS signatures.","url":"https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/randomness-beacon/","name":"Randomness Beacon"}},{"@type":"ListItem","position":3,"item":{"@id":"/randomness-beacon/cryptographic-background/","name":"Cryptographic Background"}},{"@type":"ListItem","position":4,"item":{"@id":"/randomness-beacon/cryptographic-background/randomness-generation/","name":"Randomness Generation"}}]}
 ```

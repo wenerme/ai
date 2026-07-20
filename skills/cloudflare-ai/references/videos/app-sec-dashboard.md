@@ -1,7 +1,7 @@
 ---
 title: Application Security - Dashboard walkthrough
 description: In this video, learn how to navigate the Cloudflare Application Security dashboard and how to use each page to monitor, investigate, and manage security protections.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -114,5 +114,5 @@ Thank you for choosing Cloudflare.
 For more information, please refer to our developer documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/app-sec-dashboard/#page","headline":"Application Security - Dashboard walkthrough | Cloudflare Docs","description":"In this video, learn how to navigate the Cloudflare Application Security dashboard and how to use each page to monitor, investigate, and manage security protections.","url":"https://developers.cloudflare.com/videos/app-sec-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/app-sec-dashboard/#page","headline":"Application Security - Dashboard walkthrough | Cloudflare Docs","description":"In this video, learn how to navigate the Cloudflare Application Security dashboard and how to use each page to monitor, investigate, and manage security protections.","url":"https://developers.cloudflare.com/videos/app-sec-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

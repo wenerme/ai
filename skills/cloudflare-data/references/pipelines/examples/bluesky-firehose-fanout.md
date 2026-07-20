@@ -1,7 +1,7 @@
 ---
 title: Fan out a stream to multiple Iceberg tables
 description: Route Bluesky Jetstream events into multiple R2 Data Catalog tables using a single Pipelines stream and multiple SQL statements.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -238,8 +238,8 @@ One pipeline writes to five tables. To add a new event type later, add one sink 
 
 Add the stream binding, a Durable Object to hold the WebSocket connection, and a [cron trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) to keep the consumer alive. Replace `<STREAM_ID>` with the stream ID from step 4.
 
-* [  wrangler.jsonc ](#tab-panel-10056)
-* [  wrangler.toml ](#tab-panel-10057)
+* [  wrangler.jsonc ](#tab-panel-10305)
+* [  wrangler.toml ](#tab-panel-10306)
 
 **JSONC**
 
@@ -249,7 +249,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
   "name": "bluesky-pipeline",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-11",
+  "compatibility_date": "2026-07-20",
   "pipelines": [
     {
       "binding": "BSKY_STREAM",
@@ -286,7 +286,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
 name = "bluesky-pipeline"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-11"
+compatibility_date = "2026-07-20"
 
 
 [[pipelines]]
@@ -314,8 +314,8 @@ A [Durable Object](https://developers.cloudflare.com/durable-objects/) is the ri
 
 Replace the contents of `src/index.ts` with the following:
 
-* [  JavaScript ](#tab-panel-10058)
-* [  TypeScript ](#tab-panel-10059)
+* [  JavaScript ](#tab-panel-10307)
+* [  TypeScript ](#tab-panel-10308)
 
 **src/index.js**
 
@@ -735,6 +735,6 @@ This one-stream-to-many-tables pattern generalizes to any tagged event source: c
 To learn more about the SQL used here, refer to [SELECT statements](https://developers.cloudflare.com/pipelines/sql-reference/select-statements/) and [Manage pipelines](https://developers.cloudflare.com/pipelines/pipelines/manage-pipelines/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/#page","headline":"Fan out a stream to multiple Iceberg tables · Cloudflare Pipelines Docs","description":"Route Bluesky Jetstream events into multiple R2 Data Catalog tables using a single Pipelines stream and multiple SQL statements.","url":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/#page","headline":"Fan out a stream to multiple Iceberg tables · Cloudflare Pipelines Docs","description":"Route Bluesky Jetstream events into multiple R2 Data Catalog tables using a single Pipelines stream and multiple SQL statements.","url":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/examples/bluesky-firehose-fanout/","name":"Fan out a stream to multiple Iceberg tables"}}]}
 ```

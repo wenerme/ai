@@ -1,7 +1,7 @@
 ---
 title: Chat SDK
 description: Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,8 +44,8 @@ bun add agents chat
 
 Create a parent Agent that owns your Chat SDK runtime. Pass `createChatSdkState()` as the Chat SDK `state` option.
 
-* [  JavaScript ](#tab-panel-6113)
-* [  TypeScript ](#tab-panel-6114)
+* [  JavaScript ](#tab-panel-6387)
+* [  TypeScript ](#tab-panel-6388)
 
 **JavaScript**
 
@@ -117,8 +117,8 @@ export class MessengerAgent extends Agent<Env> {
 
 Add the parent Agent to your Durable Object migration:
 
-* [  wrangler.jsonc ](#tab-panel-6103)
-* [  wrangler.toml ](#tab-panel-6104)
+* [  wrangler.jsonc ](#tab-panel-6377)
+* [  wrangler.toml ](#tab-panel-6378)
 
 **JSONC**
 
@@ -126,7 +126,7 @@ Add the parent Agent to your Durable Object migration:
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -153,7 +153,7 @@ Add the parent Agent to your Durable Object migration:
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = ["nodejs_compat"]
 
 
@@ -188,8 +188,8 @@ Unknown keys use the adapter's default shard name, `default`.
 
 Use `shardKey` to control how thread IDs map to state sub-agent names:
 
-* [  JavaScript ](#tab-panel-6105)
-* [  TypeScript ](#tab-panel-6106)
+* [  JavaScript ](#tab-panel-6379)
+* [  TypeScript ](#tab-panel-6380)
 
 **JavaScript**
 
@@ -213,8 +213,8 @@ const state = createChatSdkState({
 
 Use `keyShard` when an adapter stores non-thread-shaped keys that should still route to a provider-specific shard:
 
-* [  JavaScript ](#tab-panel-6111)
-* [  TypeScript ](#tab-panel-6112)
+* [  JavaScript ](#tab-panel-6385)
+* [  TypeScript ](#tab-panel-6386)
 
 **JavaScript**
 
@@ -256,8 +256,8 @@ Returning `undefined` falls back to the built-in key sharder and then to the def
 
 Creates a Chat SDK `StateAdapter` backed by a `ChatSdkStateAgent` sub-agent.
 
-* [  JavaScript ](#tab-panel-6109)
-* [  TypeScript ](#tab-panel-6110)
+* [  JavaScript ](#tab-panel-6383)
+* [  TypeScript ](#tab-panel-6384)
 
 **JavaScript**
 
@@ -301,8 +301,8 @@ Options:
 
 The sub-agent class that stores state in SQLite. Export it from your Worker entry point so the runtime can create it.
 
-* [  JavaScript ](#tab-panel-6107)
-* [  TypeScript ](#tab-panel-6108)
+* [  JavaScript ](#tab-panel-6381)
+* [  TypeScript ](#tab-panel-6382)
 
 **JavaScript**
 
@@ -350,6 +350,6 @@ Physical cleanup is lazy. `ChatSdkStateAgent` schedules one cleanup callback for
 [ Chat SDK messenger example ](https://github.com/cloudflare/agents/tree/main/examples/chat-sdk-messenger) Build a Telegram messenger bot with Chat SDK state in sub-agents, burst/debounce concurrency, and Think-backed AI replies running in managed fibers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/#page","headline":"Chat SDK · Cloudflare Agents docs","description":"Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.","url":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/#page","headline":"Chat SDK · Cloudflare Agents docs","description":"Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.","url":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/chat-sdk/","name":"Chat SDK"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Manage sequence rules
 description: Create and manage sequence rules in the dashboard or via WAF custom rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ Sequence mitigation is currently in a closed beta and is only available for Ente
 
 ## Create a sequence rule
 
-* [  New dashboard ](#tab-panel-6809)
-* [ Old dashboard ](#tab-panel-6810)
+* [  New dashboard ](#tab-panel-7386)
+* [ Old dashboard ](#tab-panel-7387)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -78,6 +78,6 @@ You can change the priority order of your rules by selecting and dragging the ru
 You can also explicitly set a priority order by selecting the three dots on your rule and choosing **Move to…** where you can set the new priority in the resulting modal window.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/#page","headline":"Manage sequence rules · Cloudflare API Shield docs","description":"Create and manage sequence rules in the dashboard or via WAF custom rules.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/#page","headline":"Manage sequence rules · Cloudflare API Shield docs","description":"Create and manage sequence rules in the dashboard or via WAF custom rules.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/sequence-mitigation/","name":"Sequence mitigation"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/sequence-mitigation/manage-sequence-rules/","name":"Manage sequence rules"}}]}
 ```

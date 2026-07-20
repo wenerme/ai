@@ -1,7 +1,7 @@
 ---
 title: Cloud on-ramps
 description: Connect cloud providers to Cloudflare with cloud on-ramps.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -249,6 +249,6 @@ You can view estimated costs associated with your cloud resources in the Cloudfl
 4. In the **Associated Resources** page, you can view the estimated monthly costs for all the resources associated with the on-ramp you chose. You can also search for a specific resource using the search box.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#page","headline":"Cloud on-ramps · Cloudflare Multi-Cloud Networking docs","description":"Connect cloud providers to Cloudflare with cloud on-ramps.","url":"https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#page","headline":"Cloud on-ramps · Cloudflare Multi-Cloud Networking docs","description":"Connect cloud providers to Cloudflare with cloud on-ramps.","url":"https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/multi-cloud-networking/","name":"Multi-Cloud Networking"}},{"@type":"ListItem","position":3,"item":{"@id":"/multi-cloud-networking/cloud-on-ramps/","name":"Cloud on-ramps"}}]}
 ```

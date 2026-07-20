@@ -1,7 +1,7 @@
 ---
 title: Monitor resources and cookies
 description: View and filter scripts, connections, and cookies detected on your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ To review the resources detected by Cloudflare:
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7399)
-  * [ Old dashboard ](#tab-panel-7400)
+  * [  New dashboard ](#tab-panel-7627)
+  * [ Old dashboard ](#tab-panel-7628)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -57,8 +57,8 @@ Scripts blocked by a [content security rule](https://developers.cloudflare.com/c
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7401)
-  * [ Old dashboard ](#tab-panel-7402)
+  * [  New dashboard ](#tab-panel-7629)
+  * [ Old dashboard ](#tab-panel-7630)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -80,8 +80,8 @@ Only available to customers on Business and Enterprise plans.
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7403)
-  * [ Old dashboard ](#tab-panel-7404)
+  * [  New dashboard ](#tab-panel-7631)
+  * [ Old dashboard ](#tab-panel-7632)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -135,8 +135,8 @@ To export script, connection, or cookie information in CSV format:
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7405)
-  * [ Old dashboard ](#tab-panel-7406)
+  * [  New dashboard ](#tab-panel-7633)
+  * [ Old dashboard ](#tab-panel-7634)
 
   1. In the Cloudflare dashboard, go to the **Web assets** page.
   [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -149,6 +149,6 @@ To export script, connection, or cookie information in CSV format:
 4. Select **Download CSV**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#page","headline":"Monitor resources and cookies · Client-side security docs","description":"View and filter scripts, connections, and cookies detected on your domain.","url":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#page","headline":"Monitor resources and cookies · Client-side security docs","description":"View and filter scripts, connections, and cookies detected on your domain.","url":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/detection/","name":"Detection"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/detection/monitor-connections-scripts/","name":"Monitor resources and cookies"}}]}
 ```

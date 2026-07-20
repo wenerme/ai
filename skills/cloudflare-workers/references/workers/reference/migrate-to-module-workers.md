@@ -1,7 +1,7 @@
 ---
 title: Migrate from Service Workers to ES Modules
 description: Write your Worker code in ES modules syntax for an optimized experience.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -83,8 +83,8 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-12304)
-* [  wrangler.toml ](#tab-panel-12305)
+* [  wrangler.jsonc ](#tab-panel-12792)
+* [  wrangler.toml ](#tab-panel-12793)
 
 **JSONC**
 
@@ -179,8 +179,8 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12306)
-* [  wrangler.toml ](#tab-panel-12307)
+* [  wrangler.jsonc ](#tab-panel-12794)
+* [  wrangler.toml ](#tab-panel-12795)
 
 **JSONC**
 
@@ -237,8 +237,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-12308)
-* [  TypeScript ](#tab-panel-12309)
+* [  JavaScript ](#tab-panel-12796)
+* [  TypeScript ](#tab-panel-12797)
 
 **JavaScript**
 
@@ -479,6 +479,6 @@ addEventListener('fetch', event => {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#page","headline":"Migrate from Service Workers to ES Modules · Cloudflare Workers docs","description":"Write your Worker code in ES modules syntax for an optimized experience.","url":"https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#page","headline":"Migrate from Service Workers to ES Modules · Cloudflare Workers docs","description":"Write your Worker code in ES modules syntax for an optimized experience.","url":"https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/reference/migrate-to-module-workers/","name":"Migrate from Service Workers to ES Modules"}}]}
 ```

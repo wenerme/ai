@@ -1,7 +1,7 @@
 ---
 title: Rate limiting
 description: Control traffic to your AI Gateway with fixed or sliding rate limits to prevent excessive costs and suspicious activity.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ When your requests exceed the allowed rate, you will encounter rate limiting. Th
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-6618)
-* [ API ](#tab-panel-6619)
+* [ Dashboard ](#tab-panel-7128)
+* [ API ](#tab-panel-7129)
 
 To set the default rate limiting configuration in the dashboard:
 
@@ -50,6 +50,6 @@ To set the default rate limiting configuration using the API:
 This rate limiting behavior will be uniformly applied to all requests for that gateway.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/rate-limiting/#page","headline":"Rate limiting · Cloudflare AI Gateway docs","description":"Control traffic to your AI Gateway with fixed or sliding rate limits to prevent excessive costs and suspicious activity.","url":"https://developers.cloudflare.com/ai-gateway/features/rate-limiting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/rate-limiting/#page","headline":"Rate limiting · Cloudflare AI Gateway docs","description":"Control traffic to your AI Gateway with fixed or sliding rate limits to prevent excessive costs and suspicious activity.","url":"https://developers.cloudflare.com/ai-gateway/features/rate-limiting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/rate-limiting/","name":"Rate limiting"}}]}
 ```

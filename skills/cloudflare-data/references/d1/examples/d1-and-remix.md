@@ -1,7 +1,7 @@
 ---
 title: Query D1 from Remix
 description: Query your D1 database from a Remix application.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,7 +31,7 @@ The following example shows you how to define a Remix [loader ↗](https://remix
 * Bindings are passed through on the `context.cloudflare.env` parameter passed to a `LoaderFunction`.
 * If you configured a [binding](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases) named `DB`, then you would access [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) methods via `context.cloudflare.env.DB`.
 
-* [  TypeScript ](#tab-panel-8243)
+* [  TypeScript ](#tab-panel-8583)
 
 **TypeScript**
 
@@ -74,6 +74,6 @@ export default function Index() {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/d1-and-remix/#page","headline":"Query D1 from Remix · Cloudflare D1 docs","description":"Query your D1 database from a Remix application.","url":"https://developers.cloudflare.com/d1/examples/d1-and-remix/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Remix"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/d1-and-remix/#page","headline":"Query D1 from Remix · Cloudflare D1 docs","description":"Query your D1 database from a Remix application.","url":"https://developers.cloudflare.com/d1/examples/d1-and-remix/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Remix"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/d1-and-remix/","name":"Query D1 from Remix"}}]}
 ```

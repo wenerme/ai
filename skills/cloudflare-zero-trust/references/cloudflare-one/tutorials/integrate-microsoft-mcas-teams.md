@@ -1,7 +1,7 @@
 ---
 title: Integrate Microsoft MCAS with Cloudflare Zero Trust
 description: With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -85,6 +85,6 @@ Now when trying to visit one of the MCAS defined sites, the user will be blocked
 ![Access Restricted](https://developers.cloudflare.com/_astro/mcas-block-page.Bgzcx6ig_ZPxsLe.webp)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/#page","headline":"Integrate Microsoft MCAS with Cloudflare Zero Trust · Cloudflare One docs","description":"With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/#page","headline":"Integrate Microsoft MCAS with Cloudflare Zero Trust · Cloudflare One docs","description":"With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/","name":"Integrate Microsoft MCAS with Cloudflare Zero Trust"}}]}
 ```

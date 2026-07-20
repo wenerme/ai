@@ -1,7 +1,7 @@
 ---
 title: Top Level Domains supported
 description: View supported top-level domains for registration.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,6 +32,6 @@ Possible causes for the domain not being available include:
 When transferring a domain to Cloudflare Registrar, refer to [Domain is in a restricted status](https://developers.cloudflare.com/registrar/troubleshooting/#domain-is-in-a-restricted-status) for statuses that can block a transfer.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/#page","headline":"Top Level Domains supported · Cloudflare Registrar docs","description":"View supported top-level domains for registration.","url":"https://developers.cloudflare.com/registrar/top-level-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/#page","headline":"Top Level Domains supported · Cloudflare Registrar docs","description":"View supported top-level domains for registration.","url":"https://developers.cloudflare.com/registrar/top-level-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/top-level-domains/","name":"Top Level Domains supported"}}]}
 ```

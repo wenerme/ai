@@ -1,7 +1,7 @@
 ---
 title: Readonly connections
 description: Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ This is useful for scenarios like:
 * **Multi-tenant scenarios**: Some tenants have read-only access
 * **Audit and monitoring connections**: Observers that should not affect the system
 
-* [  JavaScript ](#tab-panel-6131)
-* [  TypeScript ](#tab-panel-6132)
+* [  JavaScript ](#tab-panel-6405)
+* [  TypeScript ](#tab-panel-6406)
 
 **JavaScript**
 
@@ -60,8 +60,8 @@ export class DocAgent extends Agent<Env, DocState> {
 }
 ```
 
-* [  JavaScript ](#tab-panel-6133)
-* [  TypeScript ](#tab-panel-6134)
+* [  JavaScript ](#tab-panel-6407)
+* [  TypeScript ](#tab-panel-6408)
 
 **JavaScript**
 
@@ -97,8 +97,8 @@ const agent = useAgent({
 
 Override `shouldConnectionBeReadonly` to evaluate each connection when it first connects. Return `true` to mark it readonly.
 
-* [  JavaScript ](#tab-panel-6137)
-* [  TypeScript ](#tab-panel-6138)
+* [  JavaScript ](#tab-panel-6411)
+* [  TypeScript ](#tab-panel-6412)
 
 **JavaScript**
 
@@ -133,8 +133,8 @@ This hook runs before the initial state is sent to the client, so the connection
 
 Use `setConnectionReadonly` to change a connection's readonly status dynamically:
 
-* [  JavaScript ](#tab-panel-6143)
-* [  TypeScript ](#tab-panel-6144)
+* [  JavaScript ](#tab-panel-6417)
+* [  TypeScript ](#tab-panel-6418)
 
 **JavaScript**
 
@@ -186,8 +186,8 @@ export class GameAgent extends Agent<Env, GameState> {
 
 A connection can toggle its own readonly status via a callable. This is useful for lock/unlock UIs where viewers can opt into editing mode:
 
-* [  JavaScript ](#tab-panel-6139)
-* [  TypeScript ](#tab-panel-6140)
+* [  JavaScript ](#tab-panel-6413)
+* [  TypeScript ](#tab-panel-6414)
 
 **JavaScript**
 
@@ -225,8 +225,8 @@ export class CollabAgent extends Agent<Env, State> {
 
 On the client:
 
-* [  JavaScript ](#tab-panel-6135)
-* [  TypeScript ](#tab-panel-6136)
+* [  JavaScript ](#tab-panel-6409)
+* [  TypeScript ](#tab-panel-6410)
 
 **JavaScript**
 
@@ -248,8 +248,8 @@ await agent.call("setMyReadonly", [false]); // unlock
 
 Use `isConnectionReadonly` to check a connection's current status:
 
-* [  JavaScript ](#tab-panel-6141)
-* [  TypeScript ](#tab-panel-6142)
+* [  JavaScript ](#tab-panel-6415)
+* [  TypeScript ](#tab-panel-6416)
 
 **JavaScript**
 
@@ -290,8 +290,8 @@ Note
 
 `onStateUpdateError` also fires when `validateStateChange` rejects a client-originated state update (with the message `"State update rejected"`). This makes the callback useful for handling any rejected state write, not just readonly errors.
 
-* [  JavaScript ](#tab-panel-6145)
-* [  TypeScript ](#tab-panel-6146)
+* [  JavaScript ](#tab-panel-6419)
+* [  TypeScript ](#tab-panel-6420)
 
 **JavaScript**
 
@@ -396,8 +396,8 @@ Callback on `AgentClient` and `useAgent` options. Called when the server rejects
 
 ### Query parameter based access
 
-* [  JavaScript ](#tab-panel-6149)
-* [  TypeScript ](#tab-panel-6150)
+* [  JavaScript ](#tab-panel-6423)
+* [  TypeScript ](#tab-panel-6424)
 
 **JavaScript**
 
@@ -450,8 +450,8 @@ const agent = useAgent({
 
 ### Role-based access control
 
-* [  JavaScript ](#tab-panel-6159)
-* [  TypeScript ](#tab-panel-6160)
+* [  JavaScript ](#tab-panel-6433)
+* [  TypeScript ](#tab-panel-6434)
 
 **JavaScript**
 
@@ -540,8 +540,8 @@ export class CollaborativeAgent extends Agent<Env, CollabState> {
 
 ### Admin dashboard
 
-* [  JavaScript ](#tab-panel-6161)
-* [  TypeScript ](#tab-panel-6162)
+* [  JavaScript ](#tab-panel-6435)
+* [  TypeScript ](#tab-panel-6436)
 
 **JavaScript**
 
@@ -626,8 +626,8 @@ const viewerAgent = useAgent({
 
 ### Dynamic permission changes
 
-* [  JavaScript ](#tab-panel-6163)
-* [  TypeScript ](#tab-panel-6164)
+* [  JavaScript ](#tab-panel-6437)
+* [  TypeScript ](#tab-panel-6438)
 
 **JavaScript**
 
@@ -814,8 +814,8 @@ The enforcement happens inside `setState()` itself. When a `@callable()` method 
 
 The readonly check happens inside `this.setState()`, not at the start of the callable. If your method has side effects before the state write, those will still execute:
 
-* [  JavaScript ](#tab-panel-6147)
-* [  TypeScript ](#tab-panel-6148)
+* [  JavaScript ](#tab-panel-6421)
+* [  TypeScript ](#tab-panel-6422)
 
 **JavaScript**
 
@@ -845,8 +845,8 @@ export class MyAgent extends Agent<Env, State> {
 
 To avoid this, either check permissions before side effects or structure your code so the state write comes first:
 
-* [  JavaScript ](#tab-panel-6151)
-* [  TypeScript ](#tab-panel-6152)
+* [  JavaScript ](#tab-panel-6425)
+* [  TypeScript ](#tab-panel-6426)
 
 **JavaScript**
 
@@ -882,8 +882,8 @@ export class MyAgent extends Agent<Env, State> {
 
 ### Combine with authentication
 
-* [  JavaScript ](#tab-panel-6155)
-* [  TypeScript ](#tab-panel-6156)
+* [  JavaScript ](#tab-panel-6429)
+* [  TypeScript ](#tab-panel-6430)
 
 **JavaScript**
 
@@ -922,8 +922,8 @@ export class SecureAgent extends Agent<Env, State> {
 
 ### Provide clear user feedback
 
-* [  JavaScript ](#tab-panel-6153)
-* [  TypeScript ](#tab-panel-6154)
+* [  JavaScript ](#tab-panel-6427)
+* [  TypeScript ](#tab-panel-6428)
 
 **JavaScript**
 
@@ -978,8 +978,8 @@ function EditButton() {
 
 ### Log access attempts
 
-* [  JavaScript ](#tab-panel-6157)
-* [  TypeScript ](#tab-panel-6158)
+* [  JavaScript ](#tab-panel-6431)
+* [  TypeScript ](#tab-panel-6432)
 
 **JavaScript**
 
@@ -1029,6 +1029,6 @@ export class AuditedAgent extends Agent<Env, State> {
 * [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/#page","headline":"Readonly connections · Cloudflare Agents docs","description":"Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.","url":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/#page","headline":"Readonly connections · Cloudflare Agents docs","description":"Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.","url":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/readonly-connections/","name":"Readonly connections"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Audit Logs
 description: View changelog entries for Audit Logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -173,6 +173,6 @@ You can access detailed documentation for audit logs (version 2) Beta API releas
 Support for these features is coming as part of the GA release later this year. For more details, including a sample audit log, check out our blog post: [Introducing Automatic Audit Logs ↗](https://blog.cloudflare.com/introducing-automatic-audit-logs/)
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/logs/changelog/audit-logs/#page","headline":"Audit Logs · Cloudflare Logs docs","description":"View changelog entries for Audit Logs.","url":"https://developers.cloudflare.com/logs/changelog/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/logs/changelog/audit-logs/#page","headline":"Audit Logs · Cloudflare Logs docs","description":"View changelog entries for Audit Logs.","url":"https://developers.cloudflare.com/logs/changelog/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/changelog/audit-logs/","name":"Audit Logs"}}]}
 ```

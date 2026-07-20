@@ -1,7 +1,7 @@
 ---
 title: Programmable Flow Protection (Beta)
 description: Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -1387,6 +1387,6 @@ Traffic flowing through Programmable Flow Protection can be found in the [Networ
 In the Network Analytics dashboard, select the **Programmable Flow Protection** tab to filter traffic based on this feature. You can filter traffic by program ID, custom network analytics tags, actions, IPs, and ports. By default, packets are sampled at a rate of 1/10,000.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#page","headline":"Cloudflare Programmable Flow Protection (Beta) · Cloudflare DDoS Protection docs","description":"Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#page","headline":"Cloudflare Programmable Flow Protection (Beta) · Cloudflare DDoS Protection docs","description":"Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/overview/","name":"General settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","name":"Programmable Flow Protection (Beta)"}}]}
 ```

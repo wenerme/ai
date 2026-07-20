@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -49,8 +49,8 @@ New to Workers?
 
 Refer to [How Workers works](https://developers.cloudflare.com/workers/reference/how-workers-works/) to learn about the Workers serverless execution model works. Go to the [Workers Get started guide](https://developers.cloudflare.com/workers/get-started/guide/) to set up your first Worker.
 
-* [ CLI ](#tab-panel-9385)
-* [ Dashboard ](#tab-panel-9386)
+* [ CLI ](#tab-panel-9828)
+* [ Dashboard ](#tab-panel-9829)
 
 Create a new Worker to read and write to your KV namespace.
 
@@ -110,8 +110,8 @@ For example: `CI=true npm create cloudflare@latest kv-tutorial --type=simple --g
 
 A [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) is a key-value database replicated to Cloudflare's global network.
 
-* [ CLI ](#tab-panel-9377)
-* [ Dashboard ](#tab-panel-9378)
+* [ CLI ](#tab-panel-9820)
+* [ Dashboard ](#tab-panel-9821)
 
 You can use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to create a new KV namespace. You can also use it to perform operations such as put, list, get, and delete within your KV namespace.
 
@@ -162,13 +162,13 @@ Refer to [Environment](https://developers.cloudflare.com/kv/reference/environmen
 
 To bind your KV namespace to your Worker:
 
-* [ CLI ](#tab-panel-9389)
-* [ Dashboard ](#tab-panel-9390)
+* [ CLI ](#tab-panel-9832)
+* [ Dashboard ](#tab-panel-9833)
 
 1. In your Wrangler file, add the following with the values generated in your terminal from [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace):
 
-  * [  wrangler.jsonc ](#tab-panel-9387)
-  * [  wrangler.toml ](#tab-panel-9388)
+  * [  wrangler.jsonc ](#tab-panel-9830)
+  * [  wrangler.toml ](#tab-panel-9831)
 
 **JSONC**
 ```jsonc
@@ -208,8 +208,8 @@ You can interact with your KV namespace via [Wrangler](https://developers.cloudf
 
 ### 4.1\. Write a value
 
-* [ CLI ](#tab-panel-9379)
-* [ Dashboard ](#tab-panel-9380)
+* [ CLI ](#tab-panel-9822)
+* [ Dashboard ](#tab-panel-9823)
 
 To write a value to your empty KV namespace using Wrangler:
 
@@ -255,8 +255,8 @@ npx wrangler kv key put --namespace-id=xxxxxxxxxxxxxxxx "<KEY>" "<VALUE>" --remo
 
 ### 4.2\. Get a value
 
-* [ CLI ](#tab-panel-9383)
-* [ Dashboard ](#tab-panel-9384)
+* [ CLI ](#tab-panel-9826)
+* [ Dashboard ](#tab-panel-9827)
 
 To access the value from your KV namespace using Wrangler:
 
@@ -287,8 +287,8 @@ You can view key-value pairs directly from the dashboard.
 
 ## 5\. Access your KV namespace from your Worker
 
-* [ CLI ](#tab-panel-9395)
-* [ Dashboard ](#tab-panel-9396)
+* [ CLI ](#tab-panel-9838)
+* [ Dashboard ](#tab-panel-9839)
 
 Note
 
@@ -322,8 +322,8 @@ let value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
 
 Your Worker code should look like this:
 
-* [  JavaScript ](#tab-panel-9391)
-* [  TypeScript ](#tab-panel-9392)
+* [  JavaScript ](#tab-panel-9836)
+* [  TypeScript ](#tab-panel-9837)
 
 **JavaScript**
 
@@ -398,8 +398,8 @@ The code above:
 3. Select **Edit Code**.
 4. Clear the contents of the `workers.js` file, then paste the following code.
 
-  * [  JavaScript ](#tab-panel-9393)
-  * [  TypeScript ](#tab-panel-9394)
+  * [  JavaScript ](#tab-panel-9834)
+  * [  TypeScript ](#tab-panel-9835)
 
 **JavaScript**
 ```js
@@ -467,8 +467,8 @@ The browser should simply return the `VALUE` corresponding to the `KEY` you have
 
 Deploy your Worker to Cloudflare's global network.
 
-* [ CLI ](#tab-panel-9381)
-* [ Dashboard ](#tab-panel-9382)
+* [ CLI ](#tab-panel-9824)
+* [ Dashboard ](#tab-panel-9825)
 
 1. Run the following command to deploy KV to Cloudflare's global network:
 ```sh
@@ -502,6 +502,6 @@ If you have any feature requests or notice any bugs, share your feedback directl
 * Read the Wrangler [kv command documentation](https://developers.cloudflare.com/kv/reference/kv-commands/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started · Cloudflare Workers KV docs","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started · Cloudflare Workers KV docs","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/get-started/","name":"Getting started"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: gemma-7b-it-lora
 description:   This is a Gemma-7B base model that Cloudflare dedicates for inference with LoRA adapters. Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2262)
-* [  TypeScript ](#tab-panel-2263)
-* [  Python ](#tab-panel-2264)
-* [  curl ](#tab-panel-2265)
+* [  Worker (Streaming) ](#tab-panel-2408)
+* [  TypeScript ](#tab-panel-2409)
+* [  Python ](#tab-panel-2410)
+* [  curl ](#tab-panel-2411)
 
 **TypeScript**
 
@@ -226,6 +226,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it-lora/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it-lora/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/google/gemma-7b-it-lora/#page","headline":"gemma-7b-it-lora (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"This is a Gemma-7B base model that Cloudflare dedicates for inference with LoRA adapters. Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models.","url":"https://developers.cloudflare.com/ai/models/%40cf/google/gemma-7b-it-lora/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/google/gemma-7b-it-lora/#page","headline":"gemma-7b-it-lora (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"This is a Gemma-7B base model that Cloudflare dedicates for inference with LoRA adapters. Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models.","url":"https://developers.cloudflare.com/ai/models/%40cf/google/gemma-7b-it-lora/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

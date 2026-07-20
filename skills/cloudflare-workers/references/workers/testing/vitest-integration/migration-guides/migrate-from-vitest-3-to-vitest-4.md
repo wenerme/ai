@@ -1,7 +1,7 @@
 ---
 title: Migrate from Vitest 3 to Vitest 4
 description: Migrate the Workers Vitest integration from v0.12.x (Vitest 3) to v0.13.x (Vitest 4), covering configuration and test file changes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -184,6 +184,6 @@ For breaking changes in Vitest 4 itself that may affect your tests, refer to the
 * [Configuration](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/) \- Reference for the `cloudflareTest()` plugin options.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/#page","headline":"Migrate from Vitest 3 to Vitest 4 · Cloudflare Workers docs","description":"Migrate the Workers Vitest integration from v0.12.x (Vitest 3) to v0.13.x (Vitest 4), covering configuration and test file changes.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/#page","headline":"Migrate from Vitest 3 to Vitest 4 · Cloudflare Workers docs","description":"Migrate the Workers Vitest integration from v0.12.x (Vitest 3) to v0.13.x (Vitest 4), covering configuration and test file changes.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/","name":"Migrate from Vitest 3 to Vitest 4"}}]}
 ```

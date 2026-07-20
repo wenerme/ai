@@ -1,7 +1,7 @@
 ---
 title: Build a Durable AI Agent
 description: Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -427,8 +427,8 @@ export class ResearchAgent extends Agent<Env, State> {
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:
 
-  * [  wrangler.jsonc ](#tab-panel-13430)
-  * [  wrangler.toml ](#tab-panel-13431)
+  * [  wrangler.jsonc ](#tab-panel-14049)
+  * [  wrangler.toml ](#tab-panel-14050)
 
 **JSONC**
 ```jsonc
@@ -437,7 +437,7 @@ export class ResearchAgent extends Agent<Env, State> {
   "name": "durable-ai-agent",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "observability": {
     "enabled": true
   },
@@ -471,7 +471,7 @@ export class ResearchAgent extends Agent<Env, State> {
 name = "durable-ai-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 [observability]
 enabled = true
 [[durable_objects.bindings]]
@@ -673,6 +673,6 @@ Agent class names are automatically converted to kebab-case for URLs (`ResearchA
 [ Agents SDK ](https://developers.cloudflare.com/agents/) For interactive agents with real-time chat and WebSocket connections.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/durable-agents/#page","headline":"Build a Durable AI Agent · Cloudflare Workflows docs","description":"Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.","url":"https://developers.cloudflare.com/workflows/get-started/durable-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/durable-agents/#page","headline":"Build a Durable AI Agent · Cloudflare Workflows docs","description":"Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.","url":"https://developers.cloudflare.com/workflows/get-started/durable-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/get-started/durable-agents/","name":"Build a Durable AI Agent"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Privacy Pass Protocol
 description: The Privacy Pass roles, the issuance and redemption flow.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -82,6 +82,6 @@ To run the complete issuance and redemption flow on your own machine — no Clou
 * [RFC 9578: Privacy Pass Issuance Protocols ↗](https://datatracker.ietf.org/doc/rfc9578/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/#page","headline":"Privacy Pass Protocol · Cloudflare Privacy Pass docs","description":"The Privacy Pass roles, the issuance and redemption flow.","url":"https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/#page","headline":"Privacy Pass Protocol · Cloudflare Privacy Pass docs","description":"The Privacy Pass roles, the issuance and redemption flow.","url":"https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-pass/","name":"Privacy Pass"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-pass/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-pass/concepts/privacy-pass-protocol/","name":"Privacy Pass Protocol"}}]}
 ```

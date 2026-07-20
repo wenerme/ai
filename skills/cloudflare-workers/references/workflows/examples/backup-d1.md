@@ -1,7 +1,7 @@
 ---
 title: Export and save D1 database
 description: Send invoice when shopping cart is checked out and paid for
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -134,8 +134,8 @@ Create `D1_REST_API_TOKEN` as a [secret](https://developers.cloudflare.com/worke
 
 Here is a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-13422)
-* [  wrangler.toml ](#tab-panel-13423)
+* [  wrangler.jsonc ](#tab-panel-14041)
+* [  wrangler.toml ](#tab-panel-14042)
 
 **JSONC**
 
@@ -145,7 +145,7 @@ Here is a [Wrangler configuration file](https://developers.cloudflare.com/worker
   "name": "backup-d1",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -177,7 +177,7 @@ Here is a [Wrangler configuration file](https://developers.cloudflare.com/worker
 name = "backup-d1"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -205,6 +205,6 @@ Scheduled instances include the matching cron expression and scheduled trigger t
 Use the latest Wrangler release when configuring Workflow schedules. If your local Wrangler schema does not recognize `schedules` yet, update Wrangler before deploying.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/backup-d1/#page","headline":"Export and save D1 database · Cloudflare Workflows docs","description":"Send invoice when shopping cart is checked out and paid for","url":"https://developers.cloudflare.com/workflows/examples/backup-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/backup-d1/#page","headline":"Export and save D1 database · Cloudflare Workflows docs","description":"Send invoice when shopping cart is checked out and paid for","url":"https://developers.cloudflare.com/workflows/examples/backup-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/examples/backup-d1/","name":"Export and save D1 database"}}]}
 ```

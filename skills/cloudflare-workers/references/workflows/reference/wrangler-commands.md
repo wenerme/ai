@@ -1,7 +1,7 @@
 ---
 title: Wrangler commands
 description: Wrangler CLI commands for managing, deploying, and interacting with Cloudflare Workflows.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-13502)
-* [  pnpm ](#tab-panel-13503)
-* [  yarn ](#tab-panel-13504)
+* [  npm ](#tab-panel-14063)
+* [  pnpm ](#tab-panel-14064)
+* [  yarn ](#tab-panel-14065)
 
 ```sh
 npx wrangler workflows list
@@ -66,9 +66,9 @@ Use a specific auth profile
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-13505)
-* [  pnpm ](#tab-panel-13506)
-* [  yarn ](#tab-panel-13507)
+* [  npm ](#tab-panel-14066)
+* [  pnpm ](#tab-panel-14067)
+* [  yarn ](#tab-panel-14068)
 
 ```sh
 npx wrangler workflows describe [NAME]
@@ -114,9 +114,9 @@ Use a specific auth profile
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-13508)
-* [  pnpm ](#tab-panel-13509)
-* [  yarn ](#tab-panel-13510)
+* [  npm ](#tab-panel-14069)
+* [  pnpm ](#tab-panel-14070)
+* [  yarn ](#tab-panel-14071)
 
 ```sh
 npx wrangler workflows delete [NAME]
@@ -162,9 +162,9 @@ Use a specific auth profile
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-13511)
-* [  pnpm ](#tab-panel-13512)
-* [  yarn ](#tab-panel-13513)
+* [  npm ](#tab-panel-14072)
+* [  pnpm ](#tab-panel-14073)
+* [  yarn ](#tab-panel-14074)
 
 ```sh
 npx wrangler workflows trigger [NAME] [PARAMS]
@@ -214,9 +214,9 @@ Use a specific auth profile
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-13514)
-* [  pnpm ](#tab-panel-13515)
-* [  yarn ](#tab-panel-13516)
+* [  npm ](#tab-panel-14075)
+* [  pnpm ](#tab-panel-14076)
+* [  yarn ](#tab-panel-14077)
 
 ```sh
 npx wrangler workflows instances list [NAME]
@@ -270,9 +270,9 @@ Use a specific auth profile
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-13517)
-* [  pnpm ](#tab-panel-13518)
-* [  yarn ](#tab-panel-13519)
+* [  npm ](#tab-panel-14078)
+* [  pnpm ](#tab-panel-14079)
+* [  yarn ](#tab-panel-14080)
 
 ```sh
 npx wrangler workflows instances describe [NAME] [ID]
@@ -324,9 +324,9 @@ Use a specific auth profile
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-13520)
-* [  pnpm ](#tab-panel-13521)
-* [  yarn ](#tab-panel-13522)
+* [  npm ](#tab-panel-14081)
+* [  pnpm ](#tab-panel-14082)
+* [  yarn ](#tab-panel-14083)
 
 ```sh
 npx wrangler workflows instances send-event [NAME] [ID]
@@ -378,9 +378,9 @@ Use a specific auth profile
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-13523)
-* [  pnpm ](#tab-panel-13524)
-* [  yarn ](#tab-panel-13525)
+* [  npm ](#tab-panel-14084)
+* [  pnpm ](#tab-panel-14085)
+* [  yarn ](#tab-panel-14086)
 
 ```sh
 npx wrangler workflows instances terminate [NAME] [ID]
@@ -428,9 +428,9 @@ Use a specific auth profile
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-13526)
-* [  pnpm ](#tab-panel-13527)
-* [  yarn ](#tab-panel-13528)
+* [  npm ](#tab-panel-14087)
+* [  pnpm ](#tab-panel-14088)
+* [  yarn ](#tab-panel-14089)
 
 ```sh
 npx wrangler workflows instances restart [NAME] [ID]
@@ -484,9 +484,9 @@ Use a specific auth profile
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-13529)
-* [  pnpm ](#tab-panel-13530)
-* [  yarn ](#tab-panel-13531)
+* [  npm ](#tab-panel-14090)
+* [  pnpm ](#tab-panel-14091)
+* [  yarn ](#tab-panel-14092)
 
 ```sh
 npx wrangler workflows instances pause [NAME] [ID]
@@ -534,9 +534,9 @@ Use a specific auth profile
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-13532)
-* [  pnpm ](#tab-panel-13533)
-* [  yarn ](#tab-panel-13534)
+* [  npm ](#tab-panel-14093)
+* [  pnpm ](#tab-panel-14094)
+* [  yarn ](#tab-panel-14095)
 
 ```sh
 npx wrangler workflows instances resume [NAME] [ID]
@@ -581,6 +581,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Workflows docs","description":"Wrangler CLI commands for managing, deploying, and interacting with Cloudflare Workflows.","url":"https://developers.cloudflare.com/workflows/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Workflows docs","description":"Wrangler CLI commands for managing, deploying, and interacting with Cloudflare Workflows.","url":"https://developers.cloudflare.com/workflows/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

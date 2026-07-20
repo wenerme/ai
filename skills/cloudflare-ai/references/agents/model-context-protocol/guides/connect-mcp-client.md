@@ -1,7 +1,7 @@
 ---
 title: Connect to an MCP server
 description: Create a Cloudflare Agent that connects to an external MCP server and uses its tools.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -45,8 +45,8 @@ cd my-mcp-client
 ```
 Your Agent is ready! The template includes a minimal Agent in `src/index.ts`:
 
-  * [  JavaScript ](#tab-panel-6045)
-  * [  TypeScript ](#tab-panel-6046)
+  * [  JavaScript ](#tab-panel-6319)
+  * [  TypeScript ](#tab-panel-6320)
 
 **JavaScript**
 ```js
@@ -91,8 +91,8 @@ export default {
 
 1. Add an endpoint to connect to MCP servers. Update your Agent class in `src/index.ts`:
 
-  * [  JavaScript ](#tab-panel-6049)
-  * [  TypeScript ](#tab-panel-6050)
+  * [  JavaScript ](#tab-panel-6323)
+  * [  TypeScript ](#tab-panel-6324)
 
 **JavaScript**
 ```js
@@ -177,8 +177,8 @@ You should see a response with the server ID:
 
 1. Add an endpoint to see which tools are available from connected servers:
 
-  * [  JavaScript ](#tab-panel-6047)
-  * [  TypeScript ](#tab-panel-6048)
+  * [  JavaScript ](#tab-panel-6321)
+  * [  TypeScript ](#tab-panel-6322)
 
 **JavaScript**
 ```js
@@ -255,6 +255,6 @@ Connections persist in the Agent's [SQL storage](https://developers.cloudflare.c
 [ MCP Client API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) Complete API documentation for MCP clients.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/#page","headline":"Connect to an MCP server · Cloudflare Agents docs","description":"Create a Cloudflare Agent that connects to an external MCP server and uses its tools.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/#page","headline":"Connect to an MCP server · Cloudflare Agents docs","description":"Create a Cloudflare Agent that connects to an external MCP server and uses its tools.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/guides/","name":"Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/guides/connect-mcp-client/","name":"Connect to an MCP server"}}]}
 ```

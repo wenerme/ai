@@ -1,7 +1,7 @@
 ---
 title: Cloudflare's own MCP servers
 description: Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -112,6 +112,6 @@ In addition to the Cloudflare API MCP server, Cloudflare provides product-specif
 Check the [GitHub page ↗](https://github.com/cloudflare/mcp-server-cloudflare) to learn how to use Cloudflare's remote MCP servers with different MCP clients.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#page","headline":"Cloudflare's own MCP servers · Cloudflare Agents docs","description":"Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.","url":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#page","headline":"Cloudflare's own MCP servers · Cloudflare Agents docs","description":"Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.","url":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/cloudflare/","name":"Cloudflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","name":"Cloudflare's own MCP servers"}}]}
 ```

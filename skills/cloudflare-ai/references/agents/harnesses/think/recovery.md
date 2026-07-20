@@ -1,7 +1,7 @@
 ---
 title: Durable recovery
 description: Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ A stream-stall watchdog abort (`chatStreamStallTimeoutMs`) is treated as just an
 
 Configure bounded recovery by setting `chatRecovery` to an object:
 
-* [  JavaScript ](#tab-panel-5871)
-* [  TypeScript ](#tab-panel-5872)
+* [  JavaScript ](#tab-panel-6133)
+* [  TypeScript ](#tab-panel-6134)
 
 **JavaScript**
 
@@ -75,8 +75,8 @@ The same recovery events are available through `agents/observability` on the `ch
 
 Override `onChatRecovery` when you need provider-specific recovery, such as retrieving a stored OpenAI Responses result instead of issuing a new model call:
 
-* [  JavaScript ](#tab-panel-5875)
-* [  TypeScript ](#tab-panel-5876)
+* [  JavaScript ](#tab-panel-6137)
+* [  TypeScript ](#tab-panel-6138)
 
 **JavaScript**
 
@@ -166,8 +166,8 @@ Use `ctx.createdAt` to skip stale recoveries. For example, if the interrupted tu
 
 Instead of `chatRecovery = true`, assign an object to tune how long recovery is allowed to run and when it is given up on. A turn that keeps making forward progress is never terminated by the framework on its own — duration is not a bound. Recovery is only sealed by one of the limits in the following table.
 
-* [  JavaScript ](#tab-panel-5879)
-* [  TypeScript ](#tab-panel-5880)
+* [  JavaScript ](#tab-panel-6141)
+* [  TypeScript ](#tab-panel-6142)
 
 **JavaScript**
 
@@ -233,8 +233,8 @@ When a turn is interrupted mid-flight, the transcript can contain a tool call wi
 
 Override `repairInterruptedToolPart` to customize the repaired shape. The common case is a client-resolved tool — for example an `ask_user` question that has no server `execute` and is normally answered by the user's next message. Converting it to a plain text part lets the model treat it as ordinary conversation rather than a tool error, and keeps the question verbatim through compaction:
 
-* [  JavaScript ](#tab-panel-5881)
-* [  TypeScript ](#tab-panel-5882)
+* [  JavaScript ](#tab-panel-6143)
+* [  TypeScript ](#tab-panel-6144)
 
 **JavaScript**
 
@@ -285,8 +285,8 @@ Think recovers from this with two opt-in, provider-agnostic layers, both configu
 
 **1\. Reactive backstop — `contextOverflow.reactive`.** When a turn fails with an error you classify as `"context_overflow"`, Think discards the truncated partial, runs `session.compact()`, and re-runs the turn from the compacted history. The partial is not persisted: the turn restarts from scratch, so keeping the cut-off assistant message would orphan it beside the recovered answer. It is bounded by `contextOverflow.maxRetries` (default `1`); if compaction cannot shorten history or the budget is spent, the overflow surfaces terminally through `onChatError` with `classification: "context_overflow"` — it never loops or ends silently.
 
-* [  JavaScript ](#tab-panel-5873)
-* [  TypeScript ](#tab-panel-5874)
+* [  JavaScript ](#tab-panel-6135)
+* [  TypeScript ](#tab-panel-6136)
 
 **JavaScript**
 
@@ -322,8 +322,8 @@ export class MyAgent extends Think<Env> {
 
 **2\. Proactive guard — `contextOverflow.proactive`.** Heads off the provider error before it happens. Before each step, Think reads the previous step's model-reported `usage.inputTokens` (provider-agnostic) and, if it crosses `maxInputTokens * (headroom ?? 0.9)`, compacts in place and feeds the recompacted history into the upcoming step. If a provider omits `inputTokens`, it falls back to `usage.totalTokens` (a safe over-approximation — it compacts slightly early rather than missing the threshold). It compacts at most `proactive.maxCompactions` times per turn (default `1`) — independent of the reactive `maxRetries` budget — so a history that cannot shorten does not compact on every step.
 
-* [  JavaScript ](#tab-panel-5877)
-* [  TypeScript ](#tab-panel-5878)
+* [  JavaScript ](#tab-panel-6139)
+* [  TypeScript ](#tab-panel-6140)
 
 **JavaScript**
 
@@ -387,8 +387,8 @@ protected hasPendingInteraction(): boolean
 
 Returns a promise that resolves to `true` when the agent reaches a stable state, or `false` if the timeout is exceeded.
 
-* [  JavaScript ](#tab-panel-5883)
-* [  TypeScript ](#tab-panel-5884)
+* [  JavaScript ](#tab-panel-6145)
+* [  TypeScript ](#tab-panel-6146)
 
 **JavaScript**
 
@@ -421,6 +421,6 @@ if (stable) {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/recovery/#page","headline":"Durable recovery · Cloudflare Agents docs","description":"Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/recovery/#page","headline":"Durable recovery · Cloudflare Agents docs","description":"Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/recovery/","name":"Durable recovery"}}]}
 ```

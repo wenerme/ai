@@ -1,7 +1,7 @@
 ---
 title: Dedicated Egress IP for Logpush
 description: Send Logpush logs via a dedicated egress IP.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -141,6 +141,6 @@ $ curl -H "X-Logpush-Secret: wrong-token" https://logpush.yourdestinationendpoin
 Check Cloudflare Analytics for the proxy zone to confirm Logpush traffic is flowing, and monitor WAF events to ensure unauthorized requests are blocked.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/#page","headline":"Dedicated Egress IP for Logpush · Cloudflare Logs docs","description":"Send Logpush logs via a dedicated egress IP.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/#page","headline":"Dedicated Egress IP for Logpush · Cloudflare Logs docs","description":"Send Logpush logs via a dedicated egress IP.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/egress-ip/","name":"Dedicated Egress IP for Logpush"}}]}
 ```

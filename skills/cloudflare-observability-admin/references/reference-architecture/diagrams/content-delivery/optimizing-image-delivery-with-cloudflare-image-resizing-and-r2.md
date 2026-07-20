@@ -1,7 +1,7 @@
 ---
 title: Optimizing image delivery with Cloudflare image resizing and R2
 description: Learn how to get a scalable, high-performance solution to optimizing image delivery.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -56,6 +56,6 @@ https://www.mywebsite.com/cdn-cgi/image/width=80,quality=75/uploads/image.jpg
 * [Serverless image content management platform](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/#page","headline":"Optimizing image delivery with Cloudflare image resizing and R2 · Cloudflare Reference Architecture docs","description":"Learn how to get a scalable, high-performance solution to optimizing image delivery.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/#page","headline":"Optimizing image delivery with Cloudflare image resizing and R2 · Cloudflare Reference Architecture docs","description":"Learn how to get a scalable, high-performance solution to optimizing image delivery.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/content-delivery/","name":"Content Delivery"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/","name":"Optimizing image delivery with Cloudflare image resizing and R2"}}]}
 ```

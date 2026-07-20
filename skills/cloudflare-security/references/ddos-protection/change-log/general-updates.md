@@ -1,7 +1,7 @@
 ---
 title: General updates
 description: General updates and improvements to Cloudflare DDoS protection.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ The Network Analytics dashboard is available to customers that have opted in to 
 API users can ensure they are routed properly by directing their API requests at `eu.api.cloudflare.com`.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ddos-protection/change-log/general-updates/#page","headline":"Changelog for general updates to DDoS protection · Cloudflare DDoS Protection docs","description":"General updates and improvements to Cloudflare DDoS protection.","url":"https://developers.cloudflare.com/ddos-protection/change-log/general-updates/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ddos-protection/change-log/general-updates/#page","headline":"Changelog for general updates to DDoS protection · Cloudflare DDoS Protection docs","description":"General updates and improvements to Cloudflare DDoS protection.","url":"https://developers.cloudflare.com/ddos-protection/change-log/general-updates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/change-log/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/change-log/general-updates/","name":"General updates"}}]}
 ```

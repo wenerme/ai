@@ -1,7 +1,7 @@
 ---
 title: FLUX.2 [max]
 description: FLUX.2 [max] is Black Forest Labs' highest-quality image model — top editing consistency, strongest prompt following, and grounding search for visualizations of real-time information.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ FLUX.2 \[max\] is Black Forest Labs' highest-quality image model — top editing
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-344)
-* [ cURL ](#tab-panel-345)
+* [ TypeScript ](#tab-panel-394)
+* [ cURL ](#tab-panel-395)
 
 **TypeScript**
 
@@ -60,8 +60,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-342)
-* [ Raw response ](#tab-panel-343)
+* [ Output ](#tab-panel-392)
+* [ Raw response ](#tab-panel-393)
 
 ![High Resolution Scene](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/high-resolution-scene.jpeg)
 
@@ -81,8 +81,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Hex Color Control**  — Exact color control via hex codes — useful for brand-consistent imagery
 
-* [ TypeScript ](#tab-panel-348)
-* [ cURL ](#tab-panel-349)
+* [ TypeScript ](#tab-panel-398)
+* [ cURL ](#tab-panel-399)
 
 **TypeScript**
 
@@ -109,8 +109,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-346)
-* [ Raw response ](#tab-panel-347)
+* [ Output ](#tab-panel-396)
+* [ Raw response ](#tab-panel-397)
 
 ![Hex Color Control](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/hex-color-control.jpeg)
 
@@ -128,8 +128,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image Editing**  — Single-reference image editing — relight or restage a product photo
 
-* [ TypeScript ](#tab-panel-352)
-* [ cURL ](#tab-panel-353)
+* [ TypeScript ](#tab-panel-402)
+* [ cURL ](#tab-panel-403)
 
 **TypeScript**
 
@@ -161,8 +161,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-350)
-* [ Raw response ](#tab-panel-351)
+* [ Output ](#tab-panel-400)
+* [ Raw response ](#tab-panel-401)
 
 ![Image Editing](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-max/image-editing.jpeg)
 
@@ -180,8 +180,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-354)
-* [ Output ](#tab-panel-355)
+* [ Input ](#tab-panel-404)
+* [ Output ](#tab-panel-405)
 
 prompt
 
@@ -222,6 +222,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-m
 Output [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/#page","headline":"FLUX.2 [max] (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[max] is Black Forest Labs' highest-quality image model — top editing consistency, strongest prompt following, and grounding search for visualizations of real-time information.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/#page","headline":"FLUX.2 [max] (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[max] is Black Forest Labs' highest-quality image model — top editing consistency, strongest prompt following, and grounding search for visualizations of real-time information.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

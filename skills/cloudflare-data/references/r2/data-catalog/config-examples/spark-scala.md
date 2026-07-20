@@ -1,7 +1,7 @@
 ---
 title: Spark (Scala)
 description: Build a Scala Spark application that connects to R2 Data Catalog for Iceberg table operations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -200,6 +200,6 @@ You are now ready to run the job:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/#page","headline":"Spark (Scala) · Cloudflare R2 docs","description":"Build a Scala Spark application that connects to R2 Data Catalog for Iceberg table operations.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/#page","headline":"Spark (Scala) · Cloudflare R2 docs","description":"Build a Scala Spark application that connects to R2 Data Catalog for Iceberg table operations.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/spark-scala/","name":"Spark (Scala)"}}]}
 ```

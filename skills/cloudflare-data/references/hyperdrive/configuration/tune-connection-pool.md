@@ -1,7 +1,7 @@
 ---
 title: Tune connection pooling
 description: Configure the maximum number of database connections in your Hyperdrive connection pool.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,9 +24,9 @@ Hyperdrive does have a limit of _origin_ connections that can be made from Hyper
 
 You can configure the connection pool size using the Cloudflare dashboard, the Wrangler CLI, or the Cloudflare API.
 
-* [ Dashboard ](#tab-panel-9037)
-* [ Wrangler ](#tab-panel-9038)
-* [ API ](#tab-panel-9039)
+* [ Dashboard ](#tab-panel-9474)
+* [ Wrangler ](#tab-panel-9475)
+* [ API ](#tab-panel-9476)
 
 To configure connection pool size via the dashboard:
 
@@ -82,6 +82,6 @@ You can request adjustments to Hyperdrive's origin connection limits. To request
 * [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/#page","headline":"Tune connection pooling · Cloudflare Hyperdrive docs","description":"Configure the maximum number of database connections in your Hyperdrive connection pool.","url":"https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/#page","headline":"Tune connection pooling · Cloudflare Hyperdrive docs","description":"Configure the maximum number of database connections in your Hyperdrive connection pool.","url":"https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/configuration/tune-connection-pool/","name":"Tune connection pooling"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Build a web crawler with Queues and Browser Run
 description: Example of how to use Queues and Browser Run to power a web crawler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -114,8 +114,8 @@ id = "<GENERATED_NAMESPACE_ID>"
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-10116)
-* [  wrangler.toml ](#tab-panel-10117)
+* [  wrangler.jsonc ](#tab-panel-10561)
+* [  wrangler.toml ](#tab-panel-10562)
 
 **JSONC**
 
@@ -191,8 +191,8 @@ bun add robots-parser
 
 Then, add a Browser Run binding. Adding a Browser Run binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-10114)
-* [  wrangler.toml ](#tab-panel-10115)
+* [  wrangler.jsonc ](#tab-panel-10559)
+* [  wrangler.toml ](#tab-panel-10560)
 
 **JSONC**
 
@@ -240,8 +240,8 @@ Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-10118)
-* [  wrangler.toml ](#tab-panel-10119)
+* [  wrangler.jsonc ](#tab-panel-10563)
+* [  wrangler.toml ](#tab-panel-10564)
 
 **JSONC**
 
@@ -281,8 +281,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-10120)
-* [  wrangler.toml ](#tab-panel-10121)
+* [  wrangler.jsonc ](#tab-panel-10565)
+* [  wrangler.toml ](#tab-panel-10566)
 
 **JSONC**
 
@@ -292,7 +292,7 @@ Your final Wrangler file should look similar to the one below.
   "name": "web-crawler",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "kv_namespaces": [
     {
@@ -331,7 +331,7 @@ Your final Wrangler file should look similar to the one below.
 name = "web-crawler"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -809,6 +809,6 @@ Refer to the [GitHub repository for the complete tutorial ↗](https://github.co
 * [Puppeteer Examples ↗](https://github.com/puppeteer/puppeteer/tree/main/examples)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/#page","headline":"Cloudflare Queues - Queues & Browser Run · Cloudflare Queues docs","description":"Example of how to use Queues and Browser Run to power a web crawler.","url":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/#page","headline":"Cloudflare Queues - Queues & Browser Run · Cloudflare Queues docs","description":"Example of how to use Queues and Browser Run to power a web crawler.","url":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/tutorials/web-crawler-with-browser-run/","name":"Build a web crawler with Queues and Browser Run"}}]}
 ```

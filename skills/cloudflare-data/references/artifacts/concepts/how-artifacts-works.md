@@ -1,7 +1,7 @@
 ---
 title: How Artifacts works
 description: Understand namespaces, repos, and durability.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -54,6 +54,6 @@ Artifacts handles the Git server lifecycle and storage infrastructure underneath
 For repo patterns, refer to [Best practices for Artifacts](https://developers.cloudflare.com/artifacts/concepts/best-practices/). For token behavior, refer to [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/). For product updates, refer to the [Artifacts changelog](https://developers.cloudflare.com/artifacts/platform/changelog/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/#page","headline":"How Artifacts works · Cloudflare Artifacts docs","description":"Understand namespaces, repos, and durability.","url":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/#page","headline":"How Artifacts works · Cloudflare Artifacts docs","description":"Understand namespaces, repos, and durability.","url":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/concepts/how-artifacts-works/","name":"How Artifacts works"}}]}
 ```

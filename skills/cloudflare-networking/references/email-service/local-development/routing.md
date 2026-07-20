@@ -1,7 +1,7 @@
 ---
 title: Email routing
 description: Test Email Service routing Workers locally using wrangler dev with simulated incoming emails.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8892)
-* [  wrangler.toml ](#tab-panel-8893)
+* [  wrangler.jsonc ](#tab-panel-9264)
+* [  wrangler.toml ](#tab-panel-9265)
 
 **JSONC**
 
@@ -38,7 +38,7 @@ Configure your Wrangler file:
 {
   "name": "email-routing-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
 }
 ```
 
@@ -47,7 +47,7 @@ Configure your Wrangler file:
 ```toml
 name = "email-routing-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 ```
 
 ## Basic routing worker
@@ -153,6 +153,6 @@ This will output the parsed email structure in the console:
 * See advanced patterns: [Email routing examples](https://developers.cloudflare.com/email-service/examples/email-routing/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/routing/#page","headline":"Email routing · Cloudflare Email Service docs","description":"Test Email Service routing Workers locally using wrangler dev with simulated incoming emails.","url":"https://developers.cloudflare.com/email-service/local-development/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/routing/#page","headline":"Email routing · Cloudflare Email Service docs","description":"Test Email Service routing Workers locally using wrangler dev with simulated incoming emails.","url":"https://developers.cloudflare.com/email-service/local-development/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/local-development/routing/","name":"Email routing"}}]}
 ```

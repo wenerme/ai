@@ -1,7 +1,7 @@
 ---
 title: Backup and restore
 description: Create point-in-time backups and restore sandbox directories.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,8 +24,8 @@ npx wrangler r2 bucket create my-backup-bucket
 ```
 2. Add the `BACKUP_BUCKET` R2 binding and presigned URL credentials to your Wrangler configuration:
 
-  * [  wrangler.jsonc ](#tab-panel-10696)
-  * [  wrangler.toml ](#tab-panel-10697)
+  * [  wrangler.jsonc ](#tab-panel-11141)
+  * [  wrangler.toml ](#tab-panel-11142)
 
 **JSONC**
 ```jsonc
@@ -33,7 +33,7 @@ npx wrangler r2 bucket create my-backup-bucket
   "name": "my-sandbox-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "containers": [
     {
@@ -73,7 +73,7 @@ npx wrangler r2 bucket create my-backup-bucket
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 [[containers]]
 class_name = "Sandbox"
@@ -107,8 +107,8 @@ The `vars` and API secrets in steps 2 and 3 are only required for production. Fo
 
 Use `createBackup()` to snapshot a directory and upload it to R2:
 
-* [  JavaScript ](#tab-panel-10698)
-* [  TypeScript ](#tab-panel-10699)
+* [  JavaScript ](#tab-panel-11143)
+* [  TypeScript ](#tab-panel-11144)
 
 **JavaScript**
 
@@ -144,8 +144,8 @@ The SDK creates a compressed squashfs archive of the directory and uploads it di
 
 Use `restoreBackup()` to restore a directory from a backup:
 
-* [  JavaScript ](#tab-panel-10700)
-* [  TypeScript ](#tab-panel-10701)
+* [  JavaScript ](#tab-panel-11145)
+* [  TypeScript ](#tab-panel-11146)
 
 **JavaScript**
 
@@ -191,8 +191,8 @@ In production, the FUSE mount is lost when the sandbox sleeps or the container r
 
 When backing up a directory inside a git repository, set `useGitignore: true` to exclude files matching `.gitignore` rules. This is useful for skipping large generated directories like `node_modules/`, `dist/`, or `build/` that can be recreated.
 
-* [  JavaScript ](#tab-panel-10702)
-* [  TypeScript ](#tab-panel-10703)
+* [  JavaScript ](#tab-panel-11147)
+* [  TypeScript ](#tab-panel-11148)
 
 **JavaScript**
 
@@ -238,8 +238,8 @@ Requirements
 
 Save state before risky operations and restore if something fails:
 
-* [  JavaScript ](#tab-panel-10706)
-* [  TypeScript ](#tab-panel-10707)
+* [  JavaScript ](#tab-panel-11151)
+* [  TypeScript ](#tab-panel-11152)
 
 **JavaScript**
 
@@ -285,8 +285,8 @@ try {
 
 The `DirectoryBackup` handle is serializable. Persist it to KV, D1, or Durable Object storage for later use:
 
-* [  JavaScript ](#tab-panel-10710)
-* [  TypeScript ](#tab-panel-10711)
+* [  JavaScript ](#tab-panel-11155)
+* [  TypeScript ](#tab-panel-11156)
 
 **JavaScript**
 
@@ -342,8 +342,8 @@ if (stored) {
 
 Add a `name` option to identify backups. Names can be up to 256 characters:
 
-* [  JavaScript ](#tab-panel-10704)
-* [  TypeScript ](#tab-panel-10705)
+* [  JavaScript ](#tab-panel-11149)
+* [  TypeScript ](#tab-panel-11150)
 
 **JavaScript**
 
@@ -379,8 +379,8 @@ console.log(`Backup ID: ${backup.id}`);
 
 Set a custom time-to-live for backups. The default TTL is 3 days (259200 seconds). The `ttl` value must be a positive number of seconds:
 
-* [  JavaScript ](#tab-panel-10714)
-* [  TypeScript ](#tab-panel-10715)
+* [  JavaScript ](#tab-panel-11159)
+* [  TypeScript ](#tab-panel-11160)
 
 **JavaScript**
 
@@ -444,8 +444,8 @@ You can use backup and restore during local development with `wrangler dev` by p
 
 Add a `BACKUP_BUCKET` R2 binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10694)
-* [  wrangler.toml ](#tab-panel-10695)
+* [  wrangler.jsonc ](#tab-panel-11139)
+* [  wrangler.toml ](#tab-panel-11140)
 
 **JSONC**
 
@@ -472,8 +472,8 @@ bucket_name = "my-backup-bucket"
 
 Pass `localBucket: true` to `createBackup()` to back up and restore using the R2 binding directly:
 
-* [  JavaScript ](#tab-panel-10712)
-* [  TypeScript ](#tab-panel-10713)
+* [  JavaScript ](#tab-panel-11157)
+* [  TypeScript ](#tab-panel-11158)
 
 **JavaScript**
 
@@ -544,8 +544,8 @@ Backup archives are stored in your R2 bucket under the `backups/` prefix with th
 
 If you only need the most recent backup, delete the previous one before creating a new one:
 
-* [  JavaScript ](#tab-panel-10716)
-* [  TypeScript ](#tab-panel-10717)
+* [  JavaScript ](#tab-panel-11161)
+* [  TypeScript ](#tab-panel-11162)
 
 **JavaScript**
 
@@ -605,8 +605,8 @@ await env.KV.put("latest-backup", JSON.stringify(backup));
 
 To clean up multiple old backups, list objects under the `backups/` prefix and delete them by key:
 
-* [  JavaScript ](#tab-panel-10718)
-* [  TypeScript ](#tab-panel-10719)
+* [  JavaScript ](#tab-panel-11163)
+* [  TypeScript ](#tab-panel-11164)
 
 **JavaScript**
 
@@ -658,8 +658,8 @@ for (const object of listed.objects) {
 
 If you have the backup ID, delete both its archive and metadata directly:
 
-* [  JavaScript ](#tab-panel-10708)
-* [  TypeScript ](#tab-panel-10709)
+* [  JavaScript ](#tab-panel-11153)
+* [  TypeScript ](#tab-panel-11154)
 
 **JavaScript**
 
@@ -685,8 +685,8 @@ await env.BACKUP_BUCKET.delete(`backups/${backupId}/meta.json`);
 
 In production, restore uses FUSE overlayfs to mount the backup as a read-only lower layer. New writes go to a writable upper layer and do not affect the original backup:
 
-* [  JavaScript ](#tab-panel-10720)
-* [  TypeScript ](#tab-panel-10721)
+* [  JavaScript ](#tab-panel-11165)
+* [  TypeScript ](#tab-panel-11166)
 
 **JavaScript**
 
@@ -742,8 +742,8 @@ await sandbox.restoreBackup(backup);
 
 Backup and restore operations can throw specific errors. Wrap calls in [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) blocks:
 
-* [  JavaScript ](#tab-panel-10722)
-* [  TypeScript ](#tab-panel-10723)
+* [  JavaScript ](#tab-panel-11167)
+* [  TypeScript ](#tab-panel-11168)
 
 **JavaScript**
 
@@ -881,6 +881,6 @@ This means `mksquashfs` could not read one or more files inside the directory yo
 * [R2 lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) \- Configure automatic object cleanup
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/backup-restore/#page","headline":"Backup and restore · Cloudflare Sandbox SDK docs","description":"Create point-in-time backups and restore sandbox directories.","url":"https://developers.cloudflare.com/sandbox/guides/backup-restore/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/backup-restore/#page","headline":"Backup and restore · Cloudflare Sandbox SDK docs","description":"Create point-in-time backups and restore sandbox directories.","url":"https://developers.cloudflare.com/sandbox/guides/backup-restore/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/backup-restore/","name":"Backup and restore"}}]}
 ```

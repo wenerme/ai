@@ -1,7 +1,7 @@
 ---
 title: How Cloudflare prevents email-based phishing attacks
 description: Detect phishing with AI and ML models.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ To detect these low volume, malicious emails that do not contain malware, malici
 Refer to [How we detect phish](https://developers.cloudflare.com/email-security/reference/how-we-detect-phish/#sample-attack-types-and-detections) to learn more about additional attack types and detections.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/prevent-phishing-attack/#page","headline":"How Cloudflare prevents email-based phishing attacks · Cloudflare Learning Paths","description":"Detect phishing with AI and ML models.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/prevent-phishing-attack/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/prevent-phishing-attack/#page","headline":"How Cloudflare prevents email-based phishing attacks · Cloudflare Learning Paths","description":"Detect phishing with AI and ML models.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/prevent-phishing-attack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/concepts/prevent-phishing-attack/","name":"How Cloudflare prevents email-based phishing attacks"}}]}
 ```

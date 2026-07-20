@@ -1,7 +1,7 @@
 ---
 title: OS version
 description: OS version in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,10 +28,10 @@ Note
 The OS version must be specified as a valid [Semver ↗](https://semver.org/). For example, if your device is running OS version `1.2`, you must enter `1.2.0`.
 5. (Optional) Configure additional OS-specific fields:
 
-  * [ Windows ](#tab-panel-7742)
-  * [ macOS ](#tab-panel-7743)
-  * [ Linux ](#tab-panel-7744)
-  * [ iOS ](#tab-panel-7745)
+  * [ Windows ](#tab-panel-8080)
+  * [ macOS ](#tab-panel-8081)
+  * [ Linux ](#tab-panel-8082)
+  * [ iOS ](#tab-panel-8083)
 To check that Windows devices have required security patches and features installed, include an Update Build Revision (UBR) number in the OS version check.
 
   * **Update Build Revision**: Enter the Windows UBR you want devices to match (for example, `3803`). The UBR is the fourth part of the full Windows version number (for example, in `10.0.19045.3803`, the UBR is `3803`).
@@ -125,6 +125,6 @@ To determine the ChromeOS version on your device:
 3. The OS version in Semver format is `MAJOR.MINOR.BUILD` (for example, `103.14816.131`).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/#page","headline":"OS version · Cloudflare One docs","description":"OS version in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/#page","headline":"OS version · Cloudflare One docs","description":"OS version in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/reusable-components/","name":"Reusable components"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/reusable-components/posture-checks/","name":"Posture checks"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/reusable-components/posture-checks/client-checks/","name":"Cloudflare One Client checks"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/","name":"OS version"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Sync recipient records
 description: Remove recipients after hard bounces and spam complaints.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,8 +61,8 @@ Create a queue and subscribe it to your sending domain:
 
 Bind the KV namespace and register the Worker as the queue consumer:
 
-* [  wrangler.jsonc ](#tab-panel-9205)
-* [  wrangler.toml ](#tab-panel-9206)
+* [  wrangler.jsonc ](#tab-panel-9251)
+* [  wrangler.toml ](#tab-panel-9252)
 
 **JSONC**
 
@@ -72,7 +72,7 @@ Bind the KV namespace and register the Worker as the queue consumer:
   "name": "recipient-record-sync",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-15",
+  "compatibility_date": "2026-07-20",
   "kv_namespaces": [
     {
       "binding": "RECIPIENTS",
@@ -98,7 +98,7 @@ Bind the KV namespace and register the Worker as the queue consumer:
 name = "recipient-record-sync"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-15"
+compatibility_date = "2026-07-20"
 
 
 [[kv_namespaces]]
@@ -119,8 +119,8 @@ The configuration creates `email-events-dlq` during deployment. Queues moves eve
 
 The [queue() handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) processes each event independently. It deletes applicable recipient records and retries failed KV operations.
 
-* [  JavaScript ](#tab-panel-9207)
-* [  TypeScript ](#tab-panel-9208)
+* [  JavaScript ](#tab-panel-9253)
+* [  TypeScript ](#tab-panel-9254)
 
 **src/index.js**
 
@@ -276,6 +276,6 @@ Monitor the dead letter queue for failed events. Reprocess them after fixing the
 * [Workers KV consistency](https://developers.cloudflare.com/kv/concepts/how-kv-works/#consistency) — account for propagation delays.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/#page","headline":"Sync recipient records · Cloudflare Email Service docs","description":"Remove recipients after hard bounces and spam complaints.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/#page","headline":"Sync recipient records · Cloudflare Email Service docs","description":"Remove recipients after hard bounces and spam complaints.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/sync-recipient-records/","name":"Sync recipient records"}}]}
 ```

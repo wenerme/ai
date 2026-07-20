@@ -1,7 +1,7 @@
 ---
 title: Wrangler commands
 description: Wrangler CLI commands for managing Pipelines streams, sinks, and pipelines.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,9 +16,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-10062)
-* [  pnpm ](#tab-panel-10063)
-* [  yarn ](#tab-panel-10064)
+* [  npm ](#tab-panel-10311)
+* [  pnpm ](#tab-panel-10312)
+* [  yarn ](#tab-panel-10313)
 
 ```sh
 npx wrangler pipelines setup
@@ -60,9 +60,9 @@ Use a specific auth profile
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-10065)
-* [  pnpm ](#tab-panel-10066)
-* [  yarn ](#tab-panel-10067)
+* [  npm ](#tab-panel-10314)
+* [  pnpm ](#tab-panel-10315)
+* [  yarn ](#tab-panel-10316)
 
 ```sh
 npx wrangler pipelines create [PIPELINE]
@@ -108,9 +108,9 @@ Use a specific auth profile
 
 List all pipelines
 
-* [  npm ](#tab-panel-10068)
-* [  pnpm ](#tab-panel-10069)
-* [  yarn ](#tab-panel-10070)
+* [  npm ](#tab-panel-10317)
+* [  pnpm ](#tab-panel-10318)
+* [  yarn ](#tab-panel-10319)
 
 ```sh
 npx wrangler pipelines list
@@ -156,9 +156,9 @@ Use a specific auth profile
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-10071)
-* [  pnpm ](#tab-panel-10072)
-* [  yarn ](#tab-panel-10073)
+* [  npm ](#tab-panel-10320)
+* [  pnpm ](#tab-panel-10321)
+* [  yarn ](#tab-panel-10322)
 
 ```sh
 npx wrangler pipelines get [PIPELINE]
@@ -202,9 +202,9 @@ Use a specific auth profile
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-10074)
-* [  pnpm ](#tab-panel-10075)
-* [  yarn ](#tab-panel-10076)
+* [  npm ](#tab-panel-10323)
+* [  pnpm ](#tab-panel-10324)
+* [  yarn ](#tab-panel-10325)
 
 ```sh
 npx wrangler pipelines update [PIPELINE]
@@ -270,9 +270,9 @@ Use a specific auth profile
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-10077)
-* [  pnpm ](#tab-panel-10078)
-* [  yarn ](#tab-panel-10079)
+* [  npm ](#tab-panel-10326)
+* [  pnpm ](#tab-panel-10327)
+* [  yarn ](#tab-panel-10328)
 
 ```sh
 npx wrangler pipelines delete [PIPELINE]
@@ -316,9 +316,9 @@ Use a specific auth profile
 
 Create a new stream
 
-* [  npm ](#tab-panel-10080)
-* [  pnpm ](#tab-panel-10081)
-* [  yarn ](#tab-panel-10082)
+* [  npm ](#tab-panel-10329)
+* [  pnpm ](#tab-panel-10330)
+* [  yarn ](#tab-panel-10331)
 
 ```sh
 npx wrangler pipelines streams create [STREAM]
@@ -368,9 +368,9 @@ Use a specific auth profile
 
 List all streams
 
-* [  npm ](#tab-panel-10083)
-* [  pnpm ](#tab-panel-10084)
-* [  yarn ](#tab-panel-10085)
+* [  npm ](#tab-panel-10332)
+* [  pnpm ](#tab-panel-10333)
+* [  yarn ](#tab-panel-10334)
 
 ```sh
 npx wrangler pipelines streams list
@@ -418,9 +418,9 @@ Use a specific auth profile
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-10086)
-* [  pnpm ](#tab-panel-10087)
-* [  yarn ](#tab-panel-10088)
+* [  npm ](#tab-panel-10335)
+* [  pnpm ](#tab-panel-10336)
+* [  yarn ](#tab-panel-10337)
 
 ```sh
 npx wrangler pipelines streams get [STREAM]
@@ -464,9 +464,9 @@ Use a specific auth profile
 
 Delete a stream
 
-* [  npm ](#tab-panel-10089)
-* [  pnpm ](#tab-panel-10090)
-* [  yarn ](#tab-panel-10091)
+* [  npm ](#tab-panel-10338)
+* [  pnpm ](#tab-panel-10339)
+* [  yarn ](#tab-panel-10340)
 
 ```sh
 npx wrangler pipelines streams delete [STREAM]
@@ -510,9 +510,9 @@ Use a specific auth profile
 
 Create a new sink
 
-* [  npm ](#tab-panel-10092)
-* [  pnpm ](#tab-panel-10093)
-* [  yarn ](#tab-panel-10094)
+* [  npm ](#tab-panel-10341)
+* [  pnpm ](#tab-panel-10342)
+* [  yarn ](#tab-panel-10343)
 
 ```sh
 npx wrangler pipelines sinks create [SINK]
@@ -582,9 +582,9 @@ Use a specific auth profile
 
 List all sinks
 
-* [  npm ](#tab-panel-10095)
-* [  pnpm ](#tab-panel-10096)
-* [  yarn ](#tab-panel-10097)
+* [  npm ](#tab-panel-10344)
+* [  pnpm ](#tab-panel-10345)
+* [  yarn ](#tab-panel-10346)
 
 ```sh
 npx wrangler pipelines sinks list
@@ -632,9 +632,9 @@ Use a specific auth profile
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-10098)
-* [  pnpm ](#tab-panel-10099)
-* [  yarn ](#tab-panel-10100)
+* [  npm ](#tab-panel-10347)
+* [  pnpm ](#tab-panel-10348)
+* [  yarn ](#tab-panel-10349)
 
 ```sh
 npx wrangler pipelines sinks get [SINK]
@@ -678,9 +678,9 @@ Use a specific auth profile
 
 Delete a sink
 
-* [  npm ](#tab-panel-10101)
-* [  pnpm ](#tab-panel-10102)
-* [  yarn ](#tab-panel-10103)
+* [  npm ](#tab-panel-10350)
+* [  pnpm ](#tab-panel-10351)
+* [  yarn ](#tab-panel-10352)
 
 ```sh
 npx wrangler pipelines sinks delete [SINK]
@@ -721,6 +721,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Pipelines Docs","description":"Wrangler CLI commands for managing Pipelines streams, sinks, and pipelines.","url":"https://developers.cloudflare.com/pipelines/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Pipelines Docs","description":"Wrangler CLI commands for managing Pipelines streams, sinks, and pipelines.","url":"https://developers.cloudflare.com/pipelines/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

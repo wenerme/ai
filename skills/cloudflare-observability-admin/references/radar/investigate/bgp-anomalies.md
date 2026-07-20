@@ -1,7 +1,7 @@
 ---
 title: BGP anomalies
 description: Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -210,8 +210,8 @@ cd hijack-alerts
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-10357)
-* [  wrangler.toml ](#tab-panel-10358)
+* [  wrangler.jsonc ](#tab-panel-10802)
+* [  wrangler.toml ](#tab-panel-10803)
 
 **JSONC**
 
@@ -221,7 +221,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
   "name": "hijack-alerts",
   "main": "src/index.js",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "triggers": {
     "crons": [
       "*/5 * * * *"
@@ -237,7 +237,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 name = "hijack-alerts"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [triggers]
@@ -246,8 +246,8 @@ crons = [ "*/5 * * * *" ]
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-10355)
-* [  wrangler.toml ](#tab-panel-10356)
+* [  wrangler.jsonc ](#tab-panel-10800)
+* [  wrangler.toml ](#tab-panel-10801)
 
 **JSONC**
 
@@ -423,8 +423,8 @@ If you have [Email Routing](https://developers.cloudflare.com/email-service/) en
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-10359)
-* [  wrangler.toml ](#tab-panel-10360)
+* [  wrangler.jsonc ](#tab-panel-10804)
+* [  wrangler.toml ](#tab-panel-10805)
 
 **JSONC**
 
@@ -490,6 +490,6 @@ async function send_email_alert(hijacker, prefixes, victims) {
 Refer to our API documentation for [BGP route leaks](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/leaks/subresources/events/methods/list/) and [BGP hijacks](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/hijacks/subresources/events/methods/list/) for more information on these topics.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/#page","headline":"BGP anomalies · Cloudflare Radar docs","description":"Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/#page","headline":"BGP anomalies · Cloudflare Radar docs","description":"Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/bgp-anomalies/","name":"BGP anomalies"}}]}
 ```

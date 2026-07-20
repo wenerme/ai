@@ -1,7 +1,7 @@
 ---
 title: Disable compression for AVIF images
 description: Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.
 
-* [ Dashboard ](#tab-panel-10390)
-* [ API ](#tab-panel-10391)
+* [ Dashboard ](#tab-panel-10835)
+* [ API ](#tab-panel-10836)
 
 The following example rule will disable compression for AVIF images, based on either the content type or the file extension specified in the request.
 
@@ -83,6 +83,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/#page","headline":"Disable compression for AVIF images · Cloudflare Rules docs","description":"Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/#page","headline":"Disable compression for AVIF images · Cloudflare Rules docs","description":"Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/compression-rules/","name":"Compression Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/compression-rules/examples/","name":"Compression Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/compression-rules/examples/disable-compression-avif/","name":"Disable compression for AVIF images"}}]}
 ```

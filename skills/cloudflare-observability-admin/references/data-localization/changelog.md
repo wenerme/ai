@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Track the latest updates and changes to Data Localization Suite features.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,6 +22,6 @@ image: https://developers.cloudflare.com/zt-preview.png
 * Launched the Cloudflare Green Energy region, using renewable-powered data centers.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/data-localization/changelog/#page","headline":"Changelog · Cloudflare Data Localization Suite docs","description":"Track the latest updates and changes to Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/data-localization/changelog/#page","headline":"Changelog · Cloudflare Data Localization Suite docs","description":"Track the latest updates and changes to Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/changelog/","name":"Changelog"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Export to Grafana Cloud
 description: Send OpenTelemetry traces and logs from Cloudflare Workers to Grafana Cloud.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -53,8 +53,8 @@ Before you begin, ensure you have:
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-12209)
-* [  wrangler.toml ](#tab-panel-12210)
+* [  wrangler.jsonc ](#tab-panel-12730)
+* [  wrangler.toml ](#tab-panel-12731)
 
 **JSONC**
 
@@ -95,6 +95,6 @@ Note
 It may take a few minutes after deployment for data to appear in Grafana Cloud.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/#page","headline":"Export to Grafana Cloud · Cloudflare Workers docs","description":"Send OpenTelemetry traces and logs from Cloudflare Workers to Grafana Cloud.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/#page","headline":"Export to Grafana Cloud · Cloudflare Workers docs","description":"Send OpenTelemetry traces and logs from Cloudflare Workers to Grafana Cloud.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/","name":"Exporting OpenTelemetry Data"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/grafana-cloud/","name":"Export to Grafana Cloud"}}]}
 ```

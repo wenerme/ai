@@ -1,7 +1,7 @@
 ---
 title: Build an API to access D1 using a proxy Worker
 description: This tutorial shows how to create an API that allows you to securely run queries against a D1 database. The API can be used to customize access controls and/or limit what tables can be queried.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -197,8 +197,8 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 1. From your `d1-http` folder, open the Wrangler file, Wrangler's configuration file.
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.
 
-  * [  wrangler.jsonc ](#tab-panel-8292)
-  * [  wrangler.toml ](#tab-panel-8293)
+  * [  wrangler.jsonc ](#tab-panel-8632)
+  * [  wrangler.toml ](#tab-panel-8633)
 
 **JSONC**
 ```jsonc
@@ -438,6 +438,6 @@ In this tutorial, you have:
 You can check out a similar implementation that uses Zod for validation in [this GitHub repository ↗](https://github.com/elithrar/http-api-d1-example). If you want to build an OpenAPI compliant API for your D1 database, you should use the [Cloudflare Workers OpenAPI 3.1 template ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-openapi).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/#page","headline":"Build an API to access D1 using a proxy Worker · Cloudflare D1 docs","description":"This tutorial shows how to create an API that allows you to securely run queries against a D1 database. The API can be used to customize access controls and/or limit what tables can be queried.","url":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/#page","headline":"Build an API to access D1 using a proxy Worker · Cloudflare D1 docs","description":"This tutorial shows how to create an API that allows you to securely run queries against a D1 database. The API can be used to customize access controls and/or limit what tables can be queried.","url":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/tutorials/build-an-api-to-access-d1/","name":"Build an API to access D1 using a proxy Worker"}}]}
 ```

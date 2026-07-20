@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Sensitive Data Detection
 description: Detect sensitive data like credit card numbers in HTTP responses.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,8 +44,8 @@ Note
 
 Requires an Enterprise plan.
 
-* [  New dashboard ](#tab-panel-11608)
-* [ Old dashboard ](#tab-panel-11609)
+* [  New dashboard ](#tab-panel-12047)
+* [ Old dashboard ](#tab-panel-12048)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -74,8 +74,8 @@ You can configure (or override) the following Cloudflare Sensitive Data Detectio
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-11610)
-* [ Old dashboard ](#tab-panel-11611)
+* [  New dashboard ](#tab-panel-12049)
+* [ Old dashboard ](#tab-panel-12050)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -103,8 +103,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-11612)
-* [ Old dashboard ](#tab-panel-11613)
+* [  New dashboard ](#tab-panel-12051)
+* [ Old dashboard ](#tab-panel-12052)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -147,8 +147,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-11614)
-* [ Old dashboard ](#tab-panel-11615)
+* [  New dashboard ](#tab-panel-12053)
+* [ Old dashboard ](#tab-panel-12054)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -303,6 +303,6 @@ To check for any data leaks detected by Cloudflare Sensitive Data Detection, you
 * Configure [WAF alerts](https://developers.cloudflare.com/waf/reference/alerts/) to be alerted of any spike of WAF events. For the Advanced Security Events Alert, you can filter by one or more domains on Enterprise plans and by the `Data Loss Protection` service to receive specific alerts about Sensitive Data Detection.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/#page","headline":"Cloudflare Sensitive Data Detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect sensitive data like credit card numbers in HTTP responses.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/#page","headline":"Cloudflare Sensitive Data Detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect sensitive data like credit card numbers in HTTP responses.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/reference/","name":"Rulesets reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/reference/sensitive-data-detection/","name":"Cloudflare Sensitive Data Detection"}}]}
 ```

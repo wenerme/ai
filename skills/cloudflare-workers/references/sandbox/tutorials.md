@@ -1,7 +1,7 @@
 ---
 title: Tutorials
 description: Step-by-step Sandbox SDK tutorials for building AI agents, code executors, and testing pipelines.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ All tutorials assume you have:
 * [API reference](https://developers.cloudflare.com/sandbox/api/) \- Complete SDK reference
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/tutorials/#page","headline":"Tutorials · Cloudflare Sandbox SDK docs","description":"Step-by-step Sandbox SDK tutorials for building AI agents, code executors, and testing pipelines.","url":"https://developers.cloudflare.com/sandbox/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/tutorials/#page","headline":"Tutorials · Cloudflare Sandbox SDK docs","description":"Step-by-step Sandbox SDK tutorials for building AI agents, code executors, and testing pipelines.","url":"https://developers.cloudflare.com/sandbox/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}}]}
 ```

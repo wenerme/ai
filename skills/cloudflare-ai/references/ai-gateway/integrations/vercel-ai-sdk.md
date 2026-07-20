@@ -1,7 +1,7 @@
 ---
 title: Vercel AI SDK
 description: Route Vercel AI SDK requests through AI Gateway using the ai-gateway-provider package.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -564,8 +564,8 @@ const { text } = await generateText({
 
 If you are already using the [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider) package, you can route requests through AI Gateway to call third-party models without needing separate provider SDKs. Pass a `gateway` option with your gateway ID to `createWorkersAI`:
 
-* [  JavaScript ](#tab-panel-6874)
-* [  TypeScript ](#tab-panel-6875)
+* [  JavaScript ](#tab-panel-7148)
+* [  TypeScript ](#tab-panel-7149)
 
 **JavaScript**
 
@@ -633,6 +633,6 @@ const { text } = await generateText({
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/vercel-ai-sdk/#page","headline":"Vercel AI SDK · Cloudflare AI Gateway docs","description":"Route Vercel AI SDK requests through AI Gateway using the ai-gateway-provider package.","url":"https://developers.cloudflare.com/ai-gateway/integrations/vercel-ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/vercel-ai-sdk/#page","headline":"Vercel AI SDK · Cloudflare AI Gateway docs","description":"Route Vercel AI SDK requests through AI Gateway using the ai-gateway-provider package.","url":"https://developers.cloudflare.com/ai-gateway/integrations/vercel-ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/vercel-ai-sdk/","name":"Vercel AI SDK"}}]}
 ```

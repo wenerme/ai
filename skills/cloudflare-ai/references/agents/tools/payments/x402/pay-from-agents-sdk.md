@@ -1,7 +1,7 @@
 ---
 title: Pay from Agents SDK
 description: Use withX402Client to pay for resources from a Cloudflare Agent.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ Use `base-sepolia` for testing. Get test USDC from the [Circle faucet ↗](https
 * [Human-in-the-loop guide](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) — Implement approval workflows
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/#page","headline":"Pay from Agents SDK · Cloudflare Agents docs","description":"Use withX402Client to pay for resources from a Cloudflare Agent.","url":"https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/#page","headline":"Pay from Agents SDK · Cloudflare Agents docs","description":"Use withX402Client to pay for resources from a Cloudflare Agent.","url":"https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/payments/","name":"Agentic Payments"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/payments/x402/","name":"x402"}},{"@type":"ListItem","position":6,"item":{"@id":"/agents/tools/payments/x402/pay-from-agents-sdk/","name":"Pay from Agents SDK"}}]}
 ```

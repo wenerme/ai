@@ -1,7 +1,7 @@
 ---
 title: Custom spans
 description: Create custom spans to trace your own application logic alongside Cloudflare's automatic instrumentation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -23,8 +23,8 @@ The custom spans API is available in two ways — both provide the same `enterSp
 
 Custom spans require tracing to be enabled on your Worker. If you have not already done so, set `observability.traces.enabled` to `true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability):
 
-* [  wrangler.jsonc ](#tab-panel-12239)
-* [  wrangler.toml ](#tab-panel-12240)
+* [  wrangler.jsonc ](#tab-panel-12760)
+* [  wrangler.toml ](#tab-panel-12761)
 
 **JSONC**
 
@@ -60,8 +60,8 @@ Use `tracing.enterSpan()` to wrap a section of code in a named span. The span au
 
 The following example uses both access methods — the `cloudflare:workers` import and `ctx.tracing` — to show that they are interchangeable:
 
-* [  JavaScript ](#tab-panel-12241)
-* [  TypeScript ](#tab-panel-12242)
+* [  JavaScript ](#tab-panel-12762)
+* [  TypeScript ](#tab-panel-12763)
 
 **src/index.js**
 
@@ -201,8 +201,8 @@ tracing.enterSpan("process", (span) => {
 
 Spans nest automatically based on the JavaScript async context. Any `enterSpan` call or platform operation (like `fetch`, `env.MY_KV.get()`, and so on) that runs inside a callback becomes a child of the enclosing span.
 
-* [  JavaScript ](#tab-panel-12243)
-* [  TypeScript ](#tab-panel-12244)
+* [  JavaScript ](#tab-panel-12764)
+* [  TypeScript ](#tab-panel-12765)
 
 **src/index.js**
 
@@ -328,6 +328,6 @@ The same API is available on the handler context as `ctx.tracing`, with the same
 For other tracing limitations, refer to the [known limitations](https://developers.cloudflare.com/workers/observability/traces/known-limitations/) page.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/custom-spans/#page","headline":"Custom spans · Cloudflare Workers docs","description":"Create custom spans to trace your own application logic alongside Cloudflare's automatic instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/custom-spans/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/custom-spans/#page","headline":"Custom spans · Cloudflare Workers docs","description":"Create custom spans to trace your own application logic alongside Cloudflare's automatic instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/custom-spans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/traces/","name":"Traces"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/traces/custom-spans/","name":"Custom spans"}}]}
 ```

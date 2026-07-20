@@ -1,7 +1,7 @@
 ---
 title: stable-diffusion-v1-5-img2img
 description: Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Stable Diffusion is a latent text-to-image diffusion model capable of generating
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2517)
-* [  curl ](#tab-panel-2518)
+* [  TypeScript ](#tab-panel-2665)
+* [  curl ](#tab-panel-2666)
 
 ```ts
 export interface Env {
@@ -78,8 +78,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2519)
-* [ Output ](#tab-panel-2520)
+* [ Input ](#tab-panel-2667)
+* [ Output ](#tab-panel-2668)
 
 prompt
 
@@ -134,6 +134,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v
 Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/runwayml/stable-diffusion-v1-5-img2img/#page","headline":"stable-diffusion-v1-5-img2img (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.","url":"https://developers.cloudflare.com/ai/models/%40cf/runwayml/stable-diffusion-v1-5-img2img/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/runwayml/stable-diffusion-v1-5-img2img/#page","headline":"stable-diffusion-v1-5-img2img (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.","url":"https://developers.cloudflare.com/ai/models/%40cf/runwayml/stable-diffusion-v1-5-img2img/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

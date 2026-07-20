@@ -1,7 +1,7 @@
 ---
 title: Manage Logpush with cURL
 description: Create and manage Logpush jobs using cURL.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -519,6 +519,6 @@ Note that at this time, the **CVE-2021-44228** option is not available through t
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/#page","headline":"Manage Logpush with cURL · Cloudflare Logs docs","description":"Create and manage Logpush jobs using cURL.","url":"https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/#page","headline":"Manage Logpush with cURL · Cloudflare Logs docs","description":"Create and manage Logpush jobs using cURL.","url":"https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/examples/","name":"Logpush examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/examples/example-logpush-curl/","name":"Manage Logpush with cURL"}}]}
 ```

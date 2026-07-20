@@ -1,7 +1,7 @@
 ---
 title: Bot Analytics
 description: Use Bot Analytics to examine bot traffic patterns on your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -91,6 +91,6 @@ Data from Bot Analytics is also available via the GraphQL API. You can access bo
 Read the [GraphQL Analytics API documentation](https://developers.cloudflare.com/analytics/graphql-api/) for more information about GraphQL and basic querying.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/bot-analytics/#page","headline":"Cloudflare Bot Analytics · Cloudflare bot solutions docs","description":"Use Bot Analytics to examine bot traffic patterns on your domain.","url":"https://developers.cloudflare.com/bots/bot-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/bot-analytics/#page","headline":"Cloudflare Bot Analytics · Cloudflare bot solutions docs","description":"Use Bot Analytics to examine bot traffic patterns on your domain.","url":"https://developers.cloudflare.com/bots/bot-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/bot-analytics/","name":"Bot Analytics"}}]}
 ```

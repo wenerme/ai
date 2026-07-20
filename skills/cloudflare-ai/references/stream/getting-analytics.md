@@ -1,7 +1,7 @@
 ---
 title: Analytics
 description: Access server-side video analytics for Cloudflare Stream via the dashboard or GraphQL API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ You can access data on either:
 Users will need the **Analytics** permission to access analytics via Dash or GraphQL.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/getting-analytics/#page","headline":"Analytics · Cloudflare Stream docs","description":"Access server-side video analytics for Cloudflare Stream via the dashboard or GraphQL API.","url":"https://developers.cloudflare.com/stream/getting-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/getting-analytics/#page","headline":"Analytics · Cloudflare Stream docs","description":"Access server-side video analytics for Cloudflare Stream via the dashboard or GraphQL API.","url":"https://developers.cloudflare.com/stream/getting-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/getting-analytics/","name":"Analytics"}}]}
 ```

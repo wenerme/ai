@@ -1,7 +1,7 @@
 ---
 title: Cache Reserve analytics
 description: View Cache Reserve storage, read, and write operation metrics.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,6 +24,6 @@ You have access to the following metrics:
 * **Operations** \- Class A (writes) and Class B (reads) operations over time.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/#page","headline":"Cache Reserve analytics · Cloudflare Smart Shield docs","description":"View Cache Reserve storage, read, and write operation metrics.","url":"https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/#page","headline":"Cache Reserve analytics · Cloudflare Smart Shield docs","description":"View Cache Reserve storage, read, and write operation metrics.","url":"https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/configuration/cache-reserve/","name":"Cache Reserve"}},{"@type":"ListItem","position":5,"item":{"@id":"/smart-shield/configuration/cache-reserve/analytics/","name":"Cache Reserve analytics"}}]}
 ```

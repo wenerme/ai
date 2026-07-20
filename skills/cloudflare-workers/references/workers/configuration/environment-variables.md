@@ -1,7 +1,7 @@
 ---
 title: Environment variables
 description: You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,8 +22,8 @@ Text strings and JSON values are not encrypted and are useful for storing applic
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file. In the following example, `API_HOST` and `API_ACCOUNT_ID` are text values and `SERVICE_X_DATA` is a JSON value.
 
-* [  wrangler.jsonc ](#tab-panel-11820)
-* [  wrangler.toml ](#tab-panel-11821)
+* [  wrangler.jsonc ](#tab-panel-12343)
+* [  wrangler.toml ](#tab-panel-12344)
 
 **JSONC**
 
@@ -61,9 +61,9 @@ API_ACCOUNT_ID = "example_user"
 
 Refer to the following example on how to access the `API_HOST` environment variable in your Worker code:
 
-* [  JavaScript ](#tab-panel-11813)
-* [  TypeScript ](#tab-panel-11814)
-* [  Python ](#tab-panel-11815)
+* [  JavaScript ](#tab-panel-12336)
+* [  TypeScript ](#tab-panel-12337)
+* [  Python ](#tab-panel-12338)
 
 **JavaScript**
 
@@ -106,8 +106,8 @@ class Default(WorkerEntrypoint):
 
 You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-11818)
-* [  TypeScript ](#tab-panel-11819)
+* [  JavaScript ](#tab-panel-12341)
+* [  TypeScript ](#tab-panel-12342)
 
 **JavaScript**
 
@@ -156,8 +156,8 @@ For more details, refer to [Importing env as a global](https://developers.cloudf
 
 The example below sets up two environments, `staging` and `production`, with different values for `API_HOST`.
 
-* [  wrangler.jsonc ](#tab-panel-11816)
-* [  wrangler.toml ](#tab-panel-11817)
+* [  wrangler.jsonc ](#tab-panel-12339)
+* [  wrangler.toml ](#tab-panel-12340)
 
 **JSONC**
 
@@ -313,6 +313,6 @@ Note also that because secrets are a form of environment variable within the run
 * Migrating environment variables from [Service Worker format to ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#environment-variables).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Workers docs","description":"You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.","url":"https://developers.cloudflare.com/workers/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Workers docs","description":"You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.","url":"https://developers.cloudflare.com/workers/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/environment-variables/","name":"Environment variables"}}]}
 ```

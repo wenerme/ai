@@ -1,7 +1,7 @@
 ---
 title: Tunnels FAQ
 description: Review frequently asked questions about tunnels in Cloudflare Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -88,6 +88,6 @@ Before contacting the Cloudflare support team:
 5. Include your [Cloudflare Tunnel diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/) (`cloudflared-diag-YYYY-MM-DDThh-mm-ss.zip`).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/#page","headline":"Tunnels FAQ · Cloudflare One docs","description":"Review frequently asked questions about tunnels in Cloudflare Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/#page","headline":"Tunnels FAQ · Cloudflare One docs","description":"Review frequently asked questions about tunnels in Cloudflare Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/faq/","name":"FAQ"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/faq/cloudflare-tunnels-faq/","name":"Tunnels FAQ"}}]}
 ```

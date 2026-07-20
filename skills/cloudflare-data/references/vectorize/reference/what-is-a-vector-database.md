@@ -1,7 +1,7 @@
 ---
 title: Vector databases
 description: Understand vector databases, embeddings, and how they power search, RAG, and classification.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -99,6 +99,6 @@ The distance metric is an index used for vector search. It defines how it determ
 Refer to the [distance metrics](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#distance-metrics) documentation to learn how to configure a distance metric when creating a Vectorize index.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/#page","headline":"Vector databases · Cloudflare Vectorize docs","description":"Understand vector databases, embeddings, and how they power search, RAG, and classification.","url":"https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["LLM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/#page","headline":"Vector databases · Cloudflare Vectorize docs","description":"Understand vector databases, embeddings, and how they power search, RAG, and classification.","url":"https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["LLM"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/what-is-a-vector-database/","name":"Vector databases"}}]}
 ```

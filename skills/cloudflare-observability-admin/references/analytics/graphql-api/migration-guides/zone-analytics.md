@@ -1,7 +1,7 @@
 ---
 title: Zone Analytics to GraphQL Analytics
 description: Migrate from Zone Analytics API to GraphQL.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -322,7 +322,7 @@ query ZoneAnalyticsMigrationSample($zoneTag: string, $start: Time, $end: Time) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgewHZgIJIIYBsoBcCWAxgM4Cy+A5hBgcgMoYC2ADlmABQAkAXsmACoYKALhjFcEfEgoAaGJ3EYIuUf3yMwczmCQATVerABKGAG8AUDBgA3fGADukM5asxeKYuwBm+LLkiipm58giLy7gJCMAC+JhaurgAWuLjMAEpgoGDixACMjADiEAggzJ4uCVYIELqQAEJQogDaujRgBBoAYvjWYORIIP7EAPqodADCALoVlVjq+CowuQAMyzMJPn4BZjCt-h1gwxSZogq4Srhye+2Gw36nOrox6zBxL1a6hkjE+MjEzpVKtcDt1ev1Btl3s9AVZiCBGACYVYAEbFezESCkDDMRFIqzMIRgABqdnRUISIAwdTRGIgnSYvig5OheOReEheJghAwhESYF0DSGzO5vP5GSyOWFyH8SFw-CgzD62NxrPZxGZVggmXAks5Vn5xwyxGYfzA42lOjlCrAADkmGBmdFhXNLXQ6AAZLE4+J6rUS3DqvVcl2yt3ugAKxVwCEICCwjqlIFl0C9KqRbKFQb9OoDGpguESWpogb1hBDuHNSYkUDtGgTnJ0hGgzH8ArVzMbzdb4pzJaR+GY4ywGGIZGVPs52eyuaDA-livreIJxxJDj7MKnurxWuNpro51wIDH3rzm5neoNYCNJu+YH3NCPi6RBaL5+fhbANHDNESUgoqYnbdtWndd31fb8Cz-WsHU5J0kTgmEk3wYA00qJCJShBCEiwlknWiIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEY+cQQE5ULCWzEYKIGFAAmzdl14DBADjhtBk6bJABfIA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgewHZgIJIIYBsoBcCWAxgM4Cy+A5hBgcgMoYC2ADlmABQAkAXsmACoYKALhjFcEfEgoAaGJ3EYIuUf3yMwczmCQATVerABKGAG8AUDBgA3fGADukM5asxeKYuwBm+LLkiipm58giLy7gJCMAC+JhaurgAWuLjMAEpgoGDixACMjADiEAggzJ4uCVYIELqQAEJQogDaujRgBBoAYvjWYORIIP7EAPqodADCALoVlVjq+CowuQAMyzMJPn4BZjCt-h1gwxSZogq4Srhye+2Gw36nOrox6zBxL1a6hkjE+MjEzpVKtcDt1ev1Btl3s9AVZiCBGACYVYAEbFezESCkDDMRFIqzMIRgABqdnRUISIAwdTRGIgnSYvig5OheOReEheJghAwhESYF0DSGzO5vP5GSyOWFyH8SFw-CgzD62NxrPZxGZVggmXAks5Vn5xwyxGYfzA42lOjlCrAADkmGBmdFhXNLXQ6AAZLE4+J6rUS3DqvVcl2yt3ugAKxVwCEICCwjqlIFl0C9KqRbKFQb9OoDGpguESWpogb1hBDuHNSYkUDtGgTnJ0hGgzH8ArVzMbzdb4pzJaR+GY4ywGGIZGVPs52eyuaDA-livreIJxxJDj7MKnurxWuNpro51wIDH3rzm5neoNYCNJu+YH3NCPi6RBaL5+fhbANHDNESUgoqYnbdtWndd31fb8Cz-WsHU5J0kTgmEk3wYA00qJCJShBCEiwlknWiIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIyiAzGwwUQMKABNm7LrwFCxLcVJkgAvkA)
 
 Response
 
@@ -514,6 +514,6 @@ Notice that you can specify the request time period using a dataset filter (refe
 Also, if you want to get the totals for a particular period, rather than a breakdown by time period, simply remove the `datetimeFiveMinutes` field under `dimensions`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/#page","headline":"Zone Analytics to GraphQL Analytics · Cloudflare Analytics docs","description":"Migrate from Zone Analytics API to GraphQL.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/#page","headline":"Zone Analytics to GraphQL Analytics · Cloudflare Analytics docs","description":"Migrate from Zone Analytics API to GraphQL.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/migration-guides/zone-analytics/","name":"Zone Analytics to GraphQL Analytics"}}]}
 ```

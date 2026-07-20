@@ -1,7 +1,7 @@
 ---
 title: Build a counter
 description: Build a counter using Durable Objects and Workers with RPC methods.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,9 +16,9 @@ Build a counter using Durable Objects and Workers with RPC methods.
 
 This example shows how to build a counter using Durable Objects and Workers with [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc) that can print, increment, and decrement a `name` provided by the URL query string parameter, for example, `?name=A`.
 
-* [  JavaScript ](#tab-panel-8677)
-* [  TypeScript ](#tab-panel-8678)
-* [  Python ](#tab-panel-8679)
+* [  JavaScript ](#tab-panel-9019)
+* [  TypeScript ](#tab-panel-9020)
+* [  Python ](#tab-panel-9021)
 
 **JavaScript**
 
@@ -246,8 +246,8 @@ class Counter(DurableObject):
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-8680)
-* [  wrangler.toml ](#tab-panel-8681)
+* [  wrangler.jsonc ](#tab-panel-9022)
+* [  wrangler.toml ](#tab-panel-9023)
 
 **JSONC**
 
@@ -299,6 +299,6 @@ new_sqlite_classes = [ "Counter" ]
 * [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/build-a-counter/#page","headline":"Build a counter · Cloudflare Durable Objects docs","description":"Build a counter using Durable Objects and Workers with RPC methods.","url":"https://developers.cloudflare.com/durable-objects/examples/build-a-counter/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/build-a-counter/#page","headline":"Build a counter · Cloudflare Durable Objects docs","description":"Build a counter using Durable Objects and Workers with RPC methods.","url":"https://developers.cloudflare.com/durable-objects/examples/build-a-counter/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/build-a-counter/","name":"Build a counter"}}]}
 ```

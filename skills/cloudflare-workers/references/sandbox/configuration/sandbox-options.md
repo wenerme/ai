@@ -1,7 +1,7 @@
 ---
 title: Sandbox options
 description: Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,8 +33,8 @@ Controls what happens when you call sandbox methods without an explicit `session
 
 Use `enableDefaultSession: true` for interactive or stateful workflows where commands should share working directory and exported variables. Use `enableDefaultSession: false` for stateless request handling where one call should not affect the next one. It is recommended to set this to `false` — default session support will be removed in a future version of the Sandbox SDK, and using `createSession()` explicitly is the preferred pattern going forward.
 
-* [  JavaScript ](#tab-panel-10642)
-* [  TypeScript ](#tab-panel-10643)
+* [  JavaScript ](#tab-panel-11087)
+* [  TypeScript ](#tab-panel-11088)
 
 **JavaScript**
 
@@ -96,8 +96,8 @@ Keep the container alive indefinitely by preventing automatic shutdown. When `tr
 
 The `keepAlive` flag persists across Durable Object hibernation and wakeup cycles. Once enabled, you do not need to re-set it after the sandbox wakes from hibernation.
 
-* [  JavaScript ](#tab-panel-10640)
-* [  TypeScript ](#tab-panel-10641)
+* [  JavaScript ](#tab-panel-11085)
+* [  TypeScript ](#tab-panel-11086)
 
 **JavaScript**
 
@@ -155,8 +155,8 @@ Bug fix in v0.2.17
 
 Prior to v0.2.17, the `sleepAfter` option passed to `getSandbox()` was ignored due to a timing issue. The option is now properly applied when creating sandbox instances.
 
-* [  JavaScript ](#tab-panel-10638)
-* [  TypeScript ](#tab-panel-10639)
+* [  JavaScript ](#tab-panel-11083)
+* [  TypeScript ](#tab-panel-11084)
 
 **JavaScript**
 
@@ -198,8 +198,8 @@ When `keepAlive: true` is set, `sleepAfter` is ignored and the sandbox never sle
 
 Configure timeouts for container startup operations.
 
-* [  JavaScript ](#tab-panel-10644)
-* [  TypeScript ](#tab-panel-10645)
+* [  JavaScript ](#tab-panel-11089)
+* [  TypeScript ](#tab-panel-11090)
 
 **JavaScript**
 
@@ -264,8 +264,8 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 * `SANDBOX_LOG_LEVEL` \- Minimum log level: `debug`, `info`, `warn`, `error`. **Default**: `info`
 * `SANDBOX_LOG_FORMAT` \- Output format: `json`, `pretty`. **Default**: `json`
 
-* [  wrangler.jsonc ](#tab-panel-10636)
-* [  wrangler.toml ](#tab-panel-10637)
+* [  wrangler.jsonc ](#tab-panel-11081)
+* [  wrangler.toml ](#tab-panel-11082)
 
 **JSONC**
 
@@ -300,8 +300,8 @@ Lowercase sandbox IDs when creating sandboxes. When `true`, the ID you provide i
 
 **Why this matters**: Preview URLs extract the sandbox ID from the hostname, which is always lowercase due to DNS case-insensitivity. Without normalization, a sandbox created with "MyProject-123" becomes unreachable via preview URL because the URL routing looks for "myproject-123" (different Durable Object).
 
-* [  JavaScript ](#tab-panel-10646)
-* [  TypeScript ](#tab-panel-10647)
+* [  JavaScript ](#tab-panel-11091)
+* [  TypeScript ](#tab-panel-11092)
 
 **JavaScript**
 
@@ -389,6 +389,6 @@ With `keepAlive`, containers send automatic heartbeat pings every 30 seconds to 
 * [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox lifecycle
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#page","headline":"Sandbox options · Cloudflare Sandbox SDK docs","description":"Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.","url":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#page","headline":"Sandbox options · Cloudflare Sandbox SDK docs","description":"Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.","url":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/sandbox-options/","name":"Sandbox options"}}]}
 ```

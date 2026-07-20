@@ -1,7 +1,7 @@
 ---
 title: Human-in-the-loop knowledge base updates
 description: Build an agent that searches a knowledge base and proposes updates to it, with a human approving and able to roll back each write.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -117,8 +117,8 @@ bun add -d wrangler@4
 
 Replace your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following. This adds the AI Search binding, a Workers AI binding for the model, a Worker Loader binding that runs the model's code in an isolated Worker, and the Durable Object that stores the agent's chat history and durable runtime state.
 
-* [  wrangler.jsonc ](#tab-panel-6975)
-* [  wrangler.toml ](#tab-panel-6976)
+* [  wrangler.jsonc ](#tab-panel-7243)
+* [  wrangler.toml ](#tab-panel-7244)
 
 **JSONC**
 
@@ -128,7 +128,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "name": "kb-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-08",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -172,7 +172,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
 name = "kb-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-08"
+compatibility_date = "2026-07-20"
 compatibility_flags = ["nodejs_compat"]
 
 
@@ -208,8 +208,8 @@ Create `src/ai-search-connector.ts`. The connector calls the AI Search binding d
 
 Give the model a read-only `search` method and a `saveDocument` method. Because `saveDocument` writes content, mark it `requiresApproval` and add a `revert` so the runtime can roll it back.
 
-* [  JavaScript ](#tab-panel-6979)
-* [  TypeScript ](#tab-panel-6980)
+* [  JavaScript ](#tab-panel-7247)
+* [  TypeScript ](#tab-panel-7248)
 
 **src/ai-search-connector.js**
 
@@ -379,8 +379,8 @@ The `name()` result (`aiSearch`) becomes the global the model's code calls, so t
 
 Create `src/server.ts`. The agent provisions an AI Search instance with [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) enabled the first time it runs, then creates the Code Mode runtime with the connector and exposes it to the model as a single `codemode` tool. The `@callable()` methods let your client list pending approvals and approve, reject, or roll back a write.
 
-* [  JavaScript ](#tab-panel-6981)
-* [  TypeScript ](#tab-panel-6982)
+* [  JavaScript ](#tab-panel-7249)
+* [  TypeScript ](#tab-panel-7250)
 
 **src/server.js**
 
@@ -711,8 +711,8 @@ async () => {
 
 Your client sends the chat message that starts the run, then drives the approval with the `@callable()` methods. The following script uses the [Agents SDK client](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/) to do both. Save it as `client.mjs`, set `HOST` to your deployed Worker, and run it with `node client.mjs`:
 
-* [  JavaScript ](#tab-panel-6977)
-* [  TypeScript ](#tab-panel-6978)
+* [  JavaScript ](#tab-panel-7245)
+* [  TypeScript ](#tab-panel-7246)
 
 **client.mjs**
 
@@ -870,6 +870,6 @@ Your agent can now:
 [ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) Full reference for uploading, listing, and deleting documents.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/#page","headline":"Human-in-the-loop knowledge base updates · Cloudflare AI Search docs","description":"Build an agent that searches a knowledge base and proposes updates to it, with a human approving and able to roll back each write.","url":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/#page","headline":"Human-in-the-loop knowledge base updates · Cloudflare AI Search docs","description":"Build an agent that searches a knowledge base and proposes updates to it, with a human approving and able to roll back each write.","url":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/human-in-the-loop-knowledge-base/","name":"Human-in-the-loop knowledge base updates"}}]}
 ```

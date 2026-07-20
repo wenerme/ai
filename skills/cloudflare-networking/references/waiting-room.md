@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Waiting Room
 description: Queue visitors in a virtual waiting room during traffic surges.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -108,6 +108,6 @@ Enterprise customers can preview this product as a [non-contract service](https:
 Explore pricing options for Waiting Room.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waiting-room/#page","headline":"Cloudflare Waiting Room · Cloudflare Waiting Room docs","description":"Queue visitors in a virtual waiting room during traffic surges.","url":"https://developers.cloudflare.com/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waiting-room/#page","headline":"Cloudflare Waiting Room · Cloudflare Waiting Room docs","description":"Queue visitors in a virtual waiting room during traffic surges.","url":"https://developers.cloudflare.com/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}}]}
 ```

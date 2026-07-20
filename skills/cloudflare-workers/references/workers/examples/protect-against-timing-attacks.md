@@ -1,7 +1,7 @@
 ---
 title: Using timingSafeEqual
 description: Protect against timing attacks by safely comparing values using `timingSafeEqual`.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,9 +32,9 @@ Do not return early when the input and secret have different lengths. An early r
 
 In order to compare two strings, you must use the [TextEncoder](https://developers.cloudflare.com/workers/runtime-apis/encoding/#textencoder) API.
 
-* [  TypeScript ](#tab-panel-12056)
-* [  Python ](#tab-panel-12057)
-* [  Hono ](#tab-panel-12058)
+* [  TypeScript ](#tab-panel-12577)
+* [  Python ](#tab-panel-12578)
+* [  Hono ](#tab-panel-12579)
 
 **TypeScript**
 
@@ -184,6 +184,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/protect-against-timing-attacks/#page","headline":"Using timingSafeEqual · Cloudflare Workers docs","description":"Protect against timing attacks by safely comparing values using timingSafeEqual.","url":"https://developers.cloudflare.com/workers/examples/protect-against-timing-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","WebCrypto","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/protect-against-timing-attacks/#page","headline":"Using timingSafeEqual · Cloudflare Workers docs","description":"Protect against timing attacks by safely comparing values using timingSafeEqual.","url":"https://developers.cloudflare.com/workers/examples/protect-against-timing-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","WebCrypto","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/protect-against-timing-attacks/","name":"Using timingSafeEqual"}}]}
 ```

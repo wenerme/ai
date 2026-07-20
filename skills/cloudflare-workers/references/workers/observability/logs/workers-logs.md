@@ -1,7 +1,7 @@
 ---
 title: Workers Logs
 description: Store, filter, and analyze log data emitted from Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -285,6 +285,6 @@ A Worker serves 1 billion requests per month. Each request emits 1 invocation lo
 | **Total** | $108.00       |                                                                                                                          |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/#page","headline":"Workers Logs · Cloudflare Workers docs","description":"Store, filter, and analyze log data emitted from Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/#page","headline":"Workers Logs · Cloudflare Workers docs","description":"Store, filter, and analyze log data emitted from Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/logs/workers-logs/","name":"Workers Logs"}}]}
 ```

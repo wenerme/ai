@@ -1,7 +1,7 @@
 ---
 title: Regionalized Spectrum Applications
 description: Regionalize Spectrum HTTP/S applications, with support for Static IPs and BYOIP.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -74,6 +74,6 @@ If the [managed regions](https://developers.cloudflare.com/data-localization/reg
 * [Spectrum](https://developers.cloudflare.com/spectrum/) — Cloudflare's Layer 4 proxy.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/#page","headline":"Regionalized Spectrum Applications · Cloudflare Data Localization Suite docs","description":"Regionalize Spectrum HTTP/S applications, with support for Static IPs and BYOIP.","url":"https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/#page","headline":"Regionalized Spectrum Applications · Cloudflare Data Localization Suite docs","description":"Regionalize Spectrum HTTP/S applications, with support for Static IPs and BYOIP.","url":"https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/regional-services/","name":"Regional Services"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/regional-services/spectrum-applications/","name":"Regionalized Spectrum Applications"}}]}
 ```

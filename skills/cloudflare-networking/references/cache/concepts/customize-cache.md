@@ -1,7 +1,7 @@
 ---
 title: Customize cache
 description: Methods for customizing cache behavior with rules, Workers, and headers.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ For example, add a `static=true` query string for resources at your origin web s
 Resources that match a Cache Everything Cache Rule are still not cached if the origin web server sends a Cache-Control header of `max-age=0`, `private`, `no-cache`, or an `Expires` header with an already expired date. Include the [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) setting within the Cache Everything Cache Rule to additionally override the `Cache-Control` headers from the origin web server.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/customize-cache/#page","headline":"Customize cache · Cloudflare Cache (CDN) docs","description":"Methods for customizing cache behavior with rules, Workers, and headers.","url":"https://developers.cloudflare.com/cache/concepts/customize-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/customize-cache/#page","headline":"Customize cache · Cloudflare Cache (CDN) docs","description":"Methods for customizing cache behavior with rules, Workers, and headers.","url":"https://developers.cloudflare.com/cache/concepts/customize-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/customize-cache/","name":"Customize cache"}}]}
 ```

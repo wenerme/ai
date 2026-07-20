@@ -1,7 +1,7 @@
 ---
 title: Backups
 description: Create point-in-time snapshots of sandbox directories and restore them with copy-on-write overlays.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -40,8 +40,8 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 * `id` \- Unique backup identifier (UUID)
 * `dir` \- Directory that was backed up
 
-* [  JavaScript ](#tab-panel-10496)
-* [  TypeScript ](#tab-panel-10497)
+* [  JavaScript ](#tab-panel-10941)
+* [  TypeScript ](#tab-panel-10942)
 
 **JavaScript**
 
@@ -132,8 +132,8 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 * `dir` \- Directory that was restored
 * `id` \- Backup ID that was restored
 
-* [  JavaScript ](#tab-panel-10498)
-* [  TypeScript ](#tab-panel-10499)
+* [  JavaScript ](#tab-panel-10943)
+* [  TypeScript ](#tab-panel-10944)
 
 **JavaScript**
 
@@ -200,8 +200,8 @@ In production, the FUSE mount is lost when the sandbox sleeps or restarts. Re-re
 
 Use `useGitignore` to exclude files matching `.gitignore` rules (such as `node_modules/` or `dist/`) from the backup. This reduces backup size for git repositories.
 
-* [  JavaScript ](#tab-panel-10500)
-* [  TypeScript ](#tab-panel-10501)
+* [  JavaScript ](#tab-panel-10945)
+* [  TypeScript ](#tab-panel-10946)
 
 **JavaScript**
 
@@ -247,8 +247,8 @@ If the directory is not inside a git repository, `useGitignore` has no effect an
 
 Use backups as checkpoints before risky operations.
 
-* [  JavaScript ](#tab-panel-10502)
-* [  TypeScript ](#tab-panel-10503)
+* [  JavaScript ](#tab-panel-10947)
+* [  TypeScript ](#tab-panel-10948)
 
 **JavaScript**
 
@@ -284,8 +284,8 @@ try {
 
 ### Error handling
 
-* [  JavaScript ](#tab-panel-10504)
-* [  TypeScript ](#tab-panel-10505)
+* [  JavaScript ](#tab-panel-10949)
+* [  TypeScript ](#tab-panel-10950)
 
 **JavaScript**
 
@@ -406,6 +406,6 @@ interface RestoreBackupResult {
 * [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) \- Configure bindings
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/backups/#page","headline":"Backups · Cloudflare Sandbox SDK docs","description":"Create point-in-time snapshots of sandbox directories and restore them with copy-on-write overlays.","url":"https://developers.cloudflare.com/sandbox/api/backups/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/backups/#page","headline":"Backups · Cloudflare Sandbox SDK docs","description":"Create point-in-time snapshots of sandbox directories and restore them with copy-on-write overlays.","url":"https://developers.cloudflare.com/sandbox/api/backups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/backups/","name":"Backups"}}]}
 ```

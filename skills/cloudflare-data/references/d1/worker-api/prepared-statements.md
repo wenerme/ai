@@ -1,7 +1,7 @@
 ---
 title: Prepared statement methods
 description: Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ This chapter documents the various ways you can run and retrieve the results of 
 
 Binds a parameter to the prepared statement.
 
-* [  JavaScript ](#tab-panel-8328)
-* [  Python ](#tab-panel-8329)
+* [  JavaScript ](#tab-panel-8668)
+* [  Python ](#tab-panel-8669)
 
 **JavaScript**
 
@@ -60,8 +60,8 @@ stmt = self.env.DB.prepare(
 To bind a parameter, use the `.bind` method.
 Order and anonymous examples:
 
-  * [  JavaScript ](#tab-panel-8330)
-  * [  Python ](#tab-panel-8331)
+  * [  JavaScript ](#tab-panel-8670)
+  * [  Python ](#tab-panel-8671)
 
 **JavaScript**
 ```js
@@ -73,8 +73,8 @@ const stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(""
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind("")
 ```
 
-  * [  JavaScript ](#tab-panel-8332)
-  * [  Python ](#tab-panel-8333)
+  * [  JavaScript ](#tab-panel-8672)
+  * [  Python ](#tab-panel-8673)
 
 **JavaScript**
 ```js
@@ -90,8 +90,8 @@ stmt = db.prepare(
 ).bind("Alfreds Futterkiste", 1)
 ```
 
-  * [  JavaScript ](#tab-panel-8334)
-  * [  Python ](#tab-panel-8335)
+  * [  JavaScript ](#tab-panel-8674)
+  * [  Python ](#tab-panel-8675)
 
 **JavaScript**
 ```js
@@ -116,8 +116,8 @@ The recommended approach is to use [prepared statements](https://developers.clou
 
 Example of a prepared statement with dynamically bound value:
 
-* [  JavaScript ](#tab-panel-8336)
-* [  Python ](#tab-panel-8337)
+* [  JavaScript ](#tab-panel-8676)
+* [  Python ](#tab-panel-8677)
 
 **JavaScript**
 
@@ -139,8 +139,8 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind
 
 Example of a static statement:
 
-* [  JavaScript ](#tab-panel-8338)
-* [  Python ](#tab-panel-8339)
+* [  JavaScript ](#tab-panel-8678)
+* [  Python ](#tab-panel-8679)
 
 **JavaScript**
 
@@ -162,8 +162,8 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = 'Bs Beve
 
 Runs the prepared query (or queries) and returns results. The returned results includes metadata.
 
-* [  JavaScript ](#tab-panel-8340)
-* [  Python ](#tab-panel-8341)
+* [  JavaScript ](#tab-panel-8680)
+* [  Python ](#tab-panel-8681)
 
 **JavaScript**
 
@@ -189,8 +189,8 @@ return_value = await stmt.run()
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8342)
-* [  Python ](#tab-panel-8343)
+* [  JavaScript ](#tab-panel-8682)
+* [  Python ](#tab-panel-8683)
 
 **JavaScript**
 
@@ -250,8 +250,8 @@ return Response.json(return_value)
 
 Example of returning only the `results`
 
-* [  JavaScript ](#tab-panel-8344)
-* [  Python ](#tab-panel-8345)
+* [  JavaScript ](#tab-panel-8684)
+* [  Python ](#tab-panel-8685)
 
 **JavaScript**
 
@@ -289,8 +289,8 @@ Runs the prepared query (or queries), and returns the results as an array of arr
 
 Column names are not included in the result set by default. To include column names as the first row of the result array, set `.raw({columnNames: true})`.
 
-* [  JavaScript ](#tab-panel-8346)
-* [  Python ](#tab-panel-8347)
+* [  JavaScript ](#tab-panel-8686)
+* [  Python ](#tab-panel-8687)
 
 **JavaScript**
 
@@ -316,8 +316,8 @@ return_value = await stmt.raw()
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8348)
-* [  Python ](#tab-panel-8349)
+* [  JavaScript ](#tab-panel-8688)
+* [  Python ](#tab-panel-8689)
 
 **JavaScript**
 
@@ -353,8 +353,8 @@ return Response.json(return_value)
 
 With parameter `columnNames: true`:
 
-* [  JavaScript ](#tab-panel-8350)
-* [  Python ](#tab-panel-8351)
+* [  JavaScript ](#tab-panel-8690)
+* [  Python ](#tab-panel-8691)
 
 **JavaScript**
 
@@ -401,8 +401,8 @@ return Response.json(return_value)
 
 Runs the prepared query (or queries), and returns the first row of the query result as an object. This does not return any metadata. Instead, it directly returns the object.
 
-* [  JavaScript ](#tab-panel-8352)
-* [  Python ](#tab-panel-8353)
+* [  JavaScript ](#tab-panel-8692)
+* [  Python ](#tab-panel-8693)
 
 **JavaScript**
 
@@ -437,8 +437,8 @@ Example of return values
 
 Get all the columns from the first row:
 
-* [  JavaScript ](#tab-panel-8354)
-* [  Python ](#tab-panel-8355)
+* [  JavaScript ](#tab-panel-8694)
+* [  Python ](#tab-panel-8695)
 
 **JavaScript**
 
@@ -471,8 +471,8 @@ return Response.json(return_value)
 
 Get a specific column from the first row:
 
-* [  JavaScript ](#tab-panel-8356)
-* [  Python ](#tab-panel-8357)
+* [  JavaScript ](#tab-panel-8696)
+* [  Python ](#tab-panel-8697)
 
 **JavaScript**
 
@@ -506,6 +506,6 @@ return Response.json(return_value)
 * When using TypeScript, you can pass a [type parameter](https://developers.cloudflare.com/d1/worker-api/#typescript-support) to [D1PreparedStatement::first](#first) to return a typed result object.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/#page","headline":"Prepared statement methods · Cloudflare D1 docs","description":"Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.","url":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/#page","headline":"Prepared statement methods · Cloudflare D1 docs","description":"Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.","url":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/worker-api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/worker-api/prepared-statements/","name":"Prepared statement methods"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Vite Environments
 description: Vite environments and the Vite plugin
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ The default Vite environment name for a Worker is always the top-level Worker na
 
 In the following example we have a Worker named `my-worker` that is associated with a Vite environment named `my_worker`. We use the Vite config to set global constant replacements for this environment:
 
-* [  wrangler.jsonc ](#tab-panel-12582)
-* [  wrangler.toml ](#tab-panel-12583)
+* [  wrangler.jsonc ](#tab-panel-13117)
+* [  wrangler.toml ](#tab-panel-13118)
 
 **JSONC**
 
@@ -38,7 +38,7 @@ In the following example we have a Worker named `my-worker` that is associated w
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "main": "./src/index.ts"
 }
 ```
@@ -49,7 +49,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 main = "./src/index.ts"
 ```
 
@@ -96,6 +96,6 @@ export default defineConfig({
 This merges the Worker's environment configuration with the framework's SSR configuration and ensures that the Worker is included as part of the framework's build output.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/#page","headline":"Vite Environments · Cloudflare Workers docs","description":"Vite environments and the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/#page","headline":"Vite Environments · Cloudflare Workers docs","description":"Vite environments and the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/vite-plugin/reference/vite-environments/","name":"Vite Environments"}}]}
 ```

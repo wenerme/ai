@@ -1,7 +1,7 @@
 ---
 title: Scheduled tasks
 description: Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 Use `getScheduledTasks()` when code should create recurring Think turns or deterministic scheduled handlers. Think reconciles the declarations on startup, stores a durable one-shot schedule for the next occurrence, and re-arms the next occurrence after each run.
 
-* [  JavaScript ](#tab-panel-5885)
-* [  TypeScript ](#tab-panel-5886)
+* [  JavaScript ](#tab-panel-6147)
+* [  TypeScript ](#tab-panel-6148)
 
 **JavaScript**
 
@@ -118,6 +118,6 @@ Static declarations reconcile on startup. If `getScheduledTasks()` reads product
 For a recurring job whose steps matter — multiple deterministic steps, long waits, or human approval — use a handler task to create a [Think Workflow](https://developers.cloudflare.com/agents/harnesses/think/workflows/) run. Keep simple recurring prompts as prompt tasks, and keep one-off background turns on [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/#page","headline":"Scheduled tasks · Cloudflare Agents docs","description":"Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.","url":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/#page","headline":"Scheduled tasks · Cloudflare Agents docs","description":"Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.","url":"https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/scheduled-tasks/","name":"Scheduled tasks"}}]}
 ```

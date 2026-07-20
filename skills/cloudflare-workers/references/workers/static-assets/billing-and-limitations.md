@@ -1,7 +1,7 @@
 ---
 title: Billing and Limitations
 description: Billing, troubleshooting, and limitations for Static assets on Workers
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ See the [Platform Limits](https://developers.cloudflare.com/workers/platform/lim
 * `assets.bucket is a required field` — if you see this error, you need to update Wrangler to at least `3.78.10` or later. `bucket` is not a required field.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/#page","headline":"Billing and Limitations · Cloudflare Workers docs","description":"Billing, troubleshooting, and limitations for Static assets on Workers","url":"https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/#page","headline":"Billing and Limitations · Cloudflare Workers docs","description":"Billing, troubleshooting, and limitations for Static assets on Workers","url":"https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/billing-and-limitations/","name":"Billing and Limitations"}}]}
 ```

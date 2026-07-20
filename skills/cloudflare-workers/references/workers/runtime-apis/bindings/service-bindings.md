@@ -1,7 +1,7 @@
 ---
 title: Service bindings
 description: Facilitate Worker-to-Worker communication.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -35,8 +35,8 @@ You add a Service binding by modifying the [Wrangler configuration file](https:/
 
 For example, if you want Worker A to be able to call Worker B — you'd add the following to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for Worker A:
 
-* [  wrangler.jsonc ](#tab-panel-12303)
-* [  wrangler.toml ](#tab-panel-12304)
+* [  wrangler.jsonc ](#tab-panel-12828)
+* [  wrangler.toml ](#tab-panel-12829)
 
 **JSONC**
 
@@ -73,8 +73,8 @@ Worker A that declares a Service binding to Worker B can call Worker B in two di
 
 This example [extends the WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#the-workerentrypoint-class) to support RPC-based Service bindings. First, create the Worker that you want to communicate with. Let's call this "Worker B". Worker B exposes the public method, `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-12301)
-* [  wrangler.toml ](#tab-panel-12302)
+* [  wrangler.jsonc ](#tab-panel-12826)
+* [  wrangler.toml ](#tab-panel-12827)
 
 **JSONC**
 
@@ -115,8 +115,8 @@ export default class WorkerB extends WorkerEntrypoint {
 
 Next, create the Worker that will call Worker B. Let's call this "Worker A". Worker A declares a binding to Worker B. This is what gives it permission to call public methods on Worker B.
 
-* [  wrangler.jsonc ](#tab-panel-12305)
-* [  wrangler.toml ](#tab-panel-12306)
+* [  wrangler.jsonc ](#tab-panel-12830)
+* [  wrangler.toml ](#tab-panel-12831)
 
 **JSONC**
 
@@ -218,6 +218,6 @@ Service bindings have the following limits:
 * Calling a service binding does not count towards [simultaneous open connection limits](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings - Runtime APIs · Cloudflare Workers docs","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings - Runtime APIs · Cloudflare Workers docs","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/service-bindings/","name":"Service bindings"}}]}
 ```

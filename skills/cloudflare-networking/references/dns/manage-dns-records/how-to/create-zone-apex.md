@@ -1,7 +1,7 @@
 ---
 title: Create zone apex record
 description: Create a DNS record for your zone apex.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,8 +32,8 @@ To create a zone apex record, use `@` for the record **Name**, as in the followi
 | ---- | ---- | ------------ | ------------ |
 | A    | @    | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-8175)
-* [ API ](#tab-panel-8176)
+* [ Dashboard ](#tab-panel-8798)
+* [ API ](#tab-panel-8799)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -69,6 +69,6 @@ If your domain is not correctly covered by an SSL/TLS certificate, your visitors
 Cloudflare offers free, unshared, publicly trusted [Universal SSL certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) to all Cloudflare domains.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/#page","headline":"Create zone apex record · Cloudflare DNS docs","description":"Create a DNS record for your zone apex.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/#page","headline":"Create zone apex record · Cloudflare DNS docs","description":"Create a DNS record for your zone apex.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/create-zone-apex/","name":"Create zone apex record"}}]}
 ```

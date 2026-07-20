@@ -1,7 +1,7 @@
 ---
 title: Evaluations
 description: Assess AI Gateway application performance with datasets, human feedback, and evaluation metrics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ Our first step toward comprehensive AI evaluations starts with human feedback (c
 [Learn how to set up an evaluation](https://developers.cloudflare.com/ai-gateway/evaluations/set-up-evaluations/) including creating datasets, selecting evaluators, and running the evaluation process.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/#page","headline":"Evaluations · Cloudflare AI Gateway docs","description":"Assess AI Gateway application performance with datasets, human feedback, and evaluation metrics.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/#page","headline":"Evaluations · Cloudflare AI Gateway docs","description":"Assess AI Gateway application performance with datasets, human feedback, and evaluation metrics.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/evaluations/","name":"Evaluations"}}]}
 ```

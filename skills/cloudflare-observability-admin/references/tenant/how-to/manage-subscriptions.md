@@ -1,7 +1,7 @@
 ---
 title: Manage subscriptions
 description: Add and manage zone and account-level subscriptions for tenant-managed Cloudflare accounts.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -117,6 +117,6 @@ To update a subscription on an account, send a [PUT](https://developers.cloudfla
 To delete a subscription on an account, send a [DELETE](https://developers.cloudflare.com/api/resources/accounts/subresources/subscriptions/methods/delete/) request to the `/accounts/<ACCOUNT_ID>/subscriptions/<SUBSCRIPTION_ID>` endpoint.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/#page","headline":"Manage subscriptions · Cloudflare Tenant docs","description":"Add and manage zone and account-level subscriptions for tenant-managed Cloudflare accounts.","url":"https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/#page","headline":"Manage subscriptions · Cloudflare Tenant docs","description":"Add and manage zone and account-level subscriptions for tenant-managed Cloudflare accounts.","url":"https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/tenant/how-to/manage-subscriptions/","name":"Manage subscriptions"}}]}
 ```

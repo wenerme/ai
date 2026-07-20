@@ -1,7 +1,7 @@
 ---
 title: Send Emails With Resend
 description: This tutorial explains how to send emails from Cloudflare Workers using Resend.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -163,6 +163,6 @@ And finally, deploy this update with `npm run deploy`.
 * [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/#page","headline":"Send Emails With Resend · Cloudflare Workers docs","description":"This tutorial explains how to send emails from Cloudflare Workers using Resend.","url":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/#page","headline":"Send Emails With Resend · Cloudflare Workers docs","description":"This tutorial explains how to send emails from Cloudflare Workers using Resend.","url":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/send-emails-with-resend/","name":"Send Emails With Resend"}}]}
 ```

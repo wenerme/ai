@@ -1,7 +1,7 @@
 ---
 title: Runtime APIs
 description: Explore the JavaScript and web platform APIs available in the Cloudflare Workers runtime.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -41,6 +41,6 @@ The [Workers runtime ↗](https://blog.cloudflare.com/workerd-open-source-worker
 * [ WebSockets ](https://developers.cloudflare.com/workers/runtime-apis/websockets/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/runtime-apis/#page","headline":"Runtime APIs · Cloudflare Workers docs","description":"Explore the JavaScript and web platform APIs available in the Cloudflare Workers runtime.","url":"https://developers.cloudflare.com/workers/runtime-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/runtime-apis/#page","headline":"Runtime APIs · Cloudflare Workers docs","description":"Explore the JavaScript and web platform APIs available in the Cloudflare Workers runtime.","url":"https://developers.cloudflare.com/workers/runtime-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}}]}
 ```

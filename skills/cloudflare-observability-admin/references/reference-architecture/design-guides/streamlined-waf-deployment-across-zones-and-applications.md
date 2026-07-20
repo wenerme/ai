@@ -1,7 +1,7 @@
 ---
 title: Streamlined WAF deployment across zones and applications
 description: Learn how to streamline WAF deployment across different zones and applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -162,6 +162,6 @@ For more information, please refer to the following resources:
 In conclusion, this design guide illustrates how you can implement flexible WAF configurations to cover multiple applications and domains. The described approach reduces the effort required to deploy, maintain, and update your WAF security configuration.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/#page","headline":"Streamlined WAF deployment across zones and applications · Cloudflare Reference Architecture docs","description":"Learn how to streamline WAF deployment across different zones and applications.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/#page","headline":"Streamlined WAF deployment across zones and applications · Cloudflare Reference Architecture docs","description":"Learn how to streamline WAF deployment across different zones and applications.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/design-guides/","name":"Design Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/","name":"Streamlined WAF deployment across zones and applications"}}]}
 ```

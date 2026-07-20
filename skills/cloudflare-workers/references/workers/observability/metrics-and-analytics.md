@@ -1,7 +1,7 @@
 ---
 title: Metrics and analytics
 description: Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -159,6 +159,6 @@ Writes to Analytics Engine are non-blocking and do not add latency to your Worke
 Refer to the [Analytics Engine example](https://developers.cloudflare.com/workers/examples/analytics-engine/) to get started.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers docs","description":"Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.","url":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#page","headline":"Metrics and analytics · Cloudflare Workers docs","description":"Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.","url":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/metrics-and-analytics/","name":"Metrics and analytics"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Authenticate coding agents
 description: Grant coding agents like Claude Code, OpenCode, and Windsurf access to resources protected by Cloudflare Access using cloudflared or service tokens.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -455,6 +455,6 @@ curl -s -X POST <token_endpoint> \
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#page","headline":"Authenticate coding agents · Cloudflare One docs","description":"Grant coding agents like Claude Code, OpenCode, and Windsurf access to resources protected by Cloudflare Access using cloudflared or service tokens.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#page","headline":"Authenticate coding agents · Cloudflare One docs","description":"Grant coding agents like Claude Code, OpenCode, and Windsurf access to resources protected by Cloudflare Access using cloudflared or service tokens.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/authenticate-agents/","name":"Authenticate coding agents"}}]}
 ```

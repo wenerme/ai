@@ -1,7 +1,7 @@
 ---
 title: Use ReadableStream with Durable Object and Workers
 description: Stream ReadableStream from Durable Objects.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -21,8 +21,8 @@ This example demonstrates:
 * The Worker reads and logs the values from the stream.
 * The Worker then cancels the stream after 5 values.
 
-* [  JavaScript ](#tab-panel-8691)
-* [  TypeScript ](#tab-panel-8692)
+* [  JavaScript ](#tab-panel-9033)
+* [  TypeScript ](#tab-panel-9034)
 
 **JavaScript**
 
@@ -225,6 +225,6 @@ Note
 In a setup where a Durable Object returns a readable stream to a Worker, if the Worker cancels the Durable Object's readable stream, the cancellation propagates to the Durable Object.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/readable-stream/#page","headline":"Use ReadableStream with Durable Object and Workers · Cloudflare Durable Objects docs","description":"Stream ReadableStream from Durable Objects.","url":"https://developers.cloudflare.com/durable-objects/examples/readable-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/readable-stream/#page","headline":"Use ReadableStream with Durable Object and Workers · Cloudflare Durable Objects docs","description":"Stream ReadableStream from Durable Objects.","url":"https://developers.cloudflare.com/durable-objects/examples/readable-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/readable-stream/","name":"Use ReadableStream with Durable Object and Workers"}}]}
 ```

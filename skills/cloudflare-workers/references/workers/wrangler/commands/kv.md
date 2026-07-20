@@ -1,7 +1,7 @@
 ---
 title: KV
 description: Wrangler commands for managing Workers KV namespaces and key-value pairs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,9 +30,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-12773)
-* [  pnpm ](#tab-panel-12774)
-* [  yarn ](#tab-panel-12775)
+* [  npm ](#tab-panel-13330)
+* [  pnpm ](#tab-panel-13331)
+* [  yarn ](#tab-panel-13332)
 
 ```sh
 npx wrangler kv namespace create [NAMESPACE]
@@ -82,9 +82,9 @@ Use a specific auth profile
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-12776)
-* [  pnpm ](#tab-panel-12777)
-* [  yarn ](#tab-panel-12778)
+* [  npm ](#tab-panel-13333)
+* [  pnpm ](#tab-panel-13334)
+* [  yarn ](#tab-panel-13335)
 
 ```sh
 npx wrangler kv namespace list
@@ -123,9 +123,9 @@ Use a specific auth profile
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-12779)
-* [  pnpm ](#tab-panel-12780)
-* [  yarn ](#tab-panel-12781)
+* [  npm ](#tab-panel-13336)
+* [  pnpm ](#tab-panel-13337)
+* [  yarn ](#tab-panel-13338)
 
 ```sh
 npx wrangler kv namespace delete [NAMESPACE]
@@ -175,9 +175,9 @@ Use a specific auth profile
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-12782)
-* [  pnpm ](#tab-panel-12783)
-* [  yarn ](#tab-panel-12784)
+* [  npm ](#tab-panel-13339)
+* [  pnpm ](#tab-panel-13340)
+* [  yarn ](#tab-panel-13341)
 
 ```sh
 npx wrangler kv namespace rename [OLD-NAME]
@@ -235,9 +235,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-12785)
-* [  pnpm ](#tab-panel-12786)
-* [  yarn ](#tab-panel-12787)
+* [  npm ](#tab-panel-13342)
+* [  pnpm ](#tab-panel-13343)
+* [  yarn ](#tab-panel-13344)
 
 ```sh
 npx wrangler kv key put [KEY] [VALUE]
@@ -301,9 +301,9 @@ Use a specific auth profile
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-12788)
-* [  pnpm ](#tab-panel-12789)
-* [  yarn ](#tab-panel-12790)
+* [  npm ](#tab-panel-13345)
+* [  pnpm ](#tab-panel-13346)
+* [  yarn ](#tab-panel-13347)
 
 ```sh
 npx wrangler kv key list
@@ -357,9 +357,9 @@ Use a specific auth profile
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-12791)
-* [  pnpm ](#tab-panel-12792)
-* [  yarn ](#tab-panel-12793)
+* [  npm ](#tab-panel-13348)
+* [  pnpm ](#tab-panel-13349)
+* [  yarn ](#tab-panel-13350)
 
 ```sh
 npx wrangler kv key get [KEY]
@@ -415,9 +415,9 @@ Use a specific auth profile
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-12794)
-* [  pnpm ](#tab-panel-12795)
-* [  yarn ](#tab-panel-12796)
+* [  npm ](#tab-panel-13351)
+* [  pnpm ](#tab-panel-13352)
+* [  yarn ](#tab-panel-13353)
 
 ```sh
 npx wrangler kv key delete [KEY]
@@ -483,9 +483,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-12797)
-* [  pnpm ](#tab-panel-12798)
-* [  yarn ](#tab-panel-12799)
+* [  npm ](#tab-panel-13354)
+* [  pnpm ](#tab-panel-13355)
+* [  yarn ](#tab-panel-13356)
 
 ```sh
 npx wrangler kv bulk get [FILENAME]
@@ -539,9 +539,9 @@ Use a specific auth profile
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-12800)
-* [  pnpm ](#tab-panel-12801)
-* [  yarn ](#tab-panel-12802)
+* [  npm ](#tab-panel-13357)
+* [  pnpm ](#tab-panel-13358)
+* [  yarn ](#tab-panel-13359)
 
 ```sh
 npx wrangler kv bulk put [FILENAME]
@@ -601,9 +601,9 @@ Use a specific auth profile
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-12803)
-* [  pnpm ](#tab-panel-12804)
-* [  yarn ](#tab-panel-12805)
+* [  npm ](#tab-panel-13360)
+* [  pnpm ](#tab-panel-13361)
+* [  yarn ](#tab-panel-13362)
 
 ```sh
 npx wrangler kv bulk delete [FILENAME]
@@ -656,6 +656,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/kv/#page","headline":"KV · Cloudflare Workers docs","description":"Wrangler commands for managing Workers KV namespaces and key-value pairs.","url":"https://developers.cloudflare.com/workers/wrangler/commands/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/kv/#page","headline":"KV · Cloudflare Workers docs","description":"Wrangler commands for managing Workers KV namespaces and key-value pairs.","url":"https://developers.cloudflare.com/workers/wrangler/commands/kv/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/kv/","name":"KV"}}]}
 ```

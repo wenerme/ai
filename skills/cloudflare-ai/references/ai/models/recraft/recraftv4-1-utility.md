@@ -1,7 +1,7 @@
 ---
 title: Recraft V4.1 Utility
 description: Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality and flexibility for a wide range of everyday use cases at standard resolution.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1726)
-* [ cURL ](#tab-panel-1727)
+* [ TypeScript ](#tab-panel-1872)
+* [ cURL ](#tab-panel-1873)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1724)
-* [ Raw response ](#tab-panel-1725)
+* [ Output ](#tab-panel-1870)
+* [ Raw response ](#tab-panel-1871)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/simple-generation.png)
 
@@ -75,8 +75,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Product Mockup**  — Generate a product concept image
 
-* [ TypeScript ](#tab-panel-1730)
-* [ cURL ](#tab-panel-1731)
+* [ TypeScript ](#tab-panel-1876)
+* [ cURL ](#tab-panel-1877)
 
 **TypeScript**
 
@@ -100,8 +100,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1728)
-* [ Raw response ](#tab-panel-1729)
+* [ Output ](#tab-panel-1874)
+* [ Raw response ](#tab-panel-1875)
 
 ![Product Mockup](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/product-mockup.png)
 
@@ -119,8 +119,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Specify output dimensions
 
-* [ TypeScript ](#tab-panel-1734)
-* [ cURL ](#tab-panel-1735)
+* [ TypeScript ](#tab-panel-1880)
+* [ cURL ](#tab-panel-1881)
 
 **TypeScript**
 
@@ -148,8 +148,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1732)
-* [ Raw response ](#tab-panel-1733)
+* [ Output ](#tab-panel-1878)
+* [ Raw response ](#tab-panel-1879)
 
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/custom-size.png)
 
@@ -167,8 +167,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Color Controls**  — Guide generation with specific colors
 
-* [ TypeScript ](#tab-panel-1742)
-* [ cURL ](#tab-panel-1743)
+* [ TypeScript ](#tab-panel-1888)
+* [ cURL ](#tab-panel-1889)
 
 **TypeScript**
 
@@ -213,8 +213,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1736)
-* [ Raw response ](#tab-panel-1737)
+* [ Output ](#tab-panel-1882)
+* [ Raw response ](#tab-panel-1883)
 
 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/with-color-controls.png)
 
@@ -232,8 +232,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Background Color**  — Set a specific background color
 
-* [ TypeScript ](#tab-panel-1740)
-* [ cURL ](#tab-panel-1741)
+* [ TypeScript ](#tab-panel-1886)
+* [ cURL ](#tab-panel-1887)
 
 **TypeScript**
 
@@ -271,8 +271,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1738)
-* [ Raw response ](#tab-panel-1739)
+* [ Output ](#tab-panel-1884)
+* [ Raw response ](#tab-panel-1885)
 
 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility/background-color.png)
 
@@ -290,8 +290,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1744)
-* [ Output ](#tab-panel-1745)
+* [ Input ](#tab-panel-1890)
+* [ Output ](#tab-panel-1891)
 
 prompt
 
@@ -324,6 +324,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utilit
 Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/#page","headline":"Recraft V4.1 Utility (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality and flexibility for a wide range of everyday use cases at standard resolution.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/#page","headline":"Recraft V4.1 Utility (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality and flexibility for a wide range of everyday use cases at standard resolution.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Resolve common issues with Cloudflare challenges, including loops and proxied hostnames.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -165,6 +165,6 @@ Exclude multiple IP addresses from a **Block** or **Challenge** rule that assess
     * Action: Block (or a challenge action)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/#page","headline":"Troubleshooting · Cloudflare challenges docs","description":"Resolve common issues with Cloudflare challenges, including loops and proxied hostnames.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/#page","headline":"Troubleshooting · Cloudflare challenges docs","description":"Resolve common issues with Cloudflare challenges, including loops and proxied hostnames.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/troubleshooting/","name":"Troubleshooting"}}]}
 ```

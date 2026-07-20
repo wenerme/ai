@@ -1,7 +1,7 @@
 ---
 title: Secure your first application
 description: Create policies for your first application.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -23,9 +23,9 @@ To create a new policy, open the [Cloudflare dashboard ↗](https://dash.cloudfl
 
 ## Example DNS policy
 
-* [ Dashboard ](#tab-panel-9511)
-* [ API ](#tab-panel-9512)
-* [ Terraform (v5) ](#tab-panel-9513)
+* [ Dashboard ](#tab-panel-9954)
+* [ API ](#tab-panel-9955)
+* [ Terraform (v5) ](#tab-panel-9956)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -95,9 +95,9 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {
 
 ## Example network policy
 
-* [ Dashboard ](#tab-panel-9514)
-* [ API ](#tab-panel-9515)
-* [ Terraform (v5) ](#tab-panel-9516)
+* [ Dashboard ](#tab-panel-9957)
+* [ API ](#tab-panel-9958)
+* [ Terraform (v5) ](#tab-panel-9959)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -165,9 +165,9 @@ resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
 
-* [ Dashboard ](#tab-panel-9517)
-* [ API ](#tab-panel-9518)
-* [ Terraform (v5) ](#tab-panel-9519)
+* [ Dashboard ](#tab-panel-9960)
+* [ API ](#tab-panel-9961)
+* [ Terraform (v5) ](#tab-panel-9962)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |
@@ -239,6 +239,6 @@ Note
 It is not recommended to employ a default-deny model while testing. Instead, build your explicit application policies and [monitor your logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) to determine if your policies are working as expected. If you do not see the policies triggering in your logs, you may need to tune your policies and review what kind of information (identity groups, device posture values, etc.) is being sent with your traffic.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/#page","headline":"Secure your first application · Cloudflare Learning Paths","description":"Create policies for your first application.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/#page","headline":"Secure your first application · Cloudflare Learning Paths","description":"Create policies for your first application.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/build-policies/","name":"Build secure access policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/build-policies/create-policy/","name":"Secure your first application"}}]}
 ```

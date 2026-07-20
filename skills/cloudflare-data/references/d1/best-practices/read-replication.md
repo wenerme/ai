@@ -1,7 +1,7 @@
 ---
 title: Global read replication
 description: Reduce read latency and scale throughput by replicating D1 databases across regions globally.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ Tip: Place your database further away for the read replication demo
 
 To simulate how read replication can improve a worst case latency scenario, set your D1 database location hint to be in a farther away region. For example, if you are in Europe create your database in Western North America (WNAM).
 
-* [  JavaScript ](#tab-panel-8233)
-* [  TypeScript ](#tab-panel-8234)
+* [  JavaScript ](#tab-panel-8573)
+* [  TypeScript ](#tab-panel-8574)
 
 **JavaScript**
 
@@ -246,8 +246,8 @@ With the REST API, set `read_replication.mode: auto` to enable read replication 
 
 For this REST endpoint, you need to have an API token with `D1:Edit` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-8227)
-* [ TypeScript ](#tab-panel-8228)
+* [ cURL ](#tab-panel-8567)
+* [ TypeScript ](#tab-panel-8568)
 
 ```sh
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
@@ -284,8 +284,8 @@ Note
 
 Disabling read replication takes up to 24 hours for replicas to stop processing requests. Sessions API works with databases that do not have read replication enabled, so it is safe to run code with Sessions API even after disabling read replication.
 
-* [ cURL ](#tab-panel-8229)
-* [ TypeScript ](#tab-panel-8230)
+* [ cURL ](#tab-panel-8569)
+* [ TypeScript ](#tab-panel-8570)
 
 ```sh
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
@@ -320,8 +320,8 @@ Alternatively, `GET` D1 database REST endpoint returns if read replication is en
 
 For this REST endpoint, you need to have an API token with `D1:Read` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-8231)
-* [ TypeScript ](#tab-panel-8232)
+* [ cURL ](#tab-panel-8571)
+* [ TypeScript ](#tab-panel-8572)
 
 ```sh
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}" \
@@ -435,6 +435,6 @@ You may wish to refer to the following resources:
 * [E-commerce store read replication tutorial](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/read-replication/#page","headline":"Global read replication · Cloudflare D1 docs","description":"Reduce read latency and scale throughput by replicating D1 databases across regions globally.","url":"https://developers.cloudflare.com/d1/best-practices/read-replication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/read-replication/#page","headline":"Global read replication · Cloudflare D1 docs","description":"Reduce read latency and scale throughput by replicating D1 databases across regions globally.","url":"https://developers.cloudflare.com/d1/best-practices/read-replication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/read-replication/","name":"Global read replication"}}]}
 ```

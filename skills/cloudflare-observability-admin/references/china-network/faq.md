@@ -1,7 +1,7 @@
 ---
 title: FAQ
 description: Review FAQs for Cloudflare's China Network.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ All sites hosted in Mainland China must have IPv6 enabled. China Network automat
 [Pages](https://developers.cloudflare.com/pages/) is not available in Mainland China due to pages.dev certificate not residing within Mainland China. However, Pages from a global zone may potentially be extended into Mainland China.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/faq/#page","headline":"FAQ · Cloudflare China Network docs","description":"Review FAQs for Cloudflare's China Network.","url":"https://developers.cloudflare.com/china-network/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/faq/#page","headline":"FAQ · Cloudflare China Network docs","description":"Review FAQs for Cloudflare's China Network.","url":"https://developers.cloudflare.com/china-network/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/faq/","name":"FAQ"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Manage accounts
 description: Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,8 +22,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-11290)
-* [ API ](#tab-panel-11291)
+* [ Dashboard ](#tab-panel-11735)
+* [ API ](#tab-panel-11736)
 
 To create an account under your tenant using the dashboard:
 
@@ -147,8 +147,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-11288)
-* [ API ](#tab-panel-11289)
+* [ Dashboard ](#tab-panel-11733)
+* [ API ](#tab-panel-11734)
 
 To view any accounts owned by your tenant using the dashboard:
 
@@ -260,6 +260,6 @@ A successful request will return the id to confirm the operation:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/#page","headline":"Manage accounts · Cloudflare Tenant docs","description":"Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.","url":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/#page","headline":"Manage accounts · Cloudflare Tenant docs","description":"Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.","url":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/tenant/how-to/manage-accounts/","name":"Manage accounts"}}]}
 ```

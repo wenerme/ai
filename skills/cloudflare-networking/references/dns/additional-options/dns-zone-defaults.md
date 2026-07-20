@@ -1,7 +1,7 @@
 ---
 title: Configure DNS zone defaults
 description: Set default DNS settings applied to new zones in your account.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -45,6 +45,6 @@ For secondary zones:
 Multi-provider DNS does not apply as a setting for secondary zones, as this is already a required behavior for this setup. `SOA` record and the `NS` record TTL are defined on your external DNS provider and only transferred into Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/#page","headline":"Configure DNS zone defaults · Cloudflare DNS docs","description":"Set default DNS settings applied to new zones in your account.","url":"https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/#page","headline":"Configure DNS zone defaults · Cloudflare DNS docs","description":"Set default DNS settings applied to new zones in your account.","url":"https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/additional-options/dns-zone-defaults/","name":"Configure DNS zone defaults"}}]}
 ```

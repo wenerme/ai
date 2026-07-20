@@ -1,7 +1,7 @@
 ---
 title: Chat agent
 description: Build a streaming AI chat agent with tools using Workers AI — no API keys required.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,8 +42,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-5663)
-* [  wrangler.toml ](#tab-panel-5664)
+* [  wrangler.jsonc ](#tab-panel-5925)
+* [  wrangler.toml ](#tab-panel-5926)
 
 **JSONC**
 
@@ -52,7 +52,7 @@ Replace your `wrangler.jsonc` with:
   "name": "chat-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "ai": { "binding": "AI" },
   "durable_objects": {
@@ -68,7 +68,7 @@ Replace your `wrangler.jsonc` with:
 name = "chat-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -96,8 +96,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-5665)
-* [  TypeScript ](#tab-panel-5666)
+* [  JavaScript ](#tab-panel-5927)
+* [  TypeScript ](#tab-panel-5928)
 
 **JavaScript**
 
@@ -329,8 +329,8 @@ export default {
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-5667)
-* [  TypeScript ](#tab-panel-5668)
+* [  JavaScript ](#tab-panel-5929)
+* [  TypeScript ](#tab-panel-5930)
 
 **JavaScript**
 
@@ -632,6 +632,6 @@ Your chat agent has:
 [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Deeper patterns for approval flows and manual intervention.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/chat-agent/#page","headline":"Chat agent · Cloudflare Agents docs","description":"Build a streaming AI chat agent with tools using Workers AI — no API keys required.","url":"https://developers.cloudflare.com/agents/examples/chat-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/chat-agent/#page","headline":"Chat agent · Cloudflare Agents docs","description":"Build a streaming AI chat agent with tools using Workers AI — no API keys required.","url":"https://developers.cloudflare.com/agents/examples/chat-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/chat-agent/","name":"Chat agent"}}]}
 ```

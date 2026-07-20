@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Learn how to configure your Cloudflare Worker using Wrangler v1. This guide covers top-level and environment-specific settings, key types, and deployment options.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ The top-level configuration is the collection of values you specify at the top o
 
 The layout of a top-level configuration in a Wrangler file is displayed below:
 
-* [  wrangler.jsonc ](#tab-panel-13320)
-* [  wrangler.toml ](#tab-panel-13321)
+* [  wrangler.jsonc ](#tab-panel-13935)
+* [  wrangler.toml ](#tab-panel-13936)
 
 **JSONC**
 
@@ -78,8 +78,8 @@ Some environment properties can be [_inherited_](#keys) from the top-level confi
 
 An example of an `[env.name]` configuration looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-13340)
-* [  wrangler.toml ](#tab-panel-13341)
+* [  wrangler.jsonc ](#tab-panel-13955)
+* [  wrangler.toml ](#tab-panel-13956)
 
 **JSONC**
 
@@ -230,8 +230,8 @@ The `vars` key defines a table of [environment variables](https://developers.clo
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13316)
-* [  wrangler.toml ](#tab-panel-13317)
+* [  wrangler.jsonc ](#tab-panel-13931)
+* [  wrangler.toml ](#tab-panel-13932)
 
 **JSONC**
 
@@ -268,8 +268,8 @@ console.log(BAR);
 
 Alternatively, you can define `vars` using an inline table format. This style should not include any new lines to be considered a valid TOML configuration:
 
-* [  wrangler.jsonc ](#tab-panel-13318)
-* [  wrangler.toml ](#tab-panel-13319)
+* [  wrangler.jsonc ](#tab-panel-13933)
+* [  wrangler.toml ](#tab-panel-13934)
 
 **JSONC**
 
@@ -300,8 +300,8 @@ Secrets should be handled using the [wrangler secret](https://developers.cloudfl
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13324)
-* [  wrangler.toml ](#tab-panel-13325)
+* [  wrangler.jsonc ](#tab-panel-13939)
+* [  wrangler.toml ](#tab-panel-13940)
 
 **JSONC**
 
@@ -339,8 +339,8 @@ preview_id = "fb69528dbc7336525313f2e8c3b17db0"
 
 Alternatively, you can define `kv namespaces` like so:
 
-* [  wrangler.jsonc ](#tab-panel-13328)
-* [  wrangler.toml ](#tab-panel-13329)
+* [  wrangler.jsonc ](#tab-panel-13943)
+* [  wrangler.toml ](#tab-panel-13944)
 
 **JSONC**
 
@@ -412,8 +412,8 @@ A [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/s
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13322)
-* [  wrangler.toml ](#tab-panel-13323)
+* [  wrangler.jsonc ](#tab-panel-13937)
+* [  wrangler.toml ](#tab-panel-13938)
 
 **JSONC**
 
@@ -457,8 +457,8 @@ For exceptionally large pages, Workers Sites may not be ideal. There is a 25 MiB
 
 If you want to include only a certain set of files or directories in your `bucket`, add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13326)
-* [  wrangler.toml ](#tab-panel-13327)
+* [  wrangler.jsonc ](#tab-panel-13941)
+* [  wrangler.toml ](#tab-panel-13942)
 
 **JSONC**
 
@@ -489,8 +489,8 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13330)
-* [  wrangler.toml ](#tab-panel-13331)
+* [  wrangler.jsonc ](#tab-panel-13945)
+* [  wrangler.toml ](#tab-panel-13946)
 
 **JSONC**
 
@@ -545,8 +545,8 @@ A set of cron triggers used to call a Worker on a schedule.
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13332)
-* [  wrangler.toml ](#tab-panel-13333)
+* [  wrangler.jsonc ](#tab-panel-13947)
+* [  wrangler.toml ](#tab-panel-13948)
 
 **JSONC**
 
@@ -577,8 +577,8 @@ Arguments for `wrangler dev` can be configured here so you do not have to repeat
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13334)
-* [  wrangler.toml ](#tab-panel-13335)
+* [  wrangler.jsonc ](#tab-panel-13949)
+* [  wrangler.toml ](#tab-panel-13950)
 
 **JSONC**
 
@@ -634,8 +634,8 @@ addEventListener("fetch", (event) => {
 
 Usage:
 
-* [  wrangler.jsonc ](#tab-panel-13336)
-* [  wrangler.toml ](#tab-panel-13337)
+* [  wrangler.jsonc ](#tab-panel-13951)
+* [  wrangler.toml ](#tab-panel-13952)
 
 **JSONC**
 
@@ -716,8 +716,8 @@ export default {
 
 To create a Workers project using Wrangler and Modules, add a `[build]` section:
 
-* [  wrangler.jsonc ](#tab-panel-13338)
-* [  wrangler.toml ](#tab-panel-13339)
+* [  wrangler.jsonc ](#tab-panel-13953)
+* [  wrangler.toml ](#tab-panel-13954)
 
 **JSONC**
 
@@ -778,8 +778,8 @@ If your project is written using CommonJS modules, you will need to re-export yo
 
 Defaults:
 
-* [  wrangler.jsonc ](#tab-panel-13342)
-* [  wrangler.toml ](#tab-panel-13343)
+* [  wrangler.jsonc ](#tab-panel-13957)
+* [  wrangler.toml ](#tab-panel-13958)
 
 **JSONC**
 
@@ -845,8 +845,8 @@ main = "./worker.mjs"
 
 To illustrate how these levels are applied, here is a Wrangler file using multiple environments:
 
-* [  wrangler.jsonc ](#tab-panel-13344)
-* [  wrangler.toml ](#tab-panel-13345)
+* [  wrangler.jsonc ](#tab-panel-13959)
+* [  wrangler.toml ](#tab-panel-13960)
 
 **JSONC**
 
@@ -996,6 +996,6 @@ workers_dev = true
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Learn how to configure your Cloudflare Worker using Wrangler v1. This guide covers top-level and environment-specific settings, key types, and deployment options.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Learn how to configure your Cloudflare Worker using Wrangler v1. This guide covers top-level and environment-specific settings, key types, and deployment options.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/","name":"Migrate from Wrangler v1 to v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/","name":"Wrangler v1 (legacy)"}},{"@type":"ListItem","position":7,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/","name":"Configuration"}}]}
 ```

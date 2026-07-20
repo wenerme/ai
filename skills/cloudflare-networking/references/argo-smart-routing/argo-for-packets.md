@@ -1,7 +1,7 @@
 ---
 title: Argo for Packets
 description: Optimize IP layer routing for Magic Transit, Cloudflare WAN, and Cloudflare for Offices.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ Organizations with multiple origin locations benefit most from Argo for Packets,
 To begin using Argo for Packets, contact your account manager.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/argo-smart-routing/argo-for-packets/#page","headline":"Argo for Packets · Cloudflare Argo Smart Routing docs","description":"Optimize IP layer routing for Magic Transit, Cloudflare WAN, and Cloudflare for Offices.","url":"https://developers.cloudflare.com/argo-smart-routing/argo-for-packets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/argo-smart-routing/argo-for-packets/#page","headline":"Argo for Packets · Cloudflare Argo Smart Routing docs","description":"Optimize IP layer routing for Magic Transit, Cloudflare WAN, and Cloudflare for Offices.","url":"https://developers.cloudflare.com/argo-smart-routing/argo-for-packets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/argo-smart-routing/","name":"Argo Smart Routing"}},{"@type":"ListItem","position":3,"item":{"@id":"/argo-smart-routing/argo-for-packets/","name":"Argo for Packets"}}]}
 ```

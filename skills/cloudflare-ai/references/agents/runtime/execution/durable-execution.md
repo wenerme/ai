@@ -1,7 +1,7 @@
 ---
 title: Durable execution with fibers
 description: Run work that survives Durable Object eviction with runFiber(), startFiber(), keepAlive(), and crash recovery.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -550,6 +550,6 @@ Run an async function while keeping the DO alive. Heartbeat starts before `fn` a
 * [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) — `chatRecovery` and `onChatRecovery`
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#page","headline":"Durable execution with fibers · Cloudflare Agents docs","description":"Run work that survives Durable Object eviction with runFiber(), startFiber(), keepAlive(), and crash recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/durable-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#page","headline":"Durable execution with fibers · Cloudflare Agents docs","description":"Run work that survives Durable Object eviction with runFiber(), startFiber(), keepAlive(), and crash recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/durable-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/durable-execution/","name":"Durable execution with fibers"}}]}
 ```

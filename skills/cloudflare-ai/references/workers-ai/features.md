@@ -1,7 +1,7 @@
 ---
 title: Features
 description: Explore Workers AI features including function calling, batch processing, and fine-tuning.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Markdown Conversion ](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/features/#page","headline":"Features · Cloudflare Workers AI docs","description":"Explore Workers AI features including function calling, batch processing, and fine-tuning.","url":"https://developers.cloudflare.com/workers-ai/features/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/features/#page","headline":"Features · Cloudflare Workers AI docs","description":"Explore Workers AI features including function calling, batch processing, and fine-tuning.","url":"https://developers.cloudflare.com/workers-ai/features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Learn how to set up AI Crawl Control.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,8 +32,8 @@ This guide instructs you on how to:
 
 ## 2\. Block specific AI crawlers
 
-* [ All plans ](#tab-panel-6596)
-* [ Paid plans ](#tab-panel-6597)
+* [ All plans ](#tab-panel-7106)
+* [ Paid plans ](#tab-panel-7107)
 
 To block specific AI crawlers:
 
@@ -61,7 +61,7 @@ You can also create more complex rules when taking action on AI crawlers, using 
 
 ## 3\. Explore detailed metrics
 
-* [ All plans ](#tab-panel-6595)
+* [ All plans ](#tab-panel-7105)
 
 For more detailed analytics, use the **Metrics** tab.
 
@@ -94,6 +94,6 @@ Refer to the following related resources:
 * [Direct AI crawlers with managed robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/get-started/#page","headline":"Get started with Cloudflare AI Crawl Control · Cloudflare AI Crawl Control docs","description":"Learn how to set up AI Crawl Control.","url":"https://developers.cloudflare.com/ai-crawl-control/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/get-started/#page","headline":"Get started with Cloudflare AI Crawl Control · Cloudflare AI Crawl Control docs","description":"Learn how to set up AI Crawl Control.","url":"https://developers.cloudflare.com/ai-crawl-control/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/get-started/","name":"Get started"}}]}
 ```

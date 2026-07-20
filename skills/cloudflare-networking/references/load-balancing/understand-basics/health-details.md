@@ -1,7 +1,7 @@
 ---
 title: How endpoints and pools become unhealthy
 description: How endpoints and pools become unhealthy.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -109,6 +109,6 @@ If a load balancer reaches **Critical** health and the pool serving as your fall
 * If Cloudflare does not proxy your hostname, you will see the SOA record.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#page","headline":"How endpoints and pools become unhealthy · Cloudflare Load Balancing docs","description":"How endpoints and pools become unhealthy.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#page","headline":"How endpoints and pools become unhealthy · Cloudflare Load Balancing docs","description":"How endpoints and pools become unhealthy.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/understand-basics/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/understand-basics/health-details/","name":"How endpoints and pools become unhealthy"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Autonomous responses
 description: Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -41,8 +41,8 @@ Use `saveMessages()` when the caller can wait for the model turn to finish.
 
 Use `submitMessages()` with Think when the caller needs a fast durable receipt, idempotent retry, and later status inspection. This is useful for webhook handlers, RPC callers, and parent Workers with strict timeout limits:
 
-* [  JavaScript ](#tab-panel-5353)
-* [  TypeScript ](#tab-panel-5354)
+* [  JavaScript ](#tab-panel-5613)
+* [  TypeScript ](#tab-panel-5614)
 
 **JavaScript**
 
@@ -116,8 +116,8 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
-* [  JavaScript ](#tab-panel-5351)
-* [  TypeScript ](#tab-panel-5352)
+* [  JavaScript ](#tab-panel-5611)
+* [  TypeScript ](#tab-panel-5612)
 
 **JavaScript**
 
@@ -153,8 +153,8 @@ Without this guard, you risk reading stale messages or overlapping with an in-fl
 
 A daily digest agent that summarizes activity every morning. Cron schedules are idempotent by default, so calling `schedule()` in `onStart` is safe — it does not create duplicates across Durable Object restarts.
 
-* [  JavaScript ](#tab-panel-5359)
-* [  TypeScript ](#tab-panel-5360)
+* [  JavaScript ](#tab-panel-5619)
+* [  TypeScript ](#tab-panel-5620)
 
 **JavaScript**
 
@@ -420,8 +420,8 @@ async addBackgroundContext(data: string) {
 
 ### Broadcasting state
 
-* [  JavaScript ](#tab-panel-5355)
-* [  TypeScript ](#tab-panel-5356)
+* [  JavaScript ](#tab-panel-5615)
+* [  TypeScript ](#tab-panel-5616)
 
 **JavaScript**
 
@@ -628,8 +628,8 @@ The `messageConcurrency` setting on `AIChatAgent` controls how overlapping user 
 
 Pass an `AbortSignal` when the same Durable Object starts and controls the turn:
 
-* [  JavaScript ](#tab-panel-5357)
-* [  TypeScript ](#tab-panel-5358)
+* [  JavaScript ](#tab-panel-5617)
+* [  TypeScript ](#tab-panel-5618)
 
 **JavaScript**
 
@@ -702,6 +702,6 @@ Use `cancelFiber(fiberId)` when the durable unit was accepted with `startFiber()
 [ Email routing ](https://developers.cloudflare.com/agents/communication-channels/email/) Handle inbound emails in your agent.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/#page","headline":"Autonomous responses · Cloudflare Agents docs","description":"Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/#page","headline":"Autonomous responses · Cloudflare Agents docs","description":"Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/chat/","name":"Chat"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/communication-channels/chat/autonomous-responses/","name":"Autonomous responses"}}]}
 ```

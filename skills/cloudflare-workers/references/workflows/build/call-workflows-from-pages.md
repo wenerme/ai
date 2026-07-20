@@ -1,7 +1,7 @@
 ---
 title: Call Workflows from Pages
 description: Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,8 +38,8 @@ To do this, you will need to:
 
 For example, if you have a Worker called `workflows-starter`, you would create a new Service Binding in your Pages project as follows, ensuring that the `service` name matches the name of the Worker your Workflow is defined in:
 
-* [  wrangler.jsonc ](#tab-panel-13350)
-* [  wrangler.toml ](#tab-panel-13351)
+* [  wrangler.jsonc ](#tab-panel-13967)
+* [  wrangler.toml ](#tab-panel-13968)
 
 **JSONC**
 
@@ -66,8 +66,8 @@ Your Worker can expose a specific method (or methods) that only other Workers or
 
 In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [InstanceStatus](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
 
-* [  JavaScript ](#tab-panel-13358)
-* [  TypeScript ](#tab-panel-13359)
+* [  JavaScript ](#tab-panel-13975)
+* [  TypeScript ](#tab-panel-13976)
 
 **index.js**
 
@@ -135,8 +135,8 @@ export default class WorkflowsService extends WorkerEntrypoint<Env> {
 
 Your Pages Function would resemble the following:
 
-* [  JavaScript ](#tab-panel-13352)
-* [  TypeScript ](#tab-panel-13353)
+* [  JavaScript ](#tab-panel-13969)
+* [  TypeScript ](#tab-panel-13970)
 
 **functions/request.js**
 
@@ -175,8 +175,8 @@ Service Bindings don't require you to expose a public endpoint from your Worker,
 
 An alternative to setting up a Service Binding is to call the Worker over HTTP by using the Workflows [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to `create` a new Workflow instance for each incoming HTTP call to the Worker:
 
-* [  JavaScript ](#tab-panel-13354)
-* [  TypeScript ](#tab-panel-13355)
+* [  JavaScript ](#tab-panel-13971)
+* [  TypeScript ](#tab-panel-13972)
 
 **index.js**
 
@@ -214,8 +214,8 @@ export default {
 
 Your [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/) can then make a regular `fetch` call to the Worker:
 
-* [  JavaScript ](#tab-panel-13356)
-* [  TypeScript ](#tab-panel-13357)
+* [  JavaScript ](#tab-panel-13973)
+* [  TypeScript ](#tab-panel-13974)
 
 **functions/request.js**
 
@@ -258,6 +258,6 @@ You can also choose to authenticate these requests by passing a shared secret in
 * Review the [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) and best practices for writing Workflows
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/#page","headline":"Call Workflows from Pages · Cloudflare Workflows docs","description":"Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.","url":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/#page","headline":"Call Workflows from Pages · Cloudflare Workflows docs","description":"Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.","url":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/call-workflows-from-pages/","name":"Call Workflows from Pages"}}]}
 ```

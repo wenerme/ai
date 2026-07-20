@@ -1,6 +1,6 @@
 ---
 title: Gemini 3.1 Flash TTS
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,8 +24,8 @@ Text-to-Speech • Google
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-576)
-* [ cURL ](#tab-panel-577)
+* [ TypeScript ](#tab-panel-626)
+* [ cURL ](#tab-panel-627)
 
 **TypeScript**
 
@@ -49,8 +49,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-572)
-* [ Raw response ](#tab-panel-573)
+* [ Output ](#tab-panel-622)
+* [ Raw response ](#tab-panel-623)
 
 ```json
 {
@@ -65,8 +65,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Voice**  — Generate speech with a specific voice
 
-* [ TypeScript ](#tab-panel-580)
-* [ cURL ](#tab-panel-581)
+* [ TypeScript ](#tab-panel-630)
+* [ cURL ](#tab-panel-631)
 
 **TypeScript**
 
@@ -91,8 +91,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-574)
-* [ Raw response ](#tab-panel-575)
+* [ Output ](#tab-panel-624)
+* [ Raw response ](#tab-panel-625)
 
 ```json
 {
@@ -105,8 +105,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Longer Text**  — Convert longer text to speech
 
-* [ TypeScript ](#tab-panel-584)
-* [ cURL ](#tab-panel-585)
+* [ TypeScript ](#tab-panel-634)
+* [ cURL ](#tab-panel-635)
 
 **TypeScript**
 
@@ -134,8 +134,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-578)
-* [ Raw response ](#tab-panel-579)
+* [ Output ](#tab-panel-628)
+* [ Raw response ](#tab-panel-629)
 
 ```json
 {
@@ -148,8 +148,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Narrative Voice**  — Generate speech with a narrative voice style
 
-* [ TypeScript ](#tab-panel-586)
-* [ cURL ](#tab-panel-587)
+* [ TypeScript ](#tab-panel-636)
+* [ cURL ](#tab-panel-637)
 
 **TypeScript**
 
@@ -177,8 +177,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-582)
-* [ Raw response ](#tab-panel-583)
+* [ Output ](#tab-panel-632)
+* [ Raw response ](#tab-panel-633)
 
 ```json
 {
@@ -191,8 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-588)
-* [ Output ](#tab-panel-589)
+* [ Input ](#tab-panel-638)
+* [ Output ](#tab-panel-639)
 
 text
 
@@ -233,6 +233,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tt
 Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/#page","headline":"Gemini 3.1 Flash TTS (Google) · Cloudflare AI docs · Cloudflare AI docs","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/#page","headline":"Gemini 3.1 Flash TTS (Google) · Cloudflare AI docs · Cloudflare AI docs","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

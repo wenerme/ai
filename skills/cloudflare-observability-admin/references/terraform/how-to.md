@@ -1,7 +1,7 @@
 ---
 title: How-to guides
 description: Step-by-step guides for common Cloudflare Terraform tasks like creating zones.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ The following guides explain how to complete common Terraform tasks.
 * [ Create a subdomain zone using Terraform ](https://developers.cloudflare.com/terraform/how-to/create-secondary-zone/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/how-to/#page","headline":"How-to guides · Cloudflare Terraform docs","description":"Step-by-step guides for common Cloudflare Terraform tasks like creating zones.","url":"https://developers.cloudflare.com/terraform/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/how-to/#page","headline":"How-to guides · Cloudflare Terraform docs","description":"Step-by-step guides for common Cloudflare Terraform tasks like creating zones.","url":"https://developers.cloudflare.com/terraform/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/how-to/","name":"How-to guides"}}]}
 ```

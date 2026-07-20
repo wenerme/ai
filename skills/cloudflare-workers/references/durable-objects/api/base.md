@@ -1,7 +1,7 @@
 ---
 title: Durable Object Base Class
 description: API reference for the DurableObject abstract base class and its handler methods.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
-* [  JavaScript ](#tab-panel-8528)
-* [  TypeScript ](#tab-panel-8529)
-* [  Python ](#tab-panel-8530)
+* [  JavaScript ](#tab-panel-8870)
+* [  TypeScript ](#tab-panel-8871)
+* [  Python ](#tab-panel-8872)
 
 **JavaScript**
 
@@ -82,9 +82,9 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8531)
-* [  TypeScript ](#tab-panel-8532)
-* [  Python ](#tab-panel-8533)
+* [  JavaScript ](#tab-panel-8873)
+* [  TypeScript ](#tab-panel-8874)
+* [  Python ](#tab-panel-8875)
 
 **JavaScript**
 
@@ -149,9 +149,9 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8534)
-* [  TypeScript ](#tab-panel-8535)
-* [  Python ](#tab-panel-8536)
+* [  JavaScript ](#tab-panel-8876)
+* [  TypeScript ](#tab-panel-8877)
+* [  Python ](#tab-panel-8878)
 
 **JavaScript**
 
@@ -208,9 +208,9 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8537)
-* [  TypeScript ](#tab-panel-8538)
-* [  Python ](#tab-panel-8539)
+* [  JavaScript ](#tab-panel-8879)
+* [  TypeScript ](#tab-panel-8880)
+* [  Python ](#tab-panel-8881)
 
 **JavaScript**
 
@@ -274,9 +274,9 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8543)
-* [  TypeScript ](#tab-panel-8544)
-* [  Python ](#tab-panel-8545)
+* [  JavaScript ](#tab-panel-8885)
+* [  TypeScript ](#tab-panel-8886)
+* [  Python ](#tab-panel-8887)
 
 **JavaScript**
 
@@ -333,9 +333,9 @@ class MyDurableObject(DurableObject):
 
 #### Example
 
-* [  JavaScript ](#tab-panel-8540)
-* [  TypeScript ](#tab-panel-8541)
-* [  Python ](#tab-panel-8542)
+* [  JavaScript ](#tab-panel-8882)
+* [  TypeScript ](#tab-panel-8883)
+* [  Python ](#tab-panel-8884)
 
 **JavaScript**
 
@@ -387,6 +387,6 @@ class MyDurableObject(DurableObject):
 * [RPC methods](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) for type-safe method calls.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/base/#page","headline":"Durable Object Base Class · Cloudflare Durable Objects docs","description":"API reference for the DurableObject abstract base class and its handler methods.","url":"https://developers.cloudflare.com/durable-objects/api/base/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/base/#page","headline":"Durable Object Base Class · Cloudflare Durable Objects docs","description":"API reference for the DurableObject abstract base class and its handler methods.","url":"https://developers.cloudflare.com/durable-objects/api/base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/base/","name":"Durable Object Base Class"}}]}
 ```

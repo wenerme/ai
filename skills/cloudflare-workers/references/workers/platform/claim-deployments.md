@@ -1,7 +1,7 @@
 ---
 title: Claim deployments (temporary accounts)
 description: Deploy Workers before authentication, then claim the temporary account to keep its deployments and resources.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -159,8 +159,8 @@ Before solving a challenge, require `k` and `g` to be positive integers. Reject 
 
 The following Node.js example applies these bounds and returns the object required by the create request:
 
-* [  JavaScript ](#tab-panel-12654)
-* [  TypeScript ](#tab-panel-12655)
+* [  JavaScript ](#tab-panel-12771)
+* [  TypeScript ](#tab-panel-12772)
 
 **solve-preview-challenge.js**
 
@@ -341,8 +341,8 @@ Temporary account tokens do not grant every permanent-account API permission. Un
 
 The following examples upload and deploy a Worker with the [Workers Script Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/), then retrieve the account's `workers.dev` subdomain.
 
-* [ REST API ](#tab-panel-12652)
-* [ TypeScript SDK ](#tab-panel-12653)
+* [ REST API ](#tab-panel-12769)
+* [ TypeScript SDK ](#tab-panel-12770)
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
@@ -463,6 +463,6 @@ The following table summarizes supported capabilities and limits. Temporary cred
 [ Deploy an existing project ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) Learn how the Wrangler CLI automatically detects and configures projects for Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/claim-deployments/#page","headline":"Claim deployments (temporary accounts) · Cloudflare Workers docs","description":"Deploy Workers before authentication, then claim the temporary account to keep its deployments and resources.","url":"https://developers.cloudflare.com/workers/platform/claim-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/claim-deployments/#page","headline":"Claim deployments (temporary accounts) · Cloudflare Workers docs","description":"Deploy Workers before authentication, then claim the temporary account to keep its deployments and resources.","url":"https://developers.cloudflare.com/workers/platform/claim-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/claim-deployments/","name":"Claim deployments (temporary accounts)"}}]}
 ```

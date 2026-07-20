@@ -1,7 +1,7 @@
 ---
 title: Recommended network policies
 description: Deploy recommended network security policies.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,9 +20,9 @@ For additional commonly used network policy examples, refer to [Common network p
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-10033)
-* [ API ](#tab-panel-10034)
-* [ Terraform ](#tab-panel-10035)
+* [ Dashboard ](#tab-panel-10098)
+* [ API ](#tab-panel-10099)
+* [ Terraform ](#tab-panel-10100)
 
 | Selector         | Operator    | Value                               | Logic | Action |
 | ---------------- | ----------- | ----------------------------------- | ----- | ------ |
@@ -71,9 +71,9 @@ Restrict access for devices where baseline posture checks have not passed. If po
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-10036)
-* [ API ](#tab-panel-10037)
-* [ Terraform ](#tab-panel-10038)
+* [ Dashboard ](#tab-panel-10101)
+* [ API ](#tab-panel-10102)
+* [ Terraform ](#tab-panel-10103)
 
 | Selector                     | Operator    | Value                               | Logic | Action |
 | ---------------------------- | ----------- | ----------------------------------- | ----- | ------ |
@@ -122,9 +122,9 @@ You can add a number of Cloudflare One Client device posture checks as needed, s
 
 Allow HTTPS access for user groups. For example, the following policy gives finance users access to any known financial applications:
 
-* [ Dashboard ](#tab-panel-10039)
-* [ API ](#tab-panel-10040)
-* [ Terraform ](#tab-panel-10041)
+* [ Dashboard ](#tab-panel-10104)
+* [ API ](#tab-panel-10105)
+* [ Terraform ](#tab-panel-10106)
 
 | Selector         | Operator | Value             | Logic | Action |
 | ---------------- | -------- | ----------------- | ----- | ------ |
@@ -171,9 +171,9 @@ Block traffic to destination IPs, SNIs, and SNI domains that are malicious or po
 
 You can implement this policy by either creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs). Ideally, your CERTs can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-10042)
-* [ API ](#tab-panel-10043)
-* [ Terraform ](#tab-panel-10044)
+* [ Dashboard ](#tab-panel-10107)
+* [ API ](#tab-panel-10108)
+* [ Terraform ](#tab-panel-10109)
 
 | Selector       | Operator | Value              | Logic | Action |
 | -------------- | -------- | ------------------ | ----- | ------ |
@@ -223,9 +223,9 @@ Allow SSH traffic to specific endpoints on the Internet for specific users. You 
 
 Optionally, you can include a selector to filter by source IP or IdP group.
 
-* [ Dashboard ](#tab-panel-10045)
-* [ API ](#tab-panel-10046)
-* [ Terraform ](#tab-panel-10047)
+* [ Dashboard ](#tab-panel-10110)
+* [ API ](#tab-panel-10111)
+* [ Terraform ](#tab-panel-10112)
 
 | Selector          | Operator | Value               | Logic | Action |
 | ----------------- | -------- | ------------------- | ----- | ------ |
@@ -272,9 +272,9 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_ssh_internet_allowlist"
 
 Block all non-web traffic towards the Internet. By using the **Detected Protocol** selector, you will ensure alternative ports for HTTP and HTTPS are allowed.
 
-* [ Dashboard ](#tab-panel-10048)
-* [ API ](#tab-panel-10049)
-* [ Terraform ](#tab-panel-10050)
+* [ Dashboard ](#tab-panel-10113)
+* [ API ](#tab-panel-10114)
+* [ Terraform ](#tab-panel-10115)
 
 | Selector          | Operator    | Value             | Logic | Action |
 | ----------------- | ----------- | ----------------- | ----- | ------ |
@@ -317,9 +317,9 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_no_http_https_internet_
 
 Implicitly deny all of your internal IP ranges included in a list. We recommend you place this policy at the [bottom of your policy list](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#order-of-precedence) to ensure you explicitly approve traffic defined in the above policies.
 
-* [ Dashboard ](#tab-panel-10051)
-* [ API ](#tab-panel-10052)
-* [ Terraform ](#tab-panel-10053)
+* [ Dashboard ](#tab-panel-10116)
+* [ API ](#tab-panel-10117)
+* [ Terraform ](#tab-panel-10118)
 
 | Selector       | Operator | Value                  | Action |
 | -------------- | -------- | ---------------------- | ------ |
@@ -363,9 +363,9 @@ Only allow network traffic from known and approved devices.
 
 In the following example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
-* [ Dashboard ](#tab-panel-10054)
-* [ API ](#tab-panel-10055)
-* [ Terraform ](#tab-panel-10056)
+* [ Dashboard ](#tab-panel-10119)
+* [ API ](#tab-panel-10120)
+* [ Terraform ](#tab-panel-10121)
 
 | Selector                     | Operator | Value                   | Logic | Action |
 | ---------------------------- | -------- | ----------------------- | ----- | ------ |
@@ -409,6 +409,6 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_applicationaccess_allow
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-network-policies/recommended-network-policies/#page","headline":"Recommended network policies · Cloudflare Learning Paths","description":"Deploy recommended network security policies.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-network-policies/recommended-network-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-network-policies/recommended-network-policies/#page","headline":"Recommended network policies · Cloudflare Learning Paths","description":"Deploy recommended network security policies.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-network-policies/recommended-network-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-network-policies/","name":"Build network security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-network-policies/recommended-network-policies/","name":"Recommended network policies"}}]}
 ```

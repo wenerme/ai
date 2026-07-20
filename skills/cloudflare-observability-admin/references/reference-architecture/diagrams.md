@@ -1,7 +1,7 @@
 ---
 title: Reference Architecture Diagrams
 description: Browse reference architecture diagrams by solution area.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,6 +28,6 @@ Reference architecture documents and diagrams are designed to provide a foundati
 * [ Storage ](https://developers.cloudflare.com/reference-architecture/diagrams/storage/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/#page","headline":"Reference Architecture Diagrams · Cloudflare Reference Architecture docs","description":"Browse reference architecture diagrams by solution area.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/#page","headline":"Reference Architecture Diagrams · Cloudflare Reference Architecture docs","description":"Browse reference architecture diagrams by solution area.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Unsafe and custom topic detection
 description: Detect unsafe and custom topics in AI application traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -72,8 +72,8 @@ You can manage custom topics from two places in the dashboard:
 
 Both methods will update the same underlying topic list. Changes made in one are immediately reflected in the other.
 
-* [ Dashboard ](#tab-panel-11536)
-* [ API ](#tab-panel-11537)
+* [ Dashboard ](#tab-panel-11975)
+* [ API ](#tab-panel-11976)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -184,6 +184,6 @@ Compare how the same two topic descriptions perform against two prompts that bot
 | bias             | comparing demographic groups as better or worse |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#page","headline":"Unsafe and custom topic detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect unsafe and custom topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#page","headline":"Unsafe and custom topic detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect unsafe and custom topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/unsafe-topics/","name":"Unsafe and custom topic detection"}}]}
 ```

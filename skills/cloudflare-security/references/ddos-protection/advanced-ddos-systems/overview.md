@@ -1,7 +1,7 @@
 ---
 title: General settings
 description: Enable and configure Advanced TCP Protection, DNS Protection, and Flow Protection.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -121,6 +121,6 @@ Enable the Advanced DDoS system and begin routing traffic through it.
 3. Under **General settings**, toggle the feature status **On**.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/#page","headline":"Advanced DDoS Protection systems · Cloudflare DDoS Protection docs","description":"Enable and configure Advanced TCP Protection, DNS Protection, and Flow Protection.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/#page","headline":"Advanced DDoS Protection systems · Cloudflare DDoS Protection docs","description":"Enable and configure Advanced TCP Protection, DNS Protection, and Flow Protection.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/overview/","name":"General settings"}}]}
 ```

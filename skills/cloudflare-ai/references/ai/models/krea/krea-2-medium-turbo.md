@@ -1,7 +1,7 @@
 ---
 title: Krea 2 Medium Turbo
 description: The fastest Krea 2 model, built for low-cost iteration on expressive illustrations, style-driven concepts, and rapid visual exploration. Keeps the Krea 2 style system and expressive visual range but uses a distilled sampling schedule so you can move through ideas much faster. Especially useful for expressive illustration, graphic styles, typography experiments, and quick campaign or concept directions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ The fastest Krea 2 model, built for low-cost iteration on expressive illustratio
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-854)
-* [ cURL ](#tab-panel-855)
+* [ TypeScript ](#tab-panel-904)
+* [ cURL ](#tab-panel-905)
 
 **TypeScript**
 
@@ -59,8 +59,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-852)
-* [ Raw response ](#tab-panel-853)
+* [ Output ](#tab-panel-902)
+* [ Raw response ](#tab-panel-903)
 
 ![Default](https://examples.aig.cloudflare.com/krea/krea-2-medium-turbo/default.png)
 
@@ -78,8 +78,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-856)
-* [ Output ](#tab-panel-857)
+* [ Input ](#tab-panel-906)
+* [ Output ](#tab-panel-907)
 
 prompt
 
@@ -136,6 +136,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/s
 Output [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/#page","headline":"Krea 2 Medium Turbo (krea) · Cloudflare AI docs · Cloudflare AI docs","description":"The fastest Krea 2 model, built for low-cost iteration on expressive illustrations, style-driven concepts, and rapid visual exploration. Keeps the Krea 2 style system and expressive visual range but uses a distilled sampling schedule so you can move through ideas much faster. Especially useful for expressive illustration, graphic styles, typography experiments, and quick campaign or concept directions.","url":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/#page","headline":"Krea 2 Medium Turbo (krea) · Cloudflare AI docs · Cloudflare AI docs","description":"The fastest Krea 2 model, built for low-cost iteration on expressive illustrations, style-driven concepts, and rapid visual exploration. Keeps the Krea 2 style system and expressive visual range but uses a distilled sampling schedule so you can move through ideas much faster. Especially useful for expressive illustration, graphic styles, typography experiments, and quick campaign or concept directions.","url":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Browser agent
 description: Build an agent that uses Browser Run tools to inspect pages, capture screenshots, scrape rendered content, and debug frontend issues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -49,8 +49,8 @@ npm install agents @cloudflare/codemode ai zod
 
 Add the Browser Run (formerly Browser Rendering) and Worker Loader bindings to your wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5645)
-* [  wrangler.toml ](#tab-panel-5646)
+* [  wrangler.jsonc ](#tab-panel-5907)
+* [  wrangler.toml ](#tab-panel-5908)
 
 **JSONC**
 
@@ -84,8 +84,8 @@ binding = "LOADER"
 
 ### 2\. Create browser tools
 
-* [  JavaScript ](#tab-panel-5649)
-* [  TypeScript ](#tab-panel-5650)
+* [  JavaScript ](#tab-panel-5911)
+* [  TypeScript ](#tab-panel-5912)
 
 **JavaScript**
 
@@ -117,8 +117,8 @@ To connect to a custom CDP endpoint instead of the Browser Run binding, pass `cd
 
 Pass browser tools alongside your other tools. The `model` can be any AI SDK provider — here using Workers AI:
 
-* [  JavaScript ](#tab-panel-5651)
-* [  TypeScript ](#tab-panel-5652)
+* [  JavaScript ](#tab-panel-5913)
+* [  TypeScript ](#tab-panel-5914)
 
 **JavaScript**
 
@@ -202,8 +202,8 @@ async () => {
 
 The typical pattern is to create browser tools inside an [AIChatAgent](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) message handler, which gives you message persistence and streaming:
 
-* [  JavaScript ](#tab-panel-5657)
-* [  TypeScript ](#tab-panel-5658)
+* [  JavaScript ](#tab-panel-5919)
+* [  TypeScript ](#tab-panel-5920)
 
 **JavaScript**
 
@@ -277,8 +277,8 @@ export class MyAgent extends AIChatAgent<Env> {
 
 For TanStack AI, use the `/tanstack-ai` export:
 
-* [  JavaScript ](#tab-panel-5653)
-* [  TypeScript ](#tab-panel-5654)
+* [  JavaScript ](#tab-panel-5915)
+* [  TypeScript ](#tab-panel-5916)
 
 **JavaScript**
 
@@ -380,8 +380,8 @@ Either `browser` or `cdpUrl` must be provided. When both are set, `cdpUrl` takes
 
 For custom integrations, import the building blocks directly:
 
-* [  JavaScript ](#tab-panel-5655)
-* [  TypeScript ](#tab-panel-5656)
+* [  JavaScript ](#tab-panel-5917)
+* [  TypeScript ](#tab-panel-5918)
 
 **JavaScript**
 
@@ -462,8 +462,8 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-5661)
-* [  TypeScript ](#tab-panel-5662)
+* [  JavaScript ](#tab-panel-5923)
+* [  TypeScript ](#tab-panel-5924)
 
 **JavaScript**
 
@@ -557,8 +557,8 @@ export class MyAgent extends Agent<Env> {
 
 Add the browser binding to your wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5647)
-* [  wrangler.toml ](#tab-panel-5648)
+* [  wrangler.jsonc ](#tab-panel-5909)
+* [  wrangler.toml ](#tab-panel-5910)
 
 **JSONC**
 
@@ -615,8 +615,8 @@ pnpm add @cloudflare/puppeteer
 bun add @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-5659)
-* [  TypeScript ](#tab-panel-5660)
+* [  JavaScript ](#tab-panel-5921)
+* [  TypeScript ](#tab-panel-5922)
 
 **JavaScript**
 
@@ -664,6 +664,6 @@ export class MyAgent extends Agent<Env> {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/browser-agent/#page","headline":"Browser agent · Cloudflare Agents docs","description":"Build an agent that uses Browser Run tools to inspect pages, capture screenshots, scrape rendered content, and debug frontend issues.","url":"https://developers.cloudflare.com/agents/examples/browser-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/browser-agent/#page","headline":"Browser agent · Cloudflare Agents docs","description":"Build an agent that uses Browser Run tools to inspect pages, capture screenshots, scrape rendered content, and debug frontend issues.","url":"https://developers.cloudflare.com/agents/examples/browser-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/browser-agent/","name":"Browser agent"}}]}
 ```

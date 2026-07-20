@@ -1,7 +1,7 @@
 ---
 title: Optimizing device roaming experience with geolocated IPs
 description: Cloudflare can use private mobile networks (APNs) to connect devices roaming across multiple countries through regional Internet breakouts.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ Cloudflare enhances the security of Internet breakouts with advanced features, i
 * [Cloudflare servers don't own IPs anymore ↗](https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/#page","headline":"Optimizing device roaming experience with geolocated IPs · Cloudflare Reference Architecture docs","description":"Cloudflare can use private mobile networks (APNs) to connect devices roaming across multiple countries through regional Internet breakouts.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-02-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/#page","headline":"Optimizing device roaming experience with geolocated IPs · Cloudflare Reference Architecture docs","description":"Cloudflare can use private mobile networks (APNs) to connect devices roaming across multiple countries through regional Internet breakouts.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/network/","name":"Network"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/","name":"Optimizing device roaming experience with geolocated IPs"}}]}
 ```

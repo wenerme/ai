@@ -1,7 +1,7 @@
 ---
 title: Configure JWT validation via the API
 description: Create token configurations and validation rules for JWT validation using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -652,6 +652,6 @@ The same accuracy applies as for EXP claims. As such, a token may be already reg
 2. Security Analytics events in the Cloudflare dashboard for the `API Shield - Token Validation` service will explain violation reasons in the `Token validation violations` section of the event.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API · Cloudflare API Shield docs","description":"Create token configurations and validation rules for JWT validation using the API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API · Cloudflare API Shield docs","description":"Create token configurations and validation rules for JWT validation using the API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/jwt-validation/","name":"JSON Web Tokens validation"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/jwt-validation/api/","name":"Configure JWT validation via the API"}}]}
 ```

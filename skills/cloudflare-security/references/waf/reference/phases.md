@@ -1,7 +1,7 @@
 ---
 title: WAF phases
 description: WAF rule execution phases and their order of evaluation.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ The Web Application Firewall provides the following [phases](https://developers.
 
 These phases exist both at the account level and at the zone level. Considering the available phases and the two different levels, rules will be evaluated in the following order:
 
-* [  New dashboard ](#tab-panel-11327)
-* [ Old dashboard ](#tab-panel-11328)
+* [  New dashboard ](#tab-panel-12061)
+* [ Old dashboard ](#tab-panel-12062)
 
 | Security feature                                                                                | Scope   | Phase                            | Ruleset kind                 | Location in the dashboard                                                                                               |
 | ----------------------------------------------------------------------------------------------- | ------- | -------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -44,6 +44,6 @@ These phases exist both at the account level and at the zone level. Considering 
 To learn more about phases, refer to [Phases](https://developers.cloudflare.com/ruleset-engine/about/phases/) in the Ruleset Engine documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/phases/#page","headline":"WAF phases · Cloudflare Web Application Firewall (WAF) docs","description":"WAF rule execution phases and their order of evaluation.","url":"https://developers.cloudflare.com/waf/reference/phases/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/phases/#page","headline":"WAF phases · Cloudflare Web Application Firewall (WAF) docs","description":"WAF rule execution phases and their order of evaluation.","url":"https://developers.cloudflare.com/waf/reference/phases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/reference/phases/","name":"WAF phases"}}]}
 ```

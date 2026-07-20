@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Enable and configure Workers Caching.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ Requires Wrangler 4.69.0 or above.
 
 Add a `cache` block to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11847)
-* [  wrangler.toml ](#tab-panel-11848)
+* [  wrangler.jsonc ](#tab-panel-12245)
+* [  wrangler.toml ](#tab-panel-12246)
 
 **JSONC**
 
@@ -40,7 +40,7 @@ Add a `cache` block to your Wrangler configuration:
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-07",
+  "compatibility_date": "2026-07-20",
   "cache": {
     "enabled": true,
   },
@@ -53,7 +53,7 @@ Add a `cache` block to your Wrangler configuration:
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-07"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -68,8 +68,8 @@ The `cache` block accepts two fields: `enabled` (required) and [cross\_version\_
 
 To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block) and redeploy:
 
-* [  wrangler.jsonc ](#tab-panel-11849)
-* [  wrangler.toml ](#tab-panel-11850)
+* [  wrangler.jsonc ](#tab-panel-12247)
+* [  wrangler.toml ](#tab-panel-12248)
 
 **JSONC**
 
@@ -78,7 +78,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-07",
+  "compatibility_date": "2026-07-20",
   "cache": {
     "enabled": false,
   },
@@ -91,7 +91,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-07"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -108,8 +108,8 @@ Requires Wrangler 4.107.0 or above.
 
 `cache.enabled` sets the default for the whole Worker, but a Worker can expose several [entrypoints](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) — the default export and any number of named `WorkerEntrypoint` classes — and you can turn caching on or off for each one independently. Use the `exports` map, keyed by entrypoint name, with `"default"` referring to the default export:
 
-* [  wrangler.jsonc ](#tab-panel-11853)
-* [  wrangler.toml ](#tab-panel-11854)
+* [  wrangler.jsonc ](#tab-panel-12251)
+* [  wrangler.toml ](#tab-panel-12252)
 
 **JSONC**
 
@@ -118,7 +118,7 @@ Requires Wrangler 4.107.0 or above.
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-07",
+  "compatibility_date": "2026-07-20",
   "cache": {
     "enabled": true,
   },
@@ -137,7 +137,7 @@ Requires Wrangler 4.107.0 or above.
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-07"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -191,8 +191,8 @@ The trade-off is that **cache hit rate resets on every deployment**. Because a n
 
 If you want to maximize cache hit rate and are willing to accept slower rollouts of cache-affecting changes, set `cross_version_cache` to `true`. Cached responses are then shared across versions — a response written by one version can be served by a later version as long as its TTL has not expired:
 
-* [  wrangler.jsonc ](#tab-panel-11851)
-* [  wrangler.toml ](#tab-panel-11852)
+* [  wrangler.jsonc ](#tab-panel-12249)
+* [  wrangler.toml ](#tab-panel-12250)
 
 **JSONC**
 
@@ -201,7 +201,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-07",
+  "compatibility_date": "2026-07-20",
   "cache": {
     "enabled": true,
     "cross_version_cache": true,
@@ -215,7 +215,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-07"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -231,8 +231,8 @@ Advanced users who deploy frequently and whose responses do not change between m
 
 The `cache` block can be set at the top level and overridden per [environment](https://developers.cloudflare.com/workers/wrangler/environments/). The typical pattern is to turn caching on in production once you are confident it is safe, while keeping staging uncached for easier debugging:
 
-* [  wrangler.jsonc ](#tab-panel-11855)
-* [  wrangler.toml ](#tab-panel-11856)
+* [  wrangler.jsonc ](#tab-panel-12253)
+* [  wrangler.toml ](#tab-panel-12254)
 
 **JSONC**
 
@@ -241,7 +241,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-07",
+  "compatibility_date": "2026-07-20",
   "cache": {
     "enabled": false,
   },
@@ -261,7 +261,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-07"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -313,8 +313,8 @@ Setting any explicit `Cache-Control` directive skips the check entirely — Cach
 
 Use `max-age` to control how long the response is treated as fresh:
 
-* [  JavaScript ](#tab-panel-11859)
-* [  TypeScript ](#tab-panel-11860)
+* [  JavaScript ](#tab-panel-12257)
+* [  TypeScript ](#tab-panel-12258)
 
 **src/index.js**
 
@@ -372,8 +372,8 @@ If you need browsers and the edge to cache for different durations, use `cdn-cac
 
 When a cached response becomes stale, `stale-while-revalidate` lets Cloudflare return the stale response immediately and refresh it in the background:
 
-* [  JavaScript ](#tab-panel-11857)
-* [  TypeScript ](#tab-panel-11858)
+* [  JavaScript ](#tab-panel-12255)
+* [  TypeScript ](#tab-panel-12256)
 
 **src/index.js**
 
@@ -464,8 +464,8 @@ Normally the callee decides how its responses are cached by setting `Cache-Contr
 
 Here the `Backend` entrypoint returns no `Cache-Control` of its own; the default entrypoint decides the caching policy when it calls `Backend` through `ctx.exports`:
 
-* [  JavaScript ](#tab-panel-11863)
-* [  TypeScript ](#tab-panel-11864)
+* [  JavaScript ](#tab-panel-12261)
+* [  TypeScript ](#tab-panel-12262)
 
 **src/index.js**
 
@@ -535,8 +535,8 @@ Every response carries a `Cf-Cache-Status` header indicating what happened for t
 
 The [Cache-Tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) response header attaches tags to a cached response so you can purge it later in bulk. Cloudflare consumes this header and strips it before the response reaches the client.
 
-* [  JavaScript ](#tab-panel-11861)
-* [  TypeScript ](#tab-panel-11862)
+* [  JavaScript ](#tab-panel-12259)
+* [  TypeScript ](#tab-panel-12260)
 
 **src/index.js**
 
@@ -644,6 +644,6 @@ If your Worker needs to return different encodings to different clients, you hav
 * **Vary on `Accept-Encoding`.** Return a different `Content-Encoding` per request and set `Vary: Accept-Encoding`. Cloudflare stores one variant per distinct `Accept-Encoding` value the Worker has seen. Because comparison is verbatim, clients that send semantically equivalent values in different orders or with different quality factors produce separate variants — keep cache fan-out under control by normalizing `Accept-Encoding` (for example, in a gateway Worker) before the response is generated.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/configuration/","name":"Configuration"}}]}
 ```

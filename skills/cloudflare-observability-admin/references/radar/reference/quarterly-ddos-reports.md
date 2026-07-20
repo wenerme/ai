@@ -1,7 +1,7 @@
 ---
 title: Quarterly DDoS threat reports
 description: Understand the methodologies behind Cloudflare Radar quarterly DDoS threat reports, including attack counting, ranking, and geographical insights.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -83,6 +83,6 @@ In the map charts, the countries and regions are colored using a diverging scale
 1. IP spoofing is the creation of Internet Protocol (IP) packets which have a modified source address to hide the identity of the sender, impersonate another computer system, or both. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#page","headline":"Quarterly DDoS threat reports · Cloudflare Radar docs","description":"Understand the methodologies behind Cloudflare Radar quarterly DDoS threat reports, including attack counting, ranking, and geographical insights.","url":"https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/#page","headline":"Quarterly DDoS threat reports · Cloudflare Radar docs","description":"Understand the methodologies behind Cloudflare Radar quarterly DDoS threat reports, including attack counting, ranking, and geographical insights.","url":"https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/reference/quarterly-ddos-reports/","name":"Quarterly DDoS threat reports"}}]}
 ```

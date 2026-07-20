@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Network Firewall fields
 description: Fields available in Network Firewall rule expressions.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -333,6 +333,6 @@ Source port number of the IP packet. Only applies to UDP packets.
 _GeoIP is the registered trademark of MaxMind, Inc._
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/#page","headline":"Cloudflare Network Firewall fields · Cloudflare Network Firewall docs","description":"Fields available in Network Firewall rule expressions.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/#page","headline":"Cloudflare Network Firewall fields · Cloudflare Network Firewall docs","description":"Fields available in Network Firewall rule expressions.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/reference/network-firewall-fields/","name":"Cloudflare Network Firewall fields"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Android
 description: Learn how to set up Cloudflare's 1.1.1.1 DNS resolver on Android devices. Encrypt DNS queries with DoT or DoH, and enable 1.1.1.1 for Families.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -126,6 +126,6 @@ If you are experiencing connectivity issues related to captive portals:
 3. Once the connection has been established, re-add the static IP addresses or enable the 1.1.1.1 app.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/android/#page","headline":"Set up 1.1.1.1 on Android","description":"Learn how to set up Cloudflare's 1.1.1.1 DNS resolver on Android devices. Encrypt DNS queries with DoT or DoH, and enable 1.1.1.1 for Families.","url":"https://developers.cloudflare.com/1.1.1.1/setup/android/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/android/#page","headline":"Set up 1.1.1.1 on Android","description":"Learn how to set up Cloudflare's 1.1.1.1 DNS resolver on Android devices. Encrypt DNS queries with DoT or DoH, and enable 1.1.1.1 for Families.","url":"https://developers.cloudflare.com/1.1.1.1/setup/android/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/setup/","name":"Set up"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/setup/android/","name":"Android"}}]}
 ```

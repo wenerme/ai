@@ -1,7 +1,7 @@
 ---
 title: Commands
 description: Execute commands and manage background processes in Sandbox SDK containers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -39,8 +39,8 @@ const result = await sandbox.exec(command: string, options?: ExecOptions): Promi
 
 **Returns**: `Promise<ExecuteResponse>` with `success`, `stdout`, `stderr`, `exitCode`
 
-* [  JavaScript ](#tab-panel-10530)
-* [  TypeScript ](#tab-panel-10531)
+* [  JavaScript ](#tab-panel-10975)
+* [  TypeScript ](#tab-panel-10976)
 
 **JavaScript**
 
@@ -153,8 +153,8 @@ const stream = await sandbox.execStream(command: string, options?: ExecOptions):
 
 **Returns**: `Promise<ReadableStream>` emitting `ExecEvent` objects (`start`, `stdout`, `stderr`, `complete`, `error`)
 
-* [  JavaScript ](#tab-panel-10526)
-* [  TypeScript ](#tab-panel-10527)
+* [  JavaScript ](#tab-panel-10971)
+* [  TypeScript ](#tab-panel-10972)
 
 **JavaScript**
 
@@ -268,8 +268,8 @@ const process = await sandbox.startProcess(command: string, options?: ProcessOpt
 * `waitForLog()` \- Wait for pattern in process output
 * `waitForExit()` \- Wait for process to terminate and return exit code
 
-* [  JavaScript ](#tab-panel-10510)
-* [  TypeScript ](#tab-panel-10511)
+* [  JavaScript ](#tab-panel-10955)
+* [  TypeScript ](#tab-panel-10956)
 
 **JavaScript**
 
@@ -321,8 +321,8 @@ List all running processes.
 const processes = await sandbox.listProcesses(): Promise<ProcessInfo[]>
 ```
 
-* [  JavaScript ](#tab-panel-10506)
-* [  TypeScript ](#tab-panel-10507)
+* [  JavaScript ](#tab-panel-10951)
+* [  TypeScript ](#tab-panel-10952)
 
 **JavaScript**
 
@@ -363,8 +363,8 @@ await sandbox.killProcess(processId: string, signal?: string): Promise<void>
 
 Sends the signal to the entire process group, ensuring that both the main process and any child processes it spawned are terminated. This prevents orphaned processes from continuing to run after the parent is killed.
 
-* [  JavaScript ](#tab-panel-10512)
-* [  TypeScript ](#tab-panel-10513)
+* [  JavaScript ](#tab-panel-10957)
+* [  TypeScript ](#tab-panel-10958)
 
 **JavaScript**
 
@@ -404,8 +404,8 @@ Terminate all running processes.
 await sandbox.killAllProcesses(): Promise<void>
 ```
 
-* [  JavaScript ](#tab-panel-10508)
-* [  TypeScript ](#tab-panel-10509)
+* [  JavaScript ](#tab-panel-10953)
+* [  TypeScript ](#tab-panel-10954)
 
 **JavaScript**
 
@@ -435,8 +435,8 @@ const stream = await sandbox.streamProcessLogs(processId: string): Promise<Reada
 
 **Returns**: `Promise<ReadableStream>` emitting `LogEvent` objects
 
-* [  JavaScript ](#tab-panel-10516)
-* [  TypeScript ](#tab-panel-10517)
+* [  JavaScript ](#tab-panel-10961)
+* [  TypeScript ](#tab-panel-10962)
 
 **JavaScript**
 
@@ -490,8 +490,8 @@ const logs = await sandbox.getProcessLogs(processId: string): Promise<string>
 
 **Returns**: `Promise<string>` with all accumulated output
 
-* [  JavaScript ](#tab-panel-10514)
-* [  TypeScript ](#tab-panel-10515)
+* [  JavaScript ](#tab-panel-10959)
+* [  TypeScript ](#tab-panel-10960)
 
 **JavaScript**
 
@@ -529,8 +529,8 @@ When you provide the `stdin` option:
 
 This approach prevents shell injection attacks that could occur when embedding user data directly in commands.
 
-* [  JavaScript ](#tab-panel-10518)
-* [  TypeScript ](#tab-panel-10519)
+* [  JavaScript ](#tab-panel-10963)
+* [  TypeScript ](#tab-panel-10964)
 
 **JavaScript**
 
@@ -564,8 +564,8 @@ const result = await sandbox.exec('python validate_email.py', {
 
 **Processing form data:**
 
-* [  JavaScript ](#tab-panel-10522)
-* [  TypeScript ](#tab-panel-10523)
+* [  JavaScript ](#tab-panel-10967)
+* [  TypeScript ](#tab-panel-10968)
 
 **JavaScript**
 
@@ -597,8 +597,8 @@ const result = await sandbox.exec('python process_form.py', {
 
 **Interactive command-line tools:**
 
-* [  JavaScript ](#tab-panel-10520)
-* [  TypeScript ](#tab-panel-10521)
+* [  JavaScript ](#tab-panel-10965)
+* [  TypeScript ](#tab-panel-10966)
 
 **JavaScript**
 
@@ -622,8 +622,8 @@ const result = await sandbox.exec('npm init', {
 
 **Data transformation:**
 
-* [  JavaScript ](#tab-panel-10524)
-* [  TypeScript ](#tab-panel-10525)
+* [  JavaScript ](#tab-panel-10969)
+* [  TypeScript ](#tab-panel-10970)
 
 **JavaScript**
 
@@ -675,8 +675,8 @@ await process.waitForPort(port: number, options?: WaitForPortOptions): Promise<v
 
 **HTTP mode** (default) makes an HTTP GET request and checks the response status:
 
-* [  JavaScript ](#tab-panel-10532)
-* [  TypeScript ](#tab-panel-10533)
+* [  JavaScript ](#tab-panel-10977)
+* [  TypeScript ](#tab-panel-10978)
 
 **JavaScript**
 
@@ -716,8 +716,8 @@ await server.waitForPort(8080, {
 
 **TCP mode** checks if the port accepts connections:
 
-* [  JavaScript ](#tab-panel-10528)
-* [  TypeScript ](#tab-panel-10529)
+* [  JavaScript ](#tab-panel-10973)
+* [  TypeScript ](#tab-panel-10974)
 
 **JavaScript**
 
@@ -770,8 +770,8 @@ const result = await process.waitForLog(pattern: string | RegExp, timeout?: numb
 * `line` \- The matching line of output
 * `matches` \- Array of capture groups (for RegExp patterns)
 
-* [  JavaScript ](#tab-panel-10536)
-* [  TypeScript ](#tab-panel-10537)
+* [  JavaScript ](#tab-panel-10981)
+* [  TypeScript ](#tab-panel-10982)
 
 **JavaScript**
 
@@ -836,8 +836,8 @@ const result = await process.waitForExit(timeout?: number): Promise<WaitForExitR
 
 * `exitCode` \- The process exit code
 
-* [  JavaScript ](#tab-panel-10534)
-* [  TypeScript ](#tab-panel-10535)
+* [  JavaScript ](#tab-panel-10979)
+* [  TypeScript ](#tab-panel-10980)
 
 **JavaScript**
 
@@ -879,6 +879,6 @@ const result = await build.waitForExit(60000); // 60 second timeout
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- File operations
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/commands/#page","headline":"Commands · Cloudflare Sandbox SDK docs","description":"Execute commands and manage background processes in Sandbox SDK containers.","url":"https://developers.cloudflare.com/sandbox/api/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/commands/#page","headline":"Commands · Cloudflare Sandbox SDK docs","description":"Execute commands and manage background processes in Sandbox SDK containers.","url":"https://developers.cloudflare.com/sandbox/api/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/commands/","name":"Commands"}}]}
 ```

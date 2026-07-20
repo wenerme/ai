@@ -1,7 +1,7 @@
 ---
 title: Traffic steering
 description: Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -361,7 +361,7 @@ The following table outlines the current availability and recommended use cases 
 | Feature                        | Release stage | Recommended use                                            | Prerequisites                                                                               |
 | ------------------------------ | ------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | **BGP over CNI**               | Closed Beta   | Not available to new customers — contact your account team | Cloudflare Network Interconnect (CNI) v2                                                    |
-| **BGP over Anycast IPsec/GRE** | Closed Beta   | Lab / Testing only                                         | [Unified Routing (beta)](#unified-routing-mode-beta) \- contact your account team to enroll |
+| **BGP over Anycast IPsec/GRE** | Open Beta     | Non-production workloads                                   | [Unified Routing (beta)](#unified-routing-mode-beta) \- contact your account team to enroll |
 
 ### BGP architecture
 
@@ -454,6 +454,6 @@ For Magic Transit customers, BGP with the Magic Transit Virtual Network routing 
 You need to enable [legacy health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/#legacy-bidirectional-health-checks) alongside BGP. This is essential to determine if a specific Cloudflare data center is reachable from your device. [Tunnel health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/) modify the route priorities for dynamically learned BGP routes.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/magic-transit/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/reference/traffic-steering/","name":"Traffic steering"}}]}
 ```

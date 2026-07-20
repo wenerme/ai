@@ -1,7 +1,7 @@
 ---
 title: Bring your own CA for mTLS
 description: Cloudflare mTLS now supports client certificates that have not been issued by Cloudflare CA. Learn how you can bring your own CA and use it with Cloudflare mTLS.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -50,8 +50,8 @@ Uploading the CA private key is only required if you wish to use [Zero Trust's b
 
 ## Set up mTLS with your CA
 
-* [ Dashboard ](#tab-panel-10993)
-* [ API ](#tab-panel-10994)
+* [ Dashboard ](#tab-panel-11438)
+* [ API ](#tab-panel-11439)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -106,8 +106,8 @@ There can be multiple CAs (Cloudflare-managed or BYOCA) associated with the same
 
 If you wish to remove the association from the Cloudflare-managed certificate and only use your BYOCA certificate(s):
 
-* [ Dashboard ](#tab-panel-10999)
-* [ API ](#tab-panel-11000)
+* [ Dashboard ](#tab-panel-11444)
+* [ API ](#tab-panel-11445)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -156,8 +156,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authoritie
 
 If you want to remove a CA that you have previously uploaded, you must first remove any hostname associations that it has.
 
-* [ Dashboard ](#tab-panel-10995)
-* [ API ](#tab-panel-10996)
+* [ Dashboard ](#tab-panel-11440)
+* [ API ](#tab-panel-11441)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -177,8 +177,8 @@ If you want to remove a CA that you have previously uploaded, you must first rem
 
 ## List CA hostname associations
 
-* [ Dashboard ](#tab-panel-10997)
-* [ API ](#tab-panel-10998)
+* [ Dashboard ](#tab-panel-11442)
+* [ API ](#tab-panel-11443)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
@@ -203,6 +203,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/certificate_authoritie
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/byo-ca/#page","headline":"Bring your own CA for mTLS · Cloudflare SSL/TLS docs","description":"Cloudflare mTLS now supports client certificates that have not been issued by Cloudflare CA. Learn how you can bring your own CA and use it with Cloudflare mTLS.","url":"https://developers.cloudflare.com/ssl/client-certificates/byo-ca/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/byo-ca/#page","headline":"Bring your own CA for mTLS · Cloudflare SSL/TLS docs","description":"Cloudflare mTLS now supports client certificates that have not been issued by Cloudflare CA. Learn how you can bring your own CA and use it with Cloudflare mTLS.","url":"https://developers.cloudflare.com/ssl/client-certificates/byo-ca/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/byo-ca/","name":"Bring your own CA for mTLS"}}]}
 ```

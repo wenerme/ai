@@ -1,7 +1,7 @@
 ---
 title: Edit videos
 description: Add captions, watermarks, audio tracks, and other enhancements to Cloudflare Stream videos.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Clip videos ](https://developers.cloudflare.com/stream/edit-videos/video-clipping/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/#page","headline":"Edit videos · Cloudflare Stream docs","description":"Add captions, watermarks, audio tracks, and other enhancements to Cloudflare Stream videos.","url":"https://developers.cloudflare.com/stream/edit-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/#page","headline":"Edit videos · Cloudflare Stream docs","description":"Add captions, watermarks, audio tracks, and other enhancements to Cloudflare Stream videos.","url":"https://developers.cloudflare.com/stream/edit-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/edit-videos/","name":"Edit videos"}}]}
 ```

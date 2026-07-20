@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Manage Cloudflare Workers project settings, bindings, and deployment options.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ For more information on Wrangler, refer to [Wrangler](https://developers.cloudfl
 * [ Workers Sites ](https://developers.cloudflare.com/workers/configuration/sites/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Manage Cloudflare Workers project settings, bindings, and deployment options.","url":"https://developers.cloudflare.com/workers/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Manage Cloudflare Workers project settings, bindings, and deployment options.","url":"https://developers.cloudflare.com/workers/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}}]}
 ```

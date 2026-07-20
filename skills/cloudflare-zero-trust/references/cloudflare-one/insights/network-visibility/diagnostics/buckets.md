@@ -1,7 +1,7 @@
 ---
 title: Buckets
 description: Configure cloud storage buckets for full packet captures.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-* [ Dashboard ](#tab-panel-7518)
-* [ API ](#tab-panel-7519)
+* [ Dashboard ](#tab-panel-7852)
+* [ API ](#tab-panel-7853)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. Select the **Buckets** tab > **Add a bucket**.
@@ -41,8 +41,8 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket setup, you need to confirm you have access to the bucket via an ownership challenge. This verification prevents Cloudflare from writing capture data to a bucket you do not control. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-7520)
-* [ API ](#tab-panel-7521)
+* [ Dashboard ](#tab-panel-7854)
+* [ API ](#tab-panel-7855)
 
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. Find the ownership challenge file that Cloudflare placed in your bucket, copy its contents, and enter them in the **Ownership token** field.
@@ -129,8 +129,8 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-7522)
-* [ API ](#tab-panel-7523)
+* [ Dashboard ](#tab-panel-7856)
+* [ API ](#tab-panel-7857)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to _**Insights** \> Network visibility_ \> **Diagnostics**.
 2. Select the **Buckets** tab.
@@ -224,6 +224,6 @@ The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/s
 Refer to the [Validate a bucket](#validate-a-bucket) API instructions for more details on the entire process to [validate your R2 bucket](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/subresources/ownership/methods/validate/). When specifying the R2 destination for this validation, exclude the secret and access keys from the URL.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/#page","headline":"Buckets · Cloudflare One docs","description":"Configure cloud storage buckets for full packet captures.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/#page","headline":"Buckets · Cloudflare One docs","description":"Configure cloud storage buckets for full packet captures.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/network-visibility/","name":"Network visibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/","name":"Diagnostics"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/buckets/","name":"Buckets"}}]}
 ```

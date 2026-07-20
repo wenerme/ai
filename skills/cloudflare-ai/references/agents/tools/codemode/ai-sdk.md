@@ -1,7 +1,7 @@
 ---
 title: AI SDK integration
 description: Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -41,15 +41,15 @@ bun add @cloudflare/codemode agents ai zod
 ```
 2. Add a Worker Loader binding for `DynamicWorkerExecutor`:
 
-  * [  wrangler.jsonc ](#tab-panel-6767)
-  * [  wrangler.toml ](#tab-panel-6768)
+  * [  wrangler.jsonc ](#tab-panel-7041)
+  * [  wrangler.toml ](#tab-panel-7042)
 
 **JSONC**
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -64,15 +64,15 @@ bun add @cloudflare/codemode agents ai zod
 **TOML**
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
 ```
 3. Define executable AI SDK tools. Code Mode uses their schemas to generate types and validate arguments before calling `execute`.
 
-  * [  JavaScript ](#tab-panel-6771)
-  * [  TypeScript ](#tab-panel-6772)
+  * [  JavaScript ](#tab-panel-7045)
+  * [  TypeScript ](#tab-panel-7046)
 
 **src/tools.js**
 ```js
@@ -120,8 +120,8 @@ export const weatherTools = {
 Each sandbox-callable tool needs an `execute` function. Client-side or provider-executed tools cannot run through this server-side executor.
 4. Create the Code Mode tool and pass it to an AI SDK model call:
 
-  * [  JavaScript ](#tab-panel-6775)
-  * [  TypeScript ](#tab-panel-6776)
+  * [  JavaScript ](#tab-panel-7049)
+  * [  TypeScript ](#tab-panel-7050)
 
 **src/index.js**
 ```js
@@ -204,8 +204,8 @@ pnpm add @cloudflare/shell
 bun add @cloudflare/shell
 ```
 
-* [  JavaScript ](#tab-panel-6773)
-* [  TypeScript ](#tab-panel-6774)
+* [  JavaScript ](#tab-panel-7047)
+* [  TypeScript ](#tab-panel-7048)
 
 **JavaScript**
 
@@ -259,8 +259,8 @@ This example exposes AI SDK tools as `codemode.*` and workspace tools as `state.
 
 To assign custom namespaces, pass provider objects instead:
 
-* [  JavaScript ](#tab-panel-6769)
-* [  TypeScript ](#tab-panel-6770)
+* [  JavaScript ](#tab-panel-7043)
+* [  TypeScript ](#tab-panel-7044)
 
 **JavaScript**
 
@@ -300,8 +300,8 @@ Use `ToolSetConnector` or its `toolSetConnector()` convenience function when run
 
 Create the connector from inside an Agent or another Durable Object:
 
-* [  JavaScript ](#tab-panel-6777)
-* [  TypeScript ](#tab-panel-6778)
+* [  JavaScript ](#tab-panel-7051)
+* [  TypeScript ](#tab-panel-7052)
 
 **src/server.js**
 
@@ -420,6 +420,6 @@ A function-valued `needsApproval` cannot be evaluated before the sandbox supplie
 This approval uses the Code Mode runtime's durable pause, approval, and replay flow. It does not use the AI SDK per-call approval flow.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/#page","headline":"AI SDK integration · Cloudflare Agents docs","description":"Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.","url":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/#page","headline":"AI SDK integration · Cloudflare Agents docs","description":"Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.","url":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/ai-sdk/","name":"AI SDK integration"}}]}
 ```

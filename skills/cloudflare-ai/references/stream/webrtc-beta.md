@@ -1,7 +1,7 @@
 ---
 title: WebRTC
 description: Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -165,6 +165,6 @@ You can find the specific version of WHIP and WHEP being used in the `protocol-v
 * Once generally available, WebRTC streaming will be priced just like the rest of Cloudflare Stream, based on minutes stored and minutes of video delivered.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/webrtc-beta/#page","headline":"WebRTC · Cloudflare Stream docs","description":"Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/webrtc-beta/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/webrtc-beta/#page","headline":"WebRTC · Cloudflare Stream docs","description":"Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/webrtc-beta/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/webrtc-beta/","name":"WebRTC"}}]}
 ```

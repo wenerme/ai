@@ -1,7 +1,7 @@
 ---
 title: Filtering
 description: Apply filters to GraphQL Analytics API queries.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -135,7 +135,7 @@ query GeneralExample($zoneTag: string, $start: Time) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mAdpAhgGwKIA8UFsAOaYAFACQBeA9sgCooDmAXDAM4AuEAlovQDQyl2KCG2Y1OuMAEoYAbwBQMGADdOYAO6Q5ipTCrIWxAGac0bSM1l7qYOkwH7bDGAF8ZC3boAWbNvgBKYKBg7CwAggAmKPhsnMpgcBCUIPiGOp5KJmYWcjBR5rGSAPr0ogJCIvwAxmhqiGwAwsn10AByeGDMAERwAEJdrukZtbicZQCMQ0ruU7pVzWyzLkPLSssuQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEYAnHBaDUXVAGZpGEAF8gA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mAdpAhgGwKIA8UFsAOaYAFACQBeA9sgCooDmAXDAM4AuEAlovQDQyl2KCG2Y1OuMAEoYAbwBQMGADdOYAO6Q5ipTCrIWxAGac0bSM1l7qYOkwH7bDGAF8ZC3boAWbNvgBKYKBg7CwAggAmKPhsnMpgcBCUIPiGOp5KJmYWcjBR5rGSAPr0ogJCIvwAxmhqiGwAwsn10AByeGDMAERwAEJdrukZtbicZQCMQ0ruU7pVzWyzLkPLSssuQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIyiWATgwgAvkA)
 
 ### Filter on a specific node
 
@@ -240,6 +240,6 @@ Add the `requestSource` filter for `eyeball` to return request, data transfer, a
 Subqueries are not currently supported. You can use two GraphQL queries as a workaround for this limitation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/filtering/#page","headline":"Filtering · Cloudflare Analytics docs","description":"Apply filters to GraphQL Analytics API queries.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/filtering/#page","headline":"Filtering · Cloudflare Analytics docs","description":"Apply filters to GraphQL Analytics API queries.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/features/","name":"Features"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/features/filtering/","name":"Filtering"}}]}
 ```

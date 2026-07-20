@@ -1,7 +1,7 @@
 ---
 title: Fullstack applications
 description: A practical example of how these services come together in a real fullstack application architecture.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -89,6 +89,6 @@ Define and manage resources and configuration using third-party tools and framew
 Cloudflare’s Developer Platform is built for seamless [integration with external services](https://developers.cloudflare.com/workers/configuration/integrations/). Whether connecting to third-party APIs, databases, SaaS platforms, or cloud providers, developers can easily make outbound requests from Workers, trigger workflows based on external events, and securely exchange data across systems.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/#page","headline":"Fullstack applications · Cloudflare Reference Architecture docs","description":"A practical example of how these services come together in a real fullstack application architecture.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/#page","headline":"Fullstack applications · Cloudflare Reference Architecture docs","description":"A practical example of how these services come together in a real fullstack application architecture.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/serverless/","name":"Serverless"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/serverless/fullstack-application/","name":"Fullstack applications"}}]}
 ```

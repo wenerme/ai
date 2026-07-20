@@ -1,7 +1,7 @@
 ---
 title: WAF custom rules configuration using Terraform
 description: Create and deploy Cloudflare WAF custom rules at the zone or account level using Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,8 +48,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example configures a custom rule in the zone entry point ruleset for the `http_request_firewall_custom` phase for zone with ID `<ZONE_ID>`. The rule will block all traffic on non-standard HTTP(S) ports:
 
-* [ Terraform (v5) ](#tab-panel-11314)
-* [ Terraform (v4) ](#tab-panel-11315)
+* [ Terraform (v5) ](#tab-panel-11759)
+* [ Terraform (v4) ](#tab-panel-11760)
 
 Required API token permissions
 
@@ -109,8 +109,8 @@ The following example creates a [custom ruleset](https://developers.cloudflare.c
 
 The following configuration creates a custom ruleset with a single rule:
 
-* [ Terraform (v5) ](#tab-panel-11316)
-* [ Terraform (v4) ](#tab-panel-11317)
+* [ Terraform (v5) ](#tab-panel-11761)
+* [ Terraform (v4) ](#tab-panel-11762)
 
 Required API token permissions
 
@@ -162,8 +162,8 @@ To create another custom rule in the custom ruleset, add a new `rules` object to
 
 The following configuration deploys the custom ruleset at the account level. It defines a dependency on the `account_firewall_custom_ruleset` resource and uses the ID of the created custom ruleset in `action_parameters`:
 
-* [ Terraform (v5) ](#tab-panel-11312)
-* [ Terraform (v4) ](#tab-panel-11313)
+* [ Terraform (v5) ](#tab-panel-11757)
+* [ Terraform (v4) ](#tab-panel-11758)
 
 Required API token permissions
 
@@ -230,6 +230,6 @@ For more information on configuring and deploying custom rulesets, refer to [Wor
 * [Leaked credentials detection: Add a custom rule to challenge requests with leaked credentials](https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/#add-a-custom-rule-to-challenge-requests-with-leaked-credentials)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/#page","headline":"WAF custom rules configuration using Terraform · Cloudflare Terraform docs","description":"Create and deploy Cloudflare WAF custom rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/#page","headline":"WAF custom rules configuration using Terraform · Cloudflare Terraform docs","description":"Create and deploy Cloudflare WAF custom rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/waf-custom-rules/","name":"WAF custom rules configuration using Terraform"}}]}
 ```

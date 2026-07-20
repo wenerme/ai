@@ -1,7 +1,7 @@
 ---
 title: Collect PCAPs
 description: Collect packet captures for traffic analysis.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -41,8 +41,8 @@ For help determining which data center to select for a packet capture, visit [ht
 * `time_limit`: The minimum value is `1` seconds and maximum value is `86400` seconds.
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
-* [ Dashboard ](#tab-panel-7385)
-* [ API ](#tab-panel-7386)
+* [ Dashboard ](#tab-panel-7719)
+* [ API ](#tab-panel-7720)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**, then select **Start a capture**.
@@ -165,8 +165,8 @@ The response is a JSON body that contains the details of the job running to buil
 
 ## Check packet capture status
 
-* [ Dashboard ](#tab-panel-7379)
-* [ API ](#tab-panel-7380)
+* [ Dashboard ](#tab-panel-7713)
+* [ API ](#tab-panel-7714)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -218,8 +218,8 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-* [ Dashboard ](#tab-panel-7381)
-* [ API ](#tab-panel-7382)
+* [ Dashboard ](#tab-panel-7715)
+* [ API ](#tab-panel-7716)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -246,8 +246,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-7383)
-* [ API ](#tab-panel-7384)
+* [ Dashboard ](#tab-panel-7717)
+* [ API ](#tab-panel-7718)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics** \> **Network packet captures**.
@@ -297,6 +297,6 @@ Due to the nature of Cloudflare network, your traffic may traverse various physi
 * Merging for Analysis: To view the traffic as a single flow, you can use a tool like mergecap to combine the individual files into one larger file for analysis in Wireshark. Refer to the [Wireshark mergecap documentation ↗](https://www.wireshark.org/docs/wsug%5Fhtml%5Fchunked/AppToolsmergecap.html) for instructions.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/#page","headline":"Collect PCAPs · Cloudflare Network Firewall docs","description":"Collect packet captures for traffic analysis.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/#page","headline":"Collect PCAPs · Cloudflare Network Firewall docs","description":"Collect packet captures for traffic analysis.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/packet-captures/","name":"Packet captures"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/packet-captures/collect-pcaps/","name":"Collect PCAPs"}}]}
 ```

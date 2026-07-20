@@ -2,7 +2,7 @@
 title: lucid-origin
 description: Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.
 
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive mode
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2430)
-* [  curl ](#tab-panel-2431)
+* [  TypeScript ](#tab-panel-2576)
+* [  curl ](#tab-panel-2577)
 
 ```ts
 export interface Env {
@@ -71,8 +71,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2432)
-* [ Output ](#tab-panel-2433)
+* [ Input ](#tab-panel-2578)
+* [ Output ](#tab-panel-2579)
 
 prompt
 
@@ -113,6 +113,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schem
 Output [ ](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/leonardo/lucid-origin/#page","headline":"lucid-origin (Leonardo) · Cloudflare AI docs · Cloudflare AI docs","description":"Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.","url":"https://developers.cloudflare.com/ai/models/%40cf/leonardo/lucid-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/leonardo/lucid-origin/#page","headline":"lucid-origin (Leonardo) · Cloudflare AI docs · Cloudflare AI docs","description":"Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.","url":"https://developers.cloudflare.com/ai/models/%40cf/leonardo/lucid-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: MiniMax Music 2.6
 description: MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ MiniMax's music generation model that creates full-length songs with vocals from
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-928)
-* [ cURL ](#tab-panel-929)
+* [ TypeScript ](#tab-panel-978)
+* [ cURL ](#tab-panel-979)
 
 **TypeScript**
 
@@ -60,8 +60,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-926)
-* [ Raw response ](#tab-panel-927)
+* [ Output ](#tab-panel-976)
+* [ Raw response ](#tab-panel-977)
 
 ```json
 {
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Lyrics**  — Generate a song with custom lyrics
 
-* [ TypeScript ](#tab-panel-934)
-* [ cURL ](#tab-panel-935)
+* [ TypeScript ](#tab-panel-984)
+* [ cURL ](#tab-panel-985)
 
 **TypeScript**
 
@@ -113,8 +113,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-930)
-* [ Raw response ](#tab-panel-931)
+* [ Output ](#tab-panel-980)
+* [ Raw response ](#tab-panel-981)
 
 ```json
 {
@@ -130,8 +130,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Instrumental**  — Generate instrumental music without vocals
 
-* [ TypeScript ](#tab-panel-936)
-* [ cURL ](#tab-panel-937)
+* [ TypeScript ](#tab-panel-986)
+* [ cURL ](#tab-panel-987)
 
 **TypeScript**
 
@@ -161,8 +161,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-932)
-* [ Raw response ](#tab-panel-933)
+* [ Output ](#tab-panel-982)
+* [ Raw response ](#tab-panel-983)
 
 ```json
 {
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Specify audio format and sample rate
 
-* [ TypeScript ](#tab-panel-942)
-* [ cURL ](#tab-panel-943)
+* [ TypeScript ](#tab-panel-992)
+* [ cURL ](#tab-panel-993)
 
 **TypeScript**
 
@@ -213,8 +213,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-938)
-* [ Raw response ](#tab-panel-939)
+* [ Output ](#tab-panel-988)
+* [ Raw response ](#tab-panel-989)
 
 ```json
 {
@@ -230,8 +230,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Auto-Generated Lyrics**  — Let the model generate lyrics from the prompt
 
-* [ TypeScript ](#tab-panel-944)
-* [ cURL ](#tab-panel-945)
+* [ TypeScript ](#tab-panel-994)
+* [ cURL ](#tab-panel-995)
 
 **TypeScript**
 
@@ -261,8 +261,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-940)
-* [ Raw response ](#tab-panel-941)
+* [ Output ](#tab-panel-990)
+* [ Raw response ](#tab-panel-991)
 
 ```json
 {
@@ -278,8 +278,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-946)
-* [ Output ](#tab-panel-947)
+* [ Input ](#tab-panel-996)
+* [ Output ](#tab-panel-997)
 
 prompt
 
@@ -320,6 +320,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-i
 Output [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/music-2.6/#page","headline":"MiniMax Music 2.6 (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.","url":"https://developers.cloudflare.com/ai/models/minimax/music-2.6/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/music-2.6/#page","headline":"MiniMax Music 2.6 (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.","url":"https://developers.cloudflare.com/ai/models/minimax/music-2.6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

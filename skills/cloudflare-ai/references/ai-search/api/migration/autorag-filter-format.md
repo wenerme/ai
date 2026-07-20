@@ -1,7 +1,7 @@
 ---
 title: Metadata filter (legacy)
 description: Reference for the legacy AutoRAG metadata filter format used with the previous REST API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -97,6 +97,6 @@ This filter matches all paths starting with `customer-a/` by using:
 * [Migrate from AutoRAG Search API](https://developers.cloudflare.com/ai-search/api/migration/rest-api/) \- Migration guide with before/after examples
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-format/#page","headline":"Metadata filter (legacy) · Cloudflare AI Search docs","description":"Reference for the legacy AutoRAG metadata filter format used with the previous REST API.","url":"https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-format/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-format/#page","headline":"Metadata filter (legacy) · Cloudflare AI Search docs","description":"Reference for the legacy AutoRAG metadata filter format used with the previous REST API.","url":"https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-format/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/migration/","name":"API Migration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/migration/autorag-filter-format/","name":"Metadata filter (legacy)"}}]}
 ```

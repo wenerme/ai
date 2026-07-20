@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Terraform provider
 description: Manage your Cloudflare configuration as infrastructure as code using the Terraform provider.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -17,6 +17,6 @@ Configure Cloudflare using HashiCorp's “Infrastructure as Code” tool, Terraf
 Report Terraform configuration issues via [GitHub ↗](https://github.com/cloudflare/terraform-provider-cloudflare/issues/new/choose).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/#page","headline":"Overview · Cloudflare Terraform docs","description":"Manage your Cloudflare configuration as infrastructure as code using the Terraform provider.","url":"https://developers.cloudflare.com/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/#page","headline":"Overview · Cloudflare Terraform docs","description":"Manage your Cloudflare configuration as infrastructure as code using the Terraform provider.","url":"https://developers.cloudflare.com/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}}]}
 ```

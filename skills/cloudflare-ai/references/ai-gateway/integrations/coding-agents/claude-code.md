@@ -1,7 +1,7 @@
 ---
 title: Claude Code
 description: Route Claude Code through AI Gateway using your Cloudflare gateway token.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,8 +32,8 @@ The `cf-aig-authorization` header is what authenticates your request to AI Gatew
 1. Set the base URL to your gateway's Anthropic endpoint and send your gateway token in the `cf-aig-authorization` header. Set `ANTHROPIC_API_KEY` to the same token, since Claude Code requires the variable to be set. The following commands set these as shell environment variables for the current session. To persist them, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`) or to Claude Code's [settings.json ↗](https://docs.anthropic.com/en/docs/claude-code/settings#settings-files) under the `env` key.
 Replace `<ACCOUNT_ID>`, `<GATEWAY_ID>`, and `<CF_AIG_TOKEN>` with your values.
 
-  * [ macOS / Linux ](#tab-panel-6862)
-  * [ Windows (PowerShell) ](#tab-panel-6863)
+  * [ macOS / Linux ](#tab-panel-7136)
+  * [ Windows (PowerShell) ](#tab-panel-7137)
 ```bash
 export ANTHROPIC_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/anthropic"
 export ANTHROPIC_API_KEY="<CF_AIG_TOKEN>"
@@ -57,8 +57,8 @@ To run Claude models through [Amazon Bedrock](https://developers.cloudflare.com/
 
 1. Replace `<ACCOUNT_ID>`, `<GATEWAY_ID>`, `<AWS_REGION>` (for example, `us-east-1`), and `<CF_AIG_TOKEN>` with your values.
 
-  * [ macOS / Linux ](#tab-panel-6864)
-  * [ Windows (PowerShell) ](#tab-panel-6865)
+  * [ macOS / Linux ](#tab-panel-7138)
+  * [ Windows (PowerShell) ](#tab-panel-7139)
 ```bash
 export CLAUDE_CODE_USE_BEDROCK="1"
 export ANTHROPIC_BEDROCK_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/aws-bedrock/bedrock-runtime/<AWS_REGION>/"
@@ -84,8 +84,8 @@ To run Claude models through [Google Vertex AI](https://developers.cloudflare.co
 
 1. Replace `<ACCOUNT_ID>`, `<GATEWAY_ID>`, `<GCP_PROJECT_ID>`, `<GCP_REGION>` (for example, `us-east5`), and `<CF_AIG_TOKEN>` with your values.
 
-  * [ macOS / Linux ](#tab-panel-6866)
-  * [ Windows (PowerShell) ](#tab-panel-6867)
+  * [ macOS / Linux ](#tab-panel-7140)
+  * [ Windows (PowerShell) ](#tab-panel-7141)
 ```bash
 export CLAUDE_CODE_USE_VERTEX="1"
 export ANTHROPIC_VERTEX_BASE_URL="https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/google-vertex-ai/v1"
@@ -112,6 +112,6 @@ claude
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/#page","headline":"Claude Code · Cloudflare AI Gateway docs","description":"Route Claude Code through AI Gateway using your Cloudflare gateway token.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/#page","headline":"Claude Code · Cloudflare AI Gateway docs","description":"Route Claude Code through AI Gateway using your Cloudflare gateway token.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/coding-agents/","name":"Coding agents"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/integrations/coding-agents/claude-code/","name":"Claude Code"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: WAN transformation
 description: Transform WAN traffic with header and protocol modifications.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ Organizations that start with Cloudflare WAN for site-to-site connectivity and p
 * [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/): Explore the architecture of Cloudflare One as a SASE platform.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/wan-transformation/#page","headline":"WAN transformation · Cloudflare WAN docs","description":"Transform WAN traffic with header and protocol modifications.","url":"https://developers.cloudflare.com/cloudflare-wan/wan-transformation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/wan-transformation/#page","headline":"WAN transformation · Cloudflare WAN docs","description":"Transform WAN traffic with header and protocol modifications.","url":"https://developers.cloudflare.com/cloudflare-wan/wan-transformation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/wan-transformation/","name":"WAN transformation"}}]}
 ```

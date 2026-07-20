@@ -1,7 +1,7 @@
 ---
 title: Metrics and analytics
 description: Query Email Service sending metrics and delivery rates via the dashboard or GraphQL Analytics API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -195,7 +195,7 @@ query EmailSendingHourlyVolume($zoneTag: string!, $start: Time!, $end: Time!) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwAkB7ECNKANVLRATAAoASAL1OzABUlCAuGAGcALhAKEAhABoYLUUggjB3FIxlycuFWrCSAlDADeAKBgwAbijAB3SMbPmYHLkKYAzdCMiCjzzjx8guwBvIQwAL6Gpk5OYMjoWHgSAIK4SAAOIigWYADiEOQZbo6x5p5o3hC+MOne2YxkFAD6hGDAwQpKsnVgDWBNEM1o7cFakaVlaGooyjAAjAAMy4uTsaQQuJAAQlCCANq9-YPNKRgAwgC6azDRN+YAxuTYIve1uthCKJxCDmVlR10gze5gUIhAQjeERu0NisImESAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEYAnHBaDULPqjYBmDBRAwoAE2bsuvAezhzJ0uQoC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwAkB7ECNKANVLRATAAoASAL1OzABUlCAuGAGcALhAKEAhABoYLUUggjB3FIxlycuFWrCSAlDADeAKBgwAbijAB3SMbPmYHLkKYAzdCMiCjzzjx8guwBvIQwAL6Gpk5OYMjoWHgSAIK4SAAOIigWYADiEOQZbo6x5p5o3hC+MOne2YxkFAD6hGDAwQpKsnVgDWBNEM1o7cFakaVlaGooyjAAjAAMy4uTsaQQuJAAQlCCANq9-YPNKRgAwgC6azDRN+YAxuTYIve1uthCKJxCDmVlR10gze5gUIhAQjeERu0NisImESAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIx9UbMRgogYUACbN2XXgKFiW4ydNkBfIA)
 
 #### Individual email events
 
@@ -230,7 +230,7 @@ query RecentEmailEvents($zoneTag: string!, $start: Time!, $end: Time!) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFwKIFsCGBLAGwwDdU0BnACgBIAvAexTABUcBzALhnLQjxTYBCADQxqPHBDRdmeLGBFjUAExlyFAShgBvAFAwYxPGADukHfoMwGTKgDNCaSF23XGLdlzrvWbGAF8tPSsrMFxCAGUVfjYAQWUcAAc0PFJKSxCDBwInCBcYBKcU+QB9NjBgLwkpUUKwYrASggqvFQCMzII5PGkYAFYABg6Q+ghlSAAhKC4AbTqGkoARDAiAYQBdYZggrYN59V2YOwh6LEO0ekPyEAAjACskNCu0HDQQckOwUnRmKESwK7RASLU74FCHeTkcjsMAASWUnwgJwgqxw7wBmVCSNGi3q+AIh2UAGs5ITcBBEFdEnZDnhyBFEjgzpj-B1WQZWf4gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEYAnHBaDULPqjYBmDBRAwoAE2bsuvAezhzJ0uQoC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFwKIFsCGBLAGwwDdU0BnACgBIAvAexTABUcBzALhnLQjxTYBCADQxqPHBDRdmeLGBFjUAExlyFAShgBvAFAwYxPGADukHfoMwGTKgDNCaSF23XGLdlzrvWbGAF8tPSsrMFxCAGUVfjYAQWUcAAc0PFJKSxCDBwInCBcYBKcU+QB9NjBgLwkpUUKwYrASggqvFQCMzII5PGkYAFYABg6Q+ghlSAAhKC4AbTqGkoARDAiAYQBdYZggrYN59V2YOwh6LEO0ekPyEAAjACskNCu0HDQQckOwUnRmKESwK7RASLU74FCHeTkcjsMAASWUnwgJwgqxw7wBmVCSNGi3q+AIh2UAGs5ITcBBEFdEnZDnhyBFEjgzpj-B1WQZWf4gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIx9UbMRgogYUACbN2XXgKFiW4ydNkBfIA)
 
 #### Email routing operations
 
@@ -317,7 +317,7 @@ query RecentRoutingEvents($zoneTag: string!, $start: Time!, $end: Time!) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFzgexGgligcwFEA3VNAZwAoASAL0xTABUBDAgLhgrQnwICEAGhg0erCGi7NcAWzDDRqACbS5CgJQwA3gCgYMErjAB3SDv0GYDJtQBmuADZpIXbdcYt2Xep7YEYAF8tPSsrMFlWJywcfgBBZVYABzwyKkswgwdnVx0YRJc8eQB9AjBgH3FJEQKwIrBix3KfFSCMzMc5XCkYAFYABnawzAhlSAAhKC4AbVr64oARIgBlAGEAXSGYEK2DOfVdmDsITFlDtExDihAAIwArJDQrtFY0EApD1kQ8RkOIECaAFlXogABZgZSHeQUCjsMAASUhmXCEBOEAWdSijkOygA1nIcZEIIgrkk7IdcBRlklWGdkYF2gyDAzAkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEYAnHBaDULPqjYBmDBRAwoAE2bsuvAezhzJ0uQoC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFzgexGgligcwFEA3VNAZwAoASAL0xTABUBDAgLhgrQnwICEAGhg0erCGi7NcAWzDDRqACbS5CgJQwA3gCgYMErjAB3SDv0GYDJtQBmuADZpIXbdcYt2Xep7YEYAF8tPSsrMFlWJywcfgBBZVYABzwyKkswgwdnVx0YRJc8eQB9AjBgH3FJEQKwIrBix3KfFSCMzMc5XCkYAFYABnawzAhlSAAhKC4AbVr64oARIgBlAGEAXSGYEK2DOfVdmDsITFlDtExDihAAIwArJDQrtFY0EApD1kQ8RkOIECaAFlXogABZgZSHeQUCjsMAASUhmXCEBOEAWdSijkOygA1nIcZEIIgrkk7IdcBRlklWGdkYF2gyDAzAkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIx9UbMRgogYUACbN2XXgKFiW4ydNkBfIA)
 
 Note
 
@@ -330,6 +330,6 @@ The `*AdaptiveGroups` datasets use `Date` type filters (`date_geq`, `date_leq`) 
 * [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) — full GraphQL API reference.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Email Service docs","description":"Query Email Service sending metrics and delivery rates via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/email-service/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Email Service docs","description":"Query Email Service sending metrics and delivery rates via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/email-service/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/observability/","name":"Observability and logs"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
 ```

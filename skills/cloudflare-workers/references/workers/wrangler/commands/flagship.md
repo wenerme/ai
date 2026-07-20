@@ -1,7 +1,7 @@
 ---
 title: Flagship
 description: Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -115,9 +115,9 @@ Refer to the [Flagship Wrangler commands reference](https://developers.cloudflar
 
 Create a Flagship app
 
-* [  npm ](#tab-panel-13225)
-* [  pnpm ](#tab-panel-13226)
-* [  yarn ](#tab-panel-13227)
+* [  npm ](#tab-panel-13227)
+* [  pnpm ](#tab-panel-13228)
+* [  yarn ](#tab-panel-13229)
 
 ```sh
 npx wrangler flagship apps create [NAME]
@@ -167,9 +167,9 @@ Use a specific auth profile
 
 List Flagship apps
 
-* [  npm ](#tab-panel-13228)
-* [  pnpm ](#tab-panel-13229)
-* [  yarn ](#tab-panel-13230)
+* [  npm ](#tab-panel-13230)
+* [  pnpm ](#tab-panel-13231)
+* [  yarn ](#tab-panel-13232)
 
 ```sh
 npx wrangler flagship apps list
@@ -211,9 +211,9 @@ Use a specific auth profile
 
 Get a Flagship app
 
-* [  npm ](#tab-panel-13231)
-* [  pnpm ](#tab-panel-13232)
-* [  yarn ](#tab-panel-13233)
+* [  npm ](#tab-panel-13233)
+* [  pnpm ](#tab-panel-13234)
+* [  yarn ](#tab-panel-13235)
 
 ```sh
 npx wrangler flagship apps get [APP-ID]
@@ -257,9 +257,9 @@ Use a specific auth profile
 
 Update a Flagship app
 
-* [  npm ](#tab-panel-13234)
-* [  pnpm ](#tab-panel-13235)
-* [  yarn ](#tab-panel-13236)
+* [  npm ](#tab-panel-13236)
+* [  pnpm ](#tab-panel-13237)
+* [  yarn ](#tab-panel-13238)
 
 ```sh
 npx wrangler flagship apps update [APP-ID]
@@ -305,9 +305,9 @@ Use a specific auth profile
 
 Delete a Flagship app
 
-* [  npm ](#tab-panel-13237)
-* [  pnpm ](#tab-panel-13238)
-* [  yarn ](#tab-panel-13239)
+* [  npm ](#tab-panel-13239)
+* [  pnpm ](#tab-panel-13240)
+* [  yarn ](#tab-panel-13241)
 
 ```sh
 npx wrangler flagship apps delete [APP-ID]
@@ -353,9 +353,9 @@ Use a specific auth profile
 
 Create a feature flag in a Flagship app
 
-* [  npm ](#tab-panel-13240)
-* [  pnpm ](#tab-panel-13241)
-* [  yarn ](#tab-panel-13242)
+* [  npm ](#tab-panel-13242)
+* [  pnpm ](#tab-panel-13243)
+* [  yarn ](#tab-panel-13244)
 
 ```sh
 npx wrangler flagship flags create [APP-ID] [KEY]
@@ -415,9 +415,9 @@ Use a specific auth profile
 
 List feature flags in a Flagship app
 
-* [  npm ](#tab-panel-13243)
-* [  pnpm ](#tab-panel-13244)
-* [  yarn ](#tab-panel-13245)
+* [  npm ](#tab-panel-13245)
+* [  pnpm ](#tab-panel-13246)
+* [  yarn ](#tab-panel-13247)
 
 ```sh
 npx wrangler flagship flags list [APP-ID]
@@ -467,9 +467,9 @@ Use a specific auth profile
 
 Get a feature flag from a Flagship app
 
-* [  npm ](#tab-panel-13246)
-* [  pnpm ](#tab-panel-13247)
-* [  yarn ](#tab-panel-13248)
+* [  npm ](#tab-panel-13248)
+* [  pnpm ](#tab-panel-13249)
+* [  yarn ](#tab-panel-13250)
 
 ```sh
 npx wrangler flagship flags get [APP-ID] [KEY]
@@ -515,9 +515,9 @@ Use a specific auth profile
 
 Update a feature flag in a Flagship app
 
-* [  npm ](#tab-panel-13249)
-* [  pnpm ](#tab-panel-13250)
-* [  yarn ](#tab-panel-13251)
+* [  npm ](#tab-panel-13251)
+* [  pnpm ](#tab-panel-13252)
+* [  yarn ](#tab-panel-13253)
 
 ```sh
 npx wrangler flagship flags update [APP-ID] [KEY]
@@ -587,9 +587,9 @@ Use a specific auth profile
 
 Set the default variation served by a feature flag
 
-* [  npm ](#tab-panel-13252)
-* [  pnpm ](#tab-panel-13253)
-* [  yarn ](#tab-panel-13254)
+* [  npm ](#tab-panel-13254)
+* [  pnpm ](#tab-panel-13255)
+* [  yarn ](#tab-panel-13256)
 
 ```sh
 npx wrangler flagship flags set [APP-ID] [KEY]
@@ -639,9 +639,9 @@ Use a specific auth profile
 
 List targeting rules for a feature flag
 
-* [  npm ](#tab-panel-13255)
-* [  pnpm ](#tab-panel-13256)
-* [  yarn ](#tab-panel-13257)
+* [  npm ](#tab-panel-13257)
+* [  pnpm ](#tab-panel-13258)
+* [  yarn ](#tab-panel-13259)
 
 ```sh
 npx wrangler flagship flags rules list [APP-ID] [KEY]
@@ -687,9 +687,9 @@ Use a specific auth profile
 
 Update one targeting rule for a feature flag
 
-* [  npm ](#tab-panel-13258)
-* [  pnpm ](#tab-panel-13259)
-* [  yarn ](#tab-panel-13260)
+* [  npm ](#tab-panel-13260)
+* [  pnpm ](#tab-panel-13261)
+* [  yarn ](#tab-panel-13262)
 
 ```sh
 npx wrangler flagship flags rules update [APP-ID] [KEY]
@@ -747,9 +747,9 @@ Use a specific auth profile
 
 Delete one targeting rule from a feature flag
 
-* [  npm ](#tab-panel-13261)
-* [  pnpm ](#tab-panel-13262)
-* [  yarn ](#tab-panel-13263)
+* [  npm ](#tab-panel-13263)
+* [  pnpm ](#tab-panel-13264)
+* [  yarn ](#tab-panel-13265)
 
 ```sh
 npx wrangler flagship flags rules delete [APP-ID] [KEY]
@@ -797,9 +797,9 @@ Use a specific auth profile
 
 Reorder targeting rules for a feature flag
 
-* [  npm ](#tab-panel-13264)
-* [  pnpm ](#tab-panel-13265)
-* [  yarn ](#tab-panel-13266)
+* [  npm ](#tab-panel-13266)
+* [  pnpm ](#tab-panel-13267)
+* [  yarn ](#tab-panel-13268)
 
 ```sh
 npx wrangler flagship flags rules reorder [APP-ID] [KEY]
@@ -847,9 +847,9 @@ Use a specific auth profile
 
 Split traffic across variations by percentage
 
-* [  npm ](#tab-panel-13267)
-* [  pnpm ](#tab-panel-13268)
-* [  yarn ](#tab-panel-13269)
+* [  npm ](#tab-panel-13269)
+* [  pnpm ](#tab-panel-13270)
+* [  yarn ](#tab-panel-13271)
 
 ```sh
 npx wrangler flagship flags split [APP-ID] [KEY]
@@ -903,9 +903,9 @@ Use a specific auth profile
 
 Roll out one variation to a percentage of traffic
 
-* [  npm ](#tab-panel-13270)
-* [  pnpm ](#tab-panel-13271)
-* [  yarn ](#tab-panel-13272)
+* [  npm ](#tab-panel-13272)
+* [  pnpm ](#tab-panel-13273)
+* [  yarn ](#tab-panel-13274)
 
 ```sh
 npx wrangler flagship flags rollout [APP-ID] [KEY]
@@ -961,9 +961,9 @@ Use a specific auth profile
 
 Enable a feature flag
 
-* [  npm ](#tab-panel-13273)
-* [  pnpm ](#tab-panel-13274)
-* [  yarn ](#tab-panel-13275)
+* [  npm ](#tab-panel-13275)
+* [  pnpm ](#tab-panel-13276)
+* [  yarn ](#tab-panel-13277)
 
 ```sh
 npx wrangler flagship flags enable [APP-ID] [KEY]
@@ -1009,9 +1009,9 @@ Use a specific auth profile
 
 Disable a feature flag
 
-* [  npm ](#tab-panel-13276)
-* [  pnpm ](#tab-panel-13277)
-* [  yarn ](#tab-panel-13278)
+* [  npm ](#tab-panel-13278)
+* [  pnpm ](#tab-panel-13279)
+* [  yarn ](#tab-panel-13280)
 
 ```sh
 npx wrangler flagship flags disable [APP-ID] [KEY]
@@ -1057,9 +1057,9 @@ Use a specific auth profile
 
 Evaluate a feature flag with optional context
 
-* [  npm ](#tab-panel-13279)
-* [  pnpm ](#tab-panel-13280)
-* [  yarn ](#tab-panel-13281)
+* [  npm ](#tab-panel-13281)
+* [  pnpm ](#tab-panel-13282)
+* [  yarn ](#tab-panel-13283)
 
 ```sh
 npx wrangler flagship flags evaluate [APP-ID] [KEY]
@@ -1109,9 +1109,9 @@ Use a specific auth profile
 
 Delete a feature flag from a Flagship app
 
-* [  npm ](#tab-panel-13282)
-* [  pnpm ](#tab-panel-13283)
-* [  yarn ](#tab-panel-13284)
+* [  npm ](#tab-panel-13284)
+* [  pnpm ](#tab-panel-13285)
+* [  yarn ](#tab-panel-13286)
 
 ```sh
 npx wrangler flagship flags delete [APP-ID] [KEY]
@@ -1159,9 +1159,9 @@ Use a specific auth profile
 
 Show the changelog for a feature flag
 
-* [  npm ](#tab-panel-13285)
-* [  pnpm ](#tab-panel-13286)
-* [  yarn ](#tab-panel-13287)
+* [  npm ](#tab-panel-13287)
+* [  pnpm ](#tab-panel-13288)
+* [  yarn ](#tab-panel-13289)
 
 ```sh
 npx wrangler flagship flags changelog [APP-ID] [KEY]
@@ -1210,6 +1210,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/#page","headline":"Flagship · Cloudflare Workers docs","description":"Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.","url":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/#page","headline":"Flagship · Cloudflare Workers docs","description":"Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.","url":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/flagship/","name":"Flagship"}}]}
 ```

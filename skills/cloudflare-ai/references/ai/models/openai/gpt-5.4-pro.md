@@ -1,7 +1,7 @@
 ---
 title: GPT-5.4 pro
 description: GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,8 +31,8 @@ GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1310)
-* [ cURL ](#tab-panel-1311)
+* [ TypeScript ](#tab-panel-1410)
+* [ cURL ](#tab-panel-1411)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1320)
-* [ Raw response ](#tab-panel-1321)
+* [ Output ](#tab-panel-1420)
+* [ Raw response ](#tab-panel-1421)
 
 The **three laws of thermodynamics** usually mean:
 
@@ -166,8 +166,8 @@ If you want, I can also give a **one-line intuitive version** of each law.
 
 **With Instructions**  — Using instructions to set context
 
-* [ TypeScript ](#tab-panel-1312)
-* [ cURL ](#tab-panel-1313)
+* [ TypeScript ](#tab-panel-1412)
+* [ cURL ](#tab-panel-1413)
 
 **TypeScript**
 
@@ -193,8 +193,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1322)
-* [ Raw response ](#tab-panel-1323)
+* [ Output ](#tab-panel-1422)
+* [ Raw response ](#tab-panel-1423)
 
 Use Python’s built-in `json` module.
 
@@ -350,8 +350,8 @@ If you want, I can also show how to **write JSON back to a file**.
 
 **Multi-turn Conversation**  — Continuing a conversation with message array
 
-* [ TypeScript ](#tab-panel-1318)
-* [ cURL ](#tab-panel-1319)
+* [ TypeScript ](#tab-panel-1418)
+* [ cURL ](#tab-panel-1419)
 
 **TypeScript**
 
@@ -401,8 +401,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1324)
-* [ Raw response ](#tab-panel-1325)
+* [ Output ](#tab-panel-1424)
+* [ Raw response ](#tab-panel-1425)
 
 - Monterey is great for the aquarium, Cannery Row, and ocean views.
 - San Luis Obispo is a fun lunch stop with a charming downtown and Mission Plaza.
@@ -494,8 +494,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Temperature Control**  — Using temperature for creative responses
 
-* [ TypeScript ](#tab-panel-1314)
-* [ cURL ](#tab-panel-1315)
+* [ TypeScript ](#tab-panel-1414)
+* [ cURL ](#tab-panel-1415)
 
 **TypeScript**
 
@@ -518,8 +518,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1326)
-* [ Raw response ](#tab-panel-1327)
+* [ Output ](#tab-panel-1426)
+* [ Raw response ](#tab-panel-1427)
 
 Silent circuits dream
 Learning patterns in the dark
@@ -611,8 +611,8 @@ Dawn wakes metal minds
 
 **With Reasoning**  — Using reasoning effort for complex problems
 
-* [ TypeScript ](#tab-panel-1316)
-* [ cURL ](#tab-panel-1317)
+* [ TypeScript ](#tab-panel-1416)
+* [ cURL ](#tab-panel-1417)
 
 **TypeScript**
 
@@ -641,8 +641,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1328)
-* [ Raw response ](#tab-panel-1329)
+* [ Output ](#tab-panel-1428)
+* [ Raw response ](#tab-panel-1429)
 
 Step 1: Find their combined speed since they are moving toward each other.
 
@@ -765,8 +765,8 @@ Final answer: **The trains meet about 6 hours 26 minutes after they leave.**
 
 ## Parameters
 
-* [ Input ](#tab-panel-1330)
-* [ Output ](#tab-panel-1331)
+* [ Input ](#tab-panel-1430)
+* [ Output ](#tab-panel-1431)
 
 ▶input
 
@@ -847,6 +847,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/#page","headline":"GPT-5.4 pro (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/#page","headline":"GPT-5.4 pro (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: HTML handling
 description: How to configure a HTML handling and trailing slashes for the static assets of your Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ Take the following directory structure:
 
 This will usually give you the desired behavior automatically: individual files (e.g. `foo.html`) will be served _without_ a trailing slash and folder index files (e.g. `foo/index.html`) will be served _with_ a trailing slash.
 
-* [  wrangler.jsonc ](#tab-panel-12494)
-* [  wrangler.toml ](#tab-panel-12495)
+* [  wrangler.jsonc ](#tab-panel-13019)
+* [  wrangler.toml ](#tab-panel-13020)
 
 **JSONC**
 
@@ -36,7 +36,7 @@ This will usually give you the desired behavior automatically: individual files 
 {
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "directory": "./dist/",
     "html_handling": "auto-trailing-slash"
@@ -49,7 +49,7 @@ This will usually give you the desired behavior automatically: individual files 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [assets]
@@ -76,8 +76,8 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, you can force trailing slashes (`force-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-12496)
-* [  wrangler.toml ](#tab-panel-12497)
+* [  wrangler.jsonc ](#tab-panel-13021)
+* [  wrangler.toml ](#tab-panel-13022)
 
 **JSONC**
 
@@ -85,7 +85,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 {
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "directory": "./dist/",
     "html_handling": "force-trailing-slash"
@@ -98,7 +98,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [assets]
@@ -125,8 +125,8 @@ Based on the incoming requests, the following assets would be served:
 
 Or you can drop trailing slashes (`drop-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-12498)
-* [  wrangler.toml ](#tab-panel-12499)
+* [  wrangler.jsonc ](#tab-panel-13023)
+* [  wrangler.toml ](#tab-panel-13024)
 
 **JSONC**
 
@@ -134,7 +134,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 {
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "directory": "./dist/",
     "html_handling": "drop-trailing-slash"
@@ -147,7 +147,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [assets]
@@ -174,8 +174,8 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, if you have bespoke needs, you can disable the built-in HTML handling entirely (`none`).
 
-* [  wrangler.jsonc ](#tab-panel-12500)
-* [  wrangler.toml ](#tab-panel-12501)
+* [  wrangler.jsonc ](#tab-panel-13025)
+* [  wrangler.toml ](#tab-panel-13026)
 
 **JSONC**
 
@@ -183,7 +183,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 {
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "directory": "./dist/",
     "html_handling": "none"
@@ -196,7 +196,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [assets]
@@ -220,6 +220,6 @@ Based on the incoming requests, the following assets would be served:
 | /folder/index.html | 200                             | /dist/folder/index.html         |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/#page","headline":"HTML handling · Cloudflare Workers docs","description":"How to configure a HTML handling and trailing slashes for the static assets of your Worker.","url":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/#page","headline":"HTML handling · Cloudflare Workers docs","description":"How to configure a HTML handling and trailing slashes for the static assets of your Worker.","url":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/routing/","name":"Routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/routing/advanced/","name":"Advanced"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/static-assets/routing/advanced/html-handling/","name":"HTML handling"}}]}
 ```

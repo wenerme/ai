@@ -1,7 +1,7 @@
 ---
 title: Share a local dev server
 description: Expose a local Wrangler or Vite dev server over a public tunnel URL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -62,8 +62,8 @@ Run `vite dev`, then press `t + Enter` to start or close the tunnel. Add `tunnel
 
 To use a named tunnel with stable hostnames:
 
-* [  JavaScript ](#tab-panel-12197)
-* [  TypeScript ](#tab-panel-12198)
+* [  JavaScript ](#tab-panel-12718)
+* [  TypeScript ](#tab-panel-12719)
 
 **vite.config.js**
 
@@ -106,8 +106,8 @@ When using `vite preview`, Vite's preview host validation still applies:
 
 For example:
 
-* [  JavaScript ](#tab-panel-12199)
-* [  TypeScript ](#tab-panel-12200)
+* [  JavaScript ](#tab-panel-12720)
+* [  TypeScript ](#tab-panel-12721)
 
 **vite.config.js**
 
@@ -173,6 +173,6 @@ Anyone with the tunnel URL can reach your dev server, so review what your app ex
 * [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/#page","headline":"Share a local dev server · Cloudflare Workers docs","description":"Expose a local Wrangler or Vite dev server over a public tunnel URL.","url":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/#page","headline":"Share a local dev server · Cloudflare Workers docs","description":"Expose a local Wrangler or Vite dev server over a public tunnel URL.","url":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/local-development/local-dev-tunnels/","name":"Share a local dev server"}}]}
 ```

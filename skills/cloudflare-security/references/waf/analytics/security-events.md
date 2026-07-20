@@ -1,7 +1,7 @@
 ---
 title: Security Events
 description: Review individual security events triggered by WAF rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,8 +43,8 @@ Available features vary according to your Cloudflare plan:
 
 To open Security Events for a given zone:
 
-* [  New dashboard ](#tab-panel-11216)
-* [ Old dashboard ](#tab-panel-11217)
+* [  New dashboard ](#tab-panel-11950)
+* [ Old dashboard ](#tab-panel-11951)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -204,6 +204,6 @@ The following tables show the different limits per Cloudflare plan:
 | Security Analytics (httpRequestsAdaptive) | 24 hours | 7 days   | 31 days  | 31 days    |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-events/#page","headline":"Security Events · Cloudflare Web Application Firewall (WAF) docs","description":"Review individual security events triggered by WAF rules.","url":"https://developers.cloudflare.com/waf/analytics/security-events/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SIEM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-events/#page","headline":"Security Events · Cloudflare Web Application Firewall (WAF) docs","description":"Review individual security events triggered by WAF rules.","url":"https://developers.cloudflare.com/waf/analytics/security-events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SIEM"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/analytics/security-events/","name":"Security Events"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Session timeouts
 description: Configure WARP session timeout settings.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,8 +32,8 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-9520)
-* [ Terraform (v5) ](#tab-panel-9521)
+* [ Dashboard ](#tab-panel-9963)
+* [ Terraform (v5) ](#tab-panel-9964)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.
@@ -83,6 +83,6 @@ A global timeout does not necessarily fit all customer needs. With the increased
 When configuring a global Cloudflare One Client session duration, a common mistake is to build a single policy that covers your entire private network range. An example would be an Allow policy that requires reauthentication every 7 days for all users with traffic to a destination IP in `10.0.0.0/8`. This type of global policy may result in a suboptimal user experience because an expired session blocks the user from the entire internal network (including private DNS functionality) instead of specific applications. If a user misses the one-time reauth notification, they may not know that they need to manually go into their Cloudflare One Client settings to reauthenticate.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/#page","headline":"Session timeouts · Cloudflare Learning Paths","description":"Configure WARP session timeout settings.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/#page","headline":"Session timeouts · Cloudflare Learning Paths","description":"Configure WARP session timeout settings.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/build-policies/","name":"Build secure access policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/build-policies/session-timeouts/","name":"Session timeouts"}}]}
 ```

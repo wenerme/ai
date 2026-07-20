@@ -1,7 +1,7 @@
 ---
 title: DNS_PROBE_FINISHED_NXDOMAIN
 description: Learn how to fix the DNS_PROBE_FINISHED_NXDOMAIN browser error, which indicates the domain does not exist.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -39,6 +39,6 @@ Note
 For additional troubleshooting help, refer to the [Community troubleshooting guide ↗](https://community.cloudflare.com/t/community-tip-fixing-the-dns-probe-finished-nxdomain-error/42818).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/#page","headline":"Fix DNS_PROBE_FINISHED_NXDOMAIN · Cloudflare DNS docs","description":"Learn how to fix the DNS\\_PROBE\\_FINISHED\\_NXDOMAIN browser error, which indicates the domain does not exist.","url":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/#page","headline":"Fix DNS_PROBE_FINISHED_NXDOMAIN · Cloudflare DNS docs","description":"Learn how to fix the DNS\\_PROBE\\_FINISHED\\_NXDOMAIN browser error, which indicates the domain does not exist.","url":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/troubleshooting/dns-probe-finished-nxdomain/","name":"DNS_PROBE_FINISHED_NXDOMAIN"}}]}
 ```

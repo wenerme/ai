@@ -1,7 +1,7 @@
 ---
 title: Risk score
 description: Review recent changes to Cloudflare Zero Trust user risk scoring.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ Next, configure Okta to receive your risk scores.
 You can now configure a [predefined risk behavior](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/#predefined-risk-behaviors) to evaluate user risk score using device posture attributes from the [SentinelOne integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/).
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/#page","headline":"Risk score Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Zero Trust user risk scoring.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/#page","headline":"Risk score Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Zero Trust user risk scoring.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/risk-score/","name":"Risk score"}}]}
 ```

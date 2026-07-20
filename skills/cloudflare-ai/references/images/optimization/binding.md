@@ -1,7 +1,7 @@
 ---
 title: Optimize with Workers
 description: Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,8 +38,8 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9281)
-* [  wrangler.toml ](#tab-panel-9282)
+* [  wrangler.jsonc ](#tab-panel-9648)
+* [  wrangler.toml ](#tab-panel-9649)
 
 **JSONC**
 
@@ -68,8 +68,8 @@ Responses from the Images binding are not automatically cached. Every uncached c
 
 We strongly recommend enabling [Workers Cache](https://developers.cloudflare.com/workers/cache/) so that repeat requests are served from cache without re-running your Worker or re-transforming the image. Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9283)
-* [  wrangler.toml ](#tab-panel-9284)
+* [  wrangler.jsonc ](#tab-panel-9650)
+* [  wrangler.toml ](#tab-panel-9651)
 
 **JSONC**
 
@@ -90,8 +90,8 @@ enabled = true
 
 Then set `Cache-Control` headers on your response to control how long transformed images are cached:
 
-* [  JavaScript ](#tab-panel-9285)
-* [  TypeScript ](#tab-panel-9286)
+* [  JavaScript ](#tab-panel-9652)
+* [  TypeScript ](#tab-panel-9653)
 
 **JavaScript**
 
@@ -135,8 +135,8 @@ Creates an optimization handle for an image. All operations begin with this meth
 
 Returns a handle that you can use to chain `.transform()`, `.draw()`, and `.output()` calls.
 
-* [  JavaScript ](#tab-panel-9291)
-* [  TypeScript ](#tab-panel-9292)
+* [  JavaScript ](#tab-panel-9658)
+* [  TypeScript ](#tab-panel-9659)
 
 **JavaScript**
 
@@ -187,8 +187,8 @@ For the full list of parameters, refer to [Features](https://developers.cloudfla
 
 The example below shows how you can resize an image that is [stored in Images](https://developers.cloudflare.com/images/storage/binding/) by getting the image bytes:
 
-* [  JavaScript ](#tab-panel-9287)
-* [  TypeScript ](#tab-panel-9288)
+* [  JavaScript ](#tab-panel-9654)
+* [  TypeScript ](#tab-panel-9655)
 
 **JavaScript**
 
@@ -244,8 +244,8 @@ Accepts the following options:
 * `quality` — Specifies the output [quality](https://developers.cloudflare.com/images/optimization/features/#quality--q) of an image for JPEG, WebP, and AVIF formats, expressed as a fixed value or perceptual quality level.
 * `anim` — Specifies whether to [preserve animation frames](https://developers.cloudflare.com/images/optimization/features/#anim) from input files. Set `anim:false` to convert animations to still images.
 
-* [  JavaScript ](#tab-panel-9289)
-* [  TypeScript ](#tab-panel-9290)
+* [  JavaScript ](#tab-panel-9656)
+* [  TypeScript ](#tab-panel-9657)
 
 **JavaScript**
 
@@ -307,6 +307,6 @@ npx wrangler dev --remote
 When testing with the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/), the low-fidelity offline version is used by default, to avoid hitting the Cloudflare API in tests.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/binding/","name":"Optimize with Workers"}}]}
 ```

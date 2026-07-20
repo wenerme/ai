@@ -1,7 +1,7 @@
 ---
 title: KV bindings
 description: KV bindings connect a Cloudflare Worker to a KV namespace for reading and writing data.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ To execute your Worker, define the binding.
 
 In the following example, the binding is called `TODO`. In the `kv_namespaces` portion of your Wrangler configuration file, add:
 
-* [  wrangler.jsonc ](#tab-panel-9358)
-* [  wrangler.toml ](#tab-panel-9359)
+* [  wrangler.jsonc ](#tab-panel-9801)
+* [  wrangler.toml ](#tab-panel-9802)
 
 **JSONC**
 
@@ -85,8 +85,8 @@ When you use Wrangler to develop locally with the `wrangler dev` command, Wrangl
 
 To have `wrangler dev` connect to your Workers KV namespace running on Cloudflare's global network, set `"remote" : true` in the KV binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/local-development/#remote-bindings) for more information.
 
-* [  wrangler.jsonc ](#tab-panel-9360)
-* [  wrangler.toml ](#tab-panel-9361)
+* [  wrangler.jsonc ](#tab-panel-9803)
+* [  wrangler.toml ](#tab-panel-9804)
 
 **JSONC**
 
@@ -142,6 +142,6 @@ export class MyDurableObject extends DurableObject {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/concepts/kv-bindings/#page","headline":"KV bindings · Cloudflare Workers KV docs","description":"KV bindings connect a Cloudflare Worker to a KV namespace for reading and writing data.","url":"https://developers.cloudflare.com/kv/concepts/kv-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/concepts/kv-bindings/#page","headline":"KV bindings · Cloudflare Workers KV docs","description":"KV bindings connect a Cloudflare Worker to a KV namespace for reading and writing data.","url":"https://developers.cloudflare.com/kv/concepts/kv-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/concepts/","name":"Key concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/concepts/kv-bindings/","name":"KV bindings"}}]}
 ```

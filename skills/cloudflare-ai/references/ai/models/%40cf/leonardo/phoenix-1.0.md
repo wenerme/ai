@@ -1,7 +1,7 @@
 ---
 title: phoenix-1.0
 description: Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2475)
-* [  curl ](#tab-panel-2476)
+* [  TypeScript ](#tab-panel-2623)
+* [  curl ](#tab-panel-2624)
 
 ```ts
 export interface Env {
@@ -70,8 +70,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2477)
-* [ Output ](#tab-panel-2478)
+* [ Input ](#tab-panel-2625)
+* [ Output ](#tab-panel-2626)
 
 prompt
 
@@ -110,6 +110,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema
 Output [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/leonardo/phoenix-1.0/#page","headline":"phoenix-1.0 (Leonardo) · Cloudflare AI docs · Cloudflare AI docs","description":"Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.","url":"https://developers.cloudflare.com/ai/models/%40cf/leonardo/phoenix-1.0/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/leonardo/phoenix-1.0/#page","headline":"phoenix-1.0 (Leonardo) · Cloudflare AI docs · Cloudflare AI docs","description":"Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.","url":"https://developers.cloudflare.com/ai/models/%40cf/leonardo/phoenix-1.0/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

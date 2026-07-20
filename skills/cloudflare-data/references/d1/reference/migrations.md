@@ -1,7 +1,7 @@
 ---
 title: Migrations
 description: Version your D1 database schema using SQL migration files that you create, list, and apply with Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,8 +36,8 @@ By default, migrations are created in the `migrations/` folder in your Worker pr
 
 This location and table name can be customized in your Wrangler file, inside the D1 binding.
 
-* [  wrangler.jsonc ](#tab-panel-8268)
-* [  wrangler.toml ](#tab-panel-8269)
+* [  wrangler.jsonc ](#tab-panel-8608)
+* [  wrangler.toml ](#tab-panel-8609)
 
 **JSONC**
 
@@ -74,8 +74,8 @@ migrations_pattern = "<GLOB>"
 
 By default, `wrangler d1 migrations apply` looks for top-level `.sql` files inside `migrations_dir`. If you use an ORM such as [Drizzle ↗](https://orm.drizzle.team/) that writes each migration as its own subdirectory (for example, `migrations/0001_init/migration.sql`), set `migrations_pattern` to the glob that matches your layout:
 
-* [  wrangler.jsonc ](#tab-panel-8270)
-* [  wrangler.toml ](#tab-panel-8271)
+* [  wrangler.jsonc ](#tab-panel-8610)
+* [  wrangler.toml ](#tab-panel-8611)
 
 **JSONC**
 
@@ -121,6 +121,6 @@ When applying a migration, you may need to temporarily disable [foreign key cons
 Refer to the [foreign key documentation](https://developers.cloudflare.com/d1/sql-api/foreign-keys/) to learn more about how to work with foreign keys and D1.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/migrations/#page","headline":"Migrations · Cloudflare D1 docs","description":"Version your D1 database schema using SQL migration files that you create, list, and apply with Wrangler.","url":"https://developers.cloudflare.com/d1/reference/migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/migrations/#page","headline":"Migrations · Cloudflare D1 docs","description":"Version your D1 database schema using SQL migration files that you create, list, and apply with Wrangler.","url":"https://developers.cloudflare.com/d1/reference/migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/reference/migrations/","name":"Migrations"}}]}
 ```

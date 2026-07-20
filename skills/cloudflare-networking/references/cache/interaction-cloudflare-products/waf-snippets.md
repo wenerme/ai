@@ -1,7 +1,7 @@
 ---
 title: Control cache access with WAF and Snippets
 description: Control cache access using WAF custom rules and Snippets.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -35,6 +35,6 @@ For optimal performance, we recommend separating the creation and validation pro
 In the Workers documentation, the [Signing requests](https://developers.cloudflare.com/workers/examples/signing-requests/) example shows how to both generate and verify signed requests using HMAC. The Workers implementation is compatible with the WAF's [is\_timed\_hmac\_valid\_v0() validation function](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/), so you can sign with Workers and validate with WAF custom rules, or handle both in Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/#page","headline":"Control cache access with WAF and Snippets · Cloudflare Cache (CDN) docs","description":"Control cache access using WAF custom rules and Snippets.","url":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/#page","headline":"Control cache access with WAF and Snippets · Cloudflare Cache (CDN) docs","description":"Control cache access using WAF custom rules and Snippets.","url":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/interaction-cloudflare-products/","name":"Interaction with Cloudflare products"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/interaction-cloudflare-products/waf-snippets/","name":"Control cache access with WAF and Snippets"}}]}
 ```

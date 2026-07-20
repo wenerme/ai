@@ -1,7 +1,7 @@
 ---
 title: GPT-5.6 Terra
 description: GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, us
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1414)
-* [ cURL ](#tab-panel-1415)
+* [ TypeScript ](#tab-panel-1504)
+* [ cURL ](#tab-panel-1505)
 
 **TypeScript**
 
@@ -59,8 +59,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1418)
-* [ Raw response ](#tab-panel-1419)
+* [ Output ](#tab-panel-1508)
+* [ Raw response ](#tab-panel-1509)
 
 Blue-green deployments run two identical production environments: one active (“blue”) and one idle (“green”). A new version is deployed and tested on green, then traffic is switched over all at once. This makes rollback very fast—switch traffic back to blue—but requires maintaining duplicate infrastructure and handling database/schema compatibility carefully. For a small team, blue-green is often appealing when releases are infrequent, the system is simple enough to duplicate cheaply, and a clear cutover/rollback procedure matters more than gradual validation.
 
@@ -167,8 +167,8 @@ Canary deployments release the new version to a small percentage of users or req
 
 **Customer Incident Update**  — Using instructions to tune the model's response style
 
-* [ TypeScript ](#tab-panel-1416)
-* [ cURL ](#tab-panel-1417)
+* [ TypeScript ](#tab-panel-1506)
+* [ cURL ](#tab-panel-1507)
 
 **TypeScript**
 
@@ -196,8 +196,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1420)
-* [ Raw response ](#tab-panel-1421)
+* [ Output ](#tab-panel-1510)
+* [ Raw response ](#tab-panel-1511)
 
 **Incident Update:**
 Earlier today, some customers experienced elevated API latency. Our team identified the issue and applied mitigation steps, and API performance has returned to normal.
@@ -303,8 +303,8 @@ We’ll continue monitoring closely and will share a follow-up with additional d
 
 ## Parameters
 
-* [ Input ](#tab-panel-1422)
-* [ Output ](#tab-panel-1423)
+* [ Input ](#tab-panel-1512)
+* [ Output ](#tab-panel-1513)
 
 ▶input
 
@@ -385,6 +385,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schem
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/#page","headline":"GPT-5.6 Terra (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/#page","headline":"GPT-5.6 Terra (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

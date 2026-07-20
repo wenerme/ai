@@ -1,7 +1,7 @@
 ---
 title: Vidu Q3 Pro
 description: Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, image-to-video, and start/end-frame-to-video workflows with audio and up to 16-second clips.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, i
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1922)
-* [ cURL ](#tab-panel-1923)
+* [ TypeScript ](#tab-panel-2068)
+* [ cURL ](#tab-panel-2069)
 
 **TypeScript**
 
@@ -60,8 +60,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1920)
-* [ Raw response ](#tab-panel-1921)
+* [ Output ](#tab-panel-2066)
+* [ Raw response ](#tab-panel-2067)
 
 ```json
 {
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Aspect Ratio**  — Vertical video for social media
 
-* [ TypeScript ](#tab-panel-1928)
-* [ cURL ](#tab-panel-1929)
+* [ TypeScript ](#tab-panel-2074)
+* [ cURL ](#tab-panel-2075)
 
 **TypeScript**
 
@@ -113,8 +113,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1924)
-* [ Raw response ](#tab-panel-1925)
+* [ Output ](#tab-panel-2070)
+* [ Raw response ](#tab-panel-2071)
 
 ```json
 {
@@ -130,8 +130,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Silent Video**  — Generate video without audio
 
-* [ TypeScript ](#tab-panel-1932)
-* [ cURL ](#tab-panel-1933)
+* [ TypeScript ](#tab-panel-2078)
+* [ cURL ](#tab-panel-2079)
 
 **TypeScript**
 
@@ -163,8 +163,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1926)
-* [ Raw response ](#tab-panel-1927)
+* [ Output ](#tab-panel-2072)
+* [ Raw response ](#tab-panel-2073)
 
 ```json
 {
@@ -180,8 +180,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Square Format**  — Square video for product demos or social posts
 
-* [ TypeScript ](#tab-panel-1934)
-* [ cURL ](#tab-panel-1935)
+* [ TypeScript ](#tab-panel-2080)
+* [ cURL ](#tab-panel-2081)
 
 **TypeScript**
 
@@ -214,8 +214,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1930)
-* [ Raw response ](#tab-panel-1931)
+* [ Output ](#tab-panel-2076)
+* [ Raw response ](#tab-panel-2077)
 
 ```json
 {
@@ -231,8 +231,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1936)
-* [ Output ](#tab-panel-1937)
+* [ Input ](#tab-panel-2082)
+* [ Output ](#tab-panel-2083)
 
 prompt
 
@@ -273,6 +273,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/vidu/q3-pro/schema-input.j
 Output [ ](https://developers.cloudflare.com/ai/models/vidu/q3-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/vidu/q3-pro/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/vidu/q3-pro/#page","headline":"Vidu Q3 Pro (Vidu) · Cloudflare AI docs · Cloudflare AI docs","description":"Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, image-to-video, and start/end-frame-to-video workflows with audio and up to 16-second clips.","url":"https://developers.cloudflare.com/ai/models/vidu/q3-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/vidu/q3-pro/#page","headline":"Vidu Q3 Pro (Vidu) · Cloudflare AI docs · Cloudflare AI docs","description":"Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, image-to-video, and start/end-frame-to-video workflows with audio and up to 16-second clips.","url":"https://developers.cloudflare.com/ai/models/vidu/q3-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

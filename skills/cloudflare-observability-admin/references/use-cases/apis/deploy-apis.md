@@ -1,7 +1,7 @@
 ---
 title: Deploy APIs at the edge
 description: Deploy globally distributed APIs that scale automatically with no servers to manage.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,6 +42,6 @@ Serverless SQL database built on SQLite, with global read replication ([learn mo
 3. [Queues get started](https://developers.cloudflare.com/queues/get-started/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/apis/deploy-apis/#page","headline":"Deploy APIs at the edge · Cloudflare use cases","description":"Deploy globally distributed APIs that scale automatically with no servers to manage.","url":"https://developers.cloudflare.com/use-cases/apis/deploy-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/apis/deploy-apis/#page","headline":"Deploy APIs at the edge · Cloudflare use cases","description":"Deploy globally distributed APIs that scale automatically with no servers to manage.","url":"https://developers.cloudflare.com/use-cases/apis/deploy-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/apis/","name":"APIs and microservices"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/apis/deploy-apis/","name":"Deploy APIs at the edge"}}]}
 ```

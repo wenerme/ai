@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Install the Pulumi CLI on Mac, Linux, or Windows and verify your installation.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -62,6 +62,6 @@ For upgrades and installation alternatives, refer to [Install Pulumi ↗](https:
 Follow the [Hello World tutorial](https://developers.cloudflare.com/pulumi/tutorial/hello-world/) to write a simple Pulumi program. It takes about 10 minutes to complete.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/installing/#page","headline":"Get started · Pulumi docs","description":"Install the Pulumi CLI on Mac, Linux, or Windows and verify your installation.","url":"https://developers.cloudflare.com/pulumi/installing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/installing/#page","headline":"Get started · Pulumi docs","description":"Install the Pulumi CLI on Mac, Linux, or Windows and verify your installation.","url":"https://developers.cloudflare.com/pulumi/installing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pulumi/","name":"Pulumi"}},{"@type":"ListItem","position":3,"item":{"@id":"/pulumi/installing/","name":"Get started"}}]}
 ```

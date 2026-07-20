@@ -1,7 +1,7 @@
 ---
 title: Overrides
 description: Customize Network-layer DDoS Attack Protection rule actions and sensitivity levels.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ You receive a small attack below the threshold for low sensitivity, but above th
 * **Rule override B** sets `log` at default visibility, which matches the condition. So, the defined action is applied and attack traffic is logged.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/#page","headline":"Network DDoS Attack Protection override rules · Cloudflare DDoS Protection docs","description":"Customize Network-layer DDoS Attack Protection rule actions and sensitivity levels.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/#page","headline":"Network DDoS Attack Protection override rules · Cloudflare DDoS Protection docs","description":"Customize Network-layer DDoS Attack Protection rule actions and sensitivity levels.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/managed-rulesets/","name":"Managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/managed-rulesets/network/","name":"Network-layer DDoS Attack Protection"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/managed-rulesets/network/network-overrides/","name":"Overrides"}}]}
 ```

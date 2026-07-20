@@ -1,7 +1,7 @@
 ---
 title: Create an IP access rule
 description: Create IP Access rules to allow, block, or challenge by IP.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,9 +20,9 @@ Warning
 
 For [Spectrum](https://developers.cloudflare.com/spectrum/) applications configured with the non-HTTP/HTTPS application type, IP Access rules are the only supported mechanism for filtering traffic by IP address, IP range, country, or ASN. To use them, enable IP Access rules in your [Spectrum app configuration](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules).
 
-* [  New dashboard ](#tab-panel-11331)
-* [ Old dashboard ](#tab-panel-11332)
-* [ API ](#tab-panel-11333)
+* [  New dashboard ](#tab-panel-12065)
+* [ Old dashboard ](#tab-panel-12066)
+* [ API ](#tab-panel-12067)
 
 Note
 
@@ -52,6 +52,6 @@ IP Access Rules are only available in the new security dashboard if you have con
 Use the Cloudflare API to programmatically create IP access rules. For more information, refer to [Create an IP Access Rule](https://developers.cloudflare.com/api/resources/firewall/subresources/access%5Frules/methods/create/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/create/#page","headline":"Create an IP access rule · Cloudflare Web Application Firewall (WAF) docs","description":"Create IP Access rules to allow, block, or challenge by IP.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/create/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/create/#page","headline":"Create an IP access rule · Cloudflare Web Application Firewall (WAF) docs","description":"Create IP Access rules to allow, block, or challenge by IP.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/create/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/ip-access-rules/","name":"IP Access rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/ip-access-rules/create/","name":"Create an IP access rule"}}]}
 ```

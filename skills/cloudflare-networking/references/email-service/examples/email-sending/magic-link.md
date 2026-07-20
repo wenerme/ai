@@ -1,7 +1,7 @@
 ---
 title: Magic link authentication
 description: Passwordless login system using magic links sent via email with JWT tokens and session management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,8 +18,8 @@ This example demonstrates how to send a magic link email for passwordless authen
 
 Configure the email binding in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8863)
-* [  wrangler.toml ](#tab-panel-8864)
+* [  wrangler.jsonc ](#tab-panel-9231)
+* [  wrangler.toml ](#tab-panel-9232)
 
 **JSONC**
 
@@ -132,6 +132,6 @@ function isValidEmail(email: string): boolean {
 * [Email headers](https://developers.cloudflare.com/email-service/reference/headers/) — add tracking or list-management headers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/#page","headline":"Magic link authentication · Cloudflare Email Service docs","description":"Passwordless login system using magic links sent via email with JWT tokens and session management.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/#page","headline":"Magic link authentication · Cloudflare Email Service docs","description":"Passwordless login system using magic links sent via email with JWT tokens and session management.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/magic-link/","name":"Magic link authentication"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Alter headers
 description: Example of how to add, change, or delete headers sent in a request or returned in a response.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-11924)
-* [  TypeScript ](#tab-panel-11925)
-* [  Python ](#tab-panel-11926)
-* [  Hono ](#tab-panel-11927)
+* [  JavaScript ](#tab-panel-12443)
+* [  TypeScript ](#tab-panel-12444)
+* [  Python ](#tab-panel-12445)
+* [  Hono ](#tab-panel-12446)
 
 **JavaScript**
 
@@ -177,6 +177,6 @@ export default app;
 You can also use the [custom-headers-example template ↗](https://github.com/kristianfreeman/custom-headers-example) to deploy this code to your custom domain.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/alter-headers/#page","headline":"Alter headers · Cloudflare Workers docs","description":"Example of how to add, change, or delete headers sent in a request or returned in a response.","url":"https://developers.cloudflare.com/workers/examples/alter-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","Middleware","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/alter-headers/#page","headline":"Alter headers · Cloudflare Workers docs","description":"Example of how to add, change, or delete headers sent in a request or returned in a response.","url":"https://developers.cloudflare.com/workers/examples/alter-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","Middleware","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/alter-headers/","name":"Alter headers"}}]}
 ```

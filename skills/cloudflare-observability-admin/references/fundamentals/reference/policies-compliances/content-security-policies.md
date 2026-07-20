@@ -1,7 +1,7 @@
 ---
 title: Content Security Policies (CSPs)
 description: Understand how Cloudflare interacts with Content Security Policies (CSPs) and which headers to update for specific Cloudflare features.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -52,6 +52,6 @@ To use certain Cloudflare features, however, you may need to update the headers 
 | [Turnstile](https://developers.cloudflare.com/turnstile/)                                              | Refer to [Turnstile CSP](https://developers.cloudflare.com/turnstile/reference/content-security-policy/).                                                                            |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#page","headline":"Content Security Policies (CSPs) and Cloudflare · Cloudflare Fundamentals docs","description":"Understand how Cloudflare interacts with Content Security Policies (CSPs) and which headers to update for specific Cloudflare features.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#page","headline":"Content Security Policies (CSPs) and Cloudflare · Cloudflare Fundamentals docs","description":"Understand how Cloudflare interacts with Content Security Policies (CSPs) and which headers to update for specific Cloudflare features.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/policies-compliances/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/policies-compliances/content-security-policies/","name":"Content Security Policies (CSPs)"}}]}
 ```

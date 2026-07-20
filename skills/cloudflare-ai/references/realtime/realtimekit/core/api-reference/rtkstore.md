@@ -1,6 +1,6 @@
 ---
 title: RTKStore
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -19,7 +19,7 @@ This module represents a single global store. The store can be accessed from the
 **JavaScript**
 
 ```js
-const handRaiseRTKStore = meeting.stores.stores.get('handRaise');
+const handRaiseStore = meeting.stores.stores.get('handRaise');
 ```
 
 * [RTKStore](#module%5FRTKStore) ⇒
@@ -32,6 +32,7 @@ const handRaiseRTKStore = meeting.stores.stores.get('handRaise');
     * [.bulkDelete(data)](#module%5FRTKStore--module.exports+bulkDelete) ⇒ `Promise.<void>`
     * [.get(key)](#module%5FRTKStore--module.exports+get) ⇒ `any`
     * [.getAll()](#module%5FRTKStore--module.exports+getAll) ⇒ `RTKStoreData`
+    * [.clear()](#module%5FRTKStore--module.exports+clear)
     * [.updateRateLimits(num, period)](#module%5FRTKStore--module.exports+updateRateLimits)
     * [.updateBulkRateLimits(num, period)](#module%5FRTKStore--module.exports+updateBulkRateLimits)
     * [.subscribe(key, cb)](#module%5FRTKStore--module.exports+subscribe) ⇒ `void`
@@ -44,12 +45,12 @@ const handRaiseRTKStore = meeting.stores.stores.get('handRaise');
 
 #### new module.exports(args)
 
-| Param              | Type                |
-| ------------------ | ------------------- |
-| args               | Object              |
-| args.name          | string              |
-| args.socketHandler | PluginSocketHandler |
-| args.meetingId     | string              |
+| Param              | Type                   |
+| ------------------ | ---------------------- |
+| args               | Object                 |
+| args.name          | string                 |
+| args.socketHandler | RTKStoresSocketHandler |
+| args.meetingId     | string                 |
 
 #### module.exports.set(key, value, \[sync\], \[emit\]) ⇒ `Promise.<void>`
 
@@ -131,6 +132,12 @@ Returns the entire store.
 **Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStore--module.exports)
 **Returns**: `RTKStoreData` \- An instance of RTKStoreData.
 
+#### module.exports.clear()
+
+Clears all data in the store.
+
+**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStore--module.exports)
+
 #### module.exports.updateRateLimits(num, period)
 
 **Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKStore--module.exports)
@@ -182,6 +189,6 @@ Removes all listeners for a key on the store.
 | data  | RTKStoreData |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstore/#page","headline":"RTKStore · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstore/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-02-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstore/#page","headline":"RTKStore · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkstore/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/core/api-reference/rtkstore/","name":"RTKStore"}}]}
 ```

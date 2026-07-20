@@ -1,7 +1,7 @@
 ---
 title: Smart Placement
 description: Automatically run Pages Functions closer to your back-end infrastructure to reduce latency.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ To enable Smart Placement via the dashboard:
 Smart Placement is in beta. To share your thoughts and experience with Smart Placement, join the [Cloudflare Developer Discord ↗](https://discord.cloudflare.com).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/smart-placement/#page","headline":"Smart Placement · Cloudflare Pages docs","description":"Automatically run Pages Functions closer to your back-end infrastructure to reduce latency.","url":"https://developers.cloudflare.com/pages/functions/smart-placement/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/smart-placement/#page","headline":"Smart Placement · Cloudflare Pages docs","description":"Automatically run Pages Functions closer to your back-end infrastructure to reduce latency.","url":"https://developers.cloudflare.com/pages/functions/smart-placement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/smart-placement/","name":"Smart Placement"}}]}
 ```

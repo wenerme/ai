@@ -1,7 +1,7 @@
 ---
 title: Order of enforcement
 description: Understand Gateway policy enforcement order.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -316,6 +316,6 @@ resource "cloudflare_zero_trust_gateway_policy" "policy_3" {
 To avoid precedence calculation errors when reordering policies with Terraform, you should move one policy at a time before running `terraform plan` and `terraform apply`. If you use both Terraform and the Cloudflare dashboard or API, sync your polices with `terraform refresh` before reordering policies in Terraform. Alternatively, you can set your account to [read-only in the Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only), only allowing changes using the API or Terraform.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#page","headline":"Order of enforcement · Cloudflare Learning Paths","description":"Understand Gateway policy enforcement order.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#page","headline":"Order of enforcement · Cloudflare Learning Paths","description":"Understand Gateway policy enforcement order.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/understand-policies/","name":"Understand and streamline policy creation"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/","name":"Order of enforcement"}}]}
 ```

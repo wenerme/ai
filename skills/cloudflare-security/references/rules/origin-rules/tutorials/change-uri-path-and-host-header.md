@@ -1,7 +1,7 @@
 ---
 title: Change URI path and Host header
 description: This tutorial shows you how to modify both the URI path and the Host header of incoming requests using Transform Rules and Origin Rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -82,6 +82,6 @@ Ensure the filters for the [URL rewrite](https://developers.cloudflare.com/rules
 Remember that rules are evaluated [in sequence](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/), so Transform Rules (including URL rewrites) run before Origin Rules or Cloud Connector.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/#page","headline":"Change URI path and Host header · Cloudflare Rules docs","description":"This tutorial shows you how to modify both the URI path and the Host header of incoming requests using Transform Rules and Origin Rules.","url":"https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","URL rewrite"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/#page","headline":"Change URI path and Host header · Cloudflare Rules docs","description":"This tutorial shows you how to modify both the URI path and the Host header of incoming requests using Transform Rules and Origin Rules.","url":"https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","URL rewrite"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/origin-rules/","name":"Origin Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/origin-rules/tutorials/","name":"Origin Rules tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/origin-rules/tutorials/change-uri-path-and-host-header/","name":"Change URI path and Host header"}}]}
 ```

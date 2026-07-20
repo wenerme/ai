@@ -1,7 +1,7 @@
 ---
 title: MiniMax Hailuo 2.3
 description: A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ A high-fidelity video generation model optimized for realistic human motion, cin
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-860)
-* [ cURL ](#tab-panel-861)
+* [ TypeScript ](#tab-panel-910)
+* [ cURL ](#tab-panel-911)
 
 **TypeScript**
 
@@ -64,8 +64,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-858)
-* [ Raw response ](#tab-panel-859)
+* [ Output ](#tab-panel-908)
+* [ Raw response ](#tab-panel-909)
 
 ```json
 {
@@ -85,8 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — 1080P video for higher quality output
 
-* [ TypeScript ](#tab-panel-864)
-* [ cURL ](#tab-panel-865)
+* [ TypeScript ](#tab-panel-914)
+* [ cURL ](#tab-panel-915)
 
 **TypeScript**
 
@@ -121,8 +121,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-862)
-* [ Raw response ](#tab-panel-863)
+* [ Output ](#tab-panel-912)
+* [ Raw response ](#tab-panel-913)
 
 ```json
 {
@@ -140,8 +140,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image to Video**  — Animate a still image with I2V
 
-* [ TypeScript ](#tab-panel-870)
-* [ cURL ](#tab-panel-871)
+* [ TypeScript ](#tab-panel-920)
+* [ cURL ](#tab-panel-921)
 
 **TypeScript**
 
@@ -178,8 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-866)
-* [ Raw response ](#tab-panel-867)
+* [ Output ](#tab-panel-916)
+* [ Raw response ](#tab-panel-917)
 
 ```json
 {
@@ -197,8 +197,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Fast Processing**  — Enable fast pretreatment for quicker results
 
-* [ TypeScript ](#tab-panel-872)
-* [ cURL ](#tab-panel-873)
+* [ TypeScript ](#tab-panel-922)
+* [ cURL ](#tab-panel-923)
 
 **TypeScript**
 
@@ -232,8 +232,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-868)
-* [ Raw response ](#tab-panel-869)
+* [ Output ](#tab-panel-918)
+* [ Raw response ](#tab-panel-919)
 
 ```json
 {
@@ -251,8 +251,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-874)
-* [ Output ](#tab-panel-875)
+* [ Input ](#tab-panel-924)
+* [ Output ](#tab-panel-925)
 
 prompt
 
@@ -297,6 +297,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-
 Output [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/#page","headline":"MiniMax Hailuo 2.3 (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows.","url":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/#page","headline":"MiniMax Hailuo 2.3 (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows.","url":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

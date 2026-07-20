@@ -1,7 +1,7 @@
 ---
 title: Cloudflare AI Gateway
 description: Observe and control your AI applications with analytics, caching, rate limiting, and model fallback through AI Gateway.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -91,6 +91,6 @@ Learn how you can build and deploy ambitious AI applications to Cloudflare's glo
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/#page","headline":"Overview · Cloudflare AI Gateway docs","description":"Observe and control your AI applications with analytics, caching, rate limiting, and model fallback through AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/#page","headline":"Overview · Cloudflare AI Gateway docs","description":"Observe and control your AI applications with analytics, caching, rate limiting, and model fallback through AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}}]}
 ```

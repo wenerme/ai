@@ -1,7 +1,7 @@
 ---
 title: Publish applications with Terraform
 description: Learn about publish applications with terraform in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -191,6 +191,6 @@ Note
 If you need to modify the Access application, Access policy or DNS record, you must make the changes via Terraform. Changes made via the dashboard will break Terraform's state. To prevent this from happening, [set the dashboard to read-only](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/#page","headline":"Publish applications with Terraform · Cloudflare Learning Paths","description":"Learn about publish applications with terraform in this guide.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/#page","headline":"Publish applications with Terraform · Cloudflare Learning Paths","description":"Learn about publish applications with terraform in this guide.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/terraform/","name":"Terraform automation"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/terraform/publish-apps-with-terraform/","name":"Publish applications with Terraform"}}]}
 ```

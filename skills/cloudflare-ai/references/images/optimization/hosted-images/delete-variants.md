@@ -1,7 +1,7 @@
 ---
 title: Delete variants
 description: Remove image variants from Cloudflare Images using the dashboard or API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ curl --request DELETE https://api.cloudflare.com/client/v4/accounts/{account_id}
 After the variant has been deleted, the response returns `"success": true.`
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/#page","headline":"Delete variants · Cloudflare Images docs","description":"Remove image variants from Cloudflare Images using the dashboard or API.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/#page","headline":"Delete variants · Cloudflare Images docs","description":"Remove image variants from Cloudflare Images using the dashboard or API.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/hosted-images/","name":"Hosted images"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/hosted-images/delete-variants/","name":"Delete variants"}}]}
 ```

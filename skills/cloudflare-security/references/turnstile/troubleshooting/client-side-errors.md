@@ -1,7 +1,7 @@
 ---
 title: Client-side errors
 description: Resolve client-side errors in Turnstile widget rendering.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ The `error-callback` option for explicitly rendering widgets and the `data-error
 
 This callback mechanism gives you complete control over how errors are presented to visitors and allows you to implement custom recovery strategies tailored to your application's needs.
 
-* [ Explicit rendering with error callback ](#tab-panel-11399)
-* [ Implicit rendering with error callback ](#tab-panel-11400)
+* [ Explicit rendering with error callback ](#tab-panel-11838)
+* [ Implicit rendering with error callback ](#tab-panel-11839)
 
 **JavaScript**
 
@@ -177,6 +177,6 @@ turnstile.render('#my-widget', {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/#page","headline":"Client-side errors · Cloudflare Turnstile docs","description":"Resolve client-side errors in Turnstile widget rendering.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/#page","headline":"Client-side errors · Cloudflare Turnstile docs","description":"Resolve client-side errors in Turnstile widget rendering.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/troubleshooting/client-side-errors/","name":"Client-side errors"}}]}
 ```

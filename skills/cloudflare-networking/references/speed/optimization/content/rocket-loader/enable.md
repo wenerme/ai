@@ -1,7 +1,7 @@
 ---
 title: Enable
 description: Turn on Rocket Loader for your zone.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To enable or disable Rocket Loader, use the following instructions.
 
-* [ Dashboard ](#tab-panel-10670)
-* [ API ](#tab-panel-10671)
+* [ Dashboard ](#tab-panel-11410)
+* [ API ](#tab-panel-11411)
 
 To enable or disable **Rocket Loader** in the dashboard:
 
@@ -35,6 +35,6 @@ Note
 To use this feature on specific hostnames - instead of across your entire zone - use a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/#page","headline":"Enable Rocket Loader · Cloudflare Speed docs","description":"Turn on Rocket Loader for your zone.","url":"https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/#page","headline":"Enable Rocket Loader · Cloudflare Speed docs","description":"Turn on Rocket Loader for your zone.","url":"https://developers.cloudflare.com/speed/optimization/content/rocket-loader/enable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/rocket-loader/","name":"Rocket Loader"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/content/rocket-loader/enable/","name":"Enable"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Stream large JSON
 description: Parse and transform large JSON request and response bodies using streaming.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ npm install @streamparser/json-whatwg
 
 This example parses a large JSON request body and extracts specific fields without loading the entire payload into memory.
 
-* [  TypeScript ](#tab-panel-12108)
-* [  JavaScript ](#tab-panel-12109)
+* [  TypeScript ](#tab-panel-12629)
+* [  JavaScript ](#tab-panel-12630)
 
 **TypeScript**
 
@@ -107,8 +107,8 @@ export default {
 
 This example fetches a large JSON response from an upstream API, transforms specific fields, and streams the modified response to the client.
 
-* [  TypeScript ](#tab-panel-12110)
-* [  JavaScript ](#tab-panel-12111)
+* [  TypeScript ](#tab-panel-12631)
+* [  JavaScript ](#tab-panel-12632)
 
 **TypeScript**
 
@@ -241,6 +241,6 @@ export default {
 * [@streamparser/json-whatwg ↗](https://www.npmjs.com/package/@streamparser/json-whatwg) \- Streaming JSON parser documentation
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/streaming-json/#page","headline":"Stream large JSON · Cloudflare Workers docs","description":"Parse and transform large JSON request and response bodies using streaming.","url":"https://developers.cloudflare.com/workers/examples/streaming-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JSON","JavaScript","TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/streaming-json/#page","headline":"Stream large JSON · Cloudflare Workers docs","description":"Parse and transform large JSON request and response bodies using streaming.","url":"https://developers.cloudflare.com/workers/examples/streaming-json/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JSON","JavaScript","TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/streaming-json/","name":"Stream large JSON"}}]}
 ```

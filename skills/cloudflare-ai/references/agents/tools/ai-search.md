@@ -1,7 +1,7 @@
 ---
 title: AI Search
 description: Give agents retrieval capabilities with Cloudflare AI Search.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -25,8 +25,8 @@ Use AI Search when you want an agent to:
 
 Bind AI Search to your Worker, then query an instance from an agent method.
 
-* [  JavaScript ](#tab-panel-6747)
-* [  TypeScript ](#tab-panel-6748)
+* [  JavaScript ](#tab-panel-7021)
+* [  TypeScript ](#tab-panel-7022)
 
 **JavaScript**
 
@@ -79,8 +79,8 @@ export class SearchAgent extends Agent<Env> {
 
 For answer generation, use `chatCompletions()` to retrieve relevant content and generate a response in one call.
 
-* [  JavaScript ](#tab-panel-6745)
-* [  TypeScript ](#tab-panel-6746)
+* [  JavaScript ](#tab-panel-7019)
+* [  TypeScript ](#tab-panel-7020)
 
 **JavaScript**
 
@@ -120,8 +120,8 @@ const response = await instance.chatCompletions({
 
 Use an `ai_search_namespaces` binding when the agent needs to access AI Search instances by name.
 
-* [  wrangler.jsonc ](#tab-panel-6743)
-* [  wrangler.toml ](#tab-panel-6744)
+* [  wrangler.jsonc ](#tab-panel-7017)
+* [  wrangler.toml ](#tab-panel-7018)
 
 **JSONC**
 
@@ -157,6 +157,6 @@ Use `remote: true` to query deployed AI Search instances during local developmen
 [ Create an AI Search instance ](https://developers.cloudflare.com/ai-search/get-started/) Create your first AI Search instance and run your first query.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/ai-search/#page","headline":"AI Search · Cloudflare Agents docs","description":"Give agents retrieval capabilities with Cloudflare AI Search.","url":"https://developers.cloudflare.com/agents/tools/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/ai-search/#page","headline":"AI Search · Cloudflare Agents docs","description":"Give agents retrieval capabilities with Cloudflare AI Search.","url":"https://developers.cloudflare.com/agents/tools/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/ai-search/","name":"AI Search"}}]}
 ```

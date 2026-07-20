@@ -1,7 +1,7 @@
 ---
 title: Read key-value pairs
 description: Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 To get the value for a given key, call the `get()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9332)
-* [  Python ](#tab-panel-9333)
+* [  JavaScript ](#tab-panel-9775)
+* [  Python ](#tab-panel-9776)
 
 **JavaScript**
 
@@ -45,8 +45,8 @@ If you request a single key as a string, you will get a single response in the p
 
 You can also request an array of keys. The return value with be a `Map` of the key-value pairs found, with keys not found having `null` values.
 
-* [  JavaScript ](#tab-panel-9334)
-* [  Python ](#tab-panel-9335)
+* [  JavaScript ](#tab-panel-9777)
+* [  Python ](#tab-panel-9778)
 
 **JavaScript**
 
@@ -140,8 +140,8 @@ Use the `get()` method to get a single value, or multiple values if given multip
 
 To get the value for a single key, call the `get()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9336)
-* [  Python ](#tab-panel-9337)
+* [  JavaScript ](#tab-panel-9779)
+* [  Python ](#tab-panel-9780)
 
 **JavaScript**
 
@@ -181,8 +181,8 @@ self.env.NAMESPACE.get(key, options)
 
 To get the values for multiple keys, call the `get()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9338)
-* [  Python ](#tab-panel-9339)
+* [  JavaScript ](#tab-panel-9781)
+* [  Python ](#tab-panel-9782)
 
 **JavaScript**
 
@@ -233,8 +233,8 @@ Use the `getWithMetadata()` method to get a single value along with its metadata
 
 To get the value for a given key along with its metadata, call the `getWithMetadata()` method on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9340)
-* [  Python ](#tab-panel-9341)
+* [  JavaScript ](#tab-panel-9783)
+* [  Python ](#tab-panel-9784)
 
 **JavaScript**
 
@@ -279,8 +279,8 @@ If there is no metadata associated with the requested key-value pair, `null` wil
 
 To get the values for a given set of keys along with their metadata, call the `getWithMetadata()` method on any KV namespace you have bound to your Worker code with:
 
-* [  JavaScript ](#tab-panel-9342)
-* [  Python ](#tab-panel-9343)
+* [  JavaScript ](#tab-panel-9785)
+* [  Python ](#tab-panel-9786)
 
 **JavaScript**
 
@@ -390,6 +390,6 @@ This works best if you are not expecting the need to update the values independe
 You can [read key-value pairs from the command line with Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-key-get) and [from the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/get/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/#page","headline":"Read key-value pairs · Cloudflare Workers KV docs","description":"Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.","url":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/#page","headline":"Read key-value pairs · Cloudflare Workers KV docs","description":"Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.","url":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/api/read-key-value-pairs/","name":"Read key-value pairs"}}]}
 ```

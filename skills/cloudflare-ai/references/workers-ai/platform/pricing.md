@@ -1,7 +1,7 @@
 ---
 title: Pricing
 description: Workers AI pricing is based on Neurons, with a free daily allocation and per-model rates.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -123,6 +123,6 @@ The Price in Tokens column is equivalent to the Price in Neurons column - the di
 | @cf/moondream/moondream3.1-9B-A2B     | $0.300 per M input tokens  $1.000 per M output tokens | 27273 neurons per M input tokens  90909 neurons per M output tokens |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/pricing/#page","headline":"Pricing · Cloudflare Workers AI docs","description":"Workers AI pricing is based on Neurons, with a free daily allocation and per-model rates.","url":"https://developers.cloudflare.com/workers-ai/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/pricing/#page","headline":"Pricing · Cloudflare Workers AI docs","description":"Workers AI pricing is based on Neurons, with a free daily allocation and per-model rates.","url":"https://developers.cloudflare.com/workers-ai/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/platform/pricing/","name":"Pricing"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Workers VPC
 description: Securely connect your private cloud to Cloudflare to build cross-cloud apps.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -56,8 +56,8 @@ Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-11695)
-* [ wrangler.jsonc ](#tab-panel-11696)
+* [ index.ts ](#tab-panel-12134)
+* [ wrangler.jsonc ](#tab-panel-12135)
 
 **TypeScript**
 
@@ -128,6 +128,6 @@ Build serverless applications and deploy instantly across the globe for exceptio
 Connect to PostgreSQL and MySQL databases from Workers with connection pooling and caching built-in, available to all Workers plans.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-vpc/#page","headline":"Overview · Cloudflare Workers VPC","description":"Securely connect your private cloud to Cloudflare to build cross-cloud apps.","url":"https://developers.cloudflare.com/workers-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-vpc/#page","headline":"Overview · Cloudflare Workers VPC","description":"Securely connect your private cloud to Cloudflare to build cross-cloud apps.","url":"https://developers.cloudflare.com/workers-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}}]}
 ```

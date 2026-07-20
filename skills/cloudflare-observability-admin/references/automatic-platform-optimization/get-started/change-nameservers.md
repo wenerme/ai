@@ -1,7 +1,7 @@
 ---
 title: Change nameservers
 description: Update your domain nameservers to Cloudflare for APO to work.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ Note
 You may be prompted to confirm the nameserver change with your domain registrar. Confirm or continue after making the update.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/#page","headline":"Change nameservers · Cloudflare Automatic Platform Optimization docs","description":"Update your domain nameservers to Cloudflare for APO to work.","url":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/#page","headline":"Change nameservers · Cloudflare Automatic Platform Optimization docs","description":"Update your domain nameservers to Cloudflare for APO to work.","url":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/automatic-platform-optimization/get-started/change-nameservers/","name":"Change nameservers"}}]}
 ```

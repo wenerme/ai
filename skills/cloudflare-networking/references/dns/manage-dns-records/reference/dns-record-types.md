@@ -1,7 +1,7 @@
 ---
 title: DNS record types
 description: DNS record types supported by Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -499,6 +499,6 @@ For field definitions, refer to the [API documentation](https://developers.cloud
 Cloudflare also supports other record types that are less common, such as URI, NAPTR, and certificate-related record types (SSHFP, TLSA, SMIMEA, and CERT). Refer to our [blog post ↗](https://blog.cloudflare.com/additional-record-types-available-with-cloudflare-dns/) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#page","headline":"DNS record types · Cloudflare DNS docs","description":"DNS record types supported by Cloudflare.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#page","headline":"DNS record types · Cloudflare DNS docs","description":"DNS record types supported by Cloudflare.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/reference/dns-record-types/","name":"DNS record types"}}]}
 ```

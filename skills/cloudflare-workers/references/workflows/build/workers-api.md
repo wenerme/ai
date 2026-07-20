@@ -1,7 +1,7 @@
 ---
 title: Workers API
 description: Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -124,8 +124,8 @@ After a `ReadableStream<Uint8Array>` object has been persisted within a step, it
 
 :::
 
-* [  JavaScript ](#tab-panel-13715)
-* [  TypeScript ](#tab-panel-13716)
+* [  JavaScript ](#tab-panel-14035)
+* [  TypeScript ](#tab-panel-14036)
 
 **JavaScript**
 
@@ -196,8 +196,8 @@ More information about the limits imposed on Workflow can be found in the [Workf
 
 * `step.waitForEvent(name: string, options: ): Promise<void>`\- `name` \- the name of the step. - `options` \- an object with properties for `type` (up to 100 characters [1](#user-content-fn-1)), which determines which event type this `waitForEvent` call will match on when calling `instance.sendEvent`, and an optional `timeout` property, which defines how long the `waitForEvent` call will block for before throwing a timeout exception. The default timeout is 24 hours.
 
-* [  JavaScript ](#tab-panel-13711)
-* [  TypeScript ](#tab-panel-13712)
+* [  JavaScript ](#tab-panel-14031)
+* [  TypeScript ](#tab-panel-14032)
 
 **JavaScript**
 
@@ -295,8 +295,8 @@ type WorkflowStepRollbackOptions<T = unknown> = {
 * `rollback` receives the original step context, the error that caused the Workflow to fail, and the step output returned by the forward step.
 * `rollbackConfig` applies retry and timeout settings to the rollback handler itself.
 
-* [  JavaScript ](#tab-panel-13719)
-* [  TypeScript ](#tab-panel-13720)
+* [  JavaScript ](#tab-panel-14039)
+* [  TypeScript ](#tab-panel-14040)
 
 **JavaScript**
 
@@ -389,8 +389,8 @@ Refer to the [step context documentation](https://developers.cloudflare.com/work
 
 Each workflow on Workers Paid supports 10,000 steps by default. You can increase this up to 25,000 steps by configuring `steps` within the `limits` property of your Workflow definition in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-13707)
-* [  wrangler.toml ](#tab-panel-13708)
+* [  wrangler.jsonc ](#tab-panel-14027)
+* [  wrangler.toml ](#tab-panel-14028)
 
 **JSONC**
 
@@ -441,8 +441,8 @@ You can bind to a Workflow by defining a `[[workflows]]` binding within your Wra
 
 For example, to bind to a Workflow called `workflows-starter` and to make it available on the `MY_WORKFLOW` variable to your Worker script, you would configure the following fields within the `[[workflows]]` binding definition:
 
-* [  wrangler.jsonc ](#tab-panel-13709)
-* [  wrangler.toml ](#tab-panel-13710)
+* [  wrangler.jsonc ](#tab-panel-14029)
+* [  wrangler.toml ](#tab-panel-14030)
 
 **JSONC**
 
@@ -452,7 +452,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
   "name": "workflows-starter",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-13",
+  "compatibility_date": "2026-07-20",
   "workflows": [
     {
       // name of your workflow
@@ -473,7 +473,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-13"
+compatibility_date = "2026-07-20"
 
 
 [[workflows]]
@@ -494,8 +494,8 @@ You can also bind to a Workflow that is defined in a different Worker script fro
 
 For example, if your Workflow is defined in a Worker script named `billing-worker`, but you are calling it from your `web-api-worker` script, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-13713)
-* [  wrangler.toml ](#tab-panel-13714)
+* [  wrangler.jsonc ](#tab-panel-14033)
+* [  wrangler.toml ](#tab-panel-14034)
 
 **JSONC**
 
@@ -505,7 +505,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
   "name": "web-api-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-13",
+  "compatibility_date": "2026-07-20",
   "workflows": [
     {
       // name of your workflow
@@ -529,7 +529,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-13"
+compatibility_date = "2026-07-20"
 
 
 [[workflows]]
@@ -900,8 +900,8 @@ interface WorkflowInstanceTerminateOptions {
 
 Return `void` on success; throws an exception if the Workflow is not running or is an errored state.
 
-* [  JavaScript ](#tab-panel-13717)
-* [  TypeScript ](#tab-panel-13718)
+* [  JavaScript ](#tab-panel-14037)
+* [  TypeScript ](#tab-panel-14038)
 
 **JavaScript**
 
@@ -997,6 +997,6 @@ If a Workflow enters rollback, the Workers API continues to report `status: "run
 1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/workers-api/","name":"Workers API"}}]}
 ```

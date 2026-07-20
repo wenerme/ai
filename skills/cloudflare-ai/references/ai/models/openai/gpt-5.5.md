@@ -1,7 +1,7 @@
 ---
 title: GPT-5.5
 description: GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,8 +31,8 @@ GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1414)
-* [ cURL ](#tab-panel-1415)
+* [ TypeScript ](#tab-panel-1432)
+* [ cURL ](#tab-panel-1433)
 
 **TypeScript**
 
@@ -59,8 +59,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1426)
-* [ Raw response ](#tab-panel-1427)
+* [ Output ](#tab-panel-1444)
+* [ Raw response ](#tab-panel-1445)
 
 The **three laws of thermodynamics** are:
 
@@ -127,8 +127,8 @@ There is also a **Zeroth Law**, which says that if two systems are each in therm
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-1416)
-* [ cURL ](#tab-panel-1417)
+* [ TypeScript ](#tab-panel-1434)
+* [ cURL ](#tab-panel-1435)
 
 **TypeScript**
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1428)
-* [ Raw response ](#tab-panel-1429)
+* [ Output ](#tab-panel-1446)
+* [ Raw response ](#tab-panel-1447)
 
 You can read a JSON file in Python using the built-in `json` module.
 
@@ -266,8 +266,8 @@ print(data["name"])
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-1420)
-* [ cURL ](#tab-panel-1421)
+* [ TypeScript ](#tab-panel-1438)
+* [ cURL ](#tab-panel-1439)
 
 **TypeScript**
 
@@ -317,8 +317,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1430)
-* [ Raw response ](#tab-panel-1431)
+* [ Output ](#tab-panel-1448)
+* [ Raw response ](#tab-panel-1449)
 
 Absolutely — the best stops depend on whether you take the **scenic coastal route** or the **faster inland route**.
 
@@ -405,8 +405,8 @@ Also, check current road conditions for **Highway 1 near Big Sur**, since closur
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-1418)
-* [ cURL ](#tab-panel-1419)
+* [ TypeScript ](#tab-panel-1436)
+* [ cURL ](#tab-panel-1437)
 
 **TypeScript**
 
@@ -442,8 +442,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1432)
-* [ Raw response ](#tab-panel-1433)
+* [ Output ](#tab-panel-1450)
+* [ Raw response ](#tab-panel-1451)
 
 Detective Mara Venn found the clue inside the grandfather clock, though the clock had not worked in twenty years.
 
@@ -504,8 +504,8 @@ Inside the vial was a single human tooth, etched with three tiny words in gold:
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1422)
-* [ cURL ](#tab-panel-1423)
+* [ TypeScript ](#tab-panel-1440)
+* [ cURL ](#tab-panel-1441)
 
 **TypeScript**
 
@@ -540,8 +540,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1436)
-* [ Raw response ](#tab-panel-1437)
+* [ Output ](#tab-panel-1454)
+* [ Raw response ](#tab-panel-1455)
 
 Recursion is when a function solves a problem by calling itself with a smaller or simpler version of the same problem.
 
@@ -4926,8 +4926,8 @@ So, recursion is like breaking a problem into smaller versions of itself until r
 
 **Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-1424)
-* [ cURL ](#tab-panel-1425)
+* [ TypeScript ](#tab-panel-1442)
+* [ cURL ](#tab-panel-1443)
 
 **TypeScript**
 
@@ -4959,8 +4959,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-1434)
-* [ Raw response ](#tab-panel-1435)
+* [ Output ](#tab-panel-1452)
+* [ Raw response ](#tab-panel-1453)
 
 Treating “this week” as **June 15–22, 2026**:
 
@@ -5309,8 +5309,8 @@ Schema variant
 
 ResponsesChat Completions
 
-* [ Input ](#tab-panel-1438)
-* [ Output ](#tab-panel-1439)
+* [ Input ](#tab-panel-1456)
+* [ Output ](#tab-panel-1457)
 
 ▶input
 
@@ -5471,6 +5471,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-inpu
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.5/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5/#page","headline":"GPT-5.5 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5/#page","headline":"GPT-5.5 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

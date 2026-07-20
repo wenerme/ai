@@ -1,7 +1,7 @@
 ---
 title: Sequence Analytics
 description: Track the order of API requests over time to discover user journeys and sequences.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -62,6 +62,6 @@ Sequence Analytics currently requires a session identifier and operations that A
 Sequences are currently limited to nine operations in length.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/#page","headline":"Sequence Analytics · Cloudflare API Shield docs","description":"Track the order of API requests over time to discover user journeys and sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/#page","headline":"Sequence Analytics · Cloudflare API Shield docs","description":"Track the order of API requests over time to discover user journeys and sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/sequence-analytics/","name":"Sequence Analytics"}}]}
 ```

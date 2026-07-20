@@ -1,7 +1,7 @@
 ---
 title: FLUX.2 [pro] Preview
 description: FLUX.2 [pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest [pro] weights with strong multi-reference support.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ FLUX.2 \[pro\] Preview is Black Forest Labs' recommended default for production 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-358)
-* [ cURL ](#tab-panel-359)
+* [ TypeScript ](#tab-panel-408)
+* [ cURL ](#tab-panel-409)
 
 **TypeScript**
 
@@ -60,8 +60,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-356)
-* [ Raw response ](#tab-panel-357)
+* [ Output ](#tab-panel-406)
+* [ Raw response ](#tab-panel-407)
 
 ![Simple Prompt](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/simple-prompt.jpeg)
 
@@ -81,8 +81,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Multi-Reference Editing**  — Multi-reference editing — combine two reference images in a single composition
 
-* [ TypeScript ](#tab-panel-364)
-* [ cURL ](#tab-panel-365)
+* [ TypeScript ](#tab-panel-414)
+* [ cURL ](#tab-panel-415)
 
 **TypeScript**
 
@@ -116,8 +116,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-360)
-* [ Raw response ](#tab-panel-361)
+* [ Output ](#tab-panel-410)
+* [ Raw response ](#tab-panel-411)
 
 ![Multi-Reference Editing](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/multi-reference-editing.jpeg)
 
@@ -135,8 +135,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Reproducible PNG Output**  — Seeded generation with PNG output for downstream editing pipelines
 
-* [ TypeScript ](#tab-panel-366)
-* [ cURL ](#tab-panel-367)
+* [ TypeScript ](#tab-panel-416)
+* [ cURL ](#tab-panel-417)
 
 **TypeScript**
 
@@ -162,8 +162,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-362)
-* [ Raw response ](#tab-panel-363)
+* [ Output ](#tab-panel-412)
+* [ Raw response ](#tab-panel-413)
 
 ![Reproducible PNG Output](https://examples.aig.cloudflare.com/black-forest-labs/flux-2-pro-preview/reproducible-png-output.png)
 
@@ -181,8 +181,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-368)
-* [ Output ](#tab-panel-369)
+* [ Input ](#tab-panel-418)
+* [ Output ](#tab-panel-419)
 
 prompt
 
@@ -223,6 +223,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-p
 Output [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/#page","headline":"FLUX.2 [pro] Preview (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \\[pro] weights with strong multi-reference support.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/#page","headline":"FLUX.2 [pro] Preview (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \\[pro] weights with strong multi-reference support.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

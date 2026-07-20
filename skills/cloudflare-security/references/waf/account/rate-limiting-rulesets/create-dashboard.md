@@ -1,7 +1,7 @@
 ---
 title: Create a rate limiting ruleset in the dashboard
 description: Create account-level rate limiting rulesets in the dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -77,6 +77,6 @@ The custom response has three settings:
 * **Response body**: The body of the response. Configure a valid body according to the response type you selected. The maximum field size is 30 KB.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/#page","headline":"Create a rate limiting ruleset in the dashboard for an account · Cloudflare Web Application Firewall (WAF) docs","description":"Create account-level rate limiting rulesets in the dashboard.","url":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/#page","headline":"Create a rate limiting ruleset in the dashboard for an account · Cloudflare Web Application Firewall (WAF) docs","description":"Create account-level rate limiting rulesets in the dashboard.","url":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/account/","name":"Account-level WAF configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/account/rate-limiting-rulesets/","name":"Rate limiting rulesets"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/account/rate-limiting-rulesets/create-dashboard/","name":"Create a rate limiting ruleset in the dashboard"}}]}
 ```

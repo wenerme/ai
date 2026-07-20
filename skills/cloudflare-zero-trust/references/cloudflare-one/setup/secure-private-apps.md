@@ -1,7 +1,7 @@
 ---
 title: Secure private apps
 description: Provide browser-based access to internal web applications, SSH servers, and remote desktops without installing software on user devices.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ Note
 For in-depth guidance on clientless access and advanced configuration, refer to the [Clientless access learning path](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/#page","headline":"Secure private apps · Cloudflare One docs","description":"Provide browser-based access to internal web applications, SSH servers, and remote desktops without installing software on user devices.","url":"https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/#page","headline":"Secure private apps · Cloudflare One docs","description":"Provide browser-based access to internal web applications, SSH servers, and remote desktops without installing software on user devices.","url":"https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/setup/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/setup/secure-private-apps/","name":"Secure private apps"}}]}
 ```

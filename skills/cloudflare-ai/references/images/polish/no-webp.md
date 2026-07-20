@@ -1,7 +1,7 @@
 ---
 title: WebP may be skipped
 description: Cloudflare Polish skips WebP conversion when it would increase file size or degrade image quality.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -55,6 +55,6 @@ Avoid applying multiple lossy optimization tools to images, before or after Poli
 For this reason Polish will not create the smallest possible file sizes. Instead, Polish aims to maximize the quality to file size ratio, to create the smallest possible files while preserving good quality. The quality level we stop at is carefully chosen to minimize visual distortion, while still having a high compression ratio.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/no-webp/#page","headline":"WebP may be skipped · Cloudflare Images docs","description":"Cloudflare Polish skips WebP conversion when it would increase file size or degrade image quality.","url":"https://developers.cloudflare.com/images/polish/no-webp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/no-webp/#page","headline":"WebP may be skipped · Cloudflare Images docs","description":"Cloudflare Polish skips WebP conversion when it would increase file size or degrade image quality.","url":"https://developers.cloudflare.com/images/polish/no-webp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/polish/","name":"Cloudflare Polish"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/polish/no-webp/","name":"WebP may be skipped"}}]}
 ```

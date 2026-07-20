@@ -1,7 +1,7 @@
 ---
 title: Maximum transmission unit and maximum segment size
 description: MTU and MSS values for Magic Transit tunnels.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -127,6 +127,6 @@ For IPsec tunnels, the value you need to specify depends on how your network is 
   * **On any IPsec/GRE tunnels with third parties on your Magic Transit prefix**: On the internal tunnel interface (most likely on a separate firewall behind the IPsec-terminating device in your premises) to reduce its current value by 140 bytes.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/#page","headline":"Maximum transmission unit and maximum segment size · Cloudflare Magic Transit docs","description":"MTU and MSS values for Magic Transit tunnels.","url":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","IPsec","UDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/#page","headline":"Maximum transmission unit and maximum segment size · Cloudflare Magic Transit docs","description":"MTU and MSS values for Magic Transit tunnels.","url":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","IPsec","UDP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/reference/mtu-mss/","name":"Maximum transmission unit and maximum segment size"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Conversation state and memory
 description: How agents store and recall information, including read-only context, writable short-form memory, searchable knowledge, and on-demand skills.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ The Session memory APIs currently use `agents/experimental/memory/session`. The 
 
 The most fundamental type of memory is the conversation itself: the messages between the user and the agent, the tool calls the agent made, and the results it received. The Session stores all of this in a tree-structured message history backed by a Session Provider, defaulting to SQLite.
 
-* [  JavaScript ](#tab-panel-5611)
-* [  TypeScript ](#tab-panel-5612)
+* [  JavaScript ](#tab-panel-5873)
+* [  TypeScript ](#tab-panel-5874)
 
 **JavaScript**
 
@@ -71,8 +71,8 @@ Messages are stored in a tree structure via `parent_id`, which enables branching
 
 The Session also provides full-text search across the conversation history:
 
-* [  JavaScript ](#tab-panel-5609)
-* [  TypeScript ](#tab-panel-5610)
+* [  JavaScript ](#tab-panel-5871)
+* [  TypeScript ](#tab-panel-5872)
 
 **JavaScript**
 
@@ -100,8 +100,8 @@ This is your traditional system prompt: the agent's identity, personality, and i
 
 A coding assistant might have a soul that defines its personality and constraints:
 
-* [  JavaScript ](#tab-panel-5613)
-* [  TypeScript ](#tab-panel-5614)
+* [  JavaScript ](#tab-panel-5875)
+* [  TypeScript ](#tab-panel-5876)
 
 **JavaScript**
 
@@ -137,8 +137,8 @@ const session = Session.create(this).withContext("soul", {
 
 Or load it from R2 so you can update the agent's personality without redeploying:
 
-* [  JavaScript ](#tab-panel-5615)
-* [  TypeScript ](#tab-panel-5616)
+* [  JavaScript ](#tab-panel-5877)
+* [  TypeScript ](#tab-panel-5878)
 
 **JavaScript**
 
@@ -172,8 +172,8 @@ Read-only blocks are defined by providing an object with only a `get()` method. 
 
 Think of this as a scratchpad the agent maintains for itself, a place to jot down things it needs to remember. Like how Claude Code keeps a todo list of tasks to work through, or how a customer support agent might track what it has learned about the user during the conversation.
 
-* [  JavaScript ](#tab-panel-5617)
-* [  TypeScript ](#tab-panel-5618)
+* [  JavaScript ](#tab-panel-5879)
+* [  TypeScript ](#tab-panel-5880)
 
 **JavaScript**
 
@@ -234,8 +234,8 @@ You provide a provider with a `search()` method. How that search works is entire
 
 The built-in `AgentSearchProvider` uses Durable Object SQLite with FTS5 as default:
 
-* [  JavaScript ](#tab-panel-5619)
-* [  TypeScript ](#tab-panel-5620)
+* [  JavaScript ](#tab-panel-5881)
+* [  TypeScript ](#tab-panel-5882)
 
 **JavaScript**
 
@@ -265,8 +265,8 @@ const session = Session.create(this).withContext("knowledge", {
 
 But you can implement your own provider backed by any search mechanism:
 
-* [  JavaScript ](#tab-panel-5625)
-* [  TypeScript ](#tab-panel-5626)
+* [  JavaScript ](#tab-panel-5887)
+* [  TypeScript ](#tab-panel-5888)
 
 **JavaScript**
 
@@ -352,8 +352,8 @@ Agent calls: load_context({ block: "skills", key: "deploy-checklist" })
 
 The built-in `R2SkillProvider` stores skills in a Cloudflare R2 bucket. Each skill is an R2 object with optional custom metadata for descriptions.
 
-* [  JavaScript ](#tab-panel-5631)
-* [  TypeScript ](#tab-panel-5632)
+* [  JavaScript ](#tab-panel-5893)
+* [  TypeScript ](#tab-panel-5894)
 
 **JavaScript**
 
@@ -413,8 +413,8 @@ The `prefix` option scopes the provider to a subdirectory in the bucket. Skill k
 
 Use `keys` to allowlist specific prefix-relative skills for `get()` and `load()`:
 
-* [  JavaScript ](#tab-panel-5621)
-* [  TypeScript ](#tab-panel-5622)
+* [  JavaScript ](#tab-panel-5883)
+* [  TypeScript ](#tab-panel-5884)
 
 **JavaScript**
 
@@ -436,8 +436,8 @@ new R2SkillProvider(env.SKILLS_BUCKET, {
 
 Add an R2 bucket binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5607)
-* [  wrangler.toml ](#tab-panel-5608)
+* [  wrangler.jsonc ](#tab-panel-5869)
+* [  wrangler.toml ](#tab-panel-5870)
 
 **JSONC**
 
@@ -469,8 +469,8 @@ wrangler r2 object put my-agent-skills/skills/style-guide --file ./docs/style-gu
 
 To add descriptions (shown in the metadata listing), set custom metadata on the R2 object:
 
-* [  JavaScript ](#tab-panel-5623)
-* [  TypeScript ](#tab-panel-5624)
+* [  JavaScript ](#tab-panel-5885)
+* [  TypeScript ](#tab-panel-5886)
 
 **JavaScript**
 
@@ -492,8 +492,8 @@ await env.SKILLS_BUCKET.put("skills/api-ref", content, {
 
 You can back skills with any storage by implementing the `SkillProvider` interface:
 
-* [  JavaScript ](#tab-panel-5637)
-* [  TypeScript ](#tab-panel-5638)
+* [  JavaScript ](#tab-panel-5899)
+* [  TypeScript ](#tab-panel-5900)
 
 **JavaScript**
 
@@ -604,8 +604,8 @@ The key distinction: skills are **lazy**. They cost nearly nothing in the system
 
 The Session automatically generates tools based on the provider types of your context blocks. You pass these tools to your LLM alongside your own application-specific tools:
 
-* [  JavaScript ](#tab-panel-5627)
-* [  TypeScript ](#tab-panel-5628)
+* [  JavaScript ](#tab-panel-5889)
+* [  TypeScript ](#tab-panel-5890)
 
 **JavaScript**
 
@@ -701,8 +701,8 @@ When the agent uses `set_context` to update a writable block, the underlying pro
 
 This means the system prompt stays stable throughout a multi-step tool-use turn, preserving the provider's prefix cache across every step.
 
-* [  JavaScript ](#tab-panel-5633)
-* [  TypeScript ](#tab-panel-5634)
+* [  JavaScript ](#tab-panel-5895)
+* [  TypeScript ](#tab-panel-5896)
 
 **JavaScript**
 
@@ -776,8 +776,8 @@ The key points:
 * **Boundary-aware**, compaction boundaries are shifted to avoid splitting tool call / tool result pairs.
 * **Configurable**, `protectHead` preserves the first N messages (usually the system context), and `tailTokenBudget` keeps the most recent messages intact.
 
-* [  JavaScript ](#tab-panel-5635)
-* [  TypeScript ](#tab-panel-5636)
+* [  JavaScript ](#tab-panel-5897)
+* [  TypeScript ](#tab-panel-5898)
 
 **JavaScript**
 
@@ -827,8 +827,8 @@ Micro-compaction works at the individual message level rather than across ranges
 
 **Read-time truncation**: `truncateOlderMessages()` shortens tool outputs and long text in older messages before sending them to the LLM. Recent messages (last 4 by default) are kept intact. This operates on a copy, stored messages are not mutated.
 
-* [  JavaScript ](#tab-panel-5629)
-* [  TypeScript ](#tab-panel-5630)
+* [  JavaScript ](#tab-panel-5891)
+* [  TypeScript ](#tab-panel-5892)
 
 **JavaScript**
 
@@ -863,6 +863,6 @@ const truncated = truncateOlderMessages(history);
 [ Think ](https://developers.cloudflare.com/agents/harnesses/think/) Opinionated chat agent with built-in Session integration via configureSession().
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/#page","headline":"Conversation state and memory · Cloudflare Agents docs","description":"How agents store and recall information, including read-only context, writable short-form memory, searchable knowledge, and on-demand skills.","url":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/#page","headline":"Conversation state and memory · Cloudflare Agents docs","description":"How agents store and recall information, including read-only context, writable short-form memory, searchable knowledge, and on-demand skills.","url":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/conversation-state-and-memory/","name":"Conversation state and memory"}}]}
 ```

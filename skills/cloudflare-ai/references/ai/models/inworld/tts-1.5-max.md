@@ -1,7 +1,7 @@
 ---
 title: Inworld TTS 1.5 Max
 description: Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Highest-quality text-to-speech with under 200ms latency, emotion control, and 15
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-790)
-* [ cURL ](#tab-panel-791)
+* [ TypeScript ](#tab-panel-840)
+* [ cURL ](#tab-panel-841)
 
 **TypeScript**
 
@@ -64,8 +64,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-786)
-* [ Raw response ](#tab-panel-787)
+* [ Output ](#tab-panel-836)
+* [ Raw response ](#tab-panel-837)
 
 ```json
 {
@@ -83,8 +83,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Slow Narration**  — Slower speech for narration
 
-* [ TypeScript ](#tab-panel-794)
-* [ cURL ](#tab-panel-795)
+* [ TypeScript ](#tab-panel-844)
+* [ cURL ](#tab-panel-845)
 
 **TypeScript**
 
@@ -120,8 +120,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-788)
-* [ Raw response ](#tab-panel-789)
+* [ Output ](#tab-panel-838)
+* [ Raw response ](#tab-panel-839)
 
 ```json
 {
@@ -137,8 +137,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Quality Audio**  — Higher sample rate for studio quality
 
-* [ TypeScript ](#tab-panel-798)
-* [ cURL ](#tab-panel-799)
+* [ TypeScript ](#tab-panel-848)
+* [ cURL ](#tab-panel-849)
 
 **TypeScript**
 
@@ -174,8 +174,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-792)
-* [ Raw response ](#tab-panel-793)
+* [ Output ](#tab-panel-842)
+* [ Raw response ](#tab-panel-843)
 
 ```json
 {
@@ -191,8 +191,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Text Normalization**  — Expand numbers and abbreviations before synthesis
 
-* [ TypeScript ](#tab-panel-800)
-* [ cURL ](#tab-panel-801)
+* [ TypeScript ](#tab-panel-850)
+* [ cURL ](#tab-panel-851)
 
 **TypeScript**
 
@@ -228,8 +228,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-796)
-* [ Raw response ](#tab-panel-797)
+* [ Output ](#tab-panel-846)
+* [ Raw response ](#tab-panel-847)
 
 ```json
 {
@@ -245,8 +245,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-802)
-* [ Output ](#tab-panel-803)
+* [ Input ](#tab-panel-852)
+* [ Output ](#tab-panel-853)
 
 text
 
@@ -295,6 +295,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema
 Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/#page","headline":"Inworld TTS 1.5 Max (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/#page","headline":"Inworld TTS 1.5 Max (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

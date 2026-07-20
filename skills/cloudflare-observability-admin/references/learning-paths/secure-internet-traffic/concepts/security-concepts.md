@@ -1,7 +1,7 @@
 ---
 title: What security features does Cloudflare provide?
 description: Explore Cloudflare Zero Trust security features.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -59,6 +59,6 @@ Cloudflare Browser Isolation seamlessly executes active webpage content in a sec
 For more information, refer to the [Learning Center ↗](https://www.cloudflare.com/learning/access-management/what-is-a-casb/) and [Browser Isolation documentation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/#page","headline":"What security features does Cloudflare provide? · Cloudflare Learning Paths","description":"Explore Cloudflare Zero Trust security features.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/#page","headline":"What security features does Cloudflare provide? · Cloudflare Learning Paths","description":"Explore Cloudflare Zero Trust security features.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/concepts/security-concepts/","name":"What security features does Cloudflare provide?"}}]}
 ```

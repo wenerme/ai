@@ -1,7 +1,7 @@
 ---
 title: Use Code Mode with TanStack AI
 description: Use @cloudflare/codemode/tanstack-ai to expose namespaced TanStack AI server tools through chat().
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,8 +36,8 @@ bun add @cloudflare/codemode @tanstack/ai @tanstack/ai-openai zod
 ```
 2. Add a Worker Loader binding to your Wrangler configuration:
 
-  * [  wrangler.jsonc ](#tab-panel-6813)
-  * [  wrangler.toml ](#tab-panel-6814)
+  * [  wrangler.jsonc ](#tab-panel-7087)
+  * [  wrangler.toml ](#tab-panel-7088)
 
 **JSONC**
 ```jsonc
@@ -46,7 +46,7 @@ bun add @cloudflare/codemode @tanstack/ai @tanstack/ai-openai zod
   "name": "tanstack-codemode",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -63,15 +63,15 @@ bun add @cloudflare/codemode @tanstack/ai @tanstack/ai-openai zod
 name = "tanstack-codemode"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
 ```
 3. Define TanStack AI server tools, group them into namespaces, and pass the Code Mode tool to `chat()`:
 
-  * [  JavaScript ](#tab-panel-6817)
-  * [  TypeScript ](#tab-panel-6818)
+  * [  JavaScript ](#tab-panel-7091)
+  * [  TypeScript ](#tab-panel-7092)
 
 **src/index.js**
 ```js
@@ -225,8 +225,8 @@ async () => {
 
 The optional second argument sets the sandbox namespace. For example, `tanstackTools([getWeather], "weather")` exposes `weather.get_weather()`. If you omit the name, Code Mode uses the default `codemode` namespace:
 
-* [  JavaScript ](#tab-panel-6815)
-* [  TypeScript ](#tab-panel-6816)
+* [  JavaScript ](#tab-panel-7089)
+* [  TypeScript ](#tab-panel-7090)
 
 **JavaScript**
 
@@ -261,6 +261,6 @@ The `createCodeTool()` integration does not pause execution for TanStack AI appr
 Tools with `needsApproval: false` remain available. The durable Code Mode runtime supports paused approvals through connector `requiresApproval` annotations, but this `createCodeTool()` integration does not use that approval flow.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/#page","headline":"Use Code Mode with TanStack AI · Cloudflare Agents docs","description":"Use @cloudflare/codemode/tanstack-ai to expose namespaced TanStack AI server tools through chat().","url":"https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/#page","headline":"Use Code Mode with TanStack AI · Cloudflare Agents docs","description":"Use @cloudflare/codemode/tanstack-ai to expose namespaced TanStack AI server tools through chat().","url":"https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/tanstack-ai/","name":"Use Code Mode with TanStack AI"}}]}
 ```

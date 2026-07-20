@@ -1,7 +1,7 @@
 ---
 title: CSAM Scanning Tool
 description: Scan cached content for child sexual abuse material.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -83,6 +83,6 @@ These actions are available to users with the following roles:
 [INHOPE ↗](https://www.inhope.org/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/reference/csam-scanning/#page","headline":"CSAM Scanning Tool · Cloudflare Cache (CDN) docs","description":"Scan cached content for child sexual abuse material.","url":"https://developers.cloudflare.com/cache/reference/csam-scanning/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/reference/csam-scanning/#page","headline":"CSAM Scanning Tool · Cloudflare Cache (CDN) docs","description":"Scan cached content for child sexual abuse material.","url":"https://developers.cloudflare.com/cache/reference/csam-scanning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/reference/csam-scanning/","name":"CSAM Scanning Tool"}}]}
 ```

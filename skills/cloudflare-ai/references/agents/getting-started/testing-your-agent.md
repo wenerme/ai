@@ -1,7 +1,7 @@
 ---
 title: Testing your Agents
 description: Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -137,6 +137,6 @@ This spins up a local development server that runs the same runtime as Cloudflar
 Visit the [wrangler dev ↗](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) docs to review the CLI flags and configuration options.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/#page","headline":"Testing your Agents · Cloudflare Agents docs","description":"Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.","url":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/#page","headline":"Testing your Agents · Cloudflare Agents docs","description":"Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.","url":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/getting-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/getting-started/testing-your-agent/","name":"Testing your Agents"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: General commands
 description: General Wrangler commands for authentication, telemetry, and shell completions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-12737)
-* [  pnpm ](#tab-panel-12738)
-* [  yarn ](#tab-panel-12739)
+* [  npm ](#tab-panel-13294)
+* [  pnpm ](#tab-panel-13295)
+* [  yarn ](#tab-panel-13296)
 
 ```sh
 npx wrangler docs [SEARCH]
@@ -292,9 +292,9 @@ Experimental
 
 Create or re-authenticate a named auth profile
 
-* [  npm ](#tab-panel-12740)
-* [  pnpm ](#tab-panel-12741)
-* [  yarn ](#tab-panel-12742)
+* [  npm ](#tab-panel-13297)
+* [  pnpm ](#tab-panel-13298)
+* [  yarn ](#tab-panel-13299)
 
 ```sh
 npx wrangler auth create [NAME]
@@ -347,9 +347,9 @@ Experimental
 
 Bind a named auth profile to a directory
 
-* [  npm ](#tab-panel-12743)
-* [  pnpm ](#tab-panel-12744)
-* [  yarn ](#tab-panel-12745)
+* [  npm ](#tab-panel-13300)
+* [  pnpm ](#tab-panel-13301)
+* [  yarn ](#tab-panel-13302)
 
 ```sh
 npx wrangler auth activate [NAME] [DIR]
@@ -396,9 +396,9 @@ Experimental
 
 Remove the auth profile binding from a directory
 
-* [  npm ](#tab-panel-12746)
-* [  pnpm ](#tab-panel-12747)
-* [  yarn ](#tab-panel-12748)
+* [  npm ](#tab-panel-13303)
+* [  pnpm ](#tab-panel-13304)
+* [  yarn ](#tab-panel-13305)
 
 ```sh
 npx wrangler auth deactivate [DIR]
@@ -443,9 +443,9 @@ Experimental
 
 List all auth profiles
 
-* [  npm ](#tab-panel-12749)
-* [  pnpm ](#tab-panel-12750)
-* [  yarn ](#tab-panel-12751)
+* [  npm ](#tab-panel-13306)
+* [  pnpm ](#tab-panel-13307)
+* [  yarn ](#tab-panel-13308)
 
 ```sh
 npx wrangler auth list
@@ -487,9 +487,9 @@ Experimental
 
 Delete a named auth profile
 
-* [  npm ](#tab-panel-12752)
-* [  pnpm ](#tab-panel-12753)
-* [  yarn ](#tab-panel-12754)
+* [  npm ](#tab-panel-13309)
+* [  pnpm ](#tab-panel-13310)
+* [  yarn ](#tab-panel-13311)
 
 ```sh
 npx wrangler auth delete [NAME]
@@ -533,9 +533,9 @@ Use a specific auth profile
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-12755)
-* [  pnpm ](#tab-panel-12756)
-* [  yarn ](#tab-panel-12757)
+* [  npm ](#tab-panel-13312)
+* [  pnpm ](#tab-panel-13313)
+* [  yarn ](#tab-panel-13314)
 
 ```sh
 npx wrangler whoami
@@ -635,10 +635,10 @@ wrangler complete <SHELL>
 
 Generate and add the completion script to your shell configuration file:
 
-* [ Bash ](#tab-panel-12733)
-* [ Zsh ](#tab-panel-12734)
-* [ Fish ](#tab-panel-12735)
-* [ PowerShell ](#tab-panel-12736)
+* [ Bash ](#tab-panel-13290)
+* [ Zsh ](#tab-panel-13291)
+* [ Fish ](#tab-panel-13292)
+* [ PowerShell ](#tab-panel-13293)
 
 ```sh
 wrangler complete bash >> ~/.bashrc
@@ -685,6 +685,6 @@ The following global flags work on every command:
   * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/general/","name":"General commands"}}]}
 ```

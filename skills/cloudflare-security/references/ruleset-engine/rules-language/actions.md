@@ -1,7 +1,7 @@
 ---
 title: Actions
 description: Learn about actions supported by the Rules language, including Block, Skip, and Log.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -45,6 +45,6 @@ Note
 Cloudflare Firewall Rules, now deprecated, supports a different set of actions, including the _Allow_ and _Bypass_ actions. Refer to [Firewall rules actions](https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/actions/#page","headline":"Actions reference · Cloudflare Ruleset Engine docs","description":"Learn about actions supported by the Rules language, including Block, Skip, and Log.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/actions/#page","headline":"Actions reference · Cloudflare Ruleset Engine docs","description":"Learn about actions supported by the Rules language, including Block, Skip, and Log.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rules-language/","name":"Rules language"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rules-language/actions/","name":"Actions"}}]}
 ```

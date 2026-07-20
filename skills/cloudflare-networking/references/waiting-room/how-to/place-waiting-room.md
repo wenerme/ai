@@ -1,7 +1,7 @@
 ---
 title: Place a waiting room
 description: Place a waiting room on a specific path or hostname.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ This means that – if you want a waiting room for `hello.example.com` – `hell
 If there are subpaths or query strings of the path you have configured for your waiting room that you would not like the waiting room to apply to, you can create a [Waiting Room bypass rule](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/#common-use-cases) to ensure that traffic is not queued at these parts of your site.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/#page","headline":"Place a waiting room · Cloudflare Waiting Room docs","description":"Place a waiting room on a specific path or hostname.","url":"https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/#page","headline":"Place a waiting room · Cloudflare Waiting Room docs","description":"Place a waiting room on a specific path or hostname.","url":"https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/place-waiting-room/","name":"Place a waiting room"}}]}
 ```

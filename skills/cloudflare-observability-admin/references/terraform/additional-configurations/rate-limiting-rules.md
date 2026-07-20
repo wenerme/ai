@@ -1,7 +1,7 @@
 ---
 title: Rate limiting rules configuration using Terraform
 description: Create and configure Cloudflare rate limiting rules at the zone or account level using Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -45,8 +45,8 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example creates a rate limiting rule in zone with ID `<ZONE_ID>` blocking traffic that exceeds the configured rate:
 
-* [ Terraform (v5) ](#tab-panel-11298)
-* [ Terraform (v4) ](#tab-panel-11299)
+* [ Terraform (v5) ](#tab-panel-11743)
+* [ Terraform (v4) ](#tab-panel-11744)
 
 Required API token permissions
 
@@ -120,8 +120,8 @@ Notes
 
 This example defines a [custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) with a single rate limiting rule in account with ID `<ACCOUNT_ID>` that blocks traffic for the `/api/` path exceeding the configured rate. The second `cloudflare_ruleset` resource defines an `execute` rule that deploys the custom ruleset for traffic addressed at `example.com`.
 
-* [ Terraform (v5) ](#tab-panel-11300)
-* [ Terraform (v4) ](#tab-panel-11301)
+* [ Terraform (v5) ](#tab-panel-11745)
+* [ Terraform (v4) ](#tab-panel-11746)
 
 Required API token permissions
 
@@ -240,8 +240,8 @@ This example creates a rate limiting rule in zone with ID `<ZONE_ID>` with:
 * A custom counting expression that includes a response field (`http.response.code`).
 * A custom JSON response for rate limited requests.
 
-* [ Terraform (v5) ](#tab-panel-11302)
-* [ Terraform (v4) ](#tab-panel-11303)
+* [ Terraform (v5) ](#tab-panel-11747)
+* [ Terraform (v4) ](#tab-panel-11748)
 
 Required API token permissions
 
@@ -320,6 +320,6 @@ To create another rate limiting rule, add a new `rules` object to the same `clou
 
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/#page","headline":"Rate limiting rules configuration using Terraform · Cloudflare Terraform docs","description":"Create and configure Cloudflare rate limiting rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/#page","headline":"Rate limiting rules configuration using Terraform · Cloudflare Terraform docs","description":"Create and configure Cloudflare rate limiting rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/rate-limiting-rules/","name":"Rate limiting rules configuration using Terraform"}}]}
 ```

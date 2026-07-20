@@ -1,7 +1,7 @@
 ---
 title: Connect Workers to Cloudflare Mesh
 description: Use a VPC Network binding with Cloudflare Mesh to reach private services from a Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -25,8 +25,8 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11705)
-* [  wrangler.toml ](#tab-panel-11706)
+* [  wrangler.jsonc ](#tab-panel-12144)
+* [  wrangler.toml ](#tab-panel-12145)
 
 **JSONC**
 
@@ -36,7 +36,7 @@ Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wr
   "name": "mesh-gateway",
   "main": "src/index.js",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "vpc_networks": [
     {
       "binding": "MESH",
@@ -54,7 +54,7 @@ Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wr
 name = "mesh-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[vpc_networks]]
@@ -153,6 +153,6 @@ curl https://mesh-gateway.workers.dev/api/metrics
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/#page","headline":"Connect Workers to Cloudflare Mesh · Cloudflare Workers VPC","description":"Use a VPC Network binding with Cloudflare Mesh to reach private services from a Worker.","url":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/#page","headline":"Connect Workers to Cloudflare Mesh · Cloudflare Workers VPC","description":"Use a VPC Network binding with Cloudflare Mesh to reach private services from a Worker.","url":"https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/connect-to-cloudflare-mesh/","name":"Connect Workers to Cloudflare Mesh"}}]}
 ```

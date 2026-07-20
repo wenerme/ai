@@ -1,7 +1,7 @@
 ---
 title: Blocking Triggers
 description: Prevent triggers from firing under specific conditions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,6 +31,6 @@ Note
 Blocking Triggers are useful if you wish to block specific actions, or even specific tools from firing, while keeping others active. If you wish to turn off Zaraz entirely on specific pages/domains/subdomains, or load Zaraz depending on other factors such as cookies, we recommend [loading Zaraz selectively](https://developers.cloudflare.com/zaraz/advanced/load-selectively/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/blocking-triggers/#page","headline":"Blocking Triggers · Cloudflare Zaraz docs","description":"Prevent triggers from firing under specific conditions.","url":"https://developers.cloudflare.com/zaraz/advanced/blocking-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/blocking-triggers/#page","headline":"Blocking Triggers · Cloudflare Zaraz docs","description":"Prevent triggers from firing under specific conditions.","url":"https://developers.cloudflare.com/zaraz/advanced/blocking-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/advanced/","name":"Advanced options"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/advanced/blocking-triggers/","name":"Blocking Triggers"}}]}
 ```

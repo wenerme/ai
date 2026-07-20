@@ -1,7 +1,7 @@
 ---
 title: Manage tags
 description: Create, update, and delete tags on Cloudflare resources.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -130,6 +130,6 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags" 
 This returns `204 No Content` on success. Only use `DELETE` when you want to remove all tags from a resource (for example, when decommissioning it).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/#page","headline":"Manage tags · Cloudflare Resource Tagging docs","description":"Create, update, and delete tags on Cloudflare resources.","url":"https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/#page","headline":"Manage tags · Cloudflare Resource Tagging docs","description":"Create, update, and delete tags on Cloudflare resources.","url":"https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/resource-tagging/","name":"Resource Tagging"}},{"@type":"ListItem","position":3,"item":{"@id":"/resource-tagging/how-to/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/resource-tagging/how-to/manage-tags/","name":"Manage tags"}}]}
 ```

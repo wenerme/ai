@@ -1,7 +1,7 @@
 ---
 title: gemma-3-12b-it
 description: Gemma 3 models are well-suited for a variety of text generation and image understanding tasks, including question answering, summarization, and reasoning. Gemma 3 models are multimodal, handling text and image input and generating text output, with a large, 128K context window, multilingual support in over 140 languages, and is available in more sizes than previous versions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5031)
-* [  TypeScript ](#tab-panel-5032)
-* [  Python ](#tab-panel-5033)
-* [  curl ](#tab-panel-5034)
+* [  Worker (Streaming) ](#tab-panel-5289)
+* [  TypeScript ](#tab-panel-5290)
+* [  Python ](#tab-panel-5291)
+* [  curl ](#tab-panel-5292)
 
 **TypeScript**
 
@@ -227,6 +227,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it/#page","headline":"gemma-3-12b-it (Google) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Gemma 3 models are well-suited for a variety of text generation and image understanding tasks, including question answering, summarization, and reasoning. Gemma 3 models are multimodal, handling text and image input and generating text output, with a large, 128K context window, multilingual support in over 140 languages, and is available in more sizes than previous versions.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it/#page","headline":"gemma-3-12b-it (Google) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Gemma 3 models are well-suited for a variety of text generation and image understanding tasks, including question answering, summarization, and reasoning. Gemma 3 models are multimodal, handling text and image input and generating text output, with a large, 128K context window, multilingual support in over 140 languages, and is available in more sizes than previous versions.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-3-12b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

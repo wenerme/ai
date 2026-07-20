@@ -1,7 +1,7 @@
 ---
 title: Recraft V4.1
 description: Recraft V4.1 generates art-directed images tuned for high aesthetics, with strong composition, accurate text rendering, and refined design taste. Fast and cost-efficient at standard resolution.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Recraft V4.1 generates art-directed images tuned for high aesthetics, with stron
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1668)
-* [ cURL ](#tab-panel-1669)
+* [ TypeScript ](#tab-panel-1814)
+* [ cURL ](#tab-panel-1815)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1666)
-* [ Raw response ](#tab-panel-1667)
+* [ Output ](#tab-panel-1812)
+* [ Raw response ](#tab-panel-1813)
 
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/simple-generation.png)
 
@@ -75,8 +75,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Scene Composition**  — Generate a complex compositional scene
 
-* [ TypeScript ](#tab-panel-1672)
-* [ cURL ](#tab-panel-1673)
+* [ TypeScript ](#tab-panel-1818)
+* [ cURL ](#tab-panel-1819)
 
 **TypeScript**
 
@@ -102,8 +102,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1670)
-* [ Raw response ](#tab-panel-1671)
+* [ Output ](#tab-panel-1816)
+* [ Raw response ](#tab-panel-1817)
 
 ![Scene Composition](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/scene-composition.png)
 
@@ -121,8 +121,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Custom Size**  — Specify output dimensions
 
-* [ TypeScript ](#tab-panel-1676)
-* [ cURL ](#tab-panel-1677)
+* [ TypeScript ](#tab-panel-1822)
+* [ cURL ](#tab-panel-1823)
 
 **TypeScript**
 
@@ -150,8 +150,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1674)
-* [ Raw response ](#tab-panel-1675)
+* [ Output ](#tab-panel-1820)
+* [ Raw response ](#tab-panel-1821)
 
 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/custom-size.png)
 
@@ -169,8 +169,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Color Controls**  — Guide generation with specific brand colors
 
-* [ TypeScript ](#tab-panel-1684)
-* [ cURL ](#tab-panel-1685)
+* [ TypeScript ](#tab-panel-1830)
+* [ cURL ](#tab-panel-1831)
 
 **TypeScript**
 
@@ -215,8 +215,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1678)
-* [ Raw response ](#tab-panel-1679)
+* [ Output ](#tab-panel-1824)
+* [ Raw response ](#tab-panel-1825)
 
 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/with-color-controls.png)
 
@@ -234,8 +234,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Background Color**  — Set a specific background color
 
-* [ TypeScript ](#tab-panel-1682)
-* [ cURL ](#tab-panel-1683)
+* [ TypeScript ](#tab-panel-1828)
+* [ cURL ](#tab-panel-1829)
 
 **TypeScript**
 
@@ -273,8 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1680)
-* [ Raw response ](#tab-panel-1681)
+* [ Output ](#tab-panel-1826)
+* [ Raw response ](#tab-panel-1827)
 
 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1/background-color.png)
 
@@ -292,8 +292,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1686)
-* [ Output ](#tab-panel-1687)
+* [ Input ](#tab-panel-1832)
+* [ Output ](#tab-panel-1833)
 
 prompt
 
@@ -326,6 +326,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/schema
 Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/#page","headline":"Recraft V4.1 (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4.1 generates art-directed images tuned for high aesthetics, with strong composition, accurate text rendering, and refined design taste. Fast and cost-efficient at standard resolution.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/#page","headline":"Recraft V4.1 (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4.1 generates art-directed images tuned for high aesthetics, with strong composition, accurate text rendering, and refined design taste. Fast and cost-efficient at standard resolution.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

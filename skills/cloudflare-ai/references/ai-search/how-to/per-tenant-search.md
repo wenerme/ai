@@ -1,7 +1,7 @@
 ---
 title: Multitenancy
 description: Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -86,8 +86,8 @@ AI Search limits the number of [instances per account](https://developers.cloudf
 
 Add the namespace binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7099)
-* [  wrangler.toml ](#tab-panel-7100)
+* [  wrangler.jsonc ](#tab-panel-7251)
+* [  wrangler.toml ](#tab-panel-7252)
 
 **JSONC**
 
@@ -121,8 +121,8 @@ Each tenant's instance holds documents that you upload directly to it, with no e
 
 Update `src/index.ts`. This Worker identifies the tenant from a request header, then creates, populates, searches, and deletes that tenant's instance.
 
-* [  JavaScript ](#tab-panel-7105)
-* [  TypeScript ](#tab-panel-7106)
+* [  JavaScript ](#tab-panel-7257)
+* [  TypeScript ](#tab-panel-7258)
 
 **src/index.js**
 
@@ -340,8 +340,8 @@ This option searches an existing instance, so create one named `shared-instance`
 
 Add the instance binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7101)
-* [  wrangler.toml ](#tab-panel-7102)
+* [  wrangler.jsonc ](#tab-panel-7253)
+* [  wrangler.toml ](#tab-panel-7254)
 
 **JSONC**
 
@@ -380,8 +380,8 @@ Organize your content by tenant using unique folder paths:
 
 Update `src/index.ts` to filter by the tenant's folder at query time:
 
-* [  JavaScript ](#tab-panel-7103)
-* [  TypeScript ](#tab-panel-7104)
+* [  JavaScript ](#tab-panel-7255)
+* [  TypeScript ](#tab-panel-7256)
 
 **src/index.js**
 
@@ -481,6 +481,6 @@ npx wrangler deploy
 [ Filtering ](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) Filter search results by metadata attributes at query time.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Multitenancy · Cloudflare AI Search docs","description":"Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Multitenancy · Cloudflare AI Search docs","description":"Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/per-tenant-search/","name":"Multitenancy"}}]}
 ```

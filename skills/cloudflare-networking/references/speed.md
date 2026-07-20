@@ -1,7 +1,7 @@
 ---
 title: Speed
 description: Optimize your website performance with Cloudflare Speed tools and settings.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -79,6 +79,6 @@ Learn about the quota limits for the number of tests you can run per month.
 Engage with other users and explore more resources on Cloudflare support forum.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/#page","headline":"Speed · Cloudflare Speed docs","description":"Optimize your website performance with Cloudflare Speed tools and settings.","url":"https://developers.cloudflare.com/speed/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/#page","headline":"Speed · Cloudflare Speed docs","description":"Optimize your website performance with Cloudflare Speed tools and settings.","url":"https://developers.cloudflare.com/speed/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}}]}
 ```

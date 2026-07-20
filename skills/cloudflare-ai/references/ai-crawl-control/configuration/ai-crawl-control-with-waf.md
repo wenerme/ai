@@ -1,7 +1,7 @@
 ---
 title: AI Crawl Control with Cloudflare WAF
 description: Use AI Crawl Control alongside WAF custom rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -91,8 +91,8 @@ You may have both of the following features enabled:
 
 In this scenario, you have two custom rules, each directing a different logic for handling AI crawlers. To resolve this issue:
 
-* [  New dashboard ](#tab-panel-6591)
-* [ Old dashboard ](#tab-panel-6592)
+* [  New dashboard ](#tab-panel-7101)
+* [ Old dashboard ](#tab-panel-7102)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -124,6 +124,6 @@ Warning
 Changes made directly to the WAF rule are not reflected back in the AI Crawl Control dashboard. Use the **Crawlers** tab as your primary interface, and reserve direct WAF edits for cases where the dashboard does not cover your requirements.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/#page","headline":"AI Crawl Control with Cloudflare WAF · Cloudflare AI Crawl Control docs","description":"Use AI Crawl Control alongside WAF custom rules.","url":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/#page","headline":"AI Crawl Control with Cloudflare WAF · Cloudflare AI Crawl Control docs","description":"Use AI Crawl Control alongside WAF custom rules.","url":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/configuration/ai-crawl-control-with-waf/","name":"AI Crawl Control with Cloudflare WAF"}}]}
 ```

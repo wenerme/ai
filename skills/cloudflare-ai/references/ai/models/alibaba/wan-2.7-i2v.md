@@ -1,7 +1,7 @@
 ---
 title: Wan 2.7 I2V
 description: Alibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Alibaba's Wan 2.7 image-to-video model that generates videos from a reference im
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-114)
-* [ cURL ](#tab-panel-115)
+* [ TypeScript ](#tab-panel-122)
+* [ cURL ](#tab-panel-123)
 
 **TypeScript**
 
@@ -59,8 +59,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-112)
-* [ Raw response ](#tab-panel-113)
+* [ Output ](#tab-panel-120)
+* [ Raw response ](#tab-panel-121)
 
 ```json
 {
@@ -78,8 +78,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High Resolution**  — Generate at 1080P with a longer duration
 
-* [ TypeScript ](#tab-panel-120)
-* [ cURL ](#tab-panel-121)
+* [ TypeScript ](#tab-panel-128)
+* [ cURL ](#tab-panel-129)
 
 **TypeScript**
 
@@ -112,8 +112,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-116)
-* [ Raw response ](#tab-panel-117)
+* [ Output ](#tab-panel-124)
+* [ Raw response ](#tab-panel-125)
 
 ```json
 {
@@ -129,8 +129,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Negative Prompt**  — Guide generation away from unwanted artifacts
 
-* [ TypeScript ](#tab-panel-124)
-* [ cURL ](#tab-panel-125)
+* [ TypeScript ](#tab-panel-132)
+* [ cURL ](#tab-panel-133)
 
 **TypeScript**
 
@@ -165,8 +165,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-118)
-* [ Raw response ](#tab-panel-119)
+* [ Output ](#tab-panel-126)
+* [ Raw response ](#tab-panel-127)
 
 ```json
 {
@@ -182,8 +182,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Reproducible Output**  — Use a fixed seed for reproducibility
 
-* [ TypeScript ](#tab-panel-126)
-* [ cURL ](#tab-panel-127)
+* [ TypeScript ](#tab-panel-134)
+* [ cURL ](#tab-panel-135)
 
 **TypeScript**
 
@@ -218,8 +218,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-122)
-* [ Raw response ](#tab-panel-123)
+* [ Output ](#tab-panel-130)
+* [ Raw response ](#tab-panel-131)
 
 ```json
 {
@@ -235,8 +235,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-128)
-* [ Output ](#tab-panel-129)
+* [ Input ](#tab-panel-136)
+* [ Output ](#tab-panel-137)
 
 image
 
@@ -277,6 +277,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/schema
 Output [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/#page","headline":"Wan 2.7 I2V (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds.","url":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/#page","headline":"Wan 2.7 I2V (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds.","url":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

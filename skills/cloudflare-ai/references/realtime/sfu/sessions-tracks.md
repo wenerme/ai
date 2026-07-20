@@ -1,7 +1,7 @@
 ---
 title: Sessions and Tracks
 description: Understand Realtime SFU core concepts including applications, sessions, and tracks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -51,6 +51,6 @@ While many SFUs utilize concepts like "rooms" to manage media streams among user
 Realtime distinguishes between the presence protocol and media flow, allowing for scalability and flexibility in real-time applications. This separation enables developers to craft tailored experiences, from intimate calls to massive, low-latency broadcasts.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/sessions-tracks/#page","headline":"Sessions and Tracks · Cloudflare Realtime docs","description":"Understand Realtime SFU core concepts including applications, sessions, and tracks.","url":"https://developers.cloudflare.com/realtime/sfu/sessions-tracks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/sessions-tracks/#page","headline":"Sessions and Tracks · Cloudflare Realtime docs","description":"Understand Realtime SFU core concepts including applications, sessions, and tracks.","url":"https://developers.cloudflare.com/realtime/sfu/sessions-tracks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/sfu/","name":"Realtime SFU"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/sfu/sessions-tracks/","name":"Sessions and Tracks"}}]}
 ```

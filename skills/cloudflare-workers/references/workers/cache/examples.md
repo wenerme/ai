@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 
 **Disable caching on the gateway entrypoint.** Because the cache sits in front of every entrypoint by default, the outer entrypoint would itself be cached — and the next request would be served from that outer cache without ever entering your gateway logic. Turn caching off for the gateway entrypoint in your Wrangler configuration, and leave it on for the inner entrypoint the gateway forwards to. Using `"default"` for the default export:
 
-* [  wrangler.jsonc ](#tab-panel-11865)
-* [  wrangler.toml ](#tab-panel-11866)
+* [  wrangler.jsonc ](#tab-panel-12263)
+* [  wrangler.toml ](#tab-panel-12264)
 
 **JSONC**
 
@@ -40,7 +40,7 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-20",
   "cache": { "enabled": true },
   "exports": {
     // The gateway runs on every request — no caching in front of it.
@@ -57,7 +57,7 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -100,8 +100,8 @@ The pattern below lets you authenticate every request and still serve cache hits
 
 Disable caching on the default entrypoint so it runs on every request to authenticate, and keep it on for `CachedAPI`:
 
-* [  wrangler.jsonc ](#tab-panel-11867)
-* [  wrangler.toml ](#tab-panel-11868)
+* [  wrangler.jsonc ](#tab-panel-12265)
+* [  wrangler.toml ](#tab-panel-12266)
 
 **JSONC**
 
@@ -110,7 +110,7 @@ Disable caching on the default entrypoint so it runs on every request to authent
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-20",
   "cache": { "enabled": true },
   "exports": {
     "default": { "type": "worker", "cache": { "enabled": false } },
@@ -125,7 +125,7 @@ Disable caching on the default entrypoint so it runs on every request to authent
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -148,8 +148,8 @@ type = "worker"
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-11875)
-* [  TypeScript ](#tab-panel-11876)
+* [  JavaScript ](#tab-panel-12273)
+* [  TypeScript ](#tab-panel-12274)
 
 **src/index.js**
 
@@ -290,8 +290,8 @@ This example is intentionally minimal to show the shape of the pattern. Sharing 
 
 If your endpoint returns user-specific data, pass the user identifier via `ctx.props`. Workers Caching includes `ctx.props` in the cache key, so each user gets their own cache entry and one user can never receive another user's cached response. This uses the same Wrangler configuration as the previous example — caching disabled on `default`, enabled on `CachedAPI`:
 
-* [  JavaScript ](#tab-panel-11879)
-* [  TypeScript ](#tab-panel-11880)
+* [  JavaScript ](#tab-panel-12277)
+* [  TypeScript ](#tab-panel-12278)
 
 **src/index.js**
 
@@ -432,8 +432,8 @@ For requests routed through Cloudflare's front line, this matters even more: the
 
 The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf.clientAcceptEncoding` before forwarding to the cached entrypoint. Disable caching on the gateway and enable it on `CachedAssets`:
 
-* [  wrangler.jsonc ](#tab-panel-11869)
-* [  wrangler.toml ](#tab-panel-11870)
+* [  wrangler.jsonc ](#tab-panel-12267)
+* [  wrangler.toml ](#tab-panel-12268)
 
 **JSONC**
 
@@ -442,7 +442,7 @@ The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-20",
   "cache": { "enabled": true },
   "exports": {
     "default": { "type": "worker", "cache": { "enabled": false } },
@@ -457,7 +457,7 @@ The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -480,8 +480,8 @@ type = "worker"
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-11881)
-* [  TypeScript ](#tab-panel-11882)
+* [  JavaScript ](#tab-panel-12279)
+* [  TypeScript ](#tab-panel-12280)
 
 **src/index.js**
 
@@ -635,8 +635,8 @@ So far the inner entrypoint has been a function of the request. The next example
 
 You can cache those responses by wrapping the Durable Object behind a named entrypoint and letting Workers Caching sit in front of the entrypoint. On a cache hit, the wrapper never runs and the Durable Object is never touched. Disable caching on the default (router) entrypoint and enable it on the `CachedLeaderboard` wrapper — the Durable Object itself is never cached and needs no cache configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11871)
-* [  wrangler.toml ](#tab-panel-11872)
+* [  wrangler.jsonc ](#tab-panel-12269)
+* [  wrangler.toml ](#tab-panel-12270)
 
 **JSONC**
 
@@ -645,7 +645,7 @@ You can cache those responses by wrapping the Durable Object behind a named entr
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-20",
   "cache": { "enabled": true },
   "exports": {
     "default": { "type": "worker", "cache": { "enabled": false } },
@@ -660,7 +660,7 @@ You can cache those responses by wrapping the Durable Object behind a named entr
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -683,8 +683,8 @@ type = "worker"
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-11883)
-* [  TypeScript ](#tab-panel-11884)
+* [  JavaScript ](#tab-panel-12281)
+* [  TypeScript ](#tab-panel-12282)
 
 **src/index.js**
 
@@ -940,8 +940,8 @@ Sometimes the origin you depend on is not yours. A third-party API, a SaaS endpo
 
 Workers Caching lets you put your own cache layer in front of that origin without changing anything on the origin side. The pattern is the same outer-plus-inner shape as the rest of this page: a thin entrypoint that forwards to the origin, with Workers Caching sitting in front of it and applying the `Cache-Control` directives you choose. The origin keeps its own caching contract with the rest of the world; your Worker just adds a second, user-controlled layer between your application and that origin. As with the other patterns, disable caching on the gateway and enable it on `CachedOrigin`:
 
-* [  wrangler.jsonc ](#tab-panel-11873)
-* [  wrangler.toml ](#tab-panel-11874)
+* [  wrangler.jsonc ](#tab-panel-12271)
+* [  wrangler.toml ](#tab-panel-12272)
 
 **JSONC**
 
@@ -950,7 +950,7 @@ Workers Caching lets you put your own cache layer in front of that origin withou
   "name": "my-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-06",
+  "compatibility_date": "2026-07-20",
   "cache": { "enabled": true },
   "exports": {
     "default": { "type": "worker", "cache": { "enabled": false } },
@@ -965,7 +965,7 @@ Workers Caching lets you put your own cache layer in front of that origin withou
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-20"
 
 
 [cache]
@@ -988,8 +988,8 @@ type = "worker"
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-11877)
-* [  TypeScript ](#tab-panel-11878)
+* [  JavaScript ](#tab-panel-12275)
+* [  TypeScript ](#tab-panel-12276)
 
 **src/index.js**
 
@@ -1145,6 +1145,6 @@ Each call between these entrypoints goes through its own cache stage. The chain 
 There is no fixed list of patterns. Workers Caching gives you a cache between every Worker entrypoint — what you build with that is up to you.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/examples/#page","headline":"Examples · Cloudflare Workers docs","description":"Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.","url":"https://developers.cloudflare.com/workers/cache/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/examples/#page","headline":"Examples · Cloudflare Workers docs","description":"Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.","url":"https://developers.cloudflare.com/workers/cache/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/examples/","name":"Examples"}}]}
 ```

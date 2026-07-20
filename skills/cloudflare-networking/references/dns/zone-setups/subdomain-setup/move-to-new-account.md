@@ -1,7 +1,7 @@
 ---
 title: Migrate to new account
 description: Move a subdomain zone to a different Cloudflare account.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,6 +22,6 @@ If you have already [created a standalone subdomain zone](https://developers.clo
 4. Update the `NS` records in the parent zone to refer to the newly assigned nameservers of the child zone.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/move-to-new-account/#page","headline":"Migrate subdomain to a new account · Cloudflare DNS docs","description":"Move a subdomain zone to a different Cloudflare account.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/move-to-new-account/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/move-to-new-account/#page","headline":"Migrate subdomain to a new account · Cloudflare DNS docs","description":"Move a subdomain zone to a different Cloudflare account.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/move-to-new-account/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/subdomain-setup/","name":"Subdomain setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/subdomain-setup/move-to-new-account/","name":"Migrate to new account"}}]}
 ```

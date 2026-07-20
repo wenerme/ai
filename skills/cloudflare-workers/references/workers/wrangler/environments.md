@@ -1,7 +1,7 @@
 ---
 title: Environments
 description: Use environments to create different configurations for the same Worker application.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -21,8 +21,8 @@ Review the following environments flow:
 1. Create a Worker, named `my-worker` for example.
 2. Create an environment, for example `dev`, in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), by adding a `[env.<ENV_NAME>]` section.
 
-  * [  wrangler.jsonc ](#tab-panel-13294)
-  * [  wrangler.toml ](#tab-panel-13295)
+  * [  wrangler.jsonc ](#tab-panel-13909)
+  * [  wrangler.toml ](#tab-panel-13910)
 
 **JSONC**
 ```jsonc
@@ -44,8 +44,8 @@ name = "my-worker"
 ```
 3. You can configure the `dev` environment with different values to the top-level environment. Refer [here](https://developers.cloudflare.com/workers/wrangler/configuration/#environments) for how different options are inherited - or not inherited - between environments. For example, to set a different route for a Worker in the `dev` environment:
 
-  * [  wrangler.jsonc ](#tab-panel-13296)
-  * [  wrangler.toml ](#tab-panel-13297)
+  * [  wrangler.jsonc ](#tab-panel-13911)
+  * [  wrangler.toml ](#tab-panel-13912)
 
 **JSONC**
 ```jsonc
@@ -82,8 +82,8 @@ For example, [bindings](https://developers.cloudflare.com/workers/runtime-apis/b
 
 Review the following example Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13304)
-* [  wrangler.toml ](#tab-panel-13305)
+* [  wrangler.jsonc ](#tab-panel-13919)
+* [  wrangler.toml ](#tab-panel-13920)
 
 **JSONC**
 
@@ -145,8 +145,8 @@ id = "<KV_NAMESPACE_ID_PRODUCTION>"
 
 To use a [service binding](https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings) that targets a Worker in a specific environment, you need to append the environment name to the target Worker name in the `service` field. This should be in the format `<worker-name>-<environment-name>`. In the example below, we have two Workers, both with a `staging` environment. `worker-b` has a service binding to `worker-a`. Note how the `service` field in the `staging` environment points to `worker-a-staging`, whereas the top-level service binding points to `worker-a`.
 
-* [  wrangler.jsonc ](#tab-panel-13298)
-* [  wrangler.toml ](#tab-panel-13299)
+* [  wrangler.jsonc ](#tab-panel-13913)
+* [  wrangler.toml ](#tab-panel-13914)
 
 **JSONC**
 
@@ -182,8 +182,8 @@ FOO = "<top-level-var>"
 FOO = "<staging-var>"
 ```
 
-* [  wrangler.jsonc ](#tab-panel-13302)
-* [  wrangler.toml ](#tab-panel-13303)
+* [  wrangler.jsonc ](#tab-panel-13917)
+* [  wrangler.toml ](#tab-panel-13918)
 
 **JSONC**
 
@@ -283,8 +283,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 The following Wrangler file adds two environments, `[env.staging]` and `[env.production]`, to the Wrangler file. If you are deploying to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/), you must provide a [route or routes key](https://developers.cloudflare.com/workers/wrangler/configuration/) for each environment.
 
-* [  wrangler.jsonc ](#tab-panel-13306)
-* [  wrangler.toml ](#tab-panel-13307)
+* [  wrangler.jsonc ](#tab-panel-13921)
+* [  wrangler.toml ](#tab-panel-13922)
 
 **JSONC**
 
@@ -397,8 +397,8 @@ export default {
 
 To deploy your code to your `*.workers.dev` subdomain, include `workers_dev = true` in the desired environment. Your Wrangler file may look like this:
 
-* [  wrangler.jsonc ](#tab-panel-13300)
-* [  wrangler.toml ](#tab-panel-13301)
+* [  wrangler.jsonc ](#tab-panel-13915)
+* [  wrangler.toml ](#tab-panel-13916)
 
 **JSONC**
 
@@ -454,6 +454,6 @@ Warning
 When you create a Worker via an environment, Cloudflare automatically creates an SSL certification for it. SSL certifications are discoverable and a matter of public record. Be careful when naming your environments that they do not contain sensitive information, such as, `migrating-service-from-company1-to-company2` or `company1-acquisition-load-test`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/environments/#page","headline":"Environments · Cloudflare Workers docs","description":"Use environments to create different configurations for the same Worker application.","url":"https://developers.cloudflare.com/workers/wrangler/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/environments/#page","headline":"Environments · Cloudflare Workers docs","description":"Use environments to create different configurations for the same Worker application.","url":"https://developers.cloudflare.com/workers/wrangler/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/environments/","name":"Environments"}}]}
 ```

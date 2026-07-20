@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up the Cloudflare WAF to protect your applications from attacks.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,8 +32,8 @@ If you are on a Free plan, you may skip to [5\. Review traffic in security dashb
 
 The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) protects against Common Vulnerabilities and Exposures (CVEs) and known attack vectors. This ruleset is designed to identify common attacks using signatures, while generating low false positives. Rule changes are published on a weekly basis in the [WAF changelog](https://developers.cloudflare.com/waf/change-log/). Cloudflare may also add rules at any time during emergency releases for high profile zero-day protection.
 
-* [  New dashboard ](#tab-panel-11269)
-* [ Old dashboard ](#tab-panel-11270)
+* [  New dashboard ](#tab-panel-12003)
+* [ Old dashboard ](#tab-panel-12004)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -122,8 +122,8 @@ Warning
 
 The Cloudflare OWASP Core Ruleset is prone to false positives and offers only marginal benefits when added on top of Cloudflare Managed Ruleset and WAF attack score. If you decide to deploy this managed ruleset, you will need to monitor and adjust its settings based on your traffic to prevent false positives.
 
-* [  New dashboard ](#tab-panel-11271)
-* [ Old dashboard ](#tab-panel-11272)
+* [  New dashboard ](#tab-panel-12005)
+* [ Old dashboard ](#tab-panel-12006)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -200,6 +200,6 @@ For more information on Cloudflare's API security features, refer to [Cloudflare
 For information on how to prevent attackers from discovering or overloading your origin server, refer to [Protect your origin server](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/) for a layered approach including proxied DNS, IP allowlisting, and authenticated origin pulls.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Set up the Cloudflare WAF to protect your applications from attacks.","url":"https://developers.cloudflare.com/waf/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Set up the Cloudflare WAF to protect your applications from attacks.","url":"https://developers.cloudflare.com/waf/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/get-started/","name":"Get started"}}]}
 ```

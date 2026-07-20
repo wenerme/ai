@@ -1,7 +1,7 @@
 ---
 title: Start from scratch
 description: Create a new Workers Sites project from scratch with Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,8 +48,8 @@ The template project contains the following files and directories:
 
 * Change the `name` property to the name of your project:
 
-  * [  wrangler.jsonc ](#tab-panel-11868)
-  * [  wrangler.toml ](#tab-panel-11869)
+  * [  wrangler.jsonc ](#tab-panel-12387)
+  * [  wrangler.toml ](#tab-panel-12388)
 
 **JSONC**
 ```jsonc
@@ -66,8 +66,8 @@ name = "my-site"
 ```
 * Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:
 
-  * [  wrangler.jsonc ](#tab-panel-11870)
-  * [  wrangler.toml ](#tab-panel-11871)
+  * [  wrangler.jsonc ](#tab-panel-12389)
+  * [  wrangler.toml ](#tab-panel-12390)
 
 **JSONC**
 ```jsonc
@@ -82,8 +82,8 @@ compatibility_date = "yyyy-mm-dd"
 ```
 * Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:
 
-  * [  wrangler.jsonc ](#tab-panel-11872)
-  * [  wrangler.toml ](#tab-panel-11873)
+  * [  wrangler.jsonc ](#tab-panel-12391)
+  * [  wrangler.toml ](#tab-panel-12392)
 
 **JSONC**
 ```jsonc
@@ -102,6 +102,6 @@ Refer to the documentation on [Routes](https://developers.cloudflare.com/workers
 Learn more about [configuring your project](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from scratch · Cloudflare Workers docs","description":"Create a new Workers Sites project from scratch with Wrangler.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from scratch · Cloudflare Workers docs","description":"Create a new Workers Sites project from scratch with Wrangler.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/sites/","name":"Workers Sites"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/sites/start-from-scratch/","name":"Start from scratch"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Load Balancing
 description: Distribute traffic across origin servers for availability and performance.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -93,6 +93,6 @@ Learn more about the structure of Cloudflare Load Balancers and their various co
 Module-based guidance on Cloudflare product workflows.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/#page","headline":"Cloudflare Load Balancing · Cloudflare Load Balancing docs","description":"Distribute traffic across origin servers for availability and performance.","url":"https://developers.cloudflare.com/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/#page","headline":"Cloudflare Load Balancing · Cloudflare Load Balancing docs","description":"Distribute traffic across origin servers for availability and performance.","url":"https://developers.cloudflare.com/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}}]}
 ```

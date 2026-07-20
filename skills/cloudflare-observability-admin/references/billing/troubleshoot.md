@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot
 description: Troubleshoot common Cloudflare billing issues.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -39,6 +39,6 @@ Understand what to do when a subscription is already scheduled for cancellation.
 Remove a payment method after active subscriptions, pending charges, or Registrar renewals are cleared.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/troubleshoot/#page","headline":"Troubleshoot · Cloudflare Billing docs","description":"Troubleshoot common Cloudflare billing issues.","url":"https://developers.cloudflare.com/billing/troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/troubleshoot/#page","headline":"Troubleshoot · Cloudflare Billing docs","description":"Troubleshoot common Cloudflare billing issues.","url":"https://developers.cloudflare.com/billing/troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}}]}
 ```

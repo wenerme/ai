@@ -1,7 +1,7 @@
 ---
 title: Storage
 description: Mount S3-compatible storage buckets into the Sandbox SDK filesystem for persistent data access.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,8 +38,8 @@ await sandbox.mountBucket(
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` (optional) - Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-10606)
-* [  TypeScript ](#tab-panel-10607)
+* [  JavaScript ](#tab-panel-11051)
+* [  TypeScript ](#tab-panel-11052)
 
 **JavaScript**
 
@@ -142,8 +142,8 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-10604)
-* [  TypeScript ](#tab-panel-10605)
+* [  JavaScript ](#tab-panel-11049)
+* [  TypeScript ](#tab-panel-11050)
 
 **JavaScript**
 
@@ -285,6 +285,6 @@ type BucketProvider = "r2" | "s3" | "gcs";
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- Read and write files
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/storage/#page","headline":"Storage · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible storage buckets into the Sandbox SDK filesystem for persistent data access.","url":"https://developers.cloudflare.com/sandbox/api/storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/storage/#page","headline":"Storage · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible storage buckets into the Sandbox SDK filesystem for persistent data access.","url":"https://developers.cloudflare.com/sandbox/api/storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/storage/","name":"Storage"}}]}
 ```

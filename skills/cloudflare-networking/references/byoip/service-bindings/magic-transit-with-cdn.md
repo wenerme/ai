@@ -1,7 +1,7 @@
 ---
 title: Use BYOIP with Magic Transit and CDN
 description: Service bindings allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline. It is important to note that traffic routed to the CDN pipeline is protected at Layers 3 and 4 by the inherent DDoS protection capabilities.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -135,8 +135,8 @@ Tip
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a zone on [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-7279)
-* [ API ](#tab-panel-7280)
+* [ Dashboard ](#tab-panel-7613)
+* [ API ](#tab-panel-7614)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -152,8 +152,8 @@ Make sure you have the correct Key/Token and permissions.
 
 ## 4\. Create DNS records
 
-* [ Dashboard ](#tab-panel-7281)
-* [ API ](#tab-panel-7282)
+* [ Dashboard ](#tab-panel-7615)
+* [ API ](#tab-panel-7616)
 
 To create a DNS record in the dashboard:
 
@@ -209,6 +209,6 @@ Leverage other features according to your needs. For example:
 * [Security analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/#page","headline":"Use BYOIP with Magic Transit and CDN · Cloudflare BYOIP docs","description":"Service bindings allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline. It is important to note that traffic routed to the CDN pipeline is protected at Layers 3 and 4 by the inherent DDoS protection capabilities.","url":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/#page","headline":"Use BYOIP with Magic Transit and CDN · Cloudflare BYOIP docs","description":"Service bindings allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline. It is important to note that traffic routed to the CDN pipeline is protected at Layers 3 and 4 by the inherent DDoS protection capabilities.","url":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/service-bindings/","name":"IP address service bindings"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/service-bindings/magic-transit-with-cdn/","name":"Use BYOIP with Magic Transit and CDN"}}]}
 ```

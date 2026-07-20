@@ -1,7 +1,7 @@
 ---
 title: mTLS related features
 description: Learn about mtls related features in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -171,6 +171,6 @@ Note
 Snippets do not support any [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and do not work with mTLS. However, you can [validate JSON web tokens (JWT)](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/#page","headline":"mTLS related features · Cloudflare Learning Paths","description":"Learn about mtls related features in this guide.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/#page","headline":"mTLS related features · Cloudflare Learning Paths","description":"Learn about mtls related features in this guide.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/mtls/mtls-app-security/","name":"mTLS with Application Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/mtls/mtls-app-security/related-features/","name":"mTLS related features"}}]}
 ```

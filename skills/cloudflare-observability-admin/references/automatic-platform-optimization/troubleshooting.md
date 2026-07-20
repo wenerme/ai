@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Resolve common APO issues including plugin detection and stale content.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,6 +34,6 @@ The Cloudflare APO WordPress plugin does not support multisite WordPress install
 If WordPress is returning stale content, [purge the cache](https://developers.cloudflare.com/cache/how-to/purge-cache/) when APO is enabled.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Automatic Platform Optimization docs","description":"Resolve common APO issues including plugin detection and stale content.","url":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Automatic Platform Optimization docs","description":"Resolve common APO issues including plugin detection and stale content.","url":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/troubleshooting/","name":"Troubleshooting"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Human-in-the-loop patterns
 description: Implement human-in-the-loop functionality using Workflow approvals, durable Code Mode approvals, and MCP elicitation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -41,8 +41,8 @@ Use [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) when yo
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-5833)
-* [  TypeScript ](#tab-panel-5834)
+* [  JavaScript ](#tab-panel-5851)
+* [  TypeScript ](#tab-panel-5852)
 
 **JavaScript**
 
@@ -159,8 +159,8 @@ export class ExpenseWorkflow extends AgentWorkflow<
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-5837)
-* [  TypeScript ](#tab-panel-5838)
+* [  JavaScript ](#tab-panel-5855)
+* [  TypeScript ](#tab-panel-5856)
 
 **JavaScript**
 
@@ -326,8 +326,8 @@ export class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-5825)
-* [  TypeScript ](#tab-panel-5826)
+* [  JavaScript ](#tab-panel-5843)
+* [  TypeScript ](#tab-panel-5844)
 
 **JavaScript**
 
@@ -363,8 +363,8 @@ if (!approval) {
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-5829)
-* [  TypeScript ](#tab-panel-5830)
+* [  JavaScript ](#tab-panel-5847)
+* [  TypeScript ](#tab-panel-5848)
 
 **JavaScript**
 
@@ -466,8 +466,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-5831)
-* [  TypeScript ](#tab-panel-5832)
+* [  JavaScript ](#tab-panel-5849)
+* [  TypeScript ](#tab-panel-5850)
 
 **JavaScript**
 
@@ -555,8 +555,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-5823)
-* [  wrangler.toml ](#tab-panel-5824)
+* [  wrangler.jsonc ](#tab-panel-5841)
+* [  wrangler.toml ](#tab-panel-5842)
 
 **JSONC**
 
@@ -565,7 +565,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
   "name": "expense-approval",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-14",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "durable_objects": {
     "bindings": [{ "name": "EXPENSE_AGENT", "class_name": "ExpenseAgent" }],
@@ -587,7 +587,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 name = "expense-approval"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-14"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -615,8 +615,8 @@ Form mode collects structured, non-sensitive input. URL mode asks the user to op
 
 Configure the user-facing handlers in `onStart()`:
 
-* [  JavaScript ](#tab-panel-5827)
-* [  TypeScript ](#tab-panel-5828)
+* [  JavaScript ](#tab-panel-5845)
+* [  TypeScript ](#tab-panel-5846)
 
 **JavaScript**
 
@@ -682,8 +682,8 @@ Use the [durable Code Mode runtime](https://developers.cloudflare.com/agents/too
 
 The following example marks a GitHub MCP tool as approval-gated, adds the connector to a durable runtime, and exposes methods that a UI can use to inspect, approve, or reject the pending action:
 
-* [  JavaScript ](#tab-panel-5839)
-* [  TypeScript ](#tab-panel-5840)
+* [  JavaScript ](#tab-panel-5857)
+* [  TypeScript ](#tab-panel-5858)
 
 **JavaScript**
 
@@ -941,8 +941,8 @@ function PendingApprovals() {
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-5835)
-* [  TypeScript ](#tab-panel-5836)
+* [  JavaScript ](#tab-panel-5853)
+* [  TypeScript ](#tab-panel-5854)
 
 **JavaScript**
 
@@ -1059,6 +1059,6 @@ class MultiApprovalAgent extends Agent<Env, State> {
 [ Durable Code Mode runtime ](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/) Pause model-generated code for approval before connector calls.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/#page","headline":"Human-in-the-loop patterns · Cloudflare Agents docs","description":"Implement human-in-the-loop functionality using Workflow approvals, durable Code Mode approvals, and MCP elicitation.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/#page","headline":"Human-in-the-loop patterns · Cloudflare Agents docs","description":"Implement human-in-the-loop functionality using Workflow approvals, durable Code Mode approvals, and MCP elicitation.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/agentic-patterns/","name":"Agentic patterns"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/concepts/agentic-patterns/human-in-the-loop/","name":"Human-in-the-loop patterns"}}]}
 ```

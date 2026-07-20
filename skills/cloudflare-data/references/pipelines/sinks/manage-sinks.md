@@ -1,7 +1,7 @@
 ---
 title: Manage sinks
 description: Create, configure, and manage sinks for data storage
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -94,6 +94,6 @@ Deleting a sink stops all data writes to that destination.
 * The R2 Data Catalog Sink does not currently support writing to R2 buckets into a different jurisdiction.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sinks/manage-sinks/#page","headline":"Manage sinks · Cloudflare Pipelines Docs","description":"Create, configure, and manage sinks for data storage","url":"https://developers.cloudflare.com/pipelines/sinks/manage-sinks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sinks/manage-sinks/#page","headline":"Manage sinks · Cloudflare Pipelines Docs","description":"Create, configure, and manage sinks for data storage","url":"https://developers.cloudflare.com/pipelines/sinks/manage-sinks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sinks/","name":"Sinks"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/sinks/manage-sinks/","name":"Manage sinks"}}]}
 ```

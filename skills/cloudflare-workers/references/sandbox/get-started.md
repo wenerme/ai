@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Create your first Sandbox SDK Worker to execute Python code in isolated containers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -189,8 +189,8 @@ Your sandbox is now deployed and can execute code in isolated containers.
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-10664)
-* [  wrangler.toml ](#tab-panel-10665)
+* [  wrangler.jsonc ](#tab-panel-11109)
+* [  wrangler.toml ](#tab-panel-11110)
 
 **JSONC**
 
@@ -260,6 +260,6 @@ Now that you have a working sandbox, explore more capabilities:
 * [API reference](https://developers.cloudflare.com/sandbox/api/) \- Complete API documentation
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Getting started · Cloudflare Sandbox SDK docs","description":"Create your first Sandbox SDK Worker to execute Python code in isolated containers.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Getting started · Cloudflare Sandbox SDK docs","description":"Create your first Sandbox SDK Worker to execute Python code in isolated containers.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/get-started/","name":"Getting started"}}]}
 ```

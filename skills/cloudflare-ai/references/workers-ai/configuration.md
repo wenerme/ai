@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Configure Workers AI bindings, API endpoints, and third-party integrations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,6 +18,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Hugging Face Chat UI ](https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/configuration/#page","headline":"Configuration · Cloudflare Workers AI docs","description":"Configure Workers AI bindings, API endpoints, and third-party integrations.","url":"https://developers.cloudflare.com/workers-ai/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/configuration/#page","headline":"Configuration · Cloudflare Workers AI docs","description":"Configure Workers AI bindings, API endpoints, and third-party integrations.","url":"https://developers.cloudflare.com/workers-ai/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/configuration/","name":"Configuration"}}]}
 ```

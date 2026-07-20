@@ -1,7 +1,7 @@
 ---
 title: Build an end to end data pipeline
 description: This tutorial demonstrates how to build a complete data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -69,8 +69,8 @@ npx wrangler login
 
 ## 2\. Create an R2 bucket and enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-10131)
-* [ Dashboard ](#tab-panel-10132)
+* [ Wrangler CLI ](#tab-panel-10576)
+* [ Dashboard ](#tab-panel-10577)
 
 Create an R2 bucket:
 
@@ -86,8 +86,8 @@ npx wrangler r2 bucket create fraud-pipeline
 
 Enable the catalog on your R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-10133)
-* [ Dashboard ](#tab-panel-10134)
+* [ Wrangler CLI ](#tab-panel-10578)
+* [ Dashboard ](#tab-panel-10579)
 
 ```bash
 npx wrangler r2 bucket catalog enable fraud-pipeline
@@ -113,8 +113,8 @@ export WAREHOUSE= #Paste your warehouse here
 
 R2 Data Catalog can automatically compact tables for you. In production event streaming use cases, it is common to end up with many small files, so it is recommended to enable compaction. Since the tutorial only demonstrates a sample use case, this step is optional.
 
-* [ Wrangler CLI ](#tab-panel-10135)
-* [ Dashboard ](#tab-panel-10136)
+* [ Wrangler CLI ](#tab-panel-10580)
+* [ Dashboard ](#tab-panel-10581)
 
 ```bash
 npx wrangler r2 bucket catalog compaction enable fraud-pipeline --token $WRANGLER_R2_SQL_AUTH_TOKEN
@@ -130,8 +130,8 @@ npx wrangler r2 bucket catalog compaction enable fraud-pipeline --token $WRANGLE
 
 ### 3.1\. Create the Pipeline stream
 
-* [ Wrangler CLI ](#tab-panel-10137)
-* [ Dashboard ](#tab-panel-10138)
+* [ Wrangler CLI ](#tab-panel-10582)
+* [ Dashboard ](#tab-panel-10583)
 
 First, create a schema file called `raw_transactions_schema.json` with the following `json` schema:
 
@@ -562,6 +562,6 @@ You have successfully built an end to end data pipeline using Cloudflare's data 
 4. **Query your tables with R2 SQL**: Access raw and processed data tables stored in R2 Data Catalog
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/#page","headline":"Build an end to end data pipeline · R2 SQL docs","description":"This tutorial demonstrates how to build a complete data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/#page","headline":"Build an end to end data pipeline · R2 SQL docs","description":"This tutorial demonstrates how to build a complete data pipeline using Cloudflare Pipelines, R2 Data Catalog, and R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/tutorials/end-to-end-pipeline/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/tutorials/end-to-end-pipeline/","name":"Build an end to end data pipeline"}}]}
 ```

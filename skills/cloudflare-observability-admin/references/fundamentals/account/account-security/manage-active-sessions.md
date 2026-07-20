@@ -1,7 +1,7 @@
 ---
 title: Manage active sessions
 description: View and revoke active login sessions associated with your Cloudflare account to maintain account security.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -45,6 +45,6 @@ To revoke a session:
 4. You will be prompted to enter your password before revoking the session.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/#page","headline":"Manage active sessions · Cloudflare Fundamentals docs","description":"View and revoke active login sessions associated with your Cloudflare account to maintain account security.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/#page","headline":"Manage active sessions · Cloudflare Fundamentals docs","description":"View and revoke active login sessions associated with your Cloudflare account to maintain account security.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/manage-active-sessions/","name":"Manage active sessions"}}]}
 ```

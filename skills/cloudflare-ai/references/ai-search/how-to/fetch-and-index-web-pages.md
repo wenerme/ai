@@ -1,7 +1,7 @@
 ---
 title: Fetch and index single web pages
 description: Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -69,8 +69,8 @@ cd fetch-and-index
 
 Add both bindings to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/): a [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) for Browser Run and an [AI Search namespace binding](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) for uploads. The `/content` endpoint runs through the browser binding, so you do not need to install Puppeteer or any other package.
 
-* [  wrangler.jsonc ](#tab-panel-6971)
-* [  wrangler.toml ](#tab-panel-6972)
+* [  wrangler.jsonc ](#tab-panel-7239)
+* [  wrangler.toml ](#tab-panel-7240)
 
 **JSONC**
 
@@ -80,7 +80,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
   "name": "fetch-and-index",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-08",
+  "compatibility_date": "2026-07-20",
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -101,7 +101,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
 name = "fetch-and-index"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-08"
+compatibility_date = "2026-07-20"
 
 
 [browser]
@@ -121,8 +121,8 @@ The browser binding's `quickAction` method requires a compatibility date of `202
 
 Update `src/index.ts`. This Worker has two routes: a request with a `?url=` parameter fetches that page's rendered HTML and indexes it, and a request to `/search?q=` queries the indexed content. Replace `my-instance` with the name of your instance.
 
-* [  JavaScript ](#tab-panel-6973)
-* [  TypeScript ](#tab-panel-6974)
+* [  JavaScript ](#tab-panel-7241)
+* [  TypeScript ](#tab-panel-7242)
 
 **src/index.js**
 
@@ -469,6 +469,6 @@ npx wrangler deploy
 [ Website data source ](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) Crawl and index a domain you own automatically, following its sitemap.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages · Cloudflare AI Search docs","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages · Cloudflare AI Search docs","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/fetch-and-index-web-pages/","name":"Fetch and index single web pages"}}]}
 ```

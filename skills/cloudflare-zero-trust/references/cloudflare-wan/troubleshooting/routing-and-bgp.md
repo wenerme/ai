@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot routing and BGP
 description: Troubleshoot WAN routing and BGP issues.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -219,6 +219,6 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 * [Cloudflare Status ↗](https://www.cloudflarestatus.com/): Maintenance and incident notifications
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/routing-and-bgp/#page","headline":"Troubleshoot routing and BGP · Cloudflare WAN docs","description":"Troubleshoot WAN routing and BGP issues.","url":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/routing-and-bgp/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/routing-and-bgp/#page","headline":"Troubleshoot routing and BGP · Cloudflare WAN docs","description":"Troubleshoot WAN routing and BGP issues.","url":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/routing-and-bgp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/troubleshooting/routing-and-bgp/","name":"Troubleshoot routing and BGP"}}]}
 ```

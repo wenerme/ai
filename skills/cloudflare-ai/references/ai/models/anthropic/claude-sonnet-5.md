@@ -1,7 +1,7 @@
 ---
 title: Claude Sonnet 5
 description: Claude Sonnet 5 is Anthropic's most agentic Sonnet model yet, built for coding, tool use, reasoning, and long-horizon professional work at lower cost than Opus-class models.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ Claude Sonnet 5 is Anthropic's most agentic Sonnet model yet, built for coding, 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-310)
-* [ cURL ](#tab-panel-311)
+* [ TypeScript ](#tab-panel-342)
+* [ cURL ](#tab-panel-343)
 
 **TypeScript**
 
@@ -62,8 +62,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-314)
-* [ Raw response ](#tab-panel-315)
+* [ Output ](#tab-panel-346)
+* [ Raw response ](#tab-panel-347)
 
 # The Three (Four) Laws of Thermodynamics
 
@@ -126,8 +126,8 @@ Here are the fundamental laws, typically numbered 1-3 (with a "Zeroth Law" often
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-312)
-* [ cURL ](#tab-panel-313)
+* [ TypeScript ](#tab-panel-344)
+* [ cURL ](#tab-panel-345)
 
 **TypeScript**
 
@@ -160,8 +160,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-318)
-* [ Raw response ](#tab-panel-319)
+* [ Output ](#tab-panel-350)
+* [ Raw response ](#tab-panel-351)
 
 # Reading a JSON File in Python
 
@@ -275,8 +275,8 @@ That covers the essentials — let me know if you need help with nested data, wr
 
 **Creative Writing with High Effort**  — Use adaptive thinking with high effort for deeper reasoning.
 
-* [ TypeScript ](#tab-panel-320)
-* [ cURL ](#tab-panel-321)
+* [ TypeScript ](#tab-panel-352)
+* [ cURL ](#tab-panel-353)
 
 **TypeScript**
 
@@ -320,8 +320,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-322)
-* [ Raw response ](#tab-panel-323)
+* [ Output ](#tab-panel-354)
+* [ Raw response ](#tab-panel-355)
 
 Detective Mara Voss crouched beside the overturned chair, careful not to let her coat brush the chalk outline still drying on the hardwood floor. The apartment smelled of lavender and something underneath it—copper, sharp and unmistakable.
 
@@ -366,8 +366,8 @@ Outside, rain began to tap against the window, and somewhere in the building, a 
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-316)
-* [ cURL ](#tab-panel-317)
+* [ TypeScript ](#tab-panel-348)
+* [ cURL ](#tab-panel-349)
 
 **TypeScript**
 
@@ -400,8 +400,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-324)
-* [ Raw response ](#tab-panel-325)
+* [ Output ](#tab-panel-356)
+* [ Raw response ](#tab-panel-357)
 
 # Recursion
 
@@ -666,8 +666,8 @@ Without a proper base case, recursion leads to **infinite recursion** and a stac
 
 ## Parameters
 
-* [ Input ](#tab-panel-326)
-* [ Output ](#tab-panel-327)
+* [ Input ](#tab-panel-358)
+* [ Output ](#tab-panel-359)
 
 ▶messages\[\]
 
@@ -724,6 +724,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/#page","headline":"Claude Sonnet 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 5 is Anthropic's most agentic Sonnet model yet, built for coding, tool use, reasoning, and long-horizon professional work at lower cost than Opus-class models.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/#page","headline":"Claude Sonnet 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 5 is Anthropic's most agentic Sonnet model yet, built for coding, tool use, reasoning, and long-horizon professional work at lower cost than Opus-class models.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

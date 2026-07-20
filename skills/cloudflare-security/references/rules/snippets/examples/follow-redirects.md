@@ -1,7 +1,7 @@
 ---
 title: Follow redirects from the origin
 description: Modify the fetch request to follow redirects from the origin, ensuring the client receives the final response.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ Note
 Snippets have a [maximum number of subrequests per invocation](https://developers.cloudflare.com/rules/snippets/#availability) which depends on your plan. If the origin server issues multiple redirects, each redirect subrequest will count towards this limit. When the number of subrequests exceeds the limit for your Cloudflare plan, you will receive a [1202 error](https://developers.cloudflare.com/rules/snippets/errors/#error-1202-snippets-exceeded-subrequests-limit). Ensure your origin configuration minimizes unnecessary redirects.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/follow-redirects/#page","headline":"Follow redirects from the origin · Cloudflare Rules docs","description":"Modify the fetch request to follow redirects from the origin, ensuring the client receives the final response.","url":"https://developers.cloudflare.com/rules/snippets/examples/follow-redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/follow-redirects/#page","headline":"Follow redirects from the origin · Cloudflare Rules docs","description":"Modify the fetch request to follow redirects from the origin, ensuring the client receives the final response.","url":"https://developers.cloudflare.com/rules/snippets/examples/follow-redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/examples/","name":"Snippets examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/snippets/examples/follow-redirects/","name":"Follow redirects from the origin"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Securely deliver applications with Cloudflare
 description: Cloudflare provides a complete suite of services around application performance, security, reliability, development, and Zero Trust.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -300,6 +300,6 @@ Figure 31 : Cloudflare Bot Management - Bot Analytics.
 Cloudflare offers comprehensive application performance and security services. Customers can easily onboard and start using all performance and security services by routing traffic to their origin server(s) through Clooudflare’s network. Additionally, Cloudflare offers multiple connectivity options including Cloudflare Tunnel for securely connecting origin server(s) to Cloudflare’s network.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/secure-application-delivery/#page","headline":"Securely deliver applications with Cloudflare · Cloudflare Reference Architecture docs","description":"Cloudflare provides a complete suite of services around application performance, security, reliability, development, and Zero Trust.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/secure-application-delivery/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/secure-application-delivery/#page","headline":"Securely deliver applications with Cloudflare · Cloudflare Reference Architecture docs","description":"Cloudflare provides a complete suite of services around application performance, security, reliability, development, and Zero Trust.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/secure-application-delivery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/design-guides/","name":"Design Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/design-guides/secure-application-delivery/","name":"Securely deliver applications with Cloudflare"}}]}
 ```

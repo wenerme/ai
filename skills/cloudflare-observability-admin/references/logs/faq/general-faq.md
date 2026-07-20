@@ -1,7 +1,7 @@
 ---
 title: General FAQ
 description: Review frequently asked questions about Cloudflare Logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ Yes, since Nov 25, 2025 [Audit Log v2](https://developers.cloudflare.com/fundame
 Requests are logged only after they successfully reach our proxy. It means that requests failing during the TCP or TLS handshake between the client and the Cloudflare proxy will not be available in the logs.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/faq/general-faq/#page","headline":"General FAQ · Cloudflare Logs docs","description":"Review frequently asked questions about Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/faq/general-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/faq/general-faq/#page","headline":"General FAQ · Cloudflare Logs docs","description":"Review frequently asked questions about Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/faq/general-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/faq/","name":"FAQ"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/faq/general-faq/","name":"General FAQ"}}]}
 ```

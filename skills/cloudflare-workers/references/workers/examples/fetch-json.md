@@ -1,7 +1,7 @@
 ---
 title: Fetch JSON
 description: Send a GET request and read in JSON from the response. Use to fetch external data.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,10 +20,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12011)
-* [  TypeScript ](#tab-panel-12012)
-* [  Python ](#tab-panel-12013)
-* [  Hono ](#tab-panel-12014)
+* [  JavaScript ](#tab-panel-12532)
+* [  TypeScript ](#tab-panel-12533)
+* [  Python ](#tab-panel-12534)
+* [  Hono ](#tab-panel-12535)
 
 **JavaScript**
 
@@ -160,6 +160,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/fetch-json/#page","headline":"Fetch JSON · Cloudflare Workers docs","description":"Send a GET request and read in JSON from the response. Use to fetch external data.","url":"https://developers.cloudflare.com/workers/examples/fetch-json/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/fetch-json/#page","headline":"Fetch JSON · Cloudflare Workers docs","description":"Send a GET request and read in JSON from the response. Use to fetch external data.","url":"https://developers.cloudflare.com/workers/examples/fetch-json/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/fetch-json/","name":"Fetch JSON"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Ensure device endpoint security
 description: Verify device posture before granting access.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ Device agent that routes traffic through Cloudflare's network. [Learn more about
 3. [Add posture checks to Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/company-security/device-security/#page","headline":"Ensure device endpoint security · Cloudflare use cases","description":"Verify device posture before granting access.","url":"https://developers.cloudflare.com/use-cases/company-security/device-security/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/company-security/device-security/#page","headline":"Ensure device endpoint security · Cloudflare use cases","description":"Verify device posture before granting access.","url":"https://developers.cloudflare.com/use-cases/company-security/device-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/company-security/","name":"Company security"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/company-security/device-security/","name":"Ensure device endpoint security"}}]}
 ```

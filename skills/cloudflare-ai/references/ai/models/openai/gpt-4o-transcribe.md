@@ -1,7 +1,7 @@
 ---
 title: GPT-4o Transcribe
 description: A speech-to-text model that uses GPT-4o to transcribe audio with improved word error rate and better language recognition compared to original Whisper models.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ A speech-to-text model that uses GPT-4o to transcribe audio with improved word e
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1096)
-* [ cURL ](#tab-panel-1097)
+* [ TypeScript ](#tab-panel-1172)
+* [ cURL ](#tab-panel-1173)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1094)
-* [ Raw response ](#tab-panel-1095)
+* [ Output ](#tab-panel-1170)
+* [ Raw response ](#tab-panel-1171)
 
 Hello
 
@@ -75,8 +75,8 @@ Hello
 
 **With Language Hint**  — Transcribe with a language hint for better accuracy
 
-* [ TypeScript ](#tab-panel-1100)
-* [ cURL ](#tab-panel-1101)
+* [ TypeScript ](#tab-panel-1176)
+* [ cURL ](#tab-panel-1177)
 
 **TypeScript**
 
@@ -101,8 +101,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1098)
-* [ Raw response ](#tab-panel-1099)
+* [ Output ](#tab-panel-1174)
+* [ Raw response ](#tab-panel-1175)
 
 Hello
 
@@ -120,8 +120,8 @@ Hello
 
 **Guided Transcription**  — Use a prompt to guide transcription style and context
 
-* [ TypeScript ](#tab-panel-1104)
-* [ cURL ](#tab-panel-1105)
+* [ TypeScript ](#tab-panel-1180)
+* [ cURL ](#tab-panel-1181)
 
 **TypeScript**
 
@@ -151,8 +151,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1102)
-* [ Raw response ](#tab-panel-1103)
+* [ Output ](#tab-panel-1178)
+* [ Raw response ](#tab-panel-1179)
 
 This is a technical discussion about Kubernetes and cloud-native architecture.
 
@@ -170,8 +170,8 @@ This is a technical discussion about Kubernetes and cloud-native architecture.
 
 **High Temperature**  — Higher temperature for more varied transcription
 
-* [ TypeScript ](#tab-panel-1108)
-* [ cURL ](#tab-panel-1109)
+* [ TypeScript ](#tab-panel-1184)
+* [ cURL ](#tab-panel-1185)
 
 **TypeScript**
 
@@ -196,8 +196,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1106)
-* [ Raw response ](#tab-panel-1107)
+* [ Output ](#tab-panel-1182)
+* [ Raw response ](#tab-panel-1183)
 
 Hello, world!
 
@@ -215,8 +215,8 @@ Hello, world!
 
 ## Parameters
 
-* [ Input ](#tab-panel-1110)
-* [ Output ](#tab-panel-1111)
+* [ Input ](#tab-panel-1186)
+* [ Output ](#tab-panel-1187)
 
 file
 
@@ -245,6 +245,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/s
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/#page","headline":"GPT-4o Transcribe (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"A speech-to-text model that uses GPT-4o to transcribe audio with improved word error rate and better language recognition compared to original Whisper models.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/#page","headline":"GPT-4o Transcribe (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"A speech-to-text model that uses GPT-4o to transcribe audio with improved word error rate and better language recognition compared to original Whisper models.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

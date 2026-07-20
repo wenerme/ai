@@ -1,7 +1,7 @@
 ---
 title: Durable Object Stub
 description: API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ Durable Objects implement E-order semantics, a concept deriving from the [E dist
 
 If an exception is thrown by a Durable Object stub all in-flight calls and future calls will fail with [exceptions](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/). To continue invoking methods on a remote Durable Object a Worker must recreate the stub. There are no ordering guarantees between different stubs.
 
-* [  JavaScript ](#tab-panel-8588)
-* [  TypeScript ](#tab-panel-8589)
+* [  JavaScript ](#tab-panel-8930)
+* [  TypeScript ](#tab-panel-8931)
 
 **JavaScript**
 
@@ -104,8 +104,8 @@ export default {
 
 `id` is a property of the `DurableObjectStub` corresponding to the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the stub.
 
-* [  JavaScript ](#tab-panel-8584)
-* [  Python ](#tab-panel-8585)
+* [  JavaScript ](#tab-panel-8926)
+* [  Python ](#tab-panel-8927)
 
 **JavaScript**
 
@@ -127,8 +127,8 @@ assert id.equals(stub.id), "This should always be true"
 
 `name` is an optional property of a `DurableObjectStub`, which returns a name if it was provided upon stub creation either directly via [DurableObjectNamespace::getByName](https://developers.cloudflare.com/durable-objects/api/namespace/#getbyname) or indirectly via a [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) created by [DurableObjectNamespace::idFromName](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the `DurableObjectStub` was constructed using [DurableObjectNamespace::newUniqueId](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
 
-* [  JavaScript ](#tab-panel-8586)
-* [  Python ](#tab-panel-8587)
+* [  JavaScript ](#tab-panel-8928)
+* [  Python ](#tab-panel-8929)
 
 **JavaScript**
 
@@ -149,6 +149,6 @@ assert stub.name == "foo", "This should always be true"
 * [Durable Objects: Easy, Fast, Correct – Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/stub/#page","headline":"Durable Object Stub · Cloudflare Durable Objects docs","description":"API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/stub/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/stub/#page","headline":"Durable Object Stub · Cloudflare Durable Objects docs","description":"API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/stub/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/stub/","name":"Durable Object Stub"}}]}
 ```

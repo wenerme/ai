@@ -1,7 +1,7 @@
 ---
 title: Get started with API Shield
 description: Set up API Shield to identify and address API security best practices.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -32,8 +32,8 @@ You must have specific entitlements to configure session identifiers or cookies 
 
 ### To set up session identifiers
 
-* [  New dashboard ](#tab-panel-6981)
-* [ Old dashboard ](#tab-panel-6982)
+* [  New dashboard ](#tab-panel-7326)
+* [ Old dashboard ](#tab-panel-7327)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -159,6 +159,6 @@ If you operate an API that requires or would benefit from an extra layer of prot
 [Mutual TLS (mTLS) authentication](https://developers.cloudflare.com/api-shield/security/mtls/) requires both the client and server to verify each other's identity using certificates. In standard TLS, only the server proves its identity. mTLS adds client verification, which is useful for devices like IoT hardware that do not authenticate via an identity provider.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/get-started/#page","headline":"Get started with API Shield · Cloudflare API Shield docs","description":"Set up API Shield to identify and address API security best practices.","url":"https://developers.cloudflare.com/api-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/get-started/#page","headline":"Get started with API Shield · Cloudflare API Shield docs","description":"Set up API Shield to identify and address API security best practices.","url":"https://developers.cloudflare.com/api-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/get-started/","name":"Get started with API Shield"}}]}
 ```

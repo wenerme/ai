@@ -1,7 +1,7 @@
 ---
 title: Artifacts
 description: Manage Artifacts namespaces, repositories, and repo-scoped tokens using Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ Manage [Artifacts](https://developers.cloudflare.com/artifacts/) namespaces, rep
 
 List Artifacts namespaces
 
-* [  npm ](#tab-panel-12641)
-* [  pnpm ](#tab-panel-12642)
-* [  yarn ](#tab-panel-12643)
+* [  npm ](#tab-panel-13135)
+* [  pnpm ](#tab-panel-13136)
+* [  yarn ](#tab-panel-13137)
 
 ```sh
 npx wrangler artifacts namespaces list
@@ -62,9 +62,9 @@ Use a specific auth profile
 
 Get an Artifacts namespace
 
-* [  npm ](#tab-panel-12644)
-* [  pnpm ](#tab-panel-12645)
-* [  yarn ](#tab-panel-12646)
+* [  npm ](#tab-panel-13138)
+* [  pnpm ](#tab-panel-13139)
+* [  yarn ](#tab-panel-13140)
 
 ```sh
 npx wrangler artifacts namespaces get [NAME]
@@ -108,9 +108,9 @@ Use a specific auth profile
 
 Create an Artifacts repository
 
-* [  npm ](#tab-panel-12647)
-* [  pnpm ](#tab-panel-12648)
-* [  yarn ](#tab-panel-12649)
+* [  npm ](#tab-panel-13141)
+* [  pnpm ](#tab-panel-13142)
+* [  yarn ](#tab-panel-13143)
 
 ```sh
 npx wrangler artifacts repos create [NAME]
@@ -162,9 +162,9 @@ Use a specific auth profile
 
 List Artifacts repositories in a namespace
 
-* [  npm ](#tab-panel-12650)
-* [  pnpm ](#tab-panel-12651)
-* [  yarn ](#tab-panel-12652)
+* [  npm ](#tab-panel-13144)
+* [  pnpm ](#tab-panel-13145)
+* [  yarn ](#tab-panel-13146)
 
 ```sh
 npx wrangler artifacts repos list
@@ -208,9 +208,9 @@ Use a specific auth profile
 
 Get an Artifacts repository
 
-* [  npm ](#tab-panel-12653)
-* [  pnpm ](#tab-panel-12654)
-* [  yarn ](#tab-panel-12655)
+* [  npm ](#tab-panel-13147)
+* [  pnpm ](#tab-panel-13148)
+* [  yarn ](#tab-panel-13149)
 
 ```sh
 npx wrangler artifacts repos get [NAME]
@@ -256,9 +256,9 @@ Use a specific auth profile
 
 Delete an Artifacts repository
 
-* [  npm ](#tab-panel-12656)
-* [  pnpm ](#tab-panel-12657)
-* [  yarn ](#tab-panel-12658)
+* [  npm ](#tab-panel-13150)
+* [  pnpm ](#tab-panel-13151)
+* [  yarn ](#tab-panel-13152)
 
 ```sh
 npx wrangler artifacts repos delete [NAME]
@@ -306,9 +306,9 @@ Use a specific auth profile
 
 Issue a repo-scoped Artifacts token
 
-* [  npm ](#tab-panel-12659)
-* [  pnpm ](#tab-panel-12660)
-* [  yarn ](#tab-panel-12661)
+* [  npm ](#tab-panel-13153)
+* [  pnpm ](#tab-panel-13154)
+* [  yarn ](#tab-panel-13155)
 
 ```sh
 npx wrangler artifacts repos issue-token [REPO]
@@ -355,6 +355,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/artifacts/#page","headline":"Artifacts · Cloudflare Workers docs","description":"Manage Artifacts namespaces, repositories, and repo-scoped tokens using Wrangler.","url":"https://developers.cloudflare.com/workers/wrangler/commands/artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/artifacts/#page","headline":"Artifacts · Cloudflare Workers docs","description":"Manage Artifacts namespaces, repositories, and repo-scoped tokens using Wrangler.","url":"https://developers.cloudflare.com/workers/wrangler/commands/artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/artifacts/","name":"Artifacts"}}]}
 ```

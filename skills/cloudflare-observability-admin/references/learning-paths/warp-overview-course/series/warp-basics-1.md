@@ -1,7 +1,7 @@
 ---
 title: Understand Cloudflare WARP basics
 description: Learn WARP client modes and configuration.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -12,8 +12,8 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 
 # Understand Cloudflare WARP basics
 
-* [ Watch this episode ](#tab-panel-10029)
-* [ Series overview ](#tab-panel-10030)
+* [ Watch this episode ](#tab-panel-10148)
+* [ Series overview ](#tab-panel-10149)
 
 In this episode, we explain the core features of the Cloudflare WARP client and how to troubleshoot common issues. After watching, you will have an understanding of the GUI, the differences between the consumer and corporate WARP, device profiles, the various operating modes of WARP, split tunneling and more.
 
@@ -54,6 +54,6 @@ Explore the following resources on WARP, device profiles, operating modes, and s
 [ Watch Episode 2: WARP diagnostic logs ](https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-2/) In this episode, we explain how to troubleshoot Cloudflare WARP by analyzing diagnostic logs and understand how the client connects in different modes.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-1/#page","headline":"Understand Cloudflare WARP basics · Cloudflare Learning Paths","description":"Learn WARP client modes and configuration.","url":"https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-1/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-1/#page","headline":"Understand Cloudflare WARP basics · Cloudflare Learning Paths","description":"Learn WARP client modes and configuration.","url":"https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/warp-overview-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/warp-overview-course/series/warp-basics-1/","name":"Understand Cloudflare WARP basics"}}]}
 ```

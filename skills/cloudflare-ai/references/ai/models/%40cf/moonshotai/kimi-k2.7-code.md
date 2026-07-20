@@ -1,7 +1,7 @@
 ---
 title: kimi-k2.7-code
 description: Kimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2341)
-* [  TypeScript ](#tab-panel-2342)
-* [  Python ](#tab-panel-2343)
-* [  curl ](#tab-panel-2344)
+* [  Worker (Streaming) ](#tab-panel-2487)
+* [  TypeScript ](#tab-panel-2488)
+* [  Python ](#tab-panel-2489)
+* [  curl ](#tab-panel-2490)
 
 **TypeScript**
 
@@ -140,8 +140,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-2345)
-* [ Output ](#tab-panel-2346)
+* [ Input ](#tab-panel-2491)
+* [ Output ](#tab-panel-2492)
 
 Input format
 
@@ -315,8 +315,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-2347)
-* [ Output ](#tab-panel-2348)
+* [ Input ](#tab-panel-2493)
+* [ Output ](#tab-panel-2494)
 
 Input format
 
@@ -470,8 +470,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-2349)
-* [ Output ](#tab-panel-2350)
+* [ Input ](#tab-panel-2495)
+* [ Output ](#tab-panel-2496)
 
 ▶requests\[\]
 
@@ -524,6 +524,6 @@ service\_tier
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.7-code/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/kimi-k2.7-code/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/moonshotai/kimi-k2.7-code/#page","headline":"kimi-k2.7-code (Moonshot AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Kimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.","url":"https://developers.cloudflare.com/ai/models/%40cf/moonshotai/kimi-k2.7-code/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/moonshotai/kimi-k2.7-code/#page","headline":"kimi-k2.7-code (Moonshot AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Kimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.","url":"https://developers.cloudflare.com/ai/models/%40cf/moonshotai/kimi-k2.7-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

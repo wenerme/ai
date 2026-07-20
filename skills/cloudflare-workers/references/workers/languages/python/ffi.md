@@ -1,7 +1,7 @@
 ---
 title: Foreign Function Interface (FFI)
 description: Call JavaScript APIs, bindings, and globals from Python Workers using the Pyodide FFI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ Bindings allow your Worker to interact with resources on the Cloudflare Develope
 
 For example, to access a [KV](https://developers.cloudflare.com/kv) namespace from a Python Worker, you would declare the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12169)
-* [  wrangler.toml ](#tab-panel-12170)
+* [  wrangler.jsonc ](#tab-panel-12690)
+* [  wrangler.toml ](#tab-panel-12691)
 
 **JSONC**
 
@@ -111,6 +111,6 @@ class Default(WorkerEntrypoint):
 Refer to the [Python examples](https://developers.cloudflare.com/workers/languages/python/examples/) to learn how to call into JavaScript functions from Python, including `console.log` and logging, providing options to `Response`, and parsing JSON.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/ffi/#page","headline":"Work with JavaScript objects, methods, functions and globals from Python Workers · Cloudflare Workers docs","description":"Call JavaScript APIs, bindings, and globals from Python Workers using the Pyodide FFI.","url":"https://developers.cloudflare.com/workers/languages/python/ffi/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/ffi/#page","headline":"Work with JavaScript objects, methods, functions and globals from Python Workers · Cloudflare Workers docs","description":"Call JavaScript APIs, bindings, and globals from Python Workers using the Pyodide FFI.","url":"https://developers.cloudflare.com/workers/languages/python/ffi/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/ffi/","name":"Foreign Function Interface (FFI)"}}]}
 ```

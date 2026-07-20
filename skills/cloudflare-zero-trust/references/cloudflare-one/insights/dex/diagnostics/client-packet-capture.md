@@ -1,7 +1,7 @@
 ---
 title: Client packet capture
 description: Feature documentation for Cloudflare One client packet captures.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -120,6 +120,6 @@ Cloudflare DEX will store the `warp-diag` log and its detection report per our [
 * On Windows, packet captures may fail on devices configured with a non-English language due to limitations with the underlying `PktMon` tool.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#page","headline":"Client packet capture · Cloudflare One docs","description":"Feature documentation for Cloudflare One client packet captures.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/#page","headline":"Client packet capture · Cloudflare One docs","description":"Feature documentation for Cloudflare One client packet captures.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/client-packet-capture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/diagnostics/","name":"Diagnostics"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/dex/diagnostics/client-packet-capture/","name":"Client packet capture"}}]}
 ```

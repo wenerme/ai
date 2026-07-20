@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Rules
 description: Use Cloudflare Rules to adjust requests and responses, configure settings, and trigger actions for specific requests.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -111,6 +111,6 @@ Cloudflare Workers provides a serverless execution environment that allows you t
 Compare available Cloudflare plans
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/rules/#page","headline":"Overview · Cloudflare Rules docs","description":"Use Cloudflare Rules to adjust requests and responses, configure settings, and trigger actions for specific requests.","url":"https://developers.cloudflare.com/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/rules/#page","headline":"Overview · Cloudflare Rules docs","description":"Use Cloudflare Rules to adjust requests and responses, configure settings, and trigger actions for specific requests.","url":"https://developers.cloudflare.com/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}}]}
 ```

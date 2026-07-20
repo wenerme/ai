@@ -1,7 +1,7 @@
 ---
 title: llama-3.2-11b-vision-instruct
 description:  The Llama 3.2-Vision instruction-tuned models are optimized for visual recognition, image reasoning, captioning, and answering general questions about an image.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -47,10 +47,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2391)
-* [  TypeScript ](#tab-panel-2392)
-* [  Python ](#tab-panel-2393)
-* [  curl ](#tab-panel-2394)
+* [  Worker (Streaming) ](#tab-panel-2537)
+* [  TypeScript ](#tab-panel-2538)
+* [  Python ](#tab-panel-2539)
+* [  curl ](#tab-panel-2540)
 
 **TypeScript**
 
@@ -239,6 +239,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.2-11b-vision-instruct/#page","headline":"llama-3.2-11b-vision-instruct (Meta) · Cloudflare AI docs · Cloudflare AI docs","description":"The Llama 3.2-Vision instruction-tuned models are optimized for visual recognition, image reasoning, captioning, and answering general questions about an image.","url":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.2-11b-vision-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.2-11b-vision-instruct/#page","headline":"llama-3.2-11b-vision-instruct (Meta) · Cloudflare AI docs · Cloudflare AI docs","description":"The Llama 3.2-Vision instruction-tuned models are optimized for visual recognition, image reasoning, captioning, and answering general questions about an image.","url":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.2-11b-vision-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

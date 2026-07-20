@@ -1,7 +1,7 @@
 ---
 title: Handle outbound traffic
 description: Intercept and handle outbound HTTP from containers using Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -231,10 +231,10 @@ For HTTPS interception to work, you must trust the CA file. The CA is ephemeral 
 
 If your base image does not already include the trust-store tooling, install the distro's `ca-certificates` package in your image first.
 
-* [ Debian/Ubuntu ](#tab-panel-8209)
-* [ Alpine ](#tab-panel-8210)
-* [ Fedora/RHEL ](#tab-panel-8211)
-* [ Arch ](#tab-panel-8212)
+* [ Debian/Ubuntu ](#tab-panel-8549)
+* [ Alpine ](#tab-panel-8550)
+* [ Fedora/RHEL ](#tab-panel-8551)
+* [ Arch ](#tab-panel-8552)
 
 **JavaScript**
 
@@ -465,6 +465,6 @@ The `Container` class calls these methods automatically when you use the functio
 * [Durable Object interface](https://developers.cloudflare.com/durable-objects/api/container/) — Full `ctx.container` API reference
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/#page","headline":"Handle outbound traffic · Cloudflare Containers docs","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/#page","headline":"Handle outbound traffic · Cloudflare Containers docs","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/outbound-traffic/","name":"Handle outbound traffic"}}]}
 ```

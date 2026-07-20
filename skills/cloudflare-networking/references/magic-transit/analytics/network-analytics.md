@@ -1,7 +1,7 @@
 ---
 title: Network Analytics
 description: Analyze Magic Transit traffic with Network Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -53,6 +53,6 @@ This lets you examine traffic from specific Source tunnels and/or Destination tu
 The label `Non-Tunnel traffic` is a placeholder, and Cloudflare will apply more specific labels to this category of traffic in the future.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/analytics/network-analytics/#page","headline":"Magic Transit Network Analytics · Cloudflare Magic Transit docs","description":"Analyze Magic Transit traffic with Network Analytics.","url":"https://developers.cloudflare.com/magic-transit/analytics/network-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/analytics/network-analytics/#page","headline":"Magic Transit Network Analytics · Cloudflare Magic Transit docs","description":"Analyze Magic Transit traffic with Network Analytics.","url":"https://developers.cloudflare.com/magic-transit/analytics/network-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/analytics/network-analytics/","name":"Network Analytics"}}]}
 ```

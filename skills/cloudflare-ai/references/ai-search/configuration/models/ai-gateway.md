@@ -1,7 +1,7 @@
 ---
 title: AI Gateway
 description: Observe and control the AI models your AI Search instance uses through the connected AI Gateway.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ Do not turn on [AI Gateway caching](https://developers.cloudflare.com/ai-gateway
 Similarly, avoid setting [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/) on this gateway. Rate limits apply to AI Search's own model calls, including the many embedding requests made while indexing, and can interrupt indexing and querying.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/#page","headline":"AI Gateway · Cloudflare AI Search docs","description":"Observe and control the AI models your AI Search instance uses through the connected AI Gateway.","url":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/#page","headline":"AI Gateway · Cloudflare AI Search docs","description":"Observe and control the AI models your AI Search instance uses through the connected AI Gateway.","url":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/models/","name":"Models"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/models/ai-gateway/","name":"AI Gateway"}}]}
 ```

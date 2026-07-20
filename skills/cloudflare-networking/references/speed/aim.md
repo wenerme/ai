@@ -1,7 +1,7 @@
 ---
 title: Aggregated Internet Measurement
 description: Measure real-world internet quality metrics for your visitors.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ You have a few options to help improve network scores.
 * **Contact your ISP.** If you’re using a wired connection or have a good connection to your wireless router and are still seeing issues, you may have issues with your Internet connection and should reach out to your ISP.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/aim/#page","headline":"Aggregated Internet Measurement · Cloudflare Speed docs","description":"Measure real-world internet quality metrics for your visitors.","url":"https://developers.cloudflare.com/speed/aim/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/aim/#page","headline":"Aggregated Internet Measurement · Cloudflare Speed docs","description":"Measure real-world internet quality metrics for your visitors.","url":"https://developers.cloudflare.com/speed/aim/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/aim/","name":"Aggregated Internet Measurement"}}]}
 ```

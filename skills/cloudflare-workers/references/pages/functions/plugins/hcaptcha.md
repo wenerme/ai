@@ -1,7 +1,7 @@
 ---
 title: hCaptcha
 description: Validate hCaptcha tokens in Pages Functions using the hCaptcha Pages Plugin.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -73,6 +73,6 @@ This Plugin only exposes a single route. It will be available wherever it is mou
 `data.hCaptcha` will be populated in subsequent Pages Functions (including for the `onError` function) with [the hCaptcha response object ↗](https://docs.hcaptcha.com/#verify-the-user-response-server-side).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/hcaptcha/#page","headline":"hCaptcha · Cloudflare Pages docs","description":"Validate hCaptcha tokens in Pages Functions using the hCaptcha Pages Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/hcaptcha/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/hcaptcha/#page","headline":"hCaptcha · Cloudflare Pages docs","description":"Validate hCaptcha tokens in Pages Functions using the hCaptcha Pages Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/hcaptcha/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/hcaptcha/","name":"hCaptcha"}}]}
 ```

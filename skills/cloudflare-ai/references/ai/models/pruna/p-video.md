@@ -1,7 +1,7 @@
 ---
 title: P-Video
 description: Pruna's P-Video is a premium video generation model supporting text-to-video, image-to-video, and audio-conditioned generation up to 1080p at 24 or 48 fps, with configurable duration up to 20 seconds.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ Pruna's P-Video is a premium video generation model supporting text-to-video, im
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1600)
-* [ cURL ](#tab-panel-1601)
+* [ TypeScript ](#tab-panel-1746)
+* [ cURL ](#tab-panel-1747)
 
 **TypeScript**
 
@@ -62,8 +62,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1598)
-* [ Raw response ](#tab-panel-1599)
+* [ Output ](#tab-panel-1744)
+* [ Raw response ](#tab-panel-1745)
 
 ```json
 {
@@ -79,8 +79,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1602)
-* [ Output ](#tab-panel-1603)
+* [ Input ](#tab-panel-1748)
+* [ Output ](#tab-panel-1749)
 
 prompt
 
@@ -145,6 +145,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/pruna/p-video/schema-input
 Output [ ](https://developers.cloudflare.com/ai/models/pruna/p-video/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-video/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-video/#page","headline":"P-Video (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Video is a premium video generation model supporting text-to-video, image-to-video, and audio-conditioned generation up to 1080p at 24 or 48 fps, with configurable duration up to 20 seconds.","url":"https://developers.cloudflare.com/ai/models/pruna/p-video/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-video/#page","headline":"P-Video (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Video is a premium video generation model supporting text-to-video, image-to-video, and audio-conditioned generation up to 1080p at 24 or 48 fps, with configurable duration up to 20 seconds.","url":"https://developers.cloudflare.com/ai/models/pruna/p-video/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

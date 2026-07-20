@@ -1,7 +1,7 @@
 ---
 title: Secure your Stream
 description: Restrict access to Cloudflare Stream videos using signed URLs and tokens.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -54,8 +54,8 @@ Response:
 
 You can also require signed URLs using the Stream binding in your Worker. Refer to [Bind to Workers API](https://developers.cloudflare.com/stream/manage-video-library/bindings/) for setup instructions.
 
-* [  JavaScript ](#tab-panel-11272)
-* [  TypeScript ](#tab-panel-11273)
+* [  JavaScript ](#tab-panel-11717)
+* [  TypeScript ](#tab-panel-11718)
 
 **JavaScript**
 
@@ -118,8 +118,8 @@ You will see a response similar to this if the request succeeds:
 
 You can generate a signed token using the Stream binding:
 
-* [  JavaScript ](#tab-panel-11274)
-* [  TypeScript ](#tab-panel-11275)
+* [  JavaScript ](#tab-panel-11719)
+* [  TypeScript ](#tab-panel-11720)
 
 **JavaScript**
 
@@ -210,8 +210,8 @@ If you are using the Stream binding in your Worker, you can generate signed toke
 
 Refer to [Bind to Workers API](https://developers.cloudflare.com/stream/manage-video-library/bindings/) for setup instructions.
 
-* [  JavaScript ](#tab-panel-11276)
-* [  TypeScript ](#tab-panel-11277)
+* [  JavaScript ](#tab-panel-11721)
+* [  TypeScript ](#tab-panel-11722)
 
 **JavaScript**
 
@@ -491,8 +491,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/{video_ui
 
 You can also set allowed origins using the Stream binding:
 
-* [  JavaScript ](#tab-panel-11278)
-* [  TypeScript ](#tab-panel-11279)
+* [  JavaScript ](#tab-panel-11723)
+* [  TypeScript ](#tab-panel-11724)
 
 **JavaScript**
 
@@ -529,6 +529,6 @@ The Allowed Origins feature lets you specify which origins are allowed for playb
 Combining signed URLs with embedding restrictions allows you to strongly control how your videos are viewed. This lets you serve only trusted users while preventing the signed URL from being hosted on an unknown site.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/#page","headline":"Secure your Stream · Cloudflare Stream docs","description":"Restrict access to Cloudflare Stream videos using signed URLs and tokens.","url":"https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/#page","headline":"Secure your Stream · Cloudflare Stream docs","description":"Restrict access to Cloudflare Stream videos using signed URLs and tokens.","url":"https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/viewing-videos/","name":"Play video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/viewing-videos/securing-your-stream/","name":"Secure your Stream"}}]}
 ```

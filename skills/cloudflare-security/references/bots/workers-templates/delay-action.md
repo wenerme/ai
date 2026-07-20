@@ -1,7 +1,7 @@
 ---
 title: Delay action
 description: Use a Worker to add configurable delays to requests with low bot scores.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ Customers with a Bot Management and a [Workers](https://developers.cloudflare.co
 
 The template sets a minimum and maximum delay, and delays requests where the bot score is less than 30 and the URI path starts with `/exampleURI`.
 
-* [  JavaScript ](#tab-panel-7178)
-* [  TypeScript ](#tab-panel-7179)
+* [  JavaScript ](#tab-panel-7507)
+* [  TypeScript ](#tab-panel-7508)
 
 **JavaScript**
 
@@ -85,6 +85,6 @@ export default {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/workers-templates/delay-action/#page","headline":"Delay action · Cloudflare bot solutions docs","description":"Use a Worker to add configurable delays to requests with low bot scores.","url":"https://developers.cloudflare.com/bots/workers-templates/delay-action/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/workers-templates/delay-action/#page","headline":"Delay action · Cloudflare bot solutions docs","description":"Use a Worker to add configurable delays to requests with low bot scores.","url":"https://developers.cloudflare.com/bots/workers-templates/delay-action/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/workers-templates/","name":"Workers templates"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/workers-templates/delay-action/","name":"Delay action"}}]}
 ```

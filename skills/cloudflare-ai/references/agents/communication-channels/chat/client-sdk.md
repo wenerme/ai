@@ -1,7 +1,7 @@
 ---
 title: Client SDK
 description: Connect to Cloudflare Agents from browsers or server runtimes using useAgent, AgentClient, and agentFetch.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -35,8 +35,8 @@ All clients provide:
 
 ### React
 
-* [  JavaScript ](#tab-panel-5463)
-* [  TypeScript ](#tab-panel-5464)
+* [  JavaScript ](#tab-panel-5723)
+* [  TypeScript ](#tab-panel-5724)
 
 **JavaScript**
 
@@ -92,8 +92,8 @@ function Chat() {
 
 ### Vanilla JavaScript
 
-* [  JavaScript ](#tab-panel-5459)
-* [  TypeScript ](#tab-panel-5460)
+* [  JavaScript ](#tab-panel-5719)
+* [  TypeScript ](#tab-panel-5720)
 
 **JavaScript**
 
@@ -141,8 +141,8 @@ const response = await client.call("sendMessage", ["Hello!"]);
 
 The `agent` parameter is your agent class name. It is automatically converted from camelCase to kebab-case for the URL:
 
-* [  JavaScript ](#tab-panel-5455)
-* [  TypeScript ](#tab-panel-5456)
+* [  JavaScript ](#tab-panel-5715)
+* [  TypeScript ](#tab-panel-5716)
 
 **JavaScript**
 
@@ -166,8 +166,8 @@ useAgent({ agent: "LOUD_AGENT" }); // → /agents/loud-agent/...
 
 The `name` parameter identifies a specific agent instance. If omitted, defaults to `"default"`:
 
-* [  JavaScript ](#tab-panel-5457)
-* [  TypeScript ](#tab-panel-5458)
+* [  JavaScript ](#tab-panel-5717)
+* [  TypeScript ](#tab-panel-5718)
 
 **JavaScript**
 
@@ -203,8 +203,8 @@ useAgent({ agent: "ChatAgent" });
 
 Both `useAgent` and `AgentClient` accept connection options:
 
-* [  JavaScript ](#tab-panel-5473)
-* [  TypeScript ](#tab-panel-5474)
+* [  JavaScript ](#tab-panel-5733)
+* [  TypeScript ](#tab-panel-5734)
 
 **JavaScript**
 
@@ -264,8 +264,8 @@ useAgent({
 
 For authentication tokens or other async data, pass a function that returns a Promise:
 
-* [  JavaScript ](#tab-panel-5469)
-* [  TypeScript ](#tab-panel-5470)
+* [  JavaScript ](#tab-panel-5729)
+* [  TypeScript ](#tab-panel-5730)
 
 **JavaScript**
 
@@ -334,8 +334,8 @@ Agents can maintain state that syncs bidirectionally with all connected clients.
 
 Both `useAgent` and `AgentClient` expose a `state` property that reflects the current agent state. It starts as `undefined` until the first state message is received from the server.
 
-* [  JavaScript ](#tab-panel-5461)
-* [  TypeScript ](#tab-panel-5462)
+* [  JavaScript ](#tab-panel-5721)
+* [  TypeScript ](#tab-panel-5722)
 
 **JavaScript**
 
@@ -361,8 +361,8 @@ With `useAgent`, state updates trigger a React re-render, so `agent.state` alway
 
 ### Receiving state updates
 
-* [  JavaScript ](#tab-panel-5467)
-* [  TypeScript ](#tab-panel-5468)
+* [  JavaScript ](#tab-panel-5727)
+* [  TypeScript ](#tab-panel-5728)
 
 **JavaScript**
 
@@ -396,8 +396,8 @@ const agent = useAgent({
 
 ### Pushing state updates
 
-* [  JavaScript ](#tab-panel-5465)
-* [  TypeScript ](#tab-panel-5466)
+* [  JavaScript ](#tab-panel-5725)
+* [  TypeScript ](#tab-panel-5726)
 
 **JavaScript**
 
@@ -438,8 +438,8 @@ The `@callable()` decorator is only required for methods called from external ru
 
 ### Using call()
 
-* [  JavaScript ](#tab-panel-5471)
-* [  TypeScript ](#tab-panel-5472)
+* [  JavaScript ](#tab-panel-5731)
+* [  TypeScript ](#tab-panel-5732)
 
 **JavaScript**
 
@@ -475,8 +475,8 @@ const result = await agent.call("getStats");
 
 The `stub` property provides a cleaner syntax for method calls:
 
-* [  JavaScript ](#tab-panel-5475)
-* [  TypeScript ](#tab-panel-5476)
+* [  JavaScript ](#tab-panel-5735)
+* [  TypeScript ](#tab-panel-5736)
 
 **JavaScript**
 
@@ -512,8 +512,8 @@ const post = await agent.stub.createPost(title, content, tags);
 
 For full type safety, pass your Agent class as a type parameter:
 
-* [  JavaScript ](#tab-panel-5477)
-* [  TypeScript ](#tab-panel-5478)
+* [  JavaScript ](#tab-panel-5737)
+* [  TypeScript ](#tab-panel-5738)
 
 **JavaScript**
 
@@ -548,8 +548,8 @@ const result = await agent.stub.processData({ input: "test" });
 
 For methods that return `StreamingResponse`, handle chunks as they arrive:
 
-* [  JavaScript ](#tab-panel-5495)
-* [  TypeScript ](#tab-panel-5496)
+* [  JavaScript ](#tab-panel-5755)
+* [  TypeScript ](#tab-panel-5756)
 
 **JavaScript**
 
@@ -617,8 +617,8 @@ await agent.call("generateText", [prompt], {
 
 For one-off requests without maintaining a WebSocket connection:
 
-* [  JavaScript ](#tab-panel-5497)
-* [  TypeScript ](#tab-panel-5498)
+* [  JavaScript ](#tab-panel-5757)
+* [  TypeScript ](#tab-panel-5758)
 
 **JavaScript**
 
@@ -697,8 +697,8 @@ const response = await agentFetch(
 
 If your agent uses MCP (Model Context Protocol) servers, you can receive updates about their state:
 
-* [  JavaScript ](#tab-panel-5481)
-* [  TypeScript ](#tab-panel-5482)
+* [  JavaScript ](#tab-panel-5741)
+* [  TypeScript ](#tab-panel-5742)
 
 **JavaScript**
 
@@ -736,8 +736,8 @@ const agent = useAgent({
 
 ### Connection errors
 
-* [  JavaScript ](#tab-panel-5483)
-* [  TypeScript ](#tab-panel-5484)
+* [  JavaScript ](#tab-panel-5743)
+* [  TypeScript ](#tab-panel-5744)
 
 **JavaScript**
 
@@ -769,8 +769,8 @@ const agent = useAgent({
 
 ### RPC errors
 
-* [  JavaScript ](#tab-panel-5479)
-* [  TypeScript ](#tab-panel-5480)
+* [  JavaScript ](#tab-panel-5739)
+* [  TypeScript ](#tab-panel-5740)
 
 **JavaScript**
 
@@ -796,8 +796,8 @@ try {
 
 ### Streaming errors
 
-* [  JavaScript ](#tab-panel-5485)
-* [  TypeScript ](#tab-panel-5486)
+* [  JavaScript ](#tab-panel-5745)
+* [  TypeScript ](#tab-panel-5746)
 
 **JavaScript**
 
@@ -827,8 +827,8 @@ await agent.call("streamingMethod", [data], {
 
 ### 1\. Use typed stubs
 
-* [  JavaScript ](#tab-panel-5487)
-* [  TypeScript ](#tab-panel-5488)
+* [  JavaScript ](#tab-panel-5747)
+* [  TypeScript ](#tab-panel-5748)
 
 **JavaScript**
 
@@ -858,8 +858,8 @@ The client auto-reconnects and the agent automatically sends the current state o
 
 ### 3\. Optimize query caching
 
-* [  JavaScript ](#tab-panel-5489)
-* [  TypeScript ](#tab-panel-5490)
+* [  JavaScript ](#tab-panel-5749)
+* [  TypeScript ](#tab-panel-5750)
 
 **JavaScript**
 
@@ -887,8 +887,8 @@ useAgent({
 
 In vanilla JS, close connections when done:
 
-* [  JavaScript ](#tab-panel-5491)
-* [  TypeScript ](#tab-panel-5492)
+* [  JavaScript ](#tab-panel-5751)
+* [  TypeScript ](#tab-panel-5752)
 
 **JavaScript**
 
@@ -999,8 +999,8 @@ type AgentClientOptions<State> = {
 
 The client also supports WebSocket event listeners:
 
-* [  JavaScript ](#tab-panel-5493)
-* [  TypeScript ](#tab-panel-5494)
+* [  JavaScript ](#tab-panel-5753)
+* [  TypeScript ](#tab-panel-5754)
 
 **JavaScript**
 
@@ -1024,8 +1024,8 @@ client.addEventListener("message", () => {});
 
 If your chat UI renders retained child runs from [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/), use `useAgentToolEvents()` alongside `useAgent()` and `useAgentChat()`. The hook subscribes to the parent connection, replays retained child timelines, and groups runs by parent tool call ID.
 
-* [  JavaScript ](#tab-panel-5499)
-* [  TypeScript ](#tab-panel-5500)
+* [  JavaScript ](#tab-panel-5759)
+* [  TypeScript ](#tab-panel-5760)
 
 **JavaScript**
 
@@ -1062,6 +1062,6 @@ const agentTools = useAgentToolEvents({ agent });
 [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Complete client integration with AI chat.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#page","headline":"Client SDK · Cloudflare Agents docs","description":"Connect to Cloudflare Agents from browsers or server runtimes using useAgent, AgentClient, and agentFetch.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#page","headline":"Client SDK · Cloudflare Agents docs","description":"Connect to Cloudflare Agents from browsers or server runtimes using useAgent, AgentClient, and agentFetch.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/chat/","name":"Chat"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/communication-channels/chat/client-sdk/","name":"Client SDK"}}]}
 ```

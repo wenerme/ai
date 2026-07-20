@@ -1,7 +1,7 @@
 ---
 title: Bulk import to D1 using REST API
 description: This tutorial uses the REST API to import a database into D1.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -426,6 +426,6 @@ By completing this tutorial, you have
 5. Imported your example data into the D1 target table using REST API.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/#page","headline":"Bulk import to D1 using REST API · Cloudflare D1 docs","description":"This tutorial uses the REST API to import a database into D1.","url":"https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/#page","headline":"Bulk import to D1 using REST API · Cloudflare D1 docs","description":"This tutorial uses the REST API to import a database into D1.","url":"https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/tutorials/import-to-d1-with-rest-api/","name":"Bulk import to D1 using REST API"}}]}
 ```

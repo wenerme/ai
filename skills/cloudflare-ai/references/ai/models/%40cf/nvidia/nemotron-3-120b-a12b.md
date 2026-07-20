@@ -1,7 +1,7 @@
 ---
 title: nemotron-3-120b-a12b
 description: NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2463)
-* [  TypeScript ](#tab-panel-2464)
-* [  Python ](#tab-panel-2465)
-* [  curl ](#tab-panel-2466)
+* [  Worker (Streaming) ](#tab-panel-2611)
+* [  TypeScript ](#tab-panel-2612)
+* [  Python ](#tab-panel-2613)
+* [  curl ](#tab-panel-2614)
 
 **TypeScript**
 
@@ -328,6 +328,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/nvidia/nemotron-3-120b-a12b/#page","headline":"nemotron-3-120b-a12b (NVIDIA) · Cloudflare AI docs · Cloudflare AI docs","description":"NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.","url":"https://developers.cloudflare.com/ai/models/%40cf/nvidia/nemotron-3-120b-a12b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/nvidia/nemotron-3-120b-a12b/#page","headline":"nemotron-3-120b-a12b (NVIDIA) · Cloudflare AI docs · Cloudflare AI docs","description":"NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.","url":"https://developers.cloudflare.com/ai/models/%40cf/nvidia/nemotron-3-120b-a12b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

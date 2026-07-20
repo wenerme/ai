@@ -1,7 +1,7 @@
 ---
 title: Use the R2 multipart API from Workers
 description: Upload large objects to R2 using the multipart API through a Cloudflare Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ The following example Worker includes any new information about the state of the
 
 Add the following code to your project's `index.js` file and replace `MY_BUCKET` with your bucket's name:
 
-* [  JavaScript ](#tab-panel-10158)
-* [  Python ](#tab-panel-10159)
+* [  JavaScript ](#tab-panel-10603)
+* [  Python ](#tab-panel-10604)
 
 **JavaScript**
 
@@ -409,6 +409,6 @@ In the example Worker and Python application described in this guide, the state 
 When keeping track of this state in the client is impossible, alternative designs can be considered. For example, you could track the `uploadId` and which parts have been uploaded in a Durable Object or other database.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/#page","headline":"Use the R2 multipart API from Workers · Cloudflare R2 docs","description":"Upload large objects to R2 using the multipart API through a Cloudflare Worker.","url":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/#page","headline":"Use the R2 multipart API from Workers · Cloudflare R2 docs","description":"Upload large objects to R2 using the multipart API through a Cloudflare Worker.","url":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/workers/","name":"Workers API"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/workers/workers-multipart-usage/","name":"Use the R2 multipart API from Workers"}}]}
 ```

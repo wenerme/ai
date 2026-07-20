@@ -1,7 +1,7 @@
 ---
 title: WebSockets
 description: Proxy WebSocket connections through Cloudflare's network.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ WebSockets are open connections sustained between the client and the origin serv
 
 ## Enable WebSockets
 
-* [ Dashboard ](#tab-panel-10119)
-* [ API ](#tab-panel-10120)
+* [ Dashboard ](#tab-panel-10238)
+* [ API ](#tab-panel-10239)
 
 To enable **WebSockets** connections to your origin server in the dashboard:
 
@@ -85,6 +85,6 @@ Cloudflare will close a WebSocket connection when no data is transmitted in eith
 If your WebSocket origin is behind a Cloudflare Load Balancer, turn on **Session affinity** to ensure all requests from the same client are routed to the same origin server. Without session affinity, a WebSocket reconnect may land on a different origin that does not have the session state.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/websockets/#page","headline":"WebSockets · Cloudflare Network settings docs","description":"Proxy WebSocket connections through Cloudflare's network.","url":"https://developers.cloudflare.com/network/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/websockets/#page","headline":"WebSockets · Cloudflare Network settings docs","description":"Proxy WebSocket connections through Cloudflare's network.","url":"https://developers.cloudflare.com/network/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network/","name":"Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/network/websockets/","name":"WebSockets"}}]}
 ```

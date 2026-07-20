@@ -1,7 +1,7 @@
 ---
 title: Available subscriptions
 description: Zone plan and account subscription values available to Cloudflare Tenant partners.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -94,6 +94,6 @@ If your reseller plan does not have access to a specific subscription, you will 
 To change your program or - in some cases - get a specific subscription added to your reseller plan, contact `partners@cloudflare.com`. Agency Partners should contact [agency@cloudflare.com](mailto:agency@cloudflare.com)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/reference/subscriptions/#page","headline":"Available subscriptions · Cloudflare Tenant docs","description":"Zone plan and account subscription values available to Cloudflare Tenant partners.","url":"https://developers.cloudflare.com/tenant/reference/subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/reference/subscriptions/#page","headline":"Available subscriptions · Cloudflare Tenant docs","description":"Zone plan and account subscription values available to Cloudflare Tenant partners.","url":"https://developers.cloudflare.com/tenant/reference/subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/tenant/reference/subscriptions/","name":"Available subscriptions"}}]}
 ```

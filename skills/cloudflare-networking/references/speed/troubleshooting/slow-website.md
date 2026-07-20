@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting a slow website
 description: Identify and resolve performance issues affecting your website.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,8 +22,8 @@ Before troubleshooting performance, confirm that your traffic is actually going 
 
 Every response served through Cloudflare includes a `cf-ray` header. Check for this header:
 
-* [ bash ](#tab-panel-10981)
-* [ PowerShell ](#tab-panel-10982)
+* [ bash ](#tab-panel-11426)
+* [ PowerShell ](#tab-panel-11427)
 
 ```bash
 curl -s -D- -o /dev/null https://www.example.com | grep -i cf-ray
@@ -41,8 +41,8 @@ If you see a `cf-ray` header (for example, `cf-ray: 8a1b2c3d4e5f6g7h-SJC`), your
 
 Your domain must resolve to Cloudflare IP addresses for traffic to be proxied:
 
-* [ bash ](#tab-panel-10983)
-* [ PowerShell ](#tab-panel-10984)
+* [ bash ](#tab-panel-11428)
+* [ PowerShell ](#tab-panel-11429)
 
 ```bash
 dig +short www.example.com
@@ -186,8 +186,8 @@ For detailed timing metrics on specific requests, use command-line tools to meas
 
 ### Basic performance test
 
-* [ bash ](#tab-panel-10985)
-* [ PowerShell ](#tab-panel-10986)
+* [ bash ](#tab-panel-11430)
+* [ PowerShell ](#tab-panel-11431)
 
 ```bash
 curl -w "\n\nDNS Lookup: %{time_namelookup}s\nTCP Connect: %{time_connect}s\nTLS Handshake: %{time_appconnect}s\nTime to First Byte: %{time_starttransfer}s\nTotal Time: %{time_total}s\n" -o /dev/null -s https://www.example.com/slow-asset.jpg
@@ -254,8 +254,8 @@ Uncached content must travel from the visitor to Cloudflare, then to your origin
 
 Check the cache status of a specific asset:
 
-* [ bash ](#tab-panel-10987)
-* [ PowerShell ](#tab-panel-10988)
+* [ bash ](#tab-panel-11432)
+* [ PowerShell ](#tab-panel-11433)
 
 ```bash
 curl -s -D- -o /dev/null https://www.example.com/asset.jpg | grep -i "cf-cache-status"
@@ -342,8 +342,8 @@ Poor results indicate issues with your local network or ISP.
 
 MTR combines traceroute and ping to show latency and packet loss at each network hop.
 
-* [ macOS/Linux ](#tab-panel-10989)
-* [ Windows ](#tab-panel-10990)
+* [ macOS/Linux ](#tab-panel-11434)
+* [ Windows ](#tab-panel-11435)
 
 ```bash
 mtr -rw www.example.com
@@ -379,8 +379,8 @@ How requests are routed to Cloudflare data centers can significantly impact perf
 
 Add `/cdn-cgi/trace` to your domain to see which Cloudflare data center is serving your requests:
 
-* [ bash ](#tab-panel-10991)
-* [ PowerShell ](#tab-panel-10992)
+* [ bash ](#tab-panel-11436)
+* [ PowerShell ](#tab-panel-11437)
 
 ```bash
 curl https://www.example.com/cdn-cgi/trace
@@ -479,6 +479,6 @@ The more evidence you provide showing the slowness, the faster Support can ident
 * [Gathering information for troubleshooting](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) \- Collect diagnostic data
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/#page","headline":"Troubleshooting a slow website · Cloudflare Speed docs","description":"Identify and resolve performance issues affecting your website.","url":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/#page","headline":"Troubleshooting a slow website · Cloudflare Speed docs","description":"Identify and resolve performance issues affecting your website.","url":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/troubleshooting/slow-website/","name":"Troubleshooting a slow website"}}]}
 ```

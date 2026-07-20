@@ -1,7 +1,7 @@
 ---
 title: Verify email address
 description: Confirm the email address on your Cloudflare account to unlock dashboard features like adding members and updating preferences.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -53,6 +53,6 @@ If your email is still not verified, try clicking the verification link in a dif
 If this still does not work, try [resending](#resend-verification-emails) the verification email to get a new verification link.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/#page","headline":"Verify email address · Cloudflare Fundamentals docs","description":"Confirm the email address on your Cloudflare account to unlock dashboard features like adding members and updating preferences.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/#page","headline":"Verify email address · Cloudflare Fundamentals docs","description":"Confirm the email address on your Cloudflare account to unlock dashboard features like adding members and updating preferences.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/user-profiles/","name":"User profiles"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/user-profiles/verify-email-address/","name":"Verify email address"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: User Groups
 description: Create and manage Cloudflare User Groups to assign shared permission policies to multiple account members.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,8 +37,8 @@ Cloudflare is actively working on improving this experience to make inherited an
 
 With your Group created, you can now add a [Permission Policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/) to your Group.
 
-* [ Dashboard ](#tab-panel-8968)
-* [ API ](#tab-panel-8969)
+* [ Dashboard ](#tab-panel-9405)
+* [ API ](#tab-panel-9406)
 
 1. In the **Groups** tab under **Permission policies**, select **Add a Policy**.
 2. Specify the scope and permissions you want applied to the members of the group.
@@ -101,8 +101,8 @@ To set up a user group with SCIM, refer to the [Provisioning with SCIM guide](ht
 
 After a user group is created either manually in Cloudflare dashboard or through SCIM integration the final step is to attach permissions to it.
 
-* [ Dashboard ](#tab-panel-8970)
-* [ API ](#tab-panel-8971)
+* [ Dashboard ](#tab-panel-9407)
+* [ API ](#tab-panel-9408)
 
 1. Go to **Manage members** \> **Members** \> **User groups**.
 2. Select the user group you want to attach permissions to.
@@ -296,6 +296,6 @@ $ curl -XGET -H "Authorization: Bearer $DEMO_AOT" https://api.cloudflare.com/cli
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/#page","headline":"User Groups · Cloudflare Fundamentals docs","description":"Create and manage Cloudflare User Groups to assign shared permission policies to multiple account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/#page","headline":"User Groups · Cloudflare Fundamentals docs","description":"Create and manage Cloudflare User Groups to assign shared permission policies to multiple account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/user-groups/","name":"User Groups"}}]}
 ```

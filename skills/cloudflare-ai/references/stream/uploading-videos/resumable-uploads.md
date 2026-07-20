@@ -1,7 +1,7 @@
 ---
 title: Resumable and large files (tus)
 description: Upload large or resumable video files to Cloudflare Stream using the tus protocol.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -259,6 +259,6 @@ stream-media-id: cab807e0c477d01baq20f66c3d1dfc26cf
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/#page","headline":"Resumable and large files (tus) · Cloudflare Stream docs","description":"Upload large or resumable video files to Cloudflare Stream using the tus protocol.","url":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/#page","headline":"Resumable and large files (tus) · Cloudflare Stream docs","description":"Upload large or resumable video files to Cloudflare Stream using the tus protocol.","url":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/uploading-videos/","name":"Upload videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/uploading-videos/resumable-uploads/","name":"Resumable and large files (tus)"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Configure payload logging in the dashboard
 description: Configure payload logging for managed rulesets in the dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ Note
 
 Only users with the [Super Administrator role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) can configure payload logging and decrypt payloads in the Cloudflare dashboard. Other users can decrypt payloads if they have access to the logs and to the private key.
 
-* [  New dashboard ](#tab-panel-11291)
-* [ Old dashboard ](#tab-panel-11292)
+* [  New dashboard ](#tab-panel-12025)
+* [ Old dashboard ](#tab-panel-12026)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -48,6 +48,6 @@ Only users with the [Super Administrator role](https://developers.cloudflare.com
 9. If you are deploying the managed ruleset where you configured payload logging, select **Deploy**. If you configured payload logging for a ruleset you had already deployed, select **Save**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/#page","headline":"Configure payload logging for a managed ruleset in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Configure payload logging for managed rulesets in the dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/#page","headline":"Configure payload logging for a managed ruleset in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Configure payload logging for managed rulesets in the dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/payload-logging/","name":"Log the payload of matched rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/payload-logging/configure/","name":"Configure payload logging in the dashboard"}}]}
 ```

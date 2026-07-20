@@ -1,7 +1,7 @@
 ---
 title: Create a simple search engine
 description: Build a simple search engine using the AI Search Workers binding and the search method.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -68,8 +68,8 @@ cd search-engine
 
 Add the following to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6995)
-* [  wrangler.toml ](#tab-panel-6996)
+* [  wrangler.jsonc ](#tab-panel-7263)
+* [  wrangler.toml ](#tab-panel-7264)
 
 **JSONC**
 
@@ -101,8 +101,8 @@ This binds the `default` [namespace](https://developers.cloudflare.com/ai-search
 
 Update `src/index.ts`. This Worker reads a query from the URL, searches your instance, and returns the file name of each matching chunk. Replace `my-instance` with the name of your instance.
 
-* [  JavaScript ](#tab-panel-6997)
-* [  TypeScript ](#tab-panel-6998)
+* [  JavaScript ](#tab-panel-7265)
+* [  TypeScript ](#tab-panel-7266)
 
 **src/index.js**
 
@@ -173,6 +173,6 @@ npx wrangler deploy
 [ Query rewriting ](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/) Control whether AI Search rewrites the query before searching.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/#page","headline":"Create a simple search engine · Cloudflare AI Search docs","description":"Build a simple search engine using the AI Search Workers binding and the search method.","url":"https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/#page","headline":"Create a simple search engine · Cloudflare AI Search docs","description":"Build a simple search engine using the AI Search Workers binding and the search method.","url":"https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/simple-search-engine/","name":"Create a simple search engine"}}]}
 ```

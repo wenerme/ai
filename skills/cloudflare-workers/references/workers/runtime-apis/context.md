@@ -1,7 +1,7 @@
 ---
 title: Context (ctx)
 description: The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ Note that the Context API is available strictly in stateless contexts, that is, 
 
 For example, imagine that you are configuring a Worker called "frontend-worker", which must talk to another Worker called "doc-worker" in order to manipulate documents. You might configure "frontend-worker" with a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) like:
 
-* [  wrangler.jsonc ](#tab-panel-12349)
-* [  wrangler.toml ](#tab-panel-12350)
+* [  wrangler.jsonc ](#tab-panel-12874)
+* [  wrangler.toml ](#tab-panel-12875)
 
 **JSONC**
 
@@ -73,8 +73,8 @@ The Workers platform is designed to ensure that `ctx.props` can only be set by s
 
 `ctx.props` can also be used to configure an RPC interface to represent a _specific_ resource, thus creating a "custom binding". For example, we could configure a Service Binding to our "doc-worker" which grants access only to a specific document:
 
-* [  wrangler.jsonc ](#tab-panel-12351)
-* [  wrangler.toml ](#tab-panel-12352)
+* [  wrangler.jsonc ](#tab-panel-12876)
+* [  wrangler.toml ](#tab-panel-12877)
 
 **JSONC**
 
@@ -153,8 +153,8 @@ In this example, the default fetch handler calls the `Greeter` class over RPC, l
 
 Loopback Service Bindings in `ctx.exports` have an extra capability that regular Service Bindings do not: the caller can specify the value of `ctx.props` that should be delivered to the callee.
 
-* [  JavaScript ](#tab-panel-12347)
-* [  TypeScript ](#tab-panel-12348)
+* [  JavaScript ](#tab-panel-12872)
+* [  TypeScript ](#tab-panel-12873)
 
 **JavaScript**
 
@@ -336,6 +336,6 @@ export default {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx) · Cloudflare Workers docs","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx) · Cloudflare Workers docs","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/context/","name":"Context (ctx)"}}]}
 ```

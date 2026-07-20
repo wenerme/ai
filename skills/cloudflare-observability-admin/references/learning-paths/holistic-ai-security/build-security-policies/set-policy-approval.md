@@ -1,7 +1,7 @@
 ---
 title: Set policy based on approval status
 description: Create Gateway policies for AI tool governance.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -136,6 +136,6 @@ For example, if you want to prevent sensitive data being shared with AI but want
 By structuring your policies in this way, you ensure that any instance of sensitive data is blocked from AI applications, no matter which user group is involved. If Cloudflare does not detect sensitive data, it will allow the prompt while capturing it for the targeted user groups – in this case, users belonging to the `contractors` and `cohort-224` groups. If that same user group were to then use sensitive data in a prompt, it would be detected and blocked.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/#page","headline":"Set policy based on approval status · Cloudflare Learning Paths","description":"Create Gateway policies for AI tool governance.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/#page","headline":"Set policy based on approval status · Cloudflare Learning Paths","description":"Create Gateway policies for AI tool governance.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/holistic-ai-security/build-security-policies/","name":"Build security policies for general AI use"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/","name":"Set policy based on approval status"}}]}
 ```

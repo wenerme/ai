@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Tunnel
 description: Review recent changes to Cloudflare Tunnel.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -432,6 +432,6 @@ The new `cloudflared` build [2024.10.0 ↗](https://github.com/cloudflare/cloudf
 macOS users can now download `cloudflared-arm64.pkg` directly from [GitHub ↗](https://github.com/cloudflare/cloudflared/releases), in addition to being available via Homebrew.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/#page","headline":"Cloudflare Tunnel Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/#page","headline":"Cloudflare Tunnel Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/tunnel/","name":"Cloudflare Tunnel"}}]}
 ```

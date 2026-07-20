@@ -1,7 +1,7 @@
 ---
 title: Durable Object State
 description: API reference for DurableObjectState, which controls concurrency, WebSocket attachment, and storage access.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ The `DurableObjectState` interface is accessible as an instance property on the 
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
-* [  JavaScript ](#tab-panel-8577)
-* [  TypeScript ](#tab-panel-8578)
-* [  Python ](#tab-panel-8579)
+* [  JavaScript ](#tab-panel-8919)
+* [  TypeScript ](#tab-panel-8920)
+* [  Python ](#tab-panel-8921)
 
 **JavaScript**
 
@@ -116,8 +116,8 @@ For regular request handling, you rarely need `blockConcurrencyWhile`. SQLite st
 
 Reserve `blockConcurrencyWhile` outside the constructor for cases where you make external async calls (such as `fetch()`) and cannot tolerate state changes while the event loop yields.
 
-* [  JavaScript ](#tab-panel-8580)
-* [  Python ](#tab-panel-8581)
+* [  JavaScript ](#tab-panel-8922)
+* [  Python ](#tab-panel-8923)
 
 **JavaScript**
 
@@ -298,8 +298,8 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 `abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
 
-* [  TypeScript ](#tab-panel-8582)
-* [  Python ](#tab-panel-8583)
+* [  TypeScript ](#tab-panel-8924)
+* [  Python ](#tab-panel-8925)
 
 **JavaScript**
 
@@ -359,6 +359,6 @@ Not available in local development
 * [Durable Objects: Easy, Fast, Correct - Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/state/#page","headline":"Durable Object State · Cloudflare Durable Objects docs","description":"API reference for DurableObjectState, which controls concurrency, WebSocket attachment, and storage access.","url":"https://developers.cloudflare.com/durable-objects/api/state/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/state/#page","headline":"Durable Object State · Cloudflare Durable Objects docs","description":"API reference for DurableObjectState, which controls concurrency, WebSocket attachment, and storage access.","url":"https://developers.cloudflare.com/durable-objects/api/state/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/state/","name":"Durable Object State"}}]}
 ```

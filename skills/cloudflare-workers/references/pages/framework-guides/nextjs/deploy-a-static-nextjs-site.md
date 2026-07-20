@@ -1,7 +1,7 @@
 ---
 title: Static site
 description: Deploy a static site built using Next.js to Cloudflare Pages
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -80,6 +80,6 @@ Every time you commit new code to your Next.js site, Cloudflare Pages will autom
 For the complete guide to deploying your first site to Cloudflare Pages, refer to the [Get started guide](https://developers.cloudflare.com/pages/get-started/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/#page","headline":"Get started · Cloudflare Pages docs","description":"Deploy a static site built using Next.js to Cloudflare Pages","url":"https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/#page","headline":"Get started · Cloudflare Pages docs","description":"Deploy a static site built using Next.js to Cloudflare Pages","url":"https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/framework-guides/nextjs/","name":"Next.js"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/","name":"Static site"}}]}
 ```

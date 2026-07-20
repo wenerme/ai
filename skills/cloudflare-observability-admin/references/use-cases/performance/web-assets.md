@@ -1,7 +1,7 @@
 ---
 title: Optimize web assets
 description: Speed up page rendering by minifying HTML, CSS, and JavaScript and loading third-party scripts server-side.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,6 +36,6 @@ Server-side loading of third-party tools to improve performance and privacy. [Le
 2. [Zaraz get started](https://developers.cloudflare.com/zaraz/get-started/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/performance/web-assets/#page","headline":"Optimize web assets · Cloudflare use cases","description":"Speed up page rendering by minifying HTML, CSS, and JavaScript and loading third-party scripts server-side.","url":"https://developers.cloudflare.com/use-cases/performance/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/performance/web-assets/#page","headline":"Optimize web assets · Cloudflare use cases","description":"Speed up page rendering by minifying HTML, CSS, and JavaScript and loading third-party scripts server-side.","url":"https://developers.cloudflare.com/use-cases/performance/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/performance/","name":"Performance"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/performance/web-assets/","name":"Optimize web assets"}}]}
 ```

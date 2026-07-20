@@ -1,7 +1,7 @@
 ---
 title: Sub-agents
 description: Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ If you want a parent chat agent to dispatch another chat-capable agent during a 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-6455)
-* [  TypeScript ](#tab-panel-6456)
+* [  JavaScript ](#tab-panel-6729)
+* [  TypeScript ](#tab-panel-6730)
 
 **JavaScript**
 
@@ -71,8 +71,8 @@ export class Researcher extends Agent {
 
 Both classes must be exported from the worker entry point. No separate Durable Object bindings are needed for child-only classes — child classes are discovered automatically via `ctx.exports`.
 
-* [  wrangler.jsonc ](#tab-panel-6443)
-* [  wrangler.toml ](#tab-panel-6444)
+* [  wrangler.jsonc ](#tab-panel-6717)
+* [  wrangler.toml ](#tab-panel-6718)
 
 **JSONC**
 
@@ -80,7 +80,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -107,7 +107,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = ["nodejs_compat"]
 
 
@@ -127,8 +127,8 @@ Only the top-level parent agent needs a Durable Object binding and migration. Ch
 
 Get or create a named sub-agent. The first call for a given name triggers the child's `onStart()`. Subsequent calls return the existing instance.
 
-* [  JavaScript ](#tab-panel-6445)
-* [  TypeScript ](#tab-panel-6446)
+* [  JavaScript ](#tab-panel-6719)
+* [  TypeScript ](#tab-panel-6720)
 
 **JavaScript**
 
@@ -160,8 +160,8 @@ The stub exposes all public instance methods you define on the child class. Meth
 
 Return types are automatically wrapped in `Promise` if they are not already:
 
-* [  JavaScript ](#tab-panel-6457)
-* [  TypeScript ](#tab-panel-6458)
+* [  JavaScript ](#tab-panel-6731)
+* [  TypeScript ](#tab-panel-6732)
 
 **JavaScript**
 
@@ -217,8 +217,8 @@ Tests that use `@cloudflare/vitest-pool-workers` may need to list facet classes 
 
 Forcefully stop a running sub-agent. The child stops executing immediately and restarts on the next `subAgent()` call. Storage is preserved — only the running instance is killed.
 
-* [  JavaScript ](#tab-panel-6447)
-* [  TypeScript ](#tab-panel-6448)
+* [  JavaScript ](#tab-panel-6721)
+* [  TypeScript ](#tab-panel-6722)
 
 **JavaScript**
 
@@ -246,8 +246,8 @@ Abort is transitive — if the child has its own sub-agents, they are also abort
 
 Abort the child (if running) and permanently wipe its storage. The next `subAgent()` call creates a fresh instance with empty SQLite.
 
-* [  JavaScript ](#tab-panel-6449)
-* [  TypeScript ](#tab-panel-6450)
+* [  JavaScript ](#tab-panel-6723)
+* [  TypeScript ](#tab-panel-6724)
 
 **JavaScript**
 
@@ -276,8 +276,8 @@ Deletion is transitive — the child's own sub-agents are also deleted.
 
 Check whether a child has been spawned and not deleted. This is backed by a framework-maintained SQLite registry.
 
-* [  JavaScript ](#tab-panel-6451)
-* [  TypeScript ](#tab-panel-6452)
+* [  JavaScript ](#tab-panel-6725)
+* [  TypeScript ](#tab-panel-6726)
 
 **JavaScript**
 
@@ -299,8 +299,8 @@ if (!this.hasSubAgent(Chat, id)) {
 
 List spawned sub-agents, optionally filtered by class. Rows are returned in creation order.
 
-* [  JavaScript ](#tab-panel-6453)
-* [  TypeScript ](#tab-panel-6454)
+* [  JavaScript ](#tab-panel-6727)
+* [  TypeScript ](#tab-panel-6728)
 
 **JavaScript**
 
@@ -328,8 +328,8 @@ The hook can return:
 | Request      | Forward a modified request                |
 | Response     | Short-circuit and do not wake the child   |
 
-* [  JavaScript ](#tab-panel-6461)
-* [  TypeScript ](#tab-panel-6462)
+* [  JavaScript ](#tab-panel-6735)
+* [  TypeScript ](#tab-panel-6736)
 
 **JavaScript**
 
@@ -367,8 +367,8 @@ WebSocket upgrade requests flow through this hook the same way as plain HTTP req
 
 Sub-agents know who their parent is through `this.parentPath` and `this.selfPath`.
 
-* [  JavaScript ](#tab-panel-6463)
-* [  TypeScript ](#tab-panel-6464)
+* [  JavaScript ](#tab-panel-6737)
+* [  TypeScript ](#tab-panel-6738)
 
 **JavaScript**
 
@@ -404,8 +404,8 @@ this.selfPath;
 
 Use `parentAgent(Cls)` from a sub-agent to get a typed RPC stub to its immediate parent:
 
-* [  JavaScript ](#tab-panel-6459)
-* [  TypeScript ](#tab-panel-6460)
+* [  JavaScript ](#tab-panel-6733)
+* [  TypeScript ](#tab-panel-6734)
 
 **JavaScript**
 
@@ -431,8 +431,8 @@ For grandparents and further ancestors, iterate `this.parentPath` and call `getA
 
 Extend any `useAgent` call with a `sub` chain to connect to a descendant facet:
 
-* [  JavaScript ](#tab-panel-6465)
-* [  TypeScript ](#tab-panel-6466)
+* [  JavaScript ](#tab-panel-6739)
+* [  TypeScript ](#tab-panel-6740)
 
 **JavaScript**
 
@@ -460,8 +460,8 @@ The hook builds a URL like `/agents/inbox/user-123/sub/chat/chat-abc` and opens 
 
 For fetch handlers that do their own top-level URL parsing, use `routeSubAgentRequest()` to dispatch a request into a sub-agent from an already-resolved parent stub:
 
-* [  JavaScript ](#tab-panel-6471)
-* [  TypeScript ](#tab-panel-6472)
+* [  JavaScript ](#tab-panel-6745)
+* [  TypeScript ](#tab-panel-6746)
 
 **JavaScript**
 
@@ -509,8 +509,8 @@ export default {
 
 From inside the parent Durable Object, `this.subAgent(Cls, name)` returns a typed stub. From outside the parent, use `getSubAgentByName()`:
 
-* [  JavaScript ](#tab-panel-6467)
-* [  TypeScript ](#tab-panel-6468)
+* [  JavaScript ](#tab-panel-6741)
+* [  TypeScript ](#tab-panel-6742)
 
 **JavaScript**
 
@@ -544,8 +544,8 @@ await chat.addMessage({ role: "user", content: "hello" });
 
 Each sub-agent has its own SQLite database, completely isolated from the parent and from other sub-agents. A parent writing to `this.sql` and a child writing to `this.sql` operate on different databases:
 
-* [  JavaScript ](#tab-panel-6477)
-* [  TypeScript ](#tab-panel-6478)
+* [  JavaScript ](#tab-panel-6751)
+* [  TypeScript ](#tab-panel-6752)
 
 **JavaScript**
 
@@ -611,8 +611,8 @@ export class Child extends Agent {
 
 Two different classes can share the same user-facing name — they are resolved independently. The internal key is a composite of class name and facet name:
 
-* [  JavaScript ](#tab-panel-6469)
-* [  TypeScript ](#tab-panel-6470)
+* [  JavaScript ](#tab-panel-6743)
+* [  TypeScript ](#tab-panel-6744)
 
 **JavaScript**
 
@@ -632,8 +632,8 @@ const logger = await this.subAgent(Logger, "shared-name");
 
 The child's `this.name` property returns the facet name (not the parent's name):
 
-* [  JavaScript ](#tab-panel-6473)
-* [  TypeScript ](#tab-panel-6474)
+* [  JavaScript ](#tab-panel-6747)
+* [  TypeScript ](#tab-panel-6748)
 
 **JavaScript**
 
@@ -661,8 +661,8 @@ export class Child extends Agent {
 
 Run multiple sub-agents concurrently:
 
-* [  JavaScript ](#tab-panel-6475)
-* [  TypeScript ](#tab-panel-6476)
+* [  JavaScript ](#tab-panel-6749)
+* [  TypeScript ](#tab-panel-6750)
 
 **JavaScript**
 
@@ -700,8 +700,8 @@ export class Orchestrator extends Agent {
 
 Sub-agents can spawn their own sub-agents, forming a tree:
 
-* [  JavaScript ](#tab-panel-6479)
-* [  TypeScript ](#tab-panel-6480)
+* [  JavaScript ](#tab-panel-6753)
+* [  TypeScript ](#tab-panel-6754)
 
 **JavaScript**
 
@@ -759,8 +759,8 @@ export class Worker extends Agent {
 
 Pass an `RpcTarget` callback to stream results from a sub-agent back to the parent:
 
-* [  JavaScript ](#tab-panel-6481)
-* [  TypeScript ](#tab-panel-6482)
+* [  JavaScript ](#tab-panel-6755)
+* [  TypeScript ](#tab-panel-6756)
 
 **JavaScript**
 
@@ -872,6 +872,6 @@ For sub-agent workflow origins, `AgentWorkflow.agent` is RPC-only. Use it to cal
 * [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — scheduling primitives for top-level agents and sub-agents
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/#page","headline":"Sub-agents · Cloudflare Agents docs","description":"Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().","url":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/#page","headline":"Sub-agents · Cloudflare Agents docs","description":"Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().","url":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/sub-agents/","name":"Sub-agents"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Refactor a Worker to a Pages Function
 description: Migrate an existing Cloudflare Worker into a Pages Function for your Pages project.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -201,6 +201,6 @@ You can test your Function [locally using Wrangler](https://developers.cloudflar
 * [Functions documentation](https://developers.cloudflare.com/pages/functions/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/#page","headline":"Refactor a Worker to a Pages Function · Cloudflare Pages docs","description":"Migrate an existing Cloudflare Worker into a Pages Function for your Pages project.","url":"https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/#page","headline":"Refactor a Worker to a Pages Function · Cloudflare Pages docs","description":"Migrate an existing Cloudflare Worker into a Pages Function for your Pages project.","url":"https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/refactor-a-worker-to-pages-functions/","name":"Refactor a Worker to a Pages Function"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Sleeping and retrying
 description: Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -118,8 +118,8 @@ The delay function receives an object with:
 
 Return a duration string, a number in milliseconds, or a promise that resolves to either value.
 
-* [  JavaScript ](#tab-panel-13627)
-* [  TypeScript ](#tab-panel-13628)
+* [  JavaScript ](#tab-panel-14017)
+* [  TypeScript ](#tab-panel-14018)
 
 **JavaScript**
 
@@ -211,8 +211,8 @@ You can attach a rollback handler to `step.do()` to implement saga-style compens
 
 A failed step with rollback options can also participate in rollback alongside any completed steps which have a rollback handler registered. For example, if a steps throws a `NonRetryableError` after registering rollback, its rollback handler runs with `output` set to `undefined`.
 
-* [  JavaScript ](#tab-panel-13629)
-* [  TypeScript ](#tab-panel-13630)
+* [  JavaScript ](#tab-panel-14019)
+* [  TypeScript ](#tab-panel-14020)
 
 **JavaScript**
 
@@ -335,6 +335,6 @@ await step.do('next-task', async() => {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/sleeping-and-retrying/","name":"Sleeping and retrying"}}]}
 ```

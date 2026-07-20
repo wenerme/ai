@@ -1,7 +1,7 @@
 ---
 title: Gemini 3.1 Flash Lite
 description: Google's lightest and most cost-efficient Gemini model for high-throughput tasks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,8 +31,8 @@ Google's lightest and most cost-efficient Gemini model for high-throughput tasks
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-554)
-* [ cURL ](#tab-panel-555)
+* [ TypeScript ](#tab-panel-604)
+* [ cURL ](#tab-panel-605)
 
 **TypeScript**
 
@@ -65,8 +65,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-560)
-* [ Raw response ](#tab-panel-561)
+* [ Output ](#tab-panel-610)
+* [ Raw response ](#tab-panel-611)
 
 The three laws of thermodynamics (plus the "zeroth" law, which was defined later) describe the fundamental rules governing energy, heat, and entropy in the universe.
 
@@ -143,8 +143,8 @@ As the temperature of a system approaches absolute zero (0 Kelvin), the entropy 
 
 **With System Instruction**  — Using a system instruction to set context
 
-* [ TypeScript ](#tab-panel-556)
-* [ cURL ](#tab-panel-557)
+* [ TypeScript ](#tab-panel-606)
+* [ cURL ](#tab-panel-607)
 
 **TypeScript**
 
@@ -193,8 +193,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-562)
-* [ Raw response ](#tab-panel-563)
+* [ Output ](#tab-panel-612)
+* [ Raw response ](#tab-panel-613)
 
 To read a JSON file in Python, you use the built-in `json` module.
 
@@ -297,8 +297,8 @@ print(data["name"])  # Output: Alice
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-564)
-* [ cURL ](#tab-panel-565)
+* [ TypeScript ](#tab-panel-614)
+* [ cURL ](#tab-panel-615)
 
 **TypeScript**
 
@@ -367,8 +367,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-566)
-* [ Raw response ](#tab-panel-567)
+* [ Output ](#tab-panel-616)
+* [ Raw response ](#tab-panel-617)
 
 To give you the best recommendations, it helps to know which route you plan to take. There are two primary ways to drive from San Francisco to Los Angeles:
 
@@ -450,8 +450,8 @@ To give you the best recommendations, it helps to know which route you plan to t
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-558)
-* [ cURL ](#tab-panel-559)
+* [ TypeScript ](#tab-panel-608)
+* [ cURL ](#tab-panel-609)
 
 **TypeScript**
 
@@ -496,8 +496,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-568)
-* [ Raw response ](#tab-panel-569)
+* [ Output ](#tab-panel-618)
+* [ Raw response ](#tab-panel-619)
 
 The rain drummed a relentless, hollow rhythm against the skylight of the abandoned clock tower, but Elias Thorne didn’t hear it. He was too busy staring at the centerpiece of the crime scene.
 
@@ -556,8 +556,8 @@ Schema variant
 
 Generate ContentChat Completions
 
-* [ Input ](#tab-panel-570)
-* [ Output ](#tab-panel-571)
+* [ Input ](#tab-panel-620)
+* [ Output ](#tab-panel-621)
 
 ▶contents\[\]
 
@@ -682,6 +682,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-li
 Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/#page","headline":"Gemini 3.1 Flash Lite (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's lightest and most cost-efficient Gemini model for high-throughput tasks.","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/#page","headline":"Gemini 3.1 Flash Lite (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's lightest and most cost-efficient Gemini model for high-throughput tasks.","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-lite/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

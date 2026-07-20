@@ -1,7 +1,7 @@
 ---
 title: Transfer your domain to Cloudflare
 description: Transfer a domain to Cloudflare Registrar from another registrar.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -247,6 +247,6 @@ For example, Netlify asks customers that host websites with them to add a `CNAME
 You may also want to [enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/#1-activate-dnssec-in-cloudflare).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#page","headline":"Transfer your domain to Cloudflare · Cloudflare Registrar docs","description":"Transfer a domain to Cloudflare Registrar from another registrar.","url":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#page","headline":"Transfer your domain to Cloudflare · Cloudflare Registrar docs","description":"Transfer a domain to Cloudflare Registrar from another registrar.","url":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/get-started/transfer-domain-to-cloudflare/","name":"Transfer your domain to Cloudflare"}}]}
 ```

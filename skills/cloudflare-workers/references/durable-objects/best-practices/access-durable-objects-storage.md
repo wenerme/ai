@@ -1,7 +1,7 @@
 ---
 title: Access Durable Objects Storage
 description: Read and write persistent data in Durable Objects using the Storage API, from within a Worker or externally.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -375,6 +375,6 @@ SQL query pricing and limits are intended to be identical between D1 ([pricing](
 * [Zero-latency SQLite storage in every Durable Object blog post ↗](https://blog.cloudflare.com/sqlite-in-durable-objects)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#page","headline":"Access Durable Objects Storage · Cloudflare Durable Objects docs","description":"Read and write persistent data in Durable Objects using the Storage API, from within a Worker or externally.","url":"https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#page","headline":"Access Durable Objects Storage · Cloudflare Durable Objects docs","description":"Read and write persistent data in Durable Objects using the Storage API, from within a Worker or externally.","url":"https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/access-durable-objects-storage/","name":"Access Durable Objects Storage"}}]}
 ```

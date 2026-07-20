@@ -1,7 +1,7 @@
 ---
 title: Register the Cloudflare One Client with minimal user interaction
 description: Register the Cloudflare One Client with minimal user interaction in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -58,8 +58,8 @@ _Note: Labels in this image may reflect a previous product name._
 
 Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
 
-* [ Windows ](#tab-panel-7815)
-* [ macOS ](#tab-panel-7816)
+* [ Windows ](#tab-panel-8153)
+* [ macOS ](#tab-panel-8154)
 
 On Windows, you can configure `AutoLaunchProtocolsFromOrigins` by adding a new registry key.
 
@@ -174,6 +174,6 @@ Be sure to replace `<your-team-name>` with your actual Zero Trust team name.
 For more information on configuring browser policies on macOS, refer to the [Google Chrome ↗](https://support.google.com/chrome/a/answer/9020077?hl=en&ref%5Ftopic=7650028&sjid=15337530832025656704-NA) or [Microsoft Edge ↗](https://learn.microsoft.com/en-us/deployedge/configure-microsoft-edge-on-mac) documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/#page","headline":"Register the Cloudflare One Client with minimal user interaction · Cloudflare One docs","description":"Register the Cloudflare One Client with minimal user interaction in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PowerShell"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/#page","headline":"Register the Cloudflare One Client with minimal user interaction · Cloudflare One docs","description":"Register the Cloudflare One Client with minimal user interaction in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PowerShell"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/","name":"Register the Cloudflare One Client with minimal user interaction"}}]}
 ```

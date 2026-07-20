@@ -1,7 +1,7 @@
 ---
 title: Download video or audio
 description: Generate downloadable MP4 video or M4A audio files from Cloudflare Stream.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,11 +30,11 @@ You can enable downloads for an uploaded video once it is ready to view by makin
 
 To get notified when a video is ready to view, refer to [Using webhooks](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/#notifications).
 
-* [ REST API ](#tab-panel-11264)
-* [ Workers Binding API ](#tab-panel-11265)
+* [ REST API ](#tab-panel-11709)
+* [ Workers Binding API ](#tab-panel-11710)
 
-* [ cURL ](#tab-panel-11248)
-* [ TypeScript ](#tab-panel-11249)
+* [ cURL ](#tab-panel-11693)
+* [ TypeScript ](#tab-panel-11694)
 
 ```bash
 curl -X POST \
@@ -76,8 +76,8 @@ The response includes the download type, URL, and processing status:
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11250)
-* [ wrangler.jsonc ](#tab-panel-11251)
+* [ index.ts ](#tab-panel-11695)
+* [ wrangler.jsonc ](#tab-panel-11696)
 
 **TypeScript**
 
@@ -112,11 +112,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 To enable M4A support on a per video basis, follow steps similar to that of generating an MP4 download, but instead send a POST request to the `/downloads/audio` endpoint.
 
-* [ REST API ](#tab-panel-11266)
-* [ Workers Binding API ](#tab-panel-11267)
+* [ REST API ](#tab-panel-11711)
+* [ Workers Binding API ](#tab-panel-11712)
 
-* [ cURL ](#tab-panel-11252)
-* [ TypeScript ](#tab-panel-11253)
+* [ cURL ](#tab-panel-11697)
+* [ TypeScript ](#tab-panel-11698)
 
 ```bash
 curl -X POST \
@@ -158,8 +158,8 @@ The response includes the download type, URL, and processing status:
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11254)
-* [ wrangler.jsonc ](#tab-panel-11255)
+* [ index.ts ](#tab-panel-11699)
+* [ wrangler.jsonc ](#tab-panel-11700)
 
 **TypeScript**
 
@@ -194,11 +194,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 You can view all available downloads for a video by making a `GET` HTTP request to the downloads API.
 
-* [ REST API ](#tab-panel-11268)
-* [ Workers Binding API ](#tab-panel-11269)
+* [ REST API ](#tab-panel-11713)
+* [ Workers Binding API ](#tab-panel-11714)
 
-* [ cURL ](#tab-panel-11256)
-* [ TypeScript ](#tab-panel-11257)
+* [ cURL ](#tab-panel-11701)
+* [ TypeScript ](#tab-panel-11702)
 
 ```bash
 curl -X GET \
@@ -245,8 +245,8 @@ const downloads = await client.stream.downloads.get({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11258)
-* [ wrangler.jsonc ](#tab-panel-11259)
+* [ index.ts ](#tab-panel-11703)
+* [ wrangler.jsonc ](#tab-panel-11704)
 
 **TypeScript**
 
@@ -299,11 +299,11 @@ curl -L https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/downloads/defau
 
 You can delete a download for a video. Available types are `default` and `audio`. Defaults to `default` when omitted.
 
-* [ REST API ](#tab-panel-11270)
-* [ Workers Binding API ](#tab-panel-11271)
+* [ REST API ](#tab-panel-11715)
+* [ Workers Binding API ](#tab-panel-11716)
 
-* [ cURL ](#tab-panel-11260)
-* [ TypeScript ](#tab-panel-11261)
+* [ cURL ](#tab-panel-11705)
+* [ TypeScript ](#tab-panel-11706)
 
 ```bash
 curl -X DELETE \
@@ -328,8 +328,8 @@ await client.stream.downloads.default.delete({
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11262)
-* [ wrangler.jsonc ](#tab-panel-11263)
+* [ index.ts ](#tab-panel-11707)
+* [ wrangler.jsonc ](#tab-panel-11708)
 
 **TypeScript**
 
@@ -413,6 +413,6 @@ MP4 downloads are billed in the same way as streaming of the video. You will be 
 You will not incur any additional cost for storage when you enable MP4s.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/download-videos/#page","headline":"Download video or audio · Cloudflare Stream docs","description":"Generate downloadable MP4 video or M4A audio files from Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/viewing-videos/download-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/download-videos/#page","headline":"Download video or audio · Cloudflare Stream docs","description":"Generate downloadable MP4 video or M4A audio files from Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/viewing-videos/download-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/viewing-videos/","name":"Play video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/viewing-videos/download-videos/","name":"Download video or audio"}}]}
 ```

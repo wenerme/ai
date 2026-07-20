@@ -1,7 +1,7 @@
 ---
 title: Speed test
 description: Run speed tests from the Cloudflare One client to measure network throughput, latency, and quality scores for end user devices.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -82,6 +82,6 @@ Network quality scores estimate the end-user experience for common application t
 | Web chat / RTC  | Estimates the connection quality for real-time communication applications such as video calls and VoIP. |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/speed-test/#page","headline":"Speed test · Cloudflare One docs","description":"Run speed tests from the Cloudflare One client to measure network throughput, latency, and quality scores for end user devices.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/speed-test/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/speed-test/#page","headline":"Speed test · Cloudflare One docs","description":"Run speed tests from the Cloudflare One client to measure network throughput, latency, and quality scores for end user devices.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/speed-test/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/diagnostics/","name":"Diagnostics"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/dex/diagnostics/speed-test/","name":"Speed test"}}]}
 ```

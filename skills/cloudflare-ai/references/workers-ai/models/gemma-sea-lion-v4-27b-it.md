@@ -1,7 +1,7 @@
 ---
 title: gemma-sea-lion-v4-27b-it
 description: SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,10 +33,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5053)
-* [  TypeScript ](#tab-panel-5054)
-* [  Python ](#tab-panel-5055)
-* [  curl ](#tab-panel-5056)
+* [  Worker (Streaming) ](#tab-panel-5311)
+* [  TypeScript ](#tab-panel-5312)
+* [  Python ](#tab-panel-5313)
+* [  curl ](#tab-panel-5314)
 
 **TypeScript**
 
@@ -136,8 +136,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response
 
-* [ Input ](#tab-panel-5057)
-* [ Output ](#tab-panel-5058)
+* [ Input ](#tab-panel-5315)
+* [ Output ](#tab-panel-5316)
 
 prompt
 
@@ -221,8 +221,8 @@ prompt\_logprobs{}
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
-* [ Input ](#tab-panel-5059)
-* [ Output ](#tab-panel-5060)
+* [ Input ](#tab-panel-5317)
+* [ Output ](#tab-panel-5318)
 
 prompt
 
@@ -290,8 +290,8 @@ format
 
 Batch — Send multiple requests in a single API call
 
-* [ Input ](#tab-panel-5061)
-* [ Output ](#tab-panel-5062)
+* [ Input ](#tab-panel-5319)
+* [ Output ](#tab-panel-5320)
 
 ▶requests\[\]
 
@@ -340,6 +340,6 @@ prompt\_logprobs{}
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/#page","headline":"gemma-sea-lion-v4-27b-it (aisingapore) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/#page","headline":"gemma-sea-lion-v4-27b-it (aisingapore) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

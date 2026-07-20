@@ -1,7 +1,7 @@
 ---
 title: Vendor-specific DNS records
 description: DNS records for common third-party services.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -234,6 +234,6 @@ For help configuring WPEngine sites, refer to:
 To use Cloudflare with Zoho, refer to [Zoho configuration with Cloudflare ↗](https://www.zoho.com/mail/help/adminconsole/cloudflare.html).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/#page","headline":"Vendor-specific DNS records · Cloudflare DNS docs","description":"DNS records for common third-party services.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/#page","headline":"Vendor-specific DNS records · Cloudflare DNS docs","description":"DNS records for common third-party services.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/reference/vendor-specific-records/","name":"Vendor-specific DNS records"}}]}
 ```

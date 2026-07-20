@@ -1,7 +1,7 @@
 ---
 title: Supported bindings per development mode
 description: Supported bindings per development mode
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -73,6 +73,6 @@ Supported only in [wrangler dev --remote](https://developers.cloudflare.com/work
 1. Refer to [Using remote resources with Durable Objects and Workflows](https://developers.cloudflare.com/workers/local-development/#using-remote-resources-with-durable-objects-and-workflows) for recommended workarounds. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/bindings-per-env/#page","headline":"Supported bindings per development mode · Cloudflare Workers docs","description":"Supported bindings per development mode","url":"https://developers.cloudflare.com/workers/local-development/bindings-per-env/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/bindings-per-env/#page","headline":"Supported bindings per development mode · Cloudflare Workers docs","description":"Supported bindings per development mode","url":"https://developers.cloudflare.com/workers/local-development/bindings-per-env/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/local-development/bindings-per-env/","name":"Supported bindings per development mode"}}]}
 ```

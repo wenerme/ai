@@ -1,7 +1,7 @@
 ---
 title: Account recovery
 description: Regain access to your Cloudflare account when you have lost your 2FA device and backup codes.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ If you see **Device verification failed**, you may be able to try again consider
 If you are still unable to verify your device, follow the instructions to _Request manual verification_ on the **Device verification failed** page.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/#page","headline":"Account recovery · Cloudflare Fundamentals docs","description":"Regain access to your Cloudflare account when you have lost your 2FA device and backup codes.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/#page","headline":"Account recovery · Cloudflare Fundamentals docs","description":"Regain access to your Cloudflare account when you have lost your 2FA device and backup codes.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/user-profiles/","name":"User profiles"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/user-profiles/account-recovery/","name":"Account recovery"}}]}
 ```

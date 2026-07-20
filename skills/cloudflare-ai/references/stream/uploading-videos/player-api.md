@@ -1,7 +1,7 @@
 ---
 title: Player API
 description: Supported attributes and properties for the Cloudflare Stream player element.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -188,6 +188,6 @@ Non-standard events are prefixed with `stream-` to distinguish them from standar
   * Fires when `ad-url` attribute is present and the ad took too long to load.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/player-api/#page","headline":"Player API · Cloudflare Stream docs","description":"Supported attributes and properties for the Cloudflare Stream player element.","url":"https://developers.cloudflare.com/stream/uploading-videos/player-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/player-api/#page","headline":"Player API · Cloudflare Stream docs","description":"Supported attributes and properties for the Cloudflare Stream player element.","url":"https://developers.cloudflare.com/stream/uploading-videos/player-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/uploading-videos/","name":"Upload videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/uploading-videos/player-api/","name":"Player API"}}]}
 ```

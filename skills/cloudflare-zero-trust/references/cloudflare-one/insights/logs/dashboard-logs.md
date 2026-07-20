@@ -1,7 +1,7 @@
 ---
 title: Dashboard logs
 description: View user activity, policy decisions, and connection logs in the Cloudflare One dashboard.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ The following logs are available in the [Cloudflare One dashboard ↗](https://o
 For additional datasets and long-term log storage, refer to [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/#page","headline":"Cloudflare One dashboard logs · Cloudflare One docs","description":"View user activity, policy decisions, and connection logs in the Cloudflare One dashboard.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/#page","headline":"Cloudflare One dashboard logs · Cloudflare One docs","description":"View user activity, policy decisions, and connection logs in the Cloudflare One dashboard.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/","name":"Dashboard logs"}}]}
 ```

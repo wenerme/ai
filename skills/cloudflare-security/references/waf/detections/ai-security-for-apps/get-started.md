@@ -1,7 +1,7 @@
 ---
 title: Get started with AI Security for Apps
 description: Enable AI Security for Apps to scan requests to AI-powered endpoints.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ## 1\. Turn on AI Security for Apps
 
-* [  New dashboard ](#tab-panel-11530)
-* [ API ](#tab-panel-11531)
+* [  New dashboard ](#tab-panel-11969)
+* [ API ](#tab-panel-11970)
 
 Note
 
@@ -41,8 +41,8 @@ Once you have [onboarded your domain](https://developers.cloudflare.com/fundamen
 
 Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/) once it has been discovered, or add the endpoint manually.
 
-* [  New dashboard ](#tab-panel-11528)
-* [ Old dashboard ](#tab-panel-11529)
+* [  New dashboard ](#tab-panel-11967)
+* [ Old dashboard ](#tab-panel-11968)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -56,8 +56,8 @@ Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management
 
 If you did not find the endpoint in the **Discovery** tab, you can add it manually:
 
-* [  New dashboard ](#tab-panel-11526)
-* [ Old dashboard ](#tab-panel-11527)
+* [  New dashboard ](#tab-panel-11965)
+* [ Old dashboard ](#tab-panel-11966)
 
 1. Go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Manually add**.
@@ -81,8 +81,8 @@ You must [label endpoints](https://developers.cloudflare.com/api-shield/manageme
 
 Add the `cf-llm` label to the endpoint you added:
 
-* [  New dashboard ](#tab-panel-11532)
-* [ Old dashboard ](#tab-panel-11533)
+* [  New dashboard ](#tab-panel-11971)
+* [ Old dashboard ](#tab-panel-11972)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -175,6 +175,6 @@ Expression when using the editor:
 `(cf.llm.prompt.pii_detected and cf.bot_management.score lt 10)`
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps · Cloudflare Web Application Firewall (WAF) docs","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps · Cloudflare Web Application Firewall (WAF) docs","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/get-started/","name":"Get started with AI Security for Apps"}}]}
 ```

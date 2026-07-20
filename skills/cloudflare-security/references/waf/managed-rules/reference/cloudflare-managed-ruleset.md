@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Managed Ruleset
 description: Rules and categories in the Cloudflare Managed Ruleset.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ It is not recommended that you enable all the available rules using overrides, s
 
 ## Deploy the Cloudflare Managed Ruleset
 
-* [  New dashboard ](#tab-panel-11592)
-* [ Old dashboard ](#tab-panel-11593)
+* [  New dashboard ](#tab-panel-12031)
+* [ Old dashboard ](#tab-panel-12032)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -65,8 +65,8 @@ When you enable all the rules in the ruleset, you will affect rules that are dis
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-11594)
-* [ Old dashboard ](#tab-panel-11595)
+* [  New dashboard ](#tab-panel-12033)
+* [ Old dashboard ](#tab-panel-12034)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -106,8 +106,8 @@ Setting any of these configurations for specific tags affects all current and fu
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-11598)
-* [ Old dashboard ](#tab-panel-11599)
+* [  New dashboard ](#tab-panel-12037)
+* [ Old dashboard ](#tab-panel-12038)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -152,8 +152,8 @@ You can configure (or override) the following Cloudflare Managed Ruleset setting
 
 Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-11596)
-* [ Old dashboard ](#tab-panel-11597)
+* [  New dashboard ](#tab-panel-12035)
+* [ Old dashboard ](#tab-panel-12036)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -306,8 +306,8 @@ For more information on working with managed rulesets via API, refer to [Work wi
 
 The following example deploys the Cloudflare Managed Ruleset for a zone and overrides the action and status of a specific rule.
 
-* [ Terraform (v5) ](#tab-panel-11590)
-* [ Terraform (v4) ](#tab-panel-11591)
+* [ Terraform (v5) ](#tab-panel-12029)
+* [ Terraform (v4) ](#tab-panel-12030)
 
 Required API token permissions
 
@@ -380,6 +380,6 @@ resource "cloudflare_ruleset" "zone_level_managed_waf" {
 For more information, refer to [WAF Managed Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#page","headline":"Cloudflare Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules and categories in the Cloudflare Managed Ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#page","headline":"Cloudflare Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules and categories in the Cloudflare Managed Ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/reference/","name":"Rulesets reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/reference/cloudflare-managed-ruleset/","name":"Cloudflare Managed Ruleset"}}]}
 ```

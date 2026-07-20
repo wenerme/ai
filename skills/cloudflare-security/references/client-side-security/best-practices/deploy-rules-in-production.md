@@ -1,7 +1,7 @@
 ---
 title: Deploy content security rules in production
 description: Safe practices for deploying and updating content security rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -59,6 +59,6 @@ If a rule change causes unexpected violations or blocks legitimate resources:
 4. Repeat the validation process before switching back to _Allow_ (blocks resources not present in the allowlist).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/#page","headline":"Deploy content security rules in production · Client-side security docs","description":"Safe practices for deploying and updating content security rules.","url":"https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/#page","headline":"Deploy content security rules in production · Client-side security docs","description":"Safe practices for deploying and updating content security rules.","url":"https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/best-practices/deploy-rules-in-production/","name":"Deploy content security rules in production"}}]}
 ```

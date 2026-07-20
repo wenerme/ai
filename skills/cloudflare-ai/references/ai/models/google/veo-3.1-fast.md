@@ -1,7 +1,7 @@
 ---
 title: Veo 3.1 Fast
 description: A faster version of Veo 3.1 optimized for lower latency while maintaining high-quality video and audio output.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ A faster version of Veo 3.1 optimized for lower latency while maintaining high-q
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-772)
-* [ cURL ](#tab-panel-773)
+* [ TypeScript ](#tab-panel-822)
+* [ cURL ](#tab-panel-823)
 
 **TypeScript**
 
@@ -64,8 +64,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-768)
-* [ Raw response ](#tab-panel-769)
+* [ Output ](#tab-panel-818)
+* [ Raw response ](#tab-panel-819)
 
 ```json
 {
@@ -83,8 +83,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Social Content**  — Quick vertical video for social media
 
-* [ TypeScript ](#tab-panel-776)
-* [ cURL ](#tab-panel-777)
+* [ TypeScript ](#tab-panel-826)
+* [ cURL ](#tab-panel-827)
 
 **TypeScript**
 
@@ -118,8 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-770)
-* [ Raw response ](#tab-panel-771)
+* [ Output ](#tab-panel-820)
+* [ Raw response ](#tab-panel-821)
 
 ```json
 {
@@ -135,8 +135,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Motion Graphics**  — Quick animated graphics
 
-* [ TypeScript ](#tab-panel-780)
-* [ cURL ](#tab-panel-781)
+* [ TypeScript ](#tab-panel-830)
+* [ cURL ](#tab-panel-831)
 
 **TypeScript**
 
@@ -170,8 +170,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-774)
-* [ Raw response ](#tab-panel-775)
+* [ Output ](#tab-panel-824)
+* [ Raw response ](#tab-panel-825)
 
 ```json
 {
@@ -187,8 +187,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Ambient Scene**  — Relaxing background video
 
-* [ TypeScript ](#tab-panel-782)
-* [ cURL ](#tab-panel-783)
+* [ TypeScript ](#tab-panel-832)
+* [ cURL ](#tab-panel-833)
 
 **TypeScript**
 
@@ -222,8 +222,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-778)
-* [ Raw response ](#tab-panel-779)
+* [ Output ](#tab-panel-828)
+* [ Raw response ](#tab-panel-829)
 
 ```json
 {
@@ -239,8 +239,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-784)
-* [ Output ](#tab-panel-785)
+* [ Input ](#tab-panel-834)
+* [ Output ](#tab-panel-835)
 
 prompt
 
@@ -277,6 +277,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/schema
 Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/#page","headline":"Veo 3.1 Fast (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"A faster version of Veo 3.1 optimized for lower latency while maintaining high-quality video and audio output.","url":"https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/#page","headline":"Veo 3.1 Fast (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"A faster version of Veo 3.1 optimized for lower latency while maintaining high-quality video and audio output.","url":"https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

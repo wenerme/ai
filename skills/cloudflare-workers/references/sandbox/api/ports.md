@@ -1,7 +1,7 @@
 ---
 title: Ports
 description: Expose sandbox services via public preview URLs using the Sandbox SDK ports API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,8 +43,8 @@ proxyToSandbox(request: Request, env: Env): Promise<Response | null>
 
 The function inspects the request hostname to determine whether it matches the subdomain pattern of an exposed port (for example, `8080-sandbox-id-token.yourdomain.com`). If it matches, `proxyToSandbox()` proxies the request to the correct Durable Object, and the sandbox service handles it. Both HTTP and WebSocket upgrade requests are supported.
 
-* [  JavaScript ](#tab-panel-10586)
-* [  TypeScript ](#tab-panel-10587)
+* [  JavaScript ](#tab-panel-11031)
+* [  TypeScript ](#tab-panel-11032)
 
 **JavaScript**
 
@@ -120,8 +120,8 @@ const response = await sandbox.exposePort(port: number, options: ExposePortOptio
 
 **Returns**: `Promise<ExposePortResponse>` with `port`, `url` (preview URL), `name`
 
-* [  JavaScript ](#tab-panel-10594)
-* [  TypeScript ](#tab-panel-10595)
+* [  JavaScript ](#tab-panel-11039)
+* [  TypeScript ](#tab-panel-11040)
 
 **JavaScript**
 
@@ -235,8 +235,8 @@ Custom tokens enable consistent preview URLs across container restarts and deplo
 * Only lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_)
 * Must be unique per sandbox (cannot reuse tokens across different ports)
 
-* [  JavaScript ](#tab-panel-10588)
-* [  TypeScript ](#tab-panel-10589)
+* [  JavaScript ](#tab-panel-11033)
+* [  TypeScript ](#tab-panel-11034)
 
 **JavaScript**
 
@@ -295,8 +295,8 @@ const isValid = await sandbox.validatePortToken(port: number, token: string): Pr
 
 **Returns**: `Promise<boolean>` \- `true` if token is valid for the port, `false` otherwise
 
-* [  JavaScript ](#tab-panel-10592)
-* [  TypeScript ](#tab-panel-10593)
+* [  JavaScript ](#tab-panel-11037)
+* [  TypeScript ](#tab-panel-11038)
 
 **JavaScript**
 
@@ -382,8 +382,8 @@ await sandbox.unexposePort(port: number): Promise<void>
 
 * `port` \- Port number to unexpose
 
-* [  JavaScript ](#tab-panel-10582)
-* [  TypeScript ](#tab-panel-10583)
+* [  JavaScript ](#tab-panel-11027)
+* [  TypeScript ](#tab-panel-11028)
 
 **JavaScript**
 
@@ -409,8 +409,8 @@ const response = await sandbox.getExposedPorts(): Promise<GetExposedPortsRespons
 
 **Returns**: `Promise<GetExposedPortsResponse>` with `ports` array (containing `port`, `url`, `name`)
 
-* [  JavaScript ](#tab-panel-10584)
-* [  TypeScript ](#tab-panel-10585)
+* [  JavaScript ](#tab-panel-11029)
+* [  TypeScript ](#tab-panel-11030)
 
 **JavaScript**
 
@@ -458,8 +458,8 @@ const response = await sandbox.wsConnect(request: Request, port: number): Promis
 
 **Returns**: `Promise<Response>` \- WebSocket response establishing the connection
 
-* [  JavaScript ](#tab-panel-10590)
-* [  TypeScript ](#tab-panel-10591)
+* [  JavaScript ](#tab-panel-11035)
+* [  TypeScript ](#tab-panel-11036)
 
 **JavaScript**
 
@@ -518,6 +518,6 @@ export default {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/ports/#page","headline":"Ports · Cloudflare Sandbox SDK docs","description":"Expose sandbox services via public preview URLs using the Sandbox SDK ports API.","url":"https://developers.cloudflare.com/sandbox/api/ports/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/ports/#page","headline":"Ports · Cloudflare Sandbox SDK docs","description":"Expose sandbox services via public preview URLs using the Sandbox SDK ports API.","url":"https://developers.cloudflare.com/sandbox/api/ports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/ports/","name":"Ports"}}]}
 ```

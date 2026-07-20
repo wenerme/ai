@@ -1,7 +1,7 @@
 ---
 title: Firewall rules upgrade
 description: Upgrade deprecated Firewall Rules to WAF custom rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -248,6 +248,6 @@ For details on importing Cloudflare resources to Terraform and using the `cf-ter
 Any unpaused firewall rules with paused [filters](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) will become enabled when converted to custom rules.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/#page","headline":"Firewall rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade deprecated Firewall Rules to WAF custom rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/#page","headline":"Firewall rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade deprecated Firewall Rules to WAF custom rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/reference/legacy/","name":"Legacy features"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/reference/legacy/firewall-rules-upgrade/","name":"Firewall rules upgrade"}}]}
 ```

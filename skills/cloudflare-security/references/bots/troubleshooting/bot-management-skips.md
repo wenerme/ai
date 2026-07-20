@@ -1,7 +1,7 @@
 ---
 title: Bot Management skips
 description: Understand why Bot Management does not score certain requests.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -39,6 +39,6 @@ All HTTP purge requests will not receive a bot score.
 Early hints cache requests will not receive a bot score.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/troubleshooting/bot-management-skips/#page","headline":"Bot Management skips · Cloudflare bot solutions docs","description":"Understand why Bot Management does not score certain requests.","url":"https://developers.cloudflare.com/bots/troubleshooting/bot-management-skips/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/troubleshooting/bot-management-skips/#page","headline":"Bot Management skips · Cloudflare bot solutions docs","description":"Understand why Bot Management does not score certain requests.","url":"https://developers.cloudflare.com/bots/troubleshooting/bot-management-skips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/troubleshooting/bot-management-skips/","name":"Bot Management skips"}}]}
 ```

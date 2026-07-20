@@ -1,7 +1,7 @@
 ---
 title: Migration guides
 description: Migrate your existing site from another platform to Cloudflare Pages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Migrating from Workers Sites to Pages ](https://developers.cloudflare.com/pages/migrations/migrating-from-workers/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pages/migrations/#page","headline":"Migration guides · Cloudflare Pages docs","description":"Migrate your existing site from another platform to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pages/migrations/#page","headline":"Migration guides · Cloudflare Pages docs","description":"Migrate your existing site from another platform to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/migrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/migrations/","name":"Migration guides"}}]}
 ```

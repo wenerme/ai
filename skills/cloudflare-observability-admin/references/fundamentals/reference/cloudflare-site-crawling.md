@@ -1,7 +1,7 @@
 ---
 title: Cloudflare crawlers
 description: Review the user agents and situations in which Cloudflare crawls or makes HTTP requests to your site.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -61,6 +61,6 @@ The [**Browser Run /crawl endpoint**](https://developers.cloudflare.com/browser-
 The crawler uses a _User-Agent_ of `Cloudflare-AI-Search`. You can allow or block it with WAF rules using its [bot detection ID](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#allow-the-ai-search-crawler-through-waf).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/#page","headline":"Cloudflare crawlers · Cloudflare Fundamentals docs","description":"Review the user agents and situations in which Cloudflare crawls or makes HTTP requests to your site.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/#page","headline":"Cloudflare crawlers · Cloudflare Fundamentals docs","description":"Review the user agents and situations in which Cloudflare crawls or makes HTTP requests to your site.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/cloudflare-site-crawling/","name":"Cloudflare crawlers"}}]}
 ```

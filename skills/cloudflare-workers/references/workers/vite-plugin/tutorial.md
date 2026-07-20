@@ -1,7 +1,7 @@
 ---
 title: Tutorial - React SPA with an API
 description: Create a React SPA with an API Worker using the Vite plugin
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -85,8 +85,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-12631)
-* [  wrangler.toml ](#tab-panel-12632)
+* [  wrangler.jsonc ](#tab-panel-13119)
+* [  wrangler.toml ](#tab-panel-13120)
 
 **JSONC**
 
@@ -95,7 +95,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-vite-tutorial",
   // Set this to today's date
-  "compatibility_date": "2026-07-03",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "not_found_handling": "single-page-application"
   }
@@ -108,7 +108,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-03"
+compatibility_date = "2026-07-20"
 
 
 [assets]
@@ -190,8 +190,8 @@ bun add -d @cloudflare/workers-types
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-12633)
-* [  wrangler.toml ](#tab-panel-12634)
+* [  wrangler.jsonc ](#tab-panel-13121)
+* [  wrangler.toml ](#tab-panel-13122)
 
 **JSONC**
 
@@ -200,7 +200,7 @@ bun add -d @cloudflare/workers-types
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-vite-tutorial",
   // Set this to today's date
-  "compatibility_date": "2026-07-03",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "not_found_handling": "single-page-application"
   },
@@ -214,7 +214,7 @@ bun add -d @cloudflare/workers-types
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-03"
+compatibility_date = "2026-07-20"
 main = "./worker/index.ts"
 
 
@@ -254,8 +254,8 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-12635)
-* [  wrangler.toml ](#tab-panel-12636)
+* [  wrangler.jsonc ](#tab-panel-13123)
+* [  wrangler.toml ](#tab-panel-13124)
 
 **JSONC**
 
@@ -264,7 +264,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-vite-tutorial",
   // Set this to today's date
-  "compatibility_date": "2026-07-03",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "not_found_handling": "single-page-application",
     "run_worker_first": [
@@ -281,7 +281,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-03"
+compatibility_date = "2026-07-20"
 main = "./worker/index.ts"
 
 
@@ -407,6 +407,6 @@ Possible next steps include:
 * Using a library, such as [Hono ↗](https://hono.dev/) or [tRPC ↗](https://trpc.io/), in your API Worker
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/tutorial/","name":"Tutorial - React SPA with an API"}}]}
 ```

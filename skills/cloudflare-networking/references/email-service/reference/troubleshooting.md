@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Diagnose and fix delivery, authentication, and local development issues for Email Service.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -232,6 +232,6 @@ If you continue to experience authentication issues:
   * SPF, DKIM, and DMARC record configurations
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Email Service docs","description":"Diagnose and fix delivery, authentication, and local development issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Email Service docs","description":"Diagnose and fix delivery, authentication, and local development issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/reference/troubleshooting/","name":"Troubleshooting"}}]}
 ```

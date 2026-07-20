@@ -1,7 +1,7 @@
 ---
 title: Search across multiple instances
 description: Search a shared knowledge base and a tenant-specific one in a single query, and identify which instance each result came from.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -67,8 +67,8 @@ cd multi-source-search
 
 Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Searching across instances is a method on the namespace binding, so a single binding can reach every instance in the namespace.
 
-* [  wrangler.jsonc ](#tab-panel-6991)
-* [  wrangler.toml ](#tab-panel-6992)
+* [  wrangler.jsonc ](#tab-panel-7259)
+* [  wrangler.toml ](#tab-panel-7260)
 
 **JSONC**
 
@@ -78,7 +78,7 @@ Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search
   "name": "multi-source-search",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-08",
+  "compatibility_date": "2026-07-20",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -95,7 +95,7 @@ Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search
 name = "multi-source-search"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-08"
+compatibility_date = "2026-07-20"
 
 
 [[ai_search_namespaces]]
@@ -110,8 +110,8 @@ The `remote` option lets `wrangler dev` proxy requests to your deployed instance
 
 Update `src/index.ts`. This Worker identifies the tenant from a request header, then searches the shared instance and that tenant's instance in one call. Each returned chunk carries an `instance_id`, so the Worker can group results by source.
 
-* [  JavaScript ](#tab-panel-6993)
-* [  TypeScript ](#tab-panel-6994)
+* [  JavaScript ](#tab-panel-7261)
+* [  TypeScript ](#tab-panel-7262)
 
 **src/index.js**
 
@@ -386,6 +386,6 @@ npx wrangler deploy
 [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) Full reference for single-instance and multi-instance search and chat.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/#page","headline":"Search across multiple instances · Cloudflare AI Search docs","description":"Search a shared knowledge base and a tenant-specific one in a single query, and identify which instance each result came from.","url":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/#page","headline":"Search across multiple instances · Cloudflare AI Search docs","description":"Search a shared knowledge base and a tenant-specific one in a single query, and identify which instance each result came from.","url":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/search-multiple-sources/","name":"Search across multiple instances"}}]}
 ```

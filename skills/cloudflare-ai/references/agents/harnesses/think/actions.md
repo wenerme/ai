@@ -1,7 +1,7 @@
 ---
 title: Actions
 description: Server-side Think tools with idempotency, human approvals, authorization, and reply attachments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,8 +29,8 @@ Actions compile into Think tools, so the model calls them exactly like any other
 
 Use the `action()` descriptor factory and return a map of actions from `getActions()`. The map key is the tool name the model sees (unless you set `name`). The `execute` input type is inferred from `inputSchema`:
 
-* [  JavaScript ](#tab-panel-5805)
-* [  TypeScript ](#tab-panel-5806)
+* [  JavaScript ](#tab-panel-6067)
+* [  TypeScript ](#tab-panel-6068)
 
 **JavaScript**
 
@@ -110,8 +110,8 @@ A plain `tool()` from `getTools()` still works and is the right choice for a rea
 
 When an action declares an `idempotencyKey`, Think records the settled result in a durable ledger keyed by `action:<name>:<key>`. If the same key is seen again — on a recovery retry, a reconnect, or a duplicate inbound event — Think returns the stored result **without** re-running `execute`, so the side effect happens at most once on the happy path.
 
-* [  JavaScript ](#tab-panel-5793)
-* [  TypeScript ](#tab-panel-5794)
+* [  JavaScript ](#tab-panel-6055)
+* [  TypeScript ](#tab-panel-6056)
 
 **JavaScript**
 
@@ -151,8 +151,8 @@ Gate an action behind a human with `approval`. There are two mechanisms, selecte
 
 The default when you set `approval` without a `kind`. The action compiles to a tool with the AI SDK `needsApproval` flag: the stream pauses with an `approval-requested` part, the client approves or rejects, and the turn continues inline. `execute` runs only after approval.
 
-* [  JavaScript ](#tab-panel-5795)
-* [  TypeScript ](#tab-panel-5796)
+* [  JavaScript ](#tab-panel-6057)
+* [  TypeScript ](#tab-panel-6058)
 
 **JavaScript**
 
@@ -186,8 +186,8 @@ const deleteAccount = action({
 
 Set `kind: "durable-pause"` when approval may take minutes or days and you do not want to hold a connection open. The action parks into a durable store and the turn ends; `execute` does not run yet. Resume later — from anywhere, including a dashboard with no live WebSocket — with `approveExecution()` or `rejectExecution()`:
 
-* [  JavaScript ](#tab-panel-5797)
-* [  TypeScript ](#tab-panel-5798)
+* [  JavaScript ](#tab-panel-6059)
+* [  TypeScript ](#tab-panel-6060)
 
 **JavaScript**
 
@@ -217,8 +217,8 @@ const deploy = action({
 });
 ```
 
-* [  JavaScript ](#tab-panel-5799)
-* [  TypeScript ](#tab-panel-5800)
+* [  JavaScript ](#tab-panel-6061)
+* [  TypeScript ](#tab-panel-6062)
 
 **JavaScript**
 
@@ -254,8 +254,8 @@ Both approval-gated and durable-pause parts carry a stable `ActionApprovalDescri
 
 Declare the permissions an action requires with `permissions`, then grant them per turn. By default every turn is fully authorized, so authorization is opt-in.
 
-* [  JavaScript ](#tab-panel-5801)
-* [  TypeScript ](#tab-panel-5802)
+* [  JavaScript ](#tab-panel-6063)
+* [  TypeScript ](#tab-panel-6064)
 
 **JavaScript**
 
@@ -281,8 +281,8 @@ const refundOrder = action({
 
 Override `authorizeTurn()` to decide, once per turn, which permissions are granted. Returning a list narrows the grant; any action requiring a permission outside the set is denied with a structured `ActionAuthorizationError` (the model never calls `execute`):
 
-* [  JavaScript ](#tab-panel-5803)
-* [  TypeScript ](#tab-panel-5804)
+* [  JavaScript ](#tab-panel-6065)
+* [  TypeScript ](#tab-panel-6066)
 
 **JavaScript**
 
@@ -314,8 +314,8 @@ export class Support extends Think<Env> {
 
 An action can record advisory delivery metadata for the turn — a drafted email, a card, a voice note — with `ctx.attachReply()`. Attachments never change the tool output the model sees; they ride alongside the response for your delivery layer to render.
 
-* [  JavaScript ](#tab-panel-5807)
-* [  TypeScript ](#tab-panel-5808)
+* [  JavaScript ](#tab-panel-6069)
+* [  TypeScript ](#tab-panel-6070)
 
 **JavaScript**
 
@@ -345,8 +345,8 @@ const draftReply = action({
 
 Read the attachments after the turn from the `onChatResponse()` hook, or from the `replyAttachments(requestId?)` getter:
 
-* [  JavaScript ](#tab-panel-5809)
-* [  TypeScript ](#tab-panel-5810)
+* [  JavaScript ](#tab-panel-6071)
+* [  TypeScript ](#tab-panel-6072)
 
 **JavaScript**
 
@@ -414,6 +414,6 @@ A built-in `ReplyAttachment` covers `email_draft`, `card`, and `voice_note`; any
 * [Channels](https://developers.cloudflare.com/agents/harnesses/think/channels/) — deliver attachments and out-of-band notices.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/actions/#page","headline":"Actions · Cloudflare Agents docs","description":"Server-side Think tools with idempotency, human approvals, authorization, and reply attachments.","url":"https://developers.cloudflare.com/agents/harnesses/think/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/actions/#page","headline":"Actions · Cloudflare Agents docs","description":"Server-side Think tools with idempotency, human approvals, authorization, and reply attachments.","url":"https://developers.cloudflare.com/agents/harnesses/think/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/actions/","name":"Actions"}}]}
 ```

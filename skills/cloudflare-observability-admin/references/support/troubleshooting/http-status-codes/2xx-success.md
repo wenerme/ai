@@ -1,7 +1,7 @@
 ---
 title: 2xx Success
 description: Understand 2xx success HTTP status codes.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -102,6 +102,6 @@ For more details, refer to [Section 4.1 of RFC 7233 ↗](https://tools.ietf.org/
 Cloudflare handles 206 responses for range requests, but [caching behavior](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) may vary depending on the file type and origin settings.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/2xx-success/#page","headline":"2xx Success · Cloudflare Support docs","description":"Understand 2xx success HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/2xx-success/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/2xx-success/#page","headline":"2xx Success · Cloudflare Support docs","description":"Understand 2xx success HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/2xx-success/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/2xx-success/","name":"2xx Success"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Grok TTS
 description: xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expressive voices (eve, ara, rex, sal, leo) with 20+ supported languages. Supports inline speech tags for laughter, whispers, and pauses.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expre
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-2126)
-* [ cURL ](#tab-panel-2127)
+* [ TypeScript ](#tab-panel-2272)
+* [ cURL ](#tab-panel-2273)
 
 **TypeScript**
 
@@ -54,8 +54,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2124)
-* [ Raw response ](#tab-panel-2125)
+* [ Output ](#tab-panel-2270)
+* [ Raw response ](#tab-panel-2271)
 
 ```json
 {
@@ -73,8 +73,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Different Voice**  — Use the warm, conversational \`ara\` voice
 
-* [ TypeScript ](#tab-panel-2130)
-* [ cURL ](#tab-panel-2131)
+* [ TypeScript ](#tab-panel-2276)
+* [ cURL ](#tab-panel-2277)
 
 **TypeScript**
 
@@ -100,8 +100,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2128)
-* [ Raw response ](#tab-panel-2129)
+* [ Output ](#tab-panel-2274)
+* [ Raw response ](#tab-panel-2275)
 
 ```json
 {
@@ -117,8 +117,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **High-Fidelity MP3**  — 44.1 kHz / 192 kbps MP3 for production use
 
-* [ TypeScript ](#tab-panel-2138)
-* [ cURL ](#tab-panel-2139)
+* [ TypeScript ](#tab-panel-2284)
+* [ cURL ](#tab-panel-2285)
 
 **TypeScript**
 
@@ -154,8 +154,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2132)
-* [ Raw response ](#tab-panel-2133)
+* [ Output ](#tab-panel-2278)
+* [ Raw response ](#tab-panel-2279)
 
 ```json
 {
@@ -171,8 +171,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Telephony (mulaw)**  — G.711 μ-law at 8 kHz for SIP / PSTN integration
 
-* [ TypeScript ](#tab-panel-2144)
-* [ cURL ](#tab-panel-2145)
+* [ TypeScript ](#tab-panel-2290)
+* [ cURL ](#tab-panel-2291)
 
 **TypeScript**
 
@@ -207,8 +207,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2134)
-* [ Raw response ](#tab-panel-2135)
+* [ Output ](#tab-panel-2280)
+* [ Raw response ](#tab-panel-2281)
 
 ```json
 {
@@ -224,8 +224,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Expressive Delivery**  — Inline speech tags for laughter, pauses, and whispers
 
-* [ TypeScript ](#tab-panel-2140)
-* [ cURL ](#tab-panel-2141)
+* [ TypeScript ](#tab-panel-2286)
+* [ cURL ](#tab-panel-2287)
 
 **TypeScript**
 
@@ -255,8 +255,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2136)
-* [ Raw response ](#tab-panel-2137)
+* [ Output ](#tab-panel-2282)
+* [ Raw response ](#tab-panel-2283)
 
 ```json
 {
@@ -272,8 +272,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Text Normalization**  — Convert written numbers and abbreviations to spoken form
 
-* [ TypeScript ](#tab-panel-2146)
-* [ cURL ](#tab-panel-2147)
+* [ TypeScript ](#tab-panel-2292)
+* [ cURL ](#tab-panel-2293)
 
 **TypeScript**
 
@@ -305,8 +305,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2142)
-* [ Raw response ](#tab-panel-2143)
+* [ Output ](#tab-panel-2288)
+* [ Raw response ](#tab-panel-2289)
 
 ```json
 {
@@ -322,8 +322,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2148)
-* [ Output ](#tab-panel-2149)
+* [ Input ](#tab-panel-2294)
+* [ Output ](#tab-panel-2295)
 
 text
 
@@ -368,6 +368,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-input.
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-tts/#page","headline":"Grok TTS (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expressive voices (eve, ara, rex, sal, leo) with 20+ supported languages. Supports inline speech tags for laughter, whispers, and pauses.","url":"https://developers.cloudflare.com/ai/models/xai/grok-tts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-tts/#page","headline":"Grok TTS (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expressive voices (eve, ara, rex, sal, leo) with 20+ supported languages. Supports inline speech tags for laughter, whispers, and pauses.","url":"https://developers.cloudflare.com/ai/models/xai/grok-tts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

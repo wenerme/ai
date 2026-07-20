@@ -1,7 +1,7 @@
 ---
 title: Add a site
 description: This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -60,13 +60,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-10000)
-* [  TypeScript ](#tab-panel-10001)
-* [  Python ](#tab-panel-10002)
-* [ go ](#tab-panel-10003)
-* [ Java ](#tab-panel-10004)
-* [ .NET ](#tab-panel-10005)
-* [ YAML ](#tab-panel-10006)
+* [  JavaScript ](#tab-panel-10359)
+* [  TypeScript ](#tab-panel-10360)
+* [  Python ](#tab-panel-10361)
+* [ go ](#tab-panel-10362)
+* [ Java ](#tab-panel-10363)
+* [ .NET ](#tab-panel-10364)
+* [ YAML ](#tab-panel-10365)
 
 ```sh
 pulumi new javascript --name addsite-cloudflare --yes
@@ -155,13 +155,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-10007)
-* [  TypeScript ](#tab-panel-10008)
-* [  Python ](#tab-panel-10009)
-* [ go ](#tab-panel-10010)
-* [ Java ](#tab-panel-10011)
-* [ .NET ](#tab-panel-10012)
-* [ YAML ](#tab-panel-10013)
+* [  JavaScript ](#tab-panel-10366)
+* [  TypeScript ](#tab-panel-10367)
+* [  Python ](#tab-panel-10368)
+* [ go ](#tab-panel-10369)
+* [ Java ](#tab-panel-10370)
+* [ .NET ](#tab-panel-10371)
+* [ YAML ](#tab-panel-10372)
 
 ```sh
 npm install @pulumi/cloudflare
@@ -242,13 +242,13 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-10014)
-* [  TypeScript ](#tab-panel-10015)
-* [  Python ](#tab-panel-10016)
-* [ go ](#tab-panel-10017)
-* [ Java ](#tab-panel-10018)
-* [ .NET ](#tab-panel-10019)
-* [ YAML ](#tab-panel-10020)
+* [  JavaScript ](#tab-panel-10373)
+* [  TypeScript ](#tab-panel-10374)
+* [  Python ](#tab-panel-10375)
+* [ go ](#tab-panel-10376)
+* [ Java ](#tab-panel-10377)
+* [ .NET ](#tab-panel-10378)
+* [ YAML ](#tab-panel-10379)
 
 **Filename: `index.js`**
 
@@ -484,13 +484,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-10021)
-* [  TypeScript ](#tab-panel-10022)
-* [  Python ](#tab-panel-10023)
-* [ go ](#tab-panel-10024)
-* [ Java ](#tab-panel-10025)
-* [ .NET ](#tab-panel-10026)
-* [ YAML ](#tab-panel-10027)
+* [  JavaScript ](#tab-panel-10380)
+* [  TypeScript ](#tab-panel-10381)
+* [  Python ](#tab-panel-10382)
+* [ go ](#tab-panel-10383)
+* [ Java ](#tab-panel-10384)
+* [ .NET ](#tab-panel-10385)
+* [ YAML ](#tab-panel-10386)
 
 **Filename: `index.js`**
 
@@ -692,6 +692,6 @@ You have incrementally defined Cloudflare resources needed to add a site to Clou
 To deploy a serverless app with Pulumi, follow the [Deploy a Worker tutorial](https://developers.cloudflare.com/pulumi/tutorial/hello-world/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/add-site/#page","headline":"Add a site · Pulumi docs","description":"This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.","url":"https://developers.cloudflare.com/pulumi/tutorial/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Go","Java",".NET","YAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/add-site/#page","headline":"Add a site · Pulumi docs","description":"This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.","url":"https://developers.cloudflare.com/pulumi/tutorial/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Go","Java",".NET","YAML"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pulumi/","name":"Pulumi"}},{"@type":"ListItem","position":3,"item":{"@id":"/pulumi/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pulumi/tutorial/add-site/","name":"Add a site"}}]}
 ```

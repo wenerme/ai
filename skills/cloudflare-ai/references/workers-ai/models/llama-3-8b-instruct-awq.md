@@ -1,7 +1,7 @@
 ---
 title: llama-3-8b-instruct-awq
 description: Quantized (int4) generative text model with 8 billion parameters from Meta.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,10 +36,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5154)
-* [  TypeScript ](#tab-panel-5155)
-* [  Python ](#tab-panel-5156)
-* [  curl ](#tab-panel-5157)
+* [  Worker (Streaming) ](#tab-panel-5412)
+* [  TypeScript ](#tab-panel-5413)
+* [  Python ](#tab-panel-5414)
+* [  curl ](#tab-panel-5415)
 
 **TypeScript**
 
@@ -228,6 +228,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/#page","headline":"llama-3-8b-instruct-awq (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Quantized (int4) generative text model with 8 billion parameters from Meta.","url":"https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/#page","headline":"llama-3-8b-instruct-awq (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Quantized (int4) generative text model with 8 billion parameters from Meta.","url":"https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

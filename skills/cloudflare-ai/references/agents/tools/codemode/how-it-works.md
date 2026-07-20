@@ -1,7 +1,7 @@
 ---
 title: How Code Mode works
 description: Learn how Code Mode isolates generated code and makes approvals, replay, rollback, and reuse durable.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -150,8 +150,8 @@ The executor and connector instances remain transient. Your application provides
 
 A typical Agent creates all three parts together:
 
-* [  JavaScript ](#tab-panel-6797)
-* [  TypeScript ](#tab-panel-6798)
+* [  JavaScript ](#tab-panel-7071)
+* [  TypeScript ](#tab-panel-7072)
 
 **src/server.js**
 
@@ -199,8 +199,8 @@ Most Agents need only one Code Mode runtime. If you omit `name`, the runtime use
 
 Set `name` when one Agent needs separate Code Mode histories. For example, a runtime named `research` and another named `operations` keep separate execution records and snippet collections:
 
-* [  JavaScript ](#tab-panel-6799)
-* [  TypeScript ](#tab-panel-6800)
+* [  JavaScript ](#tab-panel-7073)
+* [  TypeScript ](#tab-panel-7074)
 
 **src/server.js**
 
@@ -357,8 +357,8 @@ A snippet is saved source from an execution. Snippets turn model-written program
 
 The model does not promote its own code. Your application reviews an execution and calls `runtime.saveSnippet()` with its execution ID. The API accepts any execution status, so verify that the execution completed successfully before saving it. The model can then find the snippet with `codemode.search()`, inspect it with `codemode.describe()`, and invoke it with `codemode.run()`.
 
-* [  JavaScript ](#tab-panel-6795)
-* [  TypeScript ](#tab-panel-6796)
+* [  JavaScript ](#tab-panel-7069)
+* [  TypeScript ](#tab-panel-7070)
 
 **src/server.js**
 
@@ -387,6 +387,6 @@ await runtime.saveSnippet("list-open-prs", {
 A snippet can accept an input value. Its connector calls join the current execution log when the model runs it. The snippet also retains the connector list from its source execution. If a recorded connector is unavailable, `codemode.run()` resolves to an object with an `error` property. It does not throw automatically.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/how-it-works/#page","headline":"How Code Mode works · Cloudflare Agents docs","description":"Learn how Code Mode isolates generated code and makes approvals, replay, rollback, and reuse durable.","url":"https://developers.cloudflare.com/agents/tools/codemode/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/how-it-works/#page","headline":"How Code Mode works · Cloudflare Agents docs","description":"Learn how Code Mode isolates generated code and makes approvals, replay, rollback, and reuse durable.","url":"https://developers.cloudflare.com/agents/tools/codemode/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/how-it-works/","name":"How Code Mode works"}}]}
 ```

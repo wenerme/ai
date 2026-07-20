@@ -1,7 +1,7 @@
 ---
 title: Secure approved AI models and tools
 description: Monitor and secure generative AI usage.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -59,6 +59,6 @@ To define user access to your systems, you can configure Access policies for a p
 To get started with MCP server portals, refer to [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/#page","headline":"Secure approved AI models and tools · Cloudflare Learning Paths","description":"Monitor and secure generative AI usage.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/#page","headline":"Secure approved AI models and tools · Cloudflare Learning Paths","description":"Monitor and secure generative AI usage.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/","name":"Secure approved AI models and tools"}}]}
 ```

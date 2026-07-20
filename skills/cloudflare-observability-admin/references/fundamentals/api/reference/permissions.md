@@ -1,7 +1,7 @@
 ---
 title: API token permissions
 description: Review available Cloudflare API token permissions for user, account, and zone resources.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ To obtain an updated list of token permissions, including the permission ID and 
 
 The applicable scope of user permissions is `com.cloudflare.api.user`.
 
-* [ Dashboard ](#tab-panel-8653)
-* [ API ](#tab-panel-8654)
+* [ Dashboard ](#tab-panel-9381)
+* [ API ](#tab-panel-9382)
 
 | Name              | Description                                                                                                                   |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -55,8 +55,8 @@ Note
 
 The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only — they cannot be restricted to a single gateway. For details, refer to [Authenticated Gateway](https://developers.cloudflare.com/ai-gateway/configuration/authentication/).
 
-* [ Dashboard ](#tab-panel-8655)
-* [ API ](#tab-panel-8656)
+* [ Dashboard ](#tab-panel-9383)
+* [ API ](#tab-panel-9384)
 
 | Name                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -414,8 +414,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 
 The applicable scope of zone permissions is `com.cloudflare.api.account.zone`.
 
-* [ Dashboard ](#tab-panel-8657)
-* [ API ](#tab-panel-8658)
+* [ Dashboard ](#tab-panel-9385)
+* [ API ](#tab-panel-9386)
 
 | Name                               | Description                                                                                                                                                  |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -572,6 +572,6 @@ The applicable scope of zone permissions is `com.cloudflare.api.account.zone`.
 | Zone WAF Write                      | Grants write access to [Zone WAF](https://developers.cloudflare.com/waf/).                                                                                   |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions · Cloudflare Fundamentals docs","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions · Cloudflare Fundamentals docs","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/reference/permissions/","name":"API token permissions"}}]}
 ```

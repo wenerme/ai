@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,8 +42,8 @@ For `chatRecovery` and `chatStreamStallTimeoutMs` behavior, refer to [Durable re
 
 Think's class generics match `Agent<Env, State, Props>`. Persisted runtime configuration is typed at the `configure<T>()` and `getConfig<T>()` call sites, stored in SQLite, and survives hibernation and restarts.
 
-* [  JavaScript ](#tab-panel-5827)
-* [  TypeScript ](#tab-panel-5828)
+* [  JavaScript ](#tab-panel-6089)
+* [  TypeScript ](#tab-panel-6090)
 
 **JavaScript**
 
@@ -85,8 +85,8 @@ export class MyAgent extends Think<Env> {
 
 Expose configuration to the client via `@callable`:
 
-* [  JavaScript ](#tab-panel-5829)
-* [  TypeScript ](#tab-panel-5830)
+* [  JavaScript ](#tab-panel-6091)
+* [  TypeScript ](#tab-panel-6092)
 
 **JavaScript**
 
@@ -130,8 +130,8 @@ export class MyAgent extends Think<Env> {
 
 Think stores conversations in a [Session](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) — the storage layer that holds your messages and gives the model writable memory. Two concepts come up here: **context blocks** are labelled sections of the system prompt the model can read and update (for example, a `memory` block of facts about the user), and **compaction** summarizes older messages so long conversations stay within the model's context window. Override `configureSession` to add persistent memory, compaction, search, and skills:
 
-* [  JavaScript ](#tab-panel-5831)
-* [  TypeScript ](#tab-panel-5832)
+* [  JavaScript ](#tab-panel-6093)
+* [  TypeScript ](#tab-panel-6094)
 
 **JavaScript**
 
@@ -225,6 +225,6 @@ Bundled with `@cloudflare/think`:
 The Agent Skills engine and its script runner live in [agents/skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/), so skill scripts pull `@cloudflare/worker-bundler` and `just-bash` through `agents`, not Think.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/configuration/","name":"Configuration"}}]}
 ```

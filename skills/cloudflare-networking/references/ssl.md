@@ -1,7 +1,7 @@
 ---
 title: Cloudflare SSL/TLS
 description: Manage SSL/TLS certificates for encrypted connections between visitors, Cloudflare, and your origin server.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -58,6 +58,6 @@ When you use Cloudflare DNS, all DNS queries for your domain are answered by Clo
 Cloudflare for SaaS allows you to extend the security and performance benefits of Cloudflare's network to your customers via their own custom or vanity domains.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/#page","headline":"Overview · Cloudflare SSL/TLS docs","description":"Manage SSL/TLS certificates for encrypted connections between visitors, Cloudflare, and your origin server.","url":"https://developers.cloudflare.com/ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/#page","headline":"Overview · Cloudflare SSL/TLS docs","description":"Manage SSL/TLS certificates for encrypted connections between visitors, Cloudflare, and your origin server.","url":"https://developers.cloudflare.com/ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}}]}
 ```

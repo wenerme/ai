@@ -1,7 +1,7 @@
 ---
 title: Bot management
 description: Cloudflare has bot management capabilities to help identify and mitigate automated traffic to protect domains from bad bots.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -62,6 +62,6 @@ Figure 1: How Cloudflare identifies, scores and processes traffic from bots.
 * [Video: Cloudflare Bot Management and Turnstile with Demo ↗](https://youtu.be/6EnekTohO7I?si=tk8FUB0xtk1PxsJV)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/bots/bot-management/#page","headline":"Bot management · Cloudflare Reference Architecture docs","description":"Cloudflare has bot management capabilities to help identify and mitigate automated traffic to protect domains from bad bots.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/bots/bot-management/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/bots/bot-management/#page","headline":"Bot management · Cloudflare Reference Architecture docs","description":"Cloudflare has bot management capabilities to help identify and mitigate automated traffic to protect domains from bad bots.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/bots/bot-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/bots/","name":"Bots"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/bots/bot-management/","name":"Bot management"}}]}
 ```

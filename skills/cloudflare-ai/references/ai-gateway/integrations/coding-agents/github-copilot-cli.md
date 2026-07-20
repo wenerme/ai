@@ -1,7 +1,7 @@
 ---
 title: GitHub Copilot CLI
 description: Route GitHub Copilot CLI through AI Gateway using the REST API and Unified Billing.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,8 +27,8 @@ Before you start, you need:
 1. Set the provider environment variables. GitHub Copilot CLI reads these on startup and appends `/chat/completions` to the base URL. The commands set these variables for the current session. To persist them, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`).
 Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CF_API_TOKEN>` with your Cloudflare API token. Set `COPILOT_MODEL` to any supported model in `provider/model` format.
 
-  * [ macOS / Linux ](#tab-panel-6868)
-  * [ Windows (PowerShell) ](#tab-panel-6869)
+  * [ macOS / Linux ](#tab-panel-7142)
+  * [ Windows (PowerShell) ](#tab-panel-7143)
 ```bash
 export COPILOT_PROVIDER_TYPE="openai"
 export COPILOT_PROVIDER_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
@@ -60,6 +60,6 @@ export COPILOT_PROVIDER_MAX_OUTPUT_TOKENS="32000"
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/#page","headline":"GitHub Copilot CLI · Cloudflare AI Gateway docs","description":"Route GitHub Copilot CLI through AI Gateway using the REST API and Unified Billing.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/#page","headline":"GitHub Copilot CLI · Cloudflare AI Gateway docs","description":"Route GitHub Copilot CLI through AI Gateway using the REST API and Unified Billing.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/coding-agents/","name":"Coding agents"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/integrations/coding-agents/github-copilot-cli/","name":"GitHub Copilot CLI"}}]}
 ```

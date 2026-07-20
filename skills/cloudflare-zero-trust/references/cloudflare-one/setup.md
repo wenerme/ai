@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up Cloudflare Zero Trust for your organization. Choose a use case to get started with a guided quick-start.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -56,6 +56,6 @@ Note
 For in-depth deployment guides that cover policy design and advanced configuration, refer to [Implementation guides](https://developers.cloudflare.com/cloudflare-one/implementation-guides/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/#page","headline":"Get started · Cloudflare One docs","description":"Set up Cloudflare Zero Trust for your organization. Choose a use case to get started with a guided quick-start.","url":"https://developers.cloudflare.com/cloudflare-one/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/#page","headline":"Get started · Cloudflare One docs","description":"Set up Cloudflare Zero Trust for your organization. Choose a use case to get started with a guided quick-start.","url":"https://developers.cloudflare.com/cloudflare-one/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/setup/","name":"Get started"}}]}
 ```

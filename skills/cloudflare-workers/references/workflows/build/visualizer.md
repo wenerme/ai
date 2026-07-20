@@ -1,7 +1,7 @@
 ---
 title: Visualize Workflows
 description: View a visual diagram of your Workflow steps, conditionals, and parallel logic in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -57,6 +57,6 @@ When parsing, unawaited promises or `Promise.all()` calls are assigned an entry 
 If steps are awaited at the point of declaration, `starts` and `resolves` will be undefined, and the Workflow executes in the order the steps appear to the runtime.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/visualizer/#page","headline":"Visualize Workflows · Cloudflare Workflows docs","description":"View a visual diagram of your Workflow steps, conditionals, and parallel logic in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workflows/build/visualizer/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/visualizer/#page","headline":"Visualize Workflows · Cloudflare Workflows docs","description":"View a visual diagram of your Workflow steps, conditionals, and parallel logic in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workflows/build/visualizer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/visualizer/","name":"Visualize Workflows"}}]}
 ```

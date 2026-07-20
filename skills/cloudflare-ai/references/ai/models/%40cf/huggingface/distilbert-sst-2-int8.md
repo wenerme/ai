@@ -1,7 +1,7 @@
 ---
 title: distilbert-sst-2-int8
 description: Distilled BERT model that was finetuned on SST-2 for sentiment classification
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,9 +27,9 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2207)
-* [  Python ](#tab-panel-2208)
-* [  curl ](#tab-panel-2209)
+* [  TypeScript ](#tab-panel-2353)
+* [  Python ](#tab-panel-2354)
+* [  curl ](#tab-panel-2355)
 
 ```ts
 export interface Env {
@@ -77,8 +77,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-2210)
-* [ Output ](#tab-panel-2211)
+* [ Input ](#tab-panel-2356)
+* [ Output ](#tab-panel-2357)
 
 text
 
@@ -107,6 +107,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-i
 Output [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/huggingface/distilbert-sst-2-int8/#page","headline":"distilbert-sst-2-int8 (HuggingFace) · Cloudflare AI docs · Cloudflare AI docs","description":"Distilled BERT model that was finetuned on SST-2 for sentiment classification","url":"https://developers.cloudflare.com/ai/models/%40cf/huggingface/distilbert-sst-2-int8/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/huggingface/distilbert-sst-2-int8/#page","headline":"distilbert-sst-2-int8 (HuggingFace) · Cloudflare AI docs · Cloudflare AI docs","description":"Distilled BERT model that was finetuned on SST-2 for sentiment classification","url":"https://developers.cloudflare.com/ai/models/%40cf/huggingface/distilbert-sst-2-int8/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

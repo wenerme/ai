@@ -1,7 +1,7 @@
 ---
 title: Errors and exceptions
 description: Review Workers errors and exceptions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -301,8 +301,8 @@ A Worker can make HTTP requests to any HTTP service on the public Internet. You 
 
 When using an external logging strategy, remember that floating promises (promises that are neither `await`ed, `return`ed, nor passed to `ctx.waitUntil()`) may be canceled when the Worker invocation completes. A Worker invocation has not completed while it is still streaming a response body to the client. To run logging after the response is complete, pass the request promise to [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil). For example:
 
-* [  Module Worker ](#tab-panel-12201)
-* [  Service Worker ](#tab-panel-12202)
+* [  Module Worker ](#tab-panel-12722)
+* [  Service Worker ](#tab-panel-12723)
 
 **JavaScript**
 
@@ -364,8 +364,8 @@ By using [passThroughOnException()](https://developers.cloudflare.com/workers/ru
 
 `ctx.passThroughOnException()` forwards requests for unhandled exceptions in your Worker code, not for errors from the origin `fetch()`. When proxying requests to an origin, wrap `fetch(request)` in `try...catch` and return a `5xx` response on failure. If the origin `fetch()` throws after consuming the request body, `passThroughOnException()` cannot replay the body.
 
-* [  Module Worker ](#tab-panel-12203)
-* [  Service Worker ](#tab-panel-12204)
+* [  Module Worker ](#tab-panel-12724)
+* [  Service Worker ](#tab-panel-12725)
 
 **JavaScript**
 
@@ -406,6 +406,6 @@ async function handleRequest(request) {
 * [RPC error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) \- Learn how to handle errors from remote-procedure calls.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/errors/#page","headline":"Errors and exceptions · Cloudflare Workers docs","description":"Review Workers errors and exceptions.","url":"https://developers.cloudflare.com/workers/observability/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/errors/#page","headline":"Errors and exceptions · Cloudflare Workers docs","description":"Review Workers errors and exceptions.","url":"https://developers.cloudflare.com/workers/observability/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/errors/","name":"Errors and exceptions"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Workers for Platforms
 description: Wrangler commands for managing Workers for Platforms dispatch namespaces.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ Wrangler commands for managing Workers for Platforms [dispatch namespace](https:
 
 List all dispatch namespaces
 
-* [  npm ](#tab-panel-13208)
-* [  pnpm ](#tab-panel-13209)
-* [  yarn ](#tab-panel-13210)
+* [  npm ](#tab-panel-13765)
+* [  pnpm ](#tab-panel-13766)
+* [  yarn ](#tab-panel-13767)
 
 ```sh
 npx wrangler dispatch-namespace list
@@ -59,9 +59,9 @@ Use a specific auth profile
 
 Get information about a dispatch namespace
 
-* [  npm ](#tab-panel-13211)
-* [  pnpm ](#tab-panel-13212)
-* [  yarn ](#tab-panel-13213)
+* [  npm ](#tab-panel-13768)
+* [  pnpm ](#tab-panel-13769)
+* [  yarn ](#tab-panel-13770)
 
 ```sh
 npx wrangler dispatch-namespace get [NAME]
@@ -103,9 +103,9 @@ Use a specific auth profile
 
 Create a dispatch namespace
 
-* [  npm ](#tab-panel-13214)
-* [  pnpm ](#tab-panel-13215)
-* [  yarn ](#tab-panel-13216)
+* [  npm ](#tab-panel-13771)
+* [  pnpm ](#tab-panel-13772)
+* [  yarn ](#tab-panel-13773)
 
 ```sh
 npx wrangler dispatch-namespace create [NAME]
@@ -147,9 +147,9 @@ Use a specific auth profile
 
 Delete a dispatch namespace
 
-* [  npm ](#tab-panel-13217)
-* [  pnpm ](#tab-panel-13218)
-* [  yarn ](#tab-panel-13219)
+* [  npm ](#tab-panel-13774)
+* [  pnpm ](#tab-panel-13775)
+* [  yarn ](#tab-panel-13776)
 
 ```sh
 npx wrangler dispatch-namespace delete [NAME]
@@ -195,9 +195,9 @@ You must delete all user Workers in the dispatch namespace before it can be dele
 
 Rename a dispatch namespace
 
-* [  npm ](#tab-panel-13220)
-* [  pnpm ](#tab-panel-13221)
-* [  yarn ](#tab-panel-13222)
+* [  npm ](#tab-panel-13777)
+* [  pnpm ](#tab-panel-13778)
+* [  yarn ](#tab-panel-13779)
 
 ```sh
 npx wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
@@ -238,6 +238,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/#page","headline":"Workers for Platforms · Cloudflare Workers docs","description":"Wrangler commands for managing Workers for Platforms dispatch namespaces.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/#page","headline":"Workers for Platforms · Cloudflare Workers docs","description":"Wrangler commands for managing Workers for Platforms dispatch namespaces.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/workers-for-platforms/","name":"Workers for Platforms"}}]}
 ```

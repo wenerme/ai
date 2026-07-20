@@ -1,7 +1,7 @@
 ---
 title: Using Agents with Workflows
 description: Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -68,8 +68,8 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-5761)
-* [  TypeScript ](#tab-panel-5762)
+* [  JavaScript ](#tab-panel-5901)
+* [  TypeScript ](#tab-panel-5902)
 
 **JavaScript**
 
@@ -149,8 +149,8 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-5763)
-* [  TypeScript ](#tab-panel-5764)
+* [  JavaScript ](#tab-panel-5903)
+* [  TypeScript ](#tab-panel-5904)
 
 **JavaScript**
 
@@ -188,8 +188,8 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-5765)
-* [  TypeScript ](#tab-panel-5766)
+* [  JavaScript ](#tab-panel-5905)
+* [  TypeScript ](#tab-panel-5906)
 
 **JavaScript**
 
@@ -238,6 +238,6 @@ A Workflow updates Agent state at key milestones using `step.updateAgentState()`
 [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/workflows/#page","headline":"Using Agents with Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.","url":"https://developers.cloudflare.com/agents/concepts/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/workflows/#page","headline":"Using Agents with Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.","url":"https://developers.cloudflare.com/agents/concepts/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/workflows/","name":"Using Agents with Workflows"}}]}
 ```

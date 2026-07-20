@@ -1,7 +1,7 @@
 ---
 title: Custom TURN domains
 description: Use custom domains with Cloudflare Realtime TURN via CNAME DNS records.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ If Cloudflare's authoritative DNS service is used, the record must be set to [DN
 There is no additional charge to using a custom hostname with Cloudflare Realtime TURN.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/custom-domains/#page","headline":"Custom TURN domains · Cloudflare Realtime docs","description":"Use custom domains with Cloudflare Realtime TURN via CNAME DNS records.","url":"https://developers.cloudflare.com/realtime/turn/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/custom-domains/#page","headline":"Custom TURN domains · Cloudflare Realtime docs","description":"Use custom domains with Cloudflare Realtime TURN via CNAME DNS records.","url":"https://developers.cloudflare.com/realtime/turn/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/custom-domains/","name":"Custom TURN domains"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Threat Intelligence APIs
 description: Query Cloudflare threat intelligence data for IPs, domains, ASNs, and more.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -403,6 +403,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/whois?dom
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/intel-apis/#page","headline":"Threat Intelligence APIs · Cloudflare Security Center docs","description":"Query Cloudflare threat intelligence data for IPs, domains, ASNs, and more.","url":"https://developers.cloudflare.com/security-center/intel-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/intel-apis/#page","headline":"Threat Intelligence APIs · Cloudflare Security Center docs","description":"Query Cloudflare threat intelligence data for IPs, domains, ASNs, and more.","url":"https://developers.cloudflare.com/security-center/intel-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/intel-apis/","name":"Threat Intelligence APIs"}}]}
 ```

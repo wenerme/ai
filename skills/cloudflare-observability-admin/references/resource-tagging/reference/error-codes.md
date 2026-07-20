@@ -1,7 +1,7 @@
 ---
 title: Error codes
 description: Tagging API error codes, causes, and resolutions.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -45,6 +45,6 @@ List endpoints (`/tags/resources`, `/tags/keys`, `/tags/values/{key}`) return `2
 This `500` behavior is a known beta limitation and may change to `404` in a future release.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/reference/error-codes/#page","headline":"Error codes · Cloudflare Resource Tagging docs","description":"Tagging API error codes, causes, and resolutions.","url":"https://developers.cloudflare.com/resource-tagging/reference/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/reference/error-codes/#page","headline":"Error codes · Cloudflare Resource Tagging docs","description":"Tagging API error codes, causes, and resolutions.","url":"https://developers.cloudflare.com/resource-tagging/reference/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/resource-tagging/","name":"Resource Tagging"}},{"@type":"ListItem","position":3,"item":{"@id":"/resource-tagging/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/resource-tagging/reference/error-codes/","name":"Error codes"}}]}
 ```

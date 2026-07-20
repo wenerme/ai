@@ -1,7 +1,7 @@
 ---
 title: Create your OAuth client
 description: Create an OAuth client that can access Cloudflare API resources on behalf of users.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 To create an OAuth client, you must have one of these roles for the associated account: Super Administrator, Administrator, or OAuth Client Write.
 
-* [ Dashboard ](#tab-panel-8976)
-* [ API ](#tab-panel-8977)
+* [ Dashboard ](#tab-panel-9413)
+* [ API ](#tab-panel-9414)
 
 1. Log in to the Cloudflare dashboard.
 2. Select your account.
@@ -65,8 +65,8 @@ After you create an OAuth client, Cloudflare displays the client secret if the c
 
 OAuth scope names correspond to Cloudflare API token permission names. Use the Cloudflare API documentation to identify the permissions your client needs.
 
-* [ Dashboard ](#tab-panel-8972)
-* [ API ](#tab-panel-8973)
+* [ Dashboard ](#tab-panel-9409)
+* [ API ](#tab-panel-9410)
 
 When you create or edit an OAuth client, all available scopes are displayed. Search for and select the scopes required for your client.
 
@@ -132,8 +132,8 @@ Warning
 
 Setting a client's visibility to public is permanent. You cannot change the visibility back to private.
 
-* [ Dashboard ](#tab-panel-8978)
-* [ API ](#tab-panel-8979)
+* [ Dashboard ](#tab-panel-9415)
+* [ API ](#tab-panel-9416)
 
 1. Go to **Manage Account** \> **OAuth clients**.
 2. Open the action menu for your client.
@@ -161,8 +161,8 @@ Cloudflare polls this DNS record until it is found or until the request times ou
 
 ### Restart verification
 
-* [ Dashboard ](#tab-panel-8974)
-* [ API ](#tab-panel-8975)
+* [ Dashboard ](#tab-panel-9411)
+* [ API ](#tab-panel-9412)
 
 If the verification process times out, select **Restart verification** in the client action menu.
 
@@ -179,8 +179,8 @@ curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_c
 
 Each client can have two secrets. This lets you create a new secret, update your client to use the new secret, and delete the old secret.
 
-* [ Dashboard ](#tab-panel-8980)
-* [ API ](#tab-panel-8981)
+* [ Dashboard ](#tab-panel-9417)
+* [ API ](#tab-panel-9418)
 
 1. Go to **Manage Account** \> **OAuth clients**.
 2. Open the action menu for your client.
@@ -208,6 +208,6 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/#page","headline":"Create your OAuth client · Cloudflare Fundamentals docs","description":"Create an OAuth client that can access Cloudflare API resources on behalf of users.","url":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/#page","headline":"Create your OAuth client · Cloudflare Fundamentals docs","description":"Create an OAuth client that can access Cloudflare API resources on behalf of users.","url":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/oauth/","name":"OAuth Applications on Cloudflare"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/oauth/create-an-oauth-client/","name":"Create your OAuth client"}}]}
 ```

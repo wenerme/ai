@@ -1,7 +1,7 @@
 ---
 title: Access a private API or website
 description: Use Workers VPC to fetch data from a private REST API behind Cloudflare Tunnel.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -59,8 +59,8 @@ Note the service ID returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11707)
-* [  wrangler.toml ](#tab-panel-11708)
+* [  wrangler.jsonc ](#tab-panel-12146)
+* [  wrangler.toml ](#tab-panel-12147)
 
 **JSONC**
 
@@ -70,7 +70,7 @@ Update your Wrangler configuration file:
   "name": "private-api-gateway",
   "main": "src/index.js",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "vpc_services": [
     {
       "binding": "INTERNAL_API",
@@ -88,7 +88,7 @@ Update your Wrangler configuration file:
 name = "private-api-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[vpc_services]]
@@ -143,6 +143,6 @@ curl https://private-api-gateway.workers.dev
 * Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-api/#page","headline":"Access a private API or website · Cloudflare Workers VPC","description":"Use Workers VPC to fetch data from a private REST API behind Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-api/#page","headline":"Access a private API or website · Cloudflare Workers VPC","description":"Use Workers VPC to fetch data from a private REST API behind Cloudflare Tunnel.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/examples/private-api/","name":"Access a private API or website"}}]}
 ```

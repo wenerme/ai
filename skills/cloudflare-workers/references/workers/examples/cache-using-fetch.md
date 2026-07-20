@@ -1,7 +1,7 @@
 ---
 title: Cache using fetch
 description: Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,11 +20,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12085)
-* [  TypeScript ](#tab-panel-12086)
-* [  Hono ](#tab-panel-12087)
-* [  Python ](#tab-panel-12088)
-* [  Rust ](#tab-panel-12089)
+* [  JavaScript ](#tab-panel-12483)
+* [  TypeScript ](#tab-panel-12484)
+* [  Hono ](#tab-panel-12485)
+* [  Python ](#tab-panel-12486)
+* [  Rust ](#tab-panel-12487)
 
 **JavaScript**
 
@@ -246,9 +246,9 @@ fetch(event.request, { cf: { cacheKey: "some-string" } });
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-12090)
-* [  TypeScript ](#tab-panel-12091)
-* [  Hono ](#tab-panel-12092)
+* [  JavaScript ](#tab-panel-12488)
+* [  TypeScript ](#tab-panel-12489)
+* [  Hono ](#tab-panel-12490)
 
 **JavaScript**
 
@@ -343,8 +343,8 @@ Use `cf.vary` when an origin returns a `Vary` header and you want a Worker subre
 
 For Vary behavior details, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/). For the full request init object, refer to [cf.vary](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cfvary-property).
 
-* [  JavaScript ](#tab-panel-12095)
-* [  TypeScript ](#tab-panel-12096)
+* [  JavaScript ](#tab-panel-12493)
+* [  TypeScript ](#tab-panel-12494)
 
 **src/index.js**
 
@@ -418,8 +418,8 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-12093)
-* [  Service Worker ](#tab-panel-12094)
+* [  Module Worker ](#tab-panel-12491)
+* [  Service Worker ](#tab-panel-12492)
 
 **index.js**
 
@@ -668,6 +668,6 @@ fetch(request, { cache: 'no-cache'});
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/#page","headline":"Cache using fetch · Cloudflare Workers docs","description":"Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.","url":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching","Middleware","JavaScript","TypeScript","Python","Rust"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/#page","headline":"Cache using fetch · Cloudflare Workers docs","description":"Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.","url":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching","Middleware","JavaScript","TypeScript","Python","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/cache-using-fetch/","name":"Cache using fetch"}}]}
 ```

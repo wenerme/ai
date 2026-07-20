@@ -1,7 +1,7 @@
 ---
 title: Prisma Postgres
 description: Connect Hyperdrive to a Prisma Postgres database.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -60,8 +60,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-9148)
-* [ Wrangler CLI ](#tab-panel-9149)
+* [ Dashboard ](#tab-panel-9585)
+* [ Wrangler CLI ](#tab-panel-9586)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -79,8 +79,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-  * [  wrangler.jsonc ](#tab-panel-9146)
-  * [  wrangler.toml ](#tab-panel-9147)
+  * [  wrangler.jsonc ](#tab-panel-9583)
+  * [  wrangler.toml ](#tab-panel-9584)
 
 **JSONC**
 ```jsonc
@@ -89,7 +89,7 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
   "name": "hyperdrive-example",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -109,7 +109,7 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -168,8 +168,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9150)
-* [  wrangler.toml ](#tab-panel-9151)
+* [  wrangler.jsonc ](#tab-panel-9587)
+* [  wrangler.toml ](#tab-panel-9588)
 
 **JSONC**
 
@@ -180,7 +180,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
     "nodejs_compat"
   ],
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
@@ -195,7 +195,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[hyperdrive]]
@@ -261,8 +261,8 @@ There are two limits to consider here.
 
 Hyperdrive's origin connection limit should be lower than the Prisma Postgres connection limit, since Hyperdrive's origin connection limit is a soft limit, and Hyperdrive may create more connections if there are network disruptions that prevent existing connections from being used.
 
-* [ Dashboard ](#tab-panel-9144)
-* [ Wrangler CLI ](#tab-panel-9145)
+* [ Dashboard ](#tab-panel-9581)
+* [ Wrangler CLI ](#tab-panel-9582)
 
 1. From the [Cloudflare Hyperdrive dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive), select your newly created Hyperdrive configuration.
 2. Go to **Settings**.
@@ -289,6 +289,6 @@ When connecting to a Prisma Postgres database with Hyperdrive, you should use a 
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/prisma-postgres/#page","headline":"Prisma Postgres · Cloudflare Hyperdrive docs","description":"Connect Hyperdrive to a Prisma Postgres database.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/prisma-postgres/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/prisma-postgres/#page","headline":"Prisma Postgres · Cloudflare Hyperdrive docs","description":"Connect Hyperdrive to a Prisma Postgres database.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/prisma-postgres/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/","name":"Connect to PostgreSQL"}},{"@type":"ListItem","position":5,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/postgres-database-providers/","name":"Database Providers"}},{"@type":"ListItem","position":6,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/postgres-database-providers/prisma-postgres/","name":"Prisma Postgres"}}]}
 ```

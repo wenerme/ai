@@ -1,7 +1,7 @@
 ---
 title: Make API calls
 description: Learn how to make API calls using Cloudflare's API with step-by-step instructions for Windows, including using curl and PowerShell, and handling JSON.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -215,9 +215,9 @@ The procedure for setting and referencing environment variables depends on your 
 
 ### Define an environment variable
 
-* [ Linux and macOS ](#tab-panel-8938)
-* [ PowerShell ](#tab-panel-8939)
-* [ Windows Command Prompt ](#tab-panel-8940)
+* [ Linux and macOS ](#tab-panel-9375)
+* [ PowerShell ](#tab-panel-9376)
+* [ Windows Command Prompt ](#tab-panel-9377)
 
 To define a `ZONE_ID` environment variable for the current shell session, run the following command:
 
@@ -263,9 +263,9 @@ Running this command will not affect the current window. You will need to either
 
 ### Reference an environment variable
 
-* [ Linux and macOS ](#tab-panel-8941)
-* [ PowerShell ](#tab-panel-8942)
-* [ Windows Command Prompt ](#tab-panel-8943)
+* [ Linux and macOS ](#tab-panel-9378)
+* [ PowerShell ](#tab-panel-9379)
+* [ Windows Command Prompt ](#tab-panel-9380)
 
 When referencing an environment variable in a command, add a `$` prefix to the variable name (for example, `$ZONE_ID`). Make sure that the full string referencing the variable is either unquoted (if it does not contain spaces) or enclosed in double quotes (`""`).
 
@@ -295,6 +295,6 @@ curl "https://api.cloudflare.com/client/v4/zones/%ZONE_ID%" --header "Authorizat
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#page","headline":"Make API calls · Cloudflare Fundamentals docs","description":"Learn how to make API calls using Cloudflare's API with step-by-step instructions for Windows, including using curl and PowerShell, and handling JSON.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#page","headline":"Make API calls · Cloudflare Fundamentals docs","description":"Learn how to make API calls using Cloudflare's API with step-by-step instructions for Windows, including using curl and PowerShell, and handling JSON.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/how-to/make-api-calls/","name":"Make API calls"}}]}
 ```

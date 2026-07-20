@@ -1,7 +1,7 @@
 ---
 title: Application Granular Controls
 description: How Application Granular Controls works in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-7979)
-* [ API ](#tab-panel-7980)
+* [ Dashboard ](#tab-panel-8317)
+* [ API ](#tab-panel-8318)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.
@@ -120,6 +120,6 @@ File Sharing
 * Smash
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/#page","headline":"Application Granular Controls · Cloudflare One docs","description":"How Application Granular Controls works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/#page","headline":"Application Granular Controls · Cloudflare One docs","description":"How Application Granular Controls works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/","name":"HTTP policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/granular-controls/","name":"Application Granular Controls"}}]}
 ```

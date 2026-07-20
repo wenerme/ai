@@ -1,7 +1,7 @@
 ---
 title: Migrate from Netlify to Workers
 description: Migrate your Netlify application to Cloudflare Workers. You should already have an existing project deployed on Netlified that you would like to host on Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,8 +36,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12486)
-* [  wrangler.toml ](#tab-panel-12487)
+* [  wrangler.jsonc ](#tab-panel-13011)
+* [  wrangler.toml ](#tab-panel-13012)
 
 **JSONC**
 
@@ -45,7 +45,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 {
   "name": "<your-project-name>",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "directory": "<your-build-directory>",
   },
@@ -57,7 +57,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [assets]
@@ -66,8 +66,8 @@ directory = "<your-build-directory>"
 
 For a **Single Page Application**, you will need to add the following to your Wrangler configuration file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-12488)
-* [  wrangler.toml ](#tab-panel-12489)
+* [  wrangler.jsonc ](#tab-panel-13013)
+* [  wrangler.toml ](#tab-panel-13014)
 
 **JSONC**
 
@@ -75,7 +75,7 @@ For a **Single Page Application**, you will need to add the following to your Wr
 {
   "name": "<your-project-name>",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "assets": {
     "directory": "<your-build-directory>",
     "not_found_handling": "single-page-application",
@@ -88,7 +88,7 @@ For a **Single Page Application**, you will need to add the following to your Wr
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [assets]
@@ -119,6 +119,6 @@ Once your custom domain is set up and sending requests to Cloudflare Workers, yo
 For additional migration instructions, review the [Cloudflare Pages to Workers migration guide](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/). While not Netlify specific, it does cover some additional steps that may be helpful.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/#page","headline":"Migrate from Netlify to Workers · Cloudflare Workers docs","description":"Migrate your Netlify application to Cloudflare Workers. You should already have an existing project deployed on Netlified that you would like to host on Workers.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/#page","headline":"Migrate from Netlify to Workers · Cloudflare Workers docs","description":"Migrate your Netlify application to Cloudflare Workers. You should already have an existing project deployed on Netlified that you would like to host on Workers.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/migration-guides/","name":"Migration Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/migration-guides/netlify-to-workers/","name":"Migrate from Netlify to Workers"}}]}
 ```

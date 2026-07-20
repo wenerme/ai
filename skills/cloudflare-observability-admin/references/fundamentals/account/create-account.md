@@ -1,7 +1,7 @@
 ---
 title: Create account
 description: Learn how to create a new Cloudflare account.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -63,6 +63,6 @@ For those who prefer to interact with Cloudflare programmatically, you can use s
 | [cloudflare-python ↗](https://github.com/cloudflare/cloudflare-python)                   | [README ↗](https://github.com/cloudflare/cloudflare-python#readme)     | The official Python library for the Cloudflare API.                            |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/create-account/#page","headline":"Create account · Cloudflare Fundamentals docs","description":"Learn how to create a new Cloudflare account.","url":"https://developers.cloudflare.com/fundamentals/account/create-account/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/create-account/#page","headline":"Create account · Cloudflare Fundamentals docs","description":"Learn how to create a new Cloudflare account.","url":"https://developers.cloudflare.com/fundamentals/account/create-account/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/create-account/","name":"Create account"}}]}
 ```

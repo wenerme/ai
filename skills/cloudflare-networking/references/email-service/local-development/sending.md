@@ -1,7 +1,7 @@
 ---
 title: Email sending
 description: Test Email Service sending Workers locally using wrangler dev with simulated email delivery.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,8 +33,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-8894)
-* [  wrangler.toml ](#tab-panel-8895)
+* [  wrangler.jsonc ](#tab-panel-9266)
+* [  wrangler.toml ](#tab-panel-9267)
 
 **JSONC**
 
@@ -42,7 +42,7 @@ Configure your Wrangler file with the email binding:
 {
   "name": "email-sending-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "send_email": [{ "name": "EMAIL" }],
 }
 ```
@@ -52,7 +52,7 @@ Configure your Wrangler file with the email binding:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[send_email]]
@@ -65,8 +65,8 @@ Using [remote bindings](https://developers.cloudflare.com/workers/local-developm
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8896)
-* [  wrangler.toml ](#tab-panel-8897)
+* [  wrangler.jsonc ](#tab-panel-9268)
+* [  wrangler.toml ](#tab-panel-9269)
 
 **JSONC**
 
@@ -74,7 +74,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 {
   "name": "email-sending-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "send_email": [
     {
       "name": "EMAIL",
@@ -89,7 +89,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [[send_email]]
@@ -214,6 +214,6 @@ This limitation only affects local development — `ArrayBuffer` content works c
 * See advanced patterns: [Email sending examples](https://developers.cloudflare.com/email-service/examples/email-sending/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/local-development/sending/","name":"Email sending"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up your partner account and make your first Cloudflare Tenant API calls.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,8 +34,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-11286)
-* [ API ](#tab-panel-11287)
+* [ Dashboard ](#tab-panel-11731)
+* [ API ](#tab-panel-11732)
 
 To create an account under your tenant using the dashboard:
 
@@ -346,6 +346,6 @@ Once you have added the necessary subscriptions, you or your customer can move o
 Configuration can be done by anyone with access to the account (as well as the correct user permissions). This process does not differ from configuring any other Cloudflare account. For additional guidance, refer to our [Product docs](https://developers.cloudflare.com/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/get-started/#page","headline":"Get started · Cloudflare Tenant docs","description":"Set up your partner account and make your first Cloudflare Tenant API calls.","url":"https://developers.cloudflare.com/tenant/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/get-started/#page","headline":"Get started · Cloudflare Tenant docs","description":"Set up your partner account and make your first Cloudflare Tenant API calls.","url":"https://developers.cloudflare.com/tenant/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/get-started/","name":"Get started"}}]}
 ```

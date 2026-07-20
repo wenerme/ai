@@ -1,7 +1,7 @@
 ---
 title: Rate limiting best practices
 description: Typical rate limiting configurations for login protection, API abuse, and more.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -475,6 +475,6 @@ Refer to [API Shield documentation ↗](https://developers.cloudflare.com/api-sh
 1. The HTTP header name uses a misspelling of "referrer". [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#page","headline":"Rate limiting best practices · Cloudflare Web Application Firewall (WAF) docs","description":"Typical rate limiting configurations for login protection, API abuse, and more.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Account takeover","Authentication","Scraping"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#page","headline":"Rate limiting best practices · Cloudflare Web Application Firewall (WAF) docs","description":"Typical rate limiting configurations for login protection, API abuse, and more.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Account takeover","Authentication","Scraping"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/best-practices/","name":"Rate limiting best practices"}}]}
 ```

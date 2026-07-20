@@ -1,7 +1,7 @@
 ---
 title: Stream live video
 description: Ingest, encode, and deliver live video to viewers worldwide using Cloudflare Stream.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -64,6 +64,6 @@ Stream Live is billed identically to the rest of Cloudflare Stream.
 All Stream Live videos are automatically recorded. There is no additional cost for encoding and packaging live videos.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/stream-live/#page","headline":"Stream live video · Cloudflare Stream docs","description":"Ingest, encode, and deliver live video to viewers worldwide using Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/stream-live/#page","headline":"Stream live video · Cloudflare Stream docs","description":"Ingest, encode, and deliver live video to viewers worldwide using Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}}]}
 ```

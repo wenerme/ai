@@ -1,7 +1,7 @@
 ---
 title: Page Rule integration with APO
 description: Page Rules that control APO caching behavior for specific URL patterns.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ Automatic page purge via the WordPress plugin won’t clean all cached pages, on
 * `CDN-Cache-Control` and `Cloudflare-CDN-Cache-Control` – Enables users to have detailed control over cache TTLs without using a page rule. For more information on the `CDN-Cache-Control` and `Cloudflare-CDN-Cache-Control` headers, refer to [CDN-Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/reference/page-rule-integration/#page","headline":"Page Rule integration with APO · Cloudflare Automatic Platform Optimization docs","description":"Page Rules that control APO caching behavior for specific URL patterns.","url":"https://developers.cloudflare.com/automatic-platform-optimization/reference/page-rule-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/reference/page-rule-integration/#page","headline":"Page Rule integration with APO · Cloudflare Automatic Platform Optimization docs","description":"Page Rules that control APO caching behavior for specific URL patterns.","url":"https://developers.cloudflare.com/automatic-platform-optimization/reference/page-rule-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/automatic-platform-optimization/reference/page-rule-integration/","name":"Page Rule integration with APO"}}]}
 ```

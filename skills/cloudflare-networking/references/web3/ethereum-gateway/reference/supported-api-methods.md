@@ -1,7 +1,7 @@
 ---
 title: Supported API methods
 description: Ethereum JSON-RPC methods supported by the Cloudflare gateway.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -161,6 +161,6 @@ The `trace_filter` method has some limitations to ensure that our nodes are not 
 2. **Limitations**: Max block range of 800 blocks. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/#page","headline":"Supported API methods - Ethereum Gateway · Cloudflare Web3 docs","description":"Ethereum JSON-RPC methods supported by the Cloudflare gateway.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/#page","headline":"Supported API methods - Ethereum Gateway · Cloudflare Web3 docs","description":"Ethereum JSON-RPC methods supported by the Cloudflare gateway.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ethereum-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ethereum-gateway/reference/supported-api-methods/","name":"Supported API methods"}}]}
 ```

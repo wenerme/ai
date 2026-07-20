@@ -1,7 +1,7 @@
 ---
 title: Vectorize and Workers AI
 description: Generate vector embeddings with Workers AI and store them in a Vectorize index.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -129,8 +129,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-11459)
-* [  wrangler.toml ](#tab-panel-11460)
+* [  wrangler.jsonc ](#tab-panel-11898)
+* [  wrangler.toml ](#tab-panel-11899)
 
 **JSONC**
 
@@ -165,8 +165,8 @@ Before you deploy your embedding example, ensure your Worker uses your model cat
 
 From within the `embeddings-tutorial` directory, open your Wrangler file in your editor and add the new `[[ai]]` binding to make Workers AI's models available in your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-11461)
-* [  wrangler.toml ](#tab-panel-11462)
+* [  wrangler.jsonc ](#tab-panel-11900)
+* [  wrangler.toml ](#tab-panel-11901)
 
 **JSONC**
 
@@ -342,6 +342,6 @@ By finishing this tutorial, you have successfully created a Vectorize index, use
 * Read [examples](https://developers.cloudflare.com/vectorize/reference/client-api/) on how to use the Vectorize API from Cloudflare Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/get-started/embeddings/#page","headline":"Vectorize and Workers AI · Cloudflare Vectorize docs","description":"Generate vector embeddings with Workers AI and store them in a Vectorize index.","url":"https://developers.cloudflare.com/vectorize/get-started/embeddings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/get-started/embeddings/#page","headline":"Vectorize and Workers AI · Cloudflare Vectorize docs","description":"Generate vector embeddings with Workers AI and store them in a Vectorize index.","url":"https://developers.cloudflare.com/vectorize/get-started/embeddings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/get-started/embeddings/","name":"Vectorize and Workers AI"}}]}
 ```

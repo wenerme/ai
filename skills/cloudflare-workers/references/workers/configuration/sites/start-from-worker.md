@@ -1,7 +1,7 @@
 ---
 title: Start from Worker
 description: Add static asset serving to an existing Cloudflare Worker using Workers Sites.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -25,8 +25,8 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
 1. Create a directory that will contain the assets in the root of your project (for example, `./public`)
 2. Add configuration to your Wrangler file to point to it.
 
-  * [  wrangler.jsonc ](#tab-panel-11876)
-  * [  wrangler.toml ](#tab-panel-11877)
+  * [  wrangler.jsonc ](#tab-panel-12395)
+  * [  wrangler.toml ](#tab-panel-12396)
 
 **JSONC**
 ```jsonc
@@ -48,8 +48,8 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Import the `getAssetFromKV()` function into your Worker entry point and use it to respond with static assets.
 
-* [  Module Worker ](#tab-panel-11874)
-* [  Service Worker ](#tab-panel-11875)
+* [  Module Worker ](#tab-panel-12393)
+* [  Service Worker ](#tab-panel-12394)
 
 **JavaScript**
 
@@ -117,6 +117,6 @@ npx wrangler deploy
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from Worker · Cloudflare Workers docs","description":"Add static asset serving to an existing Cloudflare Worker using Workers Sites.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from Worker · Cloudflare Workers docs","description":"Add static asset serving to an existing Cloudflare Worker using Workers Sites.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/sites/","name":"Workers Sites"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/sites/start-from-worker/","name":"Start from Worker"}}]}
 ```

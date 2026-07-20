@@ -1,7 +1,7 @@
 ---
 title: Plans
 description: Compare Waiting Room features available on each Cloudflare plan.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,6 +42,6 @@ Enterprise customers can preview this product as a [non-contract service](https:
 To get started with Waiting Room, review our [setup guide](https://developers.cloudflare.com/waiting-room/get-started/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/plans/#page","headline":"Features by plan type · Cloudflare Waiting Room docs","description":"Compare Waiting Room features available on each Cloudflare plan.","url":"https://developers.cloudflare.com/waiting-room/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/plans/#page","headline":"Features by plan type · Cloudflare Waiting Room docs","description":"Compare Waiting Room features available on each Cloudflare plan.","url":"https://developers.cloudflare.com/waiting-room/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/plans/","name":"Plans"}}]}
 ```

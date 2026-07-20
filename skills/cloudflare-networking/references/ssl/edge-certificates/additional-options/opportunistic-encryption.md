@@ -1,7 +1,7 @@
 ---
 title: Opportunistic Encryption
 description: Serve HTTP sites over an encrypted TLS channel.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -26,8 +26,8 @@ Use HTTPS when both strong encryption and authentication are required. HTTP Oppo
 
 You do not need to configure your origin web server to support Opportunistic Encryption. All it requires is updating your settings in the Cloudflare dashboard.
 
-* [ Dashboard ](#tab-panel-10720)
-* [ API ](#tab-panel-10721)
+* [ Dashboard ](#tab-panel-11460)
+* [ API ](#tab-panel-11461)
 
 To enable Opportunistic Encryption in the dashboard:
 
@@ -42,6 +42,6 @@ Note
 To use this feature on specific hostnames - instead of across your entire zone - use a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/#page","headline":"Opportunistic Encryption · Cloudflare SSL/TLS docs","description":"Serve HTTP sites over an encrypted TLS channel.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/#page","headline":"Opportunistic Encryption · Cloudflare SSL/TLS docs","description":"Serve HTTP sites over an encrypted TLS channel.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/additional-options/opportunistic-encryption/","name":"Opportunistic Encryption"}}]}
 ```

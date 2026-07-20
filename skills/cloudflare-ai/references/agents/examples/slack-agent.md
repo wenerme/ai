@@ -1,7 +1,7 @@
 ---
 title: Slack agent
 description: Build and deploy an AI-powered Slack bot on Cloudflare Workers using the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -130,8 +130,8 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 
 1. Update your `wrangler.jsonc` to configure your Agent:
 
-* [  wrangler.jsonc ](#tab-panel-5707)
-* [  wrangler.toml ](#tab-panel-5708)
+* [  wrangler.jsonc ](#tab-panel-5969)
+* [  wrangler.toml ](#tab-panel-5970)
 
 **JSONC**
 
@@ -141,7 +141,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
   "name": "my-slack-agent",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -172,7 +172,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 name = "my-slack-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -529,6 +529,6 @@ export class MyAgent extends SlackAgent {
 [ OpenAI API ](https://platform.openai.com/docs/) Official OpenAI API documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/slack-agent/#page","headline":"Slack agent · Cloudflare Agents docs","description":"Build and deploy an AI-powered Slack bot on Cloudflare Workers using the Agents SDK.","url":"https://developers.cloudflare.com/agents/examples/slack-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/slack-agent/#page","headline":"Slack agent · Cloudflare Agents docs","description":"Build and deploy an AI-powered Slack bot on Cloudflare Workers using the Agents SDK.","url":"https://developers.cloudflare.com/agents/examples/slack-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/slack-agent/","name":"Slack agent"}}]}
 ```

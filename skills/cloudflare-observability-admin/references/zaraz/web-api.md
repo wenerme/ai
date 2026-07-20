@@ -1,7 +1,7 @@
 ---
 title: Web API
 description: Interact with Zaraz from client-side JavaScript.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,6 +22,6 @@ This API allows you to send events and data to Zaraz, that you can later use whe
 * [ Debug mode ](https://developers.cloudflare.com/zaraz/web-api/debug-mode/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/zaraz/web-api/#page","headline":"Web API · Cloudflare Zaraz docs","description":"Interact with Zaraz from client-side JavaScript.","url":"https://developers.cloudflare.com/zaraz/web-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/zaraz/web-api/#page","headline":"Web API · Cloudflare Zaraz docs","description":"Interact with Zaraz from client-side JavaScript.","url":"https://developers.cloudflare.com/zaraz/web-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/web-api/","name":"Web API"}}]}
 ```

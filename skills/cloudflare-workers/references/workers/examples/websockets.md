@@ -1,7 +1,7 @@
 ---
 title: Using the WebSockets API
 description: Use the WebSockets API to communicate in real time with your Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -47,8 +47,8 @@ For more details about creating and working with WebSockets in the client, refer
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
 
-* [  JavaScript ](#tab-panel-12116)
-* [  Rust ](#tab-panel-12117)
+* [  JavaScript ](#tab-panel-12637)
+* [  Rust ](#tab-panel-12638)
 
 **JavaScript**
 
@@ -79,8 +79,8 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-12118)
-* [  Rust ](#tab-panel-12119)
+* [  JavaScript ](#tab-panel-12639)
+* [  Rust ](#tab-panel-12640)
 
 **JavaScript**
 
@@ -135,8 +135,8 @@ The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys eac
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-12120)
-* [  Rust ](#tab-panel-12121)
+* [  JavaScript ](#tab-panel-12641)
+* [  Rust ](#tab-panel-12642)
 
 **JavaScript**
 
@@ -191,9 +191,9 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
 
-* [  JavaScript ](#tab-panel-12122)
-* [  Rust ](#tab-panel-12123)
-* [  Hono ](#tab-panel-12124)
+* [  JavaScript ](#tab-panel-12643)
+* [  Rust ](#tab-panel-12644)
+* [  Hono ](#tab-panel-12645)
 
 **JavaScript**
 
@@ -381,6 +381,6 @@ For more details, refer to [WebSocket close behavior](https://developers.cloudfl
 Cloudflare Workers supports WebSocket compression. Refer to [WebSocket Compression](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-compression) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/websockets/#page","headline":"Using the WebSockets API · Cloudflare Workers docs","description":"Use the WebSockets API to communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/examples/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","JavaScript","Rust"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/websockets/#page","headline":"Using the WebSockets API · Cloudflare Workers docs","description":"Use the WebSockets API to communicate in real time with your Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/examples/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets","JavaScript","Rust"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/websockets/","name":"Using the WebSockets API"}}]}
 ```

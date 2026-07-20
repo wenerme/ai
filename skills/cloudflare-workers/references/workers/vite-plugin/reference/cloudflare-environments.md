@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Environments
 description: Using Cloudflare environments with the Vite plugin
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -14,8 +14,8 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
-* [  wrangler.jsonc ](#tab-panel-12576)
-* [  wrangler.toml ](#tab-panel-12577)
+* [  wrangler.jsonc ](#tab-panel-13111)
+* [  wrangler.toml ](#tab-panel-13112)
 
 **JSONC**
 
@@ -24,7 +24,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "main": "./src/index.ts",
   "vars": {
     "MY_VAR": "Top-level var"
@@ -50,7 +50,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 main = "./src/index.ts"
 
 
@@ -140,8 +140,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 You may wish to combine the concepts of [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) and [Vite modes ↗](https://vite.dev/guide/env-and-mode.html#modes). With this approach, the Vite mode can be used to select the Cloudflare environment and a single method can be used to determine environment specific configuration and code. Consider again the previous example:
 
-* [  wrangler.jsonc ](#tab-panel-12578)
-* [  wrangler.toml ](#tab-panel-12579)
+* [  wrangler.jsonc ](#tab-panel-13113)
+* [  wrangler.toml ](#tab-panel-13114)
 
 **JSONC**
 
@@ -150,7 +150,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-worker",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "main": "./src/index.ts",
   "vars": {
     "MY_VAR": "Top-level var"
@@ -176,7 +176,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 main = "./src/index.ts"
 
 
@@ -211,6 +211,6 @@ By default, `vite build` uses the 'production' Vite mode. Vite will therefore lo
 For more information about using `.env` files with Vite, see the [relevant documentation ↗](https://vite.dev/guide/env-and-mode#env-files).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/#page","headline":"Cloudflare Environments · Cloudflare Workers docs","description":"Using Cloudflare environments with the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/#page","headline":"Cloudflare Environments · Cloudflare Workers docs","description":"Using Cloudflare environments with the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/vite-plugin/reference/cloudflare-environments/","name":"Cloudflare Environments"}}]}
 ```

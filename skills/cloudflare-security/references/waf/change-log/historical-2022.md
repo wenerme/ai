@@ -1,7 +1,7 @@
 ---
 title: Historical (2022)
 description: Changes to WAF managed rulesets done in 2022.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -125,6 +125,6 @@ image: https://developers.cloudflare.com/core-services-preview.png
 | Cloudflare Specials             | ...69fe1e0d | 100700         | Apache SSRF vulnerability CVE-2021-40438                                                                                                                                      | 2022-01-24            | N/A        | Block      |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/historical-2022/#page","headline":"Historical (2022) · Cloudflare Web Application Firewall (WAF) docs","description":"Changes to WAF managed rulesets done in 2022.","url":"https://developers.cloudflare.com/waf/change-log/historical-2022/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/historical-2022/#page","headline":"Historical (2022) · Cloudflare Web Application Firewall (WAF) docs","description":"Changes to WAF managed rulesets done in 2022.","url":"https://developers.cloudflare.com/waf/change-log/historical-2022/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/historical-2022/","name":"Historical (2022)"}}]}
 ```

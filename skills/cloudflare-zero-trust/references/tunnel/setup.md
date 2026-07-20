@@ -1,7 +1,7 @@
 ---
 title: Setup
 description: Create your first Cloudflare Tunnel and publish an application in under 5 minutes.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 
 To create a new Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-11366)
-* [ API ](#tab-panel-11367)
+* [ Dashboard ](#tab-panel-11811)
+* [ API ](#tab-panel-11812)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.
 [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
@@ -71,8 +71,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
 
 To make an application accessible from the Internet, add a published application route to your tunnel. The tunnel route maps a public hostname to a local service.
 
-* [ Dashboard ](#tab-panel-11368)
-* [ API ](#tab-panel-11369)
+* [ Dashboard ](#tab-panel-11813)
+* [ API ](#tab-panel-11814)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel. [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Under **Routes**, select **Add route**.
@@ -133,10 +133,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
 ```
 3. Install `cloudflared` on your server and run the tunnel using the `token` obtained in [Create a tunnel](https://developers.cloudflare.com/tunnel/setup/#create-a-tunnel):
 
-  * [ Linux ](#tab-panel-11362)
-  * [ Windows ](#tab-panel-11363)
-  * [ macOS ](#tab-panel-11364)
-  * [ Docker ](#tab-panel-11365)
+  * [ Linux ](#tab-panel-11807)
+  * [ Windows ](#tab-panel-11808)
+  * [ macOS ](#tab-panel-11809)
+  * [ Docker ](#tab-panel-11810)
 
   1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
   2. Run the following command:
@@ -189,6 +189,6 @@ For production use, [create a tunnel](#create-a-tunnel) instead.
 * [Troubleshooting](https://developers.cloudflare.com/tunnel/troubleshooting/) — Resolve common errors and connectivity issues.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/setup/#page","headline":"Set up Cloudflare Tunnel · Cloudflare Docs","description":"Create your first Cloudflare Tunnel and publish an application in under 5 minutes.","url":"https://developers.cloudflare.com/tunnel/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/setup/#page","headline":"Set up Cloudflare Tunnel · Cloudflare Docs","description":"Create your first Cloudflare Tunnel and publish an application in under 5 minutes.","url":"https://developers.cloudflare.com/tunnel/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/setup/","name":"Setup"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -89,8 +89,8 @@ This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tut
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-9223)
-* [  wrangler.toml ](#tab-panel-9224)
+* [  wrangler.jsonc ](#tab-panel-9621)
+* [  wrangler.toml ](#tab-panel-9622)
 
 **JSONC**
 
@@ -100,7 +100,7 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
     "nodejs_compat"
   ],
   // Set this to today's date
-  "compatibility_date": "2026-07-06"
+  "compatibility_date": "2026-07-20"
 }
 ```
 
@@ -109,7 +109,7 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-06"
+compatibility_date = "2026-07-20"
 ```
 
 ## 3\. Connect Hyperdrive to a database
@@ -133,8 +133,8 @@ To create your first Hyperdrive, you will need:
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
-* [ PostgreSQL ](#tab-panel-9217)
-* [ MySQL ](#tab-panel-9218)
+* [ PostgreSQL ](#tab-panel-9615)
+* [ MySQL ](#tab-panel-9616)
 
 ```txt
 postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
@@ -193,8 +193,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9225)
-* [  wrangler.toml ](#tab-panel-9226)
+* [  wrangler.jsonc ](#tab-panel-9623)
+* [  wrangler.toml ](#tab-panel-9624)
 
 **JSONC**
 
@@ -225,8 +225,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-9227)
-* [  wrangler.toml ](#tab-panel-9228)
+* [  wrangler.jsonc ](#tab-panel-9625)
+* [  wrangler.toml ](#tab-panel-9626)
 
 **JSONC**
 
@@ -261,8 +261,8 @@ Once you have created a Hyperdrive configuration and bound it to your Worker, yo
 
 ### Install a database driver
 
-* [ PostgreSQL ](#tab-panel-9221)
-* [ MySQL ](#tab-panel-9222)
+* [ PostgreSQL ](#tab-panel-9619)
+* [ MySQL ](#tab-panel-9620)
 
 To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [node-postgres (pg) ↗](https://node-postgres.com/), one of the most widely used PostgreSQL drivers.
 
@@ -346,8 +346,8 @@ With the driver installed, you can now create a Worker script that queries your 
 
 ### Write a Worker
 
-* [ PostgreSQL ](#tab-panel-9219)
-* [ MySQL ](#tab-panel-9220)
+* [ PostgreSQL ](#tab-panel-9617)
+* [ MySQL ](#tab-panel-9618)
 
 After you have set up your database, you will run a SQL query from within your Worker.
 
@@ -560,6 +560,6 @@ If your Worker makes only one query per request, placement does not improve end-
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started · Cloudflare Hyperdrive docs","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started · Cloudflare Hyperdrive docs","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/get-started/","name":"Getting started"}}]}
 ```

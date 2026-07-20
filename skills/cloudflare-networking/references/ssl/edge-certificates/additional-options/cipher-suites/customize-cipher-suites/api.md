@@ -1,7 +1,7 @@
 ---
 title: Customize cipher suites via API
 description: Select allowed cipher suites for your zone using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -43,10 +43,10 @@ Below you will find samples covering the recommended ciphers [by security level]
 3. Get the Zone ID from the [Overview page ↗](https://dash.cloudflare.com/?to=/:account/:zone/) of the domain you want to specify cipher suites for.
 4. Make an API call to either the [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint or the [Edit TLS setting for hostname](https://developers.cloudflare.com/api/resources/hostnames/subresources/settings/subresources/tls/methods/update/) endpoint, specifying `ciphers` in the URL. List your array of chosen cipher suites in the `value` field.
 
-* [ modern ](#tab-panel-11007)
-* [ compatible ](#tab-panel-11008)
-* [ pci dss ](#tab-panel-11009)
-* [ fips-140-3 ](#tab-panel-11010)
+* [ modern ](#tab-panel-11452)
+* [ compatible ](#tab-panel-11453)
+* [ pci dss ](#tab-panel-11454)
+* [ fips-140-3 ](#tab-panel-11455)
 
 Required API token permissions
 
@@ -189,8 +189,8 @@ curl --request PUT \
 
 ### Reset to default values
 
-* [ zone ](#tab-panel-11005)
-* [ per-hostname ](#tab-panel-11006)
+* [ zone ](#tab-panel-11450)
+* [ per-hostname ](#tab-panel-11451)
 
 To reset to the default cipher suites at zone level, use the [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint, specifying `ciphers` as the setting name in the URL, and send an empty array in the `value` field.
 
@@ -228,6 +228,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/hostnames/settings/cip
 For guidance around custom hostnames, refer to [TLS settings - Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#cipher-suites).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/#page","headline":"Customize cipher suites via API · Cloudflare SSL/TLS docs","description":"Select allowed cipher suites for your zone using the API.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/#page","headline":"Customize cipher suites via API · Cloudflare SSL/TLS docs","description":"Select allowed cipher suites for your zone using the API.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/additional-options/cipher-suites/","name":"Cipher suites"}},{"@type":"ListItem","position":6,"item":{"@id":"/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/","name":"Customize cipher suites"}},{"@type":"ListItem","position":7,"item":{"@id":"/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/","name":"Customize cipher suites via API"}}]}
 ```

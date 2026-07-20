@@ -1,7 +1,7 @@
 ---
 title: Handle form submissions with Airtable
 description: Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -269,8 +269,8 @@ To make an authenticated request to Airtable, you need to provide four constants
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12554)
-* [  wrangler.toml ](#tab-panel-12555)
+* [  wrangler.jsonc ](#tab-panel-13079)
+* [  wrangler.toml ](#tab-panel-13080)
 
 **JSONC**
 
@@ -280,7 +280,7 @@ Add a `vars` table at the end of your Wrangler file:
   "name": "workers-airtable-form",
   "main": "src/index.js",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "vars": {
     "AIRTABLE_BASE_ID": "exampleBaseId",
     "AIRTABLE_TABLE_NAME": "Form Submissions"
@@ -295,7 +295,7 @@ Add a `vars` table at the end of your Wrangler file:
 name = "workers-airtable-form"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [vars]
@@ -339,6 +339,6 @@ With this tutorial completed, you have created a Worker that can accept form sub
 * [James Quick's video on building a Cloudflare Workers + Airtable integration ↗](https://www.youtube.com/watch?v=tFQ2kbiu1K4)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable · Cloudflare Workers docs","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable · Cloudflare Workers docs","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/handle-form-submissions-with-airtable/","name":"Handle form submissions with Airtable"}}]}
 ```

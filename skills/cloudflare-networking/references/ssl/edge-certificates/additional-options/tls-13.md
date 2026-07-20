@@ -1,7 +1,7 @@
 ---
 title: TLS 1.3
 description: Enable TLS 1.3 for improved performance and security.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ By turning on the TLS 1.3 feature, traffic to and from your website will be serv
 
 TLS 1.3 can be activated in the Cloudflare dashboard or through the API:
 
-* [ Dashboard ](#tab-panel-10722)
-* [ API ](#tab-panel-10723)
+* [ Dashboard ](#tab-panel-11462)
+* [ API ](#tab-panel-11463)
 
 To enable TLS 1.3 in the dashboard:
 
@@ -57,6 +57,6 @@ Chrome users should submit a [net-internals trace ↗](https://dev.chromium.org/
 You cannot set specific TLS 1.3 ciphers. Instead, you can enable [TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/#enable-tls-13) for your entire zone and Cloudflare will use [all applicable TLS 1.3 cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/). In combination with this, you can still [disable weak cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) for TLS 1.0-1.2.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/#page","headline":"TLS 1.3 · Cloudflare SSL/TLS docs","description":"Enable TLS 1.3 for improved performance and security.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/#page","headline":"TLS 1.3 · Cloudflare SSL/TLS docs","description":"Enable TLS 1.3 for improved performance and security.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/additional-options/tls-13/","name":"TLS 1.3"}}]}
 ```

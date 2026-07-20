@@ -1,7 +1,7 @@
 ---
 title: Zone Analytics
 description: Analyze request and bandwidth data per zone.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -122,6 +122,6 @@ This panel features metrics for Cloudflare Workers. To learn more, read [Cloudfl
 The Logs tab is not a metrics feature. Instead, Customers in the Enterprise plan can enable the [Cloudflare Logs Logpush](https://developers.cloudflare.com/logs/logpush/) service. You can use Logpush to download and analyze data using any analytics tool of your choice.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/#page","headline":"Zone Analytics · Cloudflare Analytics docs","description":"Analyze request and bandwidth data per zone.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/#page","headline":"Zone Analytics · Cloudflare Analytics docs","description":"Analyze request and bandwidth data per zone.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/account-and-zone-analytics/","name":"Account and zone analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/account-and-zone-analytics/zone-analytics/","name":"Zone Analytics"}}]}
 ```

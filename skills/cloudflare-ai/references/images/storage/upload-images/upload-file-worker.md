@@ -1,7 +1,7 @@
 ---
 title: Upload via a Worker
 description: Learn how to upload images to Cloudflare using Workers. This guide provides code examples for uploading both standard and AI-generated images efficiently.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ You can use a Worker to upload your image to Cloudflare Images.
 
 Refer to the example below or refer to the [Workers documentation](https://developers.cloudflare.com/workers/) for more information.
 
-* [  JavaScript ](#tab-panel-9290)
-* [  TypeScript ](#tab-panel-9291)
+* [  JavaScript ](#tab-panel-9733)
+* [  TypeScript ](#tab-panel-9734)
 
 **JavaScript**
 
@@ -73,8 +73,8 @@ const response = await fetch(API_URL, {
 
 You can use an AI Worker to generate an image and then upload that image to store it in Cloudflare Images. For more information about using Workers AI to generate an image, refer to the [SDXL-Lightning Model](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning).
 
-* [  JavaScript ](#tab-panel-9292)
-* [  TypeScript ](#tab-panel-9293)
+* [  JavaScript ](#tab-panel-9735)
+* [  TypeScript ](#tab-panel-9736)
 
 **JavaScript**
 
@@ -131,6 +131,6 @@ const response = await fetch(API_URL, {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/upload-file-worker/#page","headline":"Upload via a Worker · Cloudflare Images docs","description":"Learn how to upload images to Cloudflare using Workers. This guide provides code examples for uploading both standard and AI-generated images efficiently.","url":"https://developers.cloudflare.com/images/storage/upload-images/upload-file-worker/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/upload-file-worker/#page","headline":"Upload via a Worker · Cloudflare Images docs","description":"Learn how to upload images to Cloudflare using Workers. This guide provides code examples for uploading both standard and AI-generated images efficiently.","url":"https://developers.cloudflare.com/images/storage/upload-images/upload-file-worker/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/storage/","name":"Storage"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/storage/upload-images/","name":"Upload images"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/storage/upload-images/upload-file-worker/","name":"Upload via a Worker"}}]}
 ```

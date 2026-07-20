@@ -1,7 +1,7 @@
 ---
 title: MessageChannel
 description: Channel messaging with MessageChannel and MessagePort
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,6 +44,6 @@ There are a number of key limitations to the `MessageChannel` API in Workers:
 * The `'close'` event will be emitted on both ports when one of the ports is closed, however it will not be emitted when the Worker is terminated or when one of the ports is garbage collected.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/messagechannel/#page","headline":"MessageChannel · Cloudflare Workers docs","description":"Channel messaging with MessageChannel and MessagePort","url":"https://developers.cloudflare.com/workers/runtime-apis/messagechannel/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/messagechannel/#page","headline":"MessageChannel · Cloudflare Workers docs","description":"Channel messaging with MessageChannel and MessagePort","url":"https://developers.cloudflare.com/workers/runtime-apis/messagechannel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/messagechannel/","name":"MessageChannel"}}]}
 ```

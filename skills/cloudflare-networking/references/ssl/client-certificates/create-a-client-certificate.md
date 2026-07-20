@@ -1,7 +1,7 @@
 ---
 title: Create a client certificate
 description: Generate a client certificate using the dashboard or API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,6 +44,6 @@ After creating the client certificate, make sure it is installed on the client d
 Refer to our [mTLS at Cloudflare learning path](https://developers.cloudflare.com/learning-paths/mtls/concepts/) for further context.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/#page","headline":"Create a client certificate · Cloudflare SSL/TLS docs","description":"Generate a client certificate using the dashboard or API.","url":"https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/#page","headline":"Create a client certificate · Cloudflare SSL/TLS docs","description":"Generate a client certificate using the dashboard or API.","url":"https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/create-a-client-certificate/","name":"Create a client certificate"}}]}
 ```

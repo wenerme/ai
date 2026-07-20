@@ -1,7 +1,7 @@
 ---
 title: mistral-7b-instruct-v0.2-lora
 description: The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,10 +34,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2455)
-* [  TypeScript ](#tab-panel-2456)
-* [  Python ](#tab-panel-2457)
-* [  curl ](#tab-panel-2458)
+* [  Worker (Streaming) ](#tab-panel-2601)
+* [  TypeScript ](#tab-panel-2602)
+* [  Python ](#tab-panel-2603)
+* [  curl ](#tab-panel-2604)
 
 **TypeScript**
 
@@ -226,6 +226,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.2-lora/#page","headline":"mistral-7b-instruct-v0.2-lora (MistralAI) · Cloudflare AI docs · Cloudflare AI docs","description":"The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2.","url":"https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.2-lora/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.2-lora/#page","headline":"mistral-7b-instruct-v0.2-lora (MistralAI) · Cloudflare AI docs · Cloudflare AI docs","description":"The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2.","url":"https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.2-lora/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

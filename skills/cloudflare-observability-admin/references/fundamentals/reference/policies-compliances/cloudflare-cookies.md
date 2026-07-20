@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Cookies
 description: Review the cookies Cloudflare sets for load balancing, bot management, challenges, and other product features.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -104,6 +104,6 @@ If your website is not [using HTTPS](https://developers.cloudflare.com/ssl/edge-
 To review Cloudflare Access cookies and their behavior, refer to [Access cookies](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#access-cookies).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#page","headline":"Cloudflare Cookies · Cloudflare Fundamentals docs","description":"Review the cookies Cloudflare sets for load balancing, bot management, challenges, and other product features.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#page","headline":"Cloudflare Cookies · Cloudflare Fundamentals docs","description":"Review the cookies Cloudflare sets for load balancing, bot management, challenges, and other product features.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/policies-compliances/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/policies-compliances/cloudflare-cookies/","name":"Cloudflare Cookies"}}]}
 ```

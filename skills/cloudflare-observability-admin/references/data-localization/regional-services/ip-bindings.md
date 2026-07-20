@@ -1,7 +1,7 @@
 ---
 title: Regionalized IP Bindings
 description: Bind a BYOIP prefix to a region so traffic to those IP addresses is processed in-region.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -276,6 +276,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regiona
 * [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/) — onboard your own IP prefixes to Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/#page","headline":"Regionalized IP Bindings · Cloudflare Data Localization Suite docs","description":"Bind a BYOIP prefix to a region so traffic to those IP addresses is processed in-region.","url":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/#page","headline":"Regionalized IP Bindings · Cloudflare Data Localization Suite docs","description":"Bind a BYOIP prefix to a region so traffic to those IP addresses is processed in-region.","url":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/regional-services/","name":"Regional Services"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/regional-services/ip-bindings/","name":"Regionalized IP Bindings"}}]}
 ```

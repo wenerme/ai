@@ -1,7 +1,7 @@
 ---
 title: Lists
 description: Lists in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -54,8 +54,8 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-7734)
-* [ Terraform (v5) ](#tab-panel-7735)
+* [ Dashboard ](#tab-panel-8072)
+* [ Terraform (v5) ](#tab-panel-8073)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -87,9 +87,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-7736)
-* [ API ](#tab-panel-7737)
-* [ Terraform (v5) ](#tab-panel-7738)
+* [ Dashboard ](#tab-panel-8074)
+* [ API ](#tab-panel-8075)
+* [ Terraform (v5) ](#tab-panel-8076)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.
@@ -242,6 +242,6 @@ To force Gateway to match all email address variants, go to **Traffic policies**
 You can send 600 requests to the [Gateway Lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/) endpoint per minute. If you exceed the rate limit, Cloudflare will block subsequent requests for 120 seconds.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/#page","headline":"Lists · Cloudflare One docs","description":"Lists in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/#page","headline":"Lists · Cloudflare One docs","description":"Lists in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/reusable-components/","name":"Reusable components"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/reusable-components/lists/","name":"Lists"}}]}
 ```

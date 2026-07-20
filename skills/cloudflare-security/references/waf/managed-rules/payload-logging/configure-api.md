@@ -1,7 +1,7 @@
 ---
 title: Configure payload logging via API
 description: Configure payload logging for managed rulesets using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -143,6 +143,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 For details on obtaining the entry point ruleset ID and the ID of the rule to update, refer to [Configure and enable payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#configure-and-enable-payload-logging).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#page","headline":"Configure payload logging for a managed ruleset via API · Cloudflare Web Application Firewall (WAF) docs","description":"Configure payload logging for managed rulesets using the API.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#page","headline":"Configure payload logging for a managed ruleset via API · Cloudflare Web Application Firewall (WAF) docs","description":"Configure payload logging for managed rulesets using the API.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/payload-logging/","name":"Log the payload of matched rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/payload-logging/configure-api/","name":"Configure payload logging via API"}}]}
 ```

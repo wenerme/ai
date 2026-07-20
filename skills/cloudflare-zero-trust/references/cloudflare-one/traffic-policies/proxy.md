@@ -1,7 +1,7 @@
 ---
 title: Proxy
 description: How Proxy works in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -73,8 +73,8 @@ Gateway cannot log or filter ICMP traffic.
 
 To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `cloudflared` host to allow ICMP traffic through `cloudflared`.
 
-* [  Linux ](#tab-panel-8019)
-* [  Docker ](#tab-panel-8020)
+* [  Linux ](#tab-panel-8357)
+* [  Docker ](#tab-panel-8358)
 
 1. Ensure that `ping_group_range` includes the Group ID (GID) of the user running `cloudflared`:
 a. Find the user that owns the `cloudflared` process:
@@ -125,6 +125,6 @@ The Gateway proxy toggle only applies to traffic from Cloudflare One Client devi
 4. (Optional) Depending on your use case, you can select **UDP** and/or **ICMP**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#page","headline":"Proxy · Cloudflare One docs","description":"How Proxy works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#page","headline":"Proxy · Cloudflare One docs","description":"How Proxy works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/proxy/","name":"Proxy"}}]}
 ```

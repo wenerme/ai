@@ -1,7 +1,7 @@
 ---
 title: Best practices
 description: Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -232,6 +232,6 @@ Locally, you can use a third-party tool like [cf-vault ↗](https://github.com/j
 For CI pipelines, use an internal or secret storage tool (such as [Vault ↗](https://www.hashicorp.com/products/vault/secrets-management)).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/#page","headline":"Best practices · Cloudflare Terraform docs","description":"Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/#page","headline":"Best practices · Cloudflare Terraform docs","description":"Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/advanced-topics/","name":"Advanced topics"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/advanced-topics/best-practices/","name":"Best practices"}}]}
 ```

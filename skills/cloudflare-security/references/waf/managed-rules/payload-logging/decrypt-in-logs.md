@@ -1,7 +1,7 @@
 ---
 title: Store decrypted matched payloads in logs
 description: Store decrypted matched payloads in Logpush logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -95,6 +95,6 @@ Below are a few examples of payload matches:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/decrypt-in-logs/#page","headline":"Store decrypted matched payloads in logs · Cloudflare Web Application Firewall (WAF) docs","description":"Store decrypted matched payloads in Logpush logs.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/decrypt-in-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SIEM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/decrypt-in-logs/#page","headline":"Store decrypted matched payloads in logs · Cloudflare Web Application Firewall (WAF) docs","description":"Store decrypted matched payloads in Logpush logs.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/decrypt-in-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SIEM"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/payload-logging/","name":"Log the payload of matched rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/payload-logging/decrypt-in-logs/","name":"Store decrypted matched payloads in logs"}}]}
 ```

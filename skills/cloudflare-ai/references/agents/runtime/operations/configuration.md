@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,8 +34,8 @@ The typical file structure for an Agent project created from `npm create cloudfl
 
 The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. Here is a complete example for an agents project:
 
-* [  wrangler.jsonc ](#tab-panel-6957)
-* [  wrangler.toml ](#tab-panel-6958)
+* [  wrangler.jsonc ](#tab-panel-6955)
+* [  wrangler.toml ](#tab-panel-6956)
 
 **JSONC**
 
@@ -45,7 +45,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
   "name": "my-agent-app",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-16",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
 
 
@@ -104,7 +104,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 name = "my-agent-app"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-16"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -147,8 +147,8 @@ enabled = true
 
 The `nodejs_compat` flag is required for agents:
 
-* [  wrangler.jsonc ](#tab-panel-6931)
-* [  wrangler.toml ](#tab-panel-6932)
+* [  wrangler.jsonc ](#tab-panel-6929)
+* [  wrangler.toml ](#tab-panel-6930)
 
 **JSONC**
 
@@ -170,8 +170,8 @@ This enables Node.js compatibility mode, which agents depend on for crypto, stre
 
 Each agent class needs a binding:
 
-* [  wrangler.jsonc ](#tab-panel-6933)
-* [  wrangler.toml ](#tab-panel-6934)
+* [  wrangler.jsonc ](#tab-panel-6931)
+* [  wrangler.toml ](#tab-panel-6932)
 
 **JSONC**
 
@@ -205,8 +205,8 @@ When `name` and `class_name` differ
 
 When `name` and `class_name` differ, follow the pattern shown below:
 
-* [  wrangler.jsonc ](#tab-panel-6935)
-* [  wrangler.toml ](#tab-panel-6936)
+* [  wrangler.jsonc ](#tab-panel-6933)
+* [  wrangler.toml ](#tab-panel-6934)
 
 **JSONC**
 
@@ -237,8 +237,8 @@ This is useful when you want environment variable-style naming (`COUNTER_DO`) bu
 
 The `exports` field declares each Agent class your Worker exports and the storage backend Cloudflare should use for it:
 
-* [  wrangler.jsonc ](#tab-panel-6937)
-* [  wrangler.toml ](#tab-panel-6938)
+* [  wrangler.jsonc ](#tab-panel-6935)
+* [  wrangler.toml ](#tab-panel-6936)
 
 **JSONC**
 
@@ -272,8 +272,8 @@ For details on renaming, deleting, or transferring Agent classes, refer to [Dura
 
 For serving static files (HTML, CSS, JS):
 
-* [  wrangler.jsonc ](#tab-panel-6939)
-* [  wrangler.toml ](#tab-panel-6940)
+* [  wrangler.jsonc ](#tab-panel-6937)
+* [  wrangler.toml ](#tab-panel-6938)
 
 **JSONC**
 
@@ -296,8 +296,8 @@ binding = "ASSETS"
 
 With a binding, you can serve assets programmatically:
 
-* [  JavaScript ](#tab-panel-6969)
-* [  TypeScript ](#tab-panel-6970)
+* [  JavaScript ](#tab-panel-6967)
+* [  TypeScript ](#tab-panel-6968)
 
 **JavaScript**
 
@@ -341,8 +341,8 @@ export default {
 
 For Workers AI integration:
 
-* [  wrangler.jsonc ](#tab-panel-6941)
-* [  wrangler.toml ](#tab-panel-6942)
+* [  wrangler.jsonc ](#tab-panel-6939)
+* [  wrangler.toml ](#tab-panel-6940)
 
 **JSONC**
 
@@ -363,8 +363,8 @@ binding = "AI"
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-6967)
-* [  TypeScript ](#tab-panel-6968)
+* [  JavaScript ](#tab-panel-6965)
+* [  TypeScript ](#tab-panel-6966)
 
 **JavaScript**
 
@@ -438,8 +438,8 @@ The Agents SDK provides a Vite plugin that handles TC39 decorator transforms. Vi
 
 Add the plugin to your `vite.config.ts`:
 
-* [  JavaScript ](#tab-panel-6971)
-* [  TypeScript ](#tab-panel-6972)
+* [  JavaScript ](#tab-panel-6969)
+* [  TypeScript ](#tab-panel-6970)
 
 **JavaScript**
 
@@ -525,8 +525,8 @@ interface Env extends Cloudflare.Env {}
 
 You can also define types manually:
 
-* [  JavaScript ](#tab-panel-6979)
-* [  TypeScript ](#tab-panel-6980)
+* [  JavaScript ](#tab-panel-6977)
+* [  TypeScript ](#tab-panel-6978)
 
 **JavaScript**
 
@@ -587,8 +587,8 @@ DATABASE_URL=postgres://...
 
 Access in your agent:
 
-* [  JavaScript ](#tab-panel-6975)
-* [  TypeScript ](#tab-panel-6976)
+* [  JavaScript ](#tab-panel-6973)
+* [  TypeScript ](#tab-panel-6974)
 
 **JavaScript**
 
@@ -632,8 +632,8 @@ npx wrangler secret delete OPENAI_API_KEY
 
 For non-sensitive configuration, use `vars` in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6943)
-* [  wrangler.toml ](#tab-panel-6944)
+* [  wrangler.jsonc ](#tab-panel-6941)
+* [  wrangler.toml ](#tab-panel-6942)
 
 **JSONC**
 
@@ -658,8 +658,8 @@ DEBUG_MODE = "false"
 
 All values must be strings. Parse numbers and booleans in code:
 
-* [  JavaScript ](#tab-panel-6973)
-* [  TypeScript ](#tab-panel-6974)
+* [  JavaScript ](#tab-panel-6971)
+* [  TypeScript ](#tab-panel-6972)
 
 **JavaScript**
 
@@ -679,8 +679,8 @@ const debugMode = this.env.DEBUG_MODE === "true";
 
 Use `env` sections for different environments (for example, staging, production):
 
-* [  wrangler.jsonc ](#tab-panel-6951)
-* [  wrangler.toml ](#tab-panel-6952)
+* [  wrangler.jsonc ](#tab-panel-6949)
+* [  wrangler.toml ](#tab-panel-6950)
 
 **JSONC**
 
@@ -848,8 +848,8 @@ This:
 
 Add a route in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6945)
-* [  wrangler.toml ](#tab-panel-6946)
+* [  wrangler.jsonc ](#tab-panel-6943)
+* [  wrangler.toml ](#tab-panel-6944)
 
 **JSONC**
 
@@ -874,8 +874,8 @@ zone_name = "example.com"
 
 Or use a custom domain (simpler):
 
-* [  wrangler.jsonc ](#tab-panel-6947)
-* [  wrangler.toml ](#tab-panel-6948)
+* [  wrangler.jsonc ](#tab-panel-6945)
+* [  wrangler.toml ](#tab-panel-6946)
 
 **JSONC**
 
@@ -922,8 +922,8 @@ npx wrangler rollback
 
 Define environments in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6977)
-* [  wrangler.toml ](#tab-panel-6978)
+* [  wrangler.jsonc ](#tab-panel-6975)
+* [  wrangler.toml ](#tab-panel-6976)
 
 **JSONC**
 
@@ -935,7 +935,7 @@ Define environments in the Wrangler configuration file:
 
   // Base configuration (shared)
   // Set this to today's date
-  "compatibility_date": "2026-07-16",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "durable_objects": {
     "bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
@@ -969,7 +969,7 @@ Define environments in the Wrangler configuration file:
 name = "my-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-16"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -1021,8 +1021,8 @@ Each environment gets its own Durable Objects. Staging agents do not share state
 
 To explicitly separate:
 
-* [  wrangler.jsonc ](#tab-panel-6961)
-* [  wrangler.toml ](#tab-panel-6962)
+* [  wrangler.jsonc ](#tab-panel-6959)
+* [  wrangler.toml ](#tab-panel-6960)
 
 **JSONC**
 
@@ -1061,8 +1061,8 @@ Each Agent maps to a Durable Object class. You manage the lifecycle of those cla
 
 Declare the new class in the `exports`:
 
-* [  wrangler.jsonc ](#tab-panel-6949)
-* [  wrangler.toml ](#tab-panel-6950)
+* [  wrangler.jsonc ](#tab-panel-6947)
+* [  wrangler.toml ](#tab-panel-6948)
 
 **JSONC**
 
@@ -1086,8 +1086,8 @@ storage = "sqlite"
 
 Replace the entry for the old name with a `renamed` tombstone and add a live entry for the new name:
 
-* [  wrangler.jsonc ](#tab-panel-6959)
-* [  wrangler.toml ](#tab-panel-6960)
+* [  wrangler.jsonc ](#tab-panel-6957)
+* [  wrangler.toml ](#tab-panel-6958)
 
 **JSONC**
 
@@ -1128,8 +1128,8 @@ Also update:
 
 Replace the entry with a `deleted` tombstone:
 
-* [  wrangler.jsonc ](#tab-panel-6953)
-* [  wrangler.toml ](#tab-panel-6954)
+* [  wrangler.jsonc ](#tab-panel-6951)
+* [  wrangler.toml ](#tab-panel-6952)
 
 **JSONC**
 
@@ -1174,8 +1174,8 @@ Existing Workers using the legacy `migrations` array continue to work — refer 
 
 The class is missing from `exports`. Declare the class and its storage:
 
-* [  wrangler.jsonc ](#tab-panel-6955)
-* [  wrangler.toml ](#tab-panel-6956)
+* [  wrangler.jsonc ](#tab-panel-6953)
+* [  wrangler.toml ](#tab-panel-6954)
 
 **JSONC**
 
@@ -1216,8 +1216,8 @@ cat .env
 
 If your Worker uses the legacy [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array, each entry must have a unique `tag`:
 
-* [  wrangler.jsonc ](#tab-panel-6963)
-* [  wrangler.toml ](#tab-panel-6964)
+* [  wrangler.jsonc ](#tab-panel-6961)
+* [  wrangler.toml ](#tab-panel-6962)
 
 **JSONC**
 
@@ -1244,8 +1244,8 @@ tag = "v1"
 new_sqlite_classes = [ "B" ]
 ```
 
-* [  wrangler.jsonc ](#tab-panel-6965)
-* [  wrangler.toml ](#tab-panel-6966)
+* [  wrangler.jsonc ](#tab-panel-6963)
+* [  wrangler.toml ](#tab-panel-6964)
 
 **JSONC**
 
@@ -1283,6 +1283,6 @@ Consider converting to the declarative [exports](https://developers.cloudflare.c
 [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Background processing with delayed and cron-based tasks.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/operations/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/operations/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/configuration/","name":"Configuration"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Configuration
 description: Add and configure a Flagship binding in your Wrangler configuration file to evaluate feature flags in a Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,8 +18,8 @@ To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler 
 
 Add the `flagship` block to your Wrangler configuration file with a binding name and your app ID.
 
-* [  wrangler.jsonc ](#tab-panel-8904)
-* [  wrangler.toml ](#tab-panel-8905)
+* [  wrangler.jsonc ](#tab-panel-9276)
+* [  wrangler.toml ](#tab-panel-9277)
 
 **JSONC**
 
@@ -48,8 +48,8 @@ Replace `<APP_ID>` with the app ID from your Flagship app. If you have not creat
 
 A single Worker can bind to multiple Flagship apps. Use the array form to define more than one binding:
 
-* [  wrangler.jsonc ](#tab-panel-8906)
-* [  wrangler.toml ](#tab-panel-8907)
+* [  wrangler.jsonc ](#tab-panel-9278)
+* [  wrangler.toml ](#tab-panel-9279)
 
 **JSONC**
 
@@ -100,8 +100,8 @@ interface Env {
 
 Call evaluation methods on `env.FLAGS` to resolve flag values at runtime. Each method accepts a flag key, a default value, and an optional evaluation context.
 
-* [  JavaScript ](#tab-panel-8908)
-* [  TypeScript ](#tab-panel-8909)
+* [  JavaScript ](#tab-panel-9280)
+* [  TypeScript ](#tab-panel-9281)
 
 **JavaScript**
 
@@ -140,6 +140,6 @@ Refer to the [binding API reference](https://developers.cloudflare.com/flagship/
 Flagship bindings work with `wrangler dev`. Local Workers use the live Flagship app configured by `app_id`. There is no local flag store. Make sure your local Wrangler configuration points to a valid Flagship app before testing evaluations.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/configuration/#page","headline":"Configuration · Cloudflare Flagship docs","description":"Add and configure a Flagship binding in your Wrangler configuration file to evaluate feature flags in a Worker.","url":"https://developers.cloudflare.com/flagship/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/configuration/#page","headline":"Configuration · Cloudflare Flagship docs","description":"Add and configure a Flagship binding in your Wrangler configuration file to evaluate feature flags in a Worker.","url":"https://developers.cloudflare.com/flagship/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/configuration/","name":"Configuration"}}]}
 ```

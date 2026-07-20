@@ -1,7 +1,7 @@
 ---
 title: Detection IDs
 description: Static rules that identify predictable bot behavior and configurable heuristics.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -49,8 +49,8 @@ Detection tags are available in Security Analytics, but not in the Security Even
 
 ## Create or edit an expression
 
-* [  New dashboard ](#tab-panel-7144)
-* [ Old dashboard ](#tab-panel-7145)
+* [  New dashboard ](#tab-panel-7473)
+* [ Old dashboard ](#tab-panel-7474)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -98,8 +98,8 @@ and not any(cf.bot_management.detection_ids[*] in {3355446 12577893})
 
 You can create or edit existing Logpush jobs to include the new Bot Detection IDs field which will provide an array of IDs for each request that has heuristics match on it. The `BotDetectionIDs` field is available as part of the HTTP Requests dataset and you can add it to new or existing jobs via the Logpush API or on the Cloudflare dashboard. This is the primary method to discover Detection IDs.
 
-* [ Dashboard ](#tab-panel-7146)
-* [ API ](#tab-panel-7147)
+* [ Dashboard ](#tab-panel-7475)
+* [ API ](#tab-panel-7476)
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.
 [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)
@@ -119,6 +119,6 @@ You can create or edit existing Logpush jobs to include the new Bot Detection ID
 Detection IDs are available for Enterprise Bot Management customers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/#page","headline":"Detection IDs · Cloudflare bot solutions docs","description":"Static rules that identify predictable bot behavior and configurable heuristics.","url":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/#page","headline":"Detection IDs · Cloudflare bot solutions docs","description":"Static rules that identify predictable bot behavior and configurable heuristics.","url":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/detection-ids/","name":"Detection IDs"}}]}
 ```

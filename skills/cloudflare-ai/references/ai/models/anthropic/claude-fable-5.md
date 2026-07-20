@@ -1,7 +1,7 @@
 ---
 title: Claude Fable 5
 description: Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -30,8 +30,8 @@ Claude Fable 5 is Anthropic's most capable widely released model, built for the 
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-130)
-* [ cURL ](#tab-panel-131)
+* [ TypeScript ](#tab-panel-138)
+* [ cURL ](#tab-panel-139)
 
 **TypeScript**
 
@@ -62,8 +62,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-134)
-* [ Raw response ](#tab-panel-135)
+* [ Output ](#tab-panel-142)
+* [ Raw response ](#tab-panel-143)
 
 # The Three Laws of Thermodynamics
 
@@ -129,8 +129,8 @@ A popular summary: *"You can't win (1st), you can't break even (2nd), and you ca
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-132)
-* [ cURL ](#tab-panel-133)
+* [ TypeScript ](#tab-panel-140)
+* [ cURL ](#tab-panel-141)
 
 **TypeScript**
 
@@ -163,8 +163,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-142)
-* [ Raw response ](#tab-panel-143)
+* [ Output ](#tab-panel-150)
+* [ Raw response ](#tab-panel-151)
 
 # Reading a JSON File in Python
 
@@ -261,8 +261,8 @@ That's all you need for most use cases. For very large files, consider streaming
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-138)
-* [ cURL ](#tab-panel-139)
+* [ TypeScript ](#tab-panel-146)
+* [ cURL ](#tab-panel-147)
 
 **TypeScript**
 
@@ -312,8 +312,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-144)
-* [ Raw response ](#tab-panel-145)
+* [ Output ](#tab-panel-152)
+* [ Raw response ](#tab-panel-153)
 
 Great question! Your stops depend a lot on which route you take, so let me break it down:
 
@@ -377,8 +377,8 @@ How much time do you have for the trip? That'll help narrow down the best plan!
 
 **Creative Writing with Adaptive Thinking**  — Use adaptive thinking with high effort to steer creative output. Adaptive thinking is always on for Claude Fable 5; use the \`effort\` parameter to control depth.
 
-* [ TypeScript ](#tab-panel-140)
-* [ cURL ](#tab-panel-141)
+* [ TypeScript ](#tab-panel-148)
+* [ cURL ](#tab-panel-149)
 
 **TypeScript**
 
@@ -422,8 +422,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-146)
-* [ Raw response ](#tab-panel-147)
+* [ Output ](#tab-panel-154)
+* [ Raw response ](#tab-panel-155)
 
 # The Paper Bird
 
@@ -473,8 +473,8 @@ It was an invitation.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-136)
-* [ cURL ](#tab-panel-137)
+* [ TypeScript ](#tab-panel-144)
+* [ cURL ](#tab-panel-145)
 
 **TypeScript**
 
@@ -507,8 +507,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
-* [ Output ](#tab-panel-148)
-* [ Raw response ](#tab-panel-149)
+* [ Output ](#tab-panel-156)
+* [ Raw response ](#tab-panel-157)
 
 # Recursion
 
@@ -761,8 +761,8 @@ Recursion shines for naturally recursive structures like:
 
 ## Parameters
 
-* [ Input ](#tab-panel-150)
-* [ Output ](#tab-panel-151)
+* [ Input ](#tab-panel-158)
+* [ Output ](#tab-panel-159)
 
 ▶messages\[\]
 
@@ -819,6 +819,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/s
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/#page","headline":"Claude Fable 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/#page","headline":"Claude Fable 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

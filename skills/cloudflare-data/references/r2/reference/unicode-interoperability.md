@@ -1,7 +1,7 @@
 ---
 title: Unicode interoperability
 description: R2 NFC-normalizes object key names by default to ensure cross-platform Unicode consistency.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ There are still some platform-specific differences to consider:
 If it is important for you to be able to bypass the unicode equivalence and use byte-oriented key names, contact your Cloudflare account team.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/unicode-interoperability/#page","headline":"Unicode interoperability · Cloudflare R2 docs","description":"R2 NFC-normalizes object key names by default to ensure cross-platform Unicode consistency.","url":"https://developers.cloudflare.com/r2/reference/unicode-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/unicode-interoperability/#page","headline":"Unicode interoperability · Cloudflare R2 docs","description":"R2 NFC-normalizes object key names by default to ensure cross-platform Unicode consistency.","url":"https://developers.cloudflare.com/r2/reference/unicode-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/reference/unicode-interoperability/","name":"Unicode interoperability"}}]}
 ```

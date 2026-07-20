@@ -1,7 +1,7 @@
 ---
 title: Configure tunnel endpoints
 description: Learn how to configure IPsec or GRE tunnels for Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -65,8 +65,8 @@ Warning
 
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
 
-* [ Dashboard ](#tab-panel-8115)
-* [ API ](#tab-panel-8116)
+* [ Dashboard ](#tab-panel-8455)
+* [ API ](#tab-panel-8456)
 
 1. Go to **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -417,6 +417,6 @@ If you experience issues with your tunnels:
 * For IPsec tunnel establishment issues, refer to [Troubleshoot with IPsec logs](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare WAN docs","description":"Learn how to configure IPsec or GRE tunnels for Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare WAN docs","description":"Learn how to configure IPsec or GRE tunnels for Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/","name":"Configure tunnel endpoints"}}]}
 ```

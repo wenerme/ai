@@ -1,7 +1,7 @@
 ---
 title: Resolve &quot;you cannot modify this subscription&quot;
 description: Fix errors when modifying a canceled subscription.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -71,6 +71,6 @@ After you cancel the downgrade, return to the subscription and retry the change 
 * [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/#page","headline":"Resolve \"you cannot modify this subscription\" · Cloudflare Billing docs","description":"Fix errors when modifying a canceled subscription.","url":"https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/#page","headline":"Resolve \"you cannot modify this subscription\" · Cloudflare Billing docs","description":"Fix errors when modifying a canceled subscription.","url":"https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/","name":"Resolve \"you cannot modify this subscription\""}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Default cache behavior
 description: Default file extensions and content types that Cloudflare caches.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -108,6 +108,6 @@ Cloudflare cacheable file limits:
 The connection status between visitors and Cloudflare can vary, affecting whether Cloudflare caches the content or not. If Cloudflare has already established a connection to the origin and started fetching the content, it will continue to retrieve and cache the entire content, even if the visitor disconnects midway. However, if a visitor disconnects before the origin responds to Cloudflare's request, no content will have been fetched yet, so Cloudflare will not start caching the content.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#page","headline":"Default Cache Behavior · Cloudflare Cache (CDN) docs","description":"Default file extensions and content types that Cloudflare caches.","url":"https://developers.cloudflare.com/cache/concepts/default-cache-behavior/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#page","headline":"Default Cache Behavior · Cloudflare Cache (CDN) docs","description":"Default file extensions and content types that Cloudflare caches.","url":"https://developers.cloudflare.com/cache/concepts/default-cache-behavior/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/default-cache-behavior/","name":"Default cache behavior"}}]}
 ```

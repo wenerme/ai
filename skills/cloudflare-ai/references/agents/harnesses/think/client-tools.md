@@ -1,7 +1,7 @@
 ---
 title: Client tools
 description: Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,8 +18,8 @@ Think supports tools that execute in the browser. The client sends serializable 
 
 For dynamic client-side tools, pass `tools` to `useAgentChat`. Tools with an `execute` function are registered with the server as client-executed tools:
 
-* [  JavaScript ](#tab-panel-5825)
-* [  TypeScript ](#tab-panel-5826)
+* [  JavaScript ](#tab-panel-6087)
+* [  TypeScript ](#tab-panel-6088)
 
 **JavaScript**
 
@@ -77,8 +77,8 @@ For most apps, prefer defining tools on the server and using `onToolCall` for br
 
 When a parent agent delegates to a Think sub-agent over RPC with `chat()` (rather than the browser WebSocket), there is no WebSocket to carry `clientTools` or to send tool results back. Pass them through `ChatOptions` instead:
 
-* [  JavaScript ](#tab-panel-5821)
-* [  TypeScript ](#tab-panel-5822)
+* [  JavaScript ](#tab-panel-6083)
+* [  TypeScript ](#tab-panel-6084)
 
 **JavaScript**
 
@@ -136,8 +136,8 @@ If you omit `onClientToolCall`, the tools are registered but have no result: the
 
 Handle browser-side tool execution on the client with `onToolCall`:
 
-* [  JavaScript ](#tab-panel-5823)
-* [  TypeScript ](#tab-panel-5824)
+* [  JavaScript ](#tab-panel-6085)
+* [  TypeScript ](#tab-panel-6086)
 
 **JavaScript**
 
@@ -197,8 +197,8 @@ The `messageConcurrency` property controls how overlapping user submits behave w
 | "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                                                                    |
 | { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                                                                           |
 
-* [  JavaScript ](#tab-panel-5819)
-* [  TypeScript ](#tab-panel-5820)
+* [  JavaScript ](#tab-panel-6081)
+* [  TypeScript ](#tab-panel-6082)
 
 **JavaScript**
 
@@ -236,6 +236,6 @@ Think broadcasts streaming responses to all connected WebSocket clients. When mu
 Programmatic `chat()` turns and `clearMessages()` also broadcast message updates to connected `useAgentChat` clients, so browser clients stay in sync without reconnecting.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/#page","headline":"Client tools · Cloudflare Agents docs","description":"Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/#page","headline":"Client tools · Cloudflare Agents docs","description":"Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/client-tools/","name":"Client tools"}}]}
 ```

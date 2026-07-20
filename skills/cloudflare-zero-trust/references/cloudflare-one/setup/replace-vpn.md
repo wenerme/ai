@@ -1,7 +1,7 @@
 ---
 title: Replace your VPN
 description: Replace your traditional VPN with Cloudflare Zero Trust. Choose a connection scenario to get started.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ Note
 For in-depth guidance on policy design and device posture checks, refer to the [Replace your VPN learning path](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/#page","headline":"Replace your VPN · Cloudflare One docs","description":"Replace your traditional VPN with Cloudflare Zero Trust. Choose a connection scenario to get started.","url":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/#page","headline":"Replace your VPN · Cloudflare One docs","description":"Replace your traditional VPN with Cloudflare Zero Trust. Choose a connection scenario to get started.","url":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/setup/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/setup/replace-vpn/","name":"Replace your VPN"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Sandbox SDK + Artifacts
 description: Connect a sandbox to an Artifacts repo.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -44,8 +44,8 @@ cd repo-per-sandbox
 
 The template keeps one Artifacts repo per sandbox ID. Use your own source of truth to decide whether this request should create a new repo or load an existing one.
 
-* [  JavaScript ](#tab-panel-7126)
-* [  TypeScript ](#tab-panel-7127)
+* [  JavaScript ](#tab-panel-7455)
+* [  TypeScript ](#tab-panel-7456)
 
 **src/index.js**
 
@@ -107,8 +107,8 @@ If your flow can race with repo creation, handle that retry at the application l
 
 Use the same ID for the sandbox:
 
-* [  JavaScript ](#tab-panel-7122)
-* [  TypeScript ](#tab-panel-7123)
+* [  JavaScript ](#tab-panel-7451)
+* [  TypeScript ](#tab-panel-7452)
 
 **src/index.js**
 
@@ -134,8 +134,8 @@ Convert the write token into an authenticated Git remote, then store it as an en
 
 Use a short-lived token and pass it into the sandbox only after the sandbox session is authorized to push changes.
 
-* [  JavaScript ](#tab-panel-7124)
-* [  TypeScript ](#tab-panel-7125)
+* [  JavaScript ](#tab-panel-7453)
+* [  TypeScript ](#tab-panel-7454)
 
 **src/index.js**
 
@@ -168,6 +168,6 @@ await sandbox.setEnvVars({
 Code running inside the sandbox can then use `ARTIFACTS_GIT_REMOTE` with `git clone`, `git fetch`, `git pull`, or `git push`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/#page","headline":"Sandbox SDK + Artifacts · Cloudflare Artifacts docs","description":"Connect a sandbox to an Artifacts repo.","url":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/#page","headline":"Sandbox SDK + Artifacts · Cloudflare Artifacts docs","description":"Connect a sandbox to an Artifacts repo.","url":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/examples/sandbox-sdk-artifacts/","name":"Sandbox SDK + Artifacts"}}]}
 ```

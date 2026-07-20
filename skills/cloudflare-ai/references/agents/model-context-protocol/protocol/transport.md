@@ -1,7 +1,7 @@
 ---
 title: Transport
 description: Configure Streamable HTTP transport for remote MCP servers built with the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,8 +37,8 @@ You can use the "Deploy to Cloudflare" button to create a remote MCP server.
 
 Create an MCP server using `createMcpHandler`. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
 
-* [  JavaScript ](#tab-panel-6097)
-* [  TypeScript ](#tab-panel-6098)
+* [  JavaScript ](#tab-panel-6371)
+* [  TypeScript ](#tab-panel-6372)
 
 **JavaScript**
 
@@ -128,8 +128,8 @@ export default {
 
 If your MCP server implements authentication & authorization using the [Workers OAuth Provider ↗](https://github.com/cloudflare/workers-oauth-provider) library, use `createMcpHandler` with the `apiRoute` and `apiHandler` properties. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
 
-* [  JavaScript ](#tab-panel-6087)
-* [  TypeScript ](#tab-panel-6088)
+* [  JavaScript ](#tab-panel-6361)
+* [  TypeScript ](#tab-panel-6362)
 
 **JavaScript**
 
@@ -187,8 +187,8 @@ RPC transport does not support authentication. Use Streamable HTTP for external 
 
 Create your `McpAgent` with the tools you want to expose:
 
-* [  JavaScript ](#tab-panel-6099)
-* [  TypeScript ](#tab-panel-6100)
+* [  JavaScript ](#tab-panel-6373)
+* [  TypeScript ](#tab-panel-6374)
 
 **JavaScript**
 
@@ -265,8 +265,8 @@ export class MyMCP extends McpAgent<Env, State> {
 
 In your `Agent`, call `addMcpServer()` with the Durable Object binding in `onStart()`:
 
-* [  JavaScript ](#tab-panel-6093)
-* [  TypeScript ](#tab-panel-6094)
+* [  JavaScript ](#tab-panel-6367)
+* [  TypeScript ](#tab-panel-6368)
 
 **JavaScript**
 
@@ -357,8 +357,8 @@ In your `wrangler.jsonc`, define bindings for both Durable Objects:
 
 Route requests to your Chat agent:
 
-* [  JavaScript ](#tab-panel-6091)
-* [  TypeScript ](#tab-panel-6092)
+* [  JavaScript ](#tab-panel-6365)
+* [  TypeScript ](#tab-panel-6366)
 
 **JavaScript**
 
@@ -416,8 +416,8 @@ export default {
 
 Since RPC transport does not have an OAuth flow, you can pass user context directly as props:
 
-* [  JavaScript ](#tab-panel-6089)
-* [  TypeScript ](#tab-panel-6090)
+* [  JavaScript ](#tab-panel-6363)
+* [  TypeScript ](#tab-panel-6364)
 
 **JavaScript**
 
@@ -437,8 +437,8 @@ await this.addMcpServer("my-mcp", this.env.MyMCP, {
 
 Your `McpAgent` can then access these props:
 
-* [  JavaScript ](#tab-panel-6095)
-* [  TypeScript ](#tab-panel-6096)
+* [  JavaScript ](#tab-panel-6369)
+* [  TypeScript ](#tab-panel-6370)
 
 **JavaScript**
 
@@ -488,8 +488,8 @@ Props are type-safe (TypeScript extracts the Props type from your `McpAgent` gen
 
 The RPC transport has a configurable timeout for waiting for tool responses. By default, the server waits **60 seconds** for a tool handler to respond. You can customize this by overriding `getRpcTransportOptions()` in your `McpAgent`:
 
-* [  JavaScript ](#tab-panel-6101)
-* [  TypeScript ](#tab-panel-6102)
+* [  JavaScript ](#tab-panel-6375)
+* [  TypeScript ](#tab-panel-6376)
 
 **JavaScript**
 
@@ -570,6 +570,6 @@ You can test your MCP server using an MCP client that supports remote connection
 Follow [this guide](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/) for instructions on how to connect to your remote MCP server to Claude Desktop, Cursor, Windsurf, and other MCP clients.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/#page","headline":"Transport · Cloudflare Agents docs","description":"Configure Streamable HTTP transport for remote MCP servers built with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/#page","headline":"Transport · Cloudflare Agents docs","description":"Configure Streamable HTTP transport for remote MCP servers built with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/protocol/","name":"Protocol"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/protocol/transport/","name":"Transport"}}]}
 ```

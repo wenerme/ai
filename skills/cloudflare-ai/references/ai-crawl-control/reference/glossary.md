@@ -1,7 +1,7 @@
 ---
 title: Glossary
 description: Review AI Crawl Control terminology definitions.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ Review the definitions for terms used across Cloudflare's AI Crawl Control docum
 | robots.txt         | A text file at the root of a website that instructs crawlers which pages they should or should not access. Compliance is voluntary. AI Crawl Control helps monitor which crawlers violate your robots.txt rules.                                            |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/reference/glossary/#page","headline":"Glossary · Cloudflare AI Crawl Control docs","description":"Review AI Crawl Control terminology definitions.","url":"https://developers.cloudflare.com/ai-crawl-control/reference/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/reference/glossary/#page","headline":"Glossary · Cloudflare AI Crawl Control docs","description":"Review AI Crawl Control terminology definitions.","url":"https://developers.cloudflare.com/ai-crawl-control/reference/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/reference/glossary/","name":"Glossary"}}]}
 ```

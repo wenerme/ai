@@ -1,7 +1,7 @@
 ---
 title: sFlow DDoS attack rule
 description: Create sFlow DDoS attack detection rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -39,6 +39,6 @@ Refer to the [Rules API documentation](https://developers.cloudflare.com/api/res
 You can tune the thresholds of your sFlow DDoS alerts in the dashboard and via the Cloudflare API by following the [Network-layer DDoS Attack Protection managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/) guide.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/#page","headline":"sFlow DDoS attack rule · Cloudflare Network Flow docs","description":"Create sFlow DDoS attack detection rules.","url":"https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/#page","headline":"sFlow DDoS attack rule · Cloudflare Network Flow docs","description":"Create sFlow DDoS attack detection rules.","url":"https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/rules/","name":"Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/rules/s-flow-ddos-attack/","name":"sFlow DDoS attack rule"}}]}
 ```

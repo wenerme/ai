@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -34,8 +34,8 @@ Browser Run offers two categories of integration methods:
 
 Quick Actions can be used via the REST API or directly from a Cloudflare Worker using a browser binding.
 
-* [ REST API ](#tab-panel-7198)
-* [ Workers binding ](#tab-panel-7199)
+* [ REST API ](#tab-panel-7529)
+* [ Workers binding ](#tab-panel-7530)
 
 ### Prerequisites
 
@@ -91,8 +91,8 @@ For setup, select the following options:
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with a browser [binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings):
 
-* [  wrangler.jsonc ](#tab-panel-7192)
-* [  wrangler.toml ](#tab-panel-7193)
+* [  wrangler.jsonc ](#tab-panel-7523)
+* [  wrangler.toml ](#tab-panel-7524)
 
 **JSONC**
 
@@ -102,7 +102,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "name": "browser-quick-action",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "browser": {
     "binding": "BROWSER"
   }
@@ -115,7 +115,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-quick-action"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 
 
 [browser]
@@ -130,8 +130,8 @@ Using the `.quickAction()` method requires a `compatibility_date` of `2026-03-24
 
 Replace the contents of `src/index.ts` with the following:
 
-* [  JavaScript ](#tab-panel-7194)
-* [  TypeScript ](#tab-panel-7195)
+* [  JavaScript ](#tab-panel-7525)
+* [  TypeScript ](#tab-panel-7526)
 
 **JavaScript**
 
@@ -270,8 +270,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-7196)
-* [  wrangler.toml ](#tab-panel-7197)
+* [  wrangler.jsonc ](#tab-panel-7527)
+* [  wrangler.toml ](#tab-panel-7528)
 
 **JSONC**
 
@@ -281,7 +281,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "name": "browser-worker",
   "main": "src/index.js",
   // Set this to today's date
-  "compatibility_date": "2026-07-01",
+  "compatibility_date": "2026-07-20",
   "compatibility_flags": ["nodejs_compat"],
   "browser": {
     "binding": "MYBROWSER"
@@ -303,7 +303,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-01"
+compatibility_date = "2026-07-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 
@@ -319,8 +319,8 @@ preview_id = "e1f8b68b68d24381b57071445f96e623"
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-7190)
-* [  TypeScript ](#tab-panel-7191)
+* [  JavaScript ](#tab-panel-7521)
+* [  TypeScript ](#tab-panel-7522)
 
 Update `src/index.js` with your Worker code:
 
@@ -442,6 +442,6 @@ To take your first screenshot, go to the following URL:
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started · Cloudflare Browser Run docs","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started · Cloudflare Browser Run docs","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/get-started/","name":"Get started"}}]}
 ```

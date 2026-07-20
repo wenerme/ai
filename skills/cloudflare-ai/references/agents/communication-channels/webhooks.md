@@ -1,7 +1,7 @@
 ---
 title: Webhooks
 description: Receive and route webhook events from external services to dedicated Cloudflare Agent instances.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -16,8 +16,8 @@ Receive webhook events from external services and route them to dedicated agent 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-5569)
-* [  TypeScript ](#tab-panel-5570)
+* [  JavaScript ](#tab-panel-5829)
+* [  TypeScript ](#tab-panel-5830)
 
 **JavaScript**
 
@@ -259,8 +259,8 @@ The key pattern is extracting an entity identifier from the webhook and using `g
 
 Most webhooks include an identifier in the payload:
 
-* [  JavaScript ](#tab-panel-5543)
-* [  TypeScript ](#tab-panel-5544)
+* [  JavaScript ](#tab-panel-5803)
+* [  TypeScript ](#tab-panel-5804)
 
 **JavaScript**
 
@@ -322,8 +322,8 @@ export default {
 
 Alternatively, include the entity ID in the webhook URL:
 
-* [  JavaScript ](#tab-panel-5539)
-* [  TypeScript ](#tab-panel-5540)
+* [  JavaScript ](#tab-panel-5799)
+* [  TypeScript ](#tab-panel-5800)
 
 **JavaScript**
 
@@ -351,8 +351,8 @@ if (url.pathname.startsWith("/webhooks/stripe/")) {
 
 Some services include identifiers in headers:
 
-* [  JavaScript ](#tab-panel-5541)
-* [  TypeScript ](#tab-panel-5542)
+* [  JavaScript ](#tab-panel-5801)
+* [  TypeScript ](#tab-panel-5802)
 
 **JavaScript**
 
@@ -382,8 +382,8 @@ Always verify webhook signatures to ensure requests are authentic. Most provider
 
 ### HMAC-SHA256 pattern
 
-* [  JavaScript ](#tab-panel-5555)
-* [  TypeScript ](#tab-panel-5556)
+* [  JavaScript ](#tab-panel-5815)
+* [  TypeScript ](#tab-panel-5816)
 
 **JavaScript**
 
@@ -473,8 +473,8 @@ async function verifySignature(
 
 Use `onRequest()` to handle incoming webhooks in your agent:
 
-* [  JavaScript ](#tab-panel-5563)
-* [  TypeScript ](#tab-panel-5564)
+* [  JavaScript ](#tab-panel-5823)
+* [  TypeScript ](#tab-panel-5824)
 
 **JavaScript**
 
@@ -584,8 +584,8 @@ Use SQLite to persist webhook events for history and replay.
 
 ### Event table schema
 
-* [  JavaScript ](#tab-panel-5551)
-* [  TypeScript ](#tab-panel-5552)
+* [  JavaScript ](#tab-panel-5811)
+* [  TypeScript ](#tab-panel-5812)
 
 **JavaScript**
 
@@ -647,8 +647,8 @@ class WebhookAgent extends Agent {
 
 Prevent unbounded growth by keeping only recent events:
 
-* [  JavaScript ](#tab-panel-5545)
-* [  TypeScript ](#tab-panel-5546)
+* [  JavaScript ](#tab-panel-5805)
+* [  TypeScript ](#tab-panel-5806)
 
 **JavaScript**
 
@@ -688,8 +688,8 @@ this.sql`
 
 ### Query events
 
-* [  JavaScript ](#tab-panel-5559)
-* [  TypeScript ](#tab-panel-5560)
+* [  JavaScript ](#tab-panel-5819)
+* [  TypeScript ](#tab-panel-5820)
 
 **JavaScript**
 
@@ -761,8 +761,8 @@ class WebhookAgent extends Agent {
 
 When a webhook arrives, update agent state to automatically broadcast to connected WebSocket clients.
 
-* [  JavaScript ](#tab-panel-5547)
-* [  TypeScript ](#tab-panel-5548)
+* [  JavaScript ](#tab-panel-5807)
+* [  TypeScript ](#tab-panel-5808)
 
 **JavaScript**
 
@@ -829,8 +829,8 @@ function Dashboard() {
 
 Prevent processing duplicate events using event IDs:
 
-* [  JavaScript ](#tab-panel-5557)
-* [  TypeScript ](#tab-panel-5558)
+* [  JavaScript ](#tab-panel-5817)
+* [  TypeScript ](#tab-panel-5818)
 
 **JavaScript**
 
@@ -888,8 +888,8 @@ class WebhookAgent extends Agent {
 
 Webhook providers expect fast responses. Use the queue for heavy processing:
 
-* [  JavaScript ](#tab-panel-5561)
-* [  TypeScript ](#tab-panel-5562)
+* [  JavaScript ](#tab-panel-5821)
+* [  TypeScript ](#tab-panel-5822)
 
 **JavaScript**
 
@@ -957,8 +957,8 @@ class WebhookAgent extends Agent {
 
 If the asynchronous work is a single Think chat turn, use `submitMessages()` instead. It returns a durable submission ID immediately and lets retries use an idempotency key instead of duplicating the message turn:
 
-* [  JavaScript ](#tab-panel-5549)
-* [  TypeScript ](#tab-panel-5550)
+* [  JavaScript ](#tab-panel-5809)
+* [  TypeScript ](#tab-panel-5810)
 
 **JavaScript**
 
@@ -994,8 +994,8 @@ If the webhook owns application side effects around a turn, such as restoring a 
 
 Handle webhooks from multiple services in one Worker:
 
-* [  JavaScript ](#tab-panel-5567)
-* [  TypeScript ](#tab-panel-5568)
+* [  JavaScript ](#tab-panel-5827)
+* [  TypeScript ](#tab-panel-5828)
 
 **JavaScript**
 
@@ -1089,8 +1089,8 @@ export default {
 
 Agents can also send webhooks to external services:
 
-* [  JavaScript ](#tab-panel-5565)
-* [  TypeScript ](#tab-panel-5566)
+* [  JavaScript ](#tab-panel-5825)
+* [  TypeScript ](#tab-panel-5826)
 
 **JavaScript**
 
@@ -1171,8 +1171,8 @@ export class NotificationAgent extends Agent {
 5. **Log rejections** \- Track invalid signatures for security monitoring.
 6. **Use HTTPS** \- Webhook URLs should always use TLS.
 
-* [  JavaScript ](#tab-panel-5553)
-* [  TypeScript ](#tab-panel-5554)
+* [  JavaScript ](#tab-panel-5813)
+* [  TypeScript ](#tab-panel-5814)
 
 **JavaScript**
 
@@ -1217,6 +1217,6 @@ const secret = this.env.GITHUB_WEBHOOK_SECRET;
 [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/#page","headline":"Webhooks · Cloudflare Agents docs","description":"Receive and route webhook events from external services to dedicated Cloudflare Agent instances.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/#page","headline":"Webhooks · Cloudflare Agents docs","description":"Receive and route webhook events from external services to dedicated Cloudflare Agent instances.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/webhooks/","name":"Webhooks"}}]}
 ```

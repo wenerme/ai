@@ -1,7 +1,7 @@
 ---
 title: Code interpreter
 description: Execute Python, JavaScript, and TypeScript code with rich output formats in Sandbox SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,8 +36,8 @@ const context = await sandbox.createCodeContext(options?: CreateContextOptions):
 
 **Returns**: `Promise<CodeContext>` with `id`, `language`, `cwd`, `createdAt`, `lastUsed`
 
-* [  JavaScript ](#tab-panel-10556)
-* [  TypeScript ](#tab-panel-10557)
+* [  JavaScript ](#tab-panel-11001)
+* [  TypeScript ](#tab-panel-11002)
 
 **JavaScript**
 
@@ -86,8 +86,8 @@ const result = await sandbox.runCode(code: string, options?: RunCodeOptions): Pr
 
 **Recommended usage - create explicit context**:
 
-* [  JavaScript ](#tab-panel-10558)
-* [  TypeScript ](#tab-panel-10559)
+* [  JavaScript ](#tab-panel-11003)
+* [  TypeScript ](#tab-panel-11004)
 
 **JavaScript**
 
@@ -119,8 +119,8 @@ Default context behavior
 
 If no `context` is provided, a default context is automatically created/reused for the specified `language`. While convenient for quick tests, **explicitly creating contexts is recommended** for production use to maintain predictable state.
 
-* [  JavaScript ](#tab-panel-10564)
-* [  TypeScript ](#tab-panel-10565)
+* [  JavaScript ](#tab-panel-11009)
+* [  TypeScript ](#tab-panel-11010)
 
 **JavaScript**
 
@@ -155,8 +155,8 @@ console.log(result.results[0].text); // "15"
 
 **Error handling**:
 
-* [  JavaScript ](#tab-panel-10560)
-* [  TypeScript ](#tab-panel-10561)
+* [  JavaScript ](#tab-panel-11005)
+* [  TypeScript ](#tab-panel-11006)
 
 **JavaScript**
 
@@ -188,8 +188,8 @@ if (result.error) {
 
 JavaScript and TypeScript code execution supports top-level `await` and persistent variables across executions within the same context.
 
-* [  JavaScript ](#tab-panel-10570)
-* [  TypeScript ](#tab-panel-10571)
+* [  JavaScript ](#tab-panel-11015)
+* [  TypeScript ](#tab-panel-11016)
 
 **JavaScript**
 
@@ -232,8 +232,8 @@ console.log(result.logs.stdout); // Data persists across executions
 
 Variables declared with `const`, `let`, or `var` persist across executions, enabling multi-step workflows:
 
-* [  JavaScript ](#tab-panel-10566)
-* [  TypeScript ](#tab-panel-10567)
+* [  JavaScript ](#tab-panel-11011)
+* [  TypeScript ](#tab-panel-11012)
 
 **JavaScript**
 
@@ -273,8 +273,8 @@ List all active code execution contexts.
 const contexts = await sandbox.listCodeContexts(): Promise<CodeContext[]>
 ```
 
-* [  JavaScript ](#tab-panel-10562)
-* [  TypeScript ](#tab-panel-10563)
+* [  JavaScript ](#tab-panel-11007)
+* [  TypeScript ](#tab-panel-11008)
 
 **JavaScript**
 
@@ -300,8 +300,8 @@ Delete a code execution context and free its resources.
 await sandbox.deleteCodeContext(contextId: string): Promise<void>
 ```
 
-* [  JavaScript ](#tab-panel-10568)
-* [  TypeScript ](#tab-panel-10569)
+* [  JavaScript ](#tab-panel-11013)
+* [  TypeScript ](#tab-panel-11014)
 
 **JavaScript**
 
@@ -325,8 +325,8 @@ Results include: `text`, `html`, `png`, `jpeg`, `svg`, `latex`, `markdown`, `jso
 
 **Charts (matplotlib)**:
 
-* [  JavaScript ](#tab-panel-10574)
-* [  TypeScript ](#tab-panel-10575)
+* [  JavaScript ](#tab-panel-11019)
+* [  TypeScript ](#tab-panel-11020)
 
 **JavaScript**
 
@@ -377,8 +377,8 @@ if (result.results[0]?.png) {
 
 **Tables (pandas)**:
 
-* [  JavaScript ](#tab-panel-10572)
-* [  TypeScript ](#tab-panel-10573)
+* [  JavaScript ](#tab-panel-11017)
+* [  TypeScript ](#tab-panel-11018)
 
 **JavaScript**
 
@@ -424,6 +424,6 @@ if (result.results[0]?.html) {
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- File operations
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/interpreter/#page","headline":"Code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python, JavaScript, and TypeScript code with rich output formats in Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/api/interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/interpreter/#page","headline":"Code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python, JavaScript, and TypeScript code with rich output formats in Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/api/interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/interpreter/","name":"Code interpreter"}}]}
 ```

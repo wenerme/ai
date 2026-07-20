@@ -1,7 +1,7 @@
 ---
 title: Machine Learning models
 description: Manage auto-updates for Bot Management machine learning models.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,8 +18,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-6926)
-* [ Old dashboard ](#tab-panel-6927)
+* [  New dashboard ](#tab-panel-7503)
+* [ Old dashboard ](#tab-panel-7504)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -57,6 +57,6 @@ By not updating to the latest version, you will be using a Machine Learning mode
 | v9      | Improved model consistency and model efficacy against randomization attack techniques                                                                                                                                             | Q2 2025     |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/machine-learning-models/#page","headline":"Machine Learning models · Cloudflare bot solutions docs","description":"Manage auto-updates for Bot Management machine learning models.","url":"https://developers.cloudflare.com/bots/reference/machine-learning-models/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/machine-learning-models/#page","headline":"Machine Learning models · Cloudflare bot solutions docs","description":"Manage auto-updates for Bot Management machine learning models.","url":"https://developers.cloudflare.com/bots/reference/machine-learning-models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/reference/machine-learning-models/","name":"Machine Learning models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Customer domains with SSL for SaaS
 description: Allow your customers to use their own domains with your platform, complete with automatic SSL certificates.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ Provision and manage SSL certificates for custom customer domains. [Learn more a
 3. [Validate certificates](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/saas/custom-domains/#page","headline":"Customer domains with SSL for SaaS · Cloudflare use cases","description":"Allow your customers to use their own domains with your platform, complete with automatic SSL certificates.","url":"https://developers.cloudflare.com/use-cases/saas/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/saas/custom-domains/#page","headline":"Customer domains with SSL for SaaS · Cloudflare use cases","description":"Allow your customers to use their own domains with your platform, complete with automatic SSL certificates.","url":"https://developers.cloudflare.com/use-cases/saas/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/saas/","name":"SaaS platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/saas/custom-domains/","name":"Customer domains with SSL for SaaS"}}]}
 ```

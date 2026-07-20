@@ -1,7 +1,7 @@
 ---
 title: Container Interface
 description: API reference for the Container interface and utility functions
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -36,8 +36,8 @@ bun add @cloudflare/containers
 
 Then, define a class that extends `Container` and set the shared properties on the class:
 
-* [  JavaScript ](#tab-panel-8129)
-* [  TypeScript ](#tab-panel-8130)
+* [  JavaScript ](#tab-panel-8469)
+* [  TypeScript ](#tab-panel-8470)
 
 **JavaScript**
 
@@ -95,8 +95,8 @@ export default {
 
 The `Container` class extends `DurableObject`, so all [Durable Object](https://developers.cloudflare.com/durable-objects/) functionality is available — including [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and [RPC methods](https://developers.cloudflare.com/durable-objects/api/base/#rpc-methods). Container disk is ephemeral by default, but Durable Object storage persists across container restarts.
 
-* [  JavaScript ](#tab-panel-8127)
-* [  TypeScript ](#tab-panel-8128)
+* [  JavaScript ](#tab-panel-8467)
+* [  TypeScript ](#tab-panel-8468)
 
 **JavaScript**
 
@@ -176,8 +176,8 @@ onStart(): void | Promise<void>
 
 Use this to log startup, seed data, or schedule recurring tasks with [schedule()](#schedule).
 
-* [  JavaScript ](#tab-panel-8123)
-* [  TypeScript ](#tab-panel-8124)
+* [  JavaScript ](#tab-panel-8463)
+* [  TypeScript ](#tab-panel-8464)
 
 **JavaScript**
 
@@ -236,8 +236,8 @@ onStop(params: StopParams): void | Promise<void>
 
 Use this to log, alert, or restart the container.
 
-* [  JavaScript ](#tab-panel-8121)
-* [  TypeScript ](#tab-panel-8122)
+* [  JavaScript ](#tab-panel-8461)
+* [  TypeScript ](#tab-panel-8462)
 
 **JavaScript**
 
@@ -283,8 +283,8 @@ onError(error: unknown): any
 
 Override this to suppress errors, notify an external service, or attempt a restart.
 
-* [  JavaScript ](#tab-panel-8125)
-* [  TypeScript ](#tab-panel-8126)
+* [  JavaScript ](#tab-panel-8465)
+* [  TypeScript ](#tab-panel-8466)
 
 **JavaScript**
 
@@ -334,8 +334,8 @@ If you override `onActivityExpired()`, call [await this.stop()](#stop) or [await
 
 If you override this method without stopping the container, the timer renews and the hook fires again on the next expiry.
 
-* [  JavaScript ](#tab-panel-8131)
-* [  TypeScript ](#tab-panel-8132)
+* [  JavaScript ](#tab-panel-8471)
+* [  TypeScript ](#tab-panel-8472)
 
 **JavaScript**
 
@@ -401,8 +401,8 @@ By default, `fetch` forwards the request to the container process at [defaultPor
 
 Override `fetch` when you need routing logic, authentication, or other middleware before forwarding to the container. Inside the override, call [this.containerFetch()](#containerfetch) rather than `this.fetch()` to avoid infinite recursion:
 
-* [  JavaScript ](#tab-panel-8133)
-* [  TypeScript ](#tab-panel-8134)
+* [  JavaScript ](#tab-panel-8473)
+* [  TypeScript ](#tab-panel-8474)
 
 **JavaScript**
 
@@ -480,8 +480,8 @@ This is what the default [fetch()](#fetch) implementation calls internally, and 
 
 Does not support WebSockets. Use [fetch()](#fetch) with [switchPort()](#switchport) for those.
 
-* [  JavaScript ](#tab-panel-8143)
-* [  TypeScript ](#tab-panel-8144)
+* [  JavaScript ](#tab-panel-8483)
+* [  TypeScript ](#tab-panel-8484)
 
 **JavaScript**
 
@@ -586,8 +586,8 @@ This is the safest way to explicitly start a container when you need to be certa
 
 This method also supports positional `ports`, `cancellationOptions`, and `startOptions` arguments, but the object form is easier to read.
 
-* [  JavaScript ](#tab-panel-8139)
-* [  TypeScript ](#tab-panel-8140)
+* [  JavaScript ](#tab-panel-8479)
+* [  TypeScript ](#tab-panel-8480)
 
 **JavaScript**
 
@@ -672,8 +672,8 @@ start(startOptions?: ContainerStartConfigOptions, waitOptions?: WaitOptions): Pr
 
 Use this when the container does not expose ports, such as a batch job or a cron task, or when you want to manage readiness yourself with [waitForPort()](#waitforport). If you need to wait for all ports to be ready, use [startAndWaitForPorts()](#startandwaitforports) instead.
 
-* [  JavaScript ](#tab-panel-8135)
-* [  TypeScript ](#tab-panel-8136)
+* [  JavaScript ](#tab-panel-8475)
+* [  TypeScript ](#tab-panel-8476)
 
 **JavaScript**
 
@@ -744,8 +744,8 @@ waitForPort(waitOptions: WaitOptions): Promise<number>
 
 Throws if the port does not become available within the retry limit. Use this after [start()](#start) when you need to check multiple ports independently or in a specific sequence.
 
-* [  JavaScript ](#tab-panel-8137)
-* [  TypeScript ](#tab-panel-8138)
+* [  JavaScript ](#tab-panel-8477)
+* [  TypeScript ](#tab-panel-8478)
 
 **JavaScript**
 
@@ -813,8 +813,8 @@ stop(signal?: 'SIGTERM' | 'SIGINT' | 'SIGKILL' | number): Promise<void>
 
 Defaults to `SIGTERM`, which gives the process a chance to shut down gracefully. Triggers [onStop()](#onstop).
 
-* [  JavaScript ](#tab-panel-8141)
-* [  TypeScript ](#tab-panel-8142)
+* [  JavaScript ](#tab-panel-8481)
+* [  TypeScript ](#tab-panel-8482)
 
 **JavaScript**
 
@@ -876,8 +876,8 @@ destroy(): Promise<void>
 
 This sends `SIGKILL`. Use it when you need the container gone immediately and cannot wait for a graceful shutdown. Triggers [onStop()](#onstop).
 
-* [  JavaScript ](#tab-panel-8145)
-* [  TypeScript ](#tab-panel-8146)
+* [  JavaScript ](#tab-panel-8485)
+* [  TypeScript ](#tab-panel-8486)
 
 **JavaScript**
 
@@ -945,8 +945,8 @@ getState(): Promise<State>
 
 `running` means the container is starting and has not yet passed its health check. `healthy` means it is up and accepting requests.
 
-* [  JavaScript ](#tab-panel-8147)
-* [  TypeScript ](#tab-panel-8148)
+* [  JavaScript ](#tab-panel-8487)
+* [  TypeScript ](#tab-panel-8488)
 
 **JavaScript**
 
@@ -1008,8 +1008,8 @@ renewActivityTimeout(): void
 
 Incoming requests reset the timer automatically. Call this manually from background work, such as a scheduled task or a long-running operation, that should count as activity and prevent the container from sleeping.
 
-* [  JavaScript ](#tab-panel-8151)
-* [  TypeScript ](#tab-panel-8152)
+* [  JavaScript ](#tab-panel-8491)
+* [  TypeScript ](#tab-panel-8492)
 
 **JavaScript**
 
@@ -1090,8 +1090,8 @@ Do not override [alarm() ↗](https://developers.cloudflare.com/durable-objects/
 
 The following example schedules a recurring health report starting at container startup:
 
-* [  JavaScript ](#tab-panel-8155)
-* [  TypeScript ](#tab-panel-8156)
+* [  JavaScript ](#tab-panel-8495)
+* [  TypeScript ](#tab-panel-8496)
 
 **JavaScript**
 
@@ -1145,8 +1145,8 @@ export class MyContainer extends Container {
 
 Outbound interception lets you intercept, mock, or block HTTP requests that the container makes to external hosts. This is useful for sandboxing, testing, or proxying outbound traffic through Worker code.
 
-* [  JavaScript ](#tab-panel-8159)
-* [  TypeScript ](#tab-panel-8160)
+* [  JavaScript ](#tab-panel-8499)
+* [  TypeScript ](#tab-panel-8500)
 
 **JavaScript**
 
@@ -1253,8 +1253,8 @@ getContainer<T>(binding: DurableObjectNamespace<T>, name?: string): DurableObjec
 
 Use this when you want one container per logical entity, such as a user session, a document, or a game room, identified by a stable name.
 
-* [  JavaScript ](#tab-panel-8149)
-* [  TypeScript ](#tab-panel-8150)
+* [  JavaScript ](#tab-panel-8489)
+* [  TypeScript ](#tab-panel-8490)
 
 **JavaScript**
 
@@ -1303,8 +1303,8 @@ getRandom<T>(binding: DurableObjectNamespace<T>, instances?: number): Promise<Du
 
 Use this for stateless workloads where any container can handle any request and you want to spread load across multiple instances.
 
-* [  JavaScript ](#tab-panel-8153)
-* [  TypeScript ](#tab-panel-8154)
+* [  JavaScript ](#tab-panel-8493)
+* [  TypeScript ](#tab-panel-8494)
 
 **JavaScript**
 
@@ -1355,8 +1355,8 @@ switchPort(request: Request, port: number): Request
 
 Use this when you need to target a specific port and also need WebSocket support. If you do not need WebSockets, pass the port directly to [containerFetch()](#containerfetch) instead.
 
-* [  JavaScript ](#tab-panel-8157)
-* [  TypeScript ](#tab-panel-8158)
+* [  JavaScript ](#tab-panel-8497)
+* [  TypeScript ](#tab-panel-8498)
 
 **JavaScript**
 
@@ -1387,6 +1387,6 @@ export default {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/container-class/#page","headline":"Container Interface · Cloudflare Containers docs","description":"API reference for the Container interface and utility functions","url":"https://developers.cloudflare.com/containers/container-class/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/container-class/#page","headline":"Container Interface · Cloudflare Containers docs","description":"API reference for the Container interface and utility functions","url":"https://developers.cloudflare.com/containers/container-class/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/container-class/","name":"Container Interface"}}]}
 ```

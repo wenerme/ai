@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Stay updated with Cloudflare's DDoS protection. Discover the latest rule updates, accuracy improvements, and threat landscape adaptations.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,6 +31,6 @@ Cloudflare is very proactive in responding to new attack vectors, which may need
 * [HTTP DDoS managed ruleset](https://developers.cloudflare.com/ddos-protection/change-log/http/) \- [ Subscribe to RSS ](https://developers.cloudflare.com/ddos-protection/change-log/http/index.xml)
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ddos-protection/change-log/#page","headline":"Changelog for global changes to DDoS protection · Cloudflare DDoS Protection docs","description":"Stay updated with Cloudflare's DDoS protection. Discover the latest rule updates, accuracy improvements, and threat landscape adaptations.","url":"https://developers.cloudflare.com/ddos-protection/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ddos-protection/change-log/#page","headline":"Changelog for global changes to DDoS protection · Cloudflare DDoS Protection docs","description":"Stay updated with Cloudflare's DDoS protection. Discover the latest rule updates, accuracy improvements, and threat landscape adaptations.","url":"https://developers.cloudflare.com/ddos-protection/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/change-log/","name":"Changelog"}}]}
 ```

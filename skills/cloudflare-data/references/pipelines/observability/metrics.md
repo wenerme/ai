@@ -1,7 +1,7 @@
 ---
 title: Metrics and analytics
 description: Query Pipelines metrics for data ingested, processed, and delivered via the dashboard or GraphQL API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -139,7 +139,7 @@ query PipelineOperatorMetrics(
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgSwA5gDYIHZgPIogQwBcB7CAWTEIgQGMBnACgCgYYASfGm4kDQgFXwBzAFwwAylUxCAhC3ZJkaTGACSAEzGTqGWfLbqilBAFswk-BEJj+psHNYGjhOwFEMmmLbNyAlDABveQA3BDAAd0hA+VZObl5CRgAzBFRCSDEAmDiePkFRdhyE-JgAX38g1iqYRRR0LDpcSCJSAEFDJBdgsABxCB4kRhjqmHQTBGsYAEYABjmZ4eqUtIzokZHa5SwNMTZN+rV1RZG6KjB8Ew0AfSxgMQAie+Pqw3SXMyuhMDv2V+MzCxWZ5VP7vMBXVDfXagtweYGlY4VYF0EAmNbrKoAIyg6ToqgwwNYEDA3Ag6jxBIxIJJxHUYFcEH6EDo8OOCOq7LKTFKQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jfmETtELALbsAyojAAnREIBMABgsA2ALRWA7PYCMT5K4CcmCz4DMXgBaDCAaWjr6ovCC2NZ2ji6uABzIVq6+AcEgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgSwA5gDYIHZgPIogQwBcB7CAWTEIgQGMBnACgCgYYASfGm4kDQgFXwBzAFwwAylUxCAhC3ZJkaTGACSAEzGTqGWfLbqilBAFswk-BEJj+psHNYGjhOwFEMmmLbNyAlDABveQA3BDAAd0hA+VZObl5CRgAzBFRCSDEAmDiePkFRdhyE-JgAX38g1iqYRRR0LDpcSCJSAEFDJBdgsABxCB4kRhjqmHQTBGsYAEYABjmZ4eqUtIzokZHa5SwNMTZN+rV1RZG6KjB8Ew0AfSxgMQAie+Pqw3SXMyuhMDv2V+MzCxWZ5VP7vMBXVDfXagtweYGlY4VYF0EAmNbrKoAIyg6ToqgwwNYEDA3Ag6jxBIxIJJxHUYFcEH6EDo8OOCOq7LKTFKQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jfmETtELALbsAyojAAnREIBMABgsA2ALRWA7PevIrtzAEYn3gMwAWgwgGlo6+qLwgtjWdo4ubl4W3r5egSAAvkA)
 
 ### Measure sink delivery metrics
 
@@ -177,7 +177,7 @@ query PipelineSinkMetrics(
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgSwA5gDYIHZgMqYNYCyYALhAgMYDOAFAFAwwAkAhueQPYgbEAqzA5gC4Y2Upn4BCekyTI0mMAEkAJsNFkMk6Y0r4VasZqkNGy5sRIIAtjmLMIxYT2thjTMxeIuAohlUxnGykAShgAb2kANwQwAHdIcOkGVg4uYhoAMwRUCwhhMJgUzm4+ISYitNKYAF9QiIYGmFkUdCxKXAw8AEEzJC9IsABxCE4kGiTGmHQrBEcYAEYABmXFicasnMh8tcnm+Sx9GTlWpWUdxt1Ow509M8nJj0sbAH1+MGBhU3Mn23tic4ajy8L1Q70+QJ8fgB1R2dQBlBAVkS90aACMoBZKAB1MjECwYAEMCBgDgQZTY3H4wkwDZgCmzKkohojWLDUb0vFgAlMhhcDhWJDEyiUMDKABCGLpOIZXOhOxhjQVNVo1SAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jAM48A1gKFipM+YpW0GIfmETtELALbsAyojAAnREIBMABg8A2ALReAOz+AIxByKEAnJgeMQDMUQBaZhZWNvai8ILY3n6BIaEAHMheobEJySAAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgSwA5gDYIHZgMqYNYCyYALhAgMYDOAFAFAwwAkAhueQPYgbEAqzA5gC4Y2Upn4BCekyTI0mMAEkAJsNFkMk6Y0r4VasZqkNGy5sRIIAtjmLMIxYT2thjTMxeIuAohlUxnGykAShgAb2kANwQwAHdIcOkGVg4uYhoAMwRUCwhhMJgUzm4+ISYitNKYAF9QiIYGmFkUdCxKXAw8AEEzJC9IsABxCE4kGiTGmHQrBEcYAEYABmXFicasnMh8tcnm+Sx9GTlWpWUdxt1Ow509M8nJj0sbAH1+MGBhU3Mn23tic4ajy8L1Q70+QJ8fgB1R2dQBlBAVkS90aACMoBZKAB1MjECwYAEMCBgDgQZTY3H4wkwDZgCmzKkohojWLDUb0vFgAlMhhcDhWJDEyiUMDKABCGLpOIZXOhOxhjQVNVo1SAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jAM48A1gKFipM+YpW0GIfmETtELALbsAyojAAnREIBMABg8A2ALReAOz+3shevpgAjEHRAMwAWmYWVjb2ovCC2N5+gSFhUR7RsVGJIAC+QA)
 
 ### Query dropped event errors
 
@@ -213,7 +213,7 @@ query GetPipelineUserErrors(
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgBQJYAcwBtUDswCqAzpAKIQQD2ERAFAFAwwAkAhgMbuUi6IAqrAOYAuGAGVEEPIICEjFugzY8YAJIATURKm5Z85utaIkqALZgJrCIlF8zYOUwNGT50rk0w75uQEoYAN7yAG6oYADukIHyTBxcPIh0AGaoWMYQogEwcdy8AiIsOQn5MAC+-kFMVTCKmDj4RMRkFNREAIKG6IiowWBwVCDodDHVMDimqDYwAIwADLMj1SlpkJmLo7XK+BqizJv1aurr1YbG3eYA+oJgwLunrhaIVojHVffnYBdYN3cuH+5HUZVUqvajqSAAISgogA2vFeBcACKkMQAYQAuusKq94S8gUx1PZcERUJRidF8W8XK8mJAqBAAGKsCZYKA0mB06h8KCYV4goH84HyEGlIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jfmETtELALbsAyojAAnREIBMABgsA2ALRWA7PYCMT5K4CcmCz4DMXgBaDCAaWjr6ovCC2NZ2ji6uABzIVq6+AcEgAL5AA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgBQJYAcwBtUDswCqAzpAKIQQD2ERAFAFAwwAkAhgMbuUi6IAqrAOYAuGAGVEEPIICEjFugzY8YAJIATURKm5Z85utaIkqALZgJrCIlF8zYOUwNGT50rk0w75uQEoYAN7yAG6oYADukIHyTBxcPIh0AGaoWMYQogEwcdy8AiIsOQn5MAC+-kFMVTCKmDj4RMRkFNREAIKG6IiowWBwVCDodDHVMDimqDYwAIwADLMj1SlpkJmLo7XK+BqizJv1aurr1YbG3eYA+oJgwLunrhaIVojHVffnYBdYN3cuH+5HUZVUqvajqSAAISgogA2vFeBcACKkMQAYQAuusKq94S8gUx1PZcERUJRidF8W8XK8mJAqBAAGKsCZYKA0mB06h8KCYV4goH84HyEGlIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQAHASyYFMAbF+dqgEywgASgFEACgBl8oigHUqyABLU6jfmETtELALbsAyojAAnREIBMABgsA2ALRWA7PevIrtzAEYn3gMwAWgwgGlo6+qLwgtjWdo4ubl4W3r5egSAAvkA)
 
 Example response:
 
@@ -305,6 +305,6 @@ Note
 In addition to `pipelinesUserErrorsAdaptiveGroups`, you can also query the `pipelinesUserErrorsAdaptive` dataset, which provides detailed error descriptions within the last 24 hours. Be aware that querying this dataset may return a large volume of data if your pipeline processes many events.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/observability/metrics/#page","headline":"Metrics and analytics · Cloudflare Pipelines Docs","description":"Query Pipelines metrics for data ingested, processed, and delivered via the dashboard or GraphQL API.","url":"https://developers.cloudflare.com/pipelines/observability/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/observability/metrics/#page","headline":"Metrics and analytics · Cloudflare Pipelines Docs","description":"Query Pipelines metrics for data ingested, processed, and delivered via the dashboard or GraphQL API.","url":"https://developers.cloudflare.com/pipelines/observability/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/observability/metrics/","name":"Metrics and analytics"}}]}
 ```

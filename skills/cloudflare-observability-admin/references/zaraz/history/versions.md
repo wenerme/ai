@@ -1,7 +1,7 @@
 ---
 title: Versions
 description: View and restore previous Zaraz configuration versions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ Version History enables you to revert any changes made to your Zaraz settings.
 4. Select **Publish** to publish your changes.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/history/versions/#page","headline":"Versions · Cloudflare Zaraz docs","description":"View and restore previous Zaraz configuration versions.","url":"https://developers.cloudflare.com/zaraz/history/versions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/history/versions/#page","headline":"Versions · Cloudflare Zaraz docs","description":"View and restore previous Zaraz configuration versions.","url":"https://developers.cloudflare.com/zaraz/history/versions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/history/","name":"Versions & History"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/history/versions/","name":"Versions"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Prometheus
 description: This tutorial explains how to export Cloudflare metrics to Prometheus using the Cloudflare Prometheus Exporter.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -172,6 +172,6 @@ Free tier zones still export:
 You can monitor skipped zones with the `cloudflare_zones_skipped_free_tier` metric.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/#page","headline":"Prometheus · Cloudflare Analytics docs","description":"This tutorial explains how to export Cloudflare metrics to Prometheus using the Cloudflare Prometheus Exporter.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/#page","headline":"Prometheus · Cloudflare Analytics docs","description":"This tutorial explains how to export Cloudflare metrics to Prometheus using the Cloudflare Prometheus Exporter.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-integrations/","name":"Analytics integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-integrations/prometheus/","name":"Prometheus"}}]}
 ```

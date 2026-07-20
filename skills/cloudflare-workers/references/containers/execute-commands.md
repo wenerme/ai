@@ -1,7 +1,7 @@
 ---
 title: Execute commands
 description: Run additional processes inside an active Container.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -20,8 +20,8 @@ Use `exec()` to start another process inside a running [Container](https://devel
 
 The following hook runs a preparation command whenever the Container starts. You can execute any series of startup commands from this hook. `output()` buffers standard output and standard error as separate `ArrayBuffer` values.
 
-* [  JavaScript ](#tab-panel-8171)
-* [  TypeScript ](#tab-panel-8172)
+* [  JavaScript ](#tab-panel-8511)
+* [  TypeScript ](#tab-panel-8512)
 
 **JavaScript**
 
@@ -83,8 +83,8 @@ export class MyContainer extends Container {
 
 In an RPC method, ensure the Container is running before calling `exec()`. Standard output uses a readable stream by default.
 
-* [  JavaScript ](#tab-panel-8169)
-* [  TypeScript ](#tab-panel-8170)
+* [  JavaScript ](#tab-panel-8509)
+* [  TypeScript ](#tab-panel-8510)
 
 **JavaScript**
 
@@ -150,8 +150,8 @@ Invoke a shell when your command needs those features. Use `["bash", "-lc", "<CO
 
 Pass a `ReadableStream` to send existing data. Setting `stdout` to `"ignore"` discards standard output.
 
-* [  JavaScript ](#tab-panel-8175)
-* [  TypeScript ](#tab-panel-8176)
+* [  JavaScript ](#tab-panel-8515)
+* [  TypeScript ](#tab-panel-8516)
 
 **JavaScript**
 
@@ -223,8 +223,8 @@ export class MyContainer extends Container {
 
 Ignored standard output produces an empty buffer from `output()`. Set `stdin` to `"pipe"` to write data over time.
 
-* [  JavaScript ](#tab-panel-8177)
-* [  TypeScript ](#tab-panel-8178)
+* [  JavaScript ](#tab-panel-8517)
+* [  TypeScript ](#tab-panel-8518)
 
 **JavaScript**
 
@@ -304,8 +304,8 @@ Close the writer to send end-of-file (EOF). If you omit `stdin`, `exec()` closes
 
 RPC methods can accept byte-oriented `ReadableStream` values whose underlying source uses `type: "bytes"`. A `Request` body meets this requirement. You can pass the received stream directly to `exec()` without buffering the entire stream in the Durable Object. For more information, refer to [Streams over RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/#readablestream-writeablestream-request-and-response).
 
-* [  JavaScript ](#tab-panel-8185)
-* [  TypeScript ](#tab-panel-8186)
+* [  JavaScript ](#tab-panel-8525)
+* [  TypeScript ](#tab-panel-8526)
 
 **JavaScript**
 
@@ -398,8 +398,8 @@ RPC transfers ownership of the stream to the Durable Object. The calling Worker 
 
 The following `cat` process exits because standard input is omitted:
 
-* [  JavaScript ](#tab-panel-8173)
-* [  TypeScript ](#tab-panel-8174)
+* [  JavaScript ](#tab-panel-8513)
+* [  TypeScript ](#tab-panel-8514)
 
 **JavaScript**
 
@@ -457,8 +457,8 @@ Use `cwd`, `env`, and `user` to set the process context. The process inherits th
 
 This example uses `sh` because it needs expansion and redirection. It also captures standard output and standard error separately.
 
-* [  JavaScript ](#tab-panel-8189)
-* [  TypeScript ](#tab-panel-8190)
+* [  JavaScript ](#tab-panel-8529)
+* [  TypeScript ](#tab-panel-8530)
 
 **JavaScript**
 
@@ -556,8 +556,8 @@ The `user` option sets the user name or numeric user ID (UID) for the process. T
 
 Set `stderr` to `"combined"` to merge standard error into standard output. Combined output requires `stdout: "pipe"`.
 
-* [  JavaScript ](#tab-panel-8181)
-* [  TypeScript ](#tab-panel-8182)
+* [  JavaScript ](#tab-panel-8521)
+* [  TypeScript ](#tab-panel-8522)
 
 **JavaScript**
 
@@ -631,8 +631,8 @@ A nonzero exit code resolves `exitCode` normally. It does not reject the promise
 
 This example preserves standard error while ignoring standard output:
 
-* [  JavaScript ](#tab-panel-8187)
-* [  TypeScript ](#tab-panel-8188)
+* [  JavaScript ](#tab-panel-8527)
+* [  TypeScript ](#tab-panel-8528)
 
 **JavaScript**
 
@@ -708,8 +708,8 @@ The result contains exit code `7` and the standard error text. Its ignored stand
 
 `output()` buffers both streams in memory. For large output, drain `stdout` and `stderr` concurrently instead.
 
-* [  JavaScript ](#tab-panel-8191)
-* [  TypeScript ](#tab-panel-8192)
+* [  JavaScript ](#tab-panel-8531)
+* [  TypeScript ](#tab-panel-8532)
 
 **JavaScript**
 
@@ -809,8 +809,8 @@ Streaming and `output()` are alternative consumption methods. `output()` throws 
 
 Return a `ReadableStream` from an RPC method to stream output to the calling Worker. Combining standard error provides one stream for both output channels.
 
-* [  JavaScript ](#tab-panel-8179)
-* [  TypeScript ](#tab-panel-8180)
+* [  JavaScript ](#tab-panel-8519)
+* [  TypeScript ](#tab-panel-8520)
 
 **JavaScript**
 
@@ -870,8 +870,8 @@ This method transfers output, not the `ExecProcess` handle. Define a separate ap
 
 `exec()` has no built-in timeout. You can request termination after a delay with `kill()` and then await `exitCode`.
 
-* [  JavaScript ](#tab-panel-8183)
-* [  TypeScript ](#tab-panel-8184)
+* [  JavaScript ](#tab-panel-8523)
+* [  TypeScript ](#tab-panel-8524)
 
 **JavaScript**
 
@@ -933,8 +933,8 @@ Place `exec()` calls in the Durable Object that controls the Container. The Dura
 
 One application RPC method can perform multiple `exec()` operations. Each command remains a separate exec operation, but the caller makes one Durable Object RPC call. This reduces caller-to-Durable Object round trips while keeping lifecycle decisions together.
 
-* [  JavaScript ](#tab-panel-8193)
-* [  TypeScript ](#tab-panel-8194)
+* [  JavaScript ](#tab-panel-8533)
+* [  TypeScript ](#tab-panel-8534)
 
 **JavaScript**
 
@@ -1015,6 +1015,6 @@ export class MyContainer extends Container {
 For all fields and return types, refer to the [exec() API contract](https://developers.cloudflare.com/durable-objects/api/container/#exec).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/execute-commands/#page","headline":"Execute commands · Cloudflare Containers docs","description":"Run additional processes inside an active Container.","url":"https://developers.cloudflare.com/containers/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/execute-commands/#page","headline":"Execute commands · Cloudflare Containers docs","description":"Run additional processes inside an active Container.","url":"https://developers.cloudflare.com/containers/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/execute-commands/","name":"Execute commands"}}]}
 ```

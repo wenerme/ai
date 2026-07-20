@@ -1,7 +1,7 @@
 ---
 title: Pricing
 description: Durable Objects compute and storage billing, including pricing examples and free tier limits.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -241,6 +241,6 @@ All writes to a SQLite-backed Durable Object stores nominal amounts of metadata 
 The metadata remains in the Durable Object until you call [deleteAll()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deleteall).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/pricing/#page","headline":"Pricing · Cloudflare Durable Objects docs","description":"Durable Objects compute and storage billing, including pricing examples and free tier limits.","url":"https://developers.cloudflare.com/durable-objects/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/pricing/#page","headline":"Pricing · Cloudflare Durable Objects docs","description":"Durable Objects compute and storage billing, including pricing examples and free tier limits.","url":"https://developers.cloudflare.com/durable-objects/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/platform/pricing/","name":"Pricing"}}]}
 ```

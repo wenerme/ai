@@ -1,7 +1,7 @@
 ---
 title: Lifecycle of a Durable Object
 description: Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -133,6 +133,6 @@ While this may feel unintuitive, Durable Object storage writes are fast and sync
 This approach ensures your Durable Object can safely resume from any point, even if it shuts down unexpectedly.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/#page","headline":"Lifecycle of a Durable Object · Cloudflare Durable Objects docs","description":"Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.","url":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/#page","headline":"Lifecycle of a Durable Object · Cloudflare Durable Objects docs","description":"Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.","url":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/concepts/durable-object-lifecycle/","name":"Lifecycle of a Durable Object"}}]}
 ```

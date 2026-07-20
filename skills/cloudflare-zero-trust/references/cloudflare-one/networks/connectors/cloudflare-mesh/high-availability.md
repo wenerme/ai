@@ -1,7 +1,7 @@
 ---
 title: High availability
 description: High availability for Cloudflare Mesh nodes.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -42,8 +42,8 @@ flowchart LR
 
 ## Create a node with high availability
 
-* [ Dashboard ](#tab-panel-7561)
-* [ API ](#tab-panel-7562)
+* [ Dashboard ](#tab-panel-7895)
+* [ API ](#tab-panel-7896)
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
@@ -71,8 +71,8 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-* [ Dashboard ](#tab-panel-7569)
-* [ API ](#tab-panel-7570)
+* [ Dashboard ](#tab-panel-7903)
+* [ API ](#tab-panel-7904)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -83,8 +83,8 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
-* [ Debian / Ubuntu ](#tab-panel-7565)
-* [ RedHat / CentOS ](#tab-panel-7566)
+* [ Debian / Ubuntu ](#tab-panel-7899)
+* [ RedHat / CentOS ](#tab-panel-7900)
 
 ```sh
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
@@ -125,8 +125,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 The response contains the token string.
 2. Install the client and register on a new Linux host:
 
-  * [ Debian / Ubuntu ](#tab-panel-7567)
-  * [ RedHat / CentOS ](#tab-panel-7568)
+  * [ Debian / Ubuntu ](#tab-panel-7901)
+  * [ RedHat / CentOS ](#tab-panel-7902)
 ```sh
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
 echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
@@ -156,8 +156,8 @@ The new replica will be in standby mode until the active replica disconnects.
 
 ## View replicas
 
-* [ Dashboard ](#tab-panel-7559)
-* [ API ](#tab-panel-7560)
+* [ Dashboard ](#tab-panel-7893)
+* [ API ](#tab-panel-7894)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -216,8 +216,8 @@ The response includes each replica with its `ha_status` (`active` or `passive`),
 
 In addition to automatic failover when the active replica disconnects, you can manually promote a passive replica to active.
 
-* [ Dashboard ](#tab-panel-7563)
-* [ API ](#tab-panel-7564)
+* [ Dashboard ](#tab-panel-7897)
+* [ API ](#tab-panel-7898)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -261,6 +261,6 @@ Get the `client_id` from the [connections endpoint](#view-replicas). Use the `id
 * Outbound traffic (from devices on the subnet through the Mesh node) does not fail over automatically. Your environment must detect that a different replica has been promoted to active and update routing tables to send traffic through the now-active host. There is no client-side failover for on-ramp traffic at this time.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/#page","headline":"High availability for Cloudflare Mesh nodes · Cloudflare One docs","description":"High availability for Cloudflare Mesh nodes.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/#page","headline":"High availability for Cloudflare Mesh nodes · Cloudflare One docs","description":"High availability for Cloudflare Mesh nodes.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/","name":"Cloudflare Mesh"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/","name":"High availability"}}]}
 ```

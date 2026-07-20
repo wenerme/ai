@@ -1,7 +1,7 @@
 ---
 title: Bindings (env)
 description: Worker Bindings that allow for interaction with other Cloudflare Resources.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -45,8 +45,8 @@ The following bindings are available today:
 
 When you declare a binding on your Worker, you grant it a specific capability, such as being able to read and write files to an [R2](https://developers.cloudflare.com/r2/) bucket. For example:
 
-* [  wrangler.jsonc ](#tab-panel-12287)
-* [  wrangler.toml ](#tab-panel-12288)
+* [  wrangler.jsonc ](#tab-panel-12812)
+* [  wrangler.toml ](#tab-panel-12813)
 
 **JSONC**
 
@@ -73,8 +73,8 @@ binding = "MY_BUCKET"
 bucket_name = "<MY_BUCKET_NAME>"
 ```
 
-* [  JavaScript ](#tab-panel-12273)
-* [  Python ](#tab-panel-12274)
+* [  JavaScript ](#tab-panel-12798)
+* [  Python ](#tab-panel-12799)
 
 **JavaScript**
 
@@ -163,8 +163,8 @@ export default {
 ```
 * It is as class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env), [DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):
 
-  * [  JavaScript ](#tab-panel-12275)
-  * [  Python ](#tab-panel-12276)
+  * [  JavaScript ](#tab-panel-12800)
+  * [  Python ](#tab-panel-12801)
 
 **JavaScript**
 ```js
@@ -184,8 +184,8 @@ class Default(WorkerEntrypoint):
 ```
 * It can be imported from `cloudflare:workers`:
 
-  * [  JavaScript ](#tab-panel-12277)
-  * [  Python ](#tab-panel-12278)
+  * [  JavaScript ](#tab-panel-12802)
+  * [  Python ](#tab-panel-12803)
 
 **JavaScript**
 ```js
@@ -203,8 +203,8 @@ print(f"Hi, {env.NAME}")
 
 Importing `env` from `cloudflare:workers` is useful when you need to access a binding such as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)in top-level global scope. For example, to initialize an API client:
 
-* [  JavaScript ](#tab-panel-12279)
-* [  Python ](#tab-panel-12280)
+* [  JavaScript ](#tab-panel-12804)
+* [  Python ](#tab-panel-12805)
 
 **JavaScript**
 
@@ -245,8 +245,8 @@ Workers do not allow I/O from outside a request context. This means that even th
 
 For instance, environment variables and secrets are accessible, and you are able to call `env.NAMESPACE.get` to get a [Durable Object stub](https://developers.cloudflare.com/durable-objects/api/stub/) in the top-level context. However, calling methods on the Durable Object stub, making [calls to a KV store](https://developers.cloudflare.com/kv/api/), and [calling to other Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) will not work.
 
-* [  JavaScript ](#tab-panel-12281)
-* [  Python ](#tab-panel-12282)
+* [  JavaScript ](#tab-panel-12806)
+* [  Python ](#tab-panel-12807)
 
 **JavaScript**
 
@@ -286,8 +286,8 @@ class Default(WorkerEntrypoint):
 
 Additionally, importing `env` from `cloudflare:workers` lets you avoid passing `env`as an argument through many function calls if you need to access a binding from a deeply-nested function. This can be helpful in a complex codebase.
 
-* [  JavaScript ](#tab-panel-12283)
-* [  Python ](#tab-panel-12284)
+* [  JavaScript ](#tab-panel-12808)
+* [  Python ](#tab-panel-12809)
 
 **JavaScript**
 
@@ -347,8 +347,8 @@ The `withEnv` function provides a mechanism for overriding values of `env`.
 
 Imagine a user has defined the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/)"NAME" to be "Alice" in their Wrangler configuration file and deployed a Worker. By default, logging `env.NAME` would print "Alice". Using the `withEnv` function, you can override the value of "NAME".
 
-* [  JavaScript ](#tab-panel-12285)
-* [  Python ](#tab-panel-12286)
+* [  JavaScript ](#tab-panel-12810)
+* [  Python ](#tab-panel-12811)
 
 **JavaScript**
 
@@ -405,6 +405,6 @@ class Default(WorkerEntrypoint):
 This can be useful when testing code that relies on an imported `env` object.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}}]}
 ```

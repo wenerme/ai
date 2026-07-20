@@ -1,7 +1,7 @@
 ---
 title: Parse Cloudflare Logs JSON data
 description: Parse and analyze downloaded Cloudflare Logs data.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -129,6 +129,6 @@ jq -r '.ClientSSLProtocol' logs.json | sort -n | uniq -c | sort -n
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/parsing-json-log-data/#page","headline":"Parse Cloudflare Logs JSON data · Cloudflare Logs docs","description":"Parse and analyze downloaded Cloudflare Logs data.","url":"https://developers.cloudflare.com/logs/logpush/parsing-json-log-data/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/parsing-json-log-data/#page","headline":"Parse Cloudflare Logs JSON data · Cloudflare Logs docs","description":"Parse and analyze downloaded Cloudflare Logs data.","url":"https://developers.cloudflare.com/logs/logpush/parsing-json-log-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/parsing-json-log-data/","name":"Parse Cloudflare Logs JSON data"}}]}
 ```

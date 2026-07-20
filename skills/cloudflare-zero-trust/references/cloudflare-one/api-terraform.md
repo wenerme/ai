@@ -1,7 +1,7 @@
 ---
 title: API and Terraform
 description: How API and Terraform works in Cloudflare One.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ The administrators managing policies and groups in Cloudflare Zero Trust might b
 You can create a scoped API token [via the dashboard](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) or [via the API](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/). For a list of available token permissions, refer to [API token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/api-terraform/#page","headline":"API and Terraform · Cloudflare One docs","description":"How API and Terraform works in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/api-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/api-terraform/#page","headline":"API and Terraform · Cloudflare One docs","description":"How API and Terraform works in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/api-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/api-terraform/","name":"API and Terraform"}}]}
 ```

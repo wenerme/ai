@@ -1,7 +1,7 @@
 ---
 title: Service tokens
 description: Service tokens in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,9 +18,9 @@ This section covers how to create, renew, and revoke a service token.
 
 ## Create a service token
 
-* [ Dashboard ](#tab-panel-7603)
-* [ API ](#tab-panel-7604)
-* [ Terraform (v5) ](#tab-panel-7605)
+* [ Dashboard ](#tab-panel-7831)
+* [ API ](#tab-panel-7832)
+* [ Terraform (v5) ](#tab-panel-7833)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
@@ -197,9 +197,9 @@ If your Access application only has Service Auth policies, you must send the ser
 
 Service tokens expire according to the token duration you selected when you created the token.
 
-* [ Dashboard ](#tab-panel-7600)
-* [ API ](#tab-panel-7601)
-* [ Terraform (v5) ](#tab-panel-7602)
+* [ Dashboard ](#tab-panel-7828)
+* [ API ](#tab-panel-7829)
+* [ Terraform (v5) ](#tab-panel-7830)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Locate the token you want to renew.
@@ -261,9 +261,9 @@ resource "cloudflare_zero_trust_access_service_token" "example_service_token" {
 
 If you need to revoke access before the token expires, delete the token. Services that rely on a deleted service token can no longer reach your application.
 
-* [ Dashboard ](#tab-panel-7597)
-* [ API ](#tab-panel-7598)
-* [ Terraform (v5) ](#tab-panel-7599)
+* [ Dashboard ](#tab-panel-7825)
+* [ API ](#tab-panel-7826)
+* [ Terraform (v5) ](#tab-panel-7827)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. **Delete** the token you need to revoke.
@@ -327,6 +327,6 @@ To configure a service token expiration alert:
 Your alert has been set and is now visible on the **Notifications** page.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens · Cloudflare One docs","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens · Cloudflare One docs","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/service-credentials/","name":"Service credentials"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/service-credentials/service-tokens/","name":"Service tokens"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: OpenAI Codex
 description: Route OpenAI Codex through AI Gateway using a custom model provider that points at the OpenAI endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,8 +48,8 @@ Codex does not expand environment variables inside `base_url`, so the account ID
 2. Set your Cloudflare API token as the `CLOUDFLARE_API_KEY` environment variable. The following commands set it for the current session. To persist it, add it to your shell profile (for example, `~/.zshrc` or `~/.bashrc`).
 Replace `<CLOUDFLARE_API_KEY>` with your value.
 
-  * [ macOS / Linux ](#tab-panel-6870)
-  * [ Windows (PowerShell) ](#tab-panel-6871)
+  * [ macOS / Linux ](#tab-panel-7144)
+  * [ Windows (PowerShell) ](#tab-panel-7145)
 ```bash
 # Run `wrangler auth token` to get an auth token.
 export CLOUDFLARE_API_KEY="<CLOUDFLARE_API_KEY>"
@@ -68,6 +68,6 @@ codex --profile cloudflare-aig
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/#page","headline":"OpenAI Codex · Cloudflare AI Gateway docs","description":"Route OpenAI Codex through AI Gateway using a custom model provider that points at the OpenAI endpoint.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/#page","headline":"OpenAI Codex · Cloudflare AI Gateway docs","description":"Route OpenAI Codex through AI Gateway using a custom model provider that points at the OpenAI endpoint.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/coding-agents/","name":"Coding agents"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/integrations/coding-agents/openai-codex/","name":"OpenAI Codex"}}]}
 ```

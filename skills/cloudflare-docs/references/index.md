@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Developer Docs
 description: Connect, protect, and build everywhere.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -127,5 +127,5 @@ Find community, read the blog, and explore open source projects.
 [ blog.cloudflare.com ](https://blog.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/#page","headline":"Cloudflare Developer Docs | Cloudflare Docs","description":"Connect, protect, and build everywhere.","url":"https://developers.cloudflare.com/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/#page","headline":"Cloudflare Developer Docs | Cloudflare Docs","description":"Connect, protect, and build everywhere.","url":"https://developers.cloudflare.com/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

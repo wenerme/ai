@@ -1,6 +1,6 @@
 ---
 title: RTKParticipants
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -22,7 +22,7 @@ This module represents all the participants in the meeting (except the local use
     * [new module.exports(context, self, roomSocketHandler)](#new%5Fmodule%5FRTKParticipants--module.exports%5Fnew)
     * [.waitlisted](#module%5FRTKParticipants--module.exports+waitlisted)
     * [.joined](#module%5FRTKParticipants--module.exports+joined)
-    * ~~[.active](#module%5FRTKParticipants--module.exports+active)~~
+    * [.active](#module%5FRTKParticipants--module.exports+active)
     * [.videoSubscribed](#module%5FRTKParticipants--module.exports+videoSubscribed)
     * [.audioSubscribed](#module%5FRTKParticipants--module.exports+audioSubscribed)
     * [.pinned](#module%5FRTKParticipants--module.exports+pinned)
@@ -34,9 +34,9 @@ This module represents all the participants in the meeting (except the local use
     * [.lastActiveSpeaker](#module%5FRTKParticipants--module.exports+lastActiveSpeaker)
     * [.selectedPeers](#module%5FRTKParticipants--module.exports+selectedPeers)
     * [.count](#module%5FRTKParticipants--module.exports+count)
-    * [.maxActiveRTKParticipantsCount](#module%5FRTKParticipants--module.exports+maxActiveRTKParticipantsCount)
+    * [.maxActiveParticipantsCount](#module%5FRTKParticipants--module.exports+maxActiveParticipantsCount)
     * [.pageCount](#module%5FRTKParticipants--module.exports+pageCount)
-    * [.setMaxActiveRTKParticipantsCount(limit)](#module%5FRTKParticipants--module.exports+setMaxActiveRTKParticipantsCount)
+    * [.setMaxActiveParticipantsCount(limit)](#module%5FRTKParticipants--module.exports+setMaxActiveParticipantsCount)
     * [.acceptWaitingRoomRequest(id)](#module%5FRTKParticipants--module.exports+acceptWaitingRoomRequest)
     * [.acceptAllWaitingRoomRequest(userIds)](#module%5FRTKParticipants--module.exports+acceptAllWaitingRoomRequest)
     * [.rejectWaitingRoomRequest(id)](#module%5FRTKParticipants--module.exports+rejectWaitingRoomRequest)
@@ -46,13 +46,10 @@ This module represents all the participants in the meeting (except the local use
     * [.setPage(page)](#module%5FRTKParticipants--module.exports+setPage)
     * [.disableAllAudio(allowUnmute)](#module%5FRTKParticipants--module.exports+disableAllAudio)
     * [.disableAllVideo()](#module%5FRTKParticipants--module.exports+disableAllVideo)
-    * ~~[.disableAudio(participantId)](#module%5FRTKParticipants--module.exports+disableAudio)~~
-    * ~~[.disableVideo(participantId)](#module%5FRTKParticipants--module.exports+disableVideo)~~
-    * ~~[.kick(participantId)](#module%5FRTKParticipants--module.exports+kick)~~
     * [.kickAll()](#module%5FRTKParticipants--module.exports+kickAll)
     * [.broadcastMessage(type, payload, target)](#module%5FRTKParticipants--module.exports+broadcastMessage)
     * [.getAllJoinedPeers(searchQuery, limit, offset)](#module%5FRTKParticipants--module.exports+getAllJoinedPeers)
-    * [.getRTKParticipantsInMeetingPreJoin()](#module%5FRTKParticipants--module.exports+getRTKParticipantsInMeetingPreJoin)
+    * [.getParticipantsInMeetingPreJoin()](#module%5FRTKParticipants--module.exports+getParticipantsInMeetingPreJoin)
 
 ### module.exports ⏏
 
@@ -80,9 +77,9 @@ Returns a list of all participants in the meeting.
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
 
-#### ~~module.exports.active~~
+#### module.exports.active
 
-_**Deprecated**_
+Returns a list of participants whose streams are currently consumed.
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
 
@@ -154,7 +151,7 @@ Returns the number of participants who are joined in the meeting.
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
 
-#### module.exports.maxActiveRTKParticipantsCount
+#### module.exports.maxActiveParticipantsCount
 
 Returns the maximum number of participants that can be present in the active map.
 
@@ -166,7 +163,7 @@ Returns the number of pages that are available in the meeting in PAGINATED mode.
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
 
-#### module.exports.setMaxActiveRTKParticipantsCount(limit)
+#### module.exports.setMaxActiveParticipantsCount(limit)
 
 Updates the maximum number of participants that are populated in the active map.
 
@@ -260,36 +257,6 @@ Disables video for all participants in the meeting.
 
 **Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
 
-#### ~~module.exports.disableAudio(participantId)~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
-
-| Param         | Type   | Description                    |
-| ------------- | ------ | ------------------------------ |
-| participantId | string | ID of participant to be muted. |
-
-#### ~~module.exports.disableVideo(participantId)~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
-
-| Param         | Type   | Description                    |
-| ------------- | ------ | ------------------------------ |
-| participantId | string | ID of participant to be muted. |
-
-#### ~~module.exports.kick(participantId)~~
-
-_**Deprecated**_
-
-**Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
-
-| Param         | Type   | Description                     |
-| ------------- | ------ | ------------------------------- |
-| participantId | string | ID of participant to be kicked. |
-
 #### module.exports.kickAll()
 
 Kicks all participants from the meeting.
@@ -322,13 +289,13 @@ Returns all peers currently present in the room If you are in a group call, use 
 | limit       | number |
 | offset      | number |
 
-#### module.exports.getRTKParticipantsInMeetingPreJoin()
+#### module.exports.getParticipantsInMeetingPreJoin()
 
 Returns all peers currently in the room, is a non paginated call and should only be used if you are in a non room joined state, if in a joined group call, use `meeting.participants.joined`
 
 **Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKParticipants--module.exports)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipants/#page","headline":"RTKParticipants · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipants/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-02-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipants/#page","headline":"RTKParticipants · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipants/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/core/api-reference/rtkparticipants/","name":"RTKParticipants"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: CLI
 description: Use R2 from the command line with Wrangler, rclone, or AWS CLI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,8 +24,8 @@ Manage R2 buckets and objects directly from your terminal. Use CLI tools to auto
 
 A bucket stores your objects in R2\. To create a new R2 bucket:
 
-* [ Wrangler CLI ](#tab-panel-10190)
-* [ Dashboard ](#tab-panel-10191)
+* [ Wrangler CLI ](#tab-panel-10635)
+* [ Dashboard ](#tab-panel-10636)
 
 1. Log in to your Cloudflare account:
 ```sh
@@ -61,9 +61,9 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 
 ## 3\. Set up a CLI tool
 
-* [ Wrangler ](#tab-panel-10187)
-* [ rclone ](#tab-panel-10188)
-* [ AWS CLI ](#tab-panel-10189)
+* [ Wrangler ](#tab-panel-10632)
+* [ rclone ](#tab-panel-10633)
+* [ AWS CLI ](#tab-panel-10634)
 
 [Wrangler](https://developers.cloudflare.com/r2/reference/wrangler-commands/) is the Cloudflare Workers CLI. It authenticates with your Cloudflare account directly, so no API credentials needed.
 
@@ -124,9 +124,9 @@ aws configure
 echo 'Hello, R2!' > myfile.txt
 ```
 
-* [ Wrangler ](#tab-panel-10184)
-* [ rclone ](#tab-panel-10185)
-* [ AWS CLI ](#tab-panel-10186)
+* [ Wrangler ](#tab-panel-10629)
+* [ rclone ](#tab-panel-10630)
+* [ AWS CLI ](#tab-panel-10631)
 
 ```sh
 # Upload myfile.txt to my-bucket
@@ -176,6 +176,6 @@ Refer to the [AWS CLI documentation](https://developers.cloudflare.com/r2/exampl
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Set up lifecycle rules to automatically delete old objects.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/cli/#page","headline":"CLI · Cloudflare R2 docs","description":"Use R2 from the command line with Wrangler, rclone, or AWS CLI.","url":"https://developers.cloudflare.com/r2/get-started/cli/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/cli/#page","headline":"CLI · Cloudflare R2 docs","description":"Use R2 from the command line with Wrangler, rclone, or AWS CLI.","url":"https://developers.cloudflare.com/r2/get-started/cli/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/get-started/cli/","name":"CLI"}}]}
 ```

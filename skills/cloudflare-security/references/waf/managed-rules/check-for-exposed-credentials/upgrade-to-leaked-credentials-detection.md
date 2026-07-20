@@ -1,7 +1,7 @@
 ---
 title: Upgrade to leaked credentials detection
 description: Upgrade from exposed credentials checks to leaked credentials detection.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ This upgrade guide applies to customers changing from Exposed Credentials Check 
 
 If you had deployed the Cloudflare Exposed Credentials Check managed ruleset:
 
-* [  New dashboard ](#tab-panel-11568)
-* [ Old dashboard ](#tab-panel-11569)
+* [  New dashboard ](#tab-panel-12007)
+* [ Old dashboard ](#tab-panel-12008)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -48,10 +48,10 @@ While Exposed Credentials Check and leaked credentials detection can work side b
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-11570)
-* [ Old dashboard ](#tab-panel-11571)
-* [ API ](#tab-panel-11572)
-* [ Terraform ](#tab-panel-11573)
+* [  New dashboard ](#tab-panel-12009)
+* [ Old dashboard ](#tab-panel-12010)
+* [ API ](#tab-panel-12011)
+* [ Terraform ](#tab-panel-12012)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -105,6 +105,6 @@ Based on your previous configuration, do one of the following:
 * Refer to [Example mitigation rules](https://developers.cloudflare.com/waf/detections/leaked-credentials/examples/) for example mitigation strategies you can use when detecting leaked credentials.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/upgrade-to-leaked-credentials-detection/#page","headline":"Upgrade to leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade from exposed credentials checks to leaked credentials detection.","url":"https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/upgrade-to-leaked-credentials-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/upgrade-to-leaked-credentials-detection/#page","headline":"Upgrade to leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade from exposed credentials checks to leaked credentials detection.","url":"https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/upgrade-to-leaked-credentials-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/check-for-exposed-credentials/","name":"Check for exposed credentials"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/check-for-exposed-credentials/upgrade-to-leaked-credentials-detection/","name":"Upgrade to leaked credentials detection"}}]}
 ```

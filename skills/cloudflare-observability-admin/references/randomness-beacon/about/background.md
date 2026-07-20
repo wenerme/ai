@@ -1,7 +1,7 @@
 ---
 title: Background
 description: History and development of the drand project.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ As drand gained maturity, an increasing number of organizations (including NIST,
 In spring 2020, a team at Protocol Labs led efforts to take drand from an experimental to production-ready network. These efforts included significant protocol upgrades, establishment of a governance model for the distributed network, and increased operational security of node operators. Check out the [drand blog ↗](https://drand.love/blog/2020/08/10/drand-launches-v1-0/) for more details.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/background/#page","headline":"Background · Cloudflare Randomness Beacon docs","description":"History and development of the drand project.","url":"https://developers.cloudflare.com/randomness-beacon/about/background/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/background/#page","headline":"Background · Cloudflare Randomness Beacon docs","description":"History and development of the drand project.","url":"https://developers.cloudflare.com/randomness-beacon/about/background/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/randomness-beacon/","name":"Randomness Beacon"}},{"@type":"ListItem","position":3,"item":{"@id":"/randomness-beacon/about/","name":"About drand"}},{"@type":"ListItem","position":4,"item":{"@id":"/randomness-beacon/about/background/","name":"Background"}}]}
 ```

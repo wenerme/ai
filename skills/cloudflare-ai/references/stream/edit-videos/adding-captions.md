@@ -1,7 +1,7 @@
 ---
 title: Add captions
 description: Add captions and subtitles to Cloudflare Stream videos using AI generation or file upload.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -64,11 +64,11 @@ Videos may include captions for several languages, but each language must be uni
 
 The `<LANGUAGE_TAG>` must adhere to the BCP 47 format. The tag for English is `en`. You may specify a region in the tag, such as `en-GB`, which will render a label that shows `British English` for the caption.
 
-* [ REST API ](#tab-panel-11109)
-* [ Workers Binding API ](#tab-panel-11110)
+* [ REST API ](#tab-panel-11554)
+* [ Workers Binding API ](#tab-panel-11555)
 
-* [ cURL ](#tab-panel-11093)
-* [ TypeScript ](#tab-panel-11094)
+* [ cURL ](#tab-panel-11538)
+* [ TypeScript ](#tab-panel-11539)
 
 ```bash
 curl -X POST \
@@ -92,8 +92,8 @@ const caption = await client.stream.captions.language.create("<VIDEO_UID>", "en"
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11095)
-* [ wrangler.jsonc ](#tab-panel-11096)
+* [ index.ts ](#tab-panel-11540)
+* [ wrangler.jsonc ](#tab-panel-11541)
 
 **TypeScript**
 
@@ -153,11 +153,11 @@ Note two changes if you edit a generated caption: the generated field will chang
 
 To create or replace a caption file:
 
-* [ REST API ](#tab-panel-11111)
-* [ Workers Binding API ](#tab-panel-11112)
+* [ REST API ](#tab-panel-11556)
+* [ Workers Binding API ](#tab-panel-11557)
 
-* [ cURL ](#tab-panel-11097)
-* [ TypeScript ](#tab-panel-11098)
+* [ cURL ](#tab-panel-11542)
+* [ TypeScript ](#tab-panel-11543)
 
 ```bash
 curl -X PUT \
@@ -183,8 +183,8 @@ const caption = await client.stream.captions.language.update("<VIDEO_UID>", "en"
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11099)
-* [ wrangler.jsonc ](#tab-panel-11100)
+* [ index.ts ](#tab-panel-11544)
+* [ wrangler.jsonc ](#tab-panel-11545)
 
 **TypeScript**
 
@@ -238,11 +238,11 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 To view captions associated with a video. Note this results list will also include generated captions that are `inprogress`and `error` status:
 
-* [ REST API ](#tab-panel-11113)
-* [ Workers Binding API ](#tab-panel-11114)
+* [ REST API ](#tab-panel-11558)
+* [ Workers Binding API ](#tab-panel-11559)
 
-* [ cURL ](#tab-panel-11101)
-* [ TypeScript ](#tab-panel-11102)
+* [ cURL ](#tab-panel-11546)
+* [ TypeScript ](#tab-panel-11547)
 
 ```bash
 curl -H 'Authorization: Bearer <API_TOKEN>' \
@@ -265,8 +265,8 @@ const captions = await client.stream.captions.get("<VIDEO_UID>", {
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11103)
-* [ wrangler.jsonc ](#tab-panel-11104)
+* [ index.ts ](#tab-panel-11548)
+* [ wrangler.jsonc ](#tab-panel-11549)
 
 **TypeScript**
 
@@ -351,11 +351,11 @@ a WebVTT caption response.
 
 To remove a caption associated with your video:
 
-* [ REST API ](#tab-panel-11115)
-* [ Workers Binding API ](#tab-panel-11116)
+* [ REST API ](#tab-panel-11560)
+* [ Workers Binding API ](#tab-panel-11561)
 
-* [ cURL ](#tab-panel-11105)
-* [ TypeScript ](#tab-panel-11106)
+* [ cURL ](#tab-panel-11550)
+* [ TypeScript ](#tab-panel-11551)
 
 ```bash
 curl -X DELETE \
@@ -379,8 +379,8 @@ await client.stream.captions.language.delete("<VIDEO_UID>", "en", {
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11107)
-* [ wrangler.jsonc ](#tab-panel-11108)
+* [ index.ts ](#tab-panel-11552)
+* [ wrangler.jsonc ](#tab-panel-11553)
 
 **TypeScript**
 
@@ -460,6 +460,6 @@ If there is an entry in `errors` response field, the caption has not been delete
 | th            | Thai             |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/adding-captions/#page","headline":"Add captions · Cloudflare Stream docs","description":"Add captions and subtitles to Cloudflare Stream videos using AI generation or file upload.","url":"https://developers.cloudflare.com/stream/edit-videos/adding-captions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/adding-captions/#page","headline":"Add captions · Cloudflare Stream docs","description":"Add captions and subtitles to Cloudflare Stream videos using AI generation or file upload.","url":"https://developers.cloudflare.com/stream/edit-videos/adding-captions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/edit-videos/","name":"Edit videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/edit-videos/adding-captions/","name":"Add captions"}}]}
 ```

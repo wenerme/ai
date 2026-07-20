@@ -1,7 +1,7 @@
 ---
 title: Configure MTA-STS
 description: Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -66,6 +66,6 @@ Email Service also supports MTA-STS upstream, which greatly improves security wh
 * [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — review your domain's DNS records.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/mta-sts/#page","headline":"Configure MTA-STS · Cloudflare Email Service docs","description":"Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.","url":"https://developers.cloudflare.com/email-service/configuration/mta-sts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/mta-sts/#page","headline":"Configure MTA-STS · Cloudflare Email Service docs","description":"Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.","url":"https://developers.cloudflare.com/email-service/configuration/mta-sts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/configuration/mta-sts/","name":"Configure MTA-STS"}}]}
 ```

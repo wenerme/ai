@@ -1,7 +1,7 @@
 ---
 title: Turnstile widgets
 description: Turnstile widget modes, sizes, and rendering behavior.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -96,6 +96,6 @@ accDescr: This diagram details a Turnstile widget's normal operation states.
 | Outdated or unsupported browser | Visitors with outdated browsers or unsupported browsers will encounter this widget state. Refer to [Supported browsers](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/) for more information regarding supported browsers.                                                                                     |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/concepts/widget/#page","headline":"Turnstile widgets · Cloudflare Turnstile docs","description":"Turnstile widget modes, sizes, and rendering behavior.","url":"https://developers.cloudflare.com/turnstile/concepts/widget/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/concepts/widget/#page","headline":"Turnstile widgets · Cloudflare Turnstile docs","description":"Turnstile widget modes, sizes, and rendering behavior.","url":"https://developers.cloudflare.com/turnstile/concepts/widget/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/concepts/widget/","name":"Turnstile widgets"}}]}
 ```

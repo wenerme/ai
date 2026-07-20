@@ -1,7 +1,7 @@
 ---
 title: Configure Cloudflare Notifications
 description: Set up notifications via email, webhooks, or PagerDuty.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -99,6 +99,6 @@ To verify that notifications will be sent to the correct location or to view whi
 This action sends a notification with fake data.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/get-started/#page","headline":"Configure Cloudflare Notifications · Cloudflare Notifications docs","description":"Set up notifications via email, webhooks, or PagerDuty.","url":"https://developers.cloudflare.com/notifications/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/get-started/#page","headline":"Configure Cloudflare Notifications · Cloudflare Notifications docs","description":"Set up notifications via email, webhooks, or PagerDuty.","url":"https://developers.cloudflare.com/notifications/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/notifications/","name":"Notifications"}},{"@type":"ListItem","position":3,"item":{"@id":"/notifications/get-started/","name":"Configure Cloudflare Notifications"}}]}
 ```

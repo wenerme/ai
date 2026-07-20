@@ -1,7 +1,7 @@
 ---
 title: RunwayML Gen-4.5
 description: RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,8 +28,8 @@ RunwayML's video generation model supporting both text-to-video and image-to-vid
 
 ## Usage
 
-* [ TypeScript ](#tab-panel-1892)
-* [ cURL ](#tab-panel-1893)
+* [ TypeScript ](#tab-panel-2038)
+* [ cURL ](#tab-panel-2039)
 
 **TypeScript**
 
@@ -59,8 +59,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1890)
-* [ Raw response ](#tab-panel-1891)
+* [ Output ](#tab-panel-2036)
+* [ Raw response ](#tab-panel-2037)
 
 ```json
 {
@@ -78,8 +78,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Portrait Video**  — Vertical video for social media
 
-* [ TypeScript ](#tab-panel-1896)
-* [ cURL ](#tab-panel-1897)
+* [ TypeScript ](#tab-panel-2042)
+* [ cURL ](#tab-panel-2043)
 
 **TypeScript**
 
@@ -110,8 +110,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1894)
-* [ Raw response ](#tab-panel-1895)
+* [ Output ](#tab-panel-2040)
+* [ Raw response ](#tab-panel-2041)
 
 ```json
 {
@@ -127,8 +127,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Nature Close-up**  — Close-up wildlife shot in 16:9
 
-* [ TypeScript ](#tab-panel-1900)
-* [ cURL ](#tab-panel-1901)
+* [ TypeScript ](#tab-panel-2046)
+* [ cURL ](#tab-panel-2047)
 
 **TypeScript**
 
@@ -159,8 +159,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1898)
-* [ Raw response ](#tab-panel-1899)
+* [ Output ](#tab-panel-2044)
+* [ Raw response ](#tab-panel-2045)
 
 ```json
 {
@@ -176,8 +176,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Cinematic Scene**  — Longer duration cinematic video
 
-* [ TypeScript ](#tab-panel-1904)
-* [ cURL ](#tab-panel-1905)
+* [ TypeScript ](#tab-panel-2050)
+* [ cURL ](#tab-panel-2051)
 
 **TypeScript**
 
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1902)
-* [ Raw response ](#tab-panel-1903)
+* [ Output ](#tab-panel-2048)
+* [ Raw response ](#tab-panel-2049)
 
 ```json
 {
@@ -225,8 +225,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Image-to-Video**  — Animate an existing image
 
-* [ TypeScript ](#tab-panel-1910)
-* [ cURL ](#tab-panel-1911)
+* [ TypeScript ](#tab-panel-2056)
+* [ cURL ](#tab-panel-2057)
 
 **TypeScript**
 
@@ -259,8 +259,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1906)
-* [ Raw response ](#tab-panel-1907)
+* [ Output ](#tab-panel-2052)
+* [ Raw response ](#tab-panel-2053)
 
 ```json
 {
@@ -276,8 +276,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **Reproducible Generation**  — Use seed for consistent results
 
-* [ TypeScript ](#tab-panel-1914)
-* [ cURL ](#tab-panel-1915)
+* [ TypeScript ](#tab-panel-2060)
+* [ cURL ](#tab-panel-2061)
 
 **TypeScript**
 
@@ -309,8 +309,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1908)
-* [ Raw response ](#tab-panel-1909)
+* [ Output ](#tab-panel-2054)
+* [ Raw response ](#tab-panel-2055)
 
 ```json
 {
@@ -326,8 +326,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 **With Content Moderation**  — Adjust content moderation settings
 
-* [ TypeScript ](#tab-panel-1916)
-* [ cURL ](#tab-panel-1917)
+* [ TypeScript ](#tab-panel-2062)
+* [ cURL ](#tab-panel-2063)
 
 **TypeScript**
 
@@ -361,8 +361,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1912)
-* [ Raw response ](#tab-panel-1913)
+* [ Output ](#tab-panel-2058)
+* [ Raw response ](#tab-panel-2059)
 
 ```json
 {
@@ -378,8 +378,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-1918)
-* [ Output ](#tab-panel-1919)
+* [ Input ](#tab-panel-2064)
+* [ Output ](#tab-panel-2065)
 
 prompt
 
@@ -416,6 +416,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-in
 Output [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/#page","headline":"RunwayML Gen-4.5 (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls.","url":"https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/#page","headline":"RunwayML Gen-4.5 (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls.","url":"https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: How Workers works
 description: The difference between the Workers runtime versus traditional browsers and Node.js.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -52,8 +52,8 @@ If you are interested in how Cloudflare handles security with the Workers runtim
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-12265)
-* [  TypeScript ](#tab-panel-12266)
+* [  JavaScript ](#tab-panel-12790)
+* [  TypeScript ](#tab-panel-12791)
 
 **JavaScript**
 
@@ -90,6 +90,6 @@ Like all other JavaScript platforms, a single Workers instance may handle multip
 * [Workers limits](https://developers.cloudflare.com/workers/platform/limits/) \- Learn about Workers limits including Worker size, startup time, and more.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/how-workers-works/#page","headline":"How Workers works · Cloudflare Workers docs","description":"The difference between the Workers runtime versus traditional browsers and Node.js.","url":"https://developers.cloudflare.com/workers/reference/how-workers-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/how-workers-works/#page","headline":"How Workers works · Cloudflare Workers docs","description":"The difference between the Workers runtime versus traditional browsers and Node.js.","url":"https://developers.cloudflare.com/workers/reference/how-workers-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/reference/how-workers-works/","name":"How Workers works"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Implement Turnstile with Google Firebase
 description: Integrate Turnstile with Google Firebase for server-side validation.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -131,6 +131,6 @@ expressApp.get("/yourApiEndpoint", [appCheckVerification], (req, res) => {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/#page","headline":"Implement Turnstile with Google Firebase · Cloudflare Turnstile docs","description":"Integrate Turnstile with Google Firebase for server-side validation.","url":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google","Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/#page","headline":"Implement Turnstile with Google Firebase · Cloudflare Turnstile docs","description":"Integrate Turnstile with Google Firebase for server-side validation.","url":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google","Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/extensions/","name":"Extensions"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/extensions/google-firebase/","name":"Implement Turnstile with Google Firebase"}}]}
 ```

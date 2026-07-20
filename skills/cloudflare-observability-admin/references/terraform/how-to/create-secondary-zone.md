@@ -1,7 +1,7 @@
 ---
 title: Create a subdomain zone using Terraform
 description: Automate the setup of a Cloudflare subdomain zone for Enterprise accounts using Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ Refer to the [cloudflare\_zone docs ↗](https://registry.terraform.io/providers
 * [cloudflare\_dns\_record resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns%5Frecord)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/how-to/create-secondary-zone/#page","headline":"Create a subdomain zone using Terraform · Cloudflare Terraform docs","description":"Automate the setup of a Cloudflare subdomain zone for Enterprise accounts using Terraform.","url":"https://developers.cloudflare.com/terraform/how-to/create-secondary-zone/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/how-to/create-secondary-zone/#page","headline":"Create a subdomain zone using Terraform · Cloudflare Terraform docs","description":"Automate the setup of a Cloudflare subdomain zone for Enterprise accounts using Terraform.","url":"https://developers.cloudflare.com/terraform/how-to/create-secondary-zone/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/how-to/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/how-to/create-secondary-zone/","name":"Create a subdomain zone using Terraform"}}]}
 ```

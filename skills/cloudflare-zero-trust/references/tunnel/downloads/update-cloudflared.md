@@ -1,7 +1,7 @@
 ---
 title: Update cloudflared
 description: Update cloudflared to the latest version.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -18,12 +18,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/advanced/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-11470)
-* [ macOS ](#tab-panel-11471)
-* [ Debian ](#tab-panel-11472)
-* [ Red Hat ](#tab-panel-11473)
-* [ Docker ](#tab-panel-11474)
-* [ Other ](#tab-panel-11475)
+* [ Windows ](#tab-panel-11797)
+* [ macOS ](#tab-panel-11798)
+* [ Debian ](#tab-panel-11799)
+* [ Red Hat ](#tab-panel-11800)
+* [ Docker ](#tab-panel-11801)
+* [ Other ](#tab-panel-11802)
 
 Run the following command:
 
@@ -184,6 +184,6 @@ sc.exe start <unique-name>
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/#page","headline":"Update cloudflared · Cloudflare Docs","description":"Update cloudflared to the latest version.","url":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Docker"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/#page","headline":"Update cloudflared · Cloudflare Docs","description":"Update cloudflared to the latest version.","url":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Docker"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/downloads/","name":"Downloads"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/downloads/update-cloudflared/","name":"Update cloudflared"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Preview URLs
 description: Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -346,6 +346,6 @@ This is **only required for local development**. In production, all container po
 * [Security Model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Security best practices
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/#page","headline":"Preview URLs · Cloudflare Sandbox SDK docs","description":"Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.","url":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/#page","headline":"Preview URLs · Cloudflare Sandbox SDK docs","description":"Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.","url":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/concepts/preview-urls/","name":"Preview URLs"}}]}
 ```

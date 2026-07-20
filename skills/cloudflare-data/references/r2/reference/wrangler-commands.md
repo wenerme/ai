@@ -1,7 +1,7 @@
 ---
 title: Wrangler commands
 description: Wrangler CLI commands for managing R2 buckets and objects.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -24,9 +24,9 @@ The `r2 bucket` commands allow you to manage application data in the Cloudflare 
 
 Create a new R2 bucket
 
-* [  npm ](#tab-panel-10267)
-* [  pnpm ](#tab-panel-10268)
-* [  yarn ](#tab-panel-10269)
+* [  npm ](#tab-panel-10673)
+* [  pnpm ](#tab-panel-10674)
+* [  yarn ](#tab-panel-10675)
 
 ```sh
 npx wrangler r2 bucket create [NAME]
@@ -80,9 +80,9 @@ Use a specific auth profile
 
 Get information about an R2 bucket
 
-* [  npm ](#tab-panel-10270)
-* [  pnpm ](#tab-panel-10271)
-* [  yarn ](#tab-panel-10272)
+* [  npm ](#tab-panel-10676)
+* [  pnpm ](#tab-panel-10677)
+* [  yarn ](#tab-panel-10678)
 
 ```sh
 npx wrangler r2 bucket info [BUCKET]
@@ -128,9 +128,9 @@ Use a specific auth profile
 
 Delete an R2 bucket
 
-* [  npm ](#tab-panel-10273)
-* [  pnpm ](#tab-panel-10274)
-* [  yarn ](#tab-panel-10275)
+* [  npm ](#tab-panel-10679)
+* [  pnpm ](#tab-panel-10680)
+* [  yarn ](#tab-panel-10681)
 
 ```sh
 npx wrangler r2 bucket delete [BUCKET]
@@ -174,9 +174,9 @@ Use a specific auth profile
 
 List R2 buckets
 
-* [  npm ](#tab-panel-10276)
-* [  pnpm ](#tab-panel-10277)
-* [  yarn ](#tab-panel-10278)
+* [  npm ](#tab-panel-10682)
+* [  pnpm ](#tab-panel-10683)
+* [  yarn ](#tab-panel-10684)
 
 ```sh
 npx wrangler r2 bucket list
@@ -218,9 +218,9 @@ Use a specific auth profile
 
 Enable the data catalog on an R2 bucket
 
-* [  npm ](#tab-panel-10279)
-* [  pnpm ](#tab-panel-10280)
-* [  yarn ](#tab-panel-10281)
+* [  npm ](#tab-panel-10685)
+* [  pnpm ](#tab-panel-10686)
+* [  yarn ](#tab-panel-10687)
 
 ```sh
 npx wrangler r2 bucket catalog enable [BUCKET]
@@ -262,9 +262,9 @@ Use a specific auth profile
 
 Disable the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-10282)
-* [  pnpm ](#tab-panel-10283)
-* [  yarn ](#tab-panel-10284)
+* [  npm ](#tab-panel-10688)
+* [  pnpm ](#tab-panel-10689)
+* [  yarn ](#tab-panel-10690)
 
 ```sh
 npx wrangler r2 bucket catalog disable [BUCKET]
@@ -306,9 +306,9 @@ Use a specific auth profile
 
 Get the status of the data catalog for an R2 bucket
 
-* [  npm ](#tab-panel-10285)
-* [  pnpm ](#tab-panel-10286)
-* [  yarn ](#tab-panel-10287)
+* [  npm ](#tab-panel-10691)
+* [  pnpm ](#tab-panel-10692)
+* [  yarn ](#tab-panel-10693)
 
 ```sh
 npx wrangler r2 bucket catalog get [BUCKET]
@@ -350,9 +350,9 @@ Use a specific auth profile
 
 Enable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-10288)
-* [  pnpm ](#tab-panel-10289)
-* [  yarn ](#tab-panel-10290)
+* [  npm ](#tab-panel-10694)
+* [  pnpm ](#tab-panel-10695)
+* [  yarn ](#tab-panel-10696)
 
 ```sh
 npx wrangler r2 bucket catalog compaction enable [BUCKET] [NAMESPACE] [TABLE]
@@ -413,9 +413,9 @@ npx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table
 
 Disable automatic file compaction for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-10291)
-* [  pnpm ](#tab-panel-10292)
-* [  yarn ](#tab-panel-10293)
+* [  npm ](#tab-panel-10697)
+* [  pnpm ](#tab-panel-10698)
+* [  yarn ](#tab-panel-10699)
 
 ```sh
 npx wrangler r2 bucket catalog compaction disable [BUCKET] [NAMESPACE] [TABLE]
@@ -472,9 +472,9 @@ npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-tabl
 
 Enable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-10294)
-* [  pnpm ](#tab-panel-10295)
-* [  yarn ](#tab-panel-10296)
+* [  npm ](#tab-panel-10700)
+* [  pnpm ](#tab-panel-10701)
+* [  yarn ](#tab-panel-10702)
 
 ```sh
 npx wrangler r2 bucket catalog snapshot-expiration enable [BUCKET] [NAMESPACE] [TABLE]
@@ -526,9 +526,9 @@ Use a specific auth profile
 
 Disable automatic snapshot expiration for your R2 data catalog or a specific table
 
-* [  npm ](#tab-panel-10297)
-* [  pnpm ](#tab-panel-10298)
-* [  yarn ](#tab-panel-10299)
+* [  npm ](#tab-panel-10703)
+* [  pnpm ](#tab-panel-10704)
+* [  yarn ](#tab-panel-10705)
 
 ```sh
 npx wrangler r2 bucket catalog snapshot-expiration disable [BUCKET] [NAMESPACE] [TABLE]
@@ -576,9 +576,9 @@ Use a specific auth profile
 
 Set the CORS configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-10300)
-* [  pnpm ](#tab-panel-10301)
-* [  yarn ](#tab-panel-10302)
+* [  npm ](#tab-panel-10706)
+* [  pnpm ](#tab-panel-10707)
+* [  yarn ](#tab-panel-10708)
 
 ```sh
 npx wrangler r2 bucket cors set [BUCKET]
@@ -626,9 +626,9 @@ Use a specific auth profile
 
 Clear the CORS configuration for an R2 bucket
 
-* [  npm ](#tab-panel-10303)
-* [  pnpm ](#tab-panel-10304)
-* [  yarn ](#tab-panel-10305)
+* [  npm ](#tab-panel-10709)
+* [  pnpm ](#tab-panel-10710)
+* [  yarn ](#tab-panel-10711)
 
 ```sh
 npx wrangler r2 bucket cors delete [BUCKET]
@@ -674,9 +674,9 @@ Use a specific auth profile
 
 List the CORS rules for an R2 bucket
 
-* [  npm ](#tab-panel-10306)
-* [  pnpm ](#tab-panel-10307)
-* [  yarn ](#tab-panel-10308)
+* [  npm ](#tab-panel-10712)
+* [  pnpm ](#tab-panel-10713)
+* [  yarn ](#tab-panel-10714)
 
 ```sh
 npx wrangler r2 bucket cors list [BUCKET]
@@ -720,9 +720,9 @@ Use a specific auth profile
 
 Enable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-10309)
-* [  pnpm ](#tab-panel-10310)
-* [  yarn ](#tab-panel-10311)
+* [  npm ](#tab-panel-10715)
+* [  pnpm ](#tab-panel-10716)
+* [  yarn ](#tab-panel-10717)
 
 ```sh
 npx wrangler r2 bucket dev-url enable [BUCKET]
@@ -768,9 +768,9 @@ Use a specific auth profile
 
 Disable public access via the r2.dev URL for an R2 bucket
 
-* [  npm ](#tab-panel-10312)
-* [  pnpm ](#tab-panel-10313)
-* [  yarn ](#tab-panel-10314)
+* [  npm ](#tab-panel-10718)
+* [  pnpm ](#tab-panel-10719)
+* [  yarn ](#tab-panel-10720)
 
 ```sh
 npx wrangler r2 bucket dev-url disable [BUCKET]
@@ -816,9 +816,9 @@ Use a specific auth profile
 
 Get the r2.dev URL and status for an R2 bucket
 
-* [  npm ](#tab-panel-10315)
-* [  pnpm ](#tab-panel-10316)
-* [  yarn ](#tab-panel-10317)
+* [  npm ](#tab-panel-10721)
+* [  pnpm ](#tab-panel-10722)
+* [  yarn ](#tab-panel-10723)
 
 ```sh
 npx wrangler r2 bucket dev-url get [BUCKET]
@@ -862,9 +862,9 @@ Use a specific auth profile
 
 Connect a custom domain to an R2 bucket
 
-* [  npm ](#tab-panel-10318)
-* [  pnpm ](#tab-panel-10319)
-* [  yarn ](#tab-panel-10320)
+* [  npm ](#tab-panel-10724)
+* [  pnpm ](#tab-panel-10725)
+* [  yarn ](#tab-panel-10726)
 
 ```sh
 npx wrangler r2 bucket domain add [BUCKET]
@@ -916,9 +916,9 @@ Use a specific auth profile
 
 Remove a custom domain from an R2 bucket
 
-* [  npm ](#tab-panel-10321)
-* [  pnpm ](#tab-panel-10322)
-* [  yarn ](#tab-panel-10323)
+* [  npm ](#tab-panel-10727)
+* [  pnpm ](#tab-panel-10728)
+* [  yarn ](#tab-panel-10729)
 
 ```sh
 npx wrangler r2 bucket domain remove [BUCKET]
@@ -966,9 +966,9 @@ Use a specific auth profile
 
 Update settings for a custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-10324)
-* [  pnpm ](#tab-panel-10325)
-* [  yarn ](#tab-panel-10326)
+* [  npm ](#tab-panel-10730)
+* [  pnpm ](#tab-panel-10731)
+* [  yarn ](#tab-panel-10732)
 
 ```sh
 npx wrangler r2 bucket domain update [BUCKET]
@@ -1016,9 +1016,9 @@ Use a specific auth profile
 
 Get custom domain connected to an R2 bucket
 
-* [  npm ](#tab-panel-10327)
-* [  pnpm ](#tab-panel-10328)
-* [  yarn ](#tab-panel-10329)
+* [  npm ](#tab-panel-10733)
+* [  pnpm ](#tab-panel-10734)
+* [  yarn ](#tab-panel-10735)
 
 ```sh
 npx wrangler r2 bucket domain get [BUCKET]
@@ -1064,9 +1064,9 @@ Use a specific auth profile
 
 List custom domains for an R2 bucket
 
-* [  npm ](#tab-panel-10330)
-* [  pnpm ](#tab-panel-10331)
-* [  yarn ](#tab-panel-10332)
+* [  npm ](#tab-panel-10736)
+* [  pnpm ](#tab-panel-10737)
+* [  yarn ](#tab-panel-10738)
 
 ```sh
 npx wrangler r2 bucket domain list [BUCKET]
@@ -1110,9 +1110,9 @@ Use a specific auth profile
 
 Add a lifecycle rule to an R2 bucket
 
-* [  npm ](#tab-panel-10333)
-* [  pnpm ](#tab-panel-10334)
-* [  yarn ](#tab-panel-10335)
+* [  npm ](#tab-panel-10739)
+* [  pnpm ](#tab-panel-10740)
+* [  yarn ](#tab-panel-10741)
 
 ```sh
 npx wrangler r2 bucket lifecycle add [BUCKET] [NAME] [PREFIX]
@@ -1172,9 +1172,9 @@ Use a specific auth profile
 
 Remove a lifecycle rule from an R2 bucket
 
-* [  npm ](#tab-panel-10336)
-* [  pnpm ](#tab-panel-10337)
-* [  yarn ](#tab-panel-10338)
+* [  npm ](#tab-panel-10742)
+* [  pnpm ](#tab-panel-10743)
+* [  yarn ](#tab-panel-10744)
 
 ```sh
 npx wrangler r2 bucket lifecycle remove [BUCKET]
@@ -1220,9 +1220,9 @@ Use a specific auth profile
 
 List lifecycle rules for an R2 bucket
 
-* [  npm ](#tab-panel-10339)
-* [  pnpm ](#tab-panel-10340)
-* [  yarn ](#tab-panel-10341)
+* [  npm ](#tab-panel-10745)
+* [  pnpm ](#tab-panel-10746)
+* [  yarn ](#tab-panel-10747)
 
 ```sh
 npx wrangler r2 bucket lifecycle list [BUCKET]
@@ -1266,9 +1266,9 @@ Use a specific auth profile
 
 Set the lifecycle configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-10342)
-* [  pnpm ](#tab-panel-10343)
-* [  yarn ](#tab-panel-10344)
+* [  npm ](#tab-panel-10748)
+* [  pnpm ](#tab-panel-10749)
+* [  yarn ](#tab-panel-10750)
 
 ```sh
 npx wrangler r2 bucket lifecycle set [BUCKET]
@@ -1316,9 +1316,9 @@ Use a specific auth profile
 
 Add a lock rule to an R2 bucket
 
-* [  npm ](#tab-panel-10345)
-* [  pnpm ](#tab-panel-10346)
-* [  yarn ](#tab-panel-10347)
+* [  npm ](#tab-panel-10751)
+* [  pnpm ](#tab-panel-10752)
+* [  yarn ](#tab-panel-10753)
 
 ```sh
 npx wrangler r2 bucket lock add [BUCKET] [NAME] [PREFIX]
@@ -1374,9 +1374,9 @@ Use a specific auth profile
 
 Remove a bucket lock rule from an R2 bucket
 
-* [  npm ](#tab-panel-10348)
-* [  pnpm ](#tab-panel-10349)
-* [  yarn ](#tab-panel-10350)
+* [  npm ](#tab-panel-10754)
+* [  pnpm ](#tab-panel-10755)
+* [  yarn ](#tab-panel-10756)
 
 ```sh
 npx wrangler r2 bucket lock remove [BUCKET]
@@ -1422,9 +1422,9 @@ Use a specific auth profile
 
 List lock rules for an R2 bucket
 
-* [  npm ](#tab-panel-10351)
-* [  pnpm ](#tab-panel-10352)
-* [  yarn ](#tab-panel-10353)
+* [  npm ](#tab-panel-10757)
+* [  pnpm ](#tab-panel-10758)
+* [  yarn ](#tab-panel-10759)
 
 ```sh
 npx wrangler r2 bucket lock list [BUCKET]
@@ -1468,9 +1468,9 @@ Use a specific auth profile
 
 Set the lock configuration for an R2 bucket from a JSON file
 
-* [  npm ](#tab-panel-10354)
-* [  pnpm ](#tab-panel-10355)
-* [  yarn ](#tab-panel-10356)
+* [  npm ](#tab-panel-10760)
+* [  pnpm ](#tab-panel-10761)
+* [  yarn ](#tab-panel-10762)
 
 ```sh
 npx wrangler r2 bucket lock set [BUCKET]
@@ -1518,9 +1518,9 @@ Use a specific auth profile
 
 Create an event notification rule for an R2 bucket
 
-* [  npm ](#tab-panel-10357)
-* [  pnpm ](#tab-panel-10358)
-* [  yarn ](#tab-panel-10359)
+* [  npm ](#tab-panel-10763)
+* [  pnpm ](#tab-panel-10764)
+* [  yarn ](#tab-panel-10765)
 
 ```sh
 npx wrangler r2 bucket notification create [BUCKET]
@@ -1574,9 +1574,9 @@ Use a specific auth profile
 
 Delete an event notification rule from an R2 bucket
 
-* [  npm ](#tab-panel-10360)
-* [  pnpm ](#tab-panel-10361)
-* [  yarn ](#tab-panel-10362)
+* [  npm ](#tab-panel-10766)
+* [  pnpm ](#tab-panel-10767)
+* [  yarn ](#tab-panel-10768)
 
 ```sh
 npx wrangler r2 bucket notification delete [BUCKET]
@@ -1624,9 +1624,9 @@ Use a specific auth profile
 
 List event notification rules for an R2 bucket
 
-* [  npm ](#tab-panel-10363)
-* [  pnpm ](#tab-panel-10364)
-* [  yarn ](#tab-panel-10365)
+* [  npm ](#tab-panel-10769)
+* [  pnpm ](#tab-panel-10770)
+* [  yarn ](#tab-panel-10771)
 
 ```sh
 npx wrangler r2 bucket notification list [BUCKET]
@@ -1670,9 +1670,9 @@ Use a specific auth profile
 
 Enable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-10366)
-* [  pnpm ](#tab-panel-10367)
-* [  yarn ](#tab-panel-10368)
+* [  npm ](#tab-panel-10772)
+* [  pnpm ](#tab-panel-10773)
+* [  yarn ](#tab-panel-10774)
 
 ```sh
 npx wrangler r2 bucket sippy enable [NAME]
@@ -1735,9 +1735,9 @@ Use a specific auth profile
 
 Disable Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-10369)
-* [  pnpm ](#tab-panel-10370)
-* [  yarn ](#tab-panel-10371)
+* [  npm ](#tab-panel-10775)
+* [  pnpm ](#tab-panel-10776)
+* [  yarn ](#tab-panel-10777)
 
 ```sh
 npx wrangler r2 bucket sippy disable [NAME]
@@ -1781,9 +1781,9 @@ Use a specific auth profile
 
 Check the status of Sippy on an R2 bucket
 
-* [  npm ](#tab-panel-10372)
-* [  pnpm ](#tab-panel-10373)
-* [  yarn ](#tab-panel-10374)
+* [  npm ](#tab-panel-10778)
+* [  pnpm ](#tab-panel-10779)
+* [  yarn ](#tab-panel-10780)
 
 ```sh
 npx wrangler r2 bucket sippy get [NAME]
@@ -1835,9 +1835,9 @@ The `r2 object` commands allow you to manage application data in the Cloudflare 
 
 Fetch an object from an R2 bucket
 
-* [  npm ](#tab-panel-10375)
-* [  pnpm ](#tab-panel-10376)
-* [  yarn ](#tab-panel-10377)
+* [  npm ](#tab-panel-10781)
+* [  pnpm ](#tab-panel-10782)
+* [  yarn ](#tab-panel-10783)
 
 ```sh
 npx wrangler r2 object get [OBJECTPATH]
@@ -1891,9 +1891,9 @@ Use a specific auth profile
 
 Create an object in an R2 bucket
 
-* [  npm ](#tab-panel-10378)
-* [  pnpm ](#tab-panel-10379)
-* [  yarn ](#tab-panel-10380)
+* [  npm ](#tab-panel-10784)
+* [  pnpm ](#tab-panel-10785)
+* [  yarn ](#tab-panel-10786)
 
 ```sh
 npx wrangler r2 object put [OBJECTPATH]
@@ -1963,9 +1963,9 @@ Use a specific auth profile
 
 Delete an object in an R2 bucket
 
-* [  npm ](#tab-panel-10381)
-* [  pnpm ](#tab-panel-10382)
-* [  yarn ](#tab-panel-10383)
+* [  npm ](#tab-panel-10787)
+* [  pnpm ](#tab-panel-10788)
+* [  yarn ](#tab-panel-10789)
 
 ```sh
 npx wrangler r2 object delete [OBJECTPATH]
@@ -2014,6 +2014,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare R2 docs","description":"Wrangler CLI commands for managing R2 buckets and objects.","url":"https://developers.cloudflare.com/r2/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare R2 docs","description":"Wrangler CLI commands for managing R2 buckets and objects.","url":"https://developers.cloudflare.com/r2/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/reference/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

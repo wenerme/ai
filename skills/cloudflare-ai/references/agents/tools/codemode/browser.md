@@ -1,7 +1,7 @@
 ---
 title: Browser integration
 description: Run model-generated code against browser-owned tools with the Code Mode iframe executor and an Agent chat UI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -50,8 +50,8 @@ The browser creates the Code Mode tool and registers it as a dynamic client tool
 
 1. Define the browser-owned tools with JSON Schema and an `execute` function.
 
-  * [  JavaScript ](#tab-panel-6781)
-  * [  TypeScript ](#tab-panel-6782)
+  * [  JavaScript ](#tab-panel-7055)
+  * [  TypeScript ](#tab-panel-7056)
 
 **src/browser-tools.js**
 ```js
@@ -114,8 +114,8 @@ export const browserTools: JsonSchemaExecutableToolDescriptors = {
 JSON Schema supplies the types shown to the model. `createBrowserCodeTool()` does not use the schema to validate arguments at runtime. Validate untrusted inputs inside each `execute` function when required.
 2. Create the Code Mode descriptor with an iframe executor.
 
-  * [  JavaScript ](#tab-panel-6779)
-  * [  TypeScript ](#tab-panel-6780)
+  * [  JavaScript ](#tab-panel-7053)
+  * [  TypeScript ](#tab-panel-7054)
 
 **src/codemode-tool.js**
 ```js
@@ -146,8 +146,8 @@ export const codemodeTool = createBrowserCodeTool({
 The `executor` option is optional. When omitted, `createBrowserCodeTool()` creates an `IframeSandboxExecutor` with default settings.
 3. Register the descriptor with `useAgentChat()` and execute client tool calls.
 
-  * [  JavaScript ](#tab-panel-6785)
-  * [  TypeScript ](#tab-panel-6786)
+  * [  JavaScript ](#tab-panel-7059)
+  * [  TypeScript ](#tab-panel-7060)
 
 **src/client.jsx**
 ```js
@@ -238,8 +238,8 @@ function BrowserCodeModeChat() {
 `useAgentChat()` sends the registered client tool schema to the Agent. When the model calls `codemode`, `onToolCall` executes the descriptor in the browser and adds its output to the conversation.
 4. On the Agent, convert the client schemas into model tools.
 
-  * [  JavaScript ](#tab-panel-6783)
-  * [  TypeScript ](#tab-panel-6784)
+  * [  JavaScript ](#tab-panel-7057)
+  * [  TypeScript ](#tab-panel-7058)
 
 **src/server.js**
 ```js
@@ -319,6 +319,6 @@ The timeout cannot interrupt a tight synchronous loop such as `while (true) {}`.
 Keep approval-gated actions outside the Code Mode descriptor. Register them as standard tools and use the [useAgentChat() approval flow](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#tool-approval-human-in-the-loop) instead.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/browser/#page","headline":"Browser integration · Cloudflare Agents docs","description":"Run model-generated code against browser-owned tools with the Code Mode iframe executor and an Agent chat UI.","url":"https://developers.cloudflare.com/agents/tools/codemode/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/browser/#page","headline":"Browser integration · Cloudflare Agents docs","description":"Run model-generated code against browser-owned tools with the Code Mode iframe executor and an Agent chat UI.","url":"https://developers.cloudflare.com/agents/tools/codemode/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/browser/","name":"Browser integration"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Overview
 description: Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -103,6 +103,6 @@ Connect with the Workers community on Discord to ask questions, share what you a
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Workers.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/#page","headline":"Cloudflare AI Search · Cloudflare AI Search docs","description":"Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.","url":"https://developers.cloudflare.com/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/#page","headline":"Cloudflare AI Search · Cloudflare AI Search docs","description":"Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.","url":"https://developers.cloudflare.com/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}}]}
 ```

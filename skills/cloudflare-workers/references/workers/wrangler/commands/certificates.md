@@ -1,7 +1,7 @@
 ---
 title: Certificates
 description: Wrangler commands for managing mTLS and CA certificates, for use standalone or with Hyperdrive.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -28,9 +28,9 @@ These certificates can be used in [mtls\_certificate bindings](https://developer
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-12674)
-* [  pnpm ](#tab-panel-12675)
-* [  yarn ](#tab-panel-12676)
+* [  npm ](#tab-panel-13168)
+* [  pnpm ](#tab-panel-13169)
+* [  yarn ](#tab-panel-13170)
 
 ```sh
 npx wrangler mtls-certificate upload
@@ -88,8 +88,8 @@ Expires: 1/01/2025
 
 You can then add this certificate as a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12695)
-* [  wrangler.toml ](#tab-panel-12696)
+* [  wrangler.jsonc ](#tab-panel-13189)
+* [  wrangler.toml ](#tab-panel-13190)
 
 **JSONC**
 
@@ -118,9 +118,9 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-12677)
-* [  pnpm ](#tab-panel-12678)
-* [  yarn ](#tab-panel-12679)
+* [  npm ](#tab-panel-13171)
+* [  pnpm ](#tab-panel-13172)
+* [  yarn ](#tab-panel-13173)
 
 ```sh
 npx wrangler mtls-certificate list
@@ -179,9 +179,9 @@ Expires: 1/01/2025
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-12680)
-* [  pnpm ](#tab-panel-12681)
-* [  yarn ](#tab-panel-12682)
+* [  npm ](#tab-panel-13174)
+* [  pnpm ](#tab-panel-13175)
+* [  yarn ](#tab-panel-13176)
 
 ```sh
 npx wrangler mtls-certificate delete
@@ -246,9 +246,9 @@ These certificates can be used in Hyperdrive configurations, enabling them to pr
 
 Upload an mTLS certificate
 
-* [  npm ](#tab-panel-12683)
-* [  pnpm ](#tab-panel-12684)
-* [  yarn ](#tab-panel-12685)
+* [  npm ](#tab-panel-13177)
+* [  pnpm ](#tab-panel-13178)
+* [  yarn ](#tab-panel-13179)
 
 ```sh
 npx wrangler cert upload mtls-certificate
@@ -310,9 +310,9 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 Upload a CA certificate chain
 
-* [  npm ](#tab-panel-12686)
-* [  pnpm ](#tab-panel-12687)
-* [  yarn ](#tab-panel-12688)
+* [  npm ](#tab-panel-13180)
+* [  pnpm ](#tab-panel-13181)
+* [  yarn ](#tab-panel-13182)
 
 ```sh
 npx wrangler cert upload certificate-authority
@@ -370,9 +370,9 @@ Expires: 1/01/2025
 
 List uploaded mTLS certificates
 
-* [  npm ](#tab-panel-12689)
-* [  pnpm ](#tab-panel-12690)
-* [  yarn ](#tab-panel-12691)
+* [  npm ](#tab-panel-13183)
+* [  pnpm ](#tab-panel-13184)
+* [  yarn ](#tab-panel-13185)
 
 ```sh
 npx wrangler cert list
@@ -431,9 +431,9 @@ Expires: 1/01/2025
 
 Delete an mTLS certificate
 
-* [  npm ](#tab-panel-12692)
-* [  pnpm ](#tab-panel-12693)
-* [  yarn ](#tab-panel-12694)
+* [  npm ](#tab-panel-13186)
+* [  pnpm ](#tab-panel-13187)
+* [  yarn ](#tab-panel-13188)
 
 ```sh
 npx wrangler cert delete
@@ -487,6 +487,6 @@ Deleted certificate 99f5fef1-6cc1-46b8-bd79-44a0d5082b8d successfully
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/certificates/#page","headline":"Certificates · Cloudflare Workers docs","description":"Wrangler commands for managing mTLS and CA certificates, for use standalone or with Hyperdrive.","url":"https://developers.cloudflare.com/workers/wrangler/commands/certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/certificates/#page","headline":"Certificates · Cloudflare Workers docs","description":"Wrangler commands for managing mTLS and CA certificates, for use standalone or with Hyperdrive.","url":"https://developers.cloudflare.com/workers/wrangler/commands/certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/certificates/","name":"Certificates"}}]}
 ```

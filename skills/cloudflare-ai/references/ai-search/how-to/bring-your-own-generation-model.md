@@ -1,7 +1,7 @@
 ---
 title: Bring your own generation model
 description: Use AI Search for retrieval while generating responses with an external model like OpenAI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -92,8 +92,8 @@ bun add ai @ai-sdk/openai
 
 Add the AI Search binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6967)
-* [  wrangler.toml ](#tab-panel-6968)
+* [  wrangler.jsonc ](#tab-panel-7225)
+* [  wrangler.toml ](#tab-panel-7226)
 
 **JSONC**
 
@@ -137,8 +137,8 @@ OPENAI_API_KEY="<YOUR_OPENAI_API_KEY>"
 
 Update `src/index.ts`. This Worker searches your instance, formats the retrieved chunks, and passes them to OpenAI to generate an answer. Replace `my-instance` with the name of your instance.
 
-* [  JavaScript ](#tab-panel-6969)
-* [  TypeScript ](#tab-panel-6970)
+* [  JavaScript ](#tab-panel-7227)
+* [  TypeScript ](#tab-panel-7228)
 
 **src/index.js**
 
@@ -270,6 +270,6 @@ npx wrangler deploy
 [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) Full reference for searching and chatting from a Worker.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/#page","headline":"Bring your own generation model · Cloudflare AI Search docs","description":"Use AI Search for retrieval while generating responses with an external model like OpenAI.","url":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/#page","headline":"Bring your own generation model · Cloudflare AI Search docs","description":"Use AI Search for retrieval while generating responses with an external model like OpenAI.","url":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/bring-your-own-generation-model/","name":"Bring your own generation model"}}]}
 ```

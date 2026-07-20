@@ -1,7 +1,7 @@
 ---
 title: Get live viewer counts
 description: Retrieve real-time viewer counts for Cloudflare Stream live videos using the views endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ Below is a response for a live video with several active viewers:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/getting-analytics/live-viewer-count/#page","headline":"Get live viewer counts · Cloudflare Stream docs","description":"Retrieve real-time viewer counts for Cloudflare Stream live videos using the views endpoint.","url":"https://developers.cloudflare.com/stream/getting-analytics/live-viewer-count/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/getting-analytics/live-viewer-count/#page","headline":"Get live viewer counts · Cloudflare Stream docs","description":"Retrieve real-time viewer counts for Cloudflare Stream live videos using the views endpoint.","url":"https://developers.cloudflare.com/stream/getting-analytics/live-viewer-count/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/getting-analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/getting-analytics/live-viewer-count/","name":"Get live viewer counts"}}]}
 ```

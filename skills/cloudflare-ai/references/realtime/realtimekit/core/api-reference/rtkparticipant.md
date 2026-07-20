@@ -1,6 +1,6 @@
 ---
 title: RTKParticipant
-image: https://developers.cloudflare.com/dev-products-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -19,7 +19,8 @@ This module represents a single participant in the meeting. The participant obje
 const participant1 = meeting.participants.active.get(participantId);
 const participant2 = meeting.participants.joined.get(participantId);
 const participant3 = meeting.participants.active.toArray()[0];
-const participant4 = meeting.participants.active.toArray().filter((p) => p.name === 'John');
+const participant4 = meeting.participants.active.toArray()
+  .filter((p) => p.name === 'John');
 ```
 
 * [RTKParticipant](#module%5FRTKParticipant)
@@ -29,8 +30,7 @@ const participant4 = meeting.participants.active.toArray().filter((p) => p.name 
     * [.userId](#module%5FRTKParticipant--module.exports+userId)
     * [.name](#module%5FRTKParticipant--module.exports+name)
     * [.picture](#module%5FRTKParticipant--module.exports+picture)
-    * [.customRTKParticipantId](#module%5FRTKParticipant--module.exports+customRTKParticipantId)
-    * ~~[.clientSpecificId](#module%5FRTKParticipant--module.exports+clientSpecificId)~~
+    * [.customParticipantId](#module%5FRTKParticipant--module.exports+customParticipantId)
     * [.device](#module%5FRTKParticipant--module.exports+device)
     * [.videoTrack](#module%5FRTKParticipant--module.exports+videoTrack)
     * [.audioTrack](#module%5FRTKParticipant--module.exports+audioTrack)
@@ -67,7 +67,7 @@ const participant4 = meeting.participants.active.toArray().filter((p) => p.name 
 | Param       | Type              |
 | ----------- | ----------------- |
 | context     | Context           |
-| participant | IRTKParticipant   |
+| participant | IParticipant      |
 | self        | Self              |
 | roomSocket  | RoomSocketHandler |
 
@@ -95,15 +95,9 @@ The picture of the participant.
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
 
-#### module.exports.customRTKParticipantId
+#### module.exports.customParticipantId
 
 The custom id of the participant set during Add RTKParticipant REST API
-
-**Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
-
-#### ~~module.exports.clientSpecificId~~
-
-_**Deprecated**_
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKParticipant--module.exports)
 
@@ -282,6 +276,6 @@ Internal method, do not use
 | e     | HTMLVideoElement |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/#page","headline":"RTKParticipant · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-02-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/#page","headline":"RTKParticipant · Cloudflare Realtime docs","url":"https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/core/api-reference/rtkparticipant/","name":"RTKParticipant"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Enabling log retention
 description: Turn log retention on or off for Logpull.
-image: https://developers.cloudflare.com/core-services-preview.png
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
 > Documentation Index
@@ -31,9 +31,9 @@ To make a `POST` call, you must have zone-scoped `edit` permissions, such as Sup
 
 ### Check log retention status
 
-* [ Linux ](#tab-panel-10080)
-* [ CMD ](#tab-panel-10081)
-* [ PowerShell ](#tab-panel-10082)
+* [ Linux ](#tab-panel-10199)
+* [ CMD ](#tab-panel-10200)
+* [ PowerShell ](#tab-panel-10201)
 
 Required API token permissions
 
@@ -66,9 +66,9 @@ If the zone has log retention [enabled](https://developers.cloudflare.com/logs/l
 
 ### Turn on log retention
 
-* [ Linux ](#tab-panel-10083)
-* [ CMD ](#tab-panel-10084)
-* [ PowerShell ](#tab-panel-10085)
+* [ Linux ](#tab-panel-10202)
+* [ CMD ](#tab-panel-10203)
+* [ PowerShell ](#tab-panel-10204)
 
 Required API token permissions
 
@@ -113,9 +113,9 @@ Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $bodyFlag -Cont
 
 ### Turn off log retention
 
-* [ Linux ](#tab-panel-10086)
-* [ CMD ](#tab-panel-10087)
-* [ PowerShell ](#tab-panel-10088)
+* [ Linux ](#tab-panel-10205)
+* [ CMD ](#tab-panel-10206)
+* [ PowerShell ](#tab-panel-10207)
 
 Required API token permissions
 
@@ -162,6 +162,6 @@ Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $bodyFlag -Cont
 Turning log retention on or off is recorded in [Cloudflare Audit Logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/#access-audit-logs).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpull/enabling-log-retention/#page","headline":"Enabling log retention · Cloudflare Logs docs","description":"Turn log retention on or off for Logpull.","url":"https://developers.cloudflare.com/logs/logpull/enabling-log-retention/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpull/enabling-log-retention/#page","headline":"Enabling log retention · Cloudflare Logs docs","description":"Turn log retention on or off for Logpull.","url":"https://developers.cloudflare.com/logs/logpull/enabling-log-retention/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpull/","name":"Logpull"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpull/enabling-log-retention/","name":"Enabling log retention"}}]}
 ```
