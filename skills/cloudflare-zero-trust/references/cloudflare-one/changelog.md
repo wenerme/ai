@@ -484,6 +484,7 @@ This release introduces multiple features from our previous beta release into st
 **Known issues**
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
+* When deploying with Microsoft Intune, the client may be repeatedly reinstalled because Intune adds the client's embedded framework bundles to its install-detection list, and those frameworks cannot be detected as installed on their own. See [Repeated reinstalls on macOS with Microsoft Intune](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#repeated-reinstalls-on-macos-with-microsoft-intune) for the workaround.
 
 ## 2026-06-29
 
@@ -690,8 +691,8 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7834)
-* [  wrangler.toml ](#tab-panel-7835)
+* [  wrangler.jsonc ](#tab-panel-7836)
+* [  wrangler.toml ](#tab-panel-7837)
 
 **JSONC**
 
@@ -716,8 +717,8 @@ network_id = "cf1:network"
 remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7836)
-* [  TypeScript ](#tab-panel-7837)
+* [  JavaScript ](#tab-panel-7838)
+* [  TypeScript ](#tab-panel-7839)
 
 **JavaScript**
 
@@ -5286,8 +5287,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp)
 
-* [ Zero Trust Dashboard ](#tab-panel-7832)
-* [ Core Dashboard ](#tab-panel-7833)
+* [ Zero Trust Dashboard ](#tab-panel-7834)
+* [ Core Dashboard ](#tab-panel-7835)
 
 To update your view preference in the Zero Trust dashboard:
 

@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop)
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
 
 #  glm-4.7-flash
 
@@ -35,10 +35,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5183)
-* [  TypeScript ](#tab-panel-5184)
-* [  Python ](#tab-panel-5185)
-* [  curl ](#tab-panel-5186)
+* [  Worker (Streaming) ](#tab-panel-5321)
+* [  TypeScript ](#tab-panel-5322)
+* [  Python ](#tab-panel-5323)
+* [  curl ](#tab-panel-5324)
 
 **TypeScript**
 

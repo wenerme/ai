@@ -10447,9 +10447,9 @@
   },
   "api/api-reference/video-generation/submit-a-video-generation-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/submit-a-video-generation-request.md",
-    "lastModified": "Sat, 18 Jul 2026 03:48:59 GMT",
-    "size": 29581,
-    "updatedAt": "2026-07-18T03:48:59.463Z"
+    "lastModified": "Mon, 20 Jul 2026 04:23:56 GMT",
+    "size": 29835,
+    "updatedAt": "2026-07-20T04:23:56.826Z"
   },
   "api/api-reference/workspaces/bulk-add-members-to-a-workspace.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/workspaces/bulk-add-members-to-a-workspace.md",
@@ -10771,9 +10771,9 @@
   },
   "client-sdks/go/sdks/videogeneration/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/videogeneration/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:14 GMT",
-    "size": 8926,
-    "updatedAt": "2026-07-06T14:29:14.507Z"
+    "lastModified": "Mon, 20 Jul 2026 04:24:17 GMT",
+    "size": 8946,
+    "updatedAt": "2026-07-20T04:24:17.509Z"
   },
   "client-sdks/go/sdks/workspaces/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/workspaces/README.md",
