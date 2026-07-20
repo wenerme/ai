@@ -47,7 +47,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 1. **Download Codex**

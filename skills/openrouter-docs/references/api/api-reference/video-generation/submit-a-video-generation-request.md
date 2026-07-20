@@ -249,6 +249,11 @@ components:
         model:
           type: string
         prompt:
+          description: >-
+            Text prompt describing the video to generate. Optional for models
+            that support generating a video from image input alone; required by
+            all other models.
+          example: A serene mountain landscape at sunset
           type: string
         provider:
           description: Provider-specific passthrough configuration
@@ -287,7 +292,6 @@ components:
           example: 1280x720
           type: string
       required:
-        - prompt
         - model
       type: object
     VideoGenerationResponse:

@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Cloudflare platform access

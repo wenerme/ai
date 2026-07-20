@@ -1272,11 +1272,11 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 114 skills, 31619 files, 375 MiB total
+> 114 skills, 31620 files, 375 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
-| [agent-browser](./skills/agent-browser/SKILL.md) | 1 | 3.2 KiB |
+| [agent-browser](./skills/agent-browser/SKILL.md) | 1 | 3.3 KiB |
 | [ai-sdk](./skills/ai-sdk/SKILL.md) | 1 | 5.4 KiB |
 | [aliyun-cli-docs](./skills/aliyun-cli-docs/SKILL.md) | 27 | 183 KiB |
 | [alpine-aports-docs](./skills/alpine-aports-docs/SKILL.md) | 7 | 41 KiB |
@@ -1356,7 +1356,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 459 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 451 | 2.4 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2352 | 14 MiB |
-| [orpc-docs](./skills/orpc-docs/SKILL.md) | 78 | 320 KiB |
+| [orpc-docs](./skills/orpc-docs/SKILL.md) | 79 | 330 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
