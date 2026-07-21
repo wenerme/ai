@@ -67,7 +67,7 @@ matching key before falling back to shared capacity.
 
 ### BYOK with Provider Ordering
 
-When you combine BYOK keys with [provider ordering](/guides/routing/provider-selection#ordering-specific-providers), OpenRouter **always prioritizes BYOK endpoints first**, regardless of where that provider appears in your specified order. After all BYOK endpoints are exhausted, OpenRouter falls back to shared capacity in the order you specified.
+When you combine BYOK keys with [provider ordering](/docs/guides/routing/provider-selection#ordering-specific-providers), OpenRouter **always prioritizes BYOK endpoints first**, regardless of where that provider appears in your specified order. After all BYOK endpoints are exhausted, OpenRouter falls back to shared capacity in the order you specified.
 
 This means BYOK keys effectively override your provider ordering for the initial routing attempts. There is currently no way to change this behavior.
 
@@ -121,7 +121,7 @@ your BYOK keys in your
 
 BYOK endpoints are subject to your data policies. Bringing your own key changes which credential authenticates the upstream request — it doesn't change which endpoints you're allowed to route to. Your provider, account, and guardrail data policies are applied **before** BYOK endpoints are created, so BYOK only routes to endpoints that already satisfy them.
 
-This means a BYOK key does not exempt a provider from your [Zero Data Retention](/guides/features/zdr) or `data_collection` restrictions. If you enforce ZDR (via `provider.zdr`, account privacy settings, or a guardrail) and a provider's endpoint retains prompts, that endpoint stays ineligible even when you supply your own key.
+This means a BYOK key does not exempt a provider from your [Zero Data Retention](/docs/guides/features/zdr) or `data_collection` restrictions. If you enforce ZDR (via `provider.zdr`, account privacy settings, or a guardrail) and a provider's endpoint retains prompts, that endpoint stays ineligible even when you supply your own key.
 
 For example, if you enforce ZDR and send a request that would otherwise use a BYOK key for a provider whose endpoint retains prompts:
 
@@ -135,7 +135,7 @@ For example, if you enforce ZDR and send a request that would otherwise use a BY
 
 The retaining endpoint is filtered out before your BYOK key is considered, and the request fails if no ZDR-compliant endpoint remains — even though you have a valid key for that provider.
 
-To use a provider via BYOK, make sure it's permitted by your data policies: the provider's endpoint must satisfy any ZDR or `data_collection` restrictions you've enabled. See [Zero Data Retention](/guides/features/zdr) and [Provider Routing](/guides/routing/provider-selection).
+To use a provider via BYOK, make sure it's permitted by your data policies: the provider's endpoint must satisfy any ZDR or `data_collection` restrictions you've enabled. See [Zero Data Retention](/docs/guides/features/zdr) and [Provider Routing](/docs/guides/routing/provider-selection).
 
 ### Multiple BYOK Keys for the Same Provider
 

@@ -61,7 +61,7 @@ console.log(text);
 Stream complete items as they update. This is the **recommended way** to handle
 streaming when you need structured access to all output types (messages, tool
 calls, reasoning, etc.). See
-[Working with Items](/agent-sdk/call-model/items) for the full
+[Working with Items](/docs/agent-sdk/call-model/items) for the full
 paradigm explanation.
 
 ```typescript expandable lines theme={null}
@@ -374,7 +374,7 @@ app.get('/stream', (c) => {
 
 ## Next Steps
 
-* **[Working with Items](/agent-sdk/call-model/items)** - Understand
+* **[Working with Items](/docs/agent-sdk/call-model/items)** - Understand
   the items-based streaming paradigm
-* **[Tools](/agent-sdk/call-model/tools)** - Create tools and
+* **[Tools](/docs/agent-sdk/call-model/tools)** - Create tools and
   multi-turn streaming with tools

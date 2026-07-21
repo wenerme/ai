@@ -1,7 +1,7 @@
 ---
 title: Add routes
 description: Add routes in Zero Trust networking.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ Anyone on the Internet can now access the application at the specified hostname.
 WAN routes define the IP network segments (such as `10.0.0.0/24`) that are reachable via a GRE or IPsec tunnel. To add a WAN route, refer to the [WAN Connectors documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#page","headline":"Add routes · Cloudflare One docs","description":"Add routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#page","headline":"Add routes · Cloudflare One docs","description":"Add routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/routes/","name":"Routes"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/routes/add-routes/","name":"Add routes"}}]}
 ```

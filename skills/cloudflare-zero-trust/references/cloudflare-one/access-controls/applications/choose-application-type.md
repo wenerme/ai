@@ -1,7 +1,7 @@
 ---
 title: Choose an application type
 description: Learn which Cloudflare Access application type fits your deployment.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -128,6 +128,6 @@ If you are currently using legacy private network applications, we strongly reco
 For more information, refer to [Private network applications (legacy)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/#page","headline":"Choose an application type · Cloudflare One docs","description":"Learn which Cloudflare Access application type fits your deployment.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/#page","headline":"Choose an application type · Cloudflare One docs","description":"Learn which Cloudflare Access application type fits your deployment.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/choose-application-type/","name":"Choose an application type"}}]}
 ```

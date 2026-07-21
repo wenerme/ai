@@ -1,7 +1,7 @@
 ---
 title: Content encoding issues
 description: Fix content encoding mismatches with compression settings.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ You also have the option to turn off these features site-wide within the dashboa
 Misconfiguring the `Content-Type` or charset within HTML, or leaving them unspecified can lead to unintended consequences. This can disrupt the intended content presentation, resulting in disorganized rendering and potentially unclear characters. Properly configuring these elements ensures consistent and accurate interpretation, correct HTML modifications, and accurate rendering for browsers. This creates a seamless user experience and aligns with best practices in web development.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/#page","headline":"Content encoding issues · Cloudflare Speed docs","description":"Fix content encoding mismatches with compression settings.","url":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/#page","headline":"Content encoding issues · Cloudflare Speed docs","description":"Fix content encoding mismatches with compression settings.","url":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/content/troubleshooting/content-encoding-issues/","name":"Content encoding issues"}}]}
 ```

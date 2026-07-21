@@ -1,7 +1,7 @@
 ---
 title: Traditional
 description: Define tools and schemas for industry-standard function calling with Workers AI models.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -66,6 +66,6 @@ The LLM will then return a JSON object with the required arguments and the name 
 For a working example on how to do function calling, take a look at our [demo app ↗](https://github.com/craigsdennis/lightbulb-moment-tool-calling/blob/main/src/index.ts).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/function-calling/traditional/#page","headline":"Traditional function calling · Cloudflare Workers AI docs","description":"Define tools and schemas for industry-standard function calling with Workers AI models.","url":"https://developers.cloudflare.com/workers-ai/features/function-calling/traditional/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/function-calling/traditional/#page","headline":"Traditional function calling · Cloudflare Workers AI docs","description":"Define tools and schemas for industry-standard function calling with Workers AI models.","url":"https://developers.cloudflare.com/workers-ai/features/function-calling/traditional/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/function-calling/","name":"Function calling"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/function-calling/traditional/","name":"Traditional"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Explore example Artifacts integrations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ Use these examples to see how Artifacts can fit into developer tools, clients, a
 * [ Sandbox SDK + Artifacts ](https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/artifacts/examples/#page","headline":"Examples · Cloudflare Artifacts docs","description":"Explore example Artifacts integrations.","url":"https://developers.cloudflare.com/artifacts/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/artifacts/examples/#page","headline":"Examples · Cloudflare Artifacts docs","description":"Explore example Artifacts integrations.","url":"https://developers.cloudflare.com/artifacts/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/examples/","name":"Examples"}}]}
 ```

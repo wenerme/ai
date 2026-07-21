@@ -1,7 +1,7 @@
 ---
 title: Network Interconnect (CNI)
 description: Connect to Magic Transit with Network Interconnect.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ With CNI, you get the same Cloudflare network services (firewall, routing, traff
 For more information about Network Interconnect, refer to the [Cloudflare Network Interconnect documentation](https://developers.cloudflare.com/network-interconnect/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-interconnect/#page","headline":"Network Interconnect and Magic Transit · Cloudflare Magic Transit docs","description":"Connect to Magic Transit with Network Interconnect.","url":"https://developers.cloudflare.com/magic-transit/network-interconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-interconnect/#page","headline":"Network Interconnect and Magic Transit · Cloudflare Magic Transit docs","description":"Connect to Magic Transit with Network Interconnect.","url":"https://developers.cloudflare.com/magic-transit/network-interconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/network-interconnect/","name":"Network Interconnect (CNI)"}}]}
 ```

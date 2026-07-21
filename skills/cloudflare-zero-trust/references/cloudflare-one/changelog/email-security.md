@@ -1,7 +1,7 @@
 ---
 title: Email security
 description: Track updates and changes to Cloudflare One features.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -516,6 +516,6 @@ Email security is now live under Zero Trust.
 Customers using Microsoft Office 365 can set up Email security via Microsoft Graph API.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/email-security/#page","headline":"Email security · Cloudflare One docs","description":"Track updates and changes to Cloudflare One features.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/email-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/email-security/#page","headline":"Email security · Cloudflare One docs","description":"Track updates and changes to Cloudflare One features.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/email-security/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/email-security/","name":"Email security"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Reference Architectures
 description: Understand how Cloudflare products integrate with your infrastructure.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ Read articles and announcements about the latest Cloudflare products and feature
 Module-based guidance on Cloudflare product workflows.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/#page","headline":"Reference Architectures · Cloudflare Reference Architecture docs","description":"Understand how Cloudflare products integrate with your infrastructure.","url":"https://developers.cloudflare.com/reference-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/#page","headline":"Reference Architectures · Cloudflare Reference Architecture docs","description":"Understand how Cloudflare products integrate with your infrastructure.","url":"https://developers.cloudflare.com/reference-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}}]}
 ```

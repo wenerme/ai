@@ -1,7 +1,7 @@
 ---
 title: Set up multi-signer DNSSEC
 description: Configure multi-signer DNSSEC for your zone.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -201,6 +201,6 @@ $ dig <ZONE_NAME> dnskey @<CLOUDFLARE_NAMESERVER> +noall +answer | grep 256
 2. Update the nameserver settings at your registrar to include the nameservers of all providers you will be using for your multi-signer DNSSEC setup.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/#page","headline":"Set up multi-signer DNSSEC · Cloudflare DNS docs","description":"Configure multi-signer DNSSEC for your zone.","url":"https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/#page","headline":"Set up multi-signer DNSSEC · Cloudflare DNS docs","description":"Configure multi-signer DNSSEC for your zone.","url":"https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dnssec/","name":"DNSSEC"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/dnssec/multi-signer-dnssec/","name":"Multi-signer DNSSEC"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/dnssec/multi-signer-dnssec/setup/","name":"Set up multi-signer DNSSEC"}}]}
 ```

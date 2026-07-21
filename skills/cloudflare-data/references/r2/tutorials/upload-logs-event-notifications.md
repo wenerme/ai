@@ -1,7 +1,7 @@
 ---
 title: Log and store upload events in R2 with event notifications
 description: This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -190,6 +190,6 @@ npx wrangler r2 bucket notification create example-upload-bucket --event-type ob
 Now you can test the full end-to-end flow by uploading an object to `example-upload-bucket` in the Cloudflare dashboard. After you have uploaded an object, logs will appear in `example-log-sink-bucket` in a few seconds.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/#page","headline":"Log and store upload events in R2 with event notifications · Cloudflare R2 docs","description":"This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.","url":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/#page","headline":"Log and store upload events in R2 with event notifications · Cloudflare R2 docs","description":"This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.","url":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/tutorials/upload-logs-event-notifications/","name":"Log and store upload events in R2 with event notifications"}}]}
 ```

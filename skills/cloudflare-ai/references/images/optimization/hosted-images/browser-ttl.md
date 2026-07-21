@@ -1,7 +1,7 @@
 ---
 title: Browser TTL
 description: Configure cache-control settings for Cloudflare Images at the account or variant level.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -65,6 +65,6 @@ Note
 [Private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/) do not respect default or custom TTL settings. The private images cache time is set according to the expiration time and can be as short as one hour.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/#page","headline":"Browser TTL · Cloudflare Images docs","description":"Configure cache-control settings for Cloudflare Images at the account or variant level.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/#page","headline":"Browser TTL · Cloudflare Images docs","description":"Configure cache-control settings for Cloudflare Images at the account or variant level.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/hosted-images/","name":"Hosted images"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/hosted-images/browser-ttl/","name":"Browser TTL"}}]}
 ```

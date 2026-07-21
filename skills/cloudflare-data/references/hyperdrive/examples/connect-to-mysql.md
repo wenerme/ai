@@ -1,7 +1,7 @@
 ---
 title: Connect to MySQL
 description: Use Hyperdrive to connect to MySQL and MySQL-compatible databases from Cloudflare Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -369,6 +369,6 @@ To identify active connections to your MySQL database server from Hyperdrive:
 * Understand the [protocols supported by Workers](https://developers.cloudflare.com/workers/reference/protocols/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/#page","headline":"Connect to MySQL · Cloudflare Hyperdrive docs","description":"Use Hyperdrive to connect to MySQL and MySQL-compatible databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/#page","headline":"Connect to MySQL · Cloudflare Hyperdrive docs","description":"Use Hyperdrive to connect to MySQL and MySQL-compatible databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/examples/connect-to-mysql/","name":"Connect to MySQL"}}]}
 ```

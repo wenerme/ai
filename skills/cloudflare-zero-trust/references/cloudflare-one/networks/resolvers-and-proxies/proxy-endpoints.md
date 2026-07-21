@@ -1,7 +1,7 @@
 ---
 title: Proxy endpoints
 description: Proxy endpoints in Zero Trust networking.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -500,6 +500,6 @@ Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/
 3. Proxy endpoints do not support HTTPS when browsers automatically upgrade HTTP requests to HTTPS (such as Chrome's automatic HTTPS upgrades). If you encounter connection issues with sites that are being auto-upgraded, you may need to disable automatic HTTPS upgrades in your browser settings or configure the site as an exception. [↩](#user-content-fnref-3) [↩2](#user-content-fnref-3-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#page","headline":"Proxy endpoints · Cloudflare One docs","description":"Proxy endpoints in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#page","headline":"Proxy endpoints · Cloudflare One docs","description":"Proxy endpoints in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/","name":"Resolvers and proxies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/","name":"Proxy endpoints"}}]}
 ```

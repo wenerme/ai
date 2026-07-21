@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Managed Ruleset
 description: Rules and categories in the Cloudflare Managed Ruleset.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -380,6 +380,6 @@ resource "cloudflare_ruleset" "zone_level_managed_waf" {
 For more information, refer to [WAF Managed Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#page","headline":"Cloudflare Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules and categories in the Cloudflare Managed Ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#page","headline":"Cloudflare Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules and categories in the Cloudflare Managed Ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/reference/","name":"Rulesets reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/reference/cloudflare-managed-ruleset/","name":"Cloudflare Managed Ruleset"}}]}
 ```

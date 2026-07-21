@@ -35,5 +35,5 @@ let value: CompletionResponse = {
 | `model`             | *string*                                                                    | :heavy\_check\_mark: | N/A         |
 | `provider`          | *string*                                                                    | :heavy\_minus\_sign: | N/A         |
 | `systemFingerprint` | *string*                                                                    | :heavy\_minus\_sign: | N/A         |
-| `choices`           | [models.CompletionChoice](/agent-sdk/typescript/models/completionchoice)\[] | :heavy\_check\_mark: | N/A         |
-| `usage`             | [models.CompletionUsage](/agent-sdk/typescript/models/completionusage)      | :heavy\_minus\_sign: | N/A         |
+| `choices`           | [models.CompletionChoice](/docs/agent-sdk/typescript/models/completionchoice)\[] | :heavy\_check\_mark: | N/A         |
+| `usage`             | [models.CompletionUsage](/docs/agent-sdk/typescript/models/completionusage)      | :heavy\_minus\_sign: | N/A         |

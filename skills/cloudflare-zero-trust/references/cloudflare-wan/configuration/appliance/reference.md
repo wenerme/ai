@@ -1,7 +1,7 @@
 ---
 title: Reference
 description: Reference information for Appliance configuration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -124,6 +124,6 @@ Depending on your use case, you can define policies in your Cloudflare One Appli
 For details, refer to [Network segmentation](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#page","headline":"Reference · Cloudflare WAN docs","description":"Reference information for Appliance configuration.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#page","headline":"Reference · Cloudflare WAN docs","description":"Reference information for Appliance configuration.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/reference/","name":"Reference"}}]}
 ```

@@ -39,5 +39,5 @@ let value: ListGuardrailKeyAssignmentsResponse = {
 
 | Field        | Type                                                                                                              | Required             | Description                                        | Example |
 | ------------ | ----------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------------- | ------- |
-| `data`       | [operations.ListGuardrailKeyAssignmentsData](/agent-sdk/typescript/operations/listguardrailkeyassignmentsdata)\[] | :heavy\_check\_mark: | List of key assignments                            |         |
+| `data`       | [operations.ListGuardrailKeyAssignmentsData](/docs/agent-sdk/typescript/operations/listguardrailkeyassignmentsdata)\[] | :heavy\_check\_mark: | List of key assignments                            |         |
 | `totalCount` | *number*                                                                                                          | :heavy\_check\_mark: | Total number of key assignments for this guardrail | 25      |

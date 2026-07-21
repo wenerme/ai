@@ -1,7 +1,7 @@
 ---
 title: Enhance Transform Rules
 description: Forward verified JWT claims to your origin using Transform Rules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -41,6 +41,6 @@ lookup_json_string(http.request.jwt.claims["<TOKEN_CONFIGURATION_ID>"][0], "clai
 `<TOKEN_CONFIGURATION_ID>` is your token configuration ID found in JWT validation and `claim_name` is the JWT claim you want to add to the header.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/#page","headline":"Enhance Transform Rules with JWT claims · Cloudflare API Shield docs","description":"Forward verified JWT claims to your origin using Transform Rules.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/#page","headline":"Enhance Transform Rules with JWT claims · Cloudflare API Shield docs","description":"Forward verified JWT claims to your origin using Transform Rules.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/jwt-validation/","name":"JSON Web Tokens validation"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/jwt-validation/transform-rules/","name":"Enhance Transform Rules"}}]}
 ```

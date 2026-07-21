@@ -1,7 +1,7 @@
 ---
 title: NetFlow statistics
 description: View NetFlow statistics for WAN traffic.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -60,6 +60,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 Your Cloudflare One Appliance will now begin exporting Netflow data for its breakout traffic, which will be ingested and displayed within your Network Flow dashboard. You can retrieve the current settings by sending a `GET` request, or disable the export by sending a `DELETE` request to the same endpoint.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analytics/#page","headline":"Cloudflare One Appliance NetFlow Analytics · Cloudflare WAN docs","description":"View NetFlow statistics for WAN traffic.","url":"https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analytics/#page","headline":"Cloudflare One Appliance NetFlow Analytics · Cloudflare WAN docs","description":"View NetFlow statistics for WAN traffic.","url":"https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/analytics/netflow-analytics/","name":"NetFlow statistics"}}]}
 ```

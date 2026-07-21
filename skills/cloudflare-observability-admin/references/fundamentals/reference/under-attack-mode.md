@@ -1,7 +1,7 @@
 ---
 title: Under Attack mode
 description: Turn on Cloudflare Under Attack mode to mitigate layer 7 DDoS attacks by challenging suspicious visitors with an interstitial page.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -68,6 +68,6 @@ The `Checking your browser before accessing...` challenge determines whether to 
 Since the Under Attack mode requires your browser to support JavaScript to display and pass the interstitial page, it is expected to observe impact on third party analytics tools.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/#page","headline":"Under Attack mode · Cloudflare Fundamentals docs","description":"Turn on Cloudflare Under Attack mode to mitigate layer 7 DDoS attacks by challenging suspicious visitors with an interstitial page.","url":"https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/#page","headline":"Under Attack mode · Cloudflare Fundamentals docs","description":"Turn on Cloudflare Under Attack mode to mitigate layer 7 DDoS attacks by challenging suspicious visitors with an interstitial page.","url":"https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/under-attack-mode/","name":"Under Attack mode"}}]}
 ```

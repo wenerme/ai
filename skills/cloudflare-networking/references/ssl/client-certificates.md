@@ -1,7 +1,7 @@
 ---
 title: Client certificates (mTLS)
 description: Use Cloudflare public key infrastructure (PKI) to create client certificates and enforce mutual Transport Layer Security (mTLS) encryption.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ flowchart LR
 * [ mTLS for Zero Trust ](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/#page","headline":"Client certificates (mTLS) · Cloudflare SSL/TLS docs","description":"Use Cloudflare public key infrastructure (PKI) to create client certificates and enforce mutual Transport Layer Security (mTLS) encryption.","url":"https://developers.cloudflare.com/ssl/client-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/#page","headline":"Client certificates (mTLS) · Cloudflare SSL/TLS docs","description":"Use Cloudflare public key infrastructure (PKI) to create client certificates and enforce mutual Transport Layer Security (mTLS) encryption.","url":"https://developers.cloudflare.com/ssl/client-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}}]}
 ```

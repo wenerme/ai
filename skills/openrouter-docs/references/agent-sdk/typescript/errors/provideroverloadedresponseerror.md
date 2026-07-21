@@ -25,5 +25,5 @@ import { ProviderOverloadedResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                                           | Required             | Description                               | Example                                              |
 | -------- | -------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------- | ---------------------------------------------------- |
-| `error`  | [models.ProviderOverloadedResponseErrorData](/agent-sdk/typescript/models/provideroverloadedresponseerrordata) | :heavy\_check\_mark: | Error data for ProviderOverloadedResponse | `{"code": 529,"message": "Provider returned error"}` |
+| `error`  | [models.ProviderOverloadedResponseErrorData](/docs/agent-sdk/typescript/models/provideroverloadedresponseerrordata) | :heavy\_check\_mark: | Error data for ProviderOverloadedResponse | `{"code": 529,"message": "Provider returned error"}` |
 | `userId` | *string*                                                                                                       | :heavy\_minus\_sign: | N/A                                       |                                                      |

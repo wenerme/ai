@@ -81,4 +81,4 @@ Every key inside `trace` that is not in the table above is forwarded as-is (e.g.
 
 ## Privacy Mode
 
-When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, the `input` and `output` fields are excluded from events. All other event data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, the `input` and `output` fields are excluded from events. All other event data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.

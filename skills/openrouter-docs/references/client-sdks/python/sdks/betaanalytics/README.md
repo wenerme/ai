@@ -17,7 +17,7 @@ beta.Analytics endpoints
 
 ## get\_analytics\_meta
 
-Returns the available metrics, dimensions, filter operators, and granularities for the analytics query endpoint. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Returns the available metrics, dimensions, filter operators, and granularities for the analytics query endpoint. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -64,7 +64,7 @@ with OpenRouter(
 
 ## query\_analytics
 
-Execute an analytics query with specified metrics, dimensions, filters, and time range. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Execute an analytics query with specified metrics, dimensions, filters, and time range. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

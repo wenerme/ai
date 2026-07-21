@@ -31,7 +31,7 @@ let value: ResponsesOutputItemFileSearchCall = {
 
 | Field     | Type                                                                                                               | Required             | Description | Example   |
 | --------- | ------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | --------- |
-| `type`    | [models.ResponsesOutputItemFileSearchCallType](/agent-sdk/typescript/models/responsesoutputitemfilesearchcalltype) | :heavy\_check\_mark: | N/A         |           |
+| `type`    | [models.ResponsesOutputItemFileSearchCallType](/docs/agent-sdk/typescript/models/responsesoutputitemfilesearchcalltype) | :heavy\_check\_mark: | N/A         |           |
 | `id`      | *string*                                                                                                           | :heavy\_check\_mark: | N/A         |           |
 | `queries` | *string*\[]                                                                                                        | :heavy\_check\_mark: | N/A         |           |
-| `status`  | [models.WebSearchStatus](/agent-sdk/typescript/models/websearchstatus)                                             | :heavy\_check\_mark: | N/A         | completed |
+| `status`  | [models.WebSearchStatus](/docs/agent-sdk/typescript/models/websearchstatus)                                             | :heavy\_check\_mark: | N/A         | completed |

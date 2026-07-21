@@ -34,5 +34,5 @@ let value: ChatTokenLogprobs = {
 
 | Field     | Type                                                                                      | Required             | Description                          |
 | --------- | ----------------------------------------------------------------------------------------- | -------------------- | ------------------------------------ |
-| `content` | [models.ChatTokenLogprob](/agent-sdk/typescript/api-reference/models/chattokenlogprob)\[] | :heavy\_check\_mark: | Log probabilities for content tokens |
-| `refusal` | [models.ChatTokenLogprob](/agent-sdk/typescript/api-reference/models/chattokenlogprob)\[] | :heavy\_minus\_sign: | Log probabilities for refusal tokens |
+| `content` | [models.ChatTokenLogprob](/docs/agent-sdk/typescript/api-reference/models/chattokenlogprob)\[] | :heavy\_check\_mark: | Log probabilities for content tokens |
+| `refusal` | [models.ChatTokenLogprob](/docs/agent-sdk/typescript/api-reference/models/chattokenlogprob)\[] | :heavy\_minus\_sign: | Log probabilities for refusal tokens |

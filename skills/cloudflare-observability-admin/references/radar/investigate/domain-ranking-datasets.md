@@ -1,7 +1,7 @@
 ---
 title: Domains ranking
 description: Retrieve Cloudflare Radar domain rankings based on 1.1.1.1 DNS queries, including ordered top 100 lists and bucket datasets up to one million domains.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -155,6 +155,6 @@ a2z.com
 Refer to [Investigate outages](https://developers.cloudflare.com/radar/investigate/outages/) to get data from outages occurring around the world.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/#page","headline":"Domains ranking · Cloudflare Radar docs","description":"Retrieve Cloudflare Radar domain rankings based on 1.1.1.1 DNS queries, including ordered top 100 lists and bucket datasets up to one million domains.","url":"https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/#page","headline":"Domains ranking · Cloudflare Radar docs","description":"Retrieve Cloudflare Radar domain rankings based on 1.1.1.1 DNS queries, including ordered top 100 lists and bucket datasets up to one million domains.","url":"https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/domain-ranking-datasets/","name":"Domains ranking"}}]}
 ```

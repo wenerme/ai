@@ -28,5 +28,5 @@ let value: AnthropicBase64ImageSource = {
 | Field       | Type                                                                                               | Required             | Description | Example    |
 | ----------- | -------------------------------------------------------------------------------------------------- | -------------------- | ----------- | ---------- |
 | `data`      | *string*                                                                                           | :heavy\_check\_mark: | N/A         |            |
-| `mediaType` | [models.AnthropicImageMimeType](/agent-sdk/typescript/api-reference/models/anthropicimagemimetype) | :heavy\_check\_mark: | N/A         | image/jpeg |
+| `mediaType` | [models.AnthropicImageMimeType](/docs/agent-sdk/typescript/api-reference/models/anthropicimagemimetype) | :heavy\_check\_mark: | N/A         | image/jpeg |
 | `type`      | *"base64"*                                                                                         | :heavy\_check\_mark: | N/A         |            |

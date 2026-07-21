@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot routing and BGP
 description: Troubleshoot Magic Transit routing and BGP issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -302,6 +302,6 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 * [Cloudflare Status ↗](https://www.cloudflarestatus.com/): Maintenance and incident notifications
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/#page","headline":"Troubleshoot routing and BGP · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit routing and BGP issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/#page","headline":"Troubleshoot routing and BGP · Cloudflare Magic Transit docs","description":"Troubleshoot Magic Transit routing and BGP issues.","url":"https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/troubleshooting/routing-and-bgp/","name":"Troubleshoot routing and BGP"}}]}
 ```

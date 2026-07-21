@@ -1,7 +1,7 @@
 ---
 title: App Launcher customization
 description: App Launcher customization in Zero Trust.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ All of the properties configured in Step 3 will also apply to the landing page.
 The App Launcher screens are now updated. To view your changes, select **Preview**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/#page","headline":"App Launcher customization · Cloudflare One docs","description":"App Launcher customization in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/#page","headline":"App Launcher customization · Cloudflare One docs","description":"App Launcher customization in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/reusable-components/","name":"Reusable components"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/reusable-components/custom-pages/","name":"Custom pages"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/","name":"App Launcher customization"}}]}
 ```

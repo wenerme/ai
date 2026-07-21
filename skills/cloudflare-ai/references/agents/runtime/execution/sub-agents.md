@@ -1,7 +1,7 @@
 ---
 title: Sub-agents
 description: Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -872,6 +872,6 @@ For sub-agent workflow origins, `AgentWorkflow.agent` is RPC-only. Use it to cal
 * [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — scheduling primitives for top-level agents and sub-agents
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/#page","headline":"Sub-agents · Cloudflare Agents docs","description":"Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().","url":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/#page","headline":"Sub-agents · Cloudflare Agents docs","description":"Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().","url":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/sub-agents/","name":"Sub-agents"}}]}
 ```

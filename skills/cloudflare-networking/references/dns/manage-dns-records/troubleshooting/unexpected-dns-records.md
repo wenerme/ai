@@ -1,7 +1,7 @@
 ---
 title: Unexpected DNS records
 description: Identify and remove unexpected DNS records.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -144,6 +144,6 @@ In this circumstance, purge your public DNS cache via these methods:
 * [Purge your DNS cache locally ↗](https://docs.cpanel.net/knowledge-base/dns/how-to-clear-your-dns-cache/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/#page","headline":"Unexpected DNS records · Cloudflare DNS docs","description":"Identify and remove unexpected DNS records.","url":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/#page","headline":"Unexpected DNS records · Cloudflare DNS docs","description":"Identify and remove unexpected DNS records.","url":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/troubleshooting/unexpected-dns-records/","name":"Unexpected DNS records"}}]}
 ```

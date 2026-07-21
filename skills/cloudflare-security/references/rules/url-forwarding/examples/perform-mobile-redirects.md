@@ -1,7 +1,7 @@
 ---
 title: Perform mobile redirects
 description: Create a redirect rule to redirect visitors using mobile devices to a different hostname.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -62,6 +62,6 @@ Notes about this example:
 * You can redirect users to other zones on Cloudflare or to other hostnames not on Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/#page","headline":"Perform mobile redirects · Cloudflare Rules docs","description":"Create a redirect rule to redirect visitors using mobile devices to a different hostname.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/#page","headline":"Perform mobile redirects · Cloudflare Rules docs","description":"Create a redirect rule to redirect visitors using mobile devices to a different hostname.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/examples/","name":"Redirect examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/examples/perform-mobile-redirects/","name":"Perform mobile redirects"}}]}
 ```

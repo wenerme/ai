@@ -1,7 +1,7 @@
 ---
 title: Pricing
 description: Billing rates for Containers vCPU, memory, disk, and network egress, including included usage on the Workers Paid plan.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -63,6 +63,6 @@ Containers are integrated with the [Workers Logs](https://developers.cloudflare.
 When you [enable observability for your Worker](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs) with a binding to a container, logs from your container will show in both the Containers and Observability sections of the Cloudflare dashboard.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/pricing/#page","headline":"Pricing · Cloudflare Containers docs","description":"Billing rates for Containers vCPU, memory, disk, and network egress, including included usage on the Workers Paid plan.","url":"https://developers.cloudflare.com/containers/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/pricing/#page","headline":"Pricing · Cloudflare Containers docs","description":"Billing rates for Containers vCPU, memory, disk, and network egress, including included usage on the Workers Paid plan.","url":"https://developers.cloudflare.com/containers/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/pricing/","name":"Pricing"}}]}
 ```

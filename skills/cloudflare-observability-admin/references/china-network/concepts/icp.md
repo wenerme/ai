@@ -1,7 +1,7 @@
 ---
 title: Internet Content Provider (ICP)
 description: Obtain and display an ICP license number required for websites operating in China.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -58,6 +58,6 @@ After you obtain an ICP number, you must display it in the footer of your websit
 ![An ICP number displayed in the footer of a website.](https://developers.cloudflare.com/_astro/icp-number-in-footer.BX2CP_mf_1Ozdwp.webp)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/icp/#page","headline":"Internet Content Provider (ICP) · Cloudflare China Network docs","description":"Obtain and display an ICP license number required for websites operating in China.","url":"https://developers.cloudflare.com/china-network/concepts/icp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/icp/#page","headline":"Internet Content Provider (ICP) · Cloudflare China Network docs","description":"Obtain and display an ICP license number required for websites operating in China.","url":"https://developers.cloudflare.com/china-network/concepts/icp/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/china-network/concepts/icp/","name":"Internet Content Provider (ICP)"}}]}
 ```

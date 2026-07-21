@@ -9,7 +9,7 @@
 <Note>
   **Try Web Search Server Tool**
 
-  For improved quality results, try the [`openrouter:web_search` server tool](/guides/features/server-tools/web-search). Server tools give the model control over when and how often to search, rather than always running once per request.
+  For improved quality results, try the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search). Server tools give the model control over when and how often to search, rather than always running once per request.
 </Note>
 
 You can incorporate relevant web search results for *any* model on OpenRouter by activating and customizing the `web` plugin, or by appending `:online` to the model slug:
@@ -41,7 +41,7 @@ You can also append `:online` to `:free` model variants like so:
 }
 ```
 
-The web search plugin is powered by native search for Anthropic, Google, OpenAI, Perplexity, and xAI models. See the [server tools web search docs](/guides/features/server-tools/web-search#native-search-providers) for the full list of supported model families per provider.
+The web search plugin is powered by native search for Anthropic, Google, OpenAI, Perplexity, and xAI models. See the [server tools web search docs](/docs/guides/features/server-tools/web-search#native-search-providers) for the full list of supported model families per provider.
 
 <Note>
   For xAI models, the web search plugin enables both Web Search and X Search.

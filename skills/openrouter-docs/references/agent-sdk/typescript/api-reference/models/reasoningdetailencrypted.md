@@ -29,7 +29,7 @@ let value: ReasoningDetailEncrypted = {
 | Field    | Type                                                                                 | Required             | Description | Example |
 | -------- | ------------------------------------------------------------------------------------ | -------------------- | ----------- | ------- |
 | `data`   | *string*                                                                             | :heavy\_check\_mark: | N/A         |         |
-| `format` | [models.ReasoningFormat](/agent-sdk/typescript/api-reference/models/reasoningformat) | :heavy\_minus\_sign: | N/A         | unknown |
+| `format` | [models.ReasoningFormat](/docs/agent-sdk/typescript/api-reference/models/reasoningformat) | :heavy\_minus\_sign: | N/A         | unknown |
 | `id`     | *string*                                                                             | :heavy\_minus\_sign: | N/A         |         |
 | `index`  | *number*                                                                             | :heavy\_minus\_sign: | N/A         |         |
 | `type`   | *"reasoning.encrypted"*                                                              | :heavy\_check\_mark: | N/A         |         |

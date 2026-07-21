@@ -197,7 +197,7 @@ This works on all three APIs; the only requirement is that you **replay the advi
 * **Responses API**: include the `openrouter:advisor` output items from prior responses in `input`, unchanged.
 * **Anthropic Messages API**: include the assistant message's advisor `server_tool_use` and `advisor_tool_result` content blocks from prior turns.
 
-Memory is **per advisor**: in a multi-advisor setup, each advisor recalls only its own prior exchanges — a "reviewer" advisor never sees what the "architect" was told. There is no fixed limit on the number of replayed exchanges; if the history exceeds the advisor model's context window, it is compressed with the [middle-out transform](/guides/features/message-transforms), which trims the middle of the conversation and keeps the oldest and newest exchanges.
+Memory is **per advisor**: in a multi-advisor setup, each advisor recalls only its own prior exchanges — a "reviewer" advisor never sees what the "architect" was told. There is no fixed limit on the number of replayed exchanges; if the history exceeds the advisor model's context window, it is compressed with the [middle-out transform](/docs/guides/features/message-transforms), which trims the middle of the conversation and keeps the oldest and newest exchanges.
 
 Memory applies to prompt-mode consultations. With `forward_transcript: true` the advisor already sees the full parent conversation, so prior exchanges are not separately replayed.
 
@@ -319,6 +319,6 @@ Consultations are also capped per request to bound cost and latency.
 
 ## Related
 
-* [Fusion server tool](/guides/features/server-tools/fusion) — multi-model deliberation
-* [Web Search server tool](/guides/features/server-tools/web-search)
-* [Web Fetch server tool](/guides/features/server-tools/web-fetch)
+* [Fusion server tool](/docs/guides/features/server-tools/fusion) — multi-model deliberation
+* [Web Search server tool](/docs/guides/features/server-tools/web-search)
+* [Web Fetch server tool](/docs/guides/features/server-tools/web-fetch)

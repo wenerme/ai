@@ -1,7 +1,7 @@
 ---
 title: Get Global API key (legacy)
 description: Retrieve or change your Cloudflare Global API key, a legacy authentication method with full account access.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -50,6 +50,6 @@ If your API key might be compromised, change your API key:
 4. Select **Change**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/get-started/keys/#page","headline":"Get Global API key (legacy) · Cloudflare Fundamentals docs","description":"Retrieve or change your Cloudflare Global API key, a legacy authentication method with full account access.","url":"https://developers.cloudflare.com/fundamentals/api/get-started/keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/get-started/keys/#page","headline":"Get Global API key (legacy) · Cloudflare Fundamentals docs","description":"Retrieve or change your Cloudflare Global API key, a legacy authentication method with full account access.","url":"https://developers.cloudflare.com/fundamentals/api/get-started/keys/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/get-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/get-started/keys/","name":"Get Global API key (legacy)"}}]}
 ```

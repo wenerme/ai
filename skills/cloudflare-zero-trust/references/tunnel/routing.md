@@ -1,7 +1,7 @@
 ---
 title: Routing
 description: Route traffic to private networks and services through Cloudflare Tunnel.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -199,6 +199,6 @@ Published applications inherit the Cloudflare settings for their hostname, inclu
 If you use a load balancer, settings are applied to the load balancer hostname instead.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/routing/#page","headline":"Routing · Cloudflare Docs","description":"Route traffic to private networks and services through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","WebSockets"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/routing/#page","headline":"Routing · Cloudflare Docs","description":"Route traffic to private networks and services through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","WebSockets"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/routing/","name":"Routing"}}]}
 ```

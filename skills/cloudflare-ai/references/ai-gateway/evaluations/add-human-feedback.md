@@ -1,7 +1,7 @@
 ---
 title: Add Human Feedback using Dashboard
 description: Annotate AI Gateway logs with thumbs-up or thumbs-down feedback in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -70,6 +70,6 @@ The human feedback score is displayed as a percentage, showing the distribution 
 For more information on running evaluations, refer to the documentation [Set Up Evaluations](https://developers.cloudflare.com/ai-gateway/evaluations/set-up-evaluations/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback/#page","headline":"Add Human Feedback using Dashboard · Cloudflare AI Gateway docs","description":"Annotate AI Gateway logs with thumbs-up or thumbs-down feedback in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback/#page","headline":"Add Human Feedback using Dashboard · Cloudflare AI Gateway docs","description":"Annotate AI Gateway logs with thumbs-up or thumbs-down feedback in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/evaluations/","name":"Evaluations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/evaluations/add-human-feedback/","name":"Add Human Feedback using Dashboard"}}]}
 ```

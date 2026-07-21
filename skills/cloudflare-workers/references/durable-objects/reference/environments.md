@@ -1,7 +1,7 @@
 ---
 title: Environments
 description: Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -152,6 +152,6 @@ Warning
 Remote development is only available for KV-backed Durable Objects. SQLite-backed Durable Objects do not support remote development.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/environments/#page","headline":"Environments · Cloudflare Durable Objects docs","description":"Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.","url":"https://developers.cloudflare.com/durable-objects/reference/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/environments/#page","headline":"Environments · Cloudflare Durable Objects docs","description":"Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.","url":"https://developers.cloudflare.com/durable-objects/reference/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/environments/","name":"Environments"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: S3 API compatibility
 description: Review which S3 API operations and features R2 supports, including implementation status.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -162,6 +162,6 @@ Unimplemented object-level operations
 | ❌ [DeleteObjectTagging ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API%5FDeleteObjectTagging.html) | ❌ Bucket Owner:  ❌ x-amz-expected-bucket-owner                                                                                        |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/api/#page","headline":"S3 API compatibility · Cloudflare R2 docs","description":"Review which S3 API operations and features R2 supports, including implementation status.","url":"https://developers.cloudflare.com/r2/api/s3/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/api/#page","headline":"S3 API compatibility · Cloudflare R2 docs","description":"Review which S3 API operations and features R2 supports, including implementation status.","url":"https://developers.cloudflare.com/r2/api/s3/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/s3/","name":"S3"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/s3/api/","name":"S3 API compatibility"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: RUM beacon for Web Analytics
 description: Collect real user performance metrics with the RUM beacon.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -65,6 +65,6 @@ Free customers have RUM enabled automatically, with EU traffic excluded, and can
 1. The web-vitals module is an open-source module written by Google. It does not access any type of storage on the browser. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3) [↩4](#user-content-fnref-1-4) [↩5](#user-content-fnref-1-5) [↩6](#user-content-fnref-1-6)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/observatory/rum-beacon/#page","headline":"RUM beacon for Web Analytics · Cloudflare Speed docs","description":"Collect real user performance metrics with the RUM beacon.","url":"https://developers.cloudflare.com/speed/observatory/rum-beacon/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/observatory/rum-beacon/#page","headline":"RUM beacon for Web Analytics · Cloudflare Speed docs","description":"Collect real user performance metrics with the RUM beacon.","url":"https://developers.cloudflare.com/speed/observatory/rum-beacon/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/observatory/","name":"Observatory (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/observatory/rum-beacon/","name":"RUM beacon for Web Analytics"}}]}
 ```

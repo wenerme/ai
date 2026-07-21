@@ -1,7 +1,7 @@
 ---
 title: Connect to a MySQL database with Cloudflare Workers
 description: This tutorial explains how to connect to a Cloudflare database using TCP Sockets and Hyperdrive. The Workers application you create in this tutorial will interact with a product database inside of MySQL.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -273,6 +273,6 @@ To build more with databases and Workers, refer to [Tutorials](https://developer
 If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/mysql/#page","headline":"Connect to a MySQL database with Cloudflare Workers · Cloudflare Workers docs","description":"This tutorial explains how to connect to a Cloudflare database using TCP Sockets and Hyperdrive. The Workers application you create in this tutorial will interact with a product database inside of MySQL.","url":"https://developers.cloudflare.com/workers/tutorials/mysql/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MySQL","TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/mysql/#page","headline":"Connect to a MySQL database with Cloudflare Workers · Cloudflare Workers docs","description":"This tutorial explains how to connect to a Cloudflare database using TCP Sockets and Hyperdrive. The Workers application you create in this tutorial will interact with a product database inside of MySQL.","url":"https://developers.cloudflare.com/workers/tutorials/mysql/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-02-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MySQL","TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/mysql/","name":"Connect to a MySQL database with Cloudflare Workers"}}]}
 ```

@@ -32,4 +32,4 @@ let value: ResponseInputAudio = {
 | Field        | Type                                                                                             | Required             | Description |
 | ------------ | ------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `type`       | *"input\_audio"*                                                                                 | :heavy\_check\_mark: | N/A         |
-| `inputAudio` | [models.ResponseInputAudioInputAudio](/agent-sdk/typescript/models/responseinputaudioinputaudio) | :heavy\_check\_mark: | N/A         |
+| `inputAudio` | [models.ResponseInputAudioInputAudio](/docs/agent-sdk/typescript/models/responseinputaudioinputaudio) | :heavy\_check\_mark: | N/A         |

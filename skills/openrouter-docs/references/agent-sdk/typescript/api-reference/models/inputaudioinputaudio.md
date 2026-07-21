@@ -27,4 +27,4 @@ let value: InputAudioInputAudio = {
 | Field    | Type                                                                       | Required             | Description |
 | -------- | -------------------------------------------------------------------------- | -------------------- | ----------- |
 | `data`   | *string*                                                                   | :heavy\_check\_mark: | N/A         |
-| `format` | [models.FormatEnum](/agent-sdk/typescript/api-reference/models/formatenum) | :heavy\_check\_mark: | N/A         |
+| `format` | [models.FormatEnum](/docs/agent-sdk/typescript/api-reference/models/formatenum) | :heavy\_check\_mark: | N/A         |

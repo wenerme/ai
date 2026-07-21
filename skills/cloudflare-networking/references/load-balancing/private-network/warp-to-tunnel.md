@@ -1,7 +1,7 @@
 ---
 title: Set up Private Network Load Balancing with Client-to-Tunnel
 description: Load balance WARP client traffic to private origins via Tunnel.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -150,6 +150,6 @@ If you want your load balancer and its endpoints to be transparently accessible 
 Requests to the hostname will now resolve to your private load balancer.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/#page","headline":"Set up Private Network Load Balancing with Client-to-Tunnel · Cloudflare Load Balancing docs","description":"Load balance WARP client traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/#page","headline":"Set up Private Network Load Balancing with Client-to-Tunnel · Cloudflare Load Balancing docs","description":"Load balance WARP client traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/private-network/","name":"Private Network Load Balancing"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/private-network/warp-to-tunnel/","name":"Set up Private Network Load Balancing with Client-to-Tunnel"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Supported networks
 description: Ethereum networks supported by the Cloudflare Ethereum Gateway.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -20,6 +20,6 @@ Currently, Cloudflare Ethereum gateways support [interacting with](https://devel
 | [Sepolia Testnet ↗](https://sepolia.dev/)                 | Append /v1/sepolia to calls to your gateway.                                                       |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/#page","headline":"Supported networks - Ethereum Gateway · Cloudflare Web3 docs","description":"Ethereum networks supported by the Cloudflare Ethereum Gateway.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/#page","headline":"Supported networks - Ethereum Gateway · Cloudflare Web3 docs","description":"Ethereum networks supported by the Cloudflare Ethereum Gateway.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ethereum-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ethereum-gateway/reference/supported-networks/","name":"Supported networks"}}]}
 ```

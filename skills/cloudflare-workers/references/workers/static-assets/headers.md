@@ -1,7 +1,7 @@
 ---
 title: Headers
 description: Learn about default and custom headers for Workers static assets, including Cache-Control, ETag, and Content-Type behavior.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -180,6 +180,6 @@ If you need fine-grained control over your application's content, the [Content-S
 1. Due to a technical limitation that we hope to address in the future, the `CF-Cache-Status` header is not always entirely accurate. It is possible for false-positives and false-negatives to occur. This should be rare. In the meantime, this header should be considered as returning a "probabilistic" result. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/headers/#page","headline":"Headers · Cloudflare Workers docs","description":"Learn about default and custom headers for Workers static assets, including Cache-Control, ETag, and Content-Type behavior.","url":"https://developers.cloudflare.com/workers/static-assets/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/headers/#page","headline":"Headers · Cloudflare Workers docs","description":"Learn about default and custom headers for Workers static assets, including Cache-Control, ETag, and Content-Type behavior.","url":"https://developers.cloudflare.com/workers/static-assets/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/headers/","name":"Headers"}}]}
 ```

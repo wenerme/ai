@@ -8,7 +8,7 @@ Sampling parameters shape the token generation process of the model. You may sen
 
 OpenRouter will default to the values listed below if certain parameters are absent from your request (for example, `temperature` to 1.0). We will also transmit some provider-specific parameters, such as `safe_prompt` for Mistral or `raw_mode` for Hyperbolic directly to the respective providers if specified.
 
-Please refer to the model’s provider section to confirm which parameters are supported. For detailed guidance on managing provider-specific parameters, [click here](/guides/routing/provider-selection#requiring-providers-to-support-all-parameters).
+Please refer to the model’s provider section to confirm which parameters are supported. For detailed guidance on managing provider-specific parameters, [click here](/docs/guides/routing/provider-selection#requiring-providers-to-support-all-parameters).
 
 ## Temperature
 
@@ -183,7 +183,7 @@ Stop generation immediately if the model encounter any token specified in the st
 
 * Optional, **array**
 
-Tool calling parameter, following OpenAI's tool calling request shape. For non-OpenAI providers, it will be transformed accordingly. [Click here to learn more about tool calling](/guides/features/tool-calling)
+Tool calling parameter, following OpenAI's tool calling request shape. For non-OpenAI providers, it will be transformed accordingly. [Click here to learn more about tool calling](/docs/guides/features/tool-calling)
 
 ## Tool Choice
 

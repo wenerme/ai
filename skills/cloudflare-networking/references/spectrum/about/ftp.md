@@ -1,7 +1,7 @@
 ---
 title: FTP
 description: Enable Spectrum for FTP services and understand protocol limitations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -93,6 +93,6 @@ Refer to the [Microsoft Windows IIS documentation ↗](https://docs.microsoft.co
 Additionally, IIS requires that the source IP for both, FTP control and data connections are the same. However, when using Spectrum, this requirement may not be met, as both connections often terminate on different servers with their own unique egress IPs. To ensure proper functionality, also set `dataChannelSecurity/matchClientAddressForPasv = false`. Refer to [Microsoft Windows IIS FTP Official Guide ↗](https://learn.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/site/ftpserver/security/datachannelsecurity) for further details.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/ftp/#page","headline":"FTP · Cloudflare Spectrum docs","description":"Enable Spectrum for FTP services and understand protocol limitations.","url":"https://developers.cloudflare.com/spectrum/about/ftp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["FTP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/ftp/#page","headline":"FTP · Cloudflare Spectrum docs","description":"Enable Spectrum for FTP services and understand protocol limitations.","url":"https://developers.cloudflare.com/spectrum/about/ftp/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["FTP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/ftp/","name":"FTP"}}]}
 ```

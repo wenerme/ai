@@ -1,7 +1,7 @@
 ---
 title: Enhanced HTTP/2 Prioritization negatively affects iOS/Safari devices
 description: Fix Enhanced HTTP/2 Prioritization issues on iOS and Safari.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ Sometimes, [HTTP/2](https://developers.cloudflare.com/speed/optimization/protoco
 If you notice this happening, also disable **HTTP/2**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/enhanced-http2-prioritization-ios-safari/#page","headline":"Enhanced HTTP/2 Prioritization negatively affects iOS/Safari devices · Cloudflare Speed docs","description":"Fix Enhanced HTTP/2 Prioritization issues on iOS and Safari.","url":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/enhanced-http2-prioritization-ios-safari/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/enhanced-http2-prioritization-ios-safari/#page","headline":"Enhanced HTTP/2 Prioritization negatively affects iOS/Safari devices · Cloudflare Speed docs","description":"Fix Enhanced HTTP/2 Prioritization issues on iOS and Safari.","url":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/enhanced-http2-prioritization-ios-safari/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/protocol/","name":"Protocol optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/protocol/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/protocol/troubleshooting/enhanced-http2-prioritization-ios-safari/","name":"Enhanced HTTP/2 Prioritization negatively affects iOS/Safari devices"}}]}
 ```

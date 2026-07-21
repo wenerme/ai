@@ -26,4 +26,4 @@ let value: OpenResponsesResponseText = {};
 | Field       | Type                                                                                                         | Required             | Description                        | Example            |
 | ----------- | ------------------------------------------------------------------------------------------------------------ | -------------------- | ---------------------------------- | ------------------ |
 | `format`    | *models.ResponseFormatTextConfig*                                                                            | :heavy\_minus\_sign: | Text response format configuration | `{"type": "text"}` |
-| `verbosity` | [models.OpenResponsesResponseTextVerbosity](/agent-sdk/typescript/models/openresponsesresponsetextverbosity) | :heavy\_minus\_sign: | N/A                                |                    |
+| `verbosity` | [models.OpenResponsesResponseTextVerbosity](/docs/agent-sdk/typescript/models/openresponsesresponsetextverbosity) | :heavy\_minus\_sign: | N/A                                |                    |

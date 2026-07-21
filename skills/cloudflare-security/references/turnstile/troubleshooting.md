@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Troubleshoot common Turnstile widget and validation issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ Refer to the following pages for more information about troubleshooting Turnstil
 * [ Feedback reports ](https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Turnstile docs","description":"Troubleshoot common Turnstile widget and validation issues.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Turnstile docs","description":"Troubleshoot common Turnstile widget and validation issues.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/troubleshooting/","name":"Troubleshooting"}}]}
 ```

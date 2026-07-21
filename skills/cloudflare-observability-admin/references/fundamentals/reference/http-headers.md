@@ -1,7 +1,7 @@
 ---
 title: Cloudflare HTTP headers
 description: Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -192,6 +192,6 @@ The `Cf-Ray` value returned to the visitor will be the same `Cf-Ray` value that 
 A list of all possible `Cf-Cache-Status` values is contained in [Cloudflare cache responses](https://developers.cloudflare.com/cache/concepts/cache-responses/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/http-headers/#page","headline":"Cloudflare HTTP headers · Cloudflare Fundamentals docs","description":"Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/reference/http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/http-headers/#page","headline":"Cloudflare HTTP headers · Cloudflare Fundamentals docs","description":"Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/reference/http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/http-headers/","name":"Cloudflare HTTP headers"}}]}
 ```

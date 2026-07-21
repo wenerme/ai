@@ -25,7 +25,7 @@ let value: WebSearchPreviewToolUserLocation = {
 
 | Field      | Type                                                                                                             | Required             | Description |
 | ---------- | ---------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type`     | [models.WebSearchPreviewToolUserLocationType](/agent-sdk/typescript/models/websearchpreviewtooluserlocationtype) | :heavy\_check\_mark: | N/A         |
+| `type`     | [models.WebSearchPreviewToolUserLocationType](/docs/agent-sdk/typescript/models/websearchpreviewtooluserlocationtype) | :heavy\_check\_mark: | N/A         |
 | `city`     | *string*                                                                                                         | :heavy\_minus\_sign: | N/A         |
 | `country`  | *string*                                                                                                         | :heavy\_minus\_sign: | N/A         |
 | `region`   | *string*                                                                                                         | :heavy\_minus\_sign: | N/A         |

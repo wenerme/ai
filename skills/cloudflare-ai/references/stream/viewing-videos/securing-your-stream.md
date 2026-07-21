@@ -1,7 +1,7 @@
 ---
 title: Secure your Stream
 description: Restrict access to Cloudflare Stream videos using signed URLs and tokens.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -529,6 +529,6 @@ The Allowed Origins feature lets you specify which origins are allowed for playb
 Combining signed URLs with embedding restrictions allows you to strongly control how your videos are viewed. This lets you serve only trusted users while preventing the signed URL from being hosted on an unknown site.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/#page","headline":"Secure your Stream · Cloudflare Stream docs","description":"Restrict access to Cloudflare Stream videos using signed URLs and tokens.","url":"https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/#page","headline":"Secure your Stream · Cloudflare Stream docs","description":"Restrict access to Cloudflare Stream videos using signed URLs and tokens.","url":"https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/viewing-videos/","name":"Play video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/viewing-videos/securing-your-stream/","name":"Secure your Stream"}}]}
 ```

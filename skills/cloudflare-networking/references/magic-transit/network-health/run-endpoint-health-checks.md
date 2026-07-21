@@ -1,7 +1,7 @@
 ---
 title: Run endpoint health checks (beta)
 description: Run endpoint health checks for Magic Transit origins.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -262,6 +262,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpo
 You will now receive notifications through your preferred method whenever the SLO for your endpoint health checks falls below your chosen threshold.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/#page","headline":"Run endpoint health checks (beta) · Cloudflare Magic Transit docs","description":"Run endpoint health checks for Magic Transit origins.","url":"https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","ICMP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/#page","headline":"Run endpoint health checks (beta) · Cloudflare Magic Transit docs","description":"Run endpoint health checks for Magic Transit origins.","url":"https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","ICMP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/network-health/","name":"Network health"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/network-health/run-endpoint-health-checks/","name":"Run endpoint health checks (beta)"}}]}
 ```

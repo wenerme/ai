@@ -33,4 +33,4 @@ let value: LegacyChatContentVideo = {
 | Field      | Type                                                                                             | Required             | Description        | Example                                    |
 | ---------- | ------------------------------------------------------------------------------------------------ | -------------------- | ------------------ | ------------------------------------------ |
 | `type`     | *"input\_video"*                                                                                 | :heavy\_check\_mark: | N/A                |                                            |
-| `videoUrl` | [models.ChatContentVideoInput](/agent-sdk/typescript/api-reference/models/chatcontentvideoinput) | :heavy\_check\_mark: | Video input object | `{"url": "https://example.com/video.mp4"}` |
+| `videoUrl` | [models.ChatContentVideoInput](/docs/agent-sdk/typescript/api-reference/models/chatcontentvideoinput) | :heavy\_check\_mark: | Video input object | `{"url": "https://example.com/video.mp4"}` |

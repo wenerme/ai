@@ -27,16 +27,16 @@ You need:
 
 <Tip>
   If you have not chosen a model yet, read
-  [Choose a Video Generation Model](/cookbook/video-generation/choose-video-model)
+  [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
   so you can select one based on your clip duration, output shape, input type,
   audio, provider controls, and cost requirements.
 </Tip>
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
-* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
-* [TypeScript SDK video generation reference](/client-sdks/typescript/sdks/videogeneration/README)
+* [Create video generation request](/docs/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/docs/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/sdks/videogeneration/README)
 
 <Warning>
   Submitting `POST /api/v1/videos` starts a real video generation job and may

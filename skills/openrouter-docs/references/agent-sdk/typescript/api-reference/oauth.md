@@ -91,14 +91,14 @@ run();
 
 | Parameter              | Type                                                                                                                           | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.ExchangeAuthCodeForAPIKeyRequest](/agent-sdk/typescript/api-reference/operations/exchangeauthcodeforapikeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.ExchangeAuthCodeForAPIKeyRequest](/docs/agent-sdk/typescript/api-reference/operations/exchangeauthcodeforapikeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                                 | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                        | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                             | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                             | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ExchangeAuthCodeForAPIKeyResponse](/agent-sdk/typescript/api-reference/operations/exchangeauthcodeforapikeyresponse)>**
+**Promise\<[operations.ExchangeAuthCodeForAPIKeyResponse](/docs/agent-sdk/typescript/api-reference/operations/exchangeauthcodeforapikeyresponse)>**
 
 ### Errors
 
@@ -182,14 +182,14 @@ run();
 
 | Parameter              | Type                                                                                                             | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.CreateAuthKeysCodeRequest](/agent-sdk/typescript/api-reference/operations/createauthkeyscoderequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.CreateAuthKeysCodeRequest](/docs/agent-sdk/typescript/api-reference/operations/createauthkeyscoderequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                   | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                          | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                               | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                               | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.CreateAuthKeysCodeResponse](/agent-sdk/typescript/api-reference/operations/createauthkeyscoderesponse)>**
+**Promise\<[operations.CreateAuthKeysCodeResponse](/docs/agent-sdk/typescript/api-reference/operations/createauthkeyscoderesponse)>**
 
 ### Errors
 

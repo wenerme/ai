@@ -1,7 +1,7 @@
 ---
 title: Infrastructure
 description: China data center locations, network IP addresses, and API endpoints.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -54,6 +54,6 @@ The `jdcloud_cidrs` array lists the IP addresses of JD Cloud data centers.
 Cloudflare will add new IP addresses to this list 30 days in advance before connecting from those IP addresses to an origin server. If you are using the China Network on JD Cloud, you should update your firewalls to reflect any IP address changes at least once every 30 days.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/reference/infrastructure/#page","headline":"Infrastructure · Cloudflare China Network docs","description":"China data center locations, network IP addresses, and API endpoints.","url":"https://developers.cloudflare.com/china-network/reference/infrastructure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/reference/infrastructure/#page","headline":"Infrastructure · Cloudflare China Network docs","description":"China data center locations, network IP addresses, and API endpoints.","url":"https://developers.cloudflare.com/china-network/reference/infrastructure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/china-network/reference/infrastructure/","name":"Infrastructure"}}]}
 ```

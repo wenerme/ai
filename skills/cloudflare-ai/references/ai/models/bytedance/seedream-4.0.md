@@ -1,7 +1,7 @@
 ---
 title: Seedream 4.0
 description: Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -313,6 +313,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/sch
 Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/#page","headline":"Seedream 4.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/#page","headline":"Seedream 4.0 (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Gateway block page
 description: Set up custom Gateway block pages.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -146,6 +146,6 @@ Client notifications provide additional functionality over the [custom block pag
 * Client notifications allow you to direct users to a unique link per individual policy. For example, you could link users to your organization's acceptable use policy, data protection policy, or any existing IT troubleshooting infrastructure. If no infrastructure for this exists within your organization, you can quickly deploy an HTML site on [Cloudflare Pages](https://developers.cloudflare.com/pages/), put the site behind a [Cloudflare Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and provide dynamic feedback based on the identity and device posture values found in the user's [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/#page","headline":"Gateway block page · Cloudflare Learning Paths","description":"Set up custom Gateway block pages.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/#page","headline":"Gateway block page · Cloudflare Learning Paths","description":"Set up custom Gateway block pages.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/block-page/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/build-policies/","name":"Build secure access policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/build-policies/block-page/","name":"Gateway block page"}}]}
 ```

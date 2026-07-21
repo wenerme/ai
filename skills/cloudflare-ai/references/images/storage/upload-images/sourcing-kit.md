@@ -1,7 +1,7 @@
 ---
 title: Upload via Sourcing Kit
 description: Bulk import images from Amazon S3 into Cloudflare Images using Sourcing Kit.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -24,6 +24,6 @@ Sourcing Kit can be a good choice if the Amazon S3 bucket you are importing cons
 * Images stored using S3 Intelligent Tiering and placed in Deep Archive tier will be skipped and logged in the migration log.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/#page","headline":"Upload via Sourcing Kit · Cloudflare Images docs","description":"Bulk import images from Amazon S3 into Cloudflare Images using Sourcing Kit.","url":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/#page","headline":"Upload via Sourcing Kit · Cloudflare Images docs","description":"Bulk import images from Amazon S3 into Cloudflare Images using Sourcing Kit.","url":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/storage/","name":"Storage"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/storage/upload-images/","name":"Upload images"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/storage/upload-images/sourcing-kit/","name":"Upload via Sourcing Kit"}}]}
 ```

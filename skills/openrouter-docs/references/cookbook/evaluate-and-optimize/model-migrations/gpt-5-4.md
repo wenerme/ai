@@ -15,7 +15,7 @@ workflows — it tells the model whether an assistant message
 is intermediate commentary or the final answer.
 
 OpenRouter supports `phase` in the
-[Responses API](/api/api-reference/responses/create-a-response).
+[Responses API](/docs/api/api-reference/responses/create-a-response).
 
 <Note>
   `phase` is **not available** in the Chat Completions API.
@@ -171,7 +171,7 @@ items that models like GPT-5.4 produce.
 
 If you need `phase` support for multi-turn agentic
 workflows, use the
-[Responses API](/api/api-reference/responses/create-a-response)
+[Responses API](/docs/api/api-reference/responses/create-a-response)
 instead.
 
 ## Implementation Pattern
@@ -230,6 +230,6 @@ None. The `phase` field is additive:
 
 * [Prompt Guidance for GPT-5.4](https://developers.openai.com/api/docs/guides/prompt-guidance/) — OpenAI's official guide covering prompt patterns and migration tips for GPT-5.4, including completeness checks, verification loops, tool persistence, and structured outputs.
 * [OpenAI Responses API Reference](https://developers.openai.com/api/reference/resources/responses/methods/create)
-* [Codex CLI Integration Guide](/cookbook/coding-agents/codex-cli)
-* [OpenRouter API Documentation](/api/reference/overview)
+* [Codex CLI Integration Guide](/docs/cookbook/coding-agents/codex-cli)
+* [OpenRouter API Documentation](/docs/api_reference/overview)
 * [OpenRouter Codex Models](https://openrouter.ai/models?q=codex)

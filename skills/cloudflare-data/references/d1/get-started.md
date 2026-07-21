@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Create your first D1 database, define a schema, and query it from a Cloudflare Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -558,6 +558,6 @@ If you have any feature requests or notice any bugs, share your feedback directl
 * Explore [community projects built on D1](https://developers.cloudflare.com/d1/reference/community-projects/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/get-started/#page","headline":"Getting started · Cloudflare D1 docs","description":"Create your first D1 database, define a schema, and query it from a Cloudflare Worker.","url":"https://developers.cloudflare.com/d1/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/get-started/#page","headline":"Getting started · Cloudflare D1 docs","description":"Create your first D1 database, define a schema, and query it from a Cloudflare Worker.","url":"https://developers.cloudflare.com/d1/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/get-started/","name":"Getting started"}}]}
 ```

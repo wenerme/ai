@@ -1,7 +1,7 @@
 ---
 title: Static IP
 description: Assign persistent IP addresses to your Spectrum applications.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 You can find your leased static IPs for Spectrum on the dashboard under [**Address space** \> **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/static-ip/#page","headline":"Static IP · Cloudflare Spectrum docs","description":"Assign persistent IP addresses to your Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/static-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/static-ip/#page","headline":"Static IP · Cloudflare Spectrum docs","description":"Assign persistent IP addresses to your Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/about/static-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/about/static-ip/","name":"Static IP"}}]}
 ```

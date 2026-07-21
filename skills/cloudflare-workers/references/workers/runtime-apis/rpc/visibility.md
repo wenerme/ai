@@ -1,7 +1,7 @@
 ---
 title: Visibility and Security Model
 description: Which properties are and are not exposed to clients that communicate with your Worker or Durable Object via RPC
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -101,6 +101,6 @@ someRpcMethod() {
 Such properties on a function are accessed asynchronously, like class properties of an RpcTarget. But, unlike the `RpcTarget` example above, the function's instance properties that are accessible to the caller. In practice, properties are rarely added to functions.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/#page","headline":"Workers RPC — Visibility and Security Model · Cloudflare Workers docs","description":"Which properties are and are not exposed to clients that communicate with your Worker or Durable Object via RPC","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/#page","headline":"Workers RPC — Visibility and Security Model · Cloudflare Workers docs","description":"Which properties are and are not exposed to clients that communicate with your Worker or Durable Object via RPC","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/rpc/","name":"Remote-procedure call (RPC)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/rpc/visibility/","name":"Visibility and Security Model"}}]}
 ```

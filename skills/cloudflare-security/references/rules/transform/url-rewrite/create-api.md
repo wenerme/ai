@@ -1,7 +1,7 @@
 ---
 title: Create a URL rewrite rule via API
 description: Create URL rewrite rules using the Rulesets API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -233,6 +233,6 @@ The API token used in API requests to manage URL Rewrite Rules must have at leas
 * _Account_ \> _Account Rulesets_ \> _Read_
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/#page","headline":"Create a URL rewrite rule via API · Cloudflare Rules docs","description":"Create URL rewrite rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/#page","headline":"Create a URL rewrite rule via API · Cloudflare Rules docs","description":"Create URL rewrite rules using the Rulesets API.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/url-rewrite/create-api/","name":"Create a URL rewrite rule via API"}}]}
 ```

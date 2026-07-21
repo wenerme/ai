@@ -1,7 +1,7 @@
 ---
 title: Compose a query in GraphiQL
 description: Learn how to use a GraphiQL client to compose and execute a GraphQL query. This guide covers setting up a query, selecting the dataset, and configuring parameters and fields.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -93,6 +93,6 @@ This example query uses the `zoneTag` query variable to represent the zone ID:
 ![Example of GraphiQL query variables](https://developers.cloudflare.com/_astro/graphiql-query-variables.D9uAtvLs_1bnPs.webp)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/#page","headline":"Compose a query in GraphiQL · Cloudflare Analytics docs","description":"Learn how to use a GraphiQL client to compose and execute a GraphQL query. This guide covers setting up a query, selecting the dataset, and configuring parameters and fields.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/#page","headline":"Compose a query in GraphiQL · Cloudflare Analytics docs","description":"Learn how to use a GraphiQL client to compose and execute a GraphQL query. This guide covers setting up a query, selecting the dataset, and configuring parameters and fields.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/getting-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/getting-started/compose-graphql-query/","name":"Compose a query in GraphiQL"}}]}
 ```

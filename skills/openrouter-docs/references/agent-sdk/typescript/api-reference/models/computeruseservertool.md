@@ -32,5 +32,5 @@ let value: ComputerUseServerTool = {
 | --------------- | ---------------------------------------------------------------------------- | -------------------- | ----------- |
 | `displayHeight` | *number*                                                                     | :heavy\_check\_mark: | N/A         |
 | `displayWidth`  | *number*                                                                     | :heavy\_check\_mark: | N/A         |
-| `environment`   | [models.Environment](/agent-sdk/typescript/api-reference/models/environment) | :heavy\_check\_mark: | N/A         |
+| `environment`   | [models.Environment](/docs/agent-sdk/typescript/api-reference/models/environment) | :heavy\_check\_mark: | N/A         |
 | `type`          | *"computer\_use\_preview"*                                                   | :heavy\_check\_mark: | N/A         |

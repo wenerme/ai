@@ -1,7 +1,7 @@
 ---
 title: Shadowed records
 description: DNS records at or below a subdomain delegation point, where authority belongs to the delegated nameservers rather than your zone.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -206,6 +206,6 @@ www.sub.example.com   A     192.0.2.2
 The `NS` record carries `shadowed_records_count: 2` (two records are shadowed by it). The glue `A` record carries both `shadowed_by` and `is_glue: true`. The non-glue `A` record carries only `shadowed_by`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/#page","headline":"Shadowed records · Cloudflare DNS docs","description":"DNS records at or below a subdomain delegation point, where authority belongs to the delegated nameservers rather than your zone.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/#page","headline":"Shadowed records · Cloudflare DNS docs","description":"DNS records at or below a subdomain delegation point, where authority belongs to the delegated nameservers rather than your zone.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/reference/shadowed-records/","name":"Shadowed records"}}]}
 ```

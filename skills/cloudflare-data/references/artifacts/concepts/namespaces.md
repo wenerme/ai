@@ -1,7 +1,7 @@
 ---
 title: Namespaces
 description: Organize repositories by environment or tenant.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -80,6 +80,6 @@ Start with one namespace when you are learning the product. Add more namespaces 
 For more information, refer to [Best practices for Artifacts](https://developers.cloudflare.com/artifacts/concepts/best-practices/#partition-namespaces-deliberately).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/namespaces/#page","headline":"Namespaces · Cloudflare Artifacts docs","description":"Organize repositories by environment or tenant.","url":"https://developers.cloudflare.com/artifacts/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/namespaces/#page","headline":"Namespaces · Cloudflare Artifacts docs","description":"Organize repositories by environment or tenant.","url":"https://developers.cloudflare.com/artifacts/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/concepts/namespaces/","name":"Namespaces"}}]}
 ```

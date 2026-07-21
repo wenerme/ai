@@ -41,5 +41,5 @@ let value: TransferIntent = {
 
 | Field      | Type                                                             | Required             | Description |
 | ---------- | ---------------------------------------------------------------- | -------------------- | ----------- |
-| `callData` | [operations.CallData](/agent-sdk/typescript/operations/calldata) | :heavy\_check\_mark: | N/A         |
-| `metadata` | [operations.Metadata](/agent-sdk/typescript/operations/metadata) | :heavy\_check\_mark: | N/A         |
+| `callData` | [operations.CallData](/docs/agent-sdk/typescript/operations/calldata) | :heavy\_check\_mark: | N/A         |
+| `metadata` | [operations.Metadata](/docs/agent-sdk/typescript/operations/metadata) | :heavy\_check\_mark: | N/A         |

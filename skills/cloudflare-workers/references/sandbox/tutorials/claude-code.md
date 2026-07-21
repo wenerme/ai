@@ -1,7 +1,7 @@
 ---
 title: Run Claude Code on a Sandbox
 description: Use Claude Code to implement a task in your GitHub repository.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -139,6 +139,6 @@ You created an API that:
 * [Workers AI](https://developers.cloudflare.com/workers-ai/) \- Use Cloudflare's built-in models
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/claude-code/#page","headline":"Run Claude Code on a Sandbox · Cloudflare Sandbox SDK docs","description":"Use Claude Code to implement a task in your GitHub repository.","url":"https://developers.cloudflare.com/sandbox/tutorials/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/claude-code/#page","headline":"Run Claude Code on a Sandbox · Cloudflare Sandbox SDK docs","description":"Use Claude Code to implement a task in your GitHub repository.","url":"https://developers.cloudflare.com/sandbox/tutorials/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/claude-code/","name":"Run Claude Code on a Sandbox"}}]}
 ```

@@ -28,5 +28,5 @@ let value: ContentPartImage = {
 
 | Field      | Type                                                                                                   | Required             | Description |
 | ---------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `imageUrl` | [models.ContentPartImageImageUrl](/agent-sdk/typescript/api-reference/models/contentpartimageimageurl) | :heavy\_check\_mark: | N/A         |
-| `type`     | [models.ContentPartImageType](/agent-sdk/typescript/api-reference/models/contentpartimagetype)         | :heavy\_check\_mark: | N/A         |
+| `imageUrl` | [models.ContentPartImageImageUrl](/docs/agent-sdk/typescript/api-reference/models/contentpartimageimageurl) | :heavy\_check\_mark: | N/A         |
+| `type`     | [models.ContentPartImageType](/docs/agent-sdk/typescript/api-reference/models/contentpartimagetype)         | :heavy\_check\_mark: | N/A         |

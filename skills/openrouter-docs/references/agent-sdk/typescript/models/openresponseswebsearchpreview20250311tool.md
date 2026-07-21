@@ -28,5 +28,5 @@ let value: OpenResponsesWebSearchPreview20250311Tool = {
 | Field               | Type                                                                                                     | Required             | Description                                     | Example |
 | ------------------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------- | ------- |
 | `type`              | *"web\_search\_preview\_2025\_03\_11"*                                                                   | :heavy\_check\_mark: | N/A                                             |         |
-| `searchContextSize` | [models.ResponsesSearchContextSize](/agent-sdk/typescript/models/responsessearchcontextsize)             | :heavy\_minus\_sign: | Size of the search context for web search tools | medium  |
-| `userLocation`      | [models.WebSearchPreviewToolUserLocation](/agent-sdk/typescript/models/websearchpreviewtooluserlocation) | :heavy\_minus\_sign: | N/A                                             |         |
+| `searchContextSize` | [models.ResponsesSearchContextSize](/docs/agent-sdk/typescript/models/responsessearchcontextsize)             | :heavy\_minus\_sign: | Size of the search context for web search tools | medium  |
+| `userLocation`      | [models.WebSearchPreviewToolUserLocation](/docs/agent-sdk/typescript/models/websearchpreviewtooluserlocation) | :heavy\_minus\_sign: | N/A                                             |         |

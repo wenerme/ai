@@ -1,7 +1,7 @@
 ---
 title: Event logs
 description: Access Spectrum connection lifecycle logs through Logpush.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -21,6 +21,10 @@ For each connection, Spectrum logs a connect event and either a disconnect or er
 Spectrum [log events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) can be configured through the dashboard or API, depending on your preferred [destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/).
 
 ## Status Codes
+
+Spectrum status codes are not HTTP status codes
+
+The status codes in the Spectrum status code table are Spectrum-specific connection status codes. They describe the outcome of Layer 4 (TCP/UDP) connections, not HTTP transactions. Some codes share numbers with HTTP status codes (for example, `444`, `499`) but have different meanings in the Spectrum context. For guidance on interpreting common status code patterns, refer to [Spectrum Troubleshooting](https://developers.cloudflare.com/spectrum/reference/troubleshooting/#common-spectrum-event-log-status-codes).
 
 | Code | Description                                                                                        |
 | ---- | -------------------------------------------------------------------------------------------------- |
@@ -55,6 +59,6 @@ Spectrum [log events](https://developers.cloudflare.com/logs/logpush/logpush-job
 | 999  | Unknown connection error.                                                                          |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/logs/#page","headline":"Event logs · Cloudflare Spectrum docs","description":"Access Spectrum connection lifecycle logs through Logpush.","url":"https://developers.cloudflare.com/spectrum/reference/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/logs/#page","headline":"Event logs · Cloudflare Spectrum docs","description":"Access Spectrum connection lifecycle logs through Logpush.","url":"https://developers.cloudflare.com/spectrum/reference/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/logs/","name":"Event logs"}}]}
 ```

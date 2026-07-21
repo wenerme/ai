@@ -29,7 +29,7 @@ let value: ChatResponseChoice = {
 
 | Field          | Type                                                                                         | Required             | Description |
 | -------------- | -------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `finishReason` | [models.ChatCompletionFinishReason](/agent-sdk/typescript/models/chatcompletionfinishreason) | :heavy\_check\_mark: | N/A         |
+| `finishReason` | [models.ChatCompletionFinishReason](/docs/agent-sdk/typescript/models/chatcompletionfinishreason) | :heavy\_check\_mark: | N/A         |
 | `index`        | *number*                                                                                     | :heavy\_check\_mark: | N/A         |
-| `message`      | [models.AssistantMessage](/agent-sdk/typescript/models/assistantmessage)                     | :heavy\_check\_mark: | N/A         |
-| `logprobs`     | [models.ChatMessageTokenLogprobs](/agent-sdk/typescript/models/chatmessagetokenlogprobs)     | :heavy\_minus\_sign: | N/A         |
+| `message`      | [models.AssistantMessage](/docs/agent-sdk/typescript/models/assistantmessage)                     | :heavy\_check\_mark: | N/A         |
+| `logprobs`     | [models.ChatMessageTokenLogprobs](/docs/agent-sdk/typescript/models/chatmessagetokenlogprobs)     | :heavy\_minus\_sign: | N/A         |

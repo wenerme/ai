@@ -40,7 +40,7 @@ Each workspace has independent settings for:
 * **[Plugins](https://openrouter.ai/workspaces/default/plugins)** — Configure default plugin behavior for API requests in each workspace.
 * **[Observability](https://openrouter.ai/workspaces/default/observability)** — Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
 * **[Members](https://openrouter.ai/workspaces/default/members)** — Control which team members have access to each workspace.
-* **[Budgets](/guides/features/workspaces/workspace-budgets)** — Set daily, weekly, monthly, or lifetime spending limits per workspace (Enterprise plan).
+* **[Budgets](/docs/guides/features/workspaces/workspace-budgets)** — Set daily, weekly, monthly, or lifetime spending limits per workspace (Enterprise plan).
 
 ## Account Level Settings
 
@@ -57,7 +57,7 @@ Some settings apply globally across all workspaces:
 
 * **Org admins** have admin permissions across all workspaces. Only org admins can create or delete workspaces and add or remove member access.
 * **Org members** have member permissions in each workspace they've been added to. Members can belong to multiple workspaces, and their API keys in each workspace are governed by that workspace's settings.
-* All org members automatically have member access to the **Default workspace**. Chat and Fusion requests run in the member's active workspace, which they can change via the [workspace switcher](/guides/features/workspaces/switching). The Default workspace is the initial active workspace.
+* All org members automatically have member access to the **Default workspace**. Chat and Fusion requests run in the member's active workspace, which they can change via the [workspace switcher](/docs/guides/features/workspaces/switching). The Default workspace is the initial active workspace.
 
 ## Frequently Asked Questions
 
@@ -83,6 +83,6 @@ Some settings apply globally across all workspaces:
   </Accordion>
 
   <Accordion title="Is my Chat/Fusion usage in a workspace?">
-    Yes. Chat and Fusion usage runs in your active workspace. It defaults to the Default workspace, and you can switch from the Chat or Fusion [sidebar workspace switcher](/guides/features/workspaces/switching).
+    Yes. Chat and Fusion usage runs in your active workspace. It defaults to the Default workspace, and you can switch from the Chat or Fusion [sidebar workspace switcher](/docs/guides/features/workspaces/switching).
   </Accordion>
 </AccordionGroup>

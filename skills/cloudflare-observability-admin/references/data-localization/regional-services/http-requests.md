@@ -1,7 +1,7 @@
 ---
 title: Default HTTP Privacy
 description: How Cloudflare encrypts and processes HTTP requests across its global network.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ At a high level, when an end user's device connects to any Cloudflare data cente
 By default, Cloudflare performs TLS termination (decryption of HTTPS traffic) in every data center globally — wherever the end user connects to a website or application behind Cloudflare. Customers who need to restrict where decryption occurs can configure [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) to specify which regions handle TLS termination and traffic processing.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/http-requests/#page","headline":"Default HTTP Privacy · Cloudflare Data Localization Suite docs","description":"How Cloudflare encrypts and processes HTTP requests across its global network.","url":"https://developers.cloudflare.com/data-localization/regional-services/http-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Privacy"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/http-requests/#page","headline":"Default HTTP Privacy · Cloudflare Data Localization Suite docs","description":"How Cloudflare encrypts and processes HTTP requests across its global network.","url":"https://developers.cloudflare.com/data-localization/regional-services/http-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Privacy"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/regional-services/","name":"Regional Services"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/regional-services/http-requests/","name":"Default HTTP Privacy"}}]}
 ```

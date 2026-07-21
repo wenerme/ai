@@ -26,5 +26,5 @@ let value: OutputWebSearchServerToolItemSource = {
 
 | Field  | Type                                                                                                                           | Required             | Description |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `type` | [models.OutputWebSearchServerToolItemTypeURL](/agent-sdk/typescript/api-reference/models/outputwebsearchservertoolitemtypeurl) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.OutputWebSearchServerToolItemTypeURL](/docs/agent-sdk/typescript/api-reference/models/outputwebsearchservertoolitemtypeurl) | :heavy\_check\_mark: | N/A         |
 | `url`  | *string*                                                                                                                       | :heavy\_check\_mark: | N/A         |

@@ -75,7 +75,7 @@ Wherever possible, OpenRouter works with providers to ensure that prompts will n
 <Tip>
   **Data Policy Filtering**
 
-  You can [restrict individual requests](/guides/routing/provider-selection#requiring-providers-to-comply-with-data-policies)
+  You can [restrict individual requests](/docs/guides/routing/provider-selection#requiring-providers-to-comply-with-data-policies)
   to only use providers with a certain data policy.
 
   This is also available as an account-wide setting in [your privacy settings](https://openrouter.ai/settings/privacy).
@@ -85,7 +85,7 @@ Wherever possible, OpenRouter works with providers to ensure that prompts will n
 
 Providers also have their own data retention policies, often for compliance reasons. OpenRouter does not have routing rules that change based on data retention policies of providers, but the retention policies as reflected in each provider's terms are shown below. Any user of OpenRouter can ignore providers that don't meet their own data retention requirements.
 
-The full terms of service for each provider are linked from the provider's page, and aggregated in the [documentation](/guides/routing/provider-selection#terms-of-service).
+The full terms of service for each provider are linked from the provider's page, and aggregated in the [documentation](/docs/guides/routing/provider-selection#terms-of-service).
 
 <ProviderDataRetentionTable />
 
@@ -96,7 +96,7 @@ For enterprise customers, OpenRouter supports EU in-region routing. When enabled
 <Info>
   **EU-only models list**
 
-  To see which models are available for EU in-region routing, call `/api/v1/models/user` through the EU domain. [Learn more](/api/api-reference/models/list-models-filtered-by-user-provider-preferences-privacy-settings-and-guardrails)
+  To see which models are available for EU in-region routing, call `/api/v1/models/user` through the EU domain. [Learn more](/docs/api/api-reference/models/list-models-filtered-by-user-provider-preferences-privacy-settings-and-guardrails)
 </Info>
 
 If you're interested, please contact our enterprise team at [https://openrouter.ai/enterprise/form](https://openrouter.ai/enterprise/form).

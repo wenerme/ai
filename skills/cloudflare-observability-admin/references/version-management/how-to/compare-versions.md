@@ -1,7 +1,7 @@
 ---
 title: Compare versions
 description: View differences between configuration versions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -32,6 +32,6 @@ After a few seconds, the page will update automatically with a comparison on a p
 Changes will be highlighted for new additions and removals for that service. Based on the comparison, you can then decide if more changes are necessary or if that new version is ready to be rolled out.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/how-to/compare-versions/#page","headline":"Compare versions · Cloudflare Version Management docs","description":"View differences between configuration versions.","url":"https://developers.cloudflare.com/version-management/how-to/compare-versions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/how-to/compare-versions/#page","headline":"Compare versions · Cloudflare Version Management docs","description":"View differences between configuration versions.","url":"https://developers.cloudflare.com/version-management/how-to/compare-versions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/version-management/","name":"Version Management"}},{"@type":"ListItem","position":3,"item":{"@id":"/version-management/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/version-management/how-to/compare-versions/","name":"Compare versions"}}]}
 ```

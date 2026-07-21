@@ -1,7 +1,7 @@
 ---
 title: Additional payment method auto-retry
 description: How Cloudflare retries failed payments using additional payment methods on file.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -74,6 +74,6 @@ Your next renewal always attempts your primary (default) payment method first. A
 The label "Backup payment method" was renamed to "Additional payment method" in the Cloudflare dashboard. The auto-retry behavior described on this page is unchanged.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/#page","headline":"Additional payment method auto-retry · Cloudflare Billing docs","description":"How Cloudflare retries failed payments using additional payment methods on file.","url":"https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/#page","headline":"Additional payment method auto-retry · Cloudflare Billing docs","description":"How Cloudflare retries failed payments using additional payment methods on file.","url":"https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/payment-methods/","name":"Payment methods"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/payment-methods/additional-payment-method-auto-retry/","name":"Additional payment method auto-retry"}}]}
 ```

@@ -31,5 +31,5 @@ let value: AnthropicWebSearchResultBlockParam = {
 | `encryptedContent` | *string*                                                                                                                           | :heavy\_check\_mark: | N/A         |
 | `pageAge`          | *string*                                                                                                                           | :heavy\_minus\_sign: | N/A         |
 | `title`            | *string*                                                                                                                           | :heavy\_check\_mark: | N/A         |
-| `type`             | [models.AnthropicWebSearchResultBlockParamType](/agent-sdk/typescript/api-reference/models/anthropicwebsearchresultblockparamtype) | :heavy\_check\_mark: | N/A         |
+| `type`             | [models.AnthropicWebSearchResultBlockParamType](/docs/agent-sdk/typescript/api-reference/models/anthropicwebsearchresultblockparamtype) | :heavy\_check\_mark: | N/A         |
 | `url`              | *string*                                                                                                                           | :heavy\_check\_mark: | N/A         |

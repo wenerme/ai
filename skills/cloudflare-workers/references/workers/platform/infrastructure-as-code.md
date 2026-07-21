@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code (IaC)
 description: Deploy and manage Cloudflare Workers using Terraform, Pulumi, and the Cloudflare API SDKs.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -1161,6 +1161,6 @@ resource "cloudflare_worker_version" "content_base64_example" {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/infrastructure-as-code/#page","headline":"Infrastructure as Code (IaC) · Cloudflare Workers docs","description":"Deploy and manage Cloudflare Workers using Terraform, Pulumi, and the Cloudflare API SDKs.","url":"https://developers.cloudflare.com/workers/platform/infrastructure-as-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/infrastructure-as-code/#page","headline":"Infrastructure as Code (IaC) · Cloudflare Workers docs","description":"Deploy and manage Cloudflare Workers using Terraform, Pulumi, and the Cloudflare API SDKs.","url":"https://developers.cloudflare.com/workers/platform/infrastructure-as-code/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/infrastructure-as-code/","name":"Infrastructure as Code (IaC)"}}]}
 ```

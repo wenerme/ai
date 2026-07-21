@@ -1,7 +1,7 @@
 ---
 title: Build and run AI applications
 description: Build AI applications with serverless compute, edge inference, multi-provider gateways, and stateful coordination.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -50,6 +50,6 @@ Stateful objects with strongly consistent storage and coordination. [Learn more 
 3. [Durable Objects get started](https://developers.cloudflare.com/durable-objects/get-started/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/ai/build-and-run/#page","headline":"Build and run AI applications · Cloudflare use cases","description":"Build AI applications with serverless compute, edge inference, multi-provider gateways, and stateful coordination.","url":"https://developers.cloudflare.com/use-cases/ai/build-and-run/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/ai/build-and-run/#page","headline":"Build and run AI applications · Cloudflare use cases","description":"Build AI applications with serverless compute, edge inference, multi-provider gateways, and stateful coordination.","url":"https://developers.cloudflare.com/use-cases/ai/build-and-run/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/ai/","name":"AI applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/ai/build-and-run/","name":"Build and run AI applications"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Reference
 description: Reference information for Network Error Logging.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ Certificate issues are also detectable through NEL. The `TLS.version`, `cipher_m
 If this is detected in NEL, the issue can be remediated by deploying new certificates or using [Cloudflare’s SSL management suite](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to automatically deploy new certificates.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-error-logging/reference/#page","headline":"Failures · Cloudflare Network Error Logging docs","description":"Reference information for Network Error Logging.","url":"https://developers.cloudflare.com/network-error-logging/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Debugging","TCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-error-logging/reference/#page","headline":"Failures · Cloudflare Network Error Logging docs","description":"Reference information for Network Error Logging.","url":"https://developers.cloudflare.com/network-error-logging/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Debugging","TCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-error-logging/","name":"Network Error Logging"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-error-logging/reference/","name":"Reference"}}]}
 ```

@@ -25,10 +25,10 @@ There are three ways to integrate with OpenRouter, depending on how much control
 </Note>
 
 <Tip>
-  Looking for information about free models and rate limits? Please see the [FAQ](/faq#how-are-rate-limits-calculated)
+  Looking for information about free models and rate limits? Please see the [FAQ](/docs/faq#how-are-rate-limits-calculated)
 </Tip>
 
-In the examples below, the OpenRouter-specific headers are optional. Setting them allows your app to appear on the OpenRouter leaderboards. For detailed information about app attribution, see our [App Attribution guide](/app-attribution).
+In the examples below, the OpenRouter-specific headers are optional. Setting them allows your app to appear on the OpenRouter leaderboards. For detailed information about app attribution, see our [App Attribution guide](/docs/app-attribution).
 
 ***
 
@@ -41,7 +41,7 @@ The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/
 </Tip>
 
 <Note>
-  The examples below use `~openai/gpt-latest`, a [latest alias](/guides/routing/routers/latest-resolution) that always resolves to the newest OpenAI flagship model — so your code keeps using the freshest version without redeploying. You can substitute any model slug here. Browse the full catalog at [openrouter.ai/models](https://openrouter.ai/models), or list every available slug programmatically via the [`GET /api/v1/models`](/api/api-reference/models/list-all-models-and-their-properties) endpoint.
+  The examples below use `~openai/gpt-latest`, a [latest alias](/docs/guides/routing/routers/latest-resolution) that always resolves to the newest OpenAI flagship model — so your code keeps using the freshest version without redeploying. You can substitute any model slug here. Browse the full catalog at [openrouter.ai/models](https://openrouter.ai/models), or list every available slug programmatically via the [`GET /api/v1/models`](/docs/api/api-reference/models/list-all-models-and-their-properties) endpoint.
 </Note>
 
 <CodeGroup>
@@ -105,13 +105,13 @@ The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/
   ```
 </CodeGroup>
 
-The API also supports [streaming](/api/reference/streaming). You can also use the [OpenAI SDK](#using-the-openai-sdk) pointed at OpenRouter as a drop-in replacement.
+The API also supports [streaming](/docs/api_reference/streaming). You can also use the [OpenAI SDK](#using-the-openai-sdk) pointed at OpenRouter as a drop-in replacement.
 
 ***
 
 ## Using the Client SDKs
 
-The [Client SDKs](/client-sdks/overview) wrap the OpenRouter API with full type safety, auto-generated types from the OpenAPI spec, and zero boilerplate. It is intentionally lean — a thin layer over the REST API.
+The [Client SDKs](/docs/client-sdks/overview) wrap the OpenRouter API with full type safety, auto-generated types from the OpenAPI spec, and zero boilerplate. It is intentionally lean — a thin layer over the REST API.
 
 First, install the SDK:
 
@@ -182,13 +182,13 @@ Then use it in your code:
   ```
 </CodeGroup>
 
-See the full [Client SDKs documentation](/client-sdks/overview) for streaming, embeddings, and the complete API reference.
+See the full [Client SDKs documentation](/docs/client-sdks/overview) for streaming, embeddings, and the complete API reference.
 
 ***
 
 ## Using the Agent SDK
 
-The [Agent SDK](/agent-sdk/overview) (`@openrouter/agent`) provides higher-level primitives for building AI agents. It handles multi-turn conversation loops, tool execution, and state management automatically via the `callModel` function.
+The [Agent SDK](/docs/agent-sdk/overview) (`@openrouter/agent`) provides higher-level primitives for building AI agents. It handles multi-turn conversation loops, tool execution, and state management automatically via the `callModel` function.
 
 Install the package:
 
@@ -249,7 +249,7 @@ console.log(text);
 
 The SDK sends the prompt, receives a tool call from the model, executes `get_weather`, feeds the result back, and returns the final response — all in one `callModel` invocation.
 
-See the full [Agent SDK documentation](/agent-sdk/overview) for stop conditions, streaming, dynamic parameters, and more.
+See the full [Agent SDK documentation](/docs/agent-sdk/overview) for stop conditions, streaming, dynamic parameters, and more.
 
 ***
 
@@ -323,16 +323,16 @@ You can also use the OpenAI SDK pointed at OpenRouter as a drop-in replacement. 
 
 ## Using third-party SDKs
 
-For information about using third-party SDKs and frameworks with OpenRouter, please [see our frameworks documentation.](/guides/community/frameworks-and-integrations-overview)
+For information about using third-party SDKs and frameworks with OpenRouter, please [see our frameworks documentation.](/docs/guides/community/frameworks-and-integrations-overview)
 
 ***
 
 ## Building with an AI assistant
 
-If you write code with an AI coding tool (Claude Code, Cursor, Codex, and others), connect the [OpenRouter MCP server](/guides/overview/mcp-server). It's a remote server hosted by OpenRouter — nothing to install — that lets your assistant pull live OpenRouter data (which models exist, what they cost, your credit balance, usage rankings) and search these docs while you build, so its suggestions reflect current data instead of stale training knowledge. Add one URL to your MCP client and approve an OAuth login:
+If you write code with an AI coding tool (Claude Code, Cursor, Codex, and others), connect the [OpenRouter MCP server](/docs/guides/overview/mcp-server). It's a remote server hosted by OpenRouter — nothing to install — that lets your assistant pull live OpenRouter data (which models exist, what they cost, your credit balance, usage rankings) and search these docs while you build, so its suggestions reflect current data instead of stale training knowledge. Add one URL to your MCP client and approve an OAuth login:
 
 ```bash theme={null}
 https://mcp.openrouter.ai/mcp
 ```
 
-See the [MCP server guide](/guides/overview/mcp-server) for per-client setup and the full tool list. To run models in your app, keep calling the OpenRouter API directly.
+See the [MCP server guide](/docs/guides/overview/mcp-server) for per-client setup and the full tool list. To run models in your app, keep calling the OpenRouter API directly.

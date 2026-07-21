@@ -1,7 +1,7 @@
 ---
 title: Concepts
 description: Core WAF concepts including rules, rulesets, phases, and actions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -81,6 +81,6 @@ For more information on the phases where each WAF feature will execute, refer to
 For common interactions between rewrites, IP Access rules, custom rules, and managed rules, refer to [Rule phase interactions](https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/concepts/#page","headline":"Concepts · Cloudflare Web Application Firewall (WAF) docs","description":"Core WAF concepts including rules, rulesets, phases, and actions.","url":"https://developers.cloudflare.com/waf/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/concepts/#page","headline":"Concepts · Cloudflare Web Application Firewall (WAF) docs","description":"Core WAF concepts including rules, rulesets, phases, and actions.","url":"https://developers.cloudflare.com/waf/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/concepts/","name":"Concepts"}}]}
 ```

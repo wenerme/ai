@@ -92,7 +92,7 @@ The worker model is resolved with the following precedence:
 1. `parameters.model` on the tool definition, if set.
 2. The model from the outer API request, as a fallback.
 
-Unlike the [advisor tool](/guides/features/server-tools/advisor), the delegating model does not choose its worker per call — the worker is fixed by the tool definition. The subagent tool itself can never be the worker model.
+Unlike the [advisor tool](/docs/guides/features/server-tools/advisor), the delegating model does not choose its worker per call — the worker is fixed by the tool definition. The subagent tool itself can never be the worker model.
 
 ## When does the model invoke it?
 
@@ -176,6 +176,6 @@ Task executions are also capped per request to bound cost and latency.
 
 ## Related
 
-* [Advisor server tool](/guides/features/server-tools/advisor) — consult a stronger model for guidance
-* [Fusion server tool](/guides/features/server-tools/fusion) — multi-model deliberation
-* [Web Search server tool](/guides/features/server-tools/web-search)
+* [Advisor server tool](/docs/guides/features/server-tools/advisor) — consult a stronger model for guidance
+* [Fusion server tool](/docs/guides/features/server-tools/fusion) — multi-model deliberation
+* [Web Search server tool](/docs/guides/features/server-tools/web-search)

@@ -11,7 +11,7 @@ export const LlmsOnly = ({children}) => null;
 export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 <Tip>
-  Looking to auto-instrument without client code? Check out [OpenRouter Broadcast](/guides/features/broadcast/langfuse) to automatically send traces to Langfuse.
+  Looking to auto-instrument without client code? Check out [OpenRouter Broadcast](/docs/guides/features/broadcast/langfuse) to automatically send traces to Langfuse.
 </Tip>
 
 ## Using Langfuse

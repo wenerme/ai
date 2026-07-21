@@ -1,7 +1,7 @@
 ---
 title: Presigned URLs
 description: Generate presigned URLs to grant temporary access to R2 objects without exposing credentials.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -227,6 +227,6 @@ If you need authentication with R2 buckets accessed via custom domains (public b
 [ Storing user generated content ](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/) Architecture guide for handling user uploads with R2.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/#page","headline":"Presigned URLs · Cloudflare R2 docs","description":"Generate presigned URLs to grant temporary access to R2 objects without exposing credentials.","url":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/#page","headline":"Presigned URLs · Cloudflare R2 docs","description":"Generate presigned URLs to grant temporary access to R2 objects without exposing credentials.","url":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/s3/","name":"S3"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/s3/presigned-urls/","name":"Presigned URLs"}}]}
 ```

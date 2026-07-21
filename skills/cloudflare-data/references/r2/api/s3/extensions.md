@@ -1,7 +1,7 @@
 ---
 title: Extensions
 description: R2 extensions to the S3 API, including Unicode metadata and custom headers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -110,6 +110,6 @@ These headers work akin to the similarly named conditional headers supported on 
 The `x-amz-copy-source-if-...` headers are guaranteed to be checked when the source object for the copy operation is selected, and the `cf-copy-destination-if-...` headers are guaranteed to be checked when the object is committed to the bucket state. However, the time at which the source object is selected for copying, and the point in time when the destination object is committed to the bucket state are not necessarily the same. This means that the `cf-copy-destination-if-...` headers are not atomic in relation to the `x-amz-copy-source-if...` headers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/extensions/#page","headline":"Extensions · Cloudflare R2 docs","description":"R2 extensions to the S3 API, including Unicode metadata and custom headers.","url":"https://developers.cloudflare.com/r2/api/s3/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/extensions/#page","headline":"Extensions · Cloudflare R2 docs","description":"R2 extensions to the S3 API, including Unicode metadata and custom headers.","url":"https://developers.cloudflare.com/r2/api/s3/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/s3/","name":"S3"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/s3/extensions/","name":"Extensions"}}]}
 ```

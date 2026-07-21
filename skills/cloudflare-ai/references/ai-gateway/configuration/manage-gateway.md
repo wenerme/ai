@@ -1,7 +1,7 @@
 ---
 title: Manage gateways
 description: Create, edit, and delete AI Gateway instances using the dashboard or API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -117,6 +117,6 @@ To delete an AI Gateway in the dashboard:
 To delete an AI Gateway, send a [DELETE request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/delete/) to the Cloudflare API.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#page","headline":"Manage gateways · Cloudflare AI Gateway docs","description":"Create, edit, and delete AI Gateway instances using the dashboard or API.","url":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#page","headline":"Manage gateways · Cloudflare AI Gateway docs","description":"Create, edit, and delete AI Gateway instances using the dashboard or API.","url":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/configuration/manage-gateway/","name":"Manage gateways"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Cloudflare error diagnostic headers
 description: Reference for the cf-error-type and cf-error-origin response headers present on Cloudflare-generated error pages.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -41,6 +41,6 @@ Reproduce the error and inspect response headers using one of:
 | 52x                  | Origin connectivity | Check origin server is up and reachable                |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-error-headers/#page","headline":"Cloudflare error diagnostic headers · Cloudflare Support docs","description":"Reference for the cf-error-type and cf-error-origin response headers present on Cloudflare-generated error pages.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-error-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-error-headers/#page","headline":"Cloudflare error diagnostic headers · Cloudflare Support docs","description":"Reference for the cf-error-type and cf-error-origin response headers present on Cloudflare-generated error pages.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-error-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-error-headers/","name":"Cloudflare error diagnostic headers"}}]}
 ```

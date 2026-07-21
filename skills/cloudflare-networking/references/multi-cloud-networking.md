@@ -1,7 +1,7 @@
 ---
 title: Cloudflare One Multi-Cloud Networking (beta)
 description: Connect multiple cloud providers through the Cloudflare network.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -49,6 +49,6 @@ Automatically build VPN tunnels between cloud networks and Cloudflare WAN.
 Connect and secure your network infrastructure with Cloudflare's global network.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/multi-cloud-networking/#page","headline":"Multi-Cloud Networking · Cloudflare Multi-Cloud Networking docs","description":"Connect multiple cloud providers through the Cloudflare network.","url":"https://developers.cloudflare.com/multi-cloud-networking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/multi-cloud-networking/#page","headline":"Multi-Cloud Networking · Cloudflare Multi-Cloud Networking docs","description":"Connect multiple cloud providers through the Cloudflare network.","url":"https://developers.cloudflare.com/multi-cloud-networking/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/multi-cloud-networking/","name":"Multi-Cloud Networking"}}]}
 ```

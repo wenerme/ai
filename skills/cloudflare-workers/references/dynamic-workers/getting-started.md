@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Load and run a dynamic Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -322,6 +322,6 @@ const worker = env.LOADER.get("my-worker", async () => {
 `createWorker()` handles TypeScript compilation, dependency resolution from npm, and bundling. It returns `mainModule` and `modules` ready to pass directly to `load()` or `get()`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/getting-started/#page","headline":"Getting started · Cloudflare Dynamic Workers docs","description":"Load and run a dynamic Worker.","url":"https://developers.cloudflare.com/dynamic-workers/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/getting-started/#page","headline":"Getting started · Cloudflare Dynamic Workers docs","description":"Load and run a dynamic Worker.","url":"https://developers.cloudflare.com/dynamic-workers/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/getting-started/","name":"Getting started"}}]}
 ```

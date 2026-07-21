@@ -29,4 +29,4 @@ let value: ChatMessageContentItemImage = {
 | Field      | Type                                                     | Required             | Description |
 | ---------- | -------------------------------------------------------- | -------------------- | ----------- |
 | `type`     | *"image\_url"*                                           | :heavy\_check\_mark: | N/A         |
-| `imageUrl` | [models.ImageUrl](/agent-sdk/typescript/models/imageurl) | :heavy\_check\_mark: | N/A         |
+| `imageUrl` | [models.ImageUrl](/docs/agent-sdk/typescript/models/imageurl) | :heavy\_check\_mark: | N/A         |

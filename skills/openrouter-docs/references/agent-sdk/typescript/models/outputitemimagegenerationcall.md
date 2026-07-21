@@ -29,7 +29,7 @@ let value: OutputItemImageGenerationCall = {
 
 | Field    | Type                                                                                                       | Required             | Description | Example   |
 | -------- | ---------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
-| `type`   | [models.OutputItemImageGenerationCallType](/agent-sdk/typescript/models/outputitemimagegenerationcalltype) | :heavy\_check\_mark: | N/A         |           |
+| `type`   | [models.OutputItemImageGenerationCallType](/docs/agent-sdk/typescript/models/outputitemimagegenerationcalltype) | :heavy\_check\_mark: | N/A         |           |
 | `id`     | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |           |
 | `result` | *string*                                                                                                   | :heavy\_minus\_sign: | N/A         |           |
-| `status` | [models.ImageGenerationStatus](/agent-sdk/typescript/models/imagegenerationstatus)                         | :heavy\_check\_mark: | N/A         | completed |
+| `status` | [models.ImageGenerationStatus](/docs/agent-sdk/typescript/models/imagegenerationstatus)                         | :heavy\_check\_mark: | N/A         | completed |

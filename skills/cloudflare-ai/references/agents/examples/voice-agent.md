@@ -1,7 +1,7 @@
 ---
 title: Voice agent
 description: Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -457,6 +457,6 @@ export class MyVoiceAgent extends VoiceAgent<Env> {
 [ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) Use Workers AI, OpenAI, Anthropic, Gemini, or any provider with your agents.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/voice-agent/#page","headline":"Voice agent · Cloudflare Agents docs","description":"Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/examples/voice-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/voice-agent/#page","headline":"Voice agent · Cloudflare Agents docs","description":"Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/examples/voice-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/voice-agent/","name":"Voice agent"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Logpush alerts and analytics
 description: Monitor Logpush job health with alerts and analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -88,6 +88,6 @@ Note
 If you get a `1105` status code error when checking your Logpush job health, it indicates a DNS resolution issue. This means Cloudflare is unable to resolve the target hostname for the Logpush job. To resolve this, check with your DNS service provider and confirm the hostname can be publicly resolved.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/#page","headline":"Logpush alerts and analytics · Cloudflare Logs docs","description":"Monitor Logpush job health with alerts and analytics.","url":"https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/#page","headline":"Logpush alerts and analytics · Cloudflare Logs docs","description":"Monitor Logpush job health with alerts and analytics.","url":"https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/alerts-and-analytics/","name":"Logpush alerts and analytics"}}]}
 ```

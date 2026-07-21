@@ -25,5 +25,5 @@ import { PayloadTooLargeResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                                     | Required             | Description                            | Example                                                |
 | -------- | -------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------- | ------------------------------------------------------ |
-| `error`  | [models.PayloadTooLargeResponseErrorData](/agent-sdk/typescript/models/payloadtoolargeresponseerrordata) | :heavy\_check\_mark: | Error data for PayloadTooLargeResponse | `{"code": 413,"message": "Request payload too large"}` |
+| `error`  | [models.PayloadTooLargeResponseErrorData](/docs/agent-sdk/typescript/models/payloadtoolargeresponseerrordata) | :heavy\_check\_mark: | Error data for PayloadTooLargeResponse | `{"code": 413,"message": "Request payload too large"}` |
 | `userId` | *string*                                                                                                 | :heavy\_minus\_sign: | N/A                                    |                                                        |

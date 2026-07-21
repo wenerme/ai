@@ -1,7 +1,7 @@
 ---
 title: Filters
 description: Learn how to use filters in Cloudflare Web Analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -28,6 +28,6 @@ To filter the data shown on Web Analytics:
 * Scroll below the graph to view detailed breakdowns, for instance of top visits by country or by device type.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/configuration-options/filters/#page","headline":"Filters · Cloudflare Web Analytics docs","description":"Learn how to use filters in Cloudflare Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/configuration-options/filters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/configuration-options/filters/#page","headline":"Filters · Cloudflare Web Analytics docs","description":"Learn how to use filters in Cloudflare Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/configuration-options/filters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/configuration-options/","name":"Configuration options"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/configuration-options/filters/","name":"Filters"}}]}
 ```

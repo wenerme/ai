@@ -1,7 +1,7 @@
 ---
 title: Glossary
 description: Key terms and definitions used throughout the Cloudflare Tenant API documentation.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -41,6 +41,6 @@ A member of a Cloudflare account with their own user profile and [an associated 
 A resource is an entity owned by an account, which could be a zone/domain, a Workers instance, or a Zero Trust application.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/glossary/#page","headline":"Glossary · Cloudflare Tenant docs","description":"Key terms and definitions used throughout the Cloudflare Tenant API documentation.","url":"https://developers.cloudflare.com/tenant/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/glossary/#page","headline":"Glossary · Cloudflare Tenant docs","description":"Key terms and definitions used throughout the Cloudflare Tenant API documentation.","url":"https://developers.cloudflare.com/tenant/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/glossary/","name":"Glossary"}}]}
 ```

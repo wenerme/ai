@@ -1,7 +1,7 @@
 ---
 title: Email attachments
 description: Handle different types of email attachments including PDFs, inline images, and file uploads with validation and encoding.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -466,6 +466,6 @@ function getFileTypeDescription(mimeType: string): string {
 * [Email headers](https://developers.cloudflare.com/email-service/reference/headers/) — set custom headers alongside attachments.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/#page","headline":"Email attachments · Cloudflare Email Service docs","description":"Handle different types of email attachments including PDFs, inline images, and file uploads with validation and encoding.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/#page","headline":"Email attachments · Cloudflare Email Service docs","description":"Handle different types of email attachments including PDFs, inline images, and file uploads with validation and encoding.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/email-attachments/","name":"Email attachments"}}]}
 ```

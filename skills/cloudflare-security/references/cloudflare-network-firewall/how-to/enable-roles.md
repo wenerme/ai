@@ -1,7 +1,7 @@
 ---
 title: Enable user roles
 description: Enable user roles for Network Firewall management.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ For example, if multiple teams manage different Cloudflare products on the same 
   * **Network Services (Magic, Read-Only)** \- Enables users to view but not modify Magic configurations.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-roles/#page","headline":"Enable user roles · Cloudflare Network Firewall docs","description":"Enable user roles for Network Firewall management.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-roles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-roles/#page","headline":"Enable user roles · Cloudflare Network Firewall docs","description":"Enable user roles for Network Firewall management.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-roles/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/how-to/enable-roles/","name":"Enable user roles"}}]}
 ```

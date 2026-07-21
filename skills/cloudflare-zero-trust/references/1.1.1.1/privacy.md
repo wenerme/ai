@@ -1,7 +1,7 @@
 ---
 title: Privacy
 description: Privacy commitments and audits for the 1.1.1.1 resolver.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ Cloudflare maintains separate privacy commitments depending on how you use 1.1.1
 * [1.1.1.1 Application ↗](https://www.cloudflare.com/application/privacypolicy/): Privacy policy for Cloudflare's consumer-facing 1.1.1.1 applications, including the 1.1.1.1 app for iOS and Android.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/privacy/#page","headline":"Privacy | Cloudflare Docs","description":"Privacy commitments and audits for the 1.1.1.1 resolver.","url":"https://developers.cloudflare.com/1.1.1.1/privacy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/privacy/#page","headline":"Privacy | Cloudflare Docs","description":"Privacy commitments and audits for the 1.1.1.1 resolver.","url":"https://developers.cloudflare.com/1.1.1.1/privacy/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/privacy/","name":"Privacy"}}]}
 ```

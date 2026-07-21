@@ -1,7 +1,7 @@
 ---
 title: Network Layers
 description: Map Cloudflare products to OSI model layers, from Layer 7 application services to Layer 1 physical connections.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ The list of related products is representative but not comprehensive.
 | 1 Physical layer     | **Direct connection** [Cloudflare Network Interconnect (CNI)](https://developers.cloudflare.com/network-interconnect)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/network-layers/#page","headline":"Network Layers · Cloudflare Fundamentals docs","description":"Map Cloudflare products to OSI model layers, from Layer 7 application services to Layer 1 physical connections.","url":"https://developers.cloudflare.com/fundamentals/reference/network-layers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/network-layers/#page","headline":"Network Layers · Cloudflare Fundamentals docs","description":"Map Cloudflare products to OSI model layers, from Layer 7 application services to Layer 1 physical connections.","url":"https://developers.cloudflare.com/fundamentals/reference/network-layers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/network-layers/","name":"Network Layers"}}]}
 ```

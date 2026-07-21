@@ -1,7 +1,7 @@
 ---
 title: Define foreign keys
 description: Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -123,6 +123,6 @@ CREATE TABLE scores (
 * Understand how [database migrations work](https://developers.cloudflare.com/d1/reference/migrations/) with D1.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/#page","headline":"Define foreign keys · Cloudflare D1 docs","description":"Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.","url":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/#page","headline":"Define foreign keys · Cloudflare D1 docs","description":"Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.","url":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/sql-api/","name":"SQL API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/sql-api/foreign-keys/","name":"Define foreign keys"}}]}
 ```

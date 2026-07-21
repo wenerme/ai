@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up Cloudflare DNS for your domain.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -40,6 +40,6 @@ The following links introduce important concepts and will guide you through acti
 * [Troubleshooting](https://developers.cloudflare.com/dns/troubleshooting/): A full resources list for when something is not working.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/get-started/#page","headline":"Get started with Cloudflare DNS · Cloudflare DNS docs","description":"Set up Cloudflare DNS for your domain.","url":"https://developers.cloudflare.com/dns/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/get-started/#page","headline":"Get started with Cloudflare DNS · Cloudflare DNS docs","description":"Set up Cloudflare DNS for your domain.","url":"https://developers.cloudflare.com/dns/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/get-started/","name":"Get started"}}]}
 ```

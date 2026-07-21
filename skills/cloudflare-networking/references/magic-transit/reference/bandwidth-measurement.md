@@ -1,7 +1,7 @@
 ---
 title: Bandwidth measurement
 description: How Cloudflare measures Magic Transit tunnel bandwidth.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -28,6 +28,6 @@ For example, if you have onboarded `10.0.0.0/20` to Magic Transit and are advert
 **To avoid this:** If you do not want Cloudflare-originated traffic flowing through your Magic Transit tunnel, withdraw the covering prefix from Cloudflare. The traffic will then egress to the Internet and follow standard Internet routing (including your more specific ISP routes).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/#page","headline":"Bandwidth measurement · Cloudflare Magic Transit docs","description":"How Cloudflare measures Magic Transit tunnel bandwidth.","url":"https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/#page","headline":"Bandwidth measurement · Cloudflare Magic Transit docs","description":"How Cloudflare measures Magic Transit tunnel bandwidth.","url":"https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/reference/bandwidth-measurement/","name":"Bandwidth measurement"}}]}
 ```

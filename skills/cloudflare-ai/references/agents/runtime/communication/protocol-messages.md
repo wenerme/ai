@@ -1,7 +1,7 @@
 ---
 title: Protocol messages
 description: Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -287,6 +287,6 @@ Unlike [readonly](https://developers.cloudflare.com/agents/runtime/communication
 * [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/#page","headline":"Protocol messages · Cloudflare Agents docs","description":"Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.","url":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/#page","headline":"Protocol messages · Cloudflare Agents docs","description":"Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.","url":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/protocol-messages/","name":"Protocol messages"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Not receiving emails from Cloudflare
 description: Troubleshoot missing transactional emails from Cloudflare.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ All Cloudflare transactional emails will be sent from [noreply@notify.cloudflare
 If you email server or mailbox was not working for any period of time, our mail service will stop attempting to send you messages if too many messages bounce. In this scenario, you will need to visit the [Support Portal ↗](https://dash.cloudflare.com/?to=/:account/support) and select the category Account > My Profile > Other.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/not-receiving-cloudflare-emails/#page","headline":"Not receiving emails from Cloudflare · Cloudflare Support docs","description":"Troubleshoot missing transactional emails from Cloudflare.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/not-receiving-cloudflare-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/not-receiving-cloudflare-emails/#page","headline":"Not receiving emails from Cloudflare · Cloudflare Support docs","description":"Troubleshoot missing transactional emails from Cloudflare.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/not-receiving-cloudflare-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/general-troubleshooting/","name":"General Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/general-troubleshooting/not-receiving-cloudflare-emails/","name":"Not receiving emails from Cloudflare"}}]}
 ```

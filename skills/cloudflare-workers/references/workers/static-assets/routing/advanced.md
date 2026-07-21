@@ -1,7 +1,7 @@
 ---
 title: Advanced
 description: Configure advanced routing options for Workers static assets, including custom path handling and fallback behavior.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ Learn how to configure advanced routing options for the static assets of your Wo
 * [ Serving a subdirectory ](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/#page","headline":"Advanced · Cloudflare Workers docs","description":"Configure advanced routing options for Workers static assets, including custom path handling and fallback behavior.","url":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/#page","headline":"Advanced · Cloudflare Workers docs","description":"Configure advanced routing options for Workers static assets, including custom path handling and fallback behavior.","url":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/routing/","name":"Routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/routing/advanced/","name":"Advanced"}}]}
 ```

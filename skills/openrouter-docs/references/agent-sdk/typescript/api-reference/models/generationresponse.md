@@ -68,4 +68,4 @@ let value: GenerationResponse = {
 
 | Field  | Type                                                                                               | Required             | Description     |
 | ------ | -------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
-| `data` | [models.GenerationResponseData](/agent-sdk/typescript/api-reference/models/generationresponsedata) | :heavy\_check\_mark: | Generation data |
+| `data` | [models.GenerationResponseData](/docs/agent-sdk/typescript/api-reference/models/generationresponsedata) | :heavy\_check\_mark: | Generation data |

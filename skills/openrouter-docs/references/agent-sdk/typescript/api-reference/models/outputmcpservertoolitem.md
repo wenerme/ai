@@ -30,6 +30,6 @@ let value: OutputMcpServerToolItem = {
 | ------------- | ------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | --------- |
 | `id`          | *string*                                                                                                     | :heavy\_minus\_sign: | N/A         |           |
 | `serverLabel` | *string*                                                                                                     | :heavy\_minus\_sign: | N/A         |           |
-| `status`      | [models.ToolCallStatus](/agent-sdk/typescript/api-reference/models/toolcallstatus)                           | :heavy\_check\_mark: | N/A         | completed |
+| `status`      | [models.ToolCallStatus](/docs/agent-sdk/typescript/api-reference/models/toolcallstatus)                           | :heavy\_check\_mark: | N/A         | completed |
 | `toolName`    | *string*                                                                                                     | :heavy\_minus\_sign: | N/A         |           |
-| `type`        | [models.OutputMcpServerToolItemType](/agent-sdk/typescript/api-reference/models/outputmcpservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |
+| `type`        | [models.OutputMcpServerToolItemType](/docs/agent-sdk/typescript/api-reference/models/outputmcpservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |

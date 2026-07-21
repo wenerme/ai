@@ -1,7 +1,7 @@
 ---
 title: Create an IP access rule
 description: Create IP Access rules to allow, block, or challenge by IP.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -52,6 +52,6 @@ IP Access Rules are only available in the new security dashboard if you have con
 Use the Cloudflare API to programmatically create IP access rules. For more information, refer to [Create an IP Access Rule](https://developers.cloudflare.com/api/resources/firewall/subresources/access%5Frules/methods/create/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/create/#page","headline":"Create an IP access rule · Cloudflare Web Application Firewall (WAF) docs","description":"Create IP Access rules to allow, block, or challenge by IP.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/create/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/ip-access-rules/create/#page","headline":"Create an IP access rule · Cloudflare Web Application Firewall (WAF) docs","description":"Create IP Access rules to allow, block, or challenge by IP.","url":"https://developers.cloudflare.com/waf/tools/ip-access-rules/create/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/ip-access-rules/","name":"IP Access rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/ip-access-rules/create/","name":"Create an IP access rule"}}]}
 ```

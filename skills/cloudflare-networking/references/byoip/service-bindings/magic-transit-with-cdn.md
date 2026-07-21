@@ -1,7 +1,7 @@
 ---
 title: Use BYOIP with Magic Transit and CDN
 description: Service bindings allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline. It is important to note that traffic routed to the CDN pipeline is protected at Layers 3 and 4 by the inherent DDoS protection capabilities.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -209,6 +209,6 @@ Leverage other features according to your needs. For example:
 * [Security analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/#page","headline":"Use BYOIP with Magic Transit and CDN · Cloudflare BYOIP docs","description":"Service bindings allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline. It is important to note that traffic routed to the CDN pipeline is protected at Layers 3 and 4 by the inherent DDoS protection capabilities.","url":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/#page","headline":"Use BYOIP with Magic Transit and CDN · Cloudflare BYOIP docs","description":"Service bindings allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline. It is important to note that traffic routed to the CDN pipeline is protected at Layers 3 and 4 by the inherent DDoS protection capabilities.","url":"https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/service-bindings/","name":"IP address service bindings"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/service-bindings/magic-transit-with-cdn/","name":"Use BYOIP with Magic Transit and CDN"}}]}
 ```

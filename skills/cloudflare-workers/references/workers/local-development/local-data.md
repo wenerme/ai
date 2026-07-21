@@ -1,7 +1,7 @@
 ---
 title: Adding local data
 description: Populating local resources with data
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -205,6 +205,6 @@ export default defineConfig({
 If you want Wrangler and the Vite plugin to share the same state, configure them to use the same persistence path.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-data/#page","headline":"Adding local data · Cloudflare Workers docs","description":"Populating local resources with data","url":"https://developers.cloudflare.com/workers/local-development/local-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-data/#page","headline":"Adding local data · Cloudflare Workers docs","description":"Populating local resources with data","url":"https://developers.cloudflare.com/workers/local-development/local-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/local-development/local-data/","name":"Adding local data"}}]}
 ```

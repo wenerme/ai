@@ -1,7 +1,7 @@
 ---
 title: Environment variables
 description: Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -454,6 +454,6 @@ await sandbox.exec("node app.js", {
 * [Proxy requests to external APIs](https://developers.cloudflare.com/sandbox/guides/proxy-requests/) \- Keep credentials out of the sandbox entirely using a Worker proxy
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Sandbox SDK docs","description":"Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.","url":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Sandbox SDK docs","description":"Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.","url":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/environment-variables/","name":"Environment variables"}}]}
 ```

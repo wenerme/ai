@@ -39,4 +39,4 @@ let value: OpenResponsesStreamEventResponseOutputTextDone = {
 | `contentIndex`   | *number*                                                                              | :heavy\_check\_mark: | N/A         |
 | `text`           | *string*                                                                              | :heavy\_check\_mark: | N/A         |
 | `sequenceNumber` | *number*                                                                              | :heavy\_check\_mark: | N/A         |
-| `logprobs`       | [models.OpenResponsesLogProbs](/agent-sdk/typescript/models/openresponseslogprobs)\[] | :heavy\_check\_mark: | N/A         |
+| `logprobs`       | [models.OpenResponsesLogProbs](/docs/agent-sdk/typescript/models/openresponseslogprobs)\[] | :heavy\_check\_mark: | N/A         |

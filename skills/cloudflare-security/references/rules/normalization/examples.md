@@ -1,7 +1,7 @@
 ---
 title: URL normalization examples
 description: Examples of the impact of different URL normalization settings in the URLs of incoming requests.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -34,6 +34,6 @@ The following table shows how different [URL normalization settings](https://dev
 | example.com/hello/\\../path | _Cloudflare_       | _On_                    | _On_                     | example.com/path             | example.com/path             |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/normalization/examples/#page","headline":"URL normalization examples · Cloudflare Rules docs","description":"Examples of the impact of different URL normalization settings in the URLs of incoming requests.","url":"https://developers.cloudflare.com/rules/normalization/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/normalization/examples/#page","headline":"URL normalization examples · Cloudflare Rules docs","description":"Examples of the impact of different URL normalization settings in the URLs of incoming requests.","url":"https://developers.cloudflare.com/rules/normalization/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/normalization/","name":"URL normalization"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/normalization/examples/","name":"URL normalization examples"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Workers Binding
 description: Convert documents to Markdown using the Workers AI binding and toMarkdown method.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -276,6 +276,6 @@ const formats = await env.AI.toMarkdown().supported();
   * The [mime type ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME%5Ftypes/Common%5Ftypes) of files of this format
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/#page","headline":"Workers Binding · Cloudflare Workers AI docs","description":"Convert documents to Markdown using the Workers AI binding and toMarkdown method.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/#page","headline":"Workers Binding · Cloudflare Workers AI docs","description":"Convert documents to Markdown using the Workers AI binding and toMarkdown method.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/markdown-conversion/","name":"Markdown Conversion"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/markdown-conversion/usage/","name":"Usage"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers-ai/features/markdown-conversion/usage/binding/","name":"Workers Binding"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Import Cloudflare resources
 description: The Cloudflare Terraform tool is available in the Terraform ME repository. To use it, you must first install the Terraform app on your Mac or Linux system. You must then import Cloudflare resources individually by providing their IDs and names.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -334,6 +334,6 @@ No changes. Infrastructure is up-to-date.
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/#page","headline":"Import Cloudflare resources · Cloudflare Terraform docs","description":"The Cloudflare Terraform tool is available in the Terraform ME repository. To use it, you must first install the Terraform app on your Mac or Linux system. You must then import Cloudflare resources individually by providing their IDs and names.","url":"https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/#page","headline":"Import Cloudflare resources · Cloudflare Terraform docs","description":"The Cloudflare Terraform tool is available in the Terraform ME repository. To use it, you must first install the Terraform app on your Mac or Linux system. You must then import Cloudflare resources individually by providing their IDs and names.","url":"https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/advanced-topics/","name":"Advanced topics"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/advanced-topics/import-cloudflare-resources/","name":"Import Cloudflare resources"}}]}
 ```

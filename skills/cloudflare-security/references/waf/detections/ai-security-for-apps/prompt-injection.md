@@ -1,7 +1,7 @@
 ---
 title: Prompt injection detection
 description: Detect prompt injection attacks targeting your AI endpoints.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -101,6 +101,6 @@ To find the right threshold for your traffic:
 You can also use [log mode](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#log-mode) with payload logging during this tuning phase to see the actual prompt content alongside scores.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/prompt-injection/#page","headline":"Prompt injection detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect prompt injection attacks targeting your AI endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/prompt-injection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/prompt-injection/#page","headline":"Prompt injection detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect prompt injection attacks targeting your AI endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/prompt-injection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/prompt-injection/","name":"Prompt injection detection"}}]}
 ```

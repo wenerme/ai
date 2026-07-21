@@ -1,7 +1,7 @@
 ---
 title: AI Crawl Control with Cloudflare Bots
 description: Use AI Crawl Control alongside bot management.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -41,6 +41,6 @@ You may have both of the following enabled:
 Since pay per crawl happens after bot solutions, you need to first turn off **Block AI Bots** to ensure pay per crawl works as intended.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-bots/#page","headline":"AI Crawl Control with Cloudflare Bots · Cloudflare AI Crawl Control docs","description":"Use AI Crawl Control alongside bot management.","url":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-bots/#page","headline":"AI Crawl Control with Cloudflare Bots · Cloudflare AI Crawl Control docs","description":"Use AI Crawl Control alongside bot management.","url":"https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/configuration/ai-crawl-control-with-bots/","name":"AI Crawl Control with Cloudflare Bots"}}]}
 ```

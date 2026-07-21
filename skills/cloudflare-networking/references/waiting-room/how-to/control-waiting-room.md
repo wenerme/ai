@@ -1,7 +1,7 @@
 ---
 title: Control waiting room traffic
 description: Manage active user limits and queueing behavior.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -60,6 +60,6 @@ Only new visitors will be queued. Active users that are already on your website 
 For more details about queueing method, refer to [Queueing methods](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/#page","headline":"Control waiting room traffic · Cloudflare Waiting Room docs","description":"Manage active user limits and queueing behavior.","url":"https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/#page","headline":"Control waiting room traffic · Cloudflare Waiting Room docs","description":"Manage active user limits and queueing behavior.","url":"https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/control-waiting-room/","name":"Control waiting room traffic"}}]}
 ```

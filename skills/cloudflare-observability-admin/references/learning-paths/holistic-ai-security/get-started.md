@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Monitor and secure generative AI usage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ IT and security leaders are often asked to address risks and deal with increasin
 Cloudflare One offers a diverse, comprehensive set of solutions to secure your applications, workforce, and data from emerging generative AI threats. This learning path will provide a path to securely adopt AI use cases within your organization. It includes recommendations and strategies to monitor AI usage, protect against shadow AI, safeguard your sensitive data, and manage Model Context Protocol (MCP) servers effectively.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/#page","headline":"Get started · Cloudflare Learning Paths","description":"Monitor and secure generative AI usage.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/#page","headline":"Get started · Cloudflare Learning Paths","description":"Monitor and secure generative AI usage.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/holistic-ai-security/get-started/","name":"Get started"}}]}
 ```

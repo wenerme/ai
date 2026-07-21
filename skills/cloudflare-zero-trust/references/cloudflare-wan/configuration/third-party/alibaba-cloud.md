@@ -1,7 +1,7 @@
 ---
 title: Alibaba Cloud VPN Gateway
 description: Connect Alibaba Cloud VPN Gateway to Cloudflare WAN.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -84,6 +84,6 @@ This tutorial shows you how to connect Alibaba Cloud infrastructure to Cloudflar
 2. In **Prefix**, enter the IP CIDR you used to create your virtual private cloud in the Alibaba Cloud interface. In our example we used `192.168.20.0/24`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/alibaba-cloud/#page","headline":"Alibaba Cloud VPN Gateway · Cloudflare WAN docs","description":"Connect Alibaba Cloud VPN Gateway to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/alibaba-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/alibaba-cloud/#page","headline":"Alibaba Cloud VPN Gateway · Cloudflare WAN docs","description":"Connect Alibaba Cloud VPN Gateway to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/alibaba-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/alibaba-cloud/","name":"Alibaba Cloud VPN Gateway"}}]}
 ```

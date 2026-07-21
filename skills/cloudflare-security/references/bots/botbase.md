@@ -1,7 +1,7 @@
 ---
 title: BotBase
 description: Browse Cloudflare's directory of all known bots and agents, with behavior-based classification, directly in the dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -40,6 +40,6 @@ BotBase classifies each tracked bot by its behavior — what the bot may do on y
 Every bot tracked in BotBase, along with select metadata, is available publicly in [Cloudflare Radar's bots and agents directory ↗](https://radar.cloudflare.com/bots/directory).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/botbase/#page","headline":"BotBase · Cloudflare bot solutions docs","description":"Browse Cloudflare's directory of all known bots and agents, with behavior-based classification, directly in the dashboard.","url":"https://developers.cloudflare.com/bots/botbase/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bots"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/botbase/#page","headline":"BotBase · Cloudflare bot solutions docs","description":"Browse Cloudflare's directory of all known bots and agents, with behavior-based classification, directly in the dashboard.","url":"https://developers.cloudflare.com/bots/botbase/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bots"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/botbase/","name":"BotBase"}}]}
 ```

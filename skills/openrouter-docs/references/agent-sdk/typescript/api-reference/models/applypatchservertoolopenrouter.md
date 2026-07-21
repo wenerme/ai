@@ -27,5 +27,5 @@ let value: ApplyPatchServerToolOpenRouter = {
 
 | Field        | Type                                                                                                       | Required             | Description                                               | Example              |
 | ------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------- | -------------------- |
-| `parameters` | [models.ApplyPatchServerToolConfig](/agent-sdk/typescript/api-reference/models/applypatchservertoolconfig) | :heavy\_minus\_sign: | Configuration for the openrouter:apply\_patch server tool | `{"engine": "auto"}` |
+| `parameters` | [models.ApplyPatchServerToolConfig](/docs/agent-sdk/typescript/api-reference/models/applypatchservertoolconfig) | :heavy\_minus\_sign: | Configuration for the openrouter:apply\_patch server tool | `{"engine": "auto"}` |
 | `type`       | *"openrouter:apply\_patch"*                                                                                | :heavy\_check\_mark: | N/A                                                       |                      |

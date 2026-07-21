@@ -29,4 +29,4 @@ let value: BaseInputsMessage = {
 | `content` | *models.BaseInputsContent2*                                                        | :heavy\_check\_mark: | N/A         |
 | `phase`   | *models.BaseInputsPhaseUnion*                                                      | :heavy\_minus\_sign: | N/A         |
 | `role`    | *models.BaseInputsRoleUnion*                                                       | :heavy\_check\_mark: | N/A         |
-| `type`    | [models.BaseInputsType](/agent-sdk/typescript/api-reference/models/baseinputstype) | :heavy\_minus\_sign: | N/A         |
+| `type`    | [models.BaseInputsType](/docs/agent-sdk/typescript/api-reference/models/baseinputstype) | :heavy\_minus\_sign: | N/A         |

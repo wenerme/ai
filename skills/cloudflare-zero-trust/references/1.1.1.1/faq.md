@@ -1,7 +1,7 @@
 ---
 title: FAQ
 description: Find answers to common questions about Cloudflare's 1.1.1.1 DNS resolver, including setup, privacy features, IPv6 support, and troubleshooting tips.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ Yes. 1.1.1.1 has full IPv6 support. Refer to [IP addresses](https://developers.c
 Authoritative DNS providers may want to allowlist the IP addresses that 1.1.1.1 uses when querying upstream nameservers. The full list of Cloudflare IP addresses is available at [https://www.cloudflare.com/ips/ ↗](https://www.cloudflare.com/ips/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/faq/#page","headline":"FAQ | Cloudflare Docs","description":"Find answers to common questions about Cloudflare's 1.1.1.1 DNS resolver, including setup, privacy features, IPv6 support, and troubleshooting tips.","url":"https://developers.cloudflare.com/1.1.1.1/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/faq/#page","headline":"FAQ | Cloudflare Docs","description":"Find answers to common questions about Cloudflare's 1.1.1.1 DNS resolver, including setup, privacy features, IPv6 support, and troubleshooting tips.","url":"https://developers.cloudflare.com/1.1.1.1/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/faq/","name":"FAQ"}}]}
 ```

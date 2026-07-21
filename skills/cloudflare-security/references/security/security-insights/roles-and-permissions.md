@@ -1,7 +1,7 @@
 ---
 title: Roles and permissions
 description: Cloudflare roles required to access and manage Security Insights.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -24,6 +24,6 @@ Cloudflare users with the following [roles](https://developers.cloudflare.com/fu
 * Firewall
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#page","headline":"Roles and permissions · Security dashboard docs","description":"Cloudflare roles required to access and manage Security Insights.","url":"https://developers.cloudflare.com/security/security-insights/roles-and-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/roles-and-permissions/#page","headline":"Roles and permissions · Security dashboard docs","description":"Cloudflare roles required to access and manage Security Insights.","url":"https://developers.cloudflare.com/security/security-insights/roles-and-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/security-insights/","name":"Security Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/security/security-insights/roles-and-permissions/","name":"Roles and permissions"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Concepts
 description: Understand key DNS concepts with Cloudflare's technical documentation. Learn about nameservers, DNS records, DNSSEC, and more.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -123,6 +123,6 @@ Without additional protection, DNS responses can be spoofed — an attacker coul
 For help setting up DNSSEC in Cloudflare, refer to [Enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/concepts/#page","headline":"DNS concepts · Cloudflare DNS docs","description":"Understand key DNS concepts with Cloudflare's technical documentation. Learn about nameservers, DNS records, DNSSEC, and more.","url":"https://developers.cloudflare.com/dns/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/concepts/#page","headline":"DNS concepts · Cloudflare DNS docs","description":"Understand key DNS concepts with Cloudflare's technical documentation. Learn about nameservers, DNS records, DNSSEC, and more.","url":"https://developers.cloudflare.com/dns/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/concepts/","name":"Concepts"}}]}
 ```

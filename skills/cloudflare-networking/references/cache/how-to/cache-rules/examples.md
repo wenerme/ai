@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Example cache rule configurations for common use cases.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ In the following sections, you can find common cache rules examples.
 * [ Respect Strong ETags ](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/respect-strong-etags/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/examples/#page","headline":"Examples · Cloudflare Cache (CDN) docs","description":"Example cache rule configurations for common use cases.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/examples/#page","headline":"Examples · Cloudflare Cache (CDN) docs","description":"Example cache rule configurations for common use cases.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-rules/","name":"Cache Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/cache-rules/examples/","name":"Examples"}}]}
 ```

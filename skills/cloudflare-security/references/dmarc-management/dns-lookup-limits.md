@@ -1,7 +1,7 @@
 ---
 title: DNS lookup limit
 description: Review number of DNS lookups on your SPF records
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ To check if your SPF records are compliant with the SPF specification:
 5. DMARC Management will inspect your records and check for the total number of DNS lookups. If the record exceeds the limit, DMARC Management will display a warning. To fix this, remove unnecessary entries in your SPF record. Refer to [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#delete-dns-records) for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dmarc-management/dns-lookup-limits/#page","headline":"DNS lookup limit · Cloudflare DMARC Management docs","description":"Review number of DNS lookups on your SPF records","url":"https://developers.cloudflare.com/dmarc-management/dns-lookup-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dmarc-management/dns-lookup-limits/#page","headline":"DNS lookup limit · Cloudflare DMARC Management docs","description":"Review number of DNS lookups on your SPF records","url":"https://developers.cloudflare.com/dmarc-management/dns-lookup-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dmarc-management/","name":"DMARC Management"}},{"@type":"ListItem","position":3,"item":{"@id":"/dmarc-management/dns-lookup-limits/","name":"DNS lookup limit"}}]}
 ```

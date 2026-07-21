@@ -1,7 +1,7 @@
 ---
 title: Workers binding migration
 description: Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -296,6 +296,6 @@ The `env.AI.autorag()` binding will continue to work indefinitely. You do not ne
 For the legacy API reference, refer to [Workers binding (legacy)](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/#page","headline":"Workers binding migration · Cloudflare AI Search docs","description":"Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.","url":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/#page","headline":"Workers binding migration · Cloudflare AI Search docs","description":"Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.","url":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/migration/","name":"API Migration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/migration/workers-binding/","name":"Workers binding migration"}}]}
 ```

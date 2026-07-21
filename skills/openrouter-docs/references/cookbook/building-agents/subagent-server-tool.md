@@ -77,20 +77,20 @@ You need:
 * Node.js 20 or newer
 * An OpenRouter API key in `OPENROUTER_API_KEY`
 * A workflow that already calls OpenRouter (Chat Completions, Responses, or Agent SDK)
-* An orchestrator model that supports tool calling (e.g. `~anthropic/claude-opus-latest`). Check the model's capabilities on the [model page](/models) before choosing.
-* A cheaper worker model for subtasks (e.g. `~anthropic/claude-haiku-latest`). Browse [model pricing](/models) to find the cheapest model that meets your quality bar.
+* An orchestrator model that supports tool calling (e.g. `~anthropic/claude-opus-latest`). Check the model's capabilities on the [model page](/docs/models) before choosing.
+* A cheaper worker model for subtasks (e.g. `~anthropic/claude-haiku-latest`). Browse [model pricing](/docs/models) to find the cheapest model that meets your quality bar.
 
-Tilde-latest aliases like `~anthropic/claude-haiku-latest` auto-resolve to the newest version in that model family. Find available aliases on each model's page at [/models](/models). You can also use exact slugs (e.g. `anthropic/claude-haiku-4.5`) when you need to pin a specific version.
+Tilde-latest aliases like `~anthropic/claude-haiku-latest` auto-resolve to the newest version in that model family. Find available aliases on each model's page at [/models](/docs/models). You can also use exact slugs (e.g. `anthropic/claude-haiku-4.5`) when you need to pin a specific version.
 
-If you're starting a new TypeScript agent, use the [Agent SDK `callModel` API](/sdks/typescript/call-model/overview) for the orchestrator loop. The samples below use Chat Completions so the server-tool request shape is visible, but the delegation pattern works the same way inside an Agent SDK workflow.
+If you're starting a new TypeScript agent, use the [Agent SDK `callModel` API](/docs/sdks/typescript/call-model/overview) for the orchestrator loop. The samples below use Chat Completions so the server-tool request shape is visible, but the delegation pattern works the same way inside an Agent SDK workflow.
 
 Use these references for exact schemas:
 
-* [Subagent server tool](/guides/features/server-tools/subagent)
-* [Agent SDK `callModel` overview](/sdks/typescript/call-model/overview)
-* [Create a chat completion](/api/api-reference/chat/create-a-chat-completion)
-* [Create a response](/api/api-reference/responses/create-a-response)
-* [TypeScript SDK Chat reference](/client-sdks/typescript/sdks/chat/README)
+* [Subagent server tool](/docs/guides/features/server-tools/subagent)
+* [Agent SDK `callModel` overview](/docs/sdks/typescript/call-model/overview)
+* [Create a chat completion](/docs/api/api-reference/chat/create-a-chat-completion)
+* [Create a response](/docs/api/api-reference/responses/create-a-response)
+* [TypeScript SDK Chat reference](/docs/client-sdks/typescript/sdks/chat/README)
 
 ## What you're building
 
@@ -262,7 +262,7 @@ Wire the request body into your app's existing request path. Here's the shape of
   ```
 </CodeGroup>
 
-The response follows the standard [Chat Completions format](/api/api-reference/chat/create-a-chat-completion). Server tools resolve server-side: the orchestrator's subagent calls happen inside OpenRouter's agentic loop, so the client response contains only the final integrated answer in `message.content`. The `usage` object reflects the combined token spend per [Server tools: Usage Tracking](/guides/features/server-tools#usage-tracking).
+The response follows the standard [Chat Completions format](/docs/api/api-reference/chat/create-a-chat-completion). Server tools resolve server-side: the orchestrator's subagent calls happen inside OpenRouter's agentic loop, so the client response contains only the final integrated answer in `message.content`. The `usage` object reflects the combined token spend per [Server tools: Usage Tracking](/docs/guides/features/server-tools#usage-tracking).
 
 The orchestrator decides whether and when to delegate. Each delegation passes two arguments:
 
@@ -294,7 +294,7 @@ On failure:
 }
 ```
 
-The orchestrator receives the result as a tool response and continues generating. It can delegate more tasks, integrate outcomes it already has, or finish the response. Subagent calls are capped per request (see the [reference page](/guides/features/server-tools/subagent) for current limits).
+The orchestrator receives the result as a tool response and continues generating. It can delegate more tasks, integrate outcomes it already has, or finish the response. Subagent calls are capped per request (see the [reference page](/docs/guides/features/server-tools/subagent) for current limits).
 
 ## 3. Give the worker its own tools
 
@@ -363,14 +363,14 @@ const tools = [
 | `instructions`          | System prompt for the worker. Shape its output format and behavior.                                                                                      |
 | `max_tool_calls`        | Range 1 to 25. Accepted and validated but **not yet enforced** on the worker call. Plan for enforcement when relying on it as a cost guard.              |
 
-The full parameter reference is at [Subagent server tool](/guides/features/server-tools/subagent).
+The full parameter reference is at [Subagent server tool](/docs/guides/features/server-tools/subagent).
 
 <Info>
   Subagent works with both non-streaming and streaming requests. With streaming
   (`stream: true`), the server sends `: OPENROUTER PROCESSING` SSE comments as
   heartbeats while workers execute. Content chunks resume once the orchestrator
   continues generating. The final chunk includes the aggregated `usage` object.
-  See [Server tools overview](/guides/features/server-tools) for how server
+  See [Server tools overview](/docs/guides/features/server-tools) for how server
   tool usage appears in the response.
 </Info>
 
@@ -453,7 +453,7 @@ Do not log:
 * full worker outcomes
 * user content (unless your product already has an explicit retention policy)
 
-The `usage` object in the response reflects the combined token spend of the orchestrator plus all worker calls, per [Server tools: Usage Tracking](/guides/features/server-tools#usage-tracking). You don't need to track inner costs separately.
+The `usage` object in the response reflects the combined token spend of the orchestrator plus all worker calls, per [Server tools: Usage Tracking](/docs/guides/features/server-tools#usage-tracking). You don't need to track inner costs separately.
 
 ```js lines theme={null}
 const logDelegation = (response, context) => {
@@ -477,10 +477,10 @@ const logDelegation = (response, context) => {
 
 ## Next steps
 
-* Read the [Subagent reference](/guides/features/server-tools/subagent) for exact parameters, recursion guards, worker tool constraints, and invocation caps.
-* Pair subagent with [Advisor](/cookbook/building-agents/advisor-server-tool) for a two-tier pattern: cheap worker for routine tasks, strong advisor for uncertain decisions.
-* Give the worker [Web Search](/guides/features/server-tools/web-search) when subtasks need current data.
-* Add [Response Caching](/guides/features/response-caching) for repeated orchestrator prefixes across similar tasks.
-* Use [Fusion](/guides/features/server-tools/fusion) when subtasks need multi-model deliberation instead of single-worker execution.
-* Browse the [Model list](/models) to compare worker model pricing and find the cheapest model that meets your subtask quality bar.
-* Add [Structured Outputs](/structured-outputs) to the orchestrator request when you need the final answer in a specific JSON schema.
+* Read the [Subagent reference](/docs/guides/features/server-tools/subagent) for exact parameters, recursion guards, worker tool constraints, and invocation caps.
+* Pair subagent with [Advisor](/docs/cookbook/building-agents/advisor-server-tool) for a two-tier pattern: cheap worker for routine tasks, strong advisor for uncertain decisions.
+* Give the worker [Web Search](/docs/guides/features/server-tools/web-search) when subtasks need current data.
+* Add [Response Caching](/docs/guides/features/response-caching) for repeated orchestrator prefixes across similar tasks.
+* Use [Fusion](/docs/guides/features/server-tools/fusion) when subtasks need multi-model deliberation instead of single-worker execution.
+* Browse the [Model list](/docs/models) to compare worker model pricing and find the cheapest model that meets your subtask quality bar.
+* Add [Structured Outputs](/docs/structured-outputs) to the orchestrator request when you need the final answer in a specific JSON schema.

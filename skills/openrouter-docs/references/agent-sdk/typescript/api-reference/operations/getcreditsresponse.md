@@ -30,4 +30,4 @@ let value: GetCreditsResponse = {
 
 | Field  | Type                                                                                       | Required             | Description | Example                                         |
 | ------ | ------------------------------------------------------------------------------------------ | -------------------- | ----------- | ----------------------------------------------- |
-| `data` | [operations.GetCreditsData](/agent-sdk/typescript/api-reference/operations/getcreditsdata) | :heavy\_check\_mark: | N/A         | `{"total_credits": 100.5,"total_usage": 25.75}` |
+| `data` | [operations.GetCreditsData](/docs/agent-sdk/typescript/api-reference/operations/getcreditsdata) | :heavy\_check\_mark: | N/A         | `{"total_credits": 100.5,"total_usage": 25.75}` |

@@ -1,7 +1,7 @@
 ---
 title: Using ETag Headers with Cloudflare
 description: How ETag headers work with Cloudflare caching.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -87,6 +87,6 @@ Refer to [Content compression](https://developers.cloudflare.com/speed/optimizat
 * If your origin (or R2) applies compression based on `accept-encoding`, the first compression type will be cached. Consider whether strong ETags fit your use case, or use cache key rules to handle different compression types.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/reference/etag-headers/#page","headline":"Using ETag Headers with Cloudflare · Cloudflare Cache (CDN) docs","description":"How ETag headers work with Cloudflare caching.","url":"https://developers.cloudflare.com/cache/reference/etag-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/reference/etag-headers/#page","headline":"Using ETag Headers with Cloudflare · Cloudflare Cache (CDN) docs","description":"How ETag headers work with Cloudflare caching.","url":"https://developers.cloudflare.com/cache/reference/etag-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/reference/etag-headers/","name":"Using ETag Headers with Cloudflare"}}]}
 ```

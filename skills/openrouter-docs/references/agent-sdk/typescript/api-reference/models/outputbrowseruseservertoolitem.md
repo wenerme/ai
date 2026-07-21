@@ -31,5 +31,5 @@ let value: OutputBrowserUseServerToolItem = {
 | `action`        | *string*                                                                                                                   | :heavy\_minus\_sign: | N/A         |           |
 | `id`            | *string*                                                                                                                   | :heavy\_minus\_sign: | N/A         |           |
 | `screenshotB64` | *string*                                                                                                                   | :heavy\_minus\_sign: | N/A         |           |
-| `status`        | [models.ToolCallStatus](/agent-sdk/typescript/api-reference/models/toolcallstatus)                                         | :heavy\_check\_mark: | N/A         | completed |
-| `type`          | [models.OutputBrowserUseServerToolItemType](/agent-sdk/typescript/api-reference/models/outputbrowseruseservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |
+| `status`        | [models.ToolCallStatus](/docs/agent-sdk/typescript/api-reference/models/toolcallstatus)                                         | :heavy\_check\_mark: | N/A         | completed |
+| `type`          | [models.OutputBrowserUseServerToolItemType](/docs/agent-sdk/typescript/api-reference/models/outputbrowseruseservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |

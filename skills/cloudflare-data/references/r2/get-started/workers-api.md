@@ -1,7 +1,7 @@
 ---
 title: Workers API
 description: Use R2 from Cloudflare Workers with the Workers API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -192,6 +192,6 @@ Refer to the [Workers R2 API documentation](https://developers.cloudflare.com/r2
 [ Object lifecycles ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) Set up lifecycle rules to automatically delete old objects.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/workers-api/#page","headline":"Workers API · Cloudflare R2 docs","description":"Use R2 from Cloudflare Workers with the Workers API.","url":"https://developers.cloudflare.com/r2/get-started/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/get-started/workers-api/#page","headline":"Workers API · Cloudflare R2 docs","description":"Use R2 from Cloudflare Workers with the Workers API.","url":"https://developers.cloudflare.com/r2/get-started/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/get-started/workers-api/","name":"Workers API"}}]}
 ```

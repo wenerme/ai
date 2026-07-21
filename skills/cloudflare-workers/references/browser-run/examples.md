@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Explore Browser Run code examples for Quick Actions, Puppeteer, Playwright, and CDP integrations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ Use [CDP](https://developers.cloudflare.com/browser-run/cdp/) to connect to Brow
 [ Configure AI agents with MCP ](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/) Set up Claude Desktop, Claude Code, Cursor, or other MCP clients to control browsers via Browser Run.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/examples/#page","headline":"Examples · Cloudflare Browser Run docs","description":"Explore Browser Run code examples for Quick Actions, Puppeteer, Playwright, and CDP integrations.","url":"https://developers.cloudflare.com/browser-run/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/examples/#page","headline":"Examples · Cloudflare Browser Run docs","description":"Explore Browser Run code examples for Quick Actions, Puppeteer, Playwright, and CDP integrations.","url":"https://developers.cloudflare.com/browser-run/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/examples/","name":"Examples"}}]}
 ```

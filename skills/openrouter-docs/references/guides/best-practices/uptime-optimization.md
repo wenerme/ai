@@ -48,4 +48,4 @@ OpenRouter tracks response times, error rates, and availability across all provi
 
 While our smart routing helps maintain high availability, you can also customize provider selection using request parameters. This gives you control over which providers handle your requests while still benefiting from automatic fallback when needed.
 
-Learn more about customizing provider selection in our [Provider Routing documentation](/guides/routing/provider-selection).
+Learn more about customizing provider selection in our [Provider Routing documentation](/docs/guides/routing/provider-selection).

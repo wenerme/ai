@@ -1,7 +1,7 @@
 ---
 title: Upload with a link
 description: Upload videos to Cloudflare Stream by providing an HTTP link to a file in cloud storage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -149,6 +149,6 @@ After the video is uploaded, you can use the video `uid` shown in the example re
 If you are using your own player or rendering the video in a mobile app, refer to [using your own player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/#page","headline":"Upload with a link · Cloudflare Stream docs","description":"Upload videos to Cloudflare Stream by providing an HTTP link to a file in cloud storage.","url":"https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/#page","headline":"Upload with a link · Cloudflare Stream docs","description":"Upload videos to Cloudflare Stream by providing an HTTP link to a file in cloud storage.","url":"https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/uploading-videos/","name":"Upload videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/uploading-videos/upload-via-link/","name":"Upload with a link"}}]}
 ```

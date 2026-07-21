@@ -1,7 +1,7 @@
 ---
 title: OneLogin (SAML)
 description: Integrate OneLogin as a SAML identity provider for Cloudflare One.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -82,6 +82,6 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-saml/#page","headline":"OneLogin (SAML) · Cloudflare One docs","description":"Integrate OneLogin as a SAML identity provider for Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-saml/#page","headline":"OneLogin (SAML) · Cloudflare One docs","description":"Integrate OneLogin as a SAML identity provider for Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/onelogin-saml/","name":"OneLogin (SAML)"}}]}
 ```

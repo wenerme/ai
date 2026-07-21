@@ -3,7 +3,7 @@ title: bge-reranker-base
 description: Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in [0,1] by sigmoid function.
 
 
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -118,6 +118,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/
 Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/baai/bge-reranker-base/#page","headline":"bge-reranker-base (BAAI) · Cloudflare AI docs · Cloudflare AI docs","description":"Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \\[0,1] by sigmoid function.","url":"https://developers.cloudflare.com/ai/models/%40cf/baai/bge-reranker-base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/baai/bge-reranker-base/#page","headline":"bge-reranker-base (BAAI) · Cloudflare AI docs · Cloudflare AI docs","description":"Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \\[0,1] by sigmoid function.","url":"https://developers.cloudflare.com/ai/models/%40cf/baai/bge-reranker-base/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

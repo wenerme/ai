@@ -190,7 +190,7 @@ run();
 
 ## submitFeedback
 
-Submit structured feedback on a generation the authenticated user made. [Management key](/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
+Submit structured feedback on a generation the authenticated user made. [Management key](/docs/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

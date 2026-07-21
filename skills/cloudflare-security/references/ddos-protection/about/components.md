@@ -1,7 +1,7 @@
 ---
 title: Main components
 description: Key components of Cloudflare DDoS protection, including managed rulesets and advanced systems.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ Complementary to the Autonomous Edge, Cloudflare's entire global network is over
 The centralized systems run in Cloudflare's core data centers. They receive samples from every global network data center, analyze them, and automatically send mitigation instructions when detecting an attack. The system is also synchronized to each of our customers' web servers to identify their health and trigger any required mitigation actions.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/about/components/#page","headline":"Main components · Cloudflare DDoS Protection docs","description":"Key components of Cloudflare DDoS protection, including managed rulesets and advanced systems.","url":"https://developers.cloudflare.com/ddos-protection/about/components/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/about/components/#page","headline":"Main components · Cloudflare DDoS Protection docs","description":"Key components of Cloudflare DDoS protection, including managed rulesets and advanced systems.","url":"https://developers.cloudflare.com/ddos-protection/about/components/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/about/components/","name":"Main components"}}]}
 ```

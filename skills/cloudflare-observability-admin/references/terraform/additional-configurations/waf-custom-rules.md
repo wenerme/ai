@@ -1,7 +1,7 @@
 ---
 title: WAF custom rules configuration using Terraform
 description: Create and deploy Cloudflare WAF custom rules at the zone or account level using Terraform.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -230,6 +230,6 @@ For more information on configuring and deploying custom rulesets, refer to [Wor
 * [Leaked credentials detection: Add a custom rule to challenge requests with leaked credentials](https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/#add-a-custom-rule-to-challenge-requests-with-leaked-credentials)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/#page","headline":"WAF custom rules configuration using Terraform · Cloudflare Terraform docs","description":"Create and deploy Cloudflare WAF custom rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/#page","headline":"WAF custom rules configuration using Terraform · Cloudflare Terraform docs","description":"Create and deploy Cloudflare WAF custom rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/waf-custom-rules/","name":"WAF custom rules configuration using Terraform"}}]}
 ```

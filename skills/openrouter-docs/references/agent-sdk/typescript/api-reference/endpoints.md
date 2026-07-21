@@ -79,14 +79,14 @@ run();
 
 | Parameter              | Type                                                                                                         | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.ListEndpointsZdrRequest](/agent-sdk/typescript/api-reference/operations/listendpointszdrrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.ListEndpointsZdrRequest](/docs/agent-sdk/typescript/api-reference/operations/listendpointszdrrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                               | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                      | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                           | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                           | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ListEndpointsZdrResponse](/agent-sdk/typescript/api-reference/operations/listendpointszdrresponse)>**
+**Promise\<[operations.ListEndpointsZdrResponse](/docs/agent-sdk/typescript/api-reference/operations/listendpointszdrresponse)>**
 
 ### Errors
 
@@ -160,14 +160,14 @@ run();
 
 | Parameter              | Type                                                                                                   | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.ListEndpointsRequest](/agent-sdk/typescript/api-reference/operations/listendpointsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.ListEndpointsRequest](/docs/agent-sdk/typescript/api-reference/operations/listendpointsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                         | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ListEndpointsResponse](/agent-sdk/typescript/api-reference/operations/listendpointsresponse)>**
+**Promise\<[operations.ListEndpointsResponse](/docs/agent-sdk/typescript/api-reference/operations/listendpointsresponse)>**
 
 ### Errors
 

@@ -1,7 +1,7 @@
 ---
 title: Readonly connections
 description: Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -1029,6 +1029,6 @@ export class AuditedAgent extends Agent<Env, State> {
 * [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/#page","headline":"Readonly connections · Cloudflare Agents docs","description":"Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.","url":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/#page","headline":"Readonly connections · Cloudflare Agents docs","description":"Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.","url":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/readonly-connections/","name":"Readonly connections"}}]}
 ```

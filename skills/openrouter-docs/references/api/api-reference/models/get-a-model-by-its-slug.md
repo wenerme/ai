@@ -168,6 +168,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/ModelResponse'
           description: Returns the model details
+        '403':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 403
+                  message: Only management keys can perform this operation
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
+          description: Forbidden - Authentication successful but insufficient permissions
         '404':
           content:
             application/json:
@@ -235,6 +245,27 @@ components:
           $ref: '#/components/schemas/Model'
       required:
         - data
+      type: object
+    ForbiddenResponse:
+      description: Forbidden - Authentication successful but insufficient permissions
+      example:
+        error:
+          code: 403
+          message: Only management keys can perform this operation
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
       type: object
     NotFoundResponse:
       description: Not Found - Resource does not exist
@@ -422,6 +453,25 @@ components:
         - default_parameters
         - supported_voices
         - links
+      type: object
+    ForbiddenResponseErrorData:
+      description: Error data for ForbiddenResponse
+      example:
+        code: 403
+        message: Only management keys can perform this operation
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
       type: object
     NotFoundResponseErrorData:
       description: Error data for NotFoundResponse

@@ -67,7 +67,7 @@ with OpenRouter(
 
 ## list
 
-List all API keys for the authenticated user. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+List all API keys for the authenticated user. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -98,7 +98,7 @@ with OpenRouter(
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
 | `include_disabled`         | *Optional\[bool]*                                                   | :heavy\_minus\_sign: | Whether to include disabled API keys in the response                                                                                                        | false                                |
-| `offset`                   | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Number of API keys to skip for pagination                                                                                                                   | 0                                    |
+| `offset`                   | *OptionalNullable\[int]*                                            | :heavy\_minus\_sign: | Number of API keys to skip for pagination                                                                                                                   | 0                                    |
 | `workspace_id`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Filter API keys by workspace ID. By default, keys in the default workspace are returned.                                                                    | 0df9e665-d932-5740-b2c7-b52af166bc11 |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
 
@@ -117,7 +117,7 @@ with OpenRouter(
 
 ## create
 
-Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -174,7 +174,7 @@ with OpenRouter(
 
 ## delete
 
-Delete an existing API key. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Delete an existing API key. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -223,7 +223,7 @@ with OpenRouter(
 
 ## get
 
-Get a single API key by hash. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Get a single API key by hash. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -272,7 +272,7 @@ with OpenRouter(
 
 ## update
 
-Update an existing API key. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Update an existing API key. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

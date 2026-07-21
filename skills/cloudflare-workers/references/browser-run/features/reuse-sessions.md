@@ -1,7 +1,7 @@
 ---
 title: Reuse sessions
 description: Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -313,6 +313,6 @@ Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/#page","headline":"Reuse sessions · Cloudflare Browser Run docs","description":"Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.","url":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/#page","headline":"Reuse sessions · Cloudflare Browser Run docs","description":"Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.","url":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/features/reuse-sessions/","name":"Reuse sessions"}}]}
 ```

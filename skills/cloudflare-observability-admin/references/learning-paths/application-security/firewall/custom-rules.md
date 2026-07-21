@@ -1,7 +1,7 @@
 ---
 title: Custom rules
 description: Create custom rules for load balancer routing.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -28,6 +28,6 @@ The [custom rules documentation](https://developers.cloudflare.com/waf/custom-ru
 You can skip one or more Cloudflare security features using a custom rule [configured with the _Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/). These rules are also known as skip rules. Refer to [Skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/) for more information on the features you can skip.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/firewall/custom-rules/#page","headline":"Custom rules · Cloudflare Learning Paths","description":"Create custom rules for load balancer routing.","url":"https://developers.cloudflare.com/learning-paths/application-security/firewall/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/firewall/custom-rules/#page","headline":"Custom rules · Cloudflare Learning Paths","description":"Create custom rules for load balancer routing.","url":"https://developers.cloudflare.com/learning-paths/application-security/firewall/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/application-security/firewall/","name":"Web Application Firewall"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/application-security/firewall/custom-rules/","name":"Custom rules"}}]}
 ```

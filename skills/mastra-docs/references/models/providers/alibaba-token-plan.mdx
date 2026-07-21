@@ -1,11 +1,11 @@
 ---
 title: "Alibaba Token Plan | Models"
-description: "Use Alibaba Token Plan models with Mastra. 18 models available."
+description: "Use Alibaba Token Plan models with Mastra. 19 models available."
 ---
 
 # [Alibaba Token Plan logo]Alibaba Token Plan
 
-Access 18 Alibaba Token Plan models through Mastra's model router. Authentication is handled automatically using the `ALIBABA_TOKEN_PLAN_API_KEY` environment variable.
+Access 19 Alibaba Token Plan models through Mastra's model router. Authentication is handled automatically using the `ALIBABA_TOKEN_PLAN_API_KEY` environment variable.
 
 Learn more in the [Alibaba Token Plan documentation](https://www.alibabacloud.com/help/en/model-studio/token-plan-overview).
 
@@ -228,6 +228,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 64000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "alibaba-token-plan/qwen3.8-max-preview",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

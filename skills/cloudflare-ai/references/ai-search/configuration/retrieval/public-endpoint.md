@@ -1,7 +1,7 @@
 ---
 title: Public endpoint settings
 description: Expose AI Search instances through public MCP, chat, and search endpoints without authentication.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -101,6 +101,6 @@ or use Acme products.
 * [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/) \- Add pre-built search and chat components to your website using your public endpoints.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/#page","headline":"Public endpoint settings · Cloudflare AI Search docs","description":"Expose AI Search instances through public MCP, chat, and search endpoints without authentication.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/#page","headline":"Public endpoint settings · Cloudflare AI Search docs","description":"Expose AI Search instances through public MCP, chat, and search endpoints without authentication.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/retrieval/","name":"Retrieval"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/retrieval/public-endpoint/","name":"Public endpoint settings"}}]}
 ```

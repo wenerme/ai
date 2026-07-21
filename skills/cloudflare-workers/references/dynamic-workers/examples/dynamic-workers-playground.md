@@ -1,7 +1,7 @@
 ---
 title: Dynamic Workers Playground
 description: Bundle, execute, and observe Dynamic Workers with real-time logs and timing.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -168,6 +168,6 @@ npm run dev
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/#page","headline":"Dynamic Workers Playground · Cloudflare Dynamic Workers docs","description":"Bundle, execute, and observe Dynamic Workers with real-time logs and timing.","url":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/#page","headline":"Dynamic Workers Playground · Cloudflare Dynamic Workers docs","description":"Bundle, execute, and observe Dynamic Workers with real-time logs and timing.","url":"https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/examples/dynamic-workers-playground/","name":"Dynamic Workers Playground"}}]}
 ```

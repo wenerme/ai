@@ -26,7 +26,7 @@ If you have a legitimate use case for adversarial testing, we encourage you to r
 
 ## Compatibility with Zero Data Retention
 
-Note that certain types of safety classifiers are run online (while the prompt is in-flight and in-memory). Prompts may therefore be flagged by classifiers even with full ZDR configured. These classifiers operate independently of data retention policies and are fully compatible with [Zero Data Retention (ZDR)](/guides/features/zdr).
+Note that certain types of safety classifiers are run online (while the prompt is in-flight and in-memory). Prompts may therefore be flagged by classifiers even with full ZDR configured. These classifiers operate independently of data retention policies and are fully compatible with [Zero Data Retention (ZDR)](/docs/guides/features/zdr).
 
 ## Request Approval
 

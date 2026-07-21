@@ -1,7 +1,7 @@
 ---
 title: Build a Comments API
 description: Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -512,6 +512,6 @@ export default app;
 * Explore [community projects built on D1](https://developers.cloudflare.com/d1/reference/community-projects/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/#page","headline":"Build a Comments API · Cloudflare D1 docs","description":"Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.","url":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/#page","headline":"Build a Comments API · Cloudflare D1 docs","description":"Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.","url":"https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/tutorials/build-a-comments-api/","name":"Build a Comments API"}}]}
 ```

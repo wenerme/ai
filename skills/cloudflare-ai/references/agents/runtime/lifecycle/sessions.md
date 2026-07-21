@@ -1,7 +1,7 @@
 ---
 title: Sessions
 description: Persistent conversation storage with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -1525,6 +1525,6 @@ By default, storage is in Durable Object SQLite and tables are created lazily on
 * [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — `setState()` for simpler key-value persistence
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#page","headline":"Sessions · Cloudflare Agents docs","description":"Persistent conversation storage with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#page","headline":"Sessions · Cloudflare Agents docs","description":"Persistent conversation storage with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/lifecycle/","name":"Lifecycle"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/lifecycle/sessions/","name":"Sessions"}}]}
 ```

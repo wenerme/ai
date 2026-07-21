@@ -1,7 +1,7 @@
 ---
 title: Webpack
 description: Learn how to migrate from Wrangler v1 to v2 using webpack. This guide covers configuration, custom builds, and compatibility for Cloudflare Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -219,6 +219,6 @@ If you are using `wrangler@1.6.0` or earlier, a `webpack.config.js` file at the 
 When [upgrading from wrangler@1.6.0](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/install-update/), you may encounter webpack configuration warnings. To resolve this, add `webpack_config = "webpack.config.js"` to your Wrangler file.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/#page","headline":"Webpack · Cloudflare Workers docs","description":"Learn how to migrate from Wrangler v1 to v2 using webpack. This guide covers configuration, custom builds, and compatibility for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/#page","headline":"Webpack · Cloudflare Workers docs","description":"Learn how to migrate from Wrangler v1 to v2 using webpack. This guide covers configuration, custom builds, and compatibility for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/","name":"Migrate from Wrangler v1 to v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/","name":"Wrangler v1 (legacy)"}},{"@type":"ListItem","position":7,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/wrangler-legacy/webpack/","name":"Webpack"}}]}
 ```

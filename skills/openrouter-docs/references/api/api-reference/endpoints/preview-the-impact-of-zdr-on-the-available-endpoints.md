@@ -180,6 +180,16 @@ paths:
                   - data
                 type: object
           description: Returns a list of endpoints
+        '403':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 403
+                  message: Only management keys can perform this operation
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
+          description: Forbidden - Authentication successful but insufficient permissions
         '500':
           content:
             application/json:
@@ -387,6 +397,27 @@ components:
         - supports_implicit_caching
         - latency_last_30m
         - throughput_last_30m
+      type: object
+    ForbiddenResponse:
+      description: Forbidden - Authentication successful but insufficient permissions
+      example:
+        error:
+          code: 403
+          message: Only management keys can perform this operation
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
       type: object
     InternalServerResponse:
       description: Internal Server Error - Unexpected server error
@@ -657,6 +688,25 @@ components:
         - verbosity
       example: temperature
       type: string
+    ForbiddenResponseErrorData:
+      description: Error data for ForbiddenResponse
+      example:
+        code: 403
+        message: Only management keys can perform this operation
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
     InternalServerResponseErrorData:
       description: Error data for InternalServerResponse
       example:

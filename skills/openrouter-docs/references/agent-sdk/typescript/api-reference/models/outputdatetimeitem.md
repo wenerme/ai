@@ -32,6 +32,6 @@ let value: OutputDatetimeItem = {
 | ---------- | -------------------------------------------------------------------------------------------------- | -------------------- | ------------------------ | --------- |
 | `datetime` | *string*                                                                                           | :heavy\_check\_mark: | ISO 8601 datetime string |           |
 | `id`       | *string*                                                                                           | :heavy\_minus\_sign: | N/A                      |           |
-| `status`   | [models.ToolCallStatus](/agent-sdk/typescript/api-reference/models/toolcallstatus)                 | :heavy\_check\_mark: | N/A                      | completed |
+| `status`   | [models.ToolCallStatus](/docs/agent-sdk/typescript/api-reference/models/toolcallstatus)                 | :heavy\_check\_mark: | N/A                      | completed |
 | `timezone` | *string*                                                                                           | :heavy\_check\_mark: | IANA timezone name       |           |
-| `type`     | [models.OutputDatetimeItemType](/agent-sdk/typescript/api-reference/models/outputdatetimeitemtype) | :heavy\_check\_mark: | N/A                      |           |
+| `type`     | [models.OutputDatetimeItemType](/docs/agent-sdk/typescript/api-reference/models/outputdatetimeitemtype) | :heavy\_check\_mark: | N/A                      |           |

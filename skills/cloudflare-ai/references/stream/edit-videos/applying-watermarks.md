@@ -1,7 +1,7 @@
 ---
 title: Apply watermarks
 description: Create watermark profiles and apply them to Cloudflare Stream video uploads via the API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -872,6 +872,6 @@ If the operation was successful, it will return a success response:
 * The maximum file size is 2MiB (2097152 bytes), and only PNG files are supported.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/#page","headline":"Apply watermarks · Cloudflare Stream docs","description":"Create watermark profiles and apply them to Cloudflare Stream video uploads via the API.","url":"https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/#page","headline":"Apply watermarks · Cloudflare Stream docs","description":"Create watermark profiles and apply them to Cloudflare Stream video uploads via the API.","url":"https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/edit-videos/","name":"Edit videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/edit-videos/applying-watermarks/","name":"Apply watermarks"}}]}
 ```

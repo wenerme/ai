@@ -25,4 +25,4 @@ let value: PDFParserOptions = {};
 
 | Field    | Type                                                                   | Required             | Description                              |
 | -------- | ---------------------------------------------------------------------- | -------------------- | ---------------------------------------- |
-| `engine` | [models.PDFParserEngine](/agent-sdk/typescript/models/pdfparserengine) | :heavy\_minus\_sign: | The engine to use for parsing PDF files. |
+| `engine` | [models.PDFParserEngine](/docs/agent-sdk/typescript/models/pdfparserengine) | :heavy\_minus\_sign: | The engine to use for parsing PDF files. |

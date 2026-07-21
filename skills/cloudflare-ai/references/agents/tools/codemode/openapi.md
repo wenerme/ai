@@ -1,7 +1,7 @@
 ---
 title: Use an OpenAPI service with Code Mode
 description: Turn OpenAPI operations into typed Code Mode connector methods while keeping authentication in the host Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -330,6 +330,6 @@ Prefer derived operation methods when available. They provide discoverable descr
 `exposeSpec()` returns `false` by default. Override it to return `true` only when model-written code needs access to the raw OpenAPI document. Large documents can produce large results and durable log entries.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/openapi/#page","headline":"Use an OpenAPI service with Code Mode · Cloudflare Agents docs","description":"Turn OpenAPI operations into typed Code Mode connector methods while keeping authentication in the host Worker.","url":"https://developers.cloudflare.com/agents/tools/codemode/openapi/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/openapi/#page","headline":"Use an OpenAPI service with Code Mode · Cloudflare Agents docs","description":"Turn OpenAPI operations into typed Code Mode connector methods while keeping authentication in the host Worker.","url":"https://developers.cloudflare.com/agents/tools/codemode/openapi/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/openapi/","name":"Use an OpenAPI service with Code Mode"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Rate limiting rule examples
 description: Sample rate limiting rule configurations for login pages, APIs, and geographic restrictions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -109,6 +109,6 @@ With the following behavior: **Block for the selected duration**
 For an API example with this rule configuration, refer to [Create a rate limiting rule via API](https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/#example-d---complexity-based-rate-limiting-rule).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/#page","headline":"Rate limiting rule examples · Cloudflare Web Application Firewall (WAF) docs","description":"Sample rate limiting rule configurations for login pages, APIs, and geographic restrictions.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/#page","headline":"Rate limiting rule examples · Cloudflare Web Application Firewall (WAF) docs","description":"Sample rate limiting rule configurations for login pages, APIs, and geographic restrictions.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/use-cases/","name":"Rate limiting rule examples"}}]}
 ```

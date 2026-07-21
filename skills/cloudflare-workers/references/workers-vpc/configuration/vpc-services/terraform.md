@@ -1,7 +1,7 @@
 ---
 title: Configure with Terraform
 description: Learn how to manage VPC Services using the Cloudflare Terraform provider.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -287,6 +287,6 @@ resource "cloudflare_connectivity_directory_service" "example" {
 For the full schema, refer to the [Terraform registry documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity%5Fdirectory%5Fservice).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#page","headline":"Configure with Terraform · Cloudflare Workers VPC","description":"Learn how to manage VPC Services using the Cloudflare Terraform provider.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#page","headline":"Configure with Terraform · Cloudflare Workers VPC","description":"Learn how to manage VPC Services using the Cloudflare Terraform provider.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/configuration/vpc-services/","name":"VPC Services"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-vpc/configuration/vpc-services/terraform/","name":"Configure with Terraform"}}]}
 ```

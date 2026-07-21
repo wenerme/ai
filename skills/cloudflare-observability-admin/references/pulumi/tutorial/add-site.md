@@ -1,7 +1,7 @@
 ---
 title: Add a site
 description: This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -692,6 +692,6 @@ You have incrementally defined Cloudflare resources needed to add a site to Clou
 To deploy a serverless app with Pulumi, follow the [Deploy a Worker tutorial](https://developers.cloudflare.com/pulumi/tutorial/hello-world/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/add-site/#page","headline":"Add a site · Pulumi docs","description":"This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.","url":"https://developers.cloudflare.com/pulumi/tutorial/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Go","Java",".NET","YAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/add-site/#page","headline":"Add a site · Pulumi docs","description":"This tutorial uses Pulumi infrastructure as code (IaC) to familiarize yourself with the resource management lifecycle.","url":"https://developers.cloudflare.com/pulumi/tutorial/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","TypeScript","Python","Go","Java",".NET","YAML"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pulumi/","name":"Pulumi"}},{"@type":"ListItem","position":3,"item":{"@id":"/pulumi/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pulumi/tutorial/add-site/","name":"Add a site"}}]}
 ```

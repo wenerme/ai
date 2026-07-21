@@ -1,7 +1,7 @@
 ---
 title: Manage
 description: Add, edit, and remove Cloudflare account members and their permission policies.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -147,6 +147,6 @@ If you are a Super Administrator for an account that has existing domains and yo
 You can delete your user as a Super Administrator, but you cannot delete your account. Other Super Administrators will continue to have access to the appropriate privileges to manage the account, including billing information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/manage/#page","headline":"Manage account members · Cloudflare Fundamentals docs","description":"Add, edit, and remove Cloudflare account members and their permission policies.","url":"https://developers.cloudflare.com/fundamentals/manage-members/manage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/manage/#page","headline":"Manage account members · Cloudflare Fundamentals docs","description":"Add, edit, and remove Cloudflare account members and their permission policies.","url":"https://developers.cloudflare.com/fundamentals/manage-members/manage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/manage/","name":"Manage"}}]}
 ```

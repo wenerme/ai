@@ -28,4 +28,4 @@ let value: ChatStreamingMessageToolCall = {
 | `index`    | *number*                                                                                                         | :heavy\_check\_mark: | N/A         |
 | `id`       | *string*                                                                                                         | :heavy\_minus\_sign: | N/A         |
 | `type`     | *"function"*                                                                                                     | :heavy\_minus\_sign: | N/A         |
-| `function` | [models.ChatStreamingMessageToolCallFunction](/agent-sdk/typescript/models/chatstreamingmessagetoolcallfunction) | :heavy\_minus\_sign: | N/A         |
+| `function` | [models.ChatStreamingMessageToolCallFunction](/docs/agent-sdk/typescript/models/chatstreamingmessagetoolcallfunction) | :heavy\_minus\_sign: | N/A         |

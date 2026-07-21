@@ -45,7 +45,7 @@ To maximize cache hit rates, OpenRouter uses **provider sticky routing** to rout
 * Subsequent requests for the same model are routed to the same provider, keeping your cache warm.
 * Sticky routing only activates when the provider's cache read pricing is cheaper than regular prompt pricing, ensuring you always benefit from cost savings.
 * If the sticky provider becomes unavailable, OpenRouter automatically falls back to the next-best provider.
-* Sticky routing is not used when you specify a manual [provider order](/guides/routing/provider-selection) via `provider.order` — in that case, your explicit ordering takes priority.
+* Sticky routing is not used when you specify a manual [provider order](/docs/guides/routing/provider-selection) via `provider.order` — in that case, your explicit ordering takes priority.
 
 **Sticky routing granularity:**
 
@@ -80,7 +80,7 @@ If neither is set, OpenRouter falls back to the OpenAI-style `prompt_cache_key` 
 When `session_id` is set, sticky routing activates on any successful request — even before cache usage is observed — so that subsequent requests in the same session benefit from prompt caching from the start. Without `session_id`, sticky routing only activates after a cache hit is detected.
 
 <Info>
-  When using router models like [Auto Router](/guides/routing/routers/auto-router) or [Pareto Router](/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/guides/routing/routers/auto-router#session-stickiness) for details.
+  When using router models like [Auto Router](/docs/guides/routing/routers/auto-router) or [Pareto Router](/docs/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/docs/guides/routing/routers/auto-router#session-stickiness) for details.
 </Info>
 
 ## Inspecting cache usage
@@ -88,13 +88,13 @@ When `session_id` is set, sticky routing activates on any successful request —
 To see how much caching saved on each generation, you can:
 
 1. Click the detail button on the [Activity](https://openrouter.ai/activity) page
-2. Use the `/api/v1/generation` API, [documented here](/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation)
-3. Check the `prompt_tokens_details` object in the [usage response](/cookbook/administration/usage-accounting) included with every API response
+2. Use the `/api/v1/generation` API, [documented here](/docs/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation)
+3. Check the `prompt_tokens_details` object in the [usage response](/docs/cookbook/administration/usage-accounting) included with every API response
 
 The `cache_discount` field in the response body will tell you how much the response saved on cache usage. Some providers, like Anthropic, will have a negative discount on cache writes, but a positive discount (which reduces total cost) on cache reads.
 
 <Info>
-  When using router models like [Auto Router](/guides/routing/routers/auto-router) or [Pareto Router](/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/guides/routing/routers/auto-router#session-stickiness) for details.
+  When using router models like [Auto Router](/docs/guides/routing/routers/auto-router) or [Pareto Router](/docs/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/docs/guides/routing/routers/auto-router#session-stickiness) for details.
 </Info>
 
 ### Usage object fields
@@ -140,7 +140,7 @@ Caching price changes:
 * **Cache writes**: charged at 1.25x the price of the original input pricing (same rate as automatic cache writes on GPT-5.6 and later)
 * **Cache reads**: charged at the model's discounted cache read rate, same as automatic caching
 
-Explicit prompt caching works on both the [Chat Completions](/api/api-reference/chat/create-a-chat-completion) and [Responses](/api/api-reference/responses/create-a-response) APIs, and gives you direct control over cache boundaries instead of relying on OpenAI's automatic breakpoint placement. Cached prefixes have a minimum 30-minute TTL. See [OpenAI's explicit prompt caching docs](https://developers.openai.com/api/docs/guides/prompt-caching?prompt-cache-api=chat-completions#prompt-cache-breakpoints) for upstream details.
+Explicit prompt caching works on both the [Chat Completions](/docs/api/api-reference/chat/create-a-chat-completion) and [Responses](/docs/api/api-reference/responses/create-a-response) APIs, and gives you direct control over cache boundaries instead of relying on OpenAI's automatic breakpoint placement. Cached prefixes have a minimum 30-minute TTL. See [OpenAI's explicit prompt caching docs](https://developers.openai.com/api/docs/guides/prompt-caching?prompt-cache-api=chat-completions#prompt-cache-breakpoints) for upstream details.
 
 <Info>
   OpenAI explicit prompt caching is only supported by OpenAI GPT-5.6 and newer.
@@ -318,7 +318,7 @@ There are two ways to enable prompt caching with Anthropic:
 </Note>
 
 <Note>
-  **Responses API support:** The [Responses API](/api/api-reference/responses/create-a-response) supports **automatic caching** via top-level `cache_control`. Anthropic-style per-block `cache_control` inside `input` items is **not** exposed through the Responses API — instead use OpenAI's per-block [`prompt_cache_breakpoint`](#explicit-prompt-caching), which OpenRouter converts to a default `cache_control` breakpoint when the request is routed to Anthropic or Google. Note that `prompt_cache_breakpoint` carries no `ttl`; if you need to set a cache `ttl`, use the [Chat Completions](/api/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/api/api-reference/anthropic-messages/create-a-message) API with `cache_control`.
+  **Responses API support:** The [Responses API](/docs/api/api-reference/responses/create-a-response) supports **automatic caching** via top-level `cache_control`. Anthropic-style per-block `cache_control` inside `input` items is **not** exposed through the Responses API — instead use OpenAI's per-block [`prompt_cache_breakpoint`](#explicit-prompt-caching), which OpenRouter converts to a default `cache_control` breakpoint when the request is routed to Anthropic or Google. Note that `prompt_cache_breakpoint` carries no `ttl`; if you need to set a cache `ttl`, use the [Chat Completions](/docs/api/api-reference/chat/create-a-chat-completion) or [Anthropic Messages](/docs/api/api-reference/anthropic-messages/create-a-message) API with `cache_control`.
 </Note>
 
 By default, the cache expires after 5 minutes, but you can extend this to 1 hour by specifying `"ttl": "1h"` in the `cache_control` object.

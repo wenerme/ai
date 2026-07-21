@@ -1,7 +1,7 @@
 ---
 title: Observability
 description: Monitor Privacy Proxy deployments using the GraphQL Analytics API or OpenTelemetry telemetry export.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ Regardless of whether you use the GraphQL Analytics API or OpenTelemetry, Privac
 Both methods export only operational metrics that help you monitor service health without compromising user privacy.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-proxy/reference/metrics/#page","headline":"Observability · Cloudflare Privacy Proxy docs","description":"Monitor Privacy Proxy deployments using the GraphQL Analytics API or OpenTelemetry telemetry export.","url":"https://developers.cloudflare.com/privacy-proxy/reference/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-proxy/reference/metrics/#page","headline":"Observability · Cloudflare Privacy Proxy docs","description":"Monitor Privacy Proxy deployments using the GraphQL Analytics API or OpenTelemetry telemetry export.","url":"https://developers.cloudflare.com/privacy-proxy/reference/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/reference/metrics/","name":"Observability"}}]}
 ```

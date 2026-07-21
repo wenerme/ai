@@ -33,8 +33,8 @@ let value: ModelArchitecture = {
 
 | Field              | Type                                                                                               | Required             | Description                      | Example    |
 | ------------------ | -------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------- | ---------- |
-| `tokenizer`        | [models.ModelGroup](/agent-sdk/typescript/models/modelgroup)                                       | :heavy\_minus\_sign: | Tokenizer type used by the model | GPT        |
-| `instructType`     | [models.ModelArchitectureInstructType](/agent-sdk/typescript/models/modelarchitectureinstructtype) | :heavy\_minus\_sign: | Instruction format type          | chatml     |
+| `tokenizer`        | [models.ModelGroup](/docs/agent-sdk/typescript/models/modelgroup)                                       | :heavy\_minus\_sign: | Tokenizer type used by the model | GPT        |
+| `instructType`     | [models.ModelArchitectureInstructType](/docs/agent-sdk/typescript/models/modelarchitectureinstructtype) | :heavy\_minus\_sign: | Instruction format type          | chatml     |
 | `modality`         | *string*                                                                                           | :heavy\_check\_mark: | Primary modality of the model    | text->text |
-| `inputModalities`  | [models.InputModality](/agent-sdk/typescript/models/inputmodality)\[]                              | :heavy\_check\_mark: | Supported input modalities       |            |
-| `outputModalities` | [models.OutputModality](/agent-sdk/typescript/models/outputmodality)\[]                            | :heavy\_check\_mark: | Supported output modalities      |            |
+| `inputModalities`  | [models.InputModality](/docs/agent-sdk/typescript/models/inputmodality)\[]                              | :heavy\_check\_mark: | Supported input modalities       |            |
+| `outputModalities` | [models.OutputModality](/docs/agent-sdk/typescript/models/outputmodality)\[]                            | :heavy\_check\_mark: | Supported output modalities      |            |

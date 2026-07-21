@@ -1,7 +1,7 @@
 ---
 title: Example rules
 description: Mitigate high-risk traffic using threat intelligence fields in WAF rules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -63,6 +63,6 @@ Block requests flagged by the WAF threat intelligence dataset that also have a l
 * **Action:** _Block_ when the rate is exceeded.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/#page","headline":"Example rules using threat intelligence · Cloudflare Web Application Firewall (WAF) docs","description":"Mitigate high-risk traffic using threat intelligence fields in WAF rules.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/#page","headline":"Example rules using threat intelligence · Cloudflare Web Application Firewall (WAF) docs","description":"Mitigate high-risk traffic using threat intelligence fields in WAF rules.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/example-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/threat-intelligence/","name":"Threat intelligence"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/threat-intelligence/example-rules/","name":"Example rules"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Serverless image content management
 description: Leverage various components of Cloudflare's ecosystem to construct a scalable image management solution
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -71,6 +71,6 @@ A [Cloudflare Worker](https://developers.cloudflare.com/workers/) script meticul
 With [Cloudflare AI ↗](https://ai.cloudflare.com/) at its core, our [image classification](https://developers.cloudflare.com/workers-ai/models/) inference model will rapidly inspect each incoming image, classifying them in real-time. This cutting-edge technology allows us to streamline the process of moderating content, significantly reducing the need for a dedicated team to sift through and review every submission.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/#page","headline":"Serverless image content management · Cloudflare Reference Architecture docs","description":"Leverage various components of Cloudflare's ecosystem to construct a scalable image management solution","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/#page","headline":"Serverless image content management · Cloudflare Reference Architecture docs","description":"Leverage various components of Cloudflare's ecosystem to construct a scalable image management solution","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/serverless/","name":"Serverless"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/serverless/serverless-image-content-management/","name":"Serverless image content management"}}]}
 ```

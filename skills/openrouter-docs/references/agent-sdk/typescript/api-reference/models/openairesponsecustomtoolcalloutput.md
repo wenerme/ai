@@ -30,4 +30,4 @@ let value: OpenAIResponseCustomToolCallOutput = {
 | `callId` | *string*                                                                                                                           | :heavy\_check\_mark: | N/A         |
 | `id`     | *string*                                                                                                                           | :heavy\_minus\_sign: | N/A         |
 | `output` | *models.OpenAIResponseCustomToolCallOutputOutput2*                                                                                 | :heavy\_check\_mark: | N/A         |
-| `type`   | [models.OpenAIResponseCustomToolCallOutputType](/agent-sdk/typescript/api-reference/models/openairesponsecustomtoolcalloutputtype) | :heavy\_check\_mark: | N/A         |
+| `type`   | [models.OpenAIResponseCustomToolCallOutputType](/docs/agent-sdk/typescript/api-reference/models/openairesponsecustomtoolcalloutputtype) | :heavy\_check\_mark: | N/A         |

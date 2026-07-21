@@ -1,7 +1,7 @@
 ---
 title: Logpush as a source
 description: Use Cloudflare Logpush to send logs from Cloudflare products to a Pipelines stream.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -32,6 +32,6 @@ For the full list of fields available in each dataset, refer to [Datasets](https
 To configure a Logpush job that sends logs to Pipelines, refer to [Enable Cloudflare Pipelines](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/#manage-via-the-cloudflare-dashboard).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/streams/logpush/#page","headline":"Logpush as a source · Cloudflare Pipelines Docs","description":"Use Cloudflare Logpush to send logs from Cloudflare products to a Pipelines stream.","url":"https://developers.cloudflare.com/pipelines/streams/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/streams/logpush/#page","headline":"Logpush as a source · Cloudflare Pipelines Docs","description":"Use Cloudflare Logpush to send logs from Cloudflare products to a Pipelines stream.","url":"https://developers.cloudflare.com/pipelines/streams/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/streams/","name":"Streams"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/streams/logpush/","name":"Logpush as a source"}}]}
 ```

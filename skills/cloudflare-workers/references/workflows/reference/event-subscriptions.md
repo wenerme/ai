@@ -1,7 +1,7 @@
 ---
 title: Event subscriptions
 description: Subscribe to Workflows lifecycle events, including instance completion and failure notifications.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -175,6 +175,6 @@ Triggered when an instance finishes execution successfully.
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/event-subscriptions/#page","headline":"Event subscriptions · Cloudflare Workflows docs","description":"Subscribe to Workflows lifecycle events, including instance completion and failure notifications.","url":"https://developers.cloudflare.com/workflows/reference/event-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/event-subscriptions/#page","headline":"Event subscriptions · Cloudflare Workflows docs","description":"Subscribe to Workflows lifecycle events, including instance completion and failure notifications.","url":"https://developers.cloudflare.com/workflows/reference/event-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/event-subscriptions/","name":"Event subscriptions"}}]}
 ```

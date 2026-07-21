@@ -16,7 +16,7 @@ Credit management endpoints
 
 ## get\_credits
 
-Get total credits purchased and used for the authenticated user. [Management key](/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Get total credits purchased and used for the authenticated user. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

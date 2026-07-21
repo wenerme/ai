@@ -307,11 +307,11 @@ The event is visually marked and your feedback is recorded for future detection 
 
 * **Regex-based detection is not exhaustive.** Sophisticated or novel injection techniques may not be caught.
 * **Flag mode does not enforce.** A flagged request is forwarded to the model exactly as submitted — the detection is recorded for dashboards and analytics only. Use `flag` to measure match rates on real traffic; switch to `redact` or `block` once you're confident the false-positive rate is acceptable.
-* **False positives** are possible. Some legitimate prompts may contain phrases that match these patterns (e.g., a prompt about security testing). Test your guardrail configuration with representative traffic — ideally in `flag` mode first — before enforcing broadly. You can [report false positives](#reporting-false-positives) from the Logs page, or exempt specific known-safe phrases via the [Allowlist](/guides/features/guardrails/prompt-injection/allowlist).
+* **False positives** are possible. Some legitimate prompts may contain phrases that match these patterns (e.g., a prompt about security testing). Test your guardrail configuration with representative traffic — ideally in `flag` mode first — before enforcing broadly. You can [report false positives](#reporting-false-positives) from the Logs page, or exempt specific known-safe phrases via the [Allowlist](/docs/guides/features/guardrails/prompt-injection/allowlist).
 
 ## Further Reading
 
-* [Allowlist](/guides/features/guardrails/prompt-injection/allowlist) — exempt specific known-safe phrases from detection
+* [Allowlist](/docs/guides/features/guardrails/prompt-injection/allowlist) — exempt specific known-safe phrases from detection
 * [OWASP LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
-* [Guardrails documentation](/guides/features/guardrails)
-* [Guardrails API reference](/api/api-reference/guardrails/list-guardrails)
+* [Guardrails documentation](/docs/guides/features/guardrails)
+* [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails)

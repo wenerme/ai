@@ -1,7 +1,7 @@
 ---
 title: Wildcard matching in Page Rules
 description: How wildcard and pattern matching works in Page Rules URLs.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ Warning
 Avoid creating a redirect where the domain points to itself as the destination. A domain that points to itself can cause an [infinite redirect error](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/), which makes your site inaccessible to visitors.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/#page","headline":"Wildcard matching in Page Rules · Cloudflare Rules docs","description":"How wildcard and pattern matching works in Page Rules URLs.","url":"https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/#page","headline":"Wildcard matching in Page Rules · Cloudflare Rules docs","description":"How wildcard and pattern matching works in Page Rules URLs.","url":"https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/page-rules/","name":"Page Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/page-rules/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/page-rules/reference/wildcard-matching/","name":"Wildcard matching in Page Rules"}}]}
 ```

@@ -29,4 +29,4 @@ let value: ContentImageURL = {
 | Field      | Type                                                             | Required             | Description |
 | ---------- | ---------------------------------------------------------------- | -------------------- | ----------- |
 | `type`     | *"image\_url"*                                                   | :heavy\_check\_mark: | N/A         |
-| `imageUrl` | [operations.ImageUrl](/agent-sdk/typescript/operations/imageurl) | :heavy\_check\_mark: | N/A         |
+| `imageUrl` | [operations.ImageUrl](/docs/agent-sdk/typescript/operations/imageurl) | :heavy\_check\_mark: | N/A         |

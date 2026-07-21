@@ -1,7 +1,7 @@
 ---
 title: Subdomains and subdirectories
 description: Run APO on WordPress subdomains and subdirectory installations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ export default {
 Create a [cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) to exclude non-WordPress portions of the site from caching using **Cache eligibility: Bypass cache**. This option disables all caching, including static assets for those paths. As a result, we recommend disabling APO via the response header.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/#page","headline":"Subdomains and subdirectories · Cloudflare Automatic Platform Optimization docs","description":"Run APO on WordPress subdomains and subdirectory installations.","url":"https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/#page","headline":"Subdomains and subdirectories · Cloudflare Automatic Platform Optimization docs","description":"Run APO on WordPress subdomains and subdirectory installations.","url":"https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/automatic-platform-optimization/reference/subdomain-subdirectories/","name":"Subdomains and subdirectories"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Custom Plugins
 description: Create plugins that run inside RealtimeKit meetings.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ To learn how plugins are registered and controlled through the SDK, refer to [Pl
 * [ Build your own plugins ](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/#page","headline":"Custom Plugins · Cloudflare Realtime docs","description":"Create plugins that run inside RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/#page","headline":"Custom Plugins · Cloudflare Realtime docs","description":"Create plugins that run inside RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/custom-plugins/","name":"Custom Plugins"}}]}
 ```

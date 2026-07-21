@@ -1,7 +1,7 @@
 ---
 title: Manage accounts
 description: Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -260,6 +260,6 @@ A successful request will return the id to confirm the operation:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/#page","headline":"Manage accounts · Cloudflare Tenant docs","description":"Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.","url":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/#page","headline":"Manage accounts · Cloudflare Tenant docs","description":"Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.","url":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/tenant/how-to/manage-accounts/","name":"Manage accounts"}}]}
 ```

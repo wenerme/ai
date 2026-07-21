@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Set up AI Gateway and send your first request to observe and control AI API traffic.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -123,6 +123,6 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/{provider}
 * Learn how to use low-cost, open source models on [Workers AI](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) \- our AI inference service.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/get-started/#page","headline":"Getting started · Cloudflare AI Gateway docs","description":"Set up AI Gateway and send your first request to observe and control AI API traffic.","url":"https://developers.cloudflare.com/ai-gateway/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/get-started/#page","headline":"Getting started · Cloudflare AI Gateway docs","description":"Set up AI Gateway and send your first request to observe and control AI API traffic.","url":"https://developers.cloudflare.com/ai-gateway/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/get-started/","name":"Getting started"}}]}
 ```

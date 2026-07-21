@@ -65,12 +65,12 @@ We have observed notable improvements in [tau-bench](https://github.com/sierra-r
 
 ## Opting Out
 
-Without Auto Exacto, OpenRouter's default routing is primarily [price-weighted](/guides/routing/provider-selection#price-based-load-balancing-default-strategy) -- requests are load balanced across providers with a strong preference for lower cost. Auto Exacto changes this for tool-calling requests by reordering providers based on quality signals instead of price.
+Without Auto Exacto, OpenRouter's default routing is primarily [price-weighted](/docs/guides/routing/provider-selection#price-based-load-balancing-default-strategy) -- requests are load balanced across providers with a strong preference for lower cost. Auto Exacto changes this for tool-calling requests by reordering providers based on quality signals instead of price.
 
 If you want to restore the previous price-weighted behavior for tool-calling requests, you can opt out by explicitly sorting by price using any of the following methods:
 
-* **`provider.sort` parameter** -- set `sort` to `"price"` in the `provider` object of your request body. See [Provider Sorting](/guides/routing/provider-selection#provider-sorting) for details.
-* **`:floor` virtual variant** -- append `:floor` to any model slug (e.g. `openai/gpt-4o:floor`) to sort by price. See [Floor Price Shortcut](/guides/routing/provider-selection#floor-price-shortcut).
+* **`provider.sort` parameter** -- set `sort` to `"price"` in the `provider` object of your request body. See [Provider Sorting](/docs/guides/routing/provider-selection#provider-sorting) for details.
+* **`:floor` virtual variant** -- append `:floor` to any model slug (e.g. `openai/gpt-4o:floor`) to sort by price. See [Floor Price Shortcut](/docs/guides/routing/provider-selection#floor-price-shortcut).
 * **Default sort in account settings** -- set your default provider sort to price in your [account settings](https://openrouter.ai/settings/preferences) to apply price sorting across all requests.
 
 Any of these will bypass Auto Exacto and return to the standard price-weighted provider ordering.

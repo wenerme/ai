@@ -1,7 +1,7 @@
 ---
 title: Recommended sampling rate
 description: The best sampling rate recommendations for your network's traffic volume.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ The following table provides general recommendations based on your traffic volum
 As a general rule, you may notice a loss in data accuracy (depending on your network volume) when your network flow sampling rate exceeds 1 in 5,000 packets.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/routers/recommended-sampling-rate/#page","headline":"Recommended sampling rate · Cloudflare Network Flow docs","description":"The best sampling rate recommendations for your network's traffic volume.","url":"https://developers.cloudflare.com/network-flow/routers/recommended-sampling-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["NetFlow"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/routers/recommended-sampling-rate/#page","headline":"Recommended sampling rate · Cloudflare Network Flow docs","description":"The best sampling rate recommendations for your network's traffic volume.","url":"https://developers.cloudflare.com/network-flow/routers/recommended-sampling-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["NetFlow"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/routers/","name":"Routers"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/routers/recommended-sampling-rate/","name":"Recommended sampling rate"}}]}
 ```

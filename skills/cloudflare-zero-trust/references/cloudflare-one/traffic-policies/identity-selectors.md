@@ -1,7 +1,7 @@
 ---
 title: Identity-based policies
 description: Reference information for Identity-based policies in Gateway.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -219,6 +219,6 @@ For a [generic OIDC provider](https://developers.cloudflare.com/cloudflare-one/i
 1. In Cloudflare One Client version 2026.1 and earlier, select **Preferences** \> **Account** \> **Re-Authenticate Session**. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#page","headline":"Identity-based policies · Cloudflare One docs","description":"Reference information for Identity-based policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["OIDC","SAML","SCIM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#page","headline":"Identity-based policies · Cloudflare One docs","description":"Reference information for Identity-based policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["OIDC","SAML","SCIM"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/identity-selectors/","name":"Identity-based policies"}}]}
 ```

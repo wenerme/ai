@@ -28,6 +28,6 @@ let value: EasyInputMessageContentInputImage = {
 
 | Field      | Type                                                                                               | Required             | Description |
 | ---------- | -------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `detail`   | [models.EasyInputMessageDetail](/agent-sdk/typescript/api-reference/models/easyinputmessagedetail) | :heavy\_check\_mark: | N/A         |
+| `detail`   | [models.EasyInputMessageDetail](/docs/agent-sdk/typescript/api-reference/models/easyinputmessagedetail) | :heavy\_check\_mark: | N/A         |
 | `imageUrl` | *string*                                                                                           | :heavy\_minus\_sign: | N/A         |
 | `type`     | *"input\_image"*                                                                                   | :heavy\_check\_mark: | N/A         |

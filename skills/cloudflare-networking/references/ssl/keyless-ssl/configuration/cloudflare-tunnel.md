@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Tunnel
 description: Deploy Keyless SSL with Cloudflare Tunnel for private connectivity.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -227,6 +227,6 @@ To activate, restart your keyless instance:
 If this command fails, try troubleshooting by [checking the logs](https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel setup - Keyless SSL · Cloudflare SSL/TLS docs","description":"Deploy Keyless SSL with Cloudflare Tunnel for private connectivity.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel setup - Keyless SSL · Cloudflare SSL/TLS docs","description":"Deploy Keyless SSL with Cloudflare Tunnel for private connectivity.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/keyless-ssl/","name":"Keyless SSL"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/keyless-ssl/configuration/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/keyless-ssl/configuration/cloudflare-tunnel/","name":"Cloudflare Tunnel"}}]}
 ```

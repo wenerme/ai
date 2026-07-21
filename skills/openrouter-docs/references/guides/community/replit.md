@@ -97,7 +97,7 @@ Once the secret is configured, you can call OpenRouter using any OpenAI-compatib
   ```
 </CodeGroup>
 
-For framework-specific examples (Vercel AI SDK, LangChain, Anthropic SDK, and more), see the [Frameworks and Integrations](/guides/community/frameworks-and-integrations-overview) overview.
+For framework-specific examples (Vercel AI SDK, LangChain, Anthropic SDK, and more), see the [Frameworks and Integrations](/docs/guides/community/frameworks-and-integrations-overview) overview.
 
 ## Replit Deployments and Teams
 
@@ -109,6 +109,6 @@ For Teams and Enterprise organizations on Replit, your organization admin contro
 
 * [Replit AI Integrations documentation](https://docs.replit.com/replitai/replit-ai-integrations)
 * [Replit Secrets documentation](https://docs.replit.com/replit-workspace/workspace-features/secrets)
-* [OpenRouter Quick Start](/quickstart)
+* [OpenRouter Quick Start](/docs/quickstart)
 * [Browse OpenRouter models](https://openrouter.ai/models)
 * [Manage your API keys](https://openrouter.ai/settings/keys)

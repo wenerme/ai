@@ -1,7 +1,7 @@
 ---
 title: Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages
 description: Build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -530,6 +530,6 @@ By completing this guide, you have successfully deployed your own blog, powered 
 If you enjoyed this tutorial, you may be interested in learning how you can use Cloudflare Workers, our powerful serverless function platform, to augment your existing site. Refer to the [Build an API for your front end using Pages Functions tutorial](https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/) to learn more.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/#page","headline":"Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages · Cloudflare Pages docs","description":"Build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Nuxt","Vue","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/#page","headline":"Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages · Cloudflare Pages docs","description":"Build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Nuxt","Vue","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/tutorials/build-a-blog-using-nuxt-and-sanity/","name":"Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages"}}]}
 ```

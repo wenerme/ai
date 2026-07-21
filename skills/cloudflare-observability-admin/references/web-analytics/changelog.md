@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Track the latest updates and changes to Web Analytics features.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -89,6 +89,6 @@ Improved to report debugging information for Core Web Vitals.
 Reporting endpoint changed from `/cdn-cgi/beacon/performance` to `/cdn-cgi/rum` (for Browser Insights only).
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/web-analytics/changelog/#page","headline":"Changelog for beacon.min.js · Cloudflare Web Analytics docs","description":"Track the latest updates and changes to Web Analytics features.","url":"https://developers.cloudflare.com/web-analytics/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/web-analytics/changelog/#page","headline":"Changelog for beacon.min.js · Cloudflare Web Analytics docs","description":"Track the latest updates and changes to Web Analytics features.","url":"https://developers.cloudflare.com/web-analytics/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/changelog/","name":"Changelog"}}]}
 ```

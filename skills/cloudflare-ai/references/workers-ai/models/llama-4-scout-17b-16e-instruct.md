@@ -1,7 +1,7 @@
 ---
 title: llama-4-scout-17b-16e-instruct
 description: Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -312,6 +312,6 @@ response
  Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/batch-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/#page","headline":"llama-4-scout-17b-16e-instruct (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.","url":"https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/#page","headline":"llama-4-scout-17b-16e-instruct (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.","url":"https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

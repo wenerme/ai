@@ -1,7 +1,7 @@
 ---
 title: Query vectors
 description: Search a Vectorize index for similar vectors using queries, metadata filters, and namespaces.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -159,6 +159,6 @@ let matches = await env.TEXT_EMBEDDINGS.query(embeddingResponse.embedding[0], {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/query-vectors/#page","headline":"Query vectors · Cloudflare Vectorize docs","description":"Search a Vectorize index for similar vectors using queries, metadata filters, and namespaces.","url":"https://developers.cloudflare.com/vectorize/best-practices/query-vectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/best-practices/query-vectors/#page","headline":"Query vectors · Cloudflare Vectorize docs","description":"Search a Vectorize index for similar vectors using queries, metadata filters, and namespaces.","url":"https://developers.cloudflare.com/vectorize/best-practices/query-vectors/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/best-practices/query-vectors/","name":"Query vectors"}}]}
 ```

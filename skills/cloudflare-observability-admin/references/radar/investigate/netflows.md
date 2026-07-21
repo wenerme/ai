@@ -1,7 +1,7 @@
 ---
 title: NetFlows
 description: Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -125,6 +125,6 @@ This response shows how Cloudflare receives more traffic from AS174 than from AS
 Refer to [HTTP requests](https://developers.cloudflare.com/radar/investigate/http-requests/) for more information about requests from end users.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/netflows/#page","headline":"NetFlows · Cloudflare Radar docs","description":"Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/netflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/netflows/#page","headline":"NetFlows · Cloudflare Radar docs","description":"Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/netflows/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/netflows/","name":"NetFlows"}}]}
 ```

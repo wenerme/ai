@@ -28,5 +28,5 @@ let value: ListOrganizationMembersResponseBody = {
 
 | Field        | Type                                                                                                                    | Required             | Description                                 | Example |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------- | ------- |
-| `data`       | [operations.ListOrganizationMembersData](/agent-sdk/typescript/api-reference/operations/listorganizationmembersdata)\[] | :heavy\_check\_mark: | List of organization members                |         |
+| `data`       | [operations.ListOrganizationMembersData](/docs/agent-sdk/typescript/api-reference/operations/listorganizationmembersdata)\[] | :heavy\_check\_mark: | List of organization members                |         |
 | `totalCount` | *number*                                                                                                                | :heavy\_check\_mark: | Total number of members in the organization | 25      |

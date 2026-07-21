@@ -27,5 +27,5 @@ let value: Caching = {
 
 | Field  | Type                                                                                                   | Required             | Description | Example |
 | ------ | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | ------- |
-| `ttl`  | [models.AnthropicCacheControlTtl](/agent-sdk/typescript/api-reference/models/anthropiccachecontrolttl) | :heavy\_minus\_sign: | N/A         | 5m      |
-| `type` | [models.ToolTypeEphemeral](/agent-sdk/typescript/api-reference/models/tooltypeephemeral)               | :heavy\_check\_mark: | N/A         |         |
+| `ttl`  | [models.AnthropicCacheControlTtl](/docs/agent-sdk/typescript/api-reference/models/anthropiccachecontrolttl) | :heavy\_minus\_sign: | N/A         | 5m      |
+| `type` | [models.ToolTypeEphemeral](/docs/agent-sdk/typescript/api-reference/models/tooltypeephemeral)               | :heavy\_check\_mark: | N/A         |         |

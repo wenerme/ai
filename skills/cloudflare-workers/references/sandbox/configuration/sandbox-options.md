@@ -1,7 +1,7 @@
 ---
 title: Sandbox options
 description: Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -389,6 +389,6 @@ With `keepAlive`, containers send automatic heartbeat pings every 30 seconds to 
 * [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox lifecycle
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#page","headline":"Sandbox options · Cloudflare Sandbox SDK docs","description":"Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.","url":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#page","headline":"Sandbox options · Cloudflare Sandbox SDK docs","description":"Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.","url":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/sandbox-options/","name":"Sandbox options"}}]}
 ```

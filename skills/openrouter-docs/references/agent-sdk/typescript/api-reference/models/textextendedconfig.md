@@ -26,4 +26,4 @@ let value: TextExtendedConfig = {};
 | Field       | Type                                                                     | Required             | Description                        | Example            |
 | ----------- | ------------------------------------------------------------------------ | -------------------- | ---------------------------------- | ------------------ |
 | `format`    | *models.Formats*                                                         | :heavy\_minus\_sign: | Text response format configuration | `{"type": "text"}` |
-| `verbosity` | [models.Verbosity](/agent-sdk/typescript/api-reference/models/verbosity) | :heavy\_minus\_sign: | N/A                                |                    |
+| `verbosity` | [models.Verbosity](/docs/agent-sdk/typescript/api-reference/models/verbosity) | :heavy\_minus\_sign: | N/A                                |                    |

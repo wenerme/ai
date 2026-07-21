@@ -32,6 +32,6 @@ let value: FileSearchServerTool = {
 | ---------------- | ---------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `filters`        | *models.FiltersUnion*                                                              | :heavy\_minus\_sign: | N/A         |
 | `maxNumResults`  | *number*                                                                           | :heavy\_minus\_sign: | N/A         |
-| `rankingOptions` | [models.RankingOptions](/agent-sdk/typescript/api-reference/models/rankingoptions) | :heavy\_minus\_sign: | N/A         |
+| `rankingOptions` | [models.RankingOptions](/docs/agent-sdk/typescript/api-reference/models/rankingoptions) | :heavy\_minus\_sign: | N/A         |
 | `type`           | *"file\_search"*                                                                   | :heavy\_check\_mark: | N/A         |
 | `vectorStoreIds` | *string*\[]                                                                        | :heavy\_check\_mark: | N/A         |

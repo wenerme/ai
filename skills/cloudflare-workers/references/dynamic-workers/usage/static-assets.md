@@ -1,7 +1,7 @@
 ---
 title: Static assets
 description: Serve static files alongside Dynamic Worker code.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -366,6 +366,6 @@ export default {
 When the Dynamic Worker calls `env.ASSETS.fetch(request)`, the call goes through RPC to the loader Worker's `AssetBinding`, which looks up the file in the manifest and reads it from KV. The Dynamic Worker does not need to handle any of this — it calls `env.ASSETS.fetch(request)` and gets back the file with the correct headers, ready to return to the client.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/#page","headline":"Static assets · Cloudflare Dynamic Workers docs","description":"Serve static files alongside Dynamic Worker code.","url":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/#page","headline":"Static assets · Cloudflare Dynamic Workers docs","description":"Serve static files alongside Dynamic Worker code.","url":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/static-assets/","name":"Static assets"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Flagship
 description: Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -1210,6 +1210,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/#page","headline":"Flagship · Cloudflare Workers docs","description":"Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.","url":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/#page","headline":"Flagship · Cloudflare Workers docs","description":"Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.","url":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/flagship/","name":"Flagship"}}]}
 ```

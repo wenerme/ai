@@ -1,7 +1,7 @@
 ---
 title: View and submit reports
 description: Submit abuse reports to Cloudflare via the dashboard, public form, or API, and view reports filed against your account.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -41,6 +41,6 @@ You can enable abuse notifications for your account to configure email, webhook,
 For help setting up alerts, refer to [Configure Cloudflare notifications](https://developers.cloudflare.com/notifications/get-started/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/#page","headline":"View and submit reports · Cloudflare Fundamentals docs","description":"Submit abuse reports to Cloudflare via the dashboard, public form, or API, and view reports filed against your account.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/#page","headline":"View and submit reports · Cloudflare Fundamentals docs","description":"Submit abuse reports to Cloudflare via the dashboard, public form, or API, and view reports filed against your account.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/report-abuse/","name":"Abuse"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/report-abuse/submit-report/","name":"View and submit reports"}}]}
 ```

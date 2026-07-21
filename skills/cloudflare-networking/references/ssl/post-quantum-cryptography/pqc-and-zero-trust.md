@@ -1,7 +1,7 @@
 ---
 title: Post-quantum cryptography in Cloudflare One
 description: Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -124,6 +124,6 @@ The client reaches Gateway through one of the post-quantum on-ramps: the [Cloudf
 A TLS connection is initiated from a data center in Cloudflare's network to the origin server, which is typically controlled by a third party. The connection from Cloudflare's SWG supports post-quantum key agreement, as long as the third-party origin server also supports post-quantum key agreement. You can test this out by using [https://pq.cloudflareresearch.com/ ↗](https://pq.cloudflareresearch.com/) as your third-party origin server.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#page","headline":"Post-quantum cryptography in Cloudflare One · Cloudflare SSL/TLS docs","description":"Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#page","headline":"Post-quantum cryptography in Cloudflare One · Cloudflare SSL/TLS docs","description":"Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/post-quantum-cryptography/","name":"Post-quantum cryptography (PQC)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/post-quantum-cryptography/pqc-and-zero-trust/","name":"Post-quantum cryptography in Cloudflare One"}}]}
 ```

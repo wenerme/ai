@@ -28,5 +28,5 @@ let value: OutputWebSearchCallItemActionSearch = {
 | --------- | --------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `queries` | *string*\[]                                                                             | :heavy\_minus\_sign: | N/A         |
 | `query`   | *string*                                                                                | :heavy\_check\_mark: | N/A         |
-| `sources` | [models.WebSearchSource](/agent-sdk/typescript/api-reference/models/websearchsource)\[] | :heavy\_minus\_sign: | N/A         |
+| `sources` | [models.WebSearchSource](/docs/agent-sdk/typescript/api-reference/models/websearchsource)\[] | :heavy\_minus\_sign: | N/A         |
 | `type`    | *"search"*                                                                              | :heavy\_check\_mark: | N/A         |

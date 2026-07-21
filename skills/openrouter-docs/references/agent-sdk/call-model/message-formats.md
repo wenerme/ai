@@ -315,6 +315,6 @@ result = openrouter.callModel({
 
 ## Next Steps
 
-* **[Text Generation](/agent-sdk/call-model/text-generation)** - Input formats and parameters
-* **[Tools](/agent-sdk/call-model/tools)** - Add tool capabilities
-* **[Streaming](/agent-sdk/call-model/streaming)** - Stream format-converted responses
+* **[Text Generation](/docs/agent-sdk/call-model/text-generation)** - Input formats and parameters
+* **[Tools](/docs/agent-sdk/call-model/tools)** - Add tool capabilities
+* **[Streaming](/docs/agent-sdk/call-model/streaming)** - Stream format-converted responses

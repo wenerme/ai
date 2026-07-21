@@ -16,7 +16,7 @@ Analytics and usage endpoints
 
 ## getUserActivity
 
-Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
+Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

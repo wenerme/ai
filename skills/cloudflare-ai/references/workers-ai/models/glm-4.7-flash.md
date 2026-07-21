@@ -1,7 +1,7 @@
 ---
 title: glm-4.7-flash
 description: GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 [Skip to content](#%5Ftop)
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
 
 #  glm-4.7-flash
 
@@ -327,6 +327,6 @@ format
  Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/#page","headline":"glm-4.7-flash (Zhipu AI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.","url":"https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/#page","headline":"glm-4.7-flash (Zhipu AI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.","url":"https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

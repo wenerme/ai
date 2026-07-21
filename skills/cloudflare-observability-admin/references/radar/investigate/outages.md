@@ -1,7 +1,7 @@
 ---
 title: Outages
 description: Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -81,6 +81,6 @@ Refer to the [API reference](https://developers.cloudflare.com/api/resources/rad
 Having data on a given outage allows you to examine its impact through both [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) (like in the [Tonga outage](https://developers.cloudflare.com/radar/get-started/making-comparisons/#use-specific-timestamps) and [others ↗](https://blog.cloudflare.com/q3-2022-internet-disruption-summary/)) and [HTTP](https://developers.cloudflare.com/radar/investigate/http-requests/) data (for example, did the outage affect more mobile than desktop traffic?).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/outages/#page","headline":"Outages · Cloudflare Radar docs","description":"Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.","url":"https://developers.cloudflare.com/radar/investigate/outages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/outages/#page","headline":"Outages · Cloudflare Radar docs","description":"Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.","url":"https://developers.cloudflare.com/radar/investigate/outages/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/outages/","name":"Outages"}}]}
 ```

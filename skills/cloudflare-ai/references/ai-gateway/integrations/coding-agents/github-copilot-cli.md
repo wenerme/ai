@@ -1,7 +1,7 @@
 ---
 title: GitHub Copilot CLI
 description: Route GitHub Copilot CLI through AI Gateway using the REST API and Unified Billing.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -60,6 +60,6 @@ export COPILOT_PROVIDER_MAX_OUTPUT_TOKENS="32000"
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/#page","headline":"GitHub Copilot CLI · Cloudflare AI Gateway docs","description":"Route GitHub Copilot CLI through AI Gateway using the REST API and Unified Billing.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/#page","headline":"GitHub Copilot CLI · Cloudflare AI Gateway docs","description":"Route GitHub Copilot CLI through AI Gateway using the REST API and Unified Billing.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/coding-agents/","name":"Coding agents"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/integrations/coding-agents/github-copilot-cli/","name":"GitHub Copilot CLI"}}]}
 ```

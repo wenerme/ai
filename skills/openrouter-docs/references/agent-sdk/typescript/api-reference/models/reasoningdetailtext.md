@@ -27,7 +27,7 @@ let value: ReasoningDetailText = {
 
 | Field       | Type                                                                                 | Required             | Description | Example |
 | ----------- | ------------------------------------------------------------------------------------ | -------------------- | ----------- | ------- |
-| `format`    | [models.ReasoningFormat](/agent-sdk/typescript/api-reference/models/reasoningformat) | :heavy\_minus\_sign: | N/A         | unknown |
+| `format`    | [models.ReasoningFormat](/docs/agent-sdk/typescript/api-reference/models/reasoningformat) | :heavy\_minus\_sign: | N/A         | unknown |
 | `id`        | *string*                                                                             | :heavy\_minus\_sign: | N/A         |         |
 | `index`     | *number*                                                                             | :heavy\_minus\_sign: | N/A         |         |
 | `signature` | *string*                                                                             | :heavy\_minus\_sign: | N/A         |         |

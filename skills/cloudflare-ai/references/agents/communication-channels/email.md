@@ -1,7 +1,7 @@
 ---
 title: Email
 description: Connect agents to email so they can send outbound messages, process inbound mail, and handle follow-up replies.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -156,6 +156,6 @@ For a complete walkthrough, including domain setup, bindings, inbound routing, a
 [ Send email from Workers ](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) Use the Workers API to send outbound email.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/email/#page","headline":"Email · Cloudflare Agents docs","description":"Connect agents to email so they can send outbound messages, process inbound mail, and handle follow-up replies.","url":"https://developers.cloudflare.com/agents/communication-channels/email/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/email/#page","headline":"Email · Cloudflare Agents docs","description":"Connect agents to email so they can send outbound messages, process inbound mail, and handle follow-up replies.","url":"https://developers.cloudflare.com/agents/communication-channels/email/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/email/","name":"Email"}}]}
 ```

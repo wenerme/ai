@@ -1,7 +1,7 @@
 ---
 title: Widget configurations
 description: Configure widget appearance, language, and callback functions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -596,6 +596,6 @@ When enabled, Turnstile automatically creates a hidden `<input>` element with th
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#page","headline":"Widget configurations · Cloudflare Turnstile docs","description":"Configure widget appearance, language, and callback functions.","url":"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#page","headline":"Widget configurations · Cloudflare Turnstile docs","description":"Configure widget appearance, language, and callback functions.","url":"https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/get-started/client-side-rendering/","name":"Embed the widget"}},{"@type":"ListItem","position":5,"item":{"@id":"/turnstile/get-started/client-side-rendering/widget-configurations/","name":"Widget configurations"}}]}
 ```

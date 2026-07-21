@@ -31,5 +31,5 @@ let value: ChatContentAudio = {
 
 | Field        | Type                                                                                                       | Required             | Description |
 | ------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `inputAudio` | [models.ChatContentAudioInputAudio](/agent-sdk/typescript/api-reference/models/chatcontentaudioinputaudio) | :heavy\_check\_mark: | N/A         |
+| `inputAudio` | [models.ChatContentAudioInputAudio](/docs/agent-sdk/typescript/api-reference/models/chatcontentaudioinputaudio) | :heavy\_check\_mark: | N/A         |
 | `type`       | *"input\_audio"*                                                                                           | :heavy\_check\_mark: | N/A         |

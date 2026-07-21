@@ -1,7 +1,7 @@
 ---
 title: Use Pruna P-video through AI Gateway
 description: Learn how to call prunaai/p-video on Replicate through AI Gateway
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -153,6 +153,6 @@ From here you can:
 * Use other models on Replicate or our other [supported providers](https://developers.cloudflare.com/ai-gateway/usage/providers/) through AI Gateway.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/#page","headline":"Use Pruna P-video through AI Gateway · Cloudflare AI Gateway docs","description":"Learn how to call prunaai/p-video on Replicate through AI Gateway","url":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/#page","headline":"Use Pruna P-video through AI Gateway · Cloudflare AI Gateway docs","description":"Learn how to call prunaai/p-video on Replicate through AI Gateway","url":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/tutorials/pruna-p-video/","name":"Use Pruna P-video through AI Gateway"}}]}
 ```

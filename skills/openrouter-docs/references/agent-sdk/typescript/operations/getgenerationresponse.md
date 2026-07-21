@@ -61,4 +61,4 @@ let value: GetGenerationResponse = {
 
 | Field  | Type                                                                               | Required             | Description     |
 | ------ | ---------------------------------------------------------------------------------- | -------------------- | --------------- |
-| `data` | [operations.GetGenerationData](/agent-sdk/typescript/operations/getgenerationdata) | :heavy\_check\_mark: | Generation data |
+| `data` | [operations.GetGenerationData](/docs/agent-sdk/typescript/operations/getgenerationdata) | :heavy\_check\_mark: | Generation data |

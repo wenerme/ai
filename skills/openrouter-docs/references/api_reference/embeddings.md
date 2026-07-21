@@ -413,7 +413,7 @@ MODEL: 'nvidia/llama-nemotron-embed-vl-1b-v2'
 
 ## API Reference
 
-For detailed information about request parameters, response format, and all available options, see the [Embeddings API Reference](/api/api-reference/embeddings/submit-an-embedding-request).
+For detailed information about request parameters, response format, and all available options, see the [Embeddings API Reference](/docs/api/api-reference/embeddings/submit-an-embedding-request).
 
 ## Available Models
 
@@ -649,7 +649,7 @@ Example with provider preferences:
 }
 ```
 
-For more information, see [Provider Routing](/guides/routing/provider-selection).
+For more information, see [Provider Routing](/docs/guides/routing/provider-selection).
 
 ## Error Handling
 
@@ -677,6 +677,6 @@ Common errors you may encounter:
 ## Related Resources
 
 * [Models Page](https://openrouter.ai/models?fmt=cards\&output_modalities=embeddings) - Browse all available embedding models
-* [Provider Routing](/guides/routing/provider-selection) - Control which providers serve your requests
-* [Authentication](/api_reference/authentication) - Learn about API key authentication
-* [Errors](/api_reference/errors-and-debugging) - Detailed error codes and handling
+* [Provider Routing](/docs/guides/routing/provider-selection) - Control which providers serve your requests
+* [Authentication](/docs/api_reference/authentication) - Learn about API key authentication
+* [Errors](/docs/api_reference/errors-and-debugging) - Detailed error codes and handling

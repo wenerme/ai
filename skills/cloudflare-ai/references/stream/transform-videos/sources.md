@@ -1,7 +1,7 @@
 ---
 title: Define source origin
 description: Specify which origins can serve source videos for Cloudflare Media Transformations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -76,6 +76,6 @@ When your accepted sources are set to **any origin**, any publicly available vid
 **Any origin** is less secure and may allow third parties to serve transformations on your zone.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/sources/#page","headline":"Define source origin · Cloudflare Stream docs","description":"Specify which origins can serve source videos for Cloudflare Media Transformations.","url":"https://developers.cloudflare.com/stream/transform-videos/sources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/sources/#page","headline":"Define source origin · Cloudflare Stream docs","description":"Specify which origins can serve source videos for Cloudflare Media Transformations.","url":"https://developers.cloudflare.com/stream/transform-videos/sources/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/transform-videos/","name":"Transform videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/transform-videos/sources/","name":"Define source origin"}}]}
 ```

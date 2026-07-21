@@ -1,7 +1,7 @@
 ---
 title: Add human feedback using Worker Bindings
 description: Provide human feedback on AI Gateway evaluations programmatically using Worker bindings.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -80,6 +80,6 @@ gateway.patchLog("my-log-id", {
 Returns: `Promise<void>` (Make sure to `await` the request.)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/#page","headline":"Add human feedback using Worker Bindings · Cloudflare AI Gateway docs","description":"Provide human feedback on AI Gateway evaluations programmatically using Worker bindings.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/#page","headline":"Add human feedback using Worker Bindings · Cloudflare AI Gateway docs","description":"Provide human feedback on AI Gateway evaluations programmatically using Worker bindings.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/evaluations/","name":"Evaluations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/evaluations/add-human-feedback-bindings/","name":"Add human feedback using Worker Bindings"}}]}
 ```

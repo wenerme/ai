@@ -54,7 +54,7 @@ You can find TTS models in several ways:
 
 ### Via the API
 
-Use the `output_modalities` query parameter on the [Models API](/api/api-reference/models/list-all-models-and-their-properties) to discover TTS models:
+Use the `output_modalities` query parameter on the [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties) to discover TTS models:
 
 ```bash lines theme={null}
 # List only TTS models
@@ -63,7 +63,7 @@ curl "https://openrouter.ai/api/v1/models?output_modalities=speech"
 
 ### On the Models Page
 
-Visit the [Models page](/guides/overview/models) and filter by output modalities to find models capable of speech synthesis. Look for models that list `"speech"` in their output modalities.
+Visit the [Models page](/docs/guides/overview/models) and filter by output modalities to find models capable of speech synthesis. Look for models that list `"speech"` in their output modalities.
 
 ## API Usage
 
@@ -201,7 +201,7 @@ MODEL: 'openai/gpt-4o-mini-tts-2025-12-15'
 | ----------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `model`           | string | Yes      | The TTS model to use (e.g., `openai/gpt-4o-mini-tts-2025-12-15`, `mistralai/voxtral-mini-tts-2603`)                                           |
 | `input`           | string | Yes      | The text to synthesize into speech                                                                                                            |
-| `voice`           | string | Yes      | Voice identifier. Available voices vary by model — check each model's page on the [Models page](/guides/overview/models) for supported voices |
+| `voice`           | string | Yes      | Voice identifier. Available voices vary by model — check each model's page on the [Models page](/docs/guides/overview/models) for supported voices |
 | `response_format` | string | No       | Audio output format: `mp3` or `pcm`. Defaults to `pcm`                                                                                        |
 | `speed`           | number | No       | Playback speed multiplier. Only used by models that support it (e.g., OpenAI TTS). Ignored by other providers. Defaults to `1.0`              |
 | `provider`        | object | No       | Provider-specific passthrough configuration                                                                                                   |
@@ -272,7 +272,7 @@ The TTS endpoint returns a **raw audio byte stream**, not JSON. The response inc
 
 ## Pricing
 
-TTS models are priced **per character** of input text. Pricing varies by model and provider. You can check the per-character cost for each model on the [Models page](/guides/overview/models) or via the [Models API](/api/api-reference/models/list-all-models-and-their-properties).
+TTS models are priced **per character** of input text. Pricing varies by model and provider. You can check the per-character cost for each model on the [Models page](/docs/guides/overview/models) or via the [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties).
 
 ## OpenAI SDK Compatibility
 
@@ -350,10 +350,10 @@ API_KEY_REF,
 
 **Model not found?**
 
-* Use the [Models page](/guides/overview/models) to find available TTS models
+* Use the [Models page](/docs/guides/overview/models) to find available TTS models
 * Verify the model slug is correct (e.g., `openai/gpt-4o-mini-tts-2025-12-15`, not `gpt-4o-mini-tts`)
 
 **Voice not available?**
 
 * Available voices vary by provider. Check the provider's documentation for supported voice identifiers
-* Each model has its own set of voices — check the model's page on the [Models page](/guides/overview/models) for the full list
+* Each model has its own set of voices — check the model's page on the [Models page](/docs/guides/overview/models) for the full list

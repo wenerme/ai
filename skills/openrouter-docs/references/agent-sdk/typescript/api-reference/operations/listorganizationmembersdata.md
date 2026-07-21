@@ -33,4 +33,4 @@ let value: ListOrganizationMembersData = {
 | `firstName` | *string*                                                               | :heavy\_check\_mark: | First name of the member               | Jane                                                |
 | `id`        | *string*                                                               | :heavy\_check\_mark: | User ID of the organization member     | user\_2dHFtVWx2n56w6HkM0000000000                   |
 | `lastName`  | *string*                                                               | :heavy\_check\_mark: | Last name of the member                | Doe                                                 |
-| `role`      | [operations.Role](/agent-sdk/typescript/api-reference/operations/role) | :heavy\_check\_mark: | Role of the member in the organization | org:member                                          |
+| `role`      | [operations.Role](/docs/agent-sdk/typescript/api-reference/operations/role) | :heavy\_check\_mark: | Role of the member in the organization | org:member                                          |

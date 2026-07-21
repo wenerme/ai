@@ -1,7 +1,7 @@
 ---
 title: SASE - Secure remote access to your critical infrastructure
 description: In this video, learn how Cloudflare's SASE platform can provide highly secure access to your critical infrastructure by leveraging a modern ZTNA service to implement Zero Trust principles Applications, databases and their servers are running in a variety of locations from on-premises data centers to cloud hyperscalers, making the need to secure administrative access more important than ever.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -219,5 +219,5 @@ corporate networking,and all the developer content the Internet
 can hold. Follow us online and thanks forwatching!
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-3-secure-remote-access/#page","headline":"SASE - Secure remote access to your critical infrastructure | Cloudflare Docs","description":"In this video, learn how Cloudflare's SASE platform can provide highly secure access to your critical infrastructure by leveraging a modern ZTNA service to implement Zero Trust principles Applications, databases and their servers are running in a variety of locations from on-premises data centers to cloud hyperscalers, making the need to secure administrative access more important than ever.","url":"https://developers.cloudflare.com/videos/sase-3-secure-remote-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-3-secure-remote-access/#page","headline":"SASE - Secure remote access to your critical infrastructure | Cloudflare Docs","description":"In this video, learn how Cloudflare's SASE platform can provide highly secure access to your critical infrastructure by leveraging a modern ZTNA service to implement Zero Trust principles Applications, databases and their servers are running in a variety of locations from on-premises data centers to cloud hyperscalers, making the need to secure administrative access more important than ever.","url":"https://developers.cloudflare.com/videos/sase-3-secure-remote-access/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

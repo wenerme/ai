@@ -35,8 +35,8 @@ let value: Architecture = {
 
 | Field              | Type                                                                    | Required             | Description                   | Example |
 | ------------------ | ----------------------------------------------------------------------- | -------------------- | ----------------------------- | ------- |
-| `tokenizer`        | [models.Tokenizer](/agent-sdk/typescript/models/tokenizer)              | :heavy\_check\_mark: | N/A                           | GPT     |
-| `instructType`     | [models.InstructType](/agent-sdk/typescript/models/instructtype)        | :heavy\_check\_mark: | Instruction format type       |         |
+| `tokenizer`        | [models.Tokenizer](/docs/agent-sdk/typescript/models/tokenizer)              | :heavy\_check\_mark: | N/A                           | GPT     |
+| `instructType`     | [models.InstructType](/docs/agent-sdk/typescript/models/instructtype)        | :heavy\_check\_mark: | Instruction format type       |         |
 | `modality`         | *string*                                                                | :heavy\_check\_mark: | Primary modality of the model | text    |
-| `inputModalities`  | [models.InputModality](/agent-sdk/typescript/models/inputmodality)\[]   | :heavy\_check\_mark: | Supported input modalities    |         |
-| `outputModalities` | [models.OutputModality](/agent-sdk/typescript/models/outputmodality)\[] | :heavy\_check\_mark: | Supported output modalities   |         |
+| `inputModalities`  | [models.InputModality](/docs/agent-sdk/typescript/models/inputmodality)\[]   | :heavy\_check\_mark: | Supported input modalities    |         |
+| `outputModalities` | [models.OutputModality](/docs/agent-sdk/typescript/models/outputmodality)\[] | :heavy\_check\_mark: | Supported output modalities   |         |

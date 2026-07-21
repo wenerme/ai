@@ -1,7 +1,7 @@
 ---
 title: Run Workflows
 description: Integrate Cloudflare Workflows with Agents for durable, multi-step background processing and failure recovery.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -1516,6 +1516,6 @@ Workflows cannot open WebSocket connections directly. Use `broadcastToClients()`
 [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention patterns.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/#page","headline":"Run Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing and failure recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/#page","headline":"Run Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing and failure recovery.","url":"https://developers.cloudflare.com/agents/runtime/execution/run-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/run-workflows/","name":"Run Workflows"}}]}
 ```

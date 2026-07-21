@@ -1,7 +1,7 @@
 ---
 title: Roughtime
 description: Authenticated time synchronization with Roughtime protocol.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ For more technical details on Roughtime, refer to the [introductory blog post �
 To get started, refer to [Get the Roughtime](https://developers.cloudflare.com/time-services/roughtime/usage/). For more practical guidance on using the Roughtime, refer to our [how-to guide](https://developers.cloudflare.com/time-services/roughtime/recipes/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/time-services/roughtime/#page","headline":"Roughtime · Cloudflare Time Services docs","description":"Authenticated time synchronization with Roughtime protocol.","url":"https://developers.cloudflare.com/time-services/roughtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/time-services/roughtime/#page","headline":"Roughtime · Cloudflare Time Services docs","description":"Authenticated time synchronization with Roughtime protocol.","url":"https://developers.cloudflare.com/time-services/roughtime/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/time-services/","name":"Time Services"}},{"@type":"ListItem","position":3,"item":{"@id":"/time-services/roughtime/","name":"Roughtime"}}]}
 ```

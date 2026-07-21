@@ -1,7 +1,7 @@
 ---
 title: Programmatic configuration
 description: Configure Workers programmatically using the Vite plugin
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -217,6 +217,6 @@ The `config` option uses [defu ↗](https://github.com/unjs/defu) for merging co
 * `undefined` values in `config` do not override existing values
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/#page","headline":"Programmatic configuration · Cloudflare Workers docs","description":"Configure Workers programmatically using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/#page","headline":"Programmatic configuration · Cloudflare Workers docs","description":"Configure Workers programmatically using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/vite-plugin/reference/programmatic-configuration/","name":"Programmatic configuration"}}]}
 ```

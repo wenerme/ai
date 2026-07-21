@@ -1,7 +1,7 @@
 ---
 title: Storage classes
 description: Choose between R2 Standard and Infrequent Access storage to optimize cost and access patterns.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -96,6 +96,6 @@ aws s3api copy-object \
 * Refer to [object-level operations](https://developers.cloudflare.com/r2/api/s3/api/#object-level-operations) for the full list of object-level API operations with R2-compatible S3 API.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/storage-classes/#page","headline":"Storage classes · Cloudflare R2 docs","description":"Choose between R2 Standard and Infrequent Access storage to optimize cost and access patterns.","url":"https://developers.cloudflare.com/r2/buckets/storage-classes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/storage-classes/#page","headline":"Storage classes · Cloudflare R2 docs","description":"Choose between R2 Standard and Infrequent Access storage to optimize cost and access patterns.","url":"https://developers.cloudflare.com/r2/buckets/storage-classes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/storage-classes/","name":"Storage classes"}}]}
 ```

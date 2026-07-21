@@ -1,7 +1,7 @@
 ---
 title: Asynchronous Batch API
 description: Queue large inference workloads for asynchronous processing with the Workers AI Batch API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ This will create a repository in your GitHub account and deploy a ready-to-use W
 Refer to our [model catalog](https://developers.cloudflare.com/workers-ai/models/?capabilities=Batch) for supported models.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/batch-api/#page","headline":"Asynchronous Batch API · Cloudflare Workers AI docs","description":"Queue large inference workloads for asynchronous processing with the Workers AI Batch API.","url":"https://developers.cloudflare.com/workers-ai/features/batch-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/batch-api/#page","headline":"Asynchronous Batch API · Cloudflare Workers AI docs","description":"Queue large inference workloads for asynchronous processing with the Workers AI Batch API.","url":"https://developers.cloudflare.com/workers-ai/features/batch-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/batch-api/","name":"Asynchronous Batch API"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Profiling CPU usage
 description: Learn how to profile CPU usage and ensure CPU-time per request stays under Workers limits
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -113,6 +113,6 @@ To learn more about how to use the CPU profiler, see [Google's documentation on 
 To learn how to use DevTools to gain insight into memory, see the [Memory Usage Documentation](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/#page","headline":"Profiling CPU usage · Cloudflare Workers docs","description":"Learn how to profile CPU usage and ensure CPU-time per request stays under Workers limits","url":"https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/#page","headline":"Profiling CPU usage · Cloudflare Workers docs","description":"Learn how to profile CPU usage and ensure CPU-time per request stays under Workers limits","url":"https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/dev-tools/","name":"DevTools"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/dev-tools/cpu-usage/","name":"Profiling CPU usage"}}]}
 ```

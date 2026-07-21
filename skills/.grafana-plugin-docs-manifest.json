@@ -331,8 +331,8 @@
   },
   "grafana-clickhouse-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure.md",
-    "size": 26902,
-    "updatedAt": "2026-07-08T04:04:29.982Z"
+    "size": 28354,
+    "updatedAt": "2026-07-21T06:49:56.282Z"
   },
   "grafana-clickhouse-datasource/dashboards.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/dashboards.md",
@@ -1211,8 +1211,8 @@
   },
   "grafana-oracle-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure.md",
-    "size": 16770,
-    "updatedAt": "2026-07-09T04:41:53.100Z"
+    "size": 17173,
+    "updatedAt": "2026-07-21T06:50:25.521Z"
   },
   "grafana-oracle-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest.md",
@@ -1226,8 +1226,8 @@
   },
   "grafana-oracle-datasource/kerberos.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/kerberos.md",
-    "size": 6921,
-    "updatedAt": "2026-07-09T04:41:53.600Z"
+    "size": 7126,
+    "updatedAt": "2026-07-21T06:50:26.156Z"
   },
   "grafana-oracle-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/query-editor.md",
@@ -1241,8 +1241,8 @@
   },
   "grafana-oracle-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting.md",
-    "size": 32144,
-    "updatedAt": "2026-07-09T04:41:54.085Z"
+    "size": 32885,
+    "updatedAt": "2026-07-21T06:50:26.830Z"
   },
   "grafana-pagerduty-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest.md",
@@ -1829,10 +1829,40 @@
     "size": 16455,
     "updatedAt": "2026-06-25T05:43:32.572Z"
   },
+  "grafana-vercel-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/alerting.md",
+    "size": 3557,
+    "updatedAt": "2026-07-21T06:50:48.175Z"
+  },
+  "grafana-vercel-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/annotations.md",
+    "size": 4070,
+    "updatedAt": "2026-07-21T06:50:48.369Z"
+  },
+  "grafana-vercel-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/configure.md",
+    "size": 6113,
+    "updatedAt": "2026-07-21T06:50:48.547Z"
+  },
   "grafana-vercel-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest.md",
-    "size": 2882,
-    "updatedAt": "2026-06-25T05:43:32.950Z"
+    "size": 6292,
+    "updatedAt": "2026-07-21T06:50:48.743Z"
+  },
+  "grafana-vercel-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/query-editor.md",
+    "size": 13933,
+    "updatedAt": "2026-07-21T06:50:48.934Z"
+  },
+  "grafana-vercel-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/template-variables.md",
+    "size": 5358,
+    "updatedAt": "2026-07-21T06:50:49.139Z"
+  },
+  "grafana-vercel-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/troubleshooting.md",
+    "size": 8534,
+    "updatedAt": "2026-07-21T06:50:49.331Z"
   },
   "grafana-wavefront-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/alerting.md",
@@ -1936,8 +1966,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8907,
-    "updatedAt": "2026-07-11T04:04:34.884Z"
+    "size": 8893,
+    "updatedAt": "2026-07-21T06:50:52.972Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",
@@ -2001,33 +2031,33 @@
   },
   "marcusolsson-csv-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/annotations.md",
-    "size": 1621,
-    "updatedAt": "2026-06-25T05:43:42.863Z"
+    "size": 1595,
+    "updatedAt": "2026-07-21T06:50:55.010Z"
   },
   "marcusolsson-csv-datasource/configuration.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/configuration.md",
-    "size": 1800,
-    "updatedAt": "2026-06-25T05:43:43.225Z"
+    "size": 1774,
+    "updatedAt": "2026-07-21T06:50:55.159Z"
   },
   "marcusolsson-csv-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest.md",
-    "size": 1276,
-    "updatedAt": "2026-06-25T05:43:43.583Z"
+    "size": 1250,
+    "updatedAt": "2026-07-21T06:50:55.349Z"
   },
   "marcusolsson-csv-datasource/installation.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/installation.md",
-    "size": 2372,
-    "updatedAt": "2026-06-25T05:43:43.946Z"
+    "size": 2346,
+    "updatedAt": "2026-07-21T06:50:55.569Z"
   },
   "marcusolsson-csv-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/query-editor.md",
-    "size": 4785,
-    "updatedAt": "2026-06-25T05:43:44.305Z"
+    "size": 4759,
+    "updatedAt": "2026-07-21T06:50:55.760Z"
   },
   "marcusolsson-csv-datasource/variables.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-csv-datasource/latest/variables.md",
-    "size": 1389,
-    "updatedAt": "2026-06-25T05:43:44.664Z"
+    "size": 1363,
+    "updatedAt": "2026-07-21T06:50:55.932Z"
   },
   "marcusolsson-dynamictext-panel/exploring-eventbus.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-eventbus.md",
@@ -2926,8 +2956,8 @@
   },
   "yesoreyeram-infinity-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure.md",
-    "size": 22090,
-    "updatedAt": "2026-06-25T05:44:51.381Z"
+    "size": 22060,
+    "updatedAt": "2026-07-21T06:51:34.965Z"
   },
   "yesoreyeram-infinity-datasource/data-formats.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats.md",

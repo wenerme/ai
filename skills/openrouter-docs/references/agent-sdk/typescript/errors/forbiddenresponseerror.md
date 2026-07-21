@@ -25,5 +25,5 @@ import { ForbiddenResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                         | Required             | Description                      | Example                                                                        |
 | -------- | -------------------------------------------------------------------------------------------- | -------------------- | -------------------------------- | ------------------------------------------------------------------------------ |
-| `error`  | [models.ForbiddenResponseErrorData](/agent-sdk/typescript/models/forbiddenresponseerrordata) | :heavy\_check\_mark: | Error data for ForbiddenResponse | `{"code": 403,"message": "Only provisioning keys can perform this operation"}` |
+| `error`  | [models.ForbiddenResponseErrorData](/docs/agent-sdk/typescript/models/forbiddenresponseerrordata) | :heavy\_check\_mark: | Error data for ForbiddenResponse | `{"code": 403,"message": "Only provisioning keys can perform this operation"}` |
 | `userId` | *string*                                                                                     | :heavy\_minus\_sign: | N/A                              |                                                                                |

@@ -29,4 +29,4 @@ let value: ItemReferenceItem = {
 | Field  | Type                                                                                             | Required             | Description |
 | ------ | ------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `id`   | *string*                                                                                         | :heavy\_check\_mark: | N/A         |
-| `type` | [models.ItemReferenceItemType](/agent-sdk/typescript/api-reference/models/itemreferenceitemtype) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.ItemReferenceItemType](/docs/agent-sdk/typescript/api-reference/models/itemreferenceitemtype) | :heavy\_check\_mark: | N/A         |

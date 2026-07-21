@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Network Interconnect
 description: Connect to Cloudflare with private network interconnects.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -77,6 +77,6 @@ Magic Transit is a network security and performance solution that offers Distrib
 Improve security and performance for your entire corporate network, reducing cost and operation complexity.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-interconnect/#page","headline":"Overview · Cloudflare Network Interconnect docs","description":"Connect to Cloudflare with private network interconnects.","url":"https://developers.cloudflare.com/network-interconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-interconnect/#page","headline":"Overview · Cloudflare Network Interconnect docs","description":"Connect to Cloudflare with private network interconnects.","url":"https://developers.cloudflare.com/network-interconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-interconnect/","name":"Network Interconnect"}}]}
 ```

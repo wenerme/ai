@@ -1,7 +1,7 @@
 ---
 title: Define a single configuration rule using Terraform
 description: Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -53,6 +53,6 @@ For additional guidance on using Terraform with Cloudflare, refer to the followi
 * [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/#page","headline":"Define a single configuration rule using Terraform · Cloudflare Rules docs","description":"Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.","url":"https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/#page","headline":"Define a single configuration rule using Terraform · Cloudflare Rules docs","description":"Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.","url":"https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/configuration-rules/","name":"Configuration Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/configuration-rules/examples/","name":"Configuration Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/configuration-rules/examples/define-single-configuration-terraform/","name":"Define a single configuration rule using Terraform"}}]}
 ```

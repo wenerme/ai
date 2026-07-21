@@ -29,6 +29,6 @@ let value: FrameImage = {
 
 | Field       | Type                                                                                       | Required             | Description                                                        | Example      |
 | ----------- | ------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------ | ------------ |
-| `imageUrl`  | [models.FrameImageImageUrl](/agent-sdk/typescript/api-reference/models/frameimageimageurl) | :heavy\_check\_mark: | N/A                                                                |              |
-| `type`      | [models.FrameImageType](/agent-sdk/typescript/api-reference/models/frameimagetype)         | :heavy\_check\_mark: | N/A                                                                |              |
-| `frameType` | [models.FrameType](/agent-sdk/typescript/api-reference/models/frametype)                   | :heavy\_check\_mark: | Whether this image represents the first or last frame of the video | first\_frame |
+| `imageUrl`  | [models.FrameImageImageUrl](/docs/agent-sdk/typescript/api-reference/models/frameimageimageurl) | :heavy\_check\_mark: | N/A                                                                |              |
+| `type`      | [models.FrameImageType](/docs/agent-sdk/typescript/api-reference/models/frameimagetype)         | :heavy\_check\_mark: | N/A                                                                |              |
+| `frameType` | [models.FrameType](/docs/agent-sdk/typescript/api-reference/models/frametype)                   | :heavy\_check\_mark: | Whether this image represents the first or last frame of the video | first\_frame |

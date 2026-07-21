@@ -1,7 +1,7 @@
 ---
 title: IPv6 compatibility
 description: Configure IPv6 compatibility for your Cloudflare domain.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -73,6 +73,6 @@ Provide the following information to [Cloudflare Support](https://developers.clo
 * Confirmation of whether [disabling IPv6 Compatibility](#disable-ipv6-compatibility) resolves the issue.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/ipv6-compatibility/#page","headline":"IPv6 compatibility · Cloudflare Network settings docs","description":"Configure IPv6 compatibility for your Cloudflare domain.","url":"https://developers.cloudflare.com/network/ipv6-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/ipv6-compatibility/#page","headline":"IPv6 compatibility · Cloudflare Network settings docs","description":"Configure IPv6 compatibility for your Cloudflare domain.","url":"https://developers.cloudflare.com/network/ipv6-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network/","name":"Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/network/ipv6-compatibility/","name":"IPv6 compatibility"}}]}
 ```

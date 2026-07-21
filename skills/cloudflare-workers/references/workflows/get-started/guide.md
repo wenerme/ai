@@ -1,7 +1,7 @@
 ---
 title: Build your first Workflow
 description: Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -283,6 +283,6 @@ The output of `instances describe` shows:
 [ Rules of Workflows ](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) Understand the programming model and best practices.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/guide/#page","headline":"Build your first Workflow · Cloudflare Workflows docs","description":"Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.","url":"https://developers.cloudflare.com/workflows/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/guide/#page","headline":"Build your first Workflow · Cloudflare Workflows docs","description":"Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.","url":"https://developers.cloudflare.com/workflows/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/get-started/guide/","name":"Build your first Workflow"}}]}
 ```

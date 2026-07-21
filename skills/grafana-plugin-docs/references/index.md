@@ -83,7 +83,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Sqlyze data source for Grafana](/docs/plugins/grafana-odbc-datasource/latest/ "Sqlyze data source for Grafana")
 - [Sumo Logic data source](/docs/plugins/grafana-sumologic-datasource/latest/ "Sumo Logic data source")
 - [Traces Drilldown](/docs/plugins/grafana-exploretraces-app/latest/ "Traces Drilldown")
-- [Vercel data source plugin](/docs/plugins/grafana-vercel-datasource/latest/ "Vercel data source plugin")
+- [Vercel data source](/docs/plugins/grafana-vercel-datasource/latest/ "Vercel data source")
 - [Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/ "Wavefront data source")
 - [Yugabyte data source](/docs/plugins/grafana-yugabyte-datasource/latest/ "Yugabyte data source")
 - [Zabbix data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/ "Zabbix data source")

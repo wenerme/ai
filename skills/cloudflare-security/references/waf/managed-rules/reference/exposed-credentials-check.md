@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Exposed Credentials Check Managed Ruleset
 description: Rules in the Cloudflare Exposed Credentials Check managed ruleset.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -187,6 +187,6 @@ For more information, refer to [Create a custom rule checking for exposed creden
 For more information on working with managed rulesets via API, refer to [Work with managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/) in the Ruleset Engine documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/#page","headline":"Cloudflare Exposed Credentials Check Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules in the Cloudflare Exposed Credentials Check managed ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/#page","headline":"Cloudflare Exposed Credentials Check Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules in the Cloudflare Exposed Credentials Check managed ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/reference/","name":"Rulesets reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/reference/exposed-credentials-check/","name":"Cloudflare Exposed Credentials Check Managed Ruleset"}}]}
 ```

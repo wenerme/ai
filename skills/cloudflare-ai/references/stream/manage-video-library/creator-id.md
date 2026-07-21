@@ -1,7 +1,7 @@
 ---
 title: Manage creators
 description: Set and use creator IDs to associate Cloudflare Stream videos with internal user accounts.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -464,6 +464,6 @@ Add the Creator ID via the `Upload-Creator` header. For more information, refer 
 After you set the creator property, you can use the [GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/) to filter by a specific creator. Refer to [Fetching bulk analytics](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics) for more information about available metrics and filters.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/creator-id/#page","headline":"Manage creators · Cloudflare Stream docs","description":"Set and use creator IDs to associate Cloudflare Stream videos with internal user accounts.","url":"https://developers.cloudflare.com/stream/manage-video-library/creator-id/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/creator-id/#page","headline":"Manage creators · Cloudflare Stream docs","description":"Set and use creator IDs to associate Cloudflare Stream videos with internal user accounts.","url":"https://developers.cloudflare.com/stream/manage-video-library/creator-id/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/manage-video-library/","name":"Manage videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/manage-video-library/creator-id/","name":"Manage creators"}}]}
 ```

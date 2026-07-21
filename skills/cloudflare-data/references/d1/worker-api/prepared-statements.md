@@ -1,7 +1,7 @@
 ---
 title: Prepared statement methods
 description: Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -506,6 +506,6 @@ return Response.json(return_value)
 * When using TypeScript, you can pass a [type parameter](https://developers.cloudflare.com/d1/worker-api/#typescript-support) to [D1PreparedStatement::first](#first) to return a typed result object.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/#page","headline":"Prepared statement methods · Cloudflare D1 docs","description":"Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.","url":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/#page","headline":"Prepared statement methods · Cloudflare D1 docs","description":"Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.","url":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/worker-api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/worker-api/prepared-statements/","name":"Prepared statement methods"}}]}
 ```

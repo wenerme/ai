@@ -1,7 +1,7 @@
 ---
 title: Rust
 description: Write Workers in 100% Rust using the [`workers-rs` crate](https://github.com/cloudflare/workers-rs)
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -235,6 +235,6 @@ Finally, `worker-bundle` automatically invokes [wasm-opt ↗](https://github.com
 * [Rust Wasm Book ↗](https://rustwasm.github.io/docs/book/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/rust/#page","headline":"Cloudflare Workers — Rust language support · Cloudflare Workers docs","description":"Write Workers in 100% Rust using the workers-rs crate","url":"https://developers.cloudflare.com/workers/languages/rust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/rust/#page","headline":"Cloudflare Workers — Rust language support · Cloudflare Workers docs","description":"Write Workers in 100% Rust using the workers-rs crate","url":"https://developers.cloudflare.com/workers/languages/rust/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/rust/","name":"Rust"}}]}
 ```

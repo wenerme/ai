@@ -37,4 +37,4 @@ let value: ChatStreamingResponseChunk = {
 
 | Field  | Type                                                                                                 | Required             | Description |
 | ------ | ---------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `data` | [models.ChatStreamingResponseChunkData](/agent-sdk/typescript/models/chatstreamingresponsechunkdata) | :heavy\_check\_mark: | N/A         |
+| `data` | [models.ChatStreamingResponseChunkData](/docs/agent-sdk/typescript/models/chatstreamingresponsechunkdata) | :heavy\_check\_mark: | N/A         |

@@ -28,5 +28,5 @@ let value: ContentPartInputAudio = {
 
 | Field        | Type                                                                                 | Required             | Description | Example                                                                            |
 | ------------ | ------------------------------------------------------------------------------------ | -------------------- | ----------- | ---------------------------------------------------------------------------------- |
-| `inputAudio` | [models.MultimodalMedia](/agent-sdk/typescript/api-reference/models/multimodalmedia) | :heavy\_check\_mark: | N/A         | `{"data": "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAA...","format": "wav"}` |
+| `inputAudio` | [models.MultimodalMedia](/docs/agent-sdk/typescript/api-reference/models/multimodalmedia) | :heavy\_check\_mark: | N/A         | `{"data": "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAA...","format": "wav"}` |
 | `type`       | *"input\_audio"*                                                                     | :heavy\_check\_mark: | N/A         |                                                                                    |

@@ -1,7 +1,7 @@
 ---
 title: Managed Rules
 description: Deploy pre-configured managed rulesets to protect against common attacks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -102,6 +102,6 @@ This means a rule with a terminal action (such as Block or Managed Challenge) in
 WAF exceptions (skip rules) are rules with a `skip` action deployed to the `http_request_firewall_managed` phase entry-point ruleset. They are evaluated in list order within the entry-point ruleset — a skip rule only bypasses `execute` rules listed after it. Place exceptions before the managed ruleset execute rules they are intended to skip. For more information, refer to [WAF exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/#page","headline":"Managed Rules · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy pre-configured managed rulesets to protect against common attacks.","url":"https://developers.cloudflare.com/waf/managed-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/#page","headline":"Managed Rules · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy pre-configured managed rulesets to protect against common attacks.","url":"https://developers.cloudflare.com/waf/managed-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}}]}
 ```

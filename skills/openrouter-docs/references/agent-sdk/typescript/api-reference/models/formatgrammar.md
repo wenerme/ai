@@ -28,5 +28,5 @@ let value: FormatGrammar = {
 | Field        | Type                                                               | Required             | Description |
 | ------------ | ------------------------------------------------------------------ | -------------------- | ----------- |
 | `definition` | *string*                                                           | :heavy\_check\_mark: | N/A         |
-| `syntax`     | [models.Syntax](/agent-sdk/typescript/api-reference/models/syntax) | :heavy\_check\_mark: | N/A         |
+| `syntax`     | [models.Syntax](/docs/agent-sdk/typescript/api-reference/models/syntax) | :heavy\_check\_mark: | N/A         |
 | `type`       | *"grammar"*                                                        | :heavy\_check\_mark: | N/A         |

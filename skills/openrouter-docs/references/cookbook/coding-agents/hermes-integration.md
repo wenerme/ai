@@ -110,7 +110,7 @@ provider_routing:
 
 **Shortcuts:** Append `:nitro` to any model name for throughput sorting (e.g., `~anthropic/claude-sonnet-latest:nitro`), or `:floor` for price sorting.
 
-For a full breakdown of routing options, see the [Provider Routing docs](/guides/routing/provider-selection).
+For a full breakdown of routing options, see the [Provider Routing docs](/docs/guides/routing/provider-selection).
 
 ## Fallback Providers
 
@@ -161,7 +161,7 @@ openrouter:
 This is useful for cost optimization on coding tasks — the router picks the cheapest model that meets your quality bar.
 
 <Note>
-  Hermes uses its own `openrouter:` config key to set `min_coding_score`. This maps to the `plugins` array in the [OpenRouter API](/guides/routing/routers/pareto-router) — you don't need to construct the plugins payload yourself.
+  Hermes uses its own `openrouter:` config key to set `min_coding_score`. This maps to the `plugins` array in the [OpenRouter API](/docs/guides/routing/routers/pareto-router) — you don't need to construct the plugins payload yourself.
 </Note>
 
 ## Monitoring Usage

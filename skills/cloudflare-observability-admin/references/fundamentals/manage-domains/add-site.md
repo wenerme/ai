@@ -1,7 +1,7 @@
 ---
 title: Onboard a domain
 description: Learn how to onboard your domain to Cloudflare, to speed up and protect your website or application.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -142,6 +142,6 @@ If you encounter unexpected results when changing your nameservers, refer to the
 2. Enterprise customers can onboard these using [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/). [↩](#user-content-fnref-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/add-site/#page","headline":"Onboard a domain · Cloudflare Fundamentals docs","description":"Learn how to onboard your domain to Cloudflare, to speed up and protect your website or application.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/add-site/#page","headline":"Onboard a domain · Cloudflare Fundamentals docs","description":"Learn how to onboard your domain to Cloudflare, to speed up and protect your website or application.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/add-site/","name":"Onboard a domain"}}]}
 ```

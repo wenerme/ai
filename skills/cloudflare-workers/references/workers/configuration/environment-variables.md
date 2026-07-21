@@ -1,7 +1,7 @@
 ---
 title: Environment variables
 description: You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -313,6 +313,6 @@ Note also that because secrets are a form of environment variable within the run
 * Migrating environment variables from [Service Worker format to ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#environment-variables).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Workers docs","description":"You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.","url":"https://developers.cloudflare.com/workers/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Workers docs","description":"You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.","url":"https://developers.cloudflare.com/workers/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/environment-variables/","name":"Environment variables"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Web Bot Auth
 description: Verify bot identity using cryptographic HTTP message signatures.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -268,6 +268,6 @@ You may wish to refer to the following resources.
 * Cloudflare's [web-bot-auth npm package in Typescript ↗](https://www.npmjs.com/package/web-bot-auth).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/reference/bot-verification/","name":"Bot verification methods"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/reference/bot-verification/web-bot-auth/","name":"Web Bot Auth"}}]}
 ```

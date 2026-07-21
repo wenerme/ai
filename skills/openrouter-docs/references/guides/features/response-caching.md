@@ -222,7 +222,7 @@ X-Generation-Id: gen-def456
 
 ### 2. Via Presets
 
-You can enable caching for all requests that use a specific [preset](/guides/features/presets) by configuring these fields in the preset:
+You can enable caching for all requests that use a specific [preset](/docs/guides/features/presets) by configuring these fields in the preset:
 
 | Field               | Type      | Description                                                     |
 | ------------------- | --------- | --------------------------------------------------------------- |
@@ -259,12 +259,12 @@ The cache key is derived from your **API key**, **model**, **endpoint type**, **
 
 * Different property ordering in logically identical JSON (e.g. `{"model":"x","messages":[]}` vs `{"messages":[],"model":"x"}`) will produce different cache keys
 * Omitting optional fields vs. explicitly sending defaults (e.g. `temperature: 1.0`) produces different keys
-* [Attribution headers](/app-attribution#attribution-headers) (e.g. `HTTP-Referer`, `X-Title`) and [provider-specific headers](/guides/routing/provider-selection#provider-specific-headers) are **not** part of the cache key
+* [Attribution headers](/docs/app-attribution#attribution-headers) (e.g. `HTTP-Referer`, `X-Title`) and [provider-specific headers](/docs/guides/routing/provider-selection#provider-specific-headers) are **not** part of the cache key
 * Multimodal requests (images, audio, video, file attachments) are eligible for caching. The full request body, including base64-encoded content, is included in the hash
 
 ### Precedence
 
-Request headers and [preset](/guides/features/presets) configuration interact as follows:
+Request headers and [preset](/docs/guides/features/presets) configuration interact as follows:
 
 1. If a preset explicitly sets `cache_enabled: false`, caching is **disabled** regardless of request headers–the header cannot override a preset opt-out
 2. `X-OpenRouter-Cache: false` header **disables** caching even if the preset enables it
@@ -280,10 +280,10 @@ If two identical requests arrive simultaneously before the first response is wri
 
 | Endpoint                                                                          | API Format              |
 | --------------------------------------------------------------------------------- | ----------------------- |
-| [`/api/v1/chat/completions`](/api/api-reference/chat/create-a-chat-completion)    | OpenAI Chat Completions |
-| [`/api/v1/responses`](/api/api-reference/responses/create-a-response)             | OpenAI Responses        |
-| [`/api/v1/messages`](/api/api-reference/anthropic-messages/create-a-message)      | Anthropic Messages      |
-| [`/api/v1/embeddings`](/api/api-reference/embeddings/submit-an-embedding-request) | OpenAI Embeddings       |
+| [`/api/v1/chat/completions`](/docs/api/api-reference/chat/create-a-chat-completion)    | OpenAI Chat Completions |
+| [`/api/v1/responses`](/docs/api/api-reference/responses/create-a-response)             | OpenAI Responses        |
+| [`/api/v1/messages`](/docs/api/api-reference/anthropic-messages/create-a-message)      | Anthropic Messages      |
+| [`/api/v1/embeddings`](/docs/api/api-reference/embeddings/submit-an-embedding-request) | OpenAI Embeddings       |
 
 Cache keys include an endpoint type discriminator, so requests to different endpoints with identical bodies will not collide.
 
@@ -319,7 +319,7 @@ The TTL controls how long a cached response remains valid.
 * **Default**: 300 seconds (5 minutes)
 * **Range**: 1 second to 86400 seconds (24 hours)
 
-You can customize the TTL per-request using the `X-OpenRouter-Cache-TTL` header, or set a default TTL in your [preset](/guides/features/presets) configuration.
+You can customize the TTL per-request using the `X-OpenRouter-Cache-TTL` header, or set a default TTL in your [preset](/docs/guides/features/presets) configuration.
 
 ## Cache Clearing
 
@@ -335,7 +335,7 @@ Cache hits do not count toward provider rate limits since the request never reac
 
 ## Limitations
 
-* **Disabled for account-level Zero Data Retention ([ZDR](/guides/features/zdr))**: Response caching is not available when account-level ZDR is enforced, since caching requires temporarily storing response data. Per-request `provider.zdr` does not affect cache eligibility.
+* **Disabled for account-level Zero Data Retention ([ZDR](/docs/guides/features/zdr))**: Response caching is not available when account-level ZDR is enforced, since caching requires temporarily storing response data. Per-request `provider.zdr` does not affect cache eligibility.
 * **Concurrent identical requests**: If two identical requests arrive before the first response is cached, both result in a `MISS`. See [Concurrent Requests](#concurrent-requests).
 * **Cache eviction**: Cached responses may be evicted before TTL expiry under memory pressure. There is no limit on the number of entries you can cache, but eviction under pressure means entries are not guaranteed to survive their full TTL.
 

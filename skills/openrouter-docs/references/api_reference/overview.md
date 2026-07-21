@@ -21,9 +21,9 @@ These specifications can be used with tools like [Swagger UI](https://swagger.io
 
 ### Completions Request Format
 
-Here is the request schema as a TypeScript type. This will be the body of your `POST` request to the `/api/v1/chat/completions` endpoint (see the [quick start](/quickstart) above for an example).
+Here is the request schema as a TypeScript type. This will be the body of your `POST` request to the `/api/v1/chat/completions` endpoint (see the [quick start](/docs/quickstart) above for an example).
 
-For a complete list of parameters, see the [Parameters](/api_reference/parameters).
+For a complete list of parameters, see the [Parameters](/docs/api_reference/parameters).
 
 <CodeGroup>
   ```typescript title="Request Schema" expandable lines theme={null}
@@ -172,7 +172,7 @@ The `response_format` parameter allows you to enforce structured JSON responses 
 * `{ type: 'json_object' }`: Basic JSON mode - the model will return valid JSON
 * `{ type: 'json_schema', json_schema: { ... } }`: Strict schema mode - the model will return JSON matching your exact schema
 
-For detailed usage and examples, see [Structured Outputs](/guides/features/structured-outputs). To find models that support structured outputs, check the [models page](https://openrouter.ai/models?supported_parameters=structured_outputs).
+For detailed usage and examples, see [Structured Outputs](/docs/guides/features/structured-outputs). To find models that support structured outputs, check the [models page](https://openrouter.ai/models?supported_parameters=structured_outputs).
 
 ### Plugins
 
@@ -187,7 +187,7 @@ OpenRouter plugins extend model capabilities with features like web search, PDF 
 }
 ```
 
-Available plugins include `web` (real-time web search), `file-parser` (PDF processing), `response-healing` (automatic JSON repair), and `context-compression` (middle-out prompt compression). For detailed configuration options, see [Plugins](/guides/features/plugins)
+Available plugins include `web` (real-time web search), `file-parser` (PDF processing), `response-healing` (automatic JSON repair), and `context-compression` (middle-out prompt compression). For detailed configuration options, see [Plugins](/docs/guides/features/plugins)
 
 ### Headers
 
@@ -195,7 +195,7 @@ OpenRouter allows you to specify some optional headers to identify your app and 
 
 * `HTTP-Referer`: Identifies your app on openrouter.ai
 * `X-OpenRouter-Title`: Sets/modifies your app's title (`X-Title` also accepted)
-* `X-OpenRouter-Categories`: Assigns marketplace categories (see [App Attribution](/app-attribution))
+* `X-OpenRouter-Categories`: Assigns marketplace categories (see [App Attribution](/docs/app-attribution))
 
 <CodeGroup>
   ```typescript title="TypeScript" lines theme={null}
@@ -225,7 +225,7 @@ OpenRouter allows you to specify some optional headers to identify your app and 
 
   If the `model` parameter is omitted, the user or payer's default is used.
   Otherwise, remember to select a value for `model` from the [supported
-  models](/guides/overview/models) or [API](/api/v1/models), and include the organization
+  models](/docs/guides/overview/models) or [API](/docs/api/v1/models), and include the organization
   prefix. OpenRouter will select the least expensive and best GPUs available to
   serve the request, and fall back to other providers or GPUs if it receives a
   5xx response code or if you are rate-limited.
@@ -448,6 +448,6 @@ You can also use the returned `id` to query for the generation stats (including 
   ```
 </CodeGroup>
 
-Please see the [Generation](/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation) API reference for the full response shape.
+Please see the [Generation](/docs/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation) API reference for the full response shape.
 
 Note that token counts are also available in the `usage` field of the response body for non-streaming completions.

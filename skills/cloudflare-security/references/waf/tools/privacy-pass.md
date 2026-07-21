@@ -1,7 +1,7 @@
 ---
 title: Privacy Pass
 description: Allow Privacy Pass token holders to bypass challenges.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -40,6 +40,6 @@ In September 2023, Cloudflare removed support for Privacy Pass v1 (legacy) token
 The full deprecation notice for the first version of Privacy Pass is available on the [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31) page.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/privacy-pass/#page","headline":"Privacy Pass · Cloudflare Web Application Firewall (WAF) docs","description":"Allow Privacy Pass token holders to bypass challenges.","url":"https://developers.cloudflare.com/waf/tools/privacy-pass/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/privacy-pass/#page","headline":"Privacy Pass · Cloudflare Web Application Firewall (WAF) docs","description":"Allow Privacy Pass token holders to bypass challenges.","url":"https://developers.cloudflare.com/waf/tools/privacy-pass/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/privacy-pass/","name":"Privacy Pass"}}]}
 ```

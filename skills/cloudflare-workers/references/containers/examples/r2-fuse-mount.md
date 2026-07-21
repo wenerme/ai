@@ -1,7 +1,7 @@
 ---
 title: Mount R2 buckets with FUSE
 description: Mount R2 buckets as filesystems using FUSE in Containers
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -202,6 +202,6 @@ This is useful for shared assets or configuration files where you want to ensure
 * [gcsfuse ↗](https://github.com/GoogleCloudPlatform/gcsfuse) \- FUSE adapter for Google Cloud Storage buckets
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/#page","headline":"Mount R2 buckets with FUSE · Cloudflare Containers docs","description":"Mount R2 buckets as filesystems using FUSE in Containers","url":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/#page","headline":"Mount R2 buckets with FUSE · Cloudflare Containers docs","description":"Mount R2 buckets as filesystems using FUSE in Containers","url":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/examples/r2-fuse-mount/","name":"Mount R2 buckets with FUSE"}}]}
 ```

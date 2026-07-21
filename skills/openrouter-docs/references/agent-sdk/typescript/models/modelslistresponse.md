@@ -60,4 +60,4 @@ let value: ModelsListResponse = {
 
 | Field  | Type                                                  | Required             | Description              |
 | ------ | ----------------------------------------------------- | -------------------- | ------------------------ |
-| `data` | [models.Model](/agent-sdk/typescript/models/model)\[] | :heavy\_check\_mark: | List of available models |
+| `data` | [models.Model](/docs/agent-sdk/typescript/models/model)\[] | :heavy\_check\_mark: | List of available models |

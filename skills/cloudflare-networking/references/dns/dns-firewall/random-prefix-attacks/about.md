@@ -1,7 +1,7 @@
 ---
 title: About
 description: Learn about random prefix attacks. As part of DNS Firewall, Cloudflare can protect your upstream authoritative nameservers from these attacks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -57,6 +57,6 @@ When you [enable random prefix attack mitigations](https://developers.cloudflare
 When we detect an attack, we will temporarily stop querying your upstream nameservers for subdomains, sub-subdomains, and more. Cloudflare will then respond with cached responses (if their TTL has not yet expired).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/#page","headline":"About random prefix attacks - DNS Firewall · Cloudflare DNS docs","description":"Learn about random prefix attacks. As part of DNS Firewall, Cloudflare can protect your upstream authoritative nameservers from these attacks.","url":"https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/#page","headline":"About random prefix attacks - DNS Firewall · Cloudflare DNS docs","description":"Learn about random prefix attacks. As part of DNS Firewall, Cloudflare can protect your upstream authoritative nameservers from these attacks.","url":"https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dns-firewall/","name":"DNS Firewall"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/dns-firewall/random-prefix-attacks/","name":"Random prefix attack mitigation"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/dns-firewall/random-prefix-attacks/about/","name":"About"}}]}
 ```

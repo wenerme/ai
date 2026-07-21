@@ -1,7 +1,7 @@
 ---
 title: Chat agents
 description: Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -2813,6 +2813,6 @@ If you are upgrading from an earlier version, replace deprecated calls with thei
 [ Long-running agents ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/) Lifecycle, recovery patterns, and provider-specific strategies.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/chat/","name":"Chat"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/communication-channels/chat/chat-agents/","name":"Chat agents"}}]}
 ```

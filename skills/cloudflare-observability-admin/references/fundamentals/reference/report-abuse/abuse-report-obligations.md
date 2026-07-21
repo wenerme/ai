@@ -1,7 +1,7 @@
 ---
 title: Customer abuse report obligations
 description: Understand your obligations when Cloudflare forwards an abuse report for a domain associated with your account.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ To assist with timely resolution and avoid potential service interruptions:
 * Respond to any abuse report notification within 24 hours. In your response, include any information that you believe will be relevant to Cloudflare in its assessment of the abuse report. Failure to respond in a timely manner or to address the concerns in the abuse report may result in the removal or blocking of reported content, websites, or apps and suspension or termination of Cloudflare services for the associated account.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/#page","headline":"Customer abuse report obligations · Cloudflare Fundamentals docs","description":"Understand your obligations when Cloudflare forwards an abuse report for a domain associated with your account.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/#page","headline":"Customer abuse report obligations · Cloudflare Fundamentals docs","description":"Understand your obligations when Cloudflare forwards an abuse report for a domain associated with your account.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/report-abuse/","name":"Abuse"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/report-abuse/abuse-report-obligations/","name":"Customer abuse report obligations"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Configure tunnel endpoints
 description: Learn how to configure IPsec or GRE tunnels for Magic Transit.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -266,7 +266,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `Magic WAN Write`
   * `Magic Transit Write`
 
-**Generate Pre Shared Key (PSK) for IPsec tunnels**
+**Generate Pre-Shared Key (PSK) for IPsec tunnels**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels/$IPSEC_TUNNEL_ID/psk_generate" \
   --request POST \
@@ -419,6 +419,6 @@ If you experience issues with your tunnels:
 * For IPsec tunnel establishment issues, refer to [Troubleshoot with IPsec logs](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare Magic Transit docs","description":"Learn how to configure IPsec or GRE tunnels for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare Magic Transit docs","description":"Learn how to configure IPsec or GRE tunnels for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/how-to/configure-tunnel-endpoints/","name":"Configure tunnel endpoints"}}]}
 ```

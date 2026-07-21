@@ -26,5 +26,5 @@ let value: ObservabilityWebhookDestinationConfig = {
 | Field     | Type                                                               | Required             | Description |
 | --------- | ------------------------------------------------------------------ | -------------------- | ----------- |
 | `headers` | `Record<string, *string*>`                                         | :heavy\_minus\_sign: | N/A         |
-| `method`  | [models.Method](/agent-sdk/typescript/api-reference/models/method) | :heavy\_minus\_sign: | N/A         |
+| `method`  | [models.Method](/docs/agent-sdk/typescript/api-reference/models/method) | :heavy\_minus\_sign: | N/A         |
 | `url`     | *string*                                                           | :heavy\_check\_mark: | N/A         |

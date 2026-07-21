@@ -1,7 +1,7 @@
 ---
 title: Form expressions
 description: Write expressions for Network Firewall rules.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ Expressions have a complexity limit that is easily reached when many joined or n
 If the limit is reached, the response will have a `400` status code and an error message of `ruleset exceeds complexity constraints`. Split the expression into multiple rules and try again.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/form-expressions/#page","headline":"Form an expression · Cloudflare Network Firewall docs","description":"Write expressions for Network Firewall rules.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/form-expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/form-expressions/#page","headline":"Form an expression · Cloudflare Network Firewall docs","description":"Write expressions for Network Firewall rules.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/form-expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/how-to/form-expressions/","name":"Form expressions"}}]}
 ```

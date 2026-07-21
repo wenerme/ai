@@ -29,5 +29,5 @@ let value: OutputImageGenerationCallItem = {
 | -------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | --------- |
 | `id`     | *string*                                                                                                                 | :heavy\_check\_mark: | N/A         |           |
 | `result` | *string*                                                                                                                 | :heavy\_minus\_sign: | N/A         |           |
-| `status` | [models.ImageGenerationStatus](/agent-sdk/typescript/api-reference/models/imagegenerationstatus)                         | :heavy\_check\_mark: | N/A         | completed |
-| `type`   | [models.OutputImageGenerationCallItemType](/agent-sdk/typescript/api-reference/models/outputimagegenerationcallitemtype) | :heavy\_check\_mark: | N/A         |           |
+| `status` | [models.ImageGenerationStatus](/docs/agent-sdk/typescript/api-reference/models/imagegenerationstatus)                         | :heavy\_check\_mark: | N/A         | completed |
+| `type`   | [models.OutputImageGenerationCallItemType](/docs/agent-sdk/typescript/api-reference/models/outputimagegenerationcallitemtype) | :heavy\_check\_mark: | N/A         |           |

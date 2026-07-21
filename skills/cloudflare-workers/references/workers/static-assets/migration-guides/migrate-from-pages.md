@@ -1,7 +1,7 @@
 ---
 title: Migrate from Pages to Workers
 description: A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -673,6 +673,6 @@ This compatibility matrix compares the features of Workers and Pages. Unless oth
 6. As in 5, Wrangler can [compile your Pages Functions into a Worker](#pages-functions-with-a-functions-folder). Or if you are starting from scratch, everything that is possible with Pages Functions can also be achieved by adding code to your Worker or by using framework-specific plugins for relevant third party tools. [↩](#user-content-fnref-6)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#page","headline":"Migrate from Pages to Workers · Cloudflare Workers docs","description":"A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#page","headline":"Migrate from Pages to Workers · Cloudflare Workers docs","description":"A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/migration-guides/","name":"Migration Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/migration-guides/migrate-from-pages/","name":"Migrate from Pages to Workers"}}]}
 ```

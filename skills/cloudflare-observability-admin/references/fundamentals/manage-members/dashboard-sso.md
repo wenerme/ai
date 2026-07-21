@@ -1,7 +1,7 @@
 ---
 title: Set up dashboard SSO
 description: Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -401,6 +401,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/
 5. Follow the verification and enable steps after recreating the SSO connectors.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#page","headline":"Set up dashboard SSO · Cloudflare Fundamentals docs","description":"Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.","url":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#page","headline":"Set up dashboard SSO · Cloudflare Fundamentals docs","description":"Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.","url":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/dashboard-sso/","name":"Set up dashboard SSO"}}]}
 ```

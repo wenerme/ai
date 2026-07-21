@@ -26,5 +26,5 @@ let value: TriggerInputTokens = {
 
 | Field   | Type                                                                                         | Required             | Description |
 | ------- | -------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type`  | [models.EditTypeInputTokens](/agent-sdk/typescript/api-reference/models/edittypeinputtokens) | :heavy\_check\_mark: | N/A         |
+| `type`  | [models.EditTypeInputTokens](/docs/agent-sdk/typescript/api-reference/models/edittypeinputtokens) | :heavy\_check\_mark: | N/A         |
 | `value` | *number*                                                                                     | :heavy\_check\_mark: | N/A         |

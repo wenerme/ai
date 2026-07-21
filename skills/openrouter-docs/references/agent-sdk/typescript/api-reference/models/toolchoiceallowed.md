@@ -36,4 +36,4 @@ let value: ToolChoiceAllowed = {
 | ------- | ------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `mode`  | *models.Mode*                                                                                    | :heavy\_check\_mark: | N/A         |
 | `tools` | `Record<string, *any*>`\[]                                                                       | :heavy\_check\_mark: | N/A         |
-| `type`  | [models.ToolChoiceAllowedType](/agent-sdk/typescript/api-reference/models/toolchoiceallowedtype) | :heavy\_check\_mark: | N/A         |
+| `type`  | [models.ToolChoiceAllowedType](/docs/agent-sdk/typescript/api-reference/models/toolchoiceallowedtype) | :heavy\_check\_mark: | N/A         |

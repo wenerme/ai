@@ -246,9 +246,9 @@ Running shell commands is powerful and is sandboxed by design:
 
 ## Next Steps
 
-* [Server Tools Overview](/guides/features/server-tools) — Learn about
+* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about
   server tools
-* [Web Fetch](/guides/features/server-tools/web-fetch) — Fetch content
+* [Web Fetch](/docs/guides/features/server-tools/web-fetch) — Fetch content
   from URLs
-* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined
+* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined
   tool calling

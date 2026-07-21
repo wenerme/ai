@@ -30,4 +30,4 @@ let value: TaskBudget = {
 | ----------- | -------------------------------------------------------------------------- | -------------------- | ----------- |
 | `remaining` | *number*                                                                   | :heavy\_minus\_sign: | N/A         |
 | `total`     | *number*                                                                   | :heavy\_check\_mark: | N/A         |
-| `type`      | [models.TypeTokens](/agent-sdk/typescript/api-reference/models/typetokens) | :heavy\_check\_mark: | N/A         |
+| `type`      | [models.TypeTokens](/docs/agent-sdk/typescript/api-reference/models/typetokens) | :heavy\_check\_mark: | N/A         |

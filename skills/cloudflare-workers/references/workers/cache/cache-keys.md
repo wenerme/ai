@@ -1,7 +1,7 @@
 ---
 title: Cache keys
 description: How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -381,6 +381,6 @@ For per-caller isolation, continue to use [ctx.props](#multi-tenant-safety-with-
 This also means `cf.cacheKey` has no effect on eyeball requests. The `cf` object on an inbound request from a browser or API client is populated by Cloudflare, not by the client, so a client cannot set its own cache key.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys · Cloudflare Workers docs","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys · Cloudflare Workers docs","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/cache-keys/","name":"Cache keys"}}]}
 ```

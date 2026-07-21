@@ -1,7 +1,7 @@
 ---
 title: Configure GraphQL client endpoint and HTTP headers
 description: Learn about configure graphql client endpoint and http headers in Cloudflare analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -32,6 +32,6 @@ The right-side response pane is empty when you enter your information correctly.
 Now that you have configured authentication, you are ready to run queries using GraphiQL.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/#page","headline":"Configure GraphQL client endpoint and HTTP headers · Cloudflare Analytics docs","description":"Learn about configure graphql client endpoint and http headers in Cloudflare analytics.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/#page","headline":"Configure GraphQL client endpoint and HTTP headers · Cloudflare Analytics docs","description":"Learn about configure graphql client endpoint and http headers in Cloudflare analytics.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/getting-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/getting-started/authentication/","name":"Authentication"}},{"@type":"ListItem","position":6,"item":{"@id":"/analytics/graphql-api/getting-started/authentication/graphql-client-headers/","name":"Configure GraphQL client endpoint and HTTP headers"}}]}
 ```

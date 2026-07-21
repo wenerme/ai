@@ -1,7 +1,7 @@
 ---
 title: Create a Zero Trust organization
 description: Set up a Zero Trust organization.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -52,6 +52,6 @@ Tip
 If you plan to manage all Zero Trust settings in Terraform, set the dashboard to [API/Terraform read-only mode](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/get-started/create-zero-trust-org/#page","headline":"Create a Zero Trust organization · Cloudflare Learning Paths","description":"Set up a Zero Trust organization.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/get-started/create-zero-trust-org/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/get-started/create-zero-trust-org/#page","headline":"Create a Zero Trust organization · Cloudflare Learning Paths","description":"Set up a Zero Trust organization.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/get-started/create-zero-trust-org/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/get-started/","name":"Get started with Zero Trust"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/get-started/create-zero-trust-org/","name":"Create a Zero Trust organization"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Wrangler commands
 description: Use Wrangler CLI commands to create, manage, and query D1 databases.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -667,6 +667,6 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 Use a specific auth profile
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare D1 docs","description":"Use Wrangler CLI commands to create, manage, and query D1 databases.","url":"https://developers.cloudflare.com/d1/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare D1 docs","description":"Use Wrangler CLI commands to create, manage, and query D1 databases.","url":"https://developers.cloudflare.com/d1/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/wrangler-commands/","name":"Wrangler commands"}}]}
 ```

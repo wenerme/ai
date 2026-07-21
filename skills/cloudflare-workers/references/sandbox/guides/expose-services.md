@@ -1,7 +1,7 @@
 ---
 title: Expose services
 description: Create preview URLs and expose ports for web services.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -740,6 +740,6 @@ See [Sandbox options - normalizeId](https://developers.cloudflare.com/sandbox/co
 * [Tunnels API reference](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Recommended alternative for most public-URL use cases (quick or named tunnels)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/expose-services/#page","headline":"Expose services · Cloudflare Sandbox SDK docs","description":"Create preview URLs and expose ports for web services.","url":"https://developers.cloudflare.com/sandbox/guides/expose-services/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/expose-services/#page","headline":"Expose services · Cloudflare Sandbox SDK docs","description":"Create preview URLs and expose ports for web services.","url":"https://developers.cloudflare.com/sandbox/guides/expose-services/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/expose-services/","name":"Expose services"}}]}
 ```

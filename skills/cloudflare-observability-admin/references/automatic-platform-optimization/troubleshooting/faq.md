@@ -1,7 +1,7 @@
 ---
 title: FAQs
 description: Answers to common questions about APO caching, Page Rules, and WordPress integration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -69,6 +69,6 @@ APO uses Cloudflare Workers internally to optimize content delivery, which resul
 It is not uncommon for mature plugins to see no updates for longer periods than it takes to trigger the WordPress not tested warning. The warning is for notification purposes and is not an indication that a plugin no longer works. It is still maintained.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/#page","headline":"FAQs · Cloudflare Automatic Platform Optimization docs","description":"Answers to common questions about APO caching, Page Rules, and WordPress integration.","url":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","Headers","Security"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/#page","headline":"FAQs · Cloudflare Automatic Platform Optimization docs","description":"Answers to common questions about APO caching, Page Rules, and WordPress integration.","url":"https://developers.cloudflare.com/automatic-platform-optimization/troubleshooting/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","Headers","Security"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/automatic-platform-optimization/troubleshooting/faq/","name":"FAQs"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Endpoint labeling service
 description: Organize API endpoints and address vulnerabilities with managed and custom labels.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -239,6 +239,6 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 Endpoint labeling is available to all customers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service · Cloudflare API Shield docs","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service · Cloudflare API Shield docs","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/management-and-monitoring/","name":"Management and Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/management-and-monitoring/endpoint-labels/","name":"Endpoint labeling service"}}]}
 ```

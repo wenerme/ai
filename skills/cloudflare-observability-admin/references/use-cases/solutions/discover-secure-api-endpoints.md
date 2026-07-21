@@ -1,7 +1,7 @@
 ---
 title: Discover and secure your API endpoints (Free, Pro, and Business)
 description: Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -470,6 +470,6 @@ Enterprise customers have access to the [Advanced Security Events Alert](https:/
 * [Vulnerability Scanner](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/) — Test your API endpoints for common vulnerabilities
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/#page","headline":"Discover and secure your API endpoints (Free, Pro, and Business) · Cloudflare use cases","description":"Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.","url":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Security"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/#page","headline":"Discover and secure your API endpoints (Free, Pro, and Business) · Cloudflare use cases","description":"Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.","url":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Security"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/solutions/","name":"Solution guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/solutions/discover-secure-api-endpoints/","name":"Discover and secure your API endpoints (Free, Pro, and Business)"}}]}
 ```

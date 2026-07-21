@@ -1,7 +1,7 @@
 ---
 title: Manage AI crawlers
 description: Allow, block, or configure actions for AI crawlers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -167,6 +167,6 @@ In the **Response body** text field, enter the response you wish to display for 
 * Learn how AI Crawl Control interacts with WAF, including advanced rule customization, in [AI Crawl Control with Cloudflare WAF](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/#page","headline":"Manage AI crawlers · Cloudflare AI Crawl Control docs","description":"Allow, block, or configure actions for AI crawlers.","url":"https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/#page","headline":"Manage AI crawlers · Cloudflare AI Crawl Control docs","description":"Allow, block, or configure actions for AI crawlers.","url":"https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/manage-ai-crawlers/","name":"Manage AI crawlers"}}]}
 ```

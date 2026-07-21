@@ -1,7 +1,7 @@
 ---
 title: Background
 description: How the IETF MoQ working group developed a standardized protocol for efficient, low-latency media delivery over QUIC.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ Key benefits of MoQ include:
 The protocol addresses common challenges in live streaming such as handling network congestion, adapting to varying bandwidth conditions, and maintaining synchronization between audio and video streams. MoQ represents a significant step forward in standardizing media delivery for the modern internet.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/moq/about/#page","headline":"Background · Cloudflare MoQ docs","description":"How the IETF MoQ working group developed a standardized protocol for efficient, low-latency media delivery over QUIC.","url":"https://developers.cloudflare.com/moq/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/moq/about/#page","headline":"Background · Cloudflare MoQ docs","description":"How the IETF MoQ working group developed a standardized protocol for efficient, low-latency media delivery over QUIC.","url":"https://developers.cloudflare.com/moq/about/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/moq/","name":"MoQ"}},{"@type":"ListItem","position":3,"item":{"@id":"/moq/about/","name":"Background"}}]}
 ```

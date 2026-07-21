@@ -1,7 +1,7 @@
 ---
 title: Notification History
 description: View a log of sent notifications.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ Note
 Customers will not be able to access Notification History from before 2021-10-11.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/notification-history/#page","headline":"Notification History · Cloudflare Notifications docs","description":"View a log of sent notifications.","url":"https://developers.cloudflare.com/notifications/notification-history/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/notification-history/#page","headline":"Notification History · Cloudflare Notifications docs","description":"View a log of sent notifications.","url":"https://developers.cloudflare.com/notifications/notification-history/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/notifications/","name":"Notifications"}},{"@type":"ListItem","position":3,"item":{"@id":"/notifications/notification-history/","name":"Notification History"}}]}
 ```

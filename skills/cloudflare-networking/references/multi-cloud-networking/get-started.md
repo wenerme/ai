@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up Multi-Cloud Networking to connect cloud environments.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -153,6 +153,6 @@ The first discovery of resources may not succeed in all regions while the IAM po
 * [Edit](https://developers.cloudflare.com/multi-cloud-networking/manage-resources/#edit-cloud-integrations) cloud integrations.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/get-started/#page","headline":"Get started · Cloudflare Multi-Cloud Networking docs","description":"Set up Multi-Cloud Networking to connect cloud environments.","url":"https://developers.cloudflare.com/multi-cloud-networking/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP","Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/get-started/#page","headline":"Get started · Cloudflare Multi-Cloud Networking docs","description":"Set up Multi-Cloud Networking to connect cloud environments.","url":"https://developers.cloudflare.com/multi-cloud-networking/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP","Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/multi-cloud-networking/","name":"Multi-Cloud Networking"}},{"@type":"ListItem","position":3,"item":{"@id":"/multi-cloud-networking/get-started/","name":"Get started"}}]}
 ```

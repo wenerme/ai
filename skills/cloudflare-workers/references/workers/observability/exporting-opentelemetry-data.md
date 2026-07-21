@@ -1,7 +1,7 @@
 ---
 title: Exporting OpenTelemetry Data
 description: Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -159,6 +159,6 @@ OpenTelemetry data export is currently in beta. Please be aware of the following
 * **Limited OTLP support from some providers**: Some observability providers are still rolling out OTLP endpoint support. Check the [Available OpenTelemetry destinations](#available-opentelemetry-destinations) table above for current availability.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/#page","headline":"Exporting OpenTelemetry Data · Cloudflare Workers docs","description":"Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/#page","headline":"Exporting OpenTelemetry Data · Cloudflare Workers docs","description":"Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/","name":"Exporting OpenTelemetry Data"}}]}
 ```

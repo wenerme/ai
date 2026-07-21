@@ -1,7 +1,7 @@
 ---
 title: Cookie parsing
 description: Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -124,6 +124,6 @@ This example requires the npm package [cookie ↗](https://www.npmjs.com/package
 The Hono example uses the built-in cookie utilities provided by Hono, so no external dependencies are needed for that implementation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/extract-cookie-value/#page","headline":"Cookie parsing · Cloudflare Workers docs","description":"Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.","url":"https://developers.cloudflare.com/workers/examples/extract-cookie-value/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/extract-cookie-value/#page","headline":"Cookie parsing · Cloudflare Workers docs","description":"Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.","url":"https://developers.cloudflare.com/workers/examples/extract-cookie-value/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/extract-cookie-value/","name":"Cookie parsing"}}]}
 ```

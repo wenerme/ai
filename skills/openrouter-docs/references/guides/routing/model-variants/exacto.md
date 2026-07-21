@@ -96,11 +96,11 @@ Exacto is useful for quality-sensitive, agentic workflows where tool-calling acc
 
 ## How Exacto Works
 
-Exacto uses the same provider-ranking signals as [Auto Exacto](/guides/routing/auto-exacto), but applies them explicitly because you chose the `:exacto` suffix.
+Exacto uses the same provider-ranking signals as [Auto Exacto](/docs/guides/routing/auto-exacto), but applies them explicitly because you chose the `:exacto` suffix.
 
 We use three classes of signals:
 
-* Tool-calling success and reliability from real traffic -- see [How Tool-Calling Success Rate Is Measured](/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured) for the underlying methodology
+* Tool-calling success and reliability from real traffic -- see [How Tool-Calling Success Rate Is Measured](/docs/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured) for the underlying methodology
 * Provider performance metrics such as throughput and latency
 * Benchmark and evaluation data as it becomes available
 

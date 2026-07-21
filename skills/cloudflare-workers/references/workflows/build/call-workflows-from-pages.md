@@ -1,7 +1,7 @@
 ---
 title: Call Workflows from Pages
 description: Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -258,6 +258,6 @@ You can also choose to authenticate these requests by passing a shared secret in
 * Review the [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/) and best practices for writing Workflows
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/#page","headline":"Call Workflows from Pages · Cloudflare Workflows docs","description":"Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.","url":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/#page","headline":"Call Workflows from Pages · Cloudflare Workflows docs","description":"Bind and trigger Cloudflare Workflows from Pages Functions using service bindings or fetch calls.","url":"https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/call-workflows-from-pages/","name":"Call Workflows from Pages"}}]}
 ```

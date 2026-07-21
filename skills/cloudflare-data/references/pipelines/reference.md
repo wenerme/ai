@@ -1,7 +1,7 @@
 ---
 title: Reference
 description: Reference documentation for Cloudflare Pipelines.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -20,6 +20,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ REST API ](https://developers.cloudflare.com/api/resources/pipelines/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pipelines/reference/#page","headline":"Reference · Cloudflare Pipelines Docs","description":"Reference documentation for Cloudflare Pipelines.","url":"https://developers.cloudflare.com/pipelines/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pipelines/reference/#page","headline":"Reference · Cloudflare Pipelines Docs","description":"Reference documentation for Cloudflare Pipelines.","url":"https://developers.cloudflare.com/pipelines/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/reference/","name":"Reference"}}]}
 ```

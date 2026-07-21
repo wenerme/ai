@@ -1,7 +1,7 @@
 ---
 title: Cloudflare China Network
 description: Deliver secure, fast content in Mainland China through Cloudflare and JD Cloud data centers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -55,6 +55,6 @@ The Cloudflare China Network is available as a separate subscription for custome
 * You must have a valid [ICP (Internet Content Provider) filing or license](https://developers.cloudflare.com/china-network/concepts/icp/) for each apex domain you wish to onboard to Cloudflare.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/china-network/#page","headline":"Overview · Cloudflare China Network docs","description":"Deliver secure, fast content in Mainland China through Cloudflare and JD Cloud data centers.","url":"https://developers.cloudflare.com/china-network/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/china-network/#page","headline":"Overview · Cloudflare China Network docs","description":"Deliver secure, fast content in Mainland China through Cloudflare and JD Cloud data centers.","url":"https://developers.cloudflare.com/china-network/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}}]}
 ```

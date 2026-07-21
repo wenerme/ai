@@ -1,7 +1,7 @@
 ---
 title: Deploy a WAF managed ruleset via API (account)
 description: Deploy WAF managed rulesets at the account level using the API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -159,6 +159,6 @@ For instructions on deploying a managed ruleset at the zone level via API, refer
 For more information on working with managed rulesets via API, refer to [Work with managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/) in the Ruleset Engine documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-api/#page","headline":"Deploy a WAF managed ruleset via API for an account · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy WAF managed rulesets at the account level using the API.","url":"https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-api/#page","headline":"Deploy a WAF managed ruleset via API for an account · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy WAF managed rulesets at the account level using the API.","url":"https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/account/","name":"Account-level WAF configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/account/managed-rulesets/","name":"Managed rulesets"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/account/managed-rulesets/deploy-api/","name":"Deploy a WAF managed ruleset via API (account)"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Chat agent
 description: Build a streaming AI chat agent with tools using Workers AI — no API keys required.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -632,6 +632,6 @@ Your chat agent has:
 [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Deeper patterns for approval flows and manual intervention.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/chat-agent/#page","headline":"Chat agent · Cloudflare Agents docs","description":"Build a streaming AI chat agent with tools using Workers AI — no API keys required.","url":"https://developers.cloudflare.com/agents/examples/chat-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/chat-agent/#page","headline":"Chat agent · Cloudflare Agents docs","description":"Build a streaming AI chat agent with tools using Workers AI — no API keys required.","url":"https://developers.cloudflare.com/agents/examples/chat-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/examples/chat-agent/","name":"Chat agent"}}]}
 ```

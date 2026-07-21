@@ -29,7 +29,7 @@ let value: ResponsesImageGenerationCall = {
 
 | Field    | Type                                                                                                     | Required             | Description | Example   |
 | -------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
-| `type`   | [models.ResponsesImageGenerationCallType](/agent-sdk/typescript/models/responsesimagegenerationcalltype) | :heavy\_check\_mark: | N/A         |           |
+| `type`   | [models.ResponsesImageGenerationCallType](/docs/agent-sdk/typescript/models/responsesimagegenerationcalltype) | :heavy\_check\_mark: | N/A         |           |
 | `id`     | *string*                                                                                                 | :heavy\_check\_mark: | N/A         |           |
 | `result` | *string*                                                                                                 | :heavy\_minus\_sign: | N/A         |           |
-| `status` | [models.ImageGenerationStatus](/agent-sdk/typescript/models/imagegenerationstatus)                       | :heavy\_check\_mark: | N/A         | completed |
+| `status` | [models.ImageGenerationStatus](/docs/agent-sdk/typescript/models/imagegenerationstatus)                       | :heavy\_check\_mark: | N/A         | completed |

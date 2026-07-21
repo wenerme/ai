@@ -314,5 +314,5 @@ describe('weatherTool', () => {
 
 ## See Also
 
-* **[Tools Guide](/agent-sdk/call-model/tools)** - Tool creation fundamentals
-* **[API Reference](/agent-sdk/call-model/api-reference)** - Complete type definitions
+* **[Tools Guide](/docs/agent-sdk/call-model/tools)** - Tool creation fundamentals
+* **[API Reference](/docs/agent-sdk/call-model/api-reference)** - Complete type definitions

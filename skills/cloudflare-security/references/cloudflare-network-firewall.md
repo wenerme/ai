@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Network Firewall
 description: Filter and inspect network traffic with Cloudflare Network Firewall.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -45,6 +45,6 @@ Secure your network from incoming Internet traffic, and improve performance at C
 Improve security and performance for your entire corporate networking, reducing cost and operation complexity.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/#page","headline":"Overview · Cloudflare Network Firewall docs","description":"Filter and inspect network traffic with Cloudflare Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/#page","headline":"Overview · Cloudflare Network Firewall docs","description":"Filter and inspect network traffic with Cloudflare Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}}]}
 ```

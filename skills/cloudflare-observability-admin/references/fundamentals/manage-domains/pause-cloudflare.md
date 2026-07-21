@@ -1,7 +1,7 @@
 ---
 title: Pause Cloudflare
 description: Temporarily pause Cloudflare on your domain to send traffic directly to your origin server for troubleshooting.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ Adjusting the proxy status will prevent that record from using Cloudflare servic
 To troubleshoot caching issues, you could [enable Development Mode](https://developers.cloudflare.com/cache/reference/development-mode/). This will bypass Cloudflare's cache while still preserving Cloudflare services like [Rules](https://developers.cloudflare.com/rules/), [WAF](https://developers.cloudflare.com/waf/), and [SSL/TLS certificates](https://developers.cloudflare.com/ssl/edge-certificates/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/#page","headline":"Pause Cloudflare · Cloudflare Fundamentals docs","description":"Temporarily pause Cloudflare on your domain to send traffic directly to your origin server for troubleshooting.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/#page","headline":"Pause Cloudflare · Cloudflare Fundamentals docs","description":"Temporarily pause Cloudflare on your domain to send traffic directly to your origin server for troubleshooting.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/pause-cloudflare/","name":"Pause Cloudflare"}}]}
 ```

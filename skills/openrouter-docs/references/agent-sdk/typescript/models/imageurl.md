@@ -26,4 +26,4 @@ let value: ImageUrl = {
 | Field    | Type                                                                                                       | Required             | Description |
 | -------- | ---------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `url`    | *string*                                                                                                   | :heavy\_check\_mark: | N/A         |
-| `detail` | [models.ChatMessageContentItemImageDetail](/agent-sdk/typescript/models/chatmessagecontentitemimagedetail) | :heavy\_minus\_sign: | N/A         |
+| `detail` | [models.ChatMessageContentItemImageDetail](/docs/agent-sdk/typescript/models/chatmessagecontentitemimagedetail) | :heavy\_minus\_sign: | N/A         |

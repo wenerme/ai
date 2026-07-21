@@ -1,7 +1,7 @@
 ---
 title: Combine with Cloudflare for SaaS
 description: Use Waiting Room with Cloudflare for SaaS custom hostnames.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ If your application is already using Cloudflare, create a waiting room using the
 If your application is not using Cloudflare, you need to ask your SaaS provider to configure a waiting room on [your Cloudflare for SaaS zone](https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/#custom-hostnames).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/ssl-for-saas/#page","headline":"Combine with Cloudflare for SaaS · Cloudflare Waiting Room docs","description":"Use Waiting Room with Cloudflare for SaaS custom hostnames.","url":"https://developers.cloudflare.com/waiting-room/additional-options/ssl-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/ssl-for-saas/#page","headline":"Combine with Cloudflare for SaaS · Cloudflare Waiting Room docs","description":"Use Waiting Room with Cloudflare for SaaS custom hostnames.","url":"https://developers.cloudflare.com/waiting-room/additional-options/ssl-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/additional-options/ssl-for-saas/","name":"Combine with Cloudflare for SaaS"}}]}
 ```

@@ -28,5 +28,5 @@ let value: ListMemberAssignmentsResponse = {
 
 | Field        | Type                                                                                                  | Required             | Description                        | Example |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------- | ------- |
-| `data`       | [operations.ListMemberAssignmentsData](/agent-sdk/typescript/operations/listmemberassignmentsdata)\[] | :heavy\_check\_mark: | List of member assignments         |         |
+| `data`       | [operations.ListMemberAssignmentsData](/docs/agent-sdk/typescript/operations/listmemberassignmentsdata)\[] | :heavy\_check\_mark: | List of member assignments         |         |
 | `totalCount` | *number*                                                                                              | :heavy\_check\_mark: | Total number of member assignments | 10      |

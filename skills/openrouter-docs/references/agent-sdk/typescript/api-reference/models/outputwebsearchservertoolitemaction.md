@@ -29,5 +29,5 @@ let value: OutputWebSearchServerToolItemAction = {
 | Field     | Type                                                                                                                                 | Required             | Description |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `query`   | *string*                                                                                                                             | :heavy\_check\_mark: | N/A         |
-| `sources` | [models.OutputWebSearchServerToolItemSource](/agent-sdk/typescript/api-reference/models/outputwebsearchservertoolitemsource)\[]      | :heavy\_minus\_sign: | N/A         |
-| `type`    | [models.OutputWebSearchServerToolItemTypeSearch](/agent-sdk/typescript/api-reference/models/outputwebsearchservertoolitemtypesearch) | :heavy\_check\_mark: | N/A         |
+| `sources` | [models.OutputWebSearchServerToolItemSource](/docs/agent-sdk/typescript/api-reference/models/outputwebsearchservertoolitemsource)\[]      | :heavy\_minus\_sign: | N/A         |
+| `type`    | [models.OutputWebSearchServerToolItemTypeSearch](/docs/agent-sdk/typescript/api-reference/models/outputwebsearchservertoolitemtypesearch) | :heavy\_check\_mark: | N/A         |

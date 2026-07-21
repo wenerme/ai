@@ -1,7 +1,7 @@
 ---
 title: GraphQL malicious query protection
 description: Scan GraphQL traffic and block queries that could overload your origin.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ The following limitations apply:
 * Parsing and rules are limited to paths ending in `/graphql`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/#page","headline":"GraphQL malicious query protection · Cloudflare API Shield docs","description":"Scan GraphQL traffic and block queries that could overload your origin.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/#page","headline":"GraphQL malicious query protection · Cloudflare API Shield docs","description":"Scan GraphQL traffic and block queries that could overload your origin.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/graphql-protection/","name":"GraphQL malicious query protection"}}]}
 ```

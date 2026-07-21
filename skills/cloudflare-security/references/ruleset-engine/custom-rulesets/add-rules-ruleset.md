@@ -1,7 +1,7 @@
 ---
 title: Add rules to a custom ruleset
 description: Add rules to an existing custom ruleset using the API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -189,6 +189,6 @@ Warning
 The request above completely replaces the list of rules in the ruleset. If you omit an existing rule from the `rules` array, it will not appear in the new version of the ruleset.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/#page","headline":"Add rules to a custom ruleset · Cloudflare Ruleset Engine docs","description":"Add rules to an existing custom ruleset using the API.","url":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/#page","headline":"Add rules to a custom ruleset · Cloudflare Ruleset Engine docs","description":"Add rules to an existing custom ruleset using the API.","url":"https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/custom-rulesets/","name":"Work with custom rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/custom-rulesets/add-rules-ruleset/","name":"Add rules to a custom ruleset"}}]}
 ```

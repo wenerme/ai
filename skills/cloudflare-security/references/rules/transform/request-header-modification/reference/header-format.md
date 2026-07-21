@@ -1,7 +1,7 @@
 ---
 title: Format of HTTP request header names and values
 description: Supported header name and value formats for request header modifications.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ The **value** of the HTTP request header you want to set can only contain:
 The maximum length of the HTTP request header value is 4 KB (\~4,096 characters).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/header-format/#page","headline":"Format of HTTP request header names and values · Cloudflare Rules docs","description":"Supported header name and value formats for request header modifications.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/header-format/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/header-format/#page","headline":"Format of HTTP request header names and values · Cloudflare Rules docs","description":"Supported header name and value formats for request header modifications.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/header-format/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/request-header-modification/","name":"Request Header Transform Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/request-header-modification/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/transform/request-header-modification/reference/header-format/","name":"Format of HTTP request header names and values"}}]}
 ```

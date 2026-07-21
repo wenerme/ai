@@ -1,7 +1,7 @@
 ---
 title: Connect to a private database using Workers VPC (Recommended)
 description: Workers VPC provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP VPC Service that points to your database and pass its service ID to Hyperdrive.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -489,6 +489,6 @@ If you receive a list of tables from your database when you access your deployed
 * [Troubleshoot common issues](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) when connecting a database to Hyperdrive.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/#page","headline":"Connect to a private database using Workers VPC (Recommended) · Cloudflare Hyperdrive docs","description":"Workers VPC provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP VPC Service that points to your database and pass its service ID to Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/#page","headline":"Connect to a private database using Workers VPC (Recommended) · Cloudflare Hyperdrive docs","description":"Workers VPC provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP VPC Service that points to your database and pass its service ID to Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/configuration/connect-to-private-database-vpc/","name":"Connect to a private database using Workers VPC (Recommended)"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: GRE and IPsec tunnels
 description: Magic Transit uses Generic Routing Encapsulation (GRE) and IPsec tunnels to transmit packets from Cloudflare's global network to your origin network.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -274,6 +274,6 @@ For help resolving tunnel issues:
 * [Troubleshoot with IPsec logs](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/) \- Use Logpush to analyze IPsec handshake issues
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/#page","headline":"GRE and IPsec tunnels · Cloudflare Magic Transit docs","description":"Magic Transit uses Generic Routing Encapsulation (GRE) and IPsec tunnels to transmit packets from Cloudflare's global network to your origin network.","url":"https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/#page","headline":"GRE and IPsec tunnels · Cloudflare Magic Transit docs","description":"Magic Transit uses Generic Routing Encapsulation (GRE) and IPsec tunnels to transmit packets from Cloudflare's global network to your origin network.","url":"https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/reference/gre-ipsec-tunnels/","name":"GRE and IPsec tunnels"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Page Rules migration guide
 description: Migrate from Page Rules to modern Cloudflare Rules alternatives.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -1197,6 +1197,6 @@ All other Page Rules settings will be migrated during 2025.
 If you have feedback to share, refer to our [Community thread ↗](https://community.cloudflare.com/t/important-page-rules-deprecation/656021).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/reference/page-rules-migration/#page","headline":"Page Rules migration guide · Cloudflare Rules docs","description":"Migrate from Page Rules to modern Cloudflare Rules alternatives.","url":"https://developers.cloudflare.com/rules/reference/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/reference/page-rules-migration/#page","headline":"Page Rules migration guide · Cloudflare Rules docs","description":"Migrate from Page Rules to modern Cloudflare Rules alternatives.","url":"https://developers.cloudflare.com/rules/reference/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/reference/page-rules-migration/","name":"Page Rules migration guide"}}]}
 ```

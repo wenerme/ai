@@ -1,7 +1,7 @@
 ---
 title: OpenAI GPT function calling with JavaScript and Cloudflare Workers
 description: Build a project that leverages OpenAI's function calling feature, available in OpenAI's latest Chat Completions API models.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -303,6 +303,6 @@ To continue working with Workers and AI, refer to [the guide on using LangChain 
 If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/#page","headline":"OpenAI GPT function calling with JavaScript and Cloudflare Workers · Cloudflare Workers docs","description":"Build a project that leverages OpenAI's function calling feature, available in OpenAI's latest Chat Completions API models.","url":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/#page","headline":"OpenAI GPT function calling with JavaScript and Cloudflare Workers · Cloudflare Workers docs","description":"Build a project that leverages OpenAI's function calling feature, available in OpenAI's latest Chat Completions API models.","url":"https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/openai-function-calls-workers/","name":"OpenAI GPT function calling with JavaScript and Cloudflare Workers"}}]}
 ```

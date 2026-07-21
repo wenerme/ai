@@ -1,7 +1,7 @@
 ---
 title: Slack
 description: Connect agents to Slack workspaces so they can respond to direct messages, mentions, and threaded conversations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ For a complete walkthrough, including Slack app setup, OAuth, event subscription
 [ Slack app authentication ](https://api.slack.com/authentication) Configure OAuth, bot tokens, signing secrets, and request verification for Slack apps.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/slack/#page","headline":"Slack · Cloudflare Agents docs","description":"Connect agents to Slack workspaces so they can respond to direct messages, mentions, and threaded conversations.","url":"https://developers.cloudflare.com/agents/communication-channels/slack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/slack/#page","headline":"Slack · Cloudflare Agents docs","description":"Connect agents to Slack workspaces so they can respond to direct messages, mentions, and threaded conversations.","url":"https://developers.cloudflare.com/agents/communication-channels/slack/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/slack/","name":"Slack"}}]}
 ```

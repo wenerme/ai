@@ -1,7 +1,7 @@
 ---
 title: AI SDK integration
 description: Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -420,6 +420,6 @@ A function-valued `needsApproval` cannot be evaluated before the sandbox supplie
 This approval uses the Code Mode runtime's durable pause, approval, and replay flow. It does not use the AI SDK per-call approval flow.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/#page","headline":"AI SDK integration · Cloudflare Agents docs","description":"Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.","url":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/#page","headline":"AI SDK integration · Cloudflare Agents docs","description":"Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.","url":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/ai-sdk/","name":"AI SDK integration"}}]}
 ```

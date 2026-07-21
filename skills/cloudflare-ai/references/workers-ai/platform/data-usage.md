@@ -1,7 +1,7 @@
 ---
 title: Data usage
 description: How Cloudflare handles your data, inputs, and outputs when using Workers AI.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -26,6 +26,6 @@ For Workers AI:
 * Your Customer Content for Workers AI may be stored by Cloudflare if you specifically use a storage service (e.g., R2, KV, DO, Vectorize, etc.) in conjunction with Workers AI.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/data-usage/#page","headline":"Your Data and Workers AI · Cloudflare Workers AI docs","description":"How Cloudflare handles your data, inputs, and outputs when using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/platform/data-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/data-usage/#page","headline":"Your Data and Workers AI · Cloudflare Workers AI docs","description":"How Cloudflare handles your data, inputs, and outputs when using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/platform/data-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/platform/data-usage/","name":"Data usage"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Use BYOIP with CDN and Spectrum
 description: Cloudflare allows users to use their Cloudflare prefix to route traffic to a different service. Service bindings must be created on the parent account of the prefix.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -297,6 +297,6 @@ Leverage other features according to your needs. For example:
 2. Layer 4 or Layer 7 HTTP with custom ports [↩](#user-content-fnref-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/#page","headline":"Use BYOIP with CDN and Spectrum · Cloudflare BYOIP docs","description":"Cloudflare allows users to use their Cloudflare prefix to route traffic to a different service. Service bindings must be created on the parent account of the prefix.","url":"https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/#page","headline":"Use BYOIP with CDN and Spectrum · Cloudflare BYOIP docs","description":"Cloudflare allows users to use their Cloudflare prefix to route traffic to a different service. Service bindings must be created on the parent account of the prefix.","url":"https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/service-bindings/","name":"IP address service bindings"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/service-bindings/cdn-and-spectrum/","name":"Use BYOIP with CDN and Spectrum"}}]}
 ```

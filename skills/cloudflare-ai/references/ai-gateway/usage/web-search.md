@@ -1,7 +1,7 @@
 ---
 title: Web Search
 description: Use provider-native web search tools through AI Gateway, or reach search-first providers like Perplexity and Parallel through their proxy endpoints.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -395,6 +395,6 @@ Web search tool calls and their results are visible in AI Gateway [logs](https:/
 * [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/web-search/#page","headline":"Web Search · Cloudflare AI Gateway docs","description":"Use provider-native web search tools through AI Gateway, or reach search-first providers like Perplexity and Parallel through their proxy endpoints.","url":"https://developers.cloudflare.com/ai-gateway/usage/web-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/web-search/#page","headline":"Web Search · Cloudflare AI Gateway docs","description":"Use provider-native web search tools through AI Gateway, or reach search-first providers like Perplexity and Parallel through their proxy endpoints.","url":"https://developers.cloudflare.com/ai-gateway/usage/web-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/web-search/","name":"Web Search"}}]}
 ```

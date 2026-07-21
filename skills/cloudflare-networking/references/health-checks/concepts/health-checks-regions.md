@@ -1,7 +1,7 @@
 ---
 title: Health Checks regions
 description: Cloudflare data center regions used for Health Checks monitoring.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ In the event log, entries are labeled by region or as **Global**. We do not prov
 If you select multiple regions or choose **All Regions** (Business and Enterprise Only), you may increase traffic to your servers. Each region sends individual health checks from three data centers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/#page","headline":"Health Checks regions · Cloudflare Health Checks docs","description":"Cloudflare data center regions used for Health Checks monitoring.","url":"https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/#page","headline":"Health Checks regions · Cloudflare Health Checks docs","description":"Cloudflare data center regions used for Health Checks monitoring.","url":"https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/health-checks/","name":"Health Checks"}},{"@type":"ListItem","position":3,"item":{"@id":"/health-checks/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/health-checks/concepts/health-checks-regions/","name":"Health Checks regions"}}]}
 ```

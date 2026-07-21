@@ -1,7 +1,7 @@
 ---
 title: Microfrontends
 description: Split a single application into independently deployable frontends, using a router worker and service bindings
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -339,6 +339,6 @@ When you deploy a microfrontend worker, the router automatically routes requests
 To deploy to production, you can use [custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) for your router worker, and configure [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) for continuous deployment from your Git repository.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/#page","headline":"Microfrontends · Cloudflare Workers docs","description":"Split a single application into independently deployable frontends, using a router worker and service bindings","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/#page","headline":"Microfrontends · Cloudflare Workers docs","description":"Split a single application into independently deployable frontends, using a router worker and service bindings","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/framework-guides/web-apps/","name":"Web applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/framework-guides/web-apps/microfrontends/","name":"Microfrontends"}}]}
 ```

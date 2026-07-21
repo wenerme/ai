@@ -50,7 +50,7 @@ OpenRouter supports video generation from text prompts (and optional reference i
 
 <Tip>
   Adding video generation to an app? The
-  [Video Generation Cookbook](/cookbook/video-generation/choose-video-model)
+  [Video Generation Cookbook](/docs/cookbook/video-generation/choose-video-model)
   breaks this workflow into step-by-step recipes for choosing a model,
   submitting text-to-video jobs, using images, passing provider options, and
   handling webhooks.
@@ -108,7 +108,7 @@ Use this endpoint to check which resolutions, aspect ratios, and passthrough par
 
 ### Via the Models API
 
-You can also use the `output_modalities` query parameter on the [Models API](/api/api-reference/models/list-all-models-and-their-properties) to discover video generation models:
+You can also use the `output_modalities` query parameter on the [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties) to discover video generation models:
 
 ```bash lines theme={null}
 # List only video generation models
@@ -117,7 +117,7 @@ curl "https://openrouter.ai/api/v1/models?output_modalities=video"
 
 ### On the Models Page
 
-Visit the [Models page](/guides/overview/models) and filter by output modalities to find models capable of video generation. Look for models that list `"video"` in their output modalities.
+Visit the [Models page](/docs/guides/overview/models) and filter by output modalities to find models capable of video generation. Look for models that list `"video"` in their output modalities.
 
 ## How It Works
 
@@ -432,7 +432,7 @@ The `index` query parameter defaults to `0` and can be used if the model generat
 Instead of polling for job status, you can receive a webhook notification when a video generation job completes. There are two ways to configure a callback URL:
 
 1. **Per-request**: Pass `callback_url` in the request body. This takes priority over the workspace default.
-2. **Workspace default**: Set a default callback URL in your [workspace settings](/guides/features/workspaces). This applies to all video generation requests that don't specify their own `callback_url`.
+2. **Workspace default**: Set a default callback URL in your [workspace settings](/docs/guides/features/workspaces). This applies to all video generation requests that don't specify their own `callback_url`.
 
 ### Webhook Payload
 
@@ -516,7 +516,7 @@ those values are assigned (e.g. an early validation failure).
 
 ### Signing Secret
 
-You can configure a signing secret in your [workspace settings](/guides/features/workspaces) to verify that webhook payloads are authentically from OpenRouter. When a signing secret is configured, each webhook delivery includes an `X-OpenRouter-Signature` header.
+You can configure a signing secret in your [workspace settings](/docs/guides/features/workspaces) to verify that webhook payloads are authentically from OpenRouter. When a signing secret is configured, each webhook delivery includes an `X-OpenRouter-Signature` header.
 
 The signature includes a timestamp and an HMAC hash:
 
@@ -588,7 +588,7 @@ function verifyWebhookSignature(
 
 ## Zero Data Retention
 
-Video generation is **not eligible** for [Zero Data Retention (ZDR)](/guides/features/zdr). Because video generation is asynchronous, the generated video output must be retained by the provider for a short period of time so that it can be retrieved after generation is complete. This temporary retention is inherent to the async polling workflow and cannot be bypassed.
+Video generation is **not eligible** for [Zero Data Retention (ZDR)](/docs/guides/features/zdr). Because video generation is asynchronous, the generated video output must be retained by the provider for a short period of time so that it can be retrieved after generation is complete. This temporary retention is inherent to the async polling workflow and cannot be bypassed.
 
 If you have ZDR enforcement enabled (either via [account settings](https://openrouter.ai/settings/privacy) or the per-request `zdr` parameter), video generation requests will not be routed.
 
@@ -608,5 +608,5 @@ If you have ZDR enforcement enabled (either via [account settings](https://openr
 
 **Model not found?**
 
-* Use the [Video Models API](#via-the-video-models-api) or the [Models page](/guides/overview/models) to find available video generation models
+* Use the [Video Models API](#via-the-video-models-api) or the [Models page](/docs/guides/overview/models) to find available video generation models
 * Verify the model slug is correct (e.g., `google/veo-3.1`)

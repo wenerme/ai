@@ -16,7 +16,7 @@ Credit management endpoints
 
 ## getCredits
 
-Get total credits purchased and used for the authenticated user. [Management key](/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
+Get total credits purchased and used for the authenticated user. [Management key](/docs/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

@@ -1,7 +1,7 @@
 ---
 title: getCurrentAgent()
 description: Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -560,6 +560,6 @@ const { agent } = getCurrentAgent<MyAgent>();
 [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Manage and sync agent state.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent() · Cloudflare Agents docs","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent() · Cloudflare Agents docs","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/lifecycle/","name":"Lifecycle"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/lifecycle/get-current-agent/","name":"getCurrentAgent()"}}]}
 ```

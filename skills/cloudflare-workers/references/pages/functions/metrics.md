@@ -1,7 +1,7 @@
 ---
 title: Metrics
 description: View request and performance metrics for your Pages Functions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -76,6 +76,6 @@ Workers on the [Bundled Usage Model](https://developers.cloudflare.com/workers/p
 Functions metrics can be inspected for up to three months in the past in maximum increments of one week. The **Functions metrics** dashboard in your Pages project includes the charts and information described above.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/metrics/#page","headline":"Metrics · Cloudflare Pages docs","description":"View request and performance metrics for your Pages Functions.","url":"https://developers.cloudflare.com/pages/functions/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/metrics/#page","headline":"Metrics · Cloudflare Pages docs","description":"View request and performance metrics for your Pages Functions.","url":"https://developers.cloudflare.com/pages/functions/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/metrics/","name":"Metrics"}}]}
 ```

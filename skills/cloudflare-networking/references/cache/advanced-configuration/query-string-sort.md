@@ -1,7 +1,7 @@
 ---
 title: Query String Sort
 description: Improve cache hit rates by sorting query string parameters.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -113,6 +113,6 @@ To learn more about Cache Rules, visit [Cache Rules](https://developers.cloudfla
 * [Best Practice: Caching Everything While Ignoring Query Strings](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything-ignore-query-strings/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/#page","headline":"Query String Sort · Cloudflare Cache (CDN) docs","description":"Improve cache hit rates by sorting query string parameters.","url":"https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/#page","headline":"Query String Sort · Cloudflare Cache (CDN) docs","description":"Improve cache hit rates by sorting query string parameters.","url":"https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/query-string-sort/","name":"Query String Sort"}}]}
 ```

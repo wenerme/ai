@@ -1,7 +1,7 @@
 ---
 title: Endpoints
 description: Available Rulesets API endpoints for zones and accounts.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -79,6 +79,6 @@ The Cloudflare Rulesets API supports the operations outlined below. Visit the as
 | [Delete a ruleset version](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset-version) | DELETE | Deletes a specific version of a ruleset. |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/#page","headline":"Endpoints · Cloudflare Ruleset Engine docs","description":"Available Rulesets API endpoints for zones and accounts.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/#page","headline":"Endpoints · Cloudflare Ruleset Engine docs","description":"Available Rulesets API endpoints for zones and accounts.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rulesets-api/","name":"Rulesets API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rulesets-api/endpoints/","name":"Endpoints"}}]}
 ```

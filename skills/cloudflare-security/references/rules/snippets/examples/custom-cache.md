@@ -1,7 +1,7 @@
 ---
 title: Custom cache
 description: Store, retrieve, and remove assets from cache programmatically. Use this template to optimize performance and implement custom caching strategies.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -126,6 +126,6 @@ function createCacheKey(request) {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/custom-cache/#page","headline":"Custom cache · Cloudflare Rules docs","description":"Store, retrieve, and remove assets from cache programmatically. Use this template to optimize performance and implement custom caching strategies.","url":"https://developers.cloudflare.com/rules/snippets/examples/custom-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/custom-cache/#page","headline":"Custom cache · Cloudflare Rules docs","description":"Store, retrieve, and remove assets from cache programmatically. Use this template to optimize performance and implement custom caching strategies.","url":"https://developers.cloudflare.com/rules/snippets/examples/custom-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/examples/","name":"Snippets examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/snippets/examples/custom-cache/","name":"Custom cache"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Wasm in JavaScript
 description: Import and instantiate WebAssembly modules in Cloudflare Workers using JavaScript.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -98,6 +98,6 @@ In practice, you will likely compile a language of your choice (such as Rust) to
 Alternatively, to write your entire Worker in Rust, Workers provides many of the same [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) when using the `workers-rs` crate. For more information, refer to the [Workers Rust guide](https://developers.cloudflare.com/workers/languages/rust/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/#page","headline":"Wasm in JavaScript · Cloudflare Workers docs","description":"Import and instantiate WebAssembly modules in Cloudflare Workers using JavaScript.","url":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/#page","headline":"Wasm in JavaScript · Cloudflare Workers docs","description":"Import and instantiate WebAssembly modules in Cloudflare Workers using JavaScript.","url":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/webassembly/","name":"WebAssembly (Wasm)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/webassembly/javascript/","name":"Wasm in JavaScript"}}]}
 ```

@@ -36,10 +36,10 @@ let value: OpenResponsesUsage = {
 | Field                 | Type                                                                           | Required             | Description                                                         |
 | --------------------- | ------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
 | `inputTokens`         | *number*                                                                       | :heavy\_check\_mark: | N/A                                                                 |
-| `inputTokensDetails`  | [models.InputTokensDetails](/agent-sdk/typescript/models/inputtokensdetails)   | :heavy\_check\_mark: | N/A                                                                 |
+| `inputTokensDetails`  | [models.InputTokensDetails](/docs/agent-sdk/typescript/models/inputtokensdetails)   | :heavy\_check\_mark: | N/A                                                                 |
 | `outputTokens`        | *number*                                                                       | :heavy\_check\_mark: | N/A                                                                 |
-| `outputTokensDetails` | [models.OutputTokensDetails](/agent-sdk/typescript/models/outputtokensdetails) | :heavy\_check\_mark: | N/A                                                                 |
+| `outputTokensDetails` | [models.OutputTokensDetails](/docs/agent-sdk/typescript/models/outputtokensdetails) | :heavy\_check\_mark: | N/A                                                                 |
 | `totalTokens`         | *number*                                                                       | :heavy\_check\_mark: | N/A                                                                 |
 | `cost`                | *number*                                                                       | :heavy\_minus\_sign: | Cost of the completion                                              |
 | `isByok`              | *boolean*                                                                      | :heavy\_minus\_sign: | Whether a request was made using a Bring Your Own Key configuration |
-| `costDetails`         | [models.CostDetails](/agent-sdk/typescript/models/costdetails)                 | :heavy\_minus\_sign: | N/A                                                                 |
+| `costDetails`         | [models.CostDetails](/docs/agent-sdk/typescript/models/costdetails)                 | :heavy\_minus\_sign: | N/A                                                                 |

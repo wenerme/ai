@@ -30,7 +30,7 @@ let value: McpServerTool = {
 | ------------------- | ---------------------------------------------------------------------------- | -------------------- | ----------- |
 | `allowedTools`      | *models.AllowedToolsUnion*                                                   | :heavy\_minus\_sign: | N/A         |
 | `authorization`     | *string*                                                                     | :heavy\_minus\_sign: | N/A         |
-| `connectorId`       | [models.ConnectorId](/agent-sdk/typescript/api-reference/models/connectorid) | :heavy\_minus\_sign: | N/A         |
+| `connectorId`       | [models.ConnectorId](/docs/agent-sdk/typescript/api-reference/models/connectorid) | :heavy\_minus\_sign: | N/A         |
 | `headers`           | `Record<string, *string*>`                                                   | :heavy\_minus\_sign: | N/A         |
 | `requireApproval`   | *models.RequireApprovalUnion*                                                | :heavy\_minus\_sign: | N/A         |
 | `serverDescription` | *string*                                                                     | :heavy\_minus\_sign: | N/A         |

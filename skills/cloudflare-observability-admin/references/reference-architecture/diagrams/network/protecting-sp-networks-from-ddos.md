@@ -1,7 +1,7 @@
 ---
 title: Protect ISP and telecommunications networks from DDoS attacks
 description: Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -53,6 +53,6 @@ The above diagram shows how Cloudflare monitors service provider traffic and, up
 * [Flow-based monitoring for Magic Transit ↗](https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/#page","headline":"Protect ISP and telecommunications networks from DDoS attacks · Cloudflare Reference Architecture docs","description":"Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/#page","headline":"Protect ISP and telecommunications networks from DDoS attacks · Cloudflare Reference Architecture docs","description":"Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/network/","name":"Network"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/","name":"Protect ISP and telecommunications networks from DDoS attacks"}}]}
 ```

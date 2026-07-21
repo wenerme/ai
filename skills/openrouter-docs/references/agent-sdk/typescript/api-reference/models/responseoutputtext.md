@@ -27,6 +27,6 @@ let value: ResponseOutputText = {
 | Field         | Type                                                                    | Required             | Description |
 | ------------- | ----------------------------------------------------------------------- | -------------------- | ----------- |
 | `annotations` | *models.OpenAIResponsesAnnotation*\[]                                   | :heavy\_minus\_sign: | N/A         |
-| `logprobs`    | [models.Logprob](/agent-sdk/typescript/api-reference/models/logprob)\[] | :heavy\_minus\_sign: | N/A         |
+| `logprobs`    | [models.Logprob](/docs/agent-sdk/typescript/api-reference/models/logprob)\[] | :heavy\_minus\_sign: | N/A         |
 | `text`        | *string*                                                                | :heavy\_check\_mark: | N/A         |
 | `type`        | *"output\_text"*                                                        | :heavy\_check\_mark: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: Workers API reference
 description: Complete reference for the R2 in-Worker API, including bucket and object operations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -517,6 +517,6 @@ An `R2UploadedPart` object represents a part that has been uploaded. `R2Uploaded
 The storage class where an `R2Object` is stored. The available storage classes are `Standard` and `InfrequentAccess`. Refer to [Storage classes](https://developers.cloudflare.com/r2/buckets/storage-classes/)for more information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference · Cloudflare R2 docs","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference · Cloudflare R2 docs","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/workers/","name":"Workers API"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/api/workers/workers-api-reference/","name":"Workers API reference"}}]}
 ```

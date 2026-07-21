@@ -155,7 +155,7 @@ The state object tracks everything needed to resume a conversation:
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `'in_progress'`       | Conversation is actively processing                                                                                                                                                            |
 | `'awaiting_approval'` | Paused, waiting for tool call approval/rejection                                                                                                                                               |
-| `'awaiting_hitl'`     | Paused by a [HITL tool](/agent-sdk/call-model/tools#human-in-the-loop-hitl-tools) whose `onToolCalled` hook returned `null`; resume by supplying a `function_call_output` for each paused call |
+| `'awaiting_hitl'`     | Paused by a [HITL tool](/docs/agent-sdk/call-model/tools#human-in-the-loop-hitl-tools) whose `onToolCalled` hook returned `null`; resume by supplying a `function_call_output` for each paused call |
 | `'complete'`          | Conversation finished normally                                                                                                                                                                 |
 | `'interrupted'`       | Conversation was interrupted and can be resumed                                                                                                                                                |
 
@@ -328,7 +328,7 @@ console.log(await r3.getText());
 
 ## Next Steps
 
-* **[Tools](/agent-sdk/call-model/tools)** - Tool definitions and the `tool()` helper
-* **[Stop Conditions](/agent-sdk/call-model/stop-conditions)** - Control when tool execution loops terminate
-* **[Dynamic Parameters](/agent-sdk/call-model/dynamic-parameters)** - Adjust parameters between turns
-* **[Examples](/agent-sdk/call-model/examples/weather-tool)** - Complete tool implementations
+* **[Tools](/docs/agent-sdk/call-model/tools)** - Tool definitions and the `tool()` helper
+* **[Stop Conditions](/docs/agent-sdk/call-model/stop-conditions)** - Control when tool execution loops terminate
+* **[Dynamic Parameters](/docs/agent-sdk/call-model/dynamic-parameters)** - Adjust parameters between turns
+* **[Examples](/docs/agent-sdk/call-model/examples/weather-tool)** - Complete tool implementations

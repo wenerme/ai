@@ -1,7 +1,7 @@
 ---
 title: WHOIS requests
 description: Submit WHOIS disclosure requests to Cloudflare.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ Email your request to [whoisrequest@cloudflare.com](mailto:whoisdisclosure@cloud
 Cloudflare processes WHOIS disclosure requests in the order they are received. If you have properly formatted and submitted your request according to Steps 1 and 2, Cloudflare typically will send you an acknowledgment of your request within two (2) business days and a substantive response within thirty (30) business days. Cloudflare will send all communications regarding your request to the email address from which you send your request. Cloudflare reserves the right to deny abusive, repetitive, or incomplete requests.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/whoisrequests/#page","headline":"WHOIS requests · Cloudflare Registrar docs","description":"Submit WHOIS disclosure requests to Cloudflare.","url":"https://developers.cloudflare.com/registrar/whoisrequests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/whoisrequests/#page","headline":"WHOIS requests · Cloudflare Registrar docs","description":"Submit WHOIS disclosure requests to Cloudflare.","url":"https://developers.cloudflare.com/registrar/whoisrequests/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/whoisrequests/","name":"WHOIS requests"}}]}
 ```

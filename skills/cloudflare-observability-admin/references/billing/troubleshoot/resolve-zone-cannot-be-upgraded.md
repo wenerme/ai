@@ -1,7 +1,7 @@
 ---
 title: Resolve the zone cannot be upgraded error
 description: Fix errors when upgrading a zone or subscription.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ After you pay the outstanding balance and wait 24 hours, return to the domain or
 * [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/resolve-zone-cannot-be-upgraded/#page","headline":"Resolve the zone cannot be upgraded error · Cloudflare Billing docs","description":"Fix errors when upgrading a zone or subscription.","url":"https://developers.cloudflare.com/billing/troubleshoot/resolve-zone-cannot-be-upgraded/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/resolve-zone-cannot-be-upgraded/#page","headline":"Resolve the zone cannot be upgraded error · Cloudflare Billing docs","description":"Fix errors when upgrading a zone or subscription.","url":"https://developers.cloudflare.com/billing/troubleshoot/resolve-zone-cannot-be-upgraded/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/resolve-zone-cannot-be-upgraded/","name":"Resolve the zone cannot be upgraded error"}}]}
 ```

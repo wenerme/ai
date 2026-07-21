@@ -1,7 +1,7 @@
 ---
 title: Certificate statuses
 description: Understand certificate statuses in Cloudflare SSL/TLS, including stages like Initializing, Pending Validation, and Active. Monitor via dashboard or command line.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -89,6 +89,6 @@ openssl s_client -servername app.example.com -connect $CNAME_TARGET:443 </dev/nu
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-statuses/#page","headline":"Certificate statuses · Cloudflare SSL/TLS docs","description":"Understand certificate statuses in Cloudflare SSL/TLS, including stages like Initializing, Pending Validation, and Active. Monitor via dashboard or command line.","url":"https://developers.cloudflare.com/ssl/reference/certificate-statuses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-statuses/#page","headline":"Certificate statuses · Cloudflare SSL/TLS docs","description":"Understand certificate statuses in Cloudflare SSL/TLS, including stages like Initializing, Pending Validation, and Active. Monitor via dashboard or command line.","url":"https://developers.cloudflare.com/ssl/reference/certificate-statuses/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/certificate-statuses/","name":"Certificate statuses"}}]}
 ```

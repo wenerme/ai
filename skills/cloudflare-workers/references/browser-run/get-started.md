@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -442,6 +442,6 @@ To take your first screenshot, go to the following URL:
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started · Cloudflare Browser Run docs","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started · Cloudflare Browser Run docs","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/get-started/","name":"Get started"}}]}
 ```

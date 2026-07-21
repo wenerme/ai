@@ -1,7 +1,7 @@
 ---
 title: What is Magic Transit?
 description: Understand Magic Transit DDoS protection for networks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ Once packets hit Cloudflare's network, traffic is inspected for attacks, filtere
 For an in-depth explanation of Magic Transit, refer to [Magic Transit Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/what-is-magic-transit/#page","headline":"What is Magic Transit? · Cloudflare Learning Paths","description":"Understand Magic Transit DDoS protection for networks.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/what-is-magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/what-is-magic-transit/#page","headline":"What is Magic Transit? · Cloudflare Learning Paths","description":"Understand Magic Transit DDoS protection for networks.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/what-is-magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/data-center-protection/concepts/what-is-magic-transit/","name":"What is Magic Transit?"}}]}
 ```

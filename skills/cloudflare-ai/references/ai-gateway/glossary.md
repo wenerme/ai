@@ -1,7 +1,7 @@
 ---
 title: Header Glossary
 description: Reference all supported AI Gateway headers for configuring, customizing, and managing API requests.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -44,6 +44,6 @@ Settings in AI Gateway can be configured at two levels: **Request** and **Gatewa
 This hierarchy ensures consistent behavior, prioritizing the most specific configurations. Use request-level headers for fine-tuned control, and gateway settings for general defaults.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/glossary/#page","headline":"Header Glossary · Cloudflare AI Gateway docs","description":"Reference all supported AI Gateway headers for configuring, customizing, and managing API requests.","url":"https://developers.cloudflare.com/ai-gateway/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/glossary/#page","headline":"Header Glossary · Cloudflare AI Gateway docs","description":"Reference all supported AI Gateway headers for configuring, customizing, and managing API requests.","url":"https://developers.cloudflare.com/ai-gateway/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/glossary/","name":"Header Glossary"}}]}
 ```

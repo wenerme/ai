@@ -1,7 +1,7 @@
 ---
 title: Create a locally-managed tunnel
 description: Create and configure a locally-managed Cloudflare Tunnel.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -194,6 +194,6 @@ Looking for private network routing?
 For Cloudflare One Client private network access, refer to the [Cloudflare One Tunnel documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/#file-structure-for-private-networks).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/#page","headline":"Create a locally-managed tunnel · Cloudflare Docs","description":"Create and configure a locally-managed Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","YAML","Linux","MacOS","Windows"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/#page","headline":"Create a locally-managed tunnel · Cloudflare Docs","description":"Create and configure a locally-managed Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","YAML","Linux","MacOS","Windows"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/local-management/","name":"Locally-managed tunnels"}},{"@type":"ListItem","position":5,"item":{"@id":"/tunnel/advanced/local-management/create-local-tunnel/","name":"Create a locally-managed tunnel"}}]}
 ```

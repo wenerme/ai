@@ -31,5 +31,5 @@ let value: LocalShellCallOutputItem = {
 | -------- | ------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | --------- |
 | `id`     | *string*                                                                                                           | :heavy\_check\_mark: | N/A         |           |
 | `output` | *string*                                                                                                           | :heavy\_check\_mark: | N/A         |           |
-| `status` | [models.LocalShellCallOutputItemStatus](/agent-sdk/typescript/api-reference/models/localshellcalloutputitemstatus) | :heavy\_minus\_sign: | N/A         | completed |
-| `type`   | [models.LocalShellCallOutputItemType](/agent-sdk/typescript/api-reference/models/localshellcalloutputitemtype)     | :heavy\_check\_mark: | N/A         |           |
+| `status` | [models.LocalShellCallOutputItemStatus](/docs/agent-sdk/typescript/api-reference/models/localshellcalloutputitemstatus) | :heavy\_minus\_sign: | N/A         | completed |
+| `type`   | [models.LocalShellCallOutputItemType](/docs/agent-sdk/typescript/api-reference/models/localshellcalloutputitemtype)     | :heavy\_check\_mark: | N/A         |           |

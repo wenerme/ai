@@ -1,7 +1,7 @@
 ---
 title: aws-sdk-js-v3
 description: Configure the AWS SDK for JavaScript v3 to work with Cloudflare R2.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -199,6 +199,6 @@ When a client uses this presigned URL, they must:
 * Include the `Content-Type: image/png` header (enforced by the signature)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/#page","headline":"aws-sdk-js-v3 · Cloudflare R2 docs","description":"Configure the AWS SDK for JavaScript v3 to work with Cloudflare R2.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/#page","headline":"aws-sdk-js-v3 · Cloudflare R2 docs","description":"Configure the AWS SDK for JavaScript v3 to work with Cloudflare R2.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/aws-sdk-js-v3/","name":"aws-sdk-js-v3"}}]}
 ```

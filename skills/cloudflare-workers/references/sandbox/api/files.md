@@ -1,7 +1,7 @@
 ---
 title: Files
 description: Read, write, and manage files in the Sandbox SDK filesystem.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -416,6 +416,6 @@ await sandbox.gitCheckout('https://github.com/facebook/react', {
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) \- Execute commands
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/files/#page","headline":"Files · Cloudflare Sandbox SDK docs","description":"Read, write, and manage files in the Sandbox SDK filesystem.","url":"https://developers.cloudflare.com/sandbox/api/files/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/files/#page","headline":"Files · Cloudflare Sandbox SDK docs","description":"Read, write, and manage files in the Sandbox SDK filesystem.","url":"https://developers.cloudflare.com/sandbox/api/files/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/files/","name":"Files"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Query D1 using Prisma ORM
 description: This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -442,6 +442,6 @@ By finishing this tutorial, you have deployed a Cloudflare Worker using D1 as a 
 * [Developer Experience Redefined: Prisma & Cloudflare Lead the Way to Data DX ↗](https://www.prisma.io/blog/cloudflare-partnership-qerefgvwirjq).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/#page","headline":"Query D1 using Prisma ORM · Cloudflare D1 docs","description":"This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.","url":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/#page","headline":"Query D1 using Prisma ORM · Cloudflare D1 docs","description":"This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.","url":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/tutorials/d1-and-prisma-orm/","name":"Query D1 using Prisma ORM"}}]}
 ```

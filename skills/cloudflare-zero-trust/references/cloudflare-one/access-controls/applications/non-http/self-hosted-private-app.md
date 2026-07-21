@@ -1,7 +1,7 @@
 ---
 title: Secure a private IP or hostname
 description: Secure a private IP or hostname in Access.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -81,15 +81,25 @@ Users can now connect to your private application after authenticating with Clou
 
 ## Authentication flow
 
+The authentication experience depends on the application's protocol.
+
 ### HTTPS applications
 
 If [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) is turned on and a user is accessing an HTTPS application on port `443`, Cloudflare Access will present a login page in the browser and issue an [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) to your origin. This is the same cookie-based authentication flow used by [self-hosted public apps](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-If [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) is turned off, session management is [handled in the Cloudflare One Client](#non-https-applications) instead of in the browser.
+If [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) is turned off, session management is [handled in the Cloudflare One Client](#other-non-http-applications) instead of in the browser.
 
-### Non-HTTPS applications
+Note
 
-The Cloudflare One Client manages sessions for all non-HTTPS applications. Users will receive an `Authentication required` pop-up notification from the Cloudflare One Client. When the user selects the notification, the Cloudflare One Client will open a browser window with your Access login page.
+If your origin uses a self-signed or otherwise untrusted certificate, create a Gateway HTTP Allow policy for the origin with the [untrusted certificate action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#untrusted-certificates) set to _Pass through_. Otherwise, Gateway will block the connection before it reaches Access.
+
+### Plaintext HTTP applications
+
+For applications served over plaintext HTTP on port `80`, Cloudflare Access presents an in-browser login page and issues an [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/), the same as HTTPS applications with Gateway TLS decryption. Gateway TLS decryption is not required because the traffic is already unencrypted.
+
+### Other non-HTTP applications
+
+For applications that are not HTTP or HTTPS (for example, SSH, RDP, or arbitrary TCP/UDP), the Cloudflare One Client manages the session. Users will receive an `Authentication required` pop-up notification from the Cloudflare One Client. When the user selects the notification, the Cloudflare One Client will open a browser window with your Access login page.
 
 Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
 
@@ -148,6 +158,6 @@ To avoid this issue, choose one of the following options:
 * **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to _Disabled_. This approach is suitable for individual users but not for enterprise-wide deployment.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/#page","headline":"Secure a private IP or hostname · Cloudflare One docs","description":"Secure a private IP or hostname in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/#page","headline":"Secure a private IP or hostname · Cloudflare One docs","description":"Secure a private IP or hostname in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/non-http/","name":"Non-HTTP applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/","name":"Secure a private IP or hostname"}}]}
 ```

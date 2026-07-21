@@ -30,5 +30,5 @@ let value: ChatContentImage = {
 
 | Field      | Type                                                                                                   | Required             | Description |
 | ---------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `imageUrl` | [models.ChatContentImageImageUrl](/agent-sdk/typescript/api-reference/models/chatcontentimageimageurl) | :heavy\_check\_mark: | N/A         |
+| `imageUrl` | [models.ChatContentImageImageUrl](/docs/agent-sdk/typescript/api-reference/models/chatcontentimageimageurl) | :heavy\_check\_mark: | N/A         |
 | `type`     | *"image\_url"*                                                                                         | :heavy\_check\_mark: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: GitHub integration
 description: Learn how to manage your GitHub integration for Workers Builds
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -94,6 +94,6 @@ When encountering Git integration related issues, one potential troubleshooting 
 5. Attempt to make a new deployment with your project which was previously broken.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#page","headline":"GitHub integration · Cloudflare Workers docs","description":"Learn how to manage your GitHub integration for Workers Builds","url":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#page","headline":"GitHub integration · Cloudflare Workers docs","description":"Learn how to manage your GitHub integration for Workers Builds","url":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/git-integration/","name":"Git integration"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/ci-cd/builds/git-integration/github-integration/","name":"GitHub integration"}}]}
 ```

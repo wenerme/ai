@@ -1,7 +1,7 @@
 ---
 title: Application Security - Get started guide
 description: In this video, learn how to get immediate protection against the most common attacks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -264,5 +264,5 @@ known cases. You can now set up application security features to protect your do
 applications. For more information, please refer to our developer documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/app-sec-get-started/#page","headline":"Application Security - Get started guide | Cloudflare Docs","description":"In this video, learn how to get immediate protection against the most common attacks.","url":"https://developers.cloudflare.com/videos/app-sec-get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/app-sec-get-started/#page","headline":"Application Security - Get started guide | Cloudflare Docs","description":"In this video, learn how to get immediate protection against the most common attacks.","url":"https://developers.cloudflare.com/videos/app-sec-get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

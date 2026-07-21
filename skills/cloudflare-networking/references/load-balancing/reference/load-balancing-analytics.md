@@ -1,7 +1,7 @@
 ---
 title: Analytics
 description: Use load balancing analytics to evaluate traffic flow, assess the health of endpoints, and review health changes over time.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -180,7 +180,7 @@ query RequestsPerPool($zoneTag: string, $start: Time, $end: Time) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSGD2OA2AFACQBeOAdmACoCGA5gFwxoQCWF9ANDMWrRFTNqbALZgexMBQAmwsWACUMAN4AoGDABubMAHdIqjZpjkqyQgDM2+VJGYrTlGg2ZlndejAC+y9SZN8HFoZACFafFoKAGMOegQkNGQAQRlaAAdUNi0wAHEIHBB0i2MAzXwxNiEYAEYABjrSsutbeyMysrS7LPEAfXpEN35BJo6usB6wXvxB3mkZUbL8ACMAOVpxZgAiFYA6MAAPDfSZ3eicUS3FzW9rmBwIGUhQqGYAbXHJgDE2SztpACyHBAdmQvQAIgBRADKAGEALqLPx3c4gCioO4yBQUZBsSjIdodEyfBQ-P5gQHA0F3TTnIKwnBPGksMAzaJ2GS4AjrcR3W4dfkmQW3bxAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIx9UbABwYKIGFAAmzdl14ChYluMky5AXyA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSGD2OA2AFACQBeOAdmACoCGA5gFwxoQCWF9ANDMWrRFTNqbALZgexMBQAmwsWACUMAN4AoGDABubMAHdIqjZpjkqyQgDM2+VJGYrTlGg2ZlndejAC+y9SZN8HFoZACFafFoKAGMOegQkNGQAQRlaAAdUNi0wAHEIHBB0i2MAzXwxNiEYAEYABjrSsutbeyMysrS7LPEAfXpEN35BJo6usB6wXvxB3mkZUbL8ACMAOVpxZgAiFYA6MAAPDfSZ3eicUS3FzW9rmBwIGUhQqGYAbXHJgDE2SztpACyHBAdmQvQAIgBRADKAGEALqLPx3c4gCioO4yBQUZBsSjIdodEyfBQ-P5gQHA0F3TTnIKwnBPGksMAzaJ2GS4AjrcR3W4dfkmQW3bxAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVKIDMGCiBhQAJs3ZdeAoS2ESps+QF8gA)
 
 **Response (truncated)**
 
@@ -245,7 +245,7 @@ query RequestsPerDataCenter($zoneTag: string, $start: Time, $end: Time) {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSARAhq3AYTADtVIAKAEgC8B7EsAFVwHMAuGNCASxNYA0MKmlwRUnJjwC2YIVVIATSTLABKGAG8AUDBgA3HmADukLbr0x6jZBQBmPADbkInTVYbM2nWp5asYAF8NHUtLRzpcRQAhXEdcEgBjPlYEJDRkAEFFXAAHVB59MAoLML1HGR4JGABGAAY60rKHZ0g3JrKYHPIC2QB9VkQfUXEOsu6wXrA+xyHhJTGwxwAjADlcWU4AIhWAOjAADw3c2d3EumktxctziMI6RTBtgGUASVWrzr1A67oIR4g0SgnAA2hMpn1sABRZ6EAC6YxC12QYFmiXIigwdDojnWsmuuWxjmQ5i+lkJOLxYGuegAFmA4qhaVAaTB6YzaYR6YkANZQki4ZazRSs3D6VKoVAAWWQ1x+nXllkVP0CQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIx9UbABwYKIGFAAmzdl14ChYluMky5AXyA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmUYDOAXZAFSARAhq3AYTADtVIAKAEgC8B7EsAFVwHMAuGNCASxNYA0MKmlwRUnJjwC2YIVVIATSTLABKGAG8AUDBgA3HmADukLbr0x6jZBQBmPADbkInTVYbM2nWp5asYAF8NHUtLRzpcRQAhXEdcEgBjPlYEJDRkAEFFXAAHVB59MAoLML1HGR4JGABGAAY60rKHZ0g3JrKYHPIC2QB9VkQfUXEOsu6wXrA+xyHhJTGwxwAjADlcWU4AIhWAOjAADw3c2d3EumktxctziMI6RTBtgGUASVWrzr1A67oIR4g0SgnAA2hMpn1sABRZ6EAC6YxC12QYFmiXIigwdDojnWsmuuWxjmQ5i+lkJOLxYGuegAFmA4qhaVAaTB6YzaYR6YkANZQki4ZazRSs3D6VKoVAAWWQ1x+nXllkVP0CQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVKIDMGCiBhQAJs3ZdeAoS2ESps+QF8gA)
 
 **Response (truncated)**
 
@@ -289,6 +289,6 @@ query RequestsPerDataCenter($zoneTag: string, $start: Time, $end: Time) {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/#page","headline":"Load balancing analytics · Cloudflare Load Balancing docs","description":"Use load balancing analytics to evaluate traffic flow, assess the health of endpoints, and review health changes over time.","url":"https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/#page","headline":"Load balancing analytics · Cloudflare Load Balancing docs","description":"Use load balancing analytics to evaluate traffic flow, assess the health of endpoints, and review health changes over time.","url":"https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/reference/load-balancing-analytics/","name":"Analytics"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Pay Per Crawl FAQ
 description: Answers to common Pay Per Crawl questions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -35,6 +35,6 @@ No. Charging events are only triggered for successful HTTP response codes. Error
 Use the standard user agents associated with your AI crawler that you have onboarded to Cloudflare and identified through Web Bot Auth.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/#page","headline":"Pay Per Crawl FAQ · Cloudflare AI Crawl Control docs","description":"Answers to common Pay Per Crawl questions.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/#page","headline":"Pay Per Crawl FAQ · Cloudflare AI Crawl Control docs","description":"Answers to common Pay Per Crawl questions.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/","name":"Pay Per Crawl"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/faq/","name":"Pay Per Crawl FAQ"}}]}
 ```

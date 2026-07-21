@@ -16,7 +16,7 @@ Organization endpoints
 
 ## ListMembers
 
-List all members of the organization associated with the authenticated management key. [Management key](/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+List all members of the organization associated with the authenticated management key. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

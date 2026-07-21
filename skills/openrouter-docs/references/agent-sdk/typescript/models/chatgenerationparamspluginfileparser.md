@@ -27,4 +27,4 @@ let value: ChatGenerationParamsPluginFileParser = {
 | --------- | ---------------------------------------------- | -------------------- | ----------- |
 | `id`      | *"file-parser"*                                | :heavy\_check\_mark: | N/A         |
 | `enabled` | *boolean*                                      | :heavy\_minus\_sign: | N/A         |
-| `pdf`     | [models.Pdf](/agent-sdk/typescript/models/pdf) | :heavy\_minus\_sign: | N/A         |
+| `pdf`     | [models.Pdf](/docs/agent-sdk/typescript/models/pdf) | :heavy\_minus\_sign: | N/A         |

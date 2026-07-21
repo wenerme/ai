@@ -1,7 +1,7 @@
 ---
 title: Manage advanced certificates
 description: Learn how to create, delete and perform other operations to manage your Cloudflare Advanced SSL certificates.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -118,6 +118,6 @@ Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notificati
 The certificate validity period you choose determines when the auto renewal will start for your certificate. For details, refer to [Validity period and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#page","headline":"Manage advanced certificates · Cloudflare SSL/TLS docs","description":"Learn how to create, delete and perform other operations to manage your Cloudflare Advanced SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#page","headline":"Manage advanced certificates · Cloudflare SSL/TLS docs","description":"Learn how to create, delete and perform other operations to manage your Cloudflare Advanced SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/advanced-certificate-manager/","name":"Advanced certificates"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/","name":"Manage advanced certificates"}}]}
 ```

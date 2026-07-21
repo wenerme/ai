@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Onboard your IP prefixes to Cloudflare with BYOIP.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -318,6 +318,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 2. Mappings that specify which IP addresses should be used when Cloudflare responds to DNS queries for proxied hostnames. [↩](#user-content-fnref-2)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/get-started/#page","headline":"Get started · Cloudflare BYOIP docs","description":"Onboard your IP prefixes to Cloudflare with BYOIP.","url":"https://developers.cloudflare.com/byoip/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/get-started/#page","headline":"Get started · Cloudflare BYOIP docs","description":"Onboard your IP prefixes to Cloudflare with BYOIP.","url":"https://developers.cloudflare.com/byoip/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/get-started/","name":"Get started"}}]}
 ```

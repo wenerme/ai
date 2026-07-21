@@ -25,5 +25,5 @@ import { BadGatewayResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                           | Required             | Description                       | Example                                              |
 | -------- | ---------------------------------------------------------------------------------------------- | -------------------- | --------------------------------- | ---------------------------------------------------- |
-| `error`  | [models.BadGatewayResponseErrorData](/agent-sdk/typescript/models/badgatewayresponseerrordata) | :heavy\_check\_mark: | Error data for BadGatewayResponse | `{"code": 502,"message": "Provider returned error"}` |
+| `error`  | [models.BadGatewayResponseErrorData](/docs/agent-sdk/typescript/models/badgatewayresponseerrordata) | :heavy\_check\_mark: | Error data for BadGatewayResponse | `{"code": 502,"message": "Provider returned error"}` |
 | `userId` | *string*                                                                                       | :heavy\_minus\_sign: | N/A                               |                                                      |

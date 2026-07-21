@@ -39,4 +39,4 @@ let value: GenerationContentData = {
 | Field    | Type                                                                                                         | Required             | Description                                                                  |
 | -------- | ------------------------------------------------------------------------------------------------------------ | -------------------- | ---------------------------------------------------------------------------- |
 | `input`  | *models.InputUnion*                                                                                          | :heavy\_check\_mark: | The input to the generation — either a prompt string or an array of messages |
-| `output` | [models.GenerationContentDataOutput](/agent-sdk/typescript/api-reference/models/generationcontentdataoutput) | :heavy\_check\_mark: | The output from the generation                                               |
+| `output` | [models.GenerationContentDataOutput](/docs/agent-sdk/typescript/api-reference/models/generationcontentdataoutput) | :heavy\_check\_mark: | The output from the generation                                               |

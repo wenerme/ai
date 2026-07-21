@@ -1,7 +1,7 @@
 ---
 title: Test APIs
 description: Runtime helpers for writing tests, exported from `cloudflare:workers` and `cloudflare:test`.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -441,6 +441,6 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
   When targeting a step, use its `name`. If multiple steps share the same name, use the optional `index` property (1-based, defaults to `1`) to specify the occurrence.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs · Cloudflare Workers docs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs · Cloudflare Workers docs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/test-apis/","name":"Test APIs"}}]}
 ```

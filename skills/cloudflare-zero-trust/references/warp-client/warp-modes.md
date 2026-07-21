@@ -1,7 +1,7 @@
 ---
 title: WARP modes
 description: Available WARP connection modes and their behavior.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -26,7 +26,7 @@ Refer to [1.1.1.1 resolver](https://developers.cloudflare.com/1.1.1.1/encryption
 
 Formerly known as **1.1.1.1 with WARP**.
 
-The WARP application uses [MASQUE ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque/) to encrypt and send traffic from your device directly to Cloudflare's global network. This ensures Internet traffic between your device and the Internet is secure and private, while also preventing third parties from accessing your traffic. All traffic[1](#user-content-fn-1) tunneled over the MASQUE connection is encrypted using [post-quantum cryptography ↗](https://blog.cloudflare.com/post-quantum-zero-trust/) to protect against [harvest-now-decrypt-later attacks ↗](https://www.nist.gov/cybersecurity/what-post-quantum-cryptography).
+The WARP application uses [MASQUE ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque/) to encrypt and send traffic from your device directly to Cloudflare's global network. This ensures Internet traffic between your device and the Internet is secure and private, while also preventing third parties from accessing your traffic. All traffic[1](#user-content-fn-1) tunneled over the MASQUE connection is encrypted using [post-quantum cryptography ↗](https://blog.cloudflare.com/post-quantum-warp/) to protect against [harvest-now-decrypt-later attacks ↗](https://www.nist.gov/cybersecurity/what-post-quantum-cryptography).
 
 This mode is available in three flavors:
 
@@ -79,6 +79,6 @@ WARP+ Unlimited is now active on this device. You can use your license key on up
 **Windows, macOS, and Linux**: 2025.6.1335.0 [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/warp-modes/#page","headline":"WARP modes · Cloudflare WARP client docs","description":"Available WARP connection modes and their behavior.","url":"https://developers.cloudflare.com/warp-client/warp-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/warp-modes/#page","headline":"WARP modes · Cloudflare WARP client docs","description":"Available WARP connection modes and their behavior.","url":"https://developers.cloudflare.com/warp-client/warp-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/warp-client/","name":"WARP Client"}},{"@type":"ListItem","position":3,"item":{"@id":"/warp-client/warp-modes/","name":"WARP modes"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Schema validation
 description: Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -472,6 +472,6 @@ Schema validation is available for all customers. Refer to [Plans](https://devel
 [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/) is only available for customers subscribed to API Shield.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/schema-validation/#page","headline":"Schema validation · Cloudflare API Shield docs","description":"Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.","url":"https://developers.cloudflare.com/api-shield/security/schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/schema-validation/#page","headline":"Schema validation · Cloudflare API Shield docs","description":"Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.","url":"https://developers.cloudflare.com/api-shield/security/schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/schema-validation/","name":"Schema validation"}}]}
 ```

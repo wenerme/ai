@@ -1,7 +1,7 @@
 ---
 title: TCP sockets
 description: Use the `connect()` API to create outbound TCP connections from Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -215,6 +215,6 @@ Your socket is connecting back to the Worker that initiated the outbound connect
 Your socket is connecting to an address on port `25`. This is usually the port used for SMTP mail servers. Workers cannot create outbound connections on port `25`. Consider using [Cloudflare Email Workers](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) instead.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#page","headline":"TCP sockets · Cloudflare Workers docs","description":"Use the connect() API to create outbound TCP connections from Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#page","headline":"TCP sockets · Cloudflare Workers docs","description":"Use the connect() API to create outbound TCP connections from Workers.","url":"https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/tcp-sockets/","name":"TCP sockets"}}]}
 ```

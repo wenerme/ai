@@ -1,7 +1,7 @@
 ---
 title: Interplanetary File System (IPFS)
 description: How the InterPlanetary File System stores and retrieves content.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -60,6 +60,6 @@ Directories make it possible to address an entire static website with a single C
 For help with additional concepts, refer to the [IPFS ↗](https://docs.ipfs.tech/concepts/) documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/#page","headline":"Interplanetary File System (IPFS) · Cloudflare Web3 docs","description":"How the InterPlanetary File System stores and retrieves content.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/#page","headline":"Interplanetary File System (IPFS) · Cloudflare Web3 docs","description":"How the InterPlanetary File System stores and retrieves content.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ipfs-gateway/","name":"IPFS Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ipfs-gateway/concepts/","name":"Concepts"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ipfs-gateway/concepts/ipfs/","name":"Interplanetary File System (IPFS)"}}]}
 ```

@@ -45,5 +45,5 @@ let value: McpListToolsItem = {
 | `error`       | *string*                                                                                          | :heavy\_minus\_sign: | N/A         |
 | `id`          | *string*                                                                                          | :heavy\_check\_mark: | N/A         |
 | `serverLabel` | *string*                                                                                          | :heavy\_check\_mark: | N/A         |
-| `tools`       | [models.McpListToolsItemTool](/agent-sdk/typescript/api-reference/models/mcplisttoolsitemtool)\[] | :heavy\_check\_mark: | N/A         |
-| `type`        | [models.McpListToolsItemType](/agent-sdk/typescript/api-reference/models/mcplisttoolsitemtype)    | :heavy\_check\_mark: | N/A         |
+| `tools`       | [models.McpListToolsItemTool](/docs/agent-sdk/typescript/api-reference/models/mcplisttoolsitemtool)\[] | :heavy\_check\_mark: | N/A         |
+| `type`        | [models.McpListToolsItemType](/docs/agent-sdk/typescript/api-reference/models/mcplisttoolsitemtype)    | :heavy\_check\_mark: | N/A         |

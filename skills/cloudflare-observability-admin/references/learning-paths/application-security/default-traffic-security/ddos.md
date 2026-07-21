@@ -1,7 +1,7 @@
 ---
 title: DDoS Protection
 description: Understand automatic DDoS attack mitigation.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -28,6 +28,6 @@ Cloudflare automatically detects and mitigates DDoS attacks using its [Autonomou
 Refer to the learning path [Prevent DDoS attacks](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/concepts/) to dive deeper into this subject.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/ddos/#page","headline":"DDoS Protection · Cloudflare Learning Paths","description":"Understand automatic DDoS attack mitigation.","url":"https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/ddos/#page","headline":"DDoS Protection · Cloudflare Learning Paths","description":"Understand automatic DDoS attack mitigation.","url":"https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/application-security/default-traffic-security/","name":"Default traffic security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/application-security/default-traffic-security/ddos/","name":"DDoS Protection"}}]}
 ```

@@ -23,5 +23,5 @@ let value: RankingOptions = {};
 
 | Field            | Type                                                               | Required             | Description |
 | ---------------- | ------------------------------------------------------------------ | -------------------- | ----------- |
-| `ranker`         | [models.Ranker](/agent-sdk/typescript/api-reference/models/ranker) | :heavy\_minus\_sign: | N/A         |
+| `ranker`         | [models.Ranker](/docs/agent-sdk/typescript/api-reference/models/ranker) | :heavy\_minus\_sign: | N/A         |
 | `scoreThreshold` | *number*                                                           | :heavy\_minus\_sign: | N/A         |

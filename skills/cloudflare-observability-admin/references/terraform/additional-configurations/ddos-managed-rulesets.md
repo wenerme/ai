@@ -1,7 +1,7 @@
 ---
 title: DDoS managed rulesets configuration using Terraform
 description: Configure Cloudflare DDoS managed rulesets at the zone or account level using Terraform.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -438,6 +438,6 @@ resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/#page","headline":"DDoS managed rulesets configuration using Terraform · Cloudflare Terraform docs","description":"Configure Cloudflare DDoS managed rulesets at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/#page","headline":"DDoS managed rulesets configuration using Terraform · Cloudflare Terraform docs","description":"Configure Cloudflare DDoS managed rulesets at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/ddos-managed-rulesets/","name":"DDoS managed rulesets configuration using Terraform"}}]}
 ```

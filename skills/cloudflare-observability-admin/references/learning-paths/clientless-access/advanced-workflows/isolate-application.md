@@ -1,7 +1,7 @@
 ---
 title: Isolate Access applications
 description: Learn about isolate access applications in this guide.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -307,6 +307,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 To configure a DLP profile, refer to [Update predefined profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/predefined/methods/update/) or [Create custom profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/custom/methods/create/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#page","headline":"Isolate Access applications · Cloudflare Learning Paths","description":"Learn about isolate access applications in this guide.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#page","headline":"Isolate Access applications · Cloudflare Learning Paths","description":"Learn about isolate access applications in this guide.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/advanced-workflows/","name":"Advanced workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/advanced-workflows/isolate-application/","name":"Isolate Access applications"}}]}
 ```

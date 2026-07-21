@@ -1,7 +1,7 @@
 ---
 title: Inworld TTS 1.5 Mini
 description: Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -241,6 +241,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schem
 Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/#page","headline":"Inworld TTS 1.5 Mini (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/#page","headline":"Inworld TTS 1.5 Mini (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: DNSSEC
 description: Protect your domain from DNS spoofing with DNSSEC.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -159,6 +159,6 @@ If your registrar does not support DNSSEC with Cloudflare's preferred cipher cho
 If your top-level domain does not support DNSSEC with Algorithm 13 (also known as _ECDSA Curve P-256 with SHA-256_), [contact that top-level domain ↗](https://www.iana.org/domains/root/db).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/#page","headline":"DNSSEC · Cloudflare DNS docs","description":"Protect your domain from DNS spoofing with DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/#page","headline":"DNSSEC · Cloudflare DNS docs","description":"Protect your domain from DNS spoofing with DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dnssec/","name":"DNSSEC"}}]}
 ```

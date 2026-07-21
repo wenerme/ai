@@ -1,7 +1,7 @@
 ---
 title: Rule phase interactions
 description: Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ When a WAF decision looks incorrect:
 5. Use [Trace](https://developers.cloudflare.com/rules/trace-request/) when available to confirm the actual phase-by-phase result.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/#page","headline":"Rule phase interactions · Cloudflare Web Application Firewall (WAF) docs","description":"Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.","url":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/#page","headline":"Rule phase interactions · Cloudflare Web Application Firewall (WAF) docs","description":"Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.","url":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/troubleshooting/phase-interactions/","name":"Rule phase interactions"}}]}
 ```

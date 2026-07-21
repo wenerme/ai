@@ -1,7 +1,7 @@
 ---
 title: Math functions
 description: Scalar functions for mathematical operations
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -468,6 +468,6 @@ trunc(numeric_expression[, decimal_places])
 * **decimal\_places**: Optional. The number of decimal places to truncate to. Defaults to 0 (truncate to a whole number). If `decimal_places` is a positive integer, truncates digits to the right of the decimal point. If `decimal_places` is a negative integer, replaces digits to the left of the decimal point with `0`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/math/#page","headline":"Math functions · Cloudflare Pipelines Docs","description":"Scalar functions for mathematical operations","url":"https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/math/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/math/#page","headline":"Math functions · Cloudflare Pipelines Docs","description":"Scalar functions for mathematical operations","url":"https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/math/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sql-reference/","name":"SQL reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/sql-reference/scalar-functions/","name":"Scalar functions"}},{"@type":"ListItem","position":5,"item":{"@id":"/pipelines/sql-reference/scalar-functions/math/","name":"Math functions"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: 1. Migrate webpack projects
 description: Migrate webpack-based Workers projects from Wrangler v1 to v2 by ejecting your bundler configuration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -174,6 +174,6 @@ command = "npm run build"
 Try running `npx wrangler deploy` to test that your configuration works as expected.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/#page","headline":"1. Migrate webpack projects · Cloudflare Workers docs","description":"Migrate webpack-based Workers projects from Wrangler v1 to v2 by ejecting your bundler configuration.","url":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/#page","headline":"1. Migrate webpack projects · Cloudflare Workers docs","description":"Migrate webpack-based Workers projects from Wrangler v1 to v2 by ejecting your bundler configuration.","url":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/","name":"Migrate from Wrangler v1 to v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/eject-webpack/","name":"1. Migrate webpack projects"}}]}
 ```

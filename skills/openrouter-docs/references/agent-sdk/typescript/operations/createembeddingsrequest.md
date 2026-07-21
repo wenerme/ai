@@ -34,8 +34,8 @@ let value: CreateEmbeddingsRequest = {
 | ---------------- | ------------------------------------------------------------------------------ | -------------------- | --------------------------------------------- |
 | `input`          | *operations.InputUnion*                                                        | :heavy\_check\_mark: | N/A                                           |
 | `model`          | *string*                                                                       | :heavy\_check\_mark: | N/A                                           |
-| `encodingFormat` | [operations.EncodingFormat](/agent-sdk/typescript/operations/encodingformat)   | :heavy\_minus\_sign: | N/A                                           |
+| `encodingFormat` | [operations.EncodingFormat](/docs/agent-sdk/typescript/operations/encodingformat)   | :heavy\_minus\_sign: | N/A                                           |
 | `dimensions`     | *number*                                                                       | :heavy\_minus\_sign: | N/A                                           |
 | `user`           | *string*                                                                       | :heavy\_minus\_sign: | N/A                                           |
-| `provider`       | [models.ProviderPreferences](/agent-sdk/typescript/models/providerpreferences) | :heavy\_minus\_sign: | Provider routing preferences for the request. |
+| `provider`       | [models.ProviderPreferences](/docs/agent-sdk/typescript/models/providerpreferences) | :heavy\_minus\_sign: | Provider routing preferences for the request. |
 | `inputType`      | *string*                                                                       | :heavy\_minus\_sign: | N/A                                           |

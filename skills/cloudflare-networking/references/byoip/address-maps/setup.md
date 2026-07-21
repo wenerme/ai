@@ -1,7 +1,7 @@
 ---
 title: Set up address maps
 description: Create and configure address maps for your IP prefixes.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -140,6 +140,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/addre
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/address-maps/setup/#page","headline":"Set up address maps · Cloudflare BYOIP docs","description":"Create and configure address maps for your IP prefixes.","url":"https://developers.cloudflare.com/byoip/address-maps/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/address-maps/setup/#page","headline":"Set up address maps · Cloudflare BYOIP docs","description":"Create and configure address maps for your IP prefixes.","url":"https://developers.cloudflare.com/byoip/address-maps/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/address-maps/","name":"About address maps"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/address-maps/setup/","name":"Set up address maps"}}]}
 ```

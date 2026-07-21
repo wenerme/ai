@@ -1,7 +1,7 @@
 ---
 title: Manage monitors
 description: Learn how to set up and maintain monitors for your load balancer.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -222,6 +222,6 @@ To delete a monitor in the dashboard:
 To delete a monitor using the API, send a [DELETE](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/delete/) request.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#page","headline":"Manage monitors · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain monitors for your load balancer.","url":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#page","headline":"Manage monitors · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain monitors for your load balancer.","url":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/monitors/","name":"Monitors"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/monitors/create-monitor/","name":"Manage monitors"}}]}
 ```

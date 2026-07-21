@@ -29,4 +29,4 @@ let value: ToolDefinitionJson = {
 | Field      | Type                                                                                         | Required             | Description |
 | ---------- | -------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `type`     | *"function"*                                                                                 | :heavy\_check\_mark: | N/A         |
-| `function` | [models.ToolDefinitionJsonFunction](/agent-sdk/typescript/models/tooldefinitionjsonfunction) | :heavy\_check\_mark: | N/A         |
+| `function` | [models.ToolDefinitionJsonFunction](/docs/agent-sdk/typescript/models/tooldefinitionjsonfunction) | :heavy\_check\_mark: | N/A         |

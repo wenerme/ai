@@ -28,5 +28,5 @@ let value: AnthropicPlainTextSource = {
 | Field       | Type                                                                                                                     | Required             | Description |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `data`      | *string*                                                                                                                 | :heavy\_check\_mark: | N/A         |
-| `mediaType` | [models.AnthropicPlainTextSourceMediaType](/agent-sdk/typescript/api-reference/models/anthropicplaintextsourcemediatype) | :heavy\_check\_mark: | N/A         |
+| `mediaType` | [models.AnthropicPlainTextSourceMediaType](/docs/agent-sdk/typescript/api-reference/models/anthropicplaintextsourcemediatype) | :heavy\_check\_mark: | N/A         |
 | `type`      | *"text"*                                                                                                                 | :heavy\_check\_mark: | N/A         |

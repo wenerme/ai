@@ -1,7 +1,7 @@
 ---
 title: Bot detection engines
 description: Heuristics, machine learning, and behavioral analysis engines used to detect bots.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -62,6 +62,6 @@ For more details, refer to [Cloudflare Cookies](https://developers.cloudflare.co
 You can disable the `__cf_bm` cookie using the `bm_cookie_enabled` field [via the API](https://developers.cloudflare.com/api/resources/bot%5Fmanagement/methods/update/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/#page","headline":"Bot detection engines · Cloudflare bot solutions docs","description":"Heuristics, machine learning, and behavioral analysis engines used to detect bots.","url":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/#page","headline":"Bot detection engines · Cloudflare bot solutions docs","description":"Heuristics, machine learning, and behavioral analysis engines used to detect bots.","url":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/concepts/bot-detection-engines/","name":"Bot detection engines"}}]}
 ```

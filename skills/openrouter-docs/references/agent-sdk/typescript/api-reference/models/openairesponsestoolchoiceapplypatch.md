@@ -25,4 +25,4 @@ let value: OpenAIResponsesToolChoiceApplyPatch = {
 
 | Field  | Type                                                                                                                                 | Required             | Description |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `type` | [models.OpenAIResponsesToolChoiceTypeApplyPatch](/agent-sdk/typescript/api-reference/models/openairesponsestoolchoicetypeapplypatch) | :heavy\_check\_mark: | N/A         |
+| `type` | [models.OpenAIResponsesToolChoiceTypeApplyPatch](/docs/agent-sdk/typescript/api-reference/models/openairesponsestoolchoicetypeapplypatch) | :heavy\_check\_mark: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: Create your first HTTP policy
 description: Build your first Gateway HTTP policy.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -113,6 +113,6 @@ Before instituting blocks or other actions that would impact your users, first m
 If your policy matches unexpected traffic flows or destinations (such as unintended users or device groups), review your policy to ensure it is not overly permissive or restrictive. If the policy design looks correct, determine whether other policies are matching before the intended policy. You can review the [order of enforcement](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/) for Gateway policies to ensure all of your policies are working together as intended.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/create-policy/#page","headline":"Create your first HTTP policy · Cloudflare Learning Paths","description":"Build your first Gateway HTTP policy.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/create-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/create-policy/#page","headline":"Create your first HTTP policy · Cloudflare Learning Paths","description":"Build your first Gateway HTTP policy.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/create-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/","name":"Build HTTP security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/create-policy/","name":"Create your first HTTP policy"}}]}
 ```

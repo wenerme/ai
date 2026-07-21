@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot failed domain transfers
 description: Fix common domain transfer issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -145,6 +145,6 @@ This solution does not apply to `.uk` domains.
 3. Select **Cancel Transfer and Retry**. After you initiate the retry, you must re-enter your auth code and confirm your WHOIS information.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/troubleshooting/#page","headline":"Troubleshoot failed domain transfers · Cloudflare Registrar docs","description":"Fix common domain transfer issues.","url":"https://developers.cloudflare.com/registrar/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/troubleshooting/#page","headline":"Troubleshoot failed domain transfers · Cloudflare Registrar docs","description":"Fix common domain transfer issues.","url":"https://developers.cloudflare.com/registrar/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/troubleshooting/","name":"Troubleshoot failed domain transfers"}}]}
 ```

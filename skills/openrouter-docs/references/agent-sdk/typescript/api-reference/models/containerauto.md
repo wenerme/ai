@@ -26,5 +26,5 @@ let value: ContainerAuto = {
 | Field         | Type                                                                             | Required             | Description |
 | ------------- | -------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `fileIds`     | *string*\[]                                                                      | :heavy\_minus\_sign: | N/A         |
-| `memoryLimit` | [models.MemoryLimit](/agent-sdk/typescript/api-reference/models/memorylimit)     | :heavy\_minus\_sign: | N/A         |
-| `type`        | [models.ContainerType](/agent-sdk/typescript/api-reference/models/containertype) | :heavy\_check\_mark: | N/A         |
+| `memoryLimit` | [models.MemoryLimit](/docs/agent-sdk/typescript/api-reference/models/memorylimit)     | :heavy\_minus\_sign: | N/A         |
+| `type`        | [models.ContainerType](/docs/agent-sdk/typescript/api-reference/models/containertype) | :heavy\_check\_mark: | N/A         |

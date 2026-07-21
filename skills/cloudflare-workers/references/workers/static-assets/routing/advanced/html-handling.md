@@ -1,7 +1,7 @@
 ---
 title: HTML handling
 description: How to configure a HTML handling and trailing slashes for the static assets of your Worker.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -220,6 +220,6 @@ Based on the incoming requests, the following assets would be served:
 | /folder/index.html | 200                             | /dist/folder/index.html         |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/#page","headline":"HTML handling · Cloudflare Workers docs","description":"How to configure a HTML handling and trailing slashes for the static assets of your Worker.","url":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/#page","headline":"HTML handling · Cloudflare Workers docs","description":"How to configure a HTML handling and trailing slashes for the static assets of your Worker.","url":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/routing/","name":"Routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/routing/advanced/","name":"Advanced"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/static-assets/routing/advanced/html-handling/","name":"HTML handling"}}]}
 ```

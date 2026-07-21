@@ -105,4 +105,4 @@ The above request produces a `$ai_generation` event with these properties (among
 
 ## Privacy Mode
 
-When [Privacy Mode](/guides/features/broadcast#privacy-mode) is enabled for this destination, the `$ai_input` and `$ai_output_choices` properties are excluded from events. All other analytics data — token usage, costs, model information, and custom metadata — is still sent normally.
+When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, the `$ai_input` and `$ai_output_choices` properties are excluded from events. All other analytics data — token usage, costs, model information, and custom metadata — is still sent normally.

@@ -1,7 +1,7 @@
 ---
 title: P-Image-Edit
 description: Pruna's P-Image-Edit edits and composes 1-5 reference images with text instructions. It supports complex compositions, style transfers, and targeted edits with flexible output aspect ratios.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -117,6 +117,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/schema-
 Output [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-edit/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-image-edit/#page","headline":"P-Image-Edit (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Image-Edit edits and composes 1-5 reference images with text instructions. It supports complex compositions, style transfers, and targeted edits with flexible output aspect ratios.","url":"https://developers.cloudflare.com/ai/models/pruna/p-image-edit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-image-edit/#page","headline":"P-Image-Edit (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Image-Edit edits and composes 1-5 reference images with text instructions. It supports complex compositions, style transfers, and targeted edits with flexible output aspect ratios.","url":"https://developers.cloudflare.com/ai/models/pruna/p-image-edit/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

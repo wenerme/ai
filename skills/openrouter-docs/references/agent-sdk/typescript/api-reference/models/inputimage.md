@@ -28,6 +28,6 @@ let value: InputImage = {
 
 | Field      | Type                                                                                       | Required             | Description |
 | ---------- | ------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `detail`   | [models.InputImageDetail](/agent-sdk/typescript/api-reference/models/inputimagedetail)     | :heavy\_check\_mark: | N/A         |
+| `detail`   | [models.InputImageDetail](/docs/agent-sdk/typescript/api-reference/models/inputimagedetail)     | :heavy\_check\_mark: | N/A         |
 | `imageUrl` | *string*                                                                                   | :heavy\_minus\_sign: | N/A         |
-| `type`     | [models.InputImageTypeEnum](/agent-sdk/typescript/api-reference/models/inputimagetypeenum) | :heavy\_check\_mark: | N/A         |
+| `type`     | [models.InputImageTypeEnum](/docs/agent-sdk/typescript/api-reference/models/inputimagetypeenum) | :heavy\_check\_mark: | N/A         |

@@ -1,7 +1,7 @@
 ---
 title: Configure GraphQL malicious query protection via the API
 description: Use the GraphQL API to configure query size and depth limits for your API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -66,7 +66,7 @@ query ApiGatewayGraphqlQueryAnalytics(
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzhtOqAIyiAzGIwUQMKABNm7LrwFCxLcVJkgAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVMM4YKIGFAAmzdl14ChLYRKky5AXyA)
 
 With the above query, you will get the following response:
 
@@ -171,6 +171,6 @@ Note
 You are not able to configure which endpoints the GraphQL parsing runs on. Requests are parsed if they are targeting a path ending in `/graphql`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/#page","headline":"Configure GraphQL malicious query protection · Cloudflare API Shield docs","description":"Use the GraphQL API to configure query size and depth limits for your API.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/#page","headline":"Configure GraphQL malicious query protection · Cloudflare API Shield docs","description":"Use the GraphQL API to configure query size and depth limits for your API.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/graphql-protection/","name":"GraphQL malicious query protection"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/graphql-protection/api/","name":"Configure GraphQL malicious query protection via the API"}}]}
 ```

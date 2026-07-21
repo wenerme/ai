@@ -1,7 +1,7 @@
 ---
 title: Analytics integrations
 description: Integrate Cloudflare analytics with third-party platforms.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -24,6 +24,6 @@ Analyze [Cloudflare Logs](https://developers.cloudflare.com/logs/) data with the
 * [ Sentinel ](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/#page","headline":"Analytics integrations · Cloudflare Analytics docs","description":"Integrate Cloudflare analytics with third-party platforms.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/#page","headline":"Analytics integrations · Cloudflare Analytics docs","description":"Integrate Cloudflare analytics with third-party platforms.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-integrations/","name":"Analytics integrations"}}]}
 ```

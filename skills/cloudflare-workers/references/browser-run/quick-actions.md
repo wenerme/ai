@@ -1,7 +1,7 @@
 ---
 title: Quick Actions
 description: Use Browser Run Quick Actions HTTP endpoints to capture screenshots, extract HTML, generate PDFs, and perform other common browser tasks.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -30,6 +30,8 @@ The following are the available options:
 * [ /links - Retrieve links from a webpage ](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)
 * [ /crawl - Crawl web content ](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
 * [ Reference ](https://developers.cloudflare.com/api/resources/browser%5Frendering/)
+
+[/crawl](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) is available via the REST API only.
 
 Use Quick Actions when you need a fast, simple way to perform common browser tasks such as capturing screenshots, extracting HTML, or generating PDFs without writing complex scripts. For more advanced automation, custom workflows, or persistent browser sessions, use [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/).
 
@@ -82,6 +84,6 @@ You can monitor Browser Run (formerly Browser Rendering) usage in two ways:
 * `X-Browser-Ms-Used` header: Returned in every Quick Actions response, reporting browser time used for that request (in milliseconds).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/quick-actions/#page","headline":"Quick Actions · Cloudflare Browser Run docs","description":"Use Browser Run Quick Actions HTTP endpoints to capture screenshots, extract HTML, generate PDFs, and perform other common browser tasks.","url":"https://developers.cloudflare.com/browser-run/quick-actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/quick-actions/#page","headline":"Quick Actions · Cloudflare Browser Run docs","description":"Use Browser Run Quick Actions HTTP endpoints to capture screenshots, extract HTML, generate PDFs, and perform other common browser tasks.","url":"https://developers.cloudflare.com/browser-run/quick-actions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}}]}
 ```

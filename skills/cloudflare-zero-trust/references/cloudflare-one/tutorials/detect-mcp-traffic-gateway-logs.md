@@ -1,7 +1,7 @@
 ---
 title: Detect MCP traffic in Gateway logs
 description: Scan Gateway logs for unauthorized MCP traffic.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -586,6 +586,6 @@ Replace the `portalDomains` array with the actual domains of your approved MCP S
 * [Logpush](https://developers.cloudflare.com/logs/logpush/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs · Cloudflare One docs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs · Cloudflare One docs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","name":"Detect MCP traffic in Gateway logs"}}]}
 ```

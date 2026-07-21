@@ -1,7 +1,7 @@
 ---
 title: How to
 description: Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ These guides walk through common AI Search use cases, from no-code setups to ful
 | [Human-in-the-loop knowledge base updates](https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/) | Advanced     | Build an agent that proposes new documents and pauses for human approval, with rollback.                 |
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/how-to/#page","headline":"How to · Cloudflare AI Search docs","description":"Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.","url":"https://developers.cloudflare.com/ai-search/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/how-to/#page","headline":"How to · Cloudflare AI Search docs","description":"Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.","url":"https://developers.cloudflare.com/ai-search/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}}]}
 ```

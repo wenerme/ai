@@ -31,4 +31,4 @@ let value: UserLocation = {
 | `country`  | *string*                                                                                     | :heavy\_minus\_sign: | N/A         |
 | `region`   | *string*                                                                                     | :heavy\_minus\_sign: | N/A         |
 | `timezone` | *string*                                                                                     | :heavy\_minus\_sign: | N/A         |
-| `type`     | [models.WebSearchPluginType](/agent-sdk/typescript/api-reference/models/websearchplugintype) | :heavy\_check\_mark: | N/A         |
+| `type`     | [models.WebSearchPluginType](/docs/agent-sdk/typescript/api-reference/models/websearchplugintype) | :heavy\_check\_mark: | N/A         |

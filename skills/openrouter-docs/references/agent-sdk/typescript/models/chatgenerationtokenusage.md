@@ -30,5 +30,5 @@ let value: ChatGenerationTokenUsage = {
 | `completionTokens`        | *number*                                                                               | :heavy\_check\_mark: | N/A         |
 | `promptTokens`            | *number*                                                                               | :heavy\_check\_mark: | N/A         |
 | `totalTokens`             | *number*                                                                               | :heavy\_check\_mark: | N/A         |
-| `completionTokensDetails` | [models.CompletionTokensDetails](/agent-sdk/typescript/models/completiontokensdetails) | :heavy\_minus\_sign: | N/A         |
-| `promptTokensDetails`     | [models.PromptTokensDetails](/agent-sdk/typescript/models/prompttokensdetails)         | :heavy\_minus\_sign: | N/A         |
+| `completionTokensDetails` | [models.CompletionTokensDetails](/docs/agent-sdk/typescript/models/completiontokensdetails) | :heavy\_minus\_sign: | N/A         |
+| `promptTokensDetails`     | [models.PromptTokensDetails](/docs/agent-sdk/typescript/models/prompttokensdetails)         | :heavy\_minus\_sign: | N/A         |

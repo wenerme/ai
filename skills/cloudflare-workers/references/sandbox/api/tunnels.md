@@ -1,7 +1,7 @@
 ---
 title: Tunnels
 description: Expose sandbox services on the public internet with quick tunnels (*.trycloudflare.com) or named tunnels bound to a hostname on your Cloudflare zone.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -500,6 +500,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/cfd_t
 * [Transport configuration](https://developers.cloudflare.com/sandbox/configuration/transport/) — RPC vs. route-based transport.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/tunnels/#page","headline":"Tunnels · Cloudflare Sandbox SDK docs","description":"Expose sandbox services on the public internet with quick tunnels (\\*.trycloudflare.com) or named tunnels bound to a hostname on your Cloudflare zone.","url":"https://developers.cloudflare.com/sandbox/api/tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/tunnels/#page","headline":"Tunnels · Cloudflare Sandbox SDK docs","description":"Expose sandbox services on the public internet with quick tunnels (\\*.trycloudflare.com) or named tunnels bound to a hostname on your Cloudflare zone.","url":"https://developers.cloudflare.com/sandbox/api/tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/tunnels/","name":"Tunnels"}}]}
 ```

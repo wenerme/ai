@@ -1,7 +1,7 @@
 ---
 title: Human in the Loop
 description: Temporarily hand off browser control to a human operator for authentication, sensitive actions, or tasks that are difficult to fully automate.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -96,6 +96,6 @@ Bot detection
 Browser Run requests are [always identified as bot traffic](https://developers.cloudflare.com/browser-run/faq/#will-browser-run-be-detected-by-bot-management). Even with a human controlling the session, some third-party services may still block the request.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/#page","headline":"Human in the Loop · Cloudflare Browser Run docs","description":"Temporarily hand off browser control to a human operator for authentication, sensitive actions, or tasks that are difficult to fully automate.","url":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/#page","headline":"Human in the Loop · Cloudflare Browser Run docs","description":"Temporarily hand off browser control to a human operator for authentication, sensitive actions, or tasks that are difficult to fully automate.","url":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/features/human-in-the-loop/","name":"Human in the Loop"}}]}
 ```

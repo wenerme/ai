@@ -1,7 +1,7 @@
 ---
 title: Serve /static-assets from Azure Blob Storage
 description: Route requests with a URI path starting with `/static-assets` to an Azure Blob Storage container using Cloud Connector.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -31,6 +31,6 @@ To serve static assets from an Azure Blob Storage container:
 This setup ensures that all traffic matching `http*://<YOUR_HOSTNAME>/static-assets/*` (HTTPS and HTTP requests) is served from your Azure Blob Storage container. Make sure to replace `<YOUR_HOSTNAME>` with your actual hostname and adjust the example paths according to your setup.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/#page","headline":"Serve /static-assets from Azure Blob Storage · Cloudflare Rules docs","description":"Route requests with a URI path starting with /static-assets to an Azure Blob Storage container using Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Azure"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/#page","headline":"Serve /static-assets from Azure Blob Storage · Cloudflare Rules docs","description":"Route requests with a URI path starting with /static-assets to an Azure Blob Storage container using Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Azure"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/cloud-connector/","name":"Cloud Connector"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/cloud-connector/examples/","name":"Cloud Connector examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/cloud-connector/examples/serve-static-assets-from-azure/","name":"Serve /static-assets from Azure Blob Storage"}}]}
 ```

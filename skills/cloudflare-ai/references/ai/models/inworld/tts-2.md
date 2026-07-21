@@ -1,7 +1,7 @@
 ---
 title: Inworld TTS 2
 description: Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. [whisper], [say excitedly]), and stronger multilingual support across 15 production languages plus 90+ experimental languages.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -345,6 +345,6 @@ Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-input
 Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-2/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-2/#page","headline":"Inworld TTS 2 (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. \\[whisper], \\[say excitedly]), and stronger multilingual support across 15 production languages plus 90+ experimental languages.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-2/#page","headline":"Inworld TTS 2 (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 with rich expressive speech, real-time latency, natural language steering (e.g. \\[whisper], \\[say excitedly]), and stronger multilingual support across 15 production languages plus 90+ experimental languages.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

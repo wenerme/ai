@@ -120,7 +120,7 @@ You can find a list of models that support structured outputs on the [models pag
 To ensure your chosen model supports structured outputs:
 
 1. Check the model's supported parameters on the [models page](https://openrouter.ai/models)
-2. Set `require_parameters: true` in your provider preferences (see [Provider Routing](/guides/routing/provider-selection))
+2. Set `require_parameters: true` in your provider preferences (see [Provider Routing](/docs/guides/routing/provider-selection))
 3. Include `response_format` and set `type: json_schema` in the required parameters
 
 ## Best Practices
@@ -305,4 +305,4 @@ When using structured outputs, you may encounter these scenarios:
 
 ## Response Healing
 
-For non-streaming requests using `response_format` with `type: "json_schema"`, you can enable the [Response Healing](/guides/features/plugins/response-healing) plugin to reduce the risk of invalid JSON when models return imperfect formatting. Learn more in the [Response Healing documentation](/guides/features/plugins/response-healing).
+For non-streaming requests using `response_format` with `type: "json_schema"`, you can enable the [Response Healing](/docs/guides/features/plugins/response-healing) plugin to reduce the risk of invalid JSON when models return imperfect formatting. Learn more in the [Response Healing documentation](/docs/guides/features/plugins/response-healing).

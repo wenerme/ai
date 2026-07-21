@@ -41,4 +41,4 @@ let value: GetUserActivityResponse = {
 
 | Field  | Type                                                                | Required             | Description            |
 | ------ | ------------------------------------------------------------------- | -------------------- | ---------------------- |
-| `data` | [models.ActivityItem](/agent-sdk/typescript/models/activityitem)\[] | :heavy\_check\_mark: | List of activity items |
+| `data` | [models.ActivityItem](/docs/agent-sdk/typescript/models/activityitem)\[] | :heavy\_check\_mark: | List of activity items |

@@ -1,7 +1,7 @@
 ---
 title: Using JSON
 description: Query 1.1.1.1 DNS over HTTPS using JSON format.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -113,6 +113,6 @@ The following tables have more information on each response field.
 | error | An explanation of the error that occurred. |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/#page","headline":"Using JSON | Cloudflare Docs","description":"Query 1.1.1.1 DNS over HTTPS using JSON format.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/#page","headline":"Using JSON | Cloudflare Docs","description":"Query 1.1.1.1 DNS over HTTPS using JSON format.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/encryption/","name":"Encryption"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/","name":"DNS over HTTPS"}},{"@type":"ListItem","position":5,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/make-api-requests/","name":"Make API requests to 1.1.1.1"}},{"@type":"ListItem","position":6,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/","name":"Using JSON"}}]}
 ```

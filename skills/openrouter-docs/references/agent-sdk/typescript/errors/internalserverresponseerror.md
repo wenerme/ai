@@ -25,5 +25,5 @@ import { InternalServerResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                                   | Required             | Description                           | Example                                            |
 | -------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------- | -------------------------------------------------- |
-| `error`  | [models.InternalServerResponseErrorData](/agent-sdk/typescript/models/internalserverresponseerrordata) | :heavy\_check\_mark: | Error data for InternalServerResponse | `{"code": 500,"message": "Internal Server Error"}` |
+| `error`  | [models.InternalServerResponseErrorData](/docs/agent-sdk/typescript/models/internalserverresponseerrordata) | :heavy\_check\_mark: | Error data for InternalServerResponse | `{"code": 500,"message": "Internal Server Error"}` |
 | `userId` | *string*                                                                                               | :heavy\_minus\_sign: | N/A                                   |                                                    |

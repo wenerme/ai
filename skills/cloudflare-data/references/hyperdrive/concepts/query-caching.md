@@ -1,7 +1,7 @@
 ---
 title: Query caching
 description: Hyperdrive automatically caches read queries to reduce database load and improve performance.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -236,6 +236,6 @@ id = "<YOUR_HYPERDRIVE_CACHE_DISABLED_CONFIGURATION_ID>"
 * For troubleshooting guidance, refer to [Troubleshoot and debug](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#page","headline":"Query caching · Cloudflare Hyperdrive docs","description":"Hyperdrive automatically caches read queries to reduce database load and improve performance.","url":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#page","headline":"Query caching · Cloudflare Hyperdrive docs","description":"Hyperdrive automatically caches read queries to reduce database load and improve performance.","url":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/concepts/query-caching/","name":"Query caching"}}]}
 ```

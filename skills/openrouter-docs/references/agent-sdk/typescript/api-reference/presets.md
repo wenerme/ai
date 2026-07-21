@@ -112,14 +112,14 @@ run();
 
 | Parameter              | Type                                                                                                                                 | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.CreatePresetsChatCompletionsRequest](/agent-sdk/typescript/api-reference/operations/createpresetschatcompletionsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.CreatePresetsChatCompletionsRequest](/docs/agent-sdk/typescript/api-reference/operations/createpresetschatcompletionsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                                       | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                              | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                   | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                                   | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CreatePresetFromInferenceResponse](/agent-sdk/typescript/api-reference/models/createpresetfrominferenceresponse)>**
+**Promise\<[models.CreatePresetFromInferenceResponse](/docs/agent-sdk/typescript/api-reference/models/createpresetfrominferenceresponse)>**
 
 ### Errors
 
@@ -218,14 +218,14 @@ run();
 
 | Parameter              | Type                                                                                                                   | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.CreatePresetsMessagesRequest](/agent-sdk/typescript/api-reference/operations/createpresetsmessagesrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.CreatePresetsMessagesRequest](/docs/agent-sdk/typescript/api-reference/operations/createpresetsmessagesrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                         | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CreatePresetFromInferenceResponse](/agent-sdk/typescript/api-reference/models/createpresetfrominferenceresponse)>**
+**Promise\<[models.CreatePresetFromInferenceResponse](/docs/agent-sdk/typescript/api-reference/models/createpresetfrominferenceresponse)>**
 
 ### Errors
 
@@ -312,14 +312,14 @@ run();
 
 | Parameter              | Type                                                                                                                     | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.CreatePresetsResponsesRequest](/agent-sdk/typescript/api-reference/operations/createpresetsresponsesrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.CreatePresetsResponsesRequest](/docs/agent-sdk/typescript/api-reference/operations/createpresetsresponsesrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                                           | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                  | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                                       | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                                       | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CreatePresetFromInferenceResponse](/agent-sdk/typescript/api-reference/models/createpresetfrominferenceresponse)>**
+**Promise\<[models.CreatePresetFromInferenceResponse](/docs/agent-sdk/typescript/api-reference/models/createpresetfrominferenceresponse)>**
 
 ### Errors
 

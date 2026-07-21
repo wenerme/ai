@@ -1,7 +1,7 @@
 ---
 title: Always Online
 description: Serve cached pages when your origin server is unavailable.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -55,6 +55,6 @@ When turning on Always Online, you are also enabling the Internet Archive integr
 Refer to [Always Online](https://developers.cloudflare.com/cache/troubleshooting/always-online/) for best practices, limitations, and FAQs.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/always-online/#page","headline":"Always Online · Cloudflare Cache (CDN) docs","description":"Serve cached pages when your origin server is unavailable.","url":"https://developers.cloudflare.com/cache/how-to/always-online/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/always-online/#page","headline":"Always Online · Cloudflare Cache (CDN) docs","description":"Serve cached pages when your origin server is unavailable.","url":"https://developers.cloudflare.com/cache/how-to/always-online/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/always-online/","name":"Always Online"}}]}
 ```

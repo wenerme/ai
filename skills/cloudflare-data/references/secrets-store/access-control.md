@@ -1,7 +1,7 @@
 ---
 title: Secrets Store access control
 description: Learn about role-based access control with Cloudflare Secrets Store
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ A request to bind or associate a secret with a service will be rejected if that 
 You can set scopes when [creating a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/) using the dashboard, the API (`scopes` field), or Wrangler (`--scopes` flag).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/access-control/#page","headline":"Secrets Store access control · Cloudflare Secrets Store docs","description":"Learn about role-based access control with Cloudflare Secrets Store","url":"https://developers.cloudflare.com/secrets-store/access-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/access-control/#page","headline":"Secrets Store access control · Cloudflare Secrets Store docs","description":"Learn about role-based access control with Cloudflare Secrets Store","url":"https://developers.cloudflare.com/secrets-store/access-control/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/secrets-store/","name":"Secrets Store"}},{"@type":"ListItem","position":3,"item":{"@id":"/secrets-store/access-control/","name":"Secrets Store access control"}}]}
 ```

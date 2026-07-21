@@ -31,4 +31,4 @@ let value: StreamLogprob = {
 | `bytes`       | *number*\[]                                                                                             | :heavy\_minus\_sign: | N/A         |
 | `logprob`     | *number*                                                                                                | :heavy\_check\_mark: | N/A         |
 | `token`       | *string*                                                                                                | :heavy\_check\_mark: | N/A         |
-| `topLogprobs` | [models.StreamLogprobTopLogprob](/agent-sdk/typescript/api-reference/models/streamlogprobtoplogprob)\[] | :heavy\_minus\_sign: | N/A         |
+| `topLogprobs` | [models.StreamLogprobTopLogprob](/docs/agent-sdk/typescript/api-reference/models/streamlogprobtoplogprob)\[] | :heavy\_minus\_sign: | N/A         |

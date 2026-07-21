@@ -29,4 +29,4 @@ let value: OpenResponsesRequestPluginWeb = {
 | `enabled`      | *boolean*                                                              | :heavy\_minus\_sign: | Set to false to disable the web-search plugin for this request. Defaults to true. |
 | `maxResults`   | *number*                                                               | :heavy\_minus\_sign: | N/A                                                                               |
 | `searchPrompt` | *string*                                                               | :heavy\_minus\_sign: | N/A                                                                               |
-| `engine`       | [models.WebSearchEngine](/agent-sdk/typescript/models/websearchengine) | :heavy\_minus\_sign: | The search engine to use for web search.                                          |
+| `engine`       | [models.WebSearchEngine](/docs/agent-sdk/typescript/models/websearchengine) | :heavy\_minus\_sign: | The search engine to use for web search.                                          |

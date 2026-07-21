@@ -1,7 +1,7 @@
 ---
 title: Account and zone analytics
 description: View traffic metrics for accounts and zones.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ Visit the following pages to learn more about account and zone analytics:
 * [ Zone Analytics ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/#page","headline":"Account and zone analytics · Cloudflare Analytics docs","description":"View traffic metrics for accounts and zones.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/#page","headline":"Account and zone analytics · Cloudflare Analytics docs","description":"View traffic metrics for accounts and zones.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/account-and-zone-analytics/","name":"Account and zone analytics"}}]}
 ```

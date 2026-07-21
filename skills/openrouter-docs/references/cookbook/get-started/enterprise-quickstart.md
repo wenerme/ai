@@ -14,7 +14,7 @@ To create an organization, navigate to [Settings > Preferences](https://openrout
 
 Key organization capabilities include shared credit pools for centralized billing, role-based access control (Admin and Member roles), and organization-wide activity tracking.
 
-For complete details on organization setup and management, see the [Organization Management](/cookbook/administration/organization-management) guide.
+For complete details on organization setup and management, see the [Organization Management](/docs/cookbook/administration/organization-management) guide.
 
 ## 2. Set Up Workspaces
 
@@ -28,7 +28,7 @@ Your existing setup starts in a **Default workspace** — all organization membe
 2. Click the workspace picker and select **[Create Workspace](https://openrouter.ai/workspaces/new)**
 3. Name your workspace and add a description
 
-Only organization admins can create and delete workspaces. You can also create and manage workspaces programmatically using the [Workspaces API](/api/api-reference/workspaces/list-workspaces).
+Only organization admins can create and delete workspaces. You can also create and manage workspaces programmatically using the [Workspaces API](/docs/api/api-reference/workspaces/list-workspaces).
 
 ### What's Scoped to Each Workspace
 
@@ -42,11 +42,11 @@ Each workspace has independent settings for:
 * **Plugins** — Configure default plugin behavior for API requests in each workspace.
 * **Observability** — Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
 * **Members** — Control which team members have access to each workspace.
-* **[Budgets](/guides/features/workspaces/workspace-budgets)** — Set daily, weekly, monthly, or lifetime spending limits per workspace.
+* **[Budgets](/docs/guides/features/workspaces/workspace-budgets)** — Set daily, weekly, monthly, or lifetime spending limits per workspace.
 
 Account-level settings like billing, activity, logs, management keys, and privacy policies apply globally across all workspaces.
 
-For complete details, see the [Workspaces](/guides/features/workspaces) guide.
+For complete details, see the [Workspaces](/docs/guides/features/workspaces) guide.
 
 ## 3. Configure API Key Management
 
@@ -56,15 +56,15 @@ Enterprise deployments typically require programmatic API key management for aut
 
 Create a [Management API key](https://openrouter.ai/settings/management-keys) to manage API keys programmatically. This enables automated key creation for customer instances, programmatic key rotation for security compliance, and usage monitoring with automatic limit enforcement.
 
-See [Management API Keys](/guides/overview/auth/management-api-keys) for the full API reference and code examples.
+See [Management API Keys](/docs/guides/overview/auth/management-api-keys) for the full API reference and code examples.
 
 ### API Key Rotation
 
 Regular key rotation limits the impact of compromised credentials. OpenRouter's Management API supports zero-downtime rotation: create a new key, update your applications, then delete the old key.
 
-If you use [BYOK (Bring Your Own Key)](/guides/overview/auth/byok), you can rotate OpenRouter API keys without touching your provider credentials, simplifying key management.
+If you use [BYOK (Bring Your Own Key)](/docs/guides/overview/auth/byok), you can rotate OpenRouter API keys without touching your provider credentials, simplifying key management.
 
-See [API Key Rotation](/cookbook/administration/api-key-rotation) for step-by-step instructions.
+See [API Key Rotation](/docs/cookbook/administration/api-key-rotation) for step-by-step instructions.
 
 ## 4. Implement Security Controls
 
@@ -74,21 +74,21 @@ Guardrails let organizations control how members and API keys use OpenRouter. Co
 
 Guardrails can be assigned at the workspace level (applying to all traffic in that workspace), to organization members (baseline for all their keys), or directly to specific API keys for granular control. When multiple guardrails apply, stricter rules always win.
 
-See [Guardrails](/guides/features/guardrails) for configuration details and the [Guardrails API reference](/api/api-reference/guardrails/list-guardrails) for programmatic management.
+See [Guardrails](/docs/guides/features/guardrails) for configuration details and the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for programmatic management.
 
 ### Zero Data Retention (ZDR)
 
-Zero Data Retention ensures providers do not store your prompts or responses. ZDR can be enforced per model group (Anthropic, OpenAI, Google, xAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/guides/features/guardrails), or per-request using the `zdr` parameter.
+Zero Data Retention ensures providers do not store your prompts or responses. ZDR can be enforced per model group (Anthropic, OpenAI, Google, xAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request using the `zdr` parameter.
 
 OpenRouter itself has a ZDR policy and does not retain your prompts unless you explicitly opt in to prompt logging.
 
-See [Zero Data Retention](/guides/features/zdr) for the full list of ZDR-compatible endpoints, per-model-group configuration, and request-level options.
+See [Zero Data Retention](/docs/guides/features/zdr) for the full list of ZDR-compatible endpoints, per-model-group configuration, and request-level options.
 
 ### Data Privacy
 
 OpenRouter does not store your prompts or responses unless you opt in to prompt logging. Only metadata (token counts, latency, etc.) is stored for reporting and your activity feed.
 
-See [Data Collection](/guides/privacy/data-collection) and [Provider Logging](/guides/privacy/provider-logging) for complete privacy documentation.
+See [Data Collection](/docs/guides/privacy/data-collection) and [Provider Logging](/docs/guides/privacy/provider-logging) for complete privacy documentation.
 
 ## 5. Configure Presets
 
@@ -113,7 +113,7 @@ This enables rapid iteration — switch models, adjust prompts, or change provid
 
 Presets are scoped to workspaces, so different teams or environments can maintain their own configurations independently.
 
-See [Presets](/guides/features/presets) for the full guide including creating presets from inference requests and version management.
+See [Presets](/docs/guides/features/presets) for the full guide including creating presets from inference requests and version management.
 
 ## 6. Set Up Observability
 
@@ -123,7 +123,7 @@ Broadcast automatically sends traces from your OpenRouter requests to external o
 
 Configure broadcast at [Settings > Observability](https://openrouter.ai/settings/observability). You can filter traces by API key, set sampling rates, and configure up to 5 destinations of the same type for different environments.
 
-See [Broadcast](/guides/features/broadcast) for setup instructions and destination-specific walkthroughs.
+See [Broadcast](/docs/guides/features/broadcast) for setup instructions and destination-specific walkthroughs.
 
 ### Input & Output Logging
 
@@ -131,13 +131,13 @@ Input & Output Logging lets you privately save and review the full content of yo
 
 Enable it in your workspace's [Observability settings](https://openrouter.ai/workspaces/default/observability) by toggling **Input & Output Logging**. For organizations, only admins can view and toggle this setting.
 
-See [Input & Output Logging](/guides/features/input-output-logging) for storage details, privacy guarantees, and comparison with Broadcast.
+See [Input & Output Logging](/docs/guides/features/input-output-logging) for storage details, privacy guarantees, and comparison with Broadcast.
 
 ### User Tracking
 
 Track your end-users by including a `user` parameter in API requests. This improves caching performance (sticky routing per user) and enables user-level analytics in your activity feed and exports.
 
-See [User Tracking](/cookbook/administration/user-tracking) for implementation details.
+See [User Tracking](/docs/cookbook/administration/user-tracking) for implementation details.
 
 ## 7. Monitor Usage and Costs
 
@@ -145,13 +145,13 @@ See [User Tracking](/cookbook/administration/user-tracking) for implementation d
 
 Every API response includes detailed usage information: token counts (prompt, completion, reasoning, cached), cost in credits, and timing data. This enables real-time cost tracking without additional API calls.
 
-See [Usage Accounting](/cookbook/administration/usage-accounting) for response format details and code examples.
+See [Usage Accounting](/docs/cookbook/administration/usage-accounting) for response format details and code examples.
 
 ### Activity Export
 
 Export aggregated usage data as CSV or PDF from the [Activity page](https://openrouter.ai/activity). Filter by time period and group by Model, API Key, or Creator (organization member) for detailed reporting.
 
-See [Activity Export](/cookbook/administration/activity-export) for export instructions.
+See [Activity Export](/docs/cookbook/administration/activity-export) for export instructions.
 
 ## 8. Optimize for Reliability
 
@@ -159,22 +159,22 @@ See [Activity Export](/cookbook/administration/activity-export) for export instr
 
 OpenRouter monitors provider health in real-time and automatically routes around outages. Configure fallback chains by specifying multiple models, and customize provider selection based on cost, latency, or specific provider preferences.
 
-See [Provider Selection](/guides/routing/provider-selection) and [Model Fallbacks](/guides/routing/model-fallbacks) for configuration options.
+See [Provider Selection](/docs/guides/routing/provider-selection) and [Model Fallbacks](/docs/guides/routing/model-fallbacks) for configuration options.
 
 ### Uptime Optimization
 
 OpenRouter tracks response times, error rates, and availability across all providers. This data powers intelligent routing decisions and provides transparency about service reliability.
 
-See [Uptime Optimization](/guides/best-practices/uptime-optimization) for details on how OpenRouter maximizes availability.
+See [Uptime Optimization](/docs/guides/best-practices/uptime-optimization) for details on how OpenRouter maximizes availability.
 
 ## Next Steps
 
 Once your organization is configured, explore these additional resources:
 
-* [Quickstart](/cookbook/get-started/quickstart) for basic API integration examples
-* [Structured Outputs](/guides/features/structured-outputs) for JSON schema enforcement
-* [Tool Calling](/guides/features/tool-calling) for function calling capabilities
-* [Prompt Caching](/guides/best-practices/prompt-caching) for cost optimization
-* [Latency and Performance](/guides/best-practices/latency-and-performance) for performance tuning
+* [Quickstart](/docs/cookbook/get-started/quickstart) for basic API integration examples
+* [Structured Outputs](/docs/guides/features/structured-outputs) for JSON schema enforcement
+* [Tool Calling](/docs/guides/features/tool-calling) for function calling capabilities
+* [Prompt Caching](/docs/guides/best-practices/prompt-caching) for cost optimization
+* [Latency and Performance](/docs/guides/best-practices/latency-and-performance) for performance tuning
 
 For enterprise sales inquiries or custom requirements, contact our sales team at [openrouter.ai/enterprise](https://openrouter.ai/enterprise).

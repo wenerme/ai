@@ -1,7 +1,7 @@
 ---
 title: Use with other Cloudflare products
 description: Combine Dedicated CDN Egress IPs with Access, CNI, Spectrum, and Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ For [connect() requests](https://developers.cloudflare.com/workers/runtime-apis/
 1. When an attacker knows your origin server IP and uses it to directly interact with the target application. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/other-products/#page","headline":"Use with other Cloudflare products · Cloudflare Smart Shield docs","description":"Combine Dedicated CDN Egress IPs with Access, CNI, Spectrum, and Workers.","url":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/other-products/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration","TCP","UDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/other-products/#page","headline":"Use with other Cloudflare products · Cloudflare Smart Shield docs","description":"Combine Dedicated CDN Egress IPs with Access, CNI, Spectrum, and Workers.","url":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/other-products/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration","TCP","UDP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/configuration/dedicated-egress-ips/","name":"Dedicated CDN Egress IPs"}},{"@type":"ListItem","position":5,"item":{"@id":"/smart-shield/configuration/dedicated-egress-ips/other-products/","name":"Use with other Cloudflare products"}}]}
 ```

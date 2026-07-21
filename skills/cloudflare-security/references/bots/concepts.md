@@ -1,7 +1,7 @@
 ---
 title: Concepts
 description: Core concepts for Cloudflare bot solutions, including scores, tags, and detection engines.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ Refer to the following pages for more information on bot concepts:
 * [ Bot detection engines ](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/#page","headline":"Concepts · Cloudflare bot solutions docs","description":"Core concepts for Cloudflare bot solutions, including scores, tags, and detection engines.","url":"https://developers.cloudflare.com/bots/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/#page","headline":"Concepts · Cloudflare bot solutions docs","description":"Core concepts for Cloudflare bot solutions, including scores, tags, and detection engines.","url":"https://developers.cloudflare.com/bots/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/concepts/","name":"Concepts"}}]}
 ```

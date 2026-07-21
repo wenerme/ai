@@ -33,5 +33,5 @@ let value: ListGuardrailsResponse = {
 
 | Field        | Type                                                                        | Required             | Description                | Example |
 | ------------ | --------------------------------------------------------------------------- | -------------------- | -------------------------- | ------- |
-| `data`       | [models.Guardrail](/agent-sdk/typescript/api-reference/models/guardrail)\[] | :heavy\_check\_mark: | List of guardrails         |         |
+| `data`       | [models.Guardrail](/docs/agent-sdk/typescript/api-reference/models/guardrail)\[] | :heavy\_check\_mark: | List of guardrails         |         |
 | `totalCount` | *number*                                                                    | :heavy\_check\_mark: | Total number of guardrails | 25      |

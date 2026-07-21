@@ -1,7 +1,7 @@
 ---
 title: Extended DNS error codes
 description: Extended DNS error codes returned by 1.1.1.1.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -38,6 +38,6 @@ dig @1.1.1.1 example.com A
 | 30          | Invalid Query Type           | EDE: 30 (Invalid Query Type): Invalid Query Type                                                                                                           | The record type in the request cannot give a valid answer. If this is returned for standard query types, such as A or AAAA records, please reach out to the [community forum](https://community.cloudflare.com/c/reliability/dns-1111/47).                                                                                                                                                                                                                                                                                                                                            |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/#page","headline":"Extended DNS error codes | Cloudflare Docs","description":"Extended DNS error codes returned by 1.1.1.1.","url":"https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/#page","headline":"Extended DNS error codes | Cloudflare Docs","description":"Extended DNS error codes returned by 1.1.1.1.","url":"https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/infrastructure/","name":"Infrastructure"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/infrastructure/extended-dns-error-codes/","name":"Extended DNS error codes"}}]}
 ```

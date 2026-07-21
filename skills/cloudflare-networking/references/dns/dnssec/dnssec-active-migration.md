@@ -1,7 +1,7 @@
 ---
 title: Migrate an existing zone with DNSSEC enabled
 description: Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -176,6 +176,6 @@ multisigner.info. 3600 IN DS 48553 13 2 893709B51A9C53D011A4054B15FC5454BEDF68E7
 In this example, both DS records have a TTL of `3600` seconds. Cloudflare's DS record always has the key tag set to `2371`, so the second line of the response is the DS record of the other provider.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/#page","headline":"DNSSEC migration tutorial · Cloudflare DNS docs","description":"Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/#page","headline":"DNSSEC migration tutorial · Cloudflare DNS docs","description":"Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dnssec/","name":"DNSSEC"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/dnssec/dnssec-active-migration/","name":"Migrate an existing zone with DNSSEC enabled"}}]}
 ```

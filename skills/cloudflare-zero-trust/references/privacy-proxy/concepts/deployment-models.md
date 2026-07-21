@@ -1,7 +1,7 @@
 ---
 title: Deployment models
 description: Compare Privacy Proxy single-hop and double-hop deployment architectures for different privacy and operational requirements.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -123,6 +123,6 @@ Double-hop requires you to operate and maintain a proxy. If you prefer a fully m
 [Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to discuss which deployment model fits your use case.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/#page","headline":"Deployment models · Cloudflare Privacy Proxy docs","description":"Compare Privacy Proxy single-hop and double-hop deployment architectures for different privacy and operational requirements.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/#page","headline":"Deployment models · Cloudflare Privacy Proxy docs","description":"Compare Privacy Proxy single-hop and double-hop deployment architectures for different privacy and operational requirements.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/concepts/deployment-models/","name":"Deployment models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Metrics and analytics
 description: Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -343,6 +343,6 @@ The quantity `queryEfficiency` measures how efficient your query was. It is calc
 Generally, you should try to get `queryEfficiency` as close to `1` as possible. Refer to [Use indexes](https://developers.cloudflare.com/d1/best-practices/use-indexes/) for more information on efficient querying.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare D1 docs","description":"Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/d1/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare D1 docs","description":"Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/d1/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
 ```

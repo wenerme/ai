@@ -78,9 +78,9 @@ You need:
 
 Use the API reference pages as the source of truth for exact fields:
 
-* [Create video generation request](/api/api-reference/video-generation/submit-a-video-generation-request)
-* [List video generation models](/api/api-reference/video-generation/list-all-video-generation-models)
-* [TypeScript SDK video generation reference](/client-sdks/typescript/sdks/videogeneration/README)
+* [Create video generation request](/docs/api/api-reference/video-generation/submit-a-video-generation-request)
+* [List video generation models](/docs/api/api-reference/video-generation/list-all-video-generation-models)
+* [TypeScript SDK video generation reference](/docs/client-sdks/typescript/sdks/videogeneration/README)
 
 <Warning>
   Submitting `POST /api/v1/videos` starts a real video generation job and may
@@ -127,10 +127,10 @@ Actual output from the model-list call:
 
 Each model includes the values you need for routing decisions. Use the
 [List video generation models API
-reference](/api/api-reference/video-generation/list-all-video-generation-models) as the
+reference](/docs/api/api-reference/video-generation/list-all-video-generation-models) as the
 source of truth for the endpoint response and model metadata fields. If your app
 uses the TypeScript SDK, see the generated [`listVideosModels` SDK
-reference](/client-sdks/typescript/sdks/videogeneration/README#listvideosmodels)
+reference](/docs/client-sdks/typescript/sdks/videogeneration/README#listvideosmodels)
 for the SDK method shape.
 
 ## Step 2: Filter by the job you want to run
@@ -530,4 +530,4 @@ Before submission, you should see a request body whose model supports every
 capability you filtered for. If you submit the request, you should see a
 response with a video job `id`, a `polling_url`, and an initial status such as
 `pending`. To wait for the playable MP4, use the polling and download helper
-from [Generate and Download a Video from Text](/cookbook/video-generation/text-to-video).
+from [Generate and Download a Video from Text](/docs/cookbook/video-generation/text-to-video).

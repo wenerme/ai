@@ -1,7 +1,7 @@
 ---
 title: Scheduled Handler
 description: Run Workers on a recurring schedule using the scheduled() handler and Cron Triggers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -182,6 +182,6 @@ Note
 The runtime waits for the promise returned by the `scheduled()` handler to resolve (up to the 15-minute duration limit). You do not need to use `waitUntil()` for the runtime to wait for a single asynchronous task. `waitUntil()` is most useful when you need to run multiple concurrent tasks, or when you want the outcome of a specific promise to be recorded as the Cron Trigger invocation status.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/#page","headline":"Scheduled Handler · Cloudflare Workers docs","description":"Run Workers on a recurring schedule using the scheduled() handler and Cron Triggers.","url":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/#page","headline":"Scheduled Handler · Cloudflare Workers docs","description":"Run Workers on a recurring schedule using the scheduled() handler and Cron Triggers.","url":"https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/handlers/","name":"Handlers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/handlers/scheduled/","name":"Scheduled Handler"}}]}
 ```

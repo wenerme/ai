@@ -1,7 +1,7 @@
 ---
 title: Dimensions
 description: Dimensions available for filtering and grouping Web Analytics data.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -43,6 +43,6 @@ Below you can find a list of the different dimensions you can use to filter Web 
 | Restore                 | ✅          | The browser was able to restore this page, for example when a tab has been paused due to inactivity.                                                                                                                                                                                                                                                         |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/#page","headline":"Dimensions · Cloudflare Web Analytics docs","description":"Dimensions available for filtering and grouping Web Analytics data.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/#page","headline":"Dimensions · Cloudflare Web Analytics docs","description":"Dimensions available for filtering and grouping Web Analytics data.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/data-metrics/","name":"Data and metrics"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/data-metrics/dimensions/","name":"Dimensions"}}]}
 ```

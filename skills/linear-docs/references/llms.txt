@@ -23,6 +23,7 @@ Get an overview of Linear's features, integrations, and how to use them.
 ### AI
 
 - [Linear Agent](https://linear.app/docs/linear-agent.md)
+- [Loops](https://linear.app/docs/loops.md)
 - [AI Agents](https://linear.app/docs/agents-in-linear.md)
 - [Assign and delegate issues](https://linear.app/docs/assigning-issues.md)
 - [Triage Intelligence](https://linear.app/docs/triage-intelligence.md)

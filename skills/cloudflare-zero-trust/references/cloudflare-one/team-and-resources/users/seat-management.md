@@ -1,7 +1,7 @@
 ---
 title: Seat management
 description: Seat management in Zero Trust.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ If a user is removed but authenticates later, they will consume a seat again.
 For more information about removing a user for Access and Gateway, refer to the [FAQ](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#removing-users).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/#page","headline":"Seat management · Cloudflare One docs","description":"Seat management in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/#page","headline":"Seat management · Cloudflare One docs","description":"Seat management in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/users/","name":"Users"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/users/seat-management/","name":"Seat management"}}]}
 ```

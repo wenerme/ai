@@ -1,7 +1,7 @@
 ---
 title: Route filtering and RPKI
 description: How route filtering and RPKI protect against route hijacking.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ When you register your prefix with one of the five Regional Internet Registries 
 1. AFRINIC, APNIC, ARIN, LACNIC, and RIPE. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#page","headline":"Route filtering and RPKI · Cloudflare BYOIP docs","description":"How route filtering and RPKI protect against route hijacking.","url":"https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#page","headline":"Route filtering and RPKI · Cloudflare BYOIP docs","description":"How route filtering and RPKI protect against route hijacking.","url":"https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/concepts/route-filtering-rpki/","name":"Route filtering and RPKI"}}]}
 ```

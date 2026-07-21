@@ -54,16 +54,16 @@ You can find STT models in several ways:
 
 ### Via the API
 
-Use the `output_modalities` query parameter on the [Models API](/api/api-reference/models/list-all-models-and-their-properties) to discover STT models:
+Use the `output_modalities` query parameter on the [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties) to discover STT models:
 
 ```bash lines theme={null}
 # List only STT models
-curl "https://openrouter.ai/api/v1/docs/guides/overview/models?output_modalities=transcription"
+curl "https://openrouter.ai/api/v1/models?output_modalities=transcription"
 ```
 
 ### On the Models Page
 
-Visit the [Models page](/guides/overview/models) and filter by output modalities to find models capable of audio transcription. You can also browse the [Speech-to-Text collection](/collections/speech-to-text-models) for a curated list.
+Visit the [Models page](/docs/guides/overview/models) and filter by output modalities to find models capable of audio transcription. You can also browse the [Speech-to-Text collection](https://openrouter.ai/collections/speech-to-text-models) for a curated list.
 
 ## API Usage
 
@@ -290,11 +290,11 @@ STT models use different pricing strategies depending on the provider:
 * **Duration-based** (e.g., OpenAI Whisper): Priced per second of audio input
 * **Token-based** (e.g., newer OpenAI models): Priced per input/output token, similar to text models
 
-You can check the cost for each model on the [Models page](/guides/overview/models) or via the [Models API](/api/api-reference/models/list-all-models-and-their-properties). The `usage.cost` field in the response shows the actual cost for each request.
+You can check the cost for each model on the [Models page](/docs/guides/overview/models) or via the [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties). The `usage.cost` field in the response shows the actual cost for each request.
 
 ## BYOK (Bring Your Own Key)
 
-STT supports [BYOK](/guides/overview/auth/byok), allowing you to use your own provider API keys. When configured, requests are routed directly to the provider using your key, and OpenRouter charges only its platform fee rather than the per-usage model cost.
+STT supports [BYOK](/docs/guides/overview/auth/byok), allowing you to use your own provider API keys. When configured, requests are routed directly to the provider using your key, and OpenRouter charges only its platform fee rather than the per-usage model cost.
 
 ## Playground
 
@@ -306,7 +306,7 @@ OpenRouter supports two ways to process audio:
 
 1. **Speech-to-Text** (this page): A dedicated `/api/v1/audio/transcriptions` endpoint optimized for transcription. Returns structured JSON with the transcribed text and usage data. Best for converting audio to text.
 
-2. **Audio input via Chat Completions** ([Audio docs](/guides/overview/multimodal/audio)): Send audio as part of a `/api/v1/chat/completions` request using the `input_audio` content type. The model processes the audio alongside text and responds conversationally. Best for audio analysis, question answering about audio content, or combining audio with other modalities.
+2. **Audio input via Chat Completions** ([Audio docs](/docs/guides/overview/multimodal/audio)): Send audio as part of a `/api/v1/chat/completions` request using the `input_audio` content type. The model processes the audio alongside text and responds conversationally. Best for audio analysis, question answering about audio content, or combining audio with other modalities.
 
 ## Best Practices
 
@@ -328,7 +328,7 @@ OpenRouter supports two ways to process audio:
 
 **Model not found?**
 
-* Use the [Models page](/guides/overview/models) or the [Models API](/api/api-reference/models/list-all-models-and-their-properties) with `output_modalities=transcription` to find available STT models
+* Use the [Models page](/docs/guides/overview/models) or the [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties) with `output_modalities=transcription` to find available STT models
 * Verify the model slug is correct (e.g., `openai/whisper-1`, not `whisper-1`)
 
 **Authentication error?**

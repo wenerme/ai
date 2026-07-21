@@ -1,7 +1,7 @@
 ---
 title: Control costs and improve quality
 description: Reduce AI inference costs and improve reliability with response caching, rate limiting, and unified provider analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -37,6 +37,6 @@ Store and query time-series analytics data from Workers. [Learn more about Worke
 3. [Workers Analytics Engine get started](https://developers.cloudflare.com/analytics/analytics-engine/get-started/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/ai/control-costs/#page","headline":"Control costs and improve quality · Cloudflare use cases","description":"Reduce AI inference costs and improve reliability with response caching, rate limiting, and unified provider analytics.","url":"https://developers.cloudflare.com/use-cases/ai/control-costs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/ai/control-costs/#page","headline":"Control costs and improve quality · Cloudflare use cases","description":"Reduce AI inference costs and improve reliability with response caching, rate limiting, and unified provider analytics.","url":"https://developers.cloudflare.com/use-cases/ai/control-costs/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/ai/","name":"AI applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/ai/control-costs/","name":"Control costs and improve quality"}}]}
 ```

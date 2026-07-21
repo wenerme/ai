@@ -1,7 +1,7 @@
 ---
 title: Potential ISP blocking of Cloudflare IP addresses
 description: Understand ISP blocking of shared Cloudflare IPs.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ It is important to note that an ISP-level block is distinct from other types of 
 For information on individual users being challenged when visiting Cloudflare-protected websites, refer to [Challenges on Cloudflare-protected sites](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/#challenges-on-cloudflare-protected-sites).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/potential-isp-blocking/#page","headline":"Potential ISP blocking of Cloudflare IP addresses · Cloudflare Support docs","description":"Understand ISP blocking of shared Cloudflare IPs.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/potential-isp-blocking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/potential-isp-blocking/#page","headline":"Potential ISP blocking of Cloudflare IP addresses · Cloudflare Support docs","description":"Understand ISP blocking of shared Cloudflare IPs.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/potential-isp-blocking/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/general-troubleshooting/","name":"General Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/general-troubleshooting/potential-isp-blocking/","name":"Potential ISP blocking of Cloudflare IP addresses"}}]}
 ```

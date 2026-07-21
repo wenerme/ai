@@ -1,7 +1,7 @@
 ---
 title: Cloudflare One integration
 description: Learn how to integrate Cloudflare WAN (formerly Magic WAN) with other Cloudflare Cloudflare One products, such as Cloudflare Gateway and the Cloudflare One Client.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ Review the tutorials to learn how to use Cloudflare WAN with these Cloudflare On
 If you want a deep dive into key architecture and functionalities aspects of Cloudflare One, and learn more about Cloudflare WAN and its structure, refer to [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/).
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/#page","headline":"Cloudflare One integration tutorials · Cloudflare WAN docs","description":"Learn how to integrate Cloudflare WAN (formerly Magic WAN) with other Cloudflare Cloudflare One products, such as Cloudflare Gateway and the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/#page","headline":"Cloudflare One integration tutorials · Cloudflare WAN docs","description":"Learn how to integrate Cloudflare WAN (formerly Magic WAN) with other Cloudflare Cloudflare One products, such as Cloudflare Gateway and the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/zero-trust/","name":"Cloudflare One integration"}}]}
 ```

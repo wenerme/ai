@@ -1,7 +1,7 @@
 ---
 title: How to
 description: Create, update, duplicate, and delete secrets using the dashboard, API, or Wrangler.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -162,6 +162,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/st
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#page","headline":"How to · Cloudflare Secrets Store docs","description":"Create, update, duplicate, and delete secrets using the dashboard, API, or Wrangler.","url":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#page","headline":"How to · Cloudflare Secrets Store docs","description":"Create, update, duplicate, and delete secrets using the dashboard, API, or Wrangler.","url":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/secrets-store/","name":"Secrets Store"}},{"@type":"ListItem","position":3,"item":{"@id":"/secrets-store/manage-secrets/","name":"Manage account secrets"}},{"@type":"ListItem","position":4,"item":{"@id":"/secrets-store/manage-secrets/how-to/","name":"How to"}}]}
 ```

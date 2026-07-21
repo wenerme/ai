@@ -29,5 +29,5 @@ let value: Schema2ReasoningText = {
 | `text`      | *string*                                               | :heavy\_minus\_sign: | N/A         |
 | `signature` | *string*                                               | :heavy\_minus\_sign: | N/A         |
 | `id`        | *string*                                               | :heavy\_minus\_sign: | N/A         |
-| `format`    | [models.Schema4](/agent-sdk/typescript/models/schema4) | :heavy\_minus\_sign: | N/A         |
+| `format`    | [models.Schema4](/docs/agent-sdk/typescript/models/schema4) | :heavy\_minus\_sign: | N/A         |
 | `index`     | *number*                                               | :heavy\_minus\_sign: | N/A         |

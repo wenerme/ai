@@ -1,7 +1,7 @@
 ---
 title: State Management
 description: Manage and synchronize meeting state across RealtimeKit UI Kit components.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -832,6 +832,6 @@ For the full list of available properties, refer to the [Core SDK meeting object
 * **Understand the difference**: `useRealtimeKitSelector` provides access to **Core SDK meeting state** (participants, media, room state). The UI Kit handles its own internal UI state through the `RtkMeeting` component.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/#page","headline":"State Management · Cloudflare Realtime docs","description":"Manage and synchronize meeting state across RealtimeKit UI Kit components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/#page","headline":"State Management · Cloudflare Realtime docs","description":"Manage and synchronize meeting state across RealtimeKit UI Kit components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/state-management/","name":"State Management"}}]}
 ```

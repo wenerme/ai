@@ -1,7 +1,7 @@
 ---
 title: Workers Binding API
 description: Query D1 databases from a Cloudflare Worker using the D1 Binding API for prepared statements, batching, and type-safe results.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -200,6 +200,6 @@ Change the URL to test the various D1 Worker Binding APIs.
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/d1/worker-api/#page","headline":"Workers Binding API · Cloudflare D1 docs","description":"Query D1 databases from a Cloudflare Worker using the D1 Binding API for prepared statements, batching, and type-safe results.","url":"https://developers.cloudflare.com/d1/worker-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/d1/worker-api/#page","headline":"Workers Binding API · Cloudflare D1 docs","description":"Query D1 databases from a Cloudflare Worker using the D1 Binding API for prepared statements, batching, and type-safe results.","url":"https://developers.cloudflare.com/d1/worker-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/worker-api/","name":"Workers Binding API"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Certificate and hostname priority
 description: Learn about how Cloudflare decides which certificate and associated SSL/TLS settings to apply to individual hostnames.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -88,6 +88,6 @@ This customer is also using a SaaS provider that uses Cloudflare for SaaS. The S
 If the provider is using a wildcard custom hostname, then the original customer's plan limits will take precedence over the provider's plan limits (Cloudflare will treat the zone as a Free zone). To apply the Enterprise limits through Cloudflare for SaaS, the original customer's zone would need to either use a [DNS-only](https://developers.cloudflare.com/dns/proxy-status/) record or the SaaS provider would need to use an exact hostname match.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/#page","headline":"Certificate and hostname priority · Cloudflare SSL/TLS docs","description":"Learn about how Cloudflare decides which certificate and associated SSL/TLS settings to apply to individual hostnames.","url":"https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/#page","headline":"Certificate and hostname priority · Cloudflare SSL/TLS docs","description":"Learn about how Cloudflare decides which certificate and associated SSL/TLS settings to apply to individual hostnames.","url":"https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/certificate-and-hostname-priority/","name":"Certificate and hostname priority"}}]}
 ```

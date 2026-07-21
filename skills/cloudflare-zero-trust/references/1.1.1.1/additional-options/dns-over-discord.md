@@ -1,7 +1,7 @@
 ---
 title: DNS over Discord
 description: Run DNS lookups and WHOIS queries directly in Discord using the 1.1.1.1 bot. Invite the bot to a server or add it to your account to query DNS records without leaving Discord.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -268,6 +268,6 @@ The DNS over Discord bot is deployed on [Cloudflare Workers ↗](https://workers
 You can find the source code for the bot on GitHub, as well as information on getting started with contributing to the project, at [https://github.com/MattIPv4/DNS-over-Discord/ ↗](https://github.com/MattIPv4/DNS-over-Discord/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/#page","headline":"DNS over Discord | Cloudflare Docs","description":"Run DNS lookups and WHOIS queries directly in Discord using the 1.1.1.1 bot. Invite the bot to a server or add it to your account to query DNS records without leaving Discord.","url":"https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/#page","headline":"DNS over Discord | Cloudflare Docs","description":"Run DNS lookups and WHOIS queries directly in Discord using the 1.1.1.1 bot. Invite the bot to a server or add it to your account to query DNS records without leaving Discord.","url":"https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/additional-options/","name":"Other ways to use 1.1.1.1"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/additional-options/dns-over-discord/","name":"DNS over Discord"}}]}
 ```

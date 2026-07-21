@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Fonts
 description: Serve Google Fonts from your domain to improve privacy and performance.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -58,6 +58,6 @@ While Cloudflare Fonts offers powerful font optimization capabilities, it is imp
 * **Fallback mechanism**: In cases where Cloudflare Fonts does not support a specific page, it will gracefully fallback to using Google Fonts.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/content/fonts/#page","headline":"Cloudflare Fonts · Cloudflare Speed docs","description":"Serve Google Fonts from your domain to improve privacy and performance.","url":"https://developers.cloudflare.com/speed/optimization/content/fonts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/content/fonts/#page","headline":"Cloudflare Fonts · Cloudflare Speed docs","description":"Serve Google Fonts from your domain to improve privacy and performance.","url":"https://developers.cloudflare.com/speed/optimization/content/fonts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/fonts/","name":"Cloudflare Fonts"}}]}
 ```

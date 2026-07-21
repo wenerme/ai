@@ -1,7 +1,7 @@
 ---
 title: Mount buckets
 description: Mount S3-compatible object storage as local filesystems for persistent data storage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -812,6 +812,6 @@ await sandbox.exec('cp', { args: ['/workspace/results.json', '/data/results/outp
 * [Outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) \- Learn how `ContainerProxy` and outbound interception work
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/#page","headline":"Mount buckets · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible object storage as local filesystems for persistent data storage.","url":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/#page","headline":"Mount buckets · Cloudflare Sandbox SDK docs","description":"Mount S3-compatible object storage as local filesystems for persistent data storage.","url":"https://developers.cloudflare.com/sandbox/guides/mount-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/mount-buckets/","name":"Mount buckets"}}]}
 ```

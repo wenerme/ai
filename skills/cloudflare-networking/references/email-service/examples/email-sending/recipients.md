@@ -1,7 +1,7 @@
 ---
 title: Specify recipients
 description: Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -249,6 +249,6 @@ curl --ssl-reqd \
 * [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/) — send PDFs, inline images, and uploads.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/#page","headline":"Specify recipients · Cloudflare Email Service docs","description":"Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/#page","headline":"Specify recipients · Cloudflare Email Service docs","description":"Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/recipients/","name":"Specify recipients"}}]}
 ```

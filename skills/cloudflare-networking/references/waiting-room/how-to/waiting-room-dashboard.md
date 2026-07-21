@@ -1,7 +1,7 @@
 ---
 title: Access Waiting Room
 description: Access and manage waiting rooms in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -21,6 +21,6 @@ To access Waiting Room on the Cloudflare dashboard, go to the **Waiting Room** p
 Use the dashboard to [create, edit, update, and delete](https://developers.cloudflare.com/waiting-room/how-to/) waiting rooms.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/waiting-room-dashboard/#page","headline":"Access Waiting Room · Cloudflare Waiting Room docs","description":"Access and manage waiting rooms in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waiting-room/how-to/waiting-room-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/waiting-room-dashboard/#page","headline":"Access Waiting Room · Cloudflare Waiting Room docs","description":"Access and manage waiting rooms in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waiting-room/how-to/waiting-room-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/waiting-room-dashboard/","name":"Access Waiting Room"}}]}
 ```

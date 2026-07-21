@@ -29,4 +29,4 @@ let value: ResponseFormatJSONSchema = {
 | Field        | Type                                                                     | Required             | Description |
 | ------------ | ------------------------------------------------------------------------ | -------------------- | ----------- |
 | `type`       | *"json\_schema"*                                                         | :heavy\_check\_mark: | N/A         |
-| `jsonSchema` | [models.JSONSchemaConfig](/agent-sdk/typescript/models/jsonschemaconfig) | :heavy\_check\_mark: | N/A         |
+| `jsonSchema` | [models.JSONSchemaConfig](/docs/agent-sdk/typescript/models/jsonschemaconfig) | :heavy\_check\_mark: | N/A         |

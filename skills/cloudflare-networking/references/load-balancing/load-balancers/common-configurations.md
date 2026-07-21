@@ -1,7 +1,7 @@
 ---
 title: Common configurations
 description: Common load balancer configurations for active-active and failover.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -50,6 +50,6 @@ Note
 For more background reading on server failover and common configurations, refer to [our Learning Center ↗](https://www.cloudflare.com/learning/performance/what-is-server-failover/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/#page","headline":"Common configurations · Cloudflare Load Balancing docs","description":"Common load balancer configurations for active-active and failover.","url":"https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/#page","headline":"Common configurations · Cloudflare Load Balancing docs","description":"Common load balancer configurations for active-active and failover.","url":"https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/load-balancers/","name":"Load balancers"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/load-balancers/common-configurations/","name":"Common configurations"}}]}
 ```

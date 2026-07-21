@@ -1,7 +1,7 @@
 ---
 title: Known issues
 description: Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -118,6 +118,6 @@ Note that this will not delete the active production deployment if one exists.
 Refer to [Use Cloudflare Pages as origin](https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/) for a complete tutorial.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/known-issues/#page","headline":"Known issues · Cloudflare Pages docs","description":"Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.","url":"https://developers.cloudflare.com/pages/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/known-issues/#page","headline":"Known issues · Cloudflare Pages docs","description":"Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.","url":"https://developers.cloudflare.com/pages/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/platform/known-issues/","name":"Known issues"}}]}
 ```

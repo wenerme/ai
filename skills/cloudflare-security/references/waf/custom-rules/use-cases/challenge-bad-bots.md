@@ -1,7 +1,7 @@
 ---
 title: Challenge bad bots
 description: Challenge requests from bad bots with a managed challenge.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -145,6 +145,6 @@ Make sure you review [Bot Analytics](https://developers.cloudflare.com/bots/bot-
 * [Tutorial: Integrate Turnstile, WAF, and Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/#page","headline":"Challenge bad bots · Cloudflare Web Application Firewall (WAF) docs","description":"Challenge requests from bad bots with a managed challenge.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/#page","headline":"Challenge bad bots · Cloudflare Web Application Firewall (WAF) docs","description":"Challenge requests from bad bots with a managed challenge.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/use-cases/","name":"Common use cases"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/custom-rules/use-cases/challenge-bad-bots/","name":"Challenge bad bots"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: About drand
 description: Learn about the drand randomness-as-a-service project.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ drand follows the [KISS principle ↗](https://en.wikipedia.org/wiki/KISS%5Fprin
 Beyond that, drand adds new features important for its practical deployment, such as being able to securely add and remove members of the network through [resharing ↗](https://ieeexplore.ieee.org/document/1183515) while keeping the same shared public key necessary for randomness verification.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/#page","headline":"About drand · Cloudflare Randomness Beacon docs","description":"Learn about the drand randomness-as-a-service project.","url":"https://developers.cloudflare.com/randomness-beacon/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/#page","headline":"About drand · Cloudflare Randomness Beacon docs","description":"Learn about the drand randomness-as-a-service project.","url":"https://developers.cloudflare.com/randomness-beacon/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/randomness-beacon/","name":"Randomness Beacon"}},{"@type":"ListItem","position":3,"item":{"@id":"/randomness-beacon/about/","name":"About drand"}}]}
 ```

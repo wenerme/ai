@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Radar
 description: Access Cloudflare's data on global Internet traffic, attacks, and technology trends through the Radar dashboard and API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -75,6 +75,6 @@ Read articles about the latest trends and updates on Cloudflare Radar.
 Enable any MCP client to access and explore trends and insights on Cloudflare Radar.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/#page","headline":"Overview · Cloudflare Radar docs","description":"Access Cloudflare's data on global Internet traffic, attacks, and technology trends through the Radar dashboard and API.","url":"https://developers.cloudflare.com/radar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/radar/#page","headline":"Overview · Cloudflare Radar docs","description":"Access Cloudflare's data on global Internet traffic, attacks, and technology trends through the Radar dashboard and API.","url":"https://developers.cloudflare.com/radar/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}}]}
 ```

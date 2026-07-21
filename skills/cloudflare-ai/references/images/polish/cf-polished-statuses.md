@@ -1,7 +1,7 @@
 ---
 title: Cf-Polished statuses
 description: Learn about Cf-Polished statuses in Cloudflare Images. Understand how to handle missing headers, optimize image formats, and troubleshoot common issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -22,6 +22,6 @@ If a `Cf-Polished` header is not returned, try [using single-file cache purge](h
 * `vary_header_present`: The origin web server has sent a `Vary` header with a value other than `accept-encoding`. If the origin web server is attempting to support WebP, disable WebP at the origin web server and let Polish perform the WebP conversion. Polish will still work if `accept-encoding` is the only header listed within the `Vary` header. Polish skips image URLs processed by [Cloudflare Images](https://developers.cloudflare.com/images/optimization/transformations/overview).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/cf-polished-statuses/#page","headline":"Cf-Polished statuses · Cloudflare Images docs","description":"Learn about Cf-Polished statuses in Cloudflare Images. Understand how to handle missing headers, optimize image formats, and troubleshoot common issues.","url":"https://developers.cloudflare.com/images/polish/cf-polished-statuses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/cf-polished-statuses/#page","headline":"Cf-Polished statuses · Cloudflare Images docs","description":"Learn about Cf-Polished statuses in Cloudflare Images. Understand how to handle missing headers, optimize image formats, and troubleshoot common issues.","url":"https://developers.cloudflare.com/images/polish/cf-polished-statuses/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/polish/","name":"Cloudflare Polish"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/polish/cf-polished-statuses/","name":"Cf-Polished statuses"}}]}
 ```

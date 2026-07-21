@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot Rate Limiting (previous version)
 description: Troubleshoot issues with the previous version of Rate Limiting.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -32,6 +32,6 @@ Note
 The `origin_traffic` parameter can only be set on Enterprise plans. Setting `"origin_traffic" = false` for a rule on a Free, Pro, or Business domain is automatically converted into `"origin_traffic" = true`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/troubleshooting/#page","headline":"Troubleshoot Rate Limiting (previous version) · Cloudflare Web Application Firewall (WAF) docs","description":"Troubleshoot issues with the previous version of Rate Limiting.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/troubleshooting/#page","headline":"Troubleshoot Rate Limiting (previous version) · Cloudflare Web Application Firewall (WAF) docs","description":"Troubleshoot issues with the previous version of Rate Limiting.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/reference/legacy/","name":"Legacy features"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/reference/legacy/old-rate-limiting/","name":"Rate Limiting (previous version)"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/reference/legacy/old-rate-limiting/troubleshooting/","name":"Troubleshoot Rate Limiting (previous version)"}}]}
 ```

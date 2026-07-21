@@ -1,7 +1,7 @@
 ---
 title: Protocols per plan
 description: Supported protocols for Spectrum applications by Cloudflare plan.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -26,6 +26,6 @@ On this table, you have information about which protocols are available per plan
 | RDP (one app allowed)       | No   | No          | Yes         | Yes         |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/protocols-per-plan/#page","headline":"Protocols per plan · Cloudflare Spectrum docs","description":"Supported protocols for Spectrum applications by Cloudflare plan.","url":"https://developers.cloudflare.com/spectrum/protocols-per-plan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/protocols-per-plan/#page","headline":"Protocols per plan · Cloudflare Spectrum docs","description":"Supported protocols for Spectrum applications by Cloudflare plan.","url":"https://developers.cloudflare.com/spectrum/protocols-per-plan/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/protocols-per-plan/","name":"Protocols per plan"}}]}
 ```

@@ -32,5 +32,5 @@ let value: FunctionCallOutputItem = {
 | `callId` | *string*                                                                                                                                       | :heavy\_check\_mark: | N/A         |           |
 | `id`     | *string*                                                                                                                                       | :heavy\_minus\_sign: | N/A         |           |
 | `output` | *models.FunctionCallOutputItemOutputUnion2*                                                                                                    | :heavy\_check\_mark: | N/A         |           |
-| `status` | [models.FunctionCallOutputItemStatus](/agent-sdk/typescript/api-reference/models/functioncalloutputitemstatus)                                 | :heavy\_minus\_sign: | N/A         | completed |
-| `type`   | [models.FunctionCallOutputItemTypeFunctionCallOutput](/agent-sdk/typescript/api-reference/models/functioncalloutputitemtypefunctioncalloutput) | :heavy\_check\_mark: | N/A         |           |
+| `status` | [models.FunctionCallOutputItemStatus](/docs/agent-sdk/typescript/api-reference/models/functioncalloutputitemstatus)                                 | :heavy\_minus\_sign: | N/A         | completed |
+| `type`   | [models.FunctionCallOutputItemTypeFunctionCallOutput](/docs/agent-sdk/typescript/api-reference/models/functioncalloutputitemtypefunctioncalloutput) | :heavy\_check\_mark: | N/A         |           |

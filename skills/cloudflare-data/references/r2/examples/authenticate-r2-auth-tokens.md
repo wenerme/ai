@@ -1,7 +1,7 @@
 ---
 title: Authenticate against R2 API using auth tokens
 description: Authenticate against the R2 S3-compatible API using API tokens with Python or JavaScript.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -219,6 +219,6 @@ func main() {
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/#page","headline":"Authenticate against R2 API using auth tokens · Cloudflare R2 docs","description":"Authenticate against the R2 S3-compatible API using API tokens with Python or JavaScript.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/#page","headline":"Authenticate against R2 API using auth tokens · Cloudflare R2 docs","description":"Authenticate against the R2 S3-compatible API using API tokens with Python or JavaScript.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/authenticate-r2-auth-tokens/","name":"Authenticate against R2 API using auth tokens"}}]}
 ```

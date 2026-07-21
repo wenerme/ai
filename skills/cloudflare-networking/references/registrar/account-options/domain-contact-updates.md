@@ -1,7 +1,7 @@
 ---
 title: Registrant contact updates
 description: Update domain registrant contact information.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -64,6 +64,6 @@ This transfer lock prevents the transfer of the domain to another registrar, and
 If the registrant contact is updated again while the domain is in the 60-day lock period, the lock expiration will be further extended to 60 days from the most recent update.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/#page","headline":"Registrant contact updates · Cloudflare Registrar docs","description":"Update domain registrant contact information.","url":"https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/#page","headline":"Registrant contact updates · Cloudflare Registrar docs","description":"Update domain registrant contact information.","url":"https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/account-options/","name":"Registration options"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/account-options/domain-contact-updates/","name":"Registrant contact updates"}}]}
 ```

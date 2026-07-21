@@ -1,7 +1,7 @@
 ---
 title: Configure mTLS
 description: Set up mTLS authentication rules to require client certificates for API hosts.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -88,6 +88,6 @@ Warning
 This check only applies to client certificates issued by the Cloudflare-managed CA. Cloudflare currently does not check certificate revocation lists (CRL) for [CAs that have been uploaded](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/mtls/configure/#page","headline":"Configure mTLS · Cloudflare API Shield docs","description":"Set up mTLS authentication rules to require client certificates for API hosts.","url":"https://developers.cloudflare.com/api-shield/security/mtls/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/mtls/configure/#page","headline":"Configure mTLS · Cloudflare API Shield docs","description":"Set up mTLS authentication rules to require client certificates for API hosts.","url":"https://developers.cloudflare.com/api-shield/security/mtls/configure/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/mtls/","name":"Mutual TLS (mTLS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/mtls/configure/","name":"Configure mTLS"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Enterprise AI agent workspace
 description: Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -94,6 +94,6 @@ Treat model output, tool output, and generated code as untrusted. Apply controls
 * [Enterprise AI Vibe Coding Platform](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/#page","headline":"Enterprise AI agent workspace · Cloudflare Reference Architecture docs","description":"Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/#page","headline":"Enterprise AI agent workspace · Cloudflare Reference Architecture docs","description":"Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/ai/","name":"Artificial Intelligence (AI)"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/","name":"Enterprise AI agent workspace"}}]}
 ```

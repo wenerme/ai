@@ -1,7 +1,7 @@
 ---
 title: Set build commands per branch
 description: Run different build commands on specific branches in your Cloudflare Pages project.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -59,6 +59,6 @@ To put your changes into effect:
 To test that your build is successful, deploy your project.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/build-commands-branches/#page","headline":"Set build commands per branch · Cloudflare Pages docs","description":"Run different build commands on specific branches in your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/how-to/build-commands-branches/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/build-commands-branches/#page","headline":"Set build commands per branch · Cloudflare Pages docs","description":"Run different build commands on specific branches in your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/how-to/build-commands-branches/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/build-commands-branches/","name":"Set build commands per branch"}}]}
 ```

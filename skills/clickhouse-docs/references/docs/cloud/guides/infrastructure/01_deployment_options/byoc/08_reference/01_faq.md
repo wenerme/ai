@@ -9,9 +9,9 @@ doc_type: 'reference'
 
 ### Compute {#compute}
 
-Can I create multiple services in this single EKS cluster?
+Can I create multiple services in this single Kubernetes (EKS/GKE/AKS) cluster?
 
-Yes. The infrastructure only needs to be provisioned once for every AWS account and region combination.
+Yes. The infrastructure only needs to be provisioned once for every cloud account/project/subscription and region combination.
 
 Which regions do you support for BYOC?
 
@@ -19,7 +19,7 @@ All **public regions** listed in our [supported regions](https://clickhouse.com/
 
 Will there be some resource overhead? What are the resources needed to run services other than ClickHouse instances?
 
-Besides the ClickHouse instances themselves (ClickHouse servers and ClickHouse Keeper), we also run supporting services such as `clickhouse-operator`, `aws-cluster-autoscaler`, Istio, and the monitoring stack.
+Besides the ClickHouse instances themselves (ClickHouse servers and ClickHouse Keeper), we also run supporting services such as `clickhouse-operator`, the cluster autoscaler, Istio, and the monitoring stack.
 
 The resource consumption of these shared components is relatively stable and doesn't grow linearly with the number or size of your ClickHouse services. As a rough guideline, in AWS we typically use a dedicated node group of about four `4xlarge` EC2 instances to run these workloads.
 
@@ -33,9 +33,9 @@ Have you considered some future security controls for ClickHouse engineers to ac
 
 Yes. Implementing a customer controlled mechanism where customers can approve engineers' access to the cluster is on our roadmap. At the moment, engineers must go through our internal escalation process to gain just-in-time access to the cluster. This is logged and audited by our security team.
 
-What is the size of the VPC IP range created?
+What is the size of the VPC/VNet IP range created?
 
-By default, we use `10.0.0.0/16` for BYOC VPC. We recommend reserving at least /22 for potential future scaling,
+By default, we use `10.0.0.0/16` for the BYOC VPC (AWS/GCP) or VNet (Azure). We recommend reserving at least /22 for potential future scaling,
 but if you prefer to limit the size, it is possible to use /23 if it is likely that you will be limited
 to 30 server pods.
 

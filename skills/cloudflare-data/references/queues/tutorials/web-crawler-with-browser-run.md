@@ -1,7 +1,7 @@
 ---
 title: Build a web crawler with Queues and Browser Run
 description: Example of how to use Queues and Browser Run to power a web crawler.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -809,6 +809,6 @@ Refer to the [GitHub repository for the complete tutorial ↗](https://github.co
 * [Puppeteer Examples ↗](https://github.com/puppeteer/puppeteer/tree/main/examples)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/#page","headline":"Cloudflare Queues - Queues & Browser Run · Cloudflare Queues docs","description":"Example of how to use Queues and Browser Run to power a web crawler.","url":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/#page","headline":"Cloudflare Queues - Queues & Browser Run · Cloudflare Queues docs","description":"Example of how to use Queues and Browser Run to power a web crawler.","url":"https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/tutorials/web-crawler-with-browser-run/","name":"Build a web crawler with Queues and Browser Run"}}]}
 ```

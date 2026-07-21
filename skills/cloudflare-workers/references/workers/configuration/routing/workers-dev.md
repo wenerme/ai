@@ -1,7 +1,7 @@
 ---
 title: workers.dev
 description: Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -102,6 +102,6 @@ Worker names can be up to 255 characters when not using a `workers.dev` subdomai
 * [Wrangler routes configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#page","headline":"workers.dev · Cloudflare Workers docs","description":"Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.","url":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#page","headline":"workers.dev · Cloudflare Workers docs","description":"Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.","url":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/routing/","name":"Routes and domains"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/routing/workers-dev/","name":"workers.dev"}}]}
 ```

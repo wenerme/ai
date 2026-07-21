@@ -25,5 +25,5 @@ import { ServiceUnavailableResponseError } from "@openrouter/sdk/models/errors";
 
 | Field    | Type                                                                                                           | Required             | Description                               | Example                                                      |
 | -------- | -------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------- | ------------------------------------------------------------ |
-| `error`  | [models.ServiceUnavailableResponseErrorData](/agent-sdk/typescript/models/serviceunavailableresponseerrordata) | :heavy\_check\_mark: | Error data for ServiceUnavailableResponse | `{"code": 503,"message": "Service temporarily unavailable"}` |
+| `error`  | [models.ServiceUnavailableResponseErrorData](/docs/agent-sdk/typescript/models/serviceunavailableresponseerrordata) | :heavy\_check\_mark: | Error data for ServiceUnavailableResponse | `{"code": 503,"message": "Service temporarily unavailable"}` |
 | `userId` | *string*                                                                                                       | :heavy\_minus\_sign: | N/A                                       |                                                              |

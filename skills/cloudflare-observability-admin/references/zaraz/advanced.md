@@ -1,7 +1,7 @@
 ---
 title: Advanced options
 description: Advanced Zaraz options for custom loading, blocking, and enrichment.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [ Custom Managed Components ](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/zaraz/advanced/#page","headline":"Advanced options · Cloudflare Zaraz docs","description":"Advanced Zaraz options for custom loading, blocking, and enrichment.","url":"https://developers.cloudflare.com/zaraz/advanced/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/zaraz/advanced/#page","headline":"Advanced options · Cloudflare Zaraz docs","description":"Advanced Zaraz options for custom loading, blocking, and enrichment.","url":"https://developers.cloudflare.com/zaraz/advanced/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/advanced/","name":"Advanced options"}}]}
 ```

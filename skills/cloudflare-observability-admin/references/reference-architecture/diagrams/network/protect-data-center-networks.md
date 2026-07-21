@@ -1,7 +1,7 @@
 ---
 title: Protect data center networks
 description: This document focuses on the reference architecture of using Cloudflare WAN, Cloudflare Network Firewall, and Cloudflare Gateway services.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -143,6 +143,6 @@ _Note: Labels in this image may reflect a previous product name._
 * [Integration of Cloudflare Magic services and Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/#page","headline":"Protect data center networks · Cloudflare Reference Architecture docs","description":"This document focuses on the reference architecture of using Cloudflare WAN, Cloudflare Network Firewall, and Cloudflare Gateway services.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/#page","headline":"Protect data center networks · Cloudflare Reference Architecture docs","description":"This document focuses on the reference architecture of using Cloudflare WAN, Cloudflare Network Firewall, and Cloudflare Gateway services.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/network/","name":"Network"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/network/protect-data-center-networks/","name":"Protect data center networks"}}]}
 ```

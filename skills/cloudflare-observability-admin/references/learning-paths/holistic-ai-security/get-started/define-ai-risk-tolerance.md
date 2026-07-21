@@ -1,7 +1,7 @@
 ---
 title: Define your company's AI risk tolerance and strategy
 description: Set AI security goals and risk boundaries.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -23,6 +23,6 @@ To begin, consider these questions to help shape your strategy:
 * Encouraging user behavior: Do you want to encourage or limit user engagement with AI? How much do you expect your employees to use AI in a controlled, sanctioned way?
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/#page","headline":"Define your company's AI risk tolerance and strategy · Cloudflare Learning Paths","description":"Set AI security goals and risk boundaries.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/#page","headline":"Define your company's AI risk tolerance and strategy · Cloudflare Learning Paths","description":"Set AI security goals and risk boundaries.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/holistic-ai-security/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/","name":"Define your company's AI risk tolerance and strategy"}}]}
 ```

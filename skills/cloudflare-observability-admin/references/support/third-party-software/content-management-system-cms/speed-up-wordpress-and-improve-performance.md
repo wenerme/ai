@@ -1,7 +1,7 @@
 ---
 title: Speed Up WordPress and Improve Performance
 description: Optimize WordPress performance with Cloudflare CDN.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ Due to HTTP/2 multiplexing requests, we advise against concatenating CSS or Java
 Enterprise users can utilise [Prefetching URLs From HTML Headers](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/) and [custom cache keys](https://developers.cloudflare.com/cache/how-to/cache-keys/) to enhance caching.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/speed-up-wordpress-and-improve-performance/#page","headline":"Speed Up WordPress and Improve Performance · Cloudflare Support docs","description":"Optimize WordPress performance with Cloudflare CDN.","url":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/speed-up-wordpress-and-improve-performance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/speed-up-wordpress-and-improve-performance/#page","headline":"Speed Up WordPress and Improve Performance · Cloudflare Support docs","description":"Optimize WordPress performance with Cloudflare CDN.","url":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/speed-up-wordpress-and-improve-performance/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/third-party-software/","name":"Third-Party Software"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/third-party-software/content-management-system-cms/","name":"Content Management System (CMS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/third-party-software/content-management-system-cms/speed-up-wordpress-and-improve-performance/","name":"Speed Up WordPress and Improve Performance"}}]}
 ```

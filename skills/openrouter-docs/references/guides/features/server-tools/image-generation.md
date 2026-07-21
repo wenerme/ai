@@ -270,7 +270,7 @@ The cost is in addition to standard LLM token costs for processing the request a
 
 ## Next Steps
 
-* [Server Tools Overview](/guides/features/server-tools) — Learn about server tools
-* [Web Search](/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Datetime](/guides/features/server-tools/datetime) — Get the current date and time
-* [Tool Calling](/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
+* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
+* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
+* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling

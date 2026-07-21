@@ -1,7 +1,7 @@
 ---
 title: Email sending
 description: Test Email Service sending Workers locally using wrangler dev with simulated email delivery.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -214,6 +214,6 @@ This limitation only affects local development — `ArrayBuffer` content works c
 * See advanced patterns: [Email sending examples](https://developers.cloudflare.com/email-service/examples/email-sending/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/local-development/sending/","name":"Email sending"}}]}
 ```

@@ -22,7 +22,7 @@ This page explains how to:
 
 Before you configure the Infinity data source, you need:
 
-- Grafana version 10.0 or later
+- Grafana version 11.6 or later
 - [Organization admin permissions](/docs/grafana/latest/administration/roles-and-permissions/#organization-roles) in Grafana, or equivalent [RBAC permissions](/docs/grafana/latest/administration/roles-and-permissions/access-control/) to manage data sources
 - Network access from Grafana to your target API endpoints
 - Appropriate credentials for authenticated endpoints (API keys, OAuth credentials, etc.)
@@ -301,7 +301,7 @@ The settings for the Infinity data source on the configuration page don’t auto
 
 > Note
 >
-> The custom health check supports only HTTP GET methods. It verifies the response status code, specifically looking for an HTTP 200 status, but doesn’t check the content of the response.
+> The custom health check only verifies the response status code, specifically looking for an HTTP 200 status, but doesn’t check the content of the response.
 
 If you receive a `Health check failed` message after you click **Save &amp; Test**, check the URL to ensure it’s valid and you entered it correctly.
 

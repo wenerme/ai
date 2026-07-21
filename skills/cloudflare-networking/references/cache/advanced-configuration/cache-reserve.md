@@ -1,7 +1,7 @@
 ---
 title: Cache Reserve
 description: Persist cached content in R2 storage to eliminate cache evictions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -275,6 +275,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/cache_reserve_cl
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve · Cloudflare Cache (CDN) docs","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve · Cloudflare Cache (CDN) docs","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/cache-reserve/","name":"Cache Reserve"}}]}
 ```

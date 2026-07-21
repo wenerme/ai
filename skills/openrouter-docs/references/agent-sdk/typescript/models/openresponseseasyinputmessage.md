@@ -26,6 +26,6 @@ let value: OpenResponsesEasyInputMessage = {
 
 | Field     | Type                                                                                                                     | Required             | Description |
 | --------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `type`    | [models.OpenResponsesEasyInputMessageTypeMessage](/agent-sdk/typescript/models/openresponseseasyinputmessagetypemessage) | :heavy\_minus\_sign: | N/A         |
+| `type`    | [models.OpenResponsesEasyInputMessageTypeMessage](/docs/agent-sdk/typescript/models/openresponseseasyinputmessagetypemessage) | :heavy\_minus\_sign: | N/A         |
 | `role`    | *models.OpenResponsesEasyInputMessageRoleUnion*                                                                          | :heavy\_check\_mark: | N/A         |
 | `content` | *models.OpenResponsesEasyInputMessageContentUnion2*                                                                      | :heavy\_check\_mark: | N/A         |

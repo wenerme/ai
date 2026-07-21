@@ -1,7 +1,7 @@
 ---
 title: Web standards
 description: Standardized APIs for use by Workers running on Cloudflare's global network.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -221,6 +221,6 @@ export default {
 Please refer to the [MDN documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/File%5FSystem%5FAccess%5FAPI) for more information on using this API, and to the [node:fs documentation](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/) for details on the virtual file system structure and limitations.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/web-standards/#page","headline":"JavaScript and web standards · Cloudflare Workers docs","description":"Standardized APIs for use by Workers running on Cloudflare's global network.","url":"https://developers.cloudflare.com/workers/runtime-apis/web-standards/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/web-standards/#page","headline":"JavaScript and web standards · Cloudflare Workers docs","description":"Standardized APIs for use by Workers running on Cloudflare's global network.","url":"https://developers.cloudflare.com/workers/runtime-apis/web-standards/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/web-standards/","name":"Web standards"}}]}
 ```

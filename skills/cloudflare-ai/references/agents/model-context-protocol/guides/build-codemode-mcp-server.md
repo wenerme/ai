@@ -1,7 +1,7 @@
 ---
 title: Build a single-tool Code Mode MCP server
 description: Replace an MCP server's individual tools with one sandboxed Code Mode tool on Cloudflare Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -223,6 +223,6 @@ The publisher limits the final MCP response to approximately 6,000 estimated tok
 To publish an OpenAPI service with separate `search` and `execute` tools, refer to [Build a search and execute MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/#page","headline":"Build a single-tool Code Mode MCP server · Cloudflare Agents docs","description":"Replace an MCP server's individual tools with one sandboxed Code Mode tool on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/#page","headline":"Build a single-tool Code Mode MCP server · Cloudflare Agents docs","description":"Replace an MCP server's individual tools with one sandboxed Code Mode tool on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/guides/","name":"Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/guides/build-codemode-mcp-server/","name":"Build a single-tool Code Mode MCP server"}}]}
 ```

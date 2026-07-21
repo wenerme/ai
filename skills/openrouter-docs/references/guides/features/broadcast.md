@@ -26,24 +26,24 @@ Once enabled, OpenRouter will automatically send trace data for all your API req
 
 The following destinations are currently available:
 
-* [Arize AX](/guides/features/broadcast/arize)
-* [Braintrust](/guides/features/broadcast/braintrust)
-* [ClickHouse](/guides/features/broadcast/clickhouse)
-* [Comet Opik](/guides/features/broadcast/opik)
-* [Datadog](/guides/features/broadcast/datadog)
-* [Grafana Cloud](/guides/features/broadcast/grafana)
-* [Langfuse](/guides/features/broadcast/langfuse)
-* [LangSmith](/guides/features/broadcast/langsmith)
-* [New Relic](/guides/features/broadcast/newrelic)
-* [OpenTelemetry Collector](/guides/features/broadcast/otel-collector)
-* [PostHog](/guides/features/broadcast/posthog)
-* [Raindrop](/guides/features/broadcast/raindrop)
-* [Ramp](/guides/features/broadcast/ramp)
-* [S3 / S3-Compatible](/guides/features/broadcast/s3)
-* [Sentry](/guides/features/broadcast/sentry)
-* [Snowflake](/guides/features/broadcast/snowflake)
-* [W\&B Weave](/guides/features/broadcast/weave)
-* [Webhook](/guides/features/broadcast/webhook)
+* [Arize AX](/docs/guides/features/broadcast/arize)
+* [Braintrust](/docs/guides/features/broadcast/braintrust)
+* [ClickHouse](/docs/guides/features/broadcast/clickhouse)
+* [Comet Opik](/docs/guides/features/broadcast/opik)
+* [Datadog](/docs/guides/features/broadcast/datadog)
+* [Grafana Cloud](/docs/guides/features/broadcast/grafana)
+* [Langfuse](/docs/guides/features/broadcast/langfuse)
+* [LangSmith](/docs/guides/features/broadcast/langsmith)
+* [New Relic](/docs/guides/features/broadcast/newrelic)
+* [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector)
+* [PostHog](/docs/guides/features/broadcast/posthog)
+* [Raindrop](/docs/guides/features/broadcast/raindrop)
+* [Ramp](/docs/guides/features/broadcast/ramp)
+* [S3 / S3-Compatible](/docs/guides/features/broadcast/s3)
+* [Sentry](/docs/guides/features/broadcast/sentry)
+* [Snowflake](/docs/guides/features/broadcast/snowflake)
+* [W\&B Weave](/docs/guides/features/broadcast/weave)
+* [Webhook](/docs/guides/features/broadcast/webhook)
 
 Each destination has its own configuration requirements, such as API keys, endpoints, or project identifiers. When adding a destination, you'll be prompted to provide the necessary credentials which are encrypted and stored securely.
 
@@ -198,24 +198,24 @@ This enables you to:
 
 Each observability platform may recognize different metadata keys. See the destination-specific guides for details:
 
-* [Langfuse](/guides/features/broadcast/langfuse#custom-metadata) - Supports trace naming, user/session IDs, and arbitrary metadata
-* [LangSmith](/guides/features/broadcast/langsmith#custom-metadata) - Supports tags, session tracking, and metadata
-* [Datadog](/guides/features/broadcast/datadog#custom-metadata) - Supports tags, user IDs, and session IDs
-* [Braintrust](/guides/features/broadcast/braintrust#custom-metadata) - Supports tags and custom metadata fields
-* [W\&B Weave](/guides/features/broadcast/weave#custom-metadata) - Supports custom attributes in trace data
-* [Arize AX](/guides/features/broadcast/arize#custom-metadata) - Supports OpenInference span attributes and metadata
-* [Comet Opik](/guides/features/broadcast/opik#custom-metadata) - Supports trace/span metadata and cost tracking
-* [Grafana Cloud](/guides/features/broadcast/grafana#custom-metadata) - Supports TraceQL-queryable span attributes
-* [New Relic](/guides/features/broadcast/newrelic#custom-metadata) - Supports NRQL-queryable span attributes
-* [Sentry](/guides/features/broadcast/sentry#custom-metadata) - Supports span attributes for performance monitoring
-* [OpenTelemetry Collector](/guides/features/broadcast/otel-collector#custom-metadata) - Supports OTLP span attributes for any backend
-* [Webhook](/guides/features/broadcast/webhook#custom-metadata) - Custom metadata in OTLP JSON payload
-* [PostHog](/guides/features/broadcast/posthog#custom-metadata) - Supports event properties for LLM analytics
-* [Raindrop](/guides/features/broadcast/raindrop#custom-metadata) - Supports custom event properties for AI observability
-* [Ramp](/guides/features/broadcast/ramp#custom-metadata) - Supports OTLP span attributes for AI cost tracking
-* [Snowflake](/guides/features/broadcast/snowflake#custom-metadata) - Queryable via VARIANT column functions
-* [ClickHouse](/guides/features/broadcast/clickhouse#custom-metadata) - Queryable via JSONExtract functions
-* [S3](/guides/features/broadcast/s3#custom-metadata) - Stored in trace JSON files
+* [Langfuse](/docs/guides/features/broadcast/langfuse#custom-metadata) - Supports trace naming, user/session IDs, and arbitrary metadata
+* [LangSmith](/docs/guides/features/broadcast/langsmith#custom-metadata) - Supports tags, session tracking, and metadata
+* [Datadog](/docs/guides/features/broadcast/datadog#custom-metadata) - Supports tags, user IDs, and session IDs
+* [Braintrust](/docs/guides/features/broadcast/braintrust#custom-metadata) - Supports tags and custom metadata fields
+* [W\&B Weave](/docs/guides/features/broadcast/weave#custom-metadata) - Supports custom attributes in trace data
+* [Arize AX](/docs/guides/features/broadcast/arize#custom-metadata) - Supports OpenInference span attributes and metadata
+* [Comet Opik](/docs/guides/features/broadcast/opik#custom-metadata) - Supports trace/span metadata and cost tracking
+* [Grafana Cloud](/docs/guides/features/broadcast/grafana#custom-metadata) - Supports TraceQL-queryable span attributes
+* [New Relic](/docs/guides/features/broadcast/newrelic#custom-metadata) - Supports NRQL-queryable span attributes
+* [Sentry](/docs/guides/features/broadcast/sentry#custom-metadata) - Supports span attributes for performance monitoring
+* [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector#custom-metadata) - Supports OTLP span attributes for any backend
+* [Webhook](/docs/guides/features/broadcast/webhook#custom-metadata) - Custom metadata in OTLP JSON payload
+* [PostHog](/docs/guides/features/broadcast/posthog#custom-metadata) - Supports event properties for LLM analytics
+* [Raindrop](/docs/guides/features/broadcast/raindrop#custom-metadata) - Supports custom event properties for AI observability
+* [Ramp](/docs/guides/features/broadcast/ramp#custom-metadata) - Supports OTLP span attributes for AI cost tracking
+* [Snowflake](/docs/guides/features/broadcast/snowflake#custom-metadata) - Queryable via VARIANT column functions
+* [ClickHouse](/docs/guides/features/broadcast/clickhouse#custom-metadata) - Queryable via JSONExtract functions
+* [S3](/docs/guides/features/broadcast/s3#custom-metadata) - Stored in trace JSON files
 
 ## API Key Filtering
 
@@ -266,21 +266,21 @@ Broadcast can be configured at both the individual user level and the organizati
 
 Step-by-step guides for configuring specific observability destinations:
 
-* [Arize AX](/guides/features/broadcast/arize) - ML observability and monitoring
-* [Braintrust](/guides/features/broadcast/braintrust) - LLM evaluation and monitoring
-* [ClickHouse](/guides/features/broadcast/clickhouse) - Real-time analytics database
-* [Comet Opik](/guides/features/broadcast/opik) - LLM evaluation and testing
-* [Datadog](/guides/features/broadcast/datadog) - Full-stack monitoring and analytics
-* [Grafana Cloud](/guides/features/broadcast/grafana) - Observability and monitoring platform
-* [Langfuse](/guides/features/broadcast/langfuse) - Open-source LLM engineering platform
-* [LangSmith](/guides/features/broadcast/langsmith) - LangChain observability and debugging
-* [New Relic](/guides/features/broadcast/newrelic) - Full-stack observability platform
-* [OpenTelemetry Collector](/guides/features/broadcast/otel-collector) - Send traces to any OTLP-compatible backend
-* [PostHog](/guides/features/broadcast/posthog) - Product analytics with LLM tracking
-* [Raindrop](/guides/features/broadcast/raindrop) - AI observability and monitoring
-* [Ramp](/guides/features/broadcast/ramp) - AI usage tracking and cost management
-* [S3 / S3-Compatible](/guides/features/broadcast/s3) - Store traces in S3, R2, or compatible storage
-* [Sentry](/guides/features/broadcast/sentry) - Application monitoring and error tracking
-* [Snowflake](/guides/features/broadcast/snowflake) - Cloud data warehouse for analytics
-* [W\&B Weave](/guides/features/broadcast/weave) - LLM observability and tracking
-* [Webhook](/guides/features/broadcast/webhook) - Send traces to any HTTP endpoint
+* [Arize AX](/docs/guides/features/broadcast/arize) - ML observability and monitoring
+* [Braintrust](/docs/guides/features/broadcast/braintrust) - LLM evaluation and monitoring
+* [ClickHouse](/docs/guides/features/broadcast/clickhouse) - Real-time analytics database
+* [Comet Opik](/docs/guides/features/broadcast/opik) - LLM evaluation and testing
+* [Datadog](/docs/guides/features/broadcast/datadog) - Full-stack monitoring and analytics
+* [Grafana Cloud](/docs/guides/features/broadcast/grafana) - Observability and monitoring platform
+* [Langfuse](/docs/guides/features/broadcast/langfuse) - Open-source LLM engineering platform
+* [LangSmith](/docs/guides/features/broadcast/langsmith) - LangChain observability and debugging
+* [New Relic](/docs/guides/features/broadcast/newrelic) - Full-stack observability platform
+* [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector) - Send traces to any OTLP-compatible backend
+* [PostHog](/docs/guides/features/broadcast/posthog) - Product analytics with LLM tracking
+* [Raindrop](/docs/guides/features/broadcast/raindrop) - AI observability and monitoring
+* [Ramp](/docs/guides/features/broadcast/ramp) - AI usage tracking and cost management
+* [S3 / S3-Compatible](/docs/guides/features/broadcast/s3) - Store traces in S3, R2, or compatible storage
+* [Sentry](/docs/guides/features/broadcast/sentry) - Application monitoring and error tracking
+* [Snowflake](/docs/guides/features/broadcast/snowflake) - Cloud data warehouse for analytics
+* [W\&B Weave](/docs/guides/features/broadcast/weave) - LLM observability and tracking
+* [Webhook](/docs/guides/features/broadcast/webhook) - Send traces to any HTTP endpoint

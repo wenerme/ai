@@ -32,5 +32,5 @@ let value: EndpointsMetadata = {
 
 | Field       | Type                                                                              | Required             | Description |
 | ----------- | --------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `available` | [models.EndpointInfo](/agent-sdk/typescript/api-reference/models/endpointinfo)\[] | :heavy\_check\_mark: | N/A         |
+| `available` | [models.EndpointInfo](/docs/agent-sdk/typescript/api-reference/models/endpointinfo)\[] | :heavy\_check\_mark: | N/A         |
 | `total`     | *number*                                                                          | :heavy\_check\_mark: | N/A         |

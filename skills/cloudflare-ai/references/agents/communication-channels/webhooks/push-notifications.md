@@ -1,7 +1,7 @@
 ---
 title: Push notifications
 description: Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -652,6 +652,6 @@ try {
 [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) Expose agent methods as RPC endpoints.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/#page","headline":"Push notifications · Cloudflare Agents docs","description":"Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/#page","headline":"Push notifications · Cloudflare Agents docs","description":"Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/webhooks/","name":"Webhooks"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/communication-channels/webhooks/push-notifications/","name":"Push notifications"}}]}
 ```

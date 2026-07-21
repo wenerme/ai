@@ -1,7 +1,7 @@
 ---
 title: MCP server portals
 description: MCP server portals in Access.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -1075,6 +1075,6 @@ The portal homepage displays your Access organization name and branding. If the 
 2. Update your team name. The change will take effect the next time a user visits the portal homepage.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/mcp-portals/","name":"MCP server portals"}}]}
 ```

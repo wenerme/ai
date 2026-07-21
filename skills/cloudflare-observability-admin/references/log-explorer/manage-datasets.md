@@ -1,7 +1,7 @@
 ---
 title: Manage datasets
 description: Enable or disable Log Explorer datasets.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -104,6 +104,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/da
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/manage-datasets/#page","headline":"Manage datasets · Cloudflare Log Explorer docs","description":"Enable or disable Log Explorer datasets.","url":"https://developers.cloudflare.com/log-explorer/manage-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/manage-datasets/#page","headline":"Manage datasets · Cloudflare Log Explorer docs","description":"Enable or disable Log Explorer datasets.","url":"https://developers.cloudflare.com/log-explorer/manage-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/manage-datasets/","name":"Manage datasets"}}]}
 ```

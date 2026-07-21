@@ -1,7 +1,7 @@
 ---
 title: Set up Workers AI with AI Gateway
 description: This guide will walk you through setting up and deploying a Workers AI project. You will use Workers, an AI Gateway binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -188,6 +188,6 @@ By completing this tutorial, you have created a Worker, connected it to Workers 
 * [Workers bindings](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — Call third-party models, access gateway methods, and integrate with AI SDKs.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/#page","headline":"Set up Workers AI with AI Gateway · Cloudflare AI Gateway docs","description":"This guide will walk you through setting up and deploying a Workers AI project. You will use Workers, an AI Gateway binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.","url":"https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/#page","headline":"Set up Workers AI with AI Gateway · Cloudflare AI Gateway docs","description":"This guide will walk you through setting up and deploying a Workers AI project. You will use Workers, an AI Gateway binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.","url":"https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/aig-workers-ai-binding/","name":"Set up Workers AI with AI Gateway"}}]}
 ```

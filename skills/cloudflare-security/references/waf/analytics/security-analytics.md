@@ -1,7 +1,7 @@
 ---
 title: Security Analytics
 description: Analyze traffic patterns and identify security threats with Security Analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -226,6 +226,6 @@ The following tables show the different limits per Cloudflare plan:
 | Security Analytics (httpRequestsAdaptive) | 24 hours | 7 days   | 31 days  | 31 days    |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics · Cloudflare Web Application Firewall (WAF) docs","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics · Cloudflare Web Application Firewall (WAF) docs","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/analytics/security-analytics/","name":"Security Analytics"}}]}
 ```

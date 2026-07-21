@@ -19,7 +19,7 @@ Your private models and endpoints are only visible to the users and organization
 Once your private model endpoint is onboarded:
 
 * Approved users and organizations call it through the standard OpenRouter API — the same endpoints they use for public models (chat completions and responses).
-* The model slug behaves like any other OpenRouter model. It can be used with [Model Fallbacks](/guides/routing/model-fallbacks), [Provider Selection](/guides/routing/provider-selection), and other routing features.
+* The model slug behaves like any other OpenRouter model. It can be used with [Model Fallbacks](/docs/guides/routing/model-fallbacks), [Provider Selection](/docs/guides/routing/provider-selection), and other routing features.
 * Approved private endpoints are prioritized for callers with access, while public fallback candidates remain available if you list them.
 
 ## Who It's For

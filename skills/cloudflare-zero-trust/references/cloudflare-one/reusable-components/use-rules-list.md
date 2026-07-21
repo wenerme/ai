@@ -1,7 +1,7 @@
 ---
 title: Use IP lists
 description: Use IP lists in Zero Trust.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -101,6 +101,6 @@ Use [IP lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#i
 Geo-blocking enables you to selectively allow or block traffic to any country. Refer to [Block a country](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/add-policies/#block-a-country) to check an example of how to block a country.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/use-rules-list/#page","headline":"Define an IP list · Cloudflare One docs","description":"Use IP lists in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/use-rules-list/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/use-rules-list/#page","headline":"Define an IP list · Cloudflare One docs","description":"Use IP lists in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/use-rules-list/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/reusable-components/","name":"Reusable components"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/reusable-components/use-rules-list/","name":"Use IP lists"}}]}
 ```

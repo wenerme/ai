@@ -1,7 +1,7 @@
 ---
 title: Set up a private origin via Cloudflare WAN
 description: Proxy public hostnames to private origins through a Cloudflare WAN IPsec tunnel.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -86,6 +86,6 @@ Replace `100.64.0.0/12` with the Source IP range configured for your account, an
 * If you run into tunnel issues, refer to [Tunnel health troubleshooting](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/) and [IPsec troubleshooting](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/#page","headline":"Set up a private origin via Cloudflare WAN · Cloudflare DNS docs","description":"Proxy public hostnames to private origins through a Cloudflare WAN IPsec tunnel.","url":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/#page","headline":"Set up a private origin via Cloudflare WAN · Cloudflare DNS docs","description":"Proxy public hostnames to private origins through a Cloudflare WAN IPsec tunnel.","url":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/private-origins/","name":"Private origins (beta)"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/private-origins/set-up-via-cloudflare-wan/","name":"Set up a private origin via Cloudflare WAN"}}]}
 ```

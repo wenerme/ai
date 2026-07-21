@@ -1,7 +1,7 @@
 ---
 title: Manage custom certificates
 description: Upload, update, and delete custom certificates.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -197,6 +197,6 @@ To update the **Private Key Restriction** setting of a certificate, you must del
 4. Select **Confirm** to delete the certificate.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#page","headline":"Manage custom certificates · Cloudflare SSL/TLS docs","description":"Upload, update, and delete custom certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#page","headline":"Manage custom certificates · Cloudflare SSL/TLS docs","description":"Upload, update, and delete custom certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/custom-certificates/","name":"Custom certificates"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/custom-certificates/uploading/","name":"Manage custom certificates"}}]}
 ```

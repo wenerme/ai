@@ -1,7 +1,7 @@
 ---
 title: Tutorials
 description: Step-by-step R2 tutorials for building applications with object storage.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -33,6 +33,6 @@ View tutorials to help you get started with R2.
 | [Postman](https://developers.cloudflare.com/r2/tutorials/postman/)                                                                                  | about 4 years ago  | Beginner     |
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/tutorials/#page","headline":"Tutorials · Cloudflare R2 docs","description":"Step-by-step R2 tutorials for building applications with object storage.","url":"https://developers.cloudflare.com/r2/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/tutorials/#page","headline":"Tutorials · Cloudflare R2 docs","description":"Step-by-step R2 tutorials for building applications with object storage.","url":"https://developers.cloudflare.com/r2/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/tutorials/","name":"Tutorials"}}]}
 ```

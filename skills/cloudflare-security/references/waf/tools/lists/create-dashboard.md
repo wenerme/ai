@@ -1,7 +1,7 @@
 ---
 title: Create a list in the dashboard
 description: Create and manage lists in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -64,6 +64,6 @@ The exact CSV file format depends on the list type. Refer to [Custom list types]
 4. Select **Add to list**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/create-dashboard/#page","headline":"Create a list in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage lists in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/tools/lists/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/create-dashboard/#page","headline":"Create a list in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage lists in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/tools/lists/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/lists/","name":"Lists"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/lists/create-dashboard/","name":"Create a list in the dashboard"}}]}
 ```

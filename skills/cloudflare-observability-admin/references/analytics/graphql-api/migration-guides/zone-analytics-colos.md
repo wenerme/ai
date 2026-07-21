@@ -1,7 +1,7 @@
 ---
 title: Zone Analytics Colos Endpoint to GraphQL Analytics
 description: Migrate colos endpoint queries to GraphQL.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -144,6 +144,6 @@ This is straightforward: it just selects the attributes of each datapoint that w
 The GraphQL API is a very powerful tool, as you can filter and group the data by many dimensions. This feature is totally absent from the colos endpoint in the Zone Analytics API.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics-colos/#page","headline":"Zone Analytics Colos Endpoint to GraphQL Analytics · Cloudflare Analytics docs","description":"Migrate colos endpoint queries to GraphQL.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics-colos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics-colos/#page","headline":"Zone Analytics Colos Endpoint to GraphQL Analytics · Cloudflare Analytics docs","description":"Migrate colos endpoint queries to GraphQL.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics-colos/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/migration-guides/zone-analytics-colos/","name":"Zone Analytics Colos Endpoint to GraphQL Analytics"}}]}
 ```

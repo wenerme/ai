@@ -1,7 +1,7 @@
 ---
 title: Log mode versus production mode
 description: Differences between log mode and production mode for AI security detections.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -117,6 +117,6 @@ Note
 You can run both modes simultaneously during a transition period. The managed ruleset (log mode) operates in the managed rules phase, while your custom rules operate in the custom rules phase. Custom rules are evaluated before managed rules — if a custom rule blocks a request, it will not reach the managed ruleset. During evaluation, consider setting your custom rules to _Log_ as well.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#page","headline":"Log mode versus production mode · Cloudflare Web Application Firewall (WAF) docs","description":"Differences between log mode and production mode for AI security detections.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#page","headline":"Log mode versus production mode · Cloudflare Web Application Firewall (WAF) docs","description":"Differences between log mode and production mode for AI security detections.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","name":"Log mode versus production mode"}}]}
 ```

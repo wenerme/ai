@@ -1,7 +1,7 @@
 ---
 title: SSL/TLS certificates
 description: Configure SSL/TLS server and client certificates for secure Hyperdrive database connections.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -147,6 +147,6 @@ Note
 Hyperdrive will attempt to connect to your database with the provided credentials to verify they are correct before creating a configuration. If you encounter an error when attempting to connect, refer to Hyperdrive's [troubleshooting documentation](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug possible causes.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/#page","headline":"SSL/TLS certificates · Cloudflare Hyperdrive docs","description":"Configure SSL/TLS server and client certificates for secure Hyperdrive database connections.","url":"https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/#page","headline":"SSL/TLS certificates · Cloudflare Hyperdrive docs","description":"Configure SSL/TLS server and client certificates for secure Hyperdrive database connections.","url":"https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/","name":"SSL/TLS certificates"}}]}
 ```

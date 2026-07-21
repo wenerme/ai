@@ -34,11 +34,11 @@ let value: ReasoningItem = {
 
 | Field              | Type                                                                                              | Required             | Description | Example |
 | ------------------ | ------------------------------------------------------------------------------------------------- | -------------------- | ----------- | ------- |
-| `content`          | [models.ReasoningTextContent](/agent-sdk/typescript/api-reference/models/reasoningtextcontent)\[] | :heavy\_minus\_sign: | N/A         |         |
+| `content`          | [models.ReasoningTextContent](/docs/agent-sdk/typescript/api-reference/models/reasoningtextcontent)\[] | :heavy\_minus\_sign: | N/A         |         |
 | `encryptedContent` | *string*                                                                                          | :heavy\_minus\_sign: | N/A         |         |
 | `id`               | *string*                                                                                          | :heavy\_check\_mark: | N/A         |         |
 | `status`           | *models.ReasoningItemStatusUnion*                                                                 | :heavy\_minus\_sign: | N/A         |         |
-| `summary`          | [models.ReasoningSummaryText](/agent-sdk/typescript/api-reference/models/reasoningsummarytext)\[] | :heavy\_check\_mark: | N/A         |         |
-| `type`             | [models.ReasoningItemType](/agent-sdk/typescript/api-reference/models/reasoningitemtype)          | :heavy\_check\_mark: | N/A         |         |
-| `format`           | [models.ReasoningFormat](/agent-sdk/typescript/api-reference/models/reasoningformat)              | :heavy\_minus\_sign: | N/A         | unknown |
+| `summary`          | [models.ReasoningSummaryText](/docs/agent-sdk/typescript/api-reference/models/reasoningsummarytext)\[] | :heavy\_check\_mark: | N/A         |         |
+| `type`             | [models.ReasoningItemType](/docs/agent-sdk/typescript/api-reference/models/reasoningitemtype)          | :heavy\_check\_mark: | N/A         |         |
+| `format`           | [models.ReasoningFormat](/docs/agent-sdk/typescript/api-reference/models/reasoningformat)              | :heavy\_minus\_sign: | N/A         | unknown |
 | `signature`        | *string*                                                                                          | :heavy\_minus\_sign: | N/A         |         |

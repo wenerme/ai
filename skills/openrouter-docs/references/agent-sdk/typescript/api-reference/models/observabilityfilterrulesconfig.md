@@ -28,4 +28,4 @@ let value: ObservabilityFilterRulesConfig = {
 | Field     | Type                                                                | Required             | Description |
 | --------- | ------------------------------------------------------------------- | -------------------- | ----------- |
 | `enabled` | *boolean*                                                           | :heavy\_minus\_sign: | N/A         |
-| `groups`  | [models.Group](/agent-sdk/typescript/api-reference/models/group)\[] | :heavy\_check\_mark: | N/A         |
+| `groups`  | [models.Group](/docs/agent-sdk/typescript/api-reference/models/group)\[] | :heavy\_check\_mark: | N/A         |

@@ -29,4 +29,4 @@ let value: AnthropicWebSearchToolUserLocation = {
 | `country`  | *string*                                                                                                                           | :heavy\_minus\_sign: | N/A         |
 | `region`   | *string*                                                                                                                           | :heavy\_minus\_sign: | N/A         |
 | `timezone` | *string*                                                                                                                           | :heavy\_minus\_sign: | N/A         |
-| `type`     | [models.AnthropicWebSearchToolUserLocationType](/agent-sdk/typescript/api-reference/models/anthropicwebsearchtooluserlocationtype) | :heavy\_check\_mark: | N/A         |
+| `type`     | [models.AnthropicWebSearchToolUserLocationType](/docs/agent-sdk/typescript/api-reference/models/anthropicwebsearchtooluserlocationtype) | :heavy\_check\_mark: | N/A         |

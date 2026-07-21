@@ -1,7 +1,7 @@
 ---
 title: Email issues
 description: Resolve email delivery issues related to DNS configuration.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -121,6 +121,6 @@ If your email does not work shortly after editing DNS records, contact your mail
 If your provider confirms the issue is related to Cloudflare, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/email-issues/#page","headline":"Troubleshooting email issues · Cloudflare DNS docs","description":"Resolve email delivery issues related to DNS configuration.","url":"https://developers.cloudflare.com/dns/troubleshooting/email-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/email-issues/#page","headline":"Troubleshooting email issues · Cloudflare DNS docs","description":"Resolve email delivery issues related to DNS configuration.","url":"https://developers.cloudflare.com/dns/troubleshooting/email-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/troubleshooting/email-issues/","name":"Email issues"}}]}
 ```

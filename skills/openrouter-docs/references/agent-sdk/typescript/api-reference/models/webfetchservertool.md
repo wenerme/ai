@@ -27,5 +27,5 @@ let value: WebFetchServerTool = {
 
 | Field        | Type                                                                                                   | Required             | Description                                             | Example                                         |
 | ------------ | ------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------- | ----------------------------------------------- |
-| `parameters` | [models.WebFetchServerToolConfig](/agent-sdk/typescript/api-reference/models/webfetchservertoolconfig) | :heavy\_minus\_sign: | Configuration for the openrouter:web\_fetch server tool | `{"max_content_tokens": 100000,"max_uses": 10}` |
-| `type`       | [models.WebFetchServerToolType](/agent-sdk/typescript/api-reference/models/webfetchservertooltype)     | :heavy\_check\_mark: | N/A                                                     |                                                 |
+| `parameters` | [models.WebFetchServerToolConfig](/docs/agent-sdk/typescript/api-reference/models/webfetchservertoolconfig) | :heavy\_minus\_sign: | Configuration for the openrouter:web\_fetch server tool | `{"max_content_tokens": 100000,"max_uses": 10}` |
+| `type`       | [models.WebFetchServerToolType](/docs/agent-sdk/typescript/api-reference/models/webfetchservertooltype)     | :heavy\_check\_mark: | N/A                                                     |                                                 |

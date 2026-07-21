@@ -1,7 +1,7 @@
 ---
 title: Enable DNSSEC
 description: Enable DNSSEC for your registered domain.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -40,6 +40,6 @@ When DNSSEC has been successfully applied to your domain, Cloudflare shows you a
 You can also confirm this by reviewing the [WHOIS information ↗](https://lookup.icann.org/) for your domain. Domains with DNSSEC will read `signedDelegation` in the DNSSEC field.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/enable-dnssec/#page","headline":"Domain Name System Security Extensions (DNSSEC) · Cloudflare Registrar docs","description":"Enable DNSSEC for your registered domain.","url":"https://developers.cloudflare.com/registrar/get-started/enable-dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/enable-dnssec/#page","headline":"Domain Name System Security Extensions (DNSSEC) · Cloudflare Registrar docs","description":"Enable DNSSEC for your registered domain.","url":"https://developers.cloudflare.com/registrar/get-started/enable-dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/get-started/enable-dnssec/","name":"Enable DNSSEC"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Preview Local Projects with Cloudflare Tunnel
 description: Use Cloudflare Tunnel to share locally running Pages projects over a public URL.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -70,6 +70,6 @@ Cloudflare Tunnel can be configured in a variety of ways and can be used beyond 
 Finally, by incorporating Cloudflare Access, you can provide [secure access to your tunnels](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) without exposing your entire server, or compromising on security. Refer to the [Cloudflare for Teams documentation](https://developers.cloudflare.com/cloudflare-one/) to learn more about what you can do with Cloudflare's entire suite of Zero Trust tools.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/#page","headline":"Preview Local Projects with Cloudflare Tunnel · Cloudflare Pages docs","description":"Use Cloudflare Tunnel to share locally running Pages projects over a public URL.","url":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/#page","headline":"Preview Local Projects with Cloudflare Tunnel · Cloudflare Pages docs","description":"Use Cloudflare Tunnel to share locally running Pages projects over a public URL.","url":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/preview-with-cloudflare-tunnel/","name":"Preview Local Projects with Cloudflare Tunnel"}}]}
 ```

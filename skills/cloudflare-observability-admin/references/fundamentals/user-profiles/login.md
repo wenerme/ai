@@ -1,7 +1,7 @@
 ---
 title: Log in to Cloudflare
 description: Sign in to the Cloudflare dashboard using email and password, SSO, or social login with Apple, Google, or GitHub.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -70,6 +70,6 @@ If you created your Cloudflare account using Apple Relay and decide to change yo
 * If you select **Sign in with GitHub** with an email that does not already have a Cloudflare account associated with it, Cloudflare will create a new account and allow you to sign in using **Sign in with GitHub** option moving forward.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/login/#page","headline":"Log in to Cloudflare · Cloudflare Fundamentals docs","description":"Sign in to the Cloudflare dashboard using email and password, SSO, or social login with Apple, Google, or GitHub.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/login/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/login/#page","headline":"Log in to Cloudflare · Cloudflare Fundamentals docs","description":"Sign in to the Cloudflare dashboard using email and password, SSO, or social login with Apple, Google, or GitHub.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/login/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/user-profiles/","name":"User profiles"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/user-profiles/login/","name":"Log in to Cloudflare"}}]}
 ```

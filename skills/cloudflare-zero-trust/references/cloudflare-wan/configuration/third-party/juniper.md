@@ -1,7 +1,7 @@
 ---
 title: HPE Juniper Networking SRX Series Firewalls
 description: Connect HPE Juniper SRX to Cloudflare WAN.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -812,6 +812,6 @@ Valid support credentials may be required to view some/all of the following docu
 * [\[SRX\] How to enable VPN (IKE/IPsec) traceoptions for specific SAs (Security Associations) - KB19943 ↗](https://supportportal.juniper.net/s/article/SRX-How-to-enable-VPN-IKE-IPsec-traceoptions-for-specific-SAs-Security-Associations)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/#page","headline":"HPE Juniper Networking SRX Series Firewalls · Cloudflare WAN docs","description":"Connect HPE Juniper SRX to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/#page","headline":"HPE Juniper Networking SRX Series Firewalls · Cloudflare WAN docs","description":"Connect HPE Juniper SRX to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/juniper/","name":"HPE Juniper Networking SRX Series Firewalls"}}]}
 ```

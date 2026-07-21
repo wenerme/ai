@@ -28,6 +28,6 @@ let value: FunctionCallOutputItemOutputInputImage = {
 
 | Field      | Type                                                                                                           | Required             | Description |
 | ---------- | -------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `detail`   | [models.FunctionCallOutputItemDetail](/agent-sdk/typescript/api-reference/models/functioncalloutputitemdetail) | :heavy\_check\_mark: | N/A         |
+| `detail`   | [models.FunctionCallOutputItemDetail](/docs/agent-sdk/typescript/api-reference/models/functioncalloutputitemdetail) | :heavy\_check\_mark: | N/A         |
 | `imageUrl` | *string*                                                                                                       | :heavy\_minus\_sign: | N/A         |
 | `type`     | *"input\_image"*                                                                                               | :heavy\_check\_mark: | N/A         |

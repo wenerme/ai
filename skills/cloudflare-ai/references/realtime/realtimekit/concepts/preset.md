@@ -1,7 +1,7 @@
 ---
 title: Preset
 description: Configure participant roles, permissions, and meeting experience with RealtimeKit presets.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -74,6 +74,6 @@ After learning about Meetings and Sessions, you can explore the following next s
 * Get started with [RealtimeKit SDKs](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) – Integrate RealtimeKit into your web or mobile app with just a few lines of code.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/#page","headline":"Preset · Cloudflare Realtime docs","description":"Configure participant roles, permissions, and meeting experience with RealtimeKit presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/#page","headline":"Preset · Cloudflare Realtime docs","description":"Configure participant roles, permissions, and meeting experience with RealtimeKit presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/concepts/","name":"Concepts"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/concepts/preset/","name":"Preset"}}]}
 ```

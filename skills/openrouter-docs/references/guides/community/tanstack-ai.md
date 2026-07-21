@@ -256,7 +256,7 @@ Set maximum price limits for requests:
   ```
 </CodeGroup>
 
-For more advanced routing options like performance thresholds and partition-based sorting, see the [Provider Routing documentation](/guides/routing/provider-selection).
+For more advanced routing options like performance thresholds and partition-based sorting, see the [Provider Routing documentation](/docs/guides/routing/provider-selection).
 
 ### Resources
 

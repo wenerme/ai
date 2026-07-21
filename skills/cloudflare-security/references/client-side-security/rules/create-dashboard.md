@@ -1,7 +1,7 @@
 ---
 title: Create a content security rule in the dashboard
 description: Learn how to create a content security rule in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -52,6 +52,6 @@ Only available to customers with Client-Side Security Advanced.
 8. To save and deploy your rule, select **Deploy**. If you are not ready to deploy your rule, select **Save as Draft**.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/rules/create-dashboard/#page","headline":"Create a content security rule in the dashboard · Client-side security docs","description":"Learn how to create a content security rule in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/client-side-security/rules/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/rules/create-dashboard/#page","headline":"Create a content security rule in the dashboard · Client-side security docs","description":"Learn how to create a content security rule in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/client-side-security/rules/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/rules/","name":"Content security rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/rules/create-dashboard/","name":"Create a content security rule in the dashboard"}}]}
 ```

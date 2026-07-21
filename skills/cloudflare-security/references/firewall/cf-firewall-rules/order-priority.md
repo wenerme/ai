@@ -1,7 +1,7 @@
 ---
 title: Order and priority
 description: Understand firewall rule evaluation order and priority.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -77,6 +77,6 @@ While your priority numbering scheme can be arbitrary, keep the following in min
   * 20000-29999: Blocking rules for abusive users/spam
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/#page","headline":"Order and priority · Cloudflare Firewall Rules (deprecated) docs","description":"Understand firewall rule evaluation order and priority.","url":"https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/#page","headline":"Order and priority · Cloudflare Firewall Rules (deprecated) docs","description":"Understand firewall rule evaluation order and priority.","url":"https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/cf-firewall-rules/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/cf-firewall-rules/order-priority/","name":"Order and priority"}}]}
 ```

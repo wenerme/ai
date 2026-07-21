@@ -1,7 +1,7 @@
 ---
 title: How to accelerate dynamic traffic outside of mainland China
 description: Accelerate dynamic traffic outside mainland China.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -31,6 +31,6 @@ For additional resources on the China Network, refer to the following resources:
 [ Watch Episode 2: How to accelerate dynamic traffic outside of mainland China ](https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-express-overview-2/) This video discusses Cloudflare's CDN Global Acceleration (formerly China Express), including solutions for high latency on dynamic content, accelerating API calls, accessing Cloudflare One services like the Cloudflare One Client and Cloudflare WAN from within mainland China, and securely connecting private enterprise networks.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-express-overview-2/#page","headline":"How to accelerate dynamic traffic outside of mainland China · Cloudflare Learning Paths","description":"Accelerate dynamic traffic outside mainland China.","url":"https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-express-overview-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-express-overview-2/#page","headline":"How to accelerate dynamic traffic outside of mainland China · Cloudflare Learning Paths","description":"Accelerate dynamic traffic outside mainland China.","url":"https://developers.cloudflare.com/learning-paths/china-network-overview/series/china-express-overview-2/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/china-network-overview/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/china-network-overview/series/china-express-overview-2/","name":"How to accelerate dynamic traffic outside of mainland China"}}]}
 ```

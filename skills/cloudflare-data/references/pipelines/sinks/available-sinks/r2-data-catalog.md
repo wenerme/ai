@@ -1,7 +1,7 @@
 ---
 title: R2 Data Catalog
 description: Write data as Apache Iceberg tables to R2 Data Catalog
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -89,6 +89,6 @@ R2 Data Catalog sinks require an API token with [R2 Admin Read & Write permissio
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/#page","headline":"R2 Data Catalog · Cloudflare Pipelines Docs","description":"Write data as Apache Iceberg tables to R2 Data Catalog","url":"https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/#page","headline":"R2 Data Catalog · Cloudflare Pipelines Docs","description":"Write data as Apache Iceberg tables to R2 Data Catalog","url":"https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/sinks/","name":"Sinks"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/sinks/available-sinks/","name":"Available sinks"}},{"@type":"ListItem","position":5,"item":{"@id":"/pipelines/sinks/available-sinks/r2-data-catalog/","name":"R2 Data Catalog"}}]}
 ```

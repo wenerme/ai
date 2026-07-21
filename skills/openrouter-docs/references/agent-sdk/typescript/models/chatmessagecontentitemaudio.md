@@ -30,4 +30,4 @@ let value: ChatMessageContentItemAudio = {
 | Field        | Type                                                                                                               | Required             | Description |
 | ------------ | ------------------------------------------------------------------------------------------------------------------ | -------------------- | ----------- |
 | `type`       | *"input\_audio"*                                                                                                   | :heavy\_check\_mark: | N/A         |
-| `inputAudio` | [models.ChatMessageContentItemAudioInputAudio](/agent-sdk/typescript/models/chatmessagecontentitemaudioinputaudio) | :heavy\_check\_mark: | N/A         |
+| `inputAudio` | [models.ChatMessageContentItemAudioInputAudio](/docs/agent-sdk/typescript/models/chatmessagecontentitemaudioinputaudio) | :heavy\_check\_mark: | N/A         |

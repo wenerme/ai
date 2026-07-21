@@ -37,5 +37,5 @@ let value: ListGuardrailMemberAssignmentsResponse = {
 
 | Field        | Type                                                                                                                    | Required             | Description                        | Example |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------- | ------- |
-| `data`       | [operations.ListGuardrailMemberAssignmentsData](/agent-sdk/typescript/operations/listguardrailmemberassignmentsdata)\[] | :heavy\_check\_mark: | List of member assignments         |         |
+| `data`       | [operations.ListGuardrailMemberAssignmentsData](/docs/agent-sdk/typescript/operations/listguardrailmemberassignmentsdata)\[] | :heavy\_check\_mark: | List of member assignments         |         |
 | `totalCount` | *number*                                                                                                                | :heavy\_check\_mark: | Total number of member assignments | 10      |

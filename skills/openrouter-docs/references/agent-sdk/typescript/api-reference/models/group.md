@@ -25,5 +25,5 @@ let value: Group = {
 
 | Field   | Type                                                              | Required             | Description |
 | ------- | ----------------------------------------------------------------- | -------------------- | ----------- |
-| `logic` | [models.Logic](/agent-sdk/typescript/api-reference/models/logic)  | :heavy\_minus\_sign: | N/A         |
-| `rules` | [models.Rule](/agent-sdk/typescript/api-reference/models/rule)\[] | :heavy\_check\_mark: | N/A         |
+| `logic` | [models.Logic](/docs/agent-sdk/typescript/api-reference/models/logic)  | :heavy\_minus\_sign: | N/A         |
+| `rules` | [models.Rule](/docs/agent-sdk/typescript/api-reference/models/rule)\[] | :heavy\_check\_mark: | N/A         |

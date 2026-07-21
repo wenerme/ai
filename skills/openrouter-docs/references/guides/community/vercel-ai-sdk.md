@@ -105,7 +105,7 @@ And then you can use [streamText()](https://sdk.vercel.ai/docs/reference/ai-sdk-
 
 ## Video Generation
 
-OpenRouter supports [video generation](/guides/overview/multimodal/video-generation) through the AI SDK's [`experimental_generateVideo`](https://sdk.vercel.ai/docs/reference/ai-sdk-core/generate-video) API. The provider handles the asynchronous submit-poll-download workflow automatically.
+OpenRouter supports [video generation](/docs/guides/overview/multimodal/video-generation) through the AI SDK's [`experimental_generateVideo`](https://sdk.vercel.ai/docs/reference/ai-sdk-core/generate-video) API. The provider handles the asynchronous submit-poll-download workflow automatically.
 
 <CodeGroup>
   ```typescript title="TypeScript" lines theme={null}
@@ -130,7 +130,7 @@ OpenRouter supports [video generation](/guides/overview/multimodal/video-generat
 
 ### Passthrough Options
 
-Each video model supports model-specific parameters that can be passed through via `provider.options` in `extraBody`, keyed by provider slug. See the [video generation docs](/guides/overview/multimodal/video-generation#via-the-video-models-api) for the full list of `allowed_passthrough_parameters` per model.
+Each video model supports model-specific parameters that can be passed through via `provider.options` in `extraBody`, keyed by provider slug. See the [video generation docs](/docs/guides/overview/multimodal/video-generation#via-the-video-models-api) for the full list of `allowed_passthrough_parameters` per model.
 
 <CodeGroup>
   ```typescript title="TypeScript (Veo 3.1)" expandable lines theme={null}
@@ -244,4 +244,4 @@ The response includes OpenRouter-specific metadata accessible via `providerMetad
   ```
 </CodeGroup>
 
-For the full list of supported models, resolutions, aspect ratios, and provider-specific options, see the [Video Generation documentation](/guides/overview/multimodal/video-generation).
+For the full list of supported models, resolutions, aspect ratios, and provider-specific options, see the [Video Generation documentation](/docs/guides/overview/multimodal/video-generation).

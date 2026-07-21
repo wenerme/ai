@@ -22,4 +22,4 @@ Append `:thinking` to any model ID:
 
 Thinking variants provide access to models with extended reasoning capabilities, allowing for more thorough analysis and step-by-step problem solving. This is particularly useful for complex tasks that benefit from chain-of-thought reasoning.
 
-See also: [Reasoning Tokens](/guides/best-practices/reasoning-tokens)
+See also: [Reasoning Tokens](/docs/guides/best-practices/reasoning-tokens)

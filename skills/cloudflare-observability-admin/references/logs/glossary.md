@@ -1,7 +1,7 @@
 ---
 title: Glossary
 description: Review definitions for Cloudflare Logs terminology.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ Review the definitions for terms used across Cloudflare's Logs documentation.
 | timestamp   | A data field indicating the date and time when an event occurred, often used for sequencing and analysis.                                                                                                                                                                                                                                                     |
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/glossary/#page","headline":"Glossary · Cloudflare Logs docs","description":"Review definitions for Cloudflare Logs terminology.","url":"https://developers.cloudflare.com/logs/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/glossary/#page","headline":"Glossary · Cloudflare Logs docs","description":"Review definitions for Cloudflare Logs terminology.","url":"https://developers.cloudflare.com/logs/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/glossary/","name":"Glossary"}}]}
 ```

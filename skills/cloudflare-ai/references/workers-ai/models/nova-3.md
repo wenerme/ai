@@ -1,7 +1,7 @@
 ---
 title: nova-3
 description: Transcribe audio using Deepgram’s speech-to-text model
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -246,6 +246,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-inpu
 Output [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/nova-3/#page","headline":"nova-3 (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Transcribe audio using Deepgram’s speech-to-text model","url":"https://developers.cloudflare.com/workers-ai/models/nova-3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/nova-3/#page","headline":"nova-3 (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Transcribe audio using Deepgram’s speech-to-text model","url":"https://developers.cloudflare.com/workers-ai/models/nova-3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
 ```

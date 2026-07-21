@@ -17,7 +17,7 @@ The Responses API Beta supports web search integration, allowing models to acces
 <Warning>
   **Deprecated Plugin Approach**
 
-  The web search plugin (`plugins: [{ id: "web" }]`) shown below is deprecated. Use the [`openrouter:web_search` server tool](/guides/features/server-tools/web-search) instead, which works with both the Chat Completions and Responses APIs via the `tools` array.
+  The web search plugin (`plugins: [{ id: "web" }]`) shown below is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead, which works with both the Chat Completions and Responses APIs via the `tools` array.
 </Warning>
 
 ## Web Search Plugin
@@ -90,7 +90,7 @@ Configure web search behavior:
 | `include_domains` | string\[] | Restrict results to these domains (supports wildcards like `*.substack.com`)      |
 | `exclude_domains` | string\[] | Exclude results from these domains                                                |
 
-See the [Web Search plugin docs](/guides/features/plugins/web-search) for full details on engine selection, domain filter compatibility, and pricing.
+See the [Web Search plugin docs](/docs/guides/features/plugins/web-search) for full details on engine selection, domain filter compatibility, and pricing.
 
 ## X Search Filters (xAI only)
 
@@ -124,7 +124,7 @@ results:
 <Warning>
   `allowed_x_handles` and `excluded_x_handles` are
   mutually exclusive. See the
-  [Web Search plugin docs](/guides/features/plugins/web-search#x-search-filters-xai-only)
+  [Web Search plugin docs](/docs/guides/features/plugins/web-search#x-search-filters-xai-only)
   for full details.
 </Warning>
 
@@ -201,7 +201,7 @@ Use structured messages for more complex queries:
 <Warning>
   **Deprecated**
 
-  The `:online` variant is deprecated. Use the [`openrouter:web_search` server tool](/guides/features/server-tools/web-search) instead.
+  The `:online` variant is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead.
 </Warning>
 
 Some models have built-in web search capabilities using the `:online` variant:

@@ -1,7 +1,7 @@
 ---
 title: Scraping detections
 description: Detection IDs for identifying volumetric scraping attacks by ASN and fingerprint.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -55,6 +55,6 @@ Note
 The matched traffic for detection IDs `50331648` and `50331649` is dynamically re-calculated, meaning a single fingerprint would not be permanently flagged unless it continues to behave suspiciously at all times.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/#page","headline":"Scraping detections · Cloudflare bot solutions docs","description":"Detection IDs for identifying volumetric scraping attacks by ASN and fingerprint.","url":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Scraping"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/#page","headline":"Scraping detections · Cloudflare bot solutions docs","description":"Detection IDs for identifying volumetric scraping attacks by ASN and fingerprint.","url":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Scraping"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/detection-ids/","name":"Detection IDs"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/additional-configurations/detection-ids/scraping-detections/","name":"Scraping detections"}}]}
 ```

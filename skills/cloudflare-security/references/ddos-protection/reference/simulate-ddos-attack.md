@@ -1,7 +1,7 @@
 ---
 title: Simulating test DDoS attacks
 description: Guidelines for simulating DDoS attacks to test protection, reporting, and alerting.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -26,6 +26,6 @@ You do not have to obtain permission from Cloudflare to launch a DDoS attack sim
 It is recommended that you choose the right service and enable the correct features to test against the corresponding DDoS attacks. For example, if you want to test Cloudflare against an HTTP DDoS attack and you are only using Magic Transit, the test is going to fail because you need to onboard your HTTP application to Cloudflare's reverse proxy service to test our HTTP DDoS Protection.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/#page","headline":"Simulating test DDoS attacks · Cloudflare DDoS Protection docs","description":"Guidelines for simulating DDoS attacks to test protection, reporting, and alerting.","url":"https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/#page","headline":"Simulating test DDoS attacks · Cloudflare DDoS Protection docs","description":"Guidelines for simulating DDoS attacks to test protection, reporting, and alerting.","url":"https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/reference/simulate-ddos-attack/","name":"Simulating test DDoS attacks"}}]}
 ```

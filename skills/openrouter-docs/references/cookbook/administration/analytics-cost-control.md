@@ -21,12 +21,12 @@ export const CopyPromptButton = ({prompt, buttonLabel = "Copy prompt"}) => {
     </div>;
 };
 
-**Goal:** Run a cost review on your OpenRouter account using your coding agent, the beta [Analytics API](/api/api-reference/betaanalytics/query-analytics-data), and the [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics).
+**Goal:** Run a cost review on your OpenRouter account using your coding agent, the beta [Analytics API](/docs/api/api-reference/betaanalytics/query-analytics-data), and the [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics).
 
 **Outcome:** A set of query recipes and agent prompts for digging into your own usage data: which models burn the most, which API keys cause it, and what to repoint or cache.
 
 <Tip>
-  <Markdown src="/snippets/openrouter-analytics-skill.mdx" />
+  <Markdown src="/docs/snippets/openrouter-analytics-skill.mdx" />
 
   Then copy this prompt into your agent to run the full cost review.
 
@@ -73,9 +73,9 @@ You need:
 
 Use these references for exact schemas:
 
-* [Query analytics endpoint](/api/api-reference/betaanalytics/query-analytics-data)
-* [Get analytics metadata](/api/api-reference/betaanalytics/get-available-analytics-metrics-and-dimensions)
-* [Management API keys](/guides/overview/auth/management-api-keys)
+* [Query analytics endpoint](/docs/api/api-reference/betaanalytics/query-analytics-data)
+* [Get analytics metadata](/docs/api/api-reference/betaanalytics/get-available-analytics-metrics-and-dimensions)
+* [Management API keys](/docs/guides/overview/auth/management-api-keys)
 * [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics)
 
 ## What you're building
@@ -311,8 +311,8 @@ Filter values must match what the dimension stores internally, so agents should 
 
 ## Next steps
 
-* Read the [Analytics API reference](/api/api-reference/betaanalytics/query-analytics-data) for exact request and response schemas.
+* Read the [Analytics API reference](/docs/api/api-reference/betaanalytics/query-analytics-data) for exact request and response schemas.
 * Drill from an aggregate into individual requests with the `generation_id` dimension, then inspect them with the [openrouter-generations skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-generations).
-* Set [credit limits on keys](/api/api-reference/api-keys/update-an-api-key) once you know which ones drift.
-* Add [usage accounting](/cookbook/administration/usage-accounting) to get per-request cost in your own logs.
-* Use [prompt caching](/guides/best-practices/prompt-caching) where this review showed low cache rates on prompt-heavy traffic.
+* Set [credit limits on keys](/docs/api/api-reference/api-keys/update-an-api-key) once you know which ones drift.
+* Add [usage accounting](/docs/cookbook/administration/usage-accounting) to get per-request cost in your own logs.
+* Use [prompt caching](/docs/guides/best-practices/prompt-caching) where this review showed low cache rates on prompt-heavy traffic.

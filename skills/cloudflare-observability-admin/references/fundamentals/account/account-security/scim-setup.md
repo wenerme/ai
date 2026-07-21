@@ -1,7 +1,7 @@
 ---
 title: SCIM provisioning
 description: Provision users and groups into your Cloudflare account using the SCIM protocol with Okta, Microsoft Entra, or Authentik.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -80,6 +80,6 @@ Account API tokens are recommended for SCIM Provisioning. User owned API tokens,
 5. Copy the token value.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/#page","headline":"SCIM provisioning · Cloudflare Fundamentals docs","description":"Provision users and groups into your Cloudflare account using the SCIM protocol with Okta, Microsoft Entra, or Authentik.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/#page","headline":"SCIM provisioning · Cloudflare Fundamentals docs","description":"Provision users and groups into your Cloudflare account using the SCIM protocol with Okta, Microsoft Entra, or Authentik.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/scim-setup/","name":"SCIM provisioning"}}]}
 ```

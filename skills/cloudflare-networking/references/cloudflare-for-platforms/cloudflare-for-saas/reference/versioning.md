@@ -1,7 +1,7 @@
 ---
 title: Deprecation - Version 1
 description: Deprecation notice and migration guide for SSL for SaaS Version 1.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -108,6 +108,6 @@ If you would like to begin the migration process before March 31, 2021, please c
 If you have any questions, please contact your account team or [SaaSv2@cloudflare.com](mailto:saasv2@cloudflare.com).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/#page","headline":"Deprecation notice for SSL for SaaS - Version 1 · Cloudflare for Platforms docs","description":"Deprecation notice and migration guide for SSL for SaaS Version 1.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/#page","headline":"Deprecation notice for SSL for SaaS - Version 1 · Cloudflare for Platforms docs","description":"Deprecation notice and migration guide for SSL for SaaS Version 1.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/","name":"Deprecation - Version 1"}}]}
 ```

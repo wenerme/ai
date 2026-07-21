@@ -1,7 +1,7 @@
 ---
 title: Manage catalogs
 description: Understand how to manage Iceberg REST catalogs associated with R2 buckets
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -297,6 +297,6 @@ npx wrangler r2 bucket catalog local-uploads enable <R2_Data_Catalog_BUCKET_NAME
 [ Connect to Iceberg engines ](https://developers.cloudflare.com/r2/data-catalog/config-examples/) Find detailed setup instructions for Apache Spark and other common query engines.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/#page","headline":"Manage catalogs · Cloudflare R2 docs","description":"Understand how to manage Iceberg REST catalogs associated with R2 buckets","url":"https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/#page","headline":"Manage catalogs · Cloudflare R2 docs","description":"Understand how to manage Iceberg REST catalogs associated with R2 buckets","url":"https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/manage-catalogs/","name":"Manage catalogs"}}]}
 ```

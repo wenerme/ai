@@ -1,7 +1,7 @@
 ---
 title: smart-turn-v2
 description: An open source, community-driven, native audio turn detection model in 2nd version
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -54,6 +54,6 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/sche
 Output [ ](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/schema-output.json "Download")
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/pipecat-ai/smart-turn-v2/#page","headline":"smart-turn-v2 (Pipecat) · Cloudflare AI docs · Cloudflare AI docs","description":"An open source, community-driven, native audio turn detection model in 2nd version","url":"https://developers.cloudflare.com/ai/models/%40cf/pipecat-ai/smart-turn-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/pipecat-ai/smart-turn-v2/#page","headline":"smart-turn-v2 (Pipecat) · Cloudflare AI docs · Cloudflare AI docs","description":"An open source, community-driven, native audio turn detection model in 2nd version","url":"https://developers.cloudflare.com/ai/models/%40cf/pipecat-ai/smart-turn-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot private networks
 description: Debug private network connectivity issues.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -128,6 +128,6 @@ To work around the issue:
 1. In Cloudflare One Client version 2026.1 and earlier, select **Preferences** \> **Account** \> **Re-Authenticate Session**. [↩](#user-content-fnref-1)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/#page","headline":"Troubleshoot private networks · Cloudflare Learning Paths","description":"Debug private network connectivity issues.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/#page","headline":"Troubleshoot private networks · Cloudflare Learning Paths","description":"Debug private network connectivity issues.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/","name":"Troubleshoot private networks"}}]}
 ```

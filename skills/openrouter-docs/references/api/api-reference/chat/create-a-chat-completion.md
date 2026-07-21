@@ -4083,7 +4083,7 @@ components:
             panelist and the judge model may produce per inner call. Controls
             the total output budget so reasoning-heavy models like GPT-5.5 do
             not exhaust their token allowance before producing visible text.
-            When omitted, panelists default to 32000 and the judge to 50000.
+            When omitted, panelists default to 32000 and the judge to 20000.
           example: 16384
           type: integer
         max_tool_calls:
@@ -4202,9 +4202,10 @@ components:
           type: integer
       type: object
     SubagentServerToolConfig:
-      description: Configuration for the openrouter:subagent server tool.
+      description: Configuration for one openrouter:subagent server tool entry.
       example:
         model: ~anthropic/claude-haiku-latest
+        name: summarizer
       properties:
         instructions:
           description: >-
@@ -4237,6 +4238,17 @@ components:
             delegating. When omitted, the model from the outer API request is
             used. The subagent tool itself cannot be the subagent model.
           example: ~anthropic/claude-haiku-latest
+          type: string
+        name:
+          description: >-
+            Optional name for this subagent. The model sees one tool per named
+            subagent (and one default for an unnamed entry). Names must be
+            unique across subagent entries. Letters, digits, spaces,
+            underscores, and dashes; trimmed; 1–64 chars.
+          example: summarizer
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9 _-]+$
           type: string
         reasoning:
           $ref: '#/components/schemas/SubagentReasoning'

@@ -1,7 +1,7 @@
 ---
 title: Egress-free object storage in multi-cloud setups
 description: Learn how to use R2 to get egress-free object storage in multi-cloud setups.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -39,6 +39,6 @@ Figure 1: R2-multi-cloud setup
 * [R2: Configure aws4fetch for R2](https://developers.cloudflare.com/r2/examples/aws/aws4fetch/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/#page","headline":"Egress-free object storage in multi-cloud setups · Cloudflare Reference Architecture docs","description":"Learn how to use R2 to get egress-free object storage in multi-cloud setups.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/#page","headline":"Egress-free object storage in multi-cloud setups · Cloudflare Reference Architecture docs","description":"Learn how to use R2 to get egress-free object storage in multi-cloud setups.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/storage/","name":"Storage"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/storage/egress-free-storage-multi-cloud/","name":"Egress-free object storage in multi-cloud setups"}}]}
 ```

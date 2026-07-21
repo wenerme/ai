@@ -1,7 +1,7 @@
 ---
 title: IdP federation
 description: Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -168,6 +168,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares/$SHARE_ID
 * A source IdP cannot be deleted while it has a federation grant associated with it. Delete the grant first.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/#page","headline":"IdP federation · Cloudflare One docs","description":"Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/#page","headline":"IdP federation · Cloudflare One docs","description":"Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/idp-federation/","name":"IdP federation"}}]}
 ```

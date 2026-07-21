@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Create a WAF rule using Cloudforce One threat intelligence fields.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -71,6 +71,6 @@ any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == 
 Set the action to `log` to validate matches before enforcing.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Create a WAF rule using Cloudforce One threat intelligence fields.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Create a WAF rule using Cloudforce One threat intelligence fields.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/threat-intelligence/","name":"Threat intelligence"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/threat-intelligence/get-started/","name":"Get started"}}]}
 ```

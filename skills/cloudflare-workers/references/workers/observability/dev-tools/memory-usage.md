@@ -1,7 +1,7 @@
 ---
 title: Profiling Memory
 description: Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -83,6 +83,6 @@ To learn more about how to use Memory Snapshotting, see [Google's documentation 
 To learn how to use DevTools to gain insight into CPU usage, see the [CPU Profiling Documentation](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/#page","headline":"Profiling Memory · Cloudflare Workers docs","description":"Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/#page","headline":"Profiling Memory · Cloudflare Workers docs","description":"Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/dev-tools/","name":"DevTools"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/dev-tools/memory-usage/","name":"Profiling Memory"}}]}
 ```

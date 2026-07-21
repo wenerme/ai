@@ -1,7 +1,7 @@
 ---
 title: WAF changelog overview
 description: Overview of WAF changelog, scheduled changes, and historical updates.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -49,6 +49,6 @@ If you notice a new or updated rule generating an increased volume of security e
 The [changelog](https://developers.cloudflare.com/waf/change-log/changelog/) also includes general updates to WAF protection that are not specific to managed rulesets.
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/waf/change-log/#page","headline":"Overview of the WAF changelog · Cloudflare Web Application Firewall (WAF) docs","description":"Overview of WAF changelog, scheduled changes, and historical updates.","url":"https://developers.cloudflare.com/waf/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/waf/change-log/#page","headline":"Overview of the WAF changelog · Cloudflare Web Application Firewall (WAF) docs","description":"Overview of WAF changelog, scheduled changes, and historical updates.","url":"https://developers.cloudflare.com/waf/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}}]}
 ```

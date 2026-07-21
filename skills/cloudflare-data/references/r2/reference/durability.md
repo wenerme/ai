@@ -1,7 +1,7 @@
 ---
 title: Durability
 description: R2 is designed for 99.999999999% annual durability using replication and erasure coding.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -30,6 +30,6 @@ R2's durability is built on multiple layers of redundancy and data protection:
 * Durability is also distinct from [consistency](https://developers.cloudflare.com/r2/reference/consistency/), which describes how reads and writes are reflected in the system's state (e.g. eventual consistency vs. strong consistency).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/durability/#page","headline":"Durability · Cloudflare R2 docs","description":"R2 is designed for 99.999999999% annual durability using replication and erasure coding.","url":"https://developers.cloudflare.com/r2/reference/durability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/durability/#page","headline":"Durability · Cloudflare R2 docs","description":"R2 is designed for 99.999999999% annual durability using replication and erasure coding.","url":"https://developers.cloudflare.com/r2/reference/durability/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/reference/durability/","name":"Durability"}}]}
 ```

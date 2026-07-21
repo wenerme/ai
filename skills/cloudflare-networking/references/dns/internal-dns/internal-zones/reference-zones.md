@@ -1,7 +1,7 @@
 ---
 title: Reference zones
 description: Learn about reference zones. Cloudflare Internal DNS allows zones to reference others for query resolution when no direct record is found.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -67,6 +67,6 @@ curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f
 A third zone (C) could also point to zone B as a reference, but zone A cannot add another zone as a reference while also having zone B configured as its reference zone.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/#page","headline":"Reference zones · Cloudflare DNS docs","description":"Learn about reference zones. Cloudflare Internal DNS allows zones to reference others for query resolution when no direct record is found.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/#page","headline":"Reference zones · Cloudflare DNS docs","description":"Learn about reference zones. Cloudflare Internal DNS allows zones to reference others for query resolution when no direct record is found.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/internal-dns/","name":"Internal DNS"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/internal-dns/internal-zones/","name":"Internal zones"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/internal-dns/internal-zones/reference-zones/","name":"Reference zones"}}]}
 ```

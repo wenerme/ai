@@ -1,7 +1,7 @@
 ---
 title: Features
 description: Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -207,6 +207,6 @@ Override default pricing with your negotiated rates or custom cost models. Apply
 _All features work seamlessly together and across all 20+ supported AI providers. Get started with [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/) to begin using these features in your applications._
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/#page","headline":"Features · Cloudflare AI Gateway docs","description":"Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.","url":"https://developers.cloudflare.com/ai-gateway/features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/#page","headline":"Features · Cloudflare AI Gateway docs","description":"Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.","url":"https://developers.cloudflare.com/ai-gateway/features/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}}]}
 ```

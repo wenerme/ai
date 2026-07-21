@@ -1,7 +1,7 @@
 ---
 title: Puppeteer
 description: Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -243,6 +243,6 @@ You should also be able to access this information in the dashboard, albeit with
 The full Puppeteer API can be found in the [Cloudflare's fork of Puppeteer ↗](https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer · Cloudflare Browser Run docs","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer · Cloudflare Browser Run docs","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/puppeteer/","name":"Puppeteer"}}]}
 ```

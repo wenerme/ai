@@ -28,6 +28,6 @@ let value: ChatContentText = {
 
 | Field          | Type                                                                                                 | Required             | Description                        | Example                             |
 | -------------- | ---------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------- | ----------------------------------- |
-| `cacheControl` | [models.ChatContentCacheControl](/agent-sdk/typescript/api-reference/models/chatcontentcachecontrol) | :heavy\_minus\_sign: | Cache control for the content part | `{"ttl": "5m","type": "ephemeral"}` |
+| `cacheControl` | [models.ChatContentCacheControl](/docs/agent-sdk/typescript/api-reference/models/chatcontentcachecontrol) | :heavy\_minus\_sign: | Cache control for the content part | `{"ttl": "5m","type": "ephemeral"}` |
 | `text`         | *string*                                                                                             | :heavy\_check\_mark: | N/A                                |                                     |
-| `type`         | [models.ChatContentTextType](/agent-sdk/typescript/api-reference/models/chatcontenttexttype)         | :heavy\_check\_mark: | N/A                                |                                     |
+| `type`         | [models.ChatContentTextType](/docs/agent-sdk/typescript/api-reference/models/chatcontenttexttype)         | :heavy\_check\_mark: | N/A                                |                                     |

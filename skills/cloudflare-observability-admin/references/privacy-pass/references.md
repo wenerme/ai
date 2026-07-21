@@ -1,7 +1,7 @@
 ---
 title: References
 description: A consolidated list of the resources referenced across the Privacy Pass documentation.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -52,6 +52,6 @@ image: https://developers.cloudflare.com/og-docs.png
 * [git ↗](https://git-scm.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/references/#page","headline":"References · Cloudflare Privacy Pass docs","description":"A consolidated list of the resources referenced across the Privacy Pass documentation.","url":"https://developers.cloudflare.com/privacy-pass/references/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/references/#page","headline":"References · Cloudflare Privacy Pass docs","description":"A consolidated list of the resources referenced across the Privacy Pass documentation.","url":"https://developers.cloudflare.com/privacy-pass/references/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-pass/","name":"Privacy Pass"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-pass/references/","name":"References"}}]}
 ```

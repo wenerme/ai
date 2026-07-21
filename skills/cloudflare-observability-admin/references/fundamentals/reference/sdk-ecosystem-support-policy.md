@@ -1,7 +1,7 @@
 ---
 title: SDK ecosystem support policy
 description: Understand Cloudflare's SDK lifecycle stages, supported language runtimes, and ecosystem support commitments.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -70,6 +70,6 @@ Alongside the automatic migration approach, we provide documentation on the chan
 * [Cloudflare's Terraform documentation](https://developers.cloudflare.com/terraform/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/#page","headline":"SDK ecosystem support policy · Cloudflare Fundamentals docs","description":"Understand Cloudflare's SDK lifecycle stages, supported language runtimes, and ecosystem support commitments.","url":"https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/#page","headline":"SDK ecosystem support policy · Cloudflare Fundamentals docs","description":"Understand Cloudflare's SDK lifecycle stages, supported language runtimes, and ecosystem support commitments.","url":"https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/sdk-ecosystem-support-policy/","name":"SDK ecosystem support policy"}}]}
 ```

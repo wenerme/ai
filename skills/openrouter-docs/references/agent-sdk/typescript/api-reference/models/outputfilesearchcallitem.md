@@ -32,5 +32,5 @@ let value: OutputFileSearchCallItem = {
 | --------- | -------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- | --------- |
 | `id`      | *string*                                                                                                       | :heavy\_check\_mark: | N/A         |           |
 | `queries` | *string*\[]                                                                                                    | :heavy\_check\_mark: | N/A         |           |
-| `status`  | [models.WebSearchStatus](/agent-sdk/typescript/api-reference/models/websearchstatus)                           | :heavy\_check\_mark: | N/A         | completed |
-| `type`    | [models.OutputFileSearchCallItemType](/agent-sdk/typescript/api-reference/models/outputfilesearchcallitemtype) | :heavy\_check\_mark: | N/A         |           |
+| `status`  | [models.WebSearchStatus](/docs/agent-sdk/typescript/api-reference/models/websearchstatus)                           | :heavy\_check\_mark: | N/A         | completed |
+| `type`    | [models.OutputFileSearchCallItemType](/docs/agent-sdk/typescript/api-reference/models/outputfilesearchcallitemtype) | :heavy\_check\_mark: | N/A         |           |

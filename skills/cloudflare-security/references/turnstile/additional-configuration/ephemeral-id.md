@@ -1,7 +1,7 @@
 ---
 title: Ephemeral IDs
 description: Generate single-use Ephemeral IDs for fraud detection and analytics.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -77,6 +77,6 @@ Once enabled, Ephemeral IDs are included in Siteverify API responses.
 Ephemeral IDs are available to Enterprise Bot Management customers with the Enterprise Turnstile add-on or standalone Enterprise Turnstile customers. Contact your account team for access to Ephemeral IDs.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/#page","headline":"Ephemeral IDs · Cloudflare Turnstile docs","description":"Generate single-use Ephemeral IDs for fraud detection and analytics.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/#page","headline":"Ephemeral IDs · Cloudflare Turnstile docs","description":"Generate single-use Ephemeral IDs for fraud detection and analytics.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/additional-configuration/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/additional-configuration/ephemeral-id/","name":"Ephemeral IDs"}}]}
 ```

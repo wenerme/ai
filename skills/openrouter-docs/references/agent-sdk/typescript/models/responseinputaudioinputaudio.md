@@ -27,4 +27,4 @@ let value: ResponseInputAudioInputAudio = {
 | Field    | Type                                                                                     | Required             | Description |
 | -------- | ---------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `data`   | *string*                                                                                 | :heavy\_check\_mark: | N/A         |
-| `format` | [models.ResponseInputAudioFormat](/agent-sdk/typescript/models/responseinputaudioformat) | :heavy\_check\_mark: | N/A         |
+| `format` | [models.ResponseInputAudioFormat](/docs/agent-sdk/typescript/models/responseinputaudioformat) | :heavy\_check\_mark: | N/A         |

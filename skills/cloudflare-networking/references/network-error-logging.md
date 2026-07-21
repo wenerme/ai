@@ -1,7 +1,7 @@
 ---
 title: Network Error Logging
 description: Collect reports about network errors affecting your visitors.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -73,6 +73,6 @@ NEL reports contain information about the end user's network conditions, which c
   2. **Permanent opt-out via Support** — Contact Cloudflare support to have the `nel___enable` feature flag disabled at the product level. This prevents NEL from being enabled on your zone entirely and cannot be reversed by zone administrators. For Free and Pro plans, the dashboard toggle is typically sufficient. Enterprise customers with strict privacy requirements may prefer the permanent support-level opt-out.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-error-logging/#page","headline":"Overview · Cloudflare Network Error Logging docs","description":"Collect reports about network errors affecting your visitors.","url":"https://developers.cloudflare.com/network-error-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Logging"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-error-logging/#page","headline":"Overview · Cloudflare Network Error Logging docs","description":"Collect reports about network errors affecting your visitors.","url":"https://developers.cloudflare.com/network-error-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Logging"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-error-logging/","name":"Network Error Logging"}}]}
 ```

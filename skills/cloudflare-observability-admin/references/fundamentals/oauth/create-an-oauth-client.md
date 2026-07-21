@@ -1,7 +1,7 @@
 ---
 title: Create your OAuth client
 description: Create an OAuth client that can access Cloudflare API resources on behalf of users.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -208,6 +208,6 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/#page","headline":"Create your OAuth client · Cloudflare Fundamentals docs","description":"Create an OAuth client that can access Cloudflare API resources on behalf of users.","url":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/#page","headline":"Create your OAuth client · Cloudflare Fundamentals docs","description":"Create an OAuth client that can access Cloudflare API resources on behalf of users.","url":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/oauth/","name":"OAuth Applications on Cloudflare"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/oauth/create-an-oauth-client/","name":"Create your OAuth client"}}]}
 ```

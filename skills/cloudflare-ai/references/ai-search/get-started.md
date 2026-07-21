@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Create fully-managed, retrieval-augmented generation pipelines with Cloudflare AI Search.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -27,6 +27,6 @@ AI Search is a managed search service. Connect a website, an R2 bucket, or uploa
 [ REST API ](https://developers.cloudflare.com/ai-search/get-started/api/) Create AI Search instances programmatically using the REST API.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/#page","headline":"Get started with AI Search · Cloudflare AI Search docs","description":"Create fully-managed, retrieval-augmented generation pipelines with Cloudflare AI Search.","url":"https://developers.cloudflare.com/ai-search/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/#page","headline":"Get started with AI Search · Cloudflare AI Search docs","description":"Create fully-managed, retrieval-augmented generation pipelines with Cloudflare AI Search.","url":"https://developers.cloudflare.com/ai-search/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/get-started/","name":"Get started"}}]}
 ```

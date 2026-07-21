@@ -15,7 +15,7 @@ Our API authenticates requests using Bearer tokens. This allows you to use `curl
 <Warning>
   API keys on OpenRouter are more powerful than keys used directly for model APIs.
 
-  They allow users to set credit limits for apps, and they can be used in [OAuth](/guides/overview/auth/oauth) flows.
+  They allow users to set credit limits for apps, and they can be used in [OAuth](/docs/guides/overview/auth/oauth) flows.
 </Warning>
 
 ## Using an API key

@@ -1,7 +1,7 @@
 ---
 title: Manage files
 description: Read, write, organize, and synchronize files in the sandbox.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -442,6 +442,6 @@ try {
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Generate and execute code files
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/manage-files/#page","headline":"Manage files · Cloudflare Sandbox SDK docs","description":"Read, write, organize, and synchronize files in the sandbox.","url":"https://developers.cloudflare.com/sandbox/guides/manage-files/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/manage-files/#page","headline":"Manage files · Cloudflare Sandbox SDK docs","description":"Read, write, organize, and synchronize files in the sandbox.","url":"https://developers.cloudflare.com/sandbox/guides/manage-files/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/manage-files/","name":"Manage files"}}]}
 ```

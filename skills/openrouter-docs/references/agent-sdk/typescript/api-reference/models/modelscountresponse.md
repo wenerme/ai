@@ -29,4 +29,4 @@ let value: ModelsCountResponse = {
 
 | Field  | Type                                                                                                 | Required             | Description      | Example          |
 | ------ | ---------------------------------------------------------------------------------------------------- | -------------------- | ---------------- | ---------------- |
-| `data` | [models.ModelsCountResponseData](/agent-sdk/typescript/api-reference/models/modelscountresponsedata) | :heavy\_check\_mark: | Model count data | `{"count": 150}` |
+| `data` | [models.ModelsCountResponseData](/docs/agent-sdk/typescript/api-reference/models/modelscountresponsedata) | :heavy\_check\_mark: | Model count data | `{"count": 150}` |

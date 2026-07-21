@@ -123,7 +123,7 @@ When using OpenRouter, you can control which upstream providers handle your requ
 }
 ```
 
-For a full breakdown of routing options, see the [Provider Routing docs](/guides/routing/provider-selection).
+For a full breakdown of routing options, see the [Provider Routing docs](/docs/guides/routing/provider-selection).
 
 ## Why Use OpenRouter with OpenCode?
 

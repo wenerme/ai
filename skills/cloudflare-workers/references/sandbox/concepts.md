@@ -1,7 +1,7 @@
 ---
 title: Concepts
 description: Learn how the Sandbox SDK works, including architecture, lifecycle, security, and sessions.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -29,6 +29,6 @@ These pages explain how the Sandbox SDK works, why it's designed the way it is, 
 * [API reference](https://developers.cloudflare.com/sandbox/api/) \- Technical details and method signatures
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/concepts/#page","headline":"Concepts · Cloudflare Sandbox SDK docs","description":"Learn how the Sandbox SDK works, including architecture, lifecycle, security, and sessions.","url":"https://developers.cloudflare.com/sandbox/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/concepts/#page","headline":"Concepts · Cloudflare Sandbox SDK docs","description":"Learn how the Sandbox SDK works, including architecture, lifecycle, security, and sessions.","url":"https://developers.cloudflare.com/sandbox/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}}]}
 ```

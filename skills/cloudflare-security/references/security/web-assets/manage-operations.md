@@ -1,7 +1,7 @@
 ---
 title: Manage operations
 description: Add, review, refine, and delete HTTP request operations in Web Assets.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -139,6 +139,6 @@ When you delete an operation, future traffic towards this opetaion will not be m
 You can interact with operations through the Cloudflare API. For more information, refer to [operations API documentation](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/discovery/subresources/operations/methods/list/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/manage-operations/#page","headline":"Manage operations · Security dashboard docs","description":"Add, review, refine, and delete HTTP request operations in Web Assets.","url":"https://developers.cloudflare.com/security/web-assets/manage-operations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/manage-operations/#page","headline":"Manage operations · Security dashboard docs","description":"Add, review, refine, and delete HTTP request operations in Web Assets.","url":"https://developers.cloudflare.com/security/web-assets/manage-operations/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/web-assets/","name":"Web Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/security/web-assets/manage-operations/","name":"Manage operations"}}]}
 ```

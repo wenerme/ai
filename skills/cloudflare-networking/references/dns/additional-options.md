@@ -1,7 +1,7 @@
 ---
 title: Additional options
 description: Additional DNS features including analytics, zone defaults, and reverse zones.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -19,6 +19,6 @@ Beyond [setting up your zone](https://developers.cloudflare.com/dns/zone-setups/
 * [ Reverse zones and PTR records ](https://developers.cloudflare.com/dns/additional-options/reverse-zones/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/additional-options/#page","headline":"Additional options · Cloudflare DNS docs","description":"Additional DNS features including analytics, zone defaults, and reverse zones.","url":"https://developers.cloudflare.com/dns/additional-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/additional-options/#page","headline":"Additional options · Cloudflare DNS docs","description":"Additional DNS features including analytics, zone defaults, and reverse zones.","url":"https://developers.cloudflare.com/dns/additional-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/additional-options/","name":"Additional options"}}]}
 ```

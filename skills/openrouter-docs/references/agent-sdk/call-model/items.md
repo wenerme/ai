@@ -203,7 +203,7 @@ function calls, etc.), not just messages.
 
 ## Next Steps
 
-* **[Streaming](/agent-sdk/call-model/streaming)** - All streaming
+* **[Streaming](/docs/agent-sdk/call-model/streaming)** - All streaming
   methods including getItemsStream()
-* **[Tools](/agent-sdk/call-model/tools)** - Creating typed tools
+* **[Tools](/docs/agent-sdk/call-model/tools)** - Creating typed tools
   with Zod schemas

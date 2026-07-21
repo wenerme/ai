@@ -125,5 +125,5 @@ The distillable filter is particularly useful for:
 
 ## Related Documentation
 
-* [Provider Routing](/guides/routing/provider-selection) - Learn more about the `enforce_distillable_text` parameter and other provider routing options
-* [Models](/guides/overview/models) - Browse all available models and their capabilities
+* [Provider Routing](/docs/guides/routing/provider-selection) - Learn more about the `enforce_distillable_text` parameter and other provider routing options
+* [Models](/docs/guides/overview/models) - Browse all available models and their capabilities

@@ -33,6 +33,6 @@ let value: OpenAIResponsesInputMessage2 = {
 | Field     | Type                                                                                                     | Required             | Description |
 | --------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `id`      | *string*                                                                                                 | :heavy\_check\_mark: | N/A         |
-| `type`    | [models.OpenAIResponsesInputTypeMessage2](/agent-sdk/typescript/models/openairesponsesinputtypemessage2) | :heavy\_minus\_sign: | N/A         |
+| `type`    | [models.OpenAIResponsesInputTypeMessage2](/docs/agent-sdk/typescript/models/openairesponsesinputtypemessage2) | :heavy\_minus\_sign: | N/A         |
 | `role`    | *models.OpenAIResponsesInputRoleUnion2*                                                                  | :heavy\_check\_mark: | N/A         |
 | `content` | *models.OpenAIResponsesInputContent3*\[]                                                                 | :heavy\_check\_mark: | N/A         |

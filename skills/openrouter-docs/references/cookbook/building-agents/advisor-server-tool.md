@@ -74,15 +74,15 @@ You need:
 * A cheap executor model for routine work
 * A stronger advisor model for compact second opinions
 
-If you are starting a new TypeScript agent, use the [Agent SDK `callModel` API](/sdks/typescript/call-model/overview) for the executor loop. The sample below uses Chat Completions so the server-tool request shape is visible, but the budget-gate pattern is the same inside an Agent SDK workflow.
+If you are starting a new TypeScript agent, use the [Agent SDK `callModel` API](/docs/sdks/typescript/call-model/overview) for the executor loop. The sample below uses Chat Completions so the server-tool request shape is visible, but the budget-gate pattern is the same inside an Agent SDK workflow.
 
 Use these references for exact schemas:
 
-* [Advisor server tool](/guides/features/server-tools/advisor)
-* [Agent SDK `callModel` overview](/sdks/typescript/call-model/overview)
-* [Create a chat completion](/api/api-reference/chat/create-a-chat-completion)
-* [Create a response](/api/api-reference/responses/create-a-response)
-* [TypeScript SDK Chat reference](/client-sdks/typescript/sdks/chat/README)
+* [Advisor server tool](/docs/guides/features/server-tools/advisor)
+* [Agent SDK `callModel` overview](/docs/sdks/typescript/call-model/overview)
+* [Create a chat completion](/docs/api/api-reference/chat/create-a-chat-completion)
+* [Create a response](/docs/api/api-reference/responses/create-a-response)
+* [TypeScript SDK Chat reference](/docs/client-sdks/typescript/sdks/chat/README)
 
 ## What you're building
 
@@ -358,7 +358,7 @@ Token counts, cost, answer text, and provider-specific usage detail keys vary by
 
 ## Next steps
 
-* Read the [Advisor reference](/guides/features/server-tools/advisor) for exact parameters, multiple-advisor rules, memory, streaming, and API-surface details.
-* Add [Web Search](/guides/features/server-tools/web-search) as an Advisor sub-tool when the reviewer needs current sources.
-* Use [Response Caching](/guides/features/response-caching) for repeated stable prefixes in the executor prompt.
-* Add [Human-in-the-Loop controls](/cookbook/building-agents/hitl-tools) when a second opinion should pause for a person instead of another model.
+* Read the [Advisor reference](/docs/guides/features/server-tools/advisor) for exact parameters, multiple-advisor rules, memory, streaming, and API-surface details.
+* Add [Web Search](/docs/guides/features/server-tools/web-search) as an Advisor sub-tool when the reviewer needs current sources.
+* Use [Response Caching](/docs/guides/features/response-caching) for repeated stable prefixes in the executor prompt.
+* Add [Human-in-the-Loop controls](/docs/cookbook/building-agents/hitl-tools) when a second opinion should pause for a person instead of another model.

@@ -1,7 +1,7 @@
 ---
 title: Handle outbound traffic
 description: Intercept and handle outbound HTTP from containers using Workers.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -465,6 +465,6 @@ The `Container` class calls these methods automatically when you use the functio
 * [Durable Object interface](https://developers.cloudflare.com/durable-objects/api/container/) — Full `ctx.container` API reference
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/#page","headline":"Handle outbound traffic · Cloudflare Containers docs","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/#page","headline":"Handle outbound traffic · Cloudflare Containers docs","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/outbound-traffic/","name":"Handle outbound traffic"}}]}
 ```

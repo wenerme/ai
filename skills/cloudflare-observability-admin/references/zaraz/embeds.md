@@ -1,7 +1,7 @@
 ---
 title: Embeds
 description: Embed third-party widgets like chat and support tools with Zaraz.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -49,6 +49,6 @@ Replace `tweet-id` with the actual tweet ID for the content you wish to embed.
 Replace `post-url` with the actual URL for the content you wish to embed. To include posts captions set captions attribute to `true`.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/embeds/#page","headline":"Embeds · Cloudflare Zaraz docs","description":"Embed third-party widgets like chat and support tools with Zaraz.","url":"https://developers.cloudflare.com/zaraz/embeds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/embeds/#page","headline":"Embeds · Cloudflare Zaraz docs","description":"Embed third-party widgets like chat and support tools with Zaraz.","url":"https://developers.cloudflare.com/zaraz/embeds/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/embeds/","name":"Embeds"}}]}
 ```

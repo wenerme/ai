@@ -1,7 +1,7 @@
 ---
 title: Supported cipher suites
 description: Full list of cipher suites supported by Cloudflare edge certificates.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ Ciphers `AEAD-AES128-GCM-SHA256`, `AEAD-AES256-GCM-SHA384`, and `AEAD-CHACHA20-P
 TLS 1.3 uses the same cipher suite space as previous versions of TLS, but defines these cipher suites differently. TLS 1.3 only specifies the symmetric ciphers and cannot be used for TLS 1.2\. Similarly, TLS 1.2 and lower cipher suites cannot be used with TLS 1.3 ([RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html)). BoringSSL also hard-codes cipher preferences in this order for TLS 1.3.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/#page","headline":"Supported cipher suites · Cloudflare SSL/TLS docs","description":"Full list of cipher suites supported by Cloudflare edge certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/#page","headline":"Supported cipher suites · Cloudflare SSL/TLS docs","description":"Full list of cipher suites supported by Cloudflare edge certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/additional-options/cipher-suites/","name":"Cipher suites"}},{"@type":"ListItem","position":6,"item":{"@id":"/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/","name":"Supported cipher suites"}}]}
 ```

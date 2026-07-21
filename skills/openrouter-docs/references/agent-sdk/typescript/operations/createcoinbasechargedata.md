@@ -51,4 +51,4 @@ let value: CreateCoinbaseChargeData = {
 | `id`        | *string*                                                         | :heavy\_check\_mark: | N/A         |
 | `createdAt` | *string*                                                         | :heavy\_check\_mark: | N/A         |
 | `expiresAt` | *string*                                                         | :heavy\_check\_mark: | N/A         |
-| `web3Data`  | [operations.Web3Data](/agent-sdk/typescript/operations/web3data) | :heavy\_check\_mark: | N/A         |
+| `web3Data`  | [operations.Web3Data](/docs/agent-sdk/typescript/operations/web3data) | :heavy\_check\_mark: | N/A         |

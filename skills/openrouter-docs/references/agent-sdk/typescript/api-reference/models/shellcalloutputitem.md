@@ -36,6 +36,6 @@ let value: ShellCallOutputItem = {
 | `callId`          | *string*                                                                                                    | :heavy\_check\_mark: | N/A         |           |
 | `id`              | *string*                                                                                                    | :heavy\_minus\_sign: | N/A         |           |
 | `maxOutputLength` | *number*                                                                                                    | :heavy\_minus\_sign: | N/A         |           |
-| `output`          | [models.ShellCallOutputItemOutput](/agent-sdk/typescript/api-reference/models/shellcalloutputitemoutput)\[] | :heavy\_check\_mark: | N/A         |           |
-| `status`          | [models.ShellCallOutputItemStatus](/agent-sdk/typescript/api-reference/models/shellcalloutputitemstatus)    | :heavy\_minus\_sign: | N/A         | completed |
-| `type`            | [models.ShellCallOutputItemType](/agent-sdk/typescript/api-reference/models/shellcalloutputitemtype)        | :heavy\_check\_mark: | N/A         |           |
+| `output`          | [models.ShellCallOutputItemOutput](/docs/agent-sdk/typescript/api-reference/models/shellcalloutputitemoutput)\[] | :heavy\_check\_mark: | N/A         |           |
+| `status`          | [models.ShellCallOutputItemStatus](/docs/agent-sdk/typescript/api-reference/models/shellcalloutputitemstatus)    | :heavy\_minus\_sign: | N/A         | completed |
+| `type`            | [models.ShellCallOutputItemType](/docs/agent-sdk/typescript/api-reference/models/shellcalloutputitemtype)        | :heavy\_check\_mark: | N/A         |           |

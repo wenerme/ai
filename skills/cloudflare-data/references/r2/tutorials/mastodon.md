@@ -1,7 +1,7 @@
 ---
 title: Mastodon
 description: This guide explains how to configure R2 to be the object storage for a self hosted Mastodon instance. You can set up a self-hosted instance in multiple ways.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -89,6 +89,6 @@ Your instance may be still running during migration, and during migration, you l
 Once all the files are synced, you can restart your Mastodon instance with the new object storage configuration as mentioned in [step 3](#3-configure-r2-for-mastodon) of Set up a new instance.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/mastodon/#page","headline":"Mastodon · Cloudflare R2 docs","description":"This guide explains how to configure R2 to be the object storage for a self hosted Mastodon instance. You can set up a self-hosted instance in multiple ways.","url":"https://developers.cloudflare.com/r2/tutorials/mastodon/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/mastodon/#page","headline":"Mastodon · Cloudflare R2 docs","description":"This guide explains how to configure R2 to be the object storage for a self hosted Mastodon instance. You can set up a self-hosted instance in multiple ways.","url":"https://developers.cloudflare.com/r2/tutorials/mastodon/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/tutorials/mastodon/","name":"Mastodon"}}]}
 ```

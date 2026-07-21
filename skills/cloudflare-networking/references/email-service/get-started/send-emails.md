@@ -1,7 +1,7 @@
 ---
 title: Send emails
 description: Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -191,6 +191,6 @@ Now that you can send emails, explore advanced features:
 * **[Examples](https://developers.cloudflare.com/email-service/examples/)** \- Real-world implementation patterns
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/send-emails/#page","headline":"Send emails · Cloudflare Email Service docs","description":"Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/get-started/send-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/get-started/send-emails/#page","headline":"Send emails · Cloudflare Email Service docs","description":"Send your first email using the Cloudflare Email Service Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/get-started/send-emails/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/get-started/send-emails/","name":"Send emails"}}]}
 ```

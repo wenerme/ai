@@ -1,7 +1,7 @@
 ---
 title: Rewrite page path for visitors in specific countries
 description: Create two URL rewrite rules (part of Transform Rules) to rewrite the path of the welcome page for visitors in specific countries.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -45,6 +45,6 @@ Text after **Path** \> **Rewrite to** \> _Static_:
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/#page","headline":"Rewrite page path for visitors in specific countries · Cloudflare Rules docs","description":"Create two URL rewrite rules (part of Transform Rules) to rewrite the path of the welcome page for visitors in specific countries.","url":"https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/#page","headline":"Rewrite page path for visitors in specific countries · Cloudflare Rules docs","description":"Create two URL rewrite rules (part of Transform Rules) to rewrite the path of the welcome page for visitors in specific countries.","url":"https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/examples/","name":"Transform Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/examples/rewrite-welcome-for-countries/","name":"Rewrite page path for visitors in specific countries"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Get started
 description: Set up authentication for Resource Tagging and make your first API calls.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -89,6 +89,6 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tags/reso
 * Review [API limits and validation rules](https://developers.cloudflare.com/resource-tagging/reference/limits/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/get-started/#page","headline":"Get started · Cloudflare Resource Tagging docs","description":"Set up authentication for Resource Tagging and make your first API calls.","url":"https://developers.cloudflare.com/resource-tagging/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/get-started/#page","headline":"Get started · Cloudflare Resource Tagging docs","description":"Set up authentication for Resource Tagging and make your first API calls.","url":"https://developers.cloudflare.com/resource-tagging/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/resource-tagging/","name":"Resource Tagging"}},{"@type":"ListItem","position":3,"item":{"@id":"/resource-tagging/get-started/","name":"Get started"}}]}
 ```

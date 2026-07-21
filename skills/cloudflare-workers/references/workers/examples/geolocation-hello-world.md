@@ -1,7 +1,7 @@
 ---
 title: Geolocation: Hello World
 description: Get all geolocation data fields and display them in HTML.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -236,6 +236,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/geolocation-hello-world/#page","headline":"Geolocation: Hello World · Cloudflare Workers docs","description":"Get all geolocation data fields and display them in HTML.","url":"https://developers.cloudflare.com/workers/examples/geolocation-hello-world/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/geolocation-hello-world/#page","headline":"Geolocation: Hello World · Cloudflare Workers docs","description":"Get all geolocation data fields and display them in HTML.","url":"https://developers.cloudflare.com/workers/examples/geolocation-hello-world/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/geolocation-hello-world/","name":"Geolocation: Hello World"}}]}
 ```

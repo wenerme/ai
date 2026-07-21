@@ -1,7 +1,7 @@
 ---
 title: Waiting Room
 description: Control meeting access with a waiting room that requires host approval in RealtimeKit.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -868,6 +868,6 @@ function WaitingRoomHost() {
 * **Check Permissions** \- Ensure your app has appropriate permissions configured in the preset to use waiting room features
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/#page","headline":"Waiting Room · Cloudflare Realtime docs","description":"Control meeting access with a waiting room that requires host approval in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/#page","headline":"Waiting Room · Cloudflare Realtime docs","description":"Control meeting access with a waiting room that requires host approval in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/waiting-room/","name":"Waiting Room"}}]}
 ```

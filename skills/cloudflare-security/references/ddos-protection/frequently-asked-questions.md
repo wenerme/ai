@@ -1,7 +1,7 @@
 ---
 title: FAQ
 description: Answers to common questions about DDoS attack events, billing, and mitigation behavior.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -190,6 +190,6 @@ No. Cloudflare DDoS Protection safeguards web and network infrastructure against
 DDoS Protection does not inspect or mitigate threats delivered over email protocols such as SMTP, IMAP, or POP3\. To protect against email-borne threats such as phishing, business email compromise (BEC), spoofing, and malware delivered via email, use [Cloudflare Email Security](https://developers.cloudflare.com/email-security/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/frequently-asked-questions/#page","headline":"Frequently asked questions for DDoS Protection · Cloudflare DDoS Protection docs","description":"Answers to common questions about DDoS attack events, billing, and mitigation behavior.","url":"https://developers.cloudflare.com/ddos-protection/frequently-asked-questions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/frequently-asked-questions/#page","headline":"Frequently asked questions for DDoS Protection · Cloudflare DDoS Protection docs","description":"Answers to common questions about DDoS attack events, billing, and mitigation behavior.","url":"https://developers.cloudflare.com/ddos-protection/frequently-asked-questions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/frequently-asked-questions/","name":"FAQ"}}]}
 ```

@@ -26,6 +26,6 @@ let value: OpenAIResponsesInputMessage1 = {
 
 | Field     | Type                                                                                                     | Required             | Description |
 | --------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
-| `type`    | [models.OpenAIResponsesInputTypeMessage1](/agent-sdk/typescript/models/openairesponsesinputtypemessage1) | :heavy\_minus\_sign: | N/A         |
+| `type`    | [models.OpenAIResponsesInputTypeMessage1](/docs/agent-sdk/typescript/models/openairesponsesinputtypemessage1) | :heavy\_minus\_sign: | N/A         |
 | `role`    | *models.OpenAIResponsesInputRoleUnion1*                                                                  | :heavy\_check\_mark: | N/A         |
 | `content` | *models.OpenAIResponsesInputContent2*                                                                    | :heavy\_check\_mark: | N/A         |

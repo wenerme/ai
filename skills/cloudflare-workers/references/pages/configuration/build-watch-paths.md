@@ -1,7 +1,7 @@
 ---
 title: Build watch paths
 description: Configure which file paths trigger or skip a Cloudflare Pages build when changes are pushed.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -78,6 +78,6 @@ If you want to trigger a build for changes in `src/` but want to ignore changes 
 * Exclude paths: `src/tests/*`
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-watch-paths/#page","headline":"Build watch paths · Cloudflare Pages docs","description":"Configure which file paths trigger or skip a Cloudflare Pages build when changes are pushed.","url":"https://developers.cloudflare.com/pages/configuration/build-watch-paths/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-watch-paths/#page","headline":"Build watch paths · Cloudflare Pages docs","description":"Configure which file paths trigger or skip a Cloudflare Pages build when changes are pushed.","url":"https://developers.cloudflare.com/pages/configuration/build-watch-paths/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/build-watch-paths/","name":"Build watch paths"}}]}
 ```

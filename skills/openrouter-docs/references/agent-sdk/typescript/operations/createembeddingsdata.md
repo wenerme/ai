@@ -26,6 +26,6 @@ let value: CreateEmbeddingsData = {
 
 | Field       | Type                                                                           | Required             | Description |
 | ----------- | ------------------------------------------------------------------------------ | -------------------- | ----------- |
-| `object`    | [operations.ObjectEmbedding](/agent-sdk/typescript/operations/objectembedding) | :heavy\_check\_mark: | N/A         |
+| `object`    | [operations.ObjectEmbedding](/docs/agent-sdk/typescript/operations/objectembedding) | :heavy\_check\_mark: | N/A         |
 | `embedding` | *operations.Embedding*                                                         | :heavy\_check\_mark: | N/A         |
 | `index`     | *number*                                                                       | :heavy\_minus\_sign: | N/A         |

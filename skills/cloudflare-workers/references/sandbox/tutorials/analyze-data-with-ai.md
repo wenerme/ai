@@ -1,7 +1,7 @@
 ---
 title: Analyze data with AI
 description: Upload CSV files, generate analysis code with Claude, and return visualizations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -353,6 +353,6 @@ An AI data analysis system that:
 * [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Real-time progress updates
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/#page","headline":"Analyze data with AI · Cloudflare Sandbox SDK docs","description":"Upload CSV files, generate analysis code with Claude, and return visualizations.","url":"https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/#page","headline":"Analyze data with AI · Cloudflare Sandbox SDK docs","description":"Upload CSV files, generate analysis code with Claude, and return visualizations.","url":"https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/analyze-data-with-ai/","name":"Analyze data with AI"}}]}
 ```

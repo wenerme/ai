@@ -1,7 +1,7 @@
 ---
 title: Customize cache behavior with Workers
 description: Customize cache behavior with the Workers Cache API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -48,6 +48,6 @@ Workers offer two ways to interact with the cache. Use `fetch()` when your Worke
 To understand more about how Cache and Workers interact, refer to [Cache in Workers](https://developers.cloudflare.com/workers/reference/how-the-cache-works/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/#page","headline":"Customize cache behavior with Workers · Cloudflare Cache (CDN) docs","description":"Customize cache behavior with the Workers Cache API.","url":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/#page","headline":"Customize cache behavior with Workers · Cloudflare Cache (CDN) docs","description":"Customize cache behavior with the Workers Cache API.","url":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/interaction-cloudflare-products/","name":"Interaction with Cloudflare products"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/interaction-cloudflare-products/workers/","name":"Customize cache behavior with Workers"}}]}
 ```

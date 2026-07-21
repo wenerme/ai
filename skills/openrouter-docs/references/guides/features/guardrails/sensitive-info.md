@@ -8,7 +8,7 @@
 
 The Sensitive Info Guardrail lets you automatically detect and handle sensitive information — such as email addresses, phone numbers, credit card numbers, and names — before requests reach the model provider. You can choose to **redact** (replace with a placeholder) or **block** (reject the request entirely) when sensitive data is detected.
 
-This feature is part of [Guardrails](/guides/features/guardrails) and can be configured alongside budget limits, model restrictions, and other guardrail settings.
+This feature is part of [Guardrails](/docs/guides/features/guardrails) and can be configured alongside budget limits, model restrictions, and other guardrail settings.
 
 ## How It Works
 
@@ -161,11 +161,11 @@ Available slugs: `email`, `phone`, `ssn`, `credit-card`, `ip-address`, `person-n
 
 Each custom filter supports an optional `label` field for descriptive error messages when blocking.
 
-See the [Guardrails API reference](/api/api-reference/guardrails/list-guardrails) for full endpoint documentation.
+See the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for full endpoint documentation.
 
 ## How Sensitive Info Interacts with Other Guardrails
 
-Sensitive info filters follow the same [guardrail hierarchy](/guides/features/guardrails#guardrail-hierarchy) as other guardrail settings. When multiple guardrails apply to a request:
+Sensitive info filters follow the same [guardrail hierarchy](/docs/guides/features/guardrails#guardrail-hierarchy) as other guardrail settings. When multiple guardrails apply to a request:
 
 * **Content filters are unioned** — If a member guardrail has an email filter and an API key guardrail has a phone filter, both filters apply.
 * **Block wins over redact** — If the same entity type appears in multiple guardrails with different actions, the stricter action (block) takes precedence.

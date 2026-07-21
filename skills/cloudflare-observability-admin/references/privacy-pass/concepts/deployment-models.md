@@ -1,7 +1,7 @@
 ---
 title: Deployment Models
 description: Who operates each Privacy Pass role and example deployment models.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -88,6 +88,6 @@ Privacy Pass also powers existing Cloudflare products. The most established exam
 * [Replace CAPTCHAs with Private Access Tokens (Apple WWDC22) ↗](https://developer.apple.com/videos/play/wwdc2022/10077/) — Apple's overview of its Private Access Token deployment.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/#page","headline":"Deployment Models · Cloudflare Privacy Pass docs","description":"Who operates each Privacy Pass role and example deployment models.","url":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/#page","headline":"Deployment Models · Cloudflare Privacy Pass docs","description":"Who operates each Privacy Pass role and example deployment models.","url":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-pass/","name":"Privacy Pass"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-pass/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-pass/concepts/deployment-models/","name":"Deployment Models"}}]}
 ```

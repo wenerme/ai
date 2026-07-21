@@ -1,7 +1,7 @@
 ---
 title: Data loss prevention
 description: Protect sensitive data to prevent data loss, and send alerts to a webhooks server in the event of a data breach.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -348,6 +348,6 @@ export default app;
 ```
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/data-loss-prevention/#page","headline":"Data loss prevention · Cloudflare Workers docs","description":"Protect sensitive data to prevent data loss, and send alerts to a webhooks server in the event of a data breach.","url":"https://developers.cloudflare.com/workers/examples/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/data-loss-prevention/#page","headline":"Data loss prevention · Cloudflare Workers docs","description":"Protect sensitive data to prevent data loss, and send alerts to a webhooks server in the event of a data breach.","url":"https://developers.cloudflare.com/workers/examples/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","JavaScript","TypeScript","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/data-loss-prevention/","name":"Data loss prevention"}}]}
 ```

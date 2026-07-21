@@ -27,4 +27,4 @@ let value: ObservabilityNewrelicDestinationConfig = {
 | ------------ | ------------------------------------------------------------------ | -------------------- | --------------------------------------------------------------- |
 | `headers`    | `Record<string, *string*>`                                         | :heavy\_minus\_sign: | Custom HTTP headers to include in requests to this destination. |
 | `licenseKey` | *string*                                                           | :heavy\_check\_mark: | N/A                                                             |
-| `region`     | [models.Region](/agent-sdk/typescript/api-reference/models/region) | :heavy\_minus\_sign: | N/A                                                             |
+| `region`     | [models.Region](/docs/agent-sdk/typescript/api-reference/models/region) | :heavy\_minus\_sign: | N/A                                                             |

@@ -7,7 +7,7 @@
 > Use Claude Code with OpenRouter
 
 <Warning>
-  Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/guides/routing/provider-selection) when using Claude Code.
+  Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Code.
 </Warning>
 
 ## Why Use OpenRouter with Claude Code?
@@ -220,7 +220,7 @@ Fast mode is only served by the Anthropic first-party provider, since other prov
 
 The [Anthropic Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) lets you build AI agents programmatically using Python or TypeScript. Since the Agent SDK uses Claude Code as its runtime, you can connect it to OpenRouter using the same environment variables described above.
 
-For complete setup instructions and code examples, see our [Anthropic Agent SDK integration guide](/guides/community/anthropic-agent-sdk).
+For complete setup instructions and code examples, see our [Anthropic Agent SDK integration guide](/docs/guides/community/anthropic-agent-sdk).
 
 ## GitHub Action
 

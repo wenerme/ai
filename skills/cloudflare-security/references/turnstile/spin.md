@@ -1,7 +1,7 @@
 ---
 title: Turnstile Spin
 description: Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -244,6 +244,6 @@ Spin applies the marker automatically. If you edit the widget snippet by hand an
 * [Cloudflare Docs for Agents](https://developers.cloudflare.com/docs-for-agents/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/spin/#page","headline":"Turnstile Spin · Cloudflare Turnstile docs","description":"Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.","url":"https://developers.cloudflare.com/turnstile/spin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/spin/#page","headline":"Turnstile Spin · Cloudflare Turnstile docs","description":"Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.","url":"https://developers.cloudflare.com/turnstile/spin/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/spin/","name":"Turnstile Spin"}}]}
 ```

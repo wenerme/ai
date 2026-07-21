@@ -1,7 +1,7 @@
 ---
 title: On-ramps
 description: Connect to Cloudflare WAN using tunnels, Appliances, or CNI.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -25,6 +25,6 @@ Additional compatible on-ramps include:
 * [Network on-ramp partnerships](https://www.cloudflare.com/network-onramp-partners/): Refer to our [third-party integration tutorials](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/) for guidance on configuring the most asked for third-party products.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/on-ramps/#page","headline":"On-ramps · Cloudflare WAN docs","description":"Connect to Cloudflare WAN using tunnels, Appliances, or CNI.","url":"https://developers.cloudflare.com/cloudflare-wan/on-ramps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/on-ramps/#page","headline":"On-ramps · Cloudflare WAN docs","description":"Connect to Cloudflare WAN using tunnels, Appliances, or CNI.","url":"https://developers.cloudflare.com/cloudflare-wan/on-ramps/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/on-ramps/","name":"On-ramps"}}]}
 ```

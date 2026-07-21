@@ -32,7 +32,7 @@ let value: OutputCodeInterpreterServerToolItem = {
 | `exitCode` | *number*                                                                                                                             | :heavy\_minus\_sign: | N/A         |           |
 | `id`       | *string*                                                                                                                             | :heavy\_minus\_sign: | N/A         |           |
 | `language` | *string*                                                                                                                             | :heavy\_minus\_sign: | N/A         |           |
-| `status`   | [models.ToolCallStatus](/agent-sdk/typescript/api-reference/models/toolcallstatus)                                                   | :heavy\_check\_mark: | N/A         | completed |
+| `status`   | [models.ToolCallStatus](/docs/agent-sdk/typescript/api-reference/models/toolcallstatus)                                                   | :heavy\_check\_mark: | N/A         | completed |
 | `stderr`   | *string*                                                                                                                             | :heavy\_minus\_sign: | N/A         |           |
 | `stdout`   | *string*                                                                                                                             | :heavy\_minus\_sign: | N/A         |           |
-| `type`     | [models.OutputCodeInterpreterServerToolItemType](/agent-sdk/typescript/api-reference/models/outputcodeinterpreterservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |
+| `type`     | [models.OutputCodeInterpreterServerToolItemType](/docs/agent-sdk/typescript/api-reference/models/outputcodeinterpreterservertoolitemtype) | :heavy\_check\_mark: | N/A         |           |

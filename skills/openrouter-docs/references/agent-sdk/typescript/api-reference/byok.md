@@ -25,7 +25,7 @@ BYOK endpoints
 
 ## list
 
-List the bring-your-own-key (BYOK) provider credentials for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace, or the `provider` query parameter to filter by upstream provider. [Management key](/guides/overview/auth/management-api-keys) required.
+List the bring-your-own-key (BYOK) provider credentials for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace, or the `provider` query parameter to filter by upstream provider. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -86,14 +86,14 @@ run();
 
 | Parameter              | Type                                                                                                 | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.ListBYOKKeysRequest](/agent-sdk/typescript/api-reference/operations/listbyokkeysrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.ListBYOKKeysRequest](/docs/agent-sdk/typescript/api-reference/operations/listbyokkeysrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                       | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)              | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                   | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                   | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ListBYOKKeysResponse](/agent-sdk/typescript/api-reference/operations/listbyokkeysresponse)>**
+**Promise\<[operations.ListBYOKKeysResponse](/docs/agent-sdk/typescript/api-reference/operations/listbyokkeysresponse)>**
 
 ### Errors
 
@@ -105,7 +105,7 @@ run();
 
 ## create
 
-Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. Defaults to the authenticated entity's default workspace; use the `workspace_id` body field to scope to a different workspace. [Management key](/guides/overview/auth/management-api-keys) required.
+Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. Defaults to the authenticated entity's default workspace; use the `workspace_id` body field to scope to a different workspace. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -174,14 +174,14 @@ run();
 
 | Parameter              | Type                                                                                                   | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.CreateBYOKKeyRequest](/agent-sdk/typescript/api-reference/operations/createbyokkeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.CreateBYOKKeyRequest](/docs/agent-sdk/typescript/api-reference/operations/createbyokkeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                         | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CreateBYOKKeyResponse](/agent-sdk/typescript/api-reference/models/createbyokkeyresponse)>**
+**Promise\<[models.CreateBYOKKeyResponse](/docs/agent-sdk/typescript/api-reference/models/createbyokkeyresponse)>**
 
 ### Errors
 
@@ -195,7 +195,7 @@ run();
 
 ## delete
 
-Delete (soft-delete) a bring-your-own-key (BYOK) provider credential by its `id`. The encrypted key material is wiped and the record is marked as deleted. [Management key](/guides/overview/auth/management-api-keys) required.
+Delete (soft-delete) a bring-your-own-key (BYOK) provider credential by its `id`. The encrypted key material is wiped and the record is marked as deleted. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -256,14 +256,14 @@ run();
 
 | Parameter              | Type                                                                                                   | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.DeleteBYOKKeyRequest](/agent-sdk/typescript/api-reference/operations/deletebyokkeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.DeleteBYOKKeyRequest](/docs/agent-sdk/typescript/api-reference/operations/deletebyokkeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                         | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.DeleteBYOKKeyResponse](/agent-sdk/typescript/api-reference/models/deletebyokkeyresponse)>**
+**Promise\<[models.DeleteBYOKKeyResponse](/docs/agent-sdk/typescript/api-reference/models/deletebyokkeyresponse)>**
 
 ### Errors
 
@@ -276,7 +276,7 @@ run();
 
 ## get
 
-Get a single bring-your-own-key (BYOK) provider credential by its `id`. [Management key](/guides/overview/auth/management-api-keys) required.
+Get a single bring-your-own-key (BYOK) provider credential by its `id`. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -337,14 +337,14 @@ run();
 
 | Parameter              | Type                                                                                             | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.GetBYOKKeyRequest](/agent-sdk/typescript/api-reference/operations/getbyokkeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.GetBYOKKeyRequest](/docs/agent-sdk/typescript/api-reference/operations/getbyokkeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                   | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)          | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                               | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                               | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.GetBYOKKeyResponse](/agent-sdk/typescript/api-reference/models/getbyokkeyresponse)>**
+**Promise\<[models.GetBYOKKeyResponse](/docs/agent-sdk/typescript/api-reference/models/getbyokkeyresponse)>**
 
 ### Errors
 
@@ -357,7 +357,7 @@ run();
 
 ## update
 
-Update an existing bring-your-own-key (BYOK) provider credential by its `id`. Include the `key` field to rotate the raw provider API key in-place (the previous key material is overwritten). [Management key](/guides/overview/auth/management-api-keys) required.
+Update an existing bring-your-own-key (BYOK) provider credential by its `id`. Include the `key` field to rotate the raw provider API key in-place (the previous key material is overwritten). [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -426,14 +426,14 @@ run();
 
 | Parameter              | Type                                                                                                   | Required             | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.UpdateBYOKKeyRequest](/agent-sdk/typescript/api-reference/operations/updatebyokkeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `request`              | [operations.UpdateBYOKKeyRequest](/docs/agent-sdk/typescript/api-reference/operations/updatebyokkeyrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
 | `options`              | RequestOptions                                                                                         | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/agent-sdk/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.retries`      | [RetryConfig](/docs/agent-sdk/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.UpdateBYOKKeyResponse](/agent-sdk/typescript/api-reference/models/updatebyokkeyresponse)>**
+**Promise\<[models.UpdateBYOKKeyResponse](/docs/agent-sdk/typescript/api-reference/models/updatebyokkeyresponse)>**
 
 ### Errors
 

@@ -1,7 +1,7 @@
 ---
 title: Trace a request
 description: Trace a request through Cloudflare to see which rules match and apply.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -46,6 +46,6 @@ The key difference is that Trace simulates "what-if" scenarios, while Log Explor
 * [ Cloudflare Trace changelog ](https://developers.cloudflare.com/rules/trace-request/changelog/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/trace-request/#page","headline":"Trace a request with Cloudflare Trace · Cloudflare Rules docs","description":"Trace a request through Cloudflare to see which rules match and apply.","url":"https://developers.cloudflare.com/rules/trace-request/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/trace-request/#page","headline":"Trace a request with Cloudflare Trace · Cloudflare Rules docs","description":"Trace a request through Cloudflare to see which rules match and apply.","url":"https://developers.cloudflare.com/rules/trace-request/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/trace-request/","name":"Trace a request"}}]}
 ```

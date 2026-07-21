@@ -1,7 +1,7 @@
 ---
 title: fs
 description: Use the Node.js fs module in Cloudflare Workers to access a virtual file system for reading and writing files.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -118,6 +118,6 @@ The following `node:fs` APIs are not supported in Workers, or are only partially
 The full `node:fs` API is documented in the [Node.js documentation for node:fs ↗](https://nodejs.org/api/fs.html).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/#page","headline":"fs · Cloudflare Workers docs","description":"Use the Node.js fs module in Cloudflare Workers to access a virtual file system for reading and writing files.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/#page","headline":"fs · Cloudflare Workers docs","description":"Use the Node.js fs module in Cloudflare Workers to access a virtual file system for reading and writing files.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/fs/","name":"fs"}}]}
 ```

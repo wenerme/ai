@@ -40,8 +40,8 @@ let value: LocalShellCallItem = {
 
 | Field    | Type                                                                                                   | Required             | Description | Example   |
 | -------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ----------- | --------- |
-| `action` | [models.LocalShellCallItemAction](/agent-sdk/typescript/api-reference/models/localshellcallitemaction) | :heavy\_check\_mark: | N/A         |           |
+| `action` | [models.LocalShellCallItemAction](/docs/agent-sdk/typescript/api-reference/models/localshellcallitemaction) | :heavy\_check\_mark: | N/A         |           |
 | `callId` | *string*                                                                                               | :heavy\_check\_mark: | N/A         |           |
 | `id`     | *string*                                                                                               | :heavy\_check\_mark: | N/A         |           |
-| `status` | [models.ToolCallStatus](/agent-sdk/typescript/api-reference/models/toolcallstatus)                     | :heavy\_check\_mark: | N/A         | completed |
-| `type`   | [models.TypeLocalShellCall](/agent-sdk/typescript/api-reference/models/typelocalshellcall)             | :heavy\_check\_mark: | N/A         |           |
+| `status` | [models.ToolCallStatus](/docs/agent-sdk/typescript/api-reference/models/toolcallstatus)                     | :heavy\_check\_mark: | N/A         | completed |
+| `type`   | [models.TypeLocalShellCall](/docs/agent-sdk/typescript/api-reference/models/typelocalshellcall)             | :heavy\_check\_mark: | N/A         |           |

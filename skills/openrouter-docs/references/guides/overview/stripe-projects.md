@@ -98,7 +98,7 @@ When you run `stripe projects add openrouter/api`, the following happens:
    OPENROUTER_TYPE=bearer
    ```
 
-Your API key works with the full [OpenRouter API](/quickstart), giving you access to 400+ AI models through a single endpoint.
+Your API key works with the full [OpenRouter API](/docs/quickstart), giving you access to 400+ AI models through a single endpoint.
 
 ## Service Details
 
@@ -231,8 +231,8 @@ stripe projects llm-context
 
 ## Next Steps
 
-* [Quickstart](/quickstart) -- Learn the basics of calling the OpenRouter API
+* [Quickstart](/docs/quickstart) -- Learn the basics of calling the OpenRouter API
 * [Models](https://openrouter.ai/models) -- Browse 400+ available models and compare pricing
-* [API Key Rotation](/cookbook/administration/api-key-rotation) -- Best practices for credential management
-* [Guardrails](/guides/features/guardrails) -- Set spending limits and model restrictions
-* [Provider Selection](/guides/routing/provider-selection) -- Control which providers handle your requests
+* [API Key Rotation](/docs/cookbook/administration/api-key-rotation) -- Best practices for credential management
+* [Guardrails](/docs/guides/features/guardrails) -- Set spending limits and model restrictions
+* [Provider Selection](/docs/guides/routing/provider-selection) -- Control which providers handle your requests

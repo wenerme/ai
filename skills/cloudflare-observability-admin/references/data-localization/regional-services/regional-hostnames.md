@@ -1,7 +1,7 @@
 ---
 title: Regional Hostnames
 description: Regionalize proxied hostnames by assigning a region through the dashboard or Regional Hostnames API.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 > Documentation Index
@@ -247,6 +247,6 @@ To verify that your regional map is being applied correctly, check the `IngressC
 You can also configure Regional Services using Terraform. For more details, refer to the [cloudflare\_regional\_hostname resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/regional%5Fhostname) in the Terraform documentation.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#page","headline":"Regional Hostnames · Cloudflare Data Localization Suite docs","description":"Regionalize proxied hostnames by assigning a region through the dashboard or Regional Hostnames API.","url":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#page","headline":"Regional Hostnames · Cloudflare Data Localization Suite docs","description":"Regionalize proxied hostnames by assigning a region through the dashboard or Regional Hostnames API.","url":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/regional-services/","name":"Regional Services"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/regional-services/regional-hostnames/","name":"Regional Hostnames"}}]}
 ```

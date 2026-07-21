@@ -80,13 +80,13 @@ For teams, OpenRouter provides centralized budget management. Set spending limit
 
 Track which models your team uses, monitor costs in real-time, and understand usage patterns from a single dashboard, regardless of the underlying provider. See the [Activity page](https://openrouter.ai/activity) for a breakdown by model, user, and cost.
 
-You can also control which upstream providers handle your requests. See the [Provider Routing docs](/guides/routing/provider-selection) for details on routing suffixes like `:nitro` and `:floor`.
+You can also control which upstream providers handle your requests. See the [Provider Routing docs](/docs/guides/routing/provider-selection) for details on routing suffixes like `:nitro` and `:floor`.
 
 ## Limitations
 
 * **Tab completions** are not affected by BYOK settings; they always use Cursor's built-in models.
 * **Auto and Composer 2 modes** may not be routed through your API key. Check [Cursor's docs](https://cursor.com/help/models-and-usage/api-keys) for current behavior.
-* Only models accessible via OpenRouter's [OpenAI-compatible endpoint](/api/reference/overview#openapi-specification) will work. Most chat and reasoning models are supported.
+* Only models accessible via OpenRouter's [OpenAI-compatible endpoint](/docs/api_reference/overview#openapi-specification) will work. Most chat and reasoning models are supported.
 
 ## Troubleshooting
 
@@ -100,4 +100,4 @@ You can also control which upstream providers handle your requests. See the [Pro
 * [Cursor Documentation](https://cursor.com/docs)
 * [Cursor BYOK Help](https://cursor.com/help/models-and-usage/api-keys)
 * [OpenRouter Models](https://openrouter.ai/models)
-* [Provider Routing](/guides/routing/provider-selection)
+* [Provider Routing](/docs/guides/routing/provider-selection)

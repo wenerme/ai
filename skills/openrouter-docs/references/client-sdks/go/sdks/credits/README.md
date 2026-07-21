@@ -16,7 +16,7 @@ Credit management endpoints
 
 ## GetCredits
 
-Get total credits purchased and used for the authenticated user. [Management key](/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Get total credits purchased and used for the authenticated user. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

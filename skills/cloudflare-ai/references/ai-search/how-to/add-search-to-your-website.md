@@ -1,7 +1,7 @@
 ---
 title: Add search to your website
 description: Create an AI Search instance that indexes your website, then add a search bar, chat bubble, and search modal to your React site with the UI snippet components.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -228,6 +228,6 @@ The snippets work anywhere your site is served. When you deploy your site to its
 [ Public endpoint settings ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) Rate limiting, CORS, and tool description for the public endpoint.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/#page","headline":"Add search to your website · Cloudflare AI Search docs","description":"Create an AI Search instance that indexes your website, then add a search bar, chat bubble, and search modal to your React site with the UI snippet components.","url":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/#page","headline":"Add search to your website · Cloudflare AI Search docs","description":"Create an AI Search instance that indexes your website, then add a search bar, chat bubble, and search modal to your React site with the UI snippet components.","url":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/add-search-to-your-website/","name":"Add search to your website"}}]}
 ```

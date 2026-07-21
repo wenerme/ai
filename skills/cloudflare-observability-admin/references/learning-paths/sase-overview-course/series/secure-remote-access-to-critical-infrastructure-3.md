@@ -1,7 +1,7 @@
 ---
 title: Secure remote access to your critical infrastructure
 description: Secure remote access to critical infrastructure.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 > Documentation Index
@@ -58,6 +58,6 @@ If you want to dive into detail about using Cloudflare to access critical infras
 [ Watch Episode 5: Protect your users from Internet risks ](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/protect-users-from-internet-risks-5/) In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users and devices safe by filtering and inspecting Internet traffic in real time.
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/secure-remote-access-to-critical-infrastructure-3/#page","headline":"Secure remote access to your critical infrastructure · Cloudflare Learning Paths","description":"Secure remote access to critical infrastructure.","url":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/secure-remote-access-to-critical-infrastructure-3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/secure-remote-access-to-critical-infrastructure-3/#page","headline":"Secure remote access to your critical infrastructure · Cloudflare Learning Paths","description":"Secure remote access to critical infrastructure.","url":"https://developers.cloudflare.com/learning-paths/sase-overview-course/series/secure-remote-access-to-critical-infrastructure-3/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/sase-overview-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/sase-overview-course/series/secure-remote-access-to-critical-infrastructure-3/","name":"Secure remote access to your critical infrastructure"}}]}
 ```

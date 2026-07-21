@@ -26,6 +26,6 @@ let value: Rule = {
 
 | Field      | Type                                                                   | Required             | Description |
 | ---------- | ---------------------------------------------------------------------- | -------------------- | ----------- |
-| `field`    | [models.Field](/agent-sdk/typescript/api-reference/models/field)       | :heavy\_check\_mark: | N/A         |
-| `operator` | [models.Operator](/agent-sdk/typescript/api-reference/models/operator) | :heavy\_check\_mark: | N/A         |
+| `field`    | [models.Field](/docs/agent-sdk/typescript/api-reference/models/field)       | :heavy\_check\_mark: | N/A         |
+| `operator` | [models.Operator](/docs/agent-sdk/typescript/api-reference/models/operator) | :heavy\_check\_mark: | N/A         |
 | `value`    | *models.ObservabilityFilterRulesConfigValue*                           | :heavy\_minus\_sign: | N/A         |

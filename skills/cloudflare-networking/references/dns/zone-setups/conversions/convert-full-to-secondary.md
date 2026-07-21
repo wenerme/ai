@@ -1,7 +1,7 @@
 ---
 title: Convert full setup to secondary setup
 description: If you initially configured a full setup you can later convert your zone to use incoming zone transfers (Cloudflare as secondary).
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -88,6 +88,6 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 8. At your domain registrar (or parent zone), [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to include the `secondary.cloudflare.com` nameservers.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/#page","headline":"Convert full setup to secondary setup · Cloudflare DNS docs","description":"If you initially configured a full setup you can later convert your zone to use incoming zone transfers (Cloudflare as secondary).","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/#page","headline":"Convert full setup to secondary setup · Cloudflare DNS docs","description":"If you initially configured a full setup you can later convert your zone to use incoming zone transfers (Cloudflare as secondary).","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-secondary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/conversions/","name":"DNS setup conversions"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/conversions/convert-full-to-secondary/","name":"Convert full setup to secondary setup"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Authentication
 description: Choose auth for bindings, API calls, and Git.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -128,6 +128,6 @@ git -c http.extraHeader="Authorization: Bearer <YOUR_WRITE_TOKEN>" push "$ARTIFA
 For more information on token handling and authenticated remotes, refer to [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/).
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/authentication/#page","headline":"Authentication · Cloudflare Artifacts docs","description":"Choose auth for bindings, API calls, and Git.","url":"https://developers.cloudflare.com/artifacts/guides/authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/authentication/#page","headline":"Authentication · Cloudflare Artifacts docs","description":"Choose auth for bindings, API calls, and Git.","url":"https://developers.cloudflare.com/artifacts/guides/authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/guides/authentication/","name":"Authentication"}}]}
 ```

@@ -1,7 +1,7 @@
 ---
 title: Configuration options
 description: Configurable options for Spectrum applications, including edge and origin ports and protocols.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -13,6 +13,10 @@ image: https://developers.cloudflare.com/og-docs.png
 # Configuration options
 
 Spectrum is a global TCP and UDP proxy running on Cloudflare's edge nodes. It does not terminate the connection in the application-layer sense. However, at Layer 4, Spectrum does terminate the TCP and UDP sockets in both directions. The L4 payloads of TCP segments and UDP datagrams are passed back and forth as-is, without modifications.
+
+This means Spectrum does not inspect, modify, or upgrade application-layer protocols. For example, Spectrum cannot convert an HTTP connection to HTTPS, add HTTP headers, or apply WAF rules to TCP traffic. To add Layer 7 functionality such as CDN, Workers, or Bot Management, set the [application type](#application-type) to **HTTP/HTTPS**.
+
+For common issues and troubleshooting guidance, refer to [Spectrum Troubleshooting](https://developers.cloudflare.com/spectrum/reference/troubleshooting/).
 
 Note
 
@@ -118,6 +122,12 @@ Spectrum virtual network origins are for TCP and UDP traffic only. For HTTP/HTTP
 
 ## Edge TLS Termination
 
+Spectrum does not perform protocol upgrade
+
+Spectrum operates at Layer 4 and forwards TCP payloads as-is. If Edge TLS Termination is set to **off** (Passthrough), Spectrum will **not** upgrade an HTTP connection to HTTPS, even if your origin listens on port 443\. To encrypt traffic between Cloudflare and your origin, enable Edge TLS Termination and set it to **Full** or **Full (Strict)**.
+
+For example, if a client connects to your Spectrum application on port 8012 using HTTP, and your origin is configured on port 443, the connection to origin will use HTTP on port 443 — not HTTPS — unless Edge TLS Termination is set to **Full** or **Full (Strict)**.
+
 If you enable **Edge TLS Termination** for a Spectrum application, Cloudflare will encrypt traffic for the application at the Edge. The Edge TLS Termination toggle applies only to TCP applications.
 
 Spectrum offers three modes of TLS termination: 'Flexible', 'Full', and 'Full (Strict)'.
@@ -133,6 +143,10 @@ You can manage this through the Spectrum app at the Cloudflare dashboard, or usi
 Note
 
 If you have the TLS termination setting configured to **off**, this means that Spectrum will then proxy connections to the origin without decrypting. The certificate that is presented in this case will be the certificate installed at your origin server, instead of the Edge Certificate from Cloudflare.
+
+Warning
+
+Do not configure a TCP-type Spectrum application's origin to point to another Cloudflare-proxied hostname (for example, `origin.example.com.cdn.cloudflare.net`). This creates an unsupported double-proxy path that may result in TLS handshake failures at the origin. For TCP applications, a failed TLS handshake to the origin is reported as an origin connection failure (`521` or `522`), not error `525` — `525` applies to HTTP/HTTPS applications. Use a direct origin IP address or a DNS hostname that resolves to your origin server without passing through Cloudflare's proxy. Refer to [Spectrum Troubleshooting](https://developers.cloudflare.com/spectrum/reference/troubleshooting/#tls-handshake-failures-error-525) for details.
 
 Warning
 
@@ -185,9 +199,9 @@ The cipher suites below are ordered based on how they appear in the ClientHello,
 
 ## Footnotes
 
-1. Although TLS 1.3 uses the same cipher suite space as previous versions of TLS, TLS 1.3 cipher suites are defined differently, only specifying the symmetric ciphers, and cannot be used for TLS 1.2\. Similarly, TLS 1.2 and lower cipher suites cannot be used with TLS 1.3 ([RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html)). BoringSSL also hard-codes cipher preferences in this order for TLS 1.3\. Refer to [TLS 1.3 cipher suites](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/#tls-13-cipher-suites) for details. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
+1. Although TLS 1.3 uses the same cipher suite space as previous versions of TLS, TLS 1.3 cipher suites are defined differently, only specifying the symmetric ciphers, and cannot be used with TLS 1.2\. Similarly, TLS 1.2 and lower cipher suites cannot be used with TLS 1.3 ([RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html)). BoringSSL also hard-codes cipher preferences in this order for TLS 1.3\. Refer to [TLS 1.3 cipher suites](https://developers.cloudflare.com/ssl/origin-configuration/cipher-suites/#tls-13-cipher-suites) for details. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options · Cloudflare Spectrum docs","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options · Cloudflare Spectrum docs","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/configuration-options/","name":"Configuration options"}}]}
 ```

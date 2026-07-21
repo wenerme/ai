@@ -1,7 +1,7 @@
 ---
 title: Explore Workers AI Models Using a Jupyter Notebook
 description: This Jupyter notebook explores various models (including Whisper, Distilled BERT, LLaVA, and Meta Llama 3) using Python and the requests library.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -405,6 +405,6 @@ response["summary"]
 'The Declaration of Independence was signed by the thirteen states on July 4, 1776\. It was the first attempt at a U.S. Constitution. It declared the right of the people to change their Government.'
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/#page","headline":"Explore Workers AI Models Using a Jupyter Notebook · Cloudflare Workers AI docs","description":"This Jupyter notebook explores various models (including Whisper, Distilled BERT, LLaVA, and Meta Llama 3) using Python and the requests library.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/#page","headline":"Explore Workers AI Models Using a Jupyter Notebook · Cloudflare Workers AI docs","description":"This Jupyter notebook explores various models (including Whisper, Distilled BERT, LLaVA, and Meta Llama 3) using Python and the requests library.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Python"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/","name":"Explore Workers AI Models Using a Jupyter Notebook"}}]}
 ```

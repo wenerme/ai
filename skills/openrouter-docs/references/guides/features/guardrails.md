@@ -29,9 +29,9 @@ Each guardrail can include any combination of:
 * **Budget limit** - Spending cap in USD that resets daily, weekly, or monthly. Requests are rejected when the limit is reached.
 * **Model allowlist** - Restrict to specific models. Leave empty to allow all.
 * **Provider allowlist** - Restrict to specific providers. Leave empty to allow all.
-* **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, xAI, and non-frontier). See [Zero Data Retention](/guides/features/zdr#per-model-group-zdr-enforcement) for details.
-* **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/guides/features/guardrails/prompt-injection).
-* **[Sensitive Info](/guides/features/guardrails/sensitive-info)** - Detect and redact or block sensitive information (PII) in API requests using built-in presets and NLP-based detection.
+* **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, xAI, and non-frontier). See [Zero Data Retention](/docs/guides/features/zdr#per-model-group-zdr-enforcement) for details.
+* **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/docs/guides/features/guardrails/prompt-injection).
+* **[Sensitive Info](/docs/guides/features/guardrails/sensitive-info)** - Detect and redact or block sensitive information (PII) in API requests using built-in presets and NLP-based detection.
 * **Custom content filters** - Define your own regex patterns to [redact or block](#custom-content-filters) matching content in incoming requests.
 
 <Note>
@@ -140,7 +140,7 @@ When a guardrail's runtime checks block a request — for example a content filt
 }
 ```
 
-If you opt in to [router metadata](/guides/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran:
+If you opt in to [router metadata](/docs/guides/features/router-metadata) via the `X-OpenRouter-Experimental-Metadata: enabled` header, the 403 response also includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran:
 
 ```json expandable lines theme={null}
 {
@@ -183,13 +183,13 @@ If you opt in to [router metadata](/guides/features/router-metadata) via the `X-
 }
 ```
 
-See [Router Metadata — Error Responses](/guides/features/router-metadata#error-responses) and [Errors — Guardrail Errors](/api_reference/errors-and-debugging#guardrail-errors) for the full response shapes and pipeline stage reference.
+See [Router Metadata — Error Responses](/docs/guides/features/router-metadata#error-responses) and [Errors — Guardrail Errors](/docs/api_reference/errors-and-debugging#guardrail-errors) for the full response shapes and pipeline stage reference.
 
 ## API Access
 
 You can manage guardrails programmatically using the OpenRouter API. This allows you to create, update, delete, and assign guardrails to API keys and organization members directly from your code.
 
-See the [Guardrails API reference](/api/api-reference/guardrails/list-guardrails) for available endpoints and usage examples.
+See the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for available endpoints and usage examples.
 
 ### Updating the Workspace Default Guardrail via API
 

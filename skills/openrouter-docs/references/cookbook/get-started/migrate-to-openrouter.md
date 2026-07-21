@@ -13,7 +13,7 @@ the app works.
 tool calling, and response shapes, using your existing framework wherever a clean
 OpenRouter path exists. If your app has server-side agent or tool loops, the prompt
 can optionally move that execution onto OpenRouter's
-[Agent SDK](/agent-sdk/overview) (`@openrouter/agent`). That's a bigger change
+[Agent SDK](/docs/agent-sdk/overview) (`@openrouter/agent`). That's a bigger change
 than a provider swap, so the prompt recommends it only when it fits and asks before
 doing it — you can decline and keep the minimal migration.
 
@@ -416,26 +416,26 @@ The prompt picks a different path per stack so the migration stays minimal:
 
 * **OpenAI SDK** (TypeScript or Python) — retarget `baseURL` / `base_url` to
   `https://openrouter.ai/api/v1` and swap model IDs. See
-  [OpenAI SDK](/guides/community/openai-sdk).
+  [OpenAI SDK](/docs/guides/community/openai-sdk).
 * **Vercel AI SDK** — swap the provider for
-  [`@openrouter/ai-sdk-provider`](/guides/community/vercel-ai-sdk) while
+  [`@openrouter/ai-sdk-provider`](/docs/guides/community/vercel-ai-sdk) while
   keeping `generateText`, `streamText`, tools, and UI stream protocols intact.
 * **Vercel AI Gateway** — replace `gateway(...)` and `AI_GATEWAY_API_KEY` with
   the OpenRouter provider and `OPENROUTER_API_KEY`, including the user-facing
   setup text.
 * **Mastra** — keep Mastra and switch model strings to
-  `openrouter/provider/model`. See [Mastra](/guides/community/mastra).
+  `openrouter/provider/model`. See [Mastra](/docs/guides/community/mastra).
 * **Anthropic SDK** — translate Claude message content to OpenRouter chat
   completions or the native OpenRouter SDK.
 * **Anthropic Agent SDK** — keep the agent loop and point it at OpenRouter with
   `ANTHROPIC_BASE_URL` and `ANTHROPIC_AUTH_TOKEN`. See
-  [Anthropic Agent SDK](/guides/community/anthropic-agent-sdk).
+  [Anthropic Agent SDK](/docs/guides/community/anthropic-agent-sdk).
 * **Raw HTTP and unlisted stacks** — retarget OpenAI-compatible calls and
   preserve route shapes, streaming, and tool semantics.
 
 **OpenRouter Agent SDK (optional)** — when your project has server-side tool
 execution, multi-turn agent loops, or custom orchestration, the prompt can move
-that boundary to [`@openrouter/agent`](/agent-sdk/overview). It recommends
+that boundary to [`@openrouter/agent`](/docs/agent-sdk/overview). It recommends
 this only when the evidence is there and asks before making the change; otherwise
 it stays on the least-disruptive provider path above.
 
@@ -455,8 +455,8 @@ APIs and the `openrouter` package for Python.
 ## Next steps
 
 * New to OpenRouter? Start with the
-  [Quickstart: Build a Chat App](/cookbook/get-started/quickstart).
+  [Quickstart: Build a Chat App](/docs/cookbook/get-started/quickstart).
 * Building agents or tool loops? See the
-  [Agent SDK](/agent-sdk/overview) (`@openrouter/agent`).
+  [Agent SDK](/docs/agent-sdk/overview) (`@openrouter/agent`).
 * Browse every available model at
   [openrouter.ai/models](https://openrouter.ai/models).

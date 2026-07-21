@@ -28,5 +28,5 @@ let value: ContentPartInputFile = {
 
 | Field       | Type                                                                                 | Required             | Description | Example                                                                            |
 | ----------- | ------------------------------------------------------------------------------------ | -------------------- | ----------- | ---------------------------------------------------------------------------------- |
-| `inputFile` | [models.MultimodalMedia](/agent-sdk/typescript/api-reference/models/multimodalmedia) | :heavy\_check\_mark: | N/A         | `{"data": "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAA...","format": "wav"}` |
+| `inputFile` | [models.MultimodalMedia](/docs/agent-sdk/typescript/api-reference/models/multimodalmedia) | :heavy\_check\_mark: | N/A         | `{"data": "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAA...","format": "wav"}` |
 | `type`      | *"input\_file"*                                                                      | :heavy\_check\_mark: | N/A         |                                                                                    |

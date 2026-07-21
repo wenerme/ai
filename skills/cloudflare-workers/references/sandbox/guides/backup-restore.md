@@ -1,7 +1,7 @@
 ---
 title: Backup and restore
 description: Create point-in-time backups and restore sandbox directories.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -881,6 +881,6 @@ This means `mksquashfs` could not read one or more files inside the directory yo
 * [R2 lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) \- Configure automatic object cleanup
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/backup-restore/#page","headline":"Backup and restore · Cloudflare Sandbox SDK docs","description":"Create point-in-time backups and restore sandbox directories.","url":"https://developers.cloudflare.com/sandbox/guides/backup-restore/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/backup-restore/#page","headline":"Backup and restore · Cloudflare Sandbox SDK docs","description":"Create point-in-time backups and restore sandbox directories.","url":"https://developers.cloudflare.com/sandbox/guides/backup-restore/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/backup-restore/","name":"Backup and restore"}}]}
 ```

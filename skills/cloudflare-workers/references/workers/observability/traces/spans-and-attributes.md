@@ -1,7 +1,7 @@
 ---
 title: Spans and attributes
 description: Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
 > Documentation Index
@@ -567,6 +567,6 @@ The legacy KV-backed API allows you to modify embedded storage within a Durable 
 ---
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/#page","headline":"Spans and attributes · Cloudflare Workers docs","description":"Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.","url":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/#page","headline":"Spans and attributes · Cloudflare Workers docs","description":"Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.","url":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/traces/","name":"Traces"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/traces/spans-and-attributes/","name":"Spans and attributes"}}]}
 ```

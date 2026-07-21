@@ -1,7 +1,7 @@
 ---
 title: Monitor Cloudflare Tunnel with Grafana
 description: This tutorial covers how to create the metrics endpoint and set up the Prometheus server.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -127,6 +127,6 @@ To test without an account, you can enter `admin` for both the username and pass
 You can add operations to the queries to modify what is displayed. For example, you could show all tunnel requests over a recent period of time, such as a day, rather than all tunnel requests since metrics began reporting.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/tutorials/grafana/#page","headline":"Monitor Cloudflare Tunnel with Grafana · Cloudflare Docs","description":"This tutorial covers how to create the metrics endpoint and set up the Prometheus server.","url":"https://developers.cloudflare.com/tunnel/tutorials/grafana/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Grafana","Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/tutorials/grafana/#page","headline":"Monitor Cloudflare Tunnel with Grafana · Cloudflare Docs","description":"This tutorial covers how to create the metrics endpoint and set up the Prometheus server.","url":"https://developers.cloudflare.com/tunnel/tutorials/grafana/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Grafana","Integration"]}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/tutorials/grafana/","name":"Monitor Cloudflare Tunnel with Grafana"}}]}
 ```

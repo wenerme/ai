@@ -1,7 +1,7 @@
 ---
 title: Configure a rule with the Skip action
 description: Use the Skip action to bypass security features for matching requests.
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 > Documentation Index
@@ -47,6 +47,6 @@ Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets
 Refer to [API examples](https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/) for examples of creating skip rules.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/#page","headline":"Configure a custom rule with the Skip action · Cloudflare Web Application Firewall (WAF) docs","description":"Use the Skip action to bypass security features for matching requests.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/#page","headline":"Configure a custom rule with the Skip action · Cloudflare Web Application Firewall (WAF) docs","description":"Use the Skip action to bypass security features for matching requests.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/skip/","name":"Configure a rule with the Skip action"}}]}
 ```
