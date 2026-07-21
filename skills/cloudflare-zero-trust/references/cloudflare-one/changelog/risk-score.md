@@ -1,16 +1,18 @@
 ---
-title: Risk score
 description: Review recent changes to Cloudflare Zero Trust user risk scoring.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Risk score
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Risk score
 
-# Risk score
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/risk-score.xml)
 
@@ -85,7 +87,14 @@ Next, configure Okta to receive your risk scores.
 
 You can now configure a [predefined risk behavior](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/#predefined-risk-behaviors) to evaluate user risk score using device posture attributes from the [SentinelOne integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/#page","headline":"Risk score Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Zero Trust user risk scoring.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/risk-score/","name":"Risk score"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/#page","headline":"Risk score Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Zero Trust user risk scoring.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

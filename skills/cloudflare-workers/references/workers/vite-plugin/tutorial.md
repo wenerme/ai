@@ -1,16 +1,18 @@
 ---
-title: Tutorial - React SPA with an API
 description: Create a React SPA with an API Worker using the Vite plugin
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Tutorial - React SPA with an API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tutorial - React SPA with an API
 
-# Tutorial - React SPA with an API
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/vite-plugin/tutorial/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial takes you through the steps needed to adapt a Vite project to use the Cloudflare Vite plugin. Much of the content can also be applied to adapting existing Vite projects and to front-end frameworks other than React.
 
@@ -66,16 +68,13 @@ bun add -d @cloudflare/vite-plugin wrangler
 
 ### Add the plugin to your Vite config
 
-**vite.config.ts**
-
 ```ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { cloudflare } from "@cloudflare/vite-plugin";
 
-
 export default defineConfig({
-  plugins: [react(), cloudflare()],
+	plugins: [react(), cloudflare()],
 });
 ```
 
@@ -85,31 +84,23 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-13119)
-* [  wrangler.toml ](#tab-panel-13120)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "cloudflare-vite-tutorial",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "assets": {
-    "not_found_handling": "single-page-application"
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "cloudflare-vite-tutorial",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"assets": {
+		"not_found_handling": "single-page-application"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [assets]
 not_found_handling = "single-page-application"
@@ -126,8 +117,6 @@ When using the Cloudflare Vite plugin, the Worker config (for example, `wrangler
 ### Update the .gitignore file
 
 When developing Workers, additional files are used and/or generated that should not be stored in git. Add the following lines to your `.gitignore` file:
-
-**.gitignore**
 
 ```txt
 .wrangler
@@ -162,61 +151,49 @@ pnpm add -D @cloudflare/workers-types
 bun add -d @cloudflare/workers-types
 ```
 
-**tsconfig.worker.json**
-
 ```jsonc
 {
-  "extends": "./tsconfig.node.json",
-  "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker.tsbuildinfo",
-    "types": ["@cloudflare/workers-types", "vite/client"],
-  },
-  "include": ["worker"],
+	"extends": "./tsconfig.node.json",
+	"compilerOptions": {
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker.tsbuildinfo",
+		"types": ["@cloudflare/workers-types", "vite/client"],
+	},
+	"include": ["worker"],
 }
 ```
 
-**tsconfig.json**
-
 ```jsonc
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" },
-    { "path": "./tsconfig.worker.json" },
-  ],
+	"files": [],
+	"references": [
+		{ "path": "./tsconfig.app.json" },
+		{ "path": "./tsconfig.node.json" },
+		{ "path": "./tsconfig.worker.json" },
+	],
 }
 ```
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-13121)
-* [  wrangler.toml ](#tab-panel-13122)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "cloudflare-vite-tutorial",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "assets": {
-    "not_found_handling": "single-page-application"
-  },
-  "main": "./worker/index.ts"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "cloudflare-vite-tutorial",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"assets": {
+		"not_found_handling": "single-page-application"
+	},
+	"main": "./worker/index.ts"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 main = "./worker/index.ts"
-
 
 [assets]
 not_found_handling = "single-page-application"
@@ -226,23 +203,19 @@ The `main` field specifies the entry file for your Worker code.
 
 ### Add your API Worker
 
-**worker/index.ts**
-
 ```ts
 export default {
-  fetch(request) {
-    const url = new URL(request.url);
+	fetch(request) {
+		const url = new URL(request.url);
 
+		if (url.pathname.startsWith("/api/")) {
+			return Response.json({
+				name: "Cloudflare",
+			});
+		}
 
-    if (url.pathname.startsWith("/api/")) {
-      return Response.json({
-        name: "Cloudflare",
-      });
-    }
-
-
-    return new Response(null, { status: 404 });
-  },
+		return new Response(null, { status: 404 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -254,36 +227,28 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-13123)
-* [  wrangler.toml ](#tab-panel-13124)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "cloudflare-vite-tutorial",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "assets": {
-    "not_found_handling": "single-page-application",
-    "run_worker_first": [
-      "/api/*"
-    ]
-  },
-  "main": "./worker/index.ts"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "cloudflare-vite-tutorial",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"assets": {
+		"not_found_handling": "single-page-application",
+		"run_worker_first": [
+			"/api/*"
+		]
+	},
+	"main": "./worker/index.ts"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 main = "./worker/index.ts"
-
 
 [assets]
 not_found_handling = "single-page-application"
@@ -294,65 +259,59 @@ run_worker_first = [ "/api/*" ]
 
 Edit `src/App.tsx` so that it includes an additional button that calls the API and sets some state:
 
-**src/App.tsx**
-
 ```tsx
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-
 function App() {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("unknown");
+	const [count, setCount] = useState(0);
+	const [name, setName] = useState("unknown");
 
-
-  return (
-    <>
-16 collapsed lines
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button
-          onClick={() => setCount((count) => count + 1)}
-          aria-label="increment"
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <div className="card">
-        <button
-          onClick={() => {
-            fetch("/api/")
-              .then((res) => res.json() as Promise<{ name: string }>)
-              .then((data) => setName(data.name));
-          }}
-          aria-label="get name"
-        >
-          Name from API is: {name}
-        </button>
-        <p>
-          Edit <code>api/index.ts</code> to change the name
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  );
+	return (
+		<>
+			<div>
+				<a href="https://vite.dev" target="_blank">
+					<img src={viteLogo} className="logo" alt="Vite logo" />
+				</a>
+				<a href="https://react.dev" target="_blank">
+					<img src={reactLogo} className="logo react" alt="React logo" />
+				</a>
+			</div>
+			<h1>Vite + React</h1>
+			<div className="card">
+				<button
+					onClick={() => setCount((count) => count + 1)}
+					aria-label="increment"
+				>
+					count is {count}
+				</button>
+				<p>
+					Edit <code>src/App.tsx</code> and save to test HMR
+				</p>
+			</div>
+			<div className="card">
+				<button
+					onClick={() => {
+						fetch("/api/")
+							.then((res) => res.json() as Promise<{ name: string }>)
+							.then((data) => setName(data.name));
+					}}
+					aria-label="get name"
+				>
+					Name from API is: {name}
+				</button>
+				<p>
+					Edit <code>api/index.ts</code> to change the name
+				</p>
+			</div>
+			<p className="read-the-docs">
+				Click on the Vite and React logos to learn more
+			</p>
+		</>
+	);
 }
-
 
 export default App;
 ```
@@ -406,7 +365,14 @@ Possible next steps include:
 * Expanding the API to include additional routes
 * Using a library, such as [Hono ↗](https://hono.dev/) or [tRPC ↗](https://trpc.io/), in your API Worker
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/tutorial/","name":"Tutorial - React SPA with an API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

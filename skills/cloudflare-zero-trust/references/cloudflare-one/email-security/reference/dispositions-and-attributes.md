@@ -1,16 +1,18 @@
 ---
-title: Dispositions and attributes
 description: Reference information for Dispositions and attributes in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Dispositions and attributes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dispositions and attributes
 
-# Dispositions and attributes
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Email security uses a variety of factors to determine whether a given email message, domain, URL, or packet is part of a phishing campaign. These small pattern assessments are dynamic in nature and — in many cases — no single pattern will determine the final verdict.
 
@@ -77,7 +79,14 @@ X-CFEmailSecurity-Attribute: [Value]
 X-CFEmailSecurity-Attribute: [Value2]
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#page","headline":"Dispositions and attributes · Cloudflare One docs","description":"Reference information for Dispositions and attributes in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/reference/dispositions-and-attributes/","name":"Dispositions and attributes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#page","headline":"Dispositions and attributes · Cloudflare One docs","description":"Reference information for Dispositions and attributes in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

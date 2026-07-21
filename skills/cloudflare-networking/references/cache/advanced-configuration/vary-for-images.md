@@ -1,16 +1,18 @@
 ---
-title: Vary for images
 description: Serve images in the best format for each visitor browser.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Vary for images
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Vary for images
 
-# Vary for images
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `Vary` HTTP response header tells Cloudflare that an origin can serve different versions of the same resource depending on the request headers. For images, this allows your origin to serve modern formats like WebP or AVIF to browsers that support them, while continuing to serve JPEG or PNG to others.
 
@@ -55,24 +57,22 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-**Change variants setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": {
-        "jpeg": [
-            "image/webp",
-            "image/avif"
-        ],
-        "jpg": [
-            "image/webp",
-            "image/avif"
-        ]
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": {
+				"jpeg": [
+						"image/webp",
+						"image/avif"
+				],
+				"jpg": [
+						"image/webp",
+						"image/avif"
+				]
+		}
+	}'
 ```
 
 ### Modify to only allow WebP variants
@@ -83,22 +83,20 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-**Change variants setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": {
-        "jpeg": [
-            "image/webp"
-        ],
-        "jpg": [
-            "image/webp"
-        ]
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": {
+				"jpeg": [
+						"image/webp"
+				],
+				"jpg": [
+						"image/webp"
+				]
+		}
+	}'
 ```
 
 ### Delete the rule
@@ -109,12 +107,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-**Delete variants setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Get the rule
@@ -127,12 +123,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Read`
 * `Zone Write`
 
-**Get variants setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 To learn more about purging varied images, refer to [Purge varied images](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-varied-images/).
@@ -142,7 +136,14 @@ To learn more about purging varied images, refer to [Purge varied images](https:
 * For Vary for images to work, your image URLs must include the file extension in the path and not the query string. For example the URL `https://example.com/image.jpg` is compatible but `https://example.com/index.php?file=image.jpg` is not compatible.
 * Your origin must return an image type matching the file extension in the URL when a HTTP client sends no `Accept` header, or an `Accept: */*` header. Otherwise, you will see `CF-Cache-Status: BYPASS` in the HTTP response headers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/#page","headline":"Vary for images · Cloudflare Cache (CDN) docs","description":"Serve images in the best format for each visitor browser.","url":"https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/vary-for-images/","name":"Vary for images"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/#page","headline":"Vary for images · Cloudflare Cache (CDN) docs","description":"Serve images in the best format for each visitor browser.","url":"https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

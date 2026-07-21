@@ -1,16 +1,18 @@
 ---
-title: Email Security
 description: Email Security for Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Email Security
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Email Security
 
-# Email Security
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/email-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Review common troubleshooting scenarios for Cloudflare Email Security.
 
@@ -77,7 +79,14 @@ For more information, refer to the full Email Security documentation.
 
 [ Email Security troubleshooting ❯ ](https://developers.cloudflare.com/cloudflare-one/email-security/troubleshooting/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/email-security/#page","headline":"Email Security · Cloudflare One docs","description":"Email Security for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/email-security/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/troubleshooting/email-security/","name":"Email Security"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/email-security/#page","headline":"Email Security · Cloudflare One docs","description":"Email Security for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/email-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

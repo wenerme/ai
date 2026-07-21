@@ -1,16 +1,18 @@
 ---
-title: Log Explorer
 description: Store and explore Cloudflare logs in the dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Log Explorer
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Log Explorer
 
-# Log Explorer
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/log-explorer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Store and explore your Cloudflare logs directly within the Cloudflare dashboard or API.
 
@@ -42,41 +44,48 @@ Authentication with the API can be done via an API token or API key with an emai
 
 ## Features
 
-###  Log Search
+[Log Search](https://developers.cloudflare.com/log-explorer/log-search/)
 
 Explore your Cloudflare logs directly within the Cloudflare dashboard or [API](https://developers.cloudflare.com/log-explorer/api/).
 
-[ Use Log Search ](https://developers.cloudflare.com/log-explorer/log-search/)
+ Use Log Search
 
-###  Custom dashboards
+[Custom dashboards](https://developers.cloudflare.com/log-explorer/custom-dashboards/)
 
 Design customized views for tracking application security, performance, and usage metrics.
 
-[ Use Custom dashboards ](https://developers.cloudflare.com/log-explorer/custom-dashboards/)
+ Use Custom dashboards
 
-###  Manage datasets
+[Manage datasets](https://developers.cloudflare.com/log-explorer/manage-datasets/)
 
 Manage the data you want to store within Log Explorer.
 
-[ Use Manage datasets ](https://developers.cloudflare.com/log-explorer/manage-datasets/)
+ Use Manage datasets
 
-###  API
+[API](https://developers.cloudflare.com/log-explorer/api/)
 
 Manage configuration and perform queries via the API.
 
-[ Use API ](https://developers.cloudflare.com/log-explorer/api/)
+ Use API
 
 ## Related products
 
-**[Logpush](https://developers.cloudflare.com/logs/)**
+[Logpush](https://developers.cloudflare.com/logs/)
 
 Forward Cloudflare logs to third-party tools for debugging, identifying configuration adjustments, and creating analytics dashboards.
 
-**[Analytics](https://developers.cloudflare.com/analytics/)**
+[Analytics](https://developers.cloudflare.com/analytics/)
 
 Visualize the metadata collected by our products in the Cloudflare dashboard.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/log-explorer/#page","headline":"Log Explorer · Cloudflare Log Explorer docs","description":"Store and explore Cloudflare logs in the dashboard.","url":"https://developers.cloudflare.com/log-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/log-explorer/#page","headline":"Log Explorer · Cloudflare Log Explorer docs","description":"Store and explore Cloudflare logs in the dashboard.","url":"https://developers.cloudflare.com/log-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

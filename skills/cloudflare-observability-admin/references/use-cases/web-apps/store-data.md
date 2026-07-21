@@ -1,16 +1,18 @@
 ---
-title: Store application data
 description: Persist data with serverless databases, key-value storage, and object storage.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Store application data
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Store application data
 
-# Store application data
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/web-apps/store-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Web applications need different storage types for different workloads — relational data, key-value lookups, file uploads, and real-time state. Cloudflare provides serverless storage options including D1 (SQL), KV (key-value), R2 (object storage), and Durable Objects (strongly consistent state).
 
@@ -47,7 +49,14 @@ Stateful objects with strongly consistent storage and coordination. [Learn more 
 3. [R2 get started](https://developers.cloudflare.com/r2/get-started/)
 4. [Durable Objects get started](https://developers.cloudflare.com/durable-objects/get-started/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/store-data/#page","headline":"Store application data · Cloudflare use cases","description":"Persist data with serverless databases, key-value storage, and object storage.","url":"https://developers.cloudflare.com/use-cases/web-apps/store-data/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/web-apps/","name":"Web sites and web apps"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/web-apps/store-data/","name":"Store application data"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/store-data/#page","headline":"Store application data · Cloudflare use cases","description":"Persist data with serverless databases, key-value storage, and object storage.","url":"https://developers.cloudflare.com/use-cases/web-apps/store-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

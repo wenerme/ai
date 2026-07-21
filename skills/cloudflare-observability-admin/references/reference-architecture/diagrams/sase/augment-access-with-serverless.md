@@ -1,16 +1,18 @@
 ---
-title: Extend ZTNA with external authorization and serverless computing
 description: Cloudflare's ZTNA enhances access policies using external API calls and Workers for robust security. It verifies user authentication and authorization, ensuring only legitimate access to protected resources.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Extend ZTNA with external authorization and serverless computing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Extend ZTNA with external authorization and serverless computing
 
-# Extend ZTNA with external authorization and serverless computing
+Last updated Mar 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -28,11 +30,11 @@ This document outlines how to combine both solutions to enhance Cloudflare Acces
 
 ## Showcased products
 
-**[Workers](https://developers.cloudflare.com/workers/)**
+[Workers](https://developers.cloudflare.com/workers/)
 
 Build serverless applications and deploy instantly across the globe for exceptional performance, reliability, and scale.
 
-**[Access](https://developers.cloudflare.com/cloudflare-one/)**
+[Access](https://developers.cloudflare.com/cloudflare-one/)
 
 Cloudflare Zero Trust replaces legacy security perimeters with Cloudflare's global network, making the Internet faster and safer for teams around the world
 
@@ -56,7 +58,9 @@ During policy evaluation, the [external evaluation](https://developers.cloudflar
 
 The code typically makes calls to either a [database](https://developers.cloudflare.com/d1/) or another API to evaluate if the passed username has access to the application. The external evaluation rule requires that the call returns either a True or False, and this is combined with the policy to determine access.
 
-[ Learn more ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/) External authorization with Cloudflare's external evaluation functionality
+### [ Learn more ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/)
+
+ External authorization with Cloudflare's external evaluation functionality
 
 ### 2\. Analyze and validate the authentication material (JWT)
 
@@ -64,21 +68,19 @@ When a user successfully authenticates and is authorized to access a protected a
 
 Here is an example of a JWT sent to an origin (use [JWT.io ↗](http://jwt.io) to read the contents of a JWT)
 
-**JWT content**
-
 ```json
 {
-  "aud": ["264063895705477af73bfbaed1bf401981f4812eefcdb9fea33f5e10e666e282"],
-  "email": "john.doe@cloudflare.com",
-  "exp": 1728551137,
-  "iat": 1728464737,
-  "nbf": 1728464737,
-  "iss": "https://myorg.cloudflareaccess.com",
-  "type": "app",
-  "identity_nonce": "IA0hPRvwILtbUXSQ",
-  "sub": "ce40d564-c72f-475f-a9b8-f395f19ad986",
-  "device_id": "8469d7c4-83a9-11ee-b559-76e6e80876db",
-  "country": "FR"
+	"aud": ["264063895705477af73bfbaed1bf401981f4812eefcdb9fea33f5e10e666e282"],
+	"email": "john.doe@cloudflare.com",
+	"exp": 1728551137,
+	"iat": 1728464737,
+	"nbf": 1728464737,
+	"iss": "https://myorg.cloudflareaccess.com",
+	"type": "app",
+	"identity_nonce": "IA0hPRvwILtbUXSQ",
+	"sub": "ce40d564-c72f-475f-a9b8-f395f19ad986",
+	"device_id": "8469d7c4-83a9-11ee-b559-76e6e80876db",
+	"country": "FR"
 }
 ```
 
@@ -86,7 +88,9 @@ Cloudflare exposes a specific [endpoint](https://developers.cloudflare.com/cloud
 
 Cloudflare's Workers are a great candidate for interacting with incoming JSON Web Tokens (JWTs), enabling additional processing directly within the serverless platform without introducing any added latency.
 
-[ Learn more ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) How to validate and visualize Cloudflare Access JWTs
+### [ Learn more ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity)
+
+ How to validate and visualize Cloudflare Access JWTs
 
 ### 3\. Augment the authentication material (JWT) with extra authentication details
 
@@ -99,8 +103,6 @@ In the following example, we want to make sure the exposed application is aware 
 Figure 2: Modified origin request including posture details
 
 When a JSON Web Token (JWT) is expanded, the details of the attached authentication event become visible. This expansion reveals much more information than what is provided by default within the JWT itself, an example is below.
-
-**Expanded JWT**
 
 ```json
 {
@@ -170,7 +172,9 @@ When a JSON Web Token (JWT) is expanded, the details of the attached authenticat
 
 Using the details in the JWT, you can use a Worker to extract the details of the device posture and then reinsert them into HTTP headers which the application uses for its own authorization logic. Below is a guided tutorial explaining how this request modification can be performed with Cloudflare Developer platform.
 
-[ Tutorial ](https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers) How to augment Cloudflare Access JWT with Cloudflare's Workers
+### [ Tutorial ](https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers)
+
+ How to augment Cloudflare Access JWT with Cloudflare's Workers
 
 ## Related Resources
 
@@ -178,7 +182,14 @@ Using the details in the JWT, you can use a Worker to extract the details of the
 * [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
 * [External Evaluation blog post ↗](https://blog.cloudflare.com/access-external-validation-rules/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/#page","headline":"Extend ZTNA with external authorization and serverless computing · Cloudflare Reference Architecture docs","description":"Cloudflare's ZTNA enhances access policies using external API calls and Workers for robust security. It verifies user authentication and authorization, ensuring only legitimate access to protected resources.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/sase/","name":"Secure Access Service Edge (SASE)"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/sase/augment-access-with-serverless/","name":"Extend ZTNA with external authorization and serverless computing"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/#page","headline":"Extend ZTNA with external authorization and serverless computing · Cloudflare Reference Architecture docs","description":"Cloudflare's ZTNA enhances access policies using external API calls and Workers for robust security. It verifies user authentication and authorization, ensuring only legitimate access to protected resources.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

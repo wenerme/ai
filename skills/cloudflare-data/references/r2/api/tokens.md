@@ -1,16 +1,18 @@
 ---
-title: Authentication
 description: Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Authentication
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Authentication
 
-# Authentication
+Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/tokens/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can generate an API token to serve as the Access Key for usage with existing S3-compatible SDKs or XML APIs.
 
@@ -23,7 +25,7 @@ You must purchase R2 before you can generate an API token.
 To create an API token:
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Under the **Account Details** section, select **Manage** next to **API Tokens**.
 3. Choose to create either:
 
@@ -35,7 +37,7 @@ To create an API token:
 
 After your token has been successfully created, review your **Secret Access Key** and **Access Key ID** values. These may often be referred to as Client Secret and Client ID, respectively.
 
-Warning
+Caution
 
 You will not be able to access your **Secret Access Key** again after this step. Copy and record both values to avoid losing them.
 
@@ -48,7 +50,7 @@ Buckets created with jurisdictions must be accessed via jurisdiction-specific en
 * European Union (EU): `https://<ACCOUNT_ID>.eu.r2.cloudflarestorage.com`
 * FedRAMP: `https://<ACCOUNT_ID>.fedramp.r2.cloudflarestorage.com`
 
-Warning
+Caution
 
 Jurisdictional buckets can only be accessed via the corresponding jurisdictional endpoint. Most S3 clients will not let you configure multiple `endpoints`, so you'll generally have to initialize one client per jurisdiction.
 
@@ -118,20 +120,20 @@ Determine what [permission groups](https://developers.cloudflare.com/fundamental
 
 ```json
 [
-  {
-    "id": "f267e341f3dd4697bd3b9f71dd96247f",
-    "effect": "allow",
-    "resources": {
-      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",
-      "com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"
-    },
-    "permission_groups": [
-      {
-        "id": "6a018a9f2fc74eb6b293b0c548f38b39",
-        "name": "Workers R2 Storage Bucket Item Read"
-      }
-    ]
-  }
+	{
+		"id": "f267e341f3dd4697bd3b9f71dd96247f",
+		"effect": "allow",
+		"resources": {
+			"com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_default_my-bucket": "*",
+			"com.cloudflare.edge.r2.bucket.4793d734c0b8e484dfc37ec392b5fa8a_eu_my-eu-bucket": "*"
+		},
+		"permission_groups": [
+			{
+				"id": "6a018a9f2fc74eb6b293b0c548f38b39",
+				"name": "Workers R2 Storage Bucket Item Read"
+			}
+		]
+	}
 ]
 ```
 
@@ -148,7 +150,14 @@ Refer to [Authenticate against R2 API using auth tokens](https://developers.clou
 
 To issue short-lived, scoped credentials derived from an API token, use [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/). R2 supports generating them via the Temporary Credentials API or locally by signing a JWT with the parent token's secret access key.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/tokens/","name":"Authentication"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

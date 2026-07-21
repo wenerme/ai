@@ -1,16 +1,18 @@
 ---
-title: Identity-based policies
 description: Reference information for Identity-based policies in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Identity-based policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Identity-based policies
 
-# Identity-based policies
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare One, you can create Secure Web Gateway policies that filter outbound traffic down to the user identity level. To do that, you can build DNS, HTTP or Network policies using a set of [identity-based selectors](#identity-based-selectors). These selectors require you to deploy the Cloudflare One Client in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/).
 
@@ -22,7 +24,7 @@ You may also filter outbound traffic based on additional signals from [device po
 
 Gateway checks identity when a user logs in or re-authenticates. To check your users' identities and require re-authentication at regular intervals, you can [enforce a Cloudflare One Client session duration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
 
-Warning
+Caution
 
 Unless you use an [identity provider (IdP) that supports SCIM provisioning](#automatic-scim-idp-updates), Gateway will not detect when you add or remove a user from a group in your IdP until the user re-authenticates to your Zero Trust instance.
 
@@ -218,7 +220,14 @@ For a [generic OIDC provider](https://developers.cloudflare.com/cloudflare-one/i
 
 1. In Cloudflare One Client version 2026.1 and earlier, select **Preferences** \> **Account** \> **Re-Authenticate Session**. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#page","headline":"Identity-based policies · Cloudflare One docs","description":"Reference information for Identity-based policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["OIDC","SAML","SCIM"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/identity-selectors/","name":"Identity-based policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#page","headline":"Identity-based policies · Cloudflare One docs","description":"Reference information for Identity-based policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["OIDC","SAML","SCIM"]}
 ```

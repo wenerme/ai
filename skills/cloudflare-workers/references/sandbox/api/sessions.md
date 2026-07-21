@@ -1,16 +1,18 @@
 ---
-title: Sessions
 description: Create shell sessions with independent working directories and environment variables within a sandbox.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sessions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sessions
 
-# Sessions
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/api/sessions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Create shell sessions within a sandbox. Each session maintains its own shell state, environment variables, and working directory, while sharing the sandbox filesystem and process space. For more information, refer to [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/).
 
@@ -23,8 +25,6 @@ By default, for backwards compatibility, every sandbox has a default session tha
 ### `createSession()`
 
 Create a new shell session.
-
-**TypeScript**
 
 ```ts
 const session = await sandbox.createSession(options?: SessionOptions): Promise<ExecutionSession>
@@ -40,52 +40,40 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-11047)
-* [  TypeScript ](#tab-panel-11048)
-
-**JavaScript**
-
 ```js
 // Separate workflow environments
 const prodSession = await sandbox.createSession({
-  id: "prod",
-  env: { NODE_ENV: "production", API_URL: "https://api.example.com" },
-  cwd: "/workspace/prod",
+	id: "prod",
+	env: { NODE_ENV: "production", API_URL: "https://api.example.com" },
+	cwd: "/workspace/prod",
 });
-
 
 const testSession = await sandbox.createSession({
-  id: "test",
-  env: {
-    NODE_ENV: "test",
-    API_URL: "http://localhost:3000",
-    DEBUG_MODE: undefined, // Skipped, not set in this session
-  },
-  cwd: "/workspace/test",
+	id: "test",
+	env: {
+		NODE_ENV: "test",
+		API_URL: "http://localhost:3000",
+		DEBUG_MODE: undefined, // Skipped, not set in this session
+	},
+	cwd: "/workspace/test",
 });
-
 
 // Run in parallel
 const [prodResult, testResult] = await Promise.all([
-  prodSession.exec("npm run build"),
-  testSession.exec("npm run build"),
+	prodSession.exec("npm run build"),
+	testSession.exec("npm run build"),
 ]);
-
 
 // Session with a default command timeout
 const session = await sandbox.createSession({
-  commandTimeoutMs: 5000, // 5s timeout for all commands
+	commandTimeoutMs: 5000, // 5s timeout for all commands
 });
 
-
 await session.exec("sleep 10"); // Times out after 5s
-
 
 // Per-command timeout overrides session-level timeout
 await session.exec("sleep 10", { timeout: 3000 }); // Times out after 3s
 ```
-
-**TypeScript**
 
 ```ts
 // Separate workflow environments
@@ -94,7 +82,6 @@ const prodSession = await sandbox.createSession({
   env: { NODE_ENV: 'production', API_URL: 'https://api.example.com' },
   cwd: '/workspace/prod'
 });
-
 
 const testSession = await sandbox.createSession({
   id: 'test',
@@ -106,22 +93,18 @@ const testSession = await sandbox.createSession({
   cwd: '/workspace/test'
 });
 
-
 // Run in parallel
 const [prodResult, testResult] = await Promise.all([
   prodSession.exec('npm run build'),
   testSession.exec('npm run build')
 ]);
 
-
 // Session with a default command timeout
 const session = await sandbox.createSession({
   commandTimeoutMs: 5000 // 5s timeout for all commands
 });
 
-
 await session.exec('sleep 10'); // Times out after 5s
-
 
 // Per-command timeout overrides session-level timeout
 await session.exec('sleep 10', { timeout: 3000 }); // Times out after 3s
@@ -130,8 +113,6 @@ await session.exec('sleep 10', { timeout: 3000 }); // Times out after 3s
 ### `getSession()`
 
 Retrieve an existing session by ID.
-
-**TypeScript**
 
 ```ts
 const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSession>
@@ -143,31 +124,22 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-11041)
-* [  TypeScript ](#tab-panel-11042)
-
-**JavaScript**
-
 ```js
 // First request - create a task-specific session
 const session = await sandbox.createSession({ id: "build" });
 await session.exec("git clone https://github.com/user/repo.git");
 await session.exec("cd repo && npm install");
 
-
 // Second request - resume session (environment and cwd preserved)
 const session = await sandbox.getSession("build");
 const result = await session.exec("cd repo && npm run build");
 ```
-
-**TypeScript**
 
 ```ts
 // First request - create a task-specific session
 const session = await sandbox.createSession({ id: 'build' });
 await session.exec('git clone https://github.com/user/repo.git');
 await session.exec('cd repo && npm install');
-
 
 // Second request - resume session (environment and cwd preserved)
 const session = await sandbox.getSession('build');
@@ -179,8 +151,6 @@ const result = await session.exec('cd repo && npm run build');
 ### `deleteSession()`
 
 Delete a session and clean up its resources.
-
-**TypeScript**
 
 ```ts
 const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDeleteResult>
@@ -196,30 +166,21 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-11043)
-* [  TypeScript ](#tab-panel-11044)
-
-**JavaScript**
-
 ```js
 // Create a temporary session for a specific task
 const tempSession = await sandbox.createSession({ id: "temp-task" });
 
-
 try {
-  await tempSession.exec("npm run heavy-task");
+	await tempSession.exec("npm run heavy-task");
 } finally {
-  // Clean up the session when done
-  await sandbox.deleteSession("temp-task");
+	// Clean up the session when done
+	await sandbox.deleteSession("temp-task");
 }
 ```
-
-**TypeScript**
 
 ```ts
 // Create a temporary session for a specific task
 const tempSession = await sandbox.createSession({ id: 'temp-task' });
-
 
 try {
   await tempSession.exec('npm run heavy-task');
@@ -229,7 +190,7 @@ try {
 }
 ```
 
-Warning
+Caution
 
 Deleting a session immediately terminates all running commands. The default session cannot be deleted.
 
@@ -238,8 +199,6 @@ Deleting a session immediately terminates all running commands. The default sess
 ### `setEnvVars()`
 
 Set environment variables in the sandbox.
-
-**TypeScript**
 
 ```ts
 await sandbox.setEnvVars(envVars: Record<string, string | undefined>): Promise<void>
@@ -251,37 +210,27 @@ await sandbox.setEnvVars(envVars: Record<string, string | undefined>): Promise<v
   * `string` values: Set the environment variable
   * `undefined` or `null` values: Unset the environment variable
 
-Warning
+Caution
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
-
-* [  JavaScript ](#tab-panel-11045)
-* [  TypeScript ](#tab-panel-11046)
-
-**JavaScript**
 
 ```js
 const sandbox = getSandbox(env.Sandbox, "user-123");
 
-
 // Set environment variables first
 await sandbox.setEnvVars({
-  API_KEY: env.OPENAI_API_KEY,
-  DATABASE_URL: env.DATABASE_URL,
-  NODE_ENV: "production",
-  OLD_TOKEN: undefined, // Unsets OLD_TOKEN if previously set
+	API_KEY: env.OPENAI_API_KEY,
+	DATABASE_URL: env.DATABASE_URL,
+	NODE_ENV: "production",
+	OLD_TOKEN: undefined, // Unsets OLD_TOKEN if previously set
 });
-
 
 // Now commands can access these variables
 await sandbox.exec("python script.py");
 ```
 
-**TypeScript**
-
 ```ts
 const sandbox = getSandbox(env.Sandbox, 'user-123');
-
 
 // Set environment variables first
 await sandbox.setEnvVars({
@@ -290,7 +239,6 @@ await sandbox.setEnvVars({
   NODE_ENV: 'production',
   OLD_TOKEN: undefined // Unsets OLD_TOKEN if previously set
 });
-
 
 // Now commands can access these variables
 await sandbox.exec('python script.py');
@@ -316,7 +264,14 @@ The `ExecutionSession` object has all sandbox methods bound to the specific sess
 * [Session management concept](https://developers.cloudflare.com/sandbox/concepts/sessions/) \- How sessions work
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) \- Execute commands
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/sessions/#page","headline":"Sessions · Cloudflare Sandbox SDK docs","description":"Create shell sessions with independent working directories and environment variables within a sandbox.","url":"https://developers.cloudflare.com/sandbox/api/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/sessions/","name":"Sessions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/sessions/#page","headline":"Sessions · Cloudflare Sandbox SDK docs","description":"Create shell sessions with independent working directories and environment variables within a sandbox.","url":"https://developers.cloudflare.com/sandbox/api/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

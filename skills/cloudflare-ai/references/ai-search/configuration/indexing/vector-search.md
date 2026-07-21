@@ -1,16 +1,18 @@
 ---
-title: Vector search
 description: Configure vector search in AI Search to find semantically similar content using embeddings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Vector search
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Vector search
 
-# Vector search
+Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Vector search converts your query into a vector embedding and finds chunks with similar meaning. It is enabled by default on all AI Search instances. For an overview of search modes, refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/).
 
@@ -26,15 +28,13 @@ The [embedding model](https://developers.cloudflare.com/ai-search/configuration/
 
 Vector search is the default index method for all instances. To switch to [keyword search](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) only, set `index_method.vector` to `false`. At least one of `vector` or `keyword` must be `true`.
 
-**TypeScript**
-
 ```ts
 const instance = await env.AI_SEARCH.create({
-  id: "my-instance",
-  index_method: {
-    vector: false,
-    keyword: true,
-  },
+	id: "my-instance",
+	index_method: {
+		vector: false,
+		keyword: true,
+	},
 });
 ```
 
@@ -42,19 +42,16 @@ const instance = await env.AI_SEARCH.create({
 
 You can force vector-only search on a per-request basis using `ai_search_options.retrieval.retrieval_type`, even if keyword search is also enabled on the instance.
 
-**TypeScript**
-
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
 
-
 const results = await instance.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-  ai_search_options: {
-    retrieval: {
-      retrieval_type: "vector",
-    },
-  },
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
+	ai_search_options: {
+		retrieval: {
+			retrieval_type: "vector",
+		},
+	},
 });
 ```
 
@@ -71,7 +68,14 @@ When using vector search, each chunk includes a `scoring_details` object:
 
 For vector index limits, refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/#page","headline":"Vector search · Cloudflare AI Search docs","description":"Configure vector search in AI Search to find semantically similar content using embeddings.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/indexing/","name":"Indexing"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/indexing/vector-search/","name":"Vector search"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/#page","headline":"Vector search · Cloudflare AI Search docs","description":"Configure vector search in AI Search to find semantically similar content using embeddings.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

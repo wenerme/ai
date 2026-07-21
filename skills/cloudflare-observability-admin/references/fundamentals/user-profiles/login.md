@@ -1,20 +1,22 @@
 ---
-title: Log in to Cloudflare
 description: Sign in to the Cloudflare dashboard using email and password, SSO, or social login with Apple, Google, or GitHub.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Log in to Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Log in to Cloudflare
 
-# Log in to Cloudflare
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/user-profiles/login/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Go to the Cloudflare dashboard and choose your [sign-in option](#sign-in-options).
 
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 
 ## Sign-in options
 
@@ -36,7 +38,7 @@ Note
 
 If you log in to your Cloudflare user account with Single Sign-On (SSO), you will not be able to use social login.
 
-Warning
+Caution
 
 If you use social login to sign in, your user profile will not have a password associated with it at first. Some operations, such as enabling 2-Factor Authentication or creating API tokens, require setting a password.
 
@@ -69,7 +71,14 @@ If you created your Cloudflare account using Apple Relay and decide to change yo
 * Sign in with GitHub uses the [Primary email address ↗](https://docs.github.com/en/account-and-profile/how-tos/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/changing-your-primary-email-address) which is set on your GitHub account. If you change your primary email address in GitHub, you will not be able to log into your Cloudflare account using GitHub social login.
 * If you select **Sign in with GitHub** with an email that does not already have a Cloudflare account associated with it, Cloudflare will create a new account and allow you to sign in using **Sign in with GitHub** option moving forward.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/login/#page","headline":"Log in to Cloudflare · Cloudflare Fundamentals docs","description":"Sign in to the Cloudflare dashboard using email and password, SSO, or social login with Apple, Google, or GitHub.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/login/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/user-profiles/","name":"User profiles"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/user-profiles/login/","name":"Log in to Cloudflare"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/login/#page","headline":"Log in to Cloudflare · Cloudflare Fundamentals docs","description":"Sign in to the Cloudflare dashboard using email and password, SSO, or social login with Apple, Google, or GitHub.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/login/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

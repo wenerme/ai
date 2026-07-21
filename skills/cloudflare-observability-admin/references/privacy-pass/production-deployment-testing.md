@@ -1,16 +1,18 @@
 ---
-title: Production Deployment Testing
 description: Validate a Cloudflare-operated Privacy Pass deployment end to end — discover the issuer configuration, request and redeem a token, and verify issuance works.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Production Deployment Testing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Production Deployment Testing
 
-# Production Deployment Testing
+Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers obtaining a token from your Cloudflare-operated deployment. By this point, you and Cloudflare have already worked together to build and provision the pieces below. Use this guide to confirm the deployment issues and redeems tokens end to end.
 
@@ -93,27 +95,21 @@ In this deployment the Client never contacts the issuer directly. Getting a toke
 
 Using the TypeScript library for this example, the Client builds the blinded token request, then sends it to your Attester, which proxies it to the issuer and returns the signed response:
 
-**TypeScript**
-
 ```ts
 import { publicVerif } from '@cloudflare/privacypass-ts';
 const { BlindRSAMode, Client } = publicVerif;
 
-
 // Declare your own sendToAttester transport — see the note below.
 declare function sendToAttester(tokenRequest: Uint8Array): Promise<Uint8Array>;
-
 
 // `tokenChallenge` comes from the Origin's WWW-Authenticate header.
 // `issuerPublicKey` is the issuer's public key bytes (from the directory in Step 1).
 const client = new Client(BlindRSAMode.PSS);
 const tokenRequest = await client.createTokenRequest(tokenChallenge, issuerPublicKey);
 
-
 // Send the blinded request to your Attester. It verifies the client, proxies the
 // request to the issuer, and returns the issuer's signed token response.
 const tokenResponseBytes = await sendToAttester(tokenRequest.serialize());
-
 
 // Deserialize and unblind to recover the finalized token.
 const tokenResponse = client.deserializeTokenResponse(tokenResponseBytes);
@@ -150,7 +146,14 @@ Against a production issuer, use the demo tool only as a directory reachability 
 * [cloudflare/privacypass-attester ↗](https://github.com/cloudflare/privacypass-attester) — reference attester implementation (Turnstile attestation, proxies token requests to an issuer).
 * [cloudflare/privacypass-issuer ↗](https://github.com/cloudflare/privacypass-issuer) — reference issuer implementation (Workers, key rotation).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/production-deployment-testing/#page","headline":"Production Deployment Testing · Cloudflare Privacy Pass docs","description":"Validate a Cloudflare-operated Privacy Pass deployment end to end — discover the issuer configuration, request and redeem a token, and verify issuance works.","url":"https://developers.cloudflare.com/privacy-pass/production-deployment-testing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-pass/","name":"Privacy Pass"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-pass/production-deployment-testing/","name":"Production Deployment Testing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/production-deployment-testing/#page","headline":"Production Deployment Testing · Cloudflare Privacy Pass docs","description":"Validate a Cloudflare-operated Privacy Pass deployment end to end — discover the issuer configuration, request and redeem a token, and verify issuance works.","url":"https://developers.cloudflare.com/privacy-pass/production-deployment-testing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

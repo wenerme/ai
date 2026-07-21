@@ -1,16 +1,18 @@
 ---
-title: Firewall rules upgrade
 description: Upgrade deprecated Firewall Rules to WAF custom rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Firewall rules upgrade
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Firewall rules upgrade
 
-# Firewall rules upgrade
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare upgraded existing [firewall rules](https://developers.cloudflare.com/firewall/) into [custom rules](https://developers.cloudflare.com/waf/custom-rules/). With custom rules, you get the same level of protection and a few additional features. Custom rules are available in the Cloudflare dashboard in the following location:
 
@@ -198,7 +200,7 @@ cloudflare_firewall_rule.my_firewall_rule: Refreshing state... [id=0580eb5d92e34
 [...]
 ```
 5. Remove any state related to firewall rules and filters from your Terraform state:
-Warning
+Caution
 You must remove firewall rules and filters from Terraform state before deleting their configuration from `.tf` configuration files to prevent issues.
 
   1. Run the following command to find all resources related to firewall rules and filters:
@@ -247,7 +249,14 @@ For details on importing Cloudflare resources to Terraform and using the `cf-ter
 
 Any unpaused firewall rules with paused [filters](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) will become enabled when converted to custom rules.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/#page","headline":"Firewall rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade deprecated Firewall Rules to WAF custom rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/reference/legacy/","name":"Legacy features"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/reference/legacy/firewall-rules-upgrade/","name":"Firewall rules upgrade"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/#page","headline":"Firewall rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade deprecated Firewall Rules to WAF custom rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

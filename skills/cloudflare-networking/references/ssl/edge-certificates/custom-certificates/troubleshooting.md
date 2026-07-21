@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Troubleshoot issues with custom certificates.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Generic troubleshooting
 
@@ -102,7 +104,7 @@ If you are renewing an existing certificate, [update the existing certificate](h
 
 If you genuinely need a new certificate for a different hostname, delete an unused certificate first or contact your account team (Enterprise) to increase your quota.
 
-Warning
+Caution
 
 Deleting a certificate removes it from Cloudflare's edge immediately. If no other certificate covers the same hostnames, visitors will see TLS errors until a replacement is uploaded and active.
 
@@ -247,7 +249,14 @@ An internal error occurred while processing your request.
 
 Wait a few minutes and try again. If the issue persists, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with a [HAR file](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file) capturing the failed upload attempt.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#page","headline":"Troubleshooting · Cloudflare SSL/TLS docs","description":"Troubleshoot issues with custom certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/custom-certificates/","name":"Custom certificates"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/custom-certificates/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#page","headline":"Troubleshooting · Cloudflare SSL/TLS docs","description":"Troubleshoot issues with custom certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Subdomains and subdirectories
 description: Run APO on WordPress subdomains and subdirectory installations.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Subdomains and subdirectories
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Subdomains and subdirectories
 
-# Subdomains and subdirectories
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Run APO on a subdomain
 
@@ -41,24 +43,19 @@ If you choose to run APO only on a subdirectory, the rest of the domain should b
 
 The `cf-edge-cache: no-cache` instructs the APO service to bypass caching for non-WordPress parts of the site. You can implement this option with Cloudflare Workers using the example below.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const originalResponse = await fetch(request);
+	async fetch(request, env, ctx) {
+		const originalResponse = await fetch(request);
 
-
-    // Response properties are immutable. To change them, construct a new Response object.
+		// Response properties are immutable. To change them, construct a new Response object.
     const response = new Response(originalResponse.body, originalResponse);
-
 
     // Response headers can be modified through the headers `set` method.
     response.headers.set("cf-edge-cache", "no-cache");
 
-
-    return response;
-  },
+		return response;
+	},
 };
 ```
 
@@ -66,7 +63,14 @@ export default {
 
 Create a [cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) to exclude non-WordPress portions of the site from caching using **Cache eligibility: Bypass cache**. This option disables all caching, including static assets for those paths. As a result, we recommend disabling APO via the response header.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/#page","headline":"Subdomains and subdirectories · Cloudflare Automatic Platform Optimization docs","description":"Run APO on WordPress subdomains and subdirectory installations.","url":"https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/automatic-platform-optimization/reference/subdomain-subdirectories/","name":"Subdomains and subdirectories"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/#page","headline":"Subdomains and subdirectories · Cloudflare Automatic Platform Optimization docs","description":"Run APO on WordPress subdomains and subdirectory installations.","url":"https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress","JavaScript"]}
 ```

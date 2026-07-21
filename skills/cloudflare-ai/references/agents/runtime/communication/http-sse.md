@@ -1,16 +1,18 @@
 ---
-title: HTTP and Server-Sent Events
 description: Handle HTTP requests and stream responses with Server-Sent Events (SSE) from Cloudflare Agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: HTTP and Server-Sent Events
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP and Server-Sent Events
 
-# HTTP and Server-Sent Events
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/http-sse/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents can handle HTTP requests and stream responses using Server-Sent Events (SSE). This page covers the `onRequest` method and SSE patterns.
 
@@ -18,80 +20,63 @@ Agents can handle HTTP requests and stream responses using Server-Sent Events (S
 
 Define the `onRequest` method to handle HTTP requests to your agent:
 
-* [  JavaScript ](#tab-panel-6391)
-* [  TypeScript ](#tab-panel-6392)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 
-
 export class APIAgent extends Agent {
-  async onRequest(request) {
-    const url = new URL(request.url);
+	async onRequest(request) {
+		const url = new URL(request.url);
 
+		// Route based on path
+		if (url.pathname.endsWith("/status")) {
+			return Response.json({ status: "ok", state: this.state });
+		}
 
-    // Route based on path
-    if (url.pathname.endsWith("/status")) {
-      return Response.json({ status: "ok", state: this.state });
-    }
+		if (url.pathname.endsWith("/action")) {
+			if (request.method !== "POST") {
+				return new Response("Method not allowed", { status: 405 });
+			}
+			const data = await request.json();
+			await this.processAction(data.action);
+			return Response.json({ success: true });
+		}
 
+		return new Response("Not found", { status: 404 });
+	}
 
-    if (url.pathname.endsWith("/action")) {
-      if (request.method !== "POST") {
-        return new Response("Method not allowed", { status: 405 });
-      }
-      const data = await request.json();
-      await this.processAction(data.action);
-      return Response.json({ success: true });
-    }
-
-
-    return new Response("Not found", { status: 404 });
-  }
-
-
-  async processAction(action) {
-    // Handle the action
-  }
+	async processAction(action) {
+		// Handle the action
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 
-
 export class APIAgent extends Agent {
-  async onRequest(request: Request): Promise<Response> {
-    const url = new URL(request.url);
+	async onRequest(request: Request): Promise<Response> {
+		const url = new URL(request.url);
 
+		// Route based on path
+		if (url.pathname.endsWith("/status")) {
+			return Response.json({ status: "ok", state: this.state });
+		}
 
-    // Route based on path
-    if (url.pathname.endsWith("/status")) {
-      return Response.json({ status: "ok", state: this.state });
-    }
+		if (url.pathname.endsWith("/action")) {
+			if (request.method !== "POST") {
+				return new Response("Method not allowed", { status: 405 });
+			}
+			const data = await request.json<{ action: string }>();
+			await this.processAction(data.action);
+			return Response.json({ success: true });
+		}
 
+		return new Response("Not found", { status: 404 });
+	}
 
-    if (url.pathname.endsWith("/action")) {
-      if (request.method !== "POST") {
-        return new Response("Method not allowed", { status: 405 });
-      }
-      const data = await request.json<{ action: string }>();
-      await this.processAction(data.action);
-      return Response.json({ success: true });
-    }
-
-
-    return new Response("Not found", { status: 404 });
-  }
-
-
-  async processAction(action: string) {
-    // Handle the action
-  }
+	async processAction(action: string) {
+		// Handle the action
+	}
 }
 ```
 
@@ -103,80 +88,65 @@ SSE allows you to stream data to clients over a long-running HTTP connection. Th
 
 Create an SSE stream manually using `ReadableStream`:
 
-* [  JavaScript ](#tab-panel-6395)
-* [  TypeScript ](#tab-panel-6396)
-
-**JavaScript**
-
 ```js
 export class StreamAgent extends Agent {
-  async onRequest(request) {
-    const encoder = new TextEncoder();
+	async onRequest(request) {
+		const encoder = new TextEncoder();
 
+		const stream = new ReadableStream({
+			async start(controller) {
+				// Send events
+				controller.enqueue(encoder.encode("data: Starting...\n\n"));
 
-    const stream = new ReadableStream({
-      async start(controller) {
-        // Send events
-        controller.enqueue(encoder.encode("data: Starting...\n\n"));
+				for (let i = 1; i <= 5; i++) {
+					await new Promise((r) => setTimeout(r, 500));
+					controller.enqueue(encoder.encode(`data: Step ${i} complete\n\n`));
+				}
 
+				controller.enqueue(encoder.encode("data: Done!\n\n"));
+				controller.close();
+			},
+		});
 
-        for (let i = 1; i <= 5; i++) {
-          await new Promise((r) => setTimeout(r, 500));
-          controller.enqueue(encoder.encode(`data: Step ${i} complete\n\n`));
-        }
-
-
-        controller.enqueue(encoder.encode("data: Done!\n\n"));
-        controller.close();
-      },
-    });
-
-
-    return new Response(stream, {
-      headers: {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        Connection: "keep-alive",
-      },
-    });
-  }
+		return new Response(stream, {
+			headers: {
+				"Content-Type": "text/event-stream",
+				"Cache-Control": "no-cache",
+				Connection: "keep-alive",
+			},
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class StreamAgent extends Agent {
-  async onRequest(request: Request): Promise<Response> {
-    const encoder = new TextEncoder();
+	async onRequest(request: Request): Promise<Response> {
+		const encoder = new TextEncoder();
 
+		const stream = new ReadableStream({
+			async start(controller) {
+				// Send events
+				controller.enqueue(encoder.encode("data: Starting...\n\n"));
 
-    const stream = new ReadableStream({
-      async start(controller) {
-        // Send events
-        controller.enqueue(encoder.encode("data: Starting...\n\n"));
+				for (let i = 1; i <= 5; i++) {
+					await new Promise((r) => setTimeout(r, 500));
+					controller.enqueue(encoder.encode(`data: Step ${i} complete\n\n`));
+				}
 
+				controller.enqueue(encoder.encode("data: Done!\n\n"));
+				controller.close();
+			},
+		});
 
-        for (let i = 1; i <= 5; i++) {
-          await new Promise((r) => setTimeout(r, 500));
-          controller.enqueue(encoder.encode(`data: Step ${i} complete\n\n`));
-        }
-
-
-        controller.enqueue(encoder.encode("data: Done!\n\n"));
-        controller.close();
-      },
-    });
-
-
-    return new Response(stream, {
-      headers: {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        Connection: "keep-alive",
-      },
-    });
-  }
+		return new Response(stream, {
+			headers: {
+				"Content-Type": "text/event-stream",
+				"Cache-Control": "no-cache",
+				Connection: "keep-alive",
+			},
+		});
+	}
 }
 ```
 
@@ -200,65 +170,49 @@ data: {"count": 42}\n\n
 
 The [AI SDK ↗](https://ai-sdk.dev/) provides built-in SSE streaming:
 
-* [  JavaScript ](#tab-panel-6389)
-* [  TypeScript ](#tab-panel-6390)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 import { streamText } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 
-
 export class ChatAgent extends Agent {
-  async onRequest(request) {
-    const { prompt } = await request.json();
+	async onRequest(request) {
+		const { prompt } = await request.json();
 
+		const workersai = createWorkersAI({ binding: this.env.AI });
 
-    const workersai = createWorkersAI({ binding: this.env.AI });
+		const result = streamText({
+			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			prompt: prompt,
+		});
 
-
-    const result = streamText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      prompt: prompt,
-    });
-
-
-    return result.toTextStreamResponse();
-  }
+		return result.toTextStreamResponse();
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 import { streamText } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 
-
 interface Env {
-  AI: Ai;
+	AI: Ai;
 }
 
-
 export class ChatAgent extends Agent<Env> {
-  async onRequest(request: Request): Promise<Response> {
-    const { prompt } = await request.json<{ prompt: string }>();
+	async onRequest(request: Request): Promise<Response> {
+		const { prompt } = await request.json<{ prompt: string }>();
 
+		const workersai = createWorkersAI({ binding: this.env.AI });
 
-    const workersai = createWorkersAI({ binding: this.env.AI });
+		const result = streamText({
+			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			prompt: prompt,
+		});
 
-
-    const result = streamText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      prompt: prompt,
-    });
-
-
-    return result.toTextStreamResponse();
-  }
+		return result.toTextStreamResponse();
+	}
 }
 ```
 
@@ -270,66 +224,51 @@ SSE connections can be long-lived. Handle client disconnects gracefully:
 * **Use agent routing** — Clients can [reconnect to the same agent instance](https://developers.cloudflare.com/agents/runtime/communication/routing/) without session stores
 * **No timeout limits** — Cloudflare Workers have no effective limit on SSE response duration
 
-* [  JavaScript ](#tab-panel-6393)
-* [  TypeScript ](#tab-panel-6394)
-
-**JavaScript**
-
 ```js
 export class ResumeAgent extends Agent {
-  async onRequest(request) {
-    const url = new URL(request.url);
-    const lastEventId = request.headers.get("Last-Event-ID");
+	async onRequest(request) {
+		const url = new URL(request.url);
+		const lastEventId = request.headers.get("Last-Event-ID");
 
+		if (lastEventId) {
+			// Client is resuming - send events after lastEventId
+			return this.resumeStream(lastEventId);
+		}
 
-    if (lastEventId) {
-      // Client is resuming - send events after lastEventId
-      return this.resumeStream(lastEventId);
-    }
+		return this.startStream();
+	}
 
+	async startStream() {
+		// Start new stream, saving progress to this.state
+	}
 
-    return this.startStream();
-  }
-
-
-  async startStream() {
-    // Start new stream, saving progress to this.state
-  }
-
-
-  async resumeStream(fromId) {
-    // Resume from saved state
-  }
+	async resumeStream(fromId) {
+		// Resume from saved state
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class ResumeAgent extends Agent {
-  async onRequest(request: Request): Promise<Response> {
-    const url = new URL(request.url);
-    const lastEventId = request.headers.get("Last-Event-ID");
+	async onRequest(request: Request): Promise<Response> {
+		const url = new URL(request.url);
+		const lastEventId = request.headers.get("Last-Event-ID");
 
+		if (lastEventId) {
+			// Client is resuming - send events after lastEventId
+			return this.resumeStream(lastEventId);
+		}
 
-    if (lastEventId) {
-      // Client is resuming - send events after lastEventId
-      return this.resumeStream(lastEventId);
-    }
+		return this.startStream();
+	}
 
+	async startStream(): Promise<Response> {
+		// Start new stream, saving progress to this.state
+	}
 
-    return this.startStream();
-  }
-
-
-  async startStream(): Promise<Response> {
-    // Start new stream, saving progress to this.state
-  }
-
-
-  async resumeStream(fromId: string): Promise<Response> {
-    // Resume from saved state
-  }
+	async resumeStream(fromId: string): Promise<Response> {
+		// Resume from saved state
+	}
 }
 ```
 
@@ -349,13 +288,26 @@ Refer to [WebSockets](https://developers.cloudflare.com/agents/runtime/communica
 
 ## Next steps
 
-[ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/) Bi-directional real-time communication.
+### [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
 
-[ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Persist stream progress and agent state.
+ Bi-directional real-time communication.
 
-[ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Streaming responses with AI chat.
+### [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+
+ Persist stream progress and agent state.
+
+### [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/)
+
+ Streaming responses with AI chat.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/http-sse/#page","headline":"HTTP and Server-Sent Events · Cloudflare Agents docs","description":"Handle HTTP requests and stream responses with Server-Sent Events (SSE) from Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/communication/http-sse/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/http-sse/","name":"HTTP and Server-Sent Events"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/http-sse/#page","headline":"HTTP and Server-Sent Events · Cloudflare Agents docs","description":"Handle HTTP requests and stream responses with Server-Sent Events (SSE) from Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/communication/http-sse/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

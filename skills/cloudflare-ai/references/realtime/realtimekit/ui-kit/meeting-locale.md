@@ -1,16 +1,18 @@
 ---
-title: Meeting Locale
 description: Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Meeting Locale
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Meeting Locale
 
-# Meeting Locale
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's UI Kit allows you to customize all the text within the video call interface. You can personalize the text to align with your specific locale needs.
 
@@ -38,10 +40,10 @@ RealtimeKit's default language pack can be imported like this:
 
 ```html
 <script type="module">
-  import {
-    useLanguage,
-    defaultLanguage,
-  } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui/dist/esm/index.js";
+	import {
+		useLanguage,
+		defaultLanguage,
+	} from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui/dist/esm/index.js";
 </script>
 ```
 
@@ -53,16 +55,12 @@ import { defaultLanguage, useLanguage } from "@cloudflare/realtimekit-react-ui";
 
 RealtimeKit's default language pack can be imported like this:
 
-**TypeScript**
-
 ```typescript
 import {
-  defaultLanguage,
-  useLanguage,
+	defaultLanguage,
+	useLanguage,
 } from "@cloudflare/realtimekit-angular-ui";
 ```
-
-**Dart**
 
 ```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
@@ -70,12 +68,10 @@ import 'package:realtimekit_ui/realtimekit_ui.dart';
 
 No additional imports are required. The `arbPath` parameter is available on `RealtimeKitUIBuilder.build()`.
 
-**TypeScript**
-
 ```typescript
 import {
-  defaultLanguage,
-  useLanguage,
+	defaultLanguage,
+	useLanguage,
 } from "@cloudflare/realtimekit-react-native-ui";
 ```
 
@@ -85,44 +81,38 @@ To replace RealtimeKit's default locale with your own, create a custom language 
 
 ```html
 <body>
-  <rtk-meeting id="my-meeting"></rtk-meeting>
+	<rtk-meeting id="my-meeting"></rtk-meeting>
 
+	<script type="module">
+		import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
+		import {
+			useLanguage,
+			defaultLanguage,
+		} from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui/dist/esm/index.js";
 
-  <script type="module">
-    import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
-    import {
-      useLanguage,
-      defaultLanguage,
-    } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui/dist/esm/index.js";
+		// Customize RealtimeKit's default locale object
+		const myLanguagePack = useLanguage({
+			...defaultLanguage,
+			mute_all: "Mute All Users",
+			leave: "Exit Call",
+			join: "Join Now",
+		});
 
+		const init = async () => {
+			const meeting = await RealtimeKitClient.init({
+				authToken: "<participant_auth_token>",
+			});
 
-    // Customize RealtimeKit's default locale object
-    const myLanguagePack = useLanguage({
-      ...defaultLanguage,
-      mute_all: "Mute All Users",
-      leave: "Exit Call",
-      join: "Join Now",
-    });
+			const meetingEl = document.getElementById("my-meeting");
+			meetingEl.meeting = meeting;
+			meetingEl.showSetupScreen = true;
 
+			// Pass custom language pack
+			meetingEl.t = myLanguagePack;
+		};
 
-    const init = async () => {
-      const meeting = await RealtimeKitClient.init({
-        authToken: "<participant_auth_token>",
-      });
-
-
-      const meetingEl = document.getElementById("my-meeting");
-      meetingEl.meeting = meeting;
-      meetingEl.showSetupScreen = true;
-
-
-      // Pass custom language pack
-      meetingEl.t = myLanguagePack;
-    };
-
-
-    init();
-  </script>
+		init();
+	</script>
 </body>
 ```
 
@@ -130,86 +120,77 @@ The `useLanguage` function takes in your custom locale object as an argument and
 
 ```jsx
 import {
-  RealtimeKitProvider,
-  useRealtimeKitClient,
+	RealtimeKitProvider,
+	useRealtimeKitClient,
 } from "@cloudflare/realtimekit-react";
 import {
-  RtkMeeting,
-  defaultLanguage,
-  useLanguage,
+	RtkMeeting,
+	defaultLanguage,
+	useLanguage,
 } from "@cloudflare/realtimekit-react-ui";
 import { useEffect, useState } from "react";
 
-
 function App() {
-  const [meeting, initMeeting] = useRealtimeKitClient();
-  const [authToken, setAuthToken] = useState("<participant_auth_token>");
+	const [meeting, initMeeting] = useRealtimeKitClient();
+	const [authToken, setAuthToken] = useState("<participant_auth_token>");
 
+	// Customize RealtimeKit's default locale object
+	const myLanguagePack = useLanguage({
+		...defaultLanguage,
+		mute_all: "Mute All Users",
+		leave: "Exit Call",
+		join: "Join Now",
+	});
 
-  // Customize RealtimeKit's default locale object
-  const myLanguagePack = useLanguage({
-    ...defaultLanguage,
-    mute_all: "Mute All Users",
-    leave: "Exit Call",
-    join: "Join Now",
-  });
+	useEffect(() => {
+		if (authToken) {
+			initMeeting({
+				authToken: authToken,
+			});
+		}
+	}, [authToken]);
 
-
-  useEffect(() => {
-    if (authToken) {
-      initMeeting({
-        authToken: authToken,
-      });
-    }
-  }, [authToken]);
-
-
-  return (
-    <RealtimeKitProvider value={meeting}>
-      <RtkMeeting showSetupScreen={true} meeting={meeting} t={myLanguagePack} />
-    </RealtimeKitProvider>
-  );
+	return (
+		<RealtimeKitProvider value={meeting}>
+			<RtkMeeting showSetupScreen={true} meeting={meeting} t={myLanguagePack} />
+		</RealtimeKitProvider>
+	);
 }
 ```
 
 The `useLanguage` hook takes in your custom locale object as an argument and generates a function that retrieves the value associated with the provided key.
 
-**TypeScript**
-
 ```typescript
 import { Component, OnInit } from "@angular/core";
 import RealtimeKitClient from "@cloudflare/realtimekit-angular";
 import {
-  defaultLanguage,
-  useLanguage,
+	defaultLanguage,
+	useLanguage,
 } from "@cloudflare/realtimekit-angular-ui";
 
-
 @Component({
-  selector: "app-meeting",
-  template: `
-    <rtk-meeting [meeting]="meeting" [t]="myLanguagePack"></rtk-meeting>
-  `,
+	selector: "app-meeting",
+	template: `
+		<rtk-meeting [meeting]="meeting" [t]="myLanguagePack"></rtk-meeting>
+	`,
 })
 export class MeetingComponent implements OnInit {
-  meeting: any;
-  myLanguagePack: any;
+	meeting: any;
+	myLanguagePack: any;
 
+	async ngOnInit() {
+		// Customize RealtimeKit's default locale object
+		this.myLanguagePack = useLanguage({
+			...defaultLanguage,
+			mute_all: "Mute All Users",
+			leave: "Exit Call",
+			join: "Join Now",
+		});
 
-  async ngOnInit() {
-    // Customize RealtimeKit's default locale object
-    this.myLanguagePack = useLanguage({
-      ...defaultLanguage,
-      mute_all: "Mute All Users",
-      leave: "Exit Call",
-      join: "Join Now",
-    });
-
-
-    this.meeting = await RealtimeKitClient.init({
-      authToken: "<participant_auth_token>",
-    });
-  }
+		this.meeting = await RealtimeKitClient.init({
+			authToken: "<participant_auth_token>",
+		});
+	}
 }
 ```
 
@@ -221,24 +202,22 @@ Create an ARB JSON file with a `@locale` key and the string keys you want to ove
 
 ```json
 {
-  "@locale": "es",
-  "join": "Unirse",
-  "leave": "Salir",
-  "cancel": "Cancelar",
-  "micOn": "Mic Encendido",
-  "micOff": "Mic Apagado",
-  "videoOn": "Video Encendido",
-  "videoOff": "Video Apagado",
-  "mute": "Silenciar",
-  "participants": "Participantes",
-  "chat": "Chat",
-  "settings": "Configuración"
+	"@locale": "es",
+	"join": "Unirse",
+	"leave": "Salir",
+	"cancel": "Cancelar",
+	"micOn": "Mic Encendido",
+	"micOff": "Mic Apagado",
+	"videoOn": "Video Encendido",
+	"videoOff": "Video Apagado",
+	"mute": "Silenciar",
+	"participants": "Participantes",
+	"chat": "Chat",
+	"settings": "Configuración"
 }
 ```
 
 **2\. Register the asset** in `pubspec.yaml`:
-
-**YAML**
 
 ```yaml
 flutter:
@@ -247,8 +226,6 @@ flutter:
 ```
 
 **3\. Pass `arbPath`** when building the UI Kit:
-
-**Dart**
 
 ```dart
 final rtkUI = RealtimeKitUIBuilder.build(
@@ -262,15 +239,12 @@ You only need to include the keys you want to override. Any key not present in t
 
 Spread the `defaultLanguage` object and override specific keys. Pass the result to `RtkMeeting` via the `t` prop.
 
-**TypeScript**
-
 ```typescript
 import {
   RtkMeeting,
   defaultLanguage,
   useLanguage,
 } from '@cloudflare/realtimekit-react-native-ui';
-
 
 function App() {
   const myLanguagePack = useLanguage({
@@ -282,7 +256,6 @@ function App() {
     chat: 'Chat',
     settings: 'Configuración',
   });
-
 
   return (
     <RtkMeeting
@@ -302,115 +275,102 @@ You can also pass the custom language pack to the UI provider component when bui
 
 ```html
 <body>
-  <rtk-ui-provider id="ui-provider">
-    <!-- Your custom UI components -->
-  </rtk-ui-provider>
+	<rtk-ui-provider id="ui-provider">
+		<!-- Your custom UI components -->
+	</rtk-ui-provider>
 
+	<script type="module">
+		import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
+		import {
+			useLanguage,
+			defaultLanguage,
+		} from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui/dist/esm/index.js";
 
-  <script type="module">
-    import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
-    import {
-      useLanguage,
-      defaultLanguage,
-    } from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit-ui/dist/esm/index.js";
+		const myLanguagePack = useLanguage({
+			...defaultLanguage,
+			mute_all: "Mute All Users",
+		});
 
+		const meeting = await RealtimeKitClient.init({
+			authToken: "<participant_auth_token>",
+		});
 
-    const myLanguagePack = useLanguage({
-      ...defaultLanguage,
-      mute_all: "Mute All Users",
-    });
-
-
-    const meeting = await RealtimeKitClient.init({
-      authToken: "<participant_auth_token>",
-    });
-
-
-    const uiProvider = document.getElementById("ui-provider");
-    uiProvider.meeting = meeting;
-    uiProvider.t = myLanguagePack;
-  </script>
+		const uiProvider = document.getElementById("ui-provider");
+		uiProvider.meeting = meeting;
+		uiProvider.t = myLanguagePack;
+	</script>
 </body>
 ```
 
 ```jsx
 import {
-  RealtimeKitProvider,
-  useRealtimeKitClient,
+	RealtimeKitProvider,
+	useRealtimeKitClient,
 } from "@cloudflare/realtimekit-react";
 import {
-  RtkUIProvider,
-  defaultLanguage,
-  useLanguage,
+	RtkUIProvider,
+	defaultLanguage,
+	useLanguage,
 } from "@cloudflare/realtimekit-react-ui";
 import { useEffect, useState } from "react";
 
-
 function App() {
-  const [meeting, initMeeting] = useRealtimeKitClient();
-  const [authToken, setAuthToken] = useState("<participant_auth_token>");
+	const [meeting, initMeeting] = useRealtimeKitClient();
+	const [authToken, setAuthToken] = useState("<participant_auth_token>");
 
+	const myLanguagePack = useLanguage({
+		...defaultLanguage,
+		mute_all: "Mute All Users",
+	});
 
-  const myLanguagePack = useLanguage({
-    ...defaultLanguage,
-    mute_all: "Mute All Users",
-  });
+	useEffect(() => {
+		if (authToken) {
+			initMeeting({
+				authToken: authToken,
+			});
+		}
+	}, [authToken]);
 
-
-  useEffect(() => {
-    if (authToken) {
-      initMeeting({
-        authToken: authToken,
-      });
-    }
-  }, [authToken]);
-
-
-  return (
-    <RealtimeKitProvider value={meeting}>
-      <RtkUIProvider meeting={meeting} t={myLanguagePack}>
-        {/* Your custom UI components */}
-      </RtkUIProvider>
-    </RealtimeKitProvider>
-  );
+	return (
+		<RealtimeKitProvider value={meeting}>
+			<RtkUIProvider meeting={meeting} t={myLanguagePack}>
+				{/* Your custom UI components */}
+			</RtkUIProvider>
+		</RealtimeKitProvider>
+	);
 }
 ```
-
-**TypeScript**
 
 ```typescript
 import { Component, OnInit } from "@angular/core";
 import RealtimeKitClient from "@cloudflare/realtimekit-angular";
 import {
-  defaultLanguage,
-  useLanguage,
+	defaultLanguage,
+	useLanguage,
 } from "@cloudflare/realtimekit-angular-ui";
 
-
 @Component({
-  selector: "app-meeting",
-  template: `
-    <rtk-ui-provider [meeting]="meeting" [t]="myLanguagePack">
-      <!-- Your custom UI components -->
-    </rtk-ui-provider>
-  `,
+	selector: "app-meeting",
+	template: `
+		<rtk-ui-provider [meeting]="meeting" [t]="myLanguagePack">
+			<!-- Your custom UI components -->
+		</rtk-ui-provider>
+	`,
 })
 export class MeetingComponent implements OnInit {
-  meeting: any;
-  myLanguagePack: any;
+	meeting: any;
+	myLanguagePack: any;
 
+	async ngOnInit() {
+		this.myLanguagePack = useLanguage({
+			...defaultLanguage,
+			mute_all: "Mute All Users",
+		});
 
-  async ngOnInit() {
-    this.myLanguagePack = useLanguage({
-      ...defaultLanguage,
-      mute_all: "Mute All Users",
-    });
-
-
-    this.meeting = await RealtimeKitClient.init({
-      authToken: "<participant_auth_token>",
-    });
-  }
+		this.meeting = await RealtimeKitClient.init({
+			authToken: "<participant_auth_token>",
+		});
+	}
 }
 ```
 
@@ -845,17 +805,15 @@ Here is the complete default language pack offered by RealtimeKit:
 
 You can override any of these keys in your custom language pack. For example, to translate the interface to Spanish:
 
-**JavaScript**
-
 ```javascript
 const spanishLanguagePack = useLanguage({
-  ...defaultLanguage,
-  leave: "Salir",
-  join: "Unirse",
-  mute: "Silenciar",
-  participants: "Participantes",
-  chat: "Chat",
-  settings: "Configuración",
+	...defaultLanguage,
+	leave: "Salir",
+	join: "Unirse",
+	mute: "Silenciar",
+	participants: "Participantes",
+	chat: "Chat",
+	settings: "Configuración",
 });
 ```
 
@@ -968,7 +926,14 @@ The React Native UI Kit exposes approximately 195 overridable string keys via th
 | ended.left                 | You left the meeting.                    |
 | ended.kicked               | You were removed from the meeting.       |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/#page","headline":"Meeting Locale · Cloudflare Realtime docs","description":"Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/meeting-locale/","name":"Meeting Locale"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/#page","headline":"Meeting Locale · Cloudflare Realtime docs","description":"Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

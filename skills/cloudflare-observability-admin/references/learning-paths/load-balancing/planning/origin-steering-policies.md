@@ -1,16 +1,18 @@
 ---
-title: Endpoint steering policies
 description: Configure how pools distribute requests to servers.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Endpoint steering policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Endpoint steering policies
 
-# Endpoint steering policies
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/load-balancing/planning/origin-steering-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Endpoint steering customizes how each [pool](https://developers.cloudflare.com/load-balancing/pools/) distributes requests to its associated endpoints.
 
@@ -71,7 +73,14 @@ Additionally, session affinity takes precedence over any selected weight or endp
 
 When using [DNS-only load balancing](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/#dns-only-load-balancing), DNS resolvers may cache resolved IPs for clients and affect traffic distribution.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/planning/origin-steering-policies/#page","headline":"Endpoint steering policies · Cloudflare Learning Paths","description":"Configure how pools distribute requests to servers.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/planning/origin-steering-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/planning/","name":"Planning your load balancer"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/planning/origin-steering-policies/","name":"Endpoint steering policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/planning/origin-steering-policies/#page","headline":"Endpoint steering policies · Cloudflare Learning Paths","description":"Configure how pools distribute requests to servers.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/planning/origin-steering-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

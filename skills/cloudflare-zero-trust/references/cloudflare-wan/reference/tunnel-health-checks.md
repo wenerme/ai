@@ -1,16 +1,18 @@
 ---
-title: Tunnel health checks
 description: Cloudflare WAN uses probes to check for tunnel health. Review information on this page to learn more.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Tunnel health checks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tunnel health checks
 
-# Tunnel health checks
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare continuously monitors whether each tunnel connecting your network to Cloudflare is reachable and performing well. When a tunnel becomes unhealthy, Cloudflare automatically steers traffic to an alternate path — without requiring manual intervention. This monitoring relies on tunnel health check probes.
 
@@ -207,7 +209,7 @@ accDescr: Shows the flow of a unidirectional echo reply health check from Cloudf
 
 ### Rate
 
-Warning
+Caution
 
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
 
@@ -294,7 +296,14 @@ Global network servers continue probing Tunnel 1\. When the health check failure
 
 For help resolving tunnel health issues, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/#page","headline":"Tunnel health checks · Cloudflare WAN docs","description":"Cloudflare WAN uses probes to check for tunnel health. Review information on this page to learn more.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/reference/tunnel-health-checks/","name":"Tunnel health checks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/#page","headline":"Tunnel health checks · Cloudflare WAN docs","description":"Cloudflare WAN uses probes to check for tunnel health. Review information on this page to learn more.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

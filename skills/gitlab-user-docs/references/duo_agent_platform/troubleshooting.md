@@ -236,7 +236,7 @@ to the same `environment` line:
 
 If the GitLab Duo CLI runs in the Anthropic Sandbox Runtime (SRT), runner `environment` variables might not reach it. If TLS errors persist after this change, in your `agent-config.yml`, in the `setup_script`, set `NODE_EXTRA_CA_CERTS` instead. The `setup_script` runs inside the container and is not filtered by the sandbox.
 
-The `GIT_SSL_CAINFO` variable addresses Git operations that occur before the GitLab Duo CLI starts. For GitLab Duo CLI certificate configuration, see [custom SSL certificates](../gitlab_duo_cli/_index.md#custom-ssl-certificates).
+The `GIT_SSL_CAINFO` variable addresses Git operations that occur before the GitLab Duo CLI starts. For GitLab Duo CLI certificate configuration, see [certificate errors](../gitlab_duo_cli/use.md#certificate-errors).
 
 ## Troubleshooting in your IDE
 

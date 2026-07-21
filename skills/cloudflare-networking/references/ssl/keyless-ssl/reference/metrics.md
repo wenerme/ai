@@ -1,16 +1,18 @@
 ---
-title: Key server metrics
 description: Prometheus metrics exposed by the gokeyless key server.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Key server metrics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Key server metrics
 
-# Key server metrics
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The gokeyless key server exposes a [Prometheus ↗](https://prometheus.io/) metrics endpoint that you can use to monitor signing performance, error rates, connection health, and certificate expiry. This endpoint can also be scraped by the OpenTelemetry Collector Prometheus receiver, making the metrics available to any OpenTelemetry-compatible backend.
 
@@ -288,7 +290,14 @@ A sustained non-zero rate indicates network or TLS problems between the Cloudfla
 (certificate_expiration_timestamp_seconds - time()) / 86400 < 30
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/#page","headline":"Key server metrics · Cloudflare SSL/TLS docs","description":"Prometheus metrics exposed by the gokeyless key server.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/keyless-ssl/","name":"Keyless SSL"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/keyless-ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/keyless-ssl/reference/metrics/","name":"Key server metrics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/#page","headline":"Key server metrics · Cloudflare SSL/TLS docs","description":"Prometheus metrics exposed by the gokeyless key server.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

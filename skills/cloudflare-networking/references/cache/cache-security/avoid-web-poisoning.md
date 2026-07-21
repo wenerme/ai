@@ -1,16 +1,18 @@
 ---
-title: Avoid web cache poisoning
 description: Protect your site from web cache poisoning attacks.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Avoid web cache poisoning
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Avoid web cache poisoning
 
-# Avoid web cache poisoning
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A cache poisoning attack uses an HTTP request to trick an origin web server into responding with a harmful resource that has the same cache key as a clean request. As a result, the poisoned resource gets cached and served to other users.
 
@@ -49,7 +51,14 @@ To keep informed about Internet security threats, Cloudflare recommends that you
 * [Symfony Security Advisories ↗](https://symfony.com/blog/category/security-advisories)
 * [Laminas Security Advisories ↗](https://getlaminas.org/security/advisories)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/#page","headline":"Avoid Web Cache Poisoning · Cloudflare Cache (CDN) docs","description":"Protect your site from web cache poisoning attacks.","url":"https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/cache-security/","name":"Cache security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/cache-security/avoid-web-poisoning/","name":"Avoid web cache poisoning"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/#page","headline":"Avoid Web Cache Poisoning · Cloudflare Cache (CDN) docs","description":"Protect your site from web cache poisoning attacks.","url":"https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security"]}
 ```

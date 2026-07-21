@@ -1,16 +1,18 @@
 ---
-title: Require U2F with Okta
 description: This tutorial covers how to Integrate Cloudflare Access with Okta. It also covers the steps to set up Cloudflare Access and integrate Okta with Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Require U2F with Okta
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Require U2F with Okta
 
-# Require U2F with Okta
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Many identity providers, like Okta, support multiple multifactor authentication (MFA) options simultaneously. For example, Okta will allow you to login with your password and a temporary code generated in an app or a U2F hard key like a Yubikey.
 
@@ -80,7 +82,14 @@ You can now test the rule. Visit the application and attempt to login using an a
 
 If you sign out of Okta, and reattempt with a hardware key, Access will then allow the connection.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/#page","headline":"Require U2F with Okta · Cloudflare One docs","description":"This tutorial covers how to Integrate Cloudflare Access with Okta. It also covers the steps to set up Cloudflare Access and integrate Okta with Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Okta"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/okta-u2f/","name":"Require U2F with Okta"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/#page","headline":"Require U2F with Okta · Cloudflare One docs","description":"This tutorial covers how to Integrate Cloudflare Access with Okta. It also covers the steps to set up Cloudflare Access and integrate Okta with Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Okta"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Code interpreter with Workers AI
 description: Build a code interpreter using Workers AI GPT-OSS model with the official workers-ai-provider package.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Code interpreter with Workers AI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Code interpreter with Workers AI
 
-# Code interpreter with Workers AI
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build a powerful code interpreter that gives the [gpt-oss model](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) on Workers AI the ability to execute Python code using the Cloudflare Sandbox SDK.
 
@@ -59,8 +61,6 @@ cd workers-ai-interpreter
 
 The template includes a complete implementation using the latest best practices. Let's examine the key components:
 
-**TypeScript**
-
 ```typescript
 // src/index.ts
 import { getSandbox } from "@cloudflare/sandbox";
@@ -68,33 +68,29 @@ import { generateText, stepCountIs, tool } from "ai";
 import { createWorkersAI } from "workers-ai-provider";
 import { z } from "zod";
 
-
 const MODEL = "@cf/openai/gpt-oss-120b" as const;
 
-
 async function handleAIRequest(input: string, env: Env): Promise<string> {
-  const workersai = createWorkersAI({ binding: env.AI });
+	const workersai = createWorkersAI({ binding: env.AI });
 
+	const result = await generateText({
+		model: workersai(MODEL),
+		messages: [{ role: "user", content: input }],
+		tools: {
+			execute_python: tool({
+				description: "Execute Python code and return the output",
+				inputSchema: z.object({
+					code: z.string().describe("The Python code to execute"),
+				}),
+				execute: async ({ code }) => {
+					return executePythonCode(env, code);
+				},
+			}),
+		},
+		stopWhen: stepCountIs(5),
+	});
 
-  const result = await generateText({
-    model: workersai(MODEL),
-    messages: [{ role: "user", content: input }],
-    tools: {
-      execute_python: tool({
-        description: "Execute Python code and return the output",
-        inputSchema: z.object({
-          code: z.string().describe("The Python code to execute"),
-        }),
-        execute: async ({ code }) => {
-          return executePythonCode(env, code);
-        },
-      }),
-    },
-    stopWhen: stepCountIs(5),
-  });
-
-
-  return result.text || "No response generated";
+	return result.text || "No response generated";
 }
 ```
 
@@ -109,17 +105,12 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11389)
-* [  wrangler.toml ](#tab-panel-11390)
-
-**JSONC**
-
 ```jsonc
 {
   "name": "sandbox-code-interpreter-example",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "ai": {
     "binding": "AI"
   },
@@ -143,18 +134,14 @@ The template includes the proper Wrangler configuration:
 }
 ```
 
-**TOML**
-
 ```toml
 name = "sandbox-code-interpreter-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [ai]
 binding = "AI"
-
 
 [[containers]]
 class_name = "Sandbox"
@@ -162,7 +149,6 @@ image = "./Dockerfile"
 name = "sandbox"
 max_instances = 1
 instance_type = "basic"
-
 
 [[durable_objects.bindings]]
 class_name = "Sandbox"
@@ -195,12 +181,10 @@ curl -X POST http://localhost:8787/run \
   -H "Content-Type: application/json" \
   -d '{"input": "Calculate 5 factorial using Python"}'
 
-
 # Complex operations
 curl -X POST http://localhost:8787/run \
   -H "Content-Type: application/json" \
   -d '{"input": "Use Python to find all prime numbers under 20"}'
-
 
 # Data analysis
 curl -X POST http://localhost:8787/run \
@@ -216,7 +200,7 @@ Deploy your Worker:
 npx wrangler deploy
 ```
 
-Warning
+Caution
 
 After first deployment, wait 2-3 minutes for container provisioning before making requests.
 
@@ -230,12 +214,10 @@ curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
   -H "Content-Type: application/json" \
   -d '{"input": "Generate sample sales data for 12 months and calculate quarterly totals"}'
 
-
 # Algorithm implementation
 curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
   -H "Content-Type: application/json" \
   -d '{"input": "Implement a binary search function and test it with a sorted array"}'
-
 
 # Mathematical computation
 curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
@@ -274,7 +256,14 @@ You deployed a sophisticated code interpreter that:
 * [Vercel AI SDK ↗](https://sdk.vercel.ai/) \- Universal toolkit for AI applications
 * [GPT-OSS model documentation](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) \- Model details and capabilities
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/#page","headline":"Code interpreter with Workers AI · Cloudflare Sandbox SDK docs","description":"Build a code interpreter using Workers AI GPT-OSS model with the official workers-ai-provider package.","url":"https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/workers-ai-code-interpreter/","name":"Code interpreter with Workers AI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/#page","headline":"Code interpreter with Workers AI · Cloudflare Sandbox SDK docs","description":"Build a code interpreter using Workers AI GPT-OSS model with the official workers-ai-provider package.","url":"https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

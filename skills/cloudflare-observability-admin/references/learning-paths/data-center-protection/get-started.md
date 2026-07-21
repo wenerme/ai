@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Begin onboarding with Magic Transit.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/data-center-protection/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Scope your configuration
 
@@ -55,36 +57,27 @@ The LOA must be a PDF. Transit providers may reject the LOA if it is a JPG or PN
 
 ### Example of a Letter of Agency
 
-**Letter of Agency template**
-
 ```txt
 [COMPANY LETTERHEAD]
 
-
 LETTER OF AGENCY ("LOA")
-
 
 [DATE]
 
 
 To whom it may concern:
 
-
 [COMPANY NAME] (the "Company") authorizes Cloudflare, Inc. with AS13335 to advertise the following IP address blocks / originating ASNs:
 
-
 - - - - - - - - - - - - - - - - - - -
 [Subnet & Originating ASN]
 [Subnet & Originating ASN]
 [Subnet & Originating ASN]
 - - - - - - - - - - - - - - - - - - -
-
 
 As a representative of the Company that is the owner of the aforementioned IP address blocks / originating ASNs, I hereby declare that I am authorized to sign this LOA on the Company’s behalf.
 
-
 Should you have any questions please email me at [E-MAIL ADDRESS], or call: [TELEPHONE NUMBER]
-
 
 Regards,
 
@@ -174,7 +167,14 @@ The following table lists several commonly used router vendors with links to MSS
 
 If you want to use [BGP for prefix advertisement control](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/#bgp-prefix-advertisement-control-methods), notify your account team of the IPs and ASN for your customer premises equipment (CPE) to use for the BGP peerings. You should allow around five working days for Cloudflare to add this to our Route Reflectors.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/get-started/#page","headline":"Get started · Cloudflare Learning Paths","description":"Begin onboarding with Magic Transit.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/get-started/#page","headline":"Get started · Cloudflare Learning Paths","description":"Begin onboarding with Magic Transit.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

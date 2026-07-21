@@ -1,16 +1,18 @@
 ---
-title: List JSON object
 description: Reference information on the JSON object used in Lists API calls.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: List JSON object
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  List JSON object
 
-# List JSON object
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/lists/lists-api/json-object/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## List object structure and properties
 
@@ -18,14 +20,14 @@ A JSON response for the [Lists API](https://developers.cloudflare.com/api/resour
 
 ```json
 {
-  "id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-  "name": "my_list_name",
-  "description": "List description.",
-  "kind": "(ip|hostname|asn|redirect)",
-  "num_items": 10,
-  "num_referencing_filters": 2,
-  "created_on": "2021-01-01T08:00:00Z",
-  "modified_on": "2021-01-10T14:00:00Z"
+	"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+	"name": "my_list_name",
+	"description": "List description.",
+	"kind": "(ip|hostname|asn|redirect)",
+	"num_items": 10,
+	"num_referencing_filters": 2,
+	"created_on": "2021-01-01T08:00:00Z",
+	"modified_on": "2021-01-10T14:00:00Z"
 }
 ```
 
@@ -52,11 +54,11 @@ A fully populated JSON object for an IP address list item has the following stru
 
 ```json
 {
-  "id": "7c5dae5552338874e5053f2534d2767a",
-  "ip": "10.0.0.1/32",
-  "comment": "CF DNS server",
-  "created_on": "2021-10-01T05:20:00.12345Z",
-  "modified_on": "2021-10-01T05:20:00.12345Z"
+	"id": "7c5dae5552338874e5053f2534d2767a",
+	"ip": "10.0.0.1/32",
+	"comment": "CF DNS server",
+	"created_on": "2021-10-01T05:20:00.12345Z",
+	"modified_on": "2021-10-01T05:20:00.12345Z"
 }
 ```
 
@@ -66,12 +68,12 @@ A fully populated JSON object for a hostname list item has the following structu
 
 ```json
 {
-  "id": "7c5dae5552338874e5053f2534d2767a",
-  "hostname": {
-    "url_hostname": "*.example.com"
-  },
-  "created_on": "2021-10-11T12:39:02Z",
-  "modified_on": "2021-10-11T12:39:02Z"
+	"id": "7c5dae5552338874e5053f2534d2767a",
+	"hostname": {
+		"url_hostname": "*.example.com"
+	},
+	"created_on": "2021-10-11T12:39:02Z",
+	"modified_on": "2021-10-11T12:39:02Z"
 }
 ```
 
@@ -81,11 +83,11 @@ A fully populated JSON object for an ASN list item has the following structure:
 
 ```json
 {
-  "id": "7c5dae5552338874e5053f2534d2767a",
-  "asn": 13335,
-  "comment": "My provider's ASN",
-  "created_on": "2021-10-11T12:39:02Z",
-  "modified_on": "2021-10-11T12:39:02Z"
+	"id": "7c5dae5552338874e5053f2534d2767a",
+	"asn": 13335,
+	"comment": "My provider's ASN",
+	"created_on": "2021-10-11T12:39:02Z",
+	"modified_on": "2021-10-11T12:39:02Z"
 }
 ```
 
@@ -95,18 +97,18 @@ A fully populated JSON object for a Bulk Redirect List item has the following st
 
 ```json
 {
-  "id": "7c5dae5552338874e5053f2534d2767a",
-  "redirect": {
-    "source_url": "https://example.com/blog",
-    "target_url": "https://example.com/blog/latest",
-    "status_code": 301,
-    "include_subdomains": false,
-    "subpath_matching": false,
-    "preserve_query_string": false,
-    "preserve_path_suffix": true
-  },
-  "created_on": "2021-10-11T12:39:02Z",
-  "modified_on": "2021-10-11T12:39:02Z"
+	"id": "7c5dae5552338874e5053f2534d2767a",
+	"redirect": {
+		"source_url": "https://example.com/blog",
+		"target_url": "https://example.com/blog/latest",
+		"status_code": 301,
+		"include_subdomains": false,
+		"subpath_matching": false,
+		"preserve_query_string": false,
+		"preserve_path_suffix": true
+	},
+	"created_on": "2021-10-11T12:39:02Z",
+	"modified_on": "2021-10-11T12:39:02Z"
 }
 ```
 
@@ -127,7 +129,14 @@ The JSON object properties for a list item are defined as follows:
 
 For a detailed specification, refer to the [Lists API](https://developers.cloudflare.com/api/resources/rules/subresources/lists/) documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/lists-api/json-object/#page","headline":"List JSON object · Cloudflare Web Application Firewall (WAF) docs","description":"Reference information on the JSON object used in Lists API calls.","url":"https://developers.cloudflare.com/waf/tools/lists/lists-api/json-object/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/lists/","name":"Lists"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/lists/lists-api/","name":"Lists API"}},{"@type":"ListItem","position":6,"item":{"@id":"/waf/tools/lists/lists-api/json-object/","name":"List JSON object"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/lists-api/json-object/#page","headline":"List JSON object · Cloudflare Web Application Firewall (WAF) docs","description":"Reference information on the JSON object used in Lists API calls.","url":"https://developers.cloudflare.com/waf/tools/lists/lists-api/json-object/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

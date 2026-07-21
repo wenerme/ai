@@ -1,20 +1,22 @@
 ---
-title: Kill Switches
 description: Disable Ethereum Gateway features in an emergency.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Kill Switches
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Kill Switches
 
-# Kill Switches
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When writing contracts, be especially careful to write secure code and include a kill switch to ensure that if any bugs do reside in the code, they can be squashed. If you do not include a kill switch and there are vulnerabilities in the smart contract that can be exploited, this can lead to the theft of resources from the smart contract or from other individuals.
 
-This was brought into sharp focus during the [infamous DAO incident ↗](https://en.wikipedia.org/wiki/The%5FDAO%5F%28organization%29). The DAO smart contract acted as a complex, decentralized venture capital fund and held Ether worth $250 million at its peak collected from a group of investors. Hackers exploited vulnerabilities in the smart contract, stealing $50 million worth of Ether.
+This was brought into sharp focus during the [infamous DAO incident ↗](https://en.wikipedia.org/wiki/The%5FDAO%5F%28organization%29). The DAO smart contract acted as a complex, decentralized venture capital fund and held Ether worth `250 million at its peak collected from a group of investors. Hackers exploited vulnerabilities in the smart contract, stealing `50 million worth of Ether.
 
 Because there is no way to undo transactions in Ether, there was a highly controversial “hard fork," where the majority of the community agreed to accept a block that contained an _irregular state change_ that essentially drained all DAO funds into a special “WithdrawDAO” recovery contract. By convincing enough miners to accept this irregular block as valid, the DAO was able to return investors funds. However, not everyone agreed with the chain, with those who disagreed rejecting the irregular block and forming the Ethereum Classic network, each blockchain grew independently.
 
@@ -32,7 +34,14 @@ The trust given to institutions is historic. This history builds trustworthiness
 
 The trust placed in consensus-based algorithms is based on the assumption that most people are honest, or more accurately that no sufficiently large subset of people can be made to collude to produce a malicious outcome. This is the _democratisation of trust_. In the DAO attack, a majority of nodes agreed to accept an irregular state transition. This effectively undid the damage of the attack, and shows how, at least in the world of blockchain, perception is reality. Because most people “believed" -- accepted this irregular block, it became a “real” -- valid block.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/#page","headline":"Kill Switches · Cloudflare Web3 docs","description":"Disable Ethereum Gateway features in an emergency.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ethereum-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ethereum-gateway/reference/kill-switches/","name":"Kill Switches"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/#page","headline":"Kill Switches · Cloudflare Web3 docs","description":"Disable Ethereum Gateway features in an emergency.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

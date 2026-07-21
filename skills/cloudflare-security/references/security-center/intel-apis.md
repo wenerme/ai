@@ -1,16 +1,18 @@
 ---
-title: Threat Intelligence APIs
 description: Query Cloudflare threat intelligence data for IPs, domains, ASNs, and more.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Threat Intelligence APIs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Threat Intelligence APIs
 
-# Threat Intelligence APIs
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/intel-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides a series of endpoints covering various areas of internet security and insights. Based on your Cloudflare plan type, the [limit](https://developers.cloudflare.com/security-center/intel-apis/limits/) of API calls will vary per month.
 
@@ -44,7 +46,6 @@ Get ASN Overview
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/asn/13335" \
 --header "Authorization: Bearer <API_TOKEN>" | jq .
 
-
 # Example response:
 {
     "result": {
@@ -66,7 +67,6 @@ Download Custom Indicator Feed
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/10d79d097895ae7ed7942a2b3832186c/intel/indicator-feeds/31/download" \
 --header "Authorization: Bearer <API_TOKEN>" | jq .
-
 
 # Example response:
 {
@@ -112,7 +112,6 @@ Get Domain Details
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/domain?domain=cloudflare.com" \
 --header "Authorization: Bearer <API_TOKEN>" | jq .
-
 
 # Example response:
 {
@@ -166,7 +165,6 @@ Get Domain History
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/domain-history?domain=cloudflare.com" \
 --header "Authorization: Bearer <API_TOKEN>" | jq .
 
-
 {
     "result": [
         {
@@ -212,7 +210,6 @@ Get IP Overview
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/ip?ipv4=1.1.1.1" \
 --header "Authorization: Bearer <API_TOKEN>" | jq .
 
-
 # Example response:
 {
     "result": [
@@ -248,7 +245,6 @@ Get Passive DNS by IP
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/dns?ipv4=1.1.1.1&start=2023-07-15&end=2023-07-18&per_page=5" \
 --header "Authorization: Bearer <API_TOKEN>" | jq .
-
 
 # Example response:
 {
@@ -297,7 +293,6 @@ Get results for a URL scan
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/brand-protection/url-info?url=http://worcester-realistic-ellen-portland.trycloudflare.com/login.html" \
 --header "Authorization: Bearer <API_TOKEN>" | jq .
-
 
 # Example response:
 {
@@ -358,7 +353,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/miscatego
     "url": "https://wrong-category.example.com"
 }'
 
-
 # Example response:
 {
     "result": "",
@@ -375,7 +369,6 @@ Get WHOIS Record
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/whois?domain=cloudflare.com" \
 --header "Authorization: Bearer <API_TOKEN>" | jq .
-
 
 # Example response:
 {
@@ -402,7 +395,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/whois?dom
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/intel-apis/#page","headline":"Threat Intelligence APIs · Cloudflare Security Center docs","description":"Query Cloudflare threat intelligence data for IPs, domains, ASNs, and more.","url":"https://developers.cloudflare.com/security-center/intel-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/intel-apis/","name":"Threat Intelligence APIs"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/intel-apis/#page","headline":"Threat Intelligence APIs · Cloudflare Security Center docs","description":"Query Cloudflare threat intelligence data for IPs, domains, ASNs, and more.","url":"https://developers.cloudflare.com/security-center/intel-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

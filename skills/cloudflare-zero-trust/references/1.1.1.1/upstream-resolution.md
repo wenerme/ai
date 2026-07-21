@@ -1,16 +1,18 @@
 ---
-title: Upstream resolution
 description: How 1.1.1.1 selects authoritative nameservers, retries failed queries, and determines which response to return.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Upstream resolution
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Upstream resolution
 
-# Upstream resolution
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/upstream-resolution/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When 1.1.1.1 does not have an answer in its cache, it contacts authoritative nameservers on your behalf. Authoritative nameservers are the DNS servers that hold the actual records for a domain. This page describes how 1.1.1.1 selects which nameserver to query, what happens when a nameserver is unreachable, and how the final response is determined.
 
@@ -53,7 +55,14 @@ How 1.1.1.1 handles disagreements between nameservers:
 * **Timeout versus a valid response:** A timeout is not an answer. 1.1.1.1 retries against another nameserver and returns the first valid response it receives.
 * **`SERVFAIL` or `REFUSED` versus a valid response:** Temporary failures are treated as upstream errors, not authoritative answers. 1.1.1.1 retries against another nameserver and returns the first valid response. Only if all nameservers return errors does 1.1.1.1 return a failure to the client — typically `SERVFAIL`, or `REFUSED` if that is what the nameservers consistently returned.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/upstream-resolution/#page","headline":"Upstream resolution | Cloudflare Docs","description":"How 1.1.1.1 selects authoritative nameservers, retries failed queries, and determines which response to return.","url":"https://developers.cloudflare.com/1.1.1.1/upstream-resolution/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/upstream-resolution/","name":"Upstream resolution"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/upstream-resolution/#page","headline":"Upstream resolution | Cloudflare Docs","description":"How 1.1.1.1 selects authoritative nameservers, retries failed queries, and determines which response to return.","url":"https://developers.cloudflare.com/1.1.1.1/upstream-resolution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

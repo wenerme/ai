@@ -1,16 +1,18 @@
 ---
-title: Protocol messages
 description: Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Protocol messages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Protocol messages
 
-# Protocol messages
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When a WebSocket client connects to an Agent, the framework automatically sends several JSON text frames — identity, state, and MCP server lists. You can suppress these per-connection protocol messages for clients that cannot handle them.
 
@@ -38,37 +40,28 @@ For these connections, you can suppress protocol messages while keeping everythi
 
 Override `shouldSendProtocolMessages` to control which connections receive protocol messages. Return `false` to suppress them.
 
-* [  JavaScript ](#tab-panel-6397)
-* [  TypeScript ](#tab-panel-6398)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 
-
 export class IoTAgent extends Agent {
-  shouldSendProtocolMessages(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    return url.searchParams.get("protocol") !== "false";
-  }
+	shouldSendProtocolMessages(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		return url.searchParams.get("protocol") !== "false";
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, type Connection, type ConnectionContext } from "agents";
 
-
 export class IoTAgent extends Agent<Env, State> {
-  shouldSendProtocolMessages(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    return url.searchParams.get("protocol") !== "false";
-  }
+	shouldSendProtocolMessages(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		return url.searchParams.get("protocol") !== "false";
+	}
 }
 ```
 
@@ -82,33 +75,26 @@ This hook runs during `onConnect`, before any messages are sent. When it returns
 
 You can also check the WebSocket subprotocol header, which is the standard way to negotiate protocols over WebSocket:
 
-* [  JavaScript ](#tab-panel-6399)
-* [  TypeScript ](#tab-panel-6400)
-
-**JavaScript**
-
 ```js
 export class MqttAgent extends Agent {
-  shouldSendProtocolMessages(connection, ctx) {
-    // MQTT-over-WebSocket clients negotiate via subprotocol
-    const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");
-    return subprotocol !== "mqtt";
-  }
+	shouldSendProtocolMessages(connection, ctx) {
+		// MQTT-over-WebSocket clients negotiate via subprotocol
+		const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");
+		return subprotocol !== "mqtt";
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MqttAgent extends Agent<Env, State> {
-  shouldSendProtocolMessages(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    // MQTT-over-WebSocket clients negotiate via subprotocol
-    const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");
-    return subprotocol !== "mqtt";
-  }
+	shouldSendProtocolMessages(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		// MQTT-over-WebSocket clients negotiate via subprotocol
+		const subprotocol = ctx.request.headers.get("Sec-WebSocket-Protocol");
+		return subprotocol !== "mqtt";
+	}
 }
 ```
 
@@ -116,42 +102,33 @@ export class MqttAgent extends Agent<Env, State> {
 
 Use `isConnectionProtocolEnabled` to check whether a connection has protocol messages enabled:
 
-* [  JavaScript ](#tab-panel-6401)
-* [  TypeScript ](#tab-panel-6402)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  @callable()
-  async getConnectionInfo() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return null;
+	@callable()
+	async getConnectionInfo() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return null;
 
-
-    return {
-      protocolEnabled: this.isConnectionProtocolEnabled(connection),
-      readonly: this.isConnectionReadonly(connection),
-    };
-  }
+		return {
+			protocolEnabled: this.isConnectionProtocolEnabled(connection),
+			readonly: this.isConnectionReadonly(connection),
+		};
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends Agent<Env, State> {
-  @callable()
-  async getConnectionInfo() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return null;
+	@callable()
+	async getConnectionInfo() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return null;
 
-
-    return {
-      protocolEnabled: this.isConnectionProtocolEnabled(connection),
-      readonly: this.isConnectionReadonly(connection),
-    };
-  }
+		return {
+			protocolEnabled: this.isConnectionProtocolEnabled(connection),
+			readonly: this.isConnectionReadonly(connection),
+		};
+	}
 }
 ```
 
@@ -174,68 +151,57 @@ The following table shows what still works when protocol messages are suppressed
 
 A connection can be both readonly and protocol-suppressed. This is useful for binary devices that should observe but not modify state:
 
-* [  JavaScript ](#tab-panel-6403)
-* [  TypeScript ](#tab-panel-6404)
-
-**JavaScript**
-
 ```js
 export class SensorHub extends Agent {
-  shouldSendProtocolMessages(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    // Binary sensors don't handle JSON protocol frames
-    return url.searchParams.get("type") !== "sensor";
-  }
+	shouldSendProtocolMessages(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		// Binary sensors don't handle JSON protocol frames
+		return url.searchParams.get("type") !== "sensor";
+	}
 
+	shouldConnectionBeReadonly(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		// Sensors can only report data via RPC, not modify shared state
+		return url.searchParams.get("type") === "sensor";
+	}
 
-  shouldConnectionBeReadonly(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    // Sensors can only report data via RPC, not modify shared state
-    return url.searchParams.get("type") === "sensor";
-  }
-
-
-  @callable()
-  async reportReading(sensorId, value) {
-    // This RPC still works for readonly+no-protocol connections
-    // because it writes to SQL, not agent state
-    this
-      .sql`INSERT INTO readings (sensor_id, value, ts) VALUES (${sensorId}, ${value}, ${Date.now()})`;
-  }
+	@callable()
+	async reportReading(sensorId, value) {
+		// This RPC still works for readonly+no-protocol connections
+		// because it writes to SQL, not agent state
+		this
+			.sql`INSERT INTO readings (sensor_id, value, ts) VALUES (${sensorId}, ${value}, ${Date.now()})`;
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class SensorHub extends Agent<Env, SensorState> {
-  shouldSendProtocolMessages(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    // Binary sensors don't handle JSON protocol frames
-    return url.searchParams.get("type") !== "sensor";
-  }
+	shouldSendProtocolMessages(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		// Binary sensors don't handle JSON protocol frames
+		return url.searchParams.get("type") !== "sensor";
+	}
 
+	shouldConnectionBeReadonly(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		// Sensors can only report data via RPC, not modify shared state
+		return url.searchParams.get("type") === "sensor";
+	}
 
-  shouldConnectionBeReadonly(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    // Sensors can only report data via RPC, not modify shared state
-    return url.searchParams.get("type") === "sensor";
-  }
-
-
-  @callable()
-  async reportReading(sensorId: string, value: number) {
-    // This RPC still works for readonly+no-protocol connections
-    // because it writes to SQL, not agent state
-    this
-      .sql`INSERT INTO readings (sensor_id, value, ts) VALUES (${sensorId}, ${value}, ${Date.now()})`;
-  }
+	@callable()
+	async reportReading(sensorId: string, value: number) {
+		// This RPC still works for readonly+no-protocol connections
+		// because it writes to SQL, not agent state
+		this
+			.sql`INSERT INTO readings (sensor_id, value, ts) VALUES (${sensorId}, ${value}, ${Date.now()})`;
+	}
 }
 ```
 
@@ -286,7 +252,14 @@ Unlike [readonly](https://developers.cloudflare.com/agents/runtime/communication
 * [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 * [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/#page","headline":"Protocol messages · Cloudflare Agents docs","description":"Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.","url":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/protocol-messages/","name":"Protocol messages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/#page","headline":"Protocol messages · Cloudflare Agents docs","description":"Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.","url":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

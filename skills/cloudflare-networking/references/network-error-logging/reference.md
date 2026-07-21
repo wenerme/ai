@@ -1,16 +1,18 @@
 ---
-title: Reference
 description: Reference information for Network Error Logging.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Reference
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-error-logging/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Reference
 
-# Reference
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-error-logging/reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If a user is able to connect to Cloudflare and the site they connect to has NEL enabled, Cloudflare passes back two headers to the browser indicating that they should report any network failures to an endpoint specified in the headers. The browser will operate as usual, and if something happens that prevents the browser from connecting to the site, the browser will log the failure as a report and send it to the endpoint.
 
@@ -66,7 +68,14 @@ Certificate issues are also detectable through NEL. The `TLS.version`, `cipher_m
 
 If this is detected in NEL, the issue can be remediated by deploying new certificates or using [Cloudflare’s SSL management suite](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to automatically deploy new certificates.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-error-logging/reference/#page","headline":"Failures · Cloudflare Network Error Logging docs","description":"Reference information for Network Error Logging.","url":"https://developers.cloudflare.com/network-error-logging/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Debugging","TCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-error-logging/","name":"Network Error Logging"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-error-logging/reference/","name":"Reference"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-error-logging/reference/#page","headline":"Failures · Cloudflare Network Error Logging docs","description":"Reference information for Network Error Logging.","url":"https://developers.cloudflare.com/network-error-logging/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Debugging","TCP"]}
 ```

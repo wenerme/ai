@@ -1,16 +1,18 @@
 ---
-title: Spark (PySpark)
 description: Connect PySpark to R2 Data Catalog to read and write Iceberg tables.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Spark (PySpark)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Spark (PySpark)
 
-# Spark (PySpark)
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-python/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below is an example of using [PySpark ↗](https://spark.apache.org/docs/latest/api/python/index.html) to connect to R2 Data Catalog.
 
@@ -23,17 +25,13 @@ Below is an example of using [PySpark ↗](https://spark.apache.org/docs/latest/
 
 ## Example usage
 
-**Python**
-
 ```py
 from pyspark.sql import SparkSession
-
 
 # Define catalog connection details (replace variables)
 WAREHOUSE = "<WAREHOUSE>"
 TOKEN = "<TOKEN>"
 CATALOG_URI = "<CATALOG_URI>"
-
 
 # Build Spark session with Iceberg configurations
 spark = SparkSession.builder \
@@ -51,10 +49,8 @@ spark = SparkSession.builder \
   .getOrCreate()
 spark.sql("USE my_catalog")
 
-
 # Create namespace if it does not exist
 spark.sql("CREATE NAMESPACE IF NOT EXISTS default")
-
 
 # Create a table in the namespace using Iceberg
 spark.sql("""
@@ -65,13 +61,11 @@ spark.sql("""
     USING iceberg
 """)
 
-
 # Create a simple DataFrame
 df = spark.createDataFrame(
     [(1, "Alice"), (2, "Bob"), (3, "Charlie")],
     ["id", "name"]
 )
-
 
 # Write the DataFrame to the Iceberg table
 df.write \
@@ -79,17 +73,22 @@ df.write \
     .mode("append") \
     .save("default.my_table")
 
-
 # Read the data back from the Iceberg table
 result_df = spark.read \
     .format("iceberg") \
     .load("default.my_table")
 
-
 result_df.show()
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-python/#page","headline":"Spark (PySpark) · Cloudflare R2 docs","description":"Connect PySpark to R2 Data Catalog to read and write Iceberg tables.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-python/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/spark-python/","name":"Spark (PySpark)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-python/#page","headline":"Spark (PySpark) · Cloudflare R2 docs","description":"Connect PySpark to R2 Data Catalog to read and write Iceberg tables.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-python/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

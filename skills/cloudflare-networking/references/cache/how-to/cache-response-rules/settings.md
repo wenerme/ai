@@ -1,16 +1,18 @@
 ---
-title: Available settings
 description: Available settings for cache response rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Available settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Available settings
 
-# Available settings
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 These are the settings that you can configure when creating a Cache Response Rule. Because Cache Response Rules execute after Cloudflare receives the origin response, both request and response fields are available for rule matching.
 
@@ -111,8 +113,6 @@ API information
 
 API action: `set_cache_settings`.
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "strip_etags": true,
@@ -139,16 +139,12 @@ API information
 
 API action: `set_cache_tags`.
 
-**API configuration example (static values)**
-
 ```json
 "action_parameters": {
   "operation": "set",
   "values": ["api-response", "dynamic-content"]
 }
 ```
-
-**API configuration example (expression)**
 
 ```json
 "action_parameters": {
@@ -226,8 +222,6 @@ API information
 
 API action: `set_cache_control`.
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "max-age": {
@@ -243,7 +237,14 @@ API action: `set_cache_control`.
 
 Refer to [Create a rule via API](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/) for complete API examples.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/#page","headline":"Cache Response Rules settings · Cloudflare Cache (CDN) docs","description":"Available settings for cache response rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-response-rules/","name":"Cache Response Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/cache-response-rules/settings/","name":"Available settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/#page","headline":"Cache Response Rules settings · Cloudflare Cache (CDN) docs","description":"Available settings for cache response rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

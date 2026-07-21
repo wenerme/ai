@@ -1,16 +1,18 @@
 ---
-title: Client-side security FAQ
 description: Answers to common questions about client-side security rules, CSP headers, and monitoring.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Client-side security FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Client-side security FAQ
 
-# Client-side security FAQ
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## What happens to CSP HTTP headers set by the origin server when I create a content security rule?
 
@@ -27,7 +29,14 @@ It is recommended that you only have one rule in [allow mode](https://developers
 
 Client-side security currently does not support [nonce ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP#nonces) directives in content security rules. Instead, you can use a [hash ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP#hashes) CSP directive. For details on the supported directives and values, refer to [Supported CSP directives](https://developers.cloudflare.com/client-side-security/rules/csp-directives/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/faq/#page","headline":"Client-side security FAQ · Client-side security docs","description":"Answers to common questions about client-side security rules, CSP headers, and monitoring.","url":"https://developers.cloudflare.com/client-side-security/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/faq/","name":"Client-side security FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/faq/#page","headline":"Client-side security FAQ · Client-side security docs","description":"Answers to common questions about client-side security rules, CSP headers, and monitoring.","url":"https://developers.cloudflare.com/client-side-security/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP"]}
 ```

@@ -1,24 +1,28 @@
 ---
-title: bge-reranker-base
 description: Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in [0,1] by sigmoid function.
 
 
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: bge-reranker-base
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg)
 
 #  bge-reranker-base
 
-Text Classification • BAAI
+ Text Classification • BAAI
 
-`@cf/baai/bge-reranker-base`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/baai/bge-reranker-base `
+
+* Cloudflare-hosted
 
 Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \[0,1\] by sigmoid function.
 
@@ -28,54 +32,48 @@ Different from embedding model, reranker uses question and document as input and
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-5232)
-* [  Python ](#tab-panel-5233)
-* [  curl ](#tab-panel-5234)
-
 ```ts
+
 export interface Env {
-  AI: Ai;
+	AI: Ai;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const query = 'Which one is cooler?'
-    const contexts = [
-      {
-        text: 'a cyberpunk lizzard'
-      },
-      {
-        text: 'a cyberpunk cat'
-      }
-    ];
+	async fetch(request, env): Promise<Response> {
+		const query = 'Which one is cooler?'
+		const contexts = [
+			{
+				text: 'a cyberpunk lizzard'
+			},
+			{
+				text: 'a cyberpunk cat'
+			}
+		];
 
+		const response = await env.AI.run('@cf/baai/bge-reranker-base', { query, contexts });
 
-    const response = await env.AI.run('@cf/baai/bge-reranker-base', { query, contexts });
-
-
-    return Response.json(response);
-  },
+		return Response.json(response);
+	},
 } satisfies ExportedHandler<Env>;
+
 ```
 
 ```py
+
 import os
 import requests
 
-
 ACCOUNT_ID = "your-account-id"
 AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
 
 response = requests.post(
   f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/baai/bge-reranker-base",
     headers={"Authorization": f"Bearer {AUTH_TOKEN}"},
     json={
-    "query": "Which one is better?",
+	  "query": "Which one is better?",
       "contexts": [
         {"text": "a cyberpunk lizzard"},
-        {"text": "a cyberpunk car"},
+		    {"text": "a cyberpunk car"},
       ]
     }
 )
@@ -84,6 +82,7 @@ print(result)
 ```
 
 ```sh
+
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-reranker-base \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -91,9 +90,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-5235)
-* [ Output ](#tab-panel-5236)
 
 query
 
@@ -117,7 +113,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/#page","headline":"bge-reranker-base (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \\[0,1] by sigmoid function.","url":"https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/#page","headline":"bge-reranker-base (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \\[0,1] by sigmoid function.","url":"https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Limits
 description: Configuration, connection, and query limits that apply to Hyperdrive.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limits
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limits
 
-# Limits
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/platform/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following limits apply to Hyperdrive configurations, connections, and queries made to your configured origin databases.
 
@@ -69,7 +71,14 @@ To request an increase, submit a [Limit Increase Request form ↗](https://forms
 1. This is a limit enforced by PostgreSQL. Some database providers may enforce smaller limits. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
 2. Hyperdrive is a distributed system, so a client may be unable to reach an existing pool. In this scenario, a new pool is established with its own connection allocation. This prioritizes availability over strict limit enforcement, which means connection counts may occasionally exceed the listed limits. [↩](#user-content-fnref-2)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/platform/limits/#page","headline":"Limits · Cloudflare Hyperdrive docs","description":"Configuration, connection, and query limits that apply to Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/platform/limits/","name":"Limits"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/platform/limits/#page","headline":"Limits · Cloudflare Hyperdrive docs","description":"Configuration, connection, and query limits that apply to Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

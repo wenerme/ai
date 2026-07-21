@@ -1,16 +1,18 @@
 ---
-title: Google Consent Mode
 description: Integrate Google Consent Mode with Zaraz consent management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Google Consent Mode
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Google Consent Mode
 
-# Google Consent Mode
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -30,8 +32,6 @@ Often websites will want to set a default consent status that denies all categor
 
 If that is not what your website needs, and instead you want to set the default consent status in a more granular way, use the reserved `google_consent_default` property:
 
-**JavaScript**
-
 ```js
 zaraz.set("google_consent_default",  {
   'ad_storage': 'denied',
@@ -48,8 +48,6 @@ Note that the code should be included as part of your website HTML code, usually
 ### Update the consent status
 
 After the user has provided their consent preferences you can set the new status using the reserved `google_consent_update` property. If you are using the Zaraz Consent Management Platform, you can use the [Consent Choices Updated event](https://developers.cloudflare.com/zaraz/consent-management/api/#consent-choices-updated) to know when to update the Google Consent status.
-
-**JavaScript**
 
 ```js
 zaraz.set("google_consent_update",  {
@@ -82,7 +80,14 @@ Since the value for Consent Mode may change per user or session, it is recommend
 
 Consent Mode v1 and v2 are both supported by Google Analytics 4 and Google Ads.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/#page","headline":"Google Consent Mode · Cloudflare Zaraz docs","description":"Integrate Google Consent Mode with Zaraz consent management.","url":"https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/advanced/","name":"Advanced options"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/advanced/google-consent-mode/","name":"Google Consent Mode"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/#page","headline":"Google Consent Mode · Cloudflare Zaraz docs","description":"Integrate Google Consent Mode with Zaraz consent management.","url":"https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

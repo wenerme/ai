@@ -1,16 +1,18 @@
 ---
-title: 1xx Informational
 description: Understand 1xx informational HTTP status codes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: 1xx Informational
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  1xx Informational
 
-# 1xx Informational
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The 1xx Informational status codes serve as interim responses that provide connection status updates without completing the request-response cycle. These codes are not intended for final actions but rather to indicate that the request is being processed or additional steps are required.
 
@@ -59,7 +61,14 @@ The 102 Processing status code is commonly used in scenarios requiring long-runn
 
 If Cloudflare receives a 102 Processing response, it expects a final response within 120 seconds. Failure to receive this response results in an [Error 522: Connection Timed Out](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/). However, sending interim 102 Processing responses can help prevent [Error 524: A timeout occurred](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/), ensuring that the connection remains active while the server processes the request.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/#page","headline":"1xx Informational · Cloudflare Support docs","description":"Understand 1xx informational HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/1xx-informational/","name":"1xx Informational"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/#page","headline":"1xx Informational · Cloudflare Support docs","description":"Understand 1xx informational HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

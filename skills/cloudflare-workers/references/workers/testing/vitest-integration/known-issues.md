@@ -1,16 +1,18 @@
 ---
-title: Known issues
 description: Explore the known issues associated with the Workers Vitest integration.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Known issues
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Known issues
 
-# Known issues
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest pool is currently in open beta. The following are issues Cloudflare is aware of and fixing:
 
@@ -38,21 +40,17 @@ Storage isolation is per test file. The test runner will undo any writes to stor
 
 Always `await` all `Promise`s that read or write to storage services.
 
-**TypeScript**
-
 ```ts
 // Example: Seed data
 beforeAll(async () => {
-  await env.KV.put("message", "test message");
-  await env.R2.put("file", "hello-world");
+	await env.KV.put("message", "test message");
+	await env.R2.put("file", "hello-world");
 });
 ```
 
 #### Explicitly signal resource disposal
 
 When calling RPC methods of a Service Worker or Durable Object that return non-primitive values (such as objects or classes extending `RpcTarget`), use the `using` keyword to explicitly signal when resources can be disposed of. See [this example test ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/rpc/test/unit.test.ts#L155) and refer to [explicit-resource-management](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle#explicit-resource-management) for more details.
-
-**TypeScript**
 
 ```ts
 using result = await stub.getCounter();
@@ -62,17 +60,14 @@ using result = await stub.getCounter();
 
 When making requests via `fetch` or `R2.get()`, consume the entire response body, even if you are not asserting its content. For example:
 
-**TypeScript**
-
 ```ts
 test("check if file exists", async () => {
-  await env.R2.put("file", "hello-world");
-  const response = await env.R2.get("file");
+	await env.R2.put("file", "hello-world");
+	const response = await env.R2.get("file");
 
-
-  expect(response).not.toBe(null);
-  // Consume the response body even if you are not asserting it
-  await response.text();
+	expect(response).not.toBe(null);
+	// Consume the response body even if you are not asserting it
+	await response.text();
 });
 ```
 
@@ -81,8 +76,6 @@ test("check if file exists", async () => {
 The `ctx.exports` property provides access to the exports of the main Worker. The Workers Vitest integration attempts to automatically infer these exports by statically analyzing the Worker source code using esbuild. However, complex build setups, such as those using virtual modules or wildcard re-exports that esbuild cannot follow, may result in missing properties on the `ctx.exports` object.
 
 For example, consider a Worker that re-exports an entrypoint from a virtual module using a wildcard export:
-
-**TypeScript**
 
 ```ts
 // index.ts
@@ -93,22 +86,19 @@ In this case, any exports from `@virtual-module` (such as `MyEntrypoint`) cannot
 
 To work around this, add the `additionalExports` option to your Vitest configuration:
 
-**TypeScript**
-
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      wrangler: { configPath: "./wrangler.jsonc" },
-      additionalExports: {
-        MyEntrypoint: "WorkerEntrypoint",
-      },
-    }),
-  ],
+	plugins: [
+		cloudflareTest({
+			wrangler: { configPath: "./wrangler.jsonc" },
+			additionalExports: {
+				MyEntrypoint: "WorkerEntrypoint",
+			},
+		}),
+	],
 });
 ```
 
@@ -118,29 +108,26 @@ The `additionalExports` option is a map where keys are the export names and valu
 
 If you encounter module resolution issues such as: `Error: Cannot use require() to import an ES Module` or `Error: No such module`, you can bundle these dependencies using the [deps.optimizer ↗](https://vitest.dev/config/#deps-optimizer) option:
 
-**TypeScript**
-
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      // ...
-    }),
-  ],
-  test: {
-    deps: {
-      optimizer: {
-        ssr: {
-          enabled: true,
-          include: ["your-package-name"],
-        },
-      },
-    },
-  },
+	plugins: [
+		cloudflareTest({
+			// ...
+		}),
+	],
+	test: {
+		deps: {
+			optimizer: {
+				ssr: {
+					enabled: true,
+					include: ["your-package-name"],
+				},
+			},
+		},
+	},
 });
 ```
 
@@ -150,57 +137,56 @@ You can find an example in the [Recipes](https://developers.cloudflare.com/worke
 
 Although Vitest is set up to resolve packages for the [workerd ↗](https://github.com/cloudflare/workerd) runtime, it runs your global setup file in the Node.js environment. This can cause issues when importing packages like [Postgres.js ↗](https://github.com/cloudflare/workers-sdk/issues/6465), which exports a non-Node version for `workerd`. To work around this, you can create a wrapper that uses Vite's SSR module loader to import the global setup file under the correct conditions. Then, adjust your Vitest configuration to point to this wrapper. For example:
 
-**TypeScript**
-
 ```ts
 // File: global-setup-wrapper.ts
 import { createServer } from "vite";
 
-
 // Import the actual global setup file with the correct setup
 const mod = await viteImport("./global-setup.ts");
 
-
 export default mod.default;
-
 
 // Helper to import the file with default node setup
 async function viteImport(file: string) {
-  const server = await createServer({
-    root: import.meta.dirname,
-    configFile: false,
-    server: { middlewareMode: true, hmr: false, watch: null, ws: false },
-    optimizeDeps: { noDiscovery: true },
-    clearScreen: false,
-  });
-  const mod = await server.ssrLoadModule(file);
-  await server.close();
-  return mod;
+	const server = await createServer({
+		root: import.meta.dirname,
+		configFile: false,
+		server: { middlewareMode: true, hmr: false, watch: null, ws: false },
+		optimizeDeps: { noDiscovery: true },
+		clearScreen: false,
+	});
+	const mod = await server.ssrLoadModule(file);
+	await server.close();
+	return mod;
 }
 ```
-
-**TypeScript**
 
 ```ts
 // File: vitest.config.ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      // ...
-    }),
-  ],
-  test: {
-    // Replace the globalSetup with the wrapper file
-    globalSetup: ["./global-setup-wrapper.ts"],
-  },
+	plugins: [
+		cloudflareTest({
+			// ...
+		}),
+	],
+	test: {
+		// Replace the globalSetup with the wrapper file
+		globalSetup: ["./global-setup-wrapper.ts"],
+	},
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/#page","headline":"Known issues · Cloudflare Workers docs","description":"Explore the known issues associated with the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/known-issues/","name":"Known issues"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/#page","headline":"Known issues · Cloudflare Workers docs","description":"Explore the known issues associated with the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Monitor resources and cookies
 description: View and filter scripts, connections, and cookies detected on your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Monitor resources and cookies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitor resources and cookies
 
-# Monitor resources and cookies
+Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Once you [activate client-side security's resource monitoring](https://developers.cloudflare.com/client-side-security/get-started/), the main client-side resources dashboard will show which resources (scripts and connections) are running on your domain, as well as the cookies recently detected in HTTP traffic.
 
@@ -27,11 +29,8 @@ To review the resources detected by Cloudflare:
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7627)
-  * [ Old dashboard ](#tab-panel-7628)
-
   1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+  [ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
   2. Select the **Client-side resources** tab.
 
   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
@@ -57,11 +56,8 @@ Scripts blocked by a [content security rule](https://developers.cloudflare.com/c
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7629)
-  * [ Old dashboard ](#tab-panel-7630)
-
   1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+  [ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
   2. Select the **Client-side resources** tab.
 
   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
@@ -80,11 +76,8 @@ Only available to customers on Business and Enterprise plans.
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7631)
-  * [ Old dashboard ](#tab-panel-7632)
-
   1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+  [ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
   2. Select the **Client-side resources** tab.
 
   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
@@ -135,11 +128,8 @@ To export script, connection, or cookie information in CSV format:
 
 1. Go to the client-side resources page:
 
-  * [  New dashboard ](#tab-panel-7633)
-  * [ Old dashboard ](#tab-panel-7634)
-
   1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+  [ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
   2. Select the **Client-side resources** tab.
 
   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
@@ -148,7 +138,14 @@ To export script, connection, or cookie information in CSV format:
 3. (Optional) Apply any filters to the displayed data.
 4. Select **Download CSV**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#page","headline":"Monitor resources and cookies · Client-side security docs","description":"View and filter scripts, connections, and cookies detected on your domain.","url":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/detection/","name":"Detection"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/detection/monitor-connections-scripts/","name":"Monitor resources and cookies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#page","headline":"Monitor resources and cookies · Client-side security docs","description":"View and filter scripts, connections, and cookies detected on your domain.","url":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 ```

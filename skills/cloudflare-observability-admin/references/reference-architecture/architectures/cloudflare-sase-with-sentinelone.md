@@ -1,16 +1,18 @@
 ---
-title: Enhancing security posture with SentinelOne and Cloudflare One
 description: The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enhancing security posture with SentinelOne and Cloudflare One
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enhancing security posture with SentinelOne and Cloudflare One
 
-# Enhancing security posture with SentinelOne and Cloudflare One
+Last updated Mar 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -180,7 +182,14 @@ The integration between Cloudflare One and SentinelOne provides organizations wi
 
 * [Overview of SentinelOne and Cloudflare partnership ↗](https://www.cloudflare.com/partners/technology-partners/sentinelone/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/#page","headline":"Enhancing security posture with SentinelOne and Cloudflare One · Cloudflare Reference Architecture docs","description":"The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/cloudflare-sase-with-sentinelone/","name":"Enhancing security posture with SentinelOne and Cloudflare One"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/#page","headline":"Enhancing security posture with SentinelOne and Cloudflare One · Cloudflare Reference Architecture docs","description":"The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

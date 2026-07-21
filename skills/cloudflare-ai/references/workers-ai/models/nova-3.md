@@ -1,22 +1,29 @@
 ---
-title: nova-3
 description: Transcribe audio using Deepgram’s speech-to-text model
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: nova-3
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)
 
 #  nova-3
 
-Automatic Speech Recognition • Deepgram
+ Automatic Speech Recognition • Deepgram
 
-`@cf/deepgram/nova-3`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/nova-3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/deepgram/nova-3 `
+
+* Cloudflare-hosted
+* Batch
+* Partner
+* Real-time
 
 Transcribe audio using Deepgram’s speech-to-text model
 
@@ -35,61 +42,7 @@ The [pricing of this model](https://developers.cloudflare.com/workers-ai/platfor
 * WebSocket: $0.0092 per audio minute output (836.36 neurons per audio minute output)
 * Regular HTTP: $0.0052 per audio minute output (472.73 neurons per audio minute output)
 
-## Supported languages
-
-Nova-3 on Workers AI supports the following languages for transcription:
-
-| Language   | Code(s)                               |
-| ---------- | ------------------------------------- |
-| English    | en, en-US, en-AU, en-GB, en-IN, en-NZ |
-| Spanish    | es, es-419                            |
-| French     | fr, fr-CA                             |
-| German     | de, de-CH                             |
-| Hindi      | hi                                    |
-| Russian    | ru                                    |
-| Portuguese | pt, pt-BR, pt-PT                      |
-| Japanese   | ja                                    |
-| Italian    | it                                    |
-| Dutch      | nl                                    |
-
-Use `multi` for automatic multilingual detection across all of the languages listed above.
-
-If no language is specified, the model defaults to `en-US`. For best accuracy, explicitly set the language code matching your audio.
-
-## Usage
-
-* [  TypeScript ](#tab-panel-5514)
-* [  curl ](#tab-panel-5515)
-
-```ts
-export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const URL = "https://URL_TO_MP3_FILE/audio.mp3";
-    const mp3 = await fetch(URL);
-
-
-    const resp = await env.AI.run("@cf/deepgram/nova-3", {
-      "audio": {
-        body: mp3.body,
-        contentType: "audio/mpeg"
-      },
-      "detect_language": true
-    }, {
-      returnRawResponse: true
-    });
-    return resp;
-  },
-} satisfies ExportedHandler<Env>;
-```
-
-```sh
-curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/deepgram/nova-3?detect_language=true'   --header 'Authorization: Bearer {TOKEN}'   --header 'Content-Type: audio/mpeg'   --data-binary "@/path/to/your-mp3-file.mp3"
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-5516)
-* [ Output ](#tab-panel-5517)
 
 ▶audio{}
 
@@ -245,7 +198,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-inpu
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nova-3/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/nova-3/#page","headline":"nova-3 (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Transcribe audio using Deepgram’s speech-to-text model","url":"https://developers.cloudflare.com/workers-ai/models/nova-3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/nova-3/#page","headline":"nova-3 (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Transcribe audio using Deepgram’s speech-to-text model","url":"https://developers.cloudflare.com/workers-ai/models/nova-3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

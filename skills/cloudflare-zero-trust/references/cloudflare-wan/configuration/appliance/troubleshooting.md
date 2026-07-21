@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Troubleshoot Appliance connectivity and configuration issues.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Device metrics
 
@@ -24,7 +26,7 @@ Cloudflare customers can inspect metrics for a specific Cloudflare One Appliance
 To find the information above and start troubleshooting your Cloudflare One Appliance:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 
@@ -41,7 +43,7 @@ In Performance analytics you can review your Cloudflare One Appliance's performa
 To access performance analytics:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 1. Select **Performance analytics**.
@@ -56,7 +58,7 @@ Port analytics gives you access to information related to the packets sent and r
 The dashboard provides this information for all active ports in your Cloudflare One Appliance. To access port analytics:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 1. Select **Port analytics**.
@@ -85,7 +87,7 @@ Use Event logs to identify general patterns and changes over time. This is usefu
 To access event logs:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 1. Select **Events**.
@@ -96,7 +98,7 @@ To access event logs:
 The DHCP leasing section identifies DHCP assigned leases and their expiration dates. To access DHCP leasing:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Appliances**, and select the Cloudflare One Appliance you want to check analytics for.
 2. Select **View analytics**.
 1. Select **DHCP leasing**.
@@ -131,7 +133,14 @@ Cloudflare One Appliance sends a heartbeat periodically to Cloudflare. You can [
 
 Cloudflare is the single point of contact for any issues related to Cloudflare One Appliance, including issues with hardware. When required, Cloudflare Support will work with our partner, TD Synnex, to resolve any issues with the physical device.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/#page","headline":"Troubleshooting · Cloudflare WAN docs","description":"Troubleshoot Appliance connectivity and configuration issues.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/#page","headline":"Troubleshooting · Cloudflare WAN docs","description":"Troubleshoot Appliance connectivity and configuration issues.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

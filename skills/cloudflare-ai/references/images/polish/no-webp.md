@@ -1,16 +1,18 @@
 ---
-title: WebP may be skipped
 description: Cloudflare Polish skips WebP conversion when it would increase file size or degrade image quality.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: WebP may be skipped
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WebP may be skipped
 
-# WebP may be skipped
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/polish/no-webp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Polish avoids converting images to the WebP format when such conversion would increase the file size, or significantly degrade image quality. Polish also optimizes JPEG images, and the WebP format is not always better than a well-optimized JPEG.
 
@@ -54,7 +56,14 @@ Avoid applying multiple lossy optimization tools to images, before or after Poli
 
 For this reason Polish will not create the smallest possible file sizes. Instead, Polish aims to maximize the quality to file size ratio, to create the smallest possible files while preserving good quality. The quality level we stop at is carefully chosen to minimize visual distortion, while still having a high compression ratio.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/no-webp/#page","headline":"WebP may be skipped · Cloudflare Images docs","description":"Cloudflare Polish skips WebP conversion when it would increase file size or degrade image quality.","url":"https://developers.cloudflare.com/images/polish/no-webp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/polish/","name":"Cloudflare Polish"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/polish/no-webp/","name":"WebP may be skipped"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/no-webp/#page","headline":"WebP may be skipped · Cloudflare Images docs","description":"Cloudflare Polish skips WebP conversion when it would increase file size or degrade image quality.","url":"https://developers.cloudflare.com/images/polish/no-webp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

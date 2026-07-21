@@ -1,16 +1,18 @@
 ---
-title: Deploy custom certificate
 description: Configure the Cloudflare One Client to use a custom root certificate instead of the Cloudflare certificate.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Deploy custom certificate
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy custom certificate
 
-# Deploy custom certificate
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,7 +24,7 @@ You can upload either a root certificate or a full certificate chain (root certi
 
 You can upload up to five custom root certificates. If your organization requires more than five certificates, contact your account team.
 
-Warning
+Caution
 
 Custom certificates are limited to use between your users and the Gateway proxy. Gateway connects to origin servers using publicly trusted certificates, similar to how a browser validates secure websites.
 
@@ -42,7 +44,7 @@ You can generate the certificate files in any directory. This step keeps things 
 openssl genrsa -out <CUSTOM-ROOT-PRIVATE-KEY>.pem 2048
 ```
 The `2048` value specifies the RSA key size in bits. You can use `4096` for stronger security at the cost of slightly slower TLS handshakes.
-Warning
+Caution
 Keep the private key secure — if it is compromised, an attacker could issue trusted certificates on your behalf.
 4. Generate a self-signed root certificate.
 ```sh
@@ -72,9 +74,9 @@ openssl x509 -in <CUSTOM-ROOT-CERT>.pem -noout -ext keyUsage,basicConstraints
 The output should include:
 ```txt
 X509v3 Basic Constraints: critical
-    CA:TRUE
+		CA:TRUE
 X509v3 Key Usage: critical
-    Certificate Sign, CRL Sign
+		Certificate Sign, CRL Sign
 ```
 If these fields are missing, regenerate the certificate using the command in step 4.
 6. To review the private key, run the following command:
@@ -92,9 +94,6 @@ When preparing your certificate and private key for upload, be sure to remove an
 
 You can upload a single root certificate or a full certificate chain. When uploading a certificate chain via the dashboard, API, or Terraform, concatenate the root certificate and any intermediate certificates in PEM format, with the root certificate first.
 
-* [ Dashboard ](#tab-panel-8190)
-* [ API ](#tab-panel-8191)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings** \> **Certificates**.
 2. Select **Upload certificate**.
 3. Enter the private key and SSL certificate you generated or select **Paste certificate from file** to upload them from a file. If uploading a certificate chain, paste all certificates (root and intermediates) in PEM format with the root certificate first.
@@ -105,18 +104,16 @@ You can now [use the generated custom root certificate](#use-a-custom-root-certi
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Account: SSL and Certificates Write`
-
-**Upload mTLS certificate**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mtls_certificates" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "example_ca_cert",
-    "certificates": "-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nXXXXX\n-----END PRIVATE KEY-----",
-    "ca": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "example_ca_cert",
+		"certificates": "-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----",
+		"private_key": "-----BEGIN PRIVATE KEY-----\nXXXXX\n-----END PRIVATE KEY-----",
+		"ca": true
+	}'
 ```
 The response will return a UUID for the certificate. For example:
 ```json
@@ -135,81 +132,75 @@ The response will return a UUID for the certificate. For example:
 ```
 When uploading a certificate chain, the `certificates` field should contain all certificates in PEM format. To format this field, order the root certificate first, then concatenate any intermediate certificates.
 2. Set the certificate as available for use in inspection with the [Activate a Zero Trust certificate endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/certificates/methods/activate/). This will deploy the certificate across the Cloudflare global network.
-
-**Activate a Zero Trust certificate**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/certificates/$CERTIFICATE_ID/activate" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 The response will return the certificate and a `pending_deployment` binding status. For example:
 ```json
 {
-  "errors": [],
-  "messages": [],
-  "success": true,
-  "result": {
-    "in_use": false,
-    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-    "certificate": "-----BEGIN CERTIFICATE-----\\n ... \\n-----END CERTIFICATE-----\\n",
-    "issuer_org": "Example Inc.",
-    "issuer_raw": "O=Example Inc.,L=California,ST=San Francisco,C=US",
-    "fingerprint": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
-    "binding_status": "pending_deployment",
-    "type": "custom",
-    "updated_at": "2014-01-01T05:20:00.12345Z",
-    "uploaded_on": "2014-01-01T05:20:00.12345Z",
-    "created_at": "2014-01-01T05:20:00.12345Z",
-    "expires_on": "2014-01-01T05:20:00.12345Z"
-  }
+	"errors": [],
+	"messages": [],
+	"success": true,
+	"result": {
+		"in_use": false,
+		"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+		"certificate": "-----BEGIN CERTIFICATE-----\\n ... \\n-----END CERTIFICATE-----\\n",
+		"issuer_org": "Example Inc.",
+		"issuer_raw": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+		"fingerprint": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
+		"binding_status": "pending_deployment",
+		"type": "custom",
+		"updated_at": "2014-01-01T05:20:00.12345Z",
+		"uploaded_on": "2014-01-01T05:20:00.12345Z",
+		"created_at": "2014-01-01T05:20:00.12345Z",
+		"expires_on": "2014-01-01T05:20:00.12345Z"
+	}
 }
 ```
 3. Use the [Get Zero Trust certificate details endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/certificates/methods/get/) to verify the certificate's binding status is set to `available`.
-
-**Get Zero Trust certificate details**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/certificates/$CERTIFICATE_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 ```json
 {
-  "errors": [],
-  "messages": [],
-  "success": true,
-  "result": {
-    "in_use": false,
-    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-    "certificate": "-----BEGIN CERTIFICATE-----\\n ... \\n-----END CERTIFICATE-----\\n",
-    "issuer_org": "Example Inc.",
-    "issuer_raw": "O=Example Inc.,L=California,ST=San Francisco,C=US",
-    "fingerprint": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
-    "binding_status": "available",
-    "type": "custom",
-    "updated_at": "2014-01-01T05:20:00.12345Z",
-    "uploaded_on": "2014-01-01T05:20:00.12345Z",
-    "created_at": "2014-01-01T05:20:00.12345Z",
-    "expires_on": "2014-01-01T05:20:00.12345Z"
-  }
+	"errors": [],
+	"messages": [],
+	"success": true,
+	"result": {
+		"in_use": false,
+		"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+		"certificate": "-----BEGIN CERTIFICATE-----\\n ... \\n-----END CERTIFICATE-----\\n",
+		"issuer_org": "Example Inc.",
+		"issuer_raw": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+		"fingerprint": "E9:19:49:AA:DD:D8:1E:C1:20:2A:D8:22:BF:A5:F8:FC:1A:F7:10:9F:C7:5B:69:AB:0:31:91:8B:61:B4:BF:1C",
+		"binding_status": "available",
+		"type": "custom",
+		"updated_at": "2014-01-01T05:20:00.12345Z",
+		"uploaded_on": "2014-01-01T05:20:00.12345Z",
+		"created_at": "2014-01-01T05:20:00.12345Z",
+		"expires_on": "2014-01-01T05:20:00.12345Z"
+	}
 }
 ```
 4. (Optional) Verify the certificate is installed on your user's devices either [with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/) or [manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/).
 5. Use the [Patch Zero Trust account configuration endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/configurations/methods/edit/) to turn on the certificate for use in inspection. For example:
 
-**Patch Zero Trust account configuration**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configuration" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "settings": {
-        "certificate": {
-            "id": "{certificate_id}",
-            "in_use": true
-        }
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"settings": {
+				"certificate": {
+						"id": "{certificate_id}",
+						"in_use": true
+				}
+		}
+	}'
 ```
 
 Once `in-use` is set to `true`, Gateway will sign your traffic using the custom root certificate and private key. If you turn off or deactivate the custom certificate, Gateway will revert to the next available Cloudflare certificate generated for your Zero Trust account.
@@ -232,7 +223,14 @@ If Gateway returns an **HTTP Response Code: 526** after deploying a custom certi
 
 Python 3.13 and later enable `ssl.VERIFY_X509_STRICT` by default, which requires CA certificates to comply with [RFC 5280 ↗](https://datatracker.ietf.org/doc/html/rfc5280). If your BYOPKI certificate was generated without the `keyUsage` and `basicConstraints` extensions, Python HTTPS requests will fail when the Cloudflare One Client is active. To resolve the issue, [generate a new custom root CA](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/#generate-a-custom-root-ca) and upload it to Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/#page","headline":"Deploy custom certificate · Cloudflare One docs","description":"Configure the Cloudflare One Client to use a custom root certificate instead of the Cloudflare certificate.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Python"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/user-side-certificates/","name":"User-side certificates"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/","name":"Deploy custom certificate"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/#page","headline":"Deploy custom certificate · Cloudflare One docs","description":"Configure the Cloudflare One Client to use a custom root certificate instead of the Cloudflare certificate.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Python"]}
 ```

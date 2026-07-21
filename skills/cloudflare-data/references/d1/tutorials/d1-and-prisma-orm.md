@@ -1,16 +1,18 @@
 ---
-title: Query D1 using Prisma ORM
 description: This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query D1 using Prisma ORM
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Query D1 using Prisma ORM
 
-# Query D1 using Prisma ORM
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## What is Prisma ORM?
 
@@ -127,8 +129,6 @@ Since you will use the [driver adapter ↗](https://www.prisma.io/docs/orm/overv
 
 Open your `schema.prisma` file and adjust the `generator` block to reflect as follows:
 
-**schema.prisma**
-
 ```prisma
 generator client {
   provider        = "prisma-client-js"
@@ -153,7 +153,6 @@ You should receive the following output on your terminal:
 ✅ Successfully created DB 'prisma-demo-db' in region WEUR
 Created your new D1 database.
 
-
 {
   "d1_databases": [
     {
@@ -169,48 +168,39 @@ You now have a D1 database in your Cloudflare account with a binding to your Clo
 
 Copy the last part of the command output and paste it into your Wrangler file. It should look similar to this:
 
-* [  wrangler.jsonc ](#tab-panel-8636)
-* [  wrangler.toml ](#tab-panel-8637)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "prisma-d1-example",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "observability": {
-    "enabled": true
-  },
-  "d1_databases": [
-    {
-      "binding": "DB", // i.e. available in your Worker on env.DB
-      "database_name": "prisma-demo-db",
-      "database_id": "<D1_DATABASE_ID>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "prisma-d1-example",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "DB", // i.e. available in your Worker on env.DB
+			"database_name": "prisma-demo-db",
+			"database_id": "<D1_DATABASE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "prisma-d1-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [observability]
 enabled = true
-
 
 [[d1_databases]]
 binding = "DB"
@@ -242,15 +232,13 @@ Answer `yes` to creating a new folder called `migrations`.
 
 The command has now created a new directory called `migrations` and an empty file called `0001_create_user_table.sql` inside of it:
 
-* Directoryprisma-d1-example
-  * Directorymigrations
+* prisma-d1-example
+  * migrations
     * **0001\_create\_user\_table.sql**
 
 Next, you need to add the SQL statement that will create a `User` table to that file.
 
 Open the `schema.prisma` file and add the following `User` model to your schema:
-
-**schema.prisma**
 
 ```prisma
 model User {
@@ -262,9 +250,6 @@ model User {
 
 Now, run the following command in your terminal to generate the SQL statement that creates a `User` table equivalent to the `User` model above:
 
-* [ Prisma (v7) ](#tab-panel-8634)
-* [ Prisma (v6) ](#tab-panel-8635)
-
 ```sh
 npx prisma migrate diff --from-empty --to-schema ./prisma/schema.prisma --script --output migrations/0001_create_user_table.sql
 ```
@@ -275,8 +260,6 @@ npx prisma migrate diff --from-empty --to-schema-datamodel ./prisma/schema.prism
 
 This stores a SQL statement to create a new `User` table in your migration file from before, here is what it looks like:
 
-**0001\_create\_user\_table.sql**
-
 ```sql
 -- CreateTable
 CREATE TABLE "User" (
@@ -284,7 +267,6 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "name" TEXT
 );
-
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
@@ -349,51 +331,39 @@ To query your database from the Worker using Prisma ORM, you need to:
 
 Open `src/index.ts` and replace the entire content with the following:
 
-* [  JavaScript ](#tab-panel-8638)
-* [  TypeScript ](#tab-panel-8639)
-
-**JavaScript**
-
 ```js
 import { PrismaClient } from "./generated/prisma/";
 import { PrismaD1 } from "@prisma/adapter-d1";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const adapter = new PrismaD1(env.DB);
-    const prisma = new PrismaClient({ adapter });
+	async fetch(request, env, ctx) {
+		const adapter = new PrismaD1(env.DB);
+		const prisma = new PrismaClient({ adapter });
 
-
-    const users = await prisma.user.findMany();
-    const result = JSON.stringify(users);
-    return new Response(result);
-  },
+		const users = await prisma.user.findMany();
+		const result = JSON.stringify(users);
+		return new Response(result);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { PrismaClient } from './generated/prisma/';
 import { PrismaD1 } from '@prisma/adapter-d1';
 
-
 export interface Env {
-  DB: D1Database;
+	DB: D1Database;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const adapter = new PrismaD1(env.DB);
-    const prisma = new PrismaClient({ adapter });
+	async fetch(request, env, ctx): Promise<Response> {
+		const adapter = new PrismaD1(env.DB);
+		const prisma = new PrismaClient({ adapter });
 
-
-    const users = await prisma.user.findMany();
-    const result = JSON.stringify(users);
-    return new Response(result);
-  },
+		const users = await prisma.user.findMany();
+		const result = JSON.stringify(users);
+		return new Response(result);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -441,7 +411,14 @@ By finishing this tutorial, you have deployed a Cloudflare Worker using D1 as a 
 * Check out the [Prisma community ↗](https://www.prisma.io/community), follow [Prisma on X ↗](https://www.x.com/prisma) and join the [Prisma Discord ↗](https://pris.ly/discord).
 * [Developer Experience Redefined: Prisma & Cloudflare Lead the Way to Data DX ↗](https://www.prisma.io/blog/cloudflare-partnership-qerefgvwirjq).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/#page","headline":"Query D1 using Prisma ORM · Cloudflare D1 docs","description":"This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.","url":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/tutorials/d1-and-prisma-orm/","name":"Query D1 using Prisma ORM"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/#page","headline":"Query D1 using Prisma ORM · Cloudflare D1 docs","description":"This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.","url":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
 ```

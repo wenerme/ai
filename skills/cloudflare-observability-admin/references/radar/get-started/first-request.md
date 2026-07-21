@@ -1,16 +1,18 @@
 ---
-title: Make your first API request
 description: Create an API token and query the Cloudflare Radar API for Internet traffic data using cURL or Python.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Make your first API request
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Make your first API request
 
-# Make your first API request
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/get-started/first-request/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To make your first request to Cloudflare's Radar API, you must obtain your [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) first. Create a Custom Token, with _Account_ \> _Radar_ in the **Permissions** group, and select _Read_ as the access level.
 
@@ -29,23 +31,23 @@ A successful response will look similar to the following:
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "result": {
-    "summary_0": {
-      "desktop": "58.223483",
-      "mobile": "41.725833",
-      "other": "0.050684"
-    },
-    "meta": {
-      "dateRange": {
-        "startTime": "2022-10-26T14:00:00Z",
-        "endTime": "2022-11-02T14:00:00Z"
-      },
-      "normalization": "PERCENTAGE",
-      ...
-    }
-  }
+	"success": true,
+	"errors": [],
+	"result": {
+		"summary_0": {
+			"desktop": "58.223483",
+			"mobile": "41.725833",
+			"other": "0.050684"
+		},
+		"meta": {
+			"dateRange": {
+				"startTime": "2022-10-26T14:00:00Z",
+				"endTime": "2022-11-02T14:00:00Z"
+			},
+			"normalization": "PERCENTAGE",
+			...
+		}
+	}
 }
 ```
 
@@ -64,7 +66,7 @@ curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRa
 
 Running the above, can you find any differences between both in the distribution of mobile versus desktop traffic?
 
-The `result.meta` property
+The <code>result.meta</code> property
 
 The `result.meta` property in the response includes metadata about the current request. In the example above, `meta.dateRange` returns the date range specified in the query, while `meta.normalization` returns the type of normalization applied to the data (refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization) for more information).
 
@@ -76,13 +78,10 @@ When present, `meta.confidenceInfo.level` will also provide an indication of how
 
 [Python ↗](https://www.python.org/) has become one of the standard languages in data analysis. Here is a quick example on how to chart the same data using [Requests ↗](https://pypi.org/project/requests/) and [Pandas ↗](https://pandas.pydata.org/) libraries. Here, we are using `format=csv` in the parameters to make it easier for Pandas to import.
 
-**Python**
-
 ```python
 import io
 import requests
 import pandas as pd
-
 
 cf_api_url = "https://api.cloudflare.com/client/v4"
 params = "dateRange=7d&format=csv"
@@ -101,7 +100,14 @@ A [notebook ↗](https://jupyter.org/) is a web-based interactive computing appl
 
 Refer to [Make comparisons](https://developers.cloudflare.com/radar/get-started/making-comparisons/) to learn how to compare data.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/first-request/#page","headline":"Make your first Radar API request · Cloudflare Radar docs","description":"Create an API token and query the Cloudflare Radar API for Internet traffic data using cURL or Python.","url":"https://developers.cloudflare.com/radar/get-started/first-request/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/get-started/first-request/","name":"Make your first API request"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/first-request/#page","headline":"Make your first Radar API request · Cloudflare Radar docs","description":"Create an API token and query the Cloudflare Radar API for Internet traffic data using cURL or Python.","url":"https://developers.cloudflare.com/radar/get-started/first-request/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

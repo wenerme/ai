@@ -1,16 +1,18 @@
 ---
-title: Configuring Cloudflare for SaaS
 description: Get started with Cloudflare for SaaS
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configuring Cloudflare for SaaS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuring Cloudflare for SaaS
 
-# Configuring Cloudflare for SaaS
+Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ---
 
@@ -50,11 +52,8 @@ To create your fallback origin:
 
 1. Designate that record as your fallback origin.
 
-* [ Dashboard ](#tab-panel-7687)
-* [ API ](#tab-panel-7688)
-
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+[ Go to **Custom Hostnames** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. For **Fallback Origin**, enter the hostname for your fallback origin.
 3. Select **Add Fallback Origin**.
 
@@ -111,11 +110,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-7689)
-* [ API ](#tab-panel-7690)
-
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+[ Go to **Custom Hostnames** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select **Add Custom Hostname**.
 3. Add your customer's hostname `app.customer.com` and set the relevant options, including:
 
@@ -174,7 +170,7 @@ A successful TLS handshake can happen before `result.ssl.status` changes to `act
 
 To finish the custom hostname setup, your customer needs to set up a CNAME record at their authoritative DNS that points to your [CNAME target](#2-optional-create-cname-target) [1](#user-content-fn-1).
 
-Warning
+Caution
 
 Before your customer points DNS to your SaaS target, decide whether hostname validation and certificate validation should happen before or after DNS cutover.
 
@@ -198,7 +194,7 @@ B --> C[<code>proxy-fallback.saasprovider.com</code>]
 
 Requests to `mystore.example.com` would go to your CNAME target (`customers.saasprovider.com`), which would then route to your fallback origin (`proxy-fallback.saasprovider.com`).
 
-Warning
+Caution
 
 If your customer needs to use an A record to point to the SaaS target, you will need to get [apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/). By default, using an A record to point to the target is not a supported setup.
 
@@ -213,7 +209,14 @@ For more details, refer to [Remove custom hostnames](https://developers.cloudfla
 1. If you have [regional services](https://developers.cloudflare.com/data-localization/regional-services/) set up for your custom hostnames, Cloudflare always uses the processing region associated with your DNS target record (instead of the processing region of any [custom origins](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/)).
 [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#page","headline":"Configuring Cloudflare for SaaS · Cloudflare for Platforms docs","description":"Get started with Cloudflare for SaaS","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/","name":"Configuring Cloudflare for SaaS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#page","headline":"Configuring Cloudflare for SaaS · Cloudflare for Platforms docs","description":"Get started with Cloudflare for SaaS","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

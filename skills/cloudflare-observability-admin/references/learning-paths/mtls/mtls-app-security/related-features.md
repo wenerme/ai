@@ -1,16 +1,18 @@
 ---
-title: mTLS related features
 description: Learn about mtls related features in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: mTLS related features
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  mTLS related features
 
-# mTLS related features
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Label Client Certificates
 
@@ -153,7 +155,6 @@ Example [Rate Limiting Rule](https://developers.cloudflare.com/waf/rate-limiting
 ```txt
 (http.host in {"mtls.example.com" "mtls2.example.com"} and cf.tls_client_auth.cert_verified)
 
-
 With the same characteristics...
 "Header value of": "Cf-Client-Cert-Sha256"
 ```
@@ -166,11 +167,16 @@ In addition to mTLS, customers can purchase [API Shield](https://developers.clou
 
 Cloudflare Workers can provide details around the Client Certificate, such as returning information via headers to the client or to the origin server. Learn more in the [mTLS with Workers section](https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/) below.
 
-Note
+:::note Snippets do not support any [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and do not work with mTLS. However, you can [validate JSON web tokens (JWT)](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/).
 
-Snippets do not support any [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and do not work with mTLS. However, you can [validate JSON web tokens (JWT)](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/).
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/#page","headline":"mTLS related features · Cloudflare Learning Paths","description":"Learn about mtls related features in this guide.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/mtls/mtls-app-security/","name":"mTLS with Application Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/mtls/mtls-app-security/related-features/","name":"mTLS related features"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/#page","headline":"mTLS related features · Cloudflare Learning Paths","description":"Learn about mtls related features in this guide.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Proxy status
 description: Proxy status options for load balanced traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Proxy status
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Proxy status
 
-# Proxy status
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can load balance your traffic at different levels of the networking stack, such as:
 
@@ -29,6 +31,8 @@ When a client visits your application, Cloudflare directs their request to a hea
 Cloudflare performs layer 7 load balancing when traffic to your hostname is **proxied** through Cloudflare. In the **Load Balancing** dashboard, these load balancers are marked with an orange cloud.
 
 ![DNS-only load balancers are marked with an orange cloud](https://developers.cloudflare.com/_astro/proxied-load-balancer.BMq3VCyA_1BeaMW.webp)
+
+Caution
 
 Note that if a [DNS-only (grey cloud)](https://developers.cloudflare.com/dns/proxy-status/) CNAME record points to a proxied load balancer, the IP returned for it would be endpoint IP and a HTTP request sent to it would not be proxied.
 
@@ -89,7 +93,14 @@ Note
 
 Since Spectrum operates at the TCP level, it does not have the information to support features like [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/), [custom rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/), or caching.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/#page","headline":"Proxy status · Cloudflare Load Balancing docs","description":"Proxy status options for load balanced traffic.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/understand-basics/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/understand-basics/proxy-modes/","name":"Proxy status"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/#page","headline":"Proxy status · Cloudflare Load Balancing docs","description":"Proxy status options for load balanced traffic.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

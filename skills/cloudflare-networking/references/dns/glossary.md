@@ -1,16 +1,18 @@
 ---
-title: Glossary
 description: Definitions for terms used across Cloudflare DNS documentation.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Glossary
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Glossary
 
-# Glossary
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/glossary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Review the definitions for terms used across Cloudflare's DNS documentation.
 
@@ -31,7 +33,14 @@ Review the definitions for terms used across Cloudflare's DNS documentation.
 | proxy status             | The proxy status of a DNS record defines whether requests for your domain will route through Cloudflare (proxied) or not (DNS-only). When a [DNS record is proxied](https://developers.cloudflare.com/dns/proxy-status/), requests are processed according to your configurations, and Cloudflare can optimize, cache, and protect your domain. Refer to [How Cloudflare works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) for details.                                                                                                          |
 | zone apex                | Zone apex refers to the domain or subdomain on which the control of DNS records starts.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/glossary/#page","headline":"Glossary · Cloudflare DNS docs","description":"Definitions for terms used across Cloudflare DNS documentation.","url":"https://developers.cloudflare.com/dns/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/glossary/","name":"Glossary"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/glossary/#page","headline":"Glossary · Cloudflare DNS docs","description":"Definitions for terms used across Cloudflare DNS documentation.","url":"https://developers.cloudflare.com/dns/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Network Firewall fields
 description: Fields available in Network Firewall rule expressions.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cloudflare Network Firewall fields
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Network Firewall fields
 
-# Cloudflare Network Firewall fields
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -332,7 +334,14 @@ Source port number of the IP packet. Only applies to UDP packets.
 
 _GeoIP is the registered trademark of MaxMind, Inc._
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/#page","headline":"Cloudflare Network Firewall fields · Cloudflare Network Firewall docs","description":"Fields available in Network Firewall rule expressions.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/reference/network-firewall-fields/","name":"Cloudflare Network Firewall fields"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/#page","headline":"Cloudflare Network Firewall fields · Cloudflare Network Firewall docs","description":"Fields available in Network Firewall rule expressions.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
 ```

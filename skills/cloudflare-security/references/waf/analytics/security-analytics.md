@@ -1,16 +1,18 @@
 ---
-title: Security Analytics
 description: Analyze traffic patterns and identify security threats with Security Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Security Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Security Analytics
 
-# Security Analytics
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/analytics/security-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Security Analytics displays information about all incoming HTTP requests for your domain, including requests not handled by Cloudflare security products. This gives you visibility into your full traffic profile, not only the requests that triggered a security rule.
 
@@ -45,9 +47,9 @@ To use Security Analytics:
 2. Go to the account or zone/domain dashboard:
 
   * For the zone/domain dashboard, go to the **Analytics** page.
-  [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+  [ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
   * For the account dashboard, go to the **Security Analytics** page.
-  [ Go to **Security analytics** ](https://dash.cloudflare.com/?to=/:account/security-center/analytics)
+  [ Go to **Security analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/analytics)
 
 ## Adjusting displayed data
 
@@ -177,7 +179,7 @@ The displayed information includes:
 * Security scores for the request (attack, bot, uploaded content scanning)
 * Request properties
 
-#### Raw logs Beta
+#### Raw logs  Beta
 
 Note
 
@@ -225,7 +227,14 @@ The following tables show the different limits per Cloudflare plan:
 | Security Events (firewallEventsAdaptive)  | 24 hours | 24 hours | 3 days   | 31 days    |
 | Security Analytics (httpRequestsAdaptive) | 24 hours | 7 days   | 31 days  | 31 days    |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics · Cloudflare Web Application Firewall (WAF) docs","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/analytics/security-analytics/","name":"Security Analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics · Cloudflare Web Application Firewall (WAF) docs","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

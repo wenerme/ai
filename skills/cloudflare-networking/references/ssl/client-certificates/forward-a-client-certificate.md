@@ -1,16 +1,18 @@
 ---
-title: Forward certificate to server
 description: Forward client certificate details to your origin server.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Forward certificate to server
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Forward certificate to server
 
-# Forward certificate to server
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Add Client-Cert and Client-Cert-Chain headers (RFC 9440)
 
@@ -126,7 +128,7 @@ In addition to enforcing mTLS authentication for your host, you can also forward
 
 To avoid adding the certificate to every single request, the certificate is only forwarded on the first request of an mTLS connection.
 
-Warning
+Caution
 
 This process is only available on accounts with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/).
 
@@ -139,22 +141,20 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Mutual TLS Certificates Write`
 
-**Update an mTLS certificate's hostname settings**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \
-  --request PUT \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "settings": [
-        {
-            "hostname": "<HOSTNAME>",
-            "china_network": false,
-            "client_certificate_forwarding": true
-        }
-    ]
-  }'
+	--request PUT \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"settings": [
+				{
+						"hostname": "<HOSTNAME>",
+						"china_network": false,
+						"client_certificate_forwarding": true
+				}
+		]
+	}'
 ```
 
 Once `client_certificate_forwarding` is set to `true`, every request within an mTLS connection will now include the following headers:
@@ -174,23 +174,28 @@ You can also [modify HTTP response headers](https://developers.cloudflare.com/ru
 
 Additionally, Workers can provide details around the [client certificate](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
 
-**JavaScript**
-
 ```js
 const tlsHeaders = {
-  "X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,
-  "X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,
-  "X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,
-  "X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,
-  "X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,
-  "X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,
-  "X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,
-  "X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,
-  "X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,
+	"X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,
+	"X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,
+	"X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,
+	"X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,
+	"X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,
+	"X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,
+	"X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,
+	"X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,
+	"X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#page","headline":"Forward certificate to server · Cloudflare SSL/TLS docs","description":"Forward client certificate details to your origin server.","url":"https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","Headers"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/forward-a-client-certificate/","name":"Forward certificate to server"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#page","headline":"Forward certificate to server · Cloudflare SSL/TLS docs","description":"Forward client certificate details to your origin server.","url":"https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","Headers"]}
 ```

@@ -1,18 +1,20 @@
 ---
-title: Publish to a Queue via Workers
 description: Publish to a Queue directly from your Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Publish to a Queue via Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Publish to a Queue via Workers
+#  Publish to a Queue via Workers
 
 Publish to a Queue directly from your Worker.
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following example shows you how to publish messages to a Queue from a Worker. The example uses a Worker that receives a JSON payload from the request body and writes it as-is to the Queue, but in a real application you might have more logic before you queue a message.
 
@@ -23,32 +25,24 @@ The following example shows you how to publish messages to a Queue from a Worker
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-10475)
-* [  wrangler.toml ](#tab-panel-10476)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker",
-  "queues": {
-    "producers": [
-      {
-        "queue": "my-queue",
-        "binding": "YOUR_QUEUE"
-      }
-    ]
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker",
+	"queues": {
+		"producers": [
+			{
+				"queue": "my-queue",
+				"binding": "YOUR_QUEUE"
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
-
 
 [[queues.producers]]
 queue = "my-queue"
@@ -62,42 +56,37 @@ The following Worker script:
 1. Validates that the request body is valid JSON.
 2. Publishes the payload to the queue.
 
-**TypeScript**
-
 ```ts
 interface Env {
-  YOUR_QUEUE: Queue;
+	YOUR_QUEUE: Queue;
 }
 
-
 export default {
-  async fetch(req, env, ctx): Promise<Response> {
-    // Validate the payload is JSON
-    // In a production application, we may more robustly validate the payload
-    // against a schema using a library like 'zod'
-    let messages;
-    try {
-      messages = await req.json();
-    } catch {
-      // Return a HTTP 400 (Bad Request) if the payload isn't JSON
-      return Response.json({ error: "payload not valid JSON" }, { status: 400 });
-    }
+	async fetch(req, env, ctx): Promise<Response> {
+		// Validate the payload is JSON
+		// In a production application, we may more robustly validate the payload
+		// against a schema using a library like 'zod'
+		let messages;
+		try {
+			messages = await req.json();
+		} catch {
+			// Return a HTTP 400 (Bad Request) if the payload isn't JSON
+			return Response.json({ error: "payload not valid JSON" }, { status: 400 });
+		}
 
+		// Publish to the Queue
+		try {
+			await env.YOUR_QUEUE.send(messages);
+		} catch (e) {
+			const message = e instanceof Error ? e.message : "Unknown error";
+			console.error(`failed to send to the queue: ${message}`);
+			// Return a HTTP 500 (Internal Error) if our publish operation fails
+			return Response.json({ error: message }, { status: 500 });
+		}
 
-    // Publish to the Queue
-    try {
-      await env.YOUR_QUEUE.send(messages);
-    } catch (e) {
-      const message = e instanceof Error ? e.message : "Unknown error";
-      console.error(`failed to send to the queue: ${message}`);
-      // Return a HTTP 500 (Internal Error) if our publish operation fails
-      return Response.json({ error: message }, { status: 500 });
-    }
-
-
-    // Return a HTTP 200 if the send succeeded!
-    return Response.json({ success: true });
-  },
+		// Return a HTTP 200 if the send succeeded!
+		return Response.json({ success: true });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -127,7 +116,14 @@ This will issue a HTTP POST request, and if successful, return a HTTP 200 with a
 
 You can use [wrangler tail](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/) to debug the output of `console.log`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-workers/#page","headline":"Queues - Publish Directly via a Worker · Cloudflare Queues docs","description":"Publish to a Queue directly from your Worker.","url":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/examples/publish-to-a-queue-via-workers/","name":"Publish to a Queue via Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-workers/#page","headline":"Queues - Publish Directly via a Worker · Cloudflare Queues docs","description":"Publish to a Queue directly from your Worker.","url":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Release notes
 description: Track D1 feature updates, bug fixes, and breaking changes over time.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Release notes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Release notes
 
-# Release notes
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/platform/release-notes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/d1/platform/release-notes/index.xml)
 
@@ -391,7 +393,14 @@ You can now provide a [location hint](https://developers.cloudflare.com/d1/confi
 
 [New documentation](https://developers.cloudflare.com/d1/sql-api/query-json/) has been published that covers D1's extensive JSON function support. JSON functions allow you to parse, query and modify JSON directly from your SQL queries, reducing the number of round trips to your database, or data queried.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/d1/platform/release-notes/#page","headline":"Release notes · Cloudflare D1 docs","description":"Track D1 feature updates, bug fixes, and breaking changes over time.","url":"https://developers.cloudflare.com/d1/platform/release-notes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/platform/release-notes/","name":"Release notes"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/d1/platform/release-notes/#page","headline":"Release notes · Cloudflare D1 docs","description":"Track D1 feature updates, bug fixes, and breaking changes over time.","url":"https://developers.cloudflare.com/d1/platform/release-notes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Deploy Hooks
 description: Trigger Cloudflare Pages deployments from external event sources using unique webhook URLs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy Hooks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy Hooks
 
-# Deploy Hooks
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/deploy-hooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Deploy Hooks, you can trigger deployments using event sources beyond commits in your source repository. Each event source may obtain its own unique URL, which will receive HTTP POST requests in order to initiate new deployments. This feature allows you to integrate Pages with new or existing workflows. For example, you may:
 
@@ -21,7 +23,7 @@ With Deploy Hooks, you can trigger deployments using event sources beyond commit
 To create a Deploy Hook:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Builds** and select **Add deploy hook** to start configuration.
 ![Add a deploy hook on the Cloudflare dashboard](https://developers.cloudflare.com/_astro/deploy-hooks-add.u1N247wc_Z1kGWSF.webp)
@@ -102,7 +104,14 @@ You can set up and configure deploy hooks in Storyblok to trigger events. In you
 
 ![Configuring Deploy Hooks with Storyblok](https://user-images.githubusercontent.com/53130544/161367254-ff475f3b-2821-4ee8-a175-8e96e779aa08.png)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/deploy-hooks/#page","headline":"Deploy Hooks · Cloudflare Pages docs","description":"Trigger Cloudflare Pages deployments from external event sources using unique webhook URLs.","url":"https://developers.cloudflare.com/pages/configuration/deploy-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/deploy-hooks/","name":"Deploy Hooks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/deploy-hooks/#page","headline":"Deploy Hooks · Cloudflare Pages docs","description":"Trigger Cloudflare Pages deployments from external event sources using unique webhook URLs.","url":"https://developers.cloudflare.com/pages/configuration/deploy-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

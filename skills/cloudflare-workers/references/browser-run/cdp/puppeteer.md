@@ -1,16 +1,18 @@
 ---
-title: Using with Puppeteer (CDP)
 description: Connect Puppeteer to Browser Run sessions from any Node.js environment to automate browser tasks using the Chrome DevTools Protocol.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Using with Puppeteer (CDP)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Using with Puppeteer (CDP)
 
-# Using with Puppeteer (CDP)
+Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/cdp/puppeteer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use [Puppeteer ↗](https://pptr.dev/) to connect to Browser Run sessions from any Node.js environment and automate browser tasks programmatically via CDP. This is useful for scripts running on your local machine, CI/CD pipelines, or external servers.
 
@@ -50,42 +52,32 @@ The following script demonstrates how to connect to a Browser Run session, navig
 
 Create a file named `script.js`:
 
-**JavaScript**
-
 ```js
 const puppeteer = require("puppeteer-core");
-
 
 const ACCOUNT_ID = process.env.CF_ACCOUNT_ID || "<ACCOUNT_ID>";
 const API_TOKEN = process.env.CF_API_TOKEN || "<API_TOKEN>";
 
-
 const browserWSEndpoint = `wss://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser?keep_alive=600000`;
 
-
 async function main() {
-  const browser = await puppeteer.connect({
-    browserWSEndpoint,
-    headers: {
-      Authorization: `Bearer ${API_TOKEN}`,
-    },
-  });
+	const browser = await puppeteer.connect({
+		browserWSEndpoint,
+		headers: {
+			Authorization: `Bearer ${API_TOKEN}`,
+		},
+	});
 
+	const page = await browser.newPage();
+	await page.goto("https://developers.cloudflare.com");
 
-  const page = await browser.newPage();
-  await page.goto("https://developers.cloudflare.com");
+	const title = await page.title();
+	console.log(`Page title: ${title}`);
 
+	await page.screenshot({ path: "screenshot.png" });
 
-  const title = await page.title();
-  console.log(`Page title: ${title}`);
-
-
-  await page.screenshot({ path: "screenshot.png" });
-
-
-  await browser.close();
+	await browser.close();
 }
-
 
 main().catch(console.error);
 ```
@@ -118,7 +110,14 @@ The script connects directly to Browser Run via WebSocket using the CDP protocol
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/puppeteer/#page","headline":"Using with Puppeteer (CDP) · Cloudflare Browser Run docs","description":"Connect Puppeteer to Browser Run sessions from any Node.js environment to automate browser tasks using the Chrome DevTools Protocol.","url":"https://developers.cloudflare.com/browser-run/cdp/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/cdp/","name":"Chrome DevTools Protocol (CDP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/cdp/puppeteer/","name":"Using with Puppeteer (CDP)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/puppeteer/#page","headline":"Using with Puppeteer (CDP) · Cloudflare Browser Run docs","description":"Connect Puppeteer to Browser Run sessions from any Node.js environment to automate browser tasks using the Chrome DevTools Protocol.","url":"https://developers.cloudflare.com/browser-run/cdp/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

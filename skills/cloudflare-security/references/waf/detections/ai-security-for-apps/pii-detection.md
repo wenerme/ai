@@ -1,16 +1,18 @@
 ---
-title: PII detection
 description: Detect personally identifiable information in AI request and response bodies.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: PII detection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  PII detection
 
-# PII detection
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps (formerly Firewall for AI) can detect personally identifiable information (PII) in incoming LLM prompts. There are two approaches to PII detection, and you can use them together for layered protection:
 
@@ -172,7 +174,14 @@ You can use fuzzy and exact detection together for layered protection:
 
 This rule blocks requests where either the AI model detects any built-in PII category or the regex matches your custom identifier format.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/#page","headline":"PII detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect personally identifiable information in AI request and response bodies.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/pii-detection/","name":"PII detection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/#page","headline":"PII detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect personally identifiable information in AI request and response bodies.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

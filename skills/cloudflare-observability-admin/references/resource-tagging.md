@@ -1,16 +1,18 @@
 ---
-title: Resource Tagging
 description: Resource Tagging lets you attach key-value pairs to a wide range of Cloudflare resource types — including zones, custom hostnames, Cloudflare Tunnels, Workers, D1 databases, R2 buckets, KV namespaces, and more. Tags are stored separately from the resources themselves, enabling cross-resource queries and policy enforcement without modifying underlying resource configurations.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Resource Tagging
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Resource Tagging
 
-# Resource Tagging
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/resource-tagging/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Attach custom key-value metadata to Cloudflare resources for organization, access control, and billing attribution.
 
@@ -49,7 +51,14 @@ Authentication uses [Account Owned Tokens (AOTs)](https://developers.cloudflare.
 
 Follow the [Get started guide](https://developers.cloudflare.com/resource-tagging/get-started/) to set up authentication and make your first API calls.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/resource-tagging/#page","headline":"Overview · Cloudflare Resource Tagging docs","description":"Resource Tagging lets you attach key-value pairs to a wide range of Cloudflare resource types — including zones, custom hostnames, Cloudflare Tunnels, Workers, D1 databases, R2 buckets, KV namespaces, and more. Tags are stored separately from the resources themselves, enabling cross-resource queries and policy enforcement without modifying underlying resource configurations.","url":"https://developers.cloudflare.com/resource-tagging/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/resource-tagging/","name":"Resource Tagging"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/resource-tagging/#page","headline":"Overview · Cloudflare Resource Tagging docs","description":"Resource Tagging lets you attach key-value pairs to a wide range of Cloudflare resource types — including zones, custom hostnames, Cloudflare Tunnels, Workers, D1 databases, R2 buckets, KV namespaces, and more. Tags are stored separately from the resources themselves, enabling cross-resource queries and policy enforcement without modifying underlying resource configurations.","url":"https://developers.cloudflare.com/resource-tagging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

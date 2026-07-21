@@ -1,16 +1,18 @@
 ---
-title: Block AI Bots
 description: Block AI crawlers and scrapers from accessing your website content.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Block AI Bots
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Block AI Bots
 
-# Block AI Bots
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Configure AI bot policies
 
@@ -44,7 +46,14 @@ This option excludes mixed-purpose bots that are used both for Training and for 
 
 To configure this setting and set their preference for blocking mixed-purpose bots, customers can go to **Security Settings** \> **Block AI bots**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/#page","headline":"Block AI Bots · Cloudflare bot solutions docs","description":"Block AI crawlers and scrapers from accessing your website content.","url":"https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Scraping"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/block-ai-bots/","name":"Block AI Bots"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/#page","headline":"Block AI Bots · Cloudflare bot solutions docs","description":"Block AI crawlers and scrapers from accessing your website content.","url":"https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Scraping"]}
 ```

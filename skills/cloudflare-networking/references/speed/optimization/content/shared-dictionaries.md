@@ -1,16 +1,18 @@
 ---
-title: Shared dictionaries
 description: Shared dictionaries reduce repeat-visitor transfer size by compressing each response against a version the browser already has cached.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Shared dictionaries
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Shared dictionaries
 
-# Shared dictionaries
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Shared dictionaries ([RFC 9842 ↗](https://datatracker.ietf.org/doc/rfc9842/)) let your origin compress a response against a copy of the same — or a different — resource that the visitor's browser already has cached. Only the difference between the two resources travels over the wire.
 
@@ -70,14 +72,10 @@ The work of creating dictionaries and compressing new responses against them hap
 
 ### 1\. Enable passthrough in Cloudflare
 
-* [ Dashboard ](#tab-panel-11412)
-* [ API ](#tab-panel-11413)
-* [ Terraform ](#tab-panel-11414)
-
 To enable shared dictionaries in the dashboard:
 
 1. In the Cloudflare dashboard, go to the Speed **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to **Content Optimization**.
 3. Toggle **Shared Dictionaries** to **On**.
 
@@ -85,11 +83,11 @@ Use the following `PATCH` request to enable shared dictionaries:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/shared_dictionary_mode" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": "passthrough"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": "passthrough"
+	}'
 ```
 
 To turn shared dictionaries off, set `value` to `"disabled"`.
@@ -153,7 +151,6 @@ To confirm a request is using a shared dictionary, request the asset twice. The 
 curl -sI -H "Accept-Encoding: br, gzip, zstd, dcb, dcz" \
   https://example.com/static/app.v1.js
 
-
 # Request the next version, advertising the dictionary you just received.
 # Replace <hash> with the base64-encoded SHA-256 of the first response.
 # The surrounding colons are part of the Structured Field syntax
@@ -176,7 +173,14 @@ You can also use [canicompress.com ↗](https://canicompress.com/) to confirm yo
 * **Browser support is partial.** Visitors on browsers that do not request `dcb` or `dcz` continue to receive Brotli, Zstandard, or Gzip per your existing [Compression Rules](https://developers.cloudflare.com/rules/compression-rules/) and [default compression behavior](https://developers.cloudflare.com/speed/optimization/content/compression/).
 * **Same-origin only.** Per [RFC 9842, Section 9.3.1 ↗](https://www.rfc-editor.org/rfc/rfc9842.html#section-9.3.1), dictionaries are scoped to the response origin. Cross-origin dictionary use is not supported.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/#page","headline":"Shared dictionaries · Cloudflare Speed docs","description":"Shared dictionaries reduce repeat-visitor transfer size by compressing each response against a version the browser already has cached.","url":"https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/shared-dictionaries/","name":"Shared dictionaries"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/#page","headline":"Shared dictionaries · Cloudflare Speed docs","description":"Shared dictionaries reduce repeat-visitor transfer size by compressing each response against a version the browser already has cached.","url":"https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

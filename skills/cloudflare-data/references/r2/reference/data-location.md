@@ -1,16 +1,18 @@
 ---
-title: Data location
 description: Control where R2 stores your data using automatic placement, location hints, or jurisdictions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Data location
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Data location
 
-# Data location
+Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/reference/data-location/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Learn how the location of data stored in R2 is determined and about the different available inputs that control the physical location where objects in your buckets are stored.
 
@@ -29,7 +31,7 @@ Using Location Hints can be a good choice when you expect the majority of access
 You can choose to automatically create your bucket in the closest available region based on your location or choose a specific location from the list.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter a name for the bucket.
 4. Under **Location**, leave _None_ selected for automatic selection or choose a region from the list.
@@ -39,16 +41,14 @@ You can choose to automatically create your bucket in the closest available regi
 
 You can set the Location Hint via the `LocationConstraint` parameter using the S3 API:
 
-**JavaScript**
-
 ```js
 await S3.send(
-  new CreateBucketCommand({
-    Bucket: "YOUR_BUCKET_NAME",
-    CreateBucketConfiguration: {
-      LocationConstraint: "WNAM",
-    },
-  }),
+	new CreateBucketCommand({
+		Bucket: "YOUR_BUCKET_NAME",
+		CreateBucketConfiguration: {
+			LocationConstraint: "WNAM",
+		},
+	}),
 );
 ```
 
@@ -80,7 +80,7 @@ Use Jurisdictional Restrictions when you need to ensure data is stored and proce
 ### Set jurisdiction via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter a name for the bucket.
 4. Under **Location**, select **Specify jurisdiction** and choose a jurisdiction from the list.
@@ -90,28 +90,21 @@ Use Jurisdictional Restrictions when you need to ensure data is stored and proce
 
 To access R2 buckets that belong to a jurisdiction from [Workers](https://developers.cloudflare.com/workers/), you will need to specify the jurisdiction as well as the bucket name as part of your [bindings](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#3-bind-your-bucket-to-a-worker) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-10671)
-* [  wrangler.toml ](#tab-panel-10672)
-
-**JSONC**
-
 ```jsonc
 {
-  "r2_buckets": [
-    {
-      "bindings": [
-        {
-          "binding": "MY_BUCKET",
-          "bucket_name": "<YOUR_BUCKET_NAME>",
-          "jurisdiction": "<JURISDICTION>"
-        }
-      ]
-    }
-  ]
+	"r2_buckets": [
+		{
+			"bindings": [
+				{
+					"binding": "MY_BUCKET",
+					"bucket_name": "<YOUR_BUCKET_NAME>",
+					"jurisdiction": "<JURISDICTION>"
+				}
+			]
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[r2_buckets]]
@@ -133,22 +126,20 @@ You can use your jurisdiction-specific endpoint for any [supported S3 API operat
 
 The example below shows how to create an R2 bucket in the `eu` jurisdiction using the [@aws-sdk/client-s3 ↗](https://www.npmjs.com/package/@aws-sdk/client-s3) package for JavaScript.
 
-**JavaScript**
-
 ```js
 import { S3Client, CreateBucketCommand } from "@aws-sdk/client-s3";
 const S3 = new S3Client({
-  endpoint: "https://<account_id>.eu.r2.cloudflarestorage.com",
-  credentials: {
-    accessKeyId: "<access_key_id",
-    secretAccessKey: "<access_key_secret>",
-  },
-  region: "auto",
+	endpoint: "https://<account_id>.eu.r2.cloudflarestorage.com",
+	credentials: {
+		accessKeyId: "<access_key_id",
+		secretAccessKey: "<access_key_secret>",
+	},
+	region: "auto",
 });
 await S3.send(
-  new CreateBucketCommand({
-    Bucket: "YOUR_BUCKET_NAME",
-  }),
+	new CreateBucketCommand({
+		Bucket: "YOUR_BUCKET_NAME",
+	}),
 );
 ```
 
@@ -177,7 +168,14 @@ The following services do not interact with R2 resources with assigned jurisdict
 
 Once an R2 bucket is created, the jurisdiction cannot be changed.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/data-location/#page","headline":"Data location · Cloudflare R2 docs","description":"Control where R2 stores your data using automatic placement, location hints, or jurisdictions.","url":"https://developers.cloudflare.com/r2/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/reference/data-location/","name":"Data location"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/data-location/#page","headline":"Data location · Cloudflare R2 docs","description":"Control where R2 stores your data using automatic placement, location hints, or jurisdictions.","url":"https://developers.cloudflare.com/r2/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

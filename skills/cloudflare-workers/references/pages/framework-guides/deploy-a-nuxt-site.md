@@ -1,16 +1,18 @@
 ---
-title: Nuxt
 description: Web framework making Vue.js-based development simple and powerful.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Nuxt
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Nuxt
 
-# Nuxt
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Nuxt ↗](https://nuxt.com) is a web framework making Vue.js-based development simple and powerful.
 
@@ -75,7 +77,6 @@ git init
 git add .
 git commit -m "Initial commit"
 
-
 git branch -M main
 git remote add origin https://github.com/<YOUR_GH_USERNAME>/<REPOSITORY_NAME>
 git push -u origin main
@@ -86,7 +87,7 @@ git push -u origin main
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
@@ -116,11 +117,9 @@ If you intend to use bindings in your project, you must first set up your bindin
 
 Projects created via C3 come with `nitro-cloudflare-dev`, a `nitro` module that simplifies the process of working with bindings during development:
 
-**TypeScript**
-
 ```typescript
 export default defineNuxtConfig({
-  modules: ["nitro-cloudflare-dev"],
+	modules: ["nitro-cloudflare-dev"],
 });
 ```
 
@@ -140,20 +139,18 @@ To get proper type support, you need to create a new `env.d.ts` file in the root
 
 The following is an example of adding a `KVNamespace` binding:
 
-**TypeScript**
-
 ```ts
 declare module "h3" {
-  interface H3EventContext {
-    cf: CfProperties;
-    cloudflare: {
-      request: Request;
-      env: {
-        MY_KV: KVNamespace;
-      };
-      context: ExecutionContext;
-    };
-  }
+	interface H3EventContext {
+		cf: CfProperties;
+		cloudflare: {
+			request: Request;
+			env: {
+				MY_KV: KVNamespace;
+			};
+			context: ExecutionContext;
+		};
+	}
 }
 ```
 
@@ -163,32 +160,23 @@ In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nux
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 
-* [  JavaScript ](#tab-panel-10252)
-* [  TypeScript ](#tab-panel-10253)
-
-**JavaScript**
-
 ```javascript
 export default defineEventHandler(({ context }) => {
-  const MY_KV = context.cloudflare.env.MY_KV;
+	const MY_KV = context.cloudflare.env.MY_KV;
 
-
-  return {
-    // ...
-  };
+	return {
+		// ...
+	};
 });
 ```
 
-**TypeScript**
-
 ```typescript
 export default defineEventHandler(({ context }) => {
-  const MY_KV = context.cloudflare.env.MY_KV;
+	const MY_KV = context.cloudflare.env.MY_KV;
 
-
-  return {
-    // ...
-  };
+	return {
+		// ...
+	};
 });
 ```
 
@@ -196,7 +184,14 @@ export default defineEventHandler(({ context }) => {
 
 By completing this guide, you have successfully deployed your Nuxt site to Cloudflare Pages. To get started with other frameworks, [refer to the list of Framework guides](https://developers.cloudflare.com/pages/framework-guides/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/#page","headline":"Nuxt · Cloudflare Pages docs","description":"Web framework making Vue.js-based development simple and powerful.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/framework-guides/deploy-a-nuxt-site/","name":"Nuxt"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/#page","headline":"Nuxt · Cloudflare Pages docs","description":"Web framework making Vue.js-based development simple and powerful.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

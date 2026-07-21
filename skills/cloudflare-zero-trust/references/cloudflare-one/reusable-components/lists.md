@@ -1,16 +1,18 @@
 ---
-title: Lists
 description: Lists in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Lists
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Lists
 
-# Lists
+Last updated Apr 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare One, you can create lists of URLs, hostnames, or other entries to reference when creating [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) or [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). This allows you to quickly create rules that match and take actions against several items at once.
 
@@ -36,8 +38,6 @@ Lists can contain a single type of data each. Supported data types include:
 
 To test uploading CSV lists, you can download a [sample CSV file](https://developers.cloudflare.com/cloudflare-one/static/list-test.csv) of IP address ranges or copy the following into a file:
 
-**list-test.csv**
-
 ```csv
 value,description
 192.0.2.0/24,This is an IP address range in CIDR format
@@ -54,9 +54,6 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-8072)
-* [ Terraform (v5) ](#tab-panel-8073)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
 3. Next, specify a **List name**, enter an optional description, and choose a **List type**.
@@ -69,17 +66,17 @@ To upload the list to the Cloudflare dashboard:
 2. Decode the contents of the CSV file and store it as a local value:
 ```tf
 locals {
-  ip_list = csvdecode(file("${path.module}/list-test.csv"))
+	ip_list = csvdecode(file("${path.module}/list-test.csv"))
 }
 ```
 3. Create a list using the [cloudflare\_zero\_trust\_list ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Flist) resource:
 ```tf
 resource "cloudflare_zero_trust_list" "ips_from_csv" {
-  account_id  = var.cloudflare_account_id
-  name        = "IPs imported from CSV"
-  description = "Managed by Terraform"
-  type        = "IP"
-  items       = local.ip_list
+	account_id  = var.cloudflare_account_id
+	name        = "IPs imported from CSV"
+	description = "Managed by Terraform"
+	type        = "IP"
+	items 			= local.ip_list
 }
 ```
 
@@ -87,35 +84,29 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-8074)
-* [ API ](#tab-panel-8075)
-* [ Terraform (v5) ](#tab-panel-8076)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.
 3. Next, specify a **List name**, enter an optional description, and choose a **List type**.
 4. Enter your list element manually into the **Add entry** field and select **Add**.
 5. Select **Save**.
 
-**Create Zero Trust list**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Private application IPs",
-    "items": [
-        {
-            "value": "10.226.0.177/32"
-        },
-        {
-            "value": "10.226.1.177/32"
-        }
-    ],
-    "name": "Corporate IP list",
-    "type": "IP"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Private application IPs",
+		"items": [
+				{
+						"value": "10.226.0.177/32"
+				},
+				{
+						"value": "10.226.1.177/32"
+				}
+		],
+		"name": "Corporate IP list",
+		"type": "IP"
+	}'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
@@ -125,35 +116,35 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
 Example list of IPs:
 ```tf
 resource "cloudflare_zero_trust_list" "wiki_IPs" {
-  account_id  = var.cloudflare_account_id
-  name        = "Company Wiki IP addresses"
-  description = "Managed by Terraform"
-  type        = "IP"
-  items = [
-    {
-      description = "Example IP address range"
-      value = "192.0.2.0/24",
-    },
-    {
-      value = "198.51.100.0/24"
-    }
-  ]
+	account_id  = var.cloudflare_account_id
+	name        = "Company Wiki IP addresses"
+	description = "Managed by Terraform"
+	type        = "IP"
+	items = [
+		{
+			description = "Example IP address range"
+			value = "192.0.2.0/24",
+		},
+		{
+			value = "198.51.100.0/24"
+		}
+	]
 }
 ```
 Example list of domains:
 ```tf
 resource "cloudflare_zero_trust_list" "wiki_domains" {
-  account_id  = var.cloudflare_account_id
-  name        = "Company Wiki Domains"
-  description = "Managed by Terraform"
-  type        = "DOMAIN"
-  items = [
-    {
-      value = "wiki.example.com"
-    },
-    {
-      value = "wiki2.example.com"
-    }]
+	account_id  = var.cloudflare_account_id
+	name        = "Company Wiki Domains"
+	description = "Managed by Terraform"
+	type        = "DOMAIN"
+	items = [
+		{
+			value = "wiki.example.com"
+		},
+		{
+			value = "wiki2.example.com"
+		}]
 }
 ```
 
@@ -241,7 +232,14 @@ To force Gateway to match all email address variants, go to **Traffic policies**
 
 You can send 600 requests to the [Gateway Lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/) endpoint per minute. If you exceed the rate limit, Cloudflare will block subsequent requests for 120 seconds.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/#page","headline":"Lists · Cloudflare One docs","description":"Lists in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/reusable-components/","name":"Reusable components"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/reusable-components/lists/","name":"Lists"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/#page","headline":"Lists · Cloudflare One docs","description":"Lists in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

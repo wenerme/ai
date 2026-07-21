@@ -1,16 +1,18 @@
 ---
-title: How Email security detects phish
 description: Reference information for How Email security detects phish in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: How Email security detects phish
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Email security detects phish
 
-# How Email security detects phish
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Email security uses a variety of factors to determine whether a given email message, a web domain or URL, or specific network traffic is part of a phishing campaign (marked with a [Malicious disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/)) or other common campaigns (for example, `Spam`).
 
@@ -148,7 +150,14 @@ For protection against DDoS attacks targeting web and network infrastructure at 
 * **Example**: C2 communications for lateral spread within the network or malicious phish downloaded from an external host. Typically seen when an end user gets infected outside the organization, comes back into the network and the C2 hosts uses the infected endpoint to download the implant based on the IP address space it is now resident in.
 * **Detections applied**: Network device integrations (firewalls) and API-based integrations within existing orchestration services.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/#page","headline":"How Email security detects phish · Cloudflare One docs","description":"Reference information for How Email security detects phish in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/reference/how-es-detects-phish/","name":"How Email security detects phish"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/#page","headline":"How Email security detects phish · Cloudflare One docs","description":"Reference information for How Email security detects phish in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

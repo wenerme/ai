@@ -1,16 +1,18 @@
 ---
-title: Wildcard matching in Page Rules
 description: How wildcard and pattern matching works in Page Rules URLs.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Wildcard matching in Page Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Wildcard matching in Page Rules
 
-# Wildcard matching in Page Rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use the asterisk (`*`) in any URL segment to match certain patterns. For example, `example.com/t*st` would match:
 
@@ -43,11 +45,18 @@ This rule would match `http://cloud.example.com/flare.jpg`, which would be forwa
 
 To add a `$` character in the forwarding URL, escape it by adding a backslash `\` in front like `\$`.
 
-Warning
+Caution
 
 Avoid creating a redirect where the domain points to itself as the destination. A domain that points to itself can cause an [infinite redirect error](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/), which makes your site inaccessible to visitors.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/#page","headline":"Wildcard matching in Page Rules · Cloudflare Rules docs","description":"How wildcard and pattern matching works in Page Rules URLs.","url":"https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/page-rules/","name":"Page Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/page-rules/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/page-rules/reference/wildcard-matching/","name":"Wildcard matching in Page Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/#page","headline":"Wildcard matching in Page Rules · Cloudflare Rules docs","description":"How wildcard and pattern matching works in Page Rules URLs.","url":"https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

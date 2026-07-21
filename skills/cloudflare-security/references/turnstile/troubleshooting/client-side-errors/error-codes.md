@@ -1,16 +1,18 @@
 ---
-title: Error codes
 description: Error codes returned by Turnstile widgets and their meanings.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Error codes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Error codes
 
-# Error codes
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -54,13 +56,20 @@ You can troubleshoot these error codes using the following recommendations:
 7. Switch to a different network.
   * Your current network may have restrictions causing Turnstile challenges to fail. Try switching to another network, such as a mobile hotspot.
 
-Error code `401`
+:::caution\[Error code `401`\]
 
 Turnstile may occasionally generate a `401` Unauthorized error in your browser console during a security check. This is not typically a problem with your implementation. This error often occurs when the widget attempts to request a [Private Access Token](https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/) that your device or browser does not support yet.
 
 You can generally safely ignore the `401` error, as it is an expected part of Turnstile's underlying Challenge Platform workflow. If the widget is successfully resolving and you are receiving a token, no action is required.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/#page","headline":"Error codes · Cloudflare Turnstile docs","description":"Error codes returned by Turnstile widgets and their meanings.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/troubleshooting/client-side-errors/","name":"Client-side errors"}},{"@type":"ListItem","position":5,"item":{"@id":"/turnstile/troubleshooting/client-side-errors/error-codes/","name":"Error codes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/#page","headline":"Error codes · Cloudflare Turnstile docs","description":"Error codes returned by Turnstile widgets and their meanings.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

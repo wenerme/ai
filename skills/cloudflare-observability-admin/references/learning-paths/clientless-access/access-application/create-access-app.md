@@ -1,16 +1,18 @@
 ---
-title: Create an Access application
 description: Add an application to Cloudflare Access.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Create an Access application
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create an Access application
 
-# Create an Access application
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/clientless-access/access-application/create-access-app/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access allows you to securely publish internal tools and applications to the Internet by providing an authentication layer between the end user and your origin server. You can use signals from your existing identity providers (IdPs), device posture providers, and [other rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) to control who can access your application.
 
@@ -48,7 +50,14 @@ Cloudflare checks every HTTP request to your application for a valid application
 
 When users go to the application, they will be prompted to login with your identity provider.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/access-application/create-access-app/#page","headline":"Create an Access application · Cloudflare Learning Paths","description":"Add an application to Cloudflare Access.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/access-application/create-access-app/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/access-application/","name":"Secure your applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/access-application/create-access-app/","name":"Create an Access application"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/access-application/create-access-app/#page","headline":"Create an Access application · Cloudflare Learning Paths","description":"Add an application to Cloudflare Access.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/access-application/create-access-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

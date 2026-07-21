@@ -1,16 +1,18 @@
 ---
-title: About
 description: Understand how environments and versions work together.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: About
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/version-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  About
 
-# About
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/version-management/about/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Version Management works through a combination of **environments** and **versions**.
 
@@ -81,7 +83,14 @@ You can create a new version at any time by choosing to [**Clone**](https://deve
 
 Version configurations are applied to zone traffic when you [promote a version](https://developers.cloudflare.com/version-management/how-to/environments/#promote-a-version) to a new environment and then send traffic to that environment that matches the pattern specified in its [traffic filters](https://developers.cloudflare.com/version-management/reference/traffic-filters/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/about/#page","headline":"About · Cloudflare Version Management docs","description":"Understand how environments and versions work together.","url":"https://developers.cloudflare.com/version-management/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/version-management/","name":"Version Management"}},{"@type":"ListItem","position":3,"item":{"@id":"/version-management/about/","name":"About"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/about/#page","headline":"About · Cloudflare Version Management docs","description":"Understand how environments and versions work together.","url":"https://developers.cloudflare.com/version-management/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

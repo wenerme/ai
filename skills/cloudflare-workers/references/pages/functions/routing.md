@@ -1,25 +1,27 @@
 ---
-title: Routing
 description: Learn how Pages Functions uses file-based routing to map URL patterns to function files.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Routing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Routing
 
-# Routing
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/routing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Functions utilize file-based routing. Your `/functions` directory structure determines the designated routes that your Functions will run on. You can create a `/functions` directory with as many levels as needed for your project's use case. Review the following directory:
 
 * ...
-* Directoryfunctions
+* functions
   * index.js
   * helloworld.js
   * howdyworld.js
-  * Directoryfruits
+  * fruits
     * index.js
     * apple.js
     * banana.js
@@ -79,9 +81,9 @@ More specific routes (routes with fewer wildcards) take precedence over less spe
 Review the following `/functions/` directory structure:
 
 * ...
-* Directoryfunctions
+* functions
   * date.js
-  * Directoryusers
+  * users
     * special.js
     * \[user\].js
     * \[\[catchall\]\].js
@@ -101,11 +103,9 @@ The URL segment(s) that match the placeholder (`[user]`) will be available in th
 
 For files which match a single URL segment (use a single set of brackets), the values are returned as a string:
 
-**JavaScript**
-
 ```js
 export function onRequest(context) {
-  return new Response(context.params.user);
+	return new Response(context.params.user);
 }
 ```
 
@@ -113,11 +113,9 @@ The above logic will return `daniel` for requests to `/users/daniel`.
 
 For files which match against multiple URL segments (use a double set of brackets), the values are returned as an array:
 
-**JavaScript**
-
 ```js
 export function onRequest(context) {
-  return new Response(JSON.stringify(context.params.catchall));
+	return new Response(JSON.stringify(context.params.catchall));
 }
 ```
 
@@ -187,9 +185,9 @@ Below is an example of a `_routes.json`.
 
 ```json
 {
-  "version": 1,
-  "include": ["/*"],
-  "exclude": []
+	"version": 1,
+	"include": ["/*"],
+	"exclude": []
 }
 ```
 
@@ -199,9 +197,9 @@ Below is another example of a `_routes.json` file. Any route inside the `/build`
 
 ```json
 {
-  "version": 1,
-  "include": ["/*"],
-  "exclude": ["/build/*"]
+	"version": 1,
+	"include": ["/*"],
+	"exclude": ["/build/*"]
 }
 ```
 
@@ -210,7 +208,7 @@ Below is another example of a `_routes.json` file. Any route inside the `/build`
 If on the Workers Free plan, you can configure how Pages behaves when your daily free tier allowance of Pages Functions requests is exhausted. If, for example, you are performing authentication checks or other critical functionality in your Pages Functions, you may wish to disable your Pages project when the allowance is exhausted.
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Runtime** \> **Fail open / closed**.
 
@@ -226,7 +224,14 @@ Functions invocation routes have the following limits:
 * You may have no more than 100 include/exclude rules combined.
 * Each rule may have no more than 100 characters.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/routing/#page","headline":"Routing · Cloudflare Pages docs","description":"Learn how Pages Functions uses file-based routing to map URL patterns to function files.","url":"https://developers.cloudflare.com/pages/functions/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/routing/","name":"Routing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/routing/#page","headline":"Routing · Cloudflare Pages docs","description":"Learn how Pages Functions uses file-based routing to map URL patterns to function files.","url":"https://developers.cloudflare.com/pages/functions/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

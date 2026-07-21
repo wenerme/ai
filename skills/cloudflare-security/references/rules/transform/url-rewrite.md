@@ -1,16 +1,18 @@
 ---
-title: URL Rewrite Rules
 description: Rewrite request URL paths and query strings with Transform Rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: URL Rewrite Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  URL Rewrite Rules
 
-# URL Rewrite Rules
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/url-rewrite/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can manipulate the URL of a request through different operations, namely rewrites and redirects:
 
@@ -19,7 +21,7 @@ You can manipulate the URL of a request through different operations, namely rew
 
 Use a URL rewrite rule to return the content of a URL while displaying a different URL in the browser. You can rewrite the URI path, the query string, or both.
 
-Warning
+Caution
 
 You cannot rewrite the hostname using a URL rewrite rule. To rewrite the hostname, use an [origin rule](https://developers.cloudflare.com/rules/origin-rules/features/#dns-record).
 
@@ -47,7 +49,14 @@ When troubleshooting URL Rewrite Rules, use [Cloudflare Trace](https://developer
 * URL rewrite rules run in order, and later rules can overwrite changes done by previous rules.
 * The values of request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), such as the `http_request_transform` phase where URL rewrite rules are defined. This means that later URL rewrite rules will still use the original field values when evaluating their filter expressions, not the values changed by previous rules. Refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/#page","headline":"URL Rewrite Rules · Cloudflare Rules docs","description":"Rewrite request URL paths and query strings with Transform Rules.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/#page","headline":"URL Rewrite Rules · Cloudflare Rules docs","description":"Rewrite request URL paths and query strings with Transform Rules.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Renew domains
 description: Manage automatic and manual domain renewals.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Renew domains
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Renew domains
 
-# Renew domains
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/account-options/renew-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Automatic renewal of domain
 
@@ -31,7 +33,7 @@ You can continue to keep your domain registered with Cloudflare for the time rem
 If you want your domains to renew automatically, keep the default settings for your domain (**Auto Renew** should be set to **On**). To find this setting:
 
 1. In the Cloudflare dashboard, go to the **Manage domains** page.
-[ Go to **Manage domains** ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to automatically renew, and make sure the **Auto-renew** toggle is enabled.
 
 Cloudflare attempts to renew these domains automatically 30 days before their expiration date. Several more attempts are made if the first attempt fails. The last attempt to renew is made on the day before expiration. You can also [manually renew](#renew-a-domain-manually) a domain at any time.
@@ -49,7 +51,7 @@ If you want to delete your domain from Cloudflare, **disable** Auto-Renew first.
 You can renew a domain at any time. To renew a domain registered with Cloudflare:
 
 1. In the Cloudflare dashboard, go to the **Manage domains** page.
-[ Go to **Manage domains** ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to renew and select **Manage**.
 3. In **Registration** select **Renew/Extend Domain**.
 4. In the **Renew for** drop-down menu, choose a number of years to renew your domain (up to 10 years).
@@ -79,7 +81,14 @@ All renewals are final and Cloudflare will not issue refunds.
 
 When renewing a domain, additional years are always added to the current expiration date regardless of when the renewal takes place.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/renew-domains/#page","headline":"Renew domains with Cloudflare Registrar · Cloudflare Registrar docs","description":"Manage automatic and manual domain renewals.","url":"https://developers.cloudflare.com/registrar/account-options/renew-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/account-options/","name":"Registration options"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/account-options/renew-domains/","name":"Renew domains"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/renew-domains/#page","headline":"Renew domains with Cloudflare Registrar · Cloudflare Registrar docs","description":"Manage automatic and manual domain renewals.","url":"https://developers.cloudflare.com/registrar/account-options/renew-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

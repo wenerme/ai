@@ -1,16 +1,18 @@
 ---
-title: Check tunnel health in the dashboard
 description: Check tunnel health in the Magic Transit dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Check tunnel health in the dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Check tunnel health in the dashboard
 
-# Check tunnel health in the dashboard
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare dashboard monitors the health of all anycast tunnels on your account that route traffic from Cloudflare to your origin network.
 
@@ -25,7 +27,7 @@ Not all data centers are relevant to you at all times. You can refer to the **Tr
 ## Check tunnel health
 
 1. Go to the **Network health** page.
-[ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[ Go to **Network health** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 1. Select the **Connector health** tab.
 2. In this view you can access a list of your tunnels and their current health status. You can also check the amount of health checks passed in the last hour as well as traffic volume for each tunnel.
 3. Find the tunnel you want to inspect, select the three dots next to it, and select:
@@ -38,7 +40,7 @@ Not all data centers are relevant to you at all times. You can refer to the **Tr
 You can drill down into a specific tunnel to check its health status and other information.
 
 1. Go to the **Network health** page.
-[ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[ Go to **Network health** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 1. Select the **Connector health** tab.
 1. Find and select the tunnel you want to inspect.
 
@@ -66,7 +68,14 @@ If you received a tunnel health alert but are unsure whether it affects your tra
 
 If your tunnels show as unhealthy or degraded, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/) for common issues and solutions.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/#page","headline":"Check tunnel health in the dashboard · Cloudflare Magic Transit docs","description":"Check tunnel health in the Magic Transit dashboard.","url":"https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/network-health/","name":"Network health"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/network-health/check-tunnel-health-dashboard/","name":"Check tunnel health in the dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/#page","headline":"Check tunnel health in the dashboard · Cloudflare Magic Transit docs","description":"Check tunnel health in the Magic Transit dashboard.","url":"https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

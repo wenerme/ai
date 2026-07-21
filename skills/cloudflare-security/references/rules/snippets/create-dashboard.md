@@ -1,19 +1,21 @@
 ---
-title: Create a snippet in the dashboard
 description: Create Snippets in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a snippet in the dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a snippet in the dashboard
 
-# Create a snippet in the dashboard
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/snippets/create-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 1. In the Cloudflare dashboard, go to the **Snippets** page.
-[ Go to **Snippets** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets)
+[ Go to **Snippets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets)
 2. (Optional) If you have not created any snippets yet, select one of the snippet templates that addresses a common use case. Then, review and adjust the proposed snippet code.
 To start from scratch, select **Create Snippet**.
 3. In **Snippet name**, enter a descriptive name for the snippet. You cannot change the name after creating the snippet.
@@ -25,7 +27,14 @@ To start from scratch, select **Create Snippet**.
 9. To deploy your snippet, select **Deploy**. If you are not ready to deploy your snippet, open the dropdown next to **Deploy** and select **Save as Draft**.
 If you are matching a hostname in your rule expression, you may be prompted to create a proxied DNS record for that hostname. Refer to [Troubleshooting](https://developers.cloudflare.com/rules/reference/troubleshooting/#this-rule-may-not-apply-to-your-traffic) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/create-dashboard/#page","headline":"Create a snippet in the dashboard · Cloudflare Rules docs","description":"Create Snippets in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/rules/snippets/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/create-dashboard/","name":"Create a snippet in the dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/create-dashboard/#page","headline":"Create a snippet in the dashboard · Cloudflare Rules docs","description":"Create Snippets in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/rules/snippets/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

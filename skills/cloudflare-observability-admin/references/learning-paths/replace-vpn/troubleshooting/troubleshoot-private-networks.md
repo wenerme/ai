@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot private networks
 description: Debug private network connectivity issues.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Troubleshoot private networks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot private networks
 
-# Troubleshoot private networks
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow this troubleshooting procedure when end users running the Cloudflare One Client have issues connecting to a private network behind Cloudflare Tunnel.
 
@@ -75,9 +77,6 @@ Under **Traffic policies** \> **Traffic settings**, ensure that **Allow Secure W
 
 Verify that you can connect to the application directly from the `cloudflared` host machine:
 
-* [ macOS and Linux ](#tab-panel-9998)
-* [ Windows ](#tab-panel-9999)
-
 Open Terminal and run the following command:
 
 ```sh
@@ -87,8 +86,6 @@ telnet test.example.com 443
 If `telnet` fails to open the connection, check your infrastructure for firewalls, load balancers, or other network devices that may be interfering with the connection between `cloudflared` and the application server.
 
 Open PowerShell and run the following command:
-
-**PowerShell**
 
 ```powershell
 PS C:\Users\JohnDoe> Test-NetConnection test.example.com -port 443
@@ -127,7 +124,14 @@ To work around the issue:
 
 1. In Cloudflare One Client version 2026.1 and earlier, select **Preferences** \> **Account** \> **Re-Authenticate Session**. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/#page","headline":"Troubleshoot private networks · Cloudflare Learning Paths","description":"Debug private network connectivity issues.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/","name":"Troubleshoot private networks"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/#page","headline":"Troubleshoot private networks · Cloudflare Learning Paths","description":"Debug private network connectivity issues.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

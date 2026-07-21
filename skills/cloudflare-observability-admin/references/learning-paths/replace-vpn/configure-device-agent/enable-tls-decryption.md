@@ -1,16 +1,18 @@
 ---
-title: Enable TLS decryption (optional)
 description: Inspect encrypted traffic with TLS decryption.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Enable TLS decryption (optional)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable TLS decryption (optional)
 
-# Enable TLS decryption (optional)
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [TLS decryption ↗](https://www.cloudflare.com/learning/security/what-is-https-inspection/) allows Cloudflare Gateway to inspect HTTPS requests to your private network applications.
 
@@ -28,9 +30,6 @@ With TLS decryption turned off, Gateway can only inspect and apply HTTP policies
 
 ## Enable TLS decryption
 
-* [ Dashboard ](#tab-panel-9974)
-* [ Terraform (v5) ](#tab-panel-9975)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
@@ -40,12 +39,12 @@ With TLS decryption turned off, Gateway can only inspect and apply HTTP policies
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    tls_decrypt = {
-      enabled = true
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		tls_decrypt = {
+			enabled = true
+		}
+	}
 }
 ```
 
@@ -69,7 +68,14 @@ MDM deployments
 
 Many customers [deploy the Cloudflare One Client](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/) onto devices in production using an MDM tool like JAMF or Intune. Cloudflare has the ability to deploy a root certificate along with the device, but this could be more consistently and holistically configured within the MDM, where other certificates are presumably managed, trusted, and stored.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/#page","headline":"Enable TLS decryption (optional) · Cloudflare Learning Paths","description":"Inspect encrypted traffic with TLS decryption.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/configure-device-agent/","name":"Configure the device agent"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/","name":"Enable TLS decryption (optional)"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/#page","headline":"Enable TLS decryption (optional) · Cloudflare Learning Paths","description":"Inspect encrypted traffic with TLS decryption.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Export to PostHog
 description: Send OpenTelemetry logs from Cloudflare Workers to PostHog for analytics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Export to PostHog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Export to PostHog
 
-# Export to PostHog
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 PostHog is a product analytics platform that helps you understand user behavior and debug issues. By exporting your Cloudflare Workers application telemetry to PostHog, you can:
 
@@ -51,7 +53,7 @@ You can find your region in your PostHog project settings or by checking the URL
 
 ## Step 3: Configure Cloudflare Logs destination
 
-Warning
+Caution
 
 Cloudflare Workers Observability only supports exporting **logs** to PostHog at this time. Exporting **traces** to PostHog is not currently supported.
 
@@ -73,11 +75,6 @@ Now you'll create a destination in the Cloudflare dashboard that points to PostH
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable logs export.
 
-* [  wrangler.jsonc ](#tab-panel-12734)
-* [  wrangler.toml ](#tab-panel-12735)
-
-**JSONC**
-
 ```jsonc
 {
   "observability": {
@@ -89,8 +86,6 @@ With your destination created in the Cloudflare dashboard, update your Worker's 
   }
 }
 ```
-
-**TOML**
 
 ```toml
 [observability.logs]
@@ -123,14 +118,11 @@ You can filter logs by:
 
 You can add custom attributes to your logs using standard `console` methods with structured data:
 
-**JavaScript**
-
 ```javascript
 export default {
   async fetch(request, env) {
     // Basic logging
     console.log("Processing request");
-
 
     // Logs with additional context
     console.info("User action", {
@@ -139,13 +131,11 @@ export default {
       path: new URL(request.url).pathname
     });
 
-
     // Error logging with details
     console.error("Request failed", {
       error: "Connection timeout",
       retryCount: 3
     });
-
 
     return new Response("OK");
   }
@@ -177,7 +167,14 @@ If you see authentication errors in your destination status:
 * [PostHog Getting Started with Logs ↗](https://posthog.com/docs/logs/start-here)
 * [OpenTelemetry Logs specification ↗](https://opentelemetry.io/docs/specs/otel/logs/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/#page","headline":"Export to PostHog · Cloudflare Workers docs","description":"Send OpenTelemetry logs from Cloudflare Workers to PostHog for analytics.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/","name":"Exporting OpenTelemetry Data"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/posthog/","name":"Export to PostHog"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/#page","headline":"Export to PostHog · Cloudflare Workers docs","description":"Send OpenTelemetry logs from Cloudflare Workers to PostHog for analytics.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

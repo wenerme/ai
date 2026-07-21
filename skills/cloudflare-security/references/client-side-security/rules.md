@@ -1,16 +1,18 @@
 ---
-title: Content security rules
 description: Use content security rules to define the resources (scripts) allowed on your applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Content security rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Content security rules
 
-# Content security rules
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -58,7 +60,14 @@ Shortly after you configure content security rules, the Cloudflare dashboard wil
 
 You can filter client-side security alert notifications according to the content security rules you configured in a zone. These alerts are called [scoped alerts](https://developers.cloudflare.com/client-side-security/alerts/#scoped-alerts).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/rules/#page","headline":"Content security rules · Client-side security docs","description":"Use content security rules to define the resources (scripts) allowed on your applications.","url":"https://developers.cloudflare.com/client-side-security/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/rules/","name":"Content security rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/rules/#page","headline":"Content security rules · Client-side security docs","description":"Use content security rules to define the resources (scripts) allowed on your applications.","url":"https://developers.cloudflare.com/client-side-security/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP"]}
 ```

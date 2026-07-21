@@ -1,16 +1,18 @@
 ---
-title: How R2 works
 description: Find out how R2 works.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: How R2 works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How R2 works
 
-# How R2 works
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/how-r2-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare R2 is an S3-compatible object storage service with no egress fees, built on Cloudflare's global network. It is [strongly consistent](https://developers.cloudflare.com/r2/reference/consistency/) and designed for high [data durability](https://developers.cloudflare.com/r2/reference/durability/).
 
@@ -60,15 +62,30 @@ To optimize read performance, enable [Cloudflare Cache](https://developers.cloud
 
 ## Learn more
 
-[ Consistency ](https://developers.cloudflare.com/r2/reference/consistency/) Learn about R2's consistency model.
+### [ Consistency ](https://developers.cloudflare.com/r2/reference/consistency/)
 
-[ Durability ](https://developers.cloudflare.com/r2/reference/durability/) Learn more about R2's durability guarantee.
+ Learn about R2's consistency model.
 
-[  Data location ](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) Learn how R2 determines where data is stored, and details on jurisdiction restrictions.
+### [ Durability ](https://developers.cloudflare.com/r2/reference/durability/)
 
-[ Data security ](https://developers.cloudflare.com/r2/reference/data-security/) Learn about R2's data security properties.
+ Learn more about R2's durability guarantee.
+
+### [ Data location ](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
+
+ Learn how R2 determines where data is stored, and details on jurisdiction restrictions.
+
+### [ Data security ](https://developers.cloudflare.com/r2/reference/data-security/)
+
+ Learn about R2's data security properties.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/how-r2-works/#page","headline":"How R2 works · Cloudflare R2 docs","description":"Find out how R2 works.","url":"https://developers.cloudflare.com/r2/how-r2-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/how-r2-works/","name":"How R2 works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/how-r2-works/#page","headline":"How R2 works · Cloudflare R2 docs","description":"Find out how R2 works.","url":"https://developers.cloudflare.com/r2/how-r2-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

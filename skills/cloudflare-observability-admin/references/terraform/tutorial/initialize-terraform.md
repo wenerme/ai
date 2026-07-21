@@ -1,16 +1,18 @@
 ---
-title: 1 –  Initialize Terraform
 description: This tutorial shows you how to get started with Terraform. You will create a DNS record pointing www.example.com to a web server at 203.0.113.10.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: 1 –  Initialize Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  1 – Initialize Terraform
 
-# 1 – Initialize Terraform
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial shows you how to get started with Terraform. You just signed up your domain (`example.com`) on Cloudflare to manage everything in Terraform and now you will create a DNS record pointing `www.example.com` to a web server at `203.0.113.10`.
 
@@ -37,26 +39,21 @@ terraform {
   }
 }
 
-
 provider "cloudflare" {
   api_token = "<YOUR_API_TOKEN>"
 }
-
 
 variable "zone_id" {
   default = "<YOUR_ZONE_ID>"
 }
 
-
 variable "account_id" {
   default = "<YOUR_ACCOUNT_ID>"
 }
 
-
 variable "domain" {
   default = "<YOUR_DOMAIN>"
 }
-
 
 resource "cloudflare_dns_record" "www" {
   zone_id = "<YOUR_ZONE_ID>"
@@ -69,7 +66,7 @@ resource "cloudflare_dns_record" "www" {
 }
 ```
 
-Warning
+Caution
 
 To prevent accidentally exposing your Cloudflare credentials, do not save this file in your version control system. The [next tutorial](https://developers.cloudflare.com/terraform/tutorial/track-history/) will cover best practices for passing in your API token.
 
@@ -88,13 +85,12 @@ terraform plan
 ```
 
 ```sh
+
 Terraform used the selected providers to generate the following execution plan. Resource actions are
 indicated with the following symbols:
   + create
 
-
 Terraform will perform the following actions:
-
 
   # cloudflare_dns_record.www will be created
   + resource "cloudflare_dns_record" "www" {
@@ -115,7 +111,6 @@ Terraform will perform the following actions:
       + type                = "A"
       + zone_id             = "<YOUR_ZONE_ID>"
     }
-
 
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
@@ -135,9 +130,7 @@ Terraform used the selected providers to generate the following execution plan. 
 indicated with the following symbols:
   + create
 
-
 Terraform will perform the following actions:
-
 
   # cloudflare_dns_record.www will be created
   + resource "cloudflare_dns_record" "www" {
@@ -159,21 +152,16 @@ Terraform will perform the following actions:
       + zone_id             = "<YOUR_ZONE_ID>"
     }
 
-
 Plan: 1 to add, 0 to change, 0 to destroy.
-
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
   Only 'yes' will be accepted to approve.
 
-
   Enter a value: yes
-
 
 cloudflare_dns_record.www: Creating...
 cloudflare_dns_record.www: Creation complete after 0s
-
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
@@ -202,9 +190,16 @@ terraform show
 
 You can also check the Cloudflare dashboard and go to the **DNS** \> **Records** page.
 
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/#page","headline":"Introduction to Terraform init · Cloudflare Terraform docs","description":"This tutorial shows you how to get started with Terraform. You will create a DNS record pointing www.example.com to a web server at 203.0.113.10.","url":"https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/tutorial/initialize-terraform/","name":"1 –  Initialize Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/#page","headline":"Introduction to Terraform init · Cloudflare Terraform docs","description":"This tutorial shows you how to get started with Terraform. You will create a DNS record pointing www.example.com to a web server at 203.0.113.10.","url":"https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

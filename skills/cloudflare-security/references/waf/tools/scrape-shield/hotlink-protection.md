@@ -1,16 +1,18 @@
 ---
-title: Hotlink Protection
 description: Prevent other sites from linking to your hosted images.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Hotlink Protection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Hotlink Protection
 
-# Hotlink Protection
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Hotlink Protection prevents your images from being used by other sites, which can reduce the bandwidth consumed by your [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
 
@@ -26,21 +28,17 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 
 ## Enable Hotlink Protection
 
-* [  New dashboard ](#tab-panel-12073)
-* [ Old dashboard ](#tab-panel-12074)
-* [ API ](#tab-panel-12075)
-
 To enable **Hotlink Protection** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. For **Hotlink Protection**, switch the toggle to **On**.
 
 To enable **Hotlink Protection** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Scrape Shield** page.
-[ Go to **Scrape Shield** ](https://dash.cloudflare.com/?to=/:account/:zone/content-protection)
+[ Go to **Scrape Shield** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/content-protection)
 2. For **Hotlink Protection**, switch the toggle to **On**.
 
 To enable **Hotlink Protection** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `hotlink_protection` as the setting name in the URI path, and the `value` parameter set to `"on"`.
@@ -76,7 +74,14 @@ Some examples of URLs that will not be checked for hotlinking:
 * `http://example.com/hotlink-ok/images/pic.jpg`
 * `http://example.com/images/main-site/hotlink-ok/pic.jpg`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/#page","headline":"Hotlink Protection · Cloudflare Web Application Firewall (WAF) docs","description":"Prevent other sites from linking to your hosted images.","url":"https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/tools/","name":"Additional tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/tools/scrape-shield/","name":"Scrape Shield"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/tools/scrape-shield/hotlink-protection/","name":"Hotlink Protection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/#page","headline":"Hotlink Protection · Cloudflare Web Application Firewall (WAF) docs","description":"Prevent other sites from linking to your hosted images.","url":"https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

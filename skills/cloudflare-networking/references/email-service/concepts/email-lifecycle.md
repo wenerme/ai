@@ -1,18 +1,20 @@
 ---
-title: Email lifecycle
 description: The complete email processing flow from send request to final delivery status in Email Service.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Email lifecycle
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Email lifecycle
+#  Email lifecycle
 
 Understand the complete email processing lifecycle from request received through final delivery status with Cloudflare Email Service
+
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/concepts/email-lifecycle/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The email lifecycle describes the complete journey of an email through Cloudflare Email Service. Understanding this process helps you optimize your email implementation and troubleshoot delivery issues.
 
@@ -90,7 +92,14 @@ flowchart LR
 6. **Outbound delivery:** The system connects to the destination mail server and delivers the message. Soft bounces are retried with exponential backoff. Hard bounces are returned to the original sender in-session as upstream SMTP errors. Refer to [Postmaster: SMTP errors](https://developers.cloudflare.com/email-service/reference/postmaster/#smtp-errors).
 7. **Final status and metrics:** The final outcome is recorded and available through the [Activity log](https://developers.cloudflare.com/email-service/observability/logs/) and the [GraphQL Analytics API](https://developers.cloudflare.com/email-service/observability/metrics-analytics/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/email-lifecycle/#page","headline":"Email lifecycle · Cloudflare Email Service docs","description":"The complete email processing flow from send request to final delivery status in Email Service.","url":"https://developers.cloudflare.com/email-service/concepts/email-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/concepts/email-lifecycle/","name":"Email lifecycle"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/email-lifecycle/#page","headline":"Email lifecycle · Cloudflare Email Service docs","description":"The complete email processing flow from send request to final delivery status in Email Service.","url":"https://developers.cloudflare.com/email-service/concepts/email-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

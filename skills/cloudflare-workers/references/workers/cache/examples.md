@@ -1,16 +1,18 @@
 ---
-title: Examples
 description: Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Examples
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Examples
 
-# Examples
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers Caching is **a cache that is itself a Worker primitive**. It sits in front of every Worker entrypoint — the default export and every named [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) — and it also sits in front of `fetch()` calls between entrypoints in the same Worker via [ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/). That second fact is the one that makes the rest of this page possible.
 
@@ -30,57 +32,45 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 
 **Disable caching on the gateway entrypoint.** Because the cache sits in front of every entrypoint by default, the outer entrypoint would itself be cached — and the next request would be served from that outer cache without ever entering your gateway logic. Turn caching off for the gateway entrypoint in your Wrangler configuration, and leave it on for the inner entrypoint the gateway forwards to. Using `"default"` for the default export:
 
-* [  wrangler.jsonc ](#tab-panel-12263)
-* [  wrangler.toml ](#tab-panel-12264)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": { "enabled": true },
-  "exports": {
-    // The gateway runs on every request — no caching in front of it.
-    "default": { "type": "worker", "cache": { "enabled": false } },
-    // The inner entrypoint is the one that gets cached.
-    "Inner": { "type": "worker", "cache": { "enabled": true } },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": { "enabled": true },
+	"exports": {
+		// The gateway runs on every request — no caching in front of it.
+		"default": { "type": "worker", "cache": { "enabled": false } },
+		// The inner entrypoint is the one that gets cached.
+		"Inner": { "type": "worker", "cache": { "enabled": true } },
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 
-
 [exports.default]
 type = "worker"
-
 
   [exports.default.cache]
   enabled = false
 
-
 [exports.Inner]
 type = "worker"
-
 
   [exports.Inner.cache]
   enabled = true
 ```
 
-Do not use `Cache-Control: no-store` to keep the gateway running
+Do not use \`Cache-Control: no-store\` to keep the gateway running
 
 It might seem simpler to leave caching on for the gateway and return `Cache-Control: no-store` from it on every request. Do not do this. With caching enabled, each request to the gateway still consults the lower and upper [cache tiers](https://developers.cloudflare.com/workers/cache/#tiered-cache) before your Worker runs — so every request pays the tiered-cache round trip only to produce an uncacheable response. That adds significant latency for no benefit. Disabling caching on the entrypoint in `exports` makes requests skip the cache lookup entirely and go straight to your gateway logic.
 
@@ -100,179 +90,145 @@ The pattern below lets you authenticate every request and still serve cache hits
 
 Disable caching on the default entrypoint so it runs on every request to authenticate, and keep it on for `CachedAPI`:
 
-* [  wrangler.jsonc ](#tab-panel-12265)
-* [  wrangler.toml ](#tab-panel-12266)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": { "enabled": true },
-  "exports": {
-    "default": { "type": "worker", "cache": { "enabled": false } },
-    "CachedAPI": { "type": "worker", "cache": { "enabled": true } },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": { "enabled": true },
+	"exports": {
+		"default": { "type": "worker", "cache": { "enabled": false } },
+		"CachedAPI": { "type": "worker", "cache": { "enabled": true } },
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 
-
 [exports.default]
 type = "worker"
-
 
   [exports.default.cache]
   enabled = false
 
-
 [exports.CachedAPI]
 type = "worker"
-
 
   [exports.CachedAPI.cache]
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-12273)
-* [  TypeScript ](#tab-panel-12274)
-
-**src/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 // Cached entrypoint. Workers Caching sits in front of this — on a hit,
 // the cached response is returned and `fetch` below is never invoked.
 export class CachedAPI extends WorkerEntrypoint {
-  async fetch(request) {
-    const data = await loadExpensiveData(request);
+	async fetch(request) {
+		const data = await loadExpensiveData(request);
 
-
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        // All authenticated callers see this same response on a hit.
-        "Cache-Control": "public, max-age=60",
-      },
-    });
-  }
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+				// All authenticated callers see this same response on a hit.
+				"Cache-Control": "public, max-age=60",
+			},
+		});
+	}
 }
-
 
 // Default entrypoint. Runs on every request to authenticate the caller,
 // then forwards to the cached entrypoint.
 export default {
-  async fetch(request, env, ctx) {
-    if (!(await authenticate(request, env))) {
-      return new Response("Unauthorized", { status: 401 });
-    }
+	async fetch(request, env, ctx) {
+		if (!(await authenticate(request, env))) {
+			return new Response("Unauthorized", { status: 401 });
+		}
 
+		// Strip the Authorization header before forwarding. Otherwise the
+		// request would trigger Cloudflare's automatic bypass for
+		// authenticated requests, and nothing would ever be cached.
+		const forwarded = new Request(request);
+		forwarded.headers.delete("Authorization");
 
-    // Strip the Authorization header before forwarding. Otherwise the
-    // request would trigger Cloudflare's automatic bypass for
-    // authenticated requests, and nothing would ever be cached.
-    const forwarded = new Request(request);
-    forwarded.headers.delete("Authorization");
-
-
-    // Caching is disabled for this gateway entrypoint (see the Wrangler
-    // configuration above), so it runs on every request. Forward to the
-    // cached CachedAPI entrypoint and return its response directly.
-    return ctx.exports.CachedAPI.fetch(forwarded);
-  },
+		// Caching is disabled for this gateway entrypoint (see the Wrangler
+		// configuration above), so it runs on every request. Forward to the
+		// cached CachedAPI entrypoint and return its response directly.
+		return ctx.exports.CachedAPI.fetch(forwarded);
+	},
 };
 
-
 async function authenticate(request, env) {
-  const token = request.headers.get("Authorization")?.replace(/^Bearer\s+/, "");
-  return token === env.API_TOKEN;
+	const token = request.headers.get("Authorization")?.replace(/^Bearer\s+/, "");
+	return token === env.API_TOKEN;
 }
-
 
 async function loadExpensiveData(request) {
-  // Replace with your real data source — D1, KV, an origin, and so on.
-  return { timestamp: Date.now() };
+	// Replace with your real data source — D1, KV, an origin, and so on.
+	return { timestamp: Date.now() };
 }
 ```
-
-**src/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 interface Env {
-  API_TOKEN: string;
+	API_TOKEN: string;
 }
-
 
 // Cached entrypoint. Workers Caching sits in front of this — on a hit,
 // the cached response is returned and `fetch` below is never invoked.
 export class CachedAPI extends WorkerEntrypoint<Env> {
-  async fetch(request: Request): Promise<Response> {
-    const data = await loadExpensiveData(request);
+	async fetch(request: Request): Promise<Response> {
+		const data = await loadExpensiveData(request);
 
-
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        // All authenticated callers see this same response on a hit.
-        "Cache-Control": "public, max-age=60",
-      },
-    });
-  }
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+				// All authenticated callers see this same response on a hit.
+				"Cache-Control": "public, max-age=60",
+			},
+		});
+	}
 }
-
 
 // Default entrypoint. Runs on every request to authenticate the caller,
 // then forwards to the cached entrypoint.
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    if (!(await authenticate(request, env))) {
-      return new Response("Unauthorized", { status: 401 });
-    }
+	async fetch(request, env, ctx): Promise<Response> {
+		if (!(await authenticate(request, env))) {
+			return new Response("Unauthorized", { status: 401 });
+		}
 
+		// Strip the Authorization header before forwarding. Otherwise the
+		// request would trigger Cloudflare's automatic bypass for
+		// authenticated requests, and nothing would ever be cached.
+		const forwarded = new Request(request);
+		forwarded.headers.delete("Authorization");
 
-    // Strip the Authorization header before forwarding. Otherwise the
-    // request would trigger Cloudflare's automatic bypass for
-    // authenticated requests, and nothing would ever be cached.
-    const forwarded = new Request(request);
-    forwarded.headers.delete("Authorization");
-
-
-    // Caching is disabled for this gateway entrypoint (see the Wrangler
-    // configuration above), so it runs on every request. Forward to the
-    // cached CachedAPI entrypoint and return its response directly.
-    return ctx.exports.CachedAPI.fetch(forwarded);
-  },
+		// Caching is disabled for this gateway entrypoint (see the Wrangler
+		// configuration above), so it runs on every request. Forward to the
+		// cached CachedAPI entrypoint and return its response directly.
+		return ctx.exports.CachedAPI.fetch(forwarded);
+	},
 } satisfies ExportedHandler<Env>;
 
-
 async function authenticate(request: Request, env: Env): Promise<boolean> {
-  const token = request.headers.get("Authorization")?.replace(/^Bearer\s+/, "");
-  return token === env.API_TOKEN;
+	const token = request.headers.get("Authorization")?.replace(/^Bearer\s+/, "");
+	return token === env.API_TOKEN;
 }
 
-
 async function loadExpensiveData(request: Request): Promise<unknown> {
-  // Replace with your real data source — D1, KV, an origin, and so on.
-  return { timestamp: Date.now() };
+	// Replace with your real data source — D1, KV, an origin, and so on.
+	return { timestamp: Date.now() };
 }
 ```
 
@@ -282,7 +238,7 @@ A few things to notice:
 * **`Authorization` is stripped before forwarding.** This is what makes the response cacheable — Cloudflare's bypass rule fires on the inbound request, not on the response, so removing the header before the request reaches the cached entrypoint is what lets the cached entrypoint's `Cache-Control: public` take effect. It also prevents tokens from contributing to any future cache key.
 * **The cached response is shared across users.** Every caller who passes the auth check sees the same cached body.
 
-Warning
+Caution
 
 This example is intentionally minimal to show the shape of the pattern. Sharing a single cached response across every authenticated caller is only correct when the response really is the same for all of them — for example, a public catalog behind a token gate, or an internal endpoint where every caller is equally privileged. If different callers should see different data, the next section shows how to partition the cache per user with `ctx.props`. Workers Caching does not infer per-user isolation for you; you have to ask for it.
 
@@ -290,133 +246,110 @@ This example is intentionally minimal to show the shape of the pattern. Sharing 
 
 If your endpoint returns user-specific data, pass the user identifier via `ctx.props`. Workers Caching includes `ctx.props` in the cache key, so each user gets their own cache entry and one user can never receive another user's cached response. This uses the same Wrangler configuration as the previous example — caching disabled on `default`, enabled on `CachedAPI`:
 
-* [  JavaScript ](#tab-panel-12277)
-* [  TypeScript ](#tab-panel-12278)
-
-**src/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class CachedAPI extends WorkerEntrypoint {
-  async fetch(request) {
-    // ctx.props.userId is part of the cache key, so this response
-    // is cached separately for every userId.
-    const { userId } = this.ctx.props;
-    const data = await loadUserData(userId);
+	async fetch(request) {
+		// ctx.props.userId is part of the cache key, so this response
+		// is cached separately for every userId.
+		const { userId } = this.ctx.props;
+		const data = await loadUserData(userId);
 
-
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=60",
-      },
-    });
-  }
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+				"Cache-Control": "public, max-age=60",
+			},
+		});
+	}
 }
-
 
 export default {
-  async fetch(request, env, ctx) {
-    const userId = await authenticate(request, env);
-    if (!userId) {
-      return new Response("Unauthorized", { status: 401 });
-    }
+	async fetch(request, env, ctx) {
+		const userId = await authenticate(request, env);
+		if (!userId) {
+			return new Response("Unauthorized", { status: 401 });
+		}
 
+		const forwarded = new Request(request);
+		forwarded.headers.delete("Authorization");
 
-    const forwarded = new Request(request);
-    forwarded.headers.delete("Authorization");
-
-
-    // The gateway's cache is disabled, so it runs on every request.
-    // Pass the authenticated userId to the cached entrypoint via props —
-    // this becomes part of the cache key.
-    return ctx.exports.CachedAPI.fetch(forwarded, {
-      props: { userId },
-    });
-  },
+		// The gateway's cache is disabled, so it runs on every request.
+		// Pass the authenticated userId to the cached entrypoint via props —
+		// this becomes part of the cache key.
+		return ctx.exports.CachedAPI.fetch(forwarded, {
+			props: { userId },
+		});
+	},
 };
 
-
 async function authenticate(request, env) {
-  // Replace with your real auth — JWT verification, token lookup, and so on.
-  return "user-42";
+	// Replace with your real auth — JWT verification, token lookup, and so on.
+	return "user-42";
 }
-
 
 async function loadUserData(userId) {
-  return { userId, timestamp: Date.now() };
+	return { userId, timestamp: Date.now() };
 }
 ```
-
-**src/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 interface Env {
-  API_TOKEN: string;
+	API_TOKEN: string;
 }
-
 
 interface Props {
-  userId: string;
+	userId: string;
 }
-
 
 export class CachedAPI extends WorkerEntrypoint<Env, Props> {
-  async fetch(request: Request): Promise<Response> {
-    // ctx.props.userId is part of the cache key, so this response
-    // is cached separately for every userId.
-    const { userId } = this.ctx.props;
-    const data = await loadUserData(userId);
+	async fetch(request: Request): Promise<Response> {
+		// ctx.props.userId is part of the cache key, so this response
+		// is cached separately for every userId.
+		const { userId } = this.ctx.props;
+		const data = await loadUserData(userId);
 
-
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=60",
-      },
-    });
-  }
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+				"Cache-Control": "public, max-age=60",
+			},
+		});
+	}
 }
-
 
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const userId = await authenticate(request, env);
-    if (!userId) {
-      return new Response("Unauthorized", { status: 401 });
-    }
+	async fetch(request, env, ctx): Promise<Response> {
+		const userId = await authenticate(request, env);
+		if (!userId) {
+			return new Response("Unauthorized", { status: 401 });
+		}
 
+		const forwarded = new Request(request);
+		forwarded.headers.delete("Authorization");
 
-    const forwarded = new Request(request);
-    forwarded.headers.delete("Authorization");
-
-
-    // The gateway's cache is disabled, so it runs on every request.
-    // Pass the authenticated userId to the cached entrypoint via props —
-    // this becomes part of the cache key.
-    return ctx.exports.CachedAPI.fetch(forwarded, {
-      props: { userId },
-    });
-  },
+		// The gateway's cache is disabled, so it runs on every request.
+		// Pass the authenticated userId to the cached entrypoint via props —
+		// this becomes part of the cache key.
+		return ctx.exports.CachedAPI.fetch(forwarded, {
+			props: { userId },
+		});
+	},
 } satisfies ExportedHandler<Env>;
 
-
 async function authenticate(
-  request: Request,
-  env: Env,
+	request: Request,
+	env: Env,
 ): Promise<string | null> {
-  // Replace with your real auth — JWT verification, token lookup, and so on.
-  return "user-42";
+	// Replace with your real auth — JWT verification, token lookup, and so on.
+	return "user-42";
 }
 
-
 async function loadUserData(userId: string): Promise<unknown> {
-  return { userId, timestamp: Date.now() };
+	return { userId, timestamp: Date.now() };
 }
 ```
 
@@ -432,190 +365,155 @@ For requests routed through Cloudflare's front line, this matters even more: the
 
 The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf.clientAcceptEncoding` before forwarding to the cached entrypoint. Disable caching on the gateway and enable it on `CachedAssets`:
 
-* [  wrangler.jsonc ](#tab-panel-12267)
-* [  wrangler.toml ](#tab-panel-12268)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": { "enabled": true },
-  "exports": {
-    "default": { "type": "worker", "cache": { "enabled": false } },
-    "CachedAssets": { "type": "worker", "cache": { "enabled": true } },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": { "enabled": true },
+	"exports": {
+		"default": { "type": "worker", "cache": { "enabled": false } },
+		"CachedAssets": { "type": "worker", "cache": { "enabled": true } },
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 
-
 [exports.default]
 type = "worker"
-
 
   [exports.default.cache]
   enabled = false
 
-
 [exports.CachedAssets]
 type = "worker"
-
 
   [exports.CachedAssets.cache]
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-12279)
-* [  TypeScript ](#tab-panel-12280)
-
-**src/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class CachedAssets extends WorkerEntrypoint {
-  async fetch(request) {
-    const accept = request.headers.get("Accept-Encoding") ?? "";
-    const wantsBrotli = accept.includes("br");
+	async fetch(request) {
+		const accept = request.headers.get("Accept-Encoding") ?? "";
+		const wantsBrotli = accept.includes("br");
 
+		const { body, encoding } = wantsBrotli
+			? await loadBrotli(request)
+			: await loadGzip(request);
 
-    const { body, encoding } = wantsBrotli
-      ? await loadBrotli(request)
-      : await loadGzip(request);
-
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": "application/javascript",
-        "Content-Encoding": encoding,
-        "Cache-Control": "public, max-age=86400, immutable",
-        // One variant per distinct Accept-Encoding value the cached
-        // entrypoint sees. The gateway below normalizes that value.
-        Vary: "Accept-Encoding",
-      },
-    });
-  }
+		return new Response(body, {
+			headers: {
+				"Content-Type": "application/javascript",
+				"Content-Encoding": encoding,
+				"Cache-Control": "public, max-age=86400, immutable",
+				// One variant per distinct Accept-Encoding value the cached
+				// entrypoint sees. The gateway below normalizes that value.
+				Vary: "Accept-Encoding",
+			},
+		});
+	}
 }
-
 
 export default {
-  async fetch(request, env, ctx) {
-    // On Cloudflare, the eyeball's Accept-Encoding is usually rewritten
-    // to a canonical value before the Worker runs. Restore it from
-    // request.cf.clientAcceptEncoding so the cached entrypoint sees
-    // what the client actually sent — and so Vary keys variants on
-    // the real value.
-    const original = request.cf?.clientAcceptEncoding;
+	async fetch(request, env, ctx) {
+		// On Cloudflare, the eyeball's Accept-Encoding is usually rewritten
+		// to a canonical value before the Worker runs. Restore it from
+		// request.cf.clientAcceptEncoding so the cached entrypoint sees
+		// what the client actually sent — and so Vary keys variants on
+		// the real value.
+		const original = request.cf?.clientAcceptEncoding;
 
+		const forwarded = new Request(request);
+		if (original) {
+			forwarded.headers.set("Accept-Encoding", original);
+		}
 
-    const forwarded = new Request(request);
-    if (original) {
-      forwarded.headers.set("Accept-Encoding", original);
-    }
-
-
-    // The gateway's cache is disabled (see the Wrangler configuration
-    // above), so it runs on every request and always restores
-    // Accept-Encoding before forwarding to the cached entrypoint.
-    return ctx.exports.CachedAssets.fetch(forwarded);
-  },
+		// The gateway's cache is disabled (see the Wrangler configuration
+		// above), so it runs on every request and always restores
+		// Accept-Encoding before forwarding to the cached entrypoint.
+		return ctx.exports.CachedAssets.fetch(forwarded);
+	},
 };
 
-
 async function loadBrotli(request) {
-  // Replace with your real asset loader (R2, KV, fetch, and so on).
-  return { body: new ArrayBuffer(0), encoding: "br" };
+	// Replace with your real asset loader (R2, KV, fetch, and so on).
+	return { body: new ArrayBuffer(0), encoding: "br" };
 }
-
 
 async function loadGzip(request) {
-  return { body: new ArrayBuffer(0), encoding: "gzip" };
+	return { body: new ArrayBuffer(0), encoding: "gzip" };
 }
 ```
-
-**src/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class CachedAssets extends WorkerEntrypoint {
-  async fetch(request: Request): Promise<Response> {
-    const accept = request.headers.get("Accept-Encoding") ?? "";
-    const wantsBrotli = accept.includes("br");
+	async fetch(request: Request): Promise<Response> {
+		const accept = request.headers.get("Accept-Encoding") ?? "";
+		const wantsBrotli = accept.includes("br");
 
+		const { body, encoding } = wantsBrotli
+			? await loadBrotli(request)
+			: await loadGzip(request);
 
-    const { body, encoding } = wantsBrotli
-      ? await loadBrotli(request)
-      : await loadGzip(request);
-
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": "application/javascript",
-        "Content-Encoding": encoding,
-        "Cache-Control": "public, max-age=86400, immutable",
-        // One variant per distinct Accept-Encoding value the cached
-        // entrypoint sees. The gateway below normalizes that value.
-        Vary: "Accept-Encoding",
-      },
-    });
-  }
+		return new Response(body, {
+			headers: {
+				"Content-Type": "application/javascript",
+				"Content-Encoding": encoding,
+				"Cache-Control": "public, max-age=86400, immutable",
+				// One variant per distinct Accept-Encoding value the cached
+				// entrypoint sees. The gateway below normalizes that value.
+				Vary: "Accept-Encoding",
+			},
+		});
+	}
 }
-
 
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // On Cloudflare, the eyeball's Accept-Encoding is usually rewritten
-    // to a canonical value before the Worker runs. Restore it from
-    // request.cf.clientAcceptEncoding so the cached entrypoint sees
-    // what the client actually sent — and so Vary keys variants on
-    // the real value.
-    const original = request.cf?.clientAcceptEncoding;
+	async fetch(request, env, ctx): Promise<Response> {
+		// On Cloudflare, the eyeball's Accept-Encoding is usually rewritten
+		// to a canonical value before the Worker runs. Restore it from
+		// request.cf.clientAcceptEncoding so the cached entrypoint sees
+		// what the client actually sent — and so Vary keys variants on
+		// the real value.
+		const original = request.cf?.clientAcceptEncoding;
 
+		const forwarded = new Request(request);
+		if (original) {
+			forwarded.headers.set("Accept-Encoding", original);
+		}
 
-    const forwarded = new Request(request);
-    if (original) {
-      forwarded.headers.set("Accept-Encoding", original);
-    }
-
-
-    // The gateway's cache is disabled (see the Wrangler configuration
-    // above), so it runs on every request and always restores
-    // Accept-Encoding before forwarding to the cached entrypoint.
-    return ctx.exports.CachedAssets.fetch(forwarded);
-  },
+		// The gateway's cache is disabled (see the Wrangler configuration
+		// above), so it runs on every request and always restores
+		// Accept-Encoding before forwarding to the cached entrypoint.
+		return ctx.exports.CachedAssets.fetch(forwarded);
+	},
 } satisfies ExportedHandler;
 
-
 async function loadBrotli(
-  request: Request,
+	request: Request,
 ): Promise<{ body: ArrayBuffer; encoding: string }> {
-  // Replace with your real asset loader (R2, KV, fetch, and so on).
-  return { body: new ArrayBuffer(0), encoding: "br" };
+	// Replace with your real asset loader (R2, KV, fetch, and so on).
+	return { body: new ArrayBuffer(0), encoding: "br" };
 }
 
-
 async function loadGzip(
-  request: Request,
+	request: Request,
 ): Promise<{ body: ArrayBuffer; encoding: string }> {
-  return { body: new ArrayBuffer(0), encoding: "gzip" };
+	return { body: new ArrayBuffer(0), encoding: "gzip" };
 }
 ```
 
@@ -635,294 +533,244 @@ So far the inner entrypoint has been a function of the request. The next example
 
 You can cache those responses by wrapping the Durable Object behind a named entrypoint and letting Workers Caching sit in front of the entrypoint. On a cache hit, the wrapper never runs and the Durable Object is never touched. Disable caching on the default (router) entrypoint and enable it on the `CachedLeaderboard` wrapper — the Durable Object itself is never cached and needs no cache configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12269)
-* [  wrangler.toml ](#tab-panel-12270)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": { "enabled": true },
-  "exports": {
-    "default": { "type": "worker", "cache": { "enabled": false } },
-    "CachedLeaderboard": { "type": "worker", "cache": { "enabled": true } },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": { "enabled": true },
+	"exports": {
+		"default": { "type": "worker", "cache": { "enabled": false } },
+		"CachedLeaderboard": { "type": "worker", "cache": { "enabled": true } },
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 
-
 [exports.default]
 type = "worker"
-
 
   [exports.default.cache]
   enabled = false
 
-
 [exports.CachedLeaderboard]
 type = "worker"
-
 
   [exports.CachedLeaderboard.cache]
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-12281)
-* [  TypeScript ](#tab-panel-12282)
-
-**src/index.js**
-
 ```js
 import { DurableObject, WorkerEntrypoint } from "cloudflare:workers";
 
-
 // A Durable Object that maintains an expensive-to-compute leaderboard.
 export class Leaderboard extends DurableObject {
-  async fetch(request) {
-    const url = new URL(request.url);
+	async fetch(request) {
+		const url = new URL(request.url);
 
+		if (url.pathname === "/top") {
+			const top = await this.computeTop();
+			return new Response(JSON.stringify(top), {
+				headers: { "Content-Type": "application/json" },
+			});
+		}
 
-    if (url.pathname === "/top") {
-      const top = await this.computeTop();
-      return new Response(JSON.stringify(top), {
-        headers: { "Content-Type": "application/json" },
-      });
-    }
+		if (url.pathname === "/record" && request.method === "POST") {
+			const { userId, score } = await request.json();
+			await this.record(userId, score);
+			return new Response("Recorded");
+		}
 
+		return new Response("Not found", { status: 404 });
+	}
 
-    if (url.pathname === "/record" && request.method === "POST") {
-      const { userId, score } = await request.json();
-      await this.record(userId, score);
-      return new Response("Recorded");
-    }
+	async computeTop() {
+		// Pretend this is expensive — a sorted scan of stored state, an
+		// aggregation across many keys, a call to another service.
+		return { top: [], computedAt: Date.now() };
+	}
 
-
-    return new Response("Not found", { status: 404 });
-  }
-
-
-  async computeTop() {
-    // Pretend this is expensive — a sorted scan of stored state, an
-    // aggregation across many keys, a call to another service.
-    return { top: [], computedAt: Date.now() };
-  }
-
-
-  async record(userId, score) {
-    await this.ctx.storage.put(`score:${userId}`, score);
-  }
+	async record(userId, score) {
+		await this.ctx.storage.put(`score:${userId}`, score);
+	}
 }
-
 
 // Cached entrypoint. Forwards GET /top to the Durable Object and tags
 // the response so it can be purged when scores change.
 export class CachedLeaderboard extends WorkerEntrypoint {
-  async fetch(request) {
-    const id = this.env.LEADERBOARD.idFromName("global");
-    const stub = this.env.LEADERBOARD.get(id);
-    const response = await stub.fetch(request);
+	async fetch(request) {
+		const id = this.env.LEADERBOARD.idFromName("global");
+		const stub = this.env.LEADERBOARD.get(id);
+		const response = await stub.fetch(request);
 
+		// Copy the body and headers into a new Response so we can attach
+		// cache headers. The DO's body stream is consumed once here.
+		return new Response(response.body, {
+			status: response.status,
+			headers: {
+				...Object.fromEntries(response.headers),
+				"Cache-Control": "public, max-age=30",
+				"Cache-Tag": "leaderboard",
+			},
+		});
+	}
 
-    // Copy the body and headers into a new Response so we can attach
-    // cache headers. The DO's body stream is consumed once here.
-    return new Response(response.body, {
-      status: response.status,
-      headers: {
-        ...Object.fromEntries(response.headers),
-        "Cache-Control": "public, max-age=30",
-        "Cache-Tag": "leaderboard",
-      },
-    });
-  }
-
-
-  // Invalidate this entrypoint's cached leaderboard. purge() is scoped to
-  // the entrypoint that calls it, so it must run inside CachedLeaderboard —
-  // the entrypoint that owns the cached response. The gateway invokes this
-  // over ctx.exports after a write.
-  async invalidate() {
-    await this.ctx.cache.purge({ tags: ["leaderboard"] });
-  }
+	// Invalidate this entrypoint's cached leaderboard. purge() is scoped to
+	// the entrypoint that calls it, so it must run inside CachedLeaderboard —
+	// the entrypoint that owns the cached response. The gateway invokes this
+	// over ctx.exports after a write.
+	async invalidate() {
+		await this.ctx.cache.purge({ tags: ["leaderboard"] });
+	}
 }
-
 
 // Default entrypoint. Routes reads through the cached entrypoint
 // and writes directly to the Durable Object, invalidating the cache on write.
 export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
+	async fetch(request, env, ctx) {
+		const url = new URL(request.url);
 
+		if (request.method === "GET" && url.pathname === "/top") {
+			// Read path — goes through Workers Caching. The router's cache is
+			// disabled (see the Wrangler configuration above), so it runs on
+			// every request. On a hit, CachedLeaderboard never runs and the
+			// Durable Object is never touched.
+			return ctx.exports.CachedLeaderboard.fetch(request);
+		}
 
-    if (request.method === "GET" && url.pathname === "/top") {
-      // Read path — goes through Workers Caching. The router's cache is
-      // disabled (see the Wrangler configuration above), so it runs on
-      // every request. On a hit, CachedLeaderboard never runs and the
-      // Durable Object is never touched.
-      return ctx.exports.CachedLeaderboard.fetch(request);
-    }
+		if (request.method === "POST" && url.pathname === "/record") {
+			// Write path — bypass the cached entrypoint, hit the Durable
+			// Object directly, then ask CachedLeaderboard to invalidate its
+			// own cache so the next read returns fresh data. The purge must
+			// run inside CachedLeaderboard because purges are scoped to the
+			// entrypoint that owns the cached response — a purge from this
+			// gateway would target the gateway's (disabled) cache instead.
+			const id = env.LEADERBOARD.idFromName("global");
+			const stub = env.LEADERBOARD.get(id);
+			const result = await stub.fetch(request);
 
+			await ctx.exports.CachedLeaderboard.invalidate();
 
-    if (request.method === "POST" && url.pathname === "/record") {
-      // Write path — bypass the cached entrypoint, hit the Durable
-      // Object directly, then ask CachedLeaderboard to invalidate its
-      // own cache so the next read returns fresh data. The purge must
-      // run inside CachedLeaderboard because purges are scoped to the
-      // entrypoint that owns the cached response — a purge from this
-      // gateway would target the gateway's (disabled) cache instead.
-      const id = env.LEADERBOARD.idFromName("global");
-      const stub = env.LEADERBOARD.get(id);
-      const result = await stub.fetch(request);
+			return result;
+		}
 
-
-      await ctx.exports.CachedLeaderboard.invalidate();
-
-
-      return result;
-    }
-
-
-    return new Response("Not found", { status: 404 });
-  },
+		return new Response("Not found", { status: 404 });
+	},
 };
 ```
-
-**src/index.ts**
 
 ```ts
 import { DurableObject, WorkerEntrypoint } from "cloudflare:workers";
 
-
 interface Env {
-  LEADERBOARD: DurableObjectNamespace<Leaderboard>;
+	LEADERBOARD: DurableObjectNamespace<Leaderboard>;
 }
-
 
 // A Durable Object that maintains an expensive-to-compute leaderboard.
 export class Leaderboard extends DurableObject<Env> {
-  async fetch(request: Request): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request: Request): Promise<Response> {
+		const url = new URL(request.url);
 
+		if (url.pathname === "/top") {
+			const top = await this.computeTop();
+			return new Response(JSON.stringify(top), {
+				headers: { "Content-Type": "application/json" },
+			});
+		}
 
-    if (url.pathname === "/top") {
-      const top = await this.computeTop();
-      return new Response(JSON.stringify(top), {
-        headers: { "Content-Type": "application/json" },
-      });
-    }
+		if (url.pathname === "/record" && request.method === "POST") {
+			const { userId, score } = await request.json<{
+				userId: string;
+				score: number;
+			}>();
+			await this.record(userId, score);
+			return new Response("Recorded");
+		}
 
+		return new Response("Not found", { status: 404 });
+	}
 
-    if (url.pathname === "/record" && request.method === "POST") {
-      const { userId, score } = await request.json<{
-        userId: string;
-        score: number;
-      }>();
-      await this.record(userId, score);
-      return new Response("Recorded");
-    }
+	private async computeTop(): Promise<unknown> {
+		// Pretend this is expensive — a sorted scan of stored state, an
+		// aggregation across many keys, a call to another service.
+		return { top: [], computedAt: Date.now() };
+	}
 
-
-    return new Response("Not found", { status: 404 });
-  }
-
-
-  private async computeTop(): Promise<unknown> {
-    // Pretend this is expensive — a sorted scan of stored state, an
-    // aggregation across many keys, a call to another service.
-    return { top: [], computedAt: Date.now() };
-  }
-
-
-  private async record(userId: string, score: number): Promise<void> {
-    await this.ctx.storage.put(`score:${userId}`, score);
-  }
+	private async record(userId: string, score: number): Promise<void> {
+		await this.ctx.storage.put(`score:${userId}`, score);
+	}
 }
-
 
 // Cached entrypoint. Forwards GET /top to the Durable Object and tags
 // the response so it can be purged when scores change.
 export class CachedLeaderboard extends WorkerEntrypoint<Env> {
-  async fetch(request: Request): Promise<Response> {
-    const id = this.env.LEADERBOARD.idFromName("global");
-    const stub = this.env.LEADERBOARD.get(id);
-    const response = await stub.fetch(request);
+	async fetch(request: Request): Promise<Response> {
+		const id = this.env.LEADERBOARD.idFromName("global");
+		const stub = this.env.LEADERBOARD.get(id);
+		const response = await stub.fetch(request);
 
+		// Copy the body and headers into a new Response so we can attach
+		// cache headers. The DO's body stream is consumed once here.
+		return new Response(response.body, {
+			status: response.status,
+			headers: {
+				...Object.fromEntries(response.headers),
+				"Cache-Control": "public, max-age=30",
+				"Cache-Tag": "leaderboard",
+			},
+		});
+	}
 
-    // Copy the body and headers into a new Response so we can attach
-    // cache headers. The DO's body stream is consumed once here.
-    return new Response(response.body, {
-      status: response.status,
-      headers: {
-        ...Object.fromEntries(response.headers),
-        "Cache-Control": "public, max-age=30",
-        "Cache-Tag": "leaderboard",
-      },
-    });
-  }
-
-
-  // Invalidate this entrypoint's cached leaderboard. purge() is scoped to
-  // the entrypoint that calls it, so it must run inside CachedLeaderboard —
-  // the entrypoint that owns the cached response. The gateway invokes this
-  // over ctx.exports after a write.
-  async invalidate(): Promise<void> {
-    await this.ctx.cache.purge({ tags: ["leaderboard"] });
-  }
+	// Invalidate this entrypoint's cached leaderboard. purge() is scoped to
+	// the entrypoint that calls it, so it must run inside CachedLeaderboard —
+	// the entrypoint that owns the cached response. The gateway invokes this
+	// over ctx.exports after a write.
+	async invalidate(): Promise<void> {
+		await this.ctx.cache.purge({ tags: ["leaderboard"] });
+	}
 }
-
 
 // Default entrypoint. Routes reads through the cached entrypoint
 // and writes directly to the Durable Object, invalidating the cache on write.
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request, env, ctx): Promise<Response> {
+		const url = new URL(request.url);
 
+		if (request.method === "GET" && url.pathname === "/top") {
+			// Read path — goes through Workers Caching. The router's cache is
+			// disabled (see the Wrangler configuration above), so it runs on
+			// every request. On a hit, CachedLeaderboard never runs and the
+			// Durable Object is never touched.
+			return ctx.exports.CachedLeaderboard.fetch(request);
+		}
 
-    if (request.method === "GET" && url.pathname === "/top") {
-      // Read path — goes through Workers Caching. The router's cache is
-      // disabled (see the Wrangler configuration above), so it runs on
-      // every request. On a hit, CachedLeaderboard never runs and the
-      // Durable Object is never touched.
-      return ctx.exports.CachedLeaderboard.fetch(request);
-    }
+		if (request.method === "POST" && url.pathname === "/record") {
+			// Write path — bypass the cached entrypoint, hit the Durable
+			// Object directly, then ask CachedLeaderboard to invalidate its
+			// own cache so the next read returns fresh data. The purge must
+			// run inside CachedLeaderboard because purges are scoped to the
+			// entrypoint that owns the cached response — a purge from this
+			// gateway would target the gateway's (disabled) cache instead.
+			const id = env.LEADERBOARD.idFromName("global");
+			const stub = env.LEADERBOARD.get(id);
+			const result = await stub.fetch(request);
 
+			await ctx.exports.CachedLeaderboard.invalidate();
 
-    if (request.method === "POST" && url.pathname === "/record") {
-      // Write path — bypass the cached entrypoint, hit the Durable
-      // Object directly, then ask CachedLeaderboard to invalidate its
-      // own cache so the next read returns fresh data. The purge must
-      // run inside CachedLeaderboard because purges are scoped to the
-      // entrypoint that owns the cached response — a purge from this
-      // gateway would target the gateway's (disabled) cache instead.
-      const id = env.LEADERBOARD.idFromName("global");
-      const stub = env.LEADERBOARD.get(id);
-      const result = await stub.fetch(request);
+			return result;
+		}
 
-
-      await ctx.exports.CachedLeaderboard.invalidate();
-
-
-      return result;
-    }
-
-
-    return new Response("Not found", { status: 404 });
-  },
+		return new Response("Not found", { status: 404 });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -940,168 +788,137 @@ Sometimes the origin you depend on is not yours. A third-party API, a SaaS endpo
 
 Workers Caching lets you put your own cache layer in front of that origin without changing anything on the origin side. The pattern is the same outer-plus-inner shape as the rest of this page: a thin entrypoint that forwards to the origin, with Workers Caching sitting in front of it and applying the `Cache-Control` directives you choose. The origin keeps its own caching contract with the rest of the world; your Worker just adds a second, user-controlled layer between your application and that origin. As with the other patterns, disable caching on the gateway and enable it on `CachedOrigin`:
 
-* [  wrangler.jsonc ](#tab-panel-12271)
-* [  wrangler.toml ](#tab-panel-12272)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": { "enabled": true },
-  "exports": {
-    "default": { "type": "worker", "cache": { "enabled": false } },
-    "CachedOrigin": { "type": "worker", "cache": { "enabled": true } },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": { "enabled": true },
+	"exports": {
+		"default": { "type": "worker", "cache": { "enabled": false } },
+		"CachedOrigin": { "type": "worker", "cache": { "enabled": true } },
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 
-
 [exports.default]
 type = "worker"
-
 
   [exports.default.cache]
   enabled = false
 
-
 [exports.CachedOrigin]
 type = "worker"
-
 
   [exports.CachedOrigin.cache]
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-12275)
-* [  TypeScript ](#tab-panel-12276)
-
-**src/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 const ORIGIN = "https://api.example.com";
-
 
 // Cached entrypoint. Fetches the upstream origin and overlays your own
 // Cache-Control on the response. Workers Caching sits in front of this,
 // so on a hit the upstream origin is never contacted.
 export class CachedOrigin extends WorkerEntrypoint {
-  async fetch(request) {
-    const url = new URL(request.url);
-    const upstream = new URL(url.pathname + url.search, ORIGIN);
+	async fetch(request) {
+		const url = new URL(request.url);
+		const upstream = new URL(url.pathname + url.search, ORIGIN);
 
+		// Forward the request to the third-party origin. The origin's own
+		// caching headers (or lack of them) are about to be overwritten —
+		// they apply to the origin's relationship with the public internet,
+		// not to your cache layer.
+		const response = await fetch(upstream, {
+			method: request.method,
+			headers: request.headers,
+			body: request.body,
+		});
 
-    // Forward the request to the third-party origin. The origin's own
-    // caching headers (or lack of them) are about to be overwritten —
-    // they apply to the origin's relationship with the public internet,
-    // not to your cache layer.
-    const response = await fetch(upstream, {
-      method: request.method,
-      headers: request.headers,
-      body: request.body,
-    });
+		// Replace the origin's Cache-Control with your own. This is the
+		// whole point of the pattern: you decide how long Workers Caching
+		// stores this response, regardless of what the origin says.
+		const headers = new Headers(response.headers);
+		headers.set("Cache-Control", "public, max-age=300");
+		headers.set("Cache-Tag", "origin:example");
 
-
-    // Replace the origin's Cache-Control with your own. This is the
-    // whole point of the pattern: you decide how long Workers Caching
-    // stores this response, regardless of what the origin says.
-    const headers = new Headers(response.headers);
-    headers.set("Cache-Control", "public, max-age=300");
-    headers.set("Cache-Tag", "origin:example");
-
-
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers,
-    });
-  }
+		return new Response(response.body, {
+			status: response.status,
+			statusText: response.statusText,
+			headers,
+		});
+	}
 }
-
 
 // Default entrypoint. Forwards every request through the cached entrypoint.
 export default {
-  async fetch(request, env, ctx) {
-    // The gateway's cache is disabled (see the Wrangler configuration
-    // above), so it runs on every request and forwards to the cached
-    // CachedOrigin entrypoint.
-    return ctx.exports.CachedOrigin.fetch(request);
-  },
+	async fetch(request, env, ctx) {
+		// The gateway's cache is disabled (see the Wrangler configuration
+		// above), so it runs on every request and forwards to the cached
+		// CachedOrigin entrypoint.
+		return ctx.exports.CachedOrigin.fetch(request);
+	},
 };
 ```
-
-**src/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 const ORIGIN = "https://api.example.com";
-
 
 // Cached entrypoint. Fetches the upstream origin and overlays your own
 // Cache-Control on the response. Workers Caching sits in front of this,
 // so on a hit the upstream origin is never contacted.
 export class CachedOrigin extends WorkerEntrypoint {
-  async fetch(request: Request): Promise<Response> {
-    const url = new URL(request.url);
-    const upstream = new URL(url.pathname + url.search, ORIGIN);
+	async fetch(request: Request): Promise<Response> {
+		const url = new URL(request.url);
+		const upstream = new URL(url.pathname + url.search, ORIGIN);
 
+		// Forward the request to the third-party origin. The origin's own
+		// caching headers (or lack of them) are about to be overwritten —
+		// they apply to the origin's relationship with the public internet,
+		// not to your cache layer.
+		const response = await fetch(upstream, {
+			method: request.method,
+			headers: request.headers,
+			body: request.body,
+		});
 
-    // Forward the request to the third-party origin. The origin's own
-    // caching headers (or lack of them) are about to be overwritten —
-    // they apply to the origin's relationship with the public internet,
-    // not to your cache layer.
-    const response = await fetch(upstream, {
-      method: request.method,
-      headers: request.headers,
-      body: request.body,
-    });
+		// Replace the origin's Cache-Control with your own. This is the
+		// whole point of the pattern: you decide how long Workers Caching
+		// stores this response, regardless of what the origin says.
+		const headers = new Headers(response.headers);
+		headers.set("Cache-Control", "public, max-age=300");
+		headers.set("Cache-Tag", "origin:example");
 
-
-    // Replace the origin's Cache-Control with your own. This is the
-    // whole point of the pattern: you decide how long Workers Caching
-    // stores this response, regardless of what the origin says.
-    const headers = new Headers(response.headers);
-    headers.set("Cache-Control", "public, max-age=300");
-    headers.set("Cache-Tag", "origin:example");
-
-
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers,
-    });
-  }
+		return new Response(response.body, {
+			status: response.status,
+			statusText: response.statusText,
+			headers,
+		});
+	}
 }
-
 
 // Default entrypoint. Forwards every request through the cached entrypoint.
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // The gateway's cache is disabled (see the Wrangler configuration
-    // above), so it runs on every request and forwards to the cached
-    // CachedOrigin entrypoint.
-    return ctx.exports.CachedOrigin.fetch(request);
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		// The gateway's cache is disabled (see the Wrangler configuration
+		// above), so it runs on every request and forwards to the cached
+		// CachedOrigin entrypoint.
+		return ctx.exports.CachedOrigin.fetch(request);
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -1144,7 +961,14 @@ Each call between these entrypoints goes through its own cache stage. The chain 
 
 There is no fixed list of patterns. Workers Caching gives you a cache between every Worker entrypoint — what you build with that is up to you.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/examples/#page","headline":"Examples · Cloudflare Workers docs","description":"Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.","url":"https://developers.cloudflare.com/workers/cache/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/examples/","name":"Examples"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/examples/#page","headline":"Examples · Cloudflare Workers docs","description":"Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.","url":"https://developers.cloudflare.com/workers/cache/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

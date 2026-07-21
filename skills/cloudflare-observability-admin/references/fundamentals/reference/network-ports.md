@@ -1,16 +1,18 @@
 ---
-title: Network ports
 description: Review the HTTP and HTTPS ports Cloudflare proxies by default and how to enable proxy support for additional ports.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Network ports
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network ports
 
-# Network ports
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/network-ports/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Learn which network ports Cloudflare proxies by default and how to enable Cloudflare's proxy for additional ports.
 
@@ -85,7 +87,14 @@ Note
 
 * [Managing DNS records at Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/network-ports/#page","headline":"Network ports · Cloudflare Fundamentals docs","description":"Review the HTTP and HTTPS ports Cloudflare proxies by default and how to enable proxy support for additional ports.","url":"https://developers.cloudflare.com/fundamentals/reference/network-ports/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/network-ports/","name":"Network ports"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/network-ports/#page","headline":"Network ports · Cloudflare Fundamentals docs","description":"Review the HTTP and HTTPS ports Cloudflare proxies by default and how to enable proxy support for additional ports.","url":"https://developers.cloudflare.com/fundamentals/reference/network-ports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

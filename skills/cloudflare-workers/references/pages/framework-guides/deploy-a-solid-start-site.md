@@ -1,16 +1,18 @@
 ---
-title: SolidStart
 description: Deploy a SolidStart application to Cloudflare Pages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: SolidStart
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SolidStart
 
-# SolidStart
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-start-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Solid ↗](https://www.solidjs.com/) is an open-source web application framework focused on generating performant applications with a modern developer experience based on JSX.
 
@@ -57,16 +59,14 @@ In order to configure SolidStart so that it can be deployed to Cloudflare pages,
 ```diff
 import { defineConfig } from "@solidjs/start/config";
 
-
 export default defineConfig({
-  server: {
-    preset: "cloudflare-pages",
++  server: {
++    preset: "cloudflare-pages",
 
-
-    rollupConfig: {
-      external: ["node:async_hooks"]
-    }
-  }
++    rollupConfig: {
++      external: ["node:async_hooks"]
++    }
++  }
 });
 ```
 
@@ -102,7 +102,7 @@ If you use [create-cloudflare(C3) ↗](https://www.npmjs.com/package/create-clou
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
@@ -127,7 +127,14 @@ After deploying your site, you will receive a unique subdomain for your project 
 
 By completing this guide, you have successfully deployed your Solid site to Cloudflare Pages. To get started with other frameworks, [refer to the list of Framework guides](https://developers.cloudflare.com/pages/framework-guides/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-start-site/#page","headline":"SolidStart · Cloudflare Pages docs","description":"Deploy a SolidStart application to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-start-site/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/framework-guides/deploy-a-solid-start-site/","name":"SolidStart"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-start-site/#page","headline":"SolidStart · Cloudflare Pages docs","description":"Deploy a SolidStart application to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-start-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

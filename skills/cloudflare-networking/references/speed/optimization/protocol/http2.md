@@ -1,16 +1,18 @@
 ---
-title: HTTP/2
 description: Serve content over HTTP/2 for multiplexed, lower-latency connections.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: HTTP/2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP/2
 
-# HTTP/2
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/protocol/http2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 HTTP/2 uses the TCP transport protocol and TLS to secure communications and improves page load times.
 
@@ -32,9 +34,6 @@ HTTP/2 is enabled by default for all plans (though it does require an [SSL certi
 ## Disable HTTP/2
 
 Domains on Free plans cannot disable Cloudflare's HTTP/2 setting.
-
-* [ Dashboard ](#tab-panel-11422)
-* [ API ](#tab-panel-11423)
 
 To disable **HTTP/2** in the dashboard:
 
@@ -72,7 +71,14 @@ You can try to disable compression at your origin web server and rely on Cloudfl
 
 You can also review your origin server's compression settings to make sure the compression is working as expected.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/http2/#page","headline":"HTTP/2 · Cloudflare Speed docs","description":"Serve content over HTTP/2 for multiplexed, lower-latency connections.","url":"https://developers.cloudflare.com/speed/optimization/protocol/http2/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/protocol/","name":"Protocol optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/protocol/http2/","name":"HTTP/2"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/http2/#page","headline":"HTTP/2 · Cloudflare Speed docs","description":"Serve content over HTTP/2 for multiplexed, lower-latency connections.","url":"https://developers.cloudflare.com/speed/optimization/protocol/http2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

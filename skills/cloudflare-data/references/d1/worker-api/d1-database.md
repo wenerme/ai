@@ -1,35 +1,29 @@
 ---
-title: D1 Database
 description: Use the D1Database binding to prepare statements, execute queries, batch operations, and dump a D1 database from a Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: D1 Database
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  D1 Database
 
-# D1 Database
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/worker-api/d1-database/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To interact with your D1 database from your Worker, you need to access it through the environment bindings provided to the Worker (`env`).
 
-* [  JavaScript ](#tab-panel-8642)
-* [  Python ](#tab-panel-8643)
-
-**JavaScript**
-
 ```js
 async fetch(request, env) {
-  // D1 database is 'env.DB', where "DB" is the binding name from the Wrangler configuration file.
+	// D1 database is 'env.DB', where "DB" is the binding name from the Wrangler configuration file.
 }
 ```
 
-**Python**
-
 ```py
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -45,17 +39,10 @@ A D1 binding has the type `D1Database`, and supports a number of methods, as lis
 
 Prepares a query statement to be later executed.
 
-* [  JavaScript ](#tab-panel-8644)
-* [  Python ](#tab-panel-8645)
-
-**JavaScript**
-
 ```js
 const someVariable = `Bs Beverages`;
 const stmt = env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind(someVariable);
 ```
-
-**Python**
 
 ```py
 some_variable = "Bs Beverages"
@@ -64,7 +51,7 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind
 
 #### Parameters
 
-* `query`: ` String ` Required
+* `query`: ` String `Required
   * The SQL query you wish to execute on the database.
 
 #### Return values
@@ -77,33 +64,19 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind
 You can use the `bind` method to dynamically bind a value into the query statement, as shown below.
 
 * Example of a static statement without using `bind`:
-
-  * [  JavaScript ](#tab-panel-8646)
-  * [  Python ](#tab-panel-8647)
-
-**JavaScript**
 ```js
 const stmt = db
-  .prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")
+	.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")
 ```
-
-**Python**
 ```py
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")
 ```
 * Example of an ordered statement using `bind`:
-
-  * [  JavaScript ](#tab-panel-8648)
-  * [  Python ](#tab-panel-8649)
-
-**JavaScript**
 ```js
 const stmt = db
-  .prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")
-  .bind("Alfreds Futterkiste", 1);
+	.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?")
+	.bind("Alfreds Futterkiste", 1);
 ```
-
-**Python**
 ```py
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?").bind("Alfreds Futterkiste", 1)
 ```
@@ -118,22 +91,15 @@ Batched statements are [SQL transactions ↗](https://www.sqlite.org/lang%5Ftran
 
 To send batch statements, provide `D1Database::batch` a list of prepared statements and get the results in the same order.
 
-* [  JavaScript ](#tab-panel-8650)
-* [  Python ](#tab-panel-8651)
-
-**JavaScript**
-
 ```js
 const companyName1 = `Bs Beverages`;
 const companyName2 = `Around the Horn`;
 const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
 const batchResult = await env.DB.batch([
-  stmt.bind(companyName1),
-  stmt.bind(companyName2)
+	stmt.bind(companyName1),
+	stmt.bind(companyName2)
 ]);
 ```
-
-**Python**
 
 ```py
 company_name1 = "Bs Beverages"
@@ -158,26 +124,18 @@ batch_result = await self.env.DB.batch([
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8652)
-* [  Python ](#tab-panel-8653)
-
-**JavaScript**
-
 ```js
 const companyName1 = `Bs Beverages`;
 const companyName2 = `Around the Horn`;
 const stmt = await env.DB.batch([
-  env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName1),
-  env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName2)
+	env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName1),
+	env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`).bind(companyName2)
 ]);
 return Response.json(stmt)
 ```
 
-**Python**
-
 ```py
 from workers import Response
-
 
 company_name1 = "Bs Beverages"
 company_name2 = "Around the Horn"
@@ -238,16 +196,9 @@ return Response.json(stmt)
 ]
 ```
 
-* [  JavaScript ](#tab-panel-8654)
-* [  Python ](#tab-panel-8655)
-
-**JavaScript**
-
 ```js
 console.log(stmt[1].results);
 ```
-
-**Python**
 
 ```py
 print(stmt[1].results.to_py())
@@ -266,23 +217,16 @@ print(stmt[1].results.to_py())
 #### Guidance
 
 * You can construct batches reusing the same prepared statement:
-
-  * [  JavaScript ](#tab-panel-8656)
-  * [  Python ](#tab-panel-8657)
-
-**JavaScript**
 ```js
 const companyName1 = `Bs Beverages`;
 const companyName2 = `Around the Horn`;
 const stmt = env.DB.prepare(`SELECT * FROM Customers WHERE CompanyName = ?`);
 const batchResult = await env.DB.batch([
-  stmt.bind(companyName1),
-  stmt.bind(companyName2)
+	stmt.bind(companyName1),
+	stmt.bind(companyName2)
 ]);
 return Response.json(batchResult);
 ```
-
-**Python**
 ```py
 from workers import Response
 company_name1 = "Bs Beverages"
@@ -299,16 +243,9 @@ return Response.json(batch_result)
 
 Executes one or more queries directly without prepared statements or parameter bindings.
 
-* [  JavaScript ](#tab-panel-8658)
-* [  Python ](#tab-panel-8659)
-
-**JavaScript**
-
 ```js
 const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);
 ```
-
-**Python**
 
 ```py
 return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"')
@@ -316,7 +253,7 @@ return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName
 
 #### Parameters
 
-* `query`: ` String ` Required
+* `query`: ` String `Required
   * The SQL query statement without parameter binding.
 
 #### Return values
@@ -328,21 +265,13 @@ return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-8660)
-* [  Python ](#tab-panel-8661)
-
-**JavaScript**
-
 ```js
 const returnValue = await env.DB.exec(`SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"`);
 return Response.json(returnValue);
 ```
 
-**Python**
-
 ```py
 from workers import Response
-
 
 return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName = "Bs Beverages"')
 return Response.json(return_value)
@@ -364,32 +293,24 @@ return Response.json(return_value)
 
 ### `dump`
 
-Warning
+Caution
 
 This API only works on databases created during D1's alpha period. Check which version your database uses with `wrangler d1 info <DATABASE_NAME>`.
 
 Dumps the entire D1 database to an SQLite compatible file inside an ArrayBuffer.
 
-* [  JavaScript ](#tab-panel-8662)
-* [  Python ](#tab-panel-8663)
-
-**JavaScript**
-
 ```js
 const dump = await db.dump();
 return new Response(dump, {
-  status: 200,
-  headers: {
-    "Content-Type": "application/octet-stream",
-  },
+	status: 200,
+	headers: {
+		"Content-Type": "application/octet-stream",
+	},
 });
 ```
 
-**Python**
-
 ```py
 from workers import Response
-
 
 dump = await db.dump()
 return Response(dump, status=200, headers={"Content-Type": "application/octet-stream"})
@@ -407,16 +328,9 @@ return Response(dump, status=200, headers={"Content-Type": "application/octet-st
 
 Starts a D1 session which maintains sequential consistency among queries executed on the returned `D1DatabaseSession` object.
 
-* [  JavaScript ](#tab-panel-8664)
-* [  Python ](#tab-panel-8665)
-
-**JavaScript**
-
 ```js
 const session = env.DB.withSession("<parameter>");
 ```
-
-**Python**
 
 ```py
 session = self.env.DB.withSession("<parameter>")
@@ -455,28 +369,20 @@ session = self.env.DB.withSession("<parameter>")
 
 Retrieves the latest `bookmark` from the D1 Session.
 
-* [  JavaScript ](#tab-panel-8666)
-* [  Python ](#tab-panel-8667)
-
-**JavaScript**
-
 ```js
 const session = env.DB.withSession("first-primary");
 const result = await session
-  .prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
-  .run()
+	.prepare(`SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'`)
+	.run()
 const { bookmark } = session.getBookmark();
-  return bookmark;
+	return bookmark;
 ```
-
-**Python**
 
 ```py
 session = self.env.DB.withSession("first-primary")
 result = await session.prepare(
     "SELECT * FROM Customers WHERE CompanyName = 'Bs Beverages'"
 ).run()
-
 
 bookmark = session.getBookmark()
 ```
@@ -499,7 +405,14 @@ This method is equivalent to [D1Database::prepare](https://developers.cloudflare
 
 This method is equivalent to [D1Database::batch](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/d1-database/#page","headline":"D1 Database · Cloudflare D1 docs","description":"Use the D1Database binding to prepare statements, execute queries, batch operations, and dump a D1 database from a Worker.","url":"https://developers.cloudflare.com/d1/worker-api/d1-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/worker-api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/worker-api/d1-database/","name":"D1 Database"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/d1-database/#page","headline":"D1 Database · Cloudflare D1 docs","description":"Use the D1Database binding to prepare statements, execute queries, batch operations, and dump a D1 database from a Worker.","url":"https://developers.cloudflare.com/d1/worker-api/d1-database/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Manage monitors
 description: Learn how to set up and maintain monitors for your load balancer.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage monitors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage monitors
 
-# Manage monitors
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A monitor issues health monitor requests at regular intervals to evaluate the health of each endpoint within a [pool](https://developers.cloudflare.com/load-balancing/pools/).
 
@@ -22,9 +24,6 @@ For more details about monitors, refer to [Monitors](https://developers.cloudfla
 
 ## Create a monitor
 
-* [ Dashboard ](#tab-panel-10183)
-* [ API ](#tab-panel-10184)
-
 **Set up the monitor**
 
 You can create a monitor within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Monitors** tab:
@@ -33,14 +32,12 @@ You can create a monitor within the [load balancer workflow](https://developers.
 2. Select the **Monitors** tab.
 3. Select **Create monitor**.
 4. Add the following information:
-
   * **Type**: The protocol to use for health monitors
     * _Non-enterprise customers_: Choose **HTTP**, **HTTPS**, or **TCP**.
     * _Enterprise customers_: Choose **HTTP**, **HTTPS**, **TCP**, **UDP ICMP**, **ICMP Ping**, or **SMTP**.
   * **Path**: The endpoint path to run health monitor requests against
   * **Port**: The destination port for health monitors
 5. For additional settings, select **Advanced health monitor settings**:
-
   * **Interval**:
     * By increasing the default, you can improve failover time, but you may also increase load on your endpoints.
     * Minimum time in seconds is 60 (Pro), 15 (Business), and 10 (Enterprise).
@@ -73,7 +70,7 @@ Make sure that your firewall or web server does not block or rate limit your con
 
 Each health monitor has the HTTP user-agent of `"Mozilla/5.0 (compatible; Cloudflare-Traffic-Manager/1.0; +https://www.cloudflare.com/traffic-manager/; pool-id: $poolid)"`, where the `$poolid` is the first 16 characters of the [associated pool](https://developers.cloudflare.com/load-balancing/pools/).
 
-Warning
+Caution
 
 If you know that your endpoint is healthy but Load Balancing is reporting it as unhealthy, refer to our [Monitor troubleshooting guide](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/#why-is-my-endpoint-or-pool-considered-unhealthy).
 
@@ -100,42 +97,38 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-**Create Monitor**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "https",
-    "description": "Login page monitor",
-    "method": "GET",
-    "path": "/health",
-    "header": {
-        "Host": [
-            "example.com"
-        ],
-        "X-App-ID": [
-            "abc123"
-        ]
-    },
-    "port": 8080,
-    "timeout": 3,
-    "retries": 0,
-    "interval": 90,
-    "expected_body": "alive",
-    "expected_codes": "2xx",
-    "follow_redirects": true,
-    "allow_insecure": true,
-    "consecutive_up": 3,
-    "consecutive_down": 2,
-    "probe_zone": "example.com"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "https",
+		"description": "Login page monitor",
+		"method": "GET",
+		"path": "/health",
+		"header": {
+				"Host": [
+						"example.com"
+				],
+				"X-App-ID": [
+						"abc123"
+				]
+		},
+		"port": 8080,
+		"timeout": 3,
+		"retries": 0,
+		"interval": 90,
+		"expected_body": "alive",
+		"expected_codes": "2xx",
+		"follow_redirects": true,
+		"allow_insecure": true,
+		"consecutive_up": 3,
+		"consecutive_down": 2,
+		"probe_zone": "example.com"
+	}'
 ```
 
 The response contains the complete definition of the new monitor.
-
-**Response**
 
 ```json
 {
@@ -179,7 +172,7 @@ Make sure that your firewall or web server does not block or rate limit your con
 
 Each health monitor has the HTTP user-agent of `"Mozilla/5.0 (compatible; Cloudflare-Traffic-Manager/1.0; +https://www.cloudflare.com/traffic-manager/; pool-id: $poolid)"`, where the `$poolid` is the first 16 characters of the [associated pool](https://developers.cloudflare.com/load-balancing/pools/).
 
-Warning
+Caution
 
 If you know that your endpoint is healthy but Load Balancing is reporting it as unhealthy, refer to our [Monitor troubleshooting guide](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/#why-is-my-endpoint-or-pool-considered-unhealthy).
 
@@ -190,9 +183,6 @@ Once your monitor is created, save its `id` property. Include this value in the 
 ---
 
 ## Edit a monitor
-
-* [ Dashboard ](#tab-panel-10179)
-* [ API ](#tab-panel-10180)
 
 To edit a monitor in the dashboard:
 
@@ -210,9 +200,6 @@ To update specific settings without having to resubmit the entire configuration,
 
 ## Delete a monitor
 
-* [ Dashboard ](#tab-panel-10181)
-* [ API ](#tab-panel-10182)
-
 To delete a monitor in the dashboard:
 
 1. Go to **Load Balancing**.
@@ -221,7 +208,14 @@ To delete a monitor in the dashboard:
 
 To delete a monitor using the API, send a [DELETE](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/delete/) request.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#page","headline":"Manage monitors · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain monitors for your load balancer.","url":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/monitors/","name":"Monitors"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/monitors/create-monitor/","name":"Manage monitors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#page","headline":"Manage monitors · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain monitors for your load balancer.","url":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

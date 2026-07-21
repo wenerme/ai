@@ -1,16 +1,18 @@
 ---
-title: Commands
 description: Create, develop, and deploy your Cloudflare Workers with Wrangler commands.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Commands
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Commands
 
-# Commands
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/) offers a number of commands to manage your Cloudflare Workers.
 
@@ -20,13 +22,14 @@ The core Wrangler commands for creating, developing, and deploying Workers are o
 
 ## All commands
 
+* [ Workers ](https://developers.cloudflare.com/workers/wrangler/commands/workers/)
+* [ General commands ](https://developers.cloudflare.com/workers/wrangler/commands/general/)
 * [ Artifacts ](https://developers.cloudflare.com/workers/wrangler/commands/artifacts/)
 * [ Browser ](https://developers.cloudflare.com/workers/wrangler/commands/browser/)
 * [ Certificates ](https://developers.cloudflare.com/workers/wrangler/commands/certificates/)
 * [ Containers ](https://developers.cloudflare.com/workers/wrangler/commands/containers/)
 * [ D1 ](https://developers.cloudflare.com/workers/wrangler/commands/d1/)
 * [ Flagship ](https://developers.cloudflare.com/workers/wrangler/commands/flagship/)
-* [ General commands ](https://developers.cloudflare.com/workers/wrangler/commands/general/)
 * [ Hyperdrive ](https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/)
 * [ KV ](https://developers.cloudflare.com/workers/wrangler/commands/kv/)
 * [ Pages ](https://developers.cloudflare.com/workers/wrangler/commands/pages/)
@@ -37,7 +40,6 @@ The core Wrangler commands for creating, developing, and deploying Workers are o
 * [ Tunnel ](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/)
 * [ Vectorize ](https://developers.cloudflare.com/workers/wrangler/commands/vectorize/)
 * [ VPC ](https://developers.cloudflare.com/workers/wrangler/commands/vpc/)
-* [ Workers ](https://developers.cloudflare.com/workers/wrangler/commands/workers/)
 * [ Workers for Platforms ](https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/)
 * [ Workflows ](https://developers.cloudflare.com/workers/wrangler/commands/workflows/)
 
@@ -92,7 +94,14 @@ yarn run deploy
 pnpm run deploy
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/wrangler/commands/#page","headline":"Commands - Wrangler · Cloudflare Workers docs","description":"Create, develop, and deploy your Cloudflare Workers with Wrangler commands.","url":"https://developers.cloudflare.com/workers/wrangler/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/wrangler/commands/#page","headline":"Commands - Wrangler · Cloudflare Workers docs","description":"Create, develop, and deploy your Cloudflare Workers with Wrangler commands.","url":"https://developers.cloudflare.com/workers/wrangler/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

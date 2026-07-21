@@ -1,16 +1,18 @@
 ---
-title: Securing data in use
 description: Learn how Cloudflare's Remote Browser Isolation (RBI) works and secures data in use.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Securing data in use
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Securing data in use
 
-# Securing data in use
+Last updated Mar 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -49,7 +51,14 @@ Figure 1: Text copy/paste blocked by Cloudflare RBI.
 * [Securing data in transit](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/)
 * [Securing data at rest](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/#page","headline":"Securing data in use · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare's Remote Browser Isolation (RBI) works and secures data in use.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/security/","name":"Security"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/security/securing-data-in-use/","name":"Securing data in use"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/#page","headline":"Securing data in use · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare's Remote Browser Isolation (RBI) works and secures data in use.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-use/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

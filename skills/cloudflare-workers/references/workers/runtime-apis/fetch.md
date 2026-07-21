@@ -1,16 +1,18 @@
 ---
-title: Fetch
 description: An interface for asynchronously fetching resources via HTTP requests inside of a Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Fetch
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Fetch
 
-# Fetch
+Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/fetch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [Fetch API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch%5FAPI) provides an interface for asynchronously fetching resources via HTTP requests inside of a Worker.
 
@@ -24,21 +26,15 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-12878)
-* [  Service Worker ](#tab-panel-12879)
-* [  Python Worker ](#tab-panel-12880)
-
-**JavaScript**
-
 ```js
 export default {
-  async scheduled(controller, env, ctx) {
-    return await fetch("https://example.com", {
-      headers: {
-        "X-Source": "Cloudflare-Workers",
-      },
-    });
-  },
+	async scheduled(controller, env, ctx) {
+		return await fetch("https://example.com", {
+			headers: {
+				"X-Source": "Cloudflare-Workers",
+			},
+		});
+	},
 };
 ```
 
@@ -46,31 +42,25 @@ Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-**JavaScript**
-
 ```js
 addEventListener("fetch", (event) => {
-  // NOTE: can’t use fetch here, as we’re not in an async scope yet
-  event.respondWith(eventHandler(event));
+	// NOTE: can’t use fetch here, as we’re not in an async scope yet
+	event.respondWith(eventHandler(event));
 });
 
-
 async function eventHandler(event) {
-  // fetch can be awaited here since `event.respondWith()` waits for the Promise it receives to settle
-  const resp = await fetch(event.request);
-  return resp;
+	// fetch can be awaited here since `event.respondWith()` waits for the Promise it receives to settle
+	const resp = await fetch(event.request);
+	return resp;
 }
 ```
-
-**Python**
 
 ```python
 from workers import WorkerEntrypoint, Response, fetch
 
-
 class Default(WorkerEntrypoint):
     async def scheduled(self, controller, env, ctx):
-        return await fetch("https://example.com", headers={"X-Source": "Cloudflare-Workers"})
+  			return await fetch("https://example.com", headers={"X-Source": "Cloudflare-Workers"})
 ```
 
 * `fetch(resource, options optional)` : Promise`<Response>`
@@ -101,29 +91,26 @@ One scenario where the Accept-Encoding header is useful is for passing through c
 
 In addition to a change in the content encoding, recompression is also needed when a response uses an encoding not supported by the client. As an example, when a Worker requests either brotli or gzip as the encoding but the client only supports gzip, recompression will still be needed if the server returns brotli-encoded data to the server (and will be applied automatically). Note that this behavior may also vary based on the [compression rules](https://developers.cloudflare.com/rules/compression-rules/), which can be used to configure what compression should be applied for different types of data on the server side.
 
-**TypeScript**
-
 ```typescript
 export default {
-  async fetch(request) {
-    // Accept brotli or gzip compression
-    const headers = new Headers({
-      "Accept-Encoding": "br, gzip",
-    });
-    let response = await fetch("https://developers.cloudflare.com", {
-      method: "GET",
-      headers,
-    });
+	async fetch(request) {
+		// Accept brotli or gzip compression
+		const headers = new Headers({
+			"Accept-Encoding": "br, gzip",
+		});
+		let response = await fetch("https://developers.cloudflare.com", {
+			method: "GET",
+			headers,
+		});
 
-
-    // As long as the original response body is returned and the Content-Encoding header is
-    // preserved, the same encoded data will be returned without needing to be compressed again.
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers: response.headers,
-    });
-  },
+		// As long as the original response body is returned and the Content-Encoding header is
+		// preserved, the same encoded data will be returned without needing to be compressed again.
+		return new Response(response.body, {
+			status: response.status,
+			statusText: response.statusText,
+			headers: response.headers,
+		});
+	},
 };
 ```
 
@@ -137,7 +124,14 @@ export default {
 * [Error 526](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-526/#error-526-in-the-workers-context)
 * [Fetch API in a partial setup](https://developers.cloudflare.com/workers/platform/known-issues/#fetch-api-in-cname-setup)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/fetch/#page","headline":"Fetch · Cloudflare Workers docs","description":"An interface for asynchronously fetching resources via HTTP requests inside of a Worker.","url":"https://developers.cloudflare.com/workers/runtime-apis/fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/fetch/","name":"Fetch"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/fetch/#page","headline":"Fetch · Cloudflare Workers docs","description":"An interface for asynchronously fetching resources via HTTP requests inside of a Worker.","url":"https://developers.cloudflare.com/workers/runtime-apis/fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Authenticate against R2 API using auth tokens
 description: Authenticate against the R2 S3-compatible API using API tokens with Python or JavaScript.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Authenticate against R2 API using auth tokens
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Authenticate against R2 API using auth tokens
 
-# Authenticate against R2 API using auth tokens
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following example shows how to authenticate against R2 using the S3 API and an API token.
 
@@ -28,10 +30,6 @@ export AWS_ENDPOINT_URL=https://<account_id>.r2.cloudflarestorage.com
 export AWS_ACCESS_KEY_ID=your_access_key_id
 export AWS_SECRET_ACCESS_KEY=your_secret_access_key
 ```
-
-* [  JavaScript ](#tab-panel-10623)
-* [  Python ](#tab-panel-10624)
-* [  Go ](#tab-panel-10625)
 
 Install the `@aws-sdk/client-s3` package for the S3 API:
 
@@ -57,18 +55,13 @@ Run the following Node.js script with `node index.js`. Ensure you change `Bucket
 
 Note, tutorial below should function for TypeScript as well.
 
-**index.js**
-
 ```javascript
 import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
-
 const s3 = new S3Client();
-
 
 const Bucket = "<YOUR_BUCKET_NAME>";
 const Key = "pfp.jpg";
-
 
 const object = await s3.send(
   new GetObjectCommand({
@@ -77,14 +70,11 @@ const object = await s3.send(
   }),
 );
 
-
 console.log("Successfully fetched the object", object.$metadata);
-
 
 // Process the data as needed
 // For example, to get the content as a Buffer:
 // const content = data.Body;
-
 
 // Or to save the file (requires 'fs' module):
 // import { writeFile } from "node:fs/promises";
@@ -99,42 +89,33 @@ pip install boto3
 
 Run the following Python script with `python3 get_r2_object.py`. Ensure you change `bucket` to the name of your bucket, and `object_key` to point to an existing file in your R2 bucket.
 
-**get\_r2\_object.py**
-
 ```python
 import boto3
 from botocore.client import Config
-
 
 # Configure the S3 client for Cloudflare R2
 s3_client = boto3.client('s3',
   config=Config(signature_version='s3v4')
 )
 
-
 # Specify the object key
 #
 bucket = '<YOUR_BUCKET_NAME>'
 object_key = '2024/08/02/ingested_0001.parquet'
 
-
 try:
   # Fetch the object
   response = s3_client.get_object(Bucket=bucket, Key=object_key)
 
-
   print('Successfully fetched the object')
-
 
   # Process the response content as needed
   # For example, to read the content:
   # object_content = response['Body'].read()
 
-
   # Or to save the file:
   # with open('ingested_0001.parquet', 'wb') as f:
   #     f.write(response['Body'].read())
-
 
 except Exception as e:
   print(f'Failed to fetch the object. Error: {str(e)}')
@@ -154,7 +135,6 @@ Run the following Go application as a script with `go run main.go`. Ensure you c
 ```go
 package main
 
-
 import (
   "context"
   "fmt"
@@ -165,60 +145,60 @@ import (
   "github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-
 func main() {
     cfg, err := config.LoadDefaultConfig(context.TODO())
     if err != nil {
-      log.Fatalf("Unable to load SDK config, %v", err)
+	    log.Fatalf("Unable to load SDK config, %v", err)
     }
-
 
     // Create an S3 client
     client := s3.NewFromConfig(cfg)
-
 
     // Specify the object key
     bucket := "<YOUR_BUCKET_NAME>"
     objectKey := "pfp.jpg"
 
-
     // Fetch the object
     output, err := client.GetObject(context.TODO(), &s3.GetObjectInput{
-      Bucket: aws.String(bucket),
-      Key:    aws.String(objectKey),
+	    Bucket: aws.String(bucket),
+	    Key:    aws.String(objectKey),
     })
     if err != nil {
-      log.Fatalf("Unable to fetch object, %v", err)
+	    log.Fatalf("Unable to fetch object, %v", err)
     }
     defer output.Body.Close()
 
-
     fmt.Println("Successfully fetched the object")
-
 
     // Process the object content as needed
     // For example, to save the file:
     // file, err := os.Create("ingested_0001.parquet")
     // if err != nil {
-    //   log.Fatalf("Unable to create file, %v", err)
+    // 	log.Fatalf("Unable to create file, %v", err)
     // }
     // defer file.Close()
     // _, err = io.Copy(file, output.Body)
     // if err != nil {
-    //   log.Fatalf("Unable to write file, %v", err)
+    // 	log.Fatalf("Unable to write file, %v", err)
     // }
-
 
     // Or to read the content:
     content, err := io.ReadAll(output.Body)
     if err != nil {
-      log.Fatalf("Unable to read object content, %v", err)
+	    log.Fatalf("Unable to read object content, %v", err)
     }
     fmt.Printf("Object content length: %d bytes\n", len(content))
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/#page","headline":"Authenticate against R2 API using auth tokens · Cloudflare R2 docs","description":"Authenticate against the R2 S3-compatible API using API tokens with Python or JavaScript.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/authenticate-r2-auth-tokens/","name":"Authenticate against R2 API using auth tokens"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/#page","headline":"Authenticate against R2 API using auth tokens · Cloudflare R2 docs","description":"Authenticate against the R2 S3-compatible API using API tokens with Python or JavaScript.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

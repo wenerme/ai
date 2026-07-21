@@ -1,16 +1,18 @@
 ---
-title: Supabase
 description: Connect Cloudflare Workers to a Supabase PostgreSQL database using the Supabase client or Hyperdrive.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Supabase
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supabase
 
-# Supabase
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Supabase ↗](https://supabase.com/) is an open source Firebase alternative and a PostgreSQL database service that offers real-time functionality, database backups, and extensions. With Supabase, developers can quickly set up a PostgreSQL database and build applications.
 
@@ -19,9 +21,6 @@ Note
 The Supabase client (`@supabase/supabase-js`) provides access to Supabase's various features, including database access. If you need access to all of the Supabase client functionality, use the Supabase client.
 
 If you want to connect directly to the Supabase Postgres database, connect using [Hyperdrive](https://developers.cloudflare.com/hyperdrive). Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-
-* [ Supabase client ](#tab-panel-12417)
-* [ Hyperdrive ](#tab-panel-12418)
 
 ### Supabase client setup
 
@@ -69,21 +68,19 @@ pnpm add @supabase/supabase-js
 bun add @supabase/supabase-js
 ```
 6. The following example shows how to make a query to your Supabase database in a Worker. The credentials needed to connect to Supabase have been added as secrets to your Worker.
-
-**JavaScript**
 ```js
 import { createClient } from "@supabase/supabase-js";
 export default {
-  async fetch(request, env) {
-    const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
-    const { data, error } = await supabase.from("countries").select("*");
-    if (error) throw error;
-    return new Response(JSON.stringify(data), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  },
+	async fetch(request, env) {
+		const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_KEY);
+		const { data, error } = await supabase.from("countries").select("*");
+		if (error) throw error;
+		return new Response(JSON.stringify(data), {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+	},
 };
 ```
 
@@ -116,13 +113,10 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-12413)
-* [ Wrangler CLI ](#tab-panel-12414)
-
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Hyperdrive** page.
-[ Go to **Hyperdrive** ](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
+[ Go to **Hyperdrive** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
 2. Select **Create Configuration**.
 3. Fill out the form, including the connection string.
 4. Select **Create**.
@@ -134,38 +128,31 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
-
-  * [  wrangler.jsonc ](#tab-panel-12411)
-  * [  wrangler.toml ](#tab-panel-12412)
-
-**JSONC**
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "hyperdrive-example",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "hyperdrive-example",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+		}
+	]
 }
 ```
-
-**TOML**
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -224,35 +211,27 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-12415)
-* [  wrangler.toml ](#tab-panel-12416)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -261,46 +240,39 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 
-**TypeScript**
-
 ```ts
 // filepath: src/index.ts
 import { Client } from "pg";
 
-
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    // Create a new client instance for each request. Hyperdrive maintains the
-    // underlying database connection pool, so creating a new client is fast.
-    const client = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
+		// Create a new client instance for each request. Hyperdrive maintains the
+		// underlying database connection pool, so creating a new client is fast.
+		const client = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
 
+		try {
+			// Connect to the database
+			await client.connect();
 
-    try {
-      // Connect to the database
-      await client.connect();
+			// Perform a simple query
+			const result = await client.query("SELECT * FROM pg_tables");
 
+			return Response.json({
+				success: true,
+				result: result.rows,
+			});
+		} catch (error: any) {
+			console.error("Database error:", error.message);
 
-      // Perform a simple query
-      const result = await client.query("SELECT * FROM pg_tables");
-
-
-      return Response.json({
-        success: true,
-        result: result.rows,
-      });
-    } catch (error: any) {
-      console.error("Database error:", error.message);
-
-
-      return new Response("Internal error occurred", { status: 500 });
-    }
-  },
+			return new Response("Internal error occurred", { status: 500 });
+		}
+	},
 };
 ```
 
@@ -314,7 +286,14 @@ When connecting to a Supabase database with Hyperdrive, you should use a driver 
 * Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/#page","headline":"Supabase · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a Supabase PostgreSQL database using the Supabase client or Hyperdrive.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/databases/third-party-integrations/supabase/","name":"Supabase"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/#page","headline":"Supabase · Cloudflare Workers docs","description":"Connect Cloudflare Workers to a Supabase PostgreSQL database using the Supabase client or Hyperdrive.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

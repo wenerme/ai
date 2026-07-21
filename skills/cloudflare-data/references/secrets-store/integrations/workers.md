@@ -1,16 +1,18 @@
 ---
-title: Workers integration
 description: Cloudflare Secrets Store is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Workers integration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/secrets-store/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers integration
 
-# Workers integration
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/secrets-store/integrations/workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Secrets Store](https://developers.cloudflare.com/secrets-store/) is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.
 
@@ -39,10 +41,6 @@ Note
 
 You may also add account secrets directly from the Workers settings on the dashboard. You can skip to [step 2](#via-dashboard) to do that.
 
-* [ Wrangler ](#tab-panel-11393)
-* [ Dashboard ](#tab-panel-11394)
-* [ API ](#tab-panel-11395)
-
 Use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret) `secrets-store secret create`.
 
 To use the following example, replace the store ID and secret name by your actual data. You can find and copy the store ID from the [Secrets Store tab ↗](https://dash.cloudflare.com/?to=/:account/secrets-store/) on the dashboard or use `wrangler secrets-store store list`.
@@ -56,14 +54,13 @@ npx wrangler secrets-store secret create <STORE_ID> --name MY_SECRET_NAME --scop
 ```sh
 ✓ Enter a secret value: › ***
 
-
 🔐 Creating secret... (Name: MY_SECRET_NAME, Value: REDACTED, Scopes: workers, Comment: undefined)
 ✓ Select an account: › My account
 ✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
 ```
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Select **Create secret**.
 3. Fill in the required fields, choosing _Workers_ as the **Permission scope**. Once the secret is saved, the secret value will no longer be available for viewing.
 4. (Optional) Select **Add additional secret** to create more than one secret at a time.
@@ -78,31 +75,29 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Secrets Store Write`
 
-**Create a secret**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '[
-    {
-        "name": "<MY_SECRET_NAME>",
-        "value": "<SECRET_VALUE>",
-        "scopes": [
-            "workers"
-        ],
-        "comment": ""
-    },
-    {
-        "name": "<MY_SECRET_NAME_2>",
-        "value": "<SECRET_VALUE>",
-        "scopes": [
-            "workers"
-        ],
-        "comment": ""
-    }
-  ]'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '[
+		{
+				"name": "<MY_SECRET_NAME>",
+				"value": "<SECRET_VALUE>",
+				"scopes": [
+						"workers"
+				],
+				"comment": ""
+		},
+		{
+				"name": "<MY_SECRET_NAME_2>",
+				"value": "<SECRET_VALUE>",
+				"scopes": [
+						"workers"
+				],
+				"comment": ""
+		}
+	]'
 ```
 
 Refer to [manage account secrets](https://developers.cloudflare.com/secrets-store/manage-secrets/) for further options.
@@ -123,29 +118,21 @@ To bind an account secret to your Worker, you must have one of the following [ro
   * `store_id`: the corresponding Secrets Store ID where your account secret was created.
   * `secret_name`: the unique secret name, defined when your account secret was created.
 
-* [  wrangler.jsonc ](#tab-panel-11391)
-* [  wrangler.toml ](#tab-panel-11392)
-
-**JSONC**
-
 ```jsonc
 {
-  "main": "./src/index.js",
-  "secrets_store_secrets": [
-    {
-      "binding": "<BINDING_VARIABLE>",
-      "store_id": "<STORE_ID>",
-      "secret_name": "<MY_SECRET_NAME>"
-    }
-  ]
+	"main": "./src/index.js",
+	"secrets_store_secrets": [
+		{
+			"binding": "<BINDING_VARIABLE>",
+			"store_id": "<STORE_ID>",
+			"secret_name": "<MY_SECRET_NAME>"
+		}
+	]
 }
 ```
 
-**TOML**
-
 ```toml
 main = "./src/index.js"
-
 
 [[secrets_store_secrets]]
 binding = "<BINDING_VARIABLE>"
@@ -156,7 +143,7 @@ secret_name = "<MY_SECRET_NAME>"
 ### Via Dashboard
 
 1. In the Cloudflare dashboard, go to **Workers & Pages**.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select a Workers application.
 3. Go to **Settings** \> **Bindings** and select **Add**.
 4. On the **Add a resource binding** side panel, choose **Secrets Store**.
@@ -180,24 +167,19 @@ Local development mode
 
 You cannot access production secrets (created on the dashboard, via API, or with the `--remote` flag) from your local development setup. To use Secrets Store locally, you must use `secrets-store secret` [Wrangler commands](https://developers.cloudflare.com/workers/wrangler/commands/) without the `--remote` flag.
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env) {
     // Example of using the secret safely in an API request
-    const APIkey = await env.<BINDING_VARIABLE>.get()
-
+		const APIkey = await env.<BINDING_VARIABLE>.get()
 
     const response = await fetch("https://api.example.com/data", {
       headers: { "Authorization": `Bearer ${APIKey}` },
     });
 
-
     if (!response.ok) {
       return new Response("Failed to fetch data", { status: response.status });
     }
-
 
     const data = await response.json();
     return new Response(JSON.stringify(data), {
@@ -207,7 +189,14 @@ export default {
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/integrations/workers/#page","headline":"Workers integration · Cloudflare Secrets Store docs","description":"Cloudflare Secrets Store is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.","url":"https://developers.cloudflare.com/secrets-store/integrations/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/secrets-store/","name":"Secrets Store"}},{"@type":"ListItem","position":3,"item":{"@id":"/secrets-store/integrations/","name":"Secrets Store integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/secrets-store/integrations/workers/","name":"Workers integration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/integrations/workers/#page","headline":"Workers integration · Cloudflare Secrets Store docs","description":"Cloudflare Secrets Store is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.","url":"https://developers.cloudflare.com/secrets-store/integrations/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

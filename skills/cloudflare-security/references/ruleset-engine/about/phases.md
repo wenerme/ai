@@ -1,16 +1,18 @@
 ---
-title: Phases
 description: How phases organize rule execution in the Ruleset Engine request lifecycle.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Phases
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Phases
 
-# Phases
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/about/phases/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A phase defines a stage in the life of a request where you can execute [rulesets](https://developers.cloudflare.com/ruleset-engine/about/rulesets/). Phases are defined by Cloudflare and cannot be modified.
 
@@ -35,7 +37,14 @@ Cloudflare products are specific to one or more phases, and they add support for
 
 Refer to [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) for a list of phases and their corresponding Cloudflare products.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/about/phases/#page","headline":"Phases · Cloudflare Ruleset Engine docs","description":"How phases organize rule execution in the Ruleset Engine request lifecycle.","url":"https://developers.cloudflare.com/ruleset-engine/about/phases/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/about/phases/","name":"Phases"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/about/phases/#page","headline":"Phases · Cloudflare Ruleset Engine docs","description":"How phases organize rule execution in the Ruleset Engine request lifecycle.","url":"https://developers.cloudflare.com/ruleset-engine/about/phases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

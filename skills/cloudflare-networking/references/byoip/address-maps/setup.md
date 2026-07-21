@@ -1,16 +1,18 @@
 ---
-title: Set up address maps
 description: Create and configure address maps for your IP prefixes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set up address maps
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up address maps
 
-# Set up address maps
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/address-maps/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Consider the sections below to learn how to set up address maps.
 
@@ -22,11 +24,8 @@ There is **no expected downtime** when setting up or updating your address maps.
 
 If you are using BYOIP, refer to the following steps. If you have [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/), Cloudflare creates an address map during the static IP onboarding process, meaning you may only [edit](#manage-address-maps) the Cloudflare-created map.
 
-* [ Dashboard ](#tab-panel-7603)
-* [ API ](#tab-panel-7604)
-
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
-[ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
+[ Go to **Address maps** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
 2. Select **Create an address map**.
 3. Choose the scope of the address map.
 4. Add the zones and IP addresses that you want to map.
@@ -42,27 +41,25 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Address Maps Write`
 
-**Create Address Map**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "description": "Example address map",
-    "enabled": true,
-    "ips": [
-        "203.0.113.1",
-        "203.0.113.2"
-    ],
-    "memberships": [
-        {
-            "identifier": "<ZONE_ID>",
-            "kind": "zone"
-        }
-    ]
-  }'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"description": "Example address map",
+		"enabled": true,
+		"ips": [
+				"203.0.113.1",
+				"203.0.113.2"
+		],
+		"memberships": [
+				{
+						"identifier": "<ZONE_ID>",
+						"kind": "zone"
+				}
+		]
+	}'
 ```
 
 Note
@@ -71,11 +68,8 @@ A zone membership will take priority over an account membership.
 
 ## Manage address maps
 
-* [ Dashboard ](#tab-panel-7601)
-* [ API ](#tab-panel-7602)
-
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
-[ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
+[ Go to **Address maps** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
 2. Go to your address map and select **Review**.
 3. Edit your address map.
 4. Review the information and select **Save**.
@@ -121,25 +115,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Address Maps Write`
 
-**Create Address Map**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/address_maps" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "description": "default_sni",
-    "default_sni": "sni.example.com",
-    "enabled": false,
-    "ips": [
-        "192.0.0.1"
-    ],
-    "memberships": []
-  }'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"description": "default_sni",
+		"default_sni": "sni.example.com",
+		"enabled": false,
+		"ips": [
+				"192.0.0.1"
+		],
+		"memberships": []
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/address-maps/setup/#page","headline":"Set up address maps · Cloudflare BYOIP docs","description":"Create and configure address maps for your IP prefixes.","url":"https://developers.cloudflare.com/byoip/address-maps/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/address-maps/","name":"About address maps"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/address-maps/setup/","name":"Set up address maps"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/address-maps/setup/#page","headline":"Set up address maps · Cloudflare BYOIP docs","description":"Create and configure address maps for your IP prefixes.","url":"https://developers.cloudflare.com/byoip/address-maps/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

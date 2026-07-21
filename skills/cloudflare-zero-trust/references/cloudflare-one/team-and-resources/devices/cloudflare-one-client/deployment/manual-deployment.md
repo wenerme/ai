@@ -1,16 +1,18 @@
 ---
-title: Manual deployment
 description: Manual deployment in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Manual deployment
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manual deployment
 
-# Manual deployment
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you plan to direct your users to manually download and configure the Cloudflare One Client (formerly WARP), users will need to connect the client to your organization's Cloudflare Zero Trust instance.
 
@@ -23,9 +25,6 @@ If you plan to direct your users to manually download and configure the Cloudfla
 ### Enroll using the GUI
 
 To enroll your device using the client GUI:
-
-* [ Version 2026.2+ ](#tab-panel-8148)
-* [ Version 2026.1 and earlier ](#tab-panel-8149)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.
@@ -143,7 +142,7 @@ If the device is already enrolled in the account associated with this URL, Cloud
 3. To complete the onboarding flow:
 a. Review the privacy policy and select **Accept**.
 b. On the **Enter team name** screen, confirm that the pre-populated team name matches your organization.
-`Already Authenticated` error
+\`Already Authenticated\` error
 If Cloudflare One Agent is logged in using another team name, you must first log out of that account. Go to **Settings** \> **Account** to log out, and then retry the QR code or login link.
 c. Complete the authentication steps required by your organization.
 d. After authenticating, select **Install VPN Profile**.
@@ -156,7 +155,14 @@ The device is now protected by your organization's Zero Trust policies.
 
 By default, virtual machines (VMs) are subject to the device client settings of the host. If you want to deploy a separate instance of the Cloudflare One Client in a VM, you must configure the VM to operate in bridged networking mode.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#page","headline":"Manual deployment · Cloudflare One docs","description":"Manual deployment in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/","name":"Manual deployment"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#page","headline":"Manual deployment · Cloudflare One docs","description":"Manual deployment in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Learn how to enable Argo Smart Routing in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/argo-smart-routing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/argo-smart-routing/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -18,13 +20,10 @@ This functionality is now offered as part of Cloudflare's origin server safeguar
 
 Argo Smart Routing speeds up your global traffic by routing requests across the fastest network paths available.
 
-* [ Dashboard ](#tab-panel-7388)
-* [ API ](#tab-panel-7389)
-
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Argo Smart Routing** page.
-[ Go to **Argo Smart Routing** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic)
+[ Go to **Argo Smart Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/traffic)
 2. For **Argo Smart Routing**, switch the toggle to **On**.
 3. Provide your billing information.
 
@@ -48,7 +47,7 @@ Since this is a service with [usage-based billing](https://developers.cloudflare
 To set up those notifications:
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On **Alert Type** of **Usage Based Billing**, click **Select**.
 3. Fill out the following information:
 
@@ -66,7 +65,14 @@ Some plans also have access to alerts through [PagerDuty](https://developers.clo
 
 When used together, Argo Smart Routing optimizes the network path between Cloudflare data centers and your origin, while Tiered Cache reduces the number of requests that reach your origin. For more information, refer to [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/argo-smart-routing/get-started/#page","headline":"Get started · Cloudflare Argo Smart Routing docs","description":"Learn how to enable Argo Smart Routing in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/argo-smart-routing/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/argo-smart-routing/","name":"Argo Smart Routing"}},{"@type":"ListItem","position":3,"item":{"@id":"/argo-smart-routing/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/argo-smart-routing/get-started/#page","headline":"Get started · Cloudflare Argo Smart Routing docs","description":"Learn how to enable Argo Smart Routing in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/argo-smart-routing/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Connect to and query your Turso database using Workers
 description: This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and Turso, an edge-hosted distributed database based on libSQL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Connect to and query your Turso database using Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect to and query your Turso database using Workers
 
-# Connect to and query your Turso database using Workers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and [Turso ↗](https://chiselstrike.com/), an edge-hosted distributed database based on libSQL. By using Workers and Turso, you can create applications that are close to your end users without having to maintain or operate infrastructure in tens or hundreds of regions.
 
@@ -34,7 +36,6 @@ You will need the Turso CLI to create and populate a database. Run either of the
 ```sh
 # On macOS or Linux with Homebrew
 brew install chiselstrike/tap/turso
-
 
 # Manual scripted installation
 curl -sSfL <https://get.tur.so/install.sh> | bash
@@ -60,6 +61,7 @@ turso auth login
 ```
 
 ```sh
+
 Waiting for authentication...
 ✔  Success! Logged in as <your GitHub username>
 ```
@@ -161,20 +163,13 @@ libsql://my-db-<your-github-username>.turso.io
 
 Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in your editor and at the bottom of the file, create a new `[vars]` section representing the [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) for your project:
 
-* [  wrangler.jsonc ](#tab-panel-13059)
-* [  wrangler.toml ](#tab-panel-13060)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "LIBSQL_DB_URL": "paste-your-url-here"
-  }
+	"vars": {
+		"LIBSQL_DB_URL": "paste-your-url-here"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -248,99 +243,83 @@ You will now write a Worker that will:
 
 Open `src/index.ts` and delete the existing template. Copy the below code exactly as is and paste it into the file:
 
-**TypeScript**
-
 ```ts
 import { Client as LibsqlClient, createClient } from "@libsql/client/web";
 import { Router, RouterType } from "itty-router";
 
-
 export interface Env {
-  // The environment variable containing your the URL for your Turso database.
-  LIBSQL_DB_URL?: string;
-  // The Secret that contains the authentication token for your Turso database.
-  LIBSQL_DB_AUTH_TOKEN?: string;
+	// The environment variable containing your the URL for your Turso database.
+	LIBSQL_DB_URL?: string;
+	// The Secret that contains the authentication token for your Turso database.
+	LIBSQL_DB_AUTH_TOKEN?: string;
 
-
-  // These objects are created before first use, then stashed here
-  // for future use
-  router?: RouterType;
+	// These objects are created before first use, then stashed here
+	// for future use
+	router?: RouterType;
 }
-
 
 export default {
-  async fetch(request, env): Promise<Response> {
-    if (env.router === undefined) {
-      env.router = buildRouter(env);
-    }
+	async fetch(request, env): Promise<Response> {
+		if (env.router === undefined) {
+			env.router = buildRouter(env);
+		}
 
-
-    return env.router.fetch(request);
-  },
+		return env.router.fetch(request);
+	},
 } satisfies ExportedHandler<Env>;
 
-
 function buildLibsqlClient(env: Env): LibsqlClient {
-  const url = env.LIBSQL_DB_URL?.trim();
-  if (url === undefined) {
-    throw new Error("LIBSQL_DB_URL env var is not defined");
-  }
+	const url = env.LIBSQL_DB_URL?.trim();
+	if (url === undefined) {
+		throw new Error("LIBSQL_DB_URL env var is not defined");
+	}
 
+	const authToken = env.LIBSQL_DB_AUTH_TOKEN?.trim();
+	if (authToken === undefined) {
+		throw new Error("LIBSQL_DB_AUTH_TOKEN env var is not defined");
+	}
 
-  const authToken = env.LIBSQL_DB_AUTH_TOKEN?.trim();
-  if (authToken === undefined) {
-    throw new Error("LIBSQL_DB_AUTH_TOKEN env var is not defined");
-  }
-
-
-  return createClient({ url, authToken });
+	return createClient({ url, authToken });
 }
 
-
 function buildRouter(env: Env): RouterType {
-  const router = Router();
+	const router = Router();
 
+	router.get("/users", async () => {
+		const client = buildLibsqlClient(env);
+		const rs = await client.execute("select * from example_users");
+		return Response.json(rs);
+	});
 
-  router.get("/users", async () => {
-    const client = buildLibsqlClient(env);
-    const rs = await client.execute("select * from example_users");
-    return Response.json(rs);
-  });
+	router.get("/add-user", async (request) => {
+		const client = buildLibsqlClient(env);
+		const email = request.query.email;
+		if (email === undefined) {
+			return new Response("Missing email", { status: 400 });
+		}
+		if (typeof email !== "string") {
+			return new Response("email must be a single string", { status: 400 });
+		}
+		if (email.length === 0) {
+			return new Response("email length must be > 0", { status: 400 });
+		}
 
+		try {
+			await client.execute({
+				sql: "insert into example_users values (?)",
+				args: [email],
+			});
+		} catch (e) {
+			console.error(e);
+			return new Response("database insert failed");
+		}
 
-  router.get("/add-user", async (request) => {
-    const client = buildLibsqlClient(env);
-    const email = request.query.email;
-    if (email === undefined) {
-      return new Response("Missing email", { status: 400 });
-    }
-    if (typeof email !== "string") {
-      return new Response("email must be a single string", { status: 400 });
-    }
-    if (email.length === 0) {
-      return new Response("email length must be > 0", { status: 400 });
-    }
+		return new Response("Added");
+	});
 
+	router.all("*", () => new Response("Not Found.", { status: 404 }));
 
-    try {
-      await client.execute({
-        sql: "insert into example_users values (?)",
-        args: [email],
-      });
-    } catch (e) {
-      console.error(e);
-      return new Response("database insert failed");
-    }
-
-
-    return new Response("Added");
-  });
-
-
-  router.all("*", () => new Response("Not Found.", { status: 404 }));
-
-
-  return router;
+	return router;
 }
 ```
 
@@ -372,7 +351,7 @@ Your worker has access to the following bindings:
   - LIBSQL_DB_URL: "your-url"
 ⎔ Starting a local server...
 ╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ [b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit                                                                    │
+│ [b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit                                                                  	│
 ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 Debugger listening on ws://127.0.0.1:61918/1064babd-bc9d-4bed-b171-b35dab3b7680
 For help, see: https://nodejs.org/en/docs/inspector
@@ -392,13 +371,13 @@ You should see JSON similar to the following containing the data from the `examp
 
 ```json
 {
-  "columns": ["email"],
-  "rows": [{ "email": "foo@bar.com" }],
-  "rowsAffected": 0
+	"columns": ["email"],
+	"rows": [{ "email": "foo@bar.com" }],
+	"rowsAffected": 0
 }
 ```
 
-Warning
+Caution
 
 If you see an error instead of a list of users, double check that:
 
@@ -451,7 +430,14 @@ To clean up the resources you created as part of this tutorial:
 * Join the [Cloudflare Developer Discord ↗](https://discord.cloudflare.com).
 * Join the [ChiselStrike (Turso) Discord ↗](https://discord.com/invite/4B5D7hYwub).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/#page","headline":"Connect to and query your Turso database using Workers · Cloudflare Workers docs","description":"This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and Turso, an edge-hosted distributed database based on libSQL.","url":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/connect-to-turso-using-workers/","name":"Connect to and query your Turso database using Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/#page","headline":"Connect to and query your Turso database using Workers · Cloudflare Workers docs","description":"This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and Turso, an edge-hosted distributed database based on libSQL.","url":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
 ```

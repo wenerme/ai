@@ -1,16 +1,18 @@
 ---
-title: AI Security for Apps
 description: Detect prompt injection, PII, and unsafe topics in AI application traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: AI Security for Apps
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  AI Security for Apps
 
-# AI Security for Apps
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Applications that use large language models (LLMs) are exposed to threats specific to how LLMs process input — prompt injection attacks, PII exposure in prompts, and prompts about unsafe topics.
 
@@ -46,7 +48,14 @@ AI Security for Apps is built into the Cloudflare [Web Application Firewall (WAF
 * [AI Gateway](https://developers.cloudflare.com/ai-gateway/) — Monitor, control, and cache requests to LLM providers.
 * [What are the OWASP Top 10 risks for LLMs? ↗](https://www.cloudflare.com/learning/ai/owasp-top-10-risks-for-llms/) — Background on the most common security risks for LLM-powered applications.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/#page","headline":"AI Security for Apps · Cloudflare Web Application Firewall (WAF) docs","description":"Detect prompt injection, PII, and unsafe topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/#page","headline":"AI Security for Apps · Cloudflare Web Application Firewall (WAF) docs","description":"Detect prompt injection, PII, and unsafe topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

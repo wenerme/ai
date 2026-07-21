@@ -1,16 +1,18 @@
 ---
-title: Choose an on-ramp
 description: Select a device or network on-ramp.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Choose an on-ramp
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Choose an on-ramp
 
-# Choose an on-ramp
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Similar to the network onboarding practices in the [Replace your VPN](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/) implementation guide, there are a number of ways to on-ramp your network traffic to the Cloudflare global network. This guide will quickly explore all of the options to on-ramp traffic to Cloudflare Gateway to inspect, apply policies, and filter.
 
@@ -58,7 +60,7 @@ Cloudflare WAN on-ramps traffic via your connections and can send all network an
 
 For more information on how Cloudflare WAN integrates with Zero Trust, refer to [Zero Trust integration](https://developers.cloudflare.com/cloudflare-wan/zero-trust/).
 
-### Cloudflare Mesh Beta
+### Cloudflare Mesh  Beta
 
 [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector), a software agent similar to our device client, functions as a virtual device to establish a connection between your network and the Cloudflare global network. You can install Cloudflare Mesh on a dedicated Linux server or virtual machine.
 
@@ -78,7 +80,14 @@ For more information on setting up DNS locations, refer to [Add locations](https
 | ------------------------------ | --------------------- | --------------------- | ------------- |
 | Gateway policy types supported | Network, HTTP, Egress | Network, HTTP, Egress | DNS, Resolver |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/#page","headline":"Choose an on-ramp · Cloudflare Learning Paths","description":"Select a device or network on-ramp.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/connect-devices-networks/","name":"Connect devices and networks to Cloudflare"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/","name":"Choose an on-ramp"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/#page","headline":"Choose an on-ramp · Cloudflare Learning Paths","description":"Select a device or network on-ramp.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

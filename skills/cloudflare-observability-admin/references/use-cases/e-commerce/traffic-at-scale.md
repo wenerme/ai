@@ -1,16 +1,18 @@
 ---
-title: Handle traffic at scale
 description: Handle flash sales and traffic spikes for e-commerce stores with load balancing, visitor queuing, and smart routing.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Handle traffic at scale
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Handle traffic at scale
 
-# Handle traffic at scale
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Flash sales, seasonal peaks, and viral moments can overwhelm your origin infrastructure. Cloudflare Load Balancing distributes traffic across multiple origins with automatic failover, Waiting Room queues excess visitors to prevent overload, and Argo Smart Routing reduces latency between edge and origin.
 
@@ -45,7 +47,14 @@ Route traffic through the fastest paths across Cloudflare's network. [Learn more
 
 Cloudflare Smart Shield acts as an intermediate caching layer between Cloudflare's content delivery network and your origin server, consolidating multiple requests from various locations into a single request. [Learn more about Smart Shield](https://developers.cloudflare.com/smart-shield/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/#page","headline":"Handle traffic at scale · Cloudflare use cases","description":"Handle flash sales and traffic spikes for e-commerce stores with load balancing, visitor queuing, and smart routing.","url":"https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/e-commerce/","name":"E-commerce"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/e-commerce/traffic-at-scale/","name":"Handle traffic at scale"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/#page","headline":"Handle traffic at scale · Cloudflare use cases","description":"Handle flash sales and traffic spikes for e-commerce stores with load balancing, visitor queuing, and smart routing.","url":"https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

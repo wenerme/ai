@@ -1,16 +1,18 @@
 ---
-title: How Python Workers Work
 description: Learn how Python Workers run via Pyodide in V8 isolates and how local development works.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: How Python Workers Work
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Python Workers Work
 
-# How Python Workers Work
+Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers written in Python are executed by [Pyodide ↗](https://pyodide.org/en/stable/index.html). Pyodide is a [CPython ↗](https://github.com/python/cpython) (the reference implementation of Python — commonly referred to as just "Python") compiled to WebAssembly.
 
@@ -20,11 +22,8 @@ When you write a Python Worker, your code is interpreted directly by Pyodide, wi
 
 A basic Python Worker includes a Python file with a `Default` class extending `WorkerEntrypoint`, such as:
 
-**Python**
-
 ```python
 from workers import Response, WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -33,29 +32,22 @@ class Default(WorkerEntrypoint):
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-12692)
-* [  wrangler.toml ](#tab-panel-12693)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "hello-world-python-worker",
-  "main": "src/entry.py",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "hello-world-python-worker",
+	"main": "src/entry.py",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "hello-world-python-worker"
 main = "src/entry.py"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 ```
 
 When you run `uv run pywrangler dev` to do local dev, the Workers runtime will:
@@ -91,7 +83,14 @@ A new version of Python is released every year in August, and a new version of P
 
 Each Python release has a [five (5) year support window ↗](https://devguide.python.org/versions/). Once this support window has passed for a given version of Python, security patches are no longer applied, making this version unsafe to rely on. Following the Workers Runtime policy to never break an application that is live in production, existing Python Workers on versions outside the support window will continue to work. However, we do not recommend using Python versions outside the support window for new projects, and we will not provide patches for issues arising from using these versions. We also cannot guarantee that these older Python versions won't suffer from degraded performance, including higher latency or CPU time usage.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/#page","headline":"How Python Workers Work · Cloudflare Workers docs","description":"Learn how Python Workers run via Pyodide in V8 isolates and how local development works.","url":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/how-python-workers-work/","name":"How Python Workers Work"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/#page","headline":"How Python Workers Work · Cloudflare Workers docs","description":"Learn how Python Workers run via Pyodide in V8 isolates and how local development works.","url":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

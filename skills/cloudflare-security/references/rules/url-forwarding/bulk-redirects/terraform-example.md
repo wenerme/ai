@@ -1,16 +1,18 @@
 ---
-title: Configure Bulk Redirects using Terraform
 description: Create Bulk Redirects using the Terraform Cloudflare provider.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure Bulk Redirects using Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Bulk Redirects using Terraform
 
-# Configure Bulk Redirects using Terraform
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/terraform-example/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,18 +26,15 @@ variable "cloudflare_account_id" {
   default = "<ACCOUNT_ID>"
 }
 
-
 # Bulk redirect list description
 variable "bulk_redirect_list_description" {
   default = "my bulk redirect description"
 }
 
-
 # Bulk redirect list name
 variable "bulk_redirect_list_name" {
   default = "my_bulk_redirect_list_name"
 }
-
 
 # Bulk redirect list item (URL redirect)
 variable "bulk_redirects" {
@@ -44,7 +43,6 @@ variable "bulk_redirects" {
     target_url  = string
     status_code = number
   }))
-
 
   default = {
     "redirect1" = {
@@ -65,7 +63,6 @@ variable "bulk_redirects" {
   }
 }
 
-
 # Create redirect list
 resource "cloudflare_list" "bulk_redirect_to_id" {
   account_id  = var.cloudflare_account_id
@@ -74,15 +71,12 @@ resource "cloudflare_list" "bulk_redirect_to_id" {
   kind        = "redirect"
 }
 
-
 # Add redirect item into the redirect list
 resource "cloudflare_list_item" "bulk_redirect_to_id_item" {
   for_each = { for redirect in var.bulk_redirects : "${redirect.source_url}" => redirect }
 
-
   account_id = var.cloudflare_account_id
   list_id    = cloudflare_list.bulk_redirect_to_id.id
-
 
   redirect {
     source_url  = each.value.source_url
@@ -90,14 +84,11 @@ resource "cloudflare_list_item" "bulk_redirect_to_id_item" {
     status_code = each.value.status_code
   }
 
-
   depends_on = [
     cloudflare_list.bulk_redirect_to_id
   ]
 
-
 }
-
 
 # Create bulk redirect and attach redirect list
 resource "cloudflare_ruleset" "bulk_root_redirect_to_id" {
@@ -106,7 +97,6 @@ resource "cloudflare_ruleset" "bulk_root_redirect_to_id" {
   description = var.bulk_redirect_list_description
   kind        = "root"
   phase       = "http_request_redirect"
-
 
   rules {
     action = "redirect"
@@ -121,7 +111,6 @@ resource "cloudflare_ruleset" "bulk_root_redirect_to_id" {
     enabled     = true
   }
 
-
   depends_on = [
     cloudflare_list_item.bulk_redirect_to_id_item
   ]
@@ -131,9 +120,6 @@ resource "cloudflare_ruleset" "bulk_root_redirect_to_id" {
 ## Required token permissions
 
 Your API token must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
-
-* [ Dashboard ](#tab-panel-10933)
-* [ API ](#tab-panel-10934)
 
 * Account Filter Lists > Edit
 * Bulk URL Redirects > Edit
@@ -148,7 +134,14 @@ For additional guidance on using Terraform with Cloudflare, refer to the followi
 * [Terraform documentation](https://developers.cloudflare.com/terraform/)
 * [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/terraform-example/#page","headline":"Configure Bulk Redirects using Terraform · Cloudflare Rules docs","description":"Create Bulk Redirects using the Terraform Cloudflare provider.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/terraform-example/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","Redirects"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/terraform-example/","name":"Configure Bulk Redirects using Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/terraform-example/#page","headline":"Configure Bulk Redirects using Terraform · Cloudflare Rules docs","description":"Create Bulk Redirects using the Terraform Cloudflare provider.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/terraform-example/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","Redirects"]}
 ```

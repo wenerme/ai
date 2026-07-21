@@ -1,16 +1,18 @@
 ---
-title: Cloudflare One Client with firewall
 description: Reference information for Cloudflare One Client with firewall in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cloudflare One Client with firewall
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare One Client with firewall
 
-# Cloudflare One Client with firewall
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If your organization uses a firewall or other policies to restrict or intercept Internet traffic, you may need to exempt the following IP addresses and domains to allow the Cloudflare One Client (formerly WARP) to connect.
 
@@ -81,18 +83,16 @@ The Cloudflare One Client connects to the following IP addresses, depending on w
 
 ### WireGuard
 
-|                |                           |
-| -------------- | ------------------------- |
 | IPv4 address   | 162.159.193.0/24          |
+| -------------- | ------------------------- |
 | IPv6 address   | 2606:4700:100::/48        |
 | Default port   | UDP 2408                  |
 | Fallback ports | UDP 500 UDP 1701 UDP 4500 |
 
 ### MASQUE
 
-|                |                                                                                      |
-| -------------- | ------------------------------------------------------------------------------------ |
 | IPv4 address   | 162.159.197.0/24                                                                     |
+| -------------- | ------------------------------------------------------------------------------------ |
 | IPv6 address   | 2606:4700:102::/48                                                                   |
 | Default port   | UDP 443                                                                              |
 | Fallback ports | UDP 500 UDP 1701 UDP 4500 UDP 4443 UDP 8443 UDP 8095 TCP 443 [1](#user-content-fn-1) |
@@ -105,9 +105,8 @@ FedRAMP High requirements
 
 Devices will use the MASQUE protocol in FedRAMP High environments. To deploy the Cloudflare One Client for FedRAMP High, you will need to allow the following IPs and ports:
 
-|                |                                                                                      |
-| -------------- | ------------------------------------------------------------------------------------ |
 | IPv4 address   | 162.159.239.0/24                                                                     |
+| -------------- | ------------------------------------------------------------------------------------ |
 | IPv6 address   | 2606:4700:105::/48                                                                   |
 | Default port   | UDP 443                                                                              |
 | Fallback ports | UDP 500 UDP 1701 UDP 4500 UDP 4443 UDP 8443 UDP 8095 TCP 443 [1](#user-content-fn-1) |
@@ -211,7 +210,14 @@ To use the network connectivity tests built into the Cloudflare One Client GUI, 
 
 1. Required for HTTP/2 fallback [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#page","headline":"Cloudflare One Client with firewall · Cloudflare One docs","description":"Reference information for Cloudflare One Client with firewall in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/","name":"Cloudflare One Client with firewall"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#page","headline":"Cloudflare One Client with firewall · Cloudflare One docs","description":"Reference information for Cloudflare One Client with firewall in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE"]}
 ```

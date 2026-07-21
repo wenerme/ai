@@ -1,16 +1,18 @@
 ---
-title: WHOIS requests
 description: Submit WHOIS disclosure requests to Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: WHOIS requests
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WHOIS requests
 
-# WHOIS requests
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/whoisrequests/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page describes the mechanism and process for submitting a disclosure request to Cloudflare for WHOIS data under Section 10 of the Internet Corporation for Assigned Names and Number's ("ICANN") [Registration Data Policy ↗](https://www.icann.org/en/contracted-parties/consensus-policies/registration-data-policy).
 
@@ -37,7 +39,14 @@ Email your request to [whoisrequest@cloudflare.com](mailto:whoisdisclosure@cloud
 
 Cloudflare processes WHOIS disclosure requests in the order they are received. If you have properly formatted and submitted your request according to Steps 1 and 2, Cloudflare typically will send you an acknowledgment of your request within two (2) business days and a substantive response within thirty (30) business days. Cloudflare will send all communications regarding your request to the email address from which you send your request. Cloudflare reserves the right to deny abusive, repetitive, or incomplete requests.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/whoisrequests/#page","headline":"WHOIS requests · Cloudflare Registrar docs","description":"Submit WHOIS disclosure requests to Cloudflare.","url":"https://developers.cloudflare.com/registrar/whoisrequests/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/whoisrequests/","name":"WHOIS requests"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/whoisrequests/#page","headline":"WHOIS requests · Cloudflare Registrar docs","description":"Submit WHOIS disclosure requests to Cloudflare.","url":"https://developers.cloudflare.com/registrar/whoisrequests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Add durable memory recall and ingestion to an agent.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-memory/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agent-memory/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Add Agent Memory to an agent so it can recall durable context across conversations.
 
@@ -109,18 +111,13 @@ You will use the namespace name, `my-agent`, in your Worker binding.
 
 Add an `agent_memory` binding to your Wrangler configuration. If you use the Agents SDK, also register your agent Durable Object.
 
-* [  wrangler.jsonc ](#tab-panel-5597)
-* [  wrangler.toml ](#tab-panel-5598)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "memory-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -152,29 +149,23 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
 }
 ```
 
-**TOML**
-
 ```toml
 name = "memory-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = ["nodejs_compat"]
-
 
 [ai]
 binding = "AI"
-
 
 [[agent_memory]]
 binding = "MEMORY"
 namespace = "my-agent"
 
-
 [[durable_objects.bindings]]
 name = "ChatAgent"
 class_name = "ChatAgent"
-
 
 [[migrations]]
 tag = "v1"
@@ -205,21 +196,13 @@ With the Agents SDK [Session API](https://developers.cloudflare.com/agents/runti
 
 Create `src/server.ts` and add the recall setup:
 
-* [  JavaScript ](#tab-panel-5605)
-* [  TypeScript ](#tab-panel-5606)
-
-**src/server.js**
-
 ```js
 import { Agent, routeAgentRequest } from "agents";
 import { Session } from "agents/experimental/memory/session";
 
-
 const INSTRUCTIONS = "You are a helpful assistant.";
 
-
 const MEMORY_CONTEXT = `Long-term memory is available through the search_context tool.
-
 
 MEMORY POLICY
 - Search memory with search_context when the user asks what you know or remember about them.
@@ -229,58 +212,49 @@ MEMORY POLICY
 - When search_context returns results, always incorporate them into your response. The results are real memories from previous conversations.
 - Treat recalled memories as helpful context, not guaranteed truth. If a memory is important for an irreversible action, confirm with the user.`;
 
-
 const MEMORY_PROFILE_NAME = "demo-user";
 
-
 export class ChatAgent extends Agent {
-  initialState = { cursor: 0, nextIngestAt: null };
+	initialState = { cursor: 0, nextIngestAt: null };
 
-
-  session = Session.create(this)
-    .withContext("instructions", {
-      provider: { get: async () => INSTRUCTIONS },
-    })
-    .withContext("memory", {
-      description:
-        "Searchable durable memory: facts, events, instructions, and tasks from prior conversations.",
-      provider: {
-        get: async () => MEMORY_CONTEXT,
-        search: async (query) => {
-          const profile = await this.env.MEMORY.getProfile(MEMORY_PROFILE_NAME);
-          const { answer } = await profile.recall(query, {
-            responseLength: "short",
-          });
-          return answer || "No relevant memories found.";
-        },
-      },
-    })
-    .withCachedPrompt();
+	session = Session.create(this)
+		.withContext("instructions", {
+			provider: { get: async () => INSTRUCTIONS },
+		})
+		.withContext("memory", {
+			description:
+				"Searchable durable memory: facts, events, instructions, and tasks from prior conversations.",
+			provider: {
+				get: async () => MEMORY_CONTEXT,
+				search: async (query) => {
+					const profile = await this.env.MEMORY.getProfile(MEMORY_PROFILE_NAME);
+					const { answer } = await profile.recall(query, {
+						responseLength: "short",
+					});
+					return answer || "No relevant memories found.";
+				},
+			},
+		})
+		.withCachedPrompt();
 }
 
-
 export default {
-  async fetch(request, env) {
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request, env) {
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 };
 ```
-
-**src/server.ts**
 
 ```ts
 import { Agent, routeAgentRequest } from "agents";
 import { Session } from "agents/experimental/memory/session";
 
-
 const INSTRUCTIONS = "You are a helpful assistant.";
 
-
 const MEMORY_CONTEXT = `Long-term memory is available through the search_context tool.
-
 
 MEMORY POLICY
 - Search memory with search_context when the user asks what you know or remember about them.
@@ -290,49 +264,44 @@ MEMORY POLICY
 - When search_context returns results, always incorporate them into your response. The results are real memories from previous conversations.
 - Treat recalled memories as helpful context, not guaranteed truth. If a memory is important for an irreversible action, confirm with the user.`;
 
-
 const MEMORY_PROFILE_NAME = "demo-user";
 
-
 type ChatAgentState = {
-  cursor: number;
-  nextIngestAt: number | null;
+	cursor: number;
+	nextIngestAt: number | null;
 };
 
-
 export class ChatAgent extends Agent<Env, ChatAgentState> {
-  initialState: ChatAgentState = { cursor: 0, nextIngestAt: null };
+	initialState: ChatAgentState = { cursor: 0, nextIngestAt: null };
 
-
-  session = Session.create(this)
-    .withContext("instructions", {
-      provider: { get: async () => INSTRUCTIONS },
-    })
-    .withContext("memory", {
-      description:
-        "Searchable durable memory: facts, events, instructions, and tasks from prior conversations.",
-      provider: {
-        get: async () => MEMORY_CONTEXT,
-        search: async (query: string) => {
-          const profile = await this.env.MEMORY.getProfile(MEMORY_PROFILE_NAME);
-          const { answer } = await profile.recall(query, {
-            responseLength: "short",
-          });
-          return answer || "No relevant memories found.";
-        },
-      },
-    })
-    .withCachedPrompt();
+	session = Session.create(this)
+		.withContext("instructions", {
+			provider: { get: async () => INSTRUCTIONS },
+		})
+		.withContext("memory", {
+			description:
+				"Searchable durable memory: facts, events, instructions, and tasks from prior conversations.",
+			provider: {
+				get: async () => MEMORY_CONTEXT,
+				search: async (query: string) => {
+					const profile = await this.env.MEMORY.getProfile(MEMORY_PROFILE_NAME);
+					const { answer } = await profile.recall(query, {
+						responseLength: "short",
+					});
+					return answer || "No relevant memories found.";
+				},
+			},
+		})
+		.withCachedPrompt();
 }
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+	async fetch(request: Request, env: Env) {
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -344,20 +313,12 @@ Next, give your agent a way to add durable memories. In a chat agent, the usual 
 
 Change the `agents` import and add the AI SDK imports. Keep the `Session` import from step 4.
 
-* [  JavaScript ](#tab-panel-5601)
-* [  TypeScript ](#tab-panel-5602)
-
-**src/server.js**
-
 ```js
 import { Agent, getAgentByName, routeAgentRequest } from "agents";
 import { convertToModelMessages, generateText, stepCountIs } from "ai";
 
-
 import { createWorkersAI } from "workers-ai-provider";
 ```
-
-**src/server.ts**
 
 ```ts
 import { Agent, getAgentByName, routeAgentRequest } from "agents";
@@ -368,16 +329,9 @@ import { createWorkersAI } from "workers-ai-provider";
 
 Add the ingestion delay near the top of the file, below the imports:
 
-* [  JavaScript ](#tab-panel-5599)
-* [  TypeScript ](#tab-panel-5600)
-
-**src/server.js**
-
 ```js
 const MEMORY_INGEST_DELAY_SECONDS = 10;
 ```
-
-**src/server.ts**
 
 ```ts
 const MEMORY_INGEST_DELAY_SECONDS = 10;
@@ -385,301 +339,252 @@ const MEMORY_INGEST_DELAY_SECONDS = 10;
 
 Then update `ChatAgent` with the following shape. The comment marks where to keep the Session setup from step 4.
 
-* [  JavaScript ](#tab-panel-5607)
-* [  TypeScript ](#tab-panel-5608)
-
-**src/server.js**
-
 ```js
 export class ChatAgent extends Agent {
-  initialState = { cursor: 0, nextIngestAt: null };
+	initialState = { cursor: 0, nextIngestAt: null };
 
+	// Keep the `session = Session.create(this)` setup from step 4 here.
 
-  // Keep the `session = Session.create(this)` setup from step 4 here.
+	async chat(message) {
+		const userMessage = {
+			id: `user-${crypto.randomUUID()}`,
+			role: "user",
+			parts: [{ type: "text", text: message }],
+		};
+		await this.session.appendMessage(userMessage);
 
+		await this.scheduleIngest();
 
-  async chat(message) {
-    const userMessage = {
-      id: `user-${crypto.randomUUID()}`,
-      role: "user",
-      parts: [{ type: "text", text: message }],
-    };
-    await this.session.appendMessage(userMessage);
+		const workersai = createWorkersAI({ binding: this.env.AI });
+		const result = await generateText({
+			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			system: await this.session.freezeSystemPrompt(),
+			messages: await convertToModelMessages(await this.session.getHistory()),
+			tools: await this.session.tools(),
+			stopWhen: stepCountIs(5),
+		});
 
+		const assistantMessage = {
+			id: `assistant-${crypto.randomUUID()}`,
+			role: "assistant",
+			parts: [{ type: "text", text: result.text }],
+		};
+		await this.session.appendMessage(assistantMessage);
 
-    await this.scheduleIngest();
+		return result.text;
+	}
 
+	async ingestScheduledMemory() {
+		await this.runIngest();
+	}
 
-    const workersai = createWorkersAI({ binding: this.env.AI });
-    const result = await generateText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      system: await this.session.freezeSystemPrompt(),
-      messages: await convertToModelMessages(await this.session.getHistory()),
-      tools: await this.session.tools(),
-      stopWhen: stepCountIs(5),
-    });
+	async scheduleIngest() {
+		await this.cancelPendingIngest();
+		await this.schedule(
+			MEMORY_INGEST_DELAY_SECONDS,
+			"ingestScheduledMemory",
+			{},
+		);
+		this.setState({
+			...this.state,
+			nextIngestAt: Date.now() + MEMORY_INGEST_DELAY_SECONDS * 1000,
+		});
+	}
 
+	async cancelPendingIngest() {
+		const pending = await this.listSchedules();
+		for (const schedule of pending) {
+			if (schedule.callback === "ingestScheduledMemory") {
+				await this.cancelSchedule(schedule.id);
+			}
+		}
+	}
 
-    const assistantMessage = {
-      id: `assistant-${crypto.randomUUID()}`,
-      role: "assistant",
-      parts: [{ type: "text", text: result.text }],
-    };
-    await this.session.appendMessage(assistantMessage);
+	async runIngest() {
+		const history = await this.session.getHistory();
+		const messages = history
+			.slice(this.state.cursor)
+			.filter(
+				(message) => message.role === "user" || message.role === "assistant",
+			)
+			.map((message) => ({
+				role: message.role,
+				content: message.parts
+					.map((part) => (part.type === "text" ? part.text : ""))
+					.filter(Boolean)
+					.join("\n\n"),
+			}))
+			.filter((message) => message.content);
 
+		if (messages.length === 0) {
+			this.setState({ ...this.state, nextIngestAt: null });
+			return { ingested: 0 };
+		}
 
-    return result.text;
-  }
+		const profile = await this.env.MEMORY.getProfile(MEMORY_PROFILE_NAME);
+		await profile.ingest(messages, { sessionId: this.name });
 
+		this.setState({
+			...this.state,
+			cursor: history.length,
+			nextIngestAt: null,
+		});
 
-  async ingestScheduledMemory() {
-    await this.runIngest();
-  }
-
-
-  async scheduleIngest() {
-    await this.cancelPendingIngest();
-    await this.schedule(
-      MEMORY_INGEST_DELAY_SECONDS,
-      "ingestScheduledMemory",
-      {},
-    );
-    this.setState({
-      ...this.state,
-      nextIngestAt: Date.now() + MEMORY_INGEST_DELAY_SECONDS * 1000,
-    });
-  }
-
-
-  async cancelPendingIngest() {
-    const pending = await this.listSchedules();
-    for (const schedule of pending) {
-      if (schedule.callback === "ingestScheduledMemory") {
-        await this.cancelSchedule(schedule.id);
-      }
-    }
-  }
-
-
-  async runIngest() {
-    const history = await this.session.getHistory();
-    const messages = history
-      .slice(this.state.cursor)
-      .filter(
-        (message) => message.role === "user" || message.role === "assistant",
-      )
-      .map((message) => ({
-        role: message.role,
-        content: message.parts
-          .map((part) => (part.type === "text" ? part.text : ""))
-          .filter(Boolean)
-          .join("\n\n"),
-      }))
-      .filter((message) => message.content);
-
-
-    if (messages.length === 0) {
-      this.setState({ ...this.state, nextIngestAt: null });
-      return { ingested: 0 };
-    }
-
-
-    const profile = await this.env.MEMORY.getProfile(MEMORY_PROFILE_NAME);
-    await profile.ingest(messages, { sessionId: this.name });
-
-
-    this.setState({
-      ...this.state,
-      cursor: history.length,
-      nextIngestAt: null,
-    });
-
-
-    return { ingested: messages.length };
-  }
+		return { ingested: messages.length };
+	}
 }
 ```
 
-**src/server.ts**
-
 ```ts
 export class ChatAgent extends Agent<Env, ChatAgentState> {
-  initialState: ChatAgentState = { cursor: 0, nextIngestAt: null };
+	initialState: ChatAgentState = { cursor: 0, nextIngestAt: null };
 
+	// Keep the `session = Session.create(this)` setup from step 4 here.
 
-  // Keep the `session = Session.create(this)` setup from step 4 here.
+	async chat(message: string): Promise<string> {
+		const userMessage: UIMessage = {
+			id: `user-${crypto.randomUUID()}`,
+			role: "user",
+			parts: [{ type: "text", text: message }],
+		};
+		await this.session.appendMessage(userMessage);
 
+		await this.scheduleIngest();
 
-  async chat(message: string): Promise<string> {
-    const userMessage: UIMessage = {
-      id: `user-${crypto.randomUUID()}`,
-      role: "user",
-      parts: [{ type: "text", text: message }],
-    };
-    await this.session.appendMessage(userMessage);
+		const workersai = createWorkersAI({ binding: this.env.AI });
+		const result = await generateText({
+			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			system: await this.session.freezeSystemPrompt(),
+			messages: await convertToModelMessages(
+				(await this.session.getHistory()) as UIMessage[],
+			),
+			tools: await this.session.tools(),
+			stopWhen: stepCountIs(5),
+		});
 
+		const assistantMessage: UIMessage = {
+			id: `assistant-${crypto.randomUUID()}`,
+			role: "assistant",
+			parts: [{ type: "text", text: result.text }],
+		};
+		await this.session.appendMessage(assistantMessage);
 
-    await this.scheduleIngest();
+		return result.text;
+	}
 
+	async ingestScheduledMemory() {
+		await this.runIngest();
+	}
 
-    const workersai = createWorkersAI({ binding: this.env.AI });
-    const result = await generateText({
-      model: workersai("@cf/zai-org/glm-4.7-flash"),
-      system: await this.session.freezeSystemPrompt(),
-      messages: await convertToModelMessages(
-        (await this.session.getHistory()) as UIMessage[],
-      ),
-      tools: await this.session.tools(),
-      stopWhen: stepCountIs(5),
-    });
+	private async scheduleIngest() {
+		await this.cancelPendingIngest();
+		await this.schedule(
+			MEMORY_INGEST_DELAY_SECONDS,
+			"ingestScheduledMemory",
+			{},
+		);
+		this.setState({
+			...this.state,
+			nextIngestAt: Date.now() + MEMORY_INGEST_DELAY_SECONDS * 1000,
+		});
+	}
 
+	private async cancelPendingIngest() {
+		const pending = await this.listSchedules();
+		for (const schedule of pending) {
+			if (schedule.callback === "ingestScheduledMemory") {
+				await this.cancelSchedule(schedule.id);
+			}
+		}
+	}
 
-    const assistantMessage: UIMessage = {
-      id: `assistant-${crypto.randomUUID()}`,
-      role: "assistant",
-      parts: [{ type: "text", text: result.text }],
-    };
-    await this.session.appendMessage(assistantMessage);
+	private async runIngest(): Promise<{ ingested: number }> {
+		const history = (await this.session.getHistory()) as UIMessage[];
+		const messages = history
+			.slice(this.state.cursor)
+			.filter(
+				(message) => message.role === "user" || message.role === "assistant",
+			)
+			.map((message) => ({
+				role: message.role,
+				content: message.parts
+					.map((part) => (part.type === "text" ? part.text : ""))
+					.filter(Boolean)
+					.join("\n\n"),
+			}))
+			.filter((message) => message.content);
 
+		if (messages.length === 0) {
+			this.setState({ ...this.state, nextIngestAt: null });
+			return { ingested: 0 };
+		}
 
-    return result.text;
-  }
+		const profile = await this.env.MEMORY.getProfile(MEMORY_PROFILE_NAME);
+		await profile.ingest(messages, { sessionId: this.name });
 
+		this.setState({
+			...this.state,
+			cursor: history.length,
+			nextIngestAt: null,
+		});
 
-  async ingestScheduledMemory() {
-    await this.runIngest();
-  }
-
-
-  private async scheduleIngest() {
-    await this.cancelPendingIngest();
-    await this.schedule(
-      MEMORY_INGEST_DELAY_SECONDS,
-      "ingestScheduledMemory",
-      {},
-    );
-    this.setState({
-      ...this.state,
-      nextIngestAt: Date.now() + MEMORY_INGEST_DELAY_SECONDS * 1000,
-    });
-  }
-
-
-  private async cancelPendingIngest() {
-    const pending = await this.listSchedules();
-    for (const schedule of pending) {
-      if (schedule.callback === "ingestScheduledMemory") {
-        await this.cancelSchedule(schedule.id);
-      }
-    }
-  }
-
-
-  private async runIngest(): Promise<{ ingested: number }> {
-    const history = (await this.session.getHistory()) as UIMessage[];
-    const messages = history
-      .slice(this.state.cursor)
-      .filter(
-        (message) => message.role === "user" || message.role === "assistant",
-      )
-      .map((message) => ({
-        role: message.role,
-        content: message.parts
-          .map((part) => (part.type === "text" ? part.text : ""))
-          .filter(Boolean)
-          .join("\n\n"),
-      }))
-      .filter((message) => message.content);
-
-
-    if (messages.length === 0) {
-      this.setState({ ...this.state, nextIngestAt: null });
-      return { ingested: 0 };
-    }
-
-
-    const profile = await this.env.MEMORY.getProfile(MEMORY_PROFILE_NAME);
-    await profile.ingest(messages, { sessionId: this.name });
-
-
-    this.setState({
-      ...this.state,
-      cursor: history.length,
-      nextIngestAt: null,
-    });
-
-
-    return { ingested: messages.length };
-  }
+		return { ingested: messages.length };
+	}
 }
 ```
 
 Replace the default export with a small test endpoint. Each `conversationId` maps to a separate Agent instance with its own Session history.
 
-* [  JavaScript ](#tab-panel-5603)
-* [  TypeScript ](#tab-panel-5604)
-
-**src/server.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		if (request.method === "POST" && url.pathname === "/chat") {
+			const { message, conversationId = "default" } = await request.json();
 
-    if (request.method === "POST" && url.pathname === "/chat") {
-      const { message, conversationId = "default" } = await request.json();
+			if (!message) {
+				return Response.json({ error: "Missing message" }, { status: 400 });
+			}
 
+			const agent = await getAgentByName(env.ChatAgent, conversationId);
+			const response = await agent.chat(message);
+			return Response.json({ response });
+		}
 
-      if (!message) {
-        return Response.json({ error: "Missing message" }, { status: 400 });
-      }
-
-
-      const agent = await getAgentByName(env.ChatAgent, conversationId);
-      const response = await agent.chat(message);
-      return Response.json({ response });
-    }
-
-
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 };
 ```
 
-**src/server.ts**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env) {
-    const url = new URL(request.url);
+	async fetch(request: Request, env: Env) {
+		const url = new URL(request.url);
 
+		if (request.method === "POST" && url.pathname === "/chat") {
+			const { message, conversationId = "default" } =
+				(await request.json()) as {
+					message?: string;
+					conversationId?: string;
+				};
+			if (!message) {
+				return Response.json({ error: "Missing message" }, { status: 400 });
+			}
 
-    if (request.method === "POST" && url.pathname === "/chat") {
-      const { message, conversationId = "default" } =
-        (await request.json()) as {
-          message?: string;
-          conversationId?: string;
-        };
-      if (!message) {
-        return Response.json({ error: "Missing message" }, { status: 400 });
-      }
+			const agent = await getAgentByName(env.ChatAgent, conversationId);
+			const response = await agent.chat(message);
+			return Response.json({ response });
+		}
 
-
-      const agent = await getAgentByName(env.ChatAgent, conversationId);
-      const response = await agent.chat(message);
-      return Response.json({ response });
-    }
-
-
-    return (
-      (await routeAgentRequest(request, env)) ??
-      new Response("Not found", { status: 404 })
-    );
-  },
+		return (
+			(await routeAgentRequest(request, env)) ??
+			new Response("Not found", { status: 404 })
+		);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -739,13 +644,26 @@ The model should call `search_context`, receive recalled memory from Agent Memor
 
 ## Next steps
 
-[ How Agent Memory works ](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/) Learn how Agent Memory extracts, stores, and retrieves durable memories.
+### [ How Agent Memory works ](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
 
-[ Namespaces and profiles ](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/) Design memory scopes for users, teams, tenants, or organizations.
+ Learn how Agent Memory extracts, stores, and retrieves durable memories.
 
-[ Workers API ](https://developers.cloudflare.com/agent-memory/api/workers-api/) Use \`ingest()\`, \`remember()\`, \`recall()\`, and \`getSummary()\` from Workers.
+### [ Namespaces and profiles ](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/)
+
+ Design memory scopes for users, teams, tenants, or organizations.
+
+### [ Workers API ](https://developers.cloudflare.com/agent-memory/api/workers-api/)
+
+ Use \`ingest()\`, \`remember()\`, \`recall()\`, and \`getSummary()\` from Workers.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/get-started/#page","headline":"Get started · Cloudflare Agent Memory docs","description":"Add durable memory recall and ingestion to an agent.","url":"https://developers.cloudflare.com/agent-memory/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agent-memory/","name":"Agent Memory"}},{"@type":"ListItem","position":3,"item":{"@id":"/agent-memory/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/get-started/#page","headline":"Get started · Cloudflare Agent Memory docs","description":"Add durable memory recall and ingestion to an agent.","url":"https://developers.cloudflare.com/agent-memory/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Configuration
 description: Understand the different settings associated with your build.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration
 
-# Configuration
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When connecting your Git repository to your Worker, you can customize the configurations needed to build and deploy your Worker.
 
@@ -95,22 +97,18 @@ It is recommended to consistently use the same API token across all uploads and 
 
 [Static assets](https://developers.cloudflare.com/workers/static-assets/) and [frameworks](https://developers.cloudflare.com/workers/framework-guides/) are now supported in Cloudflare Workers. Learn to set up Workers projects and the commands for each framework in the framework guides:
 
-* [ AI & agents ](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
-  * [ Agents SDK ](https://developers.cloudflare.com/agents/)
-  * [ LangChain ](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
-* [ APIs ](https://developers.cloudflare.com/workers/framework-guides/apis/)
-  * [ FastAPI ](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
-  * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
 * [ Deploy an existing project ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
-* [ Mobile applications ](https://developers.cloudflare.com/workers/framework-guides/mobile-apps/)
-  * [ Expo ](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
 * [ Web applications ](https://developers.cloudflare.com/workers/framework-guides/web-apps/)
   * [ React + Vite ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
   * [ Astro ](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
   * [ React Router (formerly Remix) ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
+  * [ Next.js ](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
   * [ Vue ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/)
+  * [ RedwoodSDK ](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)
   * [ TanStack Start ](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)
   * [ Microfrontends ](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)
+  * [ SvelteKit ](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)
+  * [ Vike ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
   * [ More guides... ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)
     * [ Analog ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
     * [ Angular ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)
@@ -121,58 +119,50 @@ It is recommended to consistently use the same API token across all uploads and 
     * [ Qwik ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)
     * [ Solid ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)
     * [ Waku ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)
-  * [ Next.js ](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
-  * [ RedwoodSDK ](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)
-  * [ SvelteKit ](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)
-  * [ Vike ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
+* [ Mobile applications ](https://developers.cloudflare.com/workers/framework-guides/mobile-apps/)
+  * [ Expo ](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
+* [ APIs ](https://developers.cloudflare.com/workers/framework-guides/apis/)
+  * [ FastAPI ](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
+  * [ Hono ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
+* [ AI & agents ](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
+  * [ Agents SDK ](https://developers.cloudflare.com/agents/)
+  * [ LangChain ](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
 
 ## Environment variables
 
 You can provide custom environment variables to your build.
 
-* [ Dashboard ](#tab-panel-12311)
-* [ Wrangler ](#tab-panel-12312)
-
 To add environment variables via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 1. In **Overview**, select your Worker.
 2. Select **Settings** \> **Environment variables**.
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-12309)
-* [  wrangler.toml ](#tab-panel-12310)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker-dev",
-  "vars": {
-    "API_HOST": "example.com",
-    "API_ACCOUNT_ID": "example_user",
-    "SERVICE_X_DATA": {
-      "URL": "service-x-api.dev.example",
-      "MY_ID": 123
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker-dev",
+	"vars": {
+		"API_HOST": "example.com",
+		"API_ACCOUNT_ID": "example_user",
+		"SERVICE_X_DATA": {
+			"URL": "service-x-api.dev.example",
+			"MY_ID": 123
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker-dev"
 
-
 [vars]
 API_HOST = "example.com"
 API_ACCOUNT_ID = "example_user"
-
 
   [vars.SERVICE_X_DATA]
   URL = "service-x-api.dev.example"
@@ -191,7 +181,14 @@ The following system environment variables are injected by default (but can be o
 | WORKERS\_CI\_COMMIT\_SHA | <sha1-hash-of-current-commit> | Passing current commit ID to error reporting, for example, Sentry                     |
 | WORKERS\_CI\_BRANCH      | <branch-name-from-push-event  | Customizing build based on branch, for example, disabling debug logging on production |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/configuration/","name":"Configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: REST API
 description: Query AI Search instances over HTTP using the REST API for search and chat completions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: REST API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  REST API
 
-# REST API
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/api/search/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the AI Search REST API to query your AI Search instances over HTTP.
 
@@ -23,7 +25,7 @@ The previous [AutoRAG API endpoints](https://developers.cloudflare.com/api/resou
 All requests require an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
 1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[ Go to **API Tokens** ](https://dash.cloudflare.com/profile/api-tokens)
+[ Go to **API Tokens** ↗ ](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
@@ -102,18 +104,13 @@ Set `stream` to `true` to receive responses as Server-Sent Events (SSE). The ret
 event: chunks
 data: [{"id":"chunk-001","type":"text","score":0.85,"text":"...","item":{"key":"about-cloudflare.md","timestamp":1775925540000},"scoring_details":{"vector_score":0.85}}]
 
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" document"}}]}
-
 
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" you provided doesn"}}]}
 
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":"'t contain"}}]}
 
-
 data: {"id":"id-1776072781845","created":1776072781,"model":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" information"}}]}
-
 
 data: [DONE]
 ```
@@ -139,7 +136,14 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
   }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/search/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Query AI Search instances over HTTP using the REST API for search and chat completions.","url":"https://developers.cloudflare.com/ai-search/api/search/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/search/","name":"Search"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/search/rest-api/","name":"REST API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/search/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Query AI Search instances over HTTP using the REST API for search and chat completions.","url":"https://developers.cloudflare.com/ai-search/api/search/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -156,8 +156,9 @@ Use project spend alerts to notify your team when project spend reaches a thresh
 Create a project spend limit alert
 
 ```javascript
-const spendAlert =
-  await client.admin.organization.projects.spendAlerts.create("proj_abc", {
+const spendAlert = await client.admin.organization.projects.spendAlerts.create(
+  "proj_abc",
+  {
     currency: "USD",
     interval: "month",
     notification_channel: {
@@ -166,7 +167,8 @@ const spendAlert =
       subject_prefix: "[OpenAI spend]",
     },
     threshold_amount: 50000,
-  });
+  }
+);
 
 console.log(spendAlert.id);
 ```

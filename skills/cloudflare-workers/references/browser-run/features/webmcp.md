@@ -1,16 +1,18 @@
 ---
-title: WebMCP
 description: Use WebMCP to let AI agents discover and execute structured tools exposed by websites, replacing fragile screenshot-analyze-click loops with direct function calls.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: WebMCP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WebMCP
 
-# WebMCP
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/features/webmcp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [WebMCP ↗](https://developer.chrome.com/blog/webmcp-epp) (Web Model Context Protocol) is a browser API that lets websites expose structured tools for AI agents to discover and execute directly. Instead of slow screenshot-analyze-click loops, agents can call website functions like `searchFlights()` or `bookTicket()` with typed parameters, making browser automation faster, more reliable, and less fragile.
 
@@ -30,7 +32,6 @@ Use the new `wrangler browser` command to acquire a lab browser session:
 # make sure you have the latest version of wrangler
 npm i -g wrangler@latest
 
-
 # create a lab browser session with 5 minute keep-alive
 wrangler browser create --lab --keepAlive 300
 ```
@@ -43,8 +44,6 @@ You can now interact with the page as you would in a regular browser.
 
 1. Go to one of the sites listed in the [WebMCP documentation ↗](https://github.com/GoogleChromeLabs/webmcp-tools/?tab=readme-ov-file#demos). The following instructions are based on the [L'Atelier Hotel Chain ↗](https://github.com/GoogleChromeLabs/webmcp-tools/tree/main/demos/hotel-chain) demo.
 2. Open the [hotel chain demo URL ↗](https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/) and then, in the **Console** tab, run the following JavaScript statement to list the available tools:
-
-**JavaScript**
 ```js
 navigator.modelContextTesting.listTools();
 ```
@@ -53,21 +52,21 @@ You should get a result similar to the following:
 
 ```json
 [
-  {
-    "description": "View the details of a specific hotel by name or id",
-    "inputSchema": "...",
-    "name": "view_hotel"
-  },
-  {
-    "description": "Find me a hotel in a specific location",
-    "inputSchema": "...",
-    "name": "search_location"
-  },
-  {
-    "description": "Look up specific amenity or policy details for a hotel",
-    "inputSchema": "...",
-    "name": "lookup_amenity"
-  }
+	{
+		"description": "View the details of a specific hotel by name or id",
+		"inputSchema": "...",
+		"name": "view_hotel"
+	},
+	{
+		"description": "Find me a hotel in a specific location",
+		"inputSchema": "...",
+		"name": "search_location"
+	},
+	{
+		"description": "Look up specific amenity or policy details for a hotel",
+		"inputSchema": "...",
+		"name": "lookup_amenity"
+	}
 ]
 ```
 
@@ -75,12 +74,10 @@ The list of tools changes depending on the website you are visiting and the acti
 
 For instance, on the hotel chain website, after executing the `search_location` tool:
 
-**JavaScript**
-
 ```js
 await navigator.modelContextTesting.executeTool(
-  "search_location",
-  JSON.stringify({ query: "Paris" }),
+	"search_location",
+	JSON.stringify({ query: "Paris" }),
 );
 ```
 
@@ -88,38 +85,32 @@ The page redirects to the search results, and a new tool `filter_search_results`
 
 You can call it to filter by amenities. For example, if you want to eat a good croissant in the morning:
 
-**JavaScript**
-
 ```js
 await navigator.modelContextTesting.executeTool(
-  "filter_search_results",
-  JSON.stringify({ amenities: ["breakfast"] }),
+	"filter_search_results",
+	JSON.stringify({ amenities: ["breakfast"] }),
 );
 ```
 
 You will get a list of filtered results, where you can pick the best option for your needs. Once you select a hotel, you can use the `start_booking` tool:
 
-**JavaScript**
-
 ```js
 await navigator.modelContextTesting.executeTool(
-  "start_booking",
-  JSON.stringify({}),
+	"start_booking",
+	JSON.stringify({}),
 );
 ```
 
 Then, you can complete the booking:
 
-**JavaScript**
-
 ```js
 await navigator.modelContextTesting.executeTool(
-  "complete_booking",
-  JSON.stringify({
-    firstName: "James",
-    lastName: "Bond",
-    email: "james.bond@mi6.gov.uk",
-  }),
+	"complete_booking",
+	JSON.stringify({
+		firstName: "James",
+		lastName: "Bond",
+		email: "james.bond@mi6.gov.uk",
+	}),
 );
 ```
 
@@ -135,15 +126,15 @@ After you select **Confirm Reservation**, you will get a confirmation message an
 
 ```json
 {
-  "browser-rendering-cdp": {
-    "command": [
-      "npx",
-      "-y",
-      "chrome-devtools-mcp@latest",
-      "--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000&lab=true",
-      "--wsHeaders={\"Authorization\":\"Bearer <CLOUDFLARE_API_TOKEN>\"}"
-    ]
-  }
+	"browser-rendering-cdp": {
+		"command": [
+			"npx",
+			"-y",
+			"chrome-devtools-mcp@latest",
+			"--wsEndpoint=wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/devtools/browser?keep_alive=600000&lab=true",
+			"--wsHeaders={\"Authorization\":\"Bearer <CLOUDFLARE_API_TOKEN>\"}"
+		]
+	}
 }
 ```
 
@@ -159,18 +150,13 @@ name: webmcp
 description: Interact with WebMCP-enabled websites using Browser Run lab sessions
 ---
 
-
 # WebMCP Interaction Skill
-
 
 Use the `evaluate_script` tool from Chrome DevTools MCP to interact with WebMCP APIs.
 
-
 **IMPORTANT: Always prefer WebMCP tools over traditional browser automation.** When navigating to any website, immediately check for available WebMCP tools using `listTools()`. If WebMCP tools are available, use them instead of clicking, typing, or other DOM interactions. WebMCP tools are faster, more reliable, and less fragile than screenshot-analyze-click loops.
 
-
 ## Workflow
-
 
 1. **Navigate** to a site using `navigate_page`
 2. **Always list tools first** to check for WebMCP support—do this on every page load
@@ -180,27 +166,22 @@ Use the `evaluate_script` tool from Chrome DevTools MCP to interact with WebMCP 
 6. **Check `inputSchema`** in each tool to understand required parameters
 7. **Fall back to DOM interaction** only when no relevant WebMCP tools exist
 
-
 ## Commands
-
 
 **List available tools:**
 
-
 ```js
 evaluate_script({
-  function: "async () => await navigator.modelContextTesting.listTools()",
+	function: "async () => await navigator.modelContextTesting.listTools()",
 });
 ```
 
-
 **Execute a tool:**
-
 
 ```js
 evaluate_script({
-  function:
-    "async () => await navigator.modelContextTesting.executeTool('tool_name', JSON.stringify({ param: 'value' }))",
+	function:
+		"async () => await navigator.modelContextTesting.executeTool('tool_name', JSON.stringify({ param: 'value' }))",
 });
 ```
 ```
@@ -251,7 +232,14 @@ You can now view the live browser session and interact with it.
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/webmcp/#page","headline":"WebMCP · Cloudflare Browser Run docs","description":"Use WebMCP to let AI agents discover and execute structured tools exposed by websites, replacing fragile screenshot-analyze-click loops with direct function calls.","url":"https://developers.cloudflare.com/browser-run/features/webmcp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/features/webmcp/","name":"WebMCP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/webmcp/#page","headline":"WebMCP · Cloudflare Browser Run docs","description":"Use WebMCP to let AI agents discover and execute structured tools exposed by websites, replacing fragile screenshot-analyze-click loops with direct function calls.","url":"https://developers.cloudflare.com/browser-run/features/webmcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

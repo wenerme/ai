@@ -1,16 +1,18 @@
 ---
-title: Authenticate coding agents
 description: Grant coding agents like Claude Code, OpenCode, and Windsurf access to resources protected by Cloudflare Access using cloudflared or service tokens.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Authenticate coding agents
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Authenticate coding agents
 
-# Authenticate coding agents
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Coding agents such as Claude Code, OpenCode, and Windsurf often need to reach resources protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/). When a resource is behind Access, unauthenticated requests receive a redirect or `403` error instead of the expected response. Your agent needs a way to authenticate before it can reach the resource.
 
@@ -89,39 +91,29 @@ metadata:
   audience: developers
 ---
 
-
 # Access OAuth Authentication
-
 
 Authenticate to Cloudflare Access-protected resources using standard OAuth 2.0
 (resource metadata discovery, dynamic client registration, authorization code with PKCE).
 
-
 ## When to Use
 
-
 Use this skill when:
-
 
 - You need to access a URL that returns HTTP 401
 - The response contains a `www-authenticate: Bearer` header with a `resource_metadata` URL
 - The resource metadata indicates it is a Cloudflare Access-protected resource
 - You want to authenticate interactively through the user's IdP
 
-
 ## Step 1: Detect a Protected Resource
 
-
 Make a request and inspect the response headers:
-
 
 ```bash
 curl -sI -L <URL> 2>&1
 ```
 
-
 Look for a **401** response with a `www-authenticate` header like:
-
 
 ```
 www-authenticate: Bearer realm="OAuth", error="invalid_token",
@@ -129,108 +121,87 @@ www-authenticate: Bearer realm="OAuth", error="invalid_token",
   resource_metadata="https://<hostname>/.well-known/cloudflare-access-protected-resource/"
 ```
 
-
 If you see this header, the site supports the OAuth flow. Proceed to Step 2.
-
 
 The JSON body of the 401 will also contain:
 
-
 ```json
 {
-  "error": "invalid_token",
-  "error_description": "Missing or invalid access token",
-  "resource_metadata": "https://<hostname>/.well-known/cloudflare-access-protected-resource/"
+	"error": "invalid_token",
+	"error_description": "Missing or invalid access token",
+	"resource_metadata": "https://<hostname>/.well-known/cloudflare-access-protected-resource/"
 }
 ```
 
-
 ### If No `www-authenticate` Header
-
 
 If the 401 does not include `www-authenticate` with `resource_metadata`, the site may
 not support this OAuth flow. Fall back to `cloudflared access curl` or browser-based
 authentication.
 
-
 ## Step 2: Fetch Resource Metadata
 
-
 Fetch the resource metadata URL from the `www-authenticate` header:
-
 
 ```bash
 curl -s https://<hostname>/.well-known/cloudflare-access-protected-resource/
 ```
 
-
 Expected response:
-
 
 ```json
 {
-  "resource": "https://<hostname>",
-  "protected": true,
-  "team_domain": "<team>.cloudflareaccess.com",
-  "authorization_servers": ["https://<team>.cloudflareaccess.com"],
-  "authentication_method": "cloudflared",
-  "authentication_method_description": "Use `cloudflared access curl`...",
-  "authentication_method_documentation": "https://developers.cloudflare.com/cloudflare-one/tutorials/cli/"
+	"resource": "https://<hostname>",
+	"protected": true,
+	"team_domain": "<team>.cloudflareaccess.com",
+	"authorization_servers": ["https://<team>.cloudflareaccess.com"],
+	"authentication_method": "cloudflared",
+	"authentication_method_description": "Use `cloudflared access curl`...",
+	"authentication_method_documentation": "https://developers.cloudflare.com/cloudflare-one/tutorials/cli/"
 }
 ```
 
-
 Extract the **authorization server** URL from `authorization_servers[0]` (e.g. `https://<team>.cloudflareaccess.com`).
 
-
 ## Step 3: Fetch OAuth Authorization Server Metadata
-
 
 ```bash
 curl -s https://<team>.cloudflareaccess.com/.well-known/oauth-authorization-server
 ```
 
-
 Expected response:
-
 
 ```json
 {
-  "issuer": "<team>.cloudflareaccess.com",
-  "authorization_endpoint": "https://<team>.cloudflareaccess.com/cdn-cgi/access/oauth/authorization",
-  "token_endpoint": "https://<team>.cloudflareaccess.com/cdn-cgi/access/oauth/token",
-  "response_types_supported": ["code"],
-  "response_modes_supported": ["query"],
-  "grant_types_supported": ["authorization_code", "refresh_token"],
-  "token_endpoint_auth_methods_supported": [
-    "client_secret_basic",
-    "client_secret_post",
-    "none"
-  ],
-  "revocation_endpoint": "https://<team>.cloudflareaccess.com/cdn-cgi/access/oauth/revoke",
-  "registration_endpoint": "https://<team>.cloudflareaccess.com/cdn-cgi/access/oauth/registration",
-  "code_challenge_methods_supported": ["S256"]
+	"issuer": "<team>.cloudflareaccess.com",
+	"authorization_endpoint": "https://<team>.cloudflareaccess.com/cdn-cgi/access/oauth/authorization",
+	"token_endpoint": "https://<team>.cloudflareaccess.com/cdn-cgi/access/oauth/token",
+	"response_types_supported": ["code"],
+	"response_modes_supported": ["query"],
+	"grant_types_supported": ["authorization_code", "refresh_token"],
+	"token_endpoint_auth_methods_supported": [
+		"client_secret_basic",
+		"client_secret_post",
+		"none"
+	],
+	"revocation_endpoint": "https://<team>.cloudflareaccess.com/cdn-cgi/access/oauth/revoke",
+	"registration_endpoint": "https://<team>.cloudflareaccess.com/cdn-cgi/access/oauth/registration",
+	"code_challenge_methods_supported": ["S256"]
 }
 ```
 
-
 Verify that:
-
 
 - `"none"` is in `token_endpoint_auth_methods_supported` (allows public clients)
 - `"authorization_code"` is in `grant_types_supported`
 - `"S256"` is in `code_challenge_methods_supported`
 - A `registration_endpoint` is present
 
-
 Extract the **registration_endpoint**, **authorization_endpoint**, and **token_endpoint**.
-
 
 ## Step 4: Dynamic Client Registration
 
-
 Register a public OAuth client:
-
 
 ```bash
 curl -s -X POST <registration_endpoint> \
@@ -244,32 +215,26 @@ curl -s -X POST <registration_endpoint> \
   }'
 ```
 
-
 Expected response:
-
 
 ```json
 {
-  "client_id": "<uuid>",
-  "redirect_uris": ["http://localhost:8400/callback"],
-  "grant_types": ["authorization_code"],
-  "response_types": ["code"],
-  "token_endpoint_auth_method": "none",
-  "registration_client_uri": "...",
-  "client_id_issued_at": 1234567890
+	"client_id": "<uuid>",
+	"redirect_uris": ["http://localhost:8400/callback"],
+	"grant_types": ["authorization_code"],
+	"response_types": ["code"],
+	"token_endpoint_auth_method": "none",
+	"registration_client_uri": "...",
+	"client_id_issued_at": 1234567890
 }
 ```
 
-
 Save the **client_id**.
-
 
 ## Step 5: Generate PKCE Challenge
 
-
 Generate a code verifier and S256 challenge. Ensure the challenge starts with an
 alphanumeric character to avoid URL parsing issues:
-
 
 ```bash
 while true; do
@@ -281,20 +246,15 @@ while true; do
 done
 ```
 
-
 **Important**: The code challenge MUST start with `[a-zA-Z0-9]`. A leading `-` or `_`
 can cause URL parameter parsing failures on the authorization server.
 
-
 ## Step 6: Authorization Code Flow with Local Callback
-
 
 Start a local HTTP server to catch the callback, then direct the user to the
 authorization URL.
 
-
 ### Build the Authorization URL
-
 
 ```
 <authorization_endpoint>?
@@ -306,17 +266,13 @@ authorization URL.
   resource=<URL-encoded target resource>
 ```
 
-
 ### Start the Callback Listener and Prompt the User
 
-
 Run a Python HTTP server on port 8400 that captures the authorization code:
-
 
 ```python
 python3 -c '
 import http.server, urllib.parse
-
 
 class Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
@@ -349,25 +305,20 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass
 
-
 print("Listening on http://localhost:8400 ...", flush=True)
 print("Open the authorization URL in your browser.", flush=True)
 http.server.HTTPServer(("", 8400), Handler).serve_forever()
 '
 ```
 
-
 **Important**: Use a timeout of at least 120000ms for this bash command since the user
 needs time to authenticate in the browser.
-
 
 Tell the user to open the authorization URL in their browser. After they authenticate
 with their IdP, the browser will redirect to `http://localhost:8400/callback?code=<code>`,
 the server will capture it and shut down.
 
-
 ## Step 7: Exchange Code for Token
-
 
 ```bash
 curl -s -X POST <token_endpoint> \
@@ -379,42 +330,33 @@ curl -s -X POST <token_endpoint> \
   -d "code_verifier=<CODE_VERIFIER>"
 ```
 
-
 Expected response:
-
 
 ```json
 {
-  "access_token": "oauth:<token>",
-  "token_type": "bearer",
-  "expires_in": 900,
-  "scope": "",
-  "resource": "https://<hostname>/",
-  "refresh_token": "oauth:<refresh_token>"
+	"access_token": "oauth:<token>",
+	"token_type": "bearer",
+	"expires_in": 900,
+	"scope": "",
+	"resource": "https://<hostname>/",
+	"refresh_token": "oauth:<refresh_token>"
 }
 ```
 
-
 Save the **access_token** and **refresh_token**.
 
-
 ## Step 8: Access the Protected Resource
-
 
 ```bash
 curl -s https://<hostname>/ \
   -H "Authorization: Bearer <access_token>"
 ```
 
-
 This should now return the actual content behind Cloudflare Access.
-
 
 ## Step 9: Refresh the Token (if needed)
 
-
 If the access token expires (default 900 seconds), use the refresh token:
-
 
 ```bash
 curl -s -X POST <token_endpoint> \
@@ -424,9 +366,7 @@ curl -s -X POST <token_endpoint> \
   -d "client_id=<CLIENT_ID>"
 ```
 
-
 ## Quick Reference: Full Flow Summary
-
 
 ```
 1. curl -sI <URL>                          # Detect 401 + www-authenticate header
@@ -440,9 +380,7 @@ curl -s -X POST <token_endpoint> \
 9. curl -H "Authorization: Bearer <token>" # Access resource
 ```
 
-
 ## Troubleshooting
-
 
 | Problem                                                 | Cause                                                               | Fix                                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -454,7 +392,14 @@ curl -s -X POST <token_endpoint> \
 | Port 8400 already in use                                | Previous listener didn't shut down                                  | Kill the process or use a different port (update redirect_uri accordingly) |
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#page","headline":"Authenticate coding agents · Cloudflare One docs","description":"Grant coding agents like Claude Code, OpenCode, and Windsurf access to resources protected by Cloudflare Access using cloudflared or service tokens.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Authentication"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/authenticate-agents/","name":"Authenticate coding agents"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#page","headline":"Authenticate coding agents · Cloudflare One docs","description":"Grant coding agents like Claude Code, OpenCode, and Windsurf access to resources protected by Cloudflare Access using cloudflared or service tokens.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Authentication"]}
 ```

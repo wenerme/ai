@@ -1,16 +1,18 @@
 ---
-title: Managed OAuth
 description: Allow non-browser clients to authenticate with Access-protected applications using a standard OAuth 2.0 flow.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Managed OAuth
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Managed OAuth
 
-# Managed OAuth
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you protect an application with Cloudflare Access, by default non-browser clients — such as CLIs, AI agents, SDKs, and scripts — cannot complete the browser-based login redirect. They receive a `302` redirect with no usable token or authorization endpoint.
 
@@ -27,9 +29,6 @@ If you run your own OAuth server behind an Access application and rely on your o
 
 ## Enable managed OAuth on a self-hosted application
 
-* [ Dashboard ](#tab-panel-7755)
-* [ API ](#tab-panel-7756)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the application you want to configure, then select the three dots on the right > **Edit**.
 3. Go to the **Advanced settings** tab and turn on **Managed OAuth**.
@@ -41,28 +40,24 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
   * `Access: Apps and Policies Read`
-
-**Get an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Make a `PUT` request and set `oauth_configuration.enabled` to `true`. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
-
-**Update an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "oauth_configuration": {
-        "enabled": true
-    }
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"oauth_configuration": {
+				"enabled": true
+		}
+	}'
 ```
 
 To test, open an RFC 8707-compliant OAuth client and make a request to your application. The client should open a browser window prompting you to log in to Access. Refer to the [Authorization flow](#authorization-flow) section for more details.
@@ -72,9 +67,6 @@ To test, open an RFC 8707-compliant OAuth client and make a request to your appl
 Managed OAuth is available on [MCP server applications](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/) and allows MCP clients to authenticate users through Access using a standard OAuth 2.0 flow. Use this flow for MCP servers served through Cloudflare in the same account as your Zero Trust organization. The MCP server must validate the Access JWT sent in the `Cf-Access-Jwt-Assertion` header.
 
 Do not enable Managed OAuth for third-party MCP server code that already handles its own OAuth flow and cannot validate Access JWTs.
-
-* [ Dashboard ](#tab-panel-7757)
-* [ API ](#tab-panel-7758)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the MCP server application you want to configure, then select the three dots on the right > **Edit**.
@@ -87,28 +79,24 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
   * `Access: Apps and Policies Read`
-
-**Get an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Make a `PUT` request and set `oauth_configuration.enabled` to `true`. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
-
-**Update an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "oauth_configuration": {
-        "enabled": true
-    }
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"oauth_configuration": {
+				"enabled": true
+		}
+	}'
 ```
 
 To test, open an MCP client and connect to the protected MCP server. The client should open a browser window prompting you to log in to Access. Refer to the [Authorization flow](#authorization-flow) section for more details.
@@ -116,9 +104,6 @@ To test, open an MCP client and connect to the protected MCP server. The client 
 ## Enable managed OAuth on an MCP server portal
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
-
-* [ Dashboard ](#tab-panel-7759)
-* [ API ](#tab-panel-7760)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
@@ -131,36 +116,29 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
   * `Access: Apps and Policies Read`
-
-**Get an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Make a `PUT` request and set `oauth_configuration.enabled` to `true`. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
-
-**Update an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "oauth_configuration": {
-        "enabled": true
-    }
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"oauth_configuration": {
+				"enabled": true
+		}
+	}'
 ```
 
 To test, open an MCP client and [connect to the MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#connect-to-a-portal). The client should open a browser window prompting you to log in to Access. Refer to the [Authorization flow](#authorization-flow) section for more details.
 
 ## Managed OAuth settings
-
-* [ Dashboard ](#tab-panel-7761)
-* [ API ](#tab-panel-7762)
 
 Configure these settings in the **Advanced settings** tab of your [self-hosted app](#enable-managed-oauth-on-a-self-hosted-application), [MCP server application](#enable-managed-oauth-on-an-mcp-server-application), or [MCP server portal](#enable-managed-oauth-on-an-mcp-server-portal).
 
@@ -195,40 +173,36 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
   * `Access: Apps and Policies Read`
-
-**Get an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Make a `PUT` request with your Managed OAuth settings. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
-
-**Update an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "oauth_configuration": {
-        "enabled": true,
-        "dynamic_client_registration": {
-            "enabled": true,
-            "allow_any_on_localhost": true,
-            "allow_any_on_loopback": true,
-            "allowed_uris": [
-                "https://playground.ai.cloudflare.com/*"
-            ]
-        },
-        "grant": {
-            "access_token_lifetime": "5m",
-            "session_duration": "24h"
-        }
-    }
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"oauth_configuration": {
+				"enabled": true,
+				"dynamic_client_registration": {
+						"enabled": true,
+						"allow_any_on_localhost": true,
+						"allow_any_on_loopback": true,
+						"allowed_uris": [
+								"https://playground.ai.cloudflare.com/*"
+						]
+				},
+				"grant": {
+						"access_token_lifetime": "5m",
+						"session_duration": "24h"
+				}
+		}
+	}'
 ```
 
 ## Authorization flow
@@ -279,7 +253,14 @@ Use managed OAuth when you want non-browser clients to authenticate users the sa
 
 Use service tokens when no human is involved and you need a machine identity to access your application programmatically.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#page","headline":"Managed OAuth · Cloudflare One docs","description":"Allow non-browser clients to authenticate with Access-protected applications using a standard OAuth 2.0 flow.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/managed-oauth/","name":"Managed OAuth"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#page","headline":"Managed OAuth · Cloudflare One docs","description":"Allow non-browser clients to authenticate with Access-protected applications using a standard OAuth 2.0 flow.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","REST API"]}
 ```

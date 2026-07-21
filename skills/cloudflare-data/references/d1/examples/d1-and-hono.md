@@ -1,18 +1,20 @@
 ---
-title: Query D1 from Hono
 description: Query D1 from the Hono web framework
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query D1 from Hono
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Query D1 from Hono
+#  Query D1 from Hono
 
 Query D1 from the Hono web framework
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/examples/d1-and-hono/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Hono is a fast web framework for building API-first applications, and it includes first-class support for both [Workers](https://developers.cloudflare.com/workers/) and [Pages](https://developers.cloudflare.com/pages/).
 
@@ -30,82 +32,74 @@ If you are using [Pages Functions](https://developers.cloudflare.com/pages/funct
 
 The following examples show how to access a D1 database bound to `DB` from both a Workers script and a Pages Function:
 
-* [ workers ](#tab-panel-8581)
-* [ pages ](#tab-panel-8582)
-
-**TypeScript**
-
 ```ts
 import { Hono } from "hono";
 
-
 // This ensures c.env.DB is correctly typed
 type Bindings = {
-  DB: D1Database;
+	DB: D1Database;
 };
-
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-
 // Accessing D1 is via the c.env.YOUR_BINDING property
 app.get("/query/users/:id", async (c) => {
-  const userId = c.req.param("id");
-  try {
-    let { results } = await c.env.DB.prepare(
-      "SELECT * FROM users WHERE user_id = ?",
-    )
-      .bind(userId)
-      .run();
-    return c.json(results);
-  } catch (e) {
-    return c.json({ err: "Failed to query user" }, 500);
-  }
+	const userId = c.req.param("id");
+	try {
+		let { results } = await c.env.DB.prepare(
+			"SELECT * FROM users WHERE user_id = ?",
+		)
+			.bind(userId)
+			.run();
+		return c.json(results);
+	} catch (e) {
+		return c.json({ err: "Failed to query user" }, 500);
+	}
 });
-
 
 // Export our Hono app: Hono automatically exports a
 // Workers 'fetch' handler for you
 export default app;
 ```
 
-**TypeScript**
-
 ```ts
 import { Hono } from "hono";
 import { handle } from "hono/cloudflare-pages";
 
-
 // This ensures c.env.DB is correctly typed
 type Bindings = {
-  DB: D1Database;
+	DB: D1Database;
 };
-
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
 
-
 // Accessing D1 is via the c.env.YOUR_BINDING property
 app.get("/query/users/:id", async (c) => {
-  const userId = c.req.param("id");
-  try {
-    let { results } = await c.env.DB.prepare(
-      "SELECT * FROM users WHERE user_id = ?",
-    )
-      .bind(userId)
-      .run();
-    return c.json(results);
-  } catch (e) {
-    return c.json({ err: "Failed to query user" }, 500);
-  }
+	const userId = c.req.param("id");
+	try {
+		let { results } = await c.env.DB.prepare(
+			"SELECT * FROM users WHERE user_id = ?",
+		)
+			.bind(userId)
+			.run();
+		return c.json(results);
+	} catch (e) {
+		return c.json({ err: "Failed to query user" }, 500);
+	}
 });
-
 
 // Export the Hono instance as a Pages onRequest function
 export const onRequest = handle(app);
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/d1-and-hono/#page","headline":"Query D1 from Hono · Cloudflare D1 docs","description":"Query D1 from the Hono web framework","url":"https://developers.cloudflare.com/d1/examples/d1-and-hono/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/d1-and-hono/","name":"Query D1 from Hono"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/d1-and-hono/#page","headline":"Query D1 from Hono · Cloudflare D1 docs","description":"Query D1 from the Hono web framework","url":"https://developers.cloudflare.com/d1/examples/d1-and-hono/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono"]}
 ```

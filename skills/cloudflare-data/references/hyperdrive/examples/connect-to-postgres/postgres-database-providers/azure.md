@@ -1,18 +1,20 @@
 ---
-title: Azure Database
 description: Connect Hyperdrive to a Azure Database for PostgreSQL instance.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Azure Database
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Azure Database
+#  Azure Database
 
 Connect Hyperdrive to an Azure Database for PostgreSQL instance.
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/azure/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example shows you how to connect Hyperdrive to an Azure Database for PostgreSQL instance.
 
@@ -60,13 +62,10 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-9523)
-* [ Wrangler CLI ](#tab-panel-9524)
-
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Hyperdrive** page.
-[ Go to **Hyperdrive** ](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
+[ Go to **Hyperdrive** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
 2. Select **Create Configuration**.
 3. Fill out the form, including the connection string.
 4. Select **Create**.
@@ -78,38 +77,31 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
-
-  * [  wrangler.jsonc ](#tab-panel-9521)
-  * [  wrangler.toml ](#tab-panel-9522)
-
-**JSONC**
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "hyperdrive-example",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "hyperdrive-example",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+		}
+	]
 }
 ```
-
-**TOML**
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -168,35 +160,27 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9525)
-* [  wrangler.toml ](#tab-panel-9526)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -205,46 +189,39 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 
-**TypeScript**
-
 ```ts
 // filepath: src/index.ts
 import { Client } from "pg";
 
-
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    // Create a new client instance for each request. Hyperdrive maintains the
-    // underlying database connection pool, so creating a new client is fast.
-    const client = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
+		// Create a new client instance for each request. Hyperdrive maintains the
+		// underlying database connection pool, so creating a new client is fast.
+		const client = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
 
+		try {
+			// Connect to the database
+			await client.connect();
 
-    try {
-      // Connect to the database
-      await client.connect();
+			// Perform a simple query
+			const result = await client.query("SELECT * FROM pg_tables");
 
+			return Response.json({
+				success: true,
+				result: result.rows,
+			});
+		} catch (error: any) {
+			console.error("Database error:", error.message);
 
-      // Perform a simple query
-      const result = await client.query("SELECT * FROM pg_tables");
-
-
-      return Response.json({
-        success: true,
-        result: result.rows,
-      });
-    } catch (error: any) {
-      console.error("Database error:", error.message);
-
-
-      return new Response("Internal error occurred", { status: 500 });
-    }
-  },
+			return new Response("Internal error occurred", { status: 500 });
+		}
+	},
 };
 ```
 
@@ -254,7 +231,14 @@ export default {
 * Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 * Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/azure/#page","headline":"Azure Database · Cloudflare Hyperdrive docs","description":"Connect Hyperdrive to a Azure Database for PostgreSQL instance.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/azure/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/","name":"Connect to PostgreSQL"}},{"@type":"ListItem","position":5,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/postgres-database-providers/","name":"Database Providers"}},{"@type":"ListItem","position":6,"item":{"@id":"/hyperdrive/examples/connect-to-postgres/postgres-database-providers/azure/","name":"Azure Database"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/azure/#page","headline":"Azure Database · Cloudflare Hyperdrive docs","description":"Connect Hyperdrive to a Azure Database for PostgreSQL instance.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/azure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

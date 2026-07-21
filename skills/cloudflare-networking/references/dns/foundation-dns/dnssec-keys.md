@@ -1,16 +1,18 @@
 ---
-title: DNSSEC keys
 description: DNSSEC key management for Foundation DNS zones.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: DNSSEC keys
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNSSEC keys
 
-# DNSSEC keys
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/foundation-dns/dnssec-keys/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With [Foundation DNS](https://developers.cloudflare.com/dns/foundation-dns/), you can request that the ZSK/KSK pair that is used for [DNSSEC](https://developers.cloudflare.com/dns/dnssec/) is unique to your Cloudflare account. To opt in to this feature, contact your account team.
 
@@ -22,7 +24,14 @@ For more background information, refer to [How DNSSEC works ↗](https://www.clo
 
 For details about DNSSEC settings at Cloudflare, refer to the [DNSSEC documentation](https://developers.cloudflare.com/dns/dnssec/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/foundation-dns/dnssec-keys/#page","headline":"DNSSEC keys · Cloudflare DNS docs","description":"DNSSEC key management for Foundation DNS zones.","url":"https://developers.cloudflare.com/dns/foundation-dns/dnssec-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/foundation-dns/","name":"Foundation DNS"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/foundation-dns/dnssec-keys/","name":"DNSSEC keys"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/foundation-dns/dnssec-keys/#page","headline":"DNSSEC keys · Cloudflare DNS docs","description":"DNSSEC key management for Foundation DNS zones.","url":"https://developers.cloudflare.com/dns/foundation-dns/dnssec-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

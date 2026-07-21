@@ -1,16 +1,18 @@
 ---
-title: GitHub SMS notifications using Twilio
 description: This tutorial shows you how to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GitHub SMS notifications using Twilio
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  GitHub SMS notifications using Twilio
 
-# GitHub SMS notifications using Twilio
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.
 
@@ -89,33 +91,27 @@ With your local environment set up, parse the repository update with your Worker
 
 Initially, your generated `index.js` should look like this:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello World!");
+	},
 };
 ```
 
 Use the `request.method` property of [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) to check if the request coming to your application is a `POST` request, and send an error response if the request is not a `POST` request.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method !== "POST") {
-      return new Response("Please send a POST request!");
-    }
-  },
+	async fetch(request, env, ctx) {
+		if (request.method !== "POST") {
+			return new Response("Please send a POST request!");
+		}
+	},
 };
 ```
 
 Next, validate that the request is sent with the right secret key. GitHub attaches a hash signature for [each payload using the secret key ↗](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks). Use a helper function called `checkSignature` on the request to ensure the hash is correct. Then, you can access data from the webhook by parsing the request as JSON.
-
-**JavaScript**
 
 ```js
 async fetch(request, env, ctx) {
@@ -124,7 +120,6 @@ async fetch(request, env, ctx) {
   }
   try {
     const rawBody = await request.text();
-
 
     if (!checkSignature(rawBody, request.headers, env.GITHUB_SECRET_TOKEN)) {
       return new Response("Wrong password, try again", {status: 403});
@@ -137,28 +132,23 @@ async fetch(request, env, ctx) {
 
 The `checkSignature` function will use the Node.js crypto library to hash the received payload with your known secret key to ensure it matches the request hash. GitHub uses an HMAC hexdigest to compute the hash in the SHA-256 format. You will place this function at the top of your `index.js` file, before your export.
 
-**JavaScript**
-
 ```js
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { Buffer } from "node:buffer";
 
-
 function checkSignature(text, headers, githubSecretToken) {
-  const hmac = createHmac("sha256", githubSecretToken);
-  hmac.update(text);
-  const expectedSignature = hmac.digest("hex");
-  const actualSignature = headers.get("x-hub-signature-256");
+	const hmac = createHmac("sha256", githubSecretToken);
+	hmac.update(text);
+	const expectedSignature = hmac.digest("hex");
+	const actualSignature = headers.get("x-hub-signature-256");
 
+	const trusted = Buffer.from(`sha256=${expectedSignature}`, "ascii");
+	const untrusted = Buffer.from(actualSignature, "ascii");
 
-  const trusted = Buffer.from(`sha256=${expectedSignature}`, "ascii");
-  const untrusted = Buffer.from(actualSignature, "ascii");
-
-
-  return (
-    trusted.byteLength == untrusted.byteLength &&
-    timingSafeEqual(trusted, untrusted)
-  );
+	return (
+		trusted.byteLength == untrusted.byteLength &&
+		timingSafeEqual(trusted, untrusted)
+	);
 }
 ```
 
@@ -170,20 +160,13 @@ npx wrangler secret put GITHUB_SECRET_TOKEN
 
 Add the nodejs\_compat flag to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13077)
-* [  wrangler.toml ](#tab-panel-13078)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+	"compatibility_flags": [
+		"nodejs_compat"
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
@@ -199,38 +182,31 @@ You can then create a helper function to send text messages by sending a `POST` 
 
 Create a new function called `sendText()` that will handle making the request to Twilio:
 
-**JavaScript**
-
 ```js
 async function sendText(accountSid, authToken, message) {
-  const endpoint = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
+	const endpoint = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
 
+	const encoded = new URLSearchParams({
+		To: "%YOUR_PHONE_NUMBER%",
+		From: "%YOUR_TWILIO_NUMBER%",
+		Body: message,
+	});
 
-  const encoded = new URLSearchParams({
-    To: "%YOUR_PHONE_NUMBER%",
-    From: "%YOUR_TWILIO_NUMBER%",
-    Body: message,
-  });
+	const token = btoa(`${accountSid}:${authToken}`);
 
+	const request = {
+		body: encoded,
+		method: "POST",
+		headers: {
+			Authorization: `Basic ${token}`,
+			"Content-Type": "application/x-www-form-urlencoded",
+		},
+	};
 
-  const token = btoa(`${accountSid}:${authToken}`);
+	const response = await fetch(endpoint, request);
+	const result = await response.json();
 
-
-  const request = {
-    body: encoded,
-    method: "POST",
-    headers: {
-      Authorization: `Basic ${token}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  };
-
-
-  const response = await fetch(endpoint, request);
-  const result = await response.json();
-
-
-  return Response.json(result);
+	return Response.json(result);
 }
 ```
 
@@ -243,8 +219,6 @@ npx wrangler secret put TWILIO_AUTH_TOKEN
 
 Modify your `githubWebhookHandler` to send a text message using the `sendText` function you just made.
 
-**JavaScript**
-
 ```js
 async fetch(request, env, ctx) {
   if(request.method !== 'POST') {
@@ -256,12 +230,10 @@ async fetch(request, env, ctx) {
       return new Response('Wrong password, try again', {status: 403});
     }
 
-
     const action = request.headers.get('X-GitHub-Event');
     const json = JSON.parse(rawBody);
     const repoName = json.repository.full_name;
     const senderName = json.sender.login;
-
 
     return await sendText(
       env.TWILIO_ACCOUNT_SID,
@@ -293,7 +265,14 @@ By completing this tutorial, you have learned how to build webhooks using Worker
 * [Build a JAMStack app](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/)
 * [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/#page","headline":"GitHub SMS notifications using Twilio · Cloudflare Workers docs","description":"This tutorial shows you how to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.","url":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/github-sms-notifications-using-twilio/","name":"GitHub SMS notifications using Twilio"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/#page","headline":"GitHub SMS notifications using Twilio · Cloudflare Workers docs","description":"This tutorial shows you how to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.","url":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Stream output
 description: Handle real-time output from commands and processes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Stream output
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Stream output
 
-# Stream output
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/streaming-output/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to handle real-time output from commands, processes, and code execution.
 
@@ -34,56 +36,40 @@ Use non-streaming (`exec()`) for:
 
 Use `execStream()` to get real-time output:
 
-* [  JavaScript ](#tab-panel-11369)
-* [  TypeScript ](#tab-panel-11370)
-
-**JavaScript**
-
 ```js
 import { getSandbox, parseSSEStream } from "@cloudflare/sandbox";
 
-
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-
 
 const stream = await sandbox.execStream("npm run build");
 
-
 for await (const event of parseSSEStream(stream)) {
-  switch (event.type) {
-    case "stdout":
-      console.log(event.data);
-      break;
+	switch (event.type) {
+		case "stdout":
+			console.log(event.data);
+			break;
 
+		case "stderr":
+			console.error(event.data);
+			break;
 
-    case "stderr":
-      console.error(event.data);
-      break;
+		case "complete":
+			console.log("Exit code:", event.exitCode);
+			break;
 
-
-    case "complete":
-      console.log("Exit code:", event.exitCode);
-      break;
-
-
-    case "error":
-      console.error("Failed:", event.error);
-      break;
-  }
+		case "error":
+			console.error("Failed:", event.error);
+			break;
+	}
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import { getSandbox, parseSSEStream, type ExecEvent } from '@cloudflare/sandbox';
-
 
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
 
-
 const stream = await sandbox.execStream('npm run build');
-
 
 for await (const event of parseSSEStream<ExecEvent>(stream)) {
   switch (event.type) {
@@ -91,16 +77,13 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
       console.log(event.data);
       break;
 
-
     case 'stderr':
       console.error(event.data);
       break;
 
-
     case 'complete':
       console.log('Exit code:', event.exitCode);
       break;
-
 
     case 'error':
       console.error('Failed:', event.error);
@@ -113,52 +96,37 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 Return streaming output to users via Server-Sent Events:
 
-* [  JavaScript ](#tab-panel-11365)
-* [  TypeScript ](#tab-panel-11366)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    const sandbox = getSandbox(env.Sandbox, "builder");
+	async fetch(request, env) {
+		const sandbox = getSandbox(env.Sandbox, "builder");
 
+		const stream = await sandbox.execStream("npm run build");
 
-    const stream = await sandbox.execStream("npm run build");
-
-
-    return new Response(stream, {
-      headers: {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-      },
-    });
-  },
+		return new Response(stream, {
+			headers: {
+				"Content-Type": "text/event-stream",
+				"Cache-Control": "no-cache",
+			},
+		});
+	},
 };
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import { getSandbox } from '@cloudflare/sandbox';
 
-
 export { Sandbox } from '@cloudflare/sandbox';
-
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const sandbox = getSandbox(env.Sandbox, 'builder');
 
-
     const stream = await sandbox.execStream('npm run build');
-
 
     return new Response(stream, {
       headers: {
@@ -172,41 +140,30 @@ export default {
 
 Client-side consumption:
 
-* [  JavaScript ](#tab-panel-11363)
-* [  TypeScript ](#tab-panel-11364)
-
-**JavaScript**
-
 ```js
 // Browser JavaScript
 const eventSource = new EventSource("/build");
 
-
 eventSource.addEventListener("stdout", (event) => {
-  const data = JSON.parse(event.data);
-  console.log(data.data);
+	const data = JSON.parse(event.data);
+	console.log(data.data);
 });
 
-
 eventSource.addEventListener("complete", (event) => {
-  const data = JSON.parse(event.data);
-  console.log("Exit code:", data.exitCode);
-  eventSource.close();
+	const data = JSON.parse(event.data);
+	console.log("Exit code:", data.exitCode);
+	eventSource.close();
 });
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 // Browser JavaScript
 const eventSource = new EventSource('/build');
-
 
 eventSource.addEventListener('stdout', (event) => {
   const data = JSON.parse(event.data);
   console.log(data.data);
 });
-
 
 eventSource.addEventListener('complete', (event) => {
   const data = JSON.parse(event.data);
@@ -219,47 +176,32 @@ eventSource.addEventListener('complete', (event) => {
 
 Monitor background process output:
 
-* [  JavaScript ](#tab-panel-11367)
-* [  TypeScript ](#tab-panel-11368)
-
-**JavaScript**
-
 ```js
 import { parseSSEStream } from "@cloudflare/sandbox";
 
-
 const process = await sandbox.startProcess("node server.js");
-
 
 const logStream = await sandbox.streamProcessLogs(process.id);
 
-
 for await (const log of parseSSEStream(logStream)) {
-  console.log(log.data);
+	console.log(log.data);
 
-
-  if (log.data.includes("Server listening")) {
-    console.log("Server is ready");
-    break;
-  }
+	if (log.data.includes("Server listening")) {
+		console.log("Server is ready");
+		break;
+	}
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import { parseSSEStream, type LogEvent } from '@cloudflare/sandbox';
-
 
 const process = await sandbox.startProcess('node server.js');
 
-
 const logStream = await sandbox.streamProcessLogs(process.id);
-
 
 for await (const log of parseSSEStream<LogEvent>(logStream)) {
   console.log(log.data);
-
 
   if (log.data.includes('Server listening')) {
     console.log('Server is ready');
@@ -272,40 +214,29 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 Check exit codes and handle stream errors:
 
-* [  JavaScript ](#tab-panel-11371)
-* [  TypeScript ](#tab-panel-11372)
-
-**JavaScript**
-
 ```js
 const stream = await sandbox.execStream("npm run build");
 
-
 for await (const event of parseSSEStream(stream)) {
-  switch (event.type) {
-    case "stdout":
-      console.log(event.data);
-      break;
+	switch (event.type) {
+		case "stdout":
+			console.log(event.data);
+			break;
 
+		case "error":
+			throw new Error(`Build failed: ${event.error}`);
 
-    case "error":
-      throw new Error(`Build failed: ${event.error}`);
-
-
-    case "complete":
-      if (event.exitCode !== 0) {
-        throw new Error(`Build failed with exit code ${event.exitCode}`);
-      }
-      break;
-  }
+		case "complete":
+			if (event.exitCode !== 0) {
+				throw new Error(`Build failed with exit code ${event.exitCode}`);
+			}
+			break;
+	}
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const stream = await sandbox.execStream('npm run build');
-
 
 for await (const event of parseSSEStream<ExecEvent>(stream)) {
   switch (event.type) {
@@ -313,10 +244,8 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
       console.log(event.data);
       break;
 
-
     case 'error':
       throw new Error(`Build failed: ${event.error}`);
-
 
     case 'complete':
       if (event.exitCode !== 0) {
@@ -341,7 +270,14 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 * [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Process log streaming
 * [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Stream code execution output
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/streaming-output/#page","headline":"Stream output · Cloudflare Sandbox SDK docs","description":"Handle real-time output from commands and processes.","url":"https://developers.cloudflare.com/sandbox/guides/streaming-output/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/streaming-output/","name":"Stream output"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/streaming-output/#page","headline":"Stream output · Cloudflare Sandbox SDK docs","description":"Handle real-time output from commands and processes.","url":"https://developers.cloudflare.com/sandbox/guides/streaming-output/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

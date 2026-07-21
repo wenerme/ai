@@ -1,16 +1,18 @@
 ---
-title: SDKs
 description: Use Cloudflare API SDKs for Go, TypeScript, and Python to integrate Cloudflare services into your applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: SDKs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SDKs
 
-# SDKs
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/reference/sdks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers language software development kits (SDKs) as well as `curl` examples to demonstrate how to use the Cloudflare API. The SDK libraries allow you to interact with the Cloudflare API in language-specific syntax and more easily integrate with your existing applications.
 
@@ -46,21 +48,24 @@ curl "https://api.cloudflare.com/client/v4/zones" \
 
 ### With the TypeScript SDK:
 
-**JavaScript**
-
 ```js
 const client = new Cloudflare({
-  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
+	apiToken: process.env["CLOUDFLARE_API_TOKEN"],
 });
 
-
 const zones = await client.zones.list();
-
 
 console.log(zones);
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/sdks/#page","headline":"SDKs · Cloudflare Fundamentals docs","description":"Use Cloudflare API SDKs for Go, TypeScript, and Python to integrate Cloudflare services into your applications.","url":"https://developers.cloudflare.com/fundamentals/api/reference/sdks/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/reference/sdks/","name":"SDKs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/sdks/#page","headline":"SDKs · Cloudflare Fundamentals docs","description":"Use Cloudflare API SDKs for Go, TypeScript, and Python to integrate Cloudflare services into your applications.","url":"https://developers.cloudflare.com/fundamentals/api/reference/sdks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

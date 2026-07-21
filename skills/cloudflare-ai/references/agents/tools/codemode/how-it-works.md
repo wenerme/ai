@@ -1,22 +1,24 @@
 ---
-title: How Code Mode works
 description: Learn how Code Mode isolates generated code and makes approvals, replay, rollback, and reuse durable.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: How Code Mode works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Code Mode works
 
-# How Code Mode works
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/how-it-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Code Mode is a pattern where a model writes code to compose tools. The `@cloudflare/codemode` package implements that pattern with an isolated executor, service connectors, and a durable runtime.
 
 These parts have separate responsibilities. The executor runs code but stores no state. Connectors provide capabilities but do not manage replay. The runtime records execution and controls approvals, replay, rollback, and reuse.
 
-Warning
+Caution
 
 Code Mode is experimental and may have breaking changes.
 
@@ -24,27 +26,23 @@ Code Mode is experimental and may have breaking changes.
 
 In the standard setup, the model receives one outer tool named `codemode`. That tool accepts one field and returns a durable execution outcome:
 
-**TypeScript**
-
 ```ts
 type CodeModeInput = {
-  code: string;
+	code: string;
 };
-
 
 type PendingAction = {
-  executionId: string;
-  seq: number;
-  connector: string;
-  method: string;
-  args: unknown;
+	executionId: string;
+	seq: number;
+	connector: string;
+	method: string;
+	args: unknown;
 };
 
-
 type CodeModeOutput =
-  | { status: "completed"; executionId: string; result: unknown; logs?: string[] }
-  | { status: "paused"; executionId: string; pending: PendingAction[] }
-  | { status: "error"; executionId: string; error: string; logs?: string[] };
+	| { status: "completed"; executionId: string; result: unknown; logs?: string[] }
+	| { status: "paused"; executionId: string; pending: PendingAction[] }
+	| { status: "error"; executionId: string; error: string; logs?: string[] };
 ```
 
 Its description tells the model to write a JavaScript async arrow function. The description lists the configured connector namespace names, such as `github` or `stripe`, but it does not include every connector method and schema.
@@ -55,36 +53,32 @@ The model can use one Code Mode execution to discover relevant methods, then use
 
 Inside the sandbox, the `codemode` global provides the platform-level SDK:
 
-**TypeScript**
-
 ```ts
 declare const codemode: {
-  search(query: string): Promise<SearchOutput>;
-  describe(target: string): Promise<DescribeOutput>;
-  step<T>(name: string, fn: () => T | Promise<T>): Promise<T>;
-  run(name: string, input?: unknown): Promise<unknown>;
+	search(query: string): Promise<SearchOutput>;
+	describe(target: string): Promise<DescribeOutput>;
+	step<T>(name: string, fn: () => T | Promise<T>): Promise<T>;
+	run(name: string, input?: unknown): Promise<unknown>;
 };
-
 
 type SearchOutput = {
-  results: Array<{
-    path: string;
-    connector: string;
-    method: string;
-    description?: string;
-    kind: "method" | "snippet";
-    score: number;
-  }>;
-  total: number;
-  truncated: boolean;
+	results: Array<{
+		path: string;
+		connector: string;
+		method: string;
+		description?: string;
+		kind: "method" | "snippet";
+		score: number;
+	}>;
+	total: number;
+	truncated: boolean;
 };
 
-
 type DescribeOutput = {
-  path: string;
-  description?: string;
-  types: string;
-  kind: "connector" | "method" | "snippet";
+	path: string;
+	description?: string;
+	types: string;
+	kind: "connector" | "method" | "snippet";
 };
 ```
 
@@ -98,23 +92,19 @@ Each configured connector becomes another sandbox global. A connector named `git
 
 A connector-level description returns declarations similar to:
 
-**TypeScript**
-
 ```ts
 type ListPullRequestsInput = {
-  owner: string;
-  repo: string;
-  state?: "open" | "closed";
+	owner: string;
+	repo: string;
+	state?: "open" | "closed";
 };
-
 
 type ListPullRequestsOutput = unknown;
 
-
 declare const github: {
-  list_pull_requests(
-    input: ListPullRequestsInput,
-  ): Promise<ListPullRequestsOutput>;
+	list_pull_requests(
+		input: ListPullRequestsInput,
+	): Promise<ListPullRequestsOutput>;
 };
 ```
 
@@ -150,43 +140,32 @@ The executor and connector instances remain transient. Your application provides
 
 A typical Agent creates all three parts together:
 
-* [  JavaScript ](#tab-panel-7071)
-* [  TypeScript ](#tab-panel-7072)
-
-**src/server.js**
-
 ```js
 import {
-  createCodemodeRuntime,
-  DynamicWorkerExecutor,
+	createCodemodeRuntime,
+	DynamicWorkerExecutor,
 } from "@cloudflare/codemode";
 
-
 const runtime = createCodemodeRuntime({
-  ctx: this.ctx,
-  executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
-  connectors: [github, repoApi],
+	ctx: this.ctx,
+	executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+	connectors: [github, repoApi],
 });
-
 
 const tools = { codemode: runtime.tool() };
 ```
 
-**src/server.ts**
-
 ```ts
 import {
-  createCodemodeRuntime,
-  DynamicWorkerExecutor,
+	createCodemodeRuntime,
+	DynamicWorkerExecutor,
 } from "@cloudflare/codemode";
 
-
 const runtime = createCodemodeRuntime({
-  ctx: this.ctx,
-  executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
-  connectors: [github, repoApi],
+	ctx: this.ctx,
+	executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+	connectors: [github, repoApi],
 });
-
 
 const tools = { codemode: runtime.tool() };
 ```
@@ -199,44 +178,35 @@ Most Agents need only one Code Mode runtime. If you omit `name`, the runtime use
 
 Set `name` when one Agent needs separate Code Mode histories. For example, a runtime named `research` and another named `operations` keep separate execution records and snippet collections:
 
-* [  JavaScript ](#tab-panel-7073)
-* [  TypeScript ](#tab-panel-7074)
-
-**src/server.js**
-
 ```js
 const researchRuntime = createCodemodeRuntime({
-  ctx: this.ctx,
-  executor,
-  connectors: researchConnectors,
-  name: "research",
+	ctx: this.ctx,
+	executor,
+	connectors: researchConnectors,
+	name: "research",
 });
 
-
 const operationsRuntime = createCodemodeRuntime({
-  ctx: this.ctx,
-  executor,
-  connectors: operationsConnectors,
-  name: "operations",
+	ctx: this.ctx,
+	executor,
+	connectors: operationsConnectors,
+	name: "operations",
 });
 ```
 
-**src/server.ts**
-
 ```ts
 const researchRuntime = createCodemodeRuntime({
-  ctx: this.ctx,
-  executor,
-  connectors: researchConnectors,
-  name: "research",
+	ctx: this.ctx,
+	executor,
+	connectors: researchConnectors,
+	name: "research",
 });
 
-
 const operationsRuntime = createCodemodeRuntime({
-  ctx: this.ctx,
-  executor,
-  connectors: operationsConnectors,
-  name: "operations",
+	ctx: this.ctx,
+	executor,
+	connectors: operationsConnectors,
+	name: "operations",
 });
 ```
 
@@ -262,9 +232,7 @@ The application can show the pending method and arguments to a user. Approval st
 first pass:   read ── execute ──> result
               write ── pause
 
-
 approval
-
 
 second pass:  read ── replay ───> recorded result
               write ── execute ─> result
@@ -285,18 +253,15 @@ Recorded connector results make normal data-dependent branches stable. However, 
 
 Use `codemode.step()` to capture such work once. The runtime records the closure result and returns that value during approval replay:
 
-**JavaScript**
-
 ```js
 async () => {
-  const createdAt = await codemode.step("created-at", () => Date.now());
+	const createdAt = await codemode.step("created-at", () => Date.now());
 
-
-  return github.create_issue({
-    owner: "cloudflare",
-    repo: "agents",
-    title: `Review created at ${createdAt}`,
-  });
+	return github.create_issue({
+		owner: "cloudflare",
+		repo: "agents",
+		title: `Review created at ${createdAt}`,
+	});
 };
 ```
 
@@ -357,36 +322,34 @@ A snippet is saved source from an execution. Snippets turn model-written program
 
 The model does not promote its own code. Your application reviews an execution and calls `runtime.saveSnippet()` with its execution ID. The API accepts any execution status, so verify that the execution completed successfully before saving it. The model can then find the snippet with `codemode.search()`, inspect it with `codemode.describe()`, and invoke it with `codemode.run()`.
 
-* [  JavaScript ](#tab-panel-7069)
-* [  TypeScript ](#tab-panel-7070)
-
-**src/server.js**
-
 ```js
 const runs = await runtime.executions(20);
 
-
 await runtime.saveSnippet("list-open-prs", {
-  executionId: runs[0].id,
-  description: "List open pull requests for a repository.",
+	executionId: runs[0].id,
+	description: "List open pull requests for a repository.",
 });
 ```
-
-**src/server.ts**
 
 ```ts
 const runs = await runtime.executions(20);
 
-
 await runtime.saveSnippet("list-open-prs", {
-  executionId: runs[0].id,
-  description: "List open pull requests for a repository.",
+	executionId: runs[0].id,
+	description: "List open pull requests for a repository.",
 });
 ```
 
 A snippet can accept an input value. Its connector calls join the current execution log when the model runs it. The snippet also retains the connector list from its source execution. If a recorded connector is unavailable, `codemode.run()` resolves to an object with an `error` property. It does not throw automatically.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/how-it-works/#page","headline":"How Code Mode works · Cloudflare Agents docs","description":"Learn how Code Mode isolates generated code and makes approvals, replay, rollback, and reuse durable.","url":"https://developers.cloudflare.com/agents/tools/codemode/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/how-it-works/","name":"How Code Mode works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/how-it-works/#page","headline":"How Code Mode works · Cloudflare Agents docs","description":"Learn how Code Mode isolates generated code and makes approvals, replay, rollback, and reuse durable.","url":"https://developers.cloudflare.com/agents/tools/codemode/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Aggregation intervals
 description: Configure Cloudflare Radar aggregation intervals to control the frequency of returned data, from 15 minutes to one week.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Aggregation intervals
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Aggregation intervals
 
-# Aggregation intervals
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Aggregation intervals allow you to return data in a specified interval (or frequency). If no interval is defined, data will be returned in the default aggregation interval (or frequency). As a general principle, the longer the date range, the bigger the aggregation interval.
 
@@ -25,7 +27,14 @@ For example, when requesting one day of data, the default aggregation interval i
 | 1d                   | One day frequency.    |
 | 1w                   | One week frequency.   |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/concepts/aggregation-intervals/#page","headline":"Aggregation intervals · Cloudflare Radar docs","description":"Configure Cloudflare Radar aggregation intervals to control the frequency of returned data, from 15 minutes to one week.","url":"https://developers.cloudflare.com/radar/concepts/aggregation-intervals/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/concepts/aggregation-intervals/","name":"Aggregation intervals"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/concepts/aggregation-intervals/#page","headline":"Aggregation intervals · Cloudflare Radar docs","description":"Configure Cloudflare Radar aggregation intervals to control the frequency of returned data, from 15 minutes to one week.","url":"https://developers.cloudflare.com/radar/concepts/aggregation-intervals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

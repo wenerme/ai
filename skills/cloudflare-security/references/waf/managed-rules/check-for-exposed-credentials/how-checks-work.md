@@ -1,16 +1,18 @@
 ---
-title: How exposed credentials checks work
 description: How exposed credentials checks detect compromised login attempts.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How exposed credentials checks work
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How exposed credentials checks work
 
-# How exposed credentials checks work
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/how-checks-work/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deprecation notice
 
@@ -40,7 +42,14 @@ Action: _Interactive Challenge_
 
 When there is a match for the rule above and Cloudflare detects exposed credentials, the WAF presents the user with a challenge.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/how-checks-work/#page","headline":"How exposed credentials checks work · Cloudflare Web Application Firewall (WAF) docs","description":"How exposed credentials checks detect compromised login attempts.","url":"https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/how-checks-work/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/check-for-exposed-credentials/","name":"Check for exposed credentials"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/managed-rules/check-for-exposed-credentials/how-checks-work/","name":"How exposed credentials checks work"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/how-checks-work/#page","headline":"How exposed credentials checks work · Cloudflare Web Application Firewall (WAF) docs","description":"How exposed credentials checks detect compromised login attempts.","url":"https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/how-checks-work/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

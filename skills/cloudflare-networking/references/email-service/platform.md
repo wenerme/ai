@@ -1,16 +1,18 @@
 ---
-title: Platform
 description: Email Service platform details including limits, pricing, and plan information.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Platform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Platform
 
-# Platform
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/platform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Platform details for Cloudflare Email Service, including limits and pricing.
 
@@ -20,7 +22,14 @@ Platform details for Cloudflare Email Service, including limits and pricing.
 * [ Email Sending REST API ](https://developers.cloudflare.com/api/resources/email%5Fsending/)
 * [ Event subscriptions ](https://developers.cloudflare.com/email-service/platform/event-subscriptions/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/platform/#page","headline":"Platform · Cloudflare Email Service docs","description":"Email Service platform details including limits, pricing, and plan information.","url":"https://developers.cloudflare.com/email-service/platform/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/platform/","name":"Platform"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/platform/#page","headline":"Platform · Cloudflare Email Service docs","description":"Email Service platform details including limits, pricing, and plan information.","url":"https://developers.cloudflare.com/email-service/platform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

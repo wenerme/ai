@@ -1,36 +1,32 @@
 ---
-title: Specify recipients
 description: Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Specify recipients
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Specify recipients
+#  Specify recipients
 
 Specify multiple recipients, CC and BCC, and named addresses when sending with Email Service.
+
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Email Service lets you specify recipients in several ways — multiple recipients, CC and BCC, and named addresses — using the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/). The combined number of addresses across `to`, `cc`, and `bcc` must not exceed 50\. See [Limits](https://developers.cloudflare.com/email-service/platform/limits/).
 
 ## Multiple recipients
 
-* [ Workers ](#tab-panel-9233)
-* [ API ](#tab-panel-9234)
-* [ SMTP ](#tab-panel-9235)
-
-**TypeScript**
-
 ```ts
 const response = await env.EMAIL.send({
-  to: ["user1@example.com", "user2@example.com", "user3@example.com"],
-  from: { email: "newsletter@yourdomain.com", name: "Newsletter Team" },
-  subject: "Monthly Newsletter",
-  html: "<h1>This month's updates</h1>",
-  text: "This month's updates",
+	to: ["user1@example.com", "user2@example.com", "user3@example.com"],
+	from: { email: "newsletter@yourdomain.com", name: "Newsletter Team" },
+	subject: "Monthly Newsletter",
+	html: "<h1>This month's updates</h1>",
+	text: "This month's updates",
 });
 ```
 
@@ -55,10 +51,8 @@ From: Newsletter Team <newsletter@yourdomain.com>
 To: user1@example.com, user2@example.com
 Subject: Monthly Newsletter
 
-
 This month's updates
 EOF
-
 
 curl --ssl-reqd \
   --url "smtps://smtp.mx.cloudflare.net:465" \
@@ -71,22 +65,16 @@ curl --ssl-reqd \
 
 ## CC and BCC
 
-* [ Workers ](#tab-panel-9236)
-* [ API ](#tab-panel-9237)
-* [ SMTP ](#tab-panel-9238)
-
-**TypeScript**
-
 ```ts
 const response = await env.EMAIL.send({
-  to: "customer@example.com",
-  cc: ["manager@example.com"],
-  bcc: ["archive@example.com"],
-  from: "orders@yourdomain.com",
-  replyTo: "support@yourdomain.com",
-  subject: "Order Confirmation #12345",
-  html: "<h1>Your order is confirmed</h1>",
-  text: "Your order is confirmed",
+	to: "customer@example.com",
+	cc: ["manager@example.com"],
+	bcc: ["archive@example.com"],
+	from: "orders@yourdomain.com",
+	replyTo: "support@yourdomain.com",
+	subject: "Order Confirmation #12345",
+	html: "<h1>Your order is confirmed</h1>",
+	text: "Your order is confirmed",
 });
 ```
 
@@ -116,10 +104,8 @@ Cc: manager@example.com
 Reply-To: support@yourdomain.com
 Subject: Order Confirmation #12345
 
-
 Your order is confirmed
 EOF
-
 
 curl --ssl-reqd \
   --url "smtps://smtp.mx.cloudflare.net:465" \
@@ -135,19 +121,13 @@ curl --ssl-reqd \
 
 Provide a display name alongside the address for the sender and recipients.
 
-* [ Workers ](#tab-panel-9239)
-* [ API ](#tab-panel-9240)
-* [ SMTP ](#tab-panel-9241)
-
-**TypeScript**
-
 ```ts
 const response = await env.EMAIL.send({
-  to: { email: "jane@example.com", name: "Jane Doe" },
-  from: { email: "support@yourdomain.com", name: "Support Team" },
-  subject: "Welcome!",
-  html: "<h1>Thanks for joining!</h1>",
-  text: "Thanks for joining!",
+	to: { email: "jane@example.com", name: "Jane Doe" },
+	from: { email: "support@yourdomain.com", name: "Support Team" },
+	subject: "Welcome!",
+	html: "<h1>Thanks for joining!</h1>",
+	text: "Thanks for joining!",
 });
 ```
 
@@ -172,10 +152,8 @@ From: Support Team <support@yourdomain.com>
 To: Jane Doe <jane@example.com>
 Subject: Welcome!
 
-
 Thanks for joining!
 EOF
-
 
 curl --ssl-reqd \
   --url "smtps://smtp.mx.cloudflare.net:465" \
@@ -189,19 +167,13 @@ curl --ssl-reqd \
 
 Combine plain addresses and named addresses in the same `to` field.
 
-* [ Workers ](#tab-panel-9242)
-* [ API ](#tab-panel-9243)
-* [ SMTP ](#tab-panel-9244)
-
-**TypeScript**
-
 ```ts
 const response = await env.EMAIL.send({
-  to: ["plain@example.com", { email: "jane@example.com", name: "Jane Doe" }],
-  from: "support@yourdomain.com",
-  subject: "Team update",
-  html: "<h1>Monthly update</h1>",
-  text: "Monthly update",
+	to: ["plain@example.com", { email: "jane@example.com", name: "Jane Doe" }],
+	from: "support@yourdomain.com",
+	subject: "Team update",
+	html: "<h1>Monthly update</h1>",
+	text: "Monthly update",
 });
 ```
 
@@ -227,10 +199,8 @@ From: support@yourdomain.com
 To: plain@example.com, Jane Doe <jane@example.com>
 Subject: Team update
 
-
 Monthly update
 EOF
-
 
 curl --ssl-reqd \
   --url "smtps://smtp.mx.cloudflare.net:465" \
@@ -248,7 +218,14 @@ curl --ssl-reqd \
 * [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) — send from any SMTP-capable client.
 * [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/) — send PDFs, inline images, and uploads.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/#page","headline":"Specify recipients · Cloudflare Email Service docs","description":"Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/examples/email-sending/","name":"Email sending"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/examples/email-sending/recipients/","name":"Specify recipients"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/#page","headline":"Specify recipients · Cloudflare Email Service docs","description":"Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

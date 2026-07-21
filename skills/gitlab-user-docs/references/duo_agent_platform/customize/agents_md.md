@@ -53,7 +53,7 @@ instructions. Previously existing conversations do not.
   - [GitLab for VS Code](../../../editor_extensions/visual_studio_code/setup.md) 6.60 or later.
   - [GitLab Duo plugin for JetBrains IDEs](../../../editor_extensions/jetbrains_ide/setup.md) 3.26.0
     or later.
-  - [GitLab Duo CLI](../../gitlab_duo_cli/_index.md#set-up-the-gitlab-duo-cli) 8.47.0 or later.
+  - [GitLab Duo CLI](../../gitlab_duo_cli/set_up.md) 8.47.0 or later.
 - For custom flows, update the flow's configuration file to access the `user_rule` context passed
   from the executor:
 

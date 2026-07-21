@@ -1,16 +1,18 @@
 ---
-title: How Artifacts works
 description: Understand namespaces, repos, and durability.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: How Artifacts works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Artifacts works
 
-# How Artifacts works
+Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts creates Git repos on demand. Each repo is an isolated Git service with its own remote URL, tokens, and durable state.
 
@@ -53,7 +55,14 @@ Artifacts handles the Git server lifecycle and storage infrastructure underneath
 
 For repo patterns, refer to [Best practices for Artifacts](https://developers.cloudflare.com/artifacts/concepts/best-practices/). For token behavior, refer to [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/). For product updates, refer to the [Artifacts changelog](https://developers.cloudflare.com/artifacts/platform/changelog/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/#page","headline":"How Artifacts works · Cloudflare Artifacts docs","description":"Understand namespaces, repos, and durability.","url":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/concepts/how-artifacts-works/","name":"How Artifacts works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/#page","headline":"How Artifacts works · Cloudflare Artifacts docs","description":"Understand namespaces, repos, and durability.","url":"https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

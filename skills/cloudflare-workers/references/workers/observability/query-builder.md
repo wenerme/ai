@@ -1,50 +1,44 @@
 ---
-title: Query Builder
 description: Write structured queries to investigate and visualize your telemetry data.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query Builder
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Query Builder
 
-# Query Builder
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/query-builder/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Query Builder helps you write structured queries to investigate and visualize your telemetry data. The Query Builder searches the Workers Observability dataset, which currently includes all logs stored by [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/).
 
 The Query Builder can be found in the **Observability** page of the Cloudflare dashboard:
 
-[ Go to **Observability** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
+[ Go to **Observability** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
 
 ## Enable Query Builder
 
 The Query Builder is available to all developers and requires no enablement. Queries search all Workers Logs stored by Cloudflare. If you have not yet enabled Workers Logs, you can do so by adding the following setting to your [Worker's Wrangler file](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs) and redeploying your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-12752)
-* [  wrangler.toml ](#tab-panel-12753)
-
-**JSONC**
-
 ```jsonc
 {
-  "observability": {
-    "enabled": true,
-    "logs": {
-      "invocation_logs": true,
-      "head_sampling_rate": 1 // optional. default = 1.
-    }
-  }
+	"observability": {
+		"enabled": true,
+		"logs": {
+			"invocation_logs": true,
+			"head_sampling_rate": 1 // optional. default = 1.
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [observability]
 enabled = true
-
 
   [observability.logs]
   invocation_logs = true
@@ -54,7 +48,7 @@ enabled = true
 ## Write a query in the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
 3. Select **Observability** in the left-hand navigation panel, and then the **Overview** tab.
 4. Select a **Visualization**.
@@ -174,7 +168,7 @@ Queries can be starred by users. Starred queries are unique to the user, and not
 Saved queries can be deleted from the **Queries** tab. If you delete a query, the query is deleted for all users in the account.
 
 1. In the Cloudflare dashboard, go to the **Observability** page.
-[ Go to **Observability** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
+[ Go to **Observability** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
 2. Select the **Queries** tab.
 3. On the right-hand side, select the three dots for additional actions.
 4. Select **Delete Query** and follow the instructions.
@@ -201,7 +195,14 @@ We can expand a single invocation to view the relevant logs, and continue to deb
 
 ![Viewing the logs for a single Invocation](https://developers.cloudflare.com/_astro/wobs_invocation_logs_122.Bno9WyO1_9W3QT.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/query-builder/#page","headline":"Query Builder · Cloudflare Workers docs","description":"Write structured queries to investigate and visualize your telemetry data.","url":"https://developers.cloudflare.com/workers/observability/query-builder/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/query-builder/","name":"Query Builder"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/query-builder/#page","headline":"Query Builder · Cloudflare Workers docs","description":"Write structured queries to investigate and visualize your telemetry data.","url":"https://developers.cloudflare.com/workers/observability/query-builder/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

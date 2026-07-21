@@ -1,16 +1,18 @@
 ---
-title: Programmatic submissions
 description: Durably accept a Think turn with submitMessages() for webhooks and RPC callers, with idempotent retry, status inspection, and cancellation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Programmatic submissions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Programmatic submissions
 
-# Programmatic submissions
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Durably accept a Think turn and return before inference runs. Use `submitMessages()` for webhook handlers, RPC callers, and parent Workers that need a fast acknowledgement, safe retry, and later status inspection.
 
@@ -18,65 +20,54 @@ Declarative [scheduled prompt tasks](https://developers.cloudflare.com/agents/ha
 
 ## submitMessages
 
-**TypeScript**
-
 ```ts
 async submitMessages(
-  messages: UIMessage[],
-  options?: {
-    submissionId?: string;
-    idempotencyKey?: string;
-    metadata?: Record<string, unknown>;
-  },
+	messages: UIMessage[],
+	options?: {
+		submissionId?: string;
+		idempotencyKey?: string;
+		metadata?: Record<string, unknown>;
+	},
 ): Promise<SubmitMessagesResult>
 ```
 
 `submitMessages()` accepts serializable `UIMessage[]` values. It does not accept the function form supported by `saveMessages((messages) => ...)`, because durable submissions persist work before execution and cannot store closures. The array must contain at least one message.
 
-* [  JavaScript ](#tab-panel-6129)
-* [  TypeScript ](#tab-panel-6130)
-
-**JavaScript**
-
 ```js
 const submission = await this.submitMessages(
-  [
-    {
-      id: crypto.randomUUID(),
-      role: "user",
-      parts: [{ type: "text", text: "Process webhook event 123" }],
-    },
-  ],
-  { idempotencyKey: "webhook-event-123" },
+	[
+		{
+			id: crypto.randomUUID(),
+			role: "user",
+			parts: [{ type: "text", text: "Process webhook event 123" }],
+		},
+	],
+	{ idempotencyKey: "webhook-event-123" },
 );
 
-
 return Response.json({
-  submissionId: submission.submissionId,
-  status: submission.status,
-  accepted: submission.accepted,
+	submissionId: submission.submissionId,
+	status: submission.status,
+	accepted: submission.accepted,
 });
 ```
 
-**TypeScript**
-
 ```ts
 const submission = await this.submitMessages(
-  [
-    {
-      id: crypto.randomUUID(),
-      role: "user",
-      parts: [{ type: "text", text: "Process webhook event 123" }],
-    },
-  ],
-  { idempotencyKey: "webhook-event-123" },
+	[
+		{
+			id: crypto.randomUUID(),
+			role: "user",
+			parts: [{ type: "text", text: "Process webhook event 123" }],
+		},
+	],
+	{ idempotencyKey: "webhook-event-123" },
 );
 
-
 return Response.json({
-  submissionId: submission.submissionId,
-  status: submission.status,
-  accepted: submission.accepted,
+	submissionId: submission.submissionId,
+	status: submission.status,
+	accepted: submission.accepted,
 });
 ```
 
@@ -95,38 +86,27 @@ return Response.json({
 
 Pass an `idempotencyKey` from your external system. Retrying with the same key returns the existing submission with `accepted: false` instead of inserting duplicate messages:
 
-* [  JavaScript ](#tab-panel-6127)
-* [  TypeScript ](#tab-panel-6128)
-
-**JavaScript**
-
 ```js
 const first = await this.submitMessages(messages, {
-  idempotencyKey: payload.id,
+	idempotencyKey: payload.id,
 });
-
 
 const retry = await this.submitMessages(messages, {
-  idempotencyKey: payload.id,
+	idempotencyKey: payload.id,
 });
-
 
 console.log(first.submissionId === retry.submissionId); // true
 console.log(retry.accepted); // false
 ```
 
-**TypeScript**
-
 ```ts
 const first = await this.submitMessages(messages, {
-  idempotencyKey: payload.id,
+	idempotencyKey: payload.id,
 });
-
 
 const retry = await this.submitMessages(messages, {
-  idempotencyKey: payload.id,
+	idempotencyKey: payload.id,
 });
-
 
 console.log(first.submissionId === retry.submissionId); // true
 console.log(retry.accepted); // false
@@ -138,46 +118,33 @@ If you pass both `submissionId` and `idempotencyKey`, they must identify the sam
 
 Use the submission APIs to inspect active work, cancel a durable submission, and clean up terminal records:
 
-* [  JavaScript ](#tab-panel-6131)
-* [  TypeScript ](#tab-panel-6132)
-
-**JavaScript**
-
 ```js
 const current = await this.inspectSubmission(submission.submissionId);
 
-
 const active = await this.listSubmissions({
-  status: ["pending", "running"],
+	status: ["pending", "running"],
 });
-
 
 await this.cancelSubmission(submission.submissionId, "No longer needed");
 
-
 await this.deleteSubmissions({
-  status: ["completed", "error", "aborted"],
-  completedBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+	status: ["completed", "error", "aborted"],
+	completedBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
 });
 ```
-
-**TypeScript**
 
 ```ts
 const current = await this.inspectSubmission(submission.submissionId);
 
-
 const active = await this.listSubmissions({
-  status: ["pending", "running"],
+	status: ["pending", "running"],
 });
-
 
 await this.cancelSubmission(submission.submissionId, "No longer needed");
 
-
 await this.deleteSubmissions({
-  status: ["completed", "error", "aborted"],
-  completedBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+	status: ["completed", "error", "aborted"],
+	completedBefore: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
 });
 ```
 
@@ -195,7 +162,14 @@ If the chat is cleared or turn state is reset before a pending submission runs, 
 
 Use Workflows for multi-step orchestration, retries per step, long waits, external events, human approvals, or pipelines that may trigger Think as one part of a larger process. Refer to [Think Workflows](https://developers.cloudflare.com/agents/harnesses/think/workflows/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/#page","headline":"Programmatic submissions · Cloudflare Agents docs","description":"Durably accept a Think turn with submitMessages() for webhooks and RPC callers, with idempotent retry, status inspection, and cancellation.","url":"https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/programmatic-submissions/","name":"Programmatic submissions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/#page","headline":"Programmatic submissions · Cloudflare Agents docs","description":"Durably accept a Think turn with submitMessages() for webhooks and RPC callers, with idempotent retry, status inspection, and cancellation.","url":"https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

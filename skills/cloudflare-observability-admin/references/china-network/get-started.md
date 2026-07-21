@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up the Cloudflare China Network package on your Enterprise plan.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/china-network/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Contract required services and agree to supplemental terms
 
@@ -39,7 +41,14 @@ After content vetting is complete, [add your domains to Cloudflare](https://deve
 
 For first-time enablement of a zone, it will take approximately 24-48 hours to fully onboard to China Network. Afterwards, you can enable and disable China Network within your Cloudflare dashboard.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/get-started/#page","headline":"Get started · Cloudflare China Network docs","description":"Set up the Cloudflare China Network package on your Enterprise plan.","url":"https://developers.cloudflare.com/china-network/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/get-started/#page","headline":"Get started · Cloudflare China Network docs","description":"Set up the Cloudflare China Network package on your Enterprise plan.","url":"https://developers.cloudflare.com/china-network/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

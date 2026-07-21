@@ -1,16 +1,18 @@
 ---
-title: Gateway
 description: Gateway for Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Gateway
 
-# Gateway
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you troubleshoot common issues with Cloudflare Gateway policies.
 
@@ -108,9 +110,6 @@ These applications do not use the operating system's trust store and therefore d
 
 To resolve this issue:
 
-* [ Recommended ](#tab-panel-8367)
-* [ Workaround ](#tab-panel-8368)
-
 Create a targeted HTTP policy to bypass decryption for the specific domains these tools need to access. Place this policy at a higher precedence (lower order number) than your main TLS decryption policy.
 
 Create a [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) that includes hosts such as `github.com`, `*.amazonaws.com`, and `*.docker.io`.
@@ -151,7 +150,14 @@ For more information, refer to the full Gateway troubleshooting guide.
 
 [ Full Gateway troubleshooting guide ❯ ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/#page","headline":"Gateway · Cloudflare One docs","description":"Gateway for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/troubleshooting/gateway/","name":"Gateway"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/#page","headline":"Gateway · Cloudflare One docs","description":"Gateway for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Cache Reserve analytics
 description: View Cache Reserve storage, read, and write operation metrics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cache Reserve analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cache Reserve analytics
 
-# Cache Reserve analytics
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cache Reserve Analytics provides insights regarding your Cache Reserve usage. It allows you to check what content is stored in Cache Reserve, how often it is being accessed, how long it has been there and how much egress from your origin it is saving you.
 
@@ -23,7 +25,14 @@ You have access to the following metrics:
   * **Aggregate storage usage** \- is the total of storage used for the selected timestamp.
 * **Operations** \- Class A (writes) and Class B (reads) operations over time.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/#page","headline":"Cache Reserve analytics · Cloudflare Smart Shield docs","description":"View Cache Reserve storage, read, and write operation metrics.","url":"https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/configuration/cache-reserve/","name":"Cache Reserve"}},{"@type":"ListItem","position":5,"item":{"@id":"/smart-shield/configuration/cache-reserve/analytics/","name":"Cache Reserve analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/#page","headline":"Cache Reserve analytics · Cloudflare Smart Shield docs","description":"View Cache Reserve storage, read, and write operation metrics.","url":"https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 ```

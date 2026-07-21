@@ -1,16 +1,18 @@
 ---
-title: Sleeping and retrying
 description: Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sleeping and retrying
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sleeping and retrying
 
-# Sleeping and retrying
+Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide details how to sleep a Workflow and/or configure retries for a Workflow step.
 
@@ -26,15 +28,11 @@ A Workflow instance that is resuming from sleep will take priority over newly sc
 
 Use `step.sleep` to have a Workflow sleep for a relative period of time:
 
-**TypeScript**
-
 ```ts
 await step.sleep("sleep for a bit", "1 hour");
 ```
 
 The second argument to `step.sleep` accepts both `number` (milliseconds) or a human-readable format, such as "1 minute" or "26 hours". The accepted units for `step.sleep` when used this way are as follows:
-
-**TypeScript**
 
 ```ts
 | "second"
@@ -50,8 +48,6 @@ The second argument to `step.sleep` accepts both `number` (milliseconds) or a hu
 
 Use `step.sleepUntil` to have a Workflow sleep to a specific `Date`: this can be useful when you have a timestamp from another system or want to "schedule" work to occur at a specific time (e.g. Sunday, 9AM UTC).
 
-**TypeScript**
-
 ```ts
 // sleepUntil accepts a Date object as its second argument
 const workflowsLaunchDate = Date.parse("24 Oct 2024 13:00:00 UTC");
@@ -66,16 +62,14 @@ Each call to `step.do` in a Workflow accepts an optional `StepConfig`, which all
 
 If you do not provide your own retry configuration, Workflows applies the following defaults:
 
-**TypeScript**
-
 ```ts
 const defaultConfig: WorkflowStepConfig = {
-  retries: {
-    limit: 5,
-    delay: 10000,
-    backoff: "exponential",
-  },
-  timeout: "10 minutes",
+	retries: {
+		limit: 5,
+		delay: 10000,
+		backoff: "exponential",
+	},
+	timeout: "10 minutes",
 };
 ```
 
@@ -88,22 +82,20 @@ When providing your own `StepConfig`, you can configure:
 
 For example, to limit a step to 10 retries and have it apply an exponential delay (starting at 10 seconds) between each attempt, you would pass the following configuration as an optional object to `step.do`:
 
-**TypeScript**
-
 ```ts
 let someState = await step.do(
-  "call an API",
-  {
-    retries: {
-      limit: 10, // The total number of attempts
-      delay: "10 seconds", // Delay between each retry
-      backoff: "exponential", // Any of "constant" | "linear" | "exponential";
-    },
-    timeout: "30 minutes",
-  },
-  async () => {
-    /* Step code goes here */
-  },
+	"call an API",
+	{
+		retries: {
+			limit: 10, // The total number of attempts
+			delay: "10 seconds", // Delay between each retry
+			backoff: "exponential", // Any of "constant" | "linear" | "exponential";
+		},
+		timeout: "30 minutes",
+	},
+	async () => {
+		/* Step code goes here */
+	},
 );
 ```
 
@@ -118,54 +110,45 @@ The delay function receives an object with:
 
 Return a duration string, a number in milliseconds, or a promise that resolves to either value.
 
-* [  JavaScript ](#tab-panel-14017)
-* [  TypeScript ](#tab-panel-14018)
-
-**JavaScript**
-
 ```js
 await step.do(
-  "sync customer",
-  {
-    retries: {
-      limit: 5,
-      delay: ({ ctx, error }) => {
-        if (error.message.includes("rate limit")) {
-          return `${ctx.attempt * 30} seconds`;
-        }
+	"sync customer",
+	{
+		retries: {
+			limit: 5,
+			delay: ({ ctx, error }) => {
+				if (error.message.includes("rate limit")) {
+					return `${ctx.attempt * 30} seconds`;
+				}
 
-
-        return "10 seconds";
-      },
-    },
-  },
-  async () => {
-    await syncCustomer();
-  },
+				return "10 seconds";
+			},
+		},
+	},
+	async () => {
+		await syncCustomer();
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 await step.do(
-  "sync customer",
-  {
-    retries: {
-      limit: 5,
-      delay: ({ ctx, error }) => {
-        if (error.message.includes("rate limit")) {
-          return `${ctx.attempt * 30} seconds`;
-        }
+	"sync customer",
+	{
+		retries: {
+			limit: 5,
+			delay: ({ ctx, error }) => {
+				if (error.message.includes("rate limit")) {
+					return `${ctx.attempt * 30} seconds`;
+				}
 
-
-        return "10 seconds";
-      },
-    },
-  },
-  async () => {
-    await syncCustomer();
-  },
+				return "10 seconds";
+			},
+		},
+	},
+	async () => {
+		await syncCustomer();
+	},
 );
 ```
 
@@ -175,29 +158,26 @@ You can also force a Workflow instance to fail and _not_ retry by throwing a `No
 
 This can be useful when you detect a terminal (permanent) error from an upstream system (such as an authentication failure) or other errors where retrying would not help.
 
-**TypeScript**
-
 ```ts
 // Import the NonRetryableError definition
 import {
-  WorkflowEntrypoint,
-  WorkflowStep,
-  WorkflowEvent,
+	WorkflowEntrypoint,
+	WorkflowStep,
+	WorkflowEvent,
 } from "cloudflare:workers";
 import { NonRetryableError } from "cloudflare:workflows";
 
-
 // In your step code:
 export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
-  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
-    await step.do("some step", async () => {
-      if (!event.payload.data) {
-        throw new NonRetryableError(
-          "event.payload.data did not contain the expected payload",
-        );
-      }
-    });
-  }
+	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+		await step.do("some step", async () => {
+			if (!event.payload.data) {
+				throw new NonRetryableError(
+					"event.payload.data did not contain the expected payload",
+				);
+			}
+		});
+	}
 }
 ```
 
@@ -211,80 +191,69 @@ You can attach a rollback handler to `step.do()` to implement saga-style compens
 
 A failed step with rollback options can also participate in rollback alongside any completed steps which have a rollback handler registered. For example, if a steps throws a `NonRetryableError` after registering rollback, its rollback handler runs with `output` set to `undefined`.
 
-* [  JavaScript ](#tab-panel-14019)
-* [  TypeScript ](#tab-panel-14020)
-
-**JavaScript**
-
 ```js
 import { WorkflowEntrypoint } from "cloudflare:workers";
 import { NonRetryableError } from "cloudflare:workflows";
 
-
 export class OrderWorkflow extends WorkflowEntrypoint {
-  async run(_event, step) {
-    await step.do(
-      "reserve inventory",
-      async () => {
-        const reservation = await reserveInventory();
-        return { reservationId: reservation.id };
-      },
-      {
-        rollback: async ({ output }) => {
-          const { reservationId } = output;
-          await releaseInventory(reservationId);
-        },
-        rollbackConfig: {
-          retries: { limit: 3, delay: "10 seconds", backoff: "linear" },
-          timeout: "2 minutes",
-        },
-      },
-    );
+	async run(_event, step) {
+		await step.do(
+			"reserve inventory",
+			async () => {
+				const reservation = await reserveInventory();
+				return { reservationId: reservation.id };
+			},
+			{
+				rollback: async ({ output }) => {
+					const { reservationId } = output;
+					await releaseInventory(reservationId);
+				},
+				rollbackConfig: {
+					retries: { limit: 3, delay: "10 seconds", backoff: "linear" },
+					timeout: "2 minutes",
+				},
+			},
+		);
 
-
-    await step.do("charge card", async () => {
-      throw new NonRetryableError("payment processor rejected the charge");
-    });
-  }
+		await step.do("charge card", async () => {
+			throw new NonRetryableError("payment processor rejected the charge");
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 import {
-  WorkflowEntrypoint,
-  type WorkflowEvent,
-  type WorkflowStep,
+	WorkflowEntrypoint,
+	type WorkflowEvent,
+	type WorkflowStep,
 } from "cloudflare:workers";
 import { NonRetryableError } from "cloudflare:workflows";
 
-
 export class OrderWorkflow extends WorkflowEntrypoint<Env> {
-  async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {
-    await step.do(
-      "reserve inventory",
-      async () => {
-        const reservation = await reserveInventory();
-        return { reservationId: reservation.id };
-      },
-      {
-        rollback: async ({ output }) => {
-          const { reservationId } = output as { reservationId: string };
-          await releaseInventory(reservationId);
-        },
-        rollbackConfig: {
-          retries: { limit: 3, delay: "10 seconds", backoff: "linear" },
-          timeout: "2 minutes",
-        },
-      },
-    );
+	async run(_event: WorkflowEvent<unknown>, step: WorkflowStep) {
+		await step.do(
+			"reserve inventory",
+			async () => {
+				const reservation = await reserveInventory();
+				return { reservationId: reservation.id };
+			},
+			{
+				rollback: async ({ output }) => {
+					const { reservationId } = output as { reservationId: string };
+					await releaseInventory(reservationId);
+				},
+				rollbackConfig: {
+					retries: { limit: 3, delay: "10 seconds", backoff: "linear" },
+					timeout: "2 minutes",
+				},
+			},
+		);
 
-
-    await step.do("charge card", async () => {
-      throw new NonRetryableError("payment processor rejected the charge");
-    });
-  }
+		await step.do("charge card", async () => {
+			throw new NonRetryableError("payment processor rejected the charge");
+		});
+	}
 }
 ```
 
@@ -303,18 +272,15 @@ If you want to avoid this, you can catch exceptions emitted by a `step`. This ca
 
 To allow the Workflow to continue its execution, surround the intended steps that are allowed to fail with a `try...catch` block.
 
-**TypeScript**
-
 ```ts
 ...
 await step.do('task', async () => {
-  // work to be done
+	// work to be done
 });
-
 
 try {
     await step.do('non-retryable-task', async () => {
-    // work not to be retried
+		// work not to be retried
         throw new NonRetryableError('oh no');
     });
 } catch (e) {
@@ -324,17 +290,22 @@ try {
     });
 }
 
-
 // the Workflow will not fail and will continue its execution
 
-
 await step.do('next-task', async() => {
-  // more work to be done
+	// more work to be done
 });
 ...
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/sleeping-and-retrying/","name":"Sleeping and retrying"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

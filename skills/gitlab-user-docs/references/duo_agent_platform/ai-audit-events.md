@@ -1,4 +1,4 @@
-# AI audit event report
+# Audit AI events
 
 Browse and filter a unified record of GitLab Duo agent activity for compliance and governance purposes.
 
@@ -13,7 +13,7 @@ Browse and filter a unified record of GitLab Duo agent activity for compliance a
 > It is subject to change without notice.
 > For more information, see [GitLab Testing Agreement](https://handbook.gitlab.com/handbook/legal/testing-agreement/).
 
-The AI audit event report gives security and compliance teams a unified,
+Use the AI audit event report for a unified,
 browsable record of GitLab Duo agent activity. Each agent session produces
 a comprehensive audit artifact that you can inspect.
 

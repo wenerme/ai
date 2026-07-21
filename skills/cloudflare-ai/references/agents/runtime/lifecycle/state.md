@@ -1,16 +1,18 @@
 ---
-title: Store and sync state
 description: Persist and sync Agent state across clients in real time using setState, SQL storage, and bidirectional updates.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Store and sync state
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Store and sync state
 
-# Store and sync state
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents provide built-in state management with automatic persistence and real-time synchronization across all connected clients.
 
@@ -32,79 +34,65 @@ State vs Props
 
 **State** is persistent data that survives restarts and syncs across clients. **[Props](https://developers.cloudflare.com/agents/runtime/communication/routing/#props)** are one-time initialization arguments passed when an agent is instantiated - use props for configuration that does not need to persist.
 
-* [  JavaScript ](#tab-panel-6903)
-* [  TypeScript ](#tab-panel-6904)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 
-
 export class GameAgent extends Agent {
-  // Default state for new agents
-  initialState = {
-    players: [],
-    score: 0,
-    status: "waiting",
-  };
+	// Default state for new agents
+	initialState = {
+		players: [],
+		score: 0,
+		status: "waiting",
+	};
 
+	// React to state changes
+	onStateChanged(state, source) {
+		if (source !== "server" && state.players.length >= 2) {
+			// Client added a player, start the game
+			this.setState({ ...state, status: "playing" });
+		}
+	}
 
-  // React to state changes
-  onStateChanged(state, source) {
-    if (source !== "server" && state.players.length >= 2) {
-      // Client added a player, start the game
-      this.setState({ ...state, status: "playing" });
-    }
-  }
-
-
-  addPlayer(name) {
-    this.setState({
-      ...this.state,
-      players: [...this.state.players, name],
-    });
-  }
+	addPlayer(name) {
+		this.setState({
+			...this.state,
+			players: [...this.state.players, name],
+		});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 
-
 type GameState = {
-  players: string[];
-  score: number;
-  status: "waiting" | "playing" | "finished";
+	players: string[];
+	score: number;
+	status: "waiting" | "playing" | "finished";
 };
 
-
 export class GameAgent extends Agent<Env, GameState> {
-  // Default state for new agents
-  initialState: GameState = {
-    players: [],
-    score: 0,
-    status: "waiting",
-  };
+	// Default state for new agents
+	initialState: GameState = {
+		players: [],
+		score: 0,
+		status: "waiting",
+	};
 
+	// React to state changes
+	onStateChanged(state: GameState, source: Connection | "server") {
+		if (source !== "server" && state.players.length >= 2) {
+			// Client added a player, start the game
+			this.setState({ ...state, status: "playing" });
+		}
+	}
 
-  // React to state changes
-  onStateChanged(state: GameState, source: Connection | "server") {
-    if (source !== "server" && state.players.length >= 2) {
-      // Client added a player, start the game
-      this.setState({ ...state, status: "playing" });
-    }
-  }
-
-
-  addPlayer(name: string) {
-    this.setState({
-      ...this.state,
-      players: [...this.state.players, name],
-    });
-  }
+	addPlayer(name: string) {
+		this.setState({
+			...this.state,
+			players: [...this.state.players, name],
+		});
+	}
 }
 ```
 
@@ -112,37 +100,29 @@ export class GameAgent extends Agent<Env, GameState> {
 
 Use the `initialState` property to define default values for new agent instances:
 
-* [  JavaScript ](#tab-panel-6893)
-* [  TypeScript ](#tab-panel-6894)
-
-**JavaScript**
-
 ```js
 export class ChatAgent extends Agent {
-  initialState = {
-    messages: [],
-    settings: { theme: "dark", notifications: true },
-    lastActive: null,
-  };
+	initialState = {
+		messages: [],
+		settings: { theme: "dark", notifications: true },
+		lastActive: null,
+	};
 }
 ```
 
-**TypeScript**
-
 ```ts
 type State = {
-  messages: Message[];
-  settings: UserSettings;
-  lastActive: string | null;
+	messages: Message[];
+	settings: UserSettings;
+	lastActive: string | null;
 };
 
-
 export class ChatAgent extends Agent<Env, State> {
-  initialState: State = {
-    messages: [],
-    settings: { theme: "dark", notifications: true },
-    lastActive: null,
-  };
+	initialState: State = {
+		messages: [],
+		settings: { theme: "dark", notifications: true },
+		lastActive: null,
+	};
 }
 ```
 
@@ -150,36 +130,27 @@ export class ChatAgent extends Agent<Env, State> {
 
 The second generic parameter to `Agent` defines your state type:
 
-* [  JavaScript ](#tab-panel-6889)
-* [  TypeScript ](#tab-panel-6890)
-
-**JavaScript**
-
 ```js
 // State is fully typed
 export class MyAgent extends Agent {
-  initialState = { count: 0 };
+	initialState = { count: 0 };
 
-
-  increment() {
-    // TypeScript knows this.state is MyState
-    this.setState({ count: this.state.count + 1 });
-  }
+	increment() {
+		// TypeScript knows this.state is MyState
+		this.setState({ count: this.state.count + 1 });
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 // State is fully typed
 export class MyAgent extends Agent<Env, MyState> {
-  initialState: MyState = { count: 0 };
+	initialState: MyState = { count: 0 };
 
-
-  increment() {
-    // TypeScript knows this.state is MyState
-    this.setState({ count: this.state.count + 1 });
-  }
+	increment() {
+		// TypeScript knows this.state is MyState
+		this.setState({ count: this.state.count + 1 });
+	}
 }
 ```
 
@@ -191,30 +162,23 @@ Initial state is applied lazily on first access, not on every wake:
 2. **Existing agent** \- Persisted state is loaded from SQLite
 3. **No `initialState` defined** \- `this.state` is `undefined`
 
-* [  JavaScript ](#tab-panel-6891)
-* [  TypeScript ](#tab-panel-6892)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  initialState = { count: 0 };
-  async onStart() {
-    // Safe to access - returns initialState if new, or persisted state
-    console.log("Current count:", this.state.count);
-  }
+	initialState = { count: 0 };
+	async onStart() {
+		// Safe to access - returns initialState if new, or persisted state
+		console.log("Current count:", this.state.count);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent<Env, { count: number }> {
-  initialState = { count: 0 };
-  async onStart() {
-    // Safe to access - returns initialState if new, or persisted state
-    console.log("Current count:", this.state.count);
-  }
+	initialState = { count: 0 };
+	async onStart() {
+		// Safe to access - returns initialState if new, or persisted state
+		console.log("Current count:", this.state.count);
+	}
 }
 ```
 
@@ -222,47 +186,36 @@ class MyAgent extends Agent<Env, { count: number }> {
 
 Access the current state via the `this.state` getter:
 
-* [  JavaScript ](#tab-panel-6899)
-* [  TypeScript ](#tab-panel-6900)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  async onRequest(request) {
-    // Read current state
-    const { players, status } = this.state;
+	async onRequest(request) {
+		// Read current state
+		const { players, status } = this.state;
 
+		if (status === "waiting" && players.length < 2) {
+			return new Response("Waiting for players...");
+		}
 
-    if (status === "waiting" && players.length < 2) {
-      return new Response("Waiting for players...");
-    }
-
-
-    return Response.json(this.state);
-  }
+		return Response.json(this.state);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent<
-  Env,
-  { players: string[]; status: "waiting" | "playing" | "finished" }
+	Env,
+	{ players: string[]; status: "waiting" | "playing" | "finished" }
 > {
-  async onRequest(request: Request) {
-    // Read current state
-    const { players, status } = this.state;
+	async onRequest(request: Request) {
+		// Read current state
+		const { players, status } = this.state;
 
+		if (status === "waiting" && players.length < 2) {
+			return new Response("Waiting for players...");
+		}
 
-    if (status === "waiting" && players.length < 2) {
-      return new Response("Waiting for players...");
-    }
-
-
-    return Response.json(this.state);
-  }
+		return Response.json(this.state);
+	}
 }
 ```
 
@@ -270,38 +223,29 @@ class MyAgent extends Agent<
 
 If you do not define `initialState`, `this.state` returns `undefined`:
 
-* [  JavaScript ](#tab-panel-6895)
-* [  TypeScript ](#tab-panel-6896)
-
-**JavaScript**
-
 ```js
 export class MinimalAgent extends Agent {
-  // No initialState defined
+	// No initialState defined
 
-
-  async onConnect(connection) {
-    if (!this.state) {
-      // First time - initialize state
-      this.setState({ initialized: true });
-    }
-  }
+	async onConnect(connection) {
+		if (!this.state) {
+			// First time - initialize state
+			this.setState({ initialized: true });
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MinimalAgent extends Agent {
-  // No initialState defined
+	// No initialState defined
 
-
-  async onConnect(connection: Connection) {
-    if (!this.state) {
-      // First time - initialize state
-      this.setState({ initialized: true });
-    }
-  }
+	async onConnect(connection: Connection) {
+		if (!this.state) {
+			// First time - initialize state
+			this.setState({ initialized: true });
+		}
+	}
 }
 ```
 
@@ -313,42 +257,33 @@ Use `setState()` to update state. This:
 2. Broadcasts to all connected clients (excluding connections where [shouldSendProtocolMessages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) returned `false`)
 3. Triggers `onStateChanged()` (after broadcast; best-effort)
 
-* [  JavaScript ](#tab-panel-6901)
-* [  TypeScript ](#tab-panel-6902)
-
-**JavaScript**
-
 ```js
 // Replace entire state
 this.setState({
-  players: ["Alice", "Bob"],
-  score: 0,
-  status: "playing",
+	players: ["Alice", "Bob"],
+	score: 0,
+	status: "playing",
 });
-
 
 // Update specific fields (spread existing state)
 this.setState({
-  ...this.state,
-  score: this.state.score + 10,
+	...this.state,
+	score: this.state.score + 10,
 });
 ```
-
-**TypeScript**
 
 ```ts
 // Replace entire state
 this.setState({
-  players: ["Alice", "Bob"],
-  score: 0,
-  status: "playing",
+	players: ["Alice", "Bob"],
+	score: 0,
+	status: "playing",
 });
-
 
 // Update specific fields (spread existing state)
 this.setState({
-  ...this.state,
-  score: this.state.score + 10,
+	...this.state,
+	score: this.state.score + 10,
 });
 ```
 
@@ -356,54 +291,43 @@ this.setState({
 
 State is stored as JSON, so it must be serializable:
 
-* [  JavaScript ](#tab-panel-6905)
-* [  TypeScript ](#tab-panel-6906)
-
-**JavaScript**
-
 ```js
 // Good - plain objects, arrays, primitives
 this.setState({
-  items: ["a", "b", "c"],
-  count: 42,
-  active: true,
-  metadata: { key: "value" },
+	items: ["a", "b", "c"],
+	count: 42,
+	active: true,
+	metadata: { key: "value" },
 });
-
 
 // Bad - functions, classes, circular references
 // Functions do not serialize
 // Dates become strings, lose methods
 // Circular references fail
 
-
 // For dates, use ISO strings
 this.setState({
-  createdAt: new Date().toISOString(),
+	createdAt: new Date().toISOString(),
 });
 ```
-
-**TypeScript**
 
 ```ts
 // Good - plain objects, arrays, primitives
 this.setState({
-  items: ["a", "b", "c"],
-  count: 42,
-  active: true,
-  metadata: { key: "value" },
+	items: ["a", "b", "c"],
+	count: 42,
+	active: true,
+	metadata: { key: "value" },
 });
-
 
 // Bad - functions, classes, circular references
 // Functions do not serialize
 // Dates become strings, lose methods
 // Circular references fail
 
-
 // For dates, use ISO strings
 this.setState({
-  createdAt: new Date().toISOString(),
+	createdAt: new Date().toISOString(),
 });
 ```
 
@@ -411,28 +335,21 @@ this.setState({
 
 Override `onStateChanged()` to react when state changes (notifications/side-effects):
 
-* [  JavaScript ](#tab-panel-6897)
-* [  TypeScript ](#tab-panel-6898)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  onStateChanged(state, source) {
-    console.log("State updated:", state);
-    console.log("Updated by:", source === "server" ? "server" : source.id);
-  }
+	onStateChanged(state, source) {
+		console.log("State updated:", state);
+		console.log("Updated by:", source === "server" ? "server" : source.id);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent<Env, GameState> {
-  onStateChanged(state: GameState, source: Connection | "server") {
-    console.log("State updated:", state);
-    console.log("Updated by:", source === "server" ? "server" : source.id);
-  }
+	onStateChanged(state: GameState, source: Connection | "server") {
+		console.log("State updated:", state);
+		console.log("Updated by:", source === "server" ? "server" : source.id);
+	}
 }
 ```
 
@@ -451,104 +368,84 @@ This is useful for:
 * Validating client input
 * Triggering side effects only on client actions
 
-* [  JavaScript ](#tab-panel-6909)
-* [  TypeScript ](#tab-panel-6910)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  onStateChanged(state, source) {
-    // Ignore server-initiated updates
-    if (source === "server") return;
+	onStateChanged(state, source) {
+		// Ignore server-initiated updates
+		if (source === "server") return;
 
+		// A client updated state - validate and process
+		const connection = source;
+		console.log(`Client ${connection.id} updated state`);
 
-    // A client updated state - validate and process
-    const connection = source;
-    console.log(`Client ${connection.id} updated state`);
-
-
-    // Maybe trigger something based on the change
-    if (state.status === "submitted") {
-      this.processSubmission(state);
-    }
-  }
+		// Maybe trigger something based on the change
+		if (state.status === "submitted") {
+			this.processSubmission(state);
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent<
-  Env,
-  { status: "waiting" | "playing" | "finished" }
+	Env,
+	{ status: "waiting" | "playing" | "finished" }
 > {
-  onStateChanged(state: GameState, source: Connection | "server") {
-    // Ignore server-initiated updates
-    if (source === "server") return;
+	onStateChanged(state: GameState, source: Connection | "server") {
+		// Ignore server-initiated updates
+		if (source === "server") return;
 
+		// A client updated state - validate and process
+		const connection = source;
+		console.log(`Client ${connection.id} updated state`);
 
-    // A client updated state - validate and process
-    const connection = source;
-    console.log(`Client ${connection.id} updated state`);
-
-
-    // Maybe trigger something based on the change
-    if (state.status === "submitted") {
-      this.processSubmission(state);
-    }
-  }
+		// Maybe trigger something based on the change
+		if (state.status === "submitted") {
+			this.processSubmission(state);
+		}
+	}
 }
 ```
 
 ### Common pattern: Client-driven actions
 
-* [  JavaScript ](#tab-panel-6911)
-* [  TypeScript ](#tab-panel-6912)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  onStateChanged(state, source) {
-    if (source === "server") return;
+	onStateChanged(state, source) {
+		if (source === "server") return;
 
-
-    // Client added a message
-    const lastMessage = state.messages[state.messages.length - 1];
-    if (lastMessage && !lastMessage.processed) {
-      // Process and update
-      this.setState({
-        ...state,
-        messages: state.messages.map((m) =>
-          m.id === lastMessage.id ? { ...m, processed: true } : m,
-        ),
-      });
-    }
-  }
+		// Client added a message
+		const lastMessage = state.messages[state.messages.length - 1];
+		if (lastMessage && !lastMessage.processed) {
+			// Process and update
+			this.setState({
+				...state,
+				messages: state.messages.map((m) =>
+					m.id === lastMessage.id ? { ...m, processed: true } : m,
+				),
+			});
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent<Env, { messages: Message[] }> {
-  onStateChanged(state: State, source: Connection | "server") {
-    if (source === "server") return;
+	onStateChanged(state: State, source: Connection | "server") {
+		if (source === "server") return;
 
-
-    // Client added a message
-    const lastMessage = state.messages[state.messages.length - 1];
-    if (lastMessage && !lastMessage.processed) {
-      // Process and update
-      this.setState({
-        ...state,
-        messages: state.messages.map((m) =>
-          m.id === lastMessage.id ? { ...m, processed: true } : m,
-        ),
-      });
-    }
-  }
+		// Client added a message
+		const lastMessage = state.messages[state.messages.length - 1];
+		if (lastMessage && !lastMessage.processed) {
+			// Process and update
+			this.setState({
+				...state,
+				messages: state.messages.map((m) =>
+					m.id === lastMessage.id ? { ...m, processed: true } : m,
+				),
+			});
+		}
+	}
 }
 ```
 
@@ -560,44 +457,35 @@ If you want to validate or reject state updates, override `validateStateChange()
 * Must be synchronous
 * Throwing aborts the update
 
-* [  JavaScript ](#tab-panel-6907)
-* [  TypeScript ](#tab-panel-6908)
-
-**JavaScript**
-
 ```js
 class MyAgent extends Agent {
-  validateStateChange(nextState, source) {
-    // Example: reject negative scores
-    if (nextState.score < 0) {
-      throw new Error("score cannot be negative");
-    }
+	validateStateChange(nextState, source) {
+		// Example: reject negative scores
+		if (nextState.score < 0) {
+			throw new Error("score cannot be negative");
+		}
 
-
-    // Example: only allow certain status transitions
-    if (this.state.status === "finished" && nextState.status !== "finished") {
-      throw new Error("Cannot restart a finished game");
-    }
-  }
+		// Example: only allow certain status transitions
+		if (this.state.status === "finished" && nextState.status !== "finished") {
+			throw new Error("Cannot restart a finished game");
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 class MyAgent extends Agent<Env, GameState> {
-  validateStateChange(nextState: GameState, source: Connection | "server") {
-    // Example: reject negative scores
-    if (nextState.score < 0) {
-      throw new Error("score cannot be negative");
-    }
+	validateStateChange(nextState: GameState, source: Connection | "server") {
+		// Example: reject negative scores
+		if (nextState.score < 0) {
+			throw new Error("score cannot be negative");
+		}
 
-
-    // Example: only allow certain status transitions
-    if (this.state.status === "finished" && nextState.status !== "finished") {
-      throw new Error("Cannot restart a finished game");
-    }
-  }
+		// Example: only allow certain status transitions
+		if (this.state.status === "finished" && nextState.status !== "finished") {
+			throw new Error("Cannot restart a finished game");
+		}
+	}
 }
 ```
 
@@ -611,43 +499,32 @@ State synchronizes automatically with connected clients.
 
 ### React (useAgent)
 
-* [  JavaScript ](#tab-panel-6919)
-* [  TypeScript ](#tab-panel-6920)
-
-**JavaScript**
-
 ```js
 import { useAgent } from "agents/react";
 
-
 function GameUI() {
-  const agent = useAgent({
-    agent: "game-agent",
-    name: "room-123",
-    onStateUpdate: (state, source) => {
-      console.log("State updated:", state);
-    },
-  });
+	const agent = useAgent({
+		agent: "game-agent",
+		name: "room-123",
+		onStateUpdate: (state, source) => {
+			console.log("State updated:", state);
+		},
+	});
 
+	// Push state to agent
+	const addPlayer = (name) => {
+		agent.setState({
+			...agent.state,
+			players: [...agent.state.players, name],
+		});
+	};
 
-  // Push state to agent
-  const addPlayer = (name) => {
-    agent.setState({
-      ...agent.state,
-      players: [...agent.state.players, name],
-    });
-  };
-
-
-  return <div>Players: {agent.state?.players.join(", ")}</div>;
+	return <div>Players: {agent.state?.players.join(", ")}</div>;
 }
 ```
 
-**TypeScript**
-
 ```ts
 import { useAgent } from "agents/react";
-
 
 function GameUI() {
   const agent = useAgent({
@@ -658,7 +535,6 @@ function GameUI() {
     }
   });
 
-
   // Push state to agent
   const addPlayer = (name: string) => {
     agent.setState({
@@ -667,49 +543,37 @@ function GameUI() {
     });
   };
 
-
   return <div>Players: {agent.state?.players.join(", ")}</div>;
 }
 ```
 
 ### Vanilla JS (AgentClient)
 
-* [  JavaScript ](#tab-panel-6913)
-* [  TypeScript ](#tab-panel-6914)
-
-**JavaScript**
-
 ```js
 import { AgentClient } from "agents/client";
 
-
 const client = new AgentClient({
-  agent: "game-agent",
-  name: "room-123",
-  onStateUpdate: (state) => {
-    document.getElementById("score").textContent = state.score;
-  },
+	agent: "game-agent",
+	name: "room-123",
+	onStateUpdate: (state) => {
+		document.getElementById("score").textContent = state.score;
+	},
 });
-
 
 // Push state update
 client.setState({ ...client.state, score: 100 });
 ```
 
-**TypeScript**
-
 ```ts
 import { AgentClient } from "agents/client";
 
-
 const client = new AgentClient({
-  agent: "game-agent",
-  name: "room-123",
-  onStateUpdate: (state) => {
-    document.getElementById("score").textContent = state.score;
-  },
+	agent: "game-agent",
+	name: "room-123",
+	onStateUpdate: (state) => {
+		document.getElementById("score").textContent = state.score;
+	},
 });
-
 
 // Push state update
 client.setState({ ...client.state, score: 100 });
@@ -733,52 +597,39 @@ flowchart TD
 
 When using [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/), you can update agent state from workflow steps:
 
-* [  JavaScript ](#tab-panel-6917)
-* [  TypeScript ](#tab-panel-6918)
-
-**JavaScript**
-
 ```js
 // In your workflow
 class MyWorkflow extends Workflow {
-  async run(event, step) {
-    // Replace entire state
-    await step.updateAgentState({ status: "processing", progress: 0 });
+	async run(event, step) {
+		// Replace entire state
+		await step.updateAgentState({ status: "processing", progress: 0 });
 
+		// Merge partial updates (preserves other fields)
+		await step.mergeAgentState({ progress: 50 });
 
-    // Merge partial updates (preserves other fields)
-    await step.mergeAgentState({ progress: 50 });
+		// Reset to initialState
+		await step.resetAgentState();
 
-
-    // Reset to initialState
-    await step.resetAgentState();
-
-
-    return result;
-  }
+		return result;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 // In your workflow
 class MyWorkflow extends Workflow<Env> {
-  async run(event: AgentWorkflowEvent, step: AgentWorkflowStep) {
-    // Replace entire state
-    await step.updateAgentState({ status: "processing", progress: 0 });
+	async run(event: AgentWorkflowEvent, step: AgentWorkflowStep) {
+		// Replace entire state
+		await step.updateAgentState({ status: "processing", progress: 0 });
 
+		// Merge partial updates (preserves other fields)
+		await step.mergeAgentState({ progress: 50 });
 
-    // Merge partial updates (preserves other fields)
-    await step.mergeAgentState({ progress: 50 });
+		// Reset to initialState
+		await step.resetAgentState();
 
-
-    // Reset to initialState
-    await step.resetAgentState();
-
-
-    return result;
-  }
+		return result;
+	}
 }
 ```
 
@@ -790,78 +641,61 @@ Every individual Agent instance has its own SQL (SQLite) database that runs with
 
 You can access the SQL API within any method on an Agent via `this.sql`. The SQL API accepts template literals:
 
-* [  JavaScript ](#tab-panel-6915)
-* [  TypeScript ](#tab-panel-6916)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  async onRequest(request) {
-    let userId = new URL(request.url).searchParams.get("userId");
+	async onRequest(request) {
+		let userId = new URL(request.url).searchParams.get("userId");
 
-
-    // 'users' is just an example here: you can create arbitrary tables and define your own schemas
-    // within each Agent's database using SQL (SQLite syntax).
-    let [user] = this.sql`SELECT * FROM users WHERE id = ${userId}`;
-    return Response.json(user);
-  }
+		// 'users' is just an example here: you can create arbitrary tables and define your own schemas
+		// within each Agent's database using SQL (SQLite syntax).
+		let [user] = this.sql`SELECT * FROM users WHERE id = ${userId}`;
+		return Response.json(user);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends Agent {
-  async onRequest(request: Request) {
-    let userId = new URL(request.url).searchParams.get("userId");
+	async onRequest(request: Request) {
+		let userId = new URL(request.url).searchParams.get("userId");
 
-
-    // 'users' is just an example here: you can create arbitrary tables and define your own schemas
-    // within each Agent's database using SQL (SQLite syntax).
-    let [user] = this.sql`SELECT * FROM users WHERE id = ${userId}`;
-    return Response.json(user);
-  }
+		// 'users' is just an example here: you can create arbitrary tables and define your own schemas
+		// within each Agent's database using SQL (SQLite syntax).
+		let [user] = this.sql`SELECT * FROM users WHERE id = ${userId}`;
+		return Response.json(user);
+	}
 }
 ```
 
 You can also supply a TypeScript type argument to the query, which will be used to infer the type of the result:
 
-* [  JavaScript ](#tab-panel-6921)
-* [  TypeScript ](#tab-panel-6922)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  async onRequest(request) {
-    let userId = new URL(request.url).searchParams.get("userId");
-    // Supply the type parameter to the query when calling this.sql
-    // This assumes the results returns one or more User rows with "id", "name", and "email" columns
-    const [user] = this.sql`SELECT * FROM users WHERE id = ${userId}`;
-    return Response.json(user);
-  }
+	async onRequest(request) {
+		let userId = new URL(request.url).searchParams.get("userId");
+		// Supply the type parameter to the query when calling this.sql
+		// This assumes the results returns one or more User rows with "id", "name", and "email" columns
+		const [user] = this.sql`SELECT * FROM users WHERE id = ${userId}`;
+		return Response.json(user);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 type User = {
-  id: string;
-  name: string;
-  email: string;
+	id: string;
+	name: string;
+	email: string;
 };
 
-
 export class MyAgent extends Agent {
-  async onRequest(request: Request) {
-    let userId = new URL(request.url).searchParams.get("userId");
-    // Supply the type parameter to the query when calling this.sql
-    // This assumes the results returns one or more User rows with "id", "name", and "email" columns
-    const [user] = this.sql<User>`SELECT * FROM users WHERE id = ${userId}`;
-    return Response.json(user);
-  }
+	async onRequest(request: Request) {
+		let userId = new URL(request.url).searchParams.get("userId");
+		// Supply the type parameter to the query when calling this.sql
+		// This assumes the results returns one or more User rows with "id", "name", and "email" columns
+		const [user] = this.sql<User>`SELECT * FROM users WHERE id = ${userId}`;
+		return Response.json(user);
+	}
 }
 ```
 
@@ -879,21 +713,17 @@ The SQL API exposed to an Agent is similar to the one [within Durable Objects](h
 
 State is broadcast to all clients on every change. For large data:
 
-**TypeScript**
-
 ```ts
 // Bad - storing large arrays in state
 initialState = {
   allMessages: [] // Could grow to thousands of items
 };
 
-
 // Good - store in SQL, keep state light
 initialState = {
   messageCount: 0,
   lastMessageId: null
 };
-
 
 // Query SQL for full data
 async getMessages(limit = 50) {
@@ -905,92 +735,77 @@ async getMessages(limit = 50) {
 
 For responsive UIs, update client state immediately:
 
-* [  JavaScript ](#tab-panel-6925)
-* [  TypeScript ](#tab-panel-6926)
-
-**JavaScript**
-
 ```js
 // Client-side
 function sendMessage(text) {
-  const optimisticMessage = {
-    id: crypto.randomUUID(),
-    text,
-    pending: true,
-  };
+	const optimisticMessage = {
+		id: crypto.randomUUID(),
+		text,
+		pending: true,
+	};
 
+	// Update immediately
+	agent.setState({
+		...agent.state,
+		messages: [...agent.state.messages, optimisticMessage],
+	});
 
-  // Update immediately
-  agent.setState({
-    ...agent.state,
-    messages: [...agent.state.messages, optimisticMessage],
-  });
-
-
-  // Server will confirm/update
+	// Server will confirm/update
 }
-
 
 // Server-side
 class MyAgent extends Agent {
-  onStateChanged(state, source) {
-    if (source === "server") return;
+	onStateChanged(state, source) {
+		if (source === "server") return;
 
-
-    const pendingMessages = state.messages.filter((m) => m.pending);
-    for (const msg of pendingMessages) {
-      // Validate and confirm
-      this.setState({
-        ...state,
-        messages: state.messages.map((m) =>
-          m.id === msg.id ? { ...m, pending: false, timestamp: Date.now() } : m,
-        ),
-      });
-    }
-  }
+		const pendingMessages = state.messages.filter((m) => m.pending);
+		for (const msg of pendingMessages) {
+			// Validate and confirm
+			this.setState({
+				...state,
+				messages: state.messages.map((m) =>
+					m.id === msg.id ? { ...m, pending: false, timestamp: Date.now() } : m,
+				),
+			});
+		}
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 // Client-side
 function sendMessage(text: string) {
-  const optimisticMessage = {
-    id: crypto.randomUUID(),
-    text,
-    pending: true,
-  };
+	const optimisticMessage = {
+		id: crypto.randomUUID(),
+		text,
+		pending: true,
+	};
 
+	// Update immediately
+	agent.setState({
+		...agent.state,
+		messages: [...agent.state.messages, optimisticMessage],
+	});
 
-  // Update immediately
-  agent.setState({
-    ...agent.state,
-    messages: [...agent.state.messages, optimisticMessage],
-  });
-
-
-  // Server will confirm/update
+	// Server will confirm/update
 }
-
 
 // Server-side
 class MyAgent extends Agent<Env, { messages: Message[] }> {
-  onStateChanged(state: GameState, source: Connection | "server") {
-    if (source === "server") return;
+	onStateChanged(state: GameState, source: Connection | "server") {
+		if (source === "server") return;
 
-
-    const pendingMessages = state.messages.filter((m) => m.pending);
-    for (const msg of pendingMessages) {
-      // Validate and confirm
-      this.setState({
-        ...state,
-        messages: state.messages.map((m) =>
-          m.id === msg.id ? { ...m, pending: false, timestamp: Date.now() } : m,
-        ),
-      });
-    }
-  }
+		const pendingMessages = state.messages.filter((m) => m.pending);
+		for (const msg of pendingMessages) {
+			// Validate and confirm
+			this.setState({
+				...state,
+				messages: state.messages.map((m) =>
+					m.id === msg.id ? { ...m, pending: false, timestamp: Date.now() } : m,
+				),
+			});
+		}
+	}
 }
 ```
 
@@ -1003,78 +818,67 @@ class MyAgent extends Agent<Env, { messages: Message[] }> {
 | Active session data                | Relationships     |
 | Configuration                      | Queryable data    |
 
-* [  JavaScript ](#tab-panel-6923)
-* [  TypeScript ](#tab-panel-6924)
-
-**JavaScript**
-
 ```js
 export class ChatAgent extends Agent {
-  // State: current UI state
-  initialState = {
-    typing: [],
-    unreadCount: 0,
-    activeUsers: [],
-  };
+	// State: current UI state
+	initialState = {
+		typing: [],
+		unreadCount: 0,
+		activeUsers: [],
+	};
 
-
-  // SQL: message history
-  async getMessages(limit = 100) {
-    return this.sql`
+	// SQL: message history
+	async getMessages(limit = 100) {
+		return this.sql`
       SELECT * FROM messages
       ORDER BY created_at DESC
       LIMIT ${limit}
     `;
-  }
+	}
 
-
-  async saveMessage(message) {
-    this.sql`
+	async saveMessage(message) {
+		this.sql`
       INSERT INTO messages (id, text, user_id, created_at)
       VALUES (${message.id}, ${message.text}, ${message.userId}, ${Date.now()})
     `;
-    // Update state for real-time UI
-    this.setState({
-      ...this.state,
-      unreadCount: this.state.unreadCount + 1,
-    });
-  }
+		// Update state for real-time UI
+		this.setState({
+			...this.state,
+			unreadCount: this.state.unreadCount + 1,
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class ChatAgent extends Agent {
-  // State: current UI state
-  initialState = {
-    typing: [],
-    unreadCount: 0,
-    activeUsers: [],
-  };
+	// State: current UI state
+	initialState = {
+		typing: [],
+		unreadCount: 0,
+		activeUsers: [],
+	};
 
-
-  // SQL: message history
-  async getMessages(limit = 100) {
-    return this.sql`
+	// SQL: message history
+	async getMessages(limit = 100) {
+		return this.sql`
       SELECT * FROM messages
       ORDER BY created_at DESC
       LIMIT ${limit}
     `;
-  }
+	}
 
-
-  async saveMessage(message: Message) {
-    this.sql`
+	async saveMessage(message: Message) {
+		this.sql`
       INSERT INTO messages (id, text, user_id, created_at)
       VALUES (${message.id}, ${message.text}, ${message.userId}, ${Date.now()})
     `;
-    // Update state for real-time UI
-    this.setState({
-      ...this.state,
-      unreadCount: this.state.unreadCount + 1,
-    });
-  }
+		// Update state for real-time UI
+		this.setState({
+			...this.state,
+			unreadCount: this.state.unreadCount + 1,
+		});
+	}
 }
 ```
 
@@ -1082,14 +886,11 @@ export class ChatAgent extends Agent {
 
 Be careful not to trigger state updates in response to your own updates:
 
-**TypeScript**
-
 ```ts
 // Bad - infinite loop
 onStateChanged(state: State) {
   this.setState({ ...state, lastUpdated: Date.now() });
 }
-
 
 // Good - check source
 onStateChanged(state: State, source: Connection | "server") {
@@ -1104,91 +905,75 @@ You can combine the state and SQL APIs in your Agent with its ability to [call A
 
 For example, you can use an Agent's built-in SQL database to pull history, query a model with it, and append to that history ahead of the next call to the model:
 
-* [  JavaScript ](#tab-panel-6927)
-* [  TypeScript ](#tab-panel-6928)
-
-**JavaScript**
-
 ```js
 export class ReasoningAgent extends Agent {
-  async callReasoningModel(prompt) {
-    let result = this
-      .sql`SELECT * FROM history WHERE user = ${prompt.userId} ORDER BY timestamp DESC LIMIT 1000`;
-    let context = [];
-    for (const row of result) {
-      context.push(row.entry);
-    }
+	async callReasoningModel(prompt) {
+		let result = this
+			.sql`SELECT * FROM history WHERE user = ${prompt.userId} ORDER BY timestamp DESC LIMIT 1000`;
+		let context = [];
+		for (const row of result) {
+			context.push(row.entry);
+		}
 
+		const systemPrompt = prompt.system || "You are a helpful assistant.";
+		const userPrompt = `${prompt.user}\n\nUser history:\n${context.join("\n")}`;
 
-    const systemPrompt = prompt.system || "You are a helpful assistant.";
-    const userPrompt = `${prompt.user}\n\nUser history:\n${context.join("\n")}`;
+		try {
+			const response = await this.env.AI.run("@cf/zai-org/glm-4.7-flash", {
+				messages: [
+					{ role: "system", content: systemPrompt },
+					{ role: "user", content: userPrompt },
+				],
+			});
 
+			// Store the response in history
+			this
+				.sql`INSERT INTO history (timestamp, user, entry) VALUES (${new Date()}, ${prompt.userId}, ${response.response})`;
 
-    try {
-      const response = await this.env.AI.run("@cf/zai-org/glm-4.7-flash", {
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userPrompt },
-        ],
-      });
-
-
-      // Store the response in history
-      this
-        .sql`INSERT INTO history (timestamp, user, entry) VALUES (${new Date()}, ${prompt.userId}, ${response.response})`;
-
-
-      return response.response;
-    } catch (error) {
-      console.error("Error calling reasoning model:", error);
-      throw error;
-    }
-  }
+			return response.response;
+		} catch (error) {
+			console.error("Error calling reasoning model:", error);
+			throw error;
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  AI: Ai;
+	AI: Ai;
 }
 
-
 export class ReasoningAgent extends Agent<Env> {
-  async callReasoningModel(prompt: Prompt) {
-    let result = this
-      .sql<History>`SELECT * FROM history WHERE user = ${prompt.userId} ORDER BY timestamp DESC LIMIT 1000`;
-    let context = [];
-    for (const row of result) {
-      context.push(row.entry);
-    }
+	async callReasoningModel(prompt: Prompt) {
+		let result = this
+			.sql<History>`SELECT * FROM history WHERE user = ${prompt.userId} ORDER BY timestamp DESC LIMIT 1000`;
+		let context = [];
+		for (const row of result) {
+			context.push(row.entry);
+		}
 
+		const systemPrompt = prompt.system || "You are a helpful assistant.";
+		const userPrompt = `${prompt.user}\n\nUser history:\n${context.join("\n")}`;
 
-    const systemPrompt = prompt.system || "You are a helpful assistant.";
-    const userPrompt = `${prompt.user}\n\nUser history:\n${context.join("\n")}`;
+		try {
+			const response = await this.env.AI.run("@cf/zai-org/glm-4.7-flash", {
+				messages: [
+					{ role: "system", content: systemPrompt },
+					{ role: "user", content: userPrompt },
+				],
+			});
 
+			// Store the response in history
+			this
+				.sql`INSERT INTO history (timestamp, user, entry) VALUES (${new Date()}, ${prompt.userId}, ${response.response})`;
 
-    try {
-      const response = await this.env.AI.run("@cf/zai-org/glm-4.7-flash", {
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userPrompt },
-        ],
-      });
-
-
-      // Store the response in history
-      this
-        .sql`INSERT INTO history (timestamp, user, entry) VALUES (${new Date()}, ${prompt.userId}, ${response.response})`;
-
-
-      return response.response;
-    } catch (error) {
-      console.error("Error calling reasoning model:", error);
-      throw error;
-    }
-  }
+			return response.response;
+		} catch (error) {
+			console.error("Error calling reasoning model:", error);
+			throw error;
+		}
+	}
 }
 ```
 
@@ -1221,15 +1006,30 @@ This works because each instance of an Agent has its own database, and the state
 
 ## Next steps
 
-[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
+### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
-[ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/) Build and deploy an AI chat agent.
+ Complete API reference for the Agents SDK.
 
-[ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/) Build interactive agents with real-time data streaming.
+### [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/)
 
-[ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Orchestrate asynchronous workflows from your agent.
+ Build and deploy an AI chat agent.
+
+### [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
+
+ Build interactive agents with real-time data streaming.
+
+### [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+
+ Orchestrate asynchronous workflows from your agent.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/state/#page","headline":"Store and sync state · Cloudflare Agents docs","description":"Persist and sync Agent state across clients in real time using setState, SQL storage, and bidirectional updates.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/state/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/lifecycle/","name":"Lifecycle"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/lifecycle/state/","name":"Store and sync state"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/state/#page","headline":"Store and sync state · Cloudflare Agents docs","description":"Persist and sync Agent state across clients in real time using setState, SQL storage, and bidirectional updates.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/state/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

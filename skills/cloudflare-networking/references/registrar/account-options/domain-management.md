@@ -1,23 +1,25 @@
 ---
-title: Domain management
 description: Manage your registered domains in the dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Domain management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Domain management
 
-# Domain management
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/account-options/domain-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Domain status
 
 When your domain is registered with Cloudflare, you can review your domain status in **Overview**.
 
 1. In the Cloudflare dashboard, go to the **Manage domains** page.
-[ Go to **Manage domains** ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. From **Overview**, scroll down to **Domain Registration** to review the current expiration date.
 3. Select **Manage domain** to review the Auto-Renew status for your domain.
 
@@ -26,7 +28,7 @@ When your domain is registered with Cloudflare, you can review your domain statu
 Domain registrations will not appear in the **Active Subscriptions** section of the dashboard, as Registrar is not subscription based. To check information related to your domain billing:
 
 1. In the Cloudflare dashboard, go to the **Manage Domains** page.
-[ Go to **Manage domains** ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to check and select **Manage**.
 3. Refer to **Registration** for information regarding your domain fees. From here, you can also opt to [renew or extend](https://developers.cloudflare.com/registrar/account-options/renew-domains/) your domain registration.
 
@@ -35,7 +37,7 @@ Domain registrations will not appear in the **Active Subscriptions** section of 
 Cloudflare redacts WHOIS information from your domain by default. However, we do store the authentic WHOIS record for your domain. You may edit the WHOIS contact data for any domain. To do that:
 
 1. In the Cloudflare dashboard, go to the **Manage Domains** page.
-[ Go to **Manage domains** ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to edit and select **Manage** \> **Contacts**.
 3. Select **Edit** in any of the contacts you previously set up. This allows you to update the contact information for the selected domain only. It will not update the contact information for other domains within the account.
 
@@ -58,14 +60,21 @@ Deleting a domain registration from Cloudflare Registrar starts an irreversible 
 There may be instances where users may wish to delete a domain prior to expiration. In most cases a domain may be deleted prior to expiration by following these steps:
 
 1. In the Cloudflare dashboard, go to the **Manage Domains** page.
-[ Go to **Manage domains** ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Under the **Configuration** tab on the Manage page you will find a **Delete** button.
 3. If the domain is deletable the button will be active. The button will be disabled if your domain cannot be deleted and you should refer to the Registrar [FAQ](https://developers.cloudflare.com/registrar/faq/#why-am-i-unable-to-delete-my-registrar-domain).
 4. Once you click the Delete button, you will be presented with a confirmation window. If you proceed, an email will be sent to all users with the Super Admin role in the account. The email contains a deletion authorization token that must be entered into the window which appears to confirm and complete the deletion.
 
 Once all steps are completed, the domain will then be scheduled for deletion. To understand more about the timelines and potential reasons why a domain cannot be deleted, refer to the Registrar [FAQ](https://developers.cloudflare.com/registrar/faq/#domain-deletions).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/domain-management/#page","headline":"Domain management · Cloudflare Registrar docs","description":"Manage your registered domains in the dashboard.","url":"https://developers.cloudflare.com/registrar/account-options/domain-management/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/account-options/","name":"Registration options"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/account-options/domain-management/","name":"Domain management"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/domain-management/#page","headline":"Domain management · Cloudflare Registrar docs","description":"Manage your registered domains in the dashboard.","url":"https://developers.cloudflare.com/registrar/account-options/domain-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

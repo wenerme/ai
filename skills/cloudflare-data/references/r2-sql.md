@@ -1,16 +1,18 @@
 ---
-title: R2 SQL
 description: A distributed SQL engine for R2 Data Catalog
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: R2 SQL
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  R2 SQL
 
-# R2 SQL
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -23,7 +25,6 @@ R2 SQL is Cloudflare's serverless, distributed, analytics query engine for query
 ```sh
 ❯ npx wrangler r2 sql query "3373912de3f5202317188ae01300bd6_data-catalog" \
 "SELECT * FROM default.transactions LIMIT 10"
-
 
  ⛅️ wrangler 4.38.0
 ────────────────────────────────────────────────────────────────────────────
@@ -57,7 +58,14 @@ On average, 3.36 kB / s
 
 Create an end-to-end data pipeline by following [this step by step guide](https://developers.cloudflare.com/r2-sql/get-started/), which shows you how to stream events into an Apache Iceberg table and query it with R2 SQL.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/#page","headline":"R2 SQL · R2 SQL docs","description":"A distributed SQL engine for R2 Data Catalog","url":"https://developers.cloudflare.com/r2-sql/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/#page","headline":"R2 SQL · R2 SQL docs","description":"A distributed SQL engine for R2 Data Catalog","url":"https://developers.cloudflare.com/r2-sql/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

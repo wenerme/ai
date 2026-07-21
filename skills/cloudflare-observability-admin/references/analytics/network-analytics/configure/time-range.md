@@ -1,16 +1,18 @@
 ---
-title: Adjust the time range
 description: Change the time range in Network Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Adjust the time range
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Adjust the time range
 
-# Adjust the time range
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/network-analytics/configure/time-range/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Using the timeframe drop-down list
 
@@ -30,7 +32,14 @@ To zoom in a specific period, select and drag to define a region in the **Packet
 
 The effective resolution goes up when you zoom in and goes down when you zoom out, due to the [Adaptive Bit Rate](https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/#adaptive-bit-rate-sampling). This means that a big packet burst that lasted a few seconds may look less impactful when analyzing a chart displaying data for 24 hours or more.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/configure/time-range/#page","headline":"Adjust the time range in Network Analytics · Cloudflare Analytics docs","description":"Change the time range in Network Analytics.","url":"https://developers.cloudflare.com/analytics/network-analytics/configure/time-range/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/network-analytics/","name":"Network analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/network-analytics/configure/","name":"Configure"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/network-analytics/configure/time-range/","name":"Adjust the time range"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/configure/time-range/#page","headline":"Adjust the time range in Network Analytics · Cloudflare Analytics docs","description":"Change the time range in Network Analytics.","url":"https://developers.cloudflare.com/analytics/network-analytics/configure/time-range/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

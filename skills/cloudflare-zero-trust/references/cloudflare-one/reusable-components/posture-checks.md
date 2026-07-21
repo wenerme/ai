@@ -1,16 +1,18 @@
 ---
-title: Posture checks
 description: Posture checks in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Posture checks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Posture checks
 
-# Posture checks
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Zero Trust, you can configure Zero Trust policies that rely on additional signals from the Cloudflare One Client or from third-party endpoint security providers. When device posture checks are configured, users can only connect to a protected application or network resource if they have a managed or healthy device.
 
@@ -59,7 +61,7 @@ A[Device] --schedule--> B[Cloudflare One Client]--> C((Cloudflare)) --> D[Access
 C --5 min--> E[Cache] --> F[Gateway policy]
 A --> G[Service provider] --interval--> C
 
-Warning
+Caution
 
 Gateway does not terminate an [active session](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/#configure-warp-sessions-in-gateway) even if a subsequent posture check fails during that session. Gateway only evaluates posture checks at the beginning of a session, and ongoing sessions will remain uninterrupted.
 
@@ -79,7 +81,14 @@ By default, the Cloudflare One Client polls the device for status changes every 
 
 When setting up a [service-to-service integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/), you will choose a polling frequency to determine how often Cloudflare will query the third-party API. To set the polling frequency via the API, use the [interval](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/subresources/integrations/methods/edit/) parameter.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/#page","headline":"Posture checks · Cloudflare One docs","description":"Posture checks in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/reusable-components/","name":"Reusable components"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/reusable-components/posture-checks/","name":"Posture checks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/#page","headline":"Posture checks · Cloudflare One docs","description":"Posture checks in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
 ```

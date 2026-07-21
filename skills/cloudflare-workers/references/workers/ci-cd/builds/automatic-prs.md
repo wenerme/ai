@@ -1,16 +1,18 @@
 ---
-title: Automatic pull requests
 description: Learn about the pull requests Workers Builds creates to configure your project or resolve issues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Automatic pull requests
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Automatic pull requests
 
-# Automatic pull requests
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds can automatically create pull requests in your repository to configure your project or resolve deployment issues.
 
@@ -74,7 +76,14 @@ When you receive a PR from Workers Builds:
 2. **Test the preview** \- Use the preview link in the PR description to verify everything works
 3. **Merge when ready** \- Once satisfied, merge the PR to enable faster deployments
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/#page","headline":"Automatic pull requests · Cloudflare Workers docs","description":"Learn about the pull requests Workers Builds creates to configure your project or resolve issues.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/automatic-prs/","name":"Automatic pull requests"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/#page","headline":"Automatic pull requests · Cloudflare Workers docs","description":"Learn about the pull requests Workers Builds creates to configure your project or resolve issues.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: FAQ
 description: Find answers to common questions about Cloudflare's authoritative DNS.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQ
 
-# FAQ
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The sections below cover frequently asked questions about Cloudflare authoritative DNS. For DNS Firewall, refer to [DNS Firewall FAQ](https://developers.cloudflare.com/dns/dns-firewall/faq/).
 
@@ -53,7 +55,7 @@ EDNS0 is the first approved set of mechanisms for [DNS extensions ↗](http://en
 
 On the **DNS Records** page, locate the **Cloudflare Nameservers** card.
 
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 
 Also, the IP address associated with a specific Cloudflare nameserver can be retrieved via a dig command or a third-party DNS lookup tool hosted online such as [whatsmydns.net ↗](https://www.whatsmydns.net/):
 
@@ -71,7 +73,7 @@ Make the change at your registrar, which is where you registered your domain. Th
 
 If you do not know who your registrar is for the domain, a WHOIS search can help. You can use [ICANN Lookup ↗](https://lookup.icann.org/), for example.
 
-Warning
+Caution
 
 Some country code TLDs may not be supported by ICANN Lookup. If that is the case, use a different WHOIS search tool.
 
@@ -125,7 +127,7 @@ This is important because, if a domain is in a **Moved** state for a [long enoug
 
 To recover a deleted domain, [re-add it in Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) just like you would for a new domain.
 
-Warning
+Caution
 
 Cloudflare support is unable to restore DNS or settings for deleted domains.
 
@@ -171,7 +173,14 @@ This splitting is required by the DNS protocol and is performed by all DNS provi
 
 For DNS records proxied to Cloudflare, Cloudflare's IP addresses are returned in DNS queries instead of your original server IP address. This allows Cloudflare to optimize, cache, and protect all requests for your website.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/faq/#page","headline":"FAQ · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's authoritative DNS.","url":"https://developers.cloudflare.com/dns/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/faq/","name":"FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/faq/#page","headline":"FAQ · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's authoritative DNS.","url":"https://developers.cloudflare.com/dns/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

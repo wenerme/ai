@@ -1,16 +1,18 @@
 ---
-title: WebSocket adapter
 description: Stream audio and video between WebRTC tracks and WebSocket endpoints using Realtime SFU.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: WebSocket adapter
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WebSocket adapter
 
-# WebSocket adapter
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -28,9 +30,6 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 * Computer vision ingestion (low FPS)
 
 ## How it works
-
-* [ Ingest (WebSocket → WebRTC) ](#tab-panel-10825)
-* [ Stream (WebRTC → WebSocket) ](#tab-panel-10826)
 
 ### Create WebRTC tracks from external audio
 
@@ -85,9 +84,6 @@ graph LR
 ```plaintext
 POST /v1/apps/{appId}/adapters/websocket/new
 ```
-
-* [ Ingest ](#tab-panel-10827)
-* [ Stream ](#tab-panel-10828)
 
 #### Request body
 
@@ -196,11 +192,11 @@ POST /v1/apps/{appId}/adapters/websocket/close
 
 ```json
 {
-  "tracks": [
-    {
-      "adapterId": "string"
-    }
-  ]
+	"tracks": [
+		{
+			"adapterId": "string"
+		}
+	]
 }
 ```
 
@@ -381,7 +377,14 @@ When ingesting from WebSocket to WebRTC, your WebSocket client should reconnect 
 
 **Q: Can I change the audio format after creating an adapter?**A: No, audio format is fixed at creation time. Create a new adapter for different formats.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/#page","headline":"WebSocket adapter · Cloudflare Realtime docs","description":"Stream audio and video between WebRTC tracks and WebSocket endpoints using Realtime SFU.","url":"https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/sfu/","name":"Realtime SFU"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/sfu/media-transport-adapters/","name":"Media Transport Adapters"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/sfu/media-transport-adapters/websocket-adapter/","name":"WebSocket adapter"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/#page","headline":"WebSocket adapter · Cloudflare Realtime docs","description":"Stream audio and video between WebRTC tracks and WebSocket endpoints using Realtime SFU.","url":"https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

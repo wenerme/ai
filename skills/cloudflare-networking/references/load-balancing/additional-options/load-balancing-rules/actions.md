@@ -1,16 +1,18 @@
 ---
-title: Actions
 description: Actions available in custom load balancing rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Actions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Actions
 
-# Actions
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/actions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Add **actions** to customize how your load balancer responds to certain HTTP requests.
 
@@ -31,7 +33,14 @@ This table lists the actions available for Load Balancing rules. For a walkthrou
 | _Override_       | _Region pools_      | Update the [region pools](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/geo-steering/) associated with your load balancer.                      |
 | _Override_       | _Terminates_        | Stop processing Load Balancing rules and apply the current load balancing logic to the request.                                                                                                         |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/actions/#page","headline":"Load Balancing actions · Cloudflare Load Balancing docs","description":"Actions available in custom load balancing rules.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/additional-options/","name":"Additional configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/additional-options/load-balancing-rules/","name":"Custom load balancing rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/load-balancing/additional-options/load-balancing-rules/actions/","name":"Actions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/actions/#page","headline":"Load Balancing actions · Cloudflare Load Balancing docs","description":"Actions available in custom load balancing rules.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

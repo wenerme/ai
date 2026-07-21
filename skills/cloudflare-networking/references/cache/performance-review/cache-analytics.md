@@ -1,16 +1,18 @@
 ---
-title: Cache Analytics
 description: View cache hit rates and bandwidth savings in Cache Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cache Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cache Analytics
 
-# Cache Analytics
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/performance-review/cache-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cache Analytics shows how much of your site's traffic is served from Cloudflare's cache versus your origin server. When content is served from cache, visitors get faster page loads and your origin web server handles less traffic. Use Cache Analytics to identify resources that are [missing from cache](https://developers.cloudflare.com/cache/concepts/cache-responses/#miss), [expired](https://developers.cloudflare.com/cache/concepts/cache-responses/#expired) (cached copy is outdated), or [ineligible for caching](https://developers.cloudflare.com/cache/concepts/cache-responses/#noneunknown) (not eligible for caching). You can filter by hostname, review the top URLs that miss cache, and query up to three days of data.
 
@@ -25,7 +27,7 @@ Cache Analytics shows how much of your site's traffic is served from Cloudflare'
 
 In the Cloudflare dashboard, go to the **Caching** page.
 
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/caching)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching)
 
 ## Requests vs Data Transfer
 
@@ -64,7 +66,14 @@ Cache Analytics shows the most frequent values (top N) for several request attri
 
 Finding an **empty** content type in your analytics is common. Responses to redirect status codes (`301`/`302`) typically do not include content, so they have no content type. Similarly, many HTTP error responses, such as `403`, do not return `text/html` and are also reported as empty.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/performance-review/cache-analytics/#page","headline":"Cache Analytics · Cloudflare Cache (CDN) docs","description":"View cache hit rates and bandwidth savings in Cache Analytics.","url":"https://developers.cloudflare.com/cache/performance-review/cache-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/performance-review/","name":"Performance review"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/performance-review/cache-analytics/","name":"Cache Analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/performance-review/cache-analytics/#page","headline":"Cache Analytics · Cloudflare Cache (CDN) docs","description":"View cache hit rates and bandwidth savings in Cache Analytics.","url":"https://developers.cloudflare.com/cache/performance-review/cache-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

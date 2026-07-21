@@ -1,16 +1,18 @@
 ---
-title: Unsafe and custom topic detection
 description: Detect unsafe and custom topics in AI application traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Unsafe and custom topic detection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Unsafe and custom topic detection
 
-# Unsafe and custom topic detection
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps can detect when an LLM prompt touches on unsafe or unwanted subjects. There are two layers of topic detection:
 
@@ -72,11 +74,8 @@ You can manage custom topics from two places in the dashboard:
 
 Both methods will update the same underlying topic list. Changes made in one are immediately reflected in the other.
 
-* [ Dashboard ](#tab-panel-11975)
-* [ API ](#tab-panel-11976)
-
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 Alternatively, go to the [custom rules creation page](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/), select the **LLM Custom topic** field, and select **Manage custom topics** to open the sidebar.
 2. Add a topic by providing:
 
@@ -108,7 +107,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom
   }'
 ```
 
-Warning
+Caution
 
 This request replaces your entire topic list. Include all topics you want to keep, not just new ones.
 
@@ -128,7 +127,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/custom
 | Label length             | 2–20 characters                                   |
 | Label format             | Lowercase letters, numbers, and hyphens (\-) only |
 
-Warning
+Caution
 
 If you reference a label in a rule expression that has not been defined, the map lookup returns `nil`. Comparisons against `nil` are almost always `false`. For example, `cf.llm.prompt.custom_topic_categories["missing"] >= 0` evaluates to `false`. Make sure the label in your rule expression exactly matches a label you have defined in your custom topics list.
 
@@ -183,7 +182,14 @@ Compare how the same two topic descriptions perform against two prompts that bot
 | job-seeking      | asking about job openings or careers            |
 | bias             | comparing demographic groups as better or worse |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#page","headline":"Unsafe and custom topic detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect unsafe and custom topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/unsafe-topics/","name":"Unsafe and custom topic detection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#page","headline":"Unsafe and custom topic detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect unsafe and custom topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

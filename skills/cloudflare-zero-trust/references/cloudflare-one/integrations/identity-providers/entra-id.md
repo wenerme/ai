@@ -1,16 +1,18 @@
 ---
-title: Microsoft Entra ID
 description: Microsoft Entra ID in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Microsoft Entra ID
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Microsoft Entra ID
 
-# Microsoft Entra ID
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can integrate Microsoft Entra ID (formerly Azure Active Directory) with Cloudflare One and build policies based on user identity and group membership. Users will authenticate to Cloudflare One using their Entra ID credentials.
 
@@ -73,10 +75,6 @@ More narrow permissions may be used, however this is the set of permissions that
 
 ### 3\. Add Entra ID as an identity provider
 
-* [ Dashboard ](#tab-panel-7872)
-* [ API ](#tab-panel-7873)
-* [ Terraform ](#tab-panel-7874)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **Azure AD**.
@@ -99,22 +97,20 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Organizations, Identity Providers, and Groups Write`
 
-**Add an Access identity provider**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Entra ID example",
-    "type": "azureAD",
-    "config": {
-        "client_id": "<your client id>",
-        "client_secret": "<your client secret>",
-        "directory_id": "<your azure directory uuid>",
-        "support_groups": true
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Entra ID example",
+		"type": "azureAD",
+		"config": {
+				"client_id": "<your client id>",
+				"client_secret": "<your client secret>",
+				"directory_id": "<your azure directory uuid>",
+				"support_groups": true
+		}
+	}'
 ```
 
 Provider versions
@@ -127,15 +123,15 @@ The following example requires Cloudflare provider version `4.40.0` or greater.
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:
 ```tf
 resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {
-  account_id = var.cloudflare_account_id
-  name       = "Entra ID example"
-  type       = "azureAD"
-  config      = {
-    client_id                  = var.entra_id_client_id
-    client_secret              = var.entra_id_client_secret
-    directory_id               = var.entra_id_directory_id
-    support_groups             = true
-    }
+	account_id = var.cloudflare_account_id
+	name       = "Entra ID example"
+	type       = "azureAD"
+	config 		 = {
+		client_id                  = var.entra_id_client_id
+		client_secret              = var.entra_id_client_secret
+		directory_id               = var.entra_id_directory_id
+		support_groups             = true
+		}
 }
 ```
 
@@ -239,7 +235,7 @@ If not already configured, Cloudflare recommends enabling the following user att
 
 When [SCIM synchronization is enabled](#synchronize-users-and-groups), your Entra group names will automatically appear in the Access and Gateway policy builders.
 
-![Azure group names displayed in the Access policy builder](https://developers.cloudflare.com/_astro/azure-scim-groups.CShvL-AY_Z1iMluz.webp)
+If building an Access policy, choose the _Azure Groups_ selector. ![Azure group names displayed in the Access policy builder](https://developers.cloudflare.com/_astro/azure-scim-groups.CShvL-AY_Z1iMluz.webp)
 
 If building a Gateway policy, choose the [_User Group Names_](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-names) selector.
 
@@ -275,50 +271,53 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Organizations, Identity Providers, and Groups Write`
   * `Access: Organizations, Identity Providers, and Groups Read`
-
-**Get an Access identity provider**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. [Update the Entra ID identity provider](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/identity%5Fproviders/methods/update/) using a `PUT` request. In the request body, include all existing configurations and set the `prompt` parameter to either `login` or `select_account`. For example:
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Organizations, Identity Providers, and Groups Write`
-
-**Update an Access identity provider**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers/$IDENTITY_PROVIDER_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-    "type": "azureAD",
-    "uid": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-    "name": "Entra ID",
-    "version": "31e74e9b4f033e16b604552091a72295",
-    "config": {
-        "azure_cloud": "default",
-        "client_id": "<CLIENT_ID>",
-        "conditional_access_enabled": false,
-        "directory_id": "<AZURE_DIRECTORY_ID>",
-        "redirect_url": "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/callback",
-        "prompt": "login",
-        "support_groups": true
-    },
-    "scim_config": {
-        "enabled": true,
-        "user_deprovision": true,
-        "seat_deprovision": false,
-        "group_member_deprovision": false,
-        "identity_update_behavior": "automatic"
-    },
-    "scim_base_url": "https://<TEAM_NAME>.cloudflareaccess.com/populations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/scim/v2"
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+		"type": "azureAD",
+		"uid": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+		"name": "Entra ID",
+		"version": "31e74e9b4f033e16b604552091a72295",
+		"config": {
+				"azure_cloud": "default",
+				"client_id": "<CLIENT_ID>",
+				"conditional_access_enabled": false,
+				"directory_id": "<AZURE_DIRECTORY_ID>",
+				"redirect_url": "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/callback",
+				"prompt": "login",
+				"support_groups": true
+		},
+		"scim_config": {
+				"enabled": true,
+				"user_deprovision": true,
+				"seat_deprovision": false,
+				"group_member_deprovision": false,
+				"identity_update_behavior": "automatic"
+		},
+		"scim_base_url": "https://<TEAM_NAME>.cloudflareaccess.com/populations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/scim/v2"
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#page","headline":"Microsoft Entra ID · Cloudflare One docs","description":"Microsoft Entra ID in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/entra-id/","name":"Microsoft Entra ID"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#page","headline":"Microsoft Entra ID · Cloudflare One docs","description":"Microsoft Entra ID in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}
 ```

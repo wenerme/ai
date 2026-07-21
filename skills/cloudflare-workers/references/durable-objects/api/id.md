@@ -1,16 +1,18 @@
 ---
-title: Durable Object ID
 description: API reference for DurableObjectId, the 64-digit hex identifier used to address a Durable Object.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Durable Object ID
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Durable Object ID
 
-# Durable Object ID
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/id/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
@@ -28,14 +30,11 @@ If you are experiencing an issue with a particular Durable Object, you may wish 
 
 `toString` converts a `DurableObjectId` to a 64 digit hex string. This string is useful for logging purposes or storing the `DurableObjectId` elsewhere, for example, in a session cookie. This string can be used to reconstruct a `DurableObjectId` via `DurableObjectNamespace::idFromString`.
 
-**JavaScript**
-
 ```js
 // Create a new unique ID
 const id = env.MY_DURABLE_OBJECT.newUniqueId();
 // Convert the ID to a string to be saved elsewhere, e.g. a session cookie
 const session_id = id.toString();
-
 
 ...
 // Recreate the ID from the string
@@ -54,18 +53,11 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 
 `equals` is used to compare equality between two instances of `DurableObjectId`.
 
-* [  JavaScript ](#tab-panel-8892)
-* [  Python ](#tab-panel-8893)
-
-**JavaScript**
-
 ```js
 const id1 = env.MY_DURABLE_OBJECT.newUniqueId();
 const id2 = env.MY_DURABLE_OBJECT.newUniqueId();
 console.assert(!id1.equals(id2), "Different unique ids should never be equal.");
 ```
-
-**Python**
 
 ```python
 id1 = env.MY_DURABLE_OBJECT.newUniqueId()
@@ -99,35 +91,25 @@ Alarms
 
 Alarms created before 2026-03-15 do not have `name` stored. When such an alarm fires, `ctx.id.name` will be `undefined`, and any new alarm scheduled from that handler will also lack a `name`. To fix this, reschedule the alarm from a `fetch()` or RPC handler where `name` is available.
 
-* [  JavaScript ](#tab-panel-8894)
-* [  TypeScript ](#tab-panel-8895)
-* [  Python ](#tab-panel-8896)
-
-**JavaScript**
-
 ```js
 const uniqueId = env.MY_DURABLE_OBJECT.newUniqueId();
 const fromNameId = env.MY_DURABLE_OBJECT.idFromName("foo");
 console.assert(uniqueId.name === undefined, "unique ids have no name");
 console.assert(
-  fromNameId.name === "foo",
-  "name matches parameter to idFromName",
+	fromNameId.name === "foo",
+	"name matches parameter to idFromName",
 );
 ```
-
-**TypeScript**
 
 ```ts
 const uniqueId: DurableObjectId = env.MY_DURABLE_OBJECT.newUniqueId();
 const fromNameId: DurableObjectId = env.MY_DURABLE_OBJECT.idFromName("foo");
 console.assert(uniqueId.name === undefined, "unique ids have no name");
 console.assert(
-  fromNameId.name === "foo",
-  "name matches parameter to idFromName",
+	fromNameId.name === "foo",
+	"name matches parameter to idFromName",
 );
 ```
-
-**Python**
 
 ```python
 unique_id = env.MY_DURABLE_OBJECT.newUniqueId()
@@ -138,41 +120,28 @@ assert from_name_id.name == "foo", "name matches parameter to idFromName"
 
 The same `name` is available inside the Durable Object via `ctx.id.name`:
 
-* [  JavaScript ](#tab-panel-8897)
-* [  TypeScript ](#tab-panel-8898)
-* [  Python ](#tab-panel-8899)
-
-**JavaScript**
-
 ```js
 import { DurableObject } from "cloudflare:workers";
 
-
 export class ChatRoom extends DurableObject {
-  async getRoomName() {
-    return this.ctx.id.name; // "foo" when accessed via getByName("foo")
-  }
+	async getRoomName() {
+		return this.ctx.id.name; // "foo" when accessed via getByName("foo")
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
 
-
 export class ChatRoom extends DurableObject<Env> {
-  async getRoomName(): Promise<string | undefined> {
-    return this.ctx.id.name; // "foo" when accessed via getByName("foo")
-  }
+	async getRoomName(): Promise<string | undefined> {
+		return this.ctx.id.name; // "foo" when accessed via getByName("foo")
+	}
 }
 ```
 
-**Python**
-
 ```python
 from workers import DurableObject
-
 
 class ChatRoom(DurableObject):
     async def get_room_name(self):
@@ -194,19 +163,12 @@ class ChatRoom(DurableObject):
 * The Durable Object was not created in a jurisdiction-restricted namespace.
 * The Durable Object's alarm was scheduled before 2026-03-15\. To backfill the value, reschedule the alarm from a `fetch()` or RPC handler.
 
-* [  JavaScript ](#tab-panel-8900)
-* [  Python ](#tab-panel-8901)
-
-**JavaScript**
-
 ```js
 const plainId = env.MY_DURABLE_OBJECT.idFromName("foo");
 const euId = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("foo");
 console.assert(plainId.jurisdiction === undefined, "no jurisdiction set");
 console.assert(euId.jurisdiction === "eu", "jurisdiction matches namespace");
 ```
-
-**Python**
 
 ```python
 plain_id = env.MY_DURABLE_OBJECT.idFromName("foo")
@@ -219,7 +181,14 @@ assert eu_id.jurisdiction == "eu", "jurisdiction matches namespace"
 
 * [Durable Objects: Easy, Fast, Correct – Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/id/#page","headline":"Durable Object ID · Cloudflare Durable Objects docs","description":"API reference for DurableObjectId, the 64-digit hex identifier used to address a Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/id/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/id/","name":"Durable Object ID"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/id/#page","headline":"Durable Object ID · Cloudflare Durable Objects docs","description":"API reference for DurableObjectId, the 64-digit hex identifier used to address a Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/id/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Relevance boosting
 description: Bias AI Search results toward documents with specific metadata using relevance boosting.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Relevance boosting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Relevance boosting
 
-# Relevance boosting
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Boosting lets you bias search results toward documents with specific metadata characteristics. For example, you can promote recent documents, surface higher-priority pages, or deprioritize drafts. Boosting re-ranks results without replacing semantic relevance.
 
@@ -65,17 +67,15 @@ Specify `boost_by` as an array of up to 3 objects when creating or updating an i
 | field     | string | Yes      | Metadata field name or timestamp. Must match your schema. Case-insensitive. |
 | direction | string | No       | One of asc, desc, exists, not\_exists. Defaults by type.                    |
 
-**TypeScript**
-
 ```ts
 const instance = await env.AI_SEARCH.create({
-  id: "my-instance",
-  retrieval_options: {
-    boost_by: [
-      { field: "timestamp", direction: "desc" },
-      { field: "priority", direction: "desc" },
-    ],
-  },
+	id: "my-instance",
+	retrieval_options: {
+		boost_by: [
+			{ field: "timestamp", direction: "desc" },
+			{ field: "priority", direction: "desc" },
+		],
+	},
 });
 ```
 
@@ -85,34 +85,29 @@ To remove boosting, set `boost_by` to an empty array when updating the instance.
 
 You can override `boost_by` on individual requests using `ai_search_options.retrieval`. Per-request values fully replace the instance-level default.
 
-**TypeScript**
-
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
 
-
 const results = await instance.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-  ai_search_options: {
-    retrieval: {
-      boost_by: [{ field: "timestamp", direction: "desc" }],
-    },
-  },
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
+	ai_search_options: {
+		retrieval: {
+			boost_by: [{ field: "timestamp", direction: "desc" }],
+		},
+	},
 });
 ```
 
 To disable boosting for a single request, pass an empty array:
 
-**TypeScript**
-
 ```ts
 const results = await instance.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-  ai_search_options: {
-    retrieval: {
-      boost_by: [],
-    },
-  },
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
+	ai_search_options: {
+		retrieval: {
+			boost_by: [],
+		},
+	},
 });
 ```
 
@@ -137,7 +132,14 @@ Here are some common ways to use relevance boosting:
 * Boost fields within a single request must be unique.
 * Boosting re-ranks the candidate set from the initial search. It cannot surface documents that were not retrieved.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/#page","headline":"Relevance boosting · Cloudflare AI Search docs","description":"Bias AI Search results toward documents with specific metadata using relevance boosting.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/retrieval/","name":"Retrieval"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/retrieval/boosting/","name":"Relevance boosting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/#page","headline":"Relevance boosting · Cloudflare AI Search docs","description":"Bias AI Search results toward documents with specific metadata using relevance boosting.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

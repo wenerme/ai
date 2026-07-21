@@ -1,16 +1,18 @@
 ---
-title: Workers Cache
 description: Workers Cache lets you cache Worker responses to reduce latency and Workers usage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Cache
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Cache
 
-# Workers Cache
+Last updated Jul 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers Cache lets Cloudflare return cached HTTP responses from your Worker without executing your Worker code. When an incoming request matches a cached response, Cloudflare serves the response directly from its edge cache — reducing latency and Workers CPU usage.
 
@@ -22,7 +24,7 @@ Workers Cache is **your Worker's cache**. It is owned by your Worker, operated b
 
 A Worker is a zoneless entity — a Worker can be bound to any number of [zones](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones), run on `workers.dev`, or be invoked entirely through service bindings without ever touching a zone. The cache follows the Worker, not a zone, so:
 
-* **No zone configuration for caching applies to Workers Caching.** [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/), Page Rules, cache level settings, the zone's default cached-file-extensions list, and every other zone-level cache control have no effect on a Worker's cache.
+* **No zone configuration for caching applies to Workers Caching.** [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/), [Page Rules](https://developers.cloudflare.com/rules/page-rules/), cache level settings, the zone's [default cached-file-extensions](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions) list, and every other zone-level cache control have no effect on a Worker's cache.
 * **Your Worker is in full control.** You set `Cache-Control` headers on your responses, and Cloudflare honors them per [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111). That is the entire configuration surface.
 * **The cache is shared across every way the Worker can be invoked.** A Worker bound to `api.example.com`, `api.example.net`, and invoked over a service binding serves the same cached responses to all three — the cache is keyed by the request path, entrypoint, `ctx.props`, and (by default) the Worker version, not by hostname. See [Cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/).
 
@@ -119,31 +121,23 @@ This quickstart walks you through enabling caching, deploying, and observing the
 
 ### 1\. Enable caching in your Wrangler configuration
 
-* [  wrangler.jsonc ](#tab-panel-12225)
-* [  wrangler.toml ](#tab-panel-12226)
-
-**JSONC**
-
 ```jsonc
 {
  "name": "my-worker",
  "main": "src/index.ts",
  // Set this to today's date
- "compatibility_date": "2026-07-20",
+ "compatibility_date": "2026-07-21",
  "cache": {
   "enabled": true,
  },
 }
 ```
 
-**TOML**
-
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
@@ -153,50 +147,41 @@ enabled = true
 
 Use `max-age` to control how long Cloudflare caches each response:
 
-* [  JavaScript ](#tab-panel-12231)
-* [  TypeScript ](#tab-panel-12232)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    const body = JSON.stringify({
-      timestamp: new Date().toISOString(),
-      random: Math.random(),
-    });
+	async fetch(request) {
+		const body = JSON.stringify({
+			timestamp: new Date().toISOString(),
+			random: Math.random(),
+		});
 
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": "application/json",
-        // Cache for 1 hour; serve stale for up to 5 minutes while revalidating.
-        "Cache-Control": "public, max-age=3600, stale-while-revalidate=300",
-      },
-    });
-  },
+		return new Response(body, {
+			headers: {
+				"Content-Type": "application/json",
+				// Cache for 1 hour; serve stale for up to 5 minutes while revalidating.
+				"Cache-Control": "public, max-age=3600, stale-while-revalidate=300",
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const body = JSON.stringify({
-      timestamp: new Date().toISOString(),
-      random: Math.random(),
-    });
+	async fetch(request): Promise<Response> {
+		const body = JSON.stringify({
+			timestamp: new Date().toISOString(),
+			random: Math.random(),
+		});
 
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": "application/json",
-        // Cache for 1 hour; serve stale for up to 5 minutes while revalidating.
-        "Cache-Control": "public, max-age=3600, stale-while-revalidate=300",
-      },
-    });
-  },
+		return new Response(body, {
+			headers: {
+				"Content-Type": "application/json",
+				// Cache for 1 hour; serve stale for up to 5 minutes while revalidating.
+				"Cache-Control": "public, max-age=3600, stale-while-revalidate=300",
+			},
+		});
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -214,8 +199,6 @@ Then send two requests and look at the `Cf-Cache-Status` response header:
 curl -I https://my-worker.example.workers.dev/
 ```
 
-**First request — expected**
-
 ```txt
 HTTP/2 200
 cache-control: public, max-age=3600, stale-while-revalidate=300
@@ -225,8 +208,6 @@ cf-cache-status: MISS
 ```sh
 curl -I https://my-worker.example.workers.dev/
 ```
-
-**Second request — expected**
 
 ```txt
 HTTP/2 200
@@ -256,54 +237,43 @@ Workers Caching honors the [Vary ↗](https://www.rfc-editor.org/rfc/rfc9110.htm
 
 This lets a single URL cache multiple representations — for example, different encodings, different content types, or different languages — without your Worker coordinating content negotiation by hand:
 
-* [  JavaScript ](#tab-panel-12233)
-* [  TypeScript ](#tab-panel-12234)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    const accept = request.headers.get("Accept") ?? "";
-    const wantsWebp = accept.includes("image/webp");
+	async fetch(request) {
+		const accept = request.headers.get("Accept") ?? "";
+		const wantsWebp = accept.includes("image/webp");
 
+		const body = wantsWebp ? await fetchWebpImage() : await fetchJpegImage();
 
-    const body = wantsWebp ? await fetchWebpImage() : await fetchJpegImage();
-
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": wantsWebp ? "image/webp" : "image/jpeg",
-        "Cache-Control": "public, max-age=3600",
-        // Cache a separate variant per distinct Accept header value.
-        Vary: "Accept",
-      },
-    });
-  },
+		return new Response(body, {
+			headers: {
+				"Content-Type": wantsWebp ? "image/webp" : "image/jpeg",
+				"Cache-Control": "public, max-age=3600",
+				// Cache a separate variant per distinct Accept header value.
+				Vary: "Accept",
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const accept = request.headers.get("Accept") ?? "";
-    const wantsWebp = accept.includes("image/webp");
+	async fetch(request): Promise<Response> {
+		const accept = request.headers.get("Accept") ?? "";
+		const wantsWebp = accept.includes("image/webp");
 
+		const body = wantsWebp ? await fetchWebpImage() : await fetchJpegImage();
 
-    const body = wantsWebp ? await fetchWebpImage() : await fetchJpegImage();
-
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": wantsWebp ? "image/webp" : "image/jpeg",
-        "Cache-Control": "public, max-age=3600",
-        // Cache a separate variant per distinct Accept header value.
-        Vary: "Accept",
-      },
-    });
-  },
+		return new Response(body, {
+			headers: {
+				"Content-Type": wantsWebp ? "image/webp" : "image/jpeg",
+				"Cache-Control": "public, max-age=3600",
+				// Cache a separate variant per distinct Accept header value.
+				Vary: "Accept",
+			},
+		});
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -340,135 +310,109 @@ The wrapper entrypoint forwards the request into the Durable Object and sets `Ca
 
 The default entrypoint here is a gateway that should run on every request, so disable caching on it and enable it on `CachedCounter` (see [Per-entrypoint caching](https://developers.cloudflare.com/workers/cache/configuration/#per-entrypoint-caching)):
 
-* [  wrangler.jsonc ](#tab-panel-12227)
-* [  wrangler.toml ](#tab-panel-12228)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": { "enabled": true },
-  "exports": {
-    "default": { "type": "worker", "cache": { "enabled": false } },
-    "CachedCounter": { "type": "worker", "cache": { "enabled": true } },
-  },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": { "enabled": true },
+	"exports": {
+		"default": { "type": "worker", "cache": { "enabled": false } },
+		"CachedCounter": { "type": "worker", "cache": { "enabled": true } },
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 
-
 [exports.default]
 type = "worker"
-
 
   [exports.default.cache]
   enabled = false
 
-
 [exports.CachedCounter]
 type = "worker"
-
 
   [exports.CachedCounter.cache]
   enabled = true
 ```
 
-* [  JavaScript ](#tab-panel-12235)
-* [  TypeScript ](#tab-panel-12236)
-
-**src/index.js**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 // Cached entrypoint. Requests to this entrypoint are served from cache
 // when possible; on a miss, the Durable Object is invoked and its
 // response is stored.
 export class CachedCounter extends WorkerEntrypoint {
-  async fetch(request) {
-    const id = this.env.COUNTER.idFromName("global");
-    const stub = this.env.COUNTER.get(id);
-    const response = await stub.fetch(request);
+	async fetch(request) {
+		const id = this.env.COUNTER.idFromName("global");
+		const stub = this.env.COUNTER.get(id);
+		const response = await stub.fetch(request);
 
-
-    // Attach cache headers. Clone into a new Response so the headers
-    // are mutable.
-    return new Response(response.body, {
-      status: response.status,
-      headers: {
-        ...Object.fromEntries(response.headers),
-        "Cache-Control": "public, max-age=30",
-      },
-    });
-  }
+		// Attach cache headers. Clone into a new Response so the headers
+		// are mutable.
+		return new Response(response.body, {
+			status: response.status,
+			headers: {
+				...Object.fromEntries(response.headers),
+				"Cache-Control": "public, max-age=30",
+			},
+		});
+	}
 }
-
 
 // Default entrypoint. Delegates to the cached entrypoint via ctx.exports,
 // which routes through the cache.
 export default {
-  async fetch(request, env, ctx) {
-    return ctx.exports.CachedCounter.fetch(request);
-  },
+	async fetch(request, env, ctx) {
+		return ctx.exports.CachedCounter.fetch(request);
+	},
 };
 ```
-
-**src/index.ts**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 interface Env {
-  COUNTER: DurableObjectNamespace;
+	COUNTER: DurableObjectNamespace;
 }
-
 
 // Cached entrypoint. Requests to this entrypoint are served from cache
 // when possible; on a miss, the Durable Object is invoked and its
 // response is stored.
 export class CachedCounter extends WorkerEntrypoint<Env> {
-  async fetch(request: Request): Promise<Response> {
-    const id = this.env.COUNTER.idFromName("global");
-    const stub = this.env.COUNTER.get(id);
-    const response = await stub.fetch(request);
+	async fetch(request: Request): Promise<Response> {
+		const id = this.env.COUNTER.idFromName("global");
+		const stub = this.env.COUNTER.get(id);
+		const response = await stub.fetch(request);
 
-
-    // Attach cache headers. Clone into a new Response so the headers
-    // are mutable.
-    return new Response(response.body, {
-      status: response.status,
-      headers: {
-        ...Object.fromEntries(response.headers),
-        "Cache-Control": "public, max-age=30",
-      },
-    });
-  }
+		// Attach cache headers. Clone into a new Response so the headers
+		// are mutable.
+		return new Response(response.body, {
+			status: response.status,
+			headers: {
+				...Object.fromEntries(response.headers),
+				"Cache-Control": "public, max-age=30",
+			},
+		});
+	}
 }
-
 
 // Default entrypoint. Delegates to the cached entrypoint via ctx.exports,
 // which routes through the cache.
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    return ctx.exports.CachedCounter.fetch(request);
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		return ctx.exports.CachedCounter.fetch(request);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -520,28 +464,21 @@ Because the upper tier and the Smart Placement target are chosen independently t
 
 Your Worker can invalidate its own cache at any time using `ctx.cache.purge()`. Tags are the most flexible mechanism — tag responses with `Cache-Tag` when returning them, and purge those tags later:
 
-* [  JavaScript ](#tab-panel-12229)
-* [  TypeScript ](#tab-panel-12230)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    await ctx.cache.purge({ tags: ["blog-posts"] });
-    return new Response("Purged", { status: 200 });
-  },
+	async fetch(request, env, ctx) {
+		await ctx.cache.purge({ tags: ["blog-posts"] });
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    await ctx.cache.purge({ tags: ["blog-posts"] });
-    return new Response("Purged", { status: 200 });
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		await ctx.cache.purge({ tags: ["blog-posts"] });
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -574,7 +511,14 @@ For an example, refer to [Pricing example: Worker with caching](https://develope
 * [ Debugging ](https://developers.cloudflare.com/workers/cache/debugging/)
 * [ Limitations ](https://developers.cloudflare.com/workers/cache/limitations/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache · Cloudflare Workers docs","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache · Cloudflare Workers docs","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

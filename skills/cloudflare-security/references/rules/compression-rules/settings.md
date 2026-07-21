@@ -1,22 +1,24 @@
 ---
-title: Compression Rules settings
 description: Available compression algorithms and content type settings for Compression Rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Compression Rules settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Compression Rules settings
 
-# Compression Rules settings
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/compression-rules/settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Compression Rules support the configuration settings covered in the following sections.
 
 ## Dashboard configuration settings
 
-### Enable Zstandard (Zstd) compression Beta
+### Enable Zstandard (Zstd) compression  Beta
 
 Sets Zstandard as the preferred compression algorithm. If it is not supported, will automatically fall back to Brotli, Gzip, or uncompressed data.
 
@@ -79,7 +81,14 @@ When you specify only the `gzip`, `brotli`, or `zstd` algorithms, if no algorith
 
 For API examples, refer to the [Examples gallery](https://developers.cloudflare.com/rules/compression-rules/examples/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/settings/#page","headline":"Compression Rules settings · Cloudflare Rules docs","description":"Available compression algorithms and content type settings for Compression Rules.","url":"https://developers.cloudflare.com/rules/compression-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/compression-rules/","name":"Compression Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/compression-rules/settings/","name":"Compression Rules settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/settings/#page","headline":"Compression Rules settings · Cloudflare Rules docs","description":"Available compression algorithms and content type settings for Compression Rules.","url":"https://developers.cloudflare.com/rules/compression-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

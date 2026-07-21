@@ -17,15 +17,18 @@ To use Flex processing, set the `service_tier` parameter to `flex` in your API r
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI({
-    timeout: 15 * 1000 * 60, // Increase default timeout to 15 minutes
+  timeout: 15 * 1000 * 60, // Increase default timeout to 15 minutes
 });
 
-const response = await client.responses.create({
-    model: "gpt-5.5",
+const response = await client.responses.create(
+  {
+    model: "gpt-5.6",
     instructions: "List and describe all the metaphors used in this book.",
     input: "<very long text of book here>",
     service_tier: "flex",
-}, { timeout: 15 * 1000 * 60 });
+  },
+  { timeout: 15 * 1000 * 60 }
+);
 
 console.log(response.output_text);
 ```
@@ -39,7 +42,7 @@ client = OpenAI(
 
 # you can override the max timeout per request as well
 response = client.with_options(timeout=900.0).responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     instructions="List and describe all the metaphors used in this book.",
     input="<very long text of book here>",
     service_tier="flex",
@@ -53,7 +56,7 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "instructions": "List and describe all the metaphors used in this book.",
     "input": "<very long text of book here>",
     "service_tier": "flex"

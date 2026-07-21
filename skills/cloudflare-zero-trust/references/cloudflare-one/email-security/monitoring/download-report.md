@@ -1,16 +1,18 @@
 ---
-title: Download a report
 description: Download a report in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Download a report
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Download a report
 
-# Download a report
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Email security allows you to download three types of reports:
 
@@ -59,7 +61,14 @@ To download a security report:
 4. Select **Generate report**.
 5. Your security report is being generated. You will receive an email with the security report attached once it is ready.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/#page","headline":"Download a report · Cloudflare One docs","description":"Download a report in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/monitoring/","name":"Monitoring"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/monitoring/download-report/","name":"Download a report"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/#page","headline":"Download a report · Cloudflare One docs","description":"Download a report in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

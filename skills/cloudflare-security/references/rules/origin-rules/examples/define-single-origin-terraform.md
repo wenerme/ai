@@ -1,18 +1,20 @@
 ---
-title: Define a single origin rule using Terraform
 description: Create an origin rule using Terraform to override the `Host` header, the resolved hostname, and the destination port of API requests.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Define a single origin rule using Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Define a single origin rule using Terraform
+#  Define a single origin rule using Terraform
 
 Create an origin rule using Terraform to override the `Host` header, the resolved hostname, and the destination port of API requests.
+
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/origin-rules/examples/define-single-origin-terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -29,9 +31,8 @@ resource "cloudflare_ruleset" "http_origin_example" {
   kind        = "zone"
   phase       = "http_request_origin"
 
-
   rules {
-    ref         = "change_api_origin"
+	  ref         = "change_api_origin"
     description = "Change origin of API requests"
     expression  = "(http.request.uri.path matches \"^/api/\")"
     action      = "route"
@@ -55,7 +56,14 @@ For additional guidance on using Terraform with Cloudflare, refer to the followi
 * [Terraform documentation](https://developers.cloudflare.com/terraform/)
 * [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/examples/define-single-origin-terraform/#page","headline":"Define a single origin rule using Terraform · Cloudflare Rules docs","description":"Create an origin rule using Terraform to override the Host header, the resolved hostname, and the destination port of API requests.","url":"https://developers.cloudflare.com/rules/origin-rules/examples/define-single-origin-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","Headers"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/origin-rules/","name":"Origin Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/origin-rules/examples/","name":"Origin Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/origin-rules/examples/define-single-origin-terraform/","name":"Define a single origin rule using Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/examples/define-single-origin-terraform/#page","headline":"Define a single origin rule using Terraform · Cloudflare Rules docs","description":"Create an origin rule using Terraform to override the Host header, the resolved hostname, and the destination port of API requests.","url":"https://developers.cloudflare.com/rules/origin-rules/examples/define-single-origin-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","Headers"]}
 ```

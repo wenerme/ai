@@ -1,16 +1,18 @@
 ---
-title: Session management (HTTP)
 description: Manage browser sessions and tabs using HTTP endpoints, including creating sessions, listing targets, and opening the Chrome DevTools UI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Session management (HTTP)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Session management (HTTP)
 
-# Session management (HTTP)
+Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/cdp/session-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the HTTP API to manage browser sessions and tabs without using WebSocket connections. This is useful for session lifecycle operations like creating sessions, listing tabs, and cleaning up resources.
 
@@ -24,14 +26,14 @@ Create a new browser session using the `POST /devtools/browser` endpoint. The se
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser?keep_alive=600000" \
-  --request POST \
-  --header "Authorization: Bearer {api_token}"
+	--request POST \
+	--header "Authorization: Bearer {api_token}"
 ```
 
 ```json
 {
-  "sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",
-  "webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f"
+	"sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",
+	"webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f"
 }
 ```
 
@@ -43,19 +45,19 @@ Open a new tab in your browser session and navigate to a specific URL using the 
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID/json/new?url=https%3A%2F%2Fexample.com" \
-  --request PUT \
-  --header "Authorization: Bearer {api_token}"
+	--request PUT \
+	--header "Authorization: Bearer {api_token}"
 ```
 
 ```json
 {
-  "id": "8E598E996530FB09E46A22B8B7754F7F",
-  "type": "page",
-  "url": "https://example.com",
-  "title": "Example Domain",
-  "description": "",
-  "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=...",
-  "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=..."
+	"id": "8E598E996530FB09E46A22B8B7754F7F",
+	"type": "page",
+	"url": "https://example.com",
+	"title": "Example Domain",
+	"description": "",
+	"devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=...",
+	"webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=..."
 }
 ```
 
@@ -65,21 +67,21 @@ List all targets (tabs) in your session to verify the tab was created and get th
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID/json/list" \
-  --request GET \
-  --header "Authorization: Bearer {api_token}"
+	--request GET \
+	--header "Authorization: Bearer {api_token}"
 ```
 
 ```json
 [
-  {
-    "id": "8E598E996530FB09E46A22B8B7754F7F",
-    "type": "page",
-    "url": "https://example.com",
-    "title": "Example Domain",
-    "description": "",
-    "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=...",
-    "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=..."
-  }
+	{
+		"id": "8E598E996530FB09E46A22B8B7754F7F",
+		"type": "page",
+		"url": "https://example.com",
+		"title": "Example Domain",
+		"description": "",
+		"devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=...",
+		"webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-23e8-4394-bc31-27404bf4348f/page/8E598E996530FB09E46A22B8B7754F7F?jwt=..."
+	}
 ]
 ```
 
@@ -106,13 +108,13 @@ When you are done, close the browser session to release resources.
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering/devtools/browser/SESSION_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer {api_token}"
+	--request DELETE \
+	--header "Authorization: Bearer {api_token}"
 ```
 
 ```json
 {
-  "status": "closing"
+	"status": "closing"
 }
 ```
 
@@ -120,7 +122,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/browser-rendering
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/session-management/#page","headline":"Session management (HTTP) · Cloudflare Browser Run docs","description":"Manage browser sessions and tabs using HTTP endpoints, including creating sessions, listing targets, and opening the Chrome DevTools UI.","url":"https://developers.cloudflare.com/browser-run/cdp/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/cdp/","name":"Chrome DevTools Protocol (CDP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/cdp/session-management/","name":"Session management (HTTP)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/session-management/#page","headline":"Session management (HTTP) · Cloudflare Browser Run docs","description":"Manage browser sessions and tabs using HTTP endpoints, including creating sessions, listing targets, and opening the Chrome DevTools UI.","url":"https://developers.cloudflare.com/browser-run/cdp/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

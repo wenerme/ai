@@ -1,16 +1,18 @@
 ---
-title: Account and domain management best practices
 description: Protect your Cloudflare account and domains by decentralizing access, managing billing, and planning for continuity.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Account and domain management best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Account and domain management best practices
 
-# Account and domain management best practices
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 More and more of our lives revolve around our online presence and maintaining access to our various online accounts, such as social media, banking, personal, and business accounts. These accounts are critical to remaining connected with our loved ones and business. As such, ensuring a level of continuity with these services is critical. Below is a list of important items to help ensure you are able to maintain access or delegate access to your Cloudflare account in the event that you are unable to manage your account.
 
@@ -45,7 +47,14 @@ Most if not all online services have automated billing processes that will attem
 
 While often overlooked, an important part of having an online presence is ensuring continuity in the event of an unexpected accident or incapacitation of the account holder. Create clear instructions for domain or account management in the event the account holder is unable to administer the account. If you learn no instructions are available on how to access the account of the deceased, Cloudflare may be able to assist you.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/best-practices/#page","headline":"Account and domain management best practices · Cloudflare Fundamentals docs","description":"Protect your Cloudflare account and domains by decentralizing access, managing billing, and planning for continuity.","url":"https://developers.cloudflare.com/fundamentals/reference/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/best-practices/","name":"Account and domain management best practices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/best-practices/#page","headline":"Account and domain management best practices · Cloudflare Fundamentals docs","description":"Protect your Cloudflare account and domains by decentralizing access, managing billing, and planning for continuity.","url":"https://developers.cloudflare.com/fundamentals/reference/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Interstitial Challenge Pages
 description: Full-page challenge screens that verify visitors before they reach your website.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Interstitial Challenge Pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Interstitial Challenge Pages
 
-# Interstitial Challenge Pages
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 An interstitial Challenge Page (a full-page screen that appears before the visitor reaches the destination URL) acts as a gate between the visitor and your website or application while Cloudflare verifies the authenticity of the visitor.
 
@@ -42,7 +44,7 @@ Most human visitors are automatically verified and the Challenge Page will displ
 
 Cloudflare recommends Managed Challenges for most WAF rules. Unless there are specific compatibility issues, do not use other challenge types.
 
-Warning
+Caution
 
 Using Cloudflare Challenges along with Rules features may cause challenge loops. Refer to [Rules troubleshooting](https://developers.cloudflare.com/rules/reference/troubleshooting/) for more information.
 
@@ -62,7 +64,14 @@ By enabling Pre-clearance, the Turnstile widget issues a persistent clearance co
 
 For implementation details, refer to the [guidance on Pre-clearance for Turnstile](https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/#pre-clearance-support-in-turnstile).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#page","headline":"Interstitial Challenge Pages · Cloudflare challenges docs","description":"Full-page challenge screens that verify visitors before they reach your website.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/challenge-types/","name":"Available Challenges"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-challenges/challenge-types/challenge-pages/","name":"Interstitial Challenge Pages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#page","headline":"Interstitial Challenge Pages · Cloudflare challenges docs","description":"Full-page challenge screens that verify visitors before they reach your website.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

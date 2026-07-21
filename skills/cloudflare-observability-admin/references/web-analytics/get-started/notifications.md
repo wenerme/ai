@@ -1,16 +1,18 @@
 ---
-title: Notifications
 description: Configure notifications for Web Analytics traffic changes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Notifications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Notifications
 
-# Notifications
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web-analytics/get-started/notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Web Analytics uses Cloudflare's Notification service. When enabled, Web Analytics sends you a weekly report with aggregate visits, page views and median page load time for all your sites, so you can monitor their performance.
 
@@ -35,7 +37,14 @@ All Cloudflare plans.
 
 No action is needed. This notification is a weekly summary with reports from your Web Analytics account. Refer to [Notifications](https://dash.cloudflare.com/?to=/:account/notifications) in the Cloudflare dashboard to refine your notifications settings.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/get-started/notifications/#page","headline":"Notifications for Web Analytics · Cloudflare Web Analytics docs","description":"Configure notifications for Web Analytics traffic changes.","url":"https://developers.cloudflare.com/web-analytics/get-started/notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/get-started/notifications/","name":"Notifications"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/get-started/notifications/#page","headline":"Notifications for Web Analytics · Cloudflare Web Analytics docs","description":"Configure notifications for Web Analytics traffic changes.","url":"https://developers.cloudflare.com/web-analytics/get-started/notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: On-ramps
 description: Connect to Cloudflare WAN using tunnels, Appliances, or CNI.
-image: https://developers.cloudflare.com/zt-preview.png
+title: On-ramps
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  On-ramps
 
-# On-ramps
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/on-ramps/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To on-ramp your network traffic to Cloudflare WAN (formerly Magic WAN), you can use [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/), a lightweight software package you can install in corporate network locations to automatically connect and steer any IP traffic.
 
@@ -24,7 +26,14 @@ Additional compatible on-ramps include:
 * [Multi-Cloud Networking](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/): Automatically create on-ramps from your cloud networks to Cloudflare WAN.
 * [Network on-ramp partnerships](https://www.cloudflare.com/network-onramp-partners/): Refer to our [third-party integration tutorials](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/) for guidance on configuring the most asked for third-party products.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/on-ramps/#page","headline":"On-ramps · Cloudflare WAN docs","description":"Connect to Cloudflare WAN using tunnels, Appliances, or CNI.","url":"https://developers.cloudflare.com/cloudflare-wan/on-ramps/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/on-ramps/","name":"On-ramps"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/on-ramps/#page","headline":"On-ramps · Cloudflare WAN docs","description":"Connect to Cloudflare WAN using tunnels, Appliances, or CNI.","url":"https://developers.cloudflare.com/cloudflare-wan/on-ramps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

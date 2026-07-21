@@ -1,16 +1,18 @@
 ---
-title: Universal SSL
 description: Free TLS certificates automatically issued for all proxied hostnames.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Universal SSL
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Universal SSL
 
-# Universal SSL
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
 
@@ -36,7 +38,14 @@ Universal SSL certificates are issued after your domain is active on Cloudflare.
 * [Backup certificates](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)
 * [Validity period and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/#page","headline":"Free Universal SSL/TLS certificates · Cloudflare SSL/TLS docs","description":"Free TLS certificates automatically issued for all proxied hostnames.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/universal-ssl/","name":"Universal SSL"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/#page","headline":"Free Universal SSL/TLS certificates · Cloudflare SSL/TLS docs","description":"Free TLS certificates automatically issued for all proxied hostnames.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

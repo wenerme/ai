@@ -1,30 +1,39 @@
 ---
-title: How to
 description: How-to guides for configuring the Network Firewall.
-image: https://developers.cloudflare.com/zt-preview.png
+title: How to
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How to
 
-# How to
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Review the content below to learn how to complete tasks using Cloudflare Network Firewall (formerly Magic Firewall).
 
-* [ Add custom policies ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-policies/)
-* [ Create Rate Limiting policies (beta) ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/create-rate-limiting-policies/)
-* [ Enable IDS ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/)
-* [ Enable Managed Rulesets ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/)
-* [ Enable user roles ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-roles/)
-* [ Filter different views ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/)
 * [ Form expressions ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/form-expressions/)
-* [ Use Logpush with IDS ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/)
 * [ Use IP lists ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-rules-list/)
+* [ Add custom policies ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-policies/)
+* [ Enable IDS ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/)
+* [ Enable user roles ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-roles/)
+* [ Create Rate Limiting policies (beta) ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/create-rate-limiting-policies/)
+* [ Enable Managed Rulesets ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/)
+* [ Filter different views ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/)
+* [ Use Logpush with IDS ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/#page","headline":"How to · Cloudflare Network Firewall docs","description":"How-to guides for configuring the Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/#page","headline":"How to · Cloudflare Network Firewall docs","description":"How-to guides for configuring the Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Writing tests
 description: Write integration tests against Workers using Miniflare.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Writing tests
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Writing tests
 
-# Writing tests
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -44,57 +46,49 @@ Miniflare is a low-level API that exposes a large variety of configuration optio
 
 Before writing a test, you will need to create a Worker. Since Miniflare is a low-level API that emulates the Cloudflare platform primitives, your Worker will need to be written in JavaScript or you'll need to [integrate your own build pipeline](#custom-builds) into your testing setup. Here's an example JavaScript-only Worker:
 
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    return new Response(`Hello World`);
-  },
+	async fetch(request) {
+		return new Response(`Hello World`);
+	},
 };
 ```
 
 Next, you will need to create an initial test file:
-
-**src/index.test.js**
 
 ```js
 import assert from "node:assert";
 import test, { after, before, describe } from "node:test";
 import { Miniflare } from "miniflare";
 
-
 describe("worker", () => {
-  /**
-   * @type {Miniflare}
-   */
-  let worker;
+	/**
+	 * @type {Miniflare}
+	 */
+	let worker;
 
+	before(async () => {
+		worker = new Miniflare({
+			modules: [
+				{
+					type: "ESModule",
+					path: "src/index.js",
+				},
+			],
+		});
+		await worker.ready;
+	});
 
-  before(async () => {
-    worker = new Miniflare({
-      modules: [
-        {
-          type: "ESModule",
-          path: "src/index.js",
-        },
-      ],
-    });
-    await worker.ready;
-  });
+	test("hello world", async () => {
+		assert.strictEqual(
+			await (await worker.dispatchFetch("http://example.com")).text(),
+			"Hello World",
+		);
+	});
 
-
-  test("hello world", async () => {
-    assert.strictEqual(
-      await (await worker.dispatchFetch("http://example.com")).text(),
-      "Hello World",
-    );
-  });
-
-
-  after(async () => {
-    await worker.dispose();
-  });
+	after(async () => {
+		await worker.dispose();
+	});
 });
 ```
 
@@ -108,60 +102,54 @@ When using the [Vitest integration](https://developers.cloudflare.com/workers/te
 
 ## Interacting with Bindings
 
-Warning
+Caution
 
 Miniflare does not read [Wrangler's config file](https://developers.cloudflare.com/workers/wrangler/configuration). All bindings that your Worker uses need to be specified in the Miniflare API options.
 
 The `dispatchFetch()` API from Miniflare allows you to send requests to your Worker and assert that the correct response is returned, but sometimes you need to interact directly with bindings in tests. For use cases like that, Miniflare provides the [getBindings()](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#reference) API. For instance, to access an environment variable in your tests, adapt the test file `src/index.test.js` as follows:
 
-**src/index.test.js**
-
-```js
+```diff
 ...
 describe("worker", () => {
-  ...
-  before(async () => {
-    worker = new Miniflare({
-      ...
-      bindings: {
-        FOO: "Hello Bindings",
-      },
-    });
-    ...
-  });
+	...
+	before(async () => {
+		worker = new Miniflare({
+			...
++			bindings: {
++				FOO: "Hello Bindings",
++			},
+		});
+		...
+	});
 
-
-  test("text binding", async () => {
-    const bindings = await worker.getBindings();
-    assert.strictEqual(bindings.FOO, "Hello Bindings");
-  });
-  ...
+	test("text binding", async () => {
+		const bindings = await worker.getBindings();
+		assert.strictEqual(bindings.FOO, "Hello Bindings");
+	});
+	...
 });
 ```
 
 You can also interact with local resources such as KV and R2 using the same API as you would from a Worker. For example, here's how you would interact with a KV namespace:
 
-**src/index.test.js**
-
-```js
+```diff
 ...
 describe("worker", () => {
-  ...
-  before(async () => {
-    worker = new Miniflare({
-      ...
-      kvNamespaces: ["KV"],
-    });
-    ...
-  });
+	...
+	before(async () => {
+		worker = new Miniflare({
+			...
++			kvNamespaces: ["KV"],
+		});
+		...
+	});
 
-
-  test("kv binding", async () => {
-    const bindings = await worker.getBindings();
-    await bindings.KV.put("key", "value");
-    assert.strictEqual(await bindings.KV.get("key"), "value");
-  });
-  ...
+	test("kv binding", async () => {
+		const bindings = await worker.getBindings();
+		await bindings.KV.put("key", "value");
+		assert.strictEqual(await bindings.KV.get("key"), "value");
+	});
+	...
 });
 ```
 
@@ -169,32 +157,28 @@ describe("worker", () => {
 
 The example given above shows how to test a simple Worker consisting of a single JavaScript file. However, most real-world Workers are more complex than that. Miniflare supports providing all constituent files of your Worker directly using the API:
 
-**JavaScript**
-
 ```js
 new Miniflare({
-  modules: [
-    {
-      type: "ESModule",
-      path: "src/index.js",
-    },
-    {
-      type: "ESModule",
-      path: "src/imported.js",
-    },
-  ],
+	modules: [
+		{
+			type: "ESModule",
+			path: "src/index.js",
+		},
+		{
+			type: "ESModule",
+			path: "src/imported.js",
+		},
+	],
 });
 ```
 
 This can be a bit cumbersome as your Worker grows. To help with this, Miniflare can also crawl your module graph to automatically figure out which modules to include:
 
-**JavaScript**
-
 ```js
 new Miniflare({
-  scriptPath: "src/index-with-imports.js",
-  modules: true,
-  modulesRules: [{ type: "ESModule", include: ["**/*.js"] }],
+	scriptPath: "src/index-with-imports.js",
+	modules: true,
+	modulesRules: [{ type: "ESModule", include: ["**/*.js"] }],
 });
 ```
 
@@ -202,18 +186,23 @@ new Miniflare({
 
 In many real-world cases, Workers are not written in plain JavaScript but instead consist of multiple TypeScript files that import from npm packages and other dependencies, which are then bundled by a build tool. When testing your Worker via Miniflare directly you need to run this build tool before your tests. Exactly how this build is run will depend on the specific test framework you use, but for `node:test` it would likely be in a `setup()` hook. For example, if you use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to build and deploy your Worker, you could spawn a `wrangler build` command like this:
 
-**JavaScript**
-
 ```js
 before(() => {
-  spawnSync("npx wrangler build -c wrangler-build.json", {
-    shell: true,
-    stdio: "pipe",
-  });
+	spawnSync("npx wrangler build -c wrangler-build.json", {
+		shell: true,
+		stdio: "pipe",
+	});
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/#page","headline":"Writing tests · Cloudflare Workers docs","description":"Write integration tests against Workers using Miniflare.","url":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/writing-tests/","name":"Writing tests"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/#page","headline":"Writing tests · Cloudflare Workers docs","description":"Write integration tests against Workers using Miniflare.","url":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

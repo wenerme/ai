@@ -1,36 +1,10 @@
 ---
-title: Agent setup
 description: Cloudflare provides Skills and MCP servers so your agent can seamlessly build on the Cloudflare platform. Pick an agent below to get started.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Agent setup
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/agent-setup/llms.txt
-> Use this file to discover all available pages before exploring further.
-
-[Skip to content](#%5Ftop)
-
-# Agent setup
-
-Install an agent of your choice, connect Cloudflare [Skills ↗](https://github.com/cloudflare/skills) and [Code Mode API ↗](https://blog.cloudflare.com/code-mode-mcp/) and [domain-specific ↗](https://github.com/cloudflare/mcp-server-cloudflare) MCP servers, and start deploying to Cloudflare from your editor or terminal.
-
-Quick setup
-
-Already have an agent?
-
-Paste this into any AI coding agent to install Cloudflare agent tooling in one step.
-
-`Fetch https://developers.cloudflare.com/agent-setup/prompt.md `
-
-Manual setup
-
-New to AI agents?
-
-Pick an agent, follow step-by-step setup instructions, compare capabilities, and learn about the Cloudflare tools available to you.
-
-[Browse agents ↓](#pick-your-agent)
-
----
+[Skip to content ](#main-content)
 
 ## Pick your agent
 
@@ -126,5 +100,5 @@ Session vs. Indexed codebase
 Session context resets when you close the conversation. An indexed codebase is built up front and persists, letting the agent retrieve any file in the repo on demand.
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/#page","headline":"Agent setup · Agent setup docs","description":"Cloudflare provides Skills and MCP servers so your agent can seamlessly build on the Cloudflare platform. Pick an agent below to get started.","url":"https://developers.cloudflare.com/agent-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/#page","headline":"Agent setup · Agent setup docs","description":"Cloudflare provides Skills and MCP servers so your agent can seamlessly build on the Cloudflare platform. Pick an agent below to get started.","url":"https://developers.cloudflare.com/agent-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

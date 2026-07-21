@@ -1,23 +1,25 @@
 ---
-title: Blocked Content
 description: Request removal of Trust and Safety content blocks on your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Blocked Content
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Blocked Content
 
-# Blocked Content
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If your domain has content that has been blocked, Blocked Content on the dashboard gives you the ability to request the Trust and Safety team to remove a block.
 
 To view Blocked Content on the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Blocked Content** page.
-[ Go to **Blocked content** ](https://dash.cloudflare.com/?to=/:account/blocked-content)
+[ Go to **Blocked content** ↗ ](https://dash.cloudflare.com/?to=/:account/blocked-content)
 
 Note
 
@@ -41,7 +43,14 @@ You can view all your pending blocks by selecting **Pending** on the dashboard. 
 
 Resolved blocks list your recently resolved blocks. Resolved blocks are limited to 30 days of recently resolved blocks. Resolved blocks require no action. You can only sort and/or filter the list.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/#page","headline":"Blocked Content · Cloudflare Fundamentals docs","description":"Request removal of Trust and Safety content blocks on your domain.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/report-abuse/","name":"Abuse"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/reference/report-abuse/blocked-content/","name":"Blocked Content"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/#page","headline":"Blocked Content · Cloudflare Fundamentals docs","description":"Request removal of Trust and Safety content blocks on your domain.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

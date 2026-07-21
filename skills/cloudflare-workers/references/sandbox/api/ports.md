@@ -1,22 +1,24 @@
 ---
-title: Ports
 description: Expose sandbox services via public preview URLs using the Sandbox SDK ports API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Ports
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Ports
 
-# Ports
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/api/ports/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Production requires custom domain
 
 Preview URLs require a custom domain with wildcard DNS routing in production. See [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/).
 
-Prefer `sandbox.tunnels` for public URLs
+Prefer \`sandbox.tunnels\` for public URLs
 
 For most public-URL use cases — development, `.workers.dev` deployments, and production traffic — [sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) is the recommended option. Use named tunnels for stable hostnames on a zone you control, or quick tunnels for zero-config `*.trycloudflare.com` URLs. `exposePort()` is appropriate when you want the Worker itself to front the request (for example, to inject authentication, rewrite responses, or call sandbox-only RPC methods on the same hostname).
 
@@ -27,8 +29,6 @@ Expose services running in your sandbox via public preview URLs. See [Preview UR
 ### `proxyToSandbox()`
 
 Route incoming HTTP and WebSocket requests to the correct sandbox container. Call this at the top of your Worker's `fetch` handler, before any application logic, so that it intercepts and forwards preview URL requests automatically.
-
-**TypeScript**
 
 ```ts
 proxyToSandbox(request: Request, env: Env): Promise<Response | null>
@@ -43,48 +43,35 @@ proxyToSandbox(request: Request, env: Env): Promise<Response | null>
 
 The function inspects the request hostname to determine whether it matches the subdomain pattern of an exposed port (for example, `8080-sandbox-id-token.yourdomain.com`). If it matches, `proxyToSandbox()` proxies the request to the correct Durable Object, and the sandbox service handles it. Both HTTP and WebSocket upgrade requests are supported.
 
-* [  JavaScript ](#tab-panel-11031)
-* [  TypeScript ](#tab-panel-11032)
-
-**JavaScript**
-
 ```js
 import { proxyToSandbox, getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    // Always call proxyToSandbox first to handle preview URL requests
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
+	async fetch(request, env) {
+		// Always call proxyToSandbox first to handle preview URL requests
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
 
-
-    // Your application routes
-    const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-    // ...
-    return new Response("Not found", { status: 404 });
-  },
+		// Your application routes
+		const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+		// ...
+		return new Response("Not found", { status: 404 });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { proxyToSandbox, getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
-
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     // Always call proxyToSandbox first to handle preview URL requests
     const proxyResponse = await proxyToSandbox(request, env);
     if (proxyResponse) return proxyResponse;
-
 
     // Your application routes
     const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
@@ -104,8 +91,6 @@ Note
 
 Expose a port and get a preview URL for accessing services running in the sandbox.
 
-**TypeScript**
-
 ```ts
 const response = await sandbox.exposePort(port: number, options: ExposePortOptions): Promise<ExposePortResponse>
 ```
@@ -120,71 +105,55 @@ const response = await sandbox.exposePort(port: number, options: ExposePortOptio
 
 **Returns**: `Promise<ExposePortResponse>` with `port`, `url` (preview URL), `name`
 
-* [  JavaScript ](#tab-panel-11039)
-* [  TypeScript ](#tab-panel-11040)
-
-**JavaScript**
-
 ```js
 // Extract hostname from request
 const { hostname } = new URL(request.url);
-
 
 // Basic usage with auto-generated token
 await sandbox.startProcess("python -m http.server 8000");
 const exposed = await sandbox.exposePort(8000, { hostname });
 
-
 console.log("Available at:", exposed.url);
 // https://8000-sandbox-id-abc123random.yourdomain.com
 
-
 // With custom token for stable URLs across restarts
 const stable = await sandbox.exposePort(8080, {
-  hostname,
-  token: "my_service_v1", // 1-16 chars: a-z, 0-9, _
+	hostname,
+	token: "my_service_v1", // 1-16 chars: a-z, 0-9, _
 });
 console.log("Stable URL:", stable.url);
 // https://8080-sandbox-id-my_service_v1.yourdomain.com
 
-
 // With custom token for stable URLs across deployments
 await sandbox.startProcess("node api.js");
 const api = await sandbox.exposePort(3000, {
-  hostname,
-  name: "api",
-  token: "prod-api-v1", // URL stays same across restarts
+	hostname,
+	name: "api",
+	token: "prod-api-v1", // URL stays same across restarts
 });
-
 
 console.log("Stable API URL:", api.url);
 // https://3000-sandbox-id-prod-api-v1.yourdomain.com
 
-
 // Multiple services with custom tokens
 await sandbox.startProcess("npm run dev");
 const frontend = await sandbox.exposePort(5173, {
-  hostname,
-  name: "frontend",
-  token: "dev-ui",
+	hostname,
+	name: "frontend",
+	token: "dev-ui",
 });
 ```
-
-**TypeScript**
 
 ```ts
 // Extract hostname from request
 const { hostname } = new URL(request.url);
 
-
 // Basic usage with auto-generated token
 await sandbox.startProcess('python -m http.server 8000');
 const exposed = await sandbox.exposePort(8000, { hostname });
 
-
 console.log('Available at:', exposed.url);
 // https://8000-sandbox-id-abc123random.yourdomain.com
-
 
 // With custom token for stable URLs across restarts
 const stable = await sandbox.exposePort(8080, {
@@ -194,7 +163,6 @@ const stable = await sandbox.exposePort(8080, {
 console.log('Stable URL:', stable.url);
 // https://8080-sandbox-id-my_service_v1.yourdomain.com
 
-
 // With custom token for stable URLs across deployments
 await sandbox.startProcess('node api.js');
 const api = await sandbox.exposePort(3000, {
@@ -203,10 +171,8 @@ const api = await sandbox.exposePort(3000, {
   token: 'prod-api-v1'  // URL stays same across restarts
 });
 
-
 console.log('Stable API URL:', api.url);
 // https://3000-sandbox-id-prod-api-v1.yourdomain.com
-
 
 // Multiple services with custom tokens
 await sandbox.startProcess('npm run dev');
@@ -235,30 +201,21 @@ Custom tokens enable consistent preview URLs across container restarts and deplo
 * Only lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_)
 * Must be unique per sandbox (cannot reuse tokens across different ports)
 
-* [  JavaScript ](#tab-panel-11033)
-* [  TypeScript ](#tab-panel-11034)
-
-**JavaScript**
-
 ```js
 // Production API with stable URL
 const { url } = await sandbox.exposePort(8080, {
-  hostname: "api.example.com",
-  token: "v1-stable", // Always the same URL
+	hostname: "api.example.com",
+	token: "v1-stable", // Always the same URL
 });
-
 
 // Error: Token collision prevention
 await sandbox.exposePort(8081, { hostname, token: "v1-stable" });
 // Throws: Token 'v1-stable' is already in use by port 8080
 
-
 // Success: Re-exposing same port with same token (idempotent)
 await sandbox.exposePort(8080, { hostname, token: "v1-stable" });
 // Works - same port, same token
 ```
-
-**TypeScript**
 
 ```ts
 // Production API with stable URL
@@ -267,11 +224,9 @@ const { url } = await sandbox.exposePort(8080, {
   token: 'v1-stable'  // Always the same URL
 });
 
-
 // Error: Token collision prevention
 await sandbox.exposePort(8081, { hostname, token: 'v1-stable' });
 // Throws: Token 'v1-stable' is already in use by port 8080
-
 
 // Success: Re-exposing same port with same token (idempotent)
 await sandbox.exposePort(8080, { hostname, token: 'v1-stable' });
@@ -281,8 +236,6 @@ await sandbox.exposePort(8080, { hostname, token: 'v1-stable' });
 ### `validatePortToken()`
 
 Validate if a token is authorized to access a specific exposed port. Useful for custom authentication or routing logic.
-
-**TypeScript**
 
 ```ts
 const isValid = await sandbox.validatePortToken(port: number, token: string): Promise<boolean>
@@ -295,45 +248,33 @@ const isValid = await sandbox.validatePortToken(port: number, token: string): Pr
 
 **Returns**: `Promise<boolean>` \- `true` if token is valid for the port, `false` otherwise
 
-* [  JavaScript ](#tab-panel-11037)
-* [  TypeScript ](#tab-panel-11038)
-
-**JavaScript**
-
 ```js
 // Custom validation in your Worker
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		// Extract token from custom header or query param
+		const customToken = request.headers.get("x-access-token");
 
-    // Extract token from custom header or query param
-    const customToken = request.headers.get("x-access-token");
+		if (customToken) {
+			const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+			const isValid = await sandbox.validatePortToken(8080, customToken);
 
+			if (!isValid) {
+				return new Response("Invalid token", { status: 403 });
+			}
+		}
 
-    if (customToken) {
-      const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-      const isValid = await sandbox.validatePortToken(8080, customToken);
+		// Handle preview URL routing
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
 
-
-      if (!isValid) {
-        return new Response("Invalid token", { status: 403 });
-      }
-    }
-
-
-    // Handle preview URL routing
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
-
-
-    // Your application routes
-    return new Response("Not found", { status: 404 });
-  },
+		// Your application routes
+		return new Response("Not found", { status: 404 });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 // Custom validation in your Worker
@@ -341,26 +282,21 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-
     // Extract token from custom header or query param
     const customToken = request.headers.get('x-access-token');
-
 
     if (customToken) {
       const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
       const isValid = await sandbox.validatePortToken(8080, customToken);
-
 
       if (!isValid) {
         return new Response('Invalid token', { status: 403 });
       }
     }
 
-
     // Handle preview URL routing
     const proxyResponse = await proxyToSandbox(request, env);
     if (proxyResponse) return proxyResponse;
-
 
     // Your application routes
     return new Response('Not found', { status: 404 });
@@ -372,8 +308,6 @@ export default {
 
 Remove an exposed port and close its preview URL.
 
-**TypeScript**
-
 ```ts
 await sandbox.unexposePort(port: number): Promise<void>
 ```
@@ -382,16 +316,9 @@ await sandbox.unexposePort(port: number): Promise<void>
 
 * `port` \- Port number to unexpose
 
-* [  JavaScript ](#tab-panel-11027)
-* [  TypeScript ](#tab-panel-11028)
-
-**JavaScript**
-
 ```js
 await sandbox.unexposePort(8000);
 ```
-
-**TypeScript**
 
 ```ts
 await sandbox.unexposePort(8000);
@@ -401,33 +328,22 @@ await sandbox.unexposePort(8000);
 
 Get information about all currently exposed ports.
 
-**TypeScript**
-
 ```ts
 const response = await sandbox.getExposedPorts(): Promise<GetExposedPortsResponse>
 ```
 
 **Returns**: `Promise<GetExposedPortsResponse>` with `ports` array (containing `port`, `url`, `name`)
 
-* [  JavaScript ](#tab-panel-11029)
-* [  TypeScript ](#tab-panel-11030)
-
-**JavaScript**
-
 ```js
 const { ports } = await sandbox.getExposedPorts();
 
-
 for (const port of ports) {
-  console.log(`${port.name || port.port}: ${port.url}`);
+	console.log(`${port.name || port.port}: ${port.url}`);
 }
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const { ports } = await sandbox.getExposedPorts();
-
 
 for (const port of ports) {
   console.log(`${port.name || port.port}: ${port.url}`);
@@ -445,8 +361,6 @@ Connect to WebSocket servers running in the sandbox. Use this when your Worker n
 
 For exposing WebSocket services via public preview URLs, use `exposePort()` with `proxyToSandbox()` instead. See [WebSocket Connections guide](https://developers.cloudflare.com/sandbox/guides/websocket-connections/) for examples.
 
-**TypeScript**
-
 ```ts
 const response = await sandbox.wsConnect(request: Request, port: number): Promise<Response>
 ```
@@ -458,39 +372,27 @@ const response = await sandbox.wsConnect(request: Request, port: number): Promis
 
 **Returns**: `Promise<Response>` \- WebSocket response establishing the connection
 
-* [  JavaScript ](#tab-panel-11035)
-* [  TypeScript ](#tab-panel-11036)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    if (request.headers.get("Upgrade")?.toLowerCase() === "websocket") {
-      const sandbox = getSandbox(env.Sandbox, "my-sandbox");
-      return await sandbox.wsConnect(request, 8080);
-    }
+	async fetch(request, env) {
+		if (request.headers.get("Upgrade")?.toLowerCase() === "websocket") {
+			const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+			return await sandbox.wsConnect(request, 8080);
+		}
 
-
-    return new Response("WebSocket endpoint", { status: 200 });
-  },
+		return new Response("WebSocket endpoint", { status: 200 });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
-
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -498,7 +400,6 @@ export default {
       const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
       return await sandbox.wsConnect(request, 8080);
     }
-
 
     return new Response('WebSocket endpoint', { status: 200 });
   }
@@ -517,7 +418,14 @@ export default {
 
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/ports/#page","headline":"Ports · Cloudflare Sandbox SDK docs","description":"Expose sandbox services via public preview URLs using the Sandbox SDK ports API.","url":"https://developers.cloudflare.com/sandbox/api/ports/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/ports/","name":"Ports"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/ports/#page","headline":"Ports · Cloudflare Sandbox SDK docs","description":"Expose sandbox services via public preview URLs using the Sandbox SDK ports API.","url":"https://developers.cloudflare.com/sandbox/api/ports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

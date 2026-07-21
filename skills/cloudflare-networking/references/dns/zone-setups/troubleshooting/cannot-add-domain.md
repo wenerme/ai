@@ -1,16 +1,18 @@
 ---
-title: Cannot add domain
 description: Troubleshoot issues when adding a domain to Cloudflare, including DNSSEC conflicts, registrar errors, and restriction codes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cannot add domain
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cannot add domain
 
-# Cannot add domain
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you encounter issues [adding a domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, follow these troubleshooting steps.
 
@@ -53,6 +55,7 @@ dig +short ns cloudflare.com
 ```
 
 ```sh
+
 ns3.cloudflare.com.
 ns4.cloudflare.com.
 ns5.cloudflare.com.
@@ -67,6 +70,7 @@ dig +short soa cloudflare.com
 ```
 
 ```sh
+
 ns3.cloudflare.com. dns.cloudflare.com. 2029202248 10000 2400 604800 300
 ```
 
@@ -112,7 +116,14 @@ The owner might be your hosting provider, or a SaaS service provider.
 
 You can also use the [Cloudflare Forgot Email? ↗](https://dash.cloudflare.com/forgot-email) page, and check the documentation related to the [Forgot Email? feature](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#forgot-your-email-address).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/#page","headline":"Cannot add domain to Cloudflare · Cloudflare DNS docs","description":"Troubleshoot issues when adding a domain to Cloudflare, including DNSSEC conflicts, registrar errors, and restriction codes.","url":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/troubleshooting/cannot-add-domain/","name":"Cannot add domain"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/#page","headline":"Cannot add domain to Cloudflare · Cloudflare DNS docs","description":"Troubleshoot issues when adding a domain to Cloudflare, including DNSSEC conflicts, registrar errors, and restriction codes.","url":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

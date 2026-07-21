@@ -1,22 +1,28 @@
 ---
-title: stable-diffusion-xl-base-1.0
 description: Diffusion-based text-to-image generative model by Stability AI. Generates and modify images based on text prompts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: stable-diffusion-xl-base-1.0
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Stability.ai logo](https://developers.cloudflare.com/_astro/stabilityai.CmlmNdqR.svg)
 
-#  stable-diffusion-xl-base-1.0 Beta
+#  stable-diffusion-xl-base-1.0
 
-Text-to-Image • Stability.ai
+ Beta
 
-`@cf/stabilityai/stable-diffusion-xl-base-1.0`
+ Text-to-Image • Stability.ai
+
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/stabilityai/stable-diffusion-xl-base-1.0/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/stabilityai/stable-diffusion-xl-base-1.0 `
+
+* Cloudflare-hosted
 
 Diffusion-based text-to-image generative model by Stability AI. Generates and modify images based on text prompts.
 
@@ -27,52 +33,7 @@ Diffusion-based text-to-image generative model by Stability AI. Generates and mo
 | Beta              | Yes                                                                                            |
 | Unit Pricing      | $0.00 per step                                                                                 |
 
-## Usage
-
-* [  TypeScript ](#tab-panel-2673)
-* [  curl ](#tab-panel-2674)
-
-```ts
-export interface Env {
-  AI: Ai;
-}
-
-
-export default {
-  async fetch(request, env): Promise<Response> {
-
-
-    const inputs = {
-      prompt: "cyberpunk cat",
-    };
-
-
-    const response = await env.AI.run(
-      "@cf/stabilityai/stable-diffusion-xl-base-1.0",
-      inputs
-    );
-
-
-    return new Response(response, {
-      headers: {
-        "content-type": "image/jpg",
-      },
-    });
-  },
-} satisfies ExportedHandler<Env>;
-```
-
-```sh
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/stabilityai/stable-diffusion-xl-base-1.0  \
-  -X POST  \
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-  -d '{ "prompt": "cyberpunk cat" }'
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-2675)
-* [ Output ](#tab-panel-2676)
 
 prompt
 
@@ -122,11 +83,18 @@ seed
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/schema-input.json "Download")
+Input [ ](https://developers.cloudflare.com/ai/models/@cf/stabilityai/stable-diffusion-xl-base-1.0/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/stabilityai/stable-diffusion-xl-base-1.0/schema-input.json "Download")
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/schema-output.json "Download")
+Output [ ](https://developers.cloudflare.com/ai/models/@cf/stabilityai/stable-diffusion-xl-base-1.0/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/stabilityai/stable-diffusion-xl-base-1.0/schema-output.json "Download")
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/stabilityai/stable-diffusion-xl-base-1.0/#page","headline":"stable-diffusion-xl-base-1.0 (Stability.ai) · Cloudflare AI docs · Cloudflare AI docs","description":"Diffusion-based text-to-image generative model by Stability AI. Generates and modify images based on text prompts.","url":"https://developers.cloudflare.com/ai/models/%40cf/stabilityai/stable-diffusion-xl-base-1.0/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/stabilityai/stable-diffusion-xl-base-1.0/#page","headline":"stable-diffusion-xl-base-1.0 (Stability.ai) · Cloudflare AI docs · Cloudflare AI docs","description":"Diffusion-based text-to-image generative model by Stability AI. Generates and modify images based on text prompts.","url":"https://developers.cloudflare.com/ai/models/%40cf/stabilityai/stable-diffusion-xl-base-1.0/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

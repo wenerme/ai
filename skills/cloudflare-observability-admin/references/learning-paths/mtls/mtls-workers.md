@@ -1,16 +1,18 @@
 ---
-title: mTLS with Workers
 description: Implement mutual TLS authentication with Cloudflare.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: mTLS with Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  mTLS with Workers
 
-# mTLS with Workers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -23,11 +25,6 @@ Cloudflare Workers runs after the Cloudflare WAF and Cloudflare Access. Review t
 All Client Certificate details can be found in the [tlsClientAuth](https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties) object in Cloudflare Workers. Refer to [Client certificate variables](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/) for a full list of available properties.
 
 Example Cloudflare Workers code to return all headers and gain visibility, including [Client Certificate headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-workers):
-
-* [  Module Worker ](#tab-panel-9933)
-* [  Service Worker ](#tab-panel-9934)
-
-**JavaScript**
 
 ```js
 export default {
@@ -45,12 +42,10 @@ export default {
       'X-CERT-NOTAF': tlsClientAuth.certNotAfter
     };
 
-
     const headers = Object.fromEntries(request.headers);
     return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {
       headers: { 'Content-Type': 'application/json' }
     });
-
 
 }
 }
@@ -59,8 +54,6 @@ export default {
 Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
-
-**JavaScript**
 
 ```js
 addEventListener('fetch', event => {
@@ -78,7 +71,6 @@ addEventListener('fetch', event => {
         'X-CERT-NOTBE': tlsClientAuth.certNotBefore,
         'X-CERT-NOTAF': tlsClientAuth.certNotAfter
       };
-
 
       const headers = Object.fromEntries(request.headers);
       return new Response(JSON.stringify({ ...headers, ...tlsHeaders }, null, 2), {
@@ -112,7 +104,14 @@ The client certificate serial number is a unique identifier assigned to each cer
 
 This approach can also be useful to handle additional checks and logic on the mTLS via the Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/#page","headline":"mTLS with Workers · Cloudflare Learning Paths","description":"Implement mutual TLS authentication with Cloudflare.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/mtls/mtls-workers/","name":"mTLS with Workers"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/#page","headline":"mTLS with Workers · Cloudflare Learning Paths","description":"Implement mutual TLS authentication with Cloudflare.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

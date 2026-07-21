@@ -1,16 +1,18 @@
 ---
-title: Usage-based billing
 description: How to use Workers Analytics Engine to build usage-based billing into your SaaS product
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Usage-based billing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Usage-based billing
 
-# Usage-based billing
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Many Cloudflare customers run software-as-a-service products with multiple customers. A big concern for such companies is understanding the cost of each customer, and understanding customer behaviour more widely.
 
@@ -20,11 +22,8 @@ Keeping data on every web request used by a customer can be expensive, as can at
 
 Analytics Engine is designed for use with Cloudflare Workers. If you already use Cloudflare Workers to serve requests, you can start sending data into Analytics Engine in just a few lines of code:
 
-**JavaScript**
-
 ```javascript
   [...]
-
 
   // This examples assumes you give a unique ID to each of your SaaS customers, and the Worker has
   // assigned it to the variable named `customer_id`
@@ -107,7 +106,14 @@ GROUP BY customer_id, date, request_endpoint
 
 You will want to take the usage queries above, adapt them for how you charge customers, and make a backend system run those queries and calculate the customer charges based on the data returned.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/#page","headline":"Usage-based billing · Cloudflare Analytics docs","description":"How to use Workers Analytics Engine to build usage-based billing into your SaaS product","url":"https://developers.cloudflare.com/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-engine/","name":"Workers Analytics Engine"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-engine/recipes/","name":"Examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/","name":"Usage-based billing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/#page","headline":"Usage-based billing · Cloudflare Analytics docs","description":"How to use Workers Analytics Engine to build usage-based billing into your SaaS product","url":"https://developers.cloudflare.com/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

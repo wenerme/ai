@@ -1,16 +1,18 @@
 ---
-title: Content Security Policy
 description: Content Security Policy directives required for Turnstile widgets.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Content Security Policy
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Content Security Policy
 
-# Content Security Policy
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/reference/content-security-policy/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If your website uses a [Content Security Policy (CSP) ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) header, you must configure it to allow Turnstile's scripts and iframes. Without the correct CSP directives, Turnstile may fail to load.
 
@@ -33,7 +35,14 @@ If you are using [Turnstile in pre-clearance mode](https://developers.cloudflare
 
 For this request to succeed, your `connect-src` directive must include `'self'`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/content-security-policy/#page","headline":"Content Security Policy · Cloudflare Turnstile docs","description":"Content Security Policy directives required for Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/content-security-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP","Headers"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/reference/content-security-policy/","name":"Content Security Policy"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/content-security-policy/#page","headline":"Content Security Policy · Cloudflare Turnstile docs","description":"Content Security Policy directives required for Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/content-security-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CSP","Headers"]}
 ```

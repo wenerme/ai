@@ -1,16 +1,18 @@
 ---
-title: Turnstile
 description: Validate Cloudflare Turnstile tokens in Pages Functions using the Turnstile Plugin.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Turnstile
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Turnstile
 
-# Turnstile
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/plugins/turnstile/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Turnstile](https://developers.cloudflare.com/turnstile/) is Cloudflare's smart CAPTCHA alternative.
 
@@ -38,35 +40,31 @@ bun add @cloudflare/pages-plugin-turnstile
 
 ## Usage
 
-**TypeScript**
-
 ```typescript
 import turnstilePlugin from "@cloudflare/pages-plugin-turnstile";
-
 
 /**
  * POST /api/submit-with-plugin
  */
 
-
 export const onRequestPost = [
-  turnstilePlugin({
-    // This is the demo secret key. In prod, we recommend you store
-    // your secret key(s) safely.
-    secret: "0x4AAAAAAASh4E5cwHGsTTePnwcPbnFru6Y",
-  }),
-  // Alternatively, this is how you can use a secret key which has been stored as an environment variable
-  // (async (context) => {
-  //   return turnstilePlugin({secret: context.env.SECRET_KEY})(context)
-  // }),
-  async (context) => {
-    // Request has been validated as coming from a human
-    const formData = await context.request.formData();
-    // Additional solve metadata data is available at context.data.turnstile
-    return new Response(
-      `Successfully verified! ${JSON.stringify(context.data.turnstile)}`,
-    );
-  },
+	turnstilePlugin({
+		// This is the demo secret key. In prod, we recommend you store
+		// your secret key(s) safely.
+		secret: "0x4AAAAAAASh4E5cwHGsTTePnwcPbnFru6Y",
+	}),
+	// Alternatively, this is how you can use a secret key which has been stored as an environment variable
+	// (async (context) => {
+	//   return turnstilePlugin({secret: context.env.SECRET_KEY})(context)
+	// }),
+	async (context) => {
+		// Request has been validated as coming from a human
+		const formData = await context.request.formData();
+		// Additional solve metadata data is available at context.data.turnstile
+		return new Response(
+			`Successfully verified! ${JSON.stringify(context.data.turnstile)}`,
+		);
+	},
 ];
 ```
 
@@ -84,7 +82,14 @@ The Plugin is mounted with a single object parameter with the following properti
 
 `context.data.turnstile` will be populated in subsequent Pages Functions (including for the `onError` function) with [the Turnstile Siteverify response object](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/turnstile/#page","headline":"Turnstile · Cloudflare Pages docs","description":"Validate Cloudflare Turnstile tokens in Pages Functions using the Turnstile Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/turnstile/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/turnstile/","name":"Turnstile"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/turnstile/#page","headline":"Turnstile · Cloudflare Pages docs","description":"Validate Cloudflare Turnstile tokens in Pages Functions using the Turnstile Plugin.","url":"https://developers.cloudflare.com/pages/functions/plugins/turnstile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

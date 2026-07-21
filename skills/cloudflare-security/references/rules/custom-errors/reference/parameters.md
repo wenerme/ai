@@ -1,16 +1,18 @@
 ---
-title: Custom Errors parameters
 description: Configurable parameters for custom error rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Custom Errors parameters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom Errors parameters
 
-# Custom Errors parameters
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/custom-errors/reference/parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Custom error rules
 
@@ -26,7 +28,7 @@ When using the API you must either set the `asset_name` or set both the `content
 
 ### Response code
 
-API name: **`status_code`** ` Integer ` Optional
+API name: **`status_code`** ` Integer `Optional
 
 The HTTP status code of the response. If provided, this value will override the current response status code.
 
@@ -34,7 +36,7 @@ The status code must be between `400` and `999`.
 
 ### Asset
 
-API name: **`asset_name`** ` String ` Optional
+API name: **`asset_name`** ` String `Optional
 
 The name of the [custom error asset](#custom-error-assets) you previously uploaded (in the dashboard, you can create an asset when creating the rule). The asset may include [error tokens](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/) that will be replaced with real values before sending the error response to the visitor.
 
@@ -46,7 +48,7 @@ When using the API, you must provide either the `asset_name` or the `content` pa
 
 ### JSON response / HTML response / Text response / XML response
 
-API names: **`content`** ` String ` Optional and **`content_type`** ` String ` Required
+API names: **`content`** ` String `Optional and **`content_type`** ` String `Required
 
 The response body to return. It can include [error tokens](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/) that will be replaced with real values before sending the error response to the visitor.
 
@@ -61,7 +63,7 @@ When using the API you must also set the `content_type` parameter, which defines
 * `application/json`
 * `text/xml`
 
-Warning
+Caution
 
 If you create an HTML error response, make sure the `referrer` meta tag is not present in the HTML code since it will disrupt [Cloudflare challenges](https://developers.cloudflare.com/cloudflare-challenges/):
 
@@ -77,7 +79,7 @@ Custom error assets have the following parameters:
 
 ### Asset name
 
-API name: **`name`** ` String ` Required
+API name: **`name`** ` String `Required
 
 The name of the custom error asset. Example value: `"500_error_template"`.
 
@@ -91,13 +93,13 @@ The maximum length is 200 characters.
 
 ### Description
 
-API name: **`description`** ` String ` Optional
+API name: **`description`** ` String `Optional
 
 A string describing the custom error asset. Example value: `"Standard 5xx error template page"`.
 
 ### Asset address
 
-API name: **`url`** ` String ` Required
+API name: **`url`** ` String `Required
 
 The URL of the page you want Cloudflare to fetch and store, to be served later to visitors as error pages according to the configured [custom error rules](#custom-error-rules). Example value: `"https://example.com/errors/500.html"`.
 
@@ -111,7 +113,14 @@ When using the API, if you update an asset and provide the same URL, Cloudflare 
 
 The maximum asset size is 1.5 MB.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/reference/parameters/#page","headline":"Custom Errors parameters · Cloudflare Rules docs","description":"Configurable parameters for custom error rules.","url":"https://developers.cloudflare.com/rules/custom-errors/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/custom-errors/","name":"Custom Errors"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/custom-errors/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/custom-errors/reference/parameters/","name":"Custom Errors parameters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/reference/parameters/#page","headline":"Custom Errors parameters · Cloudflare Rules docs","description":"Configurable parameters for custom error rules.","url":"https://developers.cloudflare.com/rules/custom-errors/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Protective DNS for governments
 description: Learn how to use Cloudflare Gateway as a Protective DNS service for governments.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Protective DNS for governments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Protective DNS for governments
 
-# Protective DNS for governments
+Last updated Apr 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-for-protective-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -120,7 +122,14 @@ Figure 6: The different options available to use Cloudflare Gateway as a full-fe
 * [Using a zero trust framework to secure SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/)
 * [Learning path: Secure your Internet traffic and SaaS apps](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-for-protective-dns/#page","headline":"Protective DNS for governments · Cloudflare Reference Architecture docs","description":"Learn how to use Cloudflare Gateway as a Protective DNS service for governments.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-for-protective-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/sase/","name":"Secure Access Service Edge (SASE)"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/sase/gateway-for-protective-dns/","name":"Protective DNS for governments"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-for-protective-dns/#page","headline":"Protective DNS for governments · Cloudflare Reference Architecture docs","description":"Learn how to use Cloudflare Gateway as a Protective DNS service for governments.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-for-protective-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

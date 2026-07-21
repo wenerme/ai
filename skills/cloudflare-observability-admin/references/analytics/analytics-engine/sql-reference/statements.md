@@ -1,16 +1,18 @@
 ---
-title: Statements
 description: SQL statements supported by Analytics Engine.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Statements
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Statements
 
-# Statements
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## SHOW TABLES statement
 
@@ -76,10 +78,8 @@ Examples:
 -- return the named columns
 SELECT blob2, double3
 
-
 -- return all columns
 SELECT *
-
 
 -- alias columns to more descriptive names
 SELECT
@@ -95,11 +95,9 @@ SELECT
     double3 AS temp_c,
     double3*1.8+32 AS temp_f -- compute a value
 
-
 SELECT
     blob2 AS probe_name,
     if(double3 <= 0, 'FREEZING', 'NOT FREEZING') AS description -- use of functions
-
 
 SELECT
     blob2 AS probe_name,
@@ -121,7 +119,6 @@ Examples:
 ```sql
 -- query data written to a workers dataset called "temperatures"
 FROM temperatures
-
 
 -- use a subquery to manipulate the table
 FROM (
@@ -162,15 +159,12 @@ Examples:
 WHERE blob1 = 'test'
 WHERE double1 = 4
 
-
 -- inequalities
 WHERE double1 > 4
-
 
 -- use of operators (see below for supported operator list)
 WHERE double1 + double2 > 4
 WHERE blob1 = 'test1' OR blob2 = 'test2'
-
 
 -- expression using inequalities, functions and operators
 WHERE if(unit = 'f', (temp-32)/1.8, temp) <= 0
@@ -199,7 +193,7 @@ GROUP BY probe_name
 
 In the usual case the `<expression>` can just be a column name but it is also possible to supply a complex expression here. Multiple expressions or column names can be supplied separated by commas.
 
-### HAVING clause New
+### HAVING clause  New
 
 `HAVING` is used to filter the results after grouping and aggregation.
 
@@ -226,7 +220,6 @@ FROM temperature_readings
 GROUP BY probe_name
 HAVING average_temp > 10
 
-
 -- filter groups with more than 100 readings
 SELECT
     blob1 AS probe_name,
@@ -234,7 +227,6 @@ SELECT
 FROM temperature_readings
 GROUP BY probe_name
 HAVING num_readings > 100
-
 
 -- combine multiple conditions
 SELECT
@@ -265,7 +257,6 @@ Examples:
 ```sql
 -- order by double2 then double3, both in ascending order
 ORDER BY double2, double3
-
 
 -- order by double2 in ascending order then double3 is descending order
 ORDER BY double2, double3 DESC
@@ -379,7 +370,14 @@ column 1 value  column 2 value
 ...
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/#page","headline":"Workers Analytics Engine SQL Reference · Cloudflare Analytics docs","description":"SQL statements supported by Analytics Engine.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-engine/","name":"Workers Analytics Engine"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-engine/sql-reference/","name":"SQL Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/analytics-engine/sql-reference/statements/","name":"Statements"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/#page","headline":"Workers Analytics Engine SQL Reference · Cloudflare Analytics docs","description":"SQL statements supported by Analytics Engine.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: AI Search
 description: Give agents retrieval capabilities with Cloudflare AI Search.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: AI Search
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  AI Search
 
-# AI Search
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/ai-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [AI Search](https://developers.cloudflare.com/ai-search/) to retrieve relevant information from indexed content and use it to augment [calls to AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/). AI Search manages the retrieval pipeline for you, including indexing, search, and optional chat completions over your content.
 
@@ -25,94 +27,71 @@ Use AI Search when you want an agent to:
 
 Bind AI Search to your Worker, then query an instance from an agent method.
 
-* [  JavaScript ](#tab-panel-7021)
-* [  TypeScript ](#tab-panel-7022)
-
-**JavaScript**
-
 ```js
 import { Agent, callable } from "agents";
 
-
 export class SearchAgent extends Agent {
-  @callable()
-  async searchKnowledge(query) {
-    const instance = this.env.AI_SEARCH.get("my-instance");
+	@callable()
+	async searchKnowledge(query) {
+		const instance = this.env.AI_SEARCH.get("my-instance");
 
+		const results = await instance.search({
+			messages: [{ role: "user", content: query }],
+		});
 
-    const results = await instance.search({
-      messages: [{ role: "user", content: query }],
-    });
-
-
-    return results;
-  }
+		return results;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, callable } from "agents";
 
-
 type Env = {
-  AI_SEARCH: AiSearchNamespace;
+	AI_SEARCH: AiSearchNamespace;
 };
 
-
 export class SearchAgent extends Agent<Env> {
-  @callable()
-  async searchKnowledge(query: string) {
-    const instance = this.env.AI_SEARCH.get("my-instance");
+	@callable()
+	async searchKnowledge(query: string) {
+		const instance = this.env.AI_SEARCH.get("my-instance");
 
+		const results = await instance.search({
+			messages: [{ role: "user", content: query }],
+		});
 
-    const results = await instance.search({
-      messages: [{ role: "user", content: query }],
-    });
-
-
-    return results;
-  }
+		return results;
+	}
 }
 ```
 
 For answer generation, use `chatCompletions()` to retrieve relevant content and generate a response in one call.
 
-* [  JavaScript ](#tab-panel-7019)
-* [  TypeScript ](#tab-panel-7020)
-
-**JavaScript**
-
 ```js
 const instance = this.env.AI_SEARCH.get("my-instance");
 
-
 const response = await instance.chatCompletions({
-  messages: [{ role: "user", content: "How do I deploy an Agent?" }],
-  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-  ai_search_options: {
-    retrieval: {
-      max_num_results: 5,
-    },
-  },
+	messages: [{ role: "user", content: "How do I deploy an Agent?" }],
+	model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+	ai_search_options: {
+		retrieval: {
+			max_num_results: 5,
+		},
+	},
 });
 ```
-
-**TypeScript**
 
 ```ts
 const instance = this.env.AI_SEARCH.get("my-instance");
 
-
 const response = await instance.chatCompletions({
-  messages: [{ role: "user", content: "How do I deploy an Agent?" }],
-  model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-  ai_search_options: {
-    retrieval: {
-      max_num_results: 5,
-    },
-  },
+	messages: [{ role: "user", content: "How do I deploy an Agent?" }],
+	model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+	ai_search_options: {
+		retrieval: {
+			max_num_results: 5,
+		},
+	},
 });
 ```
 
@@ -120,24 +99,17 @@ const response = await instance.chatCompletions({
 
 Use an `ai_search_namespaces` binding when the agent needs to access AI Search instances by name.
 
-* [  wrangler.jsonc ](#tab-panel-7017)
-* [  wrangler.toml ](#tab-panel-7018)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai_search_namespaces": [
-    {
-      "binding": "AI_SEARCH",
-      "namespace": "default",
-      "remote": true
-    }
-  ]
+	"ai_search_namespaces": [
+		{
+			"binding": "AI_SEARCH",
+			"namespace": "default",
+			"remote": true
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[ai_search_namespaces]]
@@ -150,13 +122,26 @@ Use `remote: true` to query deployed AI Search instances during local developmen
 
 ## Related resources
 
-[ AI Search ](https://developers.cloudflare.com/ai-search/) Create managed retrieval pipelines over websites, R2 buckets, and uploaded files.
+### [ AI Search ](https://developers.cloudflare.com/ai-search/)
 
-[ Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) Query AI Search directly from Workers code.
+ Create managed retrieval pipelines over websites, R2 buckets, and uploaded files.
 
-[ Create an AI Search instance ](https://developers.cloudflare.com/ai-search/get-started/) Create your first AI Search instance and run your first query.
+### [ Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+
+ Query AI Search directly from Workers code.
+
+### [ Create an AI Search instance ](https://developers.cloudflare.com/ai-search/get-started/)
+
+ Create your first AI Search instance and run your first query.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/ai-search/#page","headline":"AI Search · Cloudflare Agents docs","description":"Give agents retrieval capabilities with Cloudflare AI Search.","url":"https://developers.cloudflare.com/agents/tools/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/ai-search/","name":"AI Search"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/ai-search/#page","headline":"AI Search · Cloudflare Agents docs","description":"Give agents retrieval capabilities with Cloudflare AI Search.","url":"https://developers.cloudflare.com/agents/tools/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

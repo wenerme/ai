@@ -1,16 +1,18 @@
 ---
-title: Use Ethereum gateway
 description: Send JSON-RPC requests through the Cloudflare Ethereum Gateway.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Use Ethereum gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use Ethereum gateway
 
-# Use Ethereum gateway
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Once you have an Ethereum gateway — meaning that you [create a new gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/#create-a-gateway) with a `target` of **Ethereum** — you can interact with [different Ethereum networks](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/) by specifying the correct JSON blob for your query.
 
@@ -20,10 +22,10 @@ The Cloudflare Ethereum Gateway allows HTTP requests where the body of the reque
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "method": "eth_getBlockByNumber",
-  "params": ["0x2244", true],
-  "id": 1
+	"jsonrpc": "2.0",
+	"method": "eth_getBlockByNumber",
+	"params": ["0x2244", true],
+	"id": 1
 }
 ```
 
@@ -37,24 +39,22 @@ curl https://web3-trial.cloudflare-eth.com/v1/mainnet -H 'Content-Type: applicat
 
 You can also write the same query using the JS Fetch API:
 
-**JavaScript**
-
 ```js
 await fetch(
-  new Request("https://web3-trial.cloudflare-eth.com/v1/mainnet", {
-    method: "POST",
-    body: JSON.stringify({
-      jsonrpc: "2.0",
-      method: "eth_getBlockByNumber",
-      params: ["0x2244", true],
-      id: 1,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }),
+	new Request("https://web3-trial.cloudflare-eth.com/v1/mainnet", {
+		method: "POST",
+		body: JSON.stringify({
+			jsonrpc: "2.0",
+			method: "eth_getBlockByNumber",
+			params: ["0x2244", true],
+			id: 1,
+		}),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	}),
 ).then((resp) => {
-  return resp.json();
+	return resp.json();
 });
 ```
 
@@ -62,30 +62,30 @@ The response in both cases will be a JSON blob of the form:
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "difficulty": "0x746ef15b66",
-    "extraData": "0x476574682f76312e302e302f6c696e75782f676f312e342e32",
-    "gasLimit": "0x1388",
-    "gasUsed": "0x0",
-    "hash": "0xd6bb42034740c5d728e774e43a01f26222e0fcc279c504ca5963dc34fe70f392",
-    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "miner": "0xf927a40c8b7f6e07c5af7fa2155b4864a4112b13",
-    "mixHash": "0x975da446e302e6da6cedb3fbaa763c3c203ae88d6fab4924e2a3d34a568c4361",
-    "nonce": "0x88a7f12f49151c83",
-    "number": "0x2244",
-    "parentHash": "0x067fd84ecdbc7491bf5ec7d5d4ead361b1f590eec74797a7f90b4a7d7004a48d",
-    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
-    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
-    "size": "0x21b",
-    "stateRoot": "0x828dade2067283e370993ec6a1bda0e65c1310e404a6d5bbb030b596eb80017c",
-    "timestamp": "0x55bb040f",
-    "totalDifficulty": "0x5c328da43525d",
-    "transactions": [],
-    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
-    "uncles": []
-  }
+	"jsonrpc": "2.0",
+	"id": 1,
+	"result": {
+		"difficulty": "0x746ef15b66",
+		"extraData": "0x476574682f76312e302e302f6c696e75782f676f312e342e32",
+		"gasLimit": "0x1388",
+		"gasUsed": "0x0",
+		"hash": "0xd6bb42034740c5d728e774e43a01f26222e0fcc279c504ca5963dc34fe70f392",
+		"logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+		"miner": "0xf927a40c8b7f6e07c5af7fa2155b4864a4112b13",
+		"mixHash": "0x975da446e302e6da6cedb3fbaa763c3c203ae88d6fab4924e2a3d34a568c4361",
+		"nonce": "0x88a7f12f49151c83",
+		"number": "0x2244",
+		"parentHash": "0x067fd84ecdbc7491bf5ec7d5d4ead361b1f590eec74797a7f90b4a7d7004a48d",
+		"receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+		"sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+		"size": "0x21b",
+		"stateRoot": "0x828dade2067283e370993ec6a1bda0e65c1310e404a6d5bbb030b596eb80017c",
+		"timestamp": "0x55bb040f",
+		"totalDifficulty": "0x5c328da43525d",
+		"transactions": [],
+		"transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+		"uncles": []
+	}
 }
 ```
 
@@ -107,32 +107,37 @@ curl https://web3-trial.cloudflare-eth.com/v1/mainnet -H 'Content-Type: applicat
 
 You could also use a JS Fetch API request:
 
-**JavaScript**
-
 ```js
 await fetch(
-  new Request("https://web3-trial.cloudflare-eth.com/v1/mainnet", {
-    method: "POST",
-    body: JSON.stringify({
-      jsonrpc: "2.0",
-      method: "eth_sendRawTransaction",
-      params: [
-        "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
-      ],
-      id: 1,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }),
+	new Request("https://web3-trial.cloudflare-eth.com/v1/mainnet", {
+		method: "POST",
+		body: JSON.stringify({
+			jsonrpc: "2.0",
+			method: "eth_sendRawTransaction",
+			params: [
+				"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
+			],
+			id: 1,
+		}),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	}),
 ).then((resp) => {
-  return resp.json();
+	return resp.json();
 });
 ```
 
 _(The actual command above will not work — you need to provide your own signed transaction.)_
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/#page","headline":"Use Ethereum gateway · Cloudflare Web3 docs","description":"Send JSON-RPC requests through the Cloudflare Ethereum Gateway.","url":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/how-to/use-ethereum-gateway/","name":"Use Ethereum gateway"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/#page","headline":"Use Ethereum gateway · Cloudflare Web3 docs","description":"Send JSON-RPC requests through the Cloudflare Ethereum Gateway.","url":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

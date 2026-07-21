@@ -1,16 +1,18 @@
 ---
-title: Connection limits
 description: Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Connection limits
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connection limits
 
-# Connection limits
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/connection-limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When HTTP/HTTPS traffic is [proxied through Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy), there are often two established [TCP connections](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/): the first is between the requesting client to Cloudflare and the second is between Cloudflare and the origin server. Each connection has their own set of TCP and HTTP limits, which are documented below.
 
@@ -60,7 +62,14 @@ Response headers observe a total limit of 128 KB.
 
 Refer to the [Cache documentation](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#customization-options-and-limits) for more details about the max upload size and the cacheable file size limits.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/#page","headline":"Connection limits · Cloudflare Fundamentals docs","description":"Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.","url":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/connection-limits/","name":"Connection limits"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/#page","headline":"Connection limits · Cloudflare Fundamentals docs","description":"Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.","url":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

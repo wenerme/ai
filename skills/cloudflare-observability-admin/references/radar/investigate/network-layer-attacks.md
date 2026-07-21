@@ -1,16 +1,18 @@
 ---
-title: Network layer attacks
 description: Examine network layer DDoS attack trends in Cloudflare Radar, broken down by protocol (TCP, UDP, ICMP) and source location.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Network layer attacks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network layer attacks
 
-# Network layer attacks
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/network-layer-attacks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Network layer attacks show [DDoS ↗](https://www.cloudflare.com/en-gb/learning/ddos/layer-3-ddos-attacks/) attack trends at the network layer. These attacks can be split by the network protocol they use: [ICMP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/internet-control-message-protocol-icmp/), [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/), [UDP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) and others.
 
@@ -60,7 +62,7 @@ If we inspect the abbreviated response below, we can conclude that globally, at 
         "endTime": "2022-11-07T13:00:00Z"
       },
       "normalization": "PERCENTAGE",
-      // ...
+			// ...
     }
   }
 }
@@ -98,7 +100,7 @@ curl "https://api.cloudflare.com/client/v4/radar/attacks/layer3/summary?location
         "endTime": "2022-11-07T15:00:00Z"
       },
       "normalization": "PERCENTAGE",
-      // ...
+			// ...
     }
   }
 }
@@ -112,7 +114,14 @@ For more information refer to the [API reference](https://developers.cloudflare.
 
 Refer to [DNS](https://developers.cloudflare.com/radar/investigate/dns/) to learn more about the aggregated and anonymized DNS queries to Cloudflare's [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) public resolver service.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/network-layer-attacks/#page","headline":"Network layer attacks · Cloudflare Radar docs","description":"Examine network layer DDoS attack trends in Cloudflare Radar, broken down by protocol (TCP, UDP, ICMP) and source location.","url":"https://developers.cloudflare.com/radar/investigate/network-layer-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/network-layer-attacks/","name":"Network layer attacks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/network-layer-attacks/#page","headline":"Network layer attacks · Cloudflare Radar docs","description":"Examine network layer DDoS attack trends in Cloudflare Radar, broken down by protocol (TCP, UDP, ICMP) and source location.","url":"https://developers.cloudflare.com/radar/investigate/network-layer-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

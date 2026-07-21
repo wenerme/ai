@@ -1,16 +1,18 @@
 ---
-title: Features
 description: Explore GraphQL Analytics API capabilities.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Features
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Features
 
-# Features
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/features/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The GraphQL Analytics API offers the following features:
 
@@ -22,7 +24,14 @@ The GraphQL Analytics API offers the following features:
 * [ Pagination ](https://developers.cloudflare.com/analytics/graphql-api/features/pagination/)
 * [ Nested Structures ](https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/#page","headline":"Features · Cloudflare Analytics docs","description":"Explore GraphQL Analytics API capabilities.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/features/","name":"Features"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/#page","headline":"Features · Cloudflare Analytics docs","description":"Explore GraphQL Analytics API capabilities.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

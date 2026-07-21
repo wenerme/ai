@@ -1,16 +1,18 @@
 ---
-title: workers.dev
 description: Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: workers.dev
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  workers.dev
 
-# workers.dev
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers accounts come with a `workers.dev` subdomain that is configurable in the Cloudflare dashboard. Your `workers.dev` subdomain allows you getting started quickly by deploying Workers without first onboarding your custom domain to Cloudflare.
 
@@ -21,7 +23,7 @@ It's recommended to run production Workers on a [Workers route or custom domain]
 `workers.dev` subdomains take the format: `<YOUR_ACCOUNT_SUBDOMAIN>.workers.dev`. To change your `workers.dev` subdomain:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Change** next to **Your subdomain**.
 
 All Workers are assigned a `workers.dev` route when they are created or renamed following the syntax `<YOUR_WORKER_NAME>.<YOUR_SUBDOMAIN>.workers.dev`. The [name](https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys) field in your Worker configuration is used as the subdomain for the deployed Worker.
@@ -33,7 +35,7 @@ When enabled, your `workers.dev` URL is available publicly. You can use [Cloudfl
 To limit your `workers.dev` URL to authorized emails only:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Go to **Settings** \> **Domains & Routes**.
 4. For `workers.dev`, click **Enable Cloudflare Access**.
@@ -47,7 +49,7 @@ To limit your `workers.dev` URL to authorized emails only:
 To disable the `workers.dev` route for a Worker:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Go to **Settings** \> **Domains & Routes**.
 4. On `workers.dev` click "Disable".
@@ -57,18 +59,11 @@ To disable the `workers.dev` route for a Worker:
 
 To disable the `workers.dev` route for a Worker, include the following in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12371)
-* [  wrangler.toml ](#tab-panel-12372)
-
-**JSONC**
-
 ```jsonc
 {
-  "workers_dev": false
+	"workers_dev": false
 }
 ```
-
-**TOML**
 
 ```toml
 workers_dev = false
@@ -78,7 +73,7 @@ When you redeploy your Worker with this change, the `workers.dev` route will be 
 
 If you do not specify `workers_dev = false` but add a [routes component](https://developers.cloudflare.com/workers/wrangler/configuration/#routes) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), the value of `workers_dev` will be inferred as `false` on the next deploy.
 
-Warning
+Caution
 
 If you disable your `workers.dev` route in the Cloudflare dashboard but do not update your Worker's Wrangler file with `workers_dev = false`, the `workers.dev` route will be re-enabled the next time you deploy your Worker with Wrangler.
 
@@ -101,7 +96,14 @@ Worker names can be up to 255 characters when not using a `workers.dev` subdomai
 * [Announcing workers.dev ↗](https://blog.cloudflare.com/announcing-workers-dev)
 * [Wrangler routes configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#page","headline":"workers.dev · Cloudflare Workers docs","description":"Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.","url":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/routing/","name":"Routes and domains"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/routing/workers-dev/","name":"workers.dev"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#page","headline":"workers.dev · Cloudflare Workers docs","description":"Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.","url":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

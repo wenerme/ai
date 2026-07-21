@@ -1,16 +1,18 @@
 ---
-title: Test DNS filtering
 description: Test DNS filtering in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Test DNS filtering
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Test DNS filtering
 
-# Test DNS filtering
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/test-dns-filtering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This section covers how to validate your Gateway DNS configuration. Testing your policies after setup helps confirm that queries are being filtered as expected before you rely on them in production.
 
@@ -121,32 +123,32 @@ curl 'https://<DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query?type=TXT&name=o-o
 The output should contain your EDNS client subnet:
 ```json
 {
-  "AD": false,
-  "Answer": [
-    {
-      "TTL": 60,
-      "data": "\"108.162.218.211\"",
-      "name": "o-o.myaddr.google.com",
-      "type": 16
-    },
-    {
-      "TTL": 60,
-      "data": "\"edns0-client-subnet 136.62.0.0/24\"",
-      "name": "o-o.myaddr.google.com",
-      "type": 16
-    }
-  ],
-  "CD": false,
-  "Question": [
-    {
-      "name": "o-o.myaddr.google.com",
-      "type": 16
-    }
-  ],
-  "RA": true,
-  "RD": true,
-  "Status": 0,
-  "TC": false
+	"AD": false,
+	"Answer": [
+		{
+			"TTL": 60,
+			"data": "\"108.162.218.211\"",
+			"name": "o-o.myaddr.google.com",
+			"type": 16
+		},
+		{
+			"TTL": 60,
+			"data": "\"edns0-client-subnet 136.62.0.0/24\"",
+			"name": "o-o.myaddr.google.com",
+			"type": 16
+		}
+	],
+	"CD": false,
+	"Question": [
+		{
+			"name": "o-o.myaddr.google.com",
+			"type": 16
+		}
+	],
+	"RA": true,
+	"RD": true,
+	"Status": 0,
+	"TC": false
 }
 ```
 3. To verify your EDNS client subnet, obtain your source IP address:
@@ -189,7 +191,14 @@ sudo killall mDNSResponderHelper
 sudo dscacheutil -flushcache
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/test-dns-filtering/#page","headline":"Test DNS filtering · Cloudflare One docs","description":"Test DNS filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/test-dns-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/dns-policies/","name":"DNS policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/dns-policies/test-dns-filtering/","name":"Test DNS filtering"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/test-dns-filtering/#page","headline":"Test DNS filtering · Cloudflare One docs","description":"Test DNS filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/test-dns-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

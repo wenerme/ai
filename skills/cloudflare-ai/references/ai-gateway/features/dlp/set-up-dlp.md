@@ -1,16 +1,18 @@
 ---
-title: Set up Data Loss Prevention (DLP)
 description: Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Set up Data Loss Prevention (DLP)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up Data Loss Prevention (DLP)
 
-# Set up Data Loss Prevention (DLP)
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Add Data Loss Prevention (DLP) to any AI Gateway to start scanning AI prompts and responses for sensitive data.
 
@@ -135,21 +137,21 @@ When a request matches DLP policies (whether flagged or blocked), an additional 
 
 ```json
 {
-  "findings": [
-    {
-      "profile": {
-        "context": {},
-        "entry_ids": [
-          "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-          "f7e8d9c0-b1a2-3456-789a-bcdef0123456"
-        ],
-        "profile_id": "12345678-90ab-cdef-1234-567890abcdef"
-      },
-      "policy_ids": ["block_financial_data"],
-      "check": "REQUEST"
-    }
-  ],
-  "action": "BLOCK"
+	"findings": [
+		{
+			"profile": {
+				"context": {},
+				"entry_ids": [
+					"a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+					"f7e8d9c0-b1a2-3456-789a-bcdef0123456"
+				],
+				"profile_id": "12345678-90ab-cdef-1234-567890abcdef"
+			},
+			"policy_ids": ["block_financial_data"],
+			"check": "REQUEST"
+		}
+	],
+	"action": "BLOCK"
 }
 ```
 
@@ -169,8 +171,6 @@ When DLP blocks a request, your application will receive structured error respon
   * `"message": "Response content blocked due to DLP policy violations"`
 
 Handle these errors in your application:
-
-**JavaScript**
 
 ```js
 try {
@@ -218,7 +218,14 @@ For general AI Gateway troubleshooting, refer to [Troubleshooting](https://devel
 
 For additional support with DLP configuration, refer to the [Cloudflare Data Loss Prevention documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) or contact your Cloudflare support team.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#page","headline":"Set up Data Loss Prevention (DLP) · Cloudflare AI Gateway docs","description":"Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.","url":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/dlp/","name":"Data Loss Prevention (DLP)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/features/dlp/set-up-dlp/","name":"Set up Data Loss Prevention (DLP)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#page","headline":"Set up Data Loss Prevention (DLP) · Cloudflare AI Gateway docs","description":"Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.","url":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

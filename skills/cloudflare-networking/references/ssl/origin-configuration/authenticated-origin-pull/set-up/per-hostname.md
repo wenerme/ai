@@ -1,16 +1,18 @@
 ---
-title: Per-hostname
 description: Set up per-hostname Authenticated Origin Pulls with custom certificates.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Per-hostname
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Per-hostname
 
-# Per-hostname
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you enable per-hostname Authenticated Origin Pulls (AOP), all proxied traffic to the specified hostname is authenticated at the origin web server using a certificate that you upload. You can use client certificates from your Private PKI to authenticate connections from Cloudflare.
 
@@ -58,11 +60,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload custom certificate
 
-* [ Dashboard ](#tab-panel-11512)
-* [ API ](#tab-panel-11513)
-
 1. Go to the **Origin Server** page.
-[ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+[ Go to **Origin Server** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. Select the **Authenticated Origin Pulls** tab.
 3. In the **Per-hostname** section, select **Upload certificate**.
 4. Paste the certificate and private key, then select **Continue**.
@@ -82,7 +81,6 @@ You must upload a [leaf certificate](https://developers.cloudflare.com/ssl/conce
 MYCERT="$(cat cert.crt|perl -pe 's/\r?\n/\\n/'|sed -e 's/..$//')"
 MYKEY="$(cat cert.key|perl -pe 's/\r?\n/\\n/'|sed -e's/..$//')"
 
-
 request_body=$(< <(cat <<EOF
 {
 "certificate": "$MYCERT",
@@ -92,9 +90,7 @@ request_body=$(< <(cat <<EOF
 EOF
 ))
 
-
 # Push the certificate
-
 
 curl --silent \
 "https://api.cloudflare.com/client/v4/zones/$ZONEID/origin_tls_client_auth/hostnames/certificates" \
@@ -133,15 +129,12 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable Authenticated Origin Pulls for the hostname
 
-* [ Dashboard ](#tab-panel-11510)
-* [ API ](#tab-panel-11511)
-
 Note
 
 For per-hostname AOP, the enablement happens as you associate a hostname. If you had already associated hostnames as you uploaded the certificate, you can skip this step.
 
 1. Go to the **Origin Server** page.
-[ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+[ Go to **Origin Server** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. Select the **Authenticated Origin Pulls** tab.
 3. In the **Per-hostname** section, find the certificate that should be used and associate the hostname with it.
 
@@ -199,7 +192,14 @@ Refer to [Manage certificates](https://developers.cloudflare.com/ssl/origin-conf
 
 To learn how to remove the configuration, refer to [Rollback](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/rollback/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/#page","headline":"Per-hostname authenticated origin pulls · Cloudflare SSL/TLS docs","description":"Set up per-hostname Authenticated Origin Pulls with custom certificates.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/","name":"Authenticated Origin Pulls (mTLS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/set-up/","name":"Setup"}},{"@type":"ListItem","position":6,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/","name":"Per-hostname"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/#page","headline":"Per-hostname authenticated origin pulls · Cloudflare SSL/TLS docs","description":"Set up per-hostname Authenticated Origin Pulls with custom certificates.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

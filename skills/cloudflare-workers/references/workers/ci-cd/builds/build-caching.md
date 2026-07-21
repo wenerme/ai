@@ -1,16 +1,18 @@
 ---
-title: Build caching
 description: Improve build times by caching build outputs and dependencies
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build caching
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build caching
 
-# Build caching
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Improve Workers build times by caching dependencies and build output between builds with a project-wide shared cache.
 
@@ -78,7 +80,14 @@ The build cache can be cleared for a project when needed, such as when debugging
 3. Go to **Settings** \> **Build** \> **Build cache**.
 4. Select **Clear Cache** to clear the build cache.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/#page","headline":"Build caching · Cloudflare Workers docs","description":"Improve build times by caching build outputs and dependencies","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/build-caching/","name":"Build caching"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/#page","headline":"Build caching · Cloudflare Workers docs","description":"Improve build times by caching build outputs and dependencies","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

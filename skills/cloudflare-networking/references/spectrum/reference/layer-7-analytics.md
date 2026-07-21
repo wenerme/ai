@@ -1,16 +1,18 @@
 ---
-title: Why Spectrum-enabled hostnames might appear in Layer 7 Analytics
 description: How Spectrum Layer 4 traffic can appear in Layer 7 analytics dashboards.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Why Spectrum-enabled hostnames might appear in Layer 7 Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Why Spectrum-enabled hostnames might appear in Layer 7 Analytics
 
-# Why Spectrum-enabled hostnames might appear in Layer 7 Analytics
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/reference/layer-7-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Even when you have Spectrum enabled to handle Layer 4 traffic (for example, TCP/UDP connections), you may still notice traffic in your Layer 7 (L7) analytics dashboard. This is due to the way Cloudflare's Layer 7 CDNand Spectrum handle customer identity differently.
 
@@ -47,7 +49,14 @@ If you want to prevent traffic for Layer-4-only Spectrum hostnames from being pr
 
 For example, you can create a WAF rule to block requests to `spectrum.example.com` unless they originate from a Spectrum IP or a customer's Spectrum BYOIP. The traffic will still be logged in Layer 7 Analytics, including WAF Security Events, but this prevents it from arriving at the wrong address and looping through the CDN a second time.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/layer-7-analytics/#page","headline":"Why Spectrum-enabled hostnames might appear in Layer 7 Analytics · Cloudflare Spectrum docs","description":"How Spectrum Layer 4 traffic can appear in Layer 7 analytics dashboards.","url":"https://developers.cloudflare.com/spectrum/reference/layer-7-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/layer-7-analytics/","name":"Why Spectrum-enabled hostnames might appear in Layer 7 Analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/layer-7-analytics/#page","headline":"Why Spectrum-enabled hostnames might appear in Layer 7 Analytics · Cloudflare Spectrum docs","description":"How Spectrum Layer 4 traffic can appear in Layer 7 analytics dashboards.","url":"https://developers.cloudflare.com/spectrum/reference/layer-7-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: HTTP API
 description: Use Agent Memory from services that call the Cloudflare API directly.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: HTTP API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-memory/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP API
 
-# HTTP API
+Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agent-memory/api/http-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the HTTP API to call Agent Memory from services that do not run inside [Cloudflare Workers](https://developers.cloudflare.com/workers/). For Workers applications, use the [Workers API](https://developers.cloudflare.com/agent-memory/api/workers-api/) through an `agent_memory` binding.
 
@@ -47,15 +49,15 @@ The response includes the namespace name that you use in Worker bindings and HTT
 
 ```json
 {
-  "result": {
-    "id": "01JSGCEXAMPLE000000000000",
-    "name": "support-agent",
-    "created_at": "2026-04-21T00:00:00.000Z",
-    "updated_at": "2026-04-21T00:00:00.000Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "01JSGCEXAMPLE000000000000",
+		"name": "support-agent",
+		"created_at": "2026-04-21T00:00:00.000Z",
+		"updated_at": "2026-04-21T00:00:00.000Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -70,22 +72,22 @@ curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/na
 
 ```json
 {
-  "result": [
-    {
-      "id": "01JSGCEXAMPLE000000000000",
-      "name": "support-agent",
-      "created_at": "2026-04-21T00:00:00.000Z",
-      "updated_at": "2026-04-21T00:00:00.000Z"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result_info": {
-    "cursor": "next-cursor",
-    "per_page": 50,
-    "count": 1
-  }
+	"result": [
+		{
+			"id": "01JSGCEXAMPLE000000000000",
+			"name": "support-agent",
+			"created_at": "2026-04-21T00:00:00.000Z",
+			"updated_at": "2026-04-21T00:00:00.000Z"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result_info": {
+		"cursor": "next-cursor",
+		"per_page": 50,
+		"count": 1
+	}
 }
 ```
 
@@ -100,15 +102,15 @@ curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/na
 
 ```json
 {
-  "result": {
-    "id": "01JSGCEXAMPLE000000000000",
-    "name": "support-agent",
-    "created_at": "2026-04-21T00:00:00.000Z",
-    "updated_at": "2026-04-21T00:00:00.000Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "01JSGCEXAMPLE000000000000",
+		"name": "support-agent",
+		"created_at": "2026-04-21T00:00:00.000Z",
+		"updated_at": "2026-04-21T00:00:00.000Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -123,10 +125,10 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent
 
 ```json
 {
-  "result": null,
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": null,
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -145,10 +147,10 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent
 
 ```json
 {
-  "result": null,
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": null,
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -163,10 +165,10 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent
 
 ```json
 {
-  "result": null,
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": null,
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -192,10 +194,10 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-m
 
 ```json
 {
-  "result": null,
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": null,
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -217,18 +219,18 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-m
 
 ```json
 {
-  "result": {
-    "id": "01JSGCEXAMPLE000000000000",
-    "type": "instruction",
-    "summary": "The user prefers concise answers.",
-    "content": "The user prefers concise answers.",
-    "sessionId": "chat-2026-04-21",
-    "createdAt": "2026-04-21T00:00:00.000Z",
-    "updatedAt": "2026-04-21T00:00:00.000Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "01JSGCEXAMPLE000000000000",
+		"type": "instruction",
+		"summary": "The user prefers concise answers.",
+		"content": "The user prefers concise answers.",
+		"sessionId": "chat-2026-04-21",
+		"createdAt": "2026-04-21T00:00:00.000Z",
+		"updatedAt": "2026-04-21T00:00:00.000Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -249,21 +251,21 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-m
 
 ```json
 {
-  "result": {
-    "answer": "The user prefers concise answers.",
-    "count": 1,
-    "candidates": [
-      {
-        "id": "01JSGCEXAMPLE000000000000",
-        "summary": "The user prefers concise answers.",
-        "sessionId": "chat-2026-04-21",
-        "score": 0.87
-      }
-    ]
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"answer": "The user prefers concise answers.",
+		"count": 1,
+		"candidates": [
+			{
+				"id": "01JSGCEXAMPLE000000000000",
+				"summary": "The user prefers concise answers.",
+				"sessionId": "chat-2026-04-21",
+				"score": 0.87
+			}
+		]
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -280,24 +282,24 @@ curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/na
 
 ```json
 {
-  "result": [
-    {
-      "id": "01JSGCEXAMPLE000000000000",
-      "type": "instruction",
-      "summary": "The user prefers concise answers.",
-      "sessionId": "chat-2026-04-21",
-      "createdAt": "2026-04-21T00:00:00.000Z",
-      "updatedAt": "2026-04-21T00:00:00.000Z"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result_info": {
-    "cursor": "next-cursor",
-    "per_page": 50,
-    "count": 1
-  }
+	"result": [
+		{
+			"id": "01JSGCEXAMPLE000000000000",
+			"type": "instruction",
+			"summary": "The user prefers concise answers.",
+			"sessionId": "chat-2026-04-21",
+			"createdAt": "2026-04-21T00:00:00.000Z",
+			"updatedAt": "2026-04-21T00:00:00.000Z"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result_info": {
+		"cursor": "next-cursor",
+		"per_page": 50,
+		"count": 1
+	}
 }
 ```
 
@@ -316,18 +318,18 @@ curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-memory/na
 
 ```json
 {
-  "result": {
-    "id": "01JSGCEXAMPLE000000000000",
-    "type": "instruction",
-    "summary": "The user prefers concise answers.",
-    "content": "The user prefers concise answers.",
-    "sessionId": "chat-2026-04-21",
-    "createdAt": "2026-04-21T00:00:00.000Z",
-    "updatedAt": "2026-04-21T00:00:00.000Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "01JSGCEXAMPLE000000000000",
+		"type": "instruction",
+		"summary": "The user prefers concise answers.",
+		"content": "The user prefers concise answers.",
+		"sessionId": "chat-2026-04-21",
+		"createdAt": "2026-04-21T00:00:00.000Z",
+		"updatedAt": "2026-04-21T00:00:00.000Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -342,18 +344,18 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent
 
 ```json
 {
-  "result": {
-    "id": "01JSGCEXAMPLE000000000000",
-    "type": "instruction",
-    "summary": "The user prefers concise answers.",
-    "content": "The user prefers concise answers.",
-    "sessionId": "chat-2026-04-21",
-    "createdAt": "2026-04-21T00:00:00.000Z",
-    "updatedAt": "2026-04-21T00:00:00.000Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "01JSGCEXAMPLE000000000000",
+		"type": "instruction",
+		"summary": "The user prefers concise answers.",
+		"content": "The user prefers concise answers.",
+		"sessionId": "chat-2026-04-21",
+		"createdAt": "2026-04-21T00:00:00.000Z",
+		"updatedAt": "2026-04-21T00:00:00.000Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -370,12 +372,12 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/agent-m
 
 ```json
 {
-  "result": {
-    "summary": "## Summary\n\nThe user prefers concise answers."
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"summary": "## Summary\n\nThe user prefers concise answers."
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -387,15 +389,15 @@ All endpoints return standard Cloudflare V4 error responses on failure:
 
 ```json
 {
-  "result": null,
-  "success": false,
-  "errors": [
-    {
-      "code": 10008,
-      "message": "Namespace name already exists"
-    }
-  ],
-  "messages": []
+	"result": null,
+	"success": false,
+	"errors": [
+		{
+			"code": 10008,
+			"message": "Namespace name already exists"
+		}
+	],
+	"messages": []
 }
 ```
 
@@ -409,7 +411,14 @@ Common error scenarios include:
 | Namespace not found           | 404         |
 | Profile not found             | 404         |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/api/http-api/#page","headline":"HTTP API · Cloudflare Agent Memory docs","description":"Use Agent Memory from services that call the Cloudflare API directly.","url":"https://developers.cloudflare.com/agent-memory/api/http-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agent-memory/","name":"Agent Memory"}},{"@type":"ListItem","position":3,"item":{"@id":"/agent-memory/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/agent-memory/api/http-api/","name":"HTTP API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/api/http-api/#page","headline":"HTTP API · Cloudflare Agent Memory docs","description":"Use Agent Memory from services that call the Cloudflare API directly.","url":"https://developers.cloudflare.com/agent-memory/api/http-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

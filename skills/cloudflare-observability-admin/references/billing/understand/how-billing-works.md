@@ -1,16 +1,18 @@
 ---
-title: How Cloudflare billing works
 description: Billing lifecycle, charge types, and invoice details.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How Cloudflare billing works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Cloudflare billing works
 
-# How Cloudflare billing works
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/understand/how-billing-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare billing has a few moving parts. This page explains the full billing lifecycle, the different types of charges on your account, and how to read a typical invoice.
 
@@ -42,7 +44,7 @@ A Cloudflare invoice can contain up to three types of charges. Understanding the
 
 ### Plan charges (flat rate, billed in advance)
 
-Domain plan charges (Free, Pro, Business, Enterprise) are flat-rate and billed at the start of each billing period for the upcoming month or year. Plans are billed **per domain** — if you have 20 domains on the Pro plan at $25/month, you will see a single line item for 20 x $25 = $500.
+Domain plan charges (Free, Pro, Business, Enterprise) are flat-rate and billed at the start of each billing period for the upcoming month or year. Plans are billed **per domain** — if you have 20 domains on the Pro plan at `25/month, you will see a single line item for 20 x `25 = $500.
 
 The line item lists the domain names the plan covers. For example:
 
@@ -185,7 +187,14 @@ For details, refer to [Billing policy](https://developers.cloudflare.com/billing
 * [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy, payment methods, and terms
 * [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) — Resolve unpaid invoices
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-billing-works/#page","headline":"How Cloudflare billing works · Cloudflare Billing docs","description":"Billing lifecycle, charge types, and invoice details.","url":"https://developers.cloudflare.com/billing/understand/how-billing-works/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/understand/","name":"Understand"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/understand/how-billing-works/","name":"How Cloudflare billing works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-billing-works/#page","headline":"How Cloudflare billing works · Cloudflare Billing docs","description":"Billing lifecycle, charge types, and invoice details.","url":"https://developers.cloudflare.com/billing/understand/how-billing-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

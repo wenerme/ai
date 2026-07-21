@@ -1,16 +1,18 @@
 ---
-title: Block page
 description: Block page in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Block page
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Block page
 
-# Block page
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When Gateway blocks traffic with a [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#block) or [HTTP Block policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#block), you can configure a block page to display in your users' browsers. You can provide a descriptive reason for blocking traffic and contact information, or you can redirect your users' browsers to another page. You can apply these customizations globally for every Block policy, or override the settings on a per-policy basis.
 
@@ -86,9 +88,6 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-8068)
-* [ Terraform (v5) ](#tab-panel-8069)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
 3. Choose **Custom Gateway block page**. Gateway will display a preview of your custom block page. Available customizations include:
@@ -106,21 +105,21 @@ To customize your block page:
 2. In [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings), configure the `block_page` argument with your customizations:
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    block_page = {
-      enabled = true //do not use the default Gateway block page
-      mode = "customized_block_page" //use a custom block page
-      name = "Cloudflare"
-      logo_path = "https://logos.com/a.png"
-      header_text = "--header--"
-      footer_text = "--footer--"
-      mailto_address = "admin@example.com"
-      mailto_subject = "Blocked Request"
-      background_color = "#ffffff"
-      suppress_footer = false
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		block_page = {
+			enabled = true //do not use the default Gateway block page
+			mode = "customized_block_page" //use a custom block page
+			name = "Cloudflare"
+			logo_path = "https://logos.com/a.png"
+			header_text = "--header--"
+			footer_text = "--footer--"
+			mailto_address = "admin@example.com"
+			mailto_subject = "Blocked Request"
+			background_color = "#ffffff"
+			suppress_footer = false
+		}
+	}
 }
 ```
 
@@ -149,9 +148,6 @@ You can add a Mailto link to your custom block page, which allows users to direc
 For DNS Block policies, you will need to turn on the block page for each policy you want to display it. For HTTP Block policies, Gateway automatically displays your global block page setting by default. You can override your global block page setting for both policy types within each policy's settings.
 
 To turn on the block page or override your global block page setting for an individual policy:
-
-* [ DNS policy ](#tab-panel-8070)
-* [ HTTP policy ](#tab-panel-8071)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
@@ -204,7 +200,14 @@ This applies to DNS queries sent to any Gateway resolver endpoint, including tho
 
 If the HTTP request comes from a different IP address than the DNS request, Gateway may not display the rule ID, custom message, or other fields on the block page. This can happen when a recursive DNS resolver's source IP address differs from the user device's IP address.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#page","headline":"Block page · Cloudflare One docs","description":"Block page in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/reusable-components/","name":"Reusable components"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/reusable-components/custom-pages/","name":"Custom pages"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/reusable-components/custom-pages/gateway-block-page/","name":"Block page"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#page","headline":"Block page · Cloudflare One docs","description":"Block page in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

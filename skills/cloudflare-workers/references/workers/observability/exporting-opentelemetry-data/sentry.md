@@ -1,16 +1,18 @@
 ---
-title: Export to Sentry
 description: Export OpenTelemetry traces and logs from Cloudflare Workers to Sentry for monitoring and debugging.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Export to Sentry
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Export to Sentry
 
-# Export to Sentry
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sentry is a software monitoring tool that helps developers identify and debug performance issues and errors. From end-to-end distributed tracing to performance monitoring, Sentry provides code-level observability that makes it easy to diagnose issues and learn continuously about your application code health across systems and services. By exporting your Cloudflare Workers application telemetry to Sentry, you can:
 
@@ -83,11 +85,6 @@ To configure your logs destination, click **Add destination** and configure the 
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-12736)
-* [  wrangler.toml ](#tab-panel-12737)
-
-**JSONC**
-
 ```jsonc
 {
   "observability": {
@@ -105,13 +102,10 @@ With your destinations created in the Cloudflare dashboard, update your Worker's
 }
 ```
 
-**TOML**
-
 ```toml
 [observability.traces]
 enabled = true
 destinations = [ "sentry-traces" ]
-
 
 [observability.logs]
 enabled = true
@@ -124,7 +118,14 @@ Note
 
 It may take a few minutes after deployment for data to appear in Sentry.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/#page","headline":"Export to Sentry · Cloudflare Workers docs","description":"Export OpenTelemetry traces and logs from Cloudflare Workers to Sentry for monitoring and debugging.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/","name":"Exporting OpenTelemetry Data"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/sentry/","name":"Export to Sentry"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/#page","headline":"Export to Sentry · Cloudflare Workers docs","description":"Export OpenTelemetry traces and logs from Cloudflare Workers to Sentry for monitoring and debugging.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

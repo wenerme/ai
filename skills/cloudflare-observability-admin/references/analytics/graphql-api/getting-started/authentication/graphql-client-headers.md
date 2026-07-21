@@ -1,16 +1,18 @@
 ---
-title: Configure GraphQL client endpoint and HTTP headers
 description: Learn about configure graphql client endpoint and http headers in Cloudflare analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure GraphQL client endpoint and HTTP headers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure GraphQL client endpoint and HTTP headers
 
-# Configure GraphQL client endpoint and HTTP headers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 1. Launch [GraphiQL ↗](https://www.gatsbyjs.com/docs/how-to/querying-data/running-queries-with-graphiql/).
 2. Select **Edit HTTP Headers**. ![Clicking Edit HTTP Headers](https://developers.cloudflare.com/_astro/GraphiQL-edit-http-headers.Cc0SaBrH_17rcJm.webp)The **Edit HTTP Headers** window appears. ![Editing HTTP Headers Window](https://developers.cloudflare.com/_astro/GraphiQL-edit-http-headers-window.D6rNIUCL_Z1C89jf.webp)
@@ -31,7 +33,14 @@ The right-side response pane is empty when you enter your information correctly.
 
 Now that you have configured authentication, you are ready to run queries using GraphiQL.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/#page","headline":"Configure GraphQL client endpoint and HTTP headers · Cloudflare Analytics docs","description":"Learn about configure graphql client endpoint and http headers in Cloudflare analytics.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/getting-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/getting-started/authentication/","name":"Authentication"}},{"@type":"ListItem","position":6,"item":{"@id":"/analytics/graphql-api/getting-started/authentication/graphql-client-headers/","name":"Configure GraphQL client endpoint and HTTP headers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/#page","headline":"Configure GraphQL client endpoint and HTTP headers · Cloudflare Analytics docs","description":"Learn about configure graphql client endpoint and http headers in Cloudflare analytics.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

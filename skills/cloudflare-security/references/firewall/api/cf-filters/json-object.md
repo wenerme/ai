@@ -1,16 +1,18 @@
 ---
-title: JSON object
 description: Review the JSON structure for filter and rule objects.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: JSON object
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  JSON object
 
-# JSON object
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/firewall/api/cf-filters/json-object/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Filter object structure and properties
 
@@ -18,11 +20,11 @@ A JSON response for the [Filters API](https://developers.cloudflare.com/api/reso
 
 ```json
 {
-  "id": "6f58318e7fa2477a23112e8118c66f61",
-  "expression": "http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\"",
-  "paused": true,
-  "description": "WordPress login paths",
-  "ref": ""
+	"id": "6f58318e7fa2477a23112e8118c66f61",
+	"expression": "http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\"",
+	"paused": true,
+	"description": "WordPress login paths",
+	"ref": ""
 }
 ```
 
@@ -36,7 +38,14 @@ The following table summarizes the object properties:
 | description String | An informative summary of the filter.                                                                                                                                              | Maximum length: 500 characters         |
 | ref String         | A short string for tagging filters.                                                                                                                                                | Maximum length: 50 characters          |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/cf-filters/json-object/#page","headline":"Filter JSON object · Cloudflare Firewall Rules (deprecated) docs","description":"Review the JSON structure for filter and rule objects.","url":"https://developers.cloudflare.com/firewall/api/cf-filters/json-object/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/api/","name":"Manage rules via the APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/api/cf-filters/","name":"Cloudflare Filters API"}},{"@type":"ListItem","position":5,"item":{"@id":"/firewall/api/cf-filters/json-object/","name":"JSON object"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/cf-filters/json-object/#page","headline":"Filter JSON object · Cloudflare Firewall Rules (deprecated) docs","description":"Review the JSON structure for filter and rule objects.","url":"https://developers.cloudflare.com/firewall/api/cf-filters/json-object/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

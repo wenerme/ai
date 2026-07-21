@@ -1,16 +1,18 @@
 ---
-title: Import repositories
 description: Import existing Git repos into Artifacts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Import repositories
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Import repositories
 
-# Import repositories
+Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/guides/import-repositories/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Import an existing repository when you already have a baseline outside Artifacts and want to start using it as an Artifacts repo.
 
@@ -50,12 +52,10 @@ IMPORT_RESPONSE=$(curl --silent --request POST "$ARTIFACTS_BASE_URL/repos/$ARTIF
      "depth": 100
    }')
 
-
 if ! printf '%s' "$IMPORT_RESPONSE" | jq -e '.success == true' > /dev/null; then
   printf '%s\n' "$IMPORT_RESPONSE" | jq .
   exit 1
 fi
-
 
 export ARTIFACTS_REMOTE=$(printf '%s' "$IMPORT_RESPONSE" | jq -r '.result.remote')
 export ARTIFACTS_TOKEN=$(printf '%s' "$IMPORT_RESPONSE" | jq -r '.result.token')
@@ -81,7 +81,14 @@ After the import finishes, use the repo like any other Artifacts repo.
 
 For the endpoint details, refer to [REST API](https://developers.cloudflare.com/artifacts/api/rest-api/#import-a-public-https-remote). For auth details, refer to [Authentication](https://developers.cloudflare.com/artifacts/guides/authentication/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/import-repositories/#page","headline":"Import repositories · Cloudflare Artifacts docs","description":"Import existing Git repos into Artifacts.","url":"https://developers.cloudflare.com/artifacts/guides/import-repositories/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/guides/import-repositories/","name":"Import repositories"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/import-repositories/#page","headline":"Import repositories · Cloudflare Artifacts docs","description":"Import existing Git repos into Artifacts.","url":"https://developers.cloudflare.com/artifacts/guides/import-repositories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

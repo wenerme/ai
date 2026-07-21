@@ -1,16 +1,18 @@
 ---
-title: How it works
 description: Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: How it works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How it works
 
-# How it works
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Pre-processing
 
@@ -56,7 +58,14 @@ Afterwards:
 * If none is obtained, we extract the text of the page _as-is_ and return it.
 * If we manage to obtain a `StructTree`, we traverse its nodes to build a semantic Markdown representation of its contents.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#page","headline":"How it works · Cloudflare Workers AI docs","description":"Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/markdown-conversion/","name":"Markdown Conversion"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/markdown-conversion/how-it-works/","name":"How it works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#page","headline":"How it works · Cloudflare Workers AI docs","description":"Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

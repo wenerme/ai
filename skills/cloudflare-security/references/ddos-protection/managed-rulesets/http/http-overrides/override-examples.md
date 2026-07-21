@@ -1,16 +1,18 @@
 ---
-title: Override examples
 description: Example override configurations for HTTP DDoS Attack Protection rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Override examples
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Override examples
 
-# Override examples
+Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Use cases
 
@@ -35,9 +37,6 @@ A false positive is an incorrect identification. In the case of DDoS protection,
 In these cases, Cloudflare's DDoS Protection systems may flag that traffic as malicious and apply mitigation actions. If the traffic is in fact legitimate and not part of an attack, the mitigation actions can cause service disruptions and outages to your Internet properties.
 
 To remedy a false positive:
-
-* [  New dashboard ](#tab-panel-8754)
-* [ Old dashboard ](#tab-panel-8755)
 
 1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
 2. Apply filters to the displayed data.
@@ -117,9 +116,6 @@ The system chooses the mitigation action based on the logic and the DDoS protect
 
 If you are experiencing a DDoS attack detected by Cloudflare and the applied mitigation action is not sufficiently strict, change the rule action to _Block_:
 
-* [  New dashboard ](#tab-panel-8756)
-* [ Old dashboard ](#tab-panel-8757)
-
 1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
 2. Apply filters to the displayed data.
 For WAF/CDN customers
@@ -168,7 +164,14 @@ If you cannot stop an attack from overloading your origin web server using the a
 * Steps to reproduce the issue, with actual results versus expected results
 * Any relevant additional information such as site URLs, error messages, screenshots, or relevant logs from your origin web server
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/#page","headline":"Override examples for HTTP DDoS Attack Protection · Cloudflare DDoS Protection docs","description":"Example override configurations for HTTP DDoS Attack Protection rules.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/managed-rulesets/","name":"Managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/managed-rulesets/http/","name":"HTTP DDoS Attack Protection"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/managed-rulesets/http/http-overrides/","name":"Overrides"}},{"@type":"ListItem","position":6,"item":{"@id":"/ddos-protection/managed-rulesets/http/http-overrides/override-examples/","name":"Override examples"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/#page","headline":"Override examples for HTTP DDoS Attack Protection · Cloudflare DDoS Protection docs","description":"Example override configurations for HTTP DDoS Attack Protection rules.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: REST API
 description: Use the Cloudflare Workers AI REST API to deploy a large language model (LLM).
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: REST API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  REST API
 
-# REST API
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/get-started/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through setting up and deploying your first Workers AI project. You will use the Workers AI REST API to experiment with a large language model (LLM).
 
@@ -25,7 +27,7 @@ You need your API token and Account ID to use the REST API.
 To get these values:
 
 1. In the Cloudflare dashboard, go to the **Workers AI** page.
-[ Go to **Workers AI** ](https://dash.cloudflare.com/?to=/:account/ai/workers-ai)
+[ Go to **Workers AI** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/workers-ai)
 2. Select **Use REST API**.
 3. Get your API token:
 
@@ -58,12 +60,12 @@ The API response will look like the following:
 
 ```json
 {
-  "result": {
-    "response": "Hello, World first appeared in 1974 at Bell Labs when Brian Kernighan included it in the C programming language example. It became widely used as a basic test program due to simplicity and clarity. It represents an inviting greeting from a program to the world."
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"response": "Hello, World first appeared in 1974 at Bell Labs when Brian Kernighan included it in the C programming language example. It became widely used as a basic test program due to simplicity and clarity. It represents an inviting greeting from a program to the world."
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -76,7 +78,14 @@ By completing this guide, you have created a Cloudflare account (if you did not 
 * [Models](https://developers.cloudflare.com/workers-ai/models/) \- Browse the Workers AI models catalog.
 * [AI SDK](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk) \- Learn how to integrate with an AI model.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/rest-api/#page","headline":"Get started - REST API · Cloudflare Workers AI docs","description":"Use the Cloudflare Workers AI REST API to deploy a large language model (LLM).","url":"https://developers.cloudflare.com/workers-ai/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/get-started/rest-api/","name":"REST API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/rest-api/#page","headline":"Get started - REST API · Cloudflare Workers AI docs","description":"Use the Cloudflare Workers AI REST API to deploy a large language model (LLM).","url":"https://developers.cloudflare.com/workers-ai/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

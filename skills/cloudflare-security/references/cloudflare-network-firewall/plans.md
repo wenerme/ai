@@ -1,16 +1,18 @@
 ---
-title: Plans
 description: Compare Network Firewall features by plan.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Plans
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Plans
 
-# Plans
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/plans/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you are a [Magic Transit](https://developers.cloudflare.com/magic-transit/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) user, you are automatically provided with a standard list of Cloudflare Network Firewall (formerly Magic Firewall) features. For additional features available for purchase, refer to the list of advanced features below.
 
@@ -37,7 +39,14 @@ All standard features are included with the purchase of the advanced features be
 * [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) filtering for outbound Internet traffic (network and HTTP policies). The Secure Web Gateway supports all TCP and UDP ports, as well as traffic sourced from RFC 1918 address space. Gateway will proxy BYOIP traffic to egress via the default Cloudflare IPs or your assigned [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/).
 * Intrusion Detection System (IDS).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/plans/#page","headline":"Plans · Cloudflare Network Firewall docs","description":"Compare Network Firewall features by plan.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/plans/","name":"Plans"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/plans/#page","headline":"Plans · Cloudflare Network Firewall docs","description":"Compare Network Firewall features by plan.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Enable IDS
 description: Enable the Intrusion Detection System for your account.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Enable IDS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable IDS
 
-# Enable IDS
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's IDS takes advantage of the threat intelligence powered by our global network and extends the capabilities of the Cloudflare Firewall to monitor and protect your network from malicious actors.
 
@@ -19,9 +21,6 @@ You can enable IDS through the dashboard or via the API.
 Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
-
-* [ Dashboard ](#tab-panel-7711)
-* [ API ](#tab-panel-7712)
 
 1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall) page.
 2. Select **IDS** and turn on **IDS**.
@@ -89,7 +88,14 @@ IDS rules are run on a subset of packets. IDS also supports the current flows:
 
 You must configure Logpush to log detected risks. Refer to [Configure a Logpush destination](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/) for more information. Additionally, all traffic that is analyzed can be accessed via [network analytics](https://developers.cloudflare.com/analytics/network-analytics/). Refer to [GraphQL Analytics](https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/) to query the analytics data.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/#page","headline":"Enable Intrusion Detection System (IDS) · Cloudflare Network Firewall docs","description":"Enable the Intrusion Detection System for your account.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/how-to/enable-ids/","name":"Enable IDS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/#page","headline":"Enable Intrusion Detection System (IDS) · Cloudflare Network Firewall docs","description":"Enable the Intrusion Detection System for your account.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

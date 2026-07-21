@@ -1,16 +1,18 @@
 ---
-title: Enable only Joomla rules
 description: Deploy the Cloudflare Managed Ruleset with only Joomla rules enabled.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enable only Joomla rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable only Joomla rules
 
-# Enable only Joomla rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-joomla-only/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure the execution of a managed ruleset and override its behavior. By default, enabled rules perform the actions defined by the managed ruleset issuer. This example uses overrides to ensure that only rules with a specific tag are enabled.
 
@@ -53,33 +55,31 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "expression": "true",
-            "action_parameters": {
-                "id": "<MANAGED_RULESET_ID>",
-                "overrides": {
-                    "enabled": false,
-                    "categories": [
-                        {
-                            "category": "joomla",
-                            "action": "block",
-                            "enabled": true
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "true",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID>",
+								"overrides": {
+										"enabled": false,
+										"categories": [
+												{
+														"category": "joomla",
+														"action": "block",
+														"enabled": true
+												}
+										]
+								}
+						}
+				}
+		]
+	}'
 ```
 
 * `"id": "<MANAGED_RULESET_ID>"` adds a rule to the ruleset of a phase that will apply the Cloudflare Managed Ruleset to requests for the specified zone (`$ZONE_ID`).
@@ -100,33 +100,31 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-**Update an account entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
-            "action_parameters": {
-                "id": "<MANAGED_RULESET_ID>",
-                "overrides": {
-                    "enabled": false,
-                    "categories": [
-                        {
-                            "category": "joomla",
-                            "action": "block",
-                            "enabled": true
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID>",
+								"overrides": {
+										"enabled": false,
+										"categories": [
+												{
+														"category": "joomla",
+														"action": "block",
+														"enabled": true
+												}
+										]
+								}
+						}
+				}
+		]
+	}'
 ```
 
 * `"id": "<MANAGED_RULESET_ID>"` adds a rule to the ruleset of a phase that will apply the Cloudflare Managed Ruleset to requests for `example.com`.
@@ -166,37 +164,35 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "expression": "true",
-            "action_parameters": {
-                "id": "<MANAGED_RULESET_ID>",
-                "overrides": {
-                    "enabled": false,
-                    "categories": [
-                        {
-                            "category": "joomla",
-                            "action": "log",
-                            "enabled": true
-                        },
-                        {
-                            "category": "wordpress",
-                            "enabled": false
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "true",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID>",
+								"overrides": {
+										"enabled": false,
+										"categories": [
+												{
+														"category": "joomla",
+														"action": "log",
+														"enabled": true
+												},
+												{
+														"category": "wordpress",
+														"enabled": false
+												}
+										]
+								}
+						}
+				}
+		]
+	}'
 ```
 
 Example: Add more than one category override at the account level
@@ -213,37 +209,35 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-**Update an account entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
-            "action_parameters": {
-                "id": "<MANAGED_RULESET_ID>",
-                "overrides": {
-                    "enabled": false,
-                    "categories": [
-                        {
-                            "category": "joomla",
-                            "action": "log",
-                            "enabled": true
-                        },
-                        {
-                            "category": "wordpress",
-                            "enabled": false
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID>",
+								"overrides": {
+										"enabled": false,
+										"categories": [
+												{
+														"category": "joomla",
+														"action": "log",
+														"enabled": true
+												},
+												{
+														"category": "wordpress",
+														"enabled": false
+												}
+										]
+								}
+						}
+				}
+		]
+	}'
 ```
 
 The order of the overrides in the ruleset determines if rules in the deployed managed ruleset are enabled or disabled. Overrides placed later in the list take precedence over earlier overrides.
@@ -258,7 +252,14 @@ Consider four rules from the managed ruleset in the code above that have differe
 | ManagedRule4            | drupal, wordpress      | Disabled                    |
 | ManagedRule5            | (no tags)              | Disabled                    |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-joomla-only/#page","headline":"Use category overrides to enable Joomla rules · Cloudflare Ruleset Engine docs","description":"Deploy the Cloudflare Managed Ruleset with only Joomla rules enabled.","url":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-joomla-only/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/managed-rulesets/","name":"Work with managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/managed-rulesets/override-examples/","name":"Override examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-joomla-only/","name":"Enable only Joomla rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-joomla-only/#page","headline":"Use category overrides to enable Joomla rules · Cloudflare Ruleset Engine docs","description":"Deploy the Cloudflare Managed Ruleset with only Joomla rules enabled.","url":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-joomla-only/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

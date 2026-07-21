@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Resolve common IPFS Gateway issues including 523 and 524 errors.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare-specific
 
@@ -60,7 +62,14 @@ The second command will run indefinitely and has quite complicated output, so yo
 
 IPFS issues mandatory updates from time to time that introduce breaking protocol changes. Cloudflare tries to say ahead of these updates and may, as a result, lose connectivity with older nodes.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Web3 docs","description":"Resolve common IPFS Gateway issues including 523 and 524 errors.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ipfs-gateway/","name":"IPFS Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ipfs-gateway/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Web3 docs","description":"Resolve common IPFS Gateway issues including 523 and 524 errors.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

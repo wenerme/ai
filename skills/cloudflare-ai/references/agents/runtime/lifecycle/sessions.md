@@ -1,16 +1,18 @@
 ---
-title: Sessions
 description: Persistent conversation storage with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sessions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sessions
 
-# Sessions
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Session API provides persistent conversation storage for agents, with tree-structured messages (inspired by [Pi ↗](https://pi.dev)), context blocks, compaction, full-text search, and AI-controllable tools. By default, it uses Durable Object SQLite. External Postgres storage is also available for apps that need shared database access, analytics, or cross-Durable Object queries.
 
@@ -20,64 +22,53 @@ The Session API is under `agents/experimental/memory/session`. The API surface i
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-6847)
-* [  TypeScript ](#tab-panel-6848)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 import { Session } from "agents/experimental/memory/session";
 
-
 class MyAgent extends Agent {
-  session = Session.create(this)
-    .withContext("soul", {
-      provider: { get: async () => "You are a helpful assistant." },
-    })
-    .withContext("memory", {
-      description: "Learned facts about the user",
-      maxTokens: 1100,
-    })
-    .withCachedPrompt();
+	session = Session.create(this)
+		.withContext("soul", {
+			provider: { get: async () => "You are a helpful assistant." },
+		})
+		.withContext("memory", {
+			description: "Learned facts about the user",
+			maxTokens: 1100,
+		})
+		.withCachedPrompt();
 
-
-  async onMessage(message) {
-    await this.session.appendMessage(message);
-    const history = await this.session.getHistory();
-    const system = await this.session.freezeSystemPrompt();
-    const tools = await this.session.tools();
-    // Pass history, system prompt, and tools to your LLM
-  }
+	async onMessage(message) {
+		await this.session.appendMessage(message);
+		const history = await this.session.getHistory();
+		const system = await this.session.freezeSystemPrompt();
+		const tools = await this.session.tools();
+		// Pass history, system prompt, and tools to your LLM
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 import { Session } from "agents/experimental/memory/session";
 
-
 class MyAgent extends Agent {
-  session = Session.create(this)
-    .withContext("soul", {
-      provider: { get: async () => "You are a helpful assistant." },
-    })
-    .withContext("memory", {
-      description: "Learned facts about the user",
-      maxTokens: 1100,
-    })
-    .withCachedPrompt();
+	session = Session.create(this)
+		.withContext("soul", {
+			provider: { get: async () => "You are a helpful assistant." },
+		})
+		.withContext("memory", {
+			description: "Learned facts about the user",
+			maxTokens: 1100,
+		})
+		.withCachedPrompt();
 
-
-  async onMessage(message: unknown) {
-    await this.session.appendMessage(message);
-    const history = await this.session.getHistory();
-    const system = await this.session.freezeSystemPrompt();
-    const tools = await this.session.tools();
-    // Pass history, system prompt, and tools to your LLM
-  }
+	async onMessage(message: unknown) {
+		await this.session.appendMessage(message);
+		const history = await this.session.getHistory();
+		const system = await this.session.freezeSystemPrompt();
+		const tools = await this.session.tools();
+		// Pass history, system prompt, and tools to your LLM
+	}
 }
 ```
 
@@ -87,81 +78,65 @@ class MyAgent extends Agent {
 
 Use `Session.create(agent)` with a chainable builder. Context providers without an explicit `provider` option are auto-wired to SQLite.
 
-* [  JavaScript ](#tab-panel-6833)
-* [  TypeScript ](#tab-panel-6834)
-
-**JavaScript**
-
 ```js
 const session = Session.create(this)
-  .withContext("soul", { provider: { get: async () => "You are helpful." } })
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-  .withCachedPrompt()
-  .onCompaction(myCompactFn)
-  .compactAfter(100_000);
+	.withContext("soul", { provider: { get: async () => "You are helpful." } })
+	.withContext("memory", { description: "Learned facts", maxTokens: 1100 })
+	.withCachedPrompt()
+	.onCompaction(myCompactFn)
+	.compactAfter(100_000);
 ```
-
-**TypeScript**
 
 ```ts
 const session = Session.create(this)
-  .withContext("soul", { provider: { get: async () => "You are helpful." } })
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-  .withCachedPrompt()
-  .onCompaction(myCompactFn)
-  .compactAfter(100_000);
+	.withContext("soul", { provider: { get: async () => "You are helpful." } })
+	.withContext("memory", { description: "Learned facts", maxTokens: 1100 })
+	.withCachedPrompt()
+	.onCompaction(myCompactFn)
+	.compactAfter(100_000);
 ```
 
 ### Direct constructor
 
 For full control over providers:
 
-* [  JavaScript ](#tab-panel-6843)
-* [  TypeScript ](#tab-panel-6844)
-
-**JavaScript**
-
 ```js
 import {
-  Session,
-  AgentSessionProvider,
-  AgentContextProvider,
+	Session,
+	AgentSessionProvider,
+	AgentContextProvider,
 } from "agents/experimental/memory/session";
 
-
 const session = new Session(new AgentSessionProvider(this), {
-  context: [
-    {
-      label: "memory",
-      description: "Notes",
-      maxTokens: 500,
-      provider: new AgentContextProvider(this, "memory"),
-    },
-    { label: "soul", provider: { get: async () => "You are helpful." } },
-  ],
+	context: [
+		{
+			label: "memory",
+			description: "Notes",
+			maxTokens: 500,
+			provider: new AgentContextProvider(this, "memory"),
+		},
+		{ label: "soul", provider: { get: async () => "You are helpful." } },
+	],
 });
 ```
 
-**TypeScript**
-
 ```ts
 import {
-  Session,
-  AgentSessionProvider,
-  AgentContextProvider,
+	Session,
+	AgentSessionProvider,
+	AgentContextProvider,
 } from "agents/experimental/memory/session";
 
-
 const session = new Session(new AgentSessionProvider(this), {
-  context: [
-    {
-      label: "memory",
-      description: "Notes",
-      maxTokens: 500,
-      provider: new AgentContextProvider(this, "memory"),
-    },
-    { label: "soul", provider: { get: async () => "You are helpful." } },
-  ],
+	context: [
+		{
+			label: "memory",
+			description: "Notes",
+			maxTokens: 500,
+			provider: new AgentContextProvider(this, "memory"),
+		},
+		{ label: "soul", provider: { get: async () => "You are helpful." } },
+	],
 });
 ```
 
@@ -183,44 +158,31 @@ All builder methods return `this` for chaining. Order does not matter — provid
 
 Messages use the `SessionMessage` type — a minimal shape with `id`, `role`, `parts`, and optional `createdAt`. The AI SDK's `UIMessage` is structurally compatible and can be passed directly. The session stores messages in a tree structure via `parent_id`, enabling branching conversations.
 
-* [  JavaScript ](#tab-panel-6841)
-* [  TypeScript ](#tab-panel-6842)
-
-**JavaScript**
-
 ```js
 // Append — auto-parents to the latest leaf unless parentId is specified
 await session.appendMessage(message);
 await session.appendMessage(message, parentId);
 
-
 // Update an existing message (matched by message.id)
 await session.updateMessage(message);
-
 
 // Delete specific messages
 await session.deleteMessages(["msg-1", "msg-2"]);
 
-
 // Clear all messages and skill state
 await session.clearMessages();
 ```
-
-**TypeScript**
 
 ```ts
 // Append — auto-parents to the latest leaf unless parentId is specified
 await session.appendMessage(message);
 await session.appendMessage(message, parentId);
 
-
 // Update an existing message (matched by message.id)
 await session.updateMessage(message);
 
-
 // Delete specific messages
 await session.deleteMessages(["msg-1", "msg-2"]);
-
 
 // Clear all messages and skill state
 await session.clearMessages();
@@ -232,50 +194,35 @@ Session methods are async. SQLite-backed sessions are usually fast, but external
 
 ### Reading history
 
-* [  JavaScript ](#tab-panel-6849)
-* [  TypeScript ](#tab-panel-6850)
-
-**JavaScript**
-
 ```js
 // Linear history from root to the latest leaf
 const messages = await session.getHistory();
 
-
 // History to a specific leaf (for branching)
 const branch = await session.getHistory(leafId);
-
 
 // Get a single message
 const msg = await session.getMessage("msg-1");
 
-
 // Get the newest message
 const latest = await session.getLatestLeaf();
-
 
 // Count messages in path
 const count = await session.getPathLength();
 ```
 
-**TypeScript**
-
 ```ts
 // Linear history from root to the latest leaf
 const messages = await session.getHistory();
 
-
 // History to a specific leaf (for branching)
 const branch = await session.getHistory(leafId);
-
 
 // Get a single message
 const msg = await session.getMessage("msg-1");
 
-
 // Get the newest message
 const latest = await session.getLatestLeaf();
-
 
 // Count messages in path
 const count = await session.getPathLength();
@@ -285,17 +232,10 @@ const count = await session.getPathLength();
 
 Messages form a tree. When you `appendMessage` with a `parentId` that already has children, you create a branch. Use `getBranches()` to get all child messages branching from a given point:
 
-* [  JavaScript ](#tab-panel-6835)
-* [  TypeScript ](#tab-panel-6836)
-
-**JavaScript**
-
 ```js
 // Get all child messages that branch from messageId
 const branches = await session.getBranches(messageId);
 ```
-
-**TypeScript**
 
 ```ts
 // Get all child messages that branch from messageId
@@ -308,17 +248,10 @@ This powers features like response regeneration — pass the user message ID to 
 
 Full-text search over the conversation history using SQLite FTS5:
 
-* [  JavaScript ](#tab-panel-6837)
-* [  TypeScript ](#tab-panel-6838)
-
-**JavaScript**
-
 ```js
 const results = await session.search("deployment Friday", { limit: 10 });
 // Returns: Array<{ id, role, content, createdAt? }>
 ```
-
-**TypeScript**
 
 ```ts
 const results = await session.search("deployment Friday", { limit: 10 });
@@ -346,80 +279,53 @@ There are four provider types, detected by duck-typing:
 
 **`AgentContextProvider`** — SQLite-backed writable context. This is the default when using the builder without an explicit provider.
 
-* [  JavaScript ](#tab-panel-6839)
-* [  TypeScript ](#tab-panel-6840)
-
-**JavaScript**
-
 ```js
 import { AgentContextProvider } from "agents/experimental/memory/session";
-
 
 new AgentContextProvider(this, "memory");
 ```
 
-**TypeScript**
-
 ```ts
 import { AgentContextProvider } from "agents/experimental/memory/session";
-
 
 new AgentContextProvider(this, "memory");
 ```
 
 **`R2SkillProvider`** — Cloudflare R2 bucket for on-demand document loading. Skills are listed in the system prompt as metadata; the model loads full content on demand via `load_context`.
 
-* [  JavaScript ](#tab-panel-6845)
-* [  TypeScript ](#tab-panel-6846)
-
-**JavaScript**
-
 ```js
 import { R2SkillProvider } from "agents/experimental/memory/session";
 
-
 Session.create(this).withContext("skills", {
-  provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
+	provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { R2SkillProvider } from "agents/experimental/memory/session";
 
-
 Session.create(this).withContext("skills", {
-  provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
+	provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
 });
 ```
 
 **`AgentSearchProvider`** — SQLite FTS5 searchable context. Entries are indexed and searchable by the model via `search_context`.
 
-* [  JavaScript ](#tab-panel-6851)
-* [  TypeScript ](#tab-panel-6852)
-
-**JavaScript**
-
 ```js
 import { AgentSearchProvider } from "agents/experimental/memory/session";
 
-
 Session.create(this).withContext("knowledge", {
-  description: "Searchable knowledge base",
-  provider: new AgentSearchProvider(this),
+	description: "Searchable knowledge base",
+	provider: new AgentSearchProvider(this),
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { AgentSearchProvider } from "agents/experimental/memory/session";
 
-
 Session.create(this).withContext("knowledge", {
-  description: "Searchable knowledge base",
-  provider: new AgentSearchProvider(this),
+	description: "Searchable knowledge base",
+	provider: new AgentSearchProvider(this),
 });
 ```
 
@@ -427,40 +333,29 @@ Session.create(this).withContext("knowledge", {
 
 Blocks can be added and removed dynamically after initialization:
 
-* [  JavaScript ](#tab-panel-6857)
-* [  TypeScript ](#tab-panel-6858)
-
-**JavaScript**
-
 ```js
 // Add a new block (auto-wires to SQLite if no provider given)
 await session.addContext("extension-notes", {
-  description: "From extension X",
-  maxTokens: 500,
+	description: "From extension X",
+	maxTokens: 500,
 });
-
 
 // Remove it
 session.removeContext("extension-notes");
-
 
 // Rebuild the system prompt to reflect changes
 await session.refreshSystemPrompt();
 ```
 
-**TypeScript**
-
 ```ts
 // Add a new block (auto-wires to SQLite if no provider given)
 await session.addContext("extension-notes", {
-  description: "From extension X",
-  maxTokens: 500,
+	description: "From extension X",
+	maxTokens: 500,
 });
-
 
 // Remove it
 session.removeContext("extension-notes");
-
 
 // Rebuild the system prompt to reflect changes
 await session.refreshSystemPrompt();
@@ -472,44 +367,31 @@ Note
 
 ### Reading and writing context
 
-* [  JavaScript ](#tab-panel-6859)
-* [  TypeScript ](#tab-panel-6860)
-
-**JavaScript**
-
 ```js
 // Read a single block
 const block = session.getContextBlock("memory");
 // { label, description?, content, tokens, maxTokens?, writable, isSkill, isSearchable }
 
-
 // Read all blocks
 const blocks = session.getContextBlocks();
-
 
 // Replace content entirely
 await session.replaceContextBlock("memory", "User likes coffee.");
 
-
 // Append content
 await session.appendContextBlock("memory", "\nUser prefers dark roast.");
 ```
-
-**TypeScript**
 
 ```ts
 // Read a single block
 const block = session.getContextBlock("memory");
 // { label, description?, content, tokens, maxTokens?, writable, isSkill, isSearchable }
 
-
 // Read all blocks
 const blocks = session.getContextBlocks();
 
-
 // Replace content entirely
 await session.replaceContextBlock("memory", "User likes coffee.");
-
 
 // Append content
 await session.appendContextBlock("memory", "\nUser prefers dark roast.");
@@ -525,7 +407,6 @@ SOUL (Identity) [readonly]
 ══════════════════════════════════════════════
 You are a helpful assistant.
 
-
 ══════════════════════════════════════════════
 MEMORY (Learned facts) [45% — 495/1100 tokens]
 ══════════════════════════════════════════════
@@ -533,26 +414,17 @@ User likes coffee.
 User prefers dark roast.
 ```
 
-* [  JavaScript ](#tab-panel-6855)
-* [  TypeScript ](#tab-panel-6856)
-
-**JavaScript**
-
 ```js
 // Freeze — first call renders and persists; subsequent calls return cached value
 const prompt = await session.freezeSystemPrompt();
-
 
 // Refresh — re-render from current block state and persist
 const updated = await session.refreshSystemPrompt();
 ```
 
-**TypeScript**
-
 ```ts
 // Freeze — first call renders and persists; subsequent calls return cached value
 const prompt = await session.freezeSystemPrompt();
-
 
 // Refresh — re-render from current block state and persist
 const updated = await session.refreshSystemPrompt();
@@ -564,17 +436,10 @@ The frozen prompt survives Durable Object hibernation and eviction when `withCac
 
 Session automatically generates tools based on the provider types of your context blocks. Pass these to your LLM alongside your own tools.
 
-* [  JavaScript ](#tab-panel-6853)
-* [  TypeScript ](#tab-panel-6854)
-
-**JavaScript**
-
 ```js
 const tools = await session.tools();
 const allTools = { ...tools, ...myTools };
 ```
-
-**TypeScript**
 
 ```ts
 const tools = await session.tools();
@@ -607,49 +472,40 @@ Compaction summarizes older messages to keep conversations within token limits. 
 
 ### Setup
 
-* [  JavaScript ](#tab-panel-6865)
-* [  TypeScript ](#tab-panel-6866)
-
-**JavaScript**
-
 ```js
 import { createCompactFunction } from "agents/experimental/memory/utils/compaction-helpers";
 
-
 const session = Session.create(this)
-  .withContext("memory", { maxTokens: 1100 })
-  .onCompaction(
-    createCompactFunction({
-      summarize: (prompt) =>
-        generateText({ model: myModel, prompt }).then((r) => r.text),
-      protectHead: 3,
-      tailTokenBudget: 20000,
-      minTailMessages: 2,
-      tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),
-    }),
-  )
-  .compactAfter(100_000);
+	.withContext("memory", { maxTokens: 1100 })
+	.onCompaction(
+		createCompactFunction({
+			summarize: (prompt) =>
+				generateText({ model: myModel, prompt }).then((r) => r.text),
+			protectHead: 3,
+			tailTokenBudget: 20000,
+			minTailMessages: 2,
+			tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),
+		}),
+	)
+	.compactAfter(100_000);
 ```
-
-**TypeScript**
 
 ```ts
 import { createCompactFunction } from "agents/experimental/memory/utils/compaction-helpers";
 
-
 const session = Session.create(this)
-  .withContext("memory", { maxTokens: 1100 })
-  .onCompaction(
-    createCompactFunction({
-      summarize: (prompt) =>
-        generateText({ model: myModel, prompt }).then((r) => r.text),
-      protectHead: 3,
-      tailTokenBudget: 20000,
-      minTailMessages: 2,
-      tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),
-    }),
-  )
-  .compactAfter(100_000);
+	.withContext("memory", { maxTokens: 1100 })
+	.onCompaction(
+		createCompactFunction({
+			summarize: (prompt) =>
+				generateText({ model: myModel, prompt }).then((r) => r.text),
+			protectHead: 3,
+			tailTokenBudget: 20000,
+			minTailMessages: 2,
+			tokenCounter: async (messages) => estimateWithYourTokenizer({ messages }),
+		}),
+	)
+	.compactAfter(100_000);
 ```
 
 ### How compaction works
@@ -665,25 +521,16 @@ When `getHistory()` is called, compaction overlays are applied transparently —
 
 ### Manual compaction
 
-* [  JavaScript ](#tab-panel-6861)
-* [  TypeScript ](#tab-panel-6862)
-
-**JavaScript**
-
 ```js
 const result = await session.compact();
-
 
 // Or manage overlays directly
 await session.addCompaction("Summary of messages 1-50", "msg-1", "msg-50");
 const overlays = await session.getCompactions();
 ```
 
-**TypeScript**
-
 ```ts
 const result = await session.compact();
-
 
 // Or manage overlays directly
 await session.addCompaction("Summary of messages 1-50", "msg-1", "msg-50");
@@ -707,51 +554,44 @@ There are two token-counting decisions:
 
 You usually only need to configure one counter. The `.compactAfter()` counter also flows into `createCompactFunction`'s boundary walk (via `CompactContext`) when no explicit `createCompactFunction({ tokenCounter })` is given, so a single counter drives both "should we compact?" and "what should we compact?".
 
-Warning
+Caution
 
 The flowed counter is invoked **per message** during the boundary walk. A tokenizer-style counter budgets accurately; a usage-only counter that returns a fixed whole-prompt total (for example `usage.inputTokens` regardless of which messages are passed) degrades the tail budget to `minTailMessages` — compaction still runs and context stays bounded, but the byte budget is effectively ignored. Pass an explicit per-message `createCompactFunction({ tokenCounter })` for precise tail budgeting.
 
 Use a custom counter when you have model-reported usage or your own tokenizer:
 
-* [  JavaScript ](#tab-panel-6871)
-* [  TypeScript ](#tab-panel-6872)
-
-**JavaScript**
-
 ```js
 const session = Session.create(this)
-  .onCompaction(myCompactFn)
-  .compactAfter(100_000, {
-    tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {
-      return estimateWithYourTokenizer({
-        messages,
-        systemPrompt,
-        contextBlocks,
-      });
-    },
-  })
-  .onCompactionError((err) => {
-    console.warn("Auto-compaction failed", err);
-  });
+	.onCompaction(myCompactFn)
+	.compactAfter(100_000, {
+		tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {
+			return estimateWithYourTokenizer({
+				messages,
+				systemPrompt,
+				contextBlocks,
+			});
+		},
+	})
+	.onCompactionError((err) => {
+		console.warn("Auto-compaction failed", err);
+	});
 ```
-
-**TypeScript**
 
 ```ts
 const session = Session.create(this)
-  .onCompaction(myCompactFn)
-  .compactAfter(100_000, {
-    tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {
-      return estimateWithYourTokenizer({
-        messages,
-        systemPrompt,
-        contextBlocks,
-      });
-    },
-  })
-  .onCompactionError((err) => {
-    console.warn("Auto-compaction failed", err);
-  });
+	.onCompaction(myCompactFn)
+	.compactAfter(100_000, {
+		tokenCounter: async ({ messages, systemPrompt, contextBlocks }) => {
+			return estimateWithYourTokenizer({
+				messages,
+				systemPrompt,
+				contextBlocks,
+			});
+		},
+	})
+	.onCompactionError((err) => {
+		console.warn("Auto-compaction failed", err);
+	});
 ```
 
 Note
@@ -764,37 +604,28 @@ The default token estimation is heuristic (not tiktoken). It uses `max(chars/4, 
 
 ### Creating a SessionManager
 
-* [  JavaScript ](#tab-panel-6867)
-* [  TypeScript ](#tab-panel-6868)
-
-**JavaScript**
-
 ```js
 import { SessionManager } from "agents/experimental/memory/session";
 
-
 const manager = SessionManager.create(this)
-  .withContext("soul", { provider: { get: async () => "You are helpful." } })
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-  .withCachedPrompt()
-  .onCompaction(myCompactFn)
-  .compactAfter(100_000)
-  .withSearchableHistory("history");
+	.withContext("soul", { provider: { get: async () => "You are helpful." } })
+	.withContext("memory", { description: "Learned facts", maxTokens: 1100 })
+	.withCachedPrompt()
+	.onCompaction(myCompactFn)
+	.compactAfter(100_000)
+	.withSearchableHistory("history");
 ```
-
-**TypeScript**
 
 ```ts
 import { SessionManager } from "agents/experimental/memory/session";
 
-
 const manager = SessionManager.create(this)
-  .withContext("soul", { provider: { get: async () => "You are helpful." } })
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-  .withCachedPrompt()
-  .onCompaction(myCompactFn)
-  .compactAfter(100_000)
-  .withSearchableHistory("history");
+	.withContext("soul", { provider: { get: async () => "You are helpful." } })
+	.withContext("memory", { description: "Learned facts", maxTokens: 1100 })
+	.withCachedPrompt()
+	.onCompaction(myCompactFn)
+	.compactAfter(100_000)
+	.withSearchableHistory("history");
 ```
 
 Context blocks, prompt caching, and compaction settings are propagated to all sessions created through the manager. Provider keys are automatically namespaced by session ID.
@@ -813,66 +644,49 @@ Context blocks, prompt caching, and compaction settings are propagated to all se
 
 ### Session lifecycle
 
-* [  JavaScript ](#tab-panel-6879)
-* [  TypeScript ](#tab-panel-6880)
-
-**JavaScript**
-
 ```js
 // Create a new session
 const info = await manager.create("My Chat");
 
-
 // Create with metadata
 const info2 = await manager.create("My Chat", {
-  parentSessionId: "parent-id",
-  model: "claude-sonnet-4-20250514",
-  source: "web",
+	parentSessionId: "parent-id",
+	model: "claude-sonnet-4-20250514",
+	source: "web",
 });
-
 
 // Get session metadata (null if not found)
 const session = await manager.get(sessionId);
 
-
 // List all sessions (ordered by updated_at DESC)
 const sessions = await manager.list();
 
-
 // Rename
 await manager.rename(sessionId, "New Name");
-
 
 // Delete (clears messages too)
 await manager.delete(sessionId);
 ```
 
-**TypeScript**
-
 ```ts
 // Create a new session
 const info = await manager.create("My Chat");
 
-
 // Create with metadata
 const info2 = await manager.create("My Chat", {
-  parentSessionId: "parent-id",
-  model: "claude-sonnet-4-20250514",
-  source: "web",
+	parentSessionId: "parent-id",
+	model: "claude-sonnet-4-20250514",
+	source: "web",
 });
-
 
 // Get session metadata (null if not found)
 const session = await manager.get(sessionId);
 
-
 // List all sessions (ordered by updated_at DESC)
 const sessions = await manager.list();
 
-
 // Rename
 await manager.rename(sessionId, "New Name");
-
 
 // Delete (clears messages too)
 await manager.delete(sessionId);
@@ -880,18 +694,11 @@ await manager.delete(sessionId);
 
 ### Accessing sessions
 
-* [  JavaScript ](#tab-panel-6863)
-* [  TypeScript ](#tab-panel-6864)
-
-**JavaScript**
-
 ```js
 // Get or create the Session instance for an ID
 // Lazy — creates on first access, caches for subsequent calls
 const session = manager.getSession(sessionId);
 ```
-
-**TypeScript**
 
 ```ts
 // Get or create the Session instance for an ID
@@ -903,66 +710,47 @@ const session = manager.getSession(sessionId);
 
 These delegate to the underlying Session and update the session's `updated_at` timestamp:
 
-* [  JavaScript ](#tab-panel-6881)
-* [  TypeScript ](#tab-panel-6882)
-
-**JavaScript**
-
 ```js
 // Append a single message
 await manager.append(sessionId, message, parentId);
 
-
 // Add or update (upsert)
 await manager.upsert(sessionId, message, parentId);
-
 
 // Batch append (auto-chains parent IDs)
 await manager.appendAll(sessionId, messages, parentId);
 
-
 // Read history
 const history = await manager.getHistory(sessionId, leafId);
-
 
 // Message count
 const count = await manager.getMessageCount(sessionId);
 
-
 // Clear messages
 await manager.clearMessages(sessionId);
-
 
 // Delete specific messages
 await manager.deleteMessages(sessionId, ["msg-1"]);
 ```
 
-**TypeScript**
-
 ```ts
 // Append a single message
 await manager.append(sessionId, message, parentId);
 
-
 // Add or update (upsert)
 await manager.upsert(sessionId, message, parentId);
-
 
 // Batch append (auto-chains parent IDs)
 await manager.appendAll(sessionId, messages, parentId);
 
-
 // Read history
 const history = await manager.getHistory(sessionId, leafId);
-
 
 // Message count
 const count = await manager.getMessageCount(sessionId);
 
-
 // Clear messages
 await manager.clearMessages(sessionId);
-
 
 // Delete specific messages
 await manager.deleteMessages(sessionId, ["msg-1"]);
@@ -972,17 +760,10 @@ await manager.deleteMessages(sessionId, ["msg-1"]);
 
 Fork a session at a specific message — copies history up to that point into a new session:
 
-* [  JavaScript ](#tab-panel-6869)
-* [  TypeScript ](#tab-panel-6870)
-
-**JavaScript**
-
 ```js
 const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
 // forked.parent_session_id === sessionId
 ```
-
-**TypeScript**
 
 ```ts
 const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
@@ -991,44 +772,33 @@ const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
 
 ### Compaction helpers
 
-* [  JavaScript ](#tab-panel-6877)
-* [  TypeScript ](#tab-panel-6878)
-
-**JavaScript**
-
 ```js
 // Add a compaction overlay
 await manager.addCompaction(sessionId, summary, fromId, toId);
 
-
 // Get overlays
 const compactions = await manager.getCompactions(sessionId);
 
-
 // Compact and split — marks old session as ended, creates a continuation
 const continuation = await manager.compactAndSplit(
-  sessionId,
-  summary,
-  "Continued Chat",
+	sessionId,
+	summary,
+	"Continued Chat",
 );
 ```
-
-**TypeScript**
 
 ```ts
 // Add a compaction overlay
 await manager.addCompaction(sessionId, summary, fromId, toId);
 
-
 // Get overlays
 const compactions = await manager.getCompactions(sessionId);
 
-
 // Compact and split — marks old session as ended, creates a continuation
 const continuation = await manager.compactAndSplit(
-  sessionId,
-  summary,
-  "Continued Chat",
+	sessionId,
+	summary,
+	"Continued Chat",
 );
 ```
 
@@ -1036,16 +806,9 @@ const continuation = await manager.compactAndSplit(
 
 ### Usage tracking
 
-* [  JavaScript ](#tab-panel-6873)
-* [  TypeScript ](#tab-panel-6874)
-
-**JavaScript**
-
 ```js
 await manager.addUsage(sessionId, inputTokens, outputTokens, cost);
 ```
-
-**TypeScript**
 
 ```ts
 await manager.addUsage(sessionId, inputTokens, outputTokens, cost);
@@ -1053,26 +816,17 @@ await manager.addUsage(sessionId, inputTokens, outputTokens, cost);
 
 ### Cross-session search
 
-* [  JavaScript ](#tab-panel-6875)
-* [  TypeScript ](#tab-panel-6876)
-
-**JavaScript**
-
 ```js
 // Search across all sessions (FTS5)
 const results = await manager.search("deployment Friday", { limit: 20 });
-
 
 // Get tools for the model (includes session_search)
 const tools = await manager.tools();
 ```
 
-**TypeScript**
-
 ```ts
 // Search across all sessions (FTS5)
 const results = await manager.search("deployment Friday", { limit: 20 });
-
 
 // Get tools for the model (includes session_search)
 const tools = await manager.tools();
@@ -1082,163 +836,143 @@ const tools = await manager.tools();
 
 Implement any of the four provider interfaces to plug in your own storage:
 
-* [  JavaScript ](#tab-panel-6883)
-* [  TypeScript ](#tab-panel-6884)
-
-**JavaScript**
-
 ```js
 // Read-only context
 const myProvider = {
-  get: async () => "Static content here",
+	get: async () => "Static content here",
 };
-
 
 // Writable context (enables set_context tool)
 const myWritable = {
-  get: async () => fetchFromMyDB(),
-  set: async (content) => saveToMyDB(content),
+	get: async () => fetchFromMyDB(),
+	set: async (content) => saveToMyDB(content),
 };
-
 
 // Skill provider (enables load_context tool)
 const mySkills = {
-  get: async () => "- api-ref: API Reference\n- guide: User Guide",
-  load: async (key) => fetchDocument(key),
-  set: async (key, content, description) =>
-    saveDocument(key, content, description),
+	get: async () => "- api-ref: API Reference\n- guide: User Guide",
+	load: async (key) => fetchDocument(key),
+	set: async (key, content, description) =>
+		saveDocument(key, content, description),
 };
-
 
 // Search provider (enables search_context tool)
 const mySearch = {
-  get: async () => "42 entries indexed",
-  search: async (query) => searchMyIndex(query),
-  set: async (key, content) => indexContent(key, content),
+	get: async () => "42 entries indexed",
+	search: async (query) => searchMyIndex(query),
+	set: async (key, content) => indexContent(key, content),
 };
 ```
-
-**TypeScript**
 
 ```ts
 // Read-only context
 const myProvider: ContextProvider = {
-  get: async () => "Static content here",
+	get: async () => "Static content here",
 };
-
 
 // Writable context (enables set_context tool)
 const myWritable: WritableContextProvider = {
-  get: async () => fetchFromMyDB(),
-  set: async (content) => saveToMyDB(content),
+	get: async () => fetchFromMyDB(),
+	set: async (content) => saveToMyDB(content),
 };
-
 
 // Skill provider (enables load_context tool)
 const mySkills: SkillProvider = {
-  get: async () => "- api-ref: API Reference\n- guide: User Guide",
-  load: async (key) => fetchDocument(key),
-  set: async (key, content, description) =>
-    saveDocument(key, content, description),
+	get: async () => "- api-ref: API Reference\n- guide: User Guide",
+	load: async (key) => fetchDocument(key),
+	set: async (key, content, description) =>
+		saveDocument(key, content, description),
 };
-
 
 // Search provider (enables search_context tool)
 const mySearch: SearchProvider = {
-  get: async () => "42 entries indexed",
-  search: async (query) => searchMyIndex(query),
-  set: async (key, content) => indexContent(key, content),
+	get: async () => "42 entries indexed",
+	search: async (query) => searchMyIndex(query),
+	set: async (key, content) => indexContent(key, content),
 };
 ```
 
 You can also implement `SessionProvider` to replace the SQLite storage entirely:
 
-* [  JavaScript ](#tab-panel-6885)
-* [  TypeScript ](#tab-panel-6886)
-
-**JavaScript**
-
 ```js
 const myStorage = {
-  async getMessage(id) {
-    /* ... */
-  },
-  async getHistory(leafId) {
-    /* ... */
-  },
-  async getLatestLeaf() {
-    /* ... */
-  },
-  async getBranches(messageId) {
-    /* ... */
-  },
-  async getPathLength(leafId) {
-    /* ... */
-  },
-  async appendMessage(message, parentId) {
-    /* ... */
-  },
-  async updateMessage(message) {
-    /* ... */
-  },
-  async deleteMessages(messageIds) {
-    /* ... */
-  },
-  async clearMessages() {
-    /* ... */
-  },
-  async addCompaction(summary, fromId, toId) {
-    /* ... */
-  },
-  async getCompactions() {
-    /* ... */
-  },
-  async searchMessages(query, limit) {
-    /* ... */
-  },
+	async getMessage(id) {
+		/* ... */
+	},
+	async getHistory(leafId) {
+		/* ... */
+	},
+	async getLatestLeaf() {
+		/* ... */
+	},
+	async getBranches(messageId) {
+		/* ... */
+	},
+	async getPathLength(leafId) {
+		/* ... */
+	},
+	async appendMessage(message, parentId) {
+		/* ... */
+	},
+	async updateMessage(message) {
+		/* ... */
+	},
+	async deleteMessages(messageIds) {
+		/* ... */
+	},
+	async clearMessages() {
+		/* ... */
+	},
+	async addCompaction(summary, fromId, toId) {
+		/* ... */
+	},
+	async getCompactions() {
+		/* ... */
+	},
+	async searchMessages(query, limit) {
+		/* ... */
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 const myStorage: SessionProvider = {
-  async getMessage(id) {
-    /* ... */
-  },
-  async getHistory(leafId?) {
-    /* ... */
-  },
-  async getLatestLeaf() {
-    /* ... */
-  },
-  async getBranches(messageId) {
-    /* ... */
-  },
-  async getPathLength(leafId?) {
-    /* ... */
-  },
-  async appendMessage(message, parentId?) {
-    /* ... */
-  },
-  async updateMessage(message) {
-    /* ... */
-  },
-  async deleteMessages(messageIds) {
-    /* ... */
-  },
-  async clearMessages() {
-    /* ... */
-  },
-  async addCompaction(summary, fromId, toId) {
-    /* ... */
-  },
-  async getCompactions() {
-    /* ... */
-  },
-  async searchMessages(query, limit) {
-    /* ... */
-  },
+	async getMessage(id) {
+		/* ... */
+	},
+	async getHistory(leafId?) {
+		/* ... */
+	},
+	async getLatestLeaf() {
+		/* ... */
+	},
+	async getBranches(messageId) {
+		/* ... */
+	},
+	async getPathLength(leafId?) {
+		/* ... */
+	},
+	async appendMessage(message, parentId?) {
+		/* ... */
+	},
+	async updateMessage(message) {
+		/* ... */
+	},
+	async deleteMessages(messageIds) {
+		/* ... */
+	},
+	async clearMessages() {
+		/* ... */
+	},
+	async addCompaction(summary, fromId, toId) {
+		/* ... */
+	},
+	async getCompactions() {
+		/* ... */
+	},
+	async searchMessages(query, limit) {
+		/* ... */
+	},
 };
 ```
 
@@ -1254,15 +988,10 @@ Create a Hyperdrive config for your Postgres database:
 
 ```sh
 npx wrangler hyperdrive create my-session-db \
-  --connection-string="postgresql://user:password@host:port/dbname"
+	--connection-string="postgresql://user:password@host:port/dbname"
 ```
 
 Then add the Hyperdrive binding to `wrangler.jsonc`:
-
-* [  wrangler.jsonc ](#tab-panel-6831)
-* [  wrangler.toml ](#tab-panel-6832)
-
-**JSONC**
 
 ```jsonc
 {
@@ -1282,16 +1011,12 @@ Then add the Hyperdrive binding to `wrangler.jsonc`:
 }
 ```
 
-**TOML**
-
 ```toml
 compatibility_flags = ["nodejs_compat"]
-
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
 id = "<your-hyperdrive-id>"
-
 
 [placement]
 mode = "smart"
@@ -1305,56 +1030,51 @@ The Postgres user may not have permission to create tables at runtime. Run the s
 
 ```sql
 CREATE TABLE IF NOT EXISTS assistant_messages (
-  id TEXT NOT NULL,
-  session_id TEXT NOT NULL DEFAULT '',
-  parent_id TEXT,
-  role TEXT NOT NULL,
-  content TEXT NOT NULL,
-  text_content TEXT NOT NULL DEFAULT '',
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  content_tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', text_content)) STORED,
-  PRIMARY KEY (session_id, id)
+	id TEXT NOT NULL,
+	session_id TEXT NOT NULL DEFAULT '',
+	parent_id TEXT,
+	role TEXT NOT NULL,
+	content TEXT NOT NULL,
+	text_content TEXT NOT NULL DEFAULT '',
+	created_at TIMESTAMPTZ DEFAULT NOW(),
+	content_tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', text_content)) STORED,
+	PRIMARY KEY (session_id, id)
 );
-
 
 CREATE INDEX IF NOT EXISTS idx_assistant_msg_parent
-  ON assistant_messages (parent_id);
+	ON assistant_messages (parent_id);
 CREATE INDEX IF NOT EXISTS idx_assistant_msg_session
-  ON assistant_messages (session_id);
+	ON assistant_messages (session_id);
 CREATE INDEX IF NOT EXISTS idx_assistant_msg_fts
-  ON assistant_messages USING GIN (content_tsv);
-
+	ON assistant_messages USING GIN (content_tsv);
 
 CREATE TABLE IF NOT EXISTS assistant_compactions (
-  id TEXT PRIMARY KEY,
-  session_id TEXT NOT NULL DEFAULT '',
-  summary TEXT NOT NULL,
-  from_message_id TEXT NOT NULL,
-  to_message_id TEXT NOT NULL,
-  created_at TIMESTAMPTZ DEFAULT NOW()
+	id TEXT PRIMARY KEY,
+	session_id TEXT NOT NULL DEFAULT '',
+	summary TEXT NOT NULL,
+	from_message_id TEXT NOT NULL,
+	to_message_id TEXT NOT NULL,
+	created_at TIMESTAMPTZ DEFAULT NOW()
 );
-
 
 CREATE TABLE IF NOT EXISTS cf_agents_context_blocks (
-  label TEXT PRIMARY KEY,
-  content TEXT NOT NULL,
-  updated_at TIMESTAMPTZ DEFAULT NOW()
+	label TEXT PRIMARY KEY,
+	content TEXT NOT NULL,
+	updated_at TIMESTAMPTZ DEFAULT NOW()
 );
-
 
 CREATE TABLE IF NOT EXISTS cf_agents_search_entries (
-  label TEXT NOT NULL,
-  key TEXT NOT NULL,
-  content TEXT NOT NULL,
-  content_tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', content)) STORED,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW(),
-  PRIMARY KEY (label, key)
+	label TEXT NOT NULL,
+	key TEXT NOT NULL,
+	content TEXT NOT NULL,
+	content_tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', content)) STORED,
+	created_at TIMESTAMPTZ DEFAULT NOW(),
+	updated_at TIMESTAMPTZ DEFAULT NOW(),
+	PRIMARY KEY (label, key)
 );
 
-
 CREATE INDEX IF NOT EXISTS idx_search_entries_fts
-  ON cf_agents_search_entries USING GIN (content_tsv);
+	ON cf_agents_search_entries USING GIN (content_tsv);
 ```
 
 ### 3\. Wire it up
@@ -1379,108 +1099,95 @@ pnpm add pg
 bun add pg
 ```
 
-* [  JavaScript ](#tab-panel-6887)
-* [  TypeScript ](#tab-panel-6888)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 import {
-  PostgresContextProvider,
-  PostgresSearchProvider,
-  PostgresSessionProvider,
-  Session,
+	PostgresContextProvider,
+	PostgresSearchProvider,
+	PostgresSessionProvider,
+	Session,
 } from "agents/experimental/memory/session";
 import { Client } from "pg";
 
-
 export class MyAgent extends Agent {
-  session;
-  pgClient;
+	session;
+	pgClient;
 
+	async onStart() {
+		const client = new Client({
+			connectionString: this.env.HYPERDRIVE.connectionString,
+		});
+		await client.connect();
+		this.pgClient = client;
 
-  async onStart() {
-    const client = new Client({
-      connectionString: this.env.HYPERDRIVE.connectionString,
-    });
-    await client.connect();
-    this.pgClient = client;
-
-
-    const sessionId = this.ctx.id.toString();
-    this.session = Session.create(
-      new PostgresSessionProvider(client, sessionId),
-    )
-      .withContext("soul", {
-        provider: {
-          get: async () => "You are a helpful assistant.",
-        },
-      })
-      .withContext("memory", {
-        description: "Short facts",
-        maxTokens: 1100,
-        provider: new PostgresContextProvider(client, `memory_${sessionId}`),
-      })
-      .withContext("knowledge", {
-        description: "Searchable knowledge base",
-        provider: new PostgresSearchProvider(client),
-      })
-      .withCachedPrompt(
-        new PostgresContextProvider(client, `_prompt_${sessionId}`),
-      );
-  }
+		const sessionId = this.ctx.id.toString();
+		this.session = Session.create(
+			new PostgresSessionProvider(client, sessionId),
+		)
+			.withContext("soul", {
+				provider: {
+					get: async () => "You are a helpful assistant.",
+				},
+			})
+			.withContext("memory", {
+				description: "Short facts",
+				maxTokens: 1100,
+				provider: new PostgresContextProvider(client, `memory_${sessionId}`),
+			})
+			.withContext("knowledge", {
+				description: "Searchable knowledge base",
+				provider: new PostgresSearchProvider(client),
+			})
+			.withCachedPrompt(
+				new PostgresContextProvider(client, `_prompt_${sessionId}`),
+			);
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 import {
-  PostgresContextProvider,
-  PostgresSearchProvider,
-  PostgresSessionProvider,
-  Session,
+	PostgresContextProvider,
+	PostgresSearchProvider,
+	PostgresSessionProvider,
+	Session,
 } from "agents/experimental/memory/session";
 import { Client } from "pg";
 
-
 export class MyAgent extends Agent<Env> {
-  private session?: Session;
-  private pgClient?: Client;
+	private session?: Session;
+	private pgClient?: Client;
 
+	async onStart(): Promise<void> {
+		const client = new Client({
+			connectionString: this.env.HYPERDRIVE.connectionString,
+		});
+		await client.connect();
+		this.pgClient = client;
 
-  async onStart(): Promise<void> {
-    const client = new Client({
-      connectionString: this.env.HYPERDRIVE.connectionString,
-    });
-    await client.connect();
-    this.pgClient = client;
-
-
-    const sessionId = this.ctx.id.toString();
-    this.session = Session.create(
-      new PostgresSessionProvider(client, sessionId),
-    )
-      .withContext("soul", {
-        provider: {
-          get: async () => "You are a helpful assistant.",
-        },
-      })
-      .withContext("memory", {
-        description: "Short facts",
-        maxTokens: 1100,
-        provider: new PostgresContextProvider(client, `memory_${sessionId}`),
-      })
-      .withContext("knowledge", {
-        description: "Searchable knowledge base",
-        provider: new PostgresSearchProvider(client),
-      })
-      .withCachedPrompt(
-        new PostgresContextProvider(client, `_prompt_${sessionId}`),
-      );
-  }
+		const sessionId = this.ctx.id.toString();
+		this.session = Session.create(
+			new PostgresSessionProvider(client, sessionId),
+		)
+			.withContext("soul", {
+				provider: {
+					get: async () => "You are a helpful assistant.",
+				},
+			})
+			.withContext("memory", {
+				description: "Short facts",
+				maxTokens: 1100,
+				provider: new PostgresContextProvider(client, `memory_${sessionId}`),
+			})
+			.withContext("knowledge", {
+				description: "Searchable knowledge base",
+				provider: new PostgresSearchProvider(client),
+			})
+			.withCachedPrompt(
+				new PostgresContextProvider(client, `_prompt_${sessionId}`),
+			);
+	}
 }
 ```
 
@@ -1524,7 +1231,14 @@ By default, storage is in Durable Object SQLite and tables are created lazily on
 * [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) — `AIChatAgent` with its own message persistence layer
 * [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — `setState()` for simpler key-value persistence
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#page","headline":"Sessions · Cloudflare Agents docs","description":"Persistent conversation storage with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/lifecycle/","name":"Lifecycle"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/lifecycle/sessions/","name":"Sessions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#page","headline":"Sessions · Cloudflare Agents docs","description":"Persistent conversation storage with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

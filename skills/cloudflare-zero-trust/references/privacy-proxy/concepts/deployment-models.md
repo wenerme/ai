@@ -1,16 +1,18 @@
 ---
-title: Deployment models
 description: Compare Privacy Proxy single-hop and double-hop deployment architectures for different privacy and operational requirements.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deployment models
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deployment models
 
-# Deployment models
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy supports two deployment architectures: single-hop and double-hop. The right choice depends on your privacy requirements and operational preferences.
 
@@ -122,7 +124,14 @@ Double-hop requires you to operate and maintain a proxy. If you prefer a fully m
 
 [Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to discuss which deployment model fits your use case.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/#page","headline":"Deployment models · Cloudflare Privacy Proxy docs","description":"Compare Privacy Proxy single-hop and double-hop deployment architectures for different privacy and operational requirements.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/concepts/deployment-models/","name":"Deployment models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/#page","headline":"Deployment models · Cloudflare Privacy Proxy docs","description":"Compare Privacy Proxy single-hop and double-hop deployment architectures for different privacy and operational requirements.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

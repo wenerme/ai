@@ -1,16 +1,18 @@
 ---
-title: Proxy
 description: How Proxy works in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Proxy
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Proxy
 
-# Proxy
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can forward [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) and [network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/) traffic to Gateway for logging and filtering. Gateway can proxy both outbound traffic and traffic directed to resources connected via a Cloudflare Tunnel, Generic Routing Encapsulation (GRE) tunnel, or IPsec tunnel. When a user connects to the Gateway proxy, Gateway will accept the connection and establish a new, separate connection to the origin server.
 
@@ -73,9 +75,6 @@ Gateway cannot log or filter ICMP traffic.
 
 To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `cloudflared` host to allow ICMP traffic through `cloudflared`.
 
-* [  Linux ](#tab-panel-8357)
-* [  Docker ](#tab-panel-8358)
-
 1. Ensure that `ping_group_range` includes the Group ID (GID) of the user running `cloudflared`:
 a. Find the user that owns the `cloudflared` process:
 ```sh
@@ -124,7 +123,14 @@ The Gateway proxy toggle only applies to traffic from Cloudflare One Client devi
 3. Select **TCP**.
 4. (Optional) Depending on your use case, you can select **UDP** and/or **ICMP**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#page","headline":"Proxy · Cloudflare One docs","description":"How Proxy works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/proxy/","name":"Proxy"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#page","headline":"Proxy · Cloudflare One docs","description":"How Proxy works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
 ```

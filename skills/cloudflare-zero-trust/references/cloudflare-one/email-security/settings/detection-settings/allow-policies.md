@@ -1,16 +1,18 @@
 ---
-title: Allow policies
 description: Allow policies in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Allow policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Allow policies
 
-# Allow policies
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Email security allows you to configure allow policies. An allow policy exempts messages that match certain patterns from normal detection scanning.
 
@@ -18,7 +20,7 @@ Email security allows you to configure allow policies. An allow policy exempts m
 
 Allow policies are crucial for legitimate messages that may otherwise be blocked due to, for example, an incorrect setup.
 
-Example of allow policy
+###  Example of allow policy
 
 An example of allow policy is a phishing simulation product. You want to configure a phishing simulation product as **Accept sender** so Email security does not scan the messages (or crawl links) in these simulated messages.
 
@@ -34,7 +36,7 @@ Accept sender creates exceptions for messages that would otherwise be marked as 
 
 It is recommended to choose this option, as it is the safest option to protect your email inbox from malicious or suspicious activities.
 
-Example of a use case where marketing emails that are legitimate have been blocked
+###  Example of a use case where marketing emails that are legitimate have been blocked
 
 When a marketing email does not follow the correct template, it may be marked as malicious or spam. It may not be possible to change the template. However, in this scenario, the marketing email is legitimate.
 
@@ -159,7 +161,7 @@ The following use cases show how you could configure allow policies for accept s
 
 ### Use case 1
 
-Company receives emails from third-party providers not used internally. These emails are sent from the service provider, and Email security gives these emails an incorrect disposition.
+###  Company receives emails from third-party providers not used internally. These emails are sent from the service provider, and Email security gives these emails an incorrect disposition.
 
 This use case can affect companies such as Shopify, PayPal, and Docusign.
 
@@ -171,7 +173,7 @@ To solve this:
 
 ### Use case 2
 
-Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof.
+###  Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof.
 
 This use case can cause the emails you want to receive to follow the auto-moves rules you set up. This use case affects emails from internal tools (such as Salesforce, Atlassian, and Figma) that are given an incorrect disposition.
 
@@ -182,7 +184,7 @@ To solve this, when you add an allow policy in the Cloudflare One dashboard:
 
 ### Use case 3
 
-Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof. The custom email domain does not support DMARC, SPF, or DKIM, and would fail Sender Verification.
+###  Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof. The custom email domain does not support DMARC, SPF, or DKIM, and would fail Sender Verification.
 
 This use case impacts the emails from internal tools (such as Salesforce, Atlassian, and Figma) that are given an incorrect disposition.
 
@@ -191,7 +193,7 @@ To solve this, when you add an allow policy in the Cloudflare One dashboard:
 1. Choose **Accept sender** based on the static IP you own.
 2. Ensure that **Sender verification (recommended)** is turned off.
 
-Warning
+Caution
 
 Do not use email addresses or email domains for this policy as they can be easily spoofed without **Sender Verification (Recommended)** enabled.
 
@@ -241,7 +243,14 @@ To delete multiple allow policies at once:
 2. Select **Action**.
 3. Select **Delete**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/#page","headline":"Allow policies · Cloudflare One docs","description":"Allow policies in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/settings/","name":"Settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/settings/detection-settings/","name":"Detection settings"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/email-security/settings/detection-settings/allow-policies/","name":"Allow policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/#page","headline":"Allow policies · Cloudflare One docs","description":"Allow policies in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

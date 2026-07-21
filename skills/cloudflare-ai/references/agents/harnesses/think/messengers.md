@@ -1,16 +1,18 @@
 ---
-title: Messengers
 description: Receive and reply to Chat SDK messenger webhooks directly from a Think agent, including Telegram setup, routing, conversation targets, and recovery.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Messengers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Messengers
 
-# Messengers
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/messengers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use messengers when a Think agent should receive and reply to Chat SDK webhooks directly. Think owns the webhook route, durable reply fiber, conversation routing, and streamed delivery back to the provider.
 
@@ -26,60 +28,49 @@ Provider adapters are exported from provider-specific subpaths so unused adapter
 
 ## Telegram
 
-* [  JavaScript ](#tab-panel-6123)
-* [  TypeScript ](#tab-panel-6124)
-
-**JavaScript**
-
 ```js
 import { Think } from "@cloudflare/think";
 import {
-  defineMessengers,
-  ThinkMessengerStateAgent,
+	defineMessengers,
+	ThinkMessengerStateAgent,
 } from "@cloudflare/think/messengers";
 import telegramMessenger from "@cloudflare/think/messengers/telegram";
 
-
 export { ThinkMessengerStateAgent };
 
-
 export class SupportAgent extends Think {
-  getMessengers() {
-    return defineMessengers({
-      telegram: telegramMessenger({
-        token: this.env.TELEGRAM_BOT_TOKEN,
-        userName: "support_bot",
-        secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
-      }),
-    });
-  }
+	getMessengers() {
+		return defineMessengers({
+			telegram: telegramMessenger({
+				token: this.env.TELEGRAM_BOT_TOKEN,
+				userName: "support_bot",
+				secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
+			}),
+		});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think } from "@cloudflare/think";
 import {
-  defineMessengers,
-  ThinkMessengerStateAgent,
+	defineMessengers,
+	ThinkMessengerStateAgent,
 } from "@cloudflare/think/messengers";
 import telegramMessenger from "@cloudflare/think/messengers/telegram";
 
-
 export { ThinkMessengerStateAgent };
 
-
 export class SupportAgent extends Think<Env> {
-  getMessengers() {
-    return defineMessengers({
-      telegram: telegramMessenger({
-        token: this.env.TELEGRAM_BOT_TOKEN,
-        userName: "support_bot",
-        secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
-      }),
-    });
-  }
+	getMessengers() {
+		return defineMessengers({
+			telegram: telegramMessenger({
+				token: this.env.TELEGRAM_BOT_TOKEN,
+				userName: "support_bot",
+				secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
+			}),
+		});
+	}
 }
 ```
 
@@ -93,44 +84,37 @@ https://<your-worker>/messengers/telegram/webhook
 
 If one Think agent owns multiple Telegram bots, give each provider a distinct Chat SDK adapter name:
 
-* [  JavaScript ](#tab-panel-6119)
-* [  TypeScript ](#tab-panel-6120)
-
-**JavaScript**
-
 ```js
 defineMessengers({
-  support: telegramMessenger({
-    adapterName: "support-telegram",
-    token: this.env.SUPPORT_TELEGRAM_BOT_TOKEN,
-    userName: "support_bot",
-    secretToken: this.env.SUPPORT_TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  }),
-  sales: telegramMessenger({
-    adapterName: "sales-telegram",
-    token: this.env.SALES_TELEGRAM_BOT_TOKEN,
-    userName: "sales_bot",
-    secretToken: this.env.SALES_TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  }),
+	support: telegramMessenger({
+		adapterName: "support-telegram",
+		token: this.env.SUPPORT_TELEGRAM_BOT_TOKEN,
+		userName: "support_bot",
+		secretToken: this.env.SUPPORT_TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	}),
+	sales: telegramMessenger({
+		adapterName: "sales-telegram",
+		token: this.env.SALES_TELEGRAM_BOT_TOKEN,
+		userName: "sales_bot",
+		secretToken: this.env.SALES_TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	}),
 });
 ```
 
-**TypeScript**
-
 ```ts
 defineMessengers({
-  support: telegramMessenger({
-    adapterName: "support-telegram",
-    token: this.env.SUPPORT_TELEGRAM_BOT_TOKEN,
-    userName: "support_bot",
-    secretToken: this.env.SUPPORT_TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  }),
-  sales: telegramMessenger({
-    adapterName: "sales-telegram",
-    token: this.env.SALES_TELEGRAM_BOT_TOKEN,
-    userName: "sales_bot",
-    secretToken: this.env.SALES_TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  }),
+	support: telegramMessenger({
+		adapterName: "support-telegram",
+		token: this.env.SUPPORT_TELEGRAM_BOT_TOKEN,
+		userName: "support_bot",
+		secretToken: this.env.SUPPORT_TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	}),
+	sales: telegramMessenger({
+		adapterName: "sales-telegram",
+		token: this.env.SALES_TELEGRAM_BOT_TOKEN,
+		userName: "sales_bot",
+		secretToken: this.env.SALES_TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	}),
 });
 ```
 
@@ -142,28 +126,21 @@ The root Think agent handles messenger webhook routes after framework sub-agent 
 
 By default, Think replies to direct messages and mentions. New mentions subscribe the Chat SDK thread so later mentions in the same thread are still observed, but ordinary subscribed-thread messages and button actions are ignored unless you opt in:
 
-* [  JavaScript ](#tab-panel-6113)
-* [  TypeScript ](#tab-panel-6114)
-
-**JavaScript**
-
 ```js
 telegramMessenger({
-  token: this.env.TELEGRAM_BOT_TOKEN,
-  userName: "support_bot",
-  secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  respondTo: ["direct-message", "mention", "subscribed-thread", "action"],
+	token: this.env.TELEGRAM_BOT_TOKEN,
+	userName: "support_bot",
+	secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	respondTo: ["direct-message", "mention", "subscribed-thread", "action"],
 });
 ```
 
-**TypeScript**
-
 ```ts
 telegramMessenger({
-  token: this.env.TELEGRAM_BOT_TOKEN,
-  userName: "support_bot",
-  secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  respondTo: ["direct-message", "mention", "subscribed-thread", "action"],
+	token: this.env.TELEGRAM_BOT_TOKEN,
+	userName: "support_bot",
+	secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	respondTo: ["direct-message", "mention", "subscribed-thread", "action"],
 });
 ```
 
@@ -175,65 +152,51 @@ The default conversation mode is one Think sub-agent per Chat SDK thread. This k
 
 Use the root agent as the conversation when all messenger traffic should share one Think session:
 
-* [  JavaScript ](#tab-panel-6115)
-* [  TypeScript ](#tab-panel-6116)
-
-**JavaScript**
-
 ```js
 telegramMessenger({
-  token: this.env.TELEGRAM_BOT_TOKEN,
-  userName: "support_bot",
-  secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  conversation: "self",
+	token: this.env.TELEGRAM_BOT_TOKEN,
+	userName: "support_bot",
+	secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	conversation: "self",
 });
 ```
 
-**TypeScript**
-
 ```ts
 telegramMessenger({
-  token: this.env.TELEGRAM_BOT_TOKEN,
-  userName: "support_bot",
-  secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  conversation: "self",
+	token: this.env.TELEGRAM_BOT_TOKEN,
+	userName: "support_bot",
+	secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	conversation: "self",
 });
 ```
 
 Use a resolver when routing depends on tenant, channel, thread, or user:
 
-* [  JavaScript ](#tab-panel-6121)
-* [  TypeScript ](#tab-panel-6122)
-
-**JavaScript**
-
 ```js
 telegramMessenger({
-  token: this.env.TELEGRAM_BOT_TOKEN,
-  userName: "support_bot",
-  secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  conversation(event) {
-    return {
-      target: "subagent",
-      name: `tenant:${event.thread.channelId ?? event.thread.id}`,
-    };
-  },
+	token: this.env.TELEGRAM_BOT_TOKEN,
+	userName: "support_bot",
+	secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	conversation(event) {
+		return {
+			target: "subagent",
+			name: `tenant:${event.thread.channelId ?? event.thread.id}`,
+		};
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 telegramMessenger({
-  token: this.env.TELEGRAM_BOT_TOKEN,
-  userName: "support_bot",
-  secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
-  conversation(event) {
-    return {
-      target: "subagent",
-      name: `tenant:${event.thread.channelId ?? event.thread.id}`,
-    };
-  },
+	token: this.env.TELEGRAM_BOT_TOKEN,
+	userName: "support_bot",
+	secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN,
+	conversation(event) {
+		return {
+			target: "subagent",
+			name: `tenant:${event.thread.channelId ?? event.thread.id}`,
+		};
+	},
 });
 ```
 
@@ -253,24 +216,17 @@ Delivery errors use a generic user-facing message by default so internal excepti
 
 During a messenger turn, `getMessengerContext()` returns provider, thread, author, message, capabilities, and attachment metadata for the initiating event. Use it from prompts, tools, or hooks that need channel-specific behavior.
 
-* [  JavaScript ](#tab-panel-6117)
-* [  TypeScript ](#tab-panel-6118)
-
-**JavaScript**
-
 ```js
 const messenger = this.getMessengerContext();
 if (messenger?.thread.isDirectMessage === false) {
-  // Adjust behavior for group chats.
+	// Adjust behavior for group chats.
 }
 ```
-
-**TypeScript**
 
 ```ts
 const messenger = this.getMessengerContext();
 if (messenger?.thread.isDirectMessage === false) {
-  // Adjust behavior for group chats.
+	// Adjust behavior for group chats.
 }
 ```
 
@@ -278,32 +234,25 @@ if (messenger?.thread.isDirectMessage === false) {
 
 Use `chatSdkMessenger()` for providers that do not have a Think helper yet:
 
-* [  JavaScript ](#tab-panel-6125)
-* [  TypeScript ](#tab-panel-6126)
-
-**JavaScript**
-
 ```js
 chatSdkMessenger({
-  adapter,
-  provider: "custom",
-  userName: "custom_bot",
-  verifyWebhook(request) {
-    return request.headers.get("x-custom-signature") === expectedSignature;
-  },
+	adapter,
+	provider: "custom",
+	userName: "custom_bot",
+	verifyWebhook(request) {
+		return request.headers.get("x-custom-signature") === expectedSignature;
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 chatSdkMessenger({
-  adapter,
-  provider: "custom",
-  userName: "custom_bot",
-  verifyWebhook(request) {
-    return request.headers.get("x-custom-signature") === expectedSignature;
-  },
+	adapter,
+	provider: "custom",
+	userName: "custom_bot",
+	verifyWebhook(request) {
+		return request.headers.get("x-custom-signature") === expectedSignature;
+	},
 });
 ```
 
@@ -315,7 +264,14 @@ The `examples/think-chat-sdk` example demonstrates the Think-native `getMessenge
 
 The `examples/chat-sdk-messenger` example demonstrates a larger manual ingress agent with an admin dashboard, menu handling, and application-owned reply fibers. Use `getMessengers()` for the simple Think-native path. Use the example when you need to own the Chat SDK runtime and control-plane UI yourself. Refer to [Chat SDK state](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/) for the underlying state adapter.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/messengers/#page","headline":"Messengers · Cloudflare Agents docs","description":"Receive and reply to Chat SDK messenger webhooks directly from a Think agent, including Telegram setup, routing, conversation targets, and recovery.","url":"https://developers.cloudflare.com/agents/harnesses/think/messengers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/messengers/","name":"Messengers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/messengers/#page","headline":"Messengers · Cloudflare Agents docs","description":"Receive and reply to Chat SDK messenger webhooks directly from a Think agent, including Telegram setup, routing, conversation targets, and recovery.","url":"https://developers.cloudflare.com/agents/harnesses/think/messengers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

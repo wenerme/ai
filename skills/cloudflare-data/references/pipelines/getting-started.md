@@ -1,16 +1,18 @@
 ---
-title: Getting started
 description: Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Getting started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Getting started
 
-# Getting started
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/getting-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
@@ -33,7 +35,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 Pipelines must authenticate to R2 Data Catalog with an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) that has catalog and R2 permissions.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Manage API tokens**.
 3. Select **Create Account API token**.
 4. Give your API token a name.
@@ -47,37 +49,34 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 2\. Create your first pipeline
 
-* [ Wrangler CLI ](#tab-panel-10309)
-* [ Dashboard ](#tab-panel-10310)
-
 First, create a schema file that defines your ecommerce data structure:
 
 **Create `schema.json`:**
 
 ```json
 {
-  "fields": [
-    {
-      "name": "user_id",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "event_type",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "product_id",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "amount",
-      "type": "float64",
-      "required": false
-    }
-  ]
+	"fields": [
+		{
+			"name": "user_id",
+			"type": "string",
+			"required": true
+		},
+		{
+			"name": "event_type",
+			"type": "string",
+			"required": true
+		},
+		{
+			"name": "product_id",
+			"type": "string",
+			"required": false
+		},
+		{
+			"name": "amount",
+			"type": "float64",
+			"required": false
+		}
+	]
 }
 ```
 
@@ -134,13 +133,13 @@ npx wrangler pipelines setup --name ecommerce
 ```
 
 1. In the Cloudflare dashboard, go to **R2 object storage**.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket** and enter the bucket name: `pipelines-tutorial`.
 3. Select **Create bucket**.
 4. Select the bucket, switch to the **Settings** tab, scroll down to **R2 Data Catalog**, and select **Enable**.
 5. Once enabled, note the **Catalog URI** and **Warehouse name**.
 6. Go to **Pipelines** \> **Pipelines**.
-[ Go to **Pipelines** ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+[ Go to **Pipelines** ↗ ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 7. Select **Create Pipeline**.
 8. **Connect to a Stream**:
 
@@ -154,28 +153,28 @@ npx wrangler pipelines setup --name ecommerce
   * Copy in the schema:
   ```json
   {
-    "fields": [
-      {
-        "name": "user_id",
-        "type": "string",
-        "required": true
-      },
-      {
-        "name": "event_type",
-        "type": "string",
-        "required": true
-      },
-      {
-        "name": "product_id",
-        "type": "string",
-        "required": false
-      },
-      {
-        "name": "amount",
-        "type": "float64",
-        "required": false
-      }
-    ]
+  	"fields": [
+  		{
+  			"name": "user_id",
+  			"type": "string",
+  			"required": true
+  		},
+  		{
+  			"name": "event_type",
+  			"type": "string",
+  			"required": true
+  		},
+  		{
+  			"name": "product_id",
+  			"type": "string",
+  			"required": false
+  		},
+  		{
+  			"name": "amount",
+  			"type": "float64",
+  			"required": false
+  		}
+  	]
   }
   ```
   * Select **Next**
@@ -274,15 +273,30 @@ You can also query this table with any engine that supports Apache Iceberg. To l
 
 ## Learn more
 
-[ Streams ](https://developers.cloudflare.com/pipelines/streams/) Learn about configuring streams for data ingestion.
+### [ Streams ](https://developers.cloudflare.com/pipelines/streams/)
 
-[ Pipelines ](https://developers.cloudflare.com/pipelines/pipelines/) Understand SQL transformations and pipeline configuration.
+ Learn about configuring streams for data ingestion.
 
-[ Sinks ](https://developers.cloudflare.com/pipelines/sinks/) Configure data destinations and output formats.
+### [ Pipelines ](https://developers.cloudflare.com/pipelines/pipelines/)
 
-[ Examples ](https://developers.cloudflare.com/pipelines/examples/) Browse end-to-end examples that show how to build with Pipelines.
+ Understand SQL transformations and pipeline configuration.
+
+### [ Sinks ](https://developers.cloudflare.com/pipelines/sinks/)
+
+ Configure data destinations and output formats.
+
+### [ Examples ](https://developers.cloudflare.com/pipelines/examples/)
+
+ Browse end-to-end examples that show how to build with Pipelines.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/getting-started/#page","headline":"Getting started · Cloudflare Pipelines Docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/pipelines/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/getting-started/","name":"Getting started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/getting-started/#page","headline":"Getting started · Cloudflare Pipelines Docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/pipelines/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

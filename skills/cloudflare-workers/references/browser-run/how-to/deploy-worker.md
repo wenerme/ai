@@ -1,16 +1,18 @@
 ---
-title: Deploy a Browser Run Worker
 description: Create and deploy a Cloudflare Worker that uses Browser Run to take screenshots from web pages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy a Browser Run Worker
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy a Browser Run Worker
 
-# Deploy a Browser Run Worker
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/how-to/deploy-worker/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By following this guide, you will create a Worker that uses the Browser Run API to take screenshots from web pages. This is a common use case for browser automation.
 
@@ -92,46 +94,37 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-7537)
-* [  wrangler.toml ](#tab-panel-7538)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "browser-worker",
-  "main": "src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": ["nodejs_compat"],
-  "browser": {
-    "binding": "MYBROWSER"
-  },
-  "kv_namespaces": [
-    {
-      "binding": "BROWSER_KV_DEMO",
-      "id": "22cf855786094a88a6906f8edac425cd",
-      "preview_id": "e1f8b68b68d24381b57071445f96e623"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "browser-worker",
+	"main": "src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": ["nodejs_compat"],
+	"browser": {
+		"binding": "MYBROWSER"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "BROWSER_KV_DEMO",
+			"id": "22cf855786094a88a6906f8edac425cd",
+			"preview_id": "e1f8b68b68d24381b57071445f96e623"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "browser-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [browser]
 binding = "MYBROWSER"
-
 
 [[kv_namespaces]]
 binding = "BROWSER_KV_DEMO"
@@ -141,88 +134,78 @@ preview_id = "e1f8b68b68d24381b57071445f96e623"
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-7535)
-* [  TypeScript ](#tab-panel-7536)
-
 Update `src/index.js` with your Worker code:
-
-**JavaScript**
 
 ```js
 import puppeteer from "@cloudflare/puppeteer";
 
-
 export default {
-  async fetch(request, env) {
-    const { searchParams } = new URL(request.url);
-    let url = searchParams.get("url");
-    let img;
-    if (url) {
-      url = new URL(url).toString(); // normalize
-      img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
-      if (img === null) {
-        const browser = await puppeteer.launch(env.MYBROWSER);
-        const page = await browser.newPage();
-        await page.goto(url);
-        img = await page.screenshot();
-        await env.BROWSER_KV_DEMO.put(url, img, {
-          expirationTtl: 60 * 60 * 24,
-        });
-        await browser.close();
-      }
-      return new Response(img, {
-        headers: {
-          "content-type": "image/jpeg",
-        },
-      });
-    } else {
-      return new Response("Please add an ?url=https://example.com/ parameter");
-    }
-  },
+	async fetch(request, env) {
+		const { searchParams } = new URL(request.url);
+		let url = searchParams.get("url");
+		let img;
+		if (url) {
+			url = new URL(url).toString(); // normalize
+			img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
+			if (img === null) {
+				const browser = await puppeteer.launch(env.MYBROWSER);
+				const page = await browser.newPage();
+				await page.goto(url);
+				img = await page.screenshot();
+				await env.BROWSER_KV_DEMO.put(url, img, {
+					expirationTtl: 60 * 60 * 24,
+				});
+				await browser.close();
+			}
+			return new Response(img, {
+				headers: {
+					"content-type": "image/jpeg",
+				},
+			});
+		} else {
+			return new Response("Please add an ?url=https://example.com/ parameter");
+		}
+	},
 };
 ```
 
 Update `src/index.ts` with your Worker code:
 
-**TypeScript**
-
 ```ts
 import puppeteer from "@cloudflare/puppeteer";
 
-
 interface Env {
-  MYBROWSER: Fetcher;
-  BROWSER_KV_DEMO: KVNamespace;
+	MYBROWSER: Fetcher;
+	BROWSER_KV_DEMO: KVNamespace;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const { searchParams } = new URL(request.url);
-    let url = searchParams.get("url");
-    let img: Buffer;
-    if (url) {
-      url = new URL(url).toString(); // normalize
-      img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
-      if (img === null) {
-        const browser = await puppeteer.launch(env.MYBROWSER);
-        const page = await browser.newPage();
-        await page.goto(url);
-        img = (await page.screenshot()) as Buffer;
-        await env.BROWSER_KV_DEMO.put(url, img, {
-          expirationTtl: 60 * 60 * 24,
-        });
-        await browser.close();
-      }
-      return new Response(img, {
-        headers: {
-          "content-type": "image/jpeg",
-        },
-      });
-    } else {
-      return new Response("Please add an ?url=https://example.com/ parameter");
-    }
-  },
+	async fetch(request, env): Promise<Response> {
+		const { searchParams } = new URL(request.url);
+		let url = searchParams.get("url");
+		let img: Buffer;
+		if (url) {
+			url = new URL(url).toString(); // normalize
+			img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
+			if (img === null) {
+				const browser = await puppeteer.launch(env.MYBROWSER);
+				const page = await browser.newPage();
+				await page.goto(url);
+				img = (await page.screenshot()) as Buffer;
+				await env.BROWSER_KV_DEMO.put(url, img, {
+					expirationTtl: 60 * 60 * 24,
+				});
+				await browser.close();
+			}
+			return new Response(img, {
+				headers: {
+					"content-type": "image/jpeg",
+				},
+			});
+		} else {
+			return new Response("Please add an ?url=https://example.com/ parameter");
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -258,7 +241,14 @@ To take your first screenshot, go to the following URL:
 
 * Other [Puppeteer examples ↗](https://github.com/cloudflare/puppeteer/tree/main/examples)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/deploy-worker/#page","headline":"Deploy a Browser Run Worker · Cloudflare Browser Run docs","description":"Create and deploy a Cloudflare Worker that uses Browser Run to take screenshots from web pages.","url":"https://developers.cloudflare.com/browser-run/how-to/deploy-worker/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/how-to/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/how-to/deploy-worker/","name":"Deploy a Browser Run Worker"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/deploy-worker/#page","headline":"Deploy a Browser Run Worker · Cloudflare Browser Run docs","description":"Create and deploy a Cloudflare Worker that uses Browser Run to take screenshots from web pages.","url":"https://developers.cloudflare.com/browser-run/how-to/deploy-worker/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

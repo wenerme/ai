@@ -1,16 +1,18 @@
 ---
-title: Common use cases
 description: Common WAF custom rule use cases and example configurations.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Common use cases
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Common use cases
 
-# Common use cases
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/custom-rules/use-cases/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following common use cases illustrate how to secure web traffic to your sites and applications with custom rules:
 
@@ -33,7 +35,14 @@ The following common use cases illustrate how to secure web traffic to your site
 * [ Stop R-U-Dead-Yet? (R.U.D.Y.) attacks ](https://developers.cloudflare.com/waf/custom-rules/use-cases/stop-rudy-attacks/)
 * [ Update custom rules for customers or partners ](https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/#page","headline":"Common use cases for custom rules · Cloudflare Web Application Firewall (WAF) docs","description":"Common WAF custom rule use cases and example configurations.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/use-cases/","name":"Common use cases"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/custom-rules/use-cases/#page","headline":"Common use cases for custom rules · Cloudflare Web Application Firewall (WAF) docs","description":"Common WAF custom rule use cases and example configurations.","url":"https://developers.cloudflare.com/waf/custom-rules/use-cases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

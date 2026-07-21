@@ -1,16 +1,18 @@
 ---
-title: API error codes
 description: Troubleshoot API and public endpoint errors.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: API error codes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  API error codes
 
-# API error codes
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When a request to the AI Search API or a public endpoint fails, it returns one of the errors documented on this page.
 
@@ -22,14 +24,14 @@ The REST API and public endpoints return errors in a JSON envelope:
 
 ```json
 {
-  "success": false,
-  "errors": [
-    {
-      "code": 7002,
-      "message": "ai_search_not_found"
-    }
-  ],
-  "result": {}
+	"success": false,
+	"errors": [
+		{
+			"code": 7002,
+			"message": "ai_search_not_found"
+		}
+	],
+	"result": {}
 }
 ```
 
@@ -228,7 +230,14 @@ If an API request fails, check the `code` and `message` fields in the error resp
 
 For transient service errors, retry with exponential backoff. If an internal or service error persists, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the error code, instance ID, and request timestamp.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/#page","headline":"API error codes · Cloudflare AI Search docs","description":"Troubleshoot API and public endpoint errors.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/troubleshooting/api-error-codes/","name":"API error codes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/#page","headline":"API error codes · Cloudflare AI Search docs","description":"Troubleshoot API and public endpoint errors.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

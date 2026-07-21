@@ -1,16 +1,18 @@
 ---
-title: Slack
 description: Reference information for Slack in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Slack
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Slack
 
-# Slack
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/slack/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Slack integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Slack Workspace that could leave you and your organization vulnerable.
 
@@ -57,7 +59,14 @@ To stay up-to-date with new CASB findings as they are added, bookmark this page 
 | Slack: File publicly accessible with view access | 9d96d3a2-696b-4802-98aa-c6c8572e806e | Medium   | An external link has been created for a file uploaded to the Slack Workspace. |
 | Slack: File larger than 2 GB                     | c16d64a8-9f78-4f24-99ff-de7fcdc6871b | Low      | A file ≥ 2 GB has been uploaded to the Slack Workspace.                       |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/slack/#page","headline":"Slack · Cloudflare One docs","description":"Reference information for Slack in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/slack/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Slack"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/","name":"Cloud and SaaS integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/slack/","name":"Slack"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/slack/#page","headline":"Slack · Cloudflare One docs","description":"Reference information for Slack in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/slack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Slack"]}
 ```

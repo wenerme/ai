@@ -1,16 +1,18 @@
 ---
-title: Filters
 description: Apply filters to Logpush job log output.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Filters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Filters
 
-# Filters
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following table represents the comparison operators that are supported and example values. Filters are added as escaped JSON strings formatted as `{"key":"<field>","operator":"<comparison_operator>","value":"<value>"}`.
 
@@ -75,28 +77,26 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "static-assets",
-    "output_options": {
-        "field_names": [
-            "ClientIP",
-            "EdgeStartTimestamp",
-            "RayID"
-        ],
-        "sample_rate": 0.1,
-        "timestamp_format": "rfc3339",
-        "CVE-2021-44228": true
-    },
-    "dataset": "http_requests",
-    "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
-    "destination_conf": "s3://<BUCKET_PATH>?region=us-west-2/"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "static-assets",
+		"output_options": {
+				"field_names": [
+						"ClientIP",
+						"EdgeStartTimestamp",
+						"RayID"
+				],
+				"sample_rate": 0.1,
+				"timestamp_format": "rfc3339",
+				"CVE-2021-44228": true
+		},
+		"dataset": "http_requests",
+		"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+		"destination_conf": "s3://<BUCKET_PATH>?region=us-west-2/"
+	}'
 ```
 
 ### Dashboard
@@ -104,15 +104,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 To set filters through the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+For account: [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
+For domain (also known as zone): [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Select the dataset you want to push to a storage service. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Below **Select data fields**, in the **Filter** section, you can set up your filters.
 4. You need to select a [dataset field](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/), an [Operator](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/#logical-operators), and a **Value**.
 5. You can connect more filters using `AND` and `OR` logical operators.
 6. Select **Next** to continue the setting up of your Logpush job.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/#page","headline":"Filters · Cloudflare Logs docs","description":"Apply filters to Logpush job log output.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/filters/","name":"Filters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/#page","headline":"Filters · Cloudflare Logs docs","description":"Apply filters to Logpush job log output.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/filters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

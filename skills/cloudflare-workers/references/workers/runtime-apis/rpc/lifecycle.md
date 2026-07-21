@@ -1,22 +1,22 @@
 ---
-title: Lifecycle
 description: Memory management, resource management, and the lifecycle of RPC stubs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Lifecycle
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Lifecycle
 
-# Lifecycle
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Lifetimes, Memory and Resource Management
 
 When you call another Worker over RPC using a Service binding, you are using memory in the Worker you are calling. Consider the following example:
-
-**JavaScript**
 
 ```js
 let user = await env.USER_SERVICE.findUser(id);
@@ -39,13 +39,10 @@ Explicit Resource Management adds the following language features:
 
 If a variable is declared with `using`, when the variable is no longer in scope, the variable's disposer will be invoked. For example:
 
-**JavaScript**
-
 ```js
 function sendEmail(id, message) {
   using user = await env.USER_SERVICE.findUser(id);
   await user.sendEmail(message);
-
 
   // user[Symbol.dispose]() is implicitly called at the end of the scope.
 }
@@ -59,29 +56,25 @@ function sendEmail(id, message) {
 
 The following code:
 
-**JavaScript**
-
 ```js
 {
-  using counter = await env.COUNTER_SERVICE.newCounter();
-  await counter.increment(2);
-  await counter.increment(4);
+	using counter = await env.COUNTER_SERVICE.newCounter();
+	await counter.increment(2);
+	await counter.increment(4);
 }
 ```
 
 ...is equivalent to:
 
-**JavaScript**
-
 ```js
 {
-  const counter = await env.COUNTER_SERVICE.newCounter();
-  try {
-    await counter.increment(2);
-    await counter.increment(4);
-  } finally {
-    counter[Symbol.dispose]();
-  }
+	const counter = await env.COUNTER_SERVICE.newCounter();
+	try {
+		await counter.increment(2);
+		await counter.increment(4);
+	} finally {
+		counter[Symbol.dispose]();
+	}
 }
 ```
 
@@ -99,22 +92,19 @@ More precisely, the event has an "execution context", which begins when the hand
 
 For example, the Worker below does not make use of the `using` declaration, but stubs will be disposed of once the `fetch()` handler returns a response:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    let authResult = await env.AUTH_SERVICE.checkCookie(
-      req.headers.get("Cookie"),
-    );
-    if (!authResult.authorized) {
-      return new Response("Not authorized", { status: 403 });
-    }
-    let profile = await authResult.user.getProfile();
+	async fetch(request, env, ctx) {
+		let authResult = await env.AUTH_SERVICE.checkCookie(
+			req.headers.get("Cookie"),
+		);
+		if (!authResult.authorized) {
+			return new Response("Not authorized", { status: 403 });
+		}
+		let profile = await authResult.user.getProfile();
 
-
-    return new Response(`Hello, ${profile.name}!`);
-  },
+		return new Response(`Hello, ${profile.name}!`);
+	},
 };
 ```
 
@@ -130,8 +120,6 @@ When an RPC returns any kind of object, that object will have a disposer added b
 
 This means you should almost always store the result of an RPC into a `using` declaration:
 
-**JavaScript**
-
 ```js
 using result = stub.foo();
 ```
@@ -144,13 +132,11 @@ If you decide you want to keep a returned stub beyond the scope of the `using` d
 
 A class that extends [RpcTarget](https://developers.cloudflare.com/workers/runtime-apis/rpc/) can optionally implement a disposer:
 
-**JavaScript**
-
 ```js
 class Foo extends RpcTarget {
-  [Symbol.dispose]() {
-    // ...
-  }
+	[Symbol.dispose]() {
+		// ...
+	}
 }
 ```
 
@@ -160,19 +146,14 @@ The RpcTarget's disposer runs after the last stub is disposed. Note that the cli
 
 Sometimes, you need to pass a stub to a function which will dispose the stub when it is done, but you also want to keep the stub for later use. To solve this problem, you can "dup" the stub:
 
-**JavaScript**
-
 ```js
 let stub = await env.SOME_SERVICE.getThing();
-
 
 // Create a duplicate.
 let stub2 = stub.dup();
 
-
 // Call some function that will dispose the stub.
 await func(stub);
-
 
 // stub2 is still valid
 ```
@@ -183,16 +164,12 @@ If the instance of the [RpcTarget class](https://developers.cloudflare.com/worke
 
 In order to avoid this situation, you can manually create a stub locally, and then pass the stub across RPC multiple times. When passing a stub over RPC, ownership of the stub transfers to the recipient, so you must make a `dup()` for each time you send it:
 
-**JavaScript**
-
 ```js
 import { RpcTarget, RpcStub } from "cloudflare:workers";
 
-
 class Foo extends RpcTarget {
-  // ...
+	// ...
 }
-
 
 let obj = new Foo();
 let stub = new RpcStub(obj);
@@ -200,12 +177,18 @@ await rpc1(stub.dup()); // sends a dup of `stub`
 await rpc2(stub.dup()); // sends another dup of `stub`
 stub[Symbol.dispose](); // disposes the original stub
 
-
 // obj's disposer will be called when the other two stubs
 // are disposed remotely.
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#page","headline":"Workers RPC — Lifecycle · Cloudflare Workers docs","description":"Memory management, resource management, and the lifecycle of RPC stubs.","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/rpc/","name":"Remote-procedure call (RPC)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/rpc/lifecycle/","name":"Lifecycle"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#page","headline":"Workers RPC — Lifecycle · Cloudflare Workers docs","description":"Memory management, resource management, and the lifecycle of RPC stubs.","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

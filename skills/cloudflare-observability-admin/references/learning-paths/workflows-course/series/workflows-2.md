@@ -1,21 +1,19 @@
 ---
-title: Monitor and batch your website data
 description: Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.
 
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Monitor and batch your website data
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitor and batch your website data
 
-# Monitor and batch your website data
-
-* [ Watch this episode ](#tab-panel-10157)
-* [ Step-by-step tutorial ](#tab-panel-10158)
-* [ Series overview ](#tab-panel-10159)
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.
 
@@ -89,7 +87,6 @@ Duration: 4 seconds
 Last Successful Step: update-status-to-published-1
 Steps:
 
-
 Name: content-moderation-1
 Type: Step
 Start: 10/24/2024, 1:43:45 AM
@@ -114,13 +111,24 @@ You can also monitor Workflows and their instances directly in the Cloudflare Da
 
 This dashboard view provides a user-friendly way to observe the progress of your batch jobs, identify failed instances, and inspect the execution details of each step.
 
-[ Watch Episode 1: Understand Cloudflare Workflows ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/) In this episode, we introduce Cloudflare Workflows, which provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background.
+### [ Watch Episode 1: Understand Cloudflare Workflows ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/)
 
-[ Watch Episode 2: Monitor and batch your website data ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/) In this episode, we describe how Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution.
+ In this episode, we introduce Cloudflare Workflows, which provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background.
 
-[ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/) In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
+### [ Watch Episode 2: Monitor and batch your website data ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/)
+
+ In this episode, we describe how Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution.
+
+### [ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/)
+
+ In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
+
+Was this helpful?
+
+YesNo
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/#page","headline":"Monitor and batch your website data · Cloudflare Learning Paths","description":"Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.","url":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/workflows-course/series/","name":"Overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/workflows-course/series/workflows-2/","name":"Monitor and batch your website data"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/#page","headline":"Monitor and batch your website data · Cloudflare Learning Paths","description":"Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.","url":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

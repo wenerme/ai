@@ -1,16 +1,18 @@
 ---
-title: Use mTLS with Cloudflare protected resources
 description: Learn about use mtls with cloudflare protected resources in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Use mTLS with Cloudflare protected resources
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use mTLS with Cloudflare protected resources
 
-# Use mTLS with Cloudflare protected resources
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this implementation guide we will be focusing on the L7 / Application Layer security for HTTP/S requests targeting [proxied](https://developers.cloudflare.com/dns/proxy-status/) hostnames, including the [first connection](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) between client and Cloudflare.
 
@@ -29,7 +31,14 @@ There are two main ways to use mTLS at Cloudflare, either by using the Applicati
 | Client Certificate Details                                                                             | Forwarded to the origin server via [Cloudflare API](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-api), [Cloudflare Workers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-workers), and [Managed Transforms](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#managed-transforms). | Forwarded to the origin server via [Cloudflare API](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#cloudflare-api), [Cloudflare Workers](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#cloudflare-workers), and [Managed Transforms](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#managed-transforms). Client Certificate headers and [Cf-Access-Jwt-Assertion](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) JWT header can be forwarded to the origin server. |
 | Client Certificates Revocation                                                                         | Use the WAF [Custom Rules](https://developers.cloudflare.com/waf/custom-rules/) to check for [_cf.tls\_client\_auth.cert\_revoked_](https://developers.cloudflare.com/ssl/client-certificates/revoke-client-certificate/), which only applies to Cloudflare-managed CA.  For BYO CAs, it would be the same approach as with Cloudflare Access.                                                                                       | Generate a [Certificate Revocation List (CRL)](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#create-a-crl) and enforce the revocation in a Cloudflare Worker.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/#page","headline":"Use mTLS with Cloudflare protected resources · Cloudflare Learning Paths","description":"Learn about use mtls with cloudflare protected resources in this guide.","url":"https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/mtls/concepts/","name":"Introducing mTLS"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/mtls/concepts/mtls-cloudflare/","name":"Use mTLS with Cloudflare protected resources"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/#page","headline":"Use mTLS with Cloudflare protected resources · Cloudflare Learning Paths","description":"Learn about use mtls with cloudflare protected resources in this guide.","url":"https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: OpenFeature SDK
 description: Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, Python, and Go applications.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: OpenFeature SDK
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  OpenFeature SDK
 
-# OpenFeature SDK
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/sdk/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Evaluate Flagship feature flags using OpenFeature.
 
@@ -98,7 +100,14 @@ go get github.com/cloudflare/flagship/sdks/go
 * Set up the [Python SDK](https://developers.cloudflare.com/flagship/sdk/python/) for Python server applications.
 * Set up the [Go SDK](https://developers.cloudflare.com/flagship/sdk/go/) for Go server applications.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDK · Cloudflare Flagship docs","description":"Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, Python, and Go applications.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDK"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDK · Cloudflare Flagship docs","description":"Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, Python, and Go applications.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

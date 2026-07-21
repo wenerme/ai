@@ -1,16 +1,18 @@
 ---
-title: Migration Strategies
 description: Combine Super Slurper and Sippy to migrate objects to R2 with minimal downtime.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Migration Strategies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migration Strategies
 
-# Migration Strategies
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-migration/migration-strategies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use a combination of Super Slurper and Sippy to effectively migrate all objects with minimal downtime.
 
@@ -44,13 +46,13 @@ When creating a migration job:
 
 For example, suppose your source bucket contains:
 
-* Directoryphotos
-  * Directory2024
+* photos
+  * 2024
     * file1.jpg
     * file2.jpg
-  * Directory2023
+  * 2023
     * file3.jpg
-  * Directory2019
+  * 2019
     * file4.jpg
 
 You can create separate jobs with prefixes such as:
@@ -60,7 +62,14 @@ You can create separate jobs with prefixes such as:
 
 Each prefix runs as an independent migration job, allowing Slurper to transfer data in parallel. This improves total transfer speed and ensures that a failure in one job does not interrupt the others.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/migration-strategies/#page","headline":"Migration Strategies · Cloudflare R2 docs","description":"Combine Super Slurper and Sippy to migrate objects to R2 with minimal downtime.","url":"https://developers.cloudflare.com/r2/data-migration/migration-strategies/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-migration/","name":"Data migration"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-migration/migration-strategies/","name":"Migration Strategies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/migration-strategies/#page","headline":"Migration Strategies · Cloudflare R2 docs","description":"Combine Super Slurper and Sippy to migrate objects to R2 with minimal downtime.","url":"https://developers.cloudflare.com/r2/data-migration/migration-strategies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

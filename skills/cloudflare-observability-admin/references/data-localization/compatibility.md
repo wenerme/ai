@@ -1,16 +1,18 @@
 ---
-title: Product compatibility
 description: Compatibility of Cloudflare products with Data Localization Suite features.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Product compatibility
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Product compatibility
 
-# Product compatibility
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/compatibility/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Data Localization Suite (DLS) has three features, each controlling a different aspect of where your data is handled:
 
@@ -178,7 +180,14 @@ The tables below show whether each Cloudflare product is compatible with each DL
  ICMP proxy (forwarding network diagnostic traffic like ping) and Mesh proxy are not available to Regional Services users. [File Sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/) (an add-on that quarantines and scans suspicious files in an isolated environment) is incompatible with DLS. [↩](#user-content-fnref-21)
 45. Dashboard Analytics and Logs are empty when using CMB outside the US region. Use Logpush instead. [↩](#user-content-fnref-22)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/compatibility/#page","headline":"Cloudflare product compatibility · Cloudflare Data Localization Suite docs","description":"Compatibility of Cloudflare products with Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/compatibility/","name":"Product compatibility"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/compatibility/#page","headline":"Cloudflare product compatibility · Cloudflare Data Localization Suite docs","description":"Compatibility of Cloudflare products with Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Traffic steering
 description: Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Traffic steering
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Traffic steering
 
-# Traffic steering
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare Virtual Network routing table
 
@@ -115,10 +117,8 @@ For example, if your ASN is `65000` then the `BGP UPDATE` to Cloudflare will be:
 # No change to base priority.
 AS_PATH: 65000 65200
 
-
 # Add 10 to base priority for 1 prepend of 65000
 AS_PATH: 65000 65000 65200
-
 
 # Add 20 to base priority for 2 prepend of 65000
 AS_PATH: 65000 65000 65000 65200
@@ -286,7 +286,7 @@ Cross-system traffic follows the same rules as [site-to-site traffic with Gatewa
 To determine the routing mode for your account:
 
 1. Go to **Routes**.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Check the banner at the top of the page:
 * **Your account is using Unified Routing mode.** — Your account uses Unified Routing.
 * **Unified routing is available.** — Your account uses Legacy Routing.
@@ -556,7 +556,14 @@ You need to enable [legacy health checks](https://developers.cloudflare.com/clou
 
 By default, Cloudflare balances and steers traffic based on network-layer characteristics (IP, port etc). If you are using the Cloudflare WAN Connector, you can also steer traffic based on well-known applications. Application-aware policies provide easier management and more granularity over traffic flows. For more information, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare One docs","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/reference/","name":"Reference"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","name":"Traffic steering"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare One docs","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

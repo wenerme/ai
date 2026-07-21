@@ -1,16 +1,18 @@
 ---
-title: sFlow DDoS attack rule
 description: Create sFlow DDoS attack detection rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: sFlow DDoS attack rule
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  sFlow DDoS attack rule
 
-# sFlow DDoS attack rule
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 An sFlow DDoS attack rule (beta) alerts you when a DDoS attack is detected in your network traffic. Network Flow (formerly Magic Network Monitoring) uses the same DDoS detection rules that protect Cloudflare's global network to identify these attacks.
 
@@ -38,7 +40,14 @@ Refer to the [Rules API documentation](https://developers.cloudflare.com/api/res
 
 You can tune the thresholds of your sFlow DDoS alerts in the dashboard and via the Cloudflare API by following the [Network-layer DDoS Attack Protection managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/) guide.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/#page","headline":"sFlow DDoS attack rule · Cloudflare Network Flow docs","description":"Create sFlow DDoS attack detection rules.","url":"https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/rules/","name":"Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/rules/s-flow-ddos-attack/","name":"sFlow DDoS attack rule"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/#page","headline":"sFlow DDoS attack rule · Cloudflare Network Flow docs","description":"Create sFlow DDoS attack detection rules.","url":"https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

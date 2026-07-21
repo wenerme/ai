@@ -1,16 +1,18 @@
 ---
-title: Plans
 description: Compare Waiting Room features available on each Cloudflare plan.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Plans
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Plans
 
-# Plans
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/plans/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The features available for a waiting room depend on your plan type. You can only have **one plan** per zone.
 
@@ -41,7 +43,14 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 To get started with Waiting Room, review our [setup guide](https://developers.cloudflare.com/waiting-room/get-started/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/plans/#page","headline":"Features by plan type · Cloudflare Waiting Room docs","description":"Compare Waiting Room features available on each Cloudflare plan.","url":"https://developers.cloudflare.com/waiting-room/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/plans/","name":"Plans"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/plans/#page","headline":"Features by plan type · Cloudflare Waiting Room docs","description":"Compare Waiting Room features available on each Cloudflare plan.","url":"https://developers.cloudflare.com/waiting-room/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

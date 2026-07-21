@@ -1,16 +1,18 @@
 ---
-title: HTTP headers
 description: HTTP headers used by Privacy Proxy for authentication, geolocation, and observability, including request and response formats.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: HTTP headers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP headers
 
-# HTTP headers
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-proxy/reference/http-headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page documents the HTTP headers used by Privacy Proxy for authentication, geolocation, and observability. For full observability details, refer to [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) and [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/).
 
@@ -56,8 +58,6 @@ sec-ch-geohash: <geohash>-<country_code>
 | <geohash>       | A [geohash ↗](https://en.wikipedia.org/wiki/Geohash) string (typically 4-8 characters) |
 | <country\_code> | ISO 3166-1 alpha-2 country code                                                        |
 
-**Example**
-
 ```http
 sec-ch-geohash: u4pruydqqvj-GB
 ```
@@ -81,8 +81,6 @@ Server-Timing: proxy;dur=<milliseconds>
 | Parameter      | Description                                             |
 | -------------- | ------------------------------------------------------- |
 | <milliseconds> | Processing time in milliseconds introduced by the proxy |
-
-**Example**
 
 ```http
 Server-Timing: proxy;dur=8.2
@@ -114,7 +112,14 @@ The proxy responds with a status code indicating success or failure:
 | 502 Bad Gateway         | Could not connect to destination |
 | 503 Service Unavailable | Proxy temporarily unavailable    |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/reference/http-headers/#page","headline":"HTTP headers · Cloudflare Privacy Proxy docs","description":"HTTP headers used by Privacy Proxy for authentication, geolocation, and observability, including request and response formats.","url":"https://developers.cloudflare.com/privacy-proxy/reference/http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/reference/http-headers/","name":"HTTP headers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/reference/http-headers/#page","headline":"HTTP headers · Cloudflare Privacy Proxy docs","description":"HTTP headers used by Privacy Proxy for authentication, geolocation, and observability, including request and response formats.","url":"https://developers.cloudflare.com/privacy-proxy/reference/http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

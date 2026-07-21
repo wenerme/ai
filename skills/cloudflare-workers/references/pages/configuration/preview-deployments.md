@@ -1,21 +1,23 @@
 ---
-title: Preview deployments
 description: Preview new versions of your Cloudflare Pages project with unique URLs before deploying to production.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Preview deployments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Preview deployments
 
-# Preview deployments
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/preview-deployments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Preview deployments allow you to preview new versions of your project without deploying it to production. To view preview deployments:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your project and find the deployment you would like to view.
 
 Every time you open a new pull request on your GitHub repository, Cloudflare Pages will create a unique preview URL, which will stay updated as you continue to push new commits to the branch. This is only true when pull requests originate from the repository itself.
@@ -49,7 +51,7 @@ By default, preview deployments are enabled and available publicly. In your proj
 To protect your preview deployments behind Cloudflare Access:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **General** \> and select **Enable access policy**.
 
@@ -101,7 +103,14 @@ curl -I https://<your-preview-url>.pages.dev
 
 Inspect the output for the x-robots-tag: noindex line to verify that your preview site is not being indexed.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/preview-deployments/#page","headline":"Preview deployments · Cloudflare Pages docs","description":"Preview new versions of your Cloudflare Pages project with unique URLs before deploying to production.","url":"https://developers.cloudflare.com/pages/configuration/preview-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/preview-deployments/","name":"Preview deployments"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/preview-deployments/#page","headline":"Preview deployments · Cloudflare Pages docs","description":"Preview new versions of your Cloudflare Pages project with unique URLs before deploying to production.","url":"https://developers.cloudflare.com/pages/configuration/preview-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

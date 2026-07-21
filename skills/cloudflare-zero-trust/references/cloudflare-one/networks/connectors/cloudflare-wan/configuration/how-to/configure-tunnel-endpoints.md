@@ -1,16 +1,18 @@
 ---
-title: Configure tunnel endpoints
 description: Learn how to configure IPsec or GRE tunnels for Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Configure tunnel endpoints
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure tunnel endpoints
 
-# Configure tunnel endpoints
+Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare assigns an IPv4 anycast address to your account for use as the tunnel destination for your network's routers. You can find this address in the Cloudflare dashboard under **Address Space** \> [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). To request additional endpoint addresses, contact your account team.
 
@@ -24,7 +26,7 @@ Before creating a tunnel, make sure you have the following information:
 * **Customer endpoint IP**: A public Internet routable IP address outside of the prefixes Cloudflare will advertise on your behalf (typically provided by your ISP). Not required if using [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/) or for IPsec tunnels (unless your router uses an IKE ID of type `ID_IPV4_ADDR`).
 * **Interface address**: A `/31` (recommended) or `/30` subnet from RFC 1918 private IP space (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) or `169.254.240.0/20`(this address space is also a link-local address).
 
-Warning
+Caution
 
 Make sure the interface address prefixes are always within the allowed Cloudflare ranges, especially for cloud service providers that might automatically generate prefixes for you. Otherwise, the tunnel will not work.
 
@@ -61,12 +63,9 @@ Beyond GRE and IPsec tunnels, you can also use Network Interconnect (CNI) to onb
 
 ## Add tunnels
 
-Warning
+Caution
 
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
-
-* [ Dashboard ](#tab-panel-8044)
-* [ API ](#tab-panel-8045)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Cloudflare WAN**, and select **Create**.
@@ -133,7 +132,7 @@ IPsec tunnels will not function without a pre-shared key (PSK).
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 GRE tunnel
 
@@ -145,19 +144,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-**Create a GRE tunnel**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/gre_tunnels" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<TUNNEL_NAME>",
-    "description": "<TUNNEL_DESCRIPTION>",
-    "interface_address": "<INTERFACE_ADDRESS>",
-    "cloudflare_gre_endpoint": "<CLOUDFLARE_ENDPOINT>",
-    "customer_gre_endpoint": "<CUSTOMER_ENDPOINT>"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<TUNNEL_NAME>",
+		"description": "<TUNNEL_DESCRIPTION>",
+		"interface_address": "<INTERFACE_ADDRESS>",
+		"cloudflare_gre_endpoint": "<CLOUDFLARE_ENDPOINT>",
+		"customer_gre_endpoint": "<CUSTOMER_ENDPOINT>"
+	}'
 ```
 
 ```json
@@ -205,55 +202,53 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Magic WAN Write`
   * `Magic Transit Write`
-
-**Create an IPsec tunnel**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<TUNNEL_NAME>",
-    "description": "<TUNNEL_DESCRIPTION>",
-    "interface_address": "<INTERFACE_ADDRESS>",
-    "cloudflare_endpoint": "<CLOUDFLARE_ENDPOINT>",
-    "customer_endpoint": "<CUSTOMER_ENDPOINT>"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<TUNNEL_NAME>",
+		"description": "<TUNNEL_DESCRIPTION>",
+		"interface_address": "<INTERFACE_ADDRESS>",
+		"cloudflare_endpoint": "<CLOUDFLARE_ENDPOINT>",
+		"customer_endpoint": "<CUSTOMER_ENDPOINT>"
+	}'
 ```
 ```json
 {
-  "errors": [
-    {
-      "code": 1000,
-      "message": "message"
-    }
-  ],
-  "messages": [
-    {
-      "code": 1000,
-      "message": "message"
-    }
-  ],
-  "result": {
-    "ipsec_tunnels": [
-      {
-        "id": "<IPSEC_TUNNEL_ID>",
-        "interface_address": "<INTERFACE_CIDR>",
-        "name": "<TUNNEL_NAME>",
-        "cloudflare_endpoint": "<IP_ADDRESS>",
-        "customer_endpoint": "<IP_ADDRESS>",
-        "description": "<TUNNEL_DESCRIPTION>",
-        "health_check": {
-          "direction": "unidirectional",
-          "enabled": true,
-          "rate": "low",
-          "type": "reply"
-        },
-        "psk_metadata": {},
-        "replay_protection": false
-      }
-    ]
-  },
-  "success": true
+	"errors": [
+		{
+			"code": 1000,
+			"message": "message"
+		}
+	],
+	"messages": [
+		{
+			"code": 1000,
+			"message": "message"
+		}
+	],
+	"result": {
+		"ipsec_tunnels": [
+			{
+				"id": "<IPSEC_TUNNEL_ID>",
+				"interface_address": "<INTERFACE_CIDR>",
+				"name": "<TUNNEL_NAME>",
+				"cloudflare_endpoint": "<IP_ADDRESS>",
+				"customer_endpoint": "<IP_ADDRESS>",
+				"description": "<TUNNEL_DESCRIPTION>",
+				"health_check": {
+					"direction": "unidirectional",
+					"enabled": true,
+					"rate": "low",
+					"type": "reply"
+				},
+				"psk_metadata": {},
+				"replay_protection": false
+			}
+		]
+	},
+	"success": true
 }
 ```
 Take note of the tunnel `id` value. We will use it to generate a pre-shared key (PSK).
@@ -262,36 +257,34 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Magic WAN Write`
   * `Magic Transit Write`
-
-**Generate Pre-Shared Key (PSK) for IPsec tunnels**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunnels/$IPSEC_TUNNEL_ID/psk_generate" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 ```json
 {
-  "result": {
-    "ipsec_id": "<IPSEC_ID>",
-    "ipsec_tunnel_id": "<IPSEC_TUNNEL_ID>",
-    "psk": "<PSK_CODE>",
-    "psk_metadata": {
-      "last_generated_on": "2025-03-13T14:28:47.054317925Z"
-    }
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"ipsec_id": "<IPSEC_ID>",
+		"ipsec_tunnel_id": "<IPSEC_TUNNEL_ID>",
+		"psk": "<PSK_CODE>",
+		"psk_metadata": {
+			"last_generated_on": "2025-03-13T14:28:47.054317925Z"
+		}
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 Take note of your `psk` value.
 3. Create a `PUT` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/update/) to update your IPsec tunnel with the PSK.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \
-  --request PUT \
-  --json '{
-    "psk": "<PSK_VALUE>"
-  }'
+	--request PUT \
+	--json '{
+		"psk": "<PSK_VALUE>"
+	}'
 ```
 
 ```json
@@ -340,12 +333,12 @@ You can change this setting via the API with `"bidirectional"` or `"unidirection
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec_tunnels/%7Bipsec_tunnel_id%7D" \
-  --request PUT \
-  --json '{
-    "health_check": {
-        "direction": "bidirectional"
-    }
-  }'
+	--request PUT \
+	--json '{
+		"health_check": {
+				"direction": "bidirectional"
+		}
+	}'
 ```
 
 ```json
@@ -415,7 +408,14 @@ If you experience issues with your tunnels:
 * For tunnel health check problems, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/).
 * For IPsec tunnel establishment issues, refer to [Troubleshoot with IPsec logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare One docs","description":"Learn how to configure IPsec or GRE tunnels for Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/","name":"How to"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/","name":"Configure tunnel endpoints"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare One docs","description":"Learn how to configure IPsec or GRE tunnels for Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

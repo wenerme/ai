@@ -1,16 +1,18 @@
 ---
-title: Workflows
 description: Wrangler commands for managing and configuring Cloudflare Workflows.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workflows
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workflows
 
-# Workflows
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/workflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Manage and configure [Workflows](https://developers.cloudflare.com/workflows/) using Wrangler.
 
@@ -18,7 +20,7 @@ Note
 
 The `wrangler workflows` command requires Wrangler version `3.83.0` or greater. Use `npx wrangler@latest` to always use the latest Wrangler version when invoking commands.
 
-`--local` option
+\`--local\` option
 
 All `wrangler workflows` commands support the `--local` flag to target a Workflow running in a local [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) session instead of production. Use `--port` to specify the port of the dev session (defaults to `8787`).
 
@@ -30,20 +32,18 @@ For more information, refer to [Workflows local development](https://developers.
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-13780)
-* [  pnpm ](#tab-panel-13781)
-* [  yarn ](#tab-panel-13782)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows list
 ```
 
-```sh
-pnpm wrangler workflows list
+```
+yarn wrangler workflows list
 ```
 
-```sh
-yarn wrangler workflows list
+```
+pnpm wrangler workflows list
 ```
 
 * `--local` ` boolean `
@@ -80,20 +80,18 @@ Use a specific auth profile
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-13783)
-* [  pnpm ](#tab-panel-13784)
-* [  yarn ](#tab-panel-13785)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows describe [NAME]
 ```
 
-```sh
-pnpm wrangler workflows describe [NAME]
+```
+yarn wrangler workflows describe [NAME]
 ```
 
-```sh
-yarn wrangler workflows describe [NAME]
+```
+pnpm wrangler workflows describe [NAME]
 ```
 
 * `--local` ` boolean `
@@ -128,20 +126,18 @@ Use a specific auth profile
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-13786)
-* [  pnpm ](#tab-panel-13787)
-* [  yarn ](#tab-panel-13788)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows delete [NAME]
 ```
 
-```sh
-pnpm wrangler workflows delete [NAME]
+```
+yarn wrangler workflows delete [NAME]
 ```
 
-```sh
-yarn wrangler workflows delete [NAME]
+```
+pnpm wrangler workflows delete [NAME]
 ```
 
 * `--local` ` boolean `
@@ -176,20 +172,18 @@ Use a specific auth profile
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-13789)
-* [  pnpm ](#tab-panel-13790)
-* [  yarn ](#tab-panel-13791)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows trigger [NAME] [PARAMS]
 ```
 
-```sh
-pnpm wrangler workflows trigger [NAME] [PARAMS]
+```
+yarn wrangler workflows trigger [NAME] [PARAMS]
 ```
 
-```sh
-yarn wrangler workflows trigger [NAME] [PARAMS]
+```
+pnpm wrangler workflows trigger [NAME] [PARAMS]
 ```
 
 * `--local` ` boolean `
@@ -228,20 +222,18 @@ Use a specific auth profile
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-13792)
-* [  pnpm ](#tab-panel-13793)
-* [  yarn ](#tab-panel-13794)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows instances list [NAME]
 ```
 
-```sh
-pnpm wrangler workflows instances list [NAME]
+```
+yarn wrangler workflows instances list [NAME]
 ```
 
-```sh
-yarn wrangler workflows instances list [NAME]
+```
+pnpm wrangler workflows instances list [NAME]
 ```
 
 * `--local` ` boolean `
@@ -284,20 +276,18 @@ Use a specific auth profile
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-13795)
-* [  pnpm ](#tab-panel-13796)
-* [  yarn ](#tab-panel-13797)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows instances describe [NAME] [ID]
 ```
 
-```sh
-pnpm wrangler workflows instances describe [NAME] [ID]
+```
+yarn wrangler workflows instances describe [NAME] [ID]
 ```
 
-```sh
-yarn wrangler workflows instances describe [NAME] [ID]
+```
+pnpm wrangler workflows instances describe [NAME] [ID]
 ```
 
 * `--local` ` boolean `
@@ -338,20 +328,18 @@ Use a specific auth profile
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-13798)
-* [  pnpm ](#tab-panel-13799)
-* [  yarn ](#tab-panel-13800)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows instances send-event [NAME] [ID]
 ```
 
-```sh
-pnpm wrangler workflows instances send-event [NAME] [ID]
+```
+yarn wrangler workflows instances send-event [NAME] [ID]
 ```
 
-```sh
-yarn wrangler workflows instances send-event [NAME] [ID]
+```
+pnpm wrangler workflows instances send-event [NAME] [ID]
 ```
 
 * `--local` ` boolean `
@@ -392,20 +380,18 @@ Use a specific auth profile
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-13801)
-* [  pnpm ](#tab-panel-13802)
-* [  yarn ](#tab-panel-13803)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows instances terminate [NAME] [ID]
 ```
 
-```sh
-pnpm wrangler workflows instances terminate [NAME] [ID]
+```
+yarn wrangler workflows instances terminate [NAME] [ID]
 ```
 
-```sh
-yarn wrangler workflows instances terminate [NAME] [ID]
+```
+pnpm wrangler workflows instances terminate [NAME] [ID]
 ```
 
 * `--local` ` boolean `
@@ -442,20 +428,18 @@ Use a specific auth profile
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-13804)
-* [  pnpm ](#tab-panel-13805)
-* [  yarn ](#tab-panel-13806)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows instances restart [NAME] [ID]
 ```
 
-```sh
-pnpm wrangler workflows instances restart [NAME] [ID]
+```
+yarn wrangler workflows instances restart [NAME] [ID]
 ```
 
-```sh
-yarn wrangler workflows instances restart [NAME] [ID]
+```
+pnpm wrangler workflows instances restart [NAME] [ID]
 ```
 
 * `--local` ` boolean `
@@ -498,20 +482,18 @@ Use a specific auth profile
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-13807)
-* [  pnpm ](#tab-panel-13808)
-* [  yarn ](#tab-panel-13809)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows instances pause [NAME] [ID]
 ```
 
-```sh
-pnpm wrangler workflows instances pause [NAME] [ID]
+```
+yarn wrangler workflows instances pause [NAME] [ID]
 ```
 
-```sh
-yarn wrangler workflows instances pause [NAME] [ID]
+```
+pnpm wrangler workflows instances pause [NAME] [ID]
 ```
 
 * `--local` ` boolean `
@@ -548,20 +530,18 @@ Use a specific auth profile
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-13810)
-* [  pnpm ](#tab-panel-13811)
-* [  yarn ](#tab-panel-13812)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler workflows instances resume [NAME] [ID]
 ```
 
-```sh
-pnpm wrangler workflows instances resume [NAME] [ID]
+```
+yarn wrangler workflows instances resume [NAME] [ID]
 ```
 
-```sh
-yarn wrangler workflows instances resume [NAME] [ID]
+```
+pnpm wrangler workflows instances resume [NAME] [ID]
 ```
 
 * `--local` ` boolean `
@@ -594,7 +574,14 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` ` string `
 Use a specific auth profile
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/#page","headline":"Workflows · Cloudflare Workers docs","description":"Wrangler commands for managing and configuring Cloudflare Workflows.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/workflows/","name":"Workflows"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/#page","headline":"Workflows · Cloudflare Workers docs","description":"Wrangler commands for managing and configuring Cloudflare Workflows.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -96,20 +96,20 @@ const ws = new WebSocket(
   "wss://api.openai.com/v1/realtime?model=gpt-realtime-2.1",
   [
     "realtime",
-    // Auth
-    "openai-insecure-api-key." + OPENAI_API_KEY,
+    // Use a short-lived token fetched from your application server.
+    "openai-insecure-api-key." + OPENAI_REALTIME_EPHEMERAL_KEY,
     // Optional
     "openai-organization." + OPENAI_ORG_ID,
     "openai-project." + OPENAI_PROJECT_ID,
   ]
 );
 
-ws.on("open", function open() {
+ws.addEventListener("open", function open() {
   console.log("Connected to server.");
 });
 
-ws.on("message", function incoming(message) {
-  console.log(message.data);
+ws.addEventListener("message", function incoming(event) {
+  console.log(event.data);
 });
 ```
 

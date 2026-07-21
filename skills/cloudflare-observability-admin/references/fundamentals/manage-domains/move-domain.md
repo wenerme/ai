@@ -1,16 +1,18 @@
 ---
-title: Move a domain between Cloudflare accounts
 description: Learn how to transfer a domain between Cloudflare accounts, including requirements, DNS settings, and SSL/TLS certificate management for seamless migration.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Move a domain between Cloudflare accounts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Move a domain between Cloudflare accounts
 
-# Move a domain between Cloudflare accounts
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You will have to move or transfer domains from one Cloudflare account to another if you:
 
@@ -19,7 +21,7 @@ You will have to move or transfer domains from one Cloudflare account to another
 * Lose access to your email address or Cloudflare account (though you can also use the [backup codes](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#use-a-backup-code) if you have two-factor authentication enabled).
 * Registered a Cloudflare account with a typo in your email.
 
-Warning
+Caution
 
 If your domain is registered with Cloudflare Registrar, you need to submit a manual request to transfer the domain and its registration to a new account.
 
@@ -34,7 +36,7 @@ To transfer a domain from one Cloudflare account to another, you will need:
 
 ## Transfer your domain
 
-Warning
+Caution
 
 Before transferring an active Cloudflare domain to another Cloudflare account, you must remove any [DNSSEC configurations](https://developers.cloudflare.com/dns/dnssec/) and [add-ons or subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/).
 
@@ -65,7 +67,14 @@ If you were using [custom certificates](https://developers.cloudflare.com/ssl/ed
 
 You can order an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) prior to transferring your domain. ACM certificates will automatically deploy to active domains.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/#page","headline":"Move a domain between Cloudflare accounts · Cloudflare Fundamentals docs","description":"Learn how to transfer a domain between Cloudflare accounts, including requirements, DNS settings, and SSL/TLS certificate management for seamless migration.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/move-domain/","name":"Move a domain between Cloudflare accounts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/#page","headline":"Move a domain between Cloudflare accounts · Cloudflare Fundamentals docs","description":"Learn how to transfer a domain between Cloudflare accounts, including requirements, DNS settings, and SSL/TLS certificate management for seamless migration.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

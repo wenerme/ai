@@ -1,16 +1,18 @@
 ---
-title: Configuration settings
 description: Configure client-side security monitoring, logging, and connection tracking settings.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configuration settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration settings
 
-# Configuration settings
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/reference/settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Reporting endpoint
 
@@ -43,11 +45,8 @@ Only available to customers with Client-Side Security Advanced.
 
 To configure the CSP reporting endpoint:
 
-* [  New dashboard ](#tab-panel-7653)
-* [ Old dashboard ](#tab-panel-7654)
-
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Under **Continuous script monitoring** \> **Configurations**, select the edit icon next to **Reporting endpoint**.
 4. Select **Cloudflare-owned endpoint** or **Same hostname**.
@@ -66,11 +65,8 @@ By default, client-side security only checks the domain against malicious threat
 
 ### Configure the connection target details to use
 
-* [  New dashboard ](#tab-panel-7655)
-* [ Old dashboard ](#tab-panel-7656)
-
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Under **Continuous script monitoring** \> **Configurations**, select the edit icon next to **Data processing**.
 4. Select **Log host only** to analyze only the hostname or **Log full URI** to use the full URI.
@@ -87,11 +83,8 @@ When you turn off client-side security's resource monitoring, you lose visibilit
 
 To turn off client-side resource monitoring:
 
-* [  New dashboard ](#tab-panel-7657)
-* [ Old dashboard ](#tab-panel-7658)
-
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Next to **Continuous script monitoring**, set the toggle to **Off**.
 
@@ -101,18 +94,22 @@ To turn off client-side resource monitoring:
 
 Turning off client-side security's resource monitoring does not turn off [content security rules](https://developers.cloudflare.com/client-side-security/rules/) (previously known as policies). To turn off content security rules:
 
-* [  New dashboard ](#tab-panel-7651)
-* [ Old dashboard ](#tab-panel-7652)
-
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Content security rules**.
 3. For each rule, select the three dots next to it > **Disable**.
 
 1. Go to **Security** \> **Client-side security** \> **Rules**.
 2. For each rule, set the toggle to **Off**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/reference/settings/#page","headline":"Configuration settings · Client-side security docs","description":"Configure client-side security monitoring, logging, and connection tracking settings.","url":"https://developers.cloudflare.com/client-side-security/reference/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/client-side-security/reference/settings/","name":"Configuration settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/reference/settings/#page","headline":"Configuration settings · Client-side security docs","description":"Configure client-side security monitoring, logging, and connection tracking settings.","url":"https://developers.cloudflare.com/client-side-security/reference/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

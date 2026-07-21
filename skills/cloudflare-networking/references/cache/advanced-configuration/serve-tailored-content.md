@@ -1,16 +1,18 @@
 ---
-title: Serving tailored content with Cloudflare
 description: Serve different cached content based on device type, location, or language.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Serving tailored content with Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Serving tailored content with Cloudflare
 
-# Serving tailored content with Cloudflare
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Content negotiation is the practice of serving different versions of a resource from a single URL, tailoring the experience to the end user. Common examples include delivering content in a specific language (`Accept-Language`), optimizing for a device (`User-Agent`), or serving modern image formats (`Accept`).
 
@@ -27,7 +29,7 @@ The [Transform Rule](https://developers.cloudflare.com/rules/transform/) method 
 In this example, you run an e-commerce site and want to display prices in the local currency based on the visitor's country.
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** and select the option **URL Rewrite Rule**.
 3. Enter a descriptive name, such as `Vary by Country - Canada`.
 4. In **If incoming requests match...**, select **Custom filter expression**.
@@ -66,24 +68,22 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-**Change variants setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": {
-        "jpeg": [
-            "image/webp",
-            "image/avif"
-        ],
-        "jpg": [
-            "image/webp",
-            "image/avif"
-        ]
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": {
+				"jpeg": [
+						"image/webp",
+						"image/avif"
+				],
+				"jpg": [
+						"image/webp",
+						"image/avif"
+				]
+		}
+	}'
 ```
 
 After creating the rule, Cloudflare will create distinct cache entries for each image variant, improving performance for users with modern browsers.
@@ -101,15 +101,12 @@ Pro, Business, and Enterprise plans
 In this example, you run an A/B test controlled by a cookie named `ab-test` (with values `group-a` or `group-b`). You want to cache a different version of the page for each group.
 
 1. In the Cloudflare dashboard, go to the **Snippets** page.
-[ Go to **Snippets** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets)
+[ Go to **Snippets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets)
 2. Select **Create new Snippet** and name it `ab-test-caching`.
 3. Paste the following code. It modifies the cache key based on the `ab-test` cookie and caches the response for 30 days.
 
-**JavaScript**
-
 ```js
 const CACHE_DURATION = 30 * 24 * 60 * 60; // 30 days
-
 
 export default {
   async fetch(request) {
@@ -118,10 +115,8 @@ export default {
     const url = new URL(request.url);
     url.pathname = `/ab-test/${abCookie}${url.pathname}`;
 
-
     const cacheKey = new Request(url, request);
     const cache = caches.default;
-
 
     let response = await cache.match(cacheKey);
     if (!response) {
@@ -161,7 +156,7 @@ Custom Cache Key options:
 If your origin serves different content types (for example, `application/json` vs. `text/html`) at the same URL based on the `Accept` header, use a custom cache key to cache them separately.
 
 1. In the Cloudflare dashboard, go to the **Cache Rules** page.
-[ Go to **Cache Rules** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
+[ Go to **Cache Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 2. Select **Create rule**.
 3. Enter rule name, such as `Vary by Accept Header`.
 4. Set the condition for the rule to apply (for example, a specific hostname or path).
@@ -187,26 +182,20 @@ For complex caching scenarios, [Cloudflare Workers](https://developers.cloudflar
 
 This Worker detects whether a visitor is on a mobile or desktop device and creates separate cache entries for each, ensuring the correct version of the site is served and cached.
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env, ctx) {
     const userAgent = request.headers.get('User-Agent') || '';
     const deviceType = userAgent.includes('Mobile') ? 'mobile' : 'desktop';
 
-
     // Create a new URL for the cache key that includes the device type
     const url = new URL(request.url);
     url.pathname = `/${deviceType}${url.pathname}`;
 
-
     const cacheKey = new Request(url, request);
     const cache = caches.default;
 
-
     let response = await cache.match(cacheKey);
-
 
     if (!response) {
       console.log(`Cache miss for ${deviceType} device. Fetching from origin.`);
@@ -214,7 +203,6 @@ export default {
       let responseToCache = response.clone();
       ctx.waitUntil(cache.put(cacheKey, responseToCache));
     }
-
 
     return response;
   },
@@ -229,8 +217,6 @@ Free and Paid plans
 
 This Worker detects if a visitor is on a mobile device or a desktop and creates a separate cache entry for each, ensuring the correct version of the site is served and cached. Uses the Enterprise `cf.customCacheKey` feature.
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request) {
@@ -238,10 +224,8 @@ export default {
     const userAgent = request.headers.get('User-Agent') || '';
     const deviceType = userAgent.includes('Mobile') ? 'mobile' : 'desktop';
 
-
     // 2. Create a custom cache key by appending the device type to the URL
     const customCacheKey = `${request.url}-${deviceType}`;
-
 
     // 3. Fetch the response. Cloudflare's cache automatically uses the
     //    customCacheKey for cache operations (match, put).
@@ -250,7 +234,6 @@ export default {
         cacheKey: customCacheKey,
       },
     });
-
 
     // Optionally, you can modify the response before returning it
     // For example, add a header to indicate which cache key was used
@@ -274,7 +257,7 @@ A common challenge is caching content from frameworks like Next.js, which uses a
 The simplest solution is to create a [Transform Rule](https://developers.cloudflare.com/rules/transform/) that checks for the `RSC` header and adds a unique query parameter on the request, creating two distinct cacheable URLs: `/page` (for HTML) and `/page?_rsc=1` (for the RSC payload).
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** and select the option **URL Rewrite Rule**.
 3. Enter a name, such as `Vary by RSC Header`.
 4. In **If incoming requests match**, select **Custom filter expression**.
@@ -296,7 +279,14 @@ Availability
 * Snippets: Pro, Business, Enterprise
 * Custom Cache Keys: Enterprise only
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/#page","headline":"Serving tailored content with Cloudflare · Cloudflare Cache (CDN) docs","description":"Serve different cached content based on device type, location, or language.","url":"https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","A/B testing","Geolocation","Next.js"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/serve-tailored-content/","name":"Serving tailored content with Cloudflare"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/#page","headline":"Serving tailored content with Cloudflare · Cloudflare Cache (CDN) docs","description":"Serve different cached content based on device type, location, or language.","url":"https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","A/B testing","Geolocation","Next.js"]}
 ```

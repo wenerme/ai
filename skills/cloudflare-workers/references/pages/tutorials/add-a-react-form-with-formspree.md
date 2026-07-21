@@ -1,16 +1,18 @@
 ---
-title: Add a React form with Formspree
 description: Learn how to add a React form with Formspree, a back-end service that handles form processing and storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Add a React form with Formspree
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add a React form with Formspree
 
-# Add a React form with Formspree
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Almost every React website needs a form to collect user data. [Formspree ↗](https://formspree.io/) is a back-end service that handles form processing and storage, allowing developers to include forms on their website without writing server-side code or functions.
 
@@ -77,39 +79,33 @@ Then paste the following code snippet into the `ContactForm.js` file:
 ```jsx
 import { useForm, ValidationError } from "@formspree/react";
 
-
 export default function ContactForm() {
-  const [state, handleSubmit] = useForm("YOUR_FORM_ID");
+	const [state, handleSubmit] = useForm("YOUR_FORM_ID");
 
+	if (state.succeeded) {
+		return <p>Thanks for your submission!</p>;
+	}
 
-  if (state.succeeded) {
-    return <p>Thanks for your submission!</p>;
-  }
+	return (
+		<form method="POST" onSubmit={handleSubmit}>
+			<label htmlFor="name">Full Name</label>
+			<input id="name" type="text" name="name" required />
+			<ValidationError prefix="Name" field="name" errors={state.errors} />
 
+			<label htmlFor="email">Email Address</label>
+			<input id="email" type="email" name="email" required />
+			<ValidationError prefix="Email" field="email" errors={state.errors} />
 
-  return (
-    <form method="POST" onSubmit={handleSubmit}>
-      <label htmlFor="name">Full Name</label>
-      <input id="name" type="text" name="name" required />
-      <ValidationError prefix="Name" field="name" errors={state.errors} />
+			<label htmlFor="message">Message</label>
+			<textarea id="message" name="message" required></textarea>
+			<ValidationError prefix="Message" field="message" errors={state.errors} />
 
-
-      <label htmlFor="email">Email Address</label>
-      <input id="email" type="email" name="email" required />
-      <ValidationError prefix="Email" field="email" errors={state.errors} />
-
-
-      <label htmlFor="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
-      <ValidationError prefix="Message" field="message" errors={state.errors} />
-
-
-      <button type="submit" disabled={state.submitting}>
-        Submit
-      </button>
-      <ValidationError errors={state.errors} />
-    </form>
-  );
+			<button type="submit" disabled={state.submitting}>
+				Submit
+			</button>
+			<ValidationError errors={state.errors} />
+		</form>
+	);
 }
 ```
 
@@ -142,32 +138,29 @@ import ContactForm from "./ContactForm"; // <-- import the form component
 import logo from "./logo.svg";
 import "./App.css";
 
-
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+	return (
+		<div className="App">
+			<header className="App-header">
+				<img src={logo} className="App-logo" alt="logo" />
+				<p>
+					Edit <code>src/App.js</code> and save to reload.
+				</p>
+				<a
+					className="App-link"
+					href="https://reactjs.org"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Learn React
+				</a>
 
-
-        {/* your contact form component goes here */}
-        <ContactForm />
-      </header>
-    </div>
-  );
+				{/* your contact form component goes here */}
+				<ContactForm />
+			</header>
+		</div>
+	);
 }
-
 
 export default App;
 ```
@@ -194,7 +187,6 @@ Your component should now have a line like this:
 
 ```jsx
 const [state, handleSubmit] = useForm("mqldaqwx");
-
 
 /* replace the random-like string above with your own form's ID */
 ```
@@ -267,7 +259,14 @@ If you would like to review the full source code for this application, you can f
 * [Add an HTML form with Formspree](https://developers.cloudflare.com/pages/tutorials/add-an-html-form-with-formspree/)
 * [HTML Forms](https://developers.cloudflare.com/pages/tutorials/forms/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/#page","headline":"Add a React form with Formspree · Cloudflare Pages docs","description":"Learn how to add a React form with Formspree, a back-end service that handles form processing and storage.","url":"https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/tutorials/add-a-react-form-with-formspree/","name":"Add a React form with Formspree"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/#page","headline":"Add a React form with Formspree · Cloudflare Pages docs","description":"Learn how to add a React form with Formspree, a back-end service that handles form processing and storage.","url":"https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
 ```

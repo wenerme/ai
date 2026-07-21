@@ -1,16 +1,18 @@
 ---
-title: Realtime vs Regular SFUs
 description: Compare Cloudflare Realtime SFU with traditional centralized SFUs for WebRTC applications.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Realtime vs Regular SFUs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Realtime vs Regular SFUs
 
-# Realtime vs Regular SFUs
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/sfu/calls-vs-sfus/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare Realtime vs. Traditional SFUs
 
@@ -53,7 +55,14 @@ Cloudflare Realtime delegates the responsibility of state management and partici
 
 Integrating Cloudflare Realtime into your application promises a straightforward and efficient process, removing the hurdles of regional scalability and server management so you can focus on creating engaging real-time experiences for users worldwide.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/calls-vs-sfus/#page","headline":"Realtime vs Regular SFUs · Cloudflare Realtime docs","description":"Compare Cloudflare Realtime SFU with traditional centralized SFUs for WebRTC applications.","url":"https://developers.cloudflare.com/realtime/sfu/calls-vs-sfus/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/sfu/","name":"Realtime SFU"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/sfu/calls-vs-sfus/","name":"Realtime vs Regular SFUs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/calls-vs-sfus/#page","headline":"Realtime vs Regular SFUs · Cloudflare Realtime docs","description":"Compare Cloudflare Realtime SFU with traditional centralized SFUs for WebRTC applications.","url":"https://developers.cloudflare.com/realtime/sfu/calls-vs-sfus/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

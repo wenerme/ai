@@ -1,22 +1,22 @@
 ---
-title: PUT examples
 description: Update filters or rules with PUT API requests.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: PUT examples
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  PUT examples
 
-# PUT examples
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/firewall/api/cf-filters/put/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Update multiple filters
 
 This example updates two filters with IDs `<FILTER_ID_1>` and `<FILTER_ID_2>` using a single API call.
-
-**Request**
 
 ```bash
 curl --request PUT \
@@ -38,8 +38,6 @@ curl --request PUT \
   }
 ]'
 ```
-
-**Response**
 
 ```json
 {
@@ -67,8 +65,6 @@ curl --request PUT \
 
 This example updates the filter with ID `{filter_id}`.
 
-**Request**
-
 ```bash
 curl --request PUT \
 "https://api.cloudflare.com/client/v4/zones/{zone_id}/filters/{filter_id}" \
@@ -82,8 +78,6 @@ curl --request PUT \
   "expression": "ip.src in {2400:cb00::/32 2a06:98c0::/29} and (http.request.uri.path ~ \"^.*/wp-login.php$\" or http.request.uri.path ~ \"^.*/xmlrpc.php$\")"
 }'
 ```
-
-**Response**
 
 ```json
 {
@@ -99,7 +93,14 @@ curl --request PUT \
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/cf-filters/put/#page","headline":"PUT examples - Filters · Cloudflare Firewall Rules (deprecated) docs","description":"Update filters or rules with PUT API requests.","url":"https://developers.cloudflare.com/firewall/api/cf-filters/put/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/firewall/","name":"Firewall Rules (deprecated)"}},{"@type":"ListItem","position":3,"item":{"@id":"/firewall/api/","name":"Manage rules via the APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/firewall/api/cf-filters/","name":"Cloudflare Filters API"}},{"@type":"ListItem","position":5,"item":{"@id":"/firewall/api/cf-filters/put/","name":"PUT examples"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/cf-filters/put/#page","headline":"PUT examples - Filters · Cloudflare Firewall Rules (deprecated) docs","description":"Update filters or rules with PUT API requests.","url":"https://developers.cloudflare.com/firewall/api/cf-filters/put/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

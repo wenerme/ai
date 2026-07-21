@@ -225,7 +225,7 @@ environments that need multiple language runtimes out of the box.
 If you use a custom Docker image, ensure that the following commands are available for the agent to function correctly:
 
 - `git`
-- `npm` with a Node.js version compatible with `@gitlab/duo-cli`. For more information, see [GitLab Duo CLI prerequisites](../../gitlab_duo_cli/_index.md#install).
+- `npm` with a Node.js version compatible with `@gitlab/duo-cli`. For more information, see [GitLab Duo CLI prerequisites](../../gitlab_duo_cli/set_up.md#prerequisites).
 
 Most base images include these commands by default. However, minimal images (like `alpine` variants)
 might require you to install them explicitly. If needed, you can install missing commands in the
@@ -572,7 +572,7 @@ To configure your own runner for flows:
    - [Allow outbound connections from the GitLab instance](../../../administration/gitlab_duo/configure/_index.md#allow-outbound-connections-from-the-gitlab-instance-to-gitlab-duo) to the Agent Platform.
    - [Allow outbound connections from the runner](../../../administration/gitlab_duo/configure/_index.md#allow-connections-from-the-runner) to the Agent Platform.
    - For instances with self-signed certificates in the certificate chain, complete the
-     [additional GitLab Duo CLI configuration](../../gitlab_duo_cli/_index.md#custom-ssl-certificates).
+     [additional GitLab Duo CLI configuration](../../gitlab_duo_cli/use.md#certificate-errors).
 
 ### Use the execution environment sandbox to secure flows
 

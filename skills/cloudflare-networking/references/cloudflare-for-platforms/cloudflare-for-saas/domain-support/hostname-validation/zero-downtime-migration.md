@@ -1,16 +1,18 @@
 ---
-title: Zero-downtime migration
 description: Migrate end customers from another CDN to Cloudflare for SaaS without any downtime by pre-validating custom hostnames before cutting over DNS.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Zero-downtime migration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Zero-downtime migration
 
-# Zero-downtime migration
+Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When an end customer is already live on another CDN, switching their CNAME to your Cloudflare fallback origin causes a brief window where Cloudflare cannot yet proxy their traffic. Pre-validation lets you verify hostname ownership and optionally pre-issue the TLS certificate _before_ the DNS cutover, so the migration is seamless.
 
@@ -28,8 +30,6 @@ When an end customer is already live on another CDN, switching their CNAME to yo
 
 Call the [Create Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) endpoint. Note the `ownership_verification` and `ownership_verification_http` fields in the response - you will need them in the next step.
 
-**Create custom hostname**
-
 ```bash
 curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames \
   --header "Authorization: Bearer <API_TOKEN>" \
@@ -46,8 +46,6 @@ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames \
     }
   }'
 ```
-
-**Example response (truncated)**
 
 ```json
 {
@@ -84,8 +82,6 @@ Use this method when the end customer cannot update their authoritative DNS, or 
 
 1. Copy the `http_url` and `http_body` from the `ownership_verification_http` object in the Create Custom Hostname response.
 2. Have the end customer serve the `http_body` value at the `http_url` path on their origin server. For example, in nginx:
-
-**nginx example**
 ```nginx
 location /.well-known/cf-custom-hostname-challenge/24c8c68e-bec2-49b6-868e-f06373780630 {
     return 200 "48b409f6-c886-406b-8cbc-0fbf59983555\n";
@@ -129,14 +125,10 @@ Hostname validation (`ownership_verification`) and certificate validation (`ssl.
 
 Before updating DNS, verify that both the hostname and certificate are ready.
 
-**Get custom hostname details**
-
 ```bash
 curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id} \
   --header "Authorization: Bearer <API_TOKEN>"
 ```
-
-**Example response (truncated)**
 
 ```json
 {
@@ -178,7 +170,14 @@ Traffic will begin proxying through Cloudflare as soon as DNS propagates. Becaus
 * [Validation status](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/validation-status/)
 * [Getting started with Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/#page","headline":"Zero-downtime migration - Custom Hostname Validation · Cloudflare for Platforms docs","description":"Migrate end customers from another CDN to Cloudflare for SaaS without any downtime by pre-validating custom hostnames before cutting over DNS.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/domain-support/","name":"Custom hostnames"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/","name":"Hostname validation"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/","name":"Zero-downtime migration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/#page","headline":"Zero-downtime migration - Custom Hostname Validation · Cloudflare for Platforms docs","description":"Migrate end customers from another CDN to Cloudflare for SaaS without any downtime by pre-validating custom hostnames before cutting over DNS.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

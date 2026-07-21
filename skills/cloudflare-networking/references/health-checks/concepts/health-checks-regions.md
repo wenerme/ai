@@ -1,16 +1,18 @@
 ---
-title: Health Checks regions
 description: Cloudflare data center regions used for Health Checks monitoring.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Health Checks regions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/health-checks/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Health Checks regions
 
-# Health Checks regions
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare has data centers in [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/). Health checks do not run from every single of these data centers as this would result in numerous requests to your servers. Instead, you are able to choose between one and thirteen regions from which to run health checks. Cloudflare will run Health Checks from three data centers in each region that you select.
 
@@ -29,7 +31,14 @@ In the event log, entries are labeled by region or as **Global**. We do not prov
 
 If you select multiple regions or choose **All Regions** (Business and Enterprise Only), you may increase traffic to your servers. Each region sends individual health checks from three data centers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/#page","headline":"Health Checks regions · Cloudflare Health Checks docs","description":"Cloudflare data center regions used for Health Checks monitoring.","url":"https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/health-checks/","name":"Health Checks"}},{"@type":"ListItem","position":3,"item":{"@id":"/health-checks/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/health-checks/concepts/health-checks-regions/","name":"Health Checks regions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/#page","headline":"Health Checks regions · Cloudflare Health Checks docs","description":"Cloudflare data center regions used for Health Checks monitoring.","url":"https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

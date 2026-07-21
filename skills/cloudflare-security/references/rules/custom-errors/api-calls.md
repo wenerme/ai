@@ -1,16 +1,18 @@
 ---
-title: Common API calls for Custom Errors
 description: Manage custom error rules and error pages using the Cloudflare API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Common API calls for Custom Errors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Common API calls for Custom Errors
 
-# Common API calls for Custom Errors
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/custom-errors/api-calls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following sections provide examples of common API calls for managing custom error assets and Error Pages at the zone level.
 
@@ -32,14 +34,14 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
 
 ```json
 {
-  "result": {
-    "name": "500_error_template",
-    "description": "Standard 5xx error template page",
-    "url": "https://example.com/errors/500_template.html",
-    "last_updated": "2025-02-10T11:36:07.810215Z",
-    "size_bytes": 2048
-  },
-  "success": true
+	"result": {
+		"name": "500_error_template",
+		"description": "Standard 5xx error template page",
+		"url": "https://example.com/errors/500_template.html",
+		"last_updated": "2025-02-10T11:36:07.810215Z",
+		"size_bytes": 2048
+	},
+	"success": true
 }
 ```
 
@@ -60,26 +62,26 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets" \
 
 ```json
 {
-  "result": [
-    {
-      "name": "500_error_template",
-      "description": "Standard 5xx error template page",
-      "url": "https://example.com/errors/500_template.html",
-      "last_updated": "2025-02-10T11:36:07.810215Z",
-      "size_bytes": 2048
-    }
-    // ...
-  ],
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result_info": {
-    "count": 2,
-    "page": 1,
-    "per_page": 20,
-    "total_count": 2,
-    "total_pages": 1
-  }
+	"result": [
+		{
+			"name": "500_error_template",
+			"description": "Standard 5xx error template page",
+			"url": "https://example.com/errors/500_template.html",
+			"last_updated": "2025-02-10T11:36:07.810215Z",
+			"size_bytes": 2048
+		}
+		// ...
+	],
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result_info": {
+		"count": 2,
+		"page": 1,
+		"per_page": 20,
+		"total_count": 2,
+		"total_pages": 1
+	}
 }
 ```
 
@@ -105,14 +107,14 @@ curl --request PUT \
 
 ```json
 {
-  "result": {
-    "name": "500_error_template",
-    "description": "Standard 5xx error template page",
-    "url": "https://example.com/errors/500_new_template.html",
-    "last_updated": "2025-02-10T13:13:07.810215Z",
-    "size_bytes": 3145
-  },
-  "success": true
+	"result": {
+		"name": "500_error_template",
+		"description": "Standard 5xx error template page",
+		"url": "https://example.com/errors/500_new_template.html",
+		"last_updated": "2025-02-10T13:13:07.810215Z",
+		"size_bytes": 3145
+	},
+	"success": true
 }
 ```
 
@@ -137,14 +139,14 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/assets/50
 
 ```json
 {
-  "result": {
-    "name": "500_error_template",
-    "description": "Standard 5xx error template page",
-    "url": "https://example.com/errors/500_new_template.html",
-    "last_updated": "2025-02-10T13:13:07.810215Z",
-    "size_bytes": 3145
-  },
-  "success": true
+	"result": {
+		"name": "500_error_template",
+		"description": "Standard 5xx error template page",
+		"url": "https://example.com/errors/500_new_template.html",
+		"last_updated": "2025-02-10T13:13:07.810215Z",
+		"size_bytes": 3145
+	},
+	"success": true
 }
 ```
 
@@ -184,30 +186,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Settings Read`
 
-**Get a custom page**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/ratelimit_block" \
-  --request GET \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--request GET \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
 ```json
 {
-  "result": {
-    "id": "ratelimit_block",
-    "description": "Rate limit Block",
-    "required_tokens": [],
-    "preview_target": "block:rate-limit",
-    "created_on": "2025-06-03T08:33:17.091587Z",
-    "modified_on": "2025-06-03T08:33:17.091587Z",
-    "url": null,
-    "state": "default"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "ratelimit_block",
+		"description": "Rate limit Block",
+		"required_tokens": [],
+		"preview_target": "block:rate-limit",
+		"created_on": "2025-06-03T08:33:17.091587Z",
+		"modified_on": "2025-06-03T08:33:17.091587Z",
+		"url": null,
+		"state": "default"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -225,34 +225,32 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Custom Pages Write`
 * `Zone Settings Write`
 
-**Update a custom page**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/ratelimit_block" \
-  --request PUT \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "state": "customized",
-    "url": "https://example.com/rate_limiting_block_error_page.html"
-  }'
+	--request PUT \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"state": "customized",
+		"url": "https://example.com/rate_limiting_block_error_page.html"
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "ratelimit_block",
-    "description": "Rate limit Block",
-    "required_tokens": [],
-    "preview_target": "block:rate-limit",
-    "created_on": "2025-06-03T08:33:17.091587Z",
-    "modified_on": "2025-06-03T08:35:32.639114Z",
-    "url": "https://example.com/rate_limiting_block_error_page.html",
-    "state": "customized"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "ratelimit_block",
+		"description": "Rate limit Block",
+		"required_tokens": [],
+		"preview_target": "block:rate-limit",
+		"created_on": "2025-06-03T08:33:17.091587Z",
+		"modified_on": "2025-06-03T08:35:32.639114Z",
+		"url": "https://example.com/rate_limiting_block_error_page.html",
+		"state": "customized"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -264,7 +262,14 @@ For a list of error page identifiers, refer to [Error page types](https://develo
 
 * [Custom Error Pages API reference](https://developers.cloudflare.com/api/resources/custom%5Fpages/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/api-calls/#page","headline":"Common API calls for Custom Errors · Cloudflare Rules docs","description":"Manage custom error rules and error pages using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/custom-errors/api-calls/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/custom-errors/","name":"Custom Errors"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/custom-errors/api-calls/","name":"Common API calls for Custom Errors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/api-calls/#page","headline":"Common API calls for Custom Errors · Cloudflare Rules docs","description":"Manage custom error rules and error pages using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/custom-errors/api-calls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

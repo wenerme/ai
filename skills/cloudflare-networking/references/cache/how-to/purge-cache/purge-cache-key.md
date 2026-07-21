@@ -1,16 +1,18 @@
 ---
-title: Purge cache key resources
 description: Purge cached resources by custom cache key.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Purge cache key resources
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Purge cache key resources
 
-# Purge cache key resources
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Instantly purge resources that use Cache Keys via the [Cloudflare API](https://developers.cloudflare.com/api/resources/cache/methods/purge/). If you use [Cloudflare's Purge by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/#purge-cached-content-by-url), include the headers and query strings that are in your custom Cache Key.
 
@@ -29,22 +31,20 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cache Purge`
 
-**Purge Cached Content**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "files": [
-        {
-            "url": "http://my.website.com/",
-            "headers": {
-                "CF-Device-Type": "mobile"
-            }
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"files": [
+				{
+						"url": "http://my.website.com/",
+						"headers": {
+								"CF-Device-Type": "mobile"
+						}
+				}
+		]
+	}'
 ```
 
 ## Purge by geo
@@ -56,22 +56,20 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cache Purge`
 
-**Purge Cached Content**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "files": [
-        {
-            "url": "http://my.website.com/",
-            "headers": {
-                "CF-IPCountry": "ES"
-            }
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"files": [
+				{
+						"url": "http://my.website.com/",
+						"headers": {
+								"CF-IPCountry": "ES"
+						}
+				}
+		]
+	}'
 ```
 
 ## Purge by language
@@ -83,25 +81,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cache Purge`
 
-**Purge Cached Content**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "files": [
-        {
-            "url": "http://my.website.com/",
-            "headers": {
-                "accept-language": "zh-CN"
-            }
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"files": [
+				{
+						"url": "http://my.website.com/",
+						"headers": {
+								"accept-language": "zh-CN"
+						}
+				}
+		]
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/#page","headline":"Purge cache key resources · Cloudflare Cache (CDN) docs","description":"Purge cached resources by custom cache key.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/purge-cache/","name":"Purge cache"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/purge-cache/purge-cache-key/","name":"Purge cache key resources"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/#page","headline":"Purge cache key resources · Cloudflare Cache (CDN) docs","description":"Purge cached resources by custom cache key.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}
 ```

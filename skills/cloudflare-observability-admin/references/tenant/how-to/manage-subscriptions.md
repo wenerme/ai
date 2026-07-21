@@ -1,16 +1,18 @@
 ---
-title: Manage subscriptions
 description: Add and manage zone and account-level subscriptions for tenant-managed Cloudflare accounts.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage subscriptions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage subscriptions
 
-# Manage subscriptions
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Once your customer has a zone provisioned, you can add zone and account-level subscriptions.
 
@@ -30,8 +32,6 @@ To create a zone subscription, typically used to upgrade a zone's plan from `PAR
 
   * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-**Request (without \`component\_values\`)**
-
 ```bash
 curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -43,8 +43,6 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
   "frequency": "annual"
 }'
 ```
-
-**Request (with \`component\_values\`)**
 
 ```bash
 curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
@@ -91,8 +89,6 @@ To create an account subscription, send a [POST](https://developers.cloudflare.c
 
   * How often the subscription is renewed automatically (defaults to `"monthly"`).
 
-**Request**
-
 ```bash
 curl 'https://api.cloudflare.com/client/v4/accounts/{account_id}/subscriptions' \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -116,7 +112,14 @@ To update a subscription on an account, send a [PUT](https://developers.cloudfla
 
 To delete a subscription on an account, send a [DELETE](https://developers.cloudflare.com/api/resources/accounts/subresources/subscriptions/methods/delete/) request to the `/accounts/<ACCOUNT_ID>/subscriptions/<SUBSCRIPTION_ID>` endpoint.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/#page","headline":"Manage subscriptions · Cloudflare Tenant docs","description":"Add and manage zone and account-level subscriptions for tenant-managed Cloudflare accounts.","url":"https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tenant/","name":"Tenant"}},{"@type":"ListItem","position":3,"item":{"@id":"/tenant/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/tenant/how-to/manage-subscriptions/","name":"Manage subscriptions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/#page","headline":"Manage subscriptions · Cloudflare Tenant docs","description":"Add and manage zone and account-level subscriptions for tenant-managed Cloudflare accounts.","url":"https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Manage Page Rules
 description: Create, edit, and manage Page Rules in the dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage Page Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage Page Rules
 
-# Manage Page Rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/page-rules/manage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can manage Page Rules in the Cloudflare dashboard or via API.
 
@@ -22,13 +24,10 @@ For more flexibility and customization, consider using [Snippets](https://develo
 
 ## Create a page rule
 
-* [ Dashboard ](#tab-panel-10861)
-* [ API ](#tab-panel-10862)
-
 To create a page rule in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Page Rules** page.
-[ Go to **Page Rules** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
+[ Go to **Page Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
 2. Select **Create Page Rule**.
 3. For **URL**, enter the URL or URL pattern that should match the rule ([more details about wildcard matching](https://developers.cloudflare.com/rules/page-rules/reference/wildcard-matching/)).
 4. For **Pick a Setting**, select a [Cloudflare setting](https://developers.cloudflare.com/rules/page-rules/reference/settings/) to adjust. If desired, select **Add a Setting** to adjust multiple Cloudflare settings with the same rule.
@@ -49,13 +48,10 @@ Notes
 
 ## Edit a page rule
 
-* [ Dashboard ](#tab-panel-10857)
-* [ API ](#tab-panel-10858)
-
 To edit a page rule in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Page Rules** page.
-[ Go to **Page Rules** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
+[ Go to **Page Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
 2. For a specific rule:
 
   * To enable or disable the rule, select the on/off toggle.
@@ -67,18 +63,22 @@ To entirely replace the configuration of a page rule, send a [PUT request](https
 
 ## Delete a page rule
 
-* [ Dashboard ](#tab-panel-10859)
-* [ API ](#tab-panel-10860)
-
 To delete a page rule in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Page Rules** page.
-[ Go to **Page Rules** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
+[ Go to **Page Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/page-rules)
 2. For a specific rule, select **X**. Then, select **Delete**.
 
 To delete a page rule using the API, send a [DELETE request](https://developers.cloudflare.com/api/resources/page%5Frules/methods/delete/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/manage/#page","headline":"Manage Page Rules · Cloudflare Rules docs","description":"Create, edit, and manage Page Rules in the dashboard.","url":"https://developers.cloudflare.com/rules/page-rules/manage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/page-rules/","name":"Page Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/page-rules/manage/","name":"Manage Page Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/manage/#page","headline":"Manage Page Rules · Cloudflare Rules docs","description":"Create, edit, and manage Page Rules in the dashboard.","url":"https://developers.cloudflare.com/rules/page-rules/manage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

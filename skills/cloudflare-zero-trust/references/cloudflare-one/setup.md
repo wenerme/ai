@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up Cloudflare Zero Trust for your organization. Choose a use case to get started with a guided quick-start.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Set up Cloudflare Zero Trust to protect your users, devices, and networks. Complete the prerequisites below, then choose a use case to get started.
 
@@ -35,19 +37,19 @@ When you create your organization, Cloudflare automatically adds the [Cloudflare
 
 These use cases match the guided onboarding in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com). To follow along in the dashboard, select **Get Started**.
 
-[Replace your VPN](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/)
+### [ Replace your VPN ](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/)
 
 Give remote users, offices, and devices secure access to private networks and applications without a traditional VPN.
 
-[Secure access to private apps from any browser](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/)
+### [ Secure access to private apps from any browser ](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/)
 
 Provide browser-based access to internal web applications, SSH servers, and RDP sessions without installing software on user devices.
 
-[Filter DNS to block threats](https://developers.cloudflare.com/cloudflare-one/traffic-policies/initial-setup/dns/)
+### [ Filter DNS to block threats ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/initial-setup/dns/)
 
 Set up DNS filtering to block malware, phishing, and unwanted content across your network in minutes.
 
-[Secure web traffic from threats](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/)
+### [ Secure web traffic from threats ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/)
 
 Inspect and filter all Internet-bound traffic from your users to block threats, enforce acceptable use policies, and prevent data loss.
 
@@ -55,7 +57,14 @@ Note
 
 For in-depth deployment guides that cover policy design and advanced configuration, refer to [Implementation guides](https://developers.cloudflare.com/cloudflare-one/implementation-guides/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/#page","headline":"Get started · Cloudflare One docs","description":"Set up Cloudflare Zero Trust for your organization. Choose a use case to get started with a guided quick-start.","url":"https://developers.cloudflare.com/cloudflare-one/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/setup/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/#page","headline":"Get started · Cloudflare One docs","description":"Set up Cloudflare Zero Trust for your organization. Choose a use case to get started with a guided quick-start.","url":"https://developers.cloudflare.com/cloudflare-one/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: General commands
 description: General Wrangler commands for authentication, telemetry, and shell completions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: General commands
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  General commands
 
-# General commands
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/general/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 General Wrangler commands for authentication, telemetry, and shell completions.
 
@@ -18,20 +20,18 @@ General Wrangler commands for authentication, telemetry, and shell completions.
 
 Open the Cloudflare developer documentation in your default browser.
 
-* [  npm ](#tab-panel-13294)
-* [  pnpm ](#tab-panel-13295)
-* [  yarn ](#tab-panel-13296)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler docs [SEARCH]
 ```
 
-```sh
-pnpm wrangler docs [SEARCH]
+```
+yarn wrangler docs [SEARCH]
 ```
 
-```sh
-yarn wrangler docs [SEARCH]
+```
+pnpm wrangler docs [SEARCH]
 ```
 
 * `[SEARCH]` ` string `
@@ -70,15 +70,15 @@ If you prefer to use API tokens for authentication, such as in headless or conti
 wrangler login [OPTIONS]
 ```
 
-* `--scopes-list` ` string ` optional
+* `--scopes-list` ` string `optional
   * List all the available OAuth scopes with descriptions.
-* `--scopes` ` string ` optional
+* `--scopes` ` string `optional
   * Allows to choose your set of OAuth scopes. The set of scopes must be entered in a whitespace-separated list, for example, `npx wrangler login --scopes account:read user:read`.
-* `--callback-host` ` string ` optional
+* `--callback-host` ` string `optional
   * Defaults to `localhost`. Sets the IP or hostname where Wrangler should listen for the OAuth callback.
-* `--callback-port` ` string ` optional
+* `--callback-port` ` string `optional
   * Defaults to `8976`. Sets the port where Wrangler should listen for the OAuth callback.
-* `--use-keyring` ` boolean ` optional
+* `--use-keyring` ` boolean `optional
   * Stores the OAuth credentials in your operating system keychain instead of the default plaintext TOML file. Refer to [Storing OAuth credentials in the OS keychain](#storing-oauth-credentials-in-the-os-keychain) for details. Use `--no-use-keyring` to opt back out. The choice is persisted across Wrangler invocations.
 
 Note
@@ -147,7 +147,6 @@ If you need to use a different port inside the container, use `--callback-port` 
 # When starting your container
 docker run -p 8976:9000 <your-image>
 
-
 # Inside the container
 npx wrangler login --callback-host=0.0.0.0 --callback-port=9000
 ```
@@ -197,7 +196,6 @@ The environment variable `CLOUDFLARE_AUTH_USE_KEYRING` overrides the persistent 
 # Force the keychain backend for this command only
 CLOUDFLARE_AUTH_USE_KEYRING=true npx wrangler deploy
 
-
 # Force the plaintext file backend for this command only
 CLOUDFLARE_AUTH_USE_KEYRING=false npx wrangler deploy
 ```
@@ -230,7 +228,7 @@ The following global flags work on every command:
 If you are using `CLOUDFLARE_API_TOKEN` instead of OAuth, and you can logout by deleting your API token in the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Account API tokens** page.
-[ Go to **Account API tokens** ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select the three-dot menu on your Wrangler token.
 3. Select **Delete**.
 
@@ -248,7 +246,7 @@ Retrieve your current authentication token or credentials for use with other too
 wrangler auth token [OPTIONS]
 ```
 
-* `--json` ` boolean ` optional
+* `--json` ` boolean `optional
   * Return output as JSON with token type information. This also enables retrieving API key/email credentials.
 
 The command returns whichever authentication method is currently configured, in the following order of precedence:
@@ -259,16 +257,12 @@ The command returns whichever authentication method is currently configured, in 
 
 When using `--json`, the output includes the token type:
 
-**JSONC**
-
 ```jsonc
 // API token
 { "type": "api_token", "token": "..." }
 
-
 // OAuth token
 { "type": "oauth", "token": "..." }
-
 
 // API key/email (only available with --json)
 { "type": "api_key", "key": "...", "email": "..." }
@@ -288,24 +282,22 @@ The following global flags work on every command:
 ### `auth create`
 
 
-Experimental
+ Experimental
 
 Create or re-authenticate a named auth profile
 
-* [  npm ](#tab-panel-13297)
-* [  pnpm ](#tab-panel-13298)
-* [  yarn ](#tab-panel-13299)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler auth create [NAME]
 ```
 
-```sh
-pnpm wrangler auth create [NAME]
+```
+yarn wrangler auth create [NAME]
 ```
 
-```sh
-yarn wrangler auth create [NAME]
+```
+pnpm wrangler auth create [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -343,24 +335,22 @@ Use a specific auth profile
 ### `auth activate`
 
 
-Experimental
+ Experimental
 
 Bind a named auth profile to a directory
 
-* [  npm ](#tab-panel-13300)
-* [  pnpm ](#tab-panel-13301)
-* [  yarn ](#tab-panel-13302)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler auth activate [NAME] [DIR]
 ```
 
-```sh
-pnpm wrangler auth activate [NAME] [DIR]
+```
+yarn wrangler auth activate [NAME] [DIR]
 ```
 
-```sh
-yarn wrangler auth activate [NAME] [DIR]
+```
+pnpm wrangler auth activate [NAME] [DIR]
 ```
 
 * `[NAME]` ` string ` required
@@ -392,24 +382,22 @@ Use a specific auth profile
 ### `auth deactivate`
 
 
-Experimental
+ Experimental
 
 Remove the auth profile binding from a directory
 
-* [  npm ](#tab-panel-13303)
-* [  pnpm ](#tab-panel-13304)
-* [  yarn ](#tab-panel-13305)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler auth deactivate [DIR]
 ```
 
-```sh
-pnpm wrangler auth deactivate [DIR]
+```
+yarn wrangler auth deactivate [DIR]
 ```
 
-```sh
-yarn wrangler auth deactivate [DIR]
+```
+pnpm wrangler auth deactivate [DIR]
 ```
 
 * `[DIR]` ` string `
@@ -439,24 +427,22 @@ Use a specific auth profile
 ### `auth list`
 
 
-Experimental
+ Experimental
 
 List all auth profiles
 
-* [  npm ](#tab-panel-13306)
-* [  pnpm ](#tab-panel-13307)
-* [  yarn ](#tab-panel-13308)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler auth list
 ```
 
-```sh
-pnpm wrangler auth list
+```
+yarn wrangler auth list
 ```
 
-```sh
-yarn wrangler auth list
+```
+pnpm wrangler auth list
 ```
 
 Global flags
@@ -483,24 +469,22 @@ Use a specific auth profile
 ### `auth delete`
 
 
-Experimental
+ Experimental
 
 Delete a named auth profile
 
-* [  npm ](#tab-panel-13309)
-* [  pnpm ](#tab-panel-13310)
-* [  yarn ](#tab-panel-13311)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler auth delete [NAME]
 ```
 
-```sh
-pnpm wrangler auth delete [NAME]
+```
+yarn wrangler auth delete [NAME]
 ```
 
-```sh
-yarn wrangler auth delete [NAME]
+```
+pnpm wrangler auth delete [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -533,20 +517,18 @@ Use a specific auth profile
 
 🕵️ Retrieve your user information
 
-* [  npm ](#tab-panel-13312)
-* [  pnpm ](#tab-panel-13313)
-* [  yarn ](#tab-panel-13314)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler whoami
 ```
 
-```sh
-pnpm wrangler whoami
+```
+yarn wrangler whoami
 ```
 
-```sh
-yarn wrangler whoami
+```
+pnpm wrangler whoami
 ```
 
 * `--account` ` string `
@@ -628,17 +610,12 @@ Generate shell completion scripts for Wrangler commands. Shell completions allow
 wrangler complete <SHELL>
 ```
 
-* `SHELL` ` string ` required
+* `SHELL` ` string `required
   * The shell to generate completions for. Supported values: `bash`, `zsh`, `fish`, `powershell`.
 
 ### Setup
 
 Generate and add the completion script to your shell configuration file:
-
-* [ Bash ](#tab-panel-13290)
-* [ Zsh ](#tab-panel-13291)
-* [ Fish ](#tab-panel-13292)
-* [ PowerShell ](#tab-panel-13293)
 
 ```sh
 wrangler complete bash >> ~/.bashrc
@@ -657,8 +634,6 @@ wrangler complete fish >> ~/.config/fish/config.fish
 ```
 
 Then restart your terminal or run `source ~/.config/fish/config.fish`.
-
-**PowerShell**
 
 ```powershell
 wrangler complete powershell >> $PROFILE
@@ -684,7 +659,14 @@ The following global flags work on every command:
 * `--cwd` ` string `
   * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/general/","name":"General commands"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

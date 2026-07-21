@@ -1,39 +1,39 @@
 ---
-title: Qwen 3.5 397B A17B
 description: Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Qwen 3.5 397B A17B
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.C3THgr9s.svg)
 
 #  Qwen 3.5 397B A17B
 
-Text Generation • Alibaba
+ Text Generation • Alibaba
 
-`alibaba/qwen3.5-397b-a17b`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` alibaba/qwen3.5-397b-a17b `
+
+* Third-party
+* Zero data retention
 
 Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.
 
-| Model Info          |                                                                                                                             |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                        |
-| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                                      |
-| Zero data retention | Yes                                                                                                                         |
-| Request formats     | Chat Completions, Responses                                                                                                 |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.5-397b-a17b) |
+| Model Info          |                                                                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                         |
+| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                                       |
+| Zero data retention | Yes                                                                                                                          |
+| Request formats     | Chat Completions, Responses                                                                                                  |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.5-397b-a17b) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-72)
-* [ cURL ](#tab-panel-73)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -57,9 +57,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-84)
-* [ Raw response ](#tab-panel-85)
 
 The three laws of thermodynamics describe how energy, heat, and entropy behave in physical systems. Here they are, explained simply:
 
@@ -132,11 +129,6 @@ Physicist C.P. Snow famously summarized the laws using a gambling analogy:
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-74)
-* [ cURL ](#tab-panel-75)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3.5-397b-a17b',
@@ -168,9 +160,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-86)
-* [ Raw response ](#tab-panel-87)
 
 # Reading JSON Files in Python
 
@@ -319,11 +308,6 @@ This covers the most common scenarios for reading JSON in Python. Let me know if
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-78)
-* [ cURL ](#tab-panel-79)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3.5-397b-a17b',
@@ -369,9 +353,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-88)
-* [ Raw response ](#tab-panel-89)
 
 The best stops depend heavily on which route you choose. There are two main options:
 
@@ -452,11 +433,6 @@ Do you think you'll prefer the scenic route or the faster one? I can help you pl
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-76)
-* [ cURL ](#tab-panel-77)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3.5-397b-a17b',
@@ -488,9 +464,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-90)
-* [ Raw response ](#tab-panel-91)
 
 The rain didn't fall so much as it hovered, a wet gray mist that clung to Detective Silas Vane's trench coat like a second skin. He ducked under the yellow tape, the flashing blue and red lights of the cruisers painting the puddles in fractured neon. Inside the apartment, the air was still, smelling faintly of copper and old paper.
 
@@ -553,11 +526,6 @@ He glanced at the sealed windows, then back at the die. It was warm. Not body he
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-80)
-* [ cURL ](#tab-panel-81)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3.5-397b-a17b',
@@ -588,9 +556,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-94)
-* [ Raw response ](#tab-panel-95)
 
 # Understanding Recursion
 
@@ -4386,11 +4351,6 @@ Think of recursion like Russian nesting dolls – you keep opening smaller dolls
 
 **Web Search**  — Letting Qwen use DashScope's built-in web search via enable\_search
 
-* [ TypeScript ](#tab-panel-82)
-* [ cURL ](#tab-panel-83)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3.5-397b-a17b',
@@ -4425,9 +4385,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-92)
-* [ Raw response ](#tab-panel-93)
 
 Based on the provided knowledge base (current context June 2026), here are the top recent news stories about Cloudflare:
 
@@ -4477,9 +4434,6 @@ Based on the provided knowledge base (current context June 2026), here are the t
 Schema variant
 
 Chat CompletionsResponses
-
-* [ Input ](#tab-panel-96)
-* [ Output ](#tab-panel-97)
 
 ▶messages\[\]
 
@@ -4639,7 +4593,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/
 
 Output [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/#page","headline":"Qwen 3.5 397B A17B (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.","url":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/#page","headline":"Qwen 3.5 397B A17B (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.","url":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

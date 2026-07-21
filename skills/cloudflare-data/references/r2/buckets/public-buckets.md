@@ -1,16 +1,18 @@
 ---
-title: Public buckets
 description: Expose R2 bucket contents to the Internet via a custom domain or r2.dev subdomain.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Public buckets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Public buckets
 
-# Public buckets
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/buckets/public-buckets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Public Bucket is a feature that allows users to expose the contents of their R2 buckets directly to the Internet. By default, buckets are never publicly accessible and will always require explicit user permission to enable.
 
@@ -48,7 +50,7 @@ To restrict access to your custom domain's bucket, use Cloudflare's existing sec
 * [Cloudflare Zero Trust Access](https://developers.cloudflare.com/cloudflare-one/access-controls/): Protects buckets that should only be accessible by your teammates. Refer to [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/) tutorial for more information.
 * [Cloudflare WAF Token Authentication](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/): Restricts access to documents, files, and media to selected users by providing them with an access token.
 
-Warning
+Caution
 
 Disable public access to your [r2.dev subdomain](#disable-public-development-url) when using products like WAF or Cloudflare Access. If you do not disable public access, your bucket will remain publicly available through your `r2.dev` subdomain.
 
@@ -68,7 +70,7 @@ Once the domain exists in your Cloudflare account (regardless of setup type), yo
 ## Connect a bucket to a custom domain
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Settings**.
 4. Under **Custom Domains**, select **Add**.
@@ -146,7 +148,14 @@ To disable public access for your bucket:
 3. Under **Public Development URL**, select **Disable**.
 4. In **Disallow Public Access?**, type `disallow` to confirm and select **Disallow**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/public-buckets/#page","headline":"Public buckets · Cloudflare R2 docs","description":"Expose R2 bucket contents to the Internet via a custom domain or r2.dev subdomain.","url":"https://developers.cloudflare.com/r2/buckets/public-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/public-buckets/","name":"Public buckets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/public-buckets/#page","headline":"Public buckets · Cloudflare R2 docs","description":"Expose R2 bucket contents to the Internet via a custom domain or r2.dev subdomain.","url":"https://developers.cloudflare.com/r2/buckets/public-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

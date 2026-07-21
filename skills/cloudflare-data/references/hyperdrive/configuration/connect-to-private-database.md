@@ -1,16 +1,18 @@
 ---
-title: Connect to a private database using Tunnel
 description: Securely connect Hyperdrive to private databases using Cloudflare Tunnel and Access.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Connect to a private database using Tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect to a private database using Tunnel
 
-# Connect to a private database using Tunnel
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive can securely connect to your private databases using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
@@ -51,7 +53,7 @@ If your organization also uses [Super Bot Fight Mode](https://developers.cloudfl
 First, create a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) in your private network to establish a secure connection between your network and Cloudflare. Your network must be configured such that the tunnel has permissions to egress to the Cloudflare network and access the database within your network.
 
 1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
 3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
 4. Select **Create Tunnel**.
@@ -102,7 +104,7 @@ The service token will be used to restrict requests to the tunnel, and is needed
 4. Set a **Service Token Duration** of `Non-expiring`. This prevents the service token from expiring, ensuring it can be used throughout the life of the Hyperdrive configuration.
 5. Select **Generate token**. You will see the generated Client ID and Client Secret for the service token, as well as their respective request headers.
 6. Copy the Access Client ID and Access Client Secret. These will be used when creating the Hyperdrive configuration.
-Warning
+Caution
 This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must regenerate the service token.
 
 ### 2.2\. (Manual) Create an Access application to secure the tunnel
@@ -125,9 +127,6 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 ### 2.3\. (Manual) Create a Hyperdrive configuration
 
 To create a Hyperdrive configuration for your private database, you'll need to specify the Access application and Cloudflare Tunnel information upon creation.
-
-* [ Wrangler ](#tab-panel-9438)
-* [ Terraform ](#tab-panel-9439)
 
 ```sh
 # wrangler v3.65 and above required
@@ -171,23 +170,16 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-9440)
-* [  wrangler.toml ](#tab-panel-9441)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created
-    }
-  ]
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<YOUR_DATABASE_ID>" // the ID associated with the Hyperdrive you just created
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
@@ -203,24 +195,17 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-9442)
-* [  wrangler.toml ](#tab-panel-9443)
-
-**JSONC**
-
 ```jsonc
 {
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created
-      "localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"
-    }
-  ]
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<YOUR_DATABASE_ID>", // the ID associated with the Hyperdrive you just created
+			"localConnectionString": "<LOCAL_DATABASE_CONNECTION_URI>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[hyperdrive]]
@@ -236,9 +221,6 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 ### 3.2\. Query your database
 
 Validate that you can connect to your database from Workers and make queries.
-
-* [ PostgreSQL ](#tab-panel-9448)
-* [ MySQL ](#tab-panel-9449)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
 
@@ -288,35 +270,27 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9444)
-* [  wrangler.toml ](#tab-panel-9445)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -325,46 +299,39 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new `Client` instance and pass the Hyperdrive `connectionString`:
 
-**TypeScript**
-
 ```ts
 // filepath: src/index.ts
 import { Client } from "pg";
 
-
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    // Create a new client instance for each request. Hyperdrive maintains the
-    // underlying database connection pool, so creating a new client is fast.
-    const client = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
+		// Create a new client instance for each request. Hyperdrive maintains the
+		// underlying database connection pool, so creating a new client is fast.
+		const client = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
 
+		try {
+			// Connect to the database
+			await client.connect();
 
-    try {
-      // Connect to the database
-      await client.connect();
+			// Perform a simple query
+			const result = await client.query("SELECT * FROM pg_tables");
 
+			return Response.json({
+				success: true,
+				result: result.rows,
+			});
+		} catch (error: any) {
+			console.error("Database error:", error.message);
 
-      // Perform a simple query
-      const result = await client.query("SELECT * FROM pg_tables");
-
-
-      return Response.json({
-        success: true,
-        result: result.rows,
-      });
-    } catch (error: any) {
-      console.error("Database error:", error.message);
-
-
-      return new Response("Internal error occurred", { status: 500 });
-    }
-  },
+			return new Response("Internal error occurred", { status: 500 });
+		}
+	},
 };
 ```
 
@@ -404,35 +371,27 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9446)
-* [  wrangler.toml ](#tab-panel-9447)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -441,45 +400,39 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
 
-**TypeScript**
-
 ```ts
 // mysql2 v3.13.0 or later is required
 import { createConnection } from "mysql2/promise";
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-    // database connection pool, so creating a new connection is fast.
-    const connection = await createConnection({
-      host: env.HYPERDRIVE.host,
-      user: env.HYPERDRIVE.user,
-      password: env.HYPERDRIVE.password,
-      database: env.HYPERDRIVE.database,
-      port: env.HYPERDRIVE.port,
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create a new connection on each request. Hyperdrive maintains the underlying
+		// database connection pool, so creating a new connection is fast.
+		const connection = await createConnection({
+			host: env.HYPERDRIVE.host,
+			user: env.HYPERDRIVE.user,
+			password: env.HYPERDRIVE.password,
+			database: env.HYPERDRIVE.database,
+			port: env.HYPERDRIVE.port,
 
+			// Required to enable mysql2 compatibility for Workers
+			disableEval: true,
+		});
 
-      // Required to enable mysql2 compatibility for Workers
-      disableEval: true,
-    });
+		try {
+			// Sample query
+			const [results, fields] = await connection.query("SHOW tables;");
 
-
-    try {
-      // Sample query
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-      return Response.json({ results, fields });
-    } catch (e) {
-      console.error(e);
-      return Response.json(
-        { error: e instanceof Error ? e.message : e },
-        { status: 500 },
-      );
-    }
-  },
+			// Return result rows as JSON
+			return Response.json({ results, fields });
+		} catch (e) {
+			console.error(e);
+			return Response.json(
+				{ error: e instanceof Error ? e.message : e },
+				{ status: 500 },
+			);
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -501,7 +454,14 @@ If you encounter issues when setting up your Hyperdrive configuration with tunne
 
 * Ensure your database is configured to use TLS (SSL). Hyperdrive requires TLS (SSL) to connect.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/#page","headline":"Connect to a private database using Tunnel · Cloudflare Hyperdrive docs","description":"Securely connect Hyperdrive to private databases using Cloudflare Tunnel and Access.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/configuration/connect-to-private-database/","name":"Connect to a private database using Tunnel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/#page","headline":"Connect to a private database using Tunnel · Cloudflare Hyperdrive docs","description":"Securely connect Hyperdrive to private databases using Cloudflare Tunnel and Access.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

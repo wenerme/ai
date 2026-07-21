@@ -1,16 +1,18 @@
 ---
-title: Changelog
 description: View recent changes and updates.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Changelog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Changelog
 
-# Changelog
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/ai-crawl-control.xml)
 
@@ -310,7 +312,6 @@ Server: cloudflare
 Cf-Ray: 967e8da599d0c3fa-EWR
 Cf-Team: 2902f6db750000c3fa1e2ef400000001
 
-
 {
   "message": "Please contact the site owner for access."
 }
@@ -347,7 +348,7 @@ We redesigned the AI Crawl Control dashboard to provide more intuitive and granu
 
 * From the new **AI Crawlers** tab: block specific AI crawlers.
 * From the new **Metrics** tab: view AI Crawl Control metrics.
-![Block AI crawlers](https://developers.cloudflare.com/_astro/manage-ai-crawlers.6UgS8dSG_Z1HRWpI.webp) ![Analyze AI crawler activity](https://developers.cloudflare.com/_astro/analyze-metrics.C52pJZVg_1C7hti.webp)
+![Block AI crawlers](https://developers.cloudflare.com/_astro/manage-ai-crawlers.6UgS8dSG_Z1HRWpI.webp)![Analyze AI crawler activity](https://developers.cloudflare.com/_astro/analyze-metrics.C52pJZVg_1C7hti.webp)
 
 To get started, explore:
 
@@ -370,7 +371,14 @@ You can use this data to:
 
 To get started, explore [AI audit](https://developers.cloudflare.com/ai-crawl-control/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ai-crawl-control/changelog/#page","headline":"Changelog · Cloudflare AI Crawl Control docs","description":"View recent changes and updates.","url":"https://developers.cloudflare.com/ai-crawl-control/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/changelog/","name":"Changelog"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ai-crawl-control/changelog/#page","headline":"Changelog · Cloudflare AI Crawl Control docs","description":"View recent changes and updates.","url":"https://developers.cloudflare.com/ai-crawl-control/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

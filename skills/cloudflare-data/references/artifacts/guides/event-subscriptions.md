@@ -1,16 +1,18 @@
 ---
-title: Event subscriptions
 description: Subscribe to Artifacts events for repo lifecycle changes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Event subscriptions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Event subscriptions
 
-# Event subscriptions
+Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/guides/event-subscriptions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts emits structured events for repository lifecycle changes — creates, deletes, forks, imports, pushes, clones, fetches, and token changes. By subscribing to these events through [event subscriptions](https://developers.cloudflare.com/queues/event-subscriptions/), you can consume them from a Worker to build commit-driven automation.
 
@@ -309,7 +311,14 @@ Triggered when a repo-scoped token is revoked. Includes the token ID.
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/event-subscriptions/#page","headline":"Event subscriptions · Cloudflare Artifacts docs","description":"Subscribe to Artifacts events for repo lifecycle changes.","url":"https://developers.cloudflare.com/artifacts/guides/event-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/guides/event-subscriptions/","name":"Event subscriptions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/event-subscriptions/#page","headline":"Event subscriptions · Cloudflare Artifacts docs","description":"Subscribe to Artifacts events for repo lifecycle changes.","url":"https://developers.cloudflare.com/artifacts/guides/event-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

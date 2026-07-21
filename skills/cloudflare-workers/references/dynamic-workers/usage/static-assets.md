@@ -1,16 +1,18 @@
 ---
-title: Static assets
 description: Serve static files alongside Dynamic Worker code.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Static assets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Static assets
 
-# Static assets
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/usage/static-assets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Dynamic Workers can serve static assets like HTML pages, JavaScript bundles, images, and other files alongside your Worker code. This is useful when you need a Dynamic Worker to serve a full-stack application.
 
@@ -36,58 +38,43 @@ project/{projectId}/manifest               →  asset manifest
 
 When a user deploys their project through your platform's upload API, store each file in KV under its pathname:
 
-**TypeScript**
-
 ```ts
 await env.KV_ASSETS.put(`project/${projectId}/assets${pathname}`, fileContent);
 ```
 
 You also need to store a manifest, a mapping that tells the asset handler which files exist and what their content types are. Use `buildAssetManifest()` from `@cloudflare/worker-bundler` to generate it from your assets:
 
-* [  JavaScript ](#tab-panel-9190)
-* [  TypeScript ](#tab-panel-9191)
-
-**JavaScript**
-
 ```js
 import { buildAssetManifest } from "@cloudflare/worker-bundler";
 
-
 const assets = {
-  "/index.html": htmlContent,
-  "/app.js": jsContent,
-  "/style.css": cssContent,
+	"/index.html": htmlContent,
+	"/app.js": jsContent,
+	"/style.css": cssContent,
 };
-
 
 const manifest = await buildAssetManifest(assets);
 
-
 await env.KV_ASSETS.put(
-  `project/${projectId}/manifest`,
-  JSON.stringify(manifest),
+	`project/${projectId}/manifest`,
+	JSON.stringify(manifest),
 );
 ```
-
-**TypeScript**
 
 ```ts
 import { buildAssetManifest } from "@cloudflare/worker-bundler";
 
-
 const assets = {
-  "/index.html": htmlContent,
-  "/app.js": jsContent,
-  "/style.css": cssContent,
+	"/index.html": htmlContent,
+	"/app.js": jsContent,
+	"/style.css": cssContent,
 };
-
 
 const manifest = await buildAssetManifest(assets);
 
-
 await env.KV_ASSETS.put(
-  `project/${projectId}/manifest`,
-  JSON.stringify(manifest),
+	`project/${projectId}/manifest`,
+	JSON.stringify(manifest),
 );
 ```
 
@@ -99,29 +86,21 @@ The examples on this page use KV for asset storage, but you can also use [R2](ht
 
 Grant the loader Worker access to the KV namespace where you stored the assets:
 
-* [  wrangler.jsonc ](#tab-panel-9188)
-* [  wrangler.toml ](#tab-panel-9189)
-
-**JSONC**
-
 ```jsonc
 {
-  "worker_loaders": [{ "binding": "LOADER" }],
-  "kv_namespaces": [
-    {
-      "binding": "KV_ASSETS",
-      "id": "<your-kv-namespace-id>",
-    },
-  ],
+	"worker_loaders": [{ "binding": "LOADER" }],
+	"kv_namespaces": [
+		{
+			"binding": "KV_ASSETS",
+			"id": "<your-kv-namespace-id>",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[worker_loaders]]
 binding = "LOADER"
-
 
 [[kv_namespaces]]
 binding = "KV_ASSETS"
@@ -148,90 +127,73 @@ Instead of writing your own logic to match request paths to files, detect conten
 
 `handleAssetRequest()` serves the file if it finds a match in the manifest, with the correct headers for content type and caching.
 
-* [  JavaScript ](#tab-panel-9196)
-* [  TypeScript ](#tab-panel-9197)
-
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 import { handleAssetRequest } from "@cloudflare/worker-bundler";
 
-
 export class AssetBinding extends WorkerEntrypoint {
-  async fetch(request) {
-    const { projectId } = this.ctx.props;
+	async fetch(request) {
+		const { projectId } = this.ctx.props;
 
+		// Load the project's asset manifest from KV
+		const manifest = await this.env.KV_ASSETS.get(
+			`project/${projectId}/manifest`,
+			{ type: "json", cacheTtl: 300 },
+		);
 
-    // Load the project's asset manifest from KV
-    const manifest = await this.env.KV_ASSETS.get(
-      `project/${projectId}/manifest`,
-      { type: "json", cacheTtl: 300 },
-    );
+		if (!manifest) {
+			return new Response("No assets found", { status: 404 });
+		}
 
+		// Storage object — handleAssetRequest calls get() to
+		// read file content when it needs to serve an asset
+		const storage = {
+			async get(pathname) {
+				return this.env.KV_ASSETS.get(
+					`project/${projectId}/assets${pathname}`,
+					{ type: "arrayBuffer", cacheTtl: 86_400 },
+				);
+			},
+		};
 
-    if (!manifest) {
-      return new Response("No assets found", { status: 404 });
-    }
-
-
-    // Storage object — handleAssetRequest calls get() to
-    // read file content when it needs to serve an asset
-    const storage = {
-      async get(pathname) {
-        return this.env.KV_ASSETS.get(
-          `project/${projectId}/assets${pathname}`,
-          { type: "arrayBuffer", cacheTtl: 86_400 },
-        );
-      },
-    };
-
-
-    const response = await handleAssetRequest(request, manifest, storage);
-    return response ?? new Response("Not Found", { status: 404 });
-  }
+		const response = await handleAssetRequest(request, manifest, storage);
+		return response ?? new Response("Not Found", { status: 404 });
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 import { handleAssetRequest } from "@cloudflare/worker-bundler";
 
-
 export class AssetBinding extends WorkerEntrypoint {
-  async fetch(request: Request) {
-    const { projectId } = this.ctx.props;
+	async fetch(request: Request) {
+		const { projectId } = this.ctx.props;
 
+		// Load the project's asset manifest from KV
+		const manifest = await this.env.KV_ASSETS.get(
+			`project/${projectId}/manifest`,
+			{ type: "json", cacheTtl: 300 },
+		);
 
-    // Load the project's asset manifest from KV
-    const manifest = await this.env.KV_ASSETS.get(
-      `project/${projectId}/manifest`,
-      { type: "json", cacheTtl: 300 },
-    );
+		if (!manifest) {
+			return new Response("No assets found", { status: 404 });
+		}
 
+		// Storage object — handleAssetRequest calls get() to
+		// read file content when it needs to serve an asset
+		const storage = {
+			async get(pathname: string) {
+				return this.env.KV_ASSETS.get(
+					`project/${projectId}/assets${pathname}`,
+					{ type: "arrayBuffer", cacheTtl: 86_400 },
+				);
+			},
+		};
 
-    if (!manifest) {
-      return new Response("No assets found", { status: 404 });
-    }
-
-
-    // Storage object — handleAssetRequest calls get() to
-    // read file content when it needs to serve an asset
-    const storage = {
-      async get(pathname: string) {
-        return this.env.KV_ASSETS.get(
-          `project/${projectId}/assets${pathname}`,
-          { type: "arrayBuffer", cacheTtl: 86_400 },
-        );
-      },
-    };
-
-
-    const response = await handleAssetRequest(request, manifest, storage);
-    return response ?? new Response("Not Found", { status: 404 });
-  }
+		const response = await handleAssetRequest(request, manifest, storage);
+		return response ?? new Response("Not Found", { status: 404 });
+	}
 }
 ```
 
@@ -245,70 +207,57 @@ Once `AssetBinding` is exported, it becomes available on `ctx.exports` in the lo
 
 When you call `get()` to create the Dynamic Worker, include the `AssetBinding` in the `env` object so the Dynamic Worker can use it to serve static files. To reference the `AssetBinding` class you defined in the previous step, use `ctx.exports.AssetBinding()` and pass the `projectId` as a prop so it knows which project's assets to serve. This works the same way as custom bindings — `props` is how you pass information to the class, and the class reads it at `this.ctx.props` when it runs.
 
-* [  JavaScript ](#tab-panel-9194)
-* [  TypeScript ](#tab-panel-9195)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const projectId = getProjectIdFromRequest(request);
+	async fetch(request, env, ctx) {
+		const projectId = getProjectIdFromRequest(request);
 
+		const worker = env.LOADER.get(projectId, async () => {
+			const serverCode = await loadServerCode(projectId);
 
-    const worker = env.LOADER.get(projectId, async () => {
-      const serverCode = await loadServerCode(projectId);
+			return {
+				mainModule: "index.js",
+				modules: {
+					"index.js": { js: serverCode },
+				},
+				compatibilityDate: "2026-07-21",
+				env: {
+					ASSETS: ctx.exports.AssetBinding({
+						props: { projectId },
+					}),
+				},
+			};
+		});
 
-
-      return {
-        mainModule: "index.js",
-        modules: {
-          "index.js": { js: serverCode },
-        },
-        compatibilityDate: "2026-07-20",
-        env: {
-          ASSETS: ctx.exports.AssetBinding({
-            props: { projectId },
-          }),
-        },
-      };
-    });
-
-
-    return await worker.getEntrypoint().fetch(request);
-  },
+		return await worker.getEntrypoint().fetch(request);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-    const projectId = getProjectIdFromRequest(request);
+	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		const projectId = getProjectIdFromRequest(request);
 
+		const worker = env.LOADER.get(projectId, async () => {
+			const serverCode = await loadServerCode(projectId);
 
-    const worker = env.LOADER.get(projectId, async () => {
-      const serverCode = await loadServerCode(projectId);
+			return {
+				mainModule: "index.js",
+				modules: {
+					"index.js": { js: serverCode },
+				},
+				compatibilityDate: "$today",
+				env: {
+					ASSETS: ctx.exports.AssetBinding({
+						props: { projectId },
+					}),
+				},
+			};
+		});
 
-
-      return {
-        mainModule: "index.js",
-        modules: {
-          "index.js": { js: serverCode },
-        },
-        compatibilityDate: "2026-07-20",
-        env: {
-          ASSETS: ctx.exports.AssetBinding({
-            props: { projectId },
-          }),
-        },
-      };
-    });
-
-
-    return await worker.getEntrypoint().fetch(request);
-  },
+		return await worker.getEntrypoint().fetch(request);
+	},
 };
 ```
 
@@ -318,54 +267,50 @@ The Dynamic Worker sees `ASSETS` as a binding and can call `env.ASSETS.fetch(req
 
 From the Dynamic Worker's perspective, `env.ASSETS` works like any other binding. The user writes their server code and calls `env.ASSETS.fetch()` to serve static files:
 
-* [  JavaScript ](#tab-panel-9192)
-* [  TypeScript ](#tab-panel-9193)
-
-**JavaScript**
-
 ```js
 // Inside the Dynamic Worker
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		// Handle API routes directly
+		if (url.pathname.startsWith("/api/")) {
+			return Response.json({ hello: "world" });
+		}
 
-    // Handle API routes directly
-    if (url.pathname.startsWith("/api/")) {
-      return Response.json({ hello: "world" });
-    }
-
-
-    // Everything else — serve static assets
-    return env.ASSETS.fetch(request);
-  },
+		// Everything else — serve static assets
+		return env.ASSETS.fetch(request);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 // Inside the Dynamic Worker
 export default {
-  async fetch(request: Request, env: Env) {
-    const url = new URL(request.url);
+	async fetch(request: Request, env: Env) {
+		const url = new URL(request.url);
 
+		// Handle API routes directly
+		if (url.pathname.startsWith("/api/")) {
+			return Response.json({ hello: "world" });
+		}
 
-    // Handle API routes directly
-    if (url.pathname.startsWith("/api/")) {
-      return Response.json({ hello: "world" });
-    }
-
-
-    // Everything else — serve static assets
-    return env.ASSETS.fetch(request);
-  },
+		// Everything else — serve static assets
+		return env.ASSETS.fetch(request);
+	},
 };
 ```
 
 When the Dynamic Worker calls `env.ASSETS.fetch(request)`, the call goes through RPC to the loader Worker's `AssetBinding`, which looks up the file in the manifest and reads it from KV. The Dynamic Worker does not need to handle any of this — it calls `env.ASSETS.fetch(request)` and gets back the file with the correct headers, ready to return to the client.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/#page","headline":"Static assets · Cloudflare Dynamic Workers docs","description":"Serve static files alongside Dynamic Worker code.","url":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/static-assets/","name":"Static assets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/#page","headline":"Static assets · Cloudflare Dynamic Workers docs","description":"Serve static files alongside Dynamic Worker code.","url":"https://developers.cloudflare.com/dynamic-workers/usage/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

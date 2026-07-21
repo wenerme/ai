@@ -1,16 +1,18 @@
 ---
-title: App Launcher
 description: Configure the Access App Launcher portal.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: App Launcher
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  App Launcher
 
-# App Launcher
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With the Access App Launcher, users can open all applications that they have access to from a single dashboard.
 
@@ -56,7 +58,14 @@ If you are having issues specifying a custom logo, check that the image is serve
 
 To customize the App Launcher with your own branding, messages, and links, refer to the [Custom pages documentation](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/#page","headline":"App Launcher · Cloudflare Learning Paths","description":"Configure the Access App Launcher portal.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/customize-ux/","name":"Customize the end user experience"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/customize-ux/app-launcher/","name":"App Launcher"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/#page","headline":"App Launcher · Cloudflare Learning Paths","description":"Configure the Access App Launcher portal.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/app-launcher/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

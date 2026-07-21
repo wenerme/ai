@@ -1,22 +1,24 @@
 ---
-title: Get started
 description: Install Terraform and configure the Cloudflare provider on your operating system.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/installing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Terraform ships as a single binary file. The examples below include installation information for popular operating systems.
 
 For official instructions on installing Terraform, refer to [Install Terraform ↗](https://developer.hashicorp.com/terraform/tutorials/certification-associate-tutorials/install-cli).
 
-Warning
+Caution
 
 Terraform maintains your configuration state, which can be broken when you make configuration changes through both Terraform and either the Cloudflare Dashboard or API.
 
@@ -44,7 +46,6 @@ Alternatively, you can fetch a specific version directly and place the binary in
 ```sh
 wget -q https://releases.hashicorp.com/terraform/1.4.5/terraform_1.4.5_linux_amd64.zip
 
-
 unzip terraform_1.4.5_linux_amd64.zip
 ```
 
@@ -55,7 +56,6 @@ Archive:  terraform_1.4.5_linux_amd64.zip
 
 ```sh
 sudo mv terraform /usr/local/bin/terraform
-
 
 terraform version
 ```
@@ -73,7 +73,14 @@ Terraform v1.4.5
 
 For additional installers, refer to the [Download Terraform ↗](https://developer.hashicorp.com/terraform/downloads) page.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/installing/#page","headline":"Install Terraform · Cloudflare Terraform docs","description":"Install Terraform and configure the Cloudflare provider on your operating system.","url":"https://developers.cloudflare.com/terraform/installing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/installing/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/installing/#page","headline":"Install Terraform · Cloudflare Terraform docs","description":"Install Terraform and configure the Cloudflare provider on your operating system.","url":"https://developers.cloudflare.com/terraform/installing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

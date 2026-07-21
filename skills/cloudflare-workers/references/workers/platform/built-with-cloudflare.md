@@ -1,16 +1,18 @@
 ---
-title: Built with Cloudflare button
 description: Set up a Built with Cloudflare button
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Built with Cloudflare button
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Built with Cloudflare button
 
-# Built with Cloudflare button
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/built-with-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you're building an application or website on Cloudflare, you can embed a Built with Cloudflare button in your README, blog post, or documentation.
 
@@ -24,10 +26,6 @@ The "Built with Cloudflare" button can be used to share that you're using Cloudf
 
 The Built with Cloudflare button is an SVG and can be embedded anywhere. Use the following snippet to paste the button into your README, blog post, or documentation.
 
-* [ Markdown ](#tab-panel-12766)
-* [ HTML ](#tab-panel-12767)
-* [ URL ](#tab-panel-12768)
-
 ```md
 [![Built with Cloudflare](https://workers.cloudflare.com/built-with-cloudflare.svg)](https://cloudflare.com)
 ```
@@ -40,7 +38,14 @@ The Built with Cloudflare button is an SVG and can be embedded anywhere. Use the
 https://workers.cloudflare.com/built-with-cloudflare.svg
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/built-with-cloudflare/#page","headline":"Built with Cloudflare button · Cloudflare Workers docs","description":"Set up a Built with Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/built-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/built-with-cloudflare/","name":"Built with Cloudflare button"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/built-with-cloudflare/#page","headline":"Built with Cloudflare button · Cloudflare Workers docs","description":"Set up a Built with Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/built-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Set up email records
 description: Configure MX, SPF, DKIM, and DMARC records for email.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set up email records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up email records
 
-# Set up email records
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 There are three reasons to set up email records for your domain:
 
@@ -40,22 +42,18 @@ API example
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `DNS Write`
-
-**Create DNS Record**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "A",
-    "name": "mail.example.com",
-    "content": "192.0.2.1",
-    "ttl": 3600,
-    "proxied": false
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "A",
+		"name": "mail.example.com",
+		"content": "192.0.2.1",
+		"ttl": 3600,
+		"proxied": false
+	}'
 ```
-
-**Response**
 ```json
 {
   "result": {
@@ -91,22 +89,18 @@ API example
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `DNS Write`
-
-**Create DNS Record**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "MX",
-    "name": "example.com",
-    "content": "mail.example.com",
-    "priority": 5,
-    "ttl": 3600
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "MX",
+		"name": "example.com",
+		"content": "mail.example.com",
+		"priority": 5,
+		"ttl": 3600
+	}'
 ```
-
-**Response**
 ```json
 {
   "result": {
@@ -161,7 +155,14 @@ Refer to [Security records](https://developers.cloudflare.com/dmarc-management/s
 
 By default, Cloudflare does not proxy email traffic on port 25 (SMTP). You can only proxy outgoing email if you have [Spectrum](https://developers.cloudflare.com/spectrum/) configured for [SMTP](https://developers.cloudflare.com/spectrum/reference/configuration-options/#smtp).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/#page","headline":"Set up email records · Cloudflare DNS docs","description":"Configure MX, SPF, DKIM, and DMARC records for email.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/email-records/","name":"Set up email records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/#page","headline":"Set up email records · Cloudflare DNS docs","description":"Configure MX, SPF, DKIM, and DMARC records for email.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

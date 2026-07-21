@@ -1,28 +1,34 @@
 ---
-title: nemotron-3-120b-a12b
 description: NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: nemotron-3-120b-a12b
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![NVIDIA logo](https://developers.cloudflare.com/_astro/nvidia.y1O6VlZA.svg)
 
 #  nemotron-3-120b-a12b
 
-Text Generation • NVIDIA
+ Text Generation • NVIDIA
 
-`@cf/nvidia/nemotron-3-120b-a12b`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/nvidia/nemotron-3-120b-a12b `
+
+* Cloudflare-hosted
+* Function calling
+* Reasoning
 
 NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.
 
 | Model Info                                                                           |                                                                                                           |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 256,000 tokens                                                                                            |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/)          | 256,000 tokens                                                                                            |
 | Terms and License                                                                    | [link ↗](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/) |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                                       |
 | Reasoning                                                                            | Yes                                                                                                       |
@@ -30,28 +36,20 @@ NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-ag
 
 ## Playground
 
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
 [ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/nvidia/nemotron-3-120b-a12b)
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5510)
-* [  TypeScript ](#tab-panel-5511)
-* [  Python ](#tab-panel-5512)
-* [  curl ](#tab-panel-5513)
-
-**TypeScript**
-
 ```ts
+
 export interface Env {
   AI: Ai;
 }
 
-
 export default {
   async fetch(request, env): Promise<Response> {
-
 
     const messages = [
       { role: "system", content: "You are a friendly assistant" },
@@ -61,12 +59,10 @@ export default {
       },
     ];
 
-
     const stream = await env.AI.run("@cf/nvidia/nemotron-3-120b-a12b", {
       messages,
       stream: true,
     });
-
 
     return new Response(stream, {
       headers: { "content-type": "text/event-stream" },
@@ -76,14 +72,13 @@ export default {
 ```
 
 ```ts
+
 export interface Env {
   AI: Ai;
 }
 
-
 export default {
   async fetch(request, env): Promise<Response> {
-
 
     const messages = [
       { role: "system", content: "You are a friendly assistant" },
@@ -94,20 +89,18 @@ export default {
     ];
     const response = await env.AI.run("@cf/nvidia/nemotron-3-120b-a12b", { messages });
 
-
     return Response.json(response);
   },
 } satisfies ExportedHandler<Env>;
 ```
 
 ```py
+
 import os
 import requests
 
-
 ACCOUNT_ID = "your-account-id"
 AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
 
 prompt = "Tell me all about PEP-8"
 response = requests.post(
@@ -125,6 +118,7 @@ print(result)
 ```
 
 ```sh
+
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/nvidia/nemotron-3-120b-a12b \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -133,7 +127,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -269,7 +263,7 @@ user
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+Synchronous  — Send a request and receive a complete response
 
 id
 
@@ -303,7 +297,7 @@ service\_tier
 
 `string | null`
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+Streaming  — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -319,15 +313,22 @@ format
 
 ## API Schemas (Raw)
 
- Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-input.json "Download")
+Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-input.json "Download")
 
- Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-output.json "Download")
+Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/sync-output.json "Download")
 
- Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-input.json "Download")
+Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-input.json "Download")
 
- Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json "Download")
+Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/streaming-output.json "Download")
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/#page","headline":"nemotron-3-120b-a12b (NVIDIA) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.","url":"https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/#page","headline":"nemotron-3-120b-a12b (NVIDIA) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.","url":"https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

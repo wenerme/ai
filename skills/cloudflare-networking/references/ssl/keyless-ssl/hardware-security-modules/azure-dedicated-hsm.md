@@ -1,16 +1,18 @@
 ---
-title: Azure Dedicated HSM
 description: Learn how to use Keyless SSL with Azure Dedicated HSM.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Azure Dedicated HSM
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Azure Dedicated HSM
 
-# Azure Dedicated HSM
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial uses [Azure Dedicated HSM ↗](https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/) — a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a790.
 
@@ -32,7 +34,6 @@ The first step is creating an HSM partition, which can be thought of as an indep
 ```txt
 vm$ ssh tenantadmin@hsm
 
-
 [local_host] lunash:>hsm login
   Please enter the HSM Administrators' password:
   > ********
@@ -42,7 +43,6 @@ vm$ ssh tenantadmin@hsm
 
 
 Command Result : 0 (Success)
-
 
 [local_host] lunash:>partition create -partition KeylessSSL
 
@@ -77,7 +77,6 @@ lunacm (64-bit) v7.2.0-220. Copyright (c) 2018 SafeNet. All rights reserved.
 
   Available HSMs:
 
-
   Slot Id ->              0
   Label ->
   Serial Number ->        XXXXXXXXXXXXX
@@ -89,25 +88,18 @@ lunacm (64-bit) v7.2.0-220. Copyright (c) 2018 SafeNet. All rights reserved.
 
   Current Slot Id: 0
 
-
 lunacm:>partition init -label KeylessSSL -domain cloudflare
-
 
   Enter password for Partition SO: ********
 
-
   Re-enter password for Partition SO: ********
-
 
   You are about to initialize the partition.
   All contents of the partition will be destroyed.
 
-
   Are you sure you wish to continue?
 
-
   Type 'proceed' to continue, or 'quit' to quit now ->proceed
-
 
 Command Result : No Error
 ```
@@ -121,12 +113,9 @@ Before running the commands below, check with your information security and/or c
 ```txt
 # cmu generatekeypair -keyType=RSA -modulusBits=2048 -publicExponent=65537 -sign=1 -verify=1 -labelpublic=myrsakey -labelprivate=myrsakey -keygenmech=1
 
-
 Please enter password for token in slot 0 : ********
 
-
 # cmu list
-
 
 Please enter password for token in slot 0 : ********
 handle=51 label=myrsakey
@@ -137,7 +126,6 @@ Using the key created in the previous step, generate a CSR that can be sent to a
 
 ```txt
 # cmu requestCertificate -c="US" -o="Example, Inc." -cn="azure-dedicatedhsm.example.com" -s="California" -l="San Francisco" -publichandle=48 -privatehandle=51 -outputfile="rsa.csr" -sha256withrsa
-
 
 Please enter password for token in slot 0 : ********
 Using "CKM_SHA256_RSA_PKCS" Mechanism
@@ -157,16 +145,12 @@ Lastly, we need to modify the configuration file that the key server will read o
 
 Open `/etc/keyless/gokeyless.yaml` and immediately after:
 
-**YAML**
-
 ```yaml
 private_key_stores:
   - dir: /etc/keyless/keys
 ```
 
 add:
-
-**YAML**
 
 ```yaml
 - uri: pkcs11:token=KeylessSSL;object=myrsakey?module-path=/usr/safenet/lunaclient/lib/libCryptoki2_64.so&pin-value=password&max-sessions=1
@@ -179,7 +163,14 @@ sudo systemctl restart gokeyless.service
 sudo systemctl status gokeyless.service -l
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/#page","headline":"Azure Dedicated HSM · Cloudflare SSL/TLS docs","description":"Learn how to use Keyless SSL with Azure Dedicated HSM.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Azure"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/keyless-ssl/","name":"Keyless SSL"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/keyless-ssl/hardware-security-modules/","name":"Hardware security modules"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/","name":"Azure Dedicated HSM"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/#page","headline":"Azure Dedicated HSM · Cloudflare SSL/TLS docs","description":"Learn how to use Keyless SSL with Azure Dedicated HSM.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Azure"]}
 ```

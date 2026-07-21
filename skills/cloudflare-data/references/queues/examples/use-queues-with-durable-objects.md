@@ -1,18 +1,20 @@
 ---
-title: Use Queues from Durable Objects
 description: Publish to a queue from within a Durable Object.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use Queues from Durable Objects
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Use Queues from Durable Objects
+#  Use Queues from Durable Objects
 
 Publish to a queue from within a Durable Object.
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/examples/use-queues-with-durable-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following example shows you how to write a Worker script to publish to [Cloudflare Queues](https://developers.cloudflare.com/queues/) from within a [Durable Object](https://developers.cloudflare.com/durable-objects/).
 
@@ -24,58 +26,48 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-10479)
-* [  wrangler.toml ](#tab-panel-10480)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker",
-  "queues": {
-    "producers": [
-      {
-        "queue": "my-queue",
-        "binding": "YOUR_QUEUE"
-      }
-    ]
-  },
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "YOUR_DO_CLASS",
-        "class_name": "YourDurableObject"
-      }
-    ]
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": [
-        "YourDurableObject"
-      ]
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker",
+	"queues": {
+		"producers": [
+			{
+				"queue": "my-queue",
+				"binding": "YOUR_QUEUE"
+			}
+		]
+	},
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "YOUR_DO_CLASS",
+				"class_name": "YourDurableObject"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": [
+				"YourDurableObject"
+			]
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 
-
 [[queues.producers]]
 queue = "my-queue"
 binding = "YOUR_QUEUE"
 
-
 [[durable_objects.bindings]]
 name = "YOUR_DO_CLASS"
 class_name = "YourDurableObject"
-
 
 [[migrations]]
 tag = "v1"
@@ -90,17 +82,13 @@ The following Worker script:
 
 Extending the `DurableObject` base class makes your `Env` available on `this.env` and the Durable Object state available on `this.ctx` within the [fetch() handler](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) in the Durable Object.
 
-**TypeScript**
-
 ```ts
 import { DurableObject } from "cloudflare:workers";
-
 
 interface Env {
   YOUR_QUEUE: Queue;
   YOUR_DO_CLASS: DurableObjectNamespace<YourDurableObject>;
 }
-
 
 export default {
   async fetch(req, env, ctx): Promise<Response> {
@@ -110,11 +98,9 @@ export default {
     const url = new URL(req.url);
     const userIdParam = url.searchParams.get("userId");
 
-
     if (userIdParam) {
       // Get a stub that allows you to call that Durable Object
       const durableObjectStub = env.YOUR_DO_CLASS.getByName(userIdParam);
-
 
       // Pass the request to that Durable Object and await the response
       // This invokes the constructor once on your Durable Object class (defined further down)
@@ -122,14 +108,12 @@ export default {
       // We pass the original Request to the Durable Object's fetch method
       const response = await durableObjectStub.fetch(req);
 
-
       // This would return "wrote to queue", but you could return any response.
       return response;
     }
     return new Response("userId must be provided", { status: 400 });
   },
 } satisfies ExportedHandler<Env>;
-
 
 export class YourDurableObject extends DurableObject<Env> {
   async fetch(req: Request): Promise<Response> {
@@ -140,13 +124,19 @@ export class YourDurableObject extends DurableObject<Env> {
       // Write any other properties to your queue
     });
 
-
     return new Response("wrote to queue");
   }
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/use-queues-with-durable-objects/#page","headline":"Queues - Use Queues and Durable Objects · Cloudflare Queues docs","description":"Publish to a queue from within a Durable Object.","url":"https://developers.cloudflare.com/queues/examples/use-queues-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/examples/use-queues-with-durable-objects/","name":"Use Queues from Durable Objects"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/use-queues-with-durable-objects/#page","headline":"Queues - Use Queues and Durable Objects · Cloudflare Queues docs","description":"Publish to a queue from within a Durable Object.","url":"https://developers.cloudflare.com/queues/examples/use-queues-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

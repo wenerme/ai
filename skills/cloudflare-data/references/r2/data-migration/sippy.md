@@ -1,16 +1,18 @@
 ---
-title: Sippy
 description: Incrementally migrate objects to R2 on-demand as they are requested, reducing egress fees.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sippy
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sippy
 
-# Sippy
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-migration/sippy/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sippy is a data migration service that allows you to copy data from other cloud providers to R2 as the data is requested, without paying unnecessary cloud egress fees typically associated with moving large amounts of data.
 
@@ -45,7 +47,7 @@ Before getting started, you will need:
 ### Enable Sippy via the Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you'd like to migrate objects to.
 3. Switch to the **Settings** tab, then scroll down to the **On Demand Migration** card.
 4. Select **Enable** and enter details for the AWS / GCS bucket you'd like to migrate objects from. The credentials you enter must have permissions to read from this bucket. Cloudflare also recommends scoping your credentials to only allow reads from this bucket.
@@ -87,7 +89,7 @@ When enabled, Sippy exposes metrics that help you understand the progress of you
 To view current and historical metrics:
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select the **Metrics** tab.
 
@@ -98,7 +100,7 @@ You can optionally select a time window to query. This defaults to the last 24 h
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you'd like to disable Sippy for.
 3. Switch to the **Settings** tab and scroll down to the **On Demand Migration** card.
 4. Press **Disable**.
@@ -147,17 +149,17 @@ To create credentials with the correct permissions:
 2. Create a policy with the following format and replace `<BUCKET_NAME>` with the bucket you want to grant access to:
 ```json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": ["s3:ListBucket*", "s3:GetObject*"],
-      "Resource": [
-        "arn:aws:s3:::<BUCKET_NAME>",
-        "arn:aws:s3:::<BUCKET_NAME>/*"
-      ]
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": ["s3:ListBucket*", "s3:GetObject*"],
+			"Resource": [
+				"arn:aws:s3:::<BUCKET_NAME>",
+				"arn:aws:s3:::<BUCKET_NAME>/*"
+			]
+		}
+	]
 }
 ```
 3. Create a new user and attach the created policy to that user.
@@ -188,7 +190,14 @@ For example, a 320 MiB object originally uploaded to S3 using a single `PutObjec
 
 Relying on matching ETags before and after the migration is therefore discouraged.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/sippy/#page","headline":"Sippy · Cloudflare R2 docs","description":"Incrementally migrate objects to R2 on-demand as they are requested, reducing egress fees.","url":"https://developers.cloudflare.com/r2/data-migration/sippy/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-migration/","name":"Data migration"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-migration/sippy/","name":"Sippy"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/sippy/#page","headline":"Sippy · Cloudflare R2 docs","description":"Incrementally migrate objects to R2 on-demand as they are requested, reducing egress fees.","url":"https://developers.cloudflare.com/r2/data-migration/sippy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

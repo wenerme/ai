@@ -1,16 +1,18 @@
 ---
-title: Information about your domain
 description: How Information about your domain works in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Information about your domain
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Information about your domain
 
-# Information about your domain
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/settings/domain-management/domain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you configure your domain, the Cloudflare dashboard will display you the following fields:
 
@@ -31,7 +33,14 @@ When you configure your domain, the Cloudflare dashboard will display you the fo
 * **Hops**: The number of hops. This will not be displayed if the configuration method is Microsoft Graph API. Hop count will be visible only if it has been configured.
 * **Date added**: Date when the domain was added.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/domain-management/domain/#page","headline":"Information about your domain · Cloudflare One docs","description":"How Information about your domain works in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/domain-management/domain/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/settings/","name":"Settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/settings/domain-management/","name":"Domain management"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/email-security/settings/domain-management/domain/","name":"Information about your domain"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/domain-management/domain/#page","headline":"Information about your domain · Cloudflare One docs","description":"How Information about your domain works in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/domain-management/domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

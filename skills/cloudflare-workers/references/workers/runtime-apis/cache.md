@@ -1,16 +1,18 @@
 ---
-title: Cache
 description: Control reading and writing from the Cloudflare global network cache.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cache
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cache
 
-# Cache
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/cache/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -40,16 +42,12 @@ This individualized zone cache object differs from Cloudflare’s Global CDN. Fo
 
 The `caches.default` API is strongly influenced by the web browsers’ Cache API, but there are some important differences. For instance, Cloudflare Workers runtime exposes a single global cache object.
 
-**JavaScript**
-
 ```js
 let cache = caches.default;
 await cache.match(request);
 ```
 
 You may create and manage additional Cache instances via the [caches.open ↗](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open) method.
-
-**JavaScript**
 
 ```js
 let myCache = await caches.open('custom:cache');
@@ -86,8 +84,6 @@ Use the `Cache-Control` method to store the response without the `Set-Cookie` he
 ## Methods
 
 ### `Put`
-
-**JavaScript**
 
 ```js
 cache.put(request, response);
@@ -132,8 +128,6 @@ Note
 This is a cache-poisoning mitigation. To cache redirect responses with query strings, either include the query string in your cache key, or remove the query string from the `Location` header before calling `cache.put()`. This restriction does not apply on `.workers.dev` domains, which include the query string in the cache key by default.
 
 ### `Match`
-
-**JavaScript**
 
 ```js
 cache.match(request, options);
@@ -182,8 +176,6 @@ If you use Cloudflare Logs, you may see these `504` responses with the `RequestS
 
 ### `Delete`
 
-**JavaScript**
-
 ```js
 cache.delete(request, options);
 ```
@@ -217,7 +209,14 @@ The `cache.delete` method only purges content of the cache in the data center th
 * [Example: using the Cache API](https://developers.cloudflare.com/workers/examples/cache-api/)
 * [Example: caching POST requests](https://developers.cloudflare.com/workers/examples/cache-post-request/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/cache/#page","headline":"Cache · Cloudflare Workers docs","description":"Control reading and writing from the Cloudflare global network cache.","url":"https://developers.cloudflare.com/workers/runtime-apis/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/cache/","name":"Cache"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/cache/#page","headline":"Cache · Cloudflare Workers docs","description":"Control reading and writing from the Cloudflare global network cache.","url":"https://developers.cloudflare.com/workers/runtime-apis/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

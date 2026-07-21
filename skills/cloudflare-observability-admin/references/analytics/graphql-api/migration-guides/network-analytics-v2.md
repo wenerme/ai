@@ -1,20 +1,22 @@
 ---
-title: Network Analytics v1 to Network Analytics v2
 description: Migrate from Network Analytics v1 to v2 nodes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Network Analytics v1 to Network Analytics v2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network Analytics v1 to Network Analytics v2
 
-# Network Analytics v1 to Network Analytics v2
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In early 2020, Cloudflare released the first version of the Network Analytics dashboard and its corresponding API. The second version (Network Analytics v2) was made available on 2021-09-13.
 
-Warning
+Caution
 
 **Network Analytics v1 (NAv1) is now deprecated.** For more information on Network Analytics v2 (NAv2), refer to [Cloudflare Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/).
 
@@ -70,29 +72,29 @@ The following example queries the top 20 logs of traffic dropped by mitigation s
 
 ```graphql
 {
-  viewer {
-    accounts(filter: { accountTag: "<REDACTED>" }) {
-      magicTransitNetworkAnalyticsAdaptiveGroups(
-        filter: {
-          datetime_gt: "2021-10-01T00:00:00Z"
-          datetime_lt: "2021-10-05T00:00:00Z"
-          outcome_like: "drop"
-          mitigationSystem_neq: "magic-firewall"
-        }
-        limit: 20
-        orderBy: [ipDestinationAddress_ASC]
-      ) {
-        dimensions {
-          outcome
-          mitigationSystem
-          ipSourceAddress
-          ipDestinationAddress
-          ipProtocol
-          destinationPort
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: "<REDACTED>" }) {
+			magicTransitNetworkAnalyticsAdaptiveGroups(
+				filter: {
+					datetime_gt: "2021-10-01T00:00:00Z"
+					datetime_lt: "2021-10-05T00:00:00Z"
+					outcome_like: "drop"
+					mitigationSystem_neq: "magic-firewall"
+				}
+				limit: 20
+				orderBy: [ipDestinationAddress_ASC]
+			) {
+				dimensions {
+					outcome
+					mitigationSystem
+					ipSourceAddress
+					ipDestinationAddress
+					ipProtocol
+					destinationPort
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -105,7 +107,14 @@ The `mitigationSystem` field can take one the following values:
 * `magic-firewall` for [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/).
 * Empty string for unmitigated traffic.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/#page","headline":"Network Analytics v1 to Network Analytics v2 · Cloudflare Analytics docs","description":"Migrate from Network Analytics v1 to v2 nodes.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/migration-guides/","name":"Migration guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/migration-guides/network-analytics-v2/","name":"Network Analytics v1 to Network Analytics v2"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/#page","headline":"Network Analytics v1 to Network Analytics v2 · Cloudflare Analytics docs","description":"Migrate from Network Analytics v1 to v2 nodes.","url":"https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

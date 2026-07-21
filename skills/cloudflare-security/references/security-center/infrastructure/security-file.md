@@ -1,16 +1,18 @@
 ---
-title: Set up your security.txt file
 description: Manage your security.txt file via the dashboard or the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set up your security.txt file
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up your security.txt file
 
-# Set up your security.txt file
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/infrastructure/security-file/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can manage your [security.txt ↗](https://en.wikipedia.org/wiki/Security.txt) file via the dashboard or the [API](https://developers.cloudflare.com/api/resources/security%5Ftxt/).
 
@@ -19,9 +21,6 @@ Note
 When using the API, the preferred languages field name is `preferred_languages` (snake\_case). For example: `"preferred_languages": "en, de"`.
 
 To manage your security.txt file via the Cloudflare dashboard:
-
-* [  New dashboard ](#tab-panel-11404)
-* [ Old dashboard ](#tab-panel-11405)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your account and domain.
 2. Go to **Security** \> **Settings** and filter by **Web application exploits**.
@@ -74,7 +73,14 @@ To delete your security.txt file:
   2. Under **Security.txt** \> **Configurations**, select the edit icon.
   3. Select **Delete**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/infrastructure/security-file/#page","headline":"Set up your security.txt file · Cloudflare Security Center docs","description":"Manage your security.txt file via the dashboard or the API.","url":"https://developers.cloudflare.com/security-center/infrastructure/security-file/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/infrastructure/","name":"Infrastructure"}},{"@type":"ListItem","position":4,"item":{"@id":"/security-center/infrastructure/security-file/","name":"Set up your security.txt file"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/infrastructure/security-file/#page","headline":"Set up your security.txt file · Cloudflare Security Center docs","description":"Manage your security.txt file via the dashboard or the API.","url":"https://developers.cloudflare.com/security-center/infrastructure/security-file/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

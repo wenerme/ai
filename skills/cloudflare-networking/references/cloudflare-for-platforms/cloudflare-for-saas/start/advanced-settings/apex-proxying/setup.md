@@ -1,16 +1,18 @@
 ---
-title: Setup
 description: Configure Cloudflare for SaaS to support apex domain custom hostnames.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Setup
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Setup
 
-# Setup
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To set up Cloudflare for SaaS for [apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/) \- as opposed to the [normal setup](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/) \- perform the following steps.
 
@@ -40,7 +42,7 @@ With apex proxying, you can either [bring your own IP range](https://developers.
 
 For more details on this step, reach out to your account team.
 
-Warning
+Caution
 
 These IP addresses are different than those associated with your Cloudflare zone.
 
@@ -62,11 +64,8 @@ To create your fallback origin:
 
 1. Designate that record as your fallback origin.
 
-* [ Dashboard ](#tab-panel-7683)
-* [ API ](#tab-panel-7684)
-
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+[ Go to **Custom Hostnames** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. For **Fallback Origin**, enter the hostname for your fallback origin.
 3. Select **Add Fallback Origin**.
 
@@ -109,11 +108,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-7685)
-* [ API ](#tab-panel-7686)
-
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+[ Go to **Custom Hostnames** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select **Add Custom Hostname**.
 3. Add your customer's hostname `app.customer.com` and set the relevant options, including:
 
@@ -163,7 +159,7 @@ If you want your customers to be able to use CNAME records, you will need to com
 
 If your customer uses an A record at their authoritative DNS provider, they need to point their hostname to the IP prefix allocated for your account. You should also make sure that they point to the specific IPs that you want to use for apex proxying - if you have Static IPs or BYOIP, and your customer points to any of the IPs associated to your account, validation will run.
 
-Warning
+Caution
 
 Before your customer points DNS to your SaaS target, decide whether hostname validation and certificate validation should happen before or after DNS cutover.
 
@@ -181,7 +177,7 @@ example.com.  60  IN  A   192.0.2.1
 
 If your customer uses a CNAME record at their authoritative DNS, they need to point their hostname to your [CNAME target](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#2-optional-create-cname-target) [1](#user-content-fn-1).
 
-Warning
+Caution
 
 Before your customer points DNS to your SaaS target, decide whether hostname validation and certificate validation should happen before or after DNS cutover.
 
@@ -206,7 +202,14 @@ For more details, refer to [Remove custom hostnames](https://developers.cloudfla
 1. If you have [regional services](https://developers.cloudflare.com/data-localization/regional-services/) set up for your custom hostnames, Cloudflare always uses the processing region associated with your DNS target record (instead of the processing region of any [custom origins](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/)).
 [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/#page","headline":"Set up apex proxying · Cloudflare for Platforms docs","description":"Configure Cloudflare for SaaS to support apex domain custom hostnames.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/","name":"Advanced Settings"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/","name":"Apex proxying"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/","name":"Setup"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/#page","headline":"Set up apex proxying · Cloudflare for Platforms docs","description":"Configure Cloudflare for SaaS to support apex domain custom hostnames.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Load balancers
 description: Configure load balancers to distribute traffic across pools.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Load balancers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Load balancers
 
-# Load balancers
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/load-balancers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A load balancer distributes traffic among pools according to [pool health](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/) and [traffic steering policies](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/). Each load balancer is identified by its DNS hostname (`lb.example.com`, `dev.example.com`, etc.) or IP address.
 
@@ -73,7 +75,14 @@ The Cloudflare API supports the following commands for load balancers.
 | [Overwrite specific properties](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/edit/)    | PATCH  | /zones/:zone\_id/load\_balancers/:id |
 | [Overwrite entire Load Balancer](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/update/) | PUT    | /zones/:zone\_id/load\_balancers/:id |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/load-balancers/#page","headline":"Load balancers · Cloudflare Load Balancing docs","description":"Configure load balancers to distribute traffic across pools.","url":"https://developers.cloudflare.com/load-balancing/load-balancers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/load-balancers/","name":"Load balancers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/load-balancers/#page","headline":"Load balancers · Cloudflare Load Balancing docs","description":"Configure load balancers to distribute traffic across pools.","url":"https://developers.cloudflare.com/load-balancing/load-balancers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

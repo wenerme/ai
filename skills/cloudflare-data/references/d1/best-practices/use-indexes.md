@@ -1,16 +1,18 @@
 ---
-title: Use indexes
 description: Improve D1 query performance by creating indexes on frequently queried columns.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use indexes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use indexes
 
-# Use indexes
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/best-practices/use-indexes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Indexes enable D1 to improve query performance over the indexed columns for common (popular) queries by reducing the amount of data (number of rows) the database has to scan when running a query.
 
@@ -59,7 +61,6 @@ Queries that reference the `customer_id` column will now benefit from the index:
 ```sql
 -- Uses the index: the indexed column is referenced by the query.
 SELECT * FROM orders WHERE customer_id = ?
-
 
 -- Does not use the index: customer_id is not in the query.
 SELECT * FROM orders WHERE order_date = '2023-05-01'
@@ -159,7 +160,14 @@ Take note of the following considerations when creating indexes:
 * Indexes cannot be updated. To add or remove a column from an index, [remove](#remove-indexes) the index and then [create a new index](#create-an-index) with the new columns.
 * Indexes contribute to the overall storage required by your database: an index is effectively a table itself.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/use-indexes/#page","headline":"Use indexes · Cloudflare D1 docs","description":"Improve D1 query performance by creating indexes on frequently queried columns.","url":"https://developers.cloudflare.com/d1/best-practices/use-indexes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/use-indexes/","name":"Use indexes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/use-indexes/#page","headline":"Use indexes · Cloudflare D1 docs","description":"Improve D1 query performance by creating indexes on frequently queried columns.","url":"https://developers.cloudflare.com/d1/best-practices/use-indexes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Pricing
 description: Understand Browser Run pricing for Quick Actions and Browser Sessions, including browser hours and concurrent browser costs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Pricing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Pricing
 
-# Pricing
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
  Available on Free and Paid plans
 
@@ -28,7 +30,7 @@ Browser hours are shared across all methods.
 
 To view or change your plan, go to the **Workers plans** page in the Cloudflare dashboard:
 
-[ Go to **Workers plans** ](https://dash.cloudflare.com/?to=/:account/workers/plans)
+[ Go to **Workers plans** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/plans)
 
 ## Examples of Workers Paid pricing
 
@@ -42,7 +44,7 @@ For browser hours:
 50 hours - 10 hours (included in plan) = 40 hours
 
 
-40 hours × $0.09 per hour = $3.60
+40 hours × `0.09 per hour = `3.60
 
 #### Example: Browser Sessions pricing
 
@@ -54,7 +56,7 @@ For browser hours:
 50 hours - 10 hours (included in plan) = 40 hours
 
 
-40 hours × $0.09 per hour = $3.60
+40 hours × `0.09 per hour = `3.60
 
 For concurrent browsers:
 
@@ -66,12 +68,12 @@ For concurrent browsers:
 
 
 15 browsers (averaged monthly) − 10 (included in plan) = 5 browsers
-5 browsers × $2.00 per browser = $10.00
+5 browsers × `2.00 per browser = `10.00
 
 For browser hours and concurrent browsers:
 
 
-$3.60 + $10.00 = $13.60
+`3.60 + `10.00 = $13.60
 
 ## Pricing FAQ
 
@@ -80,18 +82,16 @@ $3.60 + $10.00 = $13.60
 You can monitor Browser Run usage in two ways:
 
 * To monitor your Browser Run usage in the Cloudflare dashboard, go to the **Browser Run** page.
-[ Go to **Browser Run** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+[ Go to **Browser Run** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 * The `X-Browser-Ms-Used` header, which is returned in every Quick Actions response, reports browser time used for the request (in milliseconds). You can also access this header using the Typescript SDK with the .asResponse() method:
-
-**TypeScript**
 ```ts
 const contentRes = await client.browserRendering.content
-  .create({
-    account_id: "account_id",
-  })
-  .asResponse();
+	.create({
+		account_id: "account_id",
+	})
+	.asResponse();
 const browserMsUsed = parseInt(
-  contentRes.headers.get("X-Browser-Ms-Used") || "",
+	contentRes.headers.get("X-Browser-Ms-Used") || "",
 );
 ```
 
@@ -111,7 +111,14 @@ At the end of each day, Cloudflare totals all of your browser usage for that day
 
 For example, if you only use one minute of browser time in a day, that day counts as one minute. If you do that every day for a 30-day month, your total would be 30 minutes. For billing, we round that up to one browser hour.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/pricing/#page","headline":"Pricing · Cloudflare Browser Run docs","description":"Understand Browser Run pricing for Quick Actions and Browser Sessions, including browser hours and concurrent browser costs.","url":"https://developers.cloudflare.com/browser-run/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/pricing/","name":"Pricing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/pricing/#page","headline":"Pricing · Cloudflare Browser Run docs","description":"Understand Browser Run pricing for Quick Actions and Browser Sessions, including browser hours and concurrent browser costs.","url":"https://developers.cloudflare.com/browser-run/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Data migration
 description: Migrate data from other cloud providers to R2 using Super Slurper or Sippy.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Data migration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Data migration
 
-# Data migration
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Quickly and easily migrate data from other cloud providers to R2\. Explore each option further by navigating to their respective documentation page.
 
@@ -20,7 +22,14 @@ Quickly and easily migrate data from other cloud providers to R2\. Explore each 
 
 For information on how to leverage these tools effectively, refer to [Migration Strategies](https://developers.cloudflare.com/r2/data-migration/migration-strategies/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/data-migration/#page","headline":"Data migration · Cloudflare R2 docs","description":"Migrate data from other cloud providers to R2 using Super Slurper or Sippy.","url":"https://developers.cloudflare.com/r2/data-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-migration/","name":"Data migration"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/data-migration/#page","headline":"Data migration · Cloudflare R2 docs","description":"Migrate data from other cloud providers to R2 using Super Slurper or Sippy.","url":"https://developers.cloudflare.com/r2/data-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

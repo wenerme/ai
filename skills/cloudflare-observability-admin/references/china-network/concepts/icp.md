@@ -1,16 +1,18 @@
 ---
-title: Internet Content Provider (ICP)
 description: Obtain and display an ICP license number required for websites operating in China.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Internet Content Provider (ICP)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Internet Content Provider (ICP)
 
-# Internet Content Provider (ICP)
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/china-network/concepts/icp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To operate a website in China, you need government permission called an Internet Content Provider (ICP) number. Think of it as a permit — without one, your site can be shut down.
 
@@ -57,7 +59,14 @@ After you obtain an ICP number, you must display it in the footer of your websit
 
 ![An ICP number displayed in the footer of a website.](https://developers.cloudflare.com/_astro/icp-number-in-footer.BX2CP_mf_1Ozdwp.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/icp/#page","headline":"Internet Content Provider (ICP) · Cloudflare China Network docs","description":"Obtain and display an ICP license number required for websites operating in China.","url":"https://developers.cloudflare.com/china-network/concepts/icp/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/china-network/","name":"China Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/china-network/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/china-network/concepts/icp/","name":"Internet Content Provider (ICP)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/icp/#page","headline":"Internet Content Provider (ICP) · Cloudflare China Network docs","description":"Obtain and display an ICP license number required for websites operating in China.","url":"https://developers.cloudflare.com/china-network/concepts/icp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

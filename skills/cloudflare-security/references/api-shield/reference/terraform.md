@@ -1,16 +1,18 @@
 ---
-title: Terraform
 description: Configure API Shield resources with Terraform, including endpoints and schemas.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Terraform
 
-# Terraform
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/reference/terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Get started with API Shield using Terraform from the examples below. For more information on how to use Terraform with Cloudflare, refer to the [Terraform documentation](https://developers.cloudflare.com/terraform/).
 
@@ -39,8 +41,6 @@ The following resources are available to configure through Terraform:
 
 Refer to the example configuration below to set up [session identifiers](https://developers.cloudflare.com/api-shield/get-started/#to-set-up-session-identifiers) on your zone.
 
-**Example configuration**
-
 ```tf
 resource "cloudflare_api_shield" "session_identifiers" {
   zone_id = var.zone_id
@@ -55,8 +55,6 @@ resource "cloudflare_api_shield" "session_identifiers" {
 
 Refer to the example configuration below to [manage endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/) on your zone.
 
-**Example configuration**
-
 ```tf
 resource "cloudflare_api_shield_operation" "get_image" {
   zone_id  = var.zone_id
@@ -64,7 +62,6 @@ resource "cloudflare_api_shield_operation" "get_image" {
   host     = "example.com"
   endpoint = "/api/images/{var1}"
 }
-
 
 resource "cloudflare_api_shield_operation" "post_image" {
   zone_id  = var.zone_id
@@ -82,8 +79,6 @@ It is required to configure Endpoint Management if you want to set up Schema val
 
 Refer to the example configuration below to manage [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/api/) on your zone.
 
-**Example configuration**
-
 ```tf
 # Schema that should be used for Schema validation
 resource "cloudflare_schema_validation_schemas" "example_schema" {
@@ -95,13 +90,11 @@ resource "cloudflare_schema_validation_schemas" "example_schema" {
   validation_enabled = true
 }
 
-
 # Block all requests that violate schema by default
 resource "cloudflare_schema_validation_settings" "zone_level_settings" {
   zone_id                              = var.zone_id
   validation_default_mitigation_action = "block"
 }
-
 
 # For endpoint post_image - only log requests that violate schema
 resource "cloudflare_schema_validation_operation_settings" "post_image_log_only" {
@@ -114,8 +107,6 @@ resource "cloudflare_schema_validation_operation_settings" "post_image_log_only"
 ## Validate JWTs
 
 Refer to the example configuration below to perform [JWT Validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) on your zone.
-
-**Example configuration**
 
 ```tf
 # Setting up JWT validation with specific keying material and location of the token
@@ -138,7 +129,6 @@ resource "cloudflare_token_validation_config" "example_es256_config" {
     ]
   }
 }
-
 
 # Setting up JWT rules for all configured endpoints on `example.com` except for `get_image`
 resource "cloudflare_token_validation_rules" "example_com" {
@@ -167,7 +157,6 @@ resource "cloudflare_token_validation_rules" "example_com" {
  }
 }
 
-
 # With JWT validation, we can also refine session identifiers to use claims from the JWT
 resource "cloudflare_api_shield" "session_identifiers" {
   zone_id = var.zone_id
@@ -180,7 +169,14 @@ resource "cloudflare_api_shield" "session_identifiers" {
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/reference/terraform/#page","headline":"Terraform · Cloudflare API Shield docs","description":"Configure API Shield resources with Terraform, including endpoints and schemas.","url":"https://developers.cloudflare.com/api-shield/reference/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/reference/terraform/","name":"Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/reference/terraform/#page","headline":"Terraform · Cloudflare API Shield docs","description":"Configure API Shield resources with Terraform, including endpoints and schemas.","url":"https://developers.cloudflare.com/api-shield/reference/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

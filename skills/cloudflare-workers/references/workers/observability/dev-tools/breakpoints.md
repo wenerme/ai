@@ -1,16 +1,18 @@
 ---
-title: Breakpoints
 description: Debug your local and deployed Workers using breakpoints.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Breakpoints
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Breakpoints
 
-# Breakpoints
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Debug via breakpoints
 
@@ -31,19 +33,19 @@ To setup VS Code for breakpoint debugging in your Worker project:
 
 ```json
 {
-  "configurations": [
-    {
-      "name": "Wrangler",
-      "type": "node",
-      "request": "attach",
-      "port": 9229,
-      "cwd": "/",
-      "resolveSourceMapLocations": null,
-      "attachExistingChildren": false,
-      "autoAttachChildProcesses": false,
-      "sourceMaps": true // works with or without this line
-    }
-  ]
+	"configurations": [
+		{
+			"name": "Wrangler",
+			"type": "node",
+			"request": "attach",
+			"port": 9229,
+			"cwd": "/",
+			"resolveSourceMapLocations": null,
+			"attachExistingChildren": false,
+			"autoAttachChildProcesses": false,
+			"sourceMaps": true // works with or without this line
+		}
+	]
 }
 ```
 
@@ -52,7 +54,7 @@ To setup VS Code for breakpoint debugging in your Worker project:
 3. Go back to a `.js` or `.ts` file in your project and add at least one breakpoint.
 4. Open your browser and go to the Worker's local URL (default `http://127.0.0.1:8787`). The breakpoint should be hit, and you should be able to review details about your code at the specified line.
 
-Warning
+Caution
 
 Breakpoint debugging in `wrangler dev` using `--remote` could extend Worker CPU time and incur additional costs since you are testing against actual resources that count against usage limits. It is recommended to use `wrangler dev` without the `--remote` option. This ensures you are developing locally.
 
@@ -66,7 +68,14 @@ The `.vscode/launch.json` file only applies to a single workspace. If you prefer
 
 * [Local Development](https://developers.cloudflare.com/workers/local-development/) \- Develop your Workers and connected resources locally via Wrangler and [workerd ↗](https://github.com/cloudflare/workerd), for a fast, accurate feedback loop.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/#page","headline":"Breakpoints · Cloudflare Workers docs","description":"Debug your local and deployed Workers using breakpoints.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/dev-tools/","name":"DevTools"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/dev-tools/breakpoints/","name":"Breakpoints"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/#page","headline":"Breakpoints · Cloudflare Workers docs","description":"Debug your local and deployed Workers using breakpoints.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

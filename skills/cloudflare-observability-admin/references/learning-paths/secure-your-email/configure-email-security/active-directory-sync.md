@@ -1,16 +1,18 @@
 ---
-title: Manage your active directory
 description: Sync and manage email directory users.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Manage your active directory
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage your active directory
 
-# Manage your active directory
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/active-directory-sync/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Directories are folders to store user data. Email security allows you to manage directories from the Cloudflare dashboard.
 
@@ -55,7 +57,14 @@ In addition, Email security allows you to:
 * [Filter the impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-integrated-directories/manage-groups-directory/#filter-impersonation-registry).
 * [Manage users in your directory](https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-integrated-directories/manage-users-directory/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/active-directory-sync/#page","headline":"Manage your active directory · Cloudflare Learning Paths","description":"Sync and manage email directory users.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/active-directory-sync/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/configure-email-security/","name":"Configure Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/configure-email-security/active-directory-sync/","name":"Manage your active directory"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/active-directory-sync/#page","headline":"Manage your active directory · Cloudflare Learning Paths","description":"Sync and manage email directory users.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/active-directory-sync/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Workers for Platforms
 description: Run untrusted code from your customers or AI in secure, isolated sandboxes on Cloudflare's global network.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers for Platforms
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers for Platforms
 
-# Workers for Platforms
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build a multi-tenant platform that runs untrusted code in secure, isolated sandboxes.
 
@@ -39,21 +41,32 @@ Workers for Platforms provides tools to manage and control your customers' code:
 
 Explore reference architectures that use Workers for Platforms:
 
-[Programmable PlatformsWorkers for Platforms provide secure, scalable, cost-effective infrastructure for programmable platforms with global reach.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/)[AI Vibe Coding PlatformCloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)[Enterprise AI Vibe Coding PlatformReference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
+[**Programmable Platforms**Workers for Platforms provide secure, scalable, cost-effective infrastructure for programmable platforms with global reach.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/)
+
+[**AI Vibe Coding Platform**Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
+
+[**Enterprise AI Vibe Coding Platform**Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
 
 ---
 
 ## Get started
 
-[Get started](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/)
+### [ Get started ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/)
 
 Set up a dispatch namespace, dynamic dispatch Worker, and user Worker.
 
-[How Workers for Platforms works](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/)
+### [ How Workers for Platforms works ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/)
 
 Understand the architecture: dispatch namespaces, dynamic dispatch Workers, user Workers, and outbound Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/#page","headline":"Workers for Platforms · Cloudflare for Platforms docs","description":"Run untrusted code from your customers or AI in secure, isolated sandboxes on Cloudflare's global network.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/#page","headline":"Workers for Platforms · Cloudflare for Platforms docs","description":"Run untrusted code from your customers or AI in secure, isolated sandboxes on Cloudflare's global network.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Migrate 1.1.1.1 app
 description: Migrate 1.1.1.1 app in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Migrate 1.1.1.1 app
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrate 1.1.1.1 app
 
-# Migrate 1.1.1.1 app
+Last updated Apr 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Users can connect to Cloudflare Zero Trust services through an agent that runs on their device. Cloudflare previously bundled that functionality into the [WARP Client](https://developers.cloudflare.com/warp-client/), an application that also provides privacy-focused DNS and VPN services for consumers (known as 1.1.1.1 w/ WARP). Supporting both enterprise and consumer functionality in the same application allowed us to build Zero Trust upon the same foundation used by millions of consumers across the globe, but has limited the pace at which changes could be released. As a result, we are launching a dedicated Cloudflare One Agent that replaces the Cloudflare One Client for Zero Trust deployments.
 
@@ -29,9 +31,6 @@ Organizations can migrate their teams with minimal disruption in one of two mode
 ### Migrate manual deployments
 
 If you downloaded and installed the 1.1.1.1 app manually, here are the recommended migration steps:
-
-* [ android ](#tab-panel-8160)
-* [ ios ](#tab-panel-8161)
 
 1. Update the **1.1.1.1** app to version 6.29 or above. The update ensures that 1.1.1.1 can [co-exist](#what-to-do-with-the-old-app) with the new Cloudflare One Agent app.
 2. If you have enabled [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/), ensure that you have a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) in place for the following applications:
@@ -65,9 +64,6 @@ If you do not wish to use the old 1.1.1.1 app for personal browsing, you may [un
 
 If you deployed the 1.1.1.1 app with an [MDM provider](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/), perform the migration as follows:
 
-* [ android ](#tab-panel-8162)
-* [ ios ](#tab-panel-8163)
-
 1. Using your MDM tool, update the **1.1.1.1** app to version 6.29 or above. The update ensures that 1.1.1.1 can co-exist with the new Cloudflare One Agent app during the migration.
 2. Add the **Cloudflare One Agent** app from the Google Play store. Its application ID is `com.cloudflare.cloudflareoneagent`.
 3. Copy your [MDM deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#android--chromeos) for the **1.1.1.1** app.
@@ -89,7 +85,14 @@ Once users have enrolled, the migration process is complete. The 1.1.1.1 app wil
 
 To check whether a user has migrated, go to **Team & Resources** \> **Devices**. A device enrolled through the Cloudflare One Agent will appear as a new device with a new device ID. Their old 1.1.1.1 registration will remain as an inactive device.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/#page","headline":"Migrate 1.1.1.1 app · Cloudflare One docs","description":"Migrate 1.1.1.1 app in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/","name":"Download Cloudflare One Client stable releases"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/","name":"Migrate 1.1.1.1 app"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/#page","headline":"Migrate 1.1.1.1 app · Cloudflare One docs","description":"Migrate 1.1.1.1 app in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 ```

@@ -1,14 +1,10 @@
 ---
-title: http.request.body.multipart.content_dispositions
 description: List of `Content-Disposition` headers for each part in the multipart body.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: http.request.body.multipart.content_dispositions
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
-> Use this file to discover all available pages before exploring further.
-
-[Skip to content](#%5Ftop)
+[Skip to content ](#main-content)
 
 #  http.request.body.multipart.content\_dispositions
 
@@ -30,7 +26,7 @@ Example usage:
 any(http.request.body.multipart.content_dispositions[*][0] in {"form-data; name=\"username\"" "form-data; name=\"picture\""})
 ```
 
-Warning
+Caution
 
 All `http.request.body.*` fields (except [ http.request.body.size ](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.size/)) handle a given maximum body size, which varies per plan. For Enterprise customers, the maximum body size is 128 KB. For other paid plans, the limit is lower by default — reach out to your account team or to Cloudflare Support to increase the limit. For users in the Free plan, the limit is 1 MB.
 
@@ -42,7 +38,12 @@ Categories:
 * Request
 * Body
 
+Was this helpful?
+
+YesNo
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart.content_dispositions/#page","headline":"http.request.body.multipart.content_dispositions · Cloudflare Ruleset Engine docs","description":"List of Content-Disposition headers for each part in the multipart body.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart.content_dispositions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rules-language/","name":"Rules language"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rules-language/fields/","name":"Fields"}},{"@type":"ListItem","position":5,"item":{"@id":"/ruleset-engine/rules-language/fields/reference/","name":"Fields reference"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart.content_dispositions/#page","headline":"http.request.body.multipart.content_dispositions · Cloudflare Ruleset Engine docs","description":"List of Content-Disposition headers for each part in the multipart body.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.multipart.content_dispositions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

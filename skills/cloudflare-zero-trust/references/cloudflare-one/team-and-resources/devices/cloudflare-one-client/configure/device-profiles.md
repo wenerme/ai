@@ -1,26 +1,24 @@
 ---
-title: Device profiles
 description: Device profiles in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Device profiles
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Device profiles
 
-# Device profiles
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A device profile defines [Cloudflare One Client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) for a specific set of devices in your organization. You can create multiple profiles and apply different settings based on the user's identity, the device's location, and other criteria.
 
 For example, users in one identity provider group (signifying a specific office location) might have different routes that need to be excluded from their WARP tunnel, or some device types (like Linux) might need different DNS settings to accommodate local development services.
 
 ## Create a new profile
-
-* [ Dashboard ](#tab-panel-8089)
-* [ API ](#tab-panel-8090)
-* [ Terraform (v5) ](#tab-panel-8091)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select **Create new profile**. This will make a copy of the **Default** profile.
@@ -43,31 +41,29 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zero Trust Write`
 
-**Create a device settings profile**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "allow_mode_switch": false,
-    "allow_updates": false,
-    "allowed_to_leave": false,
-    "auto_connect": 600,
-    "captive_portal": 180,
-    "description": "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/",
-    "disable_auto_fallback": true,
-    "enabled": true,
-    "exclude_office_ips": false,
-    "match": "identity.email in {\"jdoe@example.com\"} or any(identity.groups.name[*] in {\"developers\" \"admin\"}) and os.name == \"windows\"",
-    "name": "Example device profile",
-    "precedence": 101,
-    "service_mode_v2": {
-        "mode": "warp"
-    },
-    "support_url": "https://support.example.com",
-    "switch_locked": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"allow_mode_switch": false,
+		"allow_updates": false,
+		"allowed_to_leave": false,
+		"auto_connect": 600,
+		"captive_portal": 180,
+		"description": "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/",
+		"disable_auto_fallback": true,
+		"enabled": true,
+		"exclude_office_ips": false,
+		"match": "identity.email in {\"jdoe@example.com\"} or any(identity.groups.name[*] in {\"developers\" \"admin\"}) and os.name == \"windows\"",
+		"name": "Example device profile",
+		"precedence": 101,
+		"service_mode_v2": {
+				"mode": "warp"
+		},
+		"support_url": "https://support.example.com",
+		"switch_locked": true
+	}'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
@@ -76,28 +72,28 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" 
 2. Create a new profile using the [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile) resource:
 ```tf
 resource "cloudflare_zero_trust_device_custom_profile" "example" {
-  account_id            = var.cloudflare_account_id
-  name                  = "Example device profile"
-  description           = "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/"
-  allow_mode_switch     = false
-  allow_updates         = false
-  allowed_to_leave      = false
-  auto_connect          = 600
-  captive_portal        = 180
-  disable_auto_fallback = true
-  enabled               = true
-  exclude_office_ips    = false
-  precedence            = 101
-  service_mode_v2       = {mode = "warp"}
-  support_url           = "https://support.example.com"
-  switch_locked         = true
-  tunnel_protocol       = "wireguard"
-  match = trimspace(replace(<<-EOT
-    identity.email in {"jdoe@example.com"}
-    or any(identity.groups.name[*] in {"developers" "admin"})
-    and os.name == "windows"
-  EOT
-  , "\n", " "))
+	account_id            = var.cloudflare_account_id
+	name                  = "Example device profile"
+	description           = "Example device profile recommended in the implementation documentation. For details, refer to https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/device-profiles/"
+	allow_mode_switch     = false
+	allow_updates         = false
+	allowed_to_leave      = false
+	auto_connect          = 600
+	captive_portal        = 180
+	disable_auto_fallback = true
+	enabled               = true
+	exclude_office_ips    = false
+	precedence            = 101
+	service_mode_v2       = {mode = "warp"}
+	support_url           = "https://support.example.com"
+	switch_locked         = true
+	tunnel_protocol       = "wireguard"
+	match = trimspace(replace(<<-EOT
+		identity.email in {"jdoe@example.com"}
+		or any(identity.groups.name[*] in {"developers" "admin"})
+		and os.name == "windows"
+	EOT
+	, "\n", " "))
 }
 ```
 
@@ -251,7 +247,14 @@ The **Default** profile is always at the bottom of the list. It will only be app
 
 Administrators can create multiple profiles to apply different settings based on specific criteria such as user identity, location, or operating system. Understanding this top-to-bottom evaluation order is crucial for ensuring that the correct policies are applied to devices.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#page","headline":"Device profiles · Cloudflare One docs","description":"Device profiles in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/","name":"Device profiles"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#page","headline":"Device profiles · Cloudflare One docs","description":"Device profiles in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 ```

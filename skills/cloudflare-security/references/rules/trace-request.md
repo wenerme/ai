@@ -1,16 +1,18 @@
 ---
-title: Trace a request
 description: Trace a request through Cloudflare to see which rules match and apply.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Trace a request
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Trace a request
 
-# Trace a request
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/trace-request/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
  Available on all plans
 
@@ -45,7 +47,14 @@ The key difference is that Trace simulates "what-if" scenarios, while Log Explor
 * [ Cloudflare Trace limitations ](https://developers.cloudflare.com/rules/trace-request/limitations/)
 * [ Cloudflare Trace changelog ](https://developers.cloudflare.com/rules/trace-request/changelog/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/trace-request/#page","headline":"Trace a request with Cloudflare Trace · Cloudflare Rules docs","description":"Trace a request through Cloudflare to see which rules match and apply.","url":"https://developers.cloudflare.com/rules/trace-request/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/trace-request/","name":"Trace a request"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/trace-request/#page","headline":"Trace a request with Cloudflare Trace · Cloudflare Rules docs","description":"Trace a request through Cloudflare to see which rules match and apply.","url":"https://developers.cloudflare.com/rules/trace-request/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

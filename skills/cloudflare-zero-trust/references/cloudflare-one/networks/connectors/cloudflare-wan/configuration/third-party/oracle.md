@@ -1,16 +1,18 @@
 ---
-title: Oracle Cloud
 description: Integrate Oracle Cloud with Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Oracle Cloud
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Oracle Cloud
 
-# Oracle Cloud
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/oracle/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial shows how to configure IPsec (Internet Protocol Security) between Cloudflare WAN (formerly Magic WAN) and an Oracle Cloud Site-to-site VPN.
 
@@ -18,23 +20,19 @@ This tutorial shows how to configure IPsec (Internet Protocol Security) between 
 
 You need a pre-shared key to establish the IPsec tunnel. You can use the following code to create a random key:
 
-**JavaScript**
-
 ```js
-    const a = new Uint8Array(48);
-    crypto.getRandomValues(a);
-    let base64String = btoa(String.fromCharCode.apply(null, a));
+		const a = new Uint8Array(48);
+		crypto.getRandomValues(a);
+		let base64String = btoa(String.fromCharCode.apply(null, a));
 
+		base64String = base64String.replace(/\+/g, '')
+								   .replace(/\//g, '')
+								   .replace(/=/g, '');
 
-    base64String = base64String.replace(/\+/g, '')
-                   .replace(/\//g, '')
-                   .replace(/=/g, '');
-
-
-    console.log(base64String.substring(0, 32));
+		console.log(base64String.substring(0, 32));
 ```
 
-Warning
+Caution
 
 The code above is an example of how you might generate a random key. However, make sure you generate a key that is strong enough to comply with your security needs.
 
@@ -124,7 +122,14 @@ To create a static route:
 3. For the **Tunnel/Next hop**, choose the IPsec tunnel you created in the previous step.
 4. Repeat these steps for the second IPsec tunnel you created.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/oracle/#page","headline":"Oracle Cloud · Cloudflare One docs","description":"Integrate Oracle Cloud with Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/oracle/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/oracle/","name":"Oracle Cloud"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/oracle/#page","headline":"Oracle Cloud · Cloudflare One docs","description":"Integrate Oracle Cloud with Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/oracle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

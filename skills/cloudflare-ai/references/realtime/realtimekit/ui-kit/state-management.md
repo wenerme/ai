@@ -1,16 +1,18 @@
 ---
-title: State Management
 description: Manage and synchronize meeting state across RealtimeKit UI Kit components.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: State Management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  State Management
 
-# State Management
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
@@ -101,54 +103,49 @@ For React, you can use the `onRtkStatesUpdate` prop on the `RtkMeeting` componen
 
 ```jsx
 import {
-  RealtimeKitProvider,
-  useRealtimeKitClient,
+	RealtimeKitProvider,
+	useRealtimeKitClient,
 } from "@cloudflare/realtimekit-react";
 import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
 import { useEffect, useState } from "react";
 
-
 function App() {
-  const [meeting, initMeeting] = useRealtimeKitClient();
-  const [authToken, setAuthToken] = useState("<participant_auth_token>");
-  const [states, setStates] = useState({});
+	const [meeting, initMeeting] = useRealtimeKitClient();
+	const [authToken, setAuthToken] = useState("<participant_auth_token>");
+	const [states, setStates] = useState({});
 
+	useEffect(() => {
+		if (authToken) {
+			initMeeting({
+				authToken: authToken,
+			});
+		}
+	}, [authToken]);
 
-  useEffect(() => {
-    if (authToken) {
-      initMeeting({
-        authToken: authToken,
-      });
-    }
-  }, [authToken]);
+	return (
+		<RealtimeKitProvider value={meeting}>
+			<RtkMeeting
+				showSetupScreen={true}
+				meeting={meeting}
+				onRtkStatesUpdate={(e) => {
+					// Update states when rtk-meeting emits state updates
+					setStates(e.detail);
 
+					// Example: Access various state properties
+					console.log("Meeting state:", e.detail.meeting); // 'idle', 'setup', 'joined', 'ended', 'waiting'
+					console.log("Is sidebar active:", e.detail.activeSidebar);
+					console.log("Current sidebar section:", e.detail.sidebar);
+					console.log("Is screen sharing:", e.detail.activeScreenShare);
+				}}
+			/>
 
-  return (
-    <RealtimeKitProvider value={meeting}>
-      <RtkMeeting
-        showSetupScreen={true}
-        meeting={meeting}
-        onRtkStatesUpdate={(e) => {
-          // Update states when rtk-meeting emits state updates
-          setStates(e.detail);
-
-
-          // Example: Access various state properties
-          console.log("Meeting state:", e.detail.meeting); // 'idle', 'setup', 'joined', 'ended', 'waiting'
-          console.log("Is sidebar active:", e.detail.activeSidebar);
-          console.log("Current sidebar section:", e.detail.sidebar);
-          console.log("Is screen sharing:", e.detail.activeScreenShare);
-        }}
-      />
-
-
-      {/* Use states to build custom UI */}
-      <div className="custom-ui">
-        <p>Meeting State: {states.meeting}</p>
-        <p>Sidebar Open: {states.activeSidebar ? "Yes" : "No"}</p>
-      </div>
-    </RealtimeKitProvider>
-  );
+			{/* Use states to build custom UI */}
+			<div className="custom-ui">
+				<p>Meeting State: {states.meeting}</p>
+				<p>Sidebar Open: {states.activeSidebar ? "Yes" : "No"}</p>
+			</div>
+		</RealtimeKitProvider>
+	);
 }
 ```
 
@@ -158,66 +155,58 @@ If you're building an experience with multiple meetings on the same page or back
 
 ```jsx
 import {
-  RealtimeKitProvider,
-  useRealtimeKitClient,
+	RealtimeKitProvider,
+	useRealtimeKitClient,
 } from "@cloudflare/realtimekit-react";
 import { RtkMeeting } from "@cloudflare/realtimekit-react-ui";
 import { useEffect, useState, useRef } from "react";
 
-
 function App() {
-  const [meeting, initMeeting] = useRealtimeKitClient();
-  const [authToken, setAuthToken] = useState("<participant_auth_token>");
-  const [states, setStates] = useState({});
-  const meetingRef = useRef(null);
+	const [meeting, initMeeting] = useRealtimeKitClient();
+	const [authToken, setAuthToken] = useState("<participant_auth_token>");
+	const [states, setStates] = useState({});
+	const meetingRef = useRef(null);
 
+	useEffect(() => {
+		if (authToken) {
+			initMeeting({
+				authToken: authToken,
+			});
+		}
+	}, [authToken]);
 
-  useEffect(() => {
-    if (authToken) {
-      initMeeting({
-        authToken: authToken,
-      });
-    }
-  }, [authToken]);
+	useEffect(() => {
+		if (!meetingRef.current) return;
 
+		const handleStatesUpdate = (e) => {
+			setStates(e.detail);
+			console.log("Meeting state:", e.detail.meeting);
+			console.log("Is sidebar active:", e.detail.activeSidebar);
+		};
 
-  useEffect(() => {
-    if (!meetingRef.current) return;
+		// Add event listener via ref
+		meetingRef.current.addEventListener("rtkStatesUpdate", handleStatesUpdate);
 
+		// Cleanup listener when component unmounts or meeting changes
+		return () => {
+			meetingRef.current?.removeEventListener(
+				"rtkStatesUpdate",
+				handleStatesUpdate,
+			);
+		};
+	}, [meetingRef.current]);
 
-    const handleStatesUpdate = (e) => {
-      setStates(e.detail);
-      console.log("Meeting state:", e.detail.meeting);
-      console.log("Is sidebar active:", e.detail.activeSidebar);
-    };
+	return (
+		<RealtimeKitProvider value={meeting}>
+			<RtkMeeting ref={meetingRef} showSetupScreen={true} meeting={meeting} />
 
-
-    // Add event listener via ref
-    meetingRef.current.addEventListener("rtkStatesUpdate", handleStatesUpdate);
-
-
-    // Cleanup listener when component unmounts or meeting changes
-    return () => {
-      meetingRef.current?.removeEventListener(
-        "rtkStatesUpdate",
-        handleStatesUpdate,
-      );
-    };
-  }, [meetingRef.current]);
-
-
-  return (
-    <RealtimeKitProvider value={meeting}>
-      <RtkMeeting ref={meetingRef} showSetupScreen={true} meeting={meeting} />
-
-
-      {/* Use states to build custom UI */}
-      <div className="custom-ui">
-        <p>Meeting State: {states.meeting}</p>
-        <p>Sidebar Open: {states.activeSidebar ? "Yes" : "No"}</p>
-      </div>
-    </RealtimeKitProvider>
-  );
+			{/* Use states to build custom UI */}
+			<div className="custom-ui">
+				<p>Meeting State: {states.meeting}</p>
+				<p>Sidebar Open: {states.activeSidebar ? "Yes" : "No"}</p>
+			</div>
+		</RealtimeKitProvider>
+	);
 }
 ```
 
@@ -229,179 +218,151 @@ For Web Components, you need to add an event listener to the `rtk-meeting` compo
 
 ```html
 <body>
-  <rtk-meeting id="meeting-component"></rtk-meeting>
+	<rtk-meeting id="meeting-component"></rtk-meeting>
 </body>
 <script type="module">
-  import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
+	import RealtimeKitClient from "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js";
 
+	const meeting = await RealtimeKitClient.init({
+		authToken: "<participant_auth_token>",
+	});
 
-  const meeting = await RealtimeKitClient.init({
-    authToken: "<participant_auth_token>",
-  });
+	// Add <rtk-meeting id="meeting-component" /> to your HTML, otherwise you will get error
+	const meetingComponent = document.querySelector("#meeting-component");
 
+	// Listen for state updates from rtk-meeting
+	meetingComponent.addEventListener("rtkStatesUpdate", (event) => {
+		console.log("RTK states updated:", event.detail);
 
-  // Add <rtk-meeting id="meeting-component" /> to your HTML, otherwise you will get error
-  const meetingComponent = document.querySelector("#meeting-component");
+		// Store states to update your custom UI
+		const states = event.detail;
 
+		// Example: Access various state properties
+		console.log("Meeting state:", states.meeting); // 'idle', 'setup', 'joined', 'ended', 'waiting'
+		console.log("Is sidebar active:", states.activeSidebar);
+		console.log("Current sidebar section:", states.sidebar); // 'chat', 'participants', 'polls', etc.
+		console.log("Is screen sharing:", states.activeScreenShare);
 
-  // Listen for state updates from rtk-meeting
-  meetingComponent.addEventListener("rtkStatesUpdate", (event) => {
-    console.log("RTK states updated:", event.detail);
+		// Update your custom UI based on states
+		// For example: Show/hide elements based on meeting state
+		if (states.meeting === "joined") {
+			// Show meeting controls
+		}
+	});
 
-
-    // Store states to update your custom UI
-    const states = event.detail;
-
-
-    // Example: Access various state properties
-    console.log("Meeting state:", states.meeting); // 'idle', 'setup', 'joined', 'ended', 'waiting'
-    console.log("Is sidebar active:", states.activeSidebar);
-    console.log("Current sidebar section:", states.sidebar); // 'chat', 'participants', 'polls', etc.
-    console.log("Is screen sharing:", states.activeScreenShare);
-
-
-    // Update your custom UI based on states
-    // For example: Show/hide elements based on meeting state
-    if (states.meeting === "joined") {
-      // Show meeting controls
-    }
-  });
-
-
-  meetingComponent.showSetupScreen = true;
-  meetingComponent.meeting = meeting;
+	meetingComponent.showSetupScreen = true;
+	meetingComponent.meeting = meeting;
 </script>
 ```
 
 For Angular, you need to add an event listener to the `rtk-meeting` component to listen for `rtkStatesUpdate` events.
 
-**meeting.component.ts**
-
 ```typescript
 import {
-  Component,
-  ElementRef,
-  OnInit,
-  OnDestroy,
-  ViewChild,
+	Component,
+	ElementRef,
+	OnInit,
+	OnDestroy,
+	ViewChild,
 } from "@angular/core";
 
-
 @Component({
-  selector: "app-meeting",
-  template: `
-    <rtk-meeting #meetingComponent id="meeting-component"></rtk-meeting>
+	selector: "app-meeting",
+	template: `
+		<rtk-meeting #meetingComponent id="meeting-component"></rtk-meeting>
 
-
-    <!-- Use states to build custom UI -->
-    <div class="custom-ui" *ngIf="states">
-      <p>Meeting State: {{ states.meeting }}</p>
-      <p>Sidebar Open: {{ states.activeSidebar ? "Yes" : "No" }}</p>
-      <div *ngIf="states.meeting === 'joined'" class="meeting-controls">
-        <!-- Show meeting controls when joined -->
-        <p>Meeting controls would go here</p>
-      </div>
-    </div>
-  `,
-  styleUrls: ["./meeting.component.css"],
+		<!-- Use states to build custom UI -->
+		<div class="custom-ui" *ngIf="states">
+			<p>Meeting State: {{ states.meeting }}</p>
+			<p>Sidebar Open: {{ states.activeSidebar ? "Yes" : "No" }}</p>
+			<div *ngIf="states.meeting === 'joined'" class="meeting-controls">
+				<!-- Show meeting controls when joined -->
+				<p>Meeting controls would go here</p>
+			</div>
+		</div>
+	`,
+	styleUrls: ["./meeting.component.css"],
 })
 export class MeetingComponent implements OnInit, OnDestroy {
-  @ViewChild("meetingComponent", { static: true }) meetingElement!: ElementRef;
+	@ViewChild("meetingComponent", { static: true }) meetingElement!: ElementRef;
 
+	meeting: any;
+	states: any = {};
+	private authToken = "<participant_auth_token>";
+	private stateUpdateListener?: (event: any) => void;
 
-  meeting: any;
-  states: any = {};
-  private authToken = "<participant_auth_token>";
-  private stateUpdateListener?: (event: any) => void;
+	async ngOnInit() {
+		// Import RealtimeKit client dynamically
+		const RealtimeKitClient = await import(
+			"https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js"
+		);
 
+		// Initialize the meeting
+		this.meeting = await RealtimeKitClient.default.init({
+			authToken: this.authToken,
+		});
 
-  async ngOnInit() {
-    // Import RealtimeKit client dynamically
-    const RealtimeKitClient = await import(
-      "https://cdn.jsdelivr.net/npm/@cloudflare/realtimekit@latest/dist/index.es.js"
-    );
+		// Set up the meeting component
+		const meetingComponent = this.meetingElement.nativeElement;
 
+		// Create the event listener
+		this.stateUpdateListener = (event: any) => {
+			console.log("RTK states updated:", event.detail);
 
-    // Initialize the meeting
-    this.meeting = await RealtimeKitClient.default.init({
-      authToken: this.authToken,
-    });
+			// Store states to update your custom UI
+			this.states = event.detail;
 
+			// Example: Access various state properties
+			console.log("Meeting state:", this.states.meeting); // 'idle', 'setup', 'joined', 'ended', 'waiting'
+			console.log("Is sidebar active:", this.states.activeSidebar);
+			console.log("Current sidebar section:", this.states.sidebar); // 'chat', 'participants', 'polls', etc.
+			console.log("Is screen sharing:", this.states.activeScreenShare);
 
-    // Set up the meeting component
-    const meetingComponent = this.meetingElement.nativeElement;
+			// Update your custom UI based on states
+			// For example: Show/hide elements based on meeting state
+			if (this.states.meeting === "joined") {
+				// Show meeting controls
+				console.log("Meeting joined - showing controls");
+			}
+		};
 
+		// Listen for state updates from rtk-meeting
+		meetingComponent.addEventListener(
+			"rtkStatesUpdate",
+			this.stateUpdateListener,
+		);
 
-    // Create the event listener
-    this.stateUpdateListener = (event: any) => {
-      console.log("RTK states updated:", event.detail);
+		// Configure the meeting component
+		meetingComponent.showSetupScreen = true;
+		meetingComponent.meeting = this.meeting;
+	}
 
-
-      // Store states to update your custom UI
-      this.states = event.detail;
-
-
-      // Example: Access various state properties
-      console.log("Meeting state:", this.states.meeting); // 'idle', 'setup', 'joined', 'ended', 'waiting'
-      console.log("Is sidebar active:", this.states.activeSidebar);
-      console.log("Current sidebar section:", this.states.sidebar); // 'chat', 'participants', 'polls', etc.
-      console.log("Is screen sharing:", this.states.activeScreenShare);
-
-
-      // Update your custom UI based on states
-      // For example: Show/hide elements based on meeting state
-      if (this.states.meeting === "joined") {
-        // Show meeting controls
-        console.log("Meeting joined - showing controls");
-      }
-    };
-
-
-    // Listen for state updates from rtk-meeting
-    meetingComponent.addEventListener(
-      "rtkStatesUpdate",
-      this.stateUpdateListener,
-    );
-
-
-    // Configure the meeting component
-    meetingComponent.showSetupScreen = true;
-    meetingComponent.meeting = this.meeting;
-  }
-
-
-  ngOnDestroy() {
-    // Clean up event listener when component is destroyed
-    if (this.stateUpdateListener && this.meetingElement) {
-      this.meetingElement.nativeElement.removeEventListener(
-        "rtkStatesUpdate",
-        this.stateUpdateListener,
-      );
-    }
-  }
+	ngOnDestroy() {
+		// Clean up event listener when component is destroyed
+		if (this.stateUpdateListener && this.meetingElement) {
+			this.meetingElement.nativeElement.removeEventListener(
+				"rtkStatesUpdate",
+				this.stateUpdateListener,
+			);
+		}
+	}
 }
 ```
 
 For Android, attach event listeners to the `meeting` object to observe state changes. Use `RtkMeetingRoomEventListener` for meeting lifecycle events and `RtkSelfEventListener` for local participant state changes.
-
-**Kotlin**
 
 ```kotlin
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
-
 class MeetingActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         // After initializing the meeting and UI Kit (see Getting Started guide),
         // add event listeners to observe state changes.
-
 
         // Listen for meeting room state changes
         meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {
@@ -409,38 +370,31 @@ class MeetingActivity : AppCompatActivity() {
                 Log.d("Meeting", "Join started")
             }
 
-
             override fun onMeetingRoomJoinCompleted(meeting: RealtimeKitClient) {
                 Log.d("Meeting", "Joined the meeting")
                 // Update UI to show meeting controls
             }
 
-
             override fun onMeetingRoomJoinFailed(exception: Exception) {
                 Log.e("Meeting", "Join failed: ${exception.message}")
             }
-
 
             override fun onMeetingRoomLeaveStarted() {
                 Log.d("Meeting", "Leave started")
             }
 
-
             override fun onMeetingRoomLeft() {
                 Log.d("Meeting", "Left the meeting")
             }
-
 
             override fun onMeetingEnded() {
                 Log.d("Meeting", "Meeting ended for all participants")
             }
 
-
             override fun onActiveTabUpdate(activeTab: ActiveTab) {
                 Log.d("Meeting", "Active tab changed: $activeTab")
             }
         })
-
 
         // Listen for local participant state changes
         meeting.addSelfEventListener(object : RtkSelfEventListener {
@@ -448,11 +402,9 @@ class MeetingActivity : AppCompatActivity() {
                 Log.d("Meeting", "Audio: ${if (isEnabled) "on" else "off"}")
             }
 
-
             override fun onVideoUpdate(isEnabled: Boolean) {
                 Log.d("Meeting", "Video: ${if (isEnabled) "on" else "off"}")
             }
-
 
             override fun onRemovedFromMeeting() {
                 Log.d("Meeting", "Removed from meeting by host")
@@ -464,8 +416,6 @@ class MeetingActivity : AppCompatActivity() {
 
 For iOS, implement event listener protocols and register them on the `meeting` object. Use `RtkMeetingRoomEventListener` for meeting lifecycle events and `RtkSelfEventListener` for local participant state changes.
 
-**Swift**
-
 ```swift
 // Listen for meeting room state changes
 extension MeetingViewModel: RtkMeetingRoomEventListener {
@@ -473,16 +423,13 @@ extension MeetingViewModel: RtkMeetingRoomEventListener {
         // Successfully joined the meeting (equivalent to 'joined' state)
     }
 
-
     func onMeetingRoomLeft() {
         // Successfully left the meeting
     }
 
-
     func onMeetingEnded() {
         // The meeting has ended for all participants (equivalent to 'ended' state)
     }
-
 
     func onActiveTabUpdate(activeTab: ActiveTab) {
         // Active tab changed (e.g., chat, polls, participants)
@@ -490,24 +437,20 @@ extension MeetingViewModel: RtkMeetingRoomEventListener {
     }
 }
 
-
 // Listen for local participant state changes
 extension MeetingViewModel: RtkSelfEventListener {
     func onAudioUpdate(isEnabled: Bool) {
         // Audio toggled on/off
     }
 
-
     func onVideoUpdate(isEnabled: Bool) {
         // Video toggled on/off
     }
-
 
     func onRemovedFromMeeting() {
         // Local user was removed from the meeting by host
     }
 }
-
 
 // Register the listeners
 meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
@@ -516,56 +459,45 @@ meeting.addSelfEventListener(selfEventListener: self)
 
 For Flutter, create event listener classes and attach them to the `meeting` object. Use `RtkMeetingRoomEventListener` for meeting lifecycle events and `RtkSelfEventListener` for local participant state changes.
 
-**Dart**
-
 ```dart
 import 'package:realtimekit_ui/realtimekit_ui.dart';
 import 'package:flutter/material.dart';
-
 
 // Create a listener for meeting room state changes
 class MeetingRoomListener extends RtkMeetingRoomEventListener {
   final Function(String) onStateChange;
 
-
   MeetingRoomListener({required this.onStateChange});
-
 
   @override
   void onMeetingRoomJoinStarted() {
     onStateChange('joining');
   }
 
-
   @override
   void onMeetingRoomJoinCompleted() {
     onStateChange('joined');
   }
-
 
   @override
   void onMeetingRoomJoinFailed(exception) {
     onStateChange('failed');
   }
 
-
   @override
   void onMeetingRoomLeaveStarted() {
     onStateChange('leaving');
   }
-
 
   @override
   void onMeetingRoomLeft() {
     onStateChange('left');
   }
 
-
   @override
   void onMeetingEnded() {
     onStateChange('ended');
   }
-
 
   @override
   void onActiveTabUpdate(activeTab) {
@@ -573,37 +505,31 @@ class MeetingRoomListener extends RtkMeetingRoomEventListener {
   }
 }
 
-
 // Create a listener for local participant state changes
 class SelfListener extends RtkSelfEventListener {
   final Function(bool) onAudioChange;
   final Function(bool) onVideoChange;
-
 
   SelfListener({
     required this.onAudioChange,
     required this.onVideoChange,
   });
 
-
   @override
   void onAudioUpdate(bool isEnabled) {
     onAudioChange(isEnabled);
   }
-
 
   @override
   void onVideoUpdate(bool isEnabled) {
     onVideoChange(isEnabled);
   }
 
-
   @override
   void onRemovedFromMeeting() {
     // Local user was removed by host
   }
 }
-
 
 // Register listeners after building the UI Kit
 final meeting = realtimeKitUI.meeting;
@@ -628,69 +554,61 @@ For React Native, use the `useRealtimeKitSelector` hook to observe specific prop
 import { useEffect } from "react";
 import { View, Text } from "react-native";
 import {
-  RealtimeKitProvider,
-  useRealtimeKitClient,
-  useRealtimeKitMeeting,
-  useRealtimeKitSelector,
+	RealtimeKitProvider,
+	useRealtimeKitClient,
+	useRealtimeKitMeeting,
+	useRealtimeKitSelector,
 } from "@cloudflare/realtimekit-react-native";
 import {
-  RtkUIProvider,
-  RtkMeeting,
+	RtkUIProvider,
+	RtkMeeting,
 } from "@cloudflare/realtimekit-react-native-ui";
 
-
 function App() {
-  const [meeting, initMeeting] = useRealtimeKitClient();
+	const [meeting, initMeeting] = useRealtimeKitClient();
 
+	useEffect(() => {
+		initMeeting({
+			authToken: "<participant_auth_token>",
+			defaults: { audio: true, video: true },
+		});
+	}, []);
 
-  useEffect(() => {
-    initMeeting({
-      authToken: "<participant_auth_token>",
-      defaults: { audio: true, video: true },
-    });
-  }, []);
-
-
-  return (
-    <RealtimeKitProvider value={meeting}>
-      <RtkUIProvider>
-        <MeetingWithState />
-      </RtkUIProvider>
-    </RealtimeKitProvider>
-  );
+	return (
+		<RealtimeKitProvider value={meeting}>
+			<RtkUIProvider>
+				<MeetingWithState />
+			</RtkUIProvider>
+		</RealtimeKitProvider>
+	);
 }
 
-
 function MeetingWithState() {
-  const { meeting } = useRealtimeKitMeeting();
+	const { meeting } = useRealtimeKitMeeting();
 
+	// Use selectors to observe meeting state
+	const roomState = useRealtimeKitSelector((m) => m.self.roomState);
+	const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
+	const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
 
-  // Use selectors to observe meeting state
-  const roomState = useRealtimeKitSelector((m) => m.self.roomState);
-  const audioEnabled = useRealtimeKitSelector((m) => m.self.audioEnabled);
-  const videoEnabled = useRealtimeKitSelector((m) => m.self.videoEnabled);
+	useEffect(() => {
+		console.log("Room state:", roomState);
+		console.log("Audio:", audioEnabled);
+		console.log("Video:", videoEnabled);
+	}, [roomState, audioEnabled, videoEnabled]);
 
+	return (
+		<View>
+			{meeting && <RtkMeeting meeting={meeting} showSetupScreen={true} />}
 
-  useEffect(() => {
-    console.log("Room state:", roomState);
-    console.log("Audio:", audioEnabled);
-    console.log("Video:", videoEnabled);
-  }, [roomState, audioEnabled, videoEnabled]);
-
-
-  return (
-    <View>
-      {meeting && <RtkMeeting meeting={meeting} showSetupScreen={true} />}
-
-
-      {/* Use state to build custom UI */}
-      <View>
-        <Text>Room State: {roomState}</Text>
-        <Text>Audio: {audioEnabled ? "On" : "Off"}</Text>
-        <Text>Video: {videoEnabled ? "On" : "Off"}</Text>
-      </View>
-    </View>
-  );
+			{/* Use state to build custom UI */}
+			<View>
+				<Text>Room State: {roomState}</Text>
+				<Text>Audio: {audioEnabled ? "On" : "Off"}</Text>
+				<Text>Video: {videoEnabled ? "On" : "Off"}</Text>
+			</View>
+		</View>
+	);
 }
 ```
 
@@ -701,39 +619,32 @@ You can also use event-based listeners for more fine-grained control, similar to
 ```tsx
 import { useEffect } from "react";
 
-
 function MeetingEvents() {
-  const { meeting } = useRealtimeKitMeeting();
+	const { meeting } = useRealtimeKitMeeting();
 
+	useEffect(() => {
+		if (!meeting) return;
 
-  useEffect(() => {
-    if (!meeting) return;
+		const handleRoomJoined = () => {
+			console.log("Successfully joined the meeting");
+		};
 
+		const handleRoomLeft = ({ state }) => {
+			if (state === "ended") {
+				console.log("Meeting ended");
+			}
+		};
 
-    const handleRoomJoined = () => {
-      console.log("Successfully joined the meeting");
-    };
+		meeting.self.on("roomJoined", handleRoomJoined);
+		meeting.self.on("roomLeft", handleRoomLeft);
 
+		return () => {
+			meeting.self.removeListener("roomJoined", handleRoomJoined);
+			meeting.self.removeListener("roomLeft", handleRoomLeft);
+		};
+	}, [meeting]);
 
-    const handleRoomLeft = ({ state }) => {
-      if (state === "ended") {
-        console.log("Meeting ended");
-      }
-    };
-
-
-    meeting.self.on("roomJoined", handleRoomJoined);
-    meeting.self.on("roomLeft", handleRoomLeft);
-
-
-    return () => {
-      meeting.self.removeListener("roomJoined", handleRoomJoined);
-      meeting.self.removeListener("roomLeft", handleRoomLeft);
-    };
-  }, [meeting]);
-
-
-  return null;
+	return null;
 }
 ```
 
@@ -831,7 +742,14 @@ For the full list of available properties, refer to the [Core SDK meeting object
 * **Combine with `useMemo` and `useCallback`**: Use React memoization hooks to prevent unnecessary re-renders when meeting state changes frequently.
 * **Understand the difference**: `useRealtimeKitSelector` provides access to **Core SDK meeting state** (participants, media, room state). The UI Kit handles its own internal UI state through the `RtkMeeting` component.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/#page","headline":"State Management · Cloudflare Realtime docs","description":"Manage and synchronize meeting state across RealtimeKit UI Kit components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/state-management/","name":"State Management"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/#page","headline":"State Management · Cloudflare Realtime docs","description":"Manage and synchronize meeting state across RealtimeKit UI Kit components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

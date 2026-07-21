@@ -1,16 +1,18 @@
 ---
-title: 2 – Track your history
 description: Learn how to track history with Cloudflare Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: 2 – Track your history
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  2 – Track your history
 
-# 2 – Track your history
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/tutorial/track-history/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In the [Initialize Terraform](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) tutorial, you created and applied basic Cloudflare configuration. Now you'll store this configuration in version control for tracking, peer review, and rollback capabilities.
 
@@ -32,11 +34,9 @@ terraform {
   }
 }
 
-
 provider "cloudflare" {
   # API token will be read from CLOUDFLARE_API_TOKEN environment variable
 }
-
 
 variable "zone_id" {
   description = "Cloudflare Zone ID"
@@ -44,20 +44,17 @@ variable "zone_id" {
   sensitive   = true
 }
 
-
 variable "account_id" {
   description = "Cloudflare Account ID"
   type        = string
   sensitive   = true
 }
 
-
 variable "domain" {
   description = "Domain name"
   type        = string
   default     = "example.com"
 }
-
 
 resource "cloudflare_dns_record" "www" {
   zone_id = var.zone_id
@@ -104,7 +101,6 @@ You may see changes detected as Terraform compares your new variable-based confi
     # (other attributes may show changes)
 }
 
-
 Plan: 0 to add, 1 to change, 0 to destroy.
 ```
 
@@ -137,7 +133,14 @@ git push -u origin main
 
 Your Terraform configuration is now version controlled and ready for team collaboration. The sensitive data (API tokens, zone IDs) remains secure and separate from your code.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/track-history/#page","headline":"Track your history · Cloudflare Terraform docs","description":"Learn how to track history with Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/tutorial/track-history/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/tutorial/track-history/","name":"2 – Track your history"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/track-history/#page","headline":"Track your history · Cloudflare Terraform docs","description":"Learn how to track history with Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/tutorial/track-history/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

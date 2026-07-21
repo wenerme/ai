@@ -1,16 +1,18 @@
 ---
-title: Configure your mobile app or IoT device
 description: This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with API Shield.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure your mobile app or IoT device
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure your mobile app or IoT device
 
-# Configure your mobile app or IoT device
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with [API Shield](https://developers.cloudflare.com/api-shield/).
 
@@ -24,88 +26,78 @@ Temperatures are stored in [Workers KV](https://developers.cloudflare.com/kv/con
 
 The example API code below saves a temperature and timestamp into KV when a POST is made and returns the most recent five temperatures when a GET request is made.
 
-**JavaScript**
-
 ```js
 const defaultData = { temperatures: [] };
-
 
 const getCache = (key) => TEMPERATURES.get(key);
 const setCache = (key, data) => TEMPERATURES.put(key, data);
 
-
 async function addTemperature(request) {
-  // Pull previously recorded temperatures for this client.
-  const ip = request.headers.get("CF-Connecting-IP");
-  const cacheKey = `data-${ip}`;
-  let data;
-  const cache = await getCache(cacheKey);
-  if (!cache) {
-    await setCache(cacheKey, JSON.stringify(defaultData));
-    data = defaultData;
-  } else {
-    data = JSON.parse(cache);
-  }
+	// Pull previously recorded temperatures for this client.
+	const ip = request.headers.get("CF-Connecting-IP");
+	const cacheKey = `data-${ip}`;
+	let data;
+	const cache = await getCache(cacheKey);
+	if (!cache) {
+		await setCache(cacheKey, JSON.stringify(defaultData));
+		data = defaultData;
+	} else {
+		data = JSON.parse(cache);
+	}
 
+	// Append the recorded temperatures with the submitted reading (assuming it has both temperature and a timestamp).
+	try {
+		const body = await request.text();
+		const val = JSON.parse(body);
 
-  // Append the recorded temperatures with the submitted reading (assuming it has both temperature and a timestamp).
-  try {
-    const body = await request.text();
-    const val = JSON.parse(body);
-
-
-    if (val.temperature && val.time) {
-      data.temperatures.push(val);
-      await setCache(cacheKey, JSON.stringify(data));
-      return new Response("", { status: 201 });
-    } else {
-      return new Response(
-        "Unable to parse temperature and/or timestamp from JSON POST body",
-        { status: 400 },
-      );
-    }
-  } catch (err) {
-    return new Response(err, { status: 500 });
-  }
+		if (val.temperature && val.time) {
+			data.temperatures.push(val);
+			await setCache(cacheKey, JSON.stringify(data));
+			return new Response("", { status: 201 });
+		} else {
+			return new Response(
+				"Unable to parse temperature and/or timestamp from JSON POST body",
+				{ status: 400 },
+			);
+		}
+	} catch (err) {
+		return new Response(err, { status: 500 });
+	}
 }
-
 
 function compareTimestamps(a, b) {
-  return -1 * (Date.parse(a.time) - Date.parse(b.time));
+	return -1 * (Date.parse(a.time) - Date.parse(b.time));
 }
-
 
 // Return the 5 most recent temperature measurements.
 async function getTemperatures(request) {
-  const ip = request.headers.get("CF-Connecting-IP");
-  const cacheKey = `data-${ip}`;
+	const ip = request.headers.get("CF-Connecting-IP");
+	const cacheKey = `data-${ip}`;
 
-
-  const cache = await getCache(cacheKey);
-  if (!cache) {
-    return new Response(JSON.stringify(defaultData), {
-      status: 200,
-      headers: { "content-type": "application/json" },
-    });
-  } else {
-    data = JSON.parse(cache);
-    const retval = JSON.stringify(
-      data.temperatures.sort(compareTimestamps).splice(0, 5),
-    );
-    return new Response(retval, {
-      status: 200,
-      headers: { "content-type": "application/json" },
-    });
-  }
+	const cache = await getCache(cacheKey);
+	if (!cache) {
+		return new Response(JSON.stringify(defaultData), {
+			status: 200,
+			headers: { "content-type": "application/json" },
+		});
+	} else {
+		data = JSON.parse(cache);
+		const retval = JSON.stringify(
+			data.temperatures.sort(compareTimestamps).splice(0, 5),
+		);
+		return new Response(retval, {
+			status: 200,
+			headers: { "content-type": "application/json" },
+		});
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    return request.method === "POST"
-      ? addTemperature(request)
-      : getTemperatures(request);
-  },
+	async fetch(request, env, ctx) {
+		return request.method === "POST"
+			? addTemperature(request)
+			: getTemperatures(request);
+	},
 };
 ```
 
@@ -121,11 +113,9 @@ To validate the API before adding mTLS authentication, POST a random temperature
 $ TEMPERATURE=$(echo $((361 + RANDOM %11)) | awk '{printf("%.2f",$1/10.0)}')
 $ TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-
 $ echo -e "$TEMPERATURE\n$TIMESTAMP"
 36.70
 2020-09-28T02:54:56Z
-
 
 $ curl --verbose --header "Content-Type: application/json" --data '{"temperature":'''$TEMPERATURE''', "time": "'''$TIMESTAMP'''"}' https://shield.upinatoms.com/temps 2>&1 | grep "< HTTP/2"
 < HTTP/2 201
@@ -168,7 +158,6 @@ To create a bootstrap certificate for the iOS application and the IoT device, th
 ```bash
 # Generate a private key and CSR for the iOS device.
 
-
 $ cat <<'EOF' | tee -a csr.json
 {
     "hosts": [
@@ -189,29 +178,23 @@ $ cat <<'EOF' | tee -a csr.json
 }
 EOF
 
-
 $ cfssl genkey csr.json | cfssljson -bare certificate
-
 
 2020/09/27 21:28:46 [INFO] generate received request
 2020/09/27 21:28:46 [INFO] received CSR
 2020/09/27 21:28:46 [INFO] generating key: rsa-2048
 2020/09/27 21:28:47 [INFO] encoded CSR
 
-
 $ mv certificate-key.pem ios-key.pem
 $ mv certificate.csr ios.csr
 
-
 # Do the same for the IoT sensor.
-
 
 $ sed -i.bak 's/ios-bootstrap/sensor-001/g' csr.json
 $ cfssl genkey csr.json | cfssljson -bare certificate
 ...
 $ mv certificate-key.pem sensor-key.pem
 $ mv certificate.csr sensor.csr
-
 
 # now ask that these CSRs be signed by the private CA issued for your zone
 # we need to replace actual newlines in the CSR with ‘\n’ before POST’ing
@@ -224,7 +207,6 @@ $ request_body=$(< <(cat <<EOF
 EOF
 ))
 
-
 # save the response so we can view it and then extra the certificate
 $ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/client_certificates \
 --header "X-Auth-Email: <EMAIL>" \
@@ -232,9 +214,7 @@ $ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/client_certificates 
 --header "Content-Type: application/json" \
 --data "$request_body" > response.json
 
-
 $ cat response.json | jq .
-
 
 {
   "success": true,
@@ -264,12 +244,9 @@ $ cat response.json | jq .
   }
 }
 
-
 $ cat response.json | jq .result.certificate | perl -npe 's/\\n/\n/g; s/"//g' > ios.pem
 
-
 # Now ask that the second client certificate signing request be signed.
-
 
 $ CSR=$(cat sensor.csr | perl -pe 's/\n/\\n/g')
 $ request_body=$(< <(cat <<EOF
@@ -279,7 +256,6 @@ $ request_body=$(< <(cat <<EOF
 }
 EOF
 ))
-
 
 $ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/client_certificates \
 --header "X-Auth-Email: <EMAIL>" \
@@ -322,28 +298,23 @@ private OkHttpClient setUpClient() {
         final String SECRET = "secret"; // You may also store this String somewhere more secure.
         CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
 
-
         // Get private key
         InputStream privateKeyInputStream = getResources().openRawResource(R.raw.key);
         byte[] privateKeyByteArray = new byte[privateKeyInputStream.available()];
         privateKeyInputStream.read(privateKeyByteArray);
-
 
         String privateKeyContent = new String(privateKeyByteArray, Charset.defaultCharset())
                 .replace("-----BEGIN PRIVATE KEY-----", "")
                 .replaceAll(System.lineSeparator(), "")
                 .replace("-----END PRIVATE KEY-----", "");
 
-
         byte[] rawPrivateKeyByteArray = Base64.getDecoder().decode(privateKeyContent);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(rawPrivateKeyByteArray);
 
-
         // Get certificate
         InputStream certificateInputStream = getResources().openRawResource(R.raw.cert);
         Certificate certificate = certificateFactory.generateCertificate(certificateInputStream);
-
 
         // Set up KeyStore
         KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -351,33 +322,27 @@ private OkHttpClient setUpClient() {
         keyStore.setKeyEntry("client", keyFactory.generatePrivate(keySpec), SECRET.toCharArray(), new Certificate[]{certificate});
         certificateInputStream.close();
 
-
         // Set up Trust Managers
         TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         trustManagerFactory.init((KeyStore) null);
         TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
-
 
         // Set up Key Managers
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
         keyManagerFactory.init(keyStore, SECRET.toCharArray());
         KeyManager[] keyManagers = keyManagerFactory.getKeyManagers();
 
-
         // Obtain SSL Socket Factory
         SSLContext sslContext = SSLContext.getInstance("TLS");
         sslContext.init(keyManagers, trustManagers, new SecureRandom());
         SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
 
         // Finally, return the client, which will then be used to make HTTP calls.
         OkHttpClient client = new OkHttpClient.Builder()
                 .sslSocketFactory(sslSocketFactory, (X509TrustManager) trustManagers[0])
                 .build();
 
-
         return client;
-
 
     } catch (CertificateException | IOException | NoSuchAlgorithmException | KeyStoreException | UnrecoverableKeyException | KeyManagementException | InvalidKeySpecException e) {
         e.printStackTrace();
@@ -398,45 +363,33 @@ This example assumes the certificate and the private key are securely copied to 
 
 The sample script is modified to point to these files:
 
-**Python**
-
 ```python
 import requests
 import json
 from datetime import datetime
 
-
 def readSensor():
 
-
     # Takes a reading from a temperature sensor and store it to temp_measurement
-
 
     dateTimeObj = datetime.now()
     timestampStr = dateTimeObj.strftime('%Y-%m-%dT%H:%M:%SZ')
 
-
     measurement = {'temperature':str(temp_measurement),'time':timestampStr}
     return measurement
 
-
 def main():
-
 
     print("Cloudflare API Shield [IoT device demonstration]")
 
-
     temperature = readSensor()
     payload = json.dumps(temperature)
-
 
     url = 'https://shield.upinatoms.com/temps'
     json_headers = {'Content-Type': 'application/json'}
     cert_file = ('/etc/ssl/certs/sensor.pem', '/etc/ssl/private/sensor-key.pem')
 
-
     r = requests.post(url, headers = json_headers, data = payload, cert = cert_file)
-
 
     print("Request body: ", r.request.body)
     print("Response status code: %d" % r.status_code)
@@ -472,7 +425,14 @@ After creating Cloudflare-issued certificates, the next step is to [enable mTLS]
 
 To configure API Shield to require client certificates, [create a mTLS rule](https://developers.cloudflare.com/api-shield/security/mtls/configure/#create-an-mtls-rule).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/#page","headline":"Configure your mobile app or IoT device · Cloudflare SSL/TLS docs","description":"This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with API Shield.","url":"https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","iOS","Android"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/configure-your-mobile-app-or-iot-device/","name":"Configure your mobile app or IoT device"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/#page","headline":"Configure your mobile app or IoT device · Cloudflare SSL/TLS docs","description":"This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with API Shield.","url":"https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","iOS","Android"]}
 ```

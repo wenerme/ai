@@ -1,16 +1,18 @@
 ---
-title: Environment variables
 description: You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Environment variables
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Environment variables
 
-# Environment variables
+Last updated Jun 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/environment-variables/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -22,37 +24,28 @@ Text strings and JSON values are not encrypted and are useful for storing applic
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file. In the following example, `API_HOST` and `API_ACCOUNT_ID` are text values and `SERVICE_X_DATA` is a JSON value.
 
-* [  wrangler.jsonc ](#tab-panel-12343)
-* [  wrangler.toml ](#tab-panel-12344)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker-dev",
-  "vars": {
-    "API_HOST": "example.com",
-    "API_ACCOUNT_ID": "example_user",
-    "SERVICE_X_DATA": {
-      "URL": "service-x-api.dev.example",
-      "MY_ID": 123
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker-dev",
+	"vars": {
+		"API_HOST": "example.com",
+		"API_ACCOUNT_ID": "example_user",
+		"SERVICE_X_DATA": {
+			"URL": "service-x-api.dev.example",
+			"MY_ID": 123
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker-dev"
 
-
 [vars]
 API_HOST = "example.com"
 API_ACCOUNT_ID = "example_user"
-
 
   [vars.SERVICE_X_DATA]
   URL = "service-x-api.dev.example"
@@ -61,40 +54,28 @@ API_ACCOUNT_ID = "example_user"
 
 Refer to the following example on how to access the `API_HOST` environment variable in your Worker code:
 
-* [  JavaScript ](#tab-panel-12336)
-* [  TypeScript ](#tab-panel-12337)
-* [  Python ](#tab-panel-12338)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response(`API host: ${env.API_HOST}`);
-  },
+	async fetch(request, env, ctx) {
+		return new Response(`API host: ${env.API_HOST}`);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export interface Env {
-  API_HOST: string;
+	API_HOST: string;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    return new Response(`API host: ${env.API_HOST}`);
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		return new Response(`API host: ${env.API_HOST}`);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -106,40 +87,29 @@ class Default(WorkerEntrypoint):
 
 You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-12341)
-* [  TypeScript ](#tab-panel-12342)
-
-**JavaScript**
-
 ```js
 import { env } from "cloudflare:workers";
-
 
 // Access environment variables at the top level
 const apiHost = env.API_HOST;
 
-
 export default {
-  async fetch(request) {
-    return new Response(`API host: ${apiHost}`);
-  },
+	async fetch(request) {
+		return new Response(`API host: ${apiHost}`);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { env } from "cloudflare:workers";
 
-
 // Access environment variables at the top level
 const apiHost = env.API_HOST;
 
-
 export default {
-  async fetch(request: Request): Promise<Response> {
-    return new Response(`API host: ${apiHost}`);
-  },
+	async fetch(request: Request): Promise<Response> {
+		return new Response(`API host: ${apiHost}`);
+	},
 };
 ```
 
@@ -156,48 +126,38 @@ For more details, refer to [Importing env as a global](https://developers.cloudf
 
 The example below sets up two environments, `staging` and `production`, with different values for `API_HOST`.
 
-* [  wrangler.jsonc ](#tab-panel-12339)
-* [  wrangler.toml ](#tab-panel-12340)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker-dev",
-  // top level environment
-  "vars": {
-    "API_HOST": "api.example.com"
-  },
-  "env": {
-    "staging": {
-      "vars": {
-        "API_HOST": "staging.example.com"
-      }
-    },
-    "production": {
-      "vars": {
-        "API_HOST": "production.example.com"
-      }
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker-dev",
+	// top level environment
+	"vars": {
+		"API_HOST": "api.example.com"
+	},
+	"env": {
+		"staging": {
+			"vars": {
+				"API_HOST": "staging.example.com"
+			}
+		},
+		"production": {
+			"vars": {
+				"API_HOST": "production.example.com"
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker-dev"
 
-
 [vars]
 API_HOST = "api.example.com"
 
-
 [env.staging.vars]
 API_HOST = "staging.example.com"
-
 
 [env.production.vars]
 API_HOST = "production.example.com"
@@ -212,7 +172,7 @@ Learn about [environments in Wrangler](https://developers.cloudflare.com/workers
 To add environment variables via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Select **Settings**.
 4. Under **Variables and Secrets**, select **Add**.
@@ -234,7 +194,7 @@ Do not use plaintext environment variables to store sensitive information. Use [
 
 ### Local development with secrets
 
-Warning
+Caution
 
 Do not use `vars` to store sensitive information in your Worker's Wrangler configuration file. Use secrets instead.
 
@@ -244,11 +204,11 @@ Note
 
 You can use the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
 
+Note
+
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
-
-**.dev.vars / .env**
 
 ```bash
 SECRET_KEY="value"
@@ -270,7 +230,7 @@ When you select a Cloudflare environment in your local development, the correspo
   * `.env.<environment-name>`
   * `.env` (least specific)
 
-Controlling `.env` handling
+Controlling \`.env\` handling
 
 It is possible to control how `.env` files are loaded in local development by setting environment variables on the process running the tools.
 
@@ -304,15 +264,20 @@ The values of `process.env.FOO` and `process.env.BAR` will each be the JavaScrip
 
 The value of `process.env.BAZ` will be the JSON-encoded string `"{ \"a\": 123 }"`.
 
-Note
-
-Note also that because secrets are a form of environment variable within the runtime, secrets are also exposed via `process.env`.
+:::note Note also that because secrets are a form of environment variable within the runtime, secrets are also exposed via `process.env`.
 
 ## Related resources
 
 * Migrating environment variables from [Service Worker format to ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#environment-variables).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Workers docs","description":"You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.","url":"https://developers.cloudflare.com/workers/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/environment-variables/","name":"Environment variables"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Workers docs","description":"You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.","url":"https://developers.cloudflare.com/workers/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

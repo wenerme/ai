@@ -1,16 +1,18 @@
 ---
-title: Logpush integration
 description: Logpush integration in Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Logpush integration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Logpush integration
 
-# Logpush integration
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
  Enterprise-only
 
@@ -76,17 +78,17 @@ Logpush provides DNS response data in two formats. `ResourceRecords` contains th
 
 ```json
 {
-  "ResourceRecords": [
-    {
-      "type": "5",
-      "data": "d3d3LmV4YW1wbGUuY29tAAABAAUAAABleGFtcGxlLmNvbQ=="
-    },
-    {
-      "type": "1",
-      "data": "ZXhhbXBsZS5jb20AAAEAAQAAAQIDBAUGBwgJ"
-    }
-  ],
-  "ResourceRecordsJSON": "[{\"name\":\"www.example.com\",\"type\":\"CNAME\",\"class\":\"IN\",\"ttl\":300,\"rdata\":\"example.com.\"},{\"name\":\"example.com\",\"type\":\"A\",\"class\":\"IN\",\"ttl\":300,\"rdata\":\"203.0.113.0\"}]"
+	"ResourceRecords": [
+		{
+			"type": "5",
+			"data": "d3d3LmV4YW1wbGUuY29tAAABAAUAAABleGFtcGxlLmNvbQ=="
+		},
+		{
+			"type": "1",
+			"data": "ZXhhbXBsZS5jb20AAAEAAQAAAQIDBAUGBwgJ"
+		}
+	],
+	"ResourceRecordsJSON": "[{\"name\":\"www.example.com\",\"type\":\"CNAME\",\"class\":\"IN\",\"ttl\":300,\"rdata\":\"example.com.\"},{\"name\":\"example.com\",\"type\":\"A\",\"class\":\"IN\",\"ttl\":300,\"rdata\":\"203.0.113.0\"}]"
 }
 ```
 
@@ -96,7 +98,14 @@ Logpush provides DNS response data in two formats. `ResourceRecords` contains th
 * [ IDS logs ](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/ids-logs/)
 * [ Network Firewall log filters ](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/network-firewall-log-filters/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/#page","headline":"Logpush integration · Cloudflare One docs","description":"Logpush integration in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/logs/logpush/","name":"Logpush integration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/#page","headline":"Logpush integration · Cloudflare One docs","description":"Logpush integration in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

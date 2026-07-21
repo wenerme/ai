@@ -1,16 +1,18 @@
 ---
-title: Track recording
 description: Record separate audio tracks for selected RealtimeKit participants and download per-participant WebM files.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Track recording
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Track recording
 
-# Track recording
+Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Track recording lets you record participant audio as separate WebM files instead of one composite meeting recording. Use it when you need speaker-level control over what you store, process, or review.
 
@@ -78,16 +80,16 @@ The response includes a recording ID. Use this ID to stop or fetch the recording
 
 ```json
 {
-  "success": true,
-  "data": {
-    "recording": {
-      "id": "fff40c6a-140b-40a9-9499-b23fd7a3868a",
-      "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
-      "status": "INVOKED",
-      "type": "TRACK",
-      "output_file_name": "{{file_name_prefix}}_{{user_id}}_{{peer_id}}_{{stream_kind}}_{{media_kind}}_{{date_time}}.webm"
-    }
-  }
+	"success": true,
+	"data": {
+		"recording": {
+			"id": "fff40c6a-140b-40a9-9499-b23fd7a3868a",
+			"meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
+			"status": "INVOKED",
+			"type": "TRACK",
+			"output_file_name": "{{file_name_prefix}}_{{user_id}}_{{peer_id}}_{{stream_kind}}_{{media_kind}}_{{date_time}}.webm"
+		}
+	}
 }
 ```
 
@@ -97,13 +99,13 @@ Use `layers.default.file_name_prefix` to prefix every generated track recording 
 
 ```json
 {
-  "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
-  "layers": {
-    "default": {
-      "media_kind": "audio",
-      "file_name_prefix": "speaker"
-    }
-  }
+	"meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a",
+	"layers": {
+		"default": {
+			"media_kind": "audio",
+			"file_name_prefix": "speaker"
+		}
+	}
 }
 ```
 
@@ -135,16 +137,16 @@ When the recording reaches `UPLOADED`, fetch the recording details or listen for
 
 ```json
 {
-  "download_url": [
-    {
-      "layer_name": "default",
-      "download_urls": {
-        "speaker_user-123_peer-456_peer_audio_1760000000000.webm": {
-          "download_url": "https://example.com/presigned-url"
-        }
-      }
-    }
-  ]
+	"download_url": [
+		{
+			"layer_name": "default",
+			"download_urls": {
+				"speaker_user-123_peer-456_peer_audio_1760000000000.webm": {
+					"download_url": "https://example.com/presigned-url"
+				}
+			}
+		}
+	]
 }
 ```
 
@@ -156,7 +158,14 @@ File names use this format:
 
 The `date_time` value is the Unix timestamp in milliseconds when the file was generated.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/#page","headline":"Track recording · Cloudflare Realtime docs","description":"Record separate audio tracks for selected RealtimeKit participants and download per-participant WebM files.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/recording-guide/","name":"Recording"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/recording-guide/track-recording/","name":"Track recording"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/#page","headline":"Track recording · Cloudflare Realtime docs","description":"Record separate audio tracks for selected RealtimeKit participants and download per-participant WebM files.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

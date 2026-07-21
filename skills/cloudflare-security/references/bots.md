@@ -1,16 +1,18 @@
 ---
-title: Cloudflare bot solutions
 description: Identify and mitigate automated traffic to protect your domain from bad bots.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare bot solutions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare bot solutions
 
-# Cloudflare bot solutions
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Identify and mitigate automated traffic to protect your domain from bad bots.
 
@@ -34,55 +36,62 @@ To see the differences in features and functionality, visit [Plans](https://deve
 
 ## Features
 
-###  Bot Fight Mode
+[Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/)
 
 Challenge detected bot traffic across your entire domain with a single toggle.
 
-[ Use Bot Fight Mode ](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/)
+ Use Bot Fight Mode
 
-###  Super Bot Fight Mode
+[Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/)
 
 Identify traffic matching patterns of known bots, challenge or block bots, protect static resources, and view analytics to help you understand bot traffic using Super Bot Fight Mode.
 
-[ Use Super Bot Fight Mode ](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/)
+ Use Super Bot Fight Mode
 
-###  Bot Analytics
+[Bot Analytics](https://developers.cloudflare.com/bots/bot-analytics/)
 
 Use Bot Analytics to dynamically examine bot traffic.
 
-[ Use Bot Analytics ](https://developers.cloudflare.com/bots/bot-analytics/)
+ Use Bot Analytics
 
-###  Firewall variables
+[Firewall variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/)
 
 Access several new variables within the Firewall expression builder.
 
-[ Use Firewall variables ](https://developers.cloudflare.com/bots/reference/bot-management-variables/)
+ Use Firewall variables
 
 ## Related products
 
-**[API Shield](https://developers.cloudflare.com/api-shield/)**
+[API Shield](https://developers.cloudflare.com/api-shield/)
 
 Identify and address API vulnerabilities using API Shield.
 
-**[DDoS Protection](https://developers.cloudflare.com/ddos-protection/)**
+[DDoS Protection](https://developers.cloudflare.com/ddos-protection/)
 
 Detect and mitigate Distributed Denial of Service (DDoS) attacks using Cloudflare's Autonomous Edge.
 
-**[Turnstile](https://developers.cloudflare.com/turnstile/)**
+[Turnstile](https://developers.cloudflare.com/turnstile/)
 
 Use Cloudflare's smart CAPTCHA alternative to run less intrusive challenges.
 
-**[WAF](https://developers.cloudflare.com/waf/)**
+[WAF](https://developers.cloudflare.com/waf/)
 
 Get automatic protection from vulnerabilities and the flexibility to create custom rules.
 
 ## More resources
 
-[Plans](https://www.cloudflare.com/plans/#overview)
+### [ Plans ](https://www.cloudflare.com/plans/#overview)
 
 Compare available Cloudflare plans
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/#page","headline":"Overview · Cloudflare bot solutions docs","description":"Identify and mitigate automated traffic to protect your domain from bad bots.","url":"https://developers.cloudflare.com/bots/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/#page","headline":"Overview · Cloudflare bot solutions docs","description":"Identify and mitigate automated traffic to protect your domain from bad bots.","url":"https://developers.cloudflare.com/bots/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

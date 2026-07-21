@@ -1,16 +1,18 @@
 ---
-title: Rclone
 description: Configure rclone to manage and upload objects to R2 using the S3-compatible API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Rclone
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rclone
 
-# Rclone
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/rclone/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
@@ -53,8 +55,6 @@ rclone config file
 
 Then use an editor (`nano` or `vim`, for example) to add or edit the new provider. This example assumes you are adding a new `r2` provider:
 
-**TOML**
-
 ```toml
 [r2]
 type = s3
@@ -84,7 +84,6 @@ rclone tree r2:
 #     ├── cat.png
 #     └── todos.txt
 
-
 rclone tree r2:my-bucket-name
 # /
 # ├── cat.png
@@ -102,7 +101,6 @@ rclone tree r2:user-uploads
 # /
 # ├── foobar.png
 # └── dog.txt
-
 
 # Download dog.txt from the user-uploads bucket
 rclone copy r2:user-uploads/dog.txt .
@@ -130,7 +128,14 @@ rclone link r2:my-bucket-name/cat.png --expire 3600
 # https://<accountid>.r2.cloudflarestorage.com/my-bucket-name/cat.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=<credential>&X-Amz-Date=<timestamp>&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=<signature>
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/rclone/#page","headline":"Rclone · Cloudflare R2 docs","description":"Configure rclone to manage and upload objects to R2 using the S3-compatible API.","url":"https://developers.cloudflare.com/r2/examples/rclone/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/rclone/","name":"Rclone"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/rclone/#page","headline":"Rclone · Cloudflare R2 docs","description":"Configure rclone to manage and upload objects to R2 using the S3-compatible API.","url":"https://developers.cloudflare.com/r2/examples/rclone/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

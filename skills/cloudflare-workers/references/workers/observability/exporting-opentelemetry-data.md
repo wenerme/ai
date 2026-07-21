@@ -1,16 +1,18 @@
 ---
-title: Exporting OpenTelemetry Data
 description: Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Exporting OpenTelemetry Data
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Exporting OpenTelemetry Data
 
-# Exporting OpenTelemetry Data
+Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers supports exporting OpenTelemetry (OTel)-compliant telemetry data to any destination with an available OTel endpoint, allowing you to integrate with your existing monitoring and observability stack.
 
@@ -69,43 +71,33 @@ Cloudflare does not support the [Binary format ↗](https://opentelemetry.io/doc
 
 After setting up destinations in the dashboard, configure your Worker to export telemetry data by updating your Wrangler configuration. Your destination name configured in your configuration file should be the same as the destination configured in the dashboard.
 
-* [  wrangler.jsonc ](#tab-panel-12726)
-* [  wrangler.toml ](#tab-panel-12727)
-
-**JSONC**
-
 ```jsonc
 {
-  "observability": {
-    "traces": {
-      "enabled": true,
-      "destinations": ["tracing-destination-name"],
+	"observability": {
+		"traces": {
+			"enabled": true,
+			"destinations": ["tracing-destination-name"],
 
+			// traces sample rate of 5%
+			"head_sampling_rate": 0.05,
 
-      // traces sample rate of 5%
-      "head_sampling_rate": 0.05,
+			// (optional) set to false to only export traces to your
+			// destination without persisting them in the Cloudflare dashboard
+			"persist": false
+		},
+		"logs": {
+			"enabled": true,
+			"destinations": ["logs-destination-name"],
+			// logs sample rate of 60%
+			"head_sampling_rate": 0.6,
 
-
-      // (optional) set to false to only export traces to your
-      // destination without persisting them in the Cloudflare dashboard
-      "persist": false
-    },
-    "logs": {
-      "enabled": true,
-      "destinations": ["logs-destination-name"],
-      // logs sample rate of 60%
-      "head_sampling_rate": 0.6,
-
-
-      // (optional) set to false to only export logs to your
-      // destination without persisting them in the Cloudflare dashboard
-      "persist": false
-    }
-  }
+			// (optional) set to false to only export logs to your
+			// destination without persisting them in the Cloudflare dashboard
+			"persist": false
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [observability.traces]
@@ -114,7 +106,6 @@ destinations = [ "tracing-destination-name" ]
 head_sampling_rate = 0.05
 persist = false
 
-
 [observability.logs]
 enabled = true
 destinations = [ "logs-destination-name" ]
@@ -122,7 +113,7 @@ head_sampling_rate = 0.6
 persist = false
 ```
 
-`persist` and pricing
+\`persist\` and pricing
 
 By default, `persist` is `true`, which means logs and traces are both exported to your destination and stored in the Cloudflare dashboard. Dashboard storage is billed [separately](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#pricing). Set `persist` to `false` if you only need data in your external destination.
 
@@ -158,7 +149,14 @@ OpenTelemetry data export is currently in beta. Please be aware of the following
 * **Metrics export not yet supported**: Exporting Worker infrastructure metrics and custom metrics via OpenTelemetry is not currently available. We are actively working to add metrics support in the future.
 * **Limited OTLP support from some providers**: Some observability providers are still rolling out OTLP endpoint support. Check the [Available OpenTelemetry destinations](#available-opentelemetry-destinations) table above for current availability.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/#page","headline":"Exporting OpenTelemetry Data · Cloudflare Workers docs","description":"Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/exporting-opentelemetry-data/","name":"Exporting OpenTelemetry Data"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/#page","headline":"Exporting OpenTelemetry Data · Cloudflare Workers docs","description":"Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

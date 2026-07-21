@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Create your first Workers VPC Service and connect a Worker to your private network.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will walk you through creating your first Workers VPC Service, allowing your Worker to access resources in your private network.
 
@@ -95,9 +97,6 @@ For comprehensive tunnel configuration, monitoring, and management, refer to the
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
-* [ Dashboard ](#tab-panel-12158)
-* [ Wrangler CLI ](#tab-panel-12159)
-
 1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
 2. Select **Create** to create a new VPC Service.
 3. Enter a **Service name** for your VPC Service (for example, `my-private-api`).
@@ -155,36 +154,28 @@ If you encounter permission errors, refer to [Required roles](https://developers
 
 Add the VPC Service binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-12160)
-* [  wrangler.toml ](#tab-panel-12161)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "workers-vpc-app",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "vpc_services": [
-    {
-      "binding": "VPC_SERVICE",
-      "service_id": "<YOUR_SERVICE_ID>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "workers-vpc-app",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"vpc_services": [
+		{
+			"binding": "VPC_SERVICE",
+			"service_id": "<YOUR_SERVICE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "workers-vpc-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[vpc_services]]
 binding = "VPC_SERVICE"
@@ -197,35 +188,29 @@ Replace `<YOUR_SERVICE_ID>` with the service ID from step 3.
 
 Update your Worker to use the VPC Service binding. The following example:
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request, env, ctx): Promise<Response> {
+		const url = new URL(request.url);
 
+		// This is a simple proxy scenario.
+		// In this case, you will need to replace the URL with the proper protocol (http vs. https), hostname and port of the service.
+		// For example, this could be "http://localhost:1111", "http://192.0.0.1:3000", "https://my-internal-api.example.com"
+		const targetUrl = new URL(
+			`http://<ENTER_SERVICE_HOST>:<ENTER_SERVICE_PORT>${url.pathname}${url.search}`,
+		);
 
-    // This is a simple proxy scenario.
-    // In this case, you will need to replace the URL with the proper protocol (http vs. https), hostname and port of the service.
-    // For example, this could be "http://localhost:1111", "http://192.0.0.1:3000", "https://my-internal-api.example.com"
-    const targetUrl = new URL(
-      `http://<ENTER_SERVICE_HOST>:<ENTER_SERVICE_PORT>${url.pathname}${url.search}`,
-    );
+		// Create new request with the target URL but preserve all other properties
+		const proxyRequest = new Request(targetUrl, {
+			method: request.method,
+			headers: request.headers,
+			body: request.body,
+		});
 
+		const response = await env.VPC_SERVICE.fetch(proxyRequest);
 
-    // Create new request with the target URL but preserve all other properties
-    const proxyRequest = new Request(targetUrl, {
-      method: request.method,
-      headers: request.headers,
-      body: request.body,
-    });
-
-
-    const response = await env.VPC_SERVICE.fetch(proxyRequest);
-
-
-    return response;
-  },
+		return response;
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -256,7 +241,14 @@ Your Worker is now deployed and can access your private network resources secure
 * View [platform-specific guides](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/) for AWS, Azure, GCP, and Kubernetes
 * Check out [examples](https://developers.cloudflare.com/workers-vpc/examples/) for common use cases
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/get-started/#page","headline":"Get started · Cloudflare Workers VPC","description":"Create your first Workers VPC Service and connect a Worker to your private network.","url":"https://developers.cloudflare.com/workers-vpc/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/get-started/#page","headline":"Get started · Cloudflare Workers VPC","description":"Create your first Workers VPC Service and connect a Worker to your private network.","url":"https://developers.cloudflare.com/workers-vpc/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

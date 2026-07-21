@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Resolve common issues with Cloudflare challenges, including loops and proxied hostnames.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-challenges/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Common issues
 
@@ -36,8 +38,6 @@ This affects tools like Google Analytics, which reads the referer from JavaScrip
 
 You can add tracking scripts, such as the Google Tag Manager Javascript, within an existing [Challenge Page](https://developers.cloudflare.com/rules/custom-errors/) to capture the correct referer header on the initial request.
 
-**Example JavaScript**
-
 ```js
 <script>
     (function () {
@@ -45,18 +45,14 @@ You can add tracking scripts, such as the Google Tag Manager Javascript, within 
         "<YOUR_DOMAIN>": "<GA_TRACKING_ID>",
       };
 
-
       const gaId = gaIds[window.location.hostname];
-
 
       if (gaId) {
         const src = "https://www.googletagmanager.com/gtag/js?id=";
 
-
         const gaScript = document.createElement("script");
         gaScript.src = src.concat(gaId);
         document.body.appendChild(gaScript);
-
 
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -164,7 +160,14 @@ Exclude multiple IP addresses from a **Block** or **Challenge** rule that assess
     * Expression: `(http.host eq "example.com" and cf.waf.score lt 20)`
     * Action: Block (or a challenge action)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/#page","headline":"Troubleshooting · Cloudflare challenges docs","description":"Resolve common issues with Cloudflare challenges, including loops and proxied hostnames.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-challenges/","name":"Challenges"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-challenges/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/#page","headline":"Troubleshooting · Cloudflare challenges docs","description":"Resolve common issues with Cloudflare challenges, including loops and proxied hostnames.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

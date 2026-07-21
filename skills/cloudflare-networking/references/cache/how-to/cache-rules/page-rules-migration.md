@@ -1,16 +1,18 @@
 ---
-title: Migration from Page Rules
 description: Migrate caching Page Rules to Cache Rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Migration from Page Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migration from Page Rules
 
-# Migration from Page Rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you are migrating from Page Rules, there is a behavior change between Page Rules and Cache Rules.
 
@@ -22,9 +24,6 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 1
 
-* [ Dashboard ](#tab-panel-7621)
-* [ visual guide ](#tab-panel-7622)
-
 1. Enter a rule name, for instance `bypass everything`.
 2. In **When incoming requests match**, select **All incoming requests**.
 3. Under **Then**, in the **Cache eligibility** section, select [Bypass cache](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#bypass-cache).
@@ -32,9 +31,6 @@ Multiple matching cache rules can be combined and applied to the same request. A
 ![Create rule to bypass cache](https://developers.cloudflare.com/_astro/first-rule.DCA_9a45_1jNULw.webp)
 
 ## Rule 2
-
-* [ Dashboard ](#tab-panel-7623)
-* [ visual guide ](#tab-panel-7624)
 
 1. Enter a rule name, for instance `cache all default cacheable extensions`.
 2. In **When incoming requests match**, select **Custom filter expression**.
@@ -59,7 +55,14 @@ Remember to create the rules in the specified order: first, the `bypass everythi
 
 ![Rules order](https://developers.cloudflare.com/_astro/rule-order.wNZiF99u_ZOuxf5.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/#page","headline":"Migration from Page Rules · Cloudflare Cache (CDN) docs","description":"Migrate caching Page Rules to Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-rules/","name":"Cache Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/cache-rules/page-rules-migration/","name":"Migration from Page Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/#page","headline":"Migration from Page Rules · Cloudflare Cache (CDN) docs","description":"Migrate caching Page Rules to Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 ```

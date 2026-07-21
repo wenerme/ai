@@ -1,16 +1,18 @@
 ---
-title: Prefetch URLs
 description: Prefetch URLs to load resources before visitors request them.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Prefetch URLs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Prefetch URLs
 
-# Prefetch URLs
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 URL prefetching means that Cloudflare pre-populates the cache with content a visitor is likely to request next. This setting — when combined with [additional setup](#setup) — leads to a higher cache hit rate and thus a faster experience for the user.
 
@@ -30,13 +32,10 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 ### Enable Prefetch URLs
 
-* [ Dashboard ](#tab-panel-11408)
-* [ API ](#tab-panel-11409)
-
 To enable **Prefetch URLs** in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to **Content Optimization**.
 3. For **Prefetch URLs**, switch the toggle to **On**.
 
@@ -78,7 +77,14 @@ The prefetch files limits are the following:
 * Cloudflare will only prefetch files listed in the manifest file if the resources are those [cached by default](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).
 * Prefetch is not compatible with the custom cache key configuration. For more information, refer to [Cache Key limitations](https://developers.cloudflare.com/cache/how-to/cache-keys/#limitations).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/#page","headline":"Prefetch URLs · Cloudflare Speed docs","description":"Prefetch URLs to load resources before visitors request them.","url":"https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/prefetch-urls/","name":"Prefetch URLs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/#page","headline":"Prefetch URLs · Cloudflare Speed docs","description":"Prefetch URLs to load resources before visitors request them.","url":"https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
 ```

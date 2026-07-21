@@ -1,16 +1,18 @@
 ---
-title: Prompting
 description: Structure prompts for Workers AI text generation models using system, user, and assistant message roles.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Prompting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Prompting
 
-# Prompting
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/prompting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Part of getting good results from text generation models is asking questions correctly. LLMs are usually trained with specific predefined templates, which should then be used with the model's tokenizer for better results when doing inference tasks.
 
@@ -36,8 +38,6 @@ OpenAI has a [good explanation ↗](https://platform.openai.com/docs/guides/text
 
 Here's an input example of a scoped prompt using system and user roles:
 
-**JavaScript**
-
 ```js
 {
   messages: [
@@ -48,8 +48,6 @@ Here's an input example of a scoped prompt using system and user roles:
 ```
 
 Here's a better example of a chat session using multiple iterations between the user and the assistant.
-
-**JavaScript**
 
 ```js
 {
@@ -70,8 +68,6 @@ Note that different LLMs are trained with different templates for different use 
 
 You can use unscoped prompts to send a single question to the model without worrying about providing any context. Workers AI will automatically convert your `prompt` input to a reasonable default scoped prompt internally so that you get the best possible prediction.
 
-**JavaScript**
-
 ```js
 {
   prompt: "tell me a joke about cloudflare";
@@ -79,8 +75,6 @@ You can use unscoped prompts to send a single question to the model without worr
 ```
 
 You can also use unscoped prompts to construct the model chat template manually. In this case, you can use the raw parameter. Here's an input example of a [Mistral ↗](https://docs.mistral.ai/models/#chat-template) chat template prompt:
-
-**JavaScript**
 
 ```js
 {
@@ -90,7 +84,14 @@ You can also use unscoped prompts to construct the model chat template manually.
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/prompting/#page","headline":"Prompting · Cloudflare Workers AI docs","description":"Structure prompts for Workers AI text generation models using system, user, and assistant message roles.","url":"https://developers.cloudflare.com/workers-ai/features/prompting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/prompting/","name":"Prompting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/prompting/#page","headline":"Prompting · Cloudflare Workers AI docs","description":"Structure prompts for Workers AI text generation models using system, user, and assistant message roles.","url":"https://developers.cloudflare.com/workers-ai/features/prompting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

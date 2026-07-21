@@ -1,16 +1,18 @@
 ---
-title: Yamaha RTX Router
 description: Connect Yamaha RTX Router to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Yamaha RTX Router
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Yamaha RTX Router
 
-# Yamaha RTX Router
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/yamaha/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial describes how to configure the Yamaha RTX840 and RTX1300 series router to connect to Cloudflare WAN (formerly Magic WAN) via IPsec tunnels.
 
@@ -64,9 +66,7 @@ Use the CLI to configure these settings.
 ```txt
 ip route default gateway tunnel 1
 
-
 ip route <Cloudflare Anycast IP> gateway <ISP provided Gateway IP>
-
 
 ip route < ISP's DNS server IP > gateway <ISP provided Gateway IP>
 ```
@@ -82,7 +82,6 @@ ip lan1 address 172.16.2.254/24
 ```txt
 ip lan2 address 194.xx.xx.xx/29
 
-
 ip lan2 nat descriptor 1000
 ```
 
@@ -91,72 +90,49 @@ ip lan2 nat descriptor 1000
 ```txt
 tunnel select 1
 
-
 ipsec tunnel 1
-
 
 ipsec sa policy 1 1 esp aes256-cbc sha256-hmac anti-replay-check=off
 
-
 ipsec ike version 1 2
-
 
 ipsec ike duration ipsec-sa 1 3600
 
-
 ipsec ike duration isakmp-sa 1 28800
-
 
 ipsec ike encryption 1 aes256-cbc
 
-
 ipsec ike group 1 modp2048
-
 
 ipsec ike hash 1 sha256
 
-
 ipsec ike keepalive log 1 off
-
 
 ipsec ike keepalive use 1 on rfc4306 10 6
 
-
 ipsec ike local address 1 194.xx.xx.xx
-
 
 ipsec ike log 1 key-info message-info payload-info
 
-
 ipsec ike local name 1 <Cloudflare Magic IPsec Tunnel FQDN IP> fqdn
-
 
 ipsec ike pfs 1 on
 
-
 ipsec ike proposal-limitation 1 on
-
 
 ipsec ike pre-shared-key 1 text <Pre-shared key>
 
-
 ipsec ike remote address 1 <Cloudflare Anycast IP>
-
 
 ipsec ike remote name 1 <Cloudflare Anycast IP> ipv4-addr
 
-
 ip tunnel address 172.30.223.3/31
-
 
 ip tunnel tcp mss limit auto
 
-
 tunnel enable 1
 
-
 ipsec auto refresh on
-
 
 ! Note: 172.30.223.3/31 is internal tunnel IP on the RTX side.
 ```
@@ -166,12 +142,9 @@ ipsec auto refresh on
 ```txt
 nat descriptor type 1000 masquerade
 
-
 nat descriptor address outer 1000 primary
 
-
 nat descriptor masquerade static 1000 1 194.xx.xx.xx udp 500
-
 
 nat descriptor masquerade static 1000 2 194.xx.xx.xx esp
 ```
@@ -181,9 +154,7 @@ nat descriptor masquerade static 1000 2 194.xx.xx.xx esp
 ```txt
 dhcp service server
 
-
 dhcp server rfc2131 compliant except remain-silent
-
 
 dhcp scope 1 172.16.2.2-172.16.2.191/24
 ```
@@ -193,9 +164,7 @@ dhcp scope 1 172.16.2.2-172.16.2.191/24
 ```txt
 dns host lan1
 
-
 dns server select 1 <ISP's DNS server IP> any .
-
 
 dns private address spoof on
 ```
@@ -209,20 +178,15 @@ In the Yamaha RTX router CLI, you can run `show ipsec sa` and `show status tunne
 ```txt
 Total: isakmp:1 send:1 recv:1
 
-
-sa    sgw   isakmp        connection      dir    life[s]              remote-id
-
+sa    sgw   isakmp        connection    	dir 	 life[s] 	           remote-id
 
 ------------------------------------------------------------------------------------------
 
+1     1    	     -     		ike         	  -   	 27384         （Cloudflare Anycast IP）
 
-1     1           -         ike             -      27384         （Cloudflare Anycast IP）
+2     1         1    		 tun[0001]esp  send 	 2185           （Cloudflare Anycast IP）
 
-
-2     1         1         tun[0001]esp  send    2185           （Cloudflare Anycast IP）
-
-
-3     1         1         tun[0001]esp  recv    2185           （Cloudflare Anycast IP）
+3     1         1    		 tun[0001]esp  recv 	 2185           （Cloudflare Anycast IP）
 ```
 
 ### `show status tunnel 1`
@@ -230,56 +194,47 @@ sa    sgw   isakmp        connection      dir    life[s]              remote-id
 ```txt
 TUNNEL[1]:
 
-
 Description:
-
 
 Interface type: IPsec
 
-
 Current status is Online.
-
 
 from 2025/12/08 13:14:20.
 
-
 20 minutes 56 seconds  connection.
-
 
 Maximum Transmission Unit(MTU):
 
-
 IPv4: 1280 octets
-
 
 IPv6: 1280 octets
 
-
 Received:    (IPv4) 171847 packets [58823472 octets]
 
-
 (IPv6) 0 packet [0 octet]
-
 
 Transmitted: (IPv4) 154224 packets [19191955 octets]
 
-
 (IPv6) 0 packet [0 octet]
-
 
 IKE keepalive:
 
-
 [Type]: rfc4306
 
-
 [Status]: OK
-
 
 [Next send]: 1 sec after
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/yamaha/#page","headline":"Yamaha RTX Router · Cloudflare WAN docs","description":"Connect Yamaha RTX Router to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/yamaha/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/yamaha/","name":"Yamaha RTX Router"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/yamaha/#page","headline":"Yamaha RTX Router · Cloudflare WAN docs","description":"Connect Yamaha RTX Router to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/yamaha/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

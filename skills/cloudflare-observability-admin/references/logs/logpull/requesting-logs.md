@@ -1,16 +1,18 @@
 ---
-title: Requesting logs
 description: Use Logpull API endpoints to request log data.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Requesting logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Requesting logs
 
-# Requesting logs
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpull/requesting-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Endpoints
 
@@ -105,7 +107,6 @@ FIELDS=$(curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received
 --header "X-Auth-Key: <API_KEY>" \
 | jq '. | to_entries[] | .key' -r | paste -sd "," -)
 
-
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2017-07-18T22:00:00Z&end=2017-07-18T22:01:00Z&count=1&fields=$FIELDS" \
 --header "X-Auth-Email: <EMAIL>" \
 --header "X-Auth-Key: <API_KEY>"
@@ -115,7 +116,14 @@ Refer to [Download jq ↗](https://jqlang.github.io/jq/download/) for more infor
 
 Refer to [HTTP request fields](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests) for the currently available fields.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpull/requesting-logs/#page","headline":"Requesting logs · Cloudflare Logs docs","description":"Use Logpull API endpoints to request log data.","url":"https://developers.cloudflare.com/logs/logpull/requesting-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpull/","name":"Logpull"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpull/requesting-logs/","name":"Requesting logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpull/requesting-logs/#page","headline":"Requesting logs · Cloudflare Logs docs","description":"Use Logpull API endpoints to request log data.","url":"https://developers.cloudflare.com/logs/logpull/requesting-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

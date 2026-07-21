@@ -1,16 +1,18 @@
 ---
-title: Kandji
 description: Deploy the Cloudflare One Client with Kandji on macOS using a custom configuration profile.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Kandji
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Kandji
 
-# Kandji
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Kandji deploys the Cloudflare One Client (formerly WARP) as a custom app. For an overview of how Kandji deploys custom apps, refer to their [knowledge base article ↗](https://support.kandji.io/custom-apps-overview).
 
@@ -56,11 +58,8 @@ After deploying the Cloudflare One Client, you can check its connection progress
 
 The following audit script checks if the Cloudflare One Client is installed and optionally enforces a minimum version number.
 
-**Python**
-
 ```python
 #!/bin/zsh
-
 
 ###################################################################################################
 # Created by Matt Wilson | se@kandji.io | Kandji, Inc. | Solutions Engineering
@@ -94,10 +93,8 @@ The following audit script checks if the Cloudflare One Client is installed and 
 # DEALINGS IN THE SOFTWARE.
 ###################################################################################################
 
-
 # Script version
 _VERSION="1.0.0"
-
 
 ###################################################################################################
 ###################################### VARIABLES ##################################################
@@ -108,9 +105,7 @@ _VERSION="1.0.0"
 # will only check for the presence of the Cloudflare WARP app at the defined APP_PATH.
 ENFORCED_VERSION="1.5.207.0"
 
-
 ###################################################################################################
-
 
 # Make sure that the application matches the name of the app that will be installed.
 # This script will dynamically search for the application in the Applications folder. So
@@ -119,17 +114,14 @@ ENFORCED_VERSION="1.5.207.0"
 #   For example Applications/<app_folder_name>/<app_name.app>
 APP_NAME="Cloudflare WARP.app"
 
-
 # Change the PROFILE_PAYLOAD_ID_PREFIX variable to the profile prefix you want to wait on before
 # running the installer. If the profile is not found, this audit and enforce script will exit 00
 # and do nothing until the next kandji agent check-in.
 PROFILE_PAYLOAD_ID_PREFIX="io.kandji.cloudflare.C59FD67"
 
-
 ###################################################################################################
 ###################################### FUNCTIONS ##################################################
 ###################################################################################################
-
 
 return_installed_app_version() {
     # Return the currently installed application version
@@ -138,12 +130,10 @@ return_installed_app_version() {
     local app_name="$1"
     local installed_version="" # Initialize local variable
 
-
     # Uses the find binary to look for the app inside of the Applications directory and
     # any subdirectories up to 3 levels deep.
     local find_app="$(/usr/bin/find /Applications -maxdepth 3 -name $app_name)"
     local ret="$?"
-
 
     # Check to see if the app is installed.
     if [[ "$ret" -eq 0 ]] && [[ -d "$find_app" ]] &&
@@ -152,34 +142,27 @@ return_installed_app_version() {
         # and the app name that we are looking for is exactly equal to the app name
         # found by the find command.
 
-
         # Gets the installed app version and replaces any "-" with "."
         installed_version=$(/usr/bin/defaults read \
             "$find_app/Contents/Info.plist" CFBundleShortVersionString |
             /usr/bin/sed "s/-/./g")
 
-
     else
         installed_version="None"
     fi
 
-
     echo "$installed_version"
 }
-
 
 ###################################################################################################
 ###################################### MAIN LOGIC #################################################
 ###################################################################################################
 
-
 # All of the main logic be here ... modify at your own risk.
-
 
 # The profiles variable will be set to an array of profiles that match the prefix in
 # the PROFILE_PAYLOAD_ID_PREFIX variable
 profiles=$(/usr/bin/profiles show | grep "$PROFILE_PAYLOAD_ID_PREFIX" | sed 's/.*\ //')
-
 
 # If the PROFILE_PAYLOAD_ID_PREFIX is not found, exit 0 to wait for the next agent run.
 if [[ ${#profiles[@]} -eq 0 ]]; then
@@ -188,16 +171,13 @@ if [[ ${#profiles[@]} -eq 0 ]]; then
     echo "Will check again at the next Kandji agent check-in ..."
     exit 0
 
-
 else
     echo "Profile prefix $PROFILE_PAYLOAD_ID_PREFIX present ..."
-
 
     # Uses the find binary to look for the app inside of the Applications directory and
     # any subdirectories up to 3 levels deep.
     find_app="$(/usr/bin/find /Applications -maxdepth 3 -name $APP_NAME)"
     ret="$?"
-
 
     # Check to see if the app is installed.
     if [[ "$ret" -eq 0 ]] && [[ -d "$find_app" ]] &&
@@ -207,23 +187,19 @@ else
         # found by the find command.
         echo "$find_app was found ..."
 
-
         # Check to see if an ENFORCED_VERSION is set. If not, exit 0.
         if [[ "$ENFORCED_VERSION" == "" ]]; then
             echo "A minimum enforced version is not set ..."
             exit 0
         fi
 
-
         # Get the currently install version
         # Pass the APP_NAME variable from above to the return_installed_app_version function
         # Removing the periods from the version number so that we can make a comparison.
         installed_version="$(return_installed_app_version $APP_NAME | /usr/bin/sed 's/\.//g')"
 
-
         # Removing the periods from the version number so that we can make a comparison.
         enforced_version="$(echo $ENFORCED_VERSION | /usr/bin/sed 's/\.//g')"
-
 
         # Check to see if the installed_version is less than the enforced_version. If it is then
         # exit 1 to initiate the installation process.
@@ -231,7 +207,6 @@ else
             echo "Installed app version $installed_version less than enforced version $ENFORCED_VERSION"
             echo "Starting the app install process ..."
             exit 1
-
 
         else
             echo "Enforced vers: $enforced_version"
@@ -241,18 +216,14 @@ else
             exit 0
         fi
 
-
     else
         echo "$APP_NAME was not found in the Applications folder ..."
         echo "Need to install $APP_NAME ..."
         exit 1
 
-
     fi
 
-
 fi
-
 
 exit 0
 ```
@@ -261,7 +232,14 @@ exit 0
 
 The Kandji macOS agent uses certificate pinning, which is incompatible with [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/). If Gateway TLS decryption is [turned on](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), you must create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#skip-inspection-for-groups-of-applications) to exempt Kandji from SSL/TLS inspection. For more information, refer to the [Kandji documentation ↗](https://support.kandji.io/kb/using-kandji-on-enterprise-networks#SSL/TLS-Inspection).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/#page","headline":"Kandji · Cloudflare One docs","description":"Deploy the Cloudflare One Client with Kandji on macOS using a custom configuration profile.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MacOS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/","name":"Partners"}},{"@type":"ListItem","position":9,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/","name":"Kandji"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/#page","headline":"Kandji · Cloudflare One docs","description":"Deploy the Cloudflare One Client with Kandji on macOS using a custom configuration profile.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MacOS"]}
 ```

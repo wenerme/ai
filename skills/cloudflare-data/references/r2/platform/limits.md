@@ -1,16 +1,18 @@
 ---
-title: Limits
 description: Account, bucket, and object limits for Cloudflare R2 storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limits
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limits
 
-# Limits
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/platform/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 | Feature                                                                         | Limit                                                                |
 | ------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -55,7 +57,14 @@ For high-throughput object operations, use the [S3-compatible API](https://devel
 4. The max upload size is 5 MiB less than 5 GiB, so 4.995 GiB. [↩](#user-content-fnref-4)
 5. Concurrent writes to the same object name (key) at a higher rate return HTTP 429 (rate limited) responses. [↩](#user-content-fnref-5)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/limits/#page","headline":"Limits · Cloudflare R2 docs","description":"Account, bucket, and object limits for Cloudflare R2 storage.","url":"https://developers.cloudflare.com/r2/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/limits/","name":"Limits"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/limits/#page","headline":"Limits · Cloudflare R2 docs","description":"Account, bucket, and object limits for Cloudflare R2 storage.","url":"https://developers.cloudflare.com/r2/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

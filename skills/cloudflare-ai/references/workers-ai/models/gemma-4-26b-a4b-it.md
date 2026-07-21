@@ -1,28 +1,35 @@
 ---
-title: gemma-4-26b-a4b-it
 description: Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: gemma-4-26b-a4b-it
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
 #  gemma-4-26b-a4b-it
 
-Text Generation • Google
+ Text Generation • Google
 
-`@cf/google/gemma-4-26b-a4b-it`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/google/gemma-4-26b-a4b-it `
+
+* Cloudflare-hosted
+* Function calling
+* Reasoning
+* Vision
 
 Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter.
 
 | Model Info                                                                           |                                                                |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 256,000 tokens                                                 |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/)          | 256,000 tokens                                                 |
 | Terms and License                                                                    | [link ↗](https://ai.google.dev/gemma/docs/gemma%5F4%5Flicense) |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                            |
 | Reasoning                                                                            | Yes                                                            |
@@ -31,28 +38,20 @@ Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 
 
 ## Playground
 
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
+Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
 [ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/google/gemma-4-26b-a4b-it)
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-5293)
-* [  TypeScript ](#tab-panel-5294)
-* [  Python ](#tab-panel-5295)
-* [  curl ](#tab-panel-5296)
-
-**TypeScript**
-
 ```ts
+
 export interface Env {
   AI: Ai;
 }
 
-
 export default {
   async fetch(request, env): Promise<Response> {
-
 
     const messages = [
       { role: "system", content: "You are a friendly assistant" },
@@ -62,12 +61,10 @@ export default {
       },
     ];
 
-
     const stream = await env.AI.run("@cf/google/gemma-4-26b-a4b-it", {
       messages,
       stream: true,
     });
-
 
     return new Response(stream, {
       headers: { "content-type": "text/event-stream" },
@@ -77,14 +74,13 @@ export default {
 ```
 
 ```ts
+
 export interface Env {
   AI: Ai;
 }
 
-
 export default {
   async fetch(request, env): Promise<Response> {
-
 
     const messages = [
       { role: "system", content: "You are a friendly assistant" },
@@ -95,20 +91,18 @@ export default {
     ];
     const response = await env.AI.run("@cf/google/gemma-4-26b-a4b-it", { messages });
 
-
     return Response.json(response);
   },
 } satisfies ExportedHandler<Env>;
 ```
 
 ```py
+
 import os
 import requests
 
-
 ACCOUNT_ID = "your-account-id"
 AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
-
 
 prompt = "Tell me all about PEP-8"
 response = requests.post(
@@ -126,6 +120,7 @@ print(result)
 ```
 
 ```sh
+
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/google/gemma-4-26b-a4b-it \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -134,14 +129,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous — Send a request and receive a complete response
-
-* [ Input ](#tab-panel-5297)
-* [ Output ](#tab-panel-5298)
+Synchronous  — Send a request and receive a complete response
 
 Input format
 
@@ -317,10 +309,7 @@ service\_tier
 
 `string | null`
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
-
-* [ Input ](#tab-panel-5299)
-* [ Output ](#tab-panel-5300)
+Streaming  — Send a request with \`stream: true\` and receive server-sent events
 
 Input format
 
@@ -476,10 +465,7 @@ format
 
 `binary`
 
-Batch — Send multiple requests in a single API call
-
-* [ Input ](#tab-panel-5301)
-* [ Output ](#tab-panel-5302)
+Batch  — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -519,19 +505,26 @@ service\_tier
 
 ## API Schemas (Raw)
 
- Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-input.json "Download")
+Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-input.json "Download")
 
- Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-output.json "Download")
+Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/sync-output.json "Download")
 
- Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-input.json "Download")
+Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-input.json "Download")
 
- Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-output.json "Download")
+Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/streaming-output.json "Download")
 
- Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-input.json "Download")
+Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-input.json "Download")
 
- Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-output.json "Download")
+Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/batch-output.json "Download")
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/#page","headline":"gemma-4-26b-a4b-it (Google) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/#page","headline":"gemma-4-26b-a4b-it (Google) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Smart Shield
 description: Use Smart Shield to protect your origin server, improve content availability, and reduce network latency.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Smart Shield
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Smart Shield
 
-# Cloudflare Smart Shield
+Last updated Jun 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/smart-shield/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Protect your origin server, reduce load, and improve content delivery performance.
 
@@ -34,15 +36,22 @@ Learn how to [get started](https://developers.cloudflare.com/smart-shield/get-st
 
 ## Related products
 
-**[Cache](https://developers.cloudflare.com/cache/)**
+[Cache](https://developers.cloudflare.com/cache/)
 
 Cache stores copies of frequently accessed content (such as images, videos, or webpages) in geographically distributed data centers that are located closer to end users than origin servers, improving website performance.
 
-**[Observatory](https://developers.cloudflare.com/speed/observatory/)**
+[Observatory](https://developers.cloudflare.com/speed/observatory/)
 
 Observatory uses synthetic tests and real user data to assess the performance of your website, producing different metrics and insights. Cloudflare then uses this analysis to recommend optimizations that best address your performance issues.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/smart-shield/#page","headline":"Overview · Cloudflare Smart Shield docs","description":"Use Smart Shield to protect your origin server, improve content availability, and reduce network latency.","url":"https://developers.cloudflare.com/smart-shield/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/smart-shield/#page","headline":"Overview · Cloudflare Smart Shield docs","description":"Use Smart Shield to protect your origin server, improve content availability, and reduce network latency.","url":"https://developers.cloudflare.com/smart-shield/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

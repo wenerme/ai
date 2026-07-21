@@ -1,16 +1,18 @@
 ---
-title: Mobile implementation
 description: Implement Turnstile in native mobile applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Mobile implementation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Mobile implementation
 
-# Mobile implementation
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile requires a browser environment because it runs JavaScript challenges in the visitor's browser. On mobile devices, Turnstile works in mobile browsers without additional configuration.
 
@@ -52,14 +54,11 @@ For Turnstile to function properly in WebView, the following requirements must b
 WebView webView = findViewById(R.id.webview);
 WebSettings webSettings = webView.getSettings();
 
-
 // Required: Enable JavaScript
 webSettings.setJavaScriptEnabled(true);
 
-
 // Required: Enable DOM storage
 webSettings.setDomStorageEnabled(true);
-
 
 // Recommended: Enable other web features
 webSettings.setLoadWithOverviewMode(true);
@@ -67,31 +66,24 @@ webSettings.setUseWideViewPort(true);
 webSettings.setAllowFileAccess(true);
 webSettings.setAllowContentAccess(true);
 
-
 // Load your web content with Turnstile
 webView.loadUrl("https://yoursite.com/protected-form");
 ```
 
 #### iOS WKWebView (Swift)
 
-**Swift**
-
 ```swift
 import WebKit
-
 
 class ViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         // Configure WebView
         let configuration = WKWebViewConfiguration()
         configuration.preferences.javaScriptEnabled = true
-
 
         // Load your web content with Turnstile
         if let url = URL(string: "https://yoursite.com/protected-form") {
@@ -103,32 +95,26 @@ class ViewController: UIViewController {
 
 #### React Native WebView
 
-**JavaScript**
-
 ```js
 import { WebView } from "react-native-webview";
 
-
 export default function App() {
-  return (
-    <WebView
-      source={{ uri: "https://yoursite.com/protected-form" }}
-      javaScriptEnabled={true}
-      domStorageEnabled={true}
-      allowsInlineMediaPlayback={true}
-      mediaPlaybackRequiresUserAction={false}
-    />
-  );
+	return (
+		<WebView
+			source={{ uri: "https://yoursite.com/protected-form" }}
+			javaScriptEnabled={true}
+			domStorageEnabled={true}
+			allowsInlineMediaPlayback={true}
+			mediaPlaybackRequiresUserAction={false}
+		/>
+	);
 }
 ```
 
 #### Flutter WebView
 
-**Dart**
-
 ```dart
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-
 
 class WebViewScreen extends StatelessWidget {
   @override
@@ -167,8 +153,6 @@ Changing the User Agent during a session causes Turnstile challenges to fail bec
 webSettings.setUserAgentString(webSettings.getUserAgentString());
 ```
 
-**Swift**
-
 ```swift
 // iOS - Maintain default User Agent
 webView.customUserAgent = webView.value(forKey: "userAgent") as? String
@@ -180,8 +164,8 @@ Strict [Content Security Policy](https://developers.cloudflare.com/turnstile/ref
 
 ```html
 <meta
-  http-equiv="Content-Security-Policy"
-  content="
+	http-equiv="Content-Security-Policy"
+	content="
   default-src 'self';
   script-src 'self' challenges.cloudflare.com 'unsafe-inline';
   connect-src 'self' challenges.cloudflare.com;
@@ -213,14 +197,19 @@ CookieManager.getInstance().setAcceptCookie(true);
 CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true);
 ```
 
-**Swift**
-
 ```swift
 // iOS - Configure cookie storage
 webView.configuration.websiteDataStore = WKWebsiteDataStore.default()
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/#page","headline":"Mobile implementation · Cloudflare Turnstile docs","description":"Implement Turnstile in native mobile applications.","url":"https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["iOS","Android"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/get-started/mobile-implementation/","name":"Mobile implementation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/#page","headline":"Mobile implementation · Cloudflare Turnstile docs","description":"Implement Turnstile in native mobile applications.","url":"https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["iOS","Android"]}
 ```

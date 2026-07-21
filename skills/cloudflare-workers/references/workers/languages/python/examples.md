@@ -1,16 +1,18 @@
 ---
-title: Examples
 description: Python code examples demonstrating modules, bindings, and SDK usage in Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Examples
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Examples
 
-# Examples
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/languages/python/examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare has a wide range of Python examples in the [Workers Example gallery](https://developers.cloudflare.com/workers/examples/?languages=Python).
 
@@ -31,15 +33,11 @@ Let's say your Worker has the following structure:
 
 In order to import `module.py` in `main.py`, you would use the following import statement:
 
-**Python**
-
 ```python
 import module
 ```
 
 In this case, the main module is set to `src/main.py` in the wrangler.toml file like so:
-
-**TOML**
 
 ```toml
 main = "src/main.py"
@@ -49,12 +47,9 @@ This means that the `src` directory does not need to be specified in the import 
 
 ## Parse an incoming request URL
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
 from urllib.parse import urlparse, parse_qs
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -62,7 +57,6 @@ class Default(WorkerEntrypoint):
         url = urlparse(request.url)
         # Parse the query parameters into a Python dictionary
         params = parse_qs(url.query)
-
 
         if "name" in params:
             greeting = "Hello there, {name}".format(name=params["name"][0])
@@ -72,17 +66,13 @@ class Default(WorkerEntrypoint):
         if url.path == "/favicon.ico":
           return Response("")
 
-
         return Response("Hello world!")
 ```
 
 ## Parse JSON from the incoming request
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -93,11 +83,8 @@ class Default(WorkerEntrypoint):
 
 ## Return a JSON response
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -118,12 +105,9 @@ Let's say your Worker has the following structure:
 
 In order to read a file in your Worker, you would do the following:
 
-**Python**
-
 ```python
 from pathlib import Path
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -133,8 +117,6 @@ class Default(WorkerEntrypoint):
 
 ## Emit logs from your Python Worker
 
-**Python**
-
 ```python
 # To use the JavaScript console APIs
 from js import console
@@ -142,46 +124,36 @@ from workers import WorkerEntrypoint, Response
 # To use the native Python logging
 import logging
 
-
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         # Use the console APIs from JavaScript
         # https://developer.mozilla.org/en-US/docs/Web/API/console
         console.log("console.log from Python!")
 
-
         # Alternatively, use the native Python logger
         logger = logging.getLogger(__name__)
-
 
         # The default level is warning. We can change that to info.
         logging.basicConfig(level=logging.INFO)
 
-
         logger.error("error from Python!")
         logger.info("info log from Python!")
 
-
         # Or just use print()
         print("print() from Python!")
-
 
         return Response("We're testing logging!")
 ```
 
 ## Publish to a Queue
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
 
-
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
-        # Bindings are available on the 'env' attribute
+			  # Bindings are available on the 'env' attribute
         # https://developers.cloudflare.com/queues/
-
 
         # The default contentType is "json"
         # We can also pass plain text strings
@@ -189,17 +161,13 @@ class Default(WorkerEntrypoint):
         # Send a JSON payload
         await self.env.QUEUE.send({"hello": "world"})
 
-
         return Response.json({"write": "success"})
 ```
 
 ## Query a D1 Database
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -212,17 +180,13 @@ Refer to [Query D1 from Python Workers](https://developers.cloudflare.com/d1/exa
 
 ## Durable Object
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response, DurableObject
-
 
 class List(DurableObject):
     async def get_messages(self):
         messages = await self.ctx.storage.get("messages")
         return messages if messages else []
-
 
     async def add_message(self, message):
         messages = await self.get_messages()
@@ -230,12 +194,10 @@ class List(DurableObject):
         await self.ctx.storage.put("messages", messages)
         return
 
-
     async def say_hello(self):
         result = self.ctx.storage.sql.exec(
             "SELECT 'Hello, World!' as greeting"
         ).one()
-
 
         return result.greeting
 ```
@@ -244,11 +206,8 @@ Refer to [Durable Objects documentation](https://developers.cloudflare.com/durab
 
 ## Cron Trigger
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def scheduled(self, controller, env, ctx):
@@ -261,11 +220,8 @@ Refer to [Cron Triggers documentation](https://developers.cloudflare.com/workers
 
 ## Workflows
 
-**Python**
-
 ```python
 from workers import WorkflowEntrypoint
-
 
 class MyWorkflow(WorkflowEntrypoint):
     async def run(self, event, step):
@@ -274,18 +230,15 @@ class MyWorkflow(WorkflowEntrypoint):
             # do some work
             return 10
 
-
         @step.do()
         async def step_b():
             # do some work
             return 20
 
-
         @step.do(concurrent=True)
         async def my_final_step(step_a, step_b):
             # should return 30
             return step_a + step_b
-
 
         await my_final_step()
 ```
@@ -300,7 +253,14 @@ Or you can clone [the examples repository ↗](https://github.com/cloudflare/pyt
 git clone https://github.com/cloudflare/python-workers-examples
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/examples/#page","headline":"Python Worker Examples · Cloudflare Workers docs","description":"Python code examples demonstrating modules, bindings, and SDK usage in Workers.","url":"https://developers.cloudflare.com/workers/languages/python/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/python/","name":"Python Workers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/languages/python/examples/","name":"Examples"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/examples/#page","headline":"Python Worker Examples · Cloudflare Workers docs","description":"Python code examples demonstrating modules, bindings, and SDK usage in Workers.","url":"https://developers.cloudflare.com/workers/languages/python/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

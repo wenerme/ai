@@ -1,16 +1,18 @@
 ---
-title: Start from Worker
 description: Add static asset serving to an existing Cloudflare Worker using Workers Sites.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Start from Worker
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Start from Worker
 
-# Start from Worker
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/sites/start-from-worker/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers Static Assets Instead
 
@@ -24,11 +26,6 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
 
 1. Create a directory that will contain the assets in the root of your project (for example, `./public`)
 2. Add configuration to your Wrangler file to point to it.
-
-  * [  wrangler.jsonc ](#tab-panel-12395)
-  * [  wrangler.toml ](#tab-panel-12396)
-
-**JSONC**
 ```jsonc
 {
   "site": {
@@ -36,8 +33,6 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
   }
 }
 ```
-
-**TOML**
 ```toml
 [site]
 bucket = "./public"
@@ -48,64 +43,54 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Import the `getAssetFromKV()` function into your Worker entry point and use it to respond with static assets.
 
-* [  Module Worker ](#tab-panel-12393)
-* [  Service Worker ](#tab-panel-12394)
-
-**JavaScript**
-
 ```js
 import { getAssetFromKV } from "@cloudflare/kv-asset-handler";
 import manifestJSON from "__STATIC_CONTENT_MANIFEST";
 const assetManifest = JSON.parse(manifestJSON);
 
-
 export default {
-  async fetch(request, env, ctx) {
-    try {
-      // Add logic to decide whether to serve an asset or run your original Worker code
-      return await getAssetFromKV(
-        {
-          request,
-          waitUntil: ctx.waitUntil.bind(ctx),
-        },
-        {
-          ASSET_NAMESPACE: env.__STATIC_CONTENT,
-          ASSET_MANIFEST: assetManifest,
-        },
-      );
-    } catch (e) {
-      let pathname = new URL(request.url).pathname;
-      return new Response(`"${pathname}" not found`, {
-        status: 404,
-        statusText: "not found",
-      });
-    }
-  },
+	async fetch(request, env, ctx) {
+		try {
+			// Add logic to decide whether to serve an asset or run your original Worker code
+			return await getAssetFromKV(
+				{
+					request,
+					waitUntil: ctx.waitUntil.bind(ctx),
+				},
+				{
+					ASSET_NAMESPACE: env.__STATIC_CONTENT,
+					ASSET_MANIFEST: assetManifest,
+				},
+			);
+		} catch (e) {
+			let pathname = new URL(request.url).pathname;
+			return new Response(`"${pathname}" not found`, {
+				status: 404,
+				statusText: "not found",
+			});
+		}
+	},
 };
 ```
-
-**JavaScript**
 
 ```js
 import { getAssetFromKV } from "@cloudflare/kv-asset-handler";
 
-
 addEventListener("fetch", (event) => {
-  event.respondWith(handleEvent(event));
+	event.respondWith(handleEvent(event));
 });
 
-
 async function handleEvent(event) {
-  try {
-    // Add logic to decide whether to serve an asset or run your original Worker code
-    return await getAssetFromKV(event);
-  } catch (e) {
-    let pathname = new URL(event.request.url).pathname;
-    return new Response(`"${pathname}" not found`, {
-      status: 404,
-      statusText: "not found",
-    });
-  }
+	try {
+		// Add logic to decide whether to serve an asset or run your original Worker code
+		return await getAssetFromKV(event);
+	} catch (e) {
+		let pathname = new URL(event.request.url).pathname;
+		return new Response(`"${pathname}" not found`, {
+			status: 404,
+			statusText: "not found",
+		});
+	}
 }
 ```
 
@@ -116,7 +101,14 @@ For more information on the configurable options of `getAssetFromKV()` refer to 
 npx wrangler deploy
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from Worker · Cloudflare Workers docs","description":"Add static asset serving to an existing Cloudflare Worker using Workers Sites.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/sites/","name":"Workers Sites"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/sites/start-from-worker/","name":"Start from Worker"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from Worker · Cloudflare Workers docs","description":"Add static asset serving to an existing Cloudflare Worker using Workers Sites.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

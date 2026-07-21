@@ -1,23 +1,22 @@
 ---
-title: Device enrollment permissions
 description: Device enrollment permissions in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Device enrollment permissions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Device enrollment permissions
 
-# Device enrollment permissions
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Device enrollment permissions determine which users can connect new devices to your organization's Cloudflare Zero Trust instance.
 
 ## Set device enrollment permissions
-
-* [ Dashboard ](#tab-panel-8142)
-* [ Terraform (v5) ](#tab-panel-8143)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **Management**.
 2. In **Device enrollment** \> **Device enrollment permissions**, select **Manage**.
@@ -42,33 +41,33 @@ b. (Optional) If you plan to only allow access via a single IdP, turn on **Apply
 2. Create a reusable Access policy using the [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource:
 ```tf
 resource "cloudflare_zero_trust_access_policy" "allow_company_emails" {
-  account_id   = var.cloudflare_account_id
-  name         = "Allow company emails"
-  decision     = "allow"
-  include      = [
-    {
-      email_domain = {
-        domain = "@example.com"
-      }
-    }
-  ]
+	account_id   = var.cloudflare_account_id
+	name         = "Allow company emails"
+	decision     = "allow"
+	include      = [
+		{
+			email_domain = {
+				domain = "@example.com"
+			}
+		}
+	]
 }
 ```
 3. Use the [cloudflare\_zero\_trust\_access\_application ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fapplication) resource to create an application with type `warp`.
 ```tf
 resource "cloudflare_zero_trust_access_application" "device_enrollment" {
-  account_id       = var.cloudflare_account_id
-  type             = "warp"
-  name             = "Warp device enrollment"
-  allowed_idps              = [cloudflare_zero_trust_access_identity_provider.microsoft_entra_id.id]
-  auto_redirect_to_identity = true
-  app_launcher_visible      = false
-  policies = [
-    {
-      id = cloudflare_zero_trust_access_policy.allow_company_emails.id
-      precedence = 1
-    }
-  ]
+	account_id       = var.cloudflare_account_id
+	type             = "warp"
+	name             = "Warp device enrollment"
+	allowed_idps              = [cloudflare_zero_trust_access_identity_provider.microsoft_entra_id.id]
+	auto_redirect_to_identity = true
+	app_launcher_visible      = false
+	policies = [
+		{
+			id = cloudflare_zero_trust_access_policy.allow_company_emails.id
+			precedence = 1
+		}
+	]
 }
 ```
 
@@ -81,9 +80,6 @@ Users can now [enroll their device](https://developers.cloudflare.com/cloudflare
 Instead of requiring users to authenticate with their credentials, you can use a [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) to enroll devices without any user interaction. Because users are not required to log in to an identity provider, identity-based policies cannot be enforced on these devices.
 
 To enroll devices using a service token:
-
-* [ Dashboard ](#tab-panel-8144)
-* [ Terraform (v5) ](#tab-panel-8145)
 
 1. [Create a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#create-a-service-token).
 2. Copy the token's **Client ID** and **Client Secret**.
@@ -107,16 +103,16 @@ Make sure to set **Action** to _Service Auth_ instead of _Allow_.
 3. Create the following Access policy:
 ```tf
 resource "cloudflare_zero_trust_access_policy" "warp_enrollment_service_token" {
-  account_id     = var.cloudflare_account_id
-  name           = "Allow service token"
-  decision       = "non_identity"
-  include = [
-    {
-      service_token = {
-        token_id = cloudflare_zero_trust_access_service_token.example_service_token.id
-      }
-    }
-  ]
+	account_id     = var.cloudflare_account_id
+	name           = "Allow service token"
+	decision       = "non_identity"
+	include = [
+		{
+			service_token = {
+				token_id = cloudflare_zero_trust_access_service_token.example_service_token.id
+			}
+		}
+	]
 }
 ```
 4. Add the policy to your [cloudflared\_zero\_trust\_access\_application for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
@@ -150,9 +146,6 @@ Allowed signature algorithms
 
 To check for an mTLS certificate:
 
-* [ Dashboard ](#tab-panel-8146)
-* [ Terraform (v5) ](#tab-panel-8147)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **Mutual TLS**.
 2. Select **Add mTLS Certificate**.
 3. Enter any name for the root CA.
@@ -181,42 +174,42 @@ If the client certificate is directly signed by the root CA, you only need to up
 2. Use the [cloudflare\_zero\_trust\_access\_mtls\_certificate ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fmtls%5Fcertificate) resource to add an mTLS certificate to your account:
 ```tf
 resource "cloudflare_zero_trust_access_mtls_certificate" "example_mtls_cert" {
-  account_id     = var.cloudflare_account_id
-  name           = "WARP enrollment mTLS cert"
-  certificate    = <<EOT
-  -----BEGIN CERTIFICATE-----
-  xxxx
-  xxxx
-  -----END CERTIFICATE-----
-  EOT
-  associated_hostnames = ["your-team-name.cloudflareaccess.com"]
+	account_id     = var.cloudflare_account_id
+	name           = "WARP enrollment mTLS cert"
+	certificate    = <<EOT
+	-----BEGIN CERTIFICATE-----
+	xxxx
+	xxxx
+	-----END CERTIFICATE-----
+	EOT
+	associated_hostnames = ["your-team-name.cloudflareaccess.com"]
 }
 ```
 3. Create the following Access policy:
 ```tf
 resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {
-  account_id     = var.cloudflare_account_id
-  name           = "Allow employees with mTLS cert"
-  decision       = "allow"
-  include = [
-    {
-      email_domain = {
-        domain = "@example.com"
-      }
-    }
-  ]
-  require = [
-    {
-      common_name = {
-        common_name = "Common name 1"
-      }
-    },
-        {
-      common_name = {
-        common_name = "Common name 2"
-      }
-    }
-  ]
+	account_id     = var.cloudflare_account_id
+	name           = "Allow employees with mTLS cert"
+	decision       = "allow"
+	include = [
+		{
+			email_domain = {
+				domain = "@example.com"
+			}
+		}
+	]
+	require = [
+		{
+			common_name = {
+				common_name = "Common name 1"
+			}
+		},
+				{
+			common_name = {
+				common_name = "Common name 2"
+			}
+		}
+	]
 }
 ```
 4. Add the policy to your [cloudflared\_zero\_trust\_access\_application for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
@@ -224,7 +217,14 @@ resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {
 
 When users [log in to your Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) from the Cloudflare One Client, their device must present a valid client certificate in order to connect.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#page","headline":"Device enrollment permissions · Cloudflare One docs","description":"Device enrollment permissions in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/","name":"Device enrollment permissions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#page","headline":"Device enrollment permissions · Cloudflare One docs","description":"Device enrollment permissions in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

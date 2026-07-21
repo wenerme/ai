@@ -1,16 +1,18 @@
 ---
-title: Add a rule to a ruleset
 description: Add a single rule to an existing ruleset using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Add a rule to a ruleset
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add a rule to a ruleset
 
-# Add a rule to a ruleset
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Adds a single rule to an existing ruleset. Use this endpoint to add a rule without having to include all the existing ruleset rules in the request.
 
@@ -58,54 +60,52 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "js_challenge",
-    "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
-    "description": "challenge GB and FR based on bot score"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "js_challenge",
+		"expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+		"description": "challenge GB and FR based on bot score"
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Zone Ruleset 1",
-    "description": "My phase entry point ruleset at the zone level",
-    "kind": "zone",
-    "version": "11",
-    "rules": [
-      {
-        "id": "<RULE_ID_1>",
-        "version": "1",
-        "action": "challenge",
-        "expression": "not http.request.uri.path matches \"^/api/.*$\"",
-        "last_updated": "2023-11-23T11:36:24.192361Z",
-        "ref": "<RULE_REF_1>",
-        "enabled": true
-      },
-      {
-        "id": "<NEW_RULE_ID>",
-        "version": "1",
-        "action": "js_challenge",
-        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
-        "description": "challenge GB and FR based on bot score",
-        "last_updated": "2024-06-22T12:35:58.144683Z",
-        "ref": "<NEW_RULE_REF>",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2024-06-22T12:35:58.144683Z",
-    "phase": "http_request_firewall_custom"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone Ruleset 1",
+		"description": "My phase entry point ruleset at the zone level",
+		"kind": "zone",
+		"version": "11",
+		"rules": [
+			{
+				"id": "<RULE_ID_1>",
+				"version": "1",
+				"action": "challenge",
+				"expression": "not http.request.uri.path matches \"^/api/.*$\"",
+				"last_updated": "2023-11-23T11:36:24.192361Z",
+				"ref": "<RULE_REF_1>",
+				"enabled": true
+			},
+			{
+				"id": "<NEW_RULE_ID>",
+				"version": "1",
+				"action": "js_challenge",
+				"expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+				"description": "challenge GB and FR based on bot score",
+				"last_updated": "2024-06-22T12:35:58.144683Z",
+				"ref": "<NEW_RULE_REF>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2024-06-22T12:35:58.144683Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -123,7 +123,14 @@ You can only use one of the `before`, `after`, and `index` fields at a time.
 
 For examples of using a `position` object, refer to [Update a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#examples).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/#page","headline":"Add a rule to a ruleset · Cloudflare Ruleset Engine docs","description":"Add a single rule to an existing ruleset using the API.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rulesets-api/","name":"Rulesets API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rulesets-api/add-rule/","name":"Add a rule to a ruleset"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/#page","headline":"Add a rule to a ruleset · Cloudflare Ruleset Engine docs","description":"Add a single rule to an existing ruleset using the API.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

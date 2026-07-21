@@ -1,16 +1,18 @@
 ---
-title: Conversation state and memory
 description: How agents store and recall information, including read-only context, writable short-form memory, searchable knowledge, and on-demand skills.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Conversation state and memory
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Conversation state and memory
 
-# Conversation state and memory
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents need memory to be useful over time. Without it, every conversation starts from zero. The agent forgets who the user is, what it learned, and what it was doing. Memory is what turns a stateless LLM call into a persistent, context-aware agent.
 
@@ -26,40 +28,29 @@ The Session memory APIs currently use `agents/experimental/memory/session`. The 
 
 The most fundamental type of memory is the conversation itself: the messages between the user and the agent, the tool calls the agent made, and the results it received. The Session stores all of this in a tree-structured message history backed by a Session Provider, defaulting to SQLite.
 
-* [  JavaScript ](#tab-panel-5873)
-* [  TypeScript ](#tab-panel-5874)
-
-**JavaScript**
-
 ```js
 import { Session } from "agents/experimental/memory/session";
 
-
 // Append messages as the conversation progresses
 await session.appendMessage({
-  id: `user-${crypto.randomUUID()}`,
-  role: "user",
-  parts: [{ type: "text", text: "What's the status of the deployment?" }],
+	id: `user-${crypto.randomUUID()}`,
+	role: "user",
+	parts: [{ type: "text", text: "What's the status of the deployment?" }],
 });
-
 
 // Read the full conversation history
 const history = await session.getHistory();
 ```
 
-**TypeScript**
-
 ```ts
 import { Session } from "agents/experimental/memory/session";
 
-
 // Append messages as the conversation progresses
 await session.appendMessage({
-  id: `user-${crypto.randomUUID()}`,
-  role: "user",
-  parts: [{ type: "text", text: "What's the status of the deployment?" }],
+	id: `user-${crypto.randomUUID()}`,
+	role: "user",
+	parts: [{ type: "text", text: "What's the status of the deployment?" }],
 });
-
 
 // Read the full conversation history
 const history = await session.getHistory();
@@ -71,16 +62,9 @@ Messages are stored in a tree structure via `parent_id`, which enables branching
 
 The Session also provides full-text search across the conversation history:
 
-* [  JavaScript ](#tab-panel-5871)
-* [  TypeScript ](#tab-panel-5872)
-
-**JavaScript**
-
 ```js
 const results = await session.search("deployment Friday", { limit: 10 });
 ```
-
-**TypeScript**
 
 ```ts
 const results = await session.search("deployment Friday", { limit: 10 });
@@ -100,69 +84,53 @@ This is your traditional system prompt: the agent's identity, personality, and i
 
 A coding assistant might have a soul that defines its personality and constraints:
 
-* [  JavaScript ](#tab-panel-5875)
-* [  TypeScript ](#tab-panel-5876)
-
-**JavaScript**
-
 ```js
 import { Session } from "agents/experimental/memory/session";
 
-
 const session = Session.create(this).withContext("soul", {
-  provider: {
-    get: async () =>
-      "You are a senior TypeScript engineer. You write concise, " +
-      "well-tested code. You prefer composition over inheritance. " +
-      "When you are unsure, you say so rather than guessing.",
-  },
+	provider: {
+		get: async () =>
+			"You are a senior TypeScript engineer. You write concise, " +
+			"well-tested code. You prefer composition over inheritance. " +
+			"When you are unsure, you say so rather than guessing.",
+	},
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { Session } from "agents/experimental/memory/session";
 
-
 const session = Session.create(this).withContext("soul", {
-  provider: {
-    get: async () =>
-      "You are a senior TypeScript engineer. You write concise, " +
-      "well-tested code. You prefer composition over inheritance. " +
-      "When you are unsure, you say so rather than guessing.",
-  },
+	provider: {
+		get: async () =>
+			"You are a senior TypeScript engineer. You write concise, " +
+			"well-tested code. You prefer composition over inheritance. " +
+			"When you are unsure, you say so rather than guessing.",
+	},
 });
 ```
 
 Or load it from R2 so you can update the agent's personality without redeploying:
 
-* [  JavaScript ](#tab-panel-5877)
-* [  TypeScript ](#tab-panel-5878)
-
-**JavaScript**
-
 ```js
 const session = Session.create(this).withContext("soul", {
-  provider: {
-    get: async () => {
-      const obj = await env.CONFIG_BUCKET.get("soul.md");
-      return obj ? obj.text() : "You are a helpful assistant.";
-    },
-  },
+	provider: {
+		get: async () => {
+			const obj = await env.CONFIG_BUCKET.get("soul.md");
+			return obj ? obj.text() : "You are a helpful assistant.";
+		},
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const session = Session.create(this).withContext("soul", {
-  provider: {
-    get: async () => {
-      const obj = await env.CONFIG_BUCKET.get("soul.md");
-      return obj ? obj.text() : "You are a helpful assistant.";
-    },
-  },
+	provider: {
+		get: async () => {
+			const obj = await env.CONFIG_BUCKET.get("soul.md");
+			return obj ? obj.text() : "You are a helpful assistant.";
+		},
+	},
 });
 ```
 
@@ -172,35 +140,28 @@ Read-only blocks are defined by providing an object with only a `get()` method. 
 
 Think of this as a scratchpad the agent maintains for itself, a place to jot down things it needs to remember. Like how Claude Code keeps a todo list of tasks to work through, or how a customer support agent might track what it has learned about the user during the conversation.
 
-* [  JavaScript ](#tab-panel-5879)
-* [  TypeScript ](#tab-panel-5880)
-
-**JavaScript**
-
 ```js
 const session = Session.create(this)
-  .withContext("memory", {
-    description: "Important facts learned during conversation",
-    maxTokens: 1100,
-  })
-  .withContext("todos", {
-    description: "Task list, track what needs to be done and what is complete",
-    maxTokens: 2000,
-  });
+	.withContext("memory", {
+		description: "Important facts learned during conversation",
+		maxTokens: 1100,
+	})
+	.withContext("todos", {
+		description: "Task list, track what needs to be done and what is complete",
+		maxTokens: 2000,
+	});
 ```
-
-**TypeScript**
 
 ```ts
 const session = Session.create(this)
-  .withContext("memory", {
-    description: "Important facts learned during conversation",
-    maxTokens: 1100,
-  })
-  .withContext("todos", {
-    description: "Task list, track what needs to be done and what is complete",
-    maxTokens: 2000,
-  });
+	.withContext("memory", {
+		description: "Important facts learned during conversation",
+		maxTokens: 1100,
+	})
+	.withContext("todos", {
+		description: "Task list, track what needs to be done and what is complete",
+		maxTokens: 2000,
+	});
 ```
 
 When you omit the `provider` option in the builder, the Session auto-wires to a SQLite-backed writable provider. The agent gets a `set_context` tool that lets it replace or append content to these blocks. Token limits are enforced, so the agent cannot write more than the `maxTokens` budget allows.
@@ -214,7 +175,6 @@ MEMORY (Important facts learned during conversation) [45% — 495/1100 tokens] [
 User prefers dark mode.
 User's project uses React and TypeScript.
 Deployment target is Cloudflare Workers.
-
 
 ══════════════════════════════════════════════
 TODOS (Task list) [12% — 240/2000 tokens] [writable]
@@ -234,81 +194,65 @@ You provide a provider with a `search()` method. How that search works is entire
 
 The built-in `AgentSearchProvider` uses Durable Object SQLite with FTS5 as default:
 
-* [  JavaScript ](#tab-panel-5881)
-* [  TypeScript ](#tab-panel-5882)
-
-**JavaScript**
-
 ```js
 import { AgentSearchProvider } from "agents/experimental/memory/session";
 
-
 const session = Session.create(this).withContext("knowledge", {
-  description:
-    "Searchable knowledge base, search for relevant information before answering",
-  provider: new AgentSearchProvider(this),
+	description:
+		"Searchable knowledge base, search for relevant information before answering",
+	provider: new AgentSearchProvider(this),
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { AgentSearchProvider } from "agents/experimental/memory/session";
 
-
 const session = Session.create(this).withContext("knowledge", {
-  description:
-    "Searchable knowledge base, search for relevant information before answering",
-  provider: new AgentSearchProvider(this),
+	description:
+		"Searchable knowledge base, search for relevant information before answering",
+	provider: new AgentSearchProvider(this),
 });
 ```
 
 But you can implement your own provider backed by any search mechanism:
 
-* [  JavaScript ](#tab-panel-5887)
-* [  TypeScript ](#tab-panel-5888)
-
-**JavaScript**
-
 ```js
 const session = Session.create(this).withContext("knowledge", {
-  description: "Searchable knowledge base",
-  provider: {
-    get: async () => "Product documentation and FAQs",
-    search: async (query) => {
-      // Use Vectorize, an external API, whatever you need
-      const results = await env.VECTORIZE_INDEX.query(
-        await generateEmbedding(query),
-        { topK: 5 },
-      );
-      return results.matches.map((m) => m.metadata.text).join("\n\n");
-    },
-    set: async (key, content) => {
-      // Index new content
-    },
-  },
+	description: "Searchable knowledge base",
+	provider: {
+		get: async () => "Product documentation and FAQs",
+		search: async (query) => {
+			// Use Vectorize, an external API, whatever you need
+			const results = await env.VECTORIZE_INDEX.query(
+				await generateEmbedding(query),
+				{ topK: 5 },
+			);
+			return results.matches.map((m) => m.metadata.text).join("\n\n");
+		},
+		set: async (key, content) => {
+			// Index new content
+		},
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const session = Session.create(this).withContext("knowledge", {
-  description: "Searchable knowledge base",
-  provider: {
-    get: async () => "Product documentation and FAQs",
-    search: async (query) => {
-      // Use Vectorize, an external API, whatever you need
-      const results = await env.VECTORIZE_INDEX.query(
-        await generateEmbedding(query),
-        { topK: 5 },
-      );
-      return results.matches.map((m) => m.metadata.text).join("\n\n");
-    },
-    set: async (key, content) => {
-      // Index new content
-    },
-  },
+	description: "Searchable knowledge base",
+	provider: {
+		get: async () => "Product documentation and FAQs",
+		search: async (query) => {
+			// Use Vectorize, an external API, whatever you need
+			const results = await env.VECTORIZE_INDEX.query(
+				await generateEmbedding(query),
+				{ topK: 5 },
+			);
+			return results.matches.map((m) => m.metadata.text).join("\n\n");
+		},
+		set: async (key, content) => {
+			// Index new content
+		},
+	},
 });
 ```
 
@@ -352,94 +296,73 @@ Agent calls: load_context({ block: "skills", key: "deploy-checklist" })
 
 The built-in `R2SkillProvider` stores skills in a Cloudflare R2 bucket. Each skill is an R2 object with optional custom metadata for descriptions.
 
-* [  JavaScript ](#tab-panel-5893)
-* [  TypeScript ](#tab-panel-5894)
-
-**JavaScript**
-
 ```js
 import { Session, R2SkillProvider } from "agents/experimental/memory/session";
 
-
 const session = Session.create(this)
-  .withContext("soul", {
-    provider: {
-      get: async () =>
-        [
-          "You are a helpful assistant with access to skills.",
-          "When a user asks you to do something, check the SKILLS section",
-          "for a relevant skill and use load_context to load it.",
-        ].join("\n"),
-    },
-  })
-  .withContext("memory", {
-    description: "Learned facts",
-    maxTokens: 1100,
-  })
-  .withContext("skills", {
-    provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
-  })
-  .withCachedPrompt();
+	.withContext("soul", {
+		provider: {
+			get: async () =>
+				[
+					"You are a helpful assistant with access to skills.",
+					"When a user asks you to do something, check the SKILLS section",
+					"for a relevant skill and use load_context to load it.",
+				].join("\n"),
+		},
+	})
+	.withContext("memory", {
+		description: "Learned facts",
+		maxTokens: 1100,
+	})
+	.withContext("skills", {
+		provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
+	})
+	.withCachedPrompt();
 ```
-
-**TypeScript**
 
 ```ts
 import { Session, R2SkillProvider } from "agents/experimental/memory/session";
 
-
 const session = Session.create(this)
-  .withContext("soul", {
-    provider: {
-      get: async () =>
-        [
-          "You are a helpful assistant with access to skills.",
-          "When a user asks you to do something, check the SKILLS section",
-          "for a relevant skill and use load_context to load it.",
-        ].join("\n"),
-    },
-  })
-  .withContext("memory", {
-    description: "Learned facts",
-    maxTokens: 1100,
-  })
-  .withContext("skills", {
-    provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
-  })
-  .withCachedPrompt();
+	.withContext("soul", {
+		provider: {
+			get: async () =>
+				[
+					"You are a helpful assistant with access to skills.",
+					"When a user asks you to do something, check the SKILLS section",
+					"for a relevant skill and use load_context to load it.",
+				].join("\n"),
+		},
+	})
+	.withContext("memory", {
+		description: "Learned facts",
+		maxTokens: 1100,
+	})
+	.withContext("skills", {
+		provider: new R2SkillProvider(env.SKILLS_BUCKET, { prefix: "skills/" }),
+	})
+	.withCachedPrompt();
 ```
 
 The `prefix` option scopes the provider to a subdirectory in the bucket. Skill keys in the metadata listing are shown without the prefix, so `skills/api-ref` becomes `api-ref` in the system prompt.
 
 Use `keys` to allowlist specific prefix-relative skills for `get()` and `load()`:
 
-* [  JavaScript ](#tab-panel-5883)
-* [  TypeScript ](#tab-panel-5884)
-
-**JavaScript**
-
 ```js
 new R2SkillProvider(env.SKILLS_BUCKET, {
-  prefix: "skills/",
-  keys: ["deploy-checklist", "api-ref"],
+	prefix: "skills/",
+	keys: ["deploy-checklist", "api-ref"],
 });
 ```
 
-**TypeScript**
-
 ```ts
 new R2SkillProvider(env.SKILLS_BUCKET, {
-  prefix: "skills/",
-  keys: ["deploy-checklist", "api-ref"],
+	prefix: "skills/",
+	keys: ["deploy-checklist", "api-ref"],
 });
 ```
 
 Add an R2 bucket binding to your Wrangler configuration:
-
-* [  wrangler.jsonc ](#tab-panel-5869)
-* [  wrangler.toml ](#tab-panel-5870)
-
-**JSONC**
 
 ```jsonc
 {
@@ -451,8 +374,6 @@ Add an R2 bucket binding to your Wrangler configuration:
   ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[r2_buckets]]
@@ -469,22 +390,15 @@ wrangler r2 object put my-agent-skills/skills/style-guide --file ./docs/style-gu
 
 To add descriptions (shown in the metadata listing), set custom metadata on the R2 object:
 
-* [  JavaScript ](#tab-panel-5885)
-* [  TypeScript ](#tab-panel-5886)
-
-**JavaScript**
-
 ```js
 await env.SKILLS_BUCKET.put("skills/api-ref", content, {
-  customMetadata: { description: "API Reference documentation" },
+	customMetadata: { description: "API Reference documentation" },
 });
 ```
 
-**TypeScript**
-
 ```ts
 await env.SKILLS_BUCKET.put("skills/api-ref", content, {
-  customMetadata: { description: "API Reference documentation" },
+	customMetadata: { description: "API Reference documentation" },
 });
 ```
 
@@ -492,97 +406,81 @@ await env.SKILLS_BUCKET.put("skills/api-ref", content, {
 
 You can back skills with any storage by implementing the `SkillProvider` interface:
 
-* [  JavaScript ](#tab-panel-5899)
-* [  TypeScript ](#tab-panel-5900)
-
-**JavaScript**
-
 ```js
 class DatabaseSkillProvider {
-  db;
+	db;
 
+	constructor(db) {
+		this.db = db;
+	}
 
-  constructor(db) {
-    this.db = db;
-  }
+	async get() {
+		const rows = await this.db
+			.prepare("SELECT key, description FROM skills ORDER BY key")
+			.all();
+		if (rows.results.length === 0) return null;
+		return rows.results
+			.map((r) => `- ${r.key}${r.description ? `: ${r.description}` : ""}`)
+			.join("\n");
+	}
 
+	async load(key) {
+		const row = await this.db
+			.prepare("SELECT content FROM skills WHERE key = ?")
+			.bind(key)
+			.first();
+		return row ? row.content : null;
+	}
 
-  async get() {
-    const rows = await this.db
-      .prepare("SELECT key, description FROM skills ORDER BY key")
-      .all();
-    if (rows.results.length === 0) return null;
-    return rows.results
-      .map((r) => `- ${r.key}${r.description ? `: ${r.description}` : ""}`)
-      .join("\n");
-  }
-
-
-  async load(key) {
-    const row = await this.db
-      .prepare("SELECT content FROM skills WHERE key = ?")
-      .bind(key)
-      .first();
-    return row ? row.content : null;
-  }
-
-
-  async set(key, content, description) {
-    await this.db
-      .prepare(
-        "INSERT INTO skills (key, content, description) VALUES (?, ?, ?) " +
-          "ON CONFLICT(key) DO UPDATE SET content = ?, description = ?",
-      )
-      .bind(key, content, description ?? null, content, description ?? null)
-      .run();
-  }
+	async set(key, content, description) {
+		await this.db
+			.prepare(
+				"INSERT INTO skills (key, content, description) VALUES (?, ?, ?) " +
+					"ON CONFLICT(key) DO UPDATE SET content = ?, description = ?",
+			)
+			.bind(key, content, description ?? null, content, description ?? null)
+			.run();
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import type { SkillProvider } from "agents/experimental/memory/session";
 
-
 class DatabaseSkillProvider implements SkillProvider {
-  private db: D1Database;
+	private db: D1Database;
 
+	constructor(db: D1Database) {
+		this.db = db;
+	}
 
-  constructor(db: D1Database) {
-    this.db = db;
-  }
+	async get(): Promise<string | null> {
+		const rows = await this.db
+			.prepare("SELECT key, description FROM skills ORDER BY key")
+			.all();
+		if (rows.results.length === 0) return null;
+		return rows.results
+			.map((r) => `- ${r.key}${r.description ? `: ${r.description}` : ""}`)
+			.join("\n");
+	}
 
+	async load(key: string): Promise<string | null> {
+		const row = await this.db
+			.prepare("SELECT content FROM skills WHERE key = ?")
+			.bind(key)
+			.first();
+		return row ? (row.content as string) : null;
+	}
 
-  async get(): Promise<string | null> {
-    const rows = await this.db
-      .prepare("SELECT key, description FROM skills ORDER BY key")
-      .all();
-    if (rows.results.length === 0) return null;
-    return rows.results
-      .map((r) => `- ${r.key}${r.description ? `: ${r.description}` : ""}`)
-      .join("\n");
-  }
-
-
-  async load(key: string): Promise<string | null> {
-    const row = await this.db
-      .prepare("SELECT content FROM skills WHERE key = ?")
-      .bind(key)
-      .first();
-    return row ? (row.content as string) : null;
-  }
-
-
-  async set(key: string, content: string, description?: string): Promise<void> {
-    await this.db
-      .prepare(
-        "INSERT INTO skills (key, content, description) VALUES (?, ?, ?) " +
-          "ON CONFLICT(key) DO UPDATE SET content = ?, description = ?",
-      )
-      .bind(key, content, description ?? null, content, description ?? null)
-      .run();
-  }
+	async set(key: string, content: string, description?: string): Promise<void> {
+		await this.db
+			.prepare(
+				"INSERT INTO skills (key, content, description) VALUES (?, ?, ?) " +
+					"ON CONFLICT(key) DO UPDATE SET content = ?, description = ?",
+			)
+			.bind(key, content, description ?? null, content, description ?? null)
+			.run();
+	}
 }
 ```
 
@@ -604,36 +502,27 @@ The key distinction: skills are **lazy**. They cost nearly nothing in the system
 
 The Session automatically generates tools based on the provider types of your context blocks. You pass these tools to your LLM alongside your own application-specific tools:
 
-* [  JavaScript ](#tab-panel-5889)
-* [  TypeScript ](#tab-panel-5890)
-
-**JavaScript**
-
 ```js
 const sessionTools = await session.tools();
 const allTools = { ...sessionTools, ...myApplicationTools };
 
-
 const result = streamText({
-  model: myModel,
-  system: await session.freezeSystemPrompt(),
-  messages: await convertToModelMessages(await session.getHistory()),
-  tools: allTools,
+	model: myModel,
+	system: await session.freezeSystemPrompt(),
+	messages: await convertToModelMessages(await session.getHistory()),
+	tools: allTools,
 });
 ```
-
-**TypeScript**
 
 ```ts
 const sessionTools = await session.tools();
 const allTools = { ...sessionTools, ...myApplicationTools };
 
-
 const result = streamText({
-  model: myModel,
-  system: await session.freezeSystemPrompt(),
-  messages: await convertToModelMessages(await session.getHistory()),
-  tools: allTools,
+	model: myModel,
+	system: await session.freezeSystemPrompt(),
+	messages: await convertToModelMessages(await session.getHistory()),
+	tools: allTools,
 });
 ```
 
@@ -663,19 +552,16 @@ SOUL (Identity) [readonly]
 ══════════════════════════════════════════════
 You are a helpful coding assistant who speaks concisely.
 
-
 ══════════════════════════════════════════════
 MEMORY (Important facts) [45% — 495/1100 tokens] [writable]
 ══════════════════════════════════════════════
 User prefers dark mode.
 User's project uses React and TypeScript.
 
-
 ══════════════════════════════════════════════
 KNOWLEDGE (Searchable knowledge base) [searchable]
 ══════════════════════════════════════════════
 12 entries indexed.
-
 
 ══════════════════════════════════════════════
 SKILLS [loadable]
@@ -701,52 +587,39 @@ When the agent uses `set_context` to update a writable block, the underlying pro
 
 This means the system prompt stays stable throughout a multi-step tool-use turn, preserving the provider's prefix cache across every step.
 
-* [  JavaScript ](#tab-panel-5895)
-* [  TypeScript ](#tab-panel-5896)
-
-**JavaScript**
-
 ```js
 const session = Session.create(this)
-  .withContext("soul", {
-    provider: { get: async () => "You are a helpful assistant." },
-  })
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-  .withCachedPrompt(); // Persist the frozen prompt across hibernation
-
+	.withContext("soul", {
+		provider: { get: async () => "You are a helpful assistant." },
+	})
+	.withContext("memory", { description: "Learned facts", maxTokens: 1100 })
+	.withCachedPrompt(); // Persist the frozen prompt across hibernation
 
 // During a conversation turn:
 const system = await session.freezeSystemPrompt(); // Same value every call
 const tools = await session.tools();
 
-
 // ... agent calls set_context to update memory ...
 // The frozen prompt is NOT changed, prefix cache stays warm
-
 
 // Between turns (optional, if you want the agent to see its own updates):
 await session.refreshSystemPrompt();
 ```
 
-**TypeScript**
-
 ```ts
 const session = Session.create(this)
-  .withContext("soul", {
-    provider: { get: async () => "You are a helpful assistant." },
-  })
-  .withContext("memory", { description: "Learned facts", maxTokens: 1100 })
-  .withCachedPrompt(); // Persist the frozen prompt across hibernation
-
+	.withContext("soul", {
+		provider: { get: async () => "You are a helpful assistant." },
+	})
+	.withContext("memory", { description: "Learned facts", maxTokens: 1100 })
+	.withCachedPrompt(); // Persist the frozen prompt across hibernation
 
 // During a conversation turn:
 const system = await session.freezeSystemPrompt(); // Same value every call
 const tools = await session.tools();
 
-
 // ... agent calls set_context to update memory ...
 // The frozen prompt is NOT changed, prefix cache stays warm
-
 
 // Between turns (optional, if you want the agent to see its own updates):
 await session.refreshSystemPrompt();
@@ -776,47 +649,38 @@ The key points:
 * **Boundary-aware**, compaction boundaries are shifted to avoid splitting tool call / tool result pairs.
 * **Configurable**, `protectHead` preserves the first N messages (usually the system context), and `tailTokenBudget` keeps the most recent messages intact.
 
-* [  JavaScript ](#tab-panel-5897)
-* [  TypeScript ](#tab-panel-5898)
-
-**JavaScript**
-
 ```js
 import { createCompactFunction } from "agents/experimental/memory/utils/compaction-helpers";
 
-
 const session = Session.create(this)
-  .withContext("memory", { maxTokens: 1100 })
-  .onCompaction(
-    createCompactFunction({
-      summarize: (prompt) =>
-        generateText({ model: myModel, prompt }).then((r) => r.text),
-      protectHead: 3,
-      tailTokenBudget: 20000,
-      minTailMessages: 2,
-    }),
-  )
-  .compactAfter(100_000); // Auto-compact when token estimate exceeds threshold
+	.withContext("memory", { maxTokens: 1100 })
+	.onCompaction(
+		createCompactFunction({
+			summarize: (prompt) =>
+				generateText({ model: myModel, prompt }).then((r) => r.text),
+			protectHead: 3,
+			tailTokenBudget: 20000,
+			minTailMessages: 2,
+		}),
+	)
+	.compactAfter(100_000); // Auto-compact when token estimate exceeds threshold
 ```
-
-**TypeScript**
 
 ```ts
 import { createCompactFunction } from "agents/experimental/memory/utils/compaction-helpers";
 
-
 const session = Session.create(this)
-  .withContext("memory", { maxTokens: 1100 })
-  .onCompaction(
-    createCompactFunction({
-      summarize: (prompt) =>
-        generateText({ model: myModel, prompt }).then((r) => r.text),
-      protectHead: 3,
-      tailTokenBudget: 20000,
-      minTailMessages: 2,
-    }),
-  )
-  .compactAfter(100_000); // Auto-compact when token estimate exceeds threshold
+	.withContext("memory", { maxTokens: 1100 })
+	.onCompaction(
+		createCompactFunction({
+			summarize: (prompt) =>
+				generateText({ model: myModel, prompt }).then((r) => r.text),
+			protectHead: 3,
+			tailTokenBudget: 20000,
+			minTailMessages: 2,
+		}),
+	)
+	.compactAfter(100_000); // Auto-compact when token estimate exceeds threshold
 ```
 
 Auto-compaction triggers after `appendMessage()` when the estimated token count exceeds the threshold. Compaction failure is non-fatal, the message is already saved.
@@ -827,25 +691,16 @@ Micro-compaction works at the individual message level rather than across ranges
 
 **Read-time truncation**: `truncateOlderMessages()` shortens tool outputs and long text in older messages before sending them to the LLM. Recent messages (last 4 by default) are kept intact. This operates on a copy, stored messages are not mutated.
 
-* [  JavaScript ](#tab-panel-5891)
-* [  TypeScript ](#tab-panel-5892)
-
-**JavaScript**
-
 ```js
 import { truncateOlderMessages } from "agents/experimental/memory/utils";
-
 
 const history = await session.getHistory();
 const truncated = truncateOlderMessages(history);
 // Pass truncated history to the LLM
 ```
 
-**TypeScript**
-
 ```ts
 import { truncateOlderMessages } from "agents/experimental/memory/utils";
-
 
 const history = await session.getHistory();
 const truncated = truncateOlderMessages(history);
@@ -856,13 +711,26 @@ const truncated = truncateOlderMessages(history);
 
 ## Related
 
-[ Session API reference ](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) Full API reference for Session, covering messages, context blocks, compaction, search, tools, and custom providers.
+### [ Session API reference ](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)
 
-[ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) setState() for simpler key-value persistence and real-time sync.
+ Full API reference for Session, covering messages, context blocks, compaction, search, tools, and custom providers.
 
-[ Think ](https://developers.cloudflare.com/agents/harnesses/think/) Opinionated chat agent with built-in Session integration via configureSession().
+### [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+
+ setState() for simpler key-value persistence and real-time sync.
+
+### [ Think ](https://developers.cloudflare.com/agents/harnesses/think/)
+
+ Opinionated chat agent with built-in Session integration via configureSession().
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/#page","headline":"Conversation state and memory · Cloudflare Agents docs","description":"How agents store and recall information, including read-only context, writable short-form memory, searchable knowledge, and on-demand skills.","url":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/conversation-state-and-memory/","name":"Conversation state and memory"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/#page","headline":"Conversation state and memory · Cloudflare Agents docs","description":"How agents store and recall information, including read-only context, writable short-form memory, searchable knowledge, and on-demand skills.","url":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

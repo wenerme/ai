@@ -1,21 +1,20 @@
 ---
-title: Use only Brotli compression for a specific path
 description: Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Use only Brotli compression for a specific path
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Use only Brotli compression for a specific path
+#  Use only Brotli compression for a specific path
 
 Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.
 
-* [ Dashboard ](#tab-panel-10841)
-* [ API ](#tab-panel-10842)
+Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following example rule will configure only Brotli compression for a specific URI path.
 
@@ -58,33 +57,38 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "ref": "use_only_brotli_for_assets_tar",
-            "expression": "http.request.uri.path eq \"/download/assets.tar\"",
-            "action": "compress_response",
-            "action_parameters": {
-                "algorithms": [
-                    {
-                        "name": "brotli"
-                    }
-                ]
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"ref": "use_only_brotli_for_assets_tar",
+						"expression": "http.request.uri.path eq \"/download/assets.tar\"",
+						"action": "compress_response",
+						"action_parameters": {
+								"algorithms": [
+										{
+												"name": "brotli"
+										}
+								]
+						}
+				}
+		]
+	}'
 ```
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/#page","headline":"Use only Brotli compression for a specific path · Cloudflare Rules docs","description":"Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/compression-rules/","name":"Compression Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/compression-rules/examples/","name":"Compression Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/compression-rules/examples/only-brotli-url-path/","name":"Use only Brotli compression for a specific path"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/#page","headline":"Use only Brotli compression for a specific path · Cloudflare Rules docs","description":"Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/only-brotli-url-path/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

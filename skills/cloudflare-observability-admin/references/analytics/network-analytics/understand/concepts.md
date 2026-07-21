@@ -1,16 +1,18 @@
 ---
-title: Concepts
 description: Understand Network Analytics sampling and enrichment concepts.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Concepts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Concepts
 
-# Concepts
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Adaptive Bit Rate sampling
 
@@ -30,7 +32,14 @@ Sample rates vary depending on the mitigation service. For example:
 
 NA uses a data logging pipeline that relies on Edge Sample Enrichment. By delegating the packet sample enrichment and cross-referencing to the global data centers, the data pipeline’s resilience and tolerance against congestion are improved. Using this method, enriched packet samples are immediately stored in Cloudflare's core data centers as soon as they arrive.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/#page","headline":"Network Analytics concepts · Cloudflare Analytics docs","description":"Understand Network Analytics sampling and enrichment concepts.","url":"https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/network-analytics/","name":"Network analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/network-analytics/understand/","name":"About"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/network-analytics/understand/concepts/","name":"Concepts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/#page","headline":"Network Analytics concepts · Cloudflare Analytics docs","description":"Understand Network Analytics sampling and enrichment concepts.","url":"https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

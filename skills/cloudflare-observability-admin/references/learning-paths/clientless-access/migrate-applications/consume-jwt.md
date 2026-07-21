@@ -1,16 +1,18 @@
 ---
-title: Authenticate without integrated SSO
 description: Use Cloudflare JWT for application authentication.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Authenticate without integrated SSO
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Authenticate without integrated SSO
 
-# Authenticate without integrated SSO
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A common goal for many security organizations is to implement continuous authentication and authorization. With Cloudflare Access JWT validation, you can achieve this goal without introducing significant user interruption or requiring behavioral changes for your end users.
 
@@ -32,7 +34,14 @@ When applications do not have integrated SSO, or any other method to deliver jus
 
 Refer to [this tutorial](https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/) for setup details.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/#page","headline":"Authenticate without integrated SSO · Cloudflare Learning Paths","description":"Use Cloudflare JWT for application authentication.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/","name":"Migrate applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/consume-jwt/","name":"Authenticate without integrated SSO"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/#page","headline":"Authenticate without integrated SSO · Cloudflare Learning Paths","description":"Use Cloudflare JWT for application authentication.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,39 +1,38 @@
 ---
-title: GPT-5.1 Chat
 description: GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GPT-5.1 Chat
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  GPT-5.1 Chat
 
-Text Generation • OpenAI
+ Text Generation • OpenAI
 
-`openai/gpt-5.1-chat`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` openai/gpt-5.1-chat `
+
+* Third-party
 
 GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.
 
-| Model Info                                                                 |                                                                                                                       |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                        |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                         |
-| Request formats                                                            | Chat Completions                                                                                                      |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1-chat) |
+| Model Info                                                                  |                                                                                                                        |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                         |
+| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                 |
+| More information                                                            | [link ↗](https://openai.com/)                                                                                          |
+| Request formats                                                             | Chat Completions                                                                                                       |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1-chat) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1310)
-* [ cURL ](#tab-panel-1311)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -57,9 +56,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1320)
-* [ Raw response ](#tab-panel-1321)
 
 The three laws of thermodynamics can be stated simply as:
 
@@ -119,11 +115,6 @@ If you want, I can also include the "zeroth" law for completeness.
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-1312)
-* [ cURL ](#tab-panel-1313)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.1-chat',
@@ -155,9 +146,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1322)
-* [ Raw response ](#tab-panel-1323)
 
 The easiest way to read a JSON file in Python is to use the built‑in json module.
 
@@ -217,11 +205,6 @@ Notes:
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-1316)
-* [ cURL ](#tab-panel-1317)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.1-chat',
@@ -267,9 +250,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1324)
-* [ Raw response ](#tab-panel-1325)
 
 Here are some great stops along the way from San Francisco to Los Angeles, depending on which route you choose:
 
@@ -339,11 +319,6 @@ If you tell me your preferred pace, interests (food, nature, beaches, wineries, 
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-1314)
-* [ cURL ](#tab-panel-1315)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.1-chat',
@@ -375,9 +350,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-1326)
-* [ Raw response ](#tab-panel-1327)
 
 Detective Mara Lorne had seen her share of strange crime scenes, but none as quietly unsettling as the abandoned greenhouse on Cinder Street. The air was warm and sweet, thick with the scent of overgrown jasmine. Glass panes lay shattered underfoot like frozen puddles.
 
@@ -426,11 +398,6 @@ She crouched beside the body, careful not to disturb the latticework of vines th
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-1318)
-* [ cURL ](#tab-panel-1319)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.1-chat',
@@ -461,9 +428,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-1328)
-* [ Raw response ](#tab-panel-1329)
 
 Recursion is a programming technique where a function calls itself to solve a smaller version of the same problem. It continues doing this until it reaches a simple stopping point called the base case.
 
@@ -3458,9 +3422,6 @@ This shows how a big task is broken into smaller tasks until it’s simple enoug
 
 ## Parameters
 
-* [ Input ](#tab-panel-1330)
-* [ Output ](#tab-panel-1331)
-
 ▶messages\[\]
 
 `array`required
@@ -3547,7 +3508,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema
 
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/#page","headline":"GPT-5.1 Chat (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/#page","headline":"GPT-5.1 Chat (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

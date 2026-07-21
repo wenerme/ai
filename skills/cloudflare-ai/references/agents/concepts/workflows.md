@@ -1,16 +1,18 @@
 ---
-title: Using Agents with Workflows
 description: Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Using Agents with Workflows
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Using Agents with Workflows
 
-# Using Agents with Workflows
+Last updated Jul 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/workflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## What are Workflows?
 
@@ -68,11 +70,6 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-5901)
-* [  TypeScript ](#tab-panel-5902)
-
-**JavaScript**
-
 ```js
 // Inside a workflow's run() method
 await this.agent.updateTaskStatus(taskId, "processing"); // RPC call
@@ -80,8 +77,6 @@ await this.reportProgress({ step: "process", percent: 0.5 }); // Progress (non-d
 this.broadcastToClients({ type: "update", taskId }); // Broadcast (non-durable)
 await step.mergeAgentState({ taskProgress: 0.5 }); // State update (durable)
 ```
-
-**TypeScript**
 
 ```ts
 // Inside a workflow's run() method
@@ -149,34 +144,27 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-5903)
-* [  TypeScript ](#tab-panel-5904)
-
-**JavaScript**
-
 ```js
 // Workflow reports progress after each item
 for (let i = 0; i < items.length; i++) {
-  await step.do(`process-${i}`, async () => processItem(items[i]));
-  await this.reportProgress({
-    step: `process-${i}`,
-    percent: (i + 1) / items.length,
-    message: `Processed ${i + 1}/${items.length}`,
-  });
+	await step.do(`process-${i}`, async () => processItem(items[i]));
+	await this.reportProgress({
+		step: `process-${i}`,
+		percent: (i + 1) / items.length,
+		message: `Processed ${i + 1}/${items.length}`,
+	});
 }
 ```
-
-**TypeScript**
 
 ```ts
 // Workflow reports progress after each item
 for (let i = 0; i < items.length; i++) {
-  await step.do(`process-${i}`, async () => processItem(items[i]));
-  await this.reportProgress({
-    step: `process-${i}`,
-    percent: (i + 1) / items.length,
-    message: `Processed ${i + 1}/${items.length}`,
-  });
+	await step.do(`process-${i}`, async () => processItem(items[i]));
+	await this.reportProgress({
+		step: `process-${i}`,
+		percent: (i + 1) / items.length,
+		message: `Processed ${i + 1}/${items.length}`,
+	});
 }
 ```
 
@@ -188,40 +176,33 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-5905)
-* [  TypeScript ](#tab-panel-5906)
-
-**JavaScript**
-
 ```js
 const result = await step.do(
-  "call-api",
-  {
-    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
-    timeout: "5 minutes",
-  },
-  async () => {
-    const response = await fetch("https://api.example.com/process");
-    if (!response.ok) throw new Error(`API error: ${response.status}`);
-    return response.json();
-  },
+	"call-api",
+	{
+		retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
+		timeout: "5 minutes",
+	},
+	async () => {
+		const response = await fetch("https://api.example.com/process");
+		if (!response.ok) throw new Error(`API error: ${response.status}`);
+		return response.json();
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 const result = await step.do(
-  "call-api",
-  {
-    retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
-    timeout: "5 minutes",
-  },
-  async () => {
-    const response = await fetch("https://api.example.com/process");
-    if (!response.ok) throw new Error(`API error: ${response.status}`);
-    return response.json();
-  },
+	"call-api",
+	{
+		retries: { limit: 5, delay: "10 seconds", backoff: "exponential" },
+		timeout: "5 minutes",
+	},
+	async () => {
+		const response = await fetch("https://api.example.com/process");
+		if (!response.ok) throw new Error(`API error: ${response.status}`);
+		return response.json();
+	},
 );
 ```
 
@@ -231,13 +212,26 @@ A Workflow updates Agent state at key milestones using `step.updateAgentState()`
 
 ## Related resources
 
-[ Run Workflows API ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Implementation details for agent workflows.
+### [ Run Workflows API ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
 
-[ Cloudflare Workflows ](https://developers.cloudflare.com/workflows/) Workflow fundamentals and documentation.
+ Implementation details for agent workflows.
 
-[ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) Approval flows and manual intervention.
+### [ Cloudflare Workflows ](https://developers.cloudflare.com/workflows/)
+
+ Workflow fundamentals and documentation.
+
+### [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
+
+ Approval flows and manual intervention.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/workflows/#page","headline":"Using Agents with Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.","url":"https://developers.cloudflare.com/agents/concepts/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/workflows/","name":"Using Agents with Workflows"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/workflows/#page","headline":"Using Agents with Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.","url":"https://developers.cloudflare.com/agents/concepts/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Configure IPv6 (beta)
 description: Configure IPv6 support for Magic Transit.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure IPv6 (beta)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure IPv6 (beta)
 
-# Configure IPv6 (beta)
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/how-to/ipv6/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 IPv6 (beta) for Magic Transit allows customers with existing IPv4 tunnels to enable and test IPv6 functionality with minimal configuration changes. This beta provides an opportunity to evaluate IPv6 addressing, routing, and security within Magic Transit while maintaining the existing IPv4 setup.
 
@@ -40,7 +42,7 @@ Since IPv6 works over an existing IPv4 tunnel, you need to select either an exis
 
 To test and set up IPv6 in the Cloudflare dashboard, complete one new field when creating a new IPv4 GRE tunnel or editing an existing one: **IPv6 Interface address**. Enter the Cloudflare-assigned IPv6 address for the Cloudflare side of the tunnel. Each tunnel is assigned a `/127` subnet from your allocated `/96` range. You configure one address on the Cloudflare side and the other address on your router.
 
-Warning
+Caution
 
 Cloudflare allocates a `/96` IPv6 prefix for each account. The first two addresses in this range are reserved for Cloudflare. The remaining addresses are available for customer GRE tunnels, starting from `:2`, with two IPv6 addresses assigned per tunnel.
 
@@ -72,7 +74,14 @@ After the first two reserved addresses, you can continue allocating `/127` subne
 
 If you use Magic Transit ingress-only traffic (DSR), apply a TCP MSS (Maximum Segment Size) clamp with a maximum of 1,416 bytes to your edge router's transit ports to account for the larger IPv6 header.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/#page","headline":"Configure IPv6 (beta) · Cloudflare Magic Transit docs","description":"Configure IPv6 support for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/how-to/ipv6/","name":"Configure IPv6 (beta)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/#page","headline":"Configure IPv6 (beta) · Cloudflare Magic Transit docs","description":"Configure IPv6 support for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
 ```

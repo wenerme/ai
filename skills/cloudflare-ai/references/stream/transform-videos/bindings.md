@@ -1,16 +1,18 @@
 ---
-title: Bind to Workers API
 description: Bind the Media Transformations API to a Cloudflare Worker to transform videos programmatically.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Bind to Workers API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bind to Workers API
 
-# Bind to Workers API
+Last updated Jun 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/transform-videos/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Media Transformations](https://developers.cloudflare.com/stream/transform-videos/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -38,11 +40,6 @@ The Media binding is enabled on a per-Worker basis.
 
 To bind Media Transformations to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11679)
-* [  wrangler.toml ](#tab-panel-11680)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -51,8 +48,6 @@ To bind Media Transformations to your Worker, add the following to the end of yo
   }
 }
 ```
-
-**TOML**
 
 ```toml
 [media]
@@ -114,21 +109,17 @@ Finally, after configuring the output, three methods are available to receive re
 
 Resize a video and extract a five-second clip:
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const video = await env.R2_BUCKET.get("input.mp4");
+	async fetch(request, env) {
+		const video = await env.R2_BUCKET.get("input.mp4");
 
+		const result = env.MEDIA.input(video.body)
+			.transform({ width: 480, height: 270 })
+			.output({ mode: "video", time: "0s", duration: "5s" });
 
-    const result = env.MEDIA.input(video.body)
-      .transform({ width: 480, height: 270 })
-      .output({ mode: "video", time: "0s", duration: "5s" });
-
-
-    return await result.response();
-  },
+		return await result.response();
+	},
 };
 ```
 
@@ -136,21 +127,17 @@ export default {
 
 Extract a single frame as a JPEG thumbnail:
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const video = await env.R2_BUCKET.get("input.mp4");
+	async fetch(request, env) {
+		const video = await env.R2_BUCKET.get("input.mp4");
 
+		const result = env.MEDIA.input(video.body)
+			.transform({ width: 640, height: 360 })
+			.output({ mode: "frame", time: "2s", format: "jpg" });
 
-    const result = env.MEDIA.input(video.body)
-      .transform({ width: 640, height: 360 })
-      .output({ mode: "frame", time: "2s", format: "jpg" });
-
-
-    return await result.response();
-  },
+		return await result.response();
+	},
 };
 ```
 
@@ -158,44 +145,38 @@ export default {
 
 Extract a frame (still image) from a video, then use a model like [UForm-Gen on Workers AI](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/) to generate a caption.
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    // First, load the video file from a source like R2 (or a fetch)
+	async fetch(request, env) {
+		// First, load the video file from a source like R2 (or a fetch)
 
+		// Loading from R2
+		const video = await env.R2_BUCKET.get("input.mp4");
 
-    // Loading from R2
-    const video = await env.R2_BUCKET.get("input.mp4");
+		// Or using a fetch:
+		// const video = await fetch('https://example.com/video.mp4');
 
+		// Isolate a frame (still image)
+		const frame = await env.MEDIA.input(video.body)
+			.transform({ width: 720 })
+			.output({
+				mode: 'frame',
+				time: '3s',
+			})
+			.response();
 
-    // Or using a fetch:
-    // const video = await fetch('https://example.com/video.mp4');
-
-
-    // Isolate a frame (still image)
-    const frame = await env.MEDIA.input(video.body)
-      .transform({ width: 720 })
-      .output({
-        mode: 'frame',
-        time: '3s',
-      })
-      .response();
-
-
-    // Set up the payload for Workers AI
-    const payload = {
-      image: [...new Uint8Array(await frame.arrayBuffer())],
-      prompt: "Generate a caption for this image",
-      max_tokens: 512,
-    };
-    const response = await env.AI.run(
-      "@cf/unum/uform-gen2-qwen-500m",
-      payload
-    );
-    return new Response(JSON.stringify(response));
-  }
+		// Set up the payload for Workers AI
+		const payload = {
+			image: [...new Uint8Array(await frame.arrayBuffer())],
+			prompt: "Generate a caption for this image",
+			max_tokens: 512,
+		};
+		const response = await env.AI.run(
+			"@cf/unum/uform-gen2-qwen-500m",
+			payload
+		);
+		return new Response(JSON.stringify(response));
+	}
 }
 ```
 
@@ -203,23 +184,19 @@ export default {
 
 Extract the audio track from a video as an M4A file. This example demonstrates skipping `.transform()` since no resizing is needed:
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const video = await env.R2_BUCKET.get("input.mp4");
+	async fetch(request, env) {
+		const video = await env.R2_BUCKET.get("input.mp4");
 
+		const result = env.MEDIA.input(video.body).output({
+			mode: "audio",
+			time: "0s",
+			duration: "30s",
+		});
 
-    const result = env.MEDIA.input(video.body).output({
-      mode: "audio",
-      time: "0s",
-      duration: "30s",
-    });
-
-
-    return await result.response();
-  },
+		return await result.response();
+	},
 };
 ```
 
@@ -227,49 +204,42 @@ export default {
 
 Extract audio, then transcribe using [Whisper on Workers AI](https://developers.cloudflare.com/workers-ai/models/whisper/).
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    // First, load the video file from a source like R2 (or a fetch)
+	async fetch(request, env) {
+		// First, load the video file from a source like R2 (or a fetch)
 
+		// Loading from R2
+		const video = await env.R2_BUCKET.get("input.mp4");
 
-    // Loading from R2
-    const video = await env.R2_BUCKET.get("input.mp4");
+		// Or using a fetch:
+		// const video = await fetch('https://example.com/video.mp4');
 
+		// Extract audio using the media transformations binding:
+		const audio = await env.MEDIA.input(video.body)
+			.transform()
+			.output({
+				mode: 'audio',
+				})
+			.response();
 
-    // Or using a fetch:
-    // const video = await fetch('https://example.com/video.mp4');
+		// Prepare and run Workers AI inference
+		const payload = {
+			audio: [...new Uint8Array(await audio.arrayBuffer())],
+		};
+		const response = await env.AI.run(
+			"@cf/openai/whisper",
+			payload
+		);
 
-
-    // Extract audio using the media transformations binding:
-    const audio = await env.MEDIA.input(video.body)
-      .transform()
-      .output({
-        mode: 'audio',
-        })
-      .response();
-
-
-    // Prepare and run Workers AI inference
-    const payload = {
-      audio: [...new Uint8Array(await audio.arrayBuffer())],
-    };
-    const response = await env.AI.run(
-      "@cf/openai/whisper",
-      payload
-    );
-
-
-    // response will have props {text, word_count, vtt, words}
-    return new Response(
-      JSON.stringify(response, null, 2),
-      {
-        headers: {'Content-Type': 'application/json'}
-      }
-    );
-  }
+		// response will have props {text, word_count, vtt, words}
+		return new Response(
+			JSON.stringify(response, null, 2),
+			{
+				headers: {'Content-Type': 'application/json'}
+			}
+		);
+	}
 }
 ```
 
@@ -277,27 +247,22 @@ export default {
 
 Transform a video and store the result directly in R2:
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const video = await env.R2_BUCKET.get("input.mp4");
+	async fetch(request, env) {
+		const video = await env.R2_BUCKET.get("input.mp4");
 
+		const result = env.MEDIA.input(video.body)
+			.transform({ width: 480, height: 270, fit: "contain" })
+			.output({ mode: "video", time: "0s", duration: "10s", audio: false });
 
-    const result = env.MEDIA.input(video.body)
-      .transform({ width: 480, height: 270, fit: "contain" })
-      .output({ mode: "video", time: "0s", duration: "10s", audio: false });
+		// Store the transformed video directly in R2
+		await env.R2_BUCKET.put("output-480p.mp4", await result.media(), {
+			httpMetadata: { contentType: await result.contentType() },
+		});
 
-
-    // Store the transformed video directly in R2
-    await env.R2_BUCKET.put("output-480p.mp4", await result.media(), {
-      httpMetadata: { contentType: await result.contentType() },
-    });
-
-
-    return new Response("Video transformed and stored", { status: 200 });
-  },
+		return new Response("Video transformed and stored", { status: 200 });
+	},
 };
 ```
 
@@ -316,31 +281,27 @@ Errors throw a `MediaError`, which extends the standard `Error` interface with a
 
 Use a `try...catch` block to handle errors:
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const video = await env.R2_BUCKET.get("input.mp4");
+	async fetch(request, env) {
+		const video = await env.R2_BUCKET.get("input.mp4");
 
+		try {
+			const result = env.MEDIA.input(video.body)
+				.transform({ width: 480, height: 270 })
+				.output({ mode: "video", time: "0s", duration: "5s" });
 
-    try {
-      const result = env.MEDIA.input(video.body)
-        .transform({ width: 480, height: 270 })
-        .output({ mode: "video", time: "0s", duration: "5s" });
-
-
-      return await result.response();
-    } catch (e) {
-      if (e instanceof Error && "code" in e) {
-        // Handle MediaError
-        return new Response(`Transformation failed: ${e.message}`, {
-          status: 500,
-        });
-      }
-      throw e;
-    }
-  },
+			return await result.response();
+		} catch (e) {
+			if (e instanceof Error && "code" in e) {
+				// Handle MediaError
+				return new Response(`Transformation failed: ${e.message}`, {
+					status: 500,
+				});
+			}
+			throw e;
+		}
+	},
 };
 ```
 
@@ -358,11 +319,6 @@ The Media Transformations API is available _in remote mode_ for local developmen
 
 To enable usage in local development, add `remote` to the binding configuration:
 
-* [  wrangler.jsonc ](#tab-panel-11681)
-* [  wrangler.toml ](#tab-panel-11682)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -372,8 +328,6 @@ To enable usage in local development, add `remote` to the binding configuration:
   }
 }
 ```
-
-**TOML**
 
 ```toml
 [media]
@@ -391,7 +345,14 @@ Note
 
 The Media Transformation binding does not support local simulation. If `remote = true` is not specified, the binding will produce an error during local development.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"Bind the Media Transformations API to a Cloudflare Worker to transform videos programmatically.","url":"https://developers.cloudflare.com/stream/transform-videos/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/transform-videos/","name":"Transform videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/transform-videos/bindings/","name":"Bind to Workers API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"Bind the Media Transformations API to a Cloudflare Worker to transform videos programmatically.","url":"https://developers.cloudflare.com/stream/transform-videos/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

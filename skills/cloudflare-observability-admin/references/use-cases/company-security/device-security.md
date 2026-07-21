@@ -1,16 +1,18 @@
 ---
-title: Ensure device endpoint security
 description: Verify device posture before granting access.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Ensure device endpoint security
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Ensure device endpoint security
 
-# Ensure device endpoint security
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/company-security/device-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Granting access to corporate applications without verifying device health creates risk. Cloudflare One checks OS version, disk encryption, and antivirus status before allowing a device to connect, and integrates with CrowdStrike, SentinelOne, and other Endpoint Detection and Response (EDR) tools.
 
@@ -36,7 +38,14 @@ Device agent that routes traffic through Cloudflare's network. [Learn more about
 2. [Configure device posture checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/)
 3. [Add posture checks to Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/company-security/device-security/#page","headline":"Ensure device endpoint security · Cloudflare use cases","description":"Verify device posture before granting access.","url":"https://developers.cloudflare.com/use-cases/company-security/device-security/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/company-security/","name":"Company security"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/company-security/device-security/","name":"Ensure device endpoint security"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/company-security/device-security/#page","headline":"Ensure device endpoint security · Cloudflare use cases","description":"Verify device posture before granting access.","url":"https://developers.cloudflare.com/use-cases/company-security/device-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

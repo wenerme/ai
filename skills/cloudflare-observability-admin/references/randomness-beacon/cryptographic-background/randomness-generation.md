@@ -1,16 +1,18 @@
 ---
-title: Randomness Generation
 description: Understand how randomness is generated with BLS signatures.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Randomness Generation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/randomness-beacon/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Randomness Generation
 
-# Randomness Generation
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this section, we describe how to use this collective key pair to generate publicly-verifiable, unbiasable, and unpredictable randomness in a distributed manner.
 
@@ -94,7 +96,14 @@ drand beacons can also be configured to use unchained randomness. To extend this
 
 This process allows for a direct precomputation of message `𝑚` for round `𝑟=i`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/#page","headline":"Randomness Generation · Cloudflare Randomness Beacon docs","description":"Understand how randomness is generated with BLS signatures.","url":"https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/randomness-beacon/","name":"Randomness Beacon"}},{"@type":"ListItem","position":3,"item":{"@id":"/randomness-beacon/cryptographic-background/","name":"Cryptographic Background"}},{"@type":"ListItem","position":4,"item":{"@id":"/randomness-beacon/cryptographic-background/randomness-generation/","name":"Randomness Generation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/#page","headline":"Randomness Generation · Cloudflare Randomness Beacon docs","description":"Understand how randomness is generated with BLS signatures.","url":"https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

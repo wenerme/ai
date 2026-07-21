@@ -1,16 +1,18 @@
 ---
-title: Gateway
 description: Review recent changes to Cloudflare Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Gateway
 
-# Gateway
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/changelog/gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
@@ -108,24 +110,17 @@ What you get by default:
 * **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 * **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
-* [  wrangler.jsonc ](#tab-panel-7840)
-* [  wrangler.toml ](#tab-panel-7841)
-
-**JSONC**
-
 ```jsonc
 {
-  "vpc_networks": [
-    {
-      "binding": "EGRESS",
-      "network_id": "cf1:network",
-      "remote": true,
-    },
-  ],
+	"vpc_networks": [
+		{
+			"binding": "EGRESS",
+			"network_id": "cf1:network",
+			"remote": true,
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[vpc_networks]]
@@ -134,17 +129,10 @@ network_id = "cf1:network"
 remote = true
 ```
 
-* [  JavaScript ](#tab-panel-7842)
-* [  TypeScript ](#tab-panel-7843)
-
-**JavaScript**
-
 ```js
 // Egress to a public destination — subject to your Gateway policies and logged
 const response = await env.EGRESS.fetch("https://api.example.com/data");
 ```
-
-**TypeScript**
 
 ```ts
 // Egress to a public destination — subject to your Gateway policies and logged
@@ -897,7 +885,14 @@ Gateway now offers the ability to selectively ignore CNAME domain categories in 
 
 Gateway now offers a more extensive, categorized [list of files](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) to control uploads and downloads.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/gateway/#page","headline":"Gateway Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/gateway/","name":"Gateway"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/gateway/#page","headline":"Gateway Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

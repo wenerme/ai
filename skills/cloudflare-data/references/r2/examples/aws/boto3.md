@@ -1,27 +1,26 @@
 ---
-title: boto3
 description: Configure Python boto3 to work with Cloudflare R2 via the S3-compatible API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: boto3
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  boto3
 
-# boto3
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/aws/boto3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
 
 Configure [boto3 ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) to use your R2 endpoint:
 
-**Python**
-
 ```python
 import boto3
-
 
 s3 = boto3.client(
     service_name="s3",
@@ -36,21 +35,16 @@ You can omit `aws_access_key_id` and `aws_secret_access_key` if you set the `AWS
 
 Common operations using the client:
 
-**Python**
-
 ```python
 # Get object metadata
 s3.head_object(Bucket="my-bucket", Key="dog.png")
 
-
 # Get object
 response = s3.get_object(Bucket="my-bucket", Key="dog.png")
-
 
 # Upload single file
 with open("./dog.png", "rb") as f:
     s3.upload_fileobj(f, "my-bucket", "dog.png")
-
 
 # Delete object
 s3.delete_object(Bucket="my-bucket", Key="dog.png")
@@ -62,14 +56,11 @@ For large objects (multi-GB files such as training data or video), `upload_fileo
 
 Use the low-level multipart API with `ThreadPoolExecutor` instead:
 
-**Python**
-
 ```python
 import boto3
 import math
 import os
 from concurrent.futures import ThreadPoolExecutor
-
 
 s3 = boto3.client(
     service_name="s3",
@@ -79,19 +70,16 @@ s3 = boto3.client(
     region_name="auto",
 )
 
-
 bucket = "my-bucket"
 key = "large-file.bin"
 file_path = "./large-file.bin"
 part_size = 16 * 1024 * 1024  # 16 MiB per part
 max_workers = 10
 
-
 # Step 1: Create the multipart upload
 upload_id = None
 mpu = s3.create_multipart_upload(Bucket=bucket, Key=key)
 upload_id = mpu["UploadId"]
-
 
 def upload_part(part_number, data):
     response = s3.upload_part(
@@ -103,11 +91,9 @@ def upload_part(part_number, data):
     )
     return {"PartNumber": part_number, "ETag": response["ETag"]}
 
-
 try:
     file_size = os.path.getsize(file_path)
     part_count = math.ceil(file_size / part_size)
-
 
     # Step 2: Upload parts in parallel
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
@@ -117,9 +103,7 @@ try:
                 data = f.read(part_size)
                 futures.append(pool.submit(upload_part, i + 1, data))
 
-
         parts = [future.result() for future in futures]
-
 
     # Step 3: Complete the upload
     s3.complete_multipart_upload(
@@ -144,8 +128,6 @@ For more on multipart uploads including part size limits and lifecycle managemen
 
 Generate presigned links to share temporary public read or write access to a bucket.
 
-**Python**
-
 ```python
 # Generate presigned URL for reading (GET)
 get_url = s3.generate_presigned_url(
@@ -153,7 +135,6 @@ get_url = s3.generate_presigned_url(
     Params={"Bucket": "my-bucket", "Key": "dog.png"},
     ExpiresIn=3600,  # Valid for 1 hour
 )
-
 
 # Generate presigned URL for writing (PUT)
 put_url = s3.generate_presigned_url(
@@ -189,19 +170,17 @@ When generating presigned URLs for uploads, you can limit abuse and misuse by:
 
 ```json
 [
-  {
-    "AllowedOrigins": ["https://example.com"],
-    "AllowedMethods": ["PUT"],
-    "AllowedHeaders": ["Content-Type"],
-    "ExposeHeaders": ["ETag"],
-    "MaxAgeSeconds": 3600
-  }
+	{
+		"AllowedOrigins": ["https://example.com"],
+		"AllowedMethods": ["PUT"],
+		"AllowedHeaders": ["Content-Type"],
+		"ExposeHeaders": ["ETag"],
+		"MaxAgeSeconds": 3600
+	}
 ]
 ```
 
 Then generate a presigned URL with a Content-Type restriction:
-
-**Python**
 
 ```python
 put_url = s3.generate_presigned_url(
@@ -220,7 +199,14 @@ When a client uses this presigned URL, they must:
 * Make the request from an allowed origin (enforced by CORS)
 * Include the `Content-Type: image/png` header (enforced by the signature)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/boto3/#page","headline":"boto3 · Cloudflare R2 docs","description":"Configure Python boto3 to work with Cloudflare R2 via the S3-compatible API.","url":"https://developers.cloudflare.com/r2/examples/aws/boto3/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/boto3/","name":"boto3"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/boto3/#page","headline":"boto3 · Cloudflare R2 docs","description":"Configure Python boto3 to work with Cloudflare R2 via the S3-compatible API.","url":"https://developers.cloudflare.com/r2/examples/aws/boto3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

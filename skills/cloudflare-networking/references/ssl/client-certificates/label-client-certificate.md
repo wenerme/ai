@@ -1,16 +1,18 @@
 ---
-title: Label client certificates
 description: Organize client certificates with labels for easier management.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Label client certificates
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Label client certificates
 
-# Label client certificates
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 After [creating client certificates](https://developers.cloudflare.com/ssl/client-certificates/) at Cloudflare, it may be hard to differentiate the generated certificates.
 
@@ -48,7 +50,14 @@ The following image displays an example of how a certificate with with `Country 
 
 ![](https://developers.cloudflare.com/_astro/chrome_mQRJVOpkTQ.BiKeZMXO_sl7oA.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/#page","headline":"Label client certificates · Cloudflare SSL/TLS docs","description":"Organize client certificates with labels for easier management.","url":"https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/label-client-certificate/","name":"Label client certificates"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/#page","headline":"Label client certificates · Cloudflare SSL/TLS docs","description":"Organize client certificates with labels for easier management.","url":"https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

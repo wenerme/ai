@@ -1,16 +1,18 @@
 ---
-title: Defend content with Scrape Shield
 description: Protect content from scraping and hotlinking.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Defend content with Scrape Shield
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Defend content with Scrape Shield
 
-# Defend content with Scrape Shield
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/surge-readiness/security/defend-content/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Scrape Shield is a collection of settings meant to protect your site's content.
 
@@ -22,7 +24,14 @@ Scrape Shield is a collection of settings meant to protect your site's content.
 
 [Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/) prevents your images from being used by other sites, which can reduce the bandwidth consumed by your origin server.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/security/defend-content/#page","headline":"Defend content with Scrape Shield · Cloudflare Learning Paths","description":"Protect content from scraping and hotlinking.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/security/defend-content/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/surge-readiness/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/surge-readiness/security/defend-content/","name":"Defend content with Scrape Shield"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/security/defend-content/#page","headline":"Defend content with Scrape Shield · Cloudflare Learning Paths","description":"Protect content from scraping and hotlinking.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/security/defend-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

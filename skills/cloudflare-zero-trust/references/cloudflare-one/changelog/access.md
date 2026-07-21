@@ -1,16 +1,18 @@
 ---
-title: Access
 description: Review recent changes to Cloudflare Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Access
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Access
 
-# Access
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/changelog/access/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/access.xml)
 
@@ -64,7 +66,7 @@ By default, file transfer is denied for new policies. For existing Access applic
 
 To upload, drag files into the browser window or select the settings gear icon on the left side of the RDP session. To download, copy a file in the remote session and select the settings gear to download it, download multiple files as a zip, or print PDFs to a local printer.
 
-![The clipboard side panel showing files available for transfer.](https://developers.cloudflare.com/_astro/clipboard-side-panel.Us2RfXfs_Z1hkXRl.webp) ![A remote document ready for download or local printing.](https://developers.cloudflare.com/_astro/remote-doc-ready-for-download-or-print-local.Dcm5hrGD_kMExI.webp)
+![The clipboard side panel showing files available for transfer.](https://developers.cloudflare.com/_astro/clipboard-side-panel.Us2RfXfs_Z1hkXRl.webp)![A remote document ready for download or local printing.](https://developers.cloudflare.com/_astro/remote-doc-ready-for-download-or-print-local.Dcm5hrGD_kMExI.webp)
 
 This feature is in beta and available on all Zero Trust plans. For more information, refer to [File transfer for browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#transfer-files).
 
@@ -957,7 +959,14 @@ Support Azure AD authentication contexts directly in Access policies.
 
 Allow Access admins to customize the block pages presented by Access to end users.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/access/#page","headline":"Access Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/access/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/access/","name":"Access"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/access/#page","headline":"Access Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection
 description: This reference architecture outlines how Cloudflare and CrowdStrike solutions integrate to create a unified security ecosystem that combines endpoint protection with zero trust network access, threat intelligence sharing, and automated remediation workflows. Organizations can leverage this integration to implement risk-based access policies, improve threat detection, and orchestrate security responses across both platforms.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection
 
-# CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection
+Last updated Mar 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Abstract
 
@@ -308,7 +310,14 @@ This reference architecture demonstrates how these solutions work together to ad
 * [CrowdStrike Marketplace - Cloudflare ↗](https://marketplace.crowdstrike.com/partners/cloudflare/)
 * [CrowdStrike Falcon Fusion SOAR with Cloudflare SASE ↗](https://blog.cloudflare.com/integrating-crowdstrike-falcon-fusion-soar-with-cloudflares-sase-platform/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/#page","headline":"CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection · Cloudflare Reference Architecture docs","description":"This reference architecture outlines how Cloudflare and CrowdStrike solutions integrate to create a unified security ecosystem that combines endpoint protection with zero trust network access, threat intelligence sharing, and automated remediation workflows. Organizations can leverage this integration to implement risk-based access policies, improve threat detection, and orchestrate security responses across both platforms.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/","name":"CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/#page","headline":"CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection · Cloudflare Reference Architecture docs","description":"This reference architecture outlines how Cloudflare and CrowdStrike solutions integrate to create a unified security ecosystem that combines endpoint protection with zero trust network access, threat intelligence sharing, and automated remediation workflows. Organizations can leverage this integration to implement risk-based access policies, improve threat detection, and orchestrate security responses across both platforms.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

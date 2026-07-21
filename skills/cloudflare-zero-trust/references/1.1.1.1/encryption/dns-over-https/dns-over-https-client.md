@@ -1,16 +1,18 @@
 ---
-title: Connect to 1.1.1.1 using DoH clients
 description: Learn how to connect to Cloudflare's 1.1.1.1 using DNS over HTTPS (DoH) clients.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Connect to 1.1.1.1 using DoH clients
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect to 1.1.1.1 using DoH clients
 
-# Connect to 1.1.1.1 using DoH clients
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A DoH client is a software that runs on your device and sends DNS queries to a resolver like 1.1.1.1 over an encrypted HTTPS connection. Once configured, the client handles DNS resolution for your device or network.
 
@@ -31,8 +33,6 @@ dnscrypt-proxy -version
 2.0.8
 ```
 3. Set up the configuration file using the [official instructions ↗](https://github.com/jedisct1/dnscrypt-proxy/wiki/installation#setting-up-dnscrypt-proxy), and add `cloudflare` and `cloudflare-ipv6` to the server list in `dnscrypt-proxy.toml`:
-
-**TOML**
 ```toml
 server_names = ['cloudflare', 'cloudflare-ipv6']
 ```
@@ -50,7 +50,14 @@ Resolver IP:    172.68.140.217
 ```
 5. Register it as a system service so that it starts automatically when your device boots. Follow the [DNSCrypt-Proxy installation instructions ↗](https://github.com/jedisct1/dnscrypt-proxy/wiki/installation).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/#page","headline":"Connect to 1.1.1.1 using DoH clients | Cloudflare Docs","description":"Learn how to connect to Cloudflare's 1.1.1.1 using DNS over HTTPS (DoH) clients.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/encryption/","name":"Encryption"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/","name":"DNS over HTTPS"}},{"@type":"ListItem","position":5,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/dns-over-https-client/","name":"Connect to 1.1.1.1 using DoH clients"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/#page","headline":"Connect to 1.1.1.1 using DoH clients | Cloudflare Docs","description":"Learn how to connect to Cloudflare's 1.1.1.1 using DNS over HTTPS (DoH) clients.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

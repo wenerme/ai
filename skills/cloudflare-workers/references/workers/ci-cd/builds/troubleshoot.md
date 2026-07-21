@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting builds
 description: Learn how to troubleshoot common and known issues in Workers Builds.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Troubleshooting builds
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting builds
 
-# Troubleshooting builds
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to identify and resolve build errors, as well as troubleshoot common issues in the Workers Builds deployment process.
 
@@ -66,7 +68,14 @@ If you are running into errors associated with your Git integration, you can try
 
 If you discover additional issues or would like to provide feedback, reach out to us in the [Cloudflare Developers Discord ↗](https://discord.com/channels/595317990191398933/1052656806058528849).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/#page","headline":"Troubleshooting builds · Cloudflare Workers docs","description":"Learn how to troubleshoot common and known issues in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/builds/troubleshoot/","name":"Troubleshooting builds"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/#page","headline":"Troubleshooting builds · Cloudflare Workers docs","description":"Learn how to troubleshoot common and known issues in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

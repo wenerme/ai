@@ -1,16 +1,18 @@
 ---
-title: Claim deployments (temporary accounts)
 description: Deploy Workers before authentication, then claim the temporary account to keep its deployments and resources.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Claim deployments (temporary accounts)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Claim deployments (temporary accounts)
 
-# Claim deployments (temporary accounts)
+Last updated Jul 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/claim-deployments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Temporary preview accounts let you deploy and test [Workers](https://developers.cloudflare.com/workers/) before you authenticate with Cloudflare. You can then claim the account to keep its deployments and supported resources.
 
@@ -133,15 +135,15 @@ The response includes the challenge token, seed, and difficulty parameters:
 
 ```json
 {
-  "success": true,
-  "result": {
-    "challengeToken": "<CHALLENGE_TOKEN>",
-    "seed": "<BASE64URL_32_BYTE_SEED>",
-    "k": 8000,
-    "g": 2000
-  },
-  "errors": [],
-  "messages": []
+	"success": true,
+	"result": {
+		"challengeToken": "<CHALLENGE_TOKEN>",
+		"seed": "<BASE64URL_32_BYTE_SEED>",
+		"k": 8000,
+		"g": 2000
+	},
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -159,125 +161,103 @@ Before solving a challenge, require `k` and `g` to be positive integers. Reject 
 
 The following Node.js example applies these bounds and returns the object required by the create request:
 
-* [  JavaScript ](#tab-panel-12771)
-* [  TypeScript ](#tab-panel-12772)
-
-**solve-preview-challenge.js**
-
 ```js
 import { createHash } from "node:crypto";
 
-
 function sha256(value) {
-  return createHash("sha256").update(value).digest();
+	return createHash("sha256").update(value).digest();
 }
-
 
 export function solvePreviewChallenge({ challengeToken, seed, k, g }) {
-  const seedBytes = Buffer.from(seed, "base64url");
-  if (seedBytes.length !== 32) {
-    throw new Error("seed must decode to 32 bytes");
-  }
-  if (!Number.isInteger(k) || k <= 0) {
-    throw new Error("k must be a positive integer");
-  }
-  if (!Number.isInteger(g) || g <= 0) {
-    throw new Error("g must be a positive integer");
-  }
-  if (k * g > 64_000_000) {
-    throw new Error("k * g must not exceed 64,000,000");
-  }
+	const seedBytes = Buffer.from(seed, "base64url");
+	if (seedBytes.length !== 32) {
+		throw new Error("seed must decode to 32 bytes");
+	}
+	if (!Number.isInteger(k) || k <= 0) {
+		throw new Error("k must be a positive integer");
+	}
+	if (!Number.isInteger(g) || g <= 0) {
+		throw new Error("g must be a positive integer");
+	}
+	if (k * g > 64_000_000) {
+		throw new Error("k * g must not exceed 64,000,000");
+	}
 
+	const checkpoints = [];
+	let hash = sha256(seedBytes);
 
-  const checkpoints = [];
-  let hash = sha256(seedBytes);
+	checkpoints.push(hash);
 
+	for (let segment = 0; segment < k; segment++) {
+		for (let iteration = 0; iteration < g; iteration++) {
+			hash = sha256(hash);
+		}
 
-  checkpoints.push(hash);
+		checkpoints.push(hash);
+	}
 
-
-  for (let segment = 0; segment < k; segment++) {
-    for (let iteration = 0; iteration < g; iteration++) {
-      hash = sha256(hash);
-    }
-
-
-    checkpoints.push(hash);
-  }
-
-
-  return {
-    challengeToken,
-    solution: {
-      checkpoints: Buffer.concat(checkpoints).toString("base64"),
-    },
-  };
+	return {
+		challengeToken,
+		solution: {
+			checkpoints: Buffer.concat(checkpoints).toString("base64"),
+		},
+	};
 }
 ```
-
-**solve-preview-challenge.ts**
 
 ```ts
 import { createHash } from "node:crypto";
 
-
 type PreviewChallenge = {
-  challengeToken: string;
-  seed: string;
-  k: number;
-  g: number;
+	challengeToken: string;
+	seed: string;
+	k: number;
+	g: number;
 };
 
-
 function sha256(value: Uint8Array): Buffer {
-  return createHash("sha256").update(value).digest();
+	return createHash("sha256").update(value).digest();
 }
 
-
 export function solvePreviewChallenge({
-  challengeToken,
-  seed,
-  k,
-  g,
+	challengeToken,
+	seed,
+	k,
+	g,
 }: PreviewChallenge) {
-  const seedBytes = Buffer.from(seed, "base64url");
-  if (seedBytes.length !== 32) {
-    throw new Error("seed must decode to 32 bytes");
-  }
-  if (!Number.isInteger(k) || k <= 0) {
-    throw new Error("k must be a positive integer");
-  }
-  if (!Number.isInteger(g) || g <= 0) {
-    throw new Error("g must be a positive integer");
-  }
-  if (k * g > 64_000_000) {
-    throw new Error("k * g must not exceed 64,000,000");
-  }
+	const seedBytes = Buffer.from(seed, "base64url");
+	if (seedBytes.length !== 32) {
+		throw new Error("seed must decode to 32 bytes");
+	}
+	if (!Number.isInteger(k) || k <= 0) {
+		throw new Error("k must be a positive integer");
+	}
+	if (!Number.isInteger(g) || g <= 0) {
+		throw new Error("g must be a positive integer");
+	}
+	if (k * g > 64_000_000) {
+		throw new Error("k * g must not exceed 64,000,000");
+	}
 
+	const checkpoints: Buffer[] = [];
+	let hash = sha256(seedBytes);
 
-  const checkpoints: Buffer[] = [];
-  let hash = sha256(seedBytes);
+	checkpoints.push(hash);
 
+	for (let segment = 0; segment < k; segment++) {
+		for (let iteration = 0; iteration < g; iteration++) {
+			hash = sha256(hash);
+		}
 
-  checkpoints.push(hash);
+		checkpoints.push(hash);
+	}
 
-
-  for (let segment = 0; segment < k; segment++) {
-    for (let iteration = 0; iteration < g; iteration++) {
-      hash = sha256(hash);
-    }
-
-
-    checkpoints.push(hash);
-  }
-
-
-  return {
-    challengeToken,
-    solution: {
-      checkpoints: Buffer.concat(checkpoints).toString("base64"),
-    },
-  };
+	return {
+		challengeToken,
+		solution: {
+			checkpoints: Buffer.concat(checkpoints).toString("base64"),
+		},
+	};
 }
 ```
 
@@ -310,24 +290,24 @@ The response includes temporary credentials and a claim URL:
 
 ```json
 {
-  "success": true,
-  "result": {
-    "account": {
-      "id": "<TEMPORARY_ACCOUNT_ID>",
-      "name": "<TEMPORARY_ACCOUNT_NAME>",
-      "type": "standard",
-      "apiToken": "<TEMPORARY_ACCOUNT_API_TOKEN>",
-      "tokenId": "<TEMPORARY_TOKEN_ID>",
-      "expiresAt": "<ACCOUNT_EXPIRES_AT>"
-    },
-    "claim": {
-      "token": "<CLAIM_TOKEN>",
-      "url": "https://dash.cloudflare.com/claim-preview?claimToken=<CLAIM_TOKEN>",
-      "expiresAt": "<CLAIM_EXPIRES_AT>"
-    }
-  },
-  "errors": [],
-  "messages": []
+	"success": true,
+	"result": {
+		"account": {
+			"id": "<TEMPORARY_ACCOUNT_ID>",
+			"name": "<TEMPORARY_ACCOUNT_NAME>",
+			"type": "standard",
+			"apiToken": "<TEMPORARY_ACCOUNT_API_TOKEN>",
+			"tokenId": "<TEMPORARY_TOKEN_ID>",
+			"expiresAt": "<ACCOUNT_EXPIRES_AT>"
+		},
+		"claim": {
+			"token": "<CLAIM_TOKEN>",
+			"url": "https://dash.cloudflare.com/claim-preview?claimToken=<CLAIM_TOKEN>",
+			"expiresAt": "<CLAIM_EXPIRES_AT>"
+		}
+	},
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -340,9 +320,6 @@ Use `account.id` and `account.apiToken` with supported Cloudflare API endpoints.
 Temporary account tokens do not grant every permanent-account API permission. Unsupported operations return an authorization error.
 
 The following examples upload and deploy a Worker with the [Workers Script Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/), then retrieve the account's `workers.dev` subdomain.
-
-* [ REST API ](#tab-panel-12769)
-* [ TypeScript SDK ](#tab-panel-12770)
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
@@ -363,41 +340,35 @@ For a script available on `workers.dev`, combine `result.subdomain` with the scr
 
 Use the [Cloudflare TypeScript SDK ↗](https://github.com/cloudflare/cloudflare-typescript) for supported resource operations after provisioning the temporary account:
 
-**TypeScript**
-
 ```typescript
 import Cloudflare from "cloudflare";
 
-
 export async function deployWorker(
-  accountId: string,
-  apiToken: string,
-  scriptName: string,
-  compatibilityDate: string,
-  scriptContent: string,
+	accountId: string,
+	apiToken: string,
+	scriptName: string,
+	compatibilityDate: string,
+	scriptContent: string,
 ) {
-  const client = new Cloudflare({ apiToken });
-  const workerModule = new File([scriptContent], "worker.mjs", {
-    type: "application/javascript+module",
-  });
+	const client = new Cloudflare({ apiToken });
+	const workerModule = new File([scriptContent], "worker.mjs", {
+		type: "application/javascript+module",
+	});
 
+	await client.workers.scripts.update(scriptName, {
+		account_id: accountId,
+		metadata: {
+			main_module: "worker.mjs",
+			compatibility_date: compatibilityDate,
+		},
+		files: [workerModule],
+	});
 
-  await client.workers.scripts.update(scriptName, {
-    account_id: accountId,
-    metadata: {
-      main_module: "worker.mjs",
-      compatibility_date: compatibilityDate,
-    },
-    files: [workerModule],
-  });
+	const { subdomain } = await client.workers.subdomains.get({
+		account_id: accountId,
+	});
 
-
-  const { subdomain } = await client.workers.subdomains.get({
-    account_id: accountId,
-  });
-
-
-  return `https://${scriptName}.${subdomain}.workers.dev`;
+	return `https://${scriptName}.${subdomain}.workers.dev`;
 }
 ```
 
@@ -456,13 +427,26 @@ The following table summarizes supported capabilities and limits. Temporary cred
 
 ## Related resources
 
-[ wrangler deploy ](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) Review the full command reference for deploying Workers.
+### [ wrangler deploy ](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy)
 
-[ Prompting ](https://developers.cloudflare.com/workers/get-started/prompting/) Build Workers apps with AI prompts and MCP servers.
+ Review the full command reference for deploying Workers.
 
-[ Deploy an existing project ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) Learn how the Wrangler CLI automatically detects and configures projects for Workers.
+### [ Prompting ](https://developers.cloudflare.com/workers/get-started/prompting/)
+
+ Build Workers apps with AI prompts and MCP servers.
+
+### [ Deploy an existing project ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
+
+ Learn how the Wrangler CLI automatically detects and configures projects for Workers.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/claim-deployments/#page","headline":"Claim deployments (temporary accounts) · Cloudflare Workers docs","description":"Deploy Workers before authentication, then claim the temporary account to keep its deployments and resources.","url":"https://developers.cloudflare.com/workers/platform/claim-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/claim-deployments/","name":"Claim deployments (temporary accounts)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/claim-deployments/#page","headline":"Claim deployments (temporary accounts) · Cloudflare Workers docs","description":"Deploy Workers before authentication, then claim the temporary account to keep its deployments and resources.","url":"https://developers.cloudflare.com/workers/platform/claim-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Log and store upload events in R2 with event notifications
 description: This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Log and store upload events in R2 with event notifications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Log and store upload events in R2 with event notifications
 
-# Log and store upload events in R2 with event notifications
+Last updated Mar 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example provides a step-by-step guide on using [event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) to capture and store R2 upload logs in a separate bucket.
 
@@ -80,55 +82,46 @@ cd consumer-worker
 
 In your Worker project's \[[Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)\](/workers/wrangler/configuration/), add a [queue consumer](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) and [R2 bucket binding](https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets). The queues consumer bindings will register your Worker as a consumer of your future event notifications and the R2 bucket bindings will allow your Worker to access your R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-10798)
-* [  wrangler.toml ](#tab-panel-10799)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "event-notification-writer",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "queues": {
-    "consumers": [
-      {
-        "queue": "example-event-notification-queue",
-        "max_batch_size": 100,
-        "max_batch_timeout": 5
-      }
-    ]
-  },
-  "r2_buckets": [
-    {
-      "binding": "LOG_SINK",
-      "bucket_name": "example-log-sink-bucket"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "event-notification-writer",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"queues": {
+		"consumers": [
+			{
+				"queue": "example-event-notification-queue",
+				"max_batch_size": 100,
+				"max_batch_timeout": 5
+			}
+		]
+	},
+	"r2_buckets": [
+		{
+			"binding": "LOG_SINK",
+			"bucket_name": "example-log-sink-bucket"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "event-notification-writer"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [[queues.consumers]]
 queue = "example-event-notification-queue"
 max_batch_size = 100
 max_batch_timeout = 5
-
 
 [[r2_buckets]]
 binding = "LOG_SINK"
@@ -139,33 +132,28 @@ bucket_name = "example-log-sink-bucket"
 
 Add a [queue handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) to `src/index.ts` to handle writing batches of notifications to our log sink bucket (you do not need a [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)):
 
-**TypeScript**
-
 ```ts
 export interface Env {
-  LOG_SINK: R2Bucket;
+	LOG_SINK: R2Bucket;
 }
 
-
 export default {
-  async queue(batch, env): Promise<void> {
-    const batchId = new Date().toISOString().replace(/[:.]/g, "-");
-    const fileName = `upload-logs-${batchId}.json`;
+	async queue(batch, env): Promise<void> {
+		const batchId = new Date().toISOString().replace(/[:.]/g, "-");
+		const fileName = `upload-logs-${batchId}.json`;
 
+		// Serialize the entire batch of messages to JSON
+		const fileContent = new TextEncoder().encode(
+			JSON.stringify(batch.messages),
+		);
 
-    // Serialize the entire batch of messages to JSON
-    const fileContent = new TextEncoder().encode(
-      JSON.stringify(batch.messages),
-    );
-
-
-    // Write the batch of messages to R2
-    await env.LOG_SINK.put(fileName, fileContent, {
-      httpMetadata: {
-        contentType: "application/json",
-      },
-    });
-  },
+		// Write the batch of messages to R2
+		await env.LOG_SINK.put(fileName, fileContent, {
+			httpMetadata: {
+				contentType: "application/json",
+			},
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -189,7 +177,14 @@ npx wrangler r2 bucket notification create example-upload-bucket --event-type ob
 
 Now you can test the full end-to-end flow by uploading an object to `example-upload-bucket` in the Cloudflare dashboard. After you have uploaded an object, logs will appear in `example-log-sink-bucket` in a few seconds.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/#page","headline":"Log and store upload events in R2 with event notifications · Cloudflare R2 docs","description":"This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.","url":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/tutorials/upload-logs-event-notifications/","name":"Log and store upload events in R2 with event notifications"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/#page","headline":"Log and store upload events in R2 with event notifications · Cloudflare R2 docs","description":"This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.","url":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

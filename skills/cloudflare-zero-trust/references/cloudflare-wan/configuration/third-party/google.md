@@ -1,16 +1,18 @@
 ---
-title: Google Cloud VPN
 description: Connect Google Cloud VPN to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Google Cloud VPN
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Google Cloud VPN
 
-# Google Cloud VPN
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/google/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to configure IPsec VPN between Cloudflare WAN (formerly Magic WAN) and a Google Cloud Platform (GCP) Cloud VPN.
 
@@ -105,7 +107,14 @@ To create a static route:
 3. For the **Tunnel/Next hop**, choose the IPsec tunnel you created in the previous step.
 4. Repeat the steps above for the second IPsec tunnel you created.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/google/#page","headline":"Google Cloud VPN · Cloudflare WAN docs","description":"Connect Google Cloud VPN to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/google/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/google/","name":"Google Cloud VPN"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/google/#page","headline":"Google Cloud VPN · Cloudflare WAN docs","description":"Connect Google Cloud VPN to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/google/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

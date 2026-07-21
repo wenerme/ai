@@ -1,16 +1,18 @@
 ---
-title: Build Data Loss Prevention (DLP) policies
 description: Configure DLP profiles and policies.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Build Data Loss Prevention (DLP) policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build Data Loss Prevention (DLP) policies
 
-# Build Data Loss Prevention (DLP) policies
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/data-loss-prevention/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In order to use Data Loss Prevention (DLP) tools within Cloudflare Zero Trust, you first need to define your DLP profiles. [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) are complex objects with dictionaries, pre-built detections, and custom logic that you can reference as selectors within your Gateway policies.
 
@@ -69,31 +71,26 @@ If your organization is most concerned about general data patterns that fit exis
 
 To help this better match the needs of your organization, you can also build a complex profile that matches data to both an existing library and a custom string detection or database. For example:
 
-* [ Dashboard ](#tab-panel-10054)
-* [ API ](#tab-panel-10055)
-
 | Selector    | Operator | Value                     | Logic | Action |
 | ----------- | -------- | ------------------------- | ----- | ------ |
 | DLP Profile | in       | _Credentials and Secrets_ | Or    | Block  |
 | DLP Profile | in       | _AWS Key Dataset_         |       |        |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "block",
-    "description": "Detect secrets and AWS keys",
-    "enabled": true,
-    "filters": [
-        "http"
-    ],
-    "name": "Secrets and AWS keys",
-    "precedence": 0,
-    "traffic": "any(dlp.profiles[*] in <CREDENTIALS_DLP_PROFILE_UUID>) or any(dlp.profiles[*] in <AWS_DLP_PROFILE_UUID>)"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "block",
+		"description": "Detect secrets and AWS keys",
+		"enabled": true,
+		"filters": [
+				"http"
+		],
+		"name": "Secrets and AWS keys",
+		"precedence": 0,
+		"traffic": "any(dlp.profiles[*] in <CREDENTIALS_DLP_PROFILE_UUID>) or any(dlp.profiles[*] in <AWS_DLP_PROFILE_UUID>)"
+	}'
 ```
 
 #### Assorted data patterns
@@ -108,9 +105,6 @@ To validate your regex, use [Rustexp ↗](https://rustexp.lpil.uk/).
 
 For example, you can use a custom expression to detect when your users share product SKUs in the format `CF1234-56789`:
 
-* [ Dashboard ](#tab-panel-10056)
-* [ API ](#tab-panel-10057)
-
 1. [Build a custom profile](#build-a-custom-profile) with the following custom entry:
 
 | Detection entry name | Value                     |
@@ -123,24 +117,22 @@ For example, you can use a custom expression to detect when your users share pro
 | DLP Profile | in            | _Product SKUs_               | And   | Block  |
 | User Email  | matches regex | \[a-z0-9\]{0,15}@example.com |       |        |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "block",
-    "description": "Detect product SKUs shared by users in organization",
-    "enabled": true,
-    "filters": [
-        "http"
-    ],
-    "name": "Detect product SKU leaks",
-    "precedence": 0,
-    "traffic": "any(dlp.profiles[*] in <SKU_DLP_PROFILE_UUID>)",
-    "identity": "identity.email matches \"[a-z0-9]{0,15}@example.com\""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "block",
+		"description": "Detect product SKUs shared by users in organization",
+		"enabled": true,
+		"filters": [
+				"http"
+		],
+		"name": "Detect product SKU leaks",
+		"precedence": 0,
+		"traffic": "any(dlp.profiles[*] in <SKU_DLP_PROFILE_UUID>)",
+		"identity": "identity.email matches \"[a-z0-9]{0,15}@example.com\""
+	}'
 ```
 
 #### DLP datasets
@@ -171,38 +163,40 @@ The best way to start applying data loss prevention to your traffic, minimize th
 
 Many organizations want to detect and log financial information egressing from user devices to critical SaaS applications. To limit the risk of false positives and to filter out logging noise, Cloudflare recommends building your first series of policies to specify both target data and target destination. For example, you can block financial information from being sent to AI chatbots, such as ChatGPT and Gemini:
 
-* [ Dashboard ](#tab-panel-10058)
-* [ API ](#tab-panel-10059)
-
 | Selector           | Operator | Value                     | Logic | Action |
 | ------------------ | -------- | ------------------------- | ----- | ------ |
 | DLP Profile        | in       | _Financial Information_   | And   | Block  |
 | Content Categories | in       | _Artificial Intelligence_ |       |        |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "block",
-    "description": "Prevent financial information from being shared with AI tools",
-    "enabled": true,
-    "filters": [
-        "http"
-    ],
-    "name": "Block AI financial info",
-    "precedence": 0,
-    "traffic": "any(dlp.profiles[*] in <FINANCIAL_INFO_DLP_PROFILE_UUID>) and any(http.request.uri.content_category[*] in {184})"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "block",
+		"description": "Prevent financial information from being shared with AI tools",
+		"enabled": true,
+		"filters": [
+				"http"
+		],
+		"name": "Block AI financial info",
+		"precedence": 0,
+		"traffic": "any(dlp.profiles[*] in <FINANCIAL_INFO_DLP_PROFILE_UUID>) and any(http.request.uri.content_category[*] in {184})"
+	}'
 ```
 
 Once you have analyzed the flow and magnitude of data from the known sources, you can begin focusing on more specialized or explicit datasets for more generalized sources. You may want to allow sources that are known internal locations where sensitive data is intentionally transferred.
 
 After developing a level of confidence from reviewing the logs and evaluating a rate of false positives for both types of policies, you can feel more confident in experimenting more broadly with data loss prevention policies.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/data-loss-prevention/#page","headline":"Build Data Loss Prevention (DLP) policies · Cloudflare Learning Paths","description":"Configure DLP profiles and policies.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/","name":"Build HTTP security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/data-loss-prevention/","name":"Build Data Loss Prevention (DLP) policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/data-loss-prevention/#page","headline":"Build Data Loss Prevention (DLP) policies · Cloudflare Learning Paths","description":"Configure DLP profiles and policies.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Manage gateways
 description: Create, edit, and delete AI Gateway instances using the dashboard or API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Manage gateways
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage gateways
 
-# Manage gateways
+Last updated May 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You have several different options for managing an AI Gateway.
 
@@ -41,10 +43,7 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 ### Create a gateway manually
 
-* [ Dashboard ](#tab-panel-7124)
-* [ API ](#tab-panel-7125)
-
-[ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** \> **AI Gateway**.
 3. Select **Create Gateway**.
@@ -61,9 +60,6 @@ To set up an AI Gateway using the API:
 3. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to the Cloudflare API.
 
 ## Edit gateway
-
-* [ Dashboard ](#tab-panel-7120)
-* [ API ](#tab-panel-7121)
 
 To edit an AI Gateway in the dashboard:
 
@@ -103,9 +99,6 @@ For more complex failover scenarios where you need to fail across different prov
 
 Deleting your gateway is permanent and can not be undone.
 
-* [ Dashboard ](#tab-panel-7122)
-* [ API ](#tab-panel-7123)
-
 To delete an AI Gateway in the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -116,7 +109,14 @@ To delete an AI Gateway in the dashboard:
 
 To delete an AI Gateway, send a [DELETE request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/delete/) to the Cloudflare API.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#page","headline":"Manage gateways · Cloudflare AI Gateway docs","description":"Create, edit, and delete AI Gateway instances using the dashboard or API.","url":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/configuration/manage-gateway/","name":"Manage gateways"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#page","headline":"Manage gateways · Cloudflare AI Gateway docs","description":"Create, edit, and delete AI Gateway instances using the dashboard or API.","url":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

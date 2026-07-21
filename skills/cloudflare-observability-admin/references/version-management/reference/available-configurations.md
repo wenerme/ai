@@ -1,16 +1,18 @@
 ---
-title: Available configurations
 description: View which zone configurations support versioning.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Available configurations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/version-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Available configurations
 
-# Available configurations
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/version-management/reference/available-configurations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you use Version Management, you can edit various configurations, such as [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [Cache](https://developers.cloudflare.com/cache/).
 
@@ -112,7 +114,14 @@ Wrangler
 * If a version has a Worker route, it might disappear when a Worker is deployed via [Wrangler](https://developers.cloudflare.com/workers/wrangler/).
 * If two versions have the same custom domains, the Worker might randomly choose between them.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/reference/available-configurations/#page","headline":"Available configurations · Cloudflare Version Management docs","description":"View which zone configurations support versioning.","url":"https://developers.cloudflare.com/version-management/reference/available-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/version-management/","name":"Version Management"}},{"@type":"ListItem","position":3,"item":{"@id":"/version-management/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/version-management/reference/available-configurations/","name":"Available configurations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/reference/available-configurations/#page","headline":"Available configurations · Cloudflare Version Management docs","description":"View which zone configurations support versioning.","url":"https://developers.cloudflare.com/version-management/reference/available-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

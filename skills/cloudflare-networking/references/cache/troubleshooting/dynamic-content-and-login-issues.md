@@ -1,16 +1,18 @@
 ---
-title: Dynamic content and login issues
 description: Troubleshoot login failures, missing session cookies, and challenge loops caused by caching dynamic content.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Dynamic content and login issues
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dynamic content and login issues
 
-# Dynamic content and login issues
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Dynamic pages such as login forms, checkout flows, and authenticated application routes can break when they are cached too aggressively.
 
@@ -92,7 +94,14 @@ When debugging, also verify that rules are not matching Cloudflare-generated pat
 
 For more information on challenge-related behavior, refer to [Rules troubleshooting](https://developers.cloudflare.com/rules/reference/troubleshooting/) and [Cloudflare WAF troubleshooting](https://developers.cloudflare.com/waf/troubleshooting/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/#page","headline":"Dynamic content and login issues · Cloudflare Cache (CDN) docs","description":"Troubleshoot login failures, missing session cookies, and challenge loops caused by caching dynamic content.","url":"https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/troubleshooting/dynamic-content-and-login-issues/","name":"Dynamic content and login issues"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/#page","headline":"Dynamic content and login issues · Cloudflare Cache (CDN) docs","description":"Troubleshoot login failures, missing session cookies, and challenge loops caused by caching dynamic content.","url":"https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","Debugging"]}
 ```

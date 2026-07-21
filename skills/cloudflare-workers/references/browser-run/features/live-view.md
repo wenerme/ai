@@ -1,16 +1,18 @@
 ---
-title: Live View
 description: View and interact with remote Browser Run sessions in real time using the hosted DevTools UI or native Chrome DevTools.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Live View
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Live View
 
-# Live View
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/features/live-view/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Live View lets you see and interact with a remote Browser Run session in real time. This is useful for debugging automation scripts, monitoring what a browser is doing, or manually stepping in when a task requires human intervention (see [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/)).
 
@@ -24,7 +26,7 @@ There are three ways to access Live View: through the Cloudflare dashboard, via 
 
 In the Cloudflare dashboard, go to the **Browser Run** page and select the **Live Sessions** tab. This shows all active browser sessions in your account. Expand a session to see its tabs, then select **Open** to open the Live View for that tab.
 
-[ Go to **Browser Run** ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+[ Go to **Browser Run** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 
 Note
 
@@ -61,25 +63,25 @@ The `devtoolsFrontendUrl` is valid for five minutes from when it was generated. 
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser?keep_alive=600000&targets=true" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",
-  "targets": [
-    {
-      "description": "",
-      "devtoolsFrontendUrl": "https://live.browser.run/ui/inspector?wss=live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=...",
-      "id": "8E598E996530FB09E46A22B8B7754F7F",
-      "title": "about:blank",
-      "type": "page",
-      "url": "about:blank",
-      "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=..."
-    }
-  ],
-  "webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-..."
+	"sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",
+	"targets": [
+		{
+			"description": "",
+			"devtoolsFrontendUrl": "https://live.browser.run/ui/inspector?wss=live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=...",
+			"id": "8E598E996530FB09E46A22B8B7754F7F",
+			"title": "about:blank",
+			"type": "page",
+			"url": "about:blank",
+			"webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=..."
+		}
+	],
+	"webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-..."
 }
 ```
 
@@ -92,31 +94,38 @@ If you have a running session and want to connect to it:
 1. List your active sessions:
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/session" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Using the session ID, list the targets in that session:
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser/$SESSION_ID/json/list" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 ```json
 [
-  {
-    "id": "110850A800BDB8B593CDDA30676635CF",
-    "type": "page",
-    "url": "https://example.com",
-    "title": "Example Domain",
-    "description": "",
-    "devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=...",
-    "webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=..."
-  }
+	{
+		"id": "110850A800BDB8B593CDDA30676635CF",
+		"type": "page",
+		"url": "https://example.com",
+		"title": "Example Domain",
+		"description": "",
+		"devtoolsFrontendUrl": "https://live.browser.run/ui/view?wss=live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=...",
+		"webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/28d75446-.../page/110850A8...?jwt=..."
+	}
 ]
 ```
 3. Copy the `devtoolsFrontendUrl` and open it in your browser.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/live-view/#page","headline":"Live View · Cloudflare Browser Run docs","description":"View and interact with remote Browser Run sessions in real time using the hosted DevTools UI or native Chrome DevTools.","url":"https://developers.cloudflare.com/browser-run/features/live-view/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/features/live-view/","name":"Live View"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/live-view/#page","headline":"Live View · Cloudflare Browser Run docs","description":"View and interact with remote Browser Run sessions in real time using the hosted DevTools UI or native Chrome DevTools.","url":"https://developers.cloudflare.com/browser-run/features/live-view/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

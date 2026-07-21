@@ -1,18 +1,20 @@
 ---
-title: Domain configuration
 description: Configure and verify DNS records for Email Service sending and routing on your domain.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Domain configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Domain configuration
+#  Domain configuration
 
 Configure domains for Cloudflare Email Service, manage DNS records, and verify domain setup for both email sending and routing.
+
+Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/configuration/domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configure your domains to work with Cloudflare Email Service. This includes DNS record management, domain verification, and advanced domain settings.
 
@@ -20,13 +22,10 @@ Configure your domains to work with Cloudflare Email Service. This includes DNS 
 
 Cloudflare can configure all required DNS records for you when you onboard a domain onto Email Sending or Email Routing.
 
-* [ Email Sending ](#tab-panel-9223)
-* [ Email Routing ](#tab-panel-9224)
-
 Before using Email Sending, configure your domain.
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Sending**.
-[ Go to **Email Sending** ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
+[ Go to **Email Sending** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select **Onboard Domain**.
 3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to the `cf-bounce` subdomain of your domain:
 
@@ -45,7 +44,7 @@ Once your domain is onboarded, you can start sending emails.
 Before using Email Routing, configure your domain.
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select **Onboard Domain**.
 3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to your root domain:
 
@@ -67,11 +66,6 @@ Cloudflare automatically configures required DNS records for both email sending 
 ### Sending records
 
 These records authenticate your outbound emails. Email Sending creates DNS records on a `cf-bounce.` subdomain of your domain to handle bounce processing. These are separate from the records used by Email Routing.
-
-* [ MX records ](#tab-panel-9214)
-* [ SPF record ](#tab-panel-9215)
-* [ DKIM record ](#tab-panel-9216)
-* [ DMARC record ](#tab-panel-9217)
 
 **Purpose**: Route bounce emails back to Cloudflare for processing.
 
@@ -136,10 +130,6 @@ TXT _dmarc.yourdomain.com "v=DMARC1; p=reject;"
 ### Routing records
 
 These records route incoming emails to Cloudflare and authenticate forwarded emails. Email Routing DNS records are configured on the root domain.
-
-* [ MX records ](#tab-panel-9218)
-* [ SPF record ](#tab-panel-9219)
-* [ DKIM record ](#tab-panel-9220)
 
 **Purpose**: Route incoming emails to Cloudflare's mail servers.
 
@@ -227,7 +217,7 @@ Only Email Routing records on the root domain (MX, SPF, and DKIM) support unlock
 To unlock an Email Routing record:
 
 1. Go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select the domain, then open **Settings**.
 3. Locate the record in the **DNS records** section and select **Unlock**.
 
@@ -243,9 +233,6 @@ For more information, refer to [DNS troubleshooting: \_dc- and \_dc-mx subdomain
 
 ### Verification troubleshooting
 
-* [ DNS propagation ](#tab-panel-9221)
-* [ Record conflicts ](#tab-panel-9222)
-
 **Issue**: Records show as "Not Found" immediately after adding.
 
 **Solution**:
@@ -260,22 +247,17 @@ For more information, refer to [DNS troubleshooting: \_dc- and \_dc-mx subdomain
 # Check sending SPF record
 dig TXT cf-bounce.yourdomain.com | grep spf
 
-
 # Check routing SPF record
 dig TXT yourdomain.com | grep spf
-
 
 # Check sending DKIM record
 dig TXT cf-bounce._domainkey.yourdomain.com
 
-
 # Check routing DKIM record
 dig TXT cf2024-1._domainkey.yourdomain.com
 
-
 # Check routing MX records
 dig MX yourdomain.com
-
 
 # Check sending MX records (bounce handling)
 dig MX cf-bounce.yourdomain.com
@@ -309,7 +291,7 @@ Email Sending and Email Routing are managed separately. Removing one does not af
 ### Remove a domain from Email Sending
 
 1. Go to **Compute** \> **Email Service** \> **Email Sending**.
-[ Go to **Email Sending** ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
+[ Go to **Email Sending** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select the domain to remove, then open **Settings**.
 3. Select **Remove Domain** and confirm the action.
 
@@ -318,7 +300,7 @@ Removing a domain from Email Sending deletes the `cf-bounce` MX, SPF, DKIM, and 
 ### Remove a domain from Email Routing
 
 1. Go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select the domain to remove, then open **Settings**.
 3. Select **Disable Email Routing** and confirm the action.
 
@@ -337,7 +319,7 @@ Turn on **Email preview** to store sent messages so you can inspect their conten
 New sending domains have **Email preview** turned on automatically. To change the setting for a domain:
 
 1. Go to **Compute** \> **Email Service** \> **Email Sending**.
-[ Go to **Email Sending** ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
+[ Go to **Email Sending** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select the domain, then open **Settings**.
 3. Toggle **Enable email preview**.
 
@@ -347,7 +329,14 @@ New sending domains have **Email preview** turned on automatically. To change th
 * **[Domain authentication (DKIM and SPF)](https://developers.cloudflare.com/email-service/concepts/email-authentication/)**: Learn about SPF, DKIM, and DMARC
 * **[Deliverability](https://developers.cloudflare.com/email-service/concepts/deliverability/)**: Optimize email delivery
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/domains/#page","headline":"Domain configuration · Cloudflare Email Service docs","description":"Configure and verify DNS records for Email Service sending and routing on your domain.","url":"https://developers.cloudflare.com/email-service/configuration/domains/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/configuration/domains/","name":"Domain configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/domains/#page","headline":"Domain configuration · Cloudflare Email Service docs","description":"Configure and verify DNS records for Email Service sending and routing on your domain.","url":"https://developers.cloudflare.com/email-service/configuration/domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

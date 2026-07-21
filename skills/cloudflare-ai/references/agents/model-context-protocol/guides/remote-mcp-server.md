@@ -1,16 +1,18 @@
 ---
-title: Build a Remote MCP server
 description: Deploy a remote MCP server on Cloudflare with optional authentication using Streamable HTTP transport.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build a Remote MCP server
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build a Remote MCP server
 
-# Build a Remote MCP server
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will show you how to deploy your own remote MCP server on Cloudflare using [Streamable HTTP transport](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/), the current MCP specification standard. You have two options:
 
@@ -85,7 +87,7 @@ You cannot interact with the MCP server by opening the `/mcp` URL directly in a 
   ```
   ```sh
   🚀 MCP Inspector is up and running at:
-    http://localhost:5173/?MCP_PROXY_AUTH_TOKEN=46ab..cd3
+  	http://localhost:5173/?MCP_PROXY_AUTH_TOKEN=46ab..cd3
   🌐 Opening browser...
   ```
   The MCP Inspector will launch in your web browser. You can also launch it manually by opening a browser and going to `http://localhost:<PORT>`. Check the command output for the local port where MCP Inspector is running. In this example, MCP Inspector is served on port `5173`.
@@ -109,15 +111,15 @@ For example, to connect from Claude Desktop:
 1. Update your Claude Desktop configuration to point to the URL of your MCP server:
 ```json
 {
-  "mcpServers": {
-    "math": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://remote-mcp-server-authless.your-account.workers.dev/mcp"
-      ]
-    }
-  }
+	"mcpServers": {
+		"math": {
+			"command": "npx",
+			"args": [
+				"mcp-remote",
+				"https://remote-mcp-server-authless.your-account.workers.dev/mcp"
+			]
+		}
+	}
 }
 ```
 2. Restart Claude Desktop to load the MCP Server. Once this is done, Claude will be able to make calls to your remote MCP server.
@@ -171,19 +173,16 @@ cd my-mcp-server-github-auth
 
 You'll notice that in the example MCP server, if you open `src/index.ts`, the primary difference is that the `defaultHandler` is set to the `GitHubHandler`:
 
-**TypeScript**
-
 ```ts
 import GitHubHandler from "./github-handler";
 
-
 export default new OAuthProvider({
-  apiRoute: "/mcp",
-  apiHandler: MyMCP.serve("/mcp"),
-  defaultHandler: GitHubHandler,
-  authorizeEndpoint: "/authorize",
-  tokenEndpoint: "/token",
-  clientRegistrationEndpoint: "/register",
+	apiRoute: "/mcp",
+	apiHandler: MyMCP.serve("/mcp"),
+	defaultHandler: GitHubHandler,
+	authorizeEndpoint: "/authorize",
+	tokenEndpoint: "/token",
+	clientRegistrationEndpoint: "/register",
 });
 ```
 
@@ -249,7 +248,7 @@ npx wrangler secret put COOKIE_ENCRYPTION_KEY
 
 Use any random string for `COOKIE_ENCRYPTION_KEY`, for example the output of `openssl rand -hex 32`.
 
-Warning
+Caution
 
 When you create the first secret, Wrangler will ask if you want to create a new Worker. Submit "Y" to create a new Worker and save the secret.
 
@@ -261,12 +260,12 @@ npx wrangler kv namespace create "OAUTH_KV"
 b. Update the `wrangler.jsonc` file with the resulting KV ID:
 ```json
 {
-  "kvNamespaces": [
-    {
-      "binding": "OAUTH_KV",
-      "id": "<YOUR_KV_NAMESPACE_ID>"
-    }
-  ]
+	"kvNamespaces": [
+		{
+			"binding": "OAUTH_KV",
+			"id": "<YOUR_KV_NAMESPACE_ID>"
+		}
+	]
 }
 ```
 2. Deploy the MCP server to your Cloudflare `workers.dev` domain:
@@ -277,11 +276,22 @@ npm run deploy
 
 ## Next steps
 
-[ MCP Tools ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/) Add tools to your MCP server.
+### [ MCP Tools ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/)
 
-[ Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/) Customize authentication and authorization.
+ Add tools to your MCP server.
+
+### [ Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
+
+ Customize authentication and authorization.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#page","headline":"Build a Remote MCP server · Cloudflare Agents docs","description":"Deploy a remote MCP server on Cloudflare with optional authentication using Streamable HTTP transport.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/guides/","name":"Guides"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/guides/remote-mcp-server/","name":"Build a Remote MCP server"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#page","headline":"Build a Remote MCP server · Cloudflare Agents docs","description":"Deploy a remote MCP server on Cloudflare with optional authentication using Streamable HTTP transport.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

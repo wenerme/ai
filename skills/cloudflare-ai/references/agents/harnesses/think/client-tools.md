@@ -1,16 +1,18 @@
 ---
-title: Client tools
 description: Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Client tools
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Client tools
 
-# Client tools
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/client-tools/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Think supports tools that execute in the browser. The client sends serializable tool schemas in the chat request body, Think merges them with server tools, and when the LLM calls a client tool, the call is routed to the client for execution.
 
@@ -18,54 +20,47 @@ Think supports tools that execute in the browser. The client sends serializable 
 
 For dynamic client-side tools, pass `tools` to `useAgentChat`. Tools with an `execute` function are registered with the server as client-executed tools:
 
-* [  JavaScript ](#tab-panel-6087)
-* [  TypeScript ](#tab-panel-6088)
-
-**JavaScript**
-
 ```js
 const { messages, sendMessage } = useAgentChat({
-  agent,
-  tools: {
-    getUserTimezone: {
-      description: "Get the user's timezone from their browser",
-      parameters: {},
-      execute: async () => {
-        return Intl.DateTimeFormat().resolvedOptions().timeZone;
-      },
-    },
-    getClipboard: {
-      description: "Read text from the user's clipboard",
-      parameters: {},
-      execute: async () => {
-        return navigator.clipboard.readText();
-      },
-    },
-  },
+	agent,
+	tools: {
+		getUserTimezone: {
+			description: "Get the user's timezone from their browser",
+			parameters: {},
+			execute: async () => {
+				return Intl.DateTimeFormat().resolvedOptions().timeZone;
+			},
+		},
+		getClipboard: {
+			description: "Read text from the user's clipboard",
+			parameters: {},
+			execute: async () => {
+				return navigator.clipboard.readText();
+			},
+		},
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const { messages, sendMessage } = useAgentChat({
-  agent,
-  tools: {
-    getUserTimezone: {
-      description: "Get the user's timezone from their browser",
-      parameters: {},
-      execute: async () => {
-        return Intl.DateTimeFormat().resolvedOptions().timeZone;
-      },
-    },
-    getClipboard: {
-      description: "Read text from the user's clipboard",
-      parameters: {},
-      execute: async () => {
-        return navigator.clipboard.readText();
-      },
-    },
-  },
+	agent,
+	tools: {
+		getUserTimezone: {
+			description: "Get the user's timezone from their browser",
+			parameters: {},
+			execute: async () => {
+				return Intl.DateTimeFormat().resolvedOptions().timeZone;
+			},
+		},
+		getClipboard: {
+			description: "Read text from the user's clipboard",
+			parameters: {},
+			execute: async () => {
+				return navigator.clipboard.readText();
+			},
+		},
+	},
 });
 ```
 
@@ -77,44 +72,37 @@ For most apps, prefer defining tools on the server and using `onToolCall` for br
 
 When a parent agent delegates to a Think sub-agent over RPC with `chat()` (rather than the browser WebSocket), there is no WebSocket to carry `clientTools` or to send tool results back. Pass them through `ChatOptions` instead:
 
-* [  JavaScript ](#tab-panel-6083)
-* [  TypeScript ](#tab-panel-6084)
-
-**JavaScript**
-
 ```js
 await child.chat(message, callback, {
-  signal,
-  clientTools: [
-    {
-      name: "get_user_timezone",
-      description: "Get the caller's timezone",
-      parameters: { type: "object" },
-    },
-  ],
-  onClientToolCall: async ({ toolName, input }) => {
-    // Run the client tool wherever the parent can — return its output.
-    return runClientTool(toolName, input);
-  },
+	signal,
+	clientTools: [
+		{
+			name: "get_user_timezone",
+			description: "Get the caller's timezone",
+			parameters: { type: "object" },
+		},
+	],
+	onClientToolCall: async ({ toolName, input }) => {
+		// Run the client tool wherever the parent can — return its output.
+		return runClientTool(toolName, input);
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 await child.chat(message, callback, {
-  signal,
-  clientTools: [
-    {
-      name: "get_user_timezone",
-      description: "Get the caller's timezone",
-      parameters: { type: "object" },
-    },
-  ],
-  onClientToolCall: async ({ toolName, input }) => {
-    // Run the client tool wherever the parent can — return its output.
-    return runClientTool(toolName, input);
-  },
+	signal,
+	clientTools: [
+		{
+			name: "get_user_timezone",
+			description: "Get the caller's timezone",
+			parameters: { type: "object" },
+		},
+	],
+	onClientToolCall: async ({ toolName, input }) => {
+		// Run the client tool wherever the parent can — return its output.
+		return runClientTool(toolName, input);
+	},
 });
 ```
 
@@ -136,40 +124,33 @@ If you omit `onClientToolCall`, the tools are registered but have no result: the
 
 Handle browser-side tool execution on the client with `onToolCall`:
 
-* [  JavaScript ](#tab-panel-6085)
-* [  TypeScript ](#tab-panel-6086)
-
-**JavaScript**
-
 ```js
 useAgentChat({
-  agent,
-  onToolCall: async ({ toolCall, addToolOutput }) => {
-    if (toolCall.toolName === "read") {
-      const result = await readFromBrowser(toolCall.input);
-      addToolOutput({
-        toolCallId: toolCall.toolCallId,
-        output: result,
-      });
-    }
-  },
+	agent,
+	onToolCall: async ({ toolCall, addToolOutput }) => {
+		if (toolCall.toolName === "read") {
+			const result = await readFromBrowser(toolCall.input);
+			addToolOutput({
+				toolCallId: toolCall.toolCallId,
+				output: result,
+			});
+		}
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 useAgentChat({
-  agent,
-  onToolCall: async ({ toolCall, addToolOutput }) => {
-    if (toolCall.toolName === "read") {
-      const result = await readFromBrowser(toolCall.input);
-      addToolOutput({
-        toolCallId: toolCall.toolCallId,
-        output: result,
-      });
-    }
-  },
+	agent,
+	onToolCall: async ({ toolCall, addToolOutput }) => {
+		if (toolCall.toolName === "read") {
+			const result = await readFromBrowser(toolCall.input);
+			addToolOutput({
+				toolCallId: toolCall.toolCallId,
+				output: result,
+			});
+		}
+	},
 });
 ```
 
@@ -197,35 +178,26 @@ The `messageConcurrency` property controls how overlapping user submits behave w
 | "drop"                                        | Ignore overlapping submits entirely. Messages are not persisted.                                                                    |
 | { strategy: "debounce", debounceMs?: number } | Trailing-edge latest with a quiet window (default 750ms).                                                                           |
 
-* [  JavaScript ](#tab-panel-6081)
-* [  TypeScript ](#tab-panel-6082)
-
-**JavaScript**
-
 ```js
 import { Think } from "@cloudflare/think";
 
-
 export class SearchAgent extends Think {
-  messageConcurrency = "latest";
-  getModel() {
-    /* ... */
-  }
+	messageConcurrency = "latest";
+	getModel() {
+		/* ... */
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think } from "@cloudflare/think";
 import type { MessageConcurrency } from "@cloudflare/think";
 
-
 export class SearchAgent extends Think<Env> {
-  override messageConcurrency: MessageConcurrency = "latest";
-  getModel() {
-    /* ... */
-  }
+	override messageConcurrency: MessageConcurrency = "latest";
+	getModel() {
+		/* ... */
+	}
 }
 ```
 
@@ -235,7 +207,14 @@ Think broadcasts streaming responses to all connected WebSocket clients. When mu
 
 Programmatic `chat()` turns and `clearMessages()` also broadcast message updates to connected `useAgentChat` clients, so browser clients stay in sync without reconnecting.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/#page","headline":"Client tools · Cloudflare Agents docs","description":"Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/client-tools/","name":"Client tools"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/#page","headline":"Client tools · Cloudflare Agents docs","description":"Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

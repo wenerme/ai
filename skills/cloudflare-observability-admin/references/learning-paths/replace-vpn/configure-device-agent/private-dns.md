@@ -1,16 +1,18 @@
 ---
-title: Resolve private DNS
 description: Set up private DNS resolution.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Resolve private DNS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Resolve private DNS
 
-# Resolve private DNS
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, all DNS requests on the user device are resolved by Cloudflare's [public DNS resolver](https://developers.cloudflare.com/1.1.1.1/) except for common top level domains used for local resolution (such as `localhost`). To allow users to connect to internal server names or domains that do not resolve on the public Internet, you have two options:
 
@@ -27,9 +29,6 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-9978)
-* [ Terraform (v5) ](#tab-panel-9979)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
 3. Scroll down to **Local Domain Fallback** and select **Manage**.
@@ -43,12 +42,10 @@ A Local Domain Fallback list is scoped to a specific [device profile](https://de
 
   * `Zero Trust Write`
 2. (Optional) Create a list of domains that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:
-
-**local-domains.local.tf**
 ```tf
 locals {
-  default_local_domains = [
-    # Default Local Domain Fallback entries recommended by Cloudflare
+	default_local_domains = [
+		# Default Local Domain Fallback entries recommended by Cloudflare
     {
   suffix = "corp"
 },
@@ -91,28 +88,26 @@ locals {
 {
   suffix = "test"
 }
-  ]
+	]
 }
 ```
 3. To configure Local Domain Fallback for the default device profile, use the [cloudflare\_zero\_trust\_device\_default\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile%5Flocal%5Fdomain%5Ffallback) resource. To configure Local Domain Fallback for a custom device profile, use[cloudflare\_zero\_trust\_device\_custom\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile%5Flocal%5Fdomain%5Ffallback). For example:
-
-**device-profiles.tf**
 ```tf
 resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example" {
-  account_id = var.cloudflare_account_id
-  policy_id  = cloudflare_zero_trust_device_custom_profile.example.id
-  domains = concat(
-    # Global entries
-    local.default_local_domains,
-    # Profile-specific entries
-    [
-      {
-      suffix = "example.com"
-      description = "Domain for local development"
-      dns_server = ["1.1.1.1", "192.168.0.1"]
-      }
-    ]
-  )
+	account_id = var.cloudflare_account_id
+	policy_id  = cloudflare_zero_trust_device_custom_profile.example.id
+	domains = concat(
+		# Global entries
+		local.default_local_domains,
+		# Profile-specific entries
+		[
+			{
+			suffix = "example.com"
+			description = "Domain for local development"
+			dns_server = ["1.1.1.1", "192.168.0.1"]
+			}
+		]
+	)
 }
 ```
 
@@ -148,9 +143,6 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-9976)
-* [ Terraform (v5) ](#tab-panel-9977)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
 3. Create an expression for your desired traffic. For example, you can resolve a hostname for an internal service:
@@ -173,31 +165,31 @@ Custom resolvers are saved to your account for future use. You can add up to 10 
 2. Create a resolver policy using the [cloudflare\_zero\_trust\_gateway\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy) resource:
 ```tf
 resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
-  name        = "Example resolver policy"
-  enabled     = true
-  account_id  = var.cloudflare_account_id
-  description = "TERRAFORM MANAGED resolver policy"
-  action      = "resolve"
-  traffic     = "dns.fqdn in {\"internal.example.com\"}"
-  identity    = "identity.email in {\"jdoe@example.com\"}"
-  precedence  = 1
-  rule_settings = {
-      dns_resolvers = {
-      # You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
-        ipv4 = [{
-          ip = "192.0.2.24"
-          port = 53
-          route_through_private_network = true
-          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
-        }]
-        ipv6 = [{
-          ip = "2001:DB8::"
-          port = 53
-          route_through_private_network = true
-          vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
-        }]
-      }
-  }
+	name        = "Example resolver policy"
+	enabled     = true
+	account_id  = var.cloudflare_account_id
+	description = "TERRAFORM MANAGED resolver policy"
+	action      = "resolve"
+	traffic     = "dns.fqdn in {\"internal.example.com\"}"
+	identity    = "identity.email in {\"jdoe@example.com\"}"
+	precedence  = 1
+	rule_settings = {
+			dns_resolvers = {
+			# You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
+				ipv4 = [{
+					ip = "192.0.2.24"
+					port = 53
+					route_through_private_network = true
+					vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+				}]
+				ipv6 = [{
+					ip = "2001:DB8::"
+					port = 53
+					route_through_private_network = true
+					vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+				}]
+			}
+	}
 }
 ```
 
@@ -209,7 +201,14 @@ When a user's query matches a resolver policy, Gateway will send the query to yo
 
 Gateway will cache the fastest resolver for use in subsequent queries. Resolver priority is cached on a per user basis for each data center.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/#page","headline":"Resolve private DNS · Cloudflare Learning Paths","description":"Set up private DNS resolution.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/configure-device-agent/","name":"Configure the device agent"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/configure-device-agent/private-dns/","name":"Resolve private DNS"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/#page","headline":"Resolve private DNS · Cloudflare Learning Paths","description":"Set up private DNS resolution.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

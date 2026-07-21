@@ -1,16 +1,18 @@
 ---
-title: Ethereum network
 description: How the Ethereum blockchain and smart contracts work.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Ethereum network
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Ethereum network
 
-# Ethereum network
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Ethereum network is a decentralized platform for running programs called smart contracts. A smart contract is a program stored at a unique address on the network that executes automatically when triggered by a transaction. Because smart contracts run on Ethereum, they can handle any computation that a general-purpose programming language can express.
 
@@ -44,7 +46,14 @@ To access the Ethereum network from a custom domain name — without running you
 
 If you’re interested in learning more, you can read the official [RPC documentation ↗](https://github.com/ethereum/wiki/wiki/JSON-RPC), along with the official documentation [provided by Ethereum ↗](https://www.ethereum.org/use/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/#page","headline":"Ethereum network · Cloudflare Web3 docs","description":"How the Ethereum blockchain and smart contracts work.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ethereum-gateway/concepts/","name":"Concepts"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ethereum-gateway/concepts/ethereum/","name":"Ethereum network"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/#page","headline":"Ethereum network · Cloudflare Web3 docs","description":"How the Ethereum blockchain and smart contracts work.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

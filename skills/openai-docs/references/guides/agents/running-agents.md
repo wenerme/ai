@@ -39,11 +39,9 @@ const agent = new Agent({
 
 const session = new MemorySession();
 
-const firstTurn = await run(
-  agent,
-  "What city is the Golden Gate Bridge in?",
-  { session },
-);
+const firstTurn = await run(agent, "What city is the Golden Gate Bridge in?", {
+  session,
+});
 console.log(firstTurn.finalOutput);
 
 const secondTurn = await run(agent, "What state is it in?", { session });
@@ -165,7 +163,7 @@ const stream = await run(agent, "Give me three short facts about Saturn.", {
 for await (const event of stream) {
   if (
     event.type === "raw_model_stream_event" &&
-    event.data.type === "response.output_text.delta"
+    event.data.type === "output_text_delta"
   ) {
     process.stdout.write(event.data.delta);
   }

@@ -1,16 +1,18 @@
 ---
-title: Organizations for Enterprise
 description: Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Organizations for Enterprise
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Organizations for Enterprise
 
-# Organizations for Enterprise
+Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -246,7 +248,14 @@ Accounts cannot be moved between Enterprise Organizations.
 
 If you encounter errors during setup, refer to [Troubleshooting](https://developers.cloudflare.com/fundamentals/organizations/limitations/#troubleshooting).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise · Cloudflare Fundamentals docs","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/organizations/","name":"Organizations"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/organizations/for-enterprise/","name":"Organizations for Enterprise"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise · Cloudflare Fundamentals docs","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

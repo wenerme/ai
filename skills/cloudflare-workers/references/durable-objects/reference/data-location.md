@@ -1,16 +1,18 @@
 ---
-title: Data location
 description: Restrict Durable Objects to specific jurisdictions or provide location hints to control where data is stored and processed.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Data location
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Data location
 
-# Data location
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/reference/data-location/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Restrict Durable Objects to a jurisdiction
 
@@ -24,16 +26,12 @@ A [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) wi
 
 Durable Objects can be restricted to a specific jurisdiction by creating a [DurableObjectNamespace](https://developers.cloudflare.com/durable-objects/api/namespace/) restricted to a jurisdiction. All [Durable Object ID methods](https://developers.cloudflare.com/durable-objects/api/id/) are valid on IDs within a namespace restricted to a jurisdiction.
 
-**JavaScript**
-
 ```js
 const euSubnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");
 const euId = euSubnamespace.newUniqueId();
 ```
 
 * It is possible to have the same name represent different IDs in different jurisdictions.
-
-**JavaScript**
 ```js
 const euId1 = env.MY_DURABLE_OBJECT.idFromName("my-name");
 const euId2 = env.MY_DURABLE_OBJECT.jurisdiction("eu").idFromName("my-name");
@@ -42,15 +40,13 @@ console.assert(!euId1.equal(euId2), "This should always be true");
 * You will run into an error if the jurisdiction on your [DurableObjectNamespace](https://developers.cloudflare.com/durable-objects/api/namespace/) and the jurisdiction on [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) are different.
 * You will not run into an error if the [DurableObjectNamespace](https://developers.cloudflare.com/durable-objects/api/namespace/) is not associated with a jurisdiction.
 * All [Durable Object ID methods](https://developers.cloudflare.com/durable-objects/api/id/) are valid on IDs within a namespace restricted to a jurisdiction.
-
-**JavaScript**
 ```js
 const euSubnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu");
 const euId = euSubnamespace.idFromName(name);
 const stub = env.MY_DURABLE_OBJECT.get(euId);
 ```
 
-Use `DurableObjectNamespace.jurisdiction`
+Use \`DurableObjectNamespace.jurisdiction\`
 
 When specifying a jurisdiction, Cloudflare recommends you first create a namespace restricted to a jurisdiction, using `const euSubnamespace = env.MY_DURABLE_OBJECT.jurisdiction("eu")`.
 
@@ -84,13 +80,11 @@ Location hints are the mechanism provided to specify the location that a Durable
 
 To manually create Durable Objects in another location, provide an optional `locationHint` parameter to `get()`. Only the first call to `get()` for a particular Object will respect the hint.
 
-**JavaScript**
-
 ```js
 let durableObjectStub = OBJECT_NAMESPACE.get(id, { locationHint: "enam" });
 ```
 
-Warning
+Caution
 
 Hints are a best effort and not a guarantee. Unlike with jurisdictions, Durable Objects will not necessarily be instantiated in the hinted location, but instead instantiated in a data center selected to minimize latency from the hinted location.
 
@@ -120,7 +114,14 @@ Hints are a best effort and not a guarantee. Unlike with jurisdictions, Durable 
 
 * You can find our more about where Durable Objects are located using the website: [Where Durable Objects Live ↗](https://where.durableobjects.live/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/data-location/#page","headline":"Data location · Cloudflare Durable Objects docs","description":"Restrict Durable Objects to specific jurisdictions or provide location hints to control where data is stored and processed.","url":"https://developers.cloudflare.com/durable-objects/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/data-location/","name":"Data location"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/data-location/#page","headline":"Data location · Cloudflare Durable Objects docs","description":"Restrict Durable Objects to specific jurisdictions or provide location hints to control where data is stored and processed.","url":"https://developers.cloudflare.com/durable-objects/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

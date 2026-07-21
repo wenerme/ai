@@ -1,18 +1,20 @@
 ---
-title: Active Directory (SAML)
 description: Integrate Active Directory with Cloudflare One for secure identity management.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Active Directory (SAML)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Active Directory (SAML)
 
-# Active Directory (SAML)
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 Microsoft recommends migrating your Active Directory Federation Service (AD FS) SSO to Microsoft Entra ID. For more information, refer to [Microsoft Learn ↗](https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview).
 
@@ -168,20 +170,27 @@ In Cloudflare Access, you can find a link to this URL in the **Edit a SAML ident
 
 ```json
 {
-  "config": {
-    "issuer_url": "https://<your-team-name>.cloudflareaccess.com/",
-    "sso_target_url": "https://adfs.example.com/adfs/ls/",
-    "attributes": ["email"],
-    "email_attribute_name": "",
-    "sign_request": false,
-    "idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
-  },
-  "type": "saml",
-  "name": "adfs saml example"
+	"config": {
+		"issuer_url": "https://<your-team-name>.cloudflareaccess.com/",
+		"sso_target_url": "https://adfs.example.com/adfs/ls/",
+		"attributes": ["email"],
+		"email_attribute_name": "",
+		"sign_request": false,
+		"idp_public_cert": "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG\nA1UEC.....GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o"
+	},
+	"type": "saml",
+	"name": "adfs saml example"
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/#page","headline":"Active Directory (SAML) · Cloudflare One docs","description":"Integrate Active Directory with Cloudflare One for secure identity management.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","SSO"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/adfs/","name":"Active Directory (SAML)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/#page","headline":"Active Directory (SAML) · Cloudflare One docs","description":"Integrate Active Directory with Cloudflare One for secure identity management.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","SSO"]}
 ```

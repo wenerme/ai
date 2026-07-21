@@ -1,16 +1,18 @@
 ---
-title: WebSocket connections
 description: Connect to WebSocket servers running in sandboxes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: WebSocket connections
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WebSocket connections
 
-# WebSocket connections
+Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/websocket-connections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to work with WebSocket servers running in your sandboxes.
 
@@ -24,46 +26,39 @@ This guide shows you how to work with WebSocket servers running in your sandboxe
 
 **Create the echo server:**
 
-**echo-server.ts**
-
 ```typescript
 Bun.serve({
-  port: 8080,
-  hostname: "0.0.0.0",
-  fetch(req, server) {
-    if (server.upgrade(req)) {
-      return;
-    }
-    return new Response("WebSocket echo server");
-  },
-  websocket: {
-    message(ws, message) {
-      ws.send(`Echo: ${message}`);
-    },
-    open(ws) {
-      console.log("Client connected");
-    },
-    close(ws) {
-      console.log("Client disconnected");
-    },
-  },
+	port: 8080,
+	hostname: "0.0.0.0",
+	fetch(req, server) {
+		if (server.upgrade(req)) {
+			return;
+		}
+		return new Response("WebSocket echo server");
+	},
+	websocket: {
+		message(ws, message) {
+			ws.send(`Echo: ${message}`);
+		},
+		open(ws) {
+			console.log("Client connected");
+		},
+		close(ws) {
+			console.log("Client disconnected");
+		},
+	},
 });
-
 
 console.log("WebSocket server listening on port 8080");
 ```
 
 **Extend the Dockerfile:**
 
-**Dockerfile**
-
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:0.3.3
 
-
 # Copy echo server into the container
 COPY echo-server.ts /workspace/echo-server.ts
-
 
 # Create custom startup script
 COPY startup.sh /container-server/startup.sh
@@ -71,8 +66,6 @@ RUN chmod +x /container-server/startup.sh
 ```
 
 **Create startup script:**
-
-**startup.sh**
 
 ```bash
 #!/bin/bash
@@ -84,39 +77,27 @@ exec bun dist/index.js
 
 **Connect from your Worker:**
 
-* [  JavaScript ](#tab-panel-11375)
-* [  TypeScript ](#tab-panel-11376)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    if (request.headers.get("Upgrade")?.toLowerCase() === "websocket") {
-      const sandbox = getSandbox(env.Sandbox, "echo-service");
-      return await sandbox.wsConnect(request, 8080);
-    }
+	async fetch(request, env) {
+		if (request.headers.get("Upgrade")?.toLowerCase() === "websocket") {
+			const sandbox = getSandbox(env.Sandbox, "echo-service");
+			return await sandbox.wsConnect(request, 8080);
+		}
 
-
-    return new Response("WebSocket endpoint");
-  },
+		return new Response("WebSocket endpoint");
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { getSandbox } from '@cloudflare/sandbox';
 
-
 export { Sandbox } from "@cloudflare/sandbox";
-
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -125,17 +106,13 @@ export default {
       return await sandbox.wsConnect(request, 8080);
     }
 
-
     return new Response('WebSocket endpoint');
-
 
 }
 };
 ```
 
 **Client connects:**
-
-**JavaScript**
 
 ```javascript
 const ws = new WebSocket('wss://your-worker.com');
@@ -147,53 +124,38 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Get a public URL for your WebSocket server:
 
-* [  JavaScript ](#tab-panel-11377)
-* [  TypeScript ](#tab-panel-11378)
-
-**JavaScript**
-
 ```js
 import { getSandbox, proxyToSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    // Auto-route all requests via proxyToSandbox first
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
+	async fetch(request, env) {
+		// Auto-route all requests via proxyToSandbox first
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
 
+		// Extract hostname from request
+		const { hostname } = new URL(request.url);
+		const sandbox = getSandbox(env.Sandbox, "echo-service");
 
-    // Extract hostname from request
-    const { hostname } = new URL(request.url);
-    const sandbox = getSandbox(env.Sandbox, "echo-service");
+		// Expose the port to get preview URL
+		const { url } = await sandbox.exposePort(8080, { hostname });
 
+		// Return URL to clients
+		if (request.url.includes("/ws-url")) {
+			return Response.json({ url: url.replace("https", "wss") });
+		}
 
-    // Expose the port to get preview URL
-    const { url } = await sandbox.exposePort(8080, { hostname });
-
-
-    // Return URL to clients
-    if (request.url.includes("/ws-url")) {
-      return Response.json({ url: url.replace("https", "wss") });
-    }
-
-
-    return new Response("Not found", { status: 404 });
-  },
+		return new Response("Not found", { status: 404 });
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { getSandbox, proxyToSandbox } from '@cloudflare/sandbox';
 
-
 export { Sandbox } from '@cloudflare/sandbox';
-
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -201,24 +163,19 @@ export default {
     const proxyResponse = await proxyToSandbox(request, env);
     if (proxyResponse) return proxyResponse;
 
-
     // Extract hostname from request
     const { hostname } = new URL(request.url);
     const sandbox = getSandbox(env.Sandbox, 'echo-service');
 
-
     // Expose the port to get preview URL
     const { url } = await sandbox.exposePort(8080, { hostname });
-
 
     // Return URL to clients
     if (request.url.includes('/ws-url')) {
       return Response.json({ url: url.replace('https', 'wss') });
     }
 
-
     return new Response('Not found', { status: 404 });
-
 
 }
 };
@@ -230,13 +187,10 @@ Quick tunnels also handle WebSocket upgrades and do not require a custom domain,
 
 **Client connects to preview URL:**
 
-**JavaScript**
-
 ```javascript
 // Get the preview URL
 const response = await fetch('https://your-worker.com/ws-url');
 const { url } = await response.json();
-
 
 // Connect
 const ws = new WebSocket(url);
@@ -248,37 +202,27 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Your Worker can connect to a WebSocket service to get real-time data, even when the incoming request isn't a WebSocket:
 
-* [  JavaScript ](#tab-panel-11379)
-* [  TypeScript ](#tab-panel-11380)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
-
 
 let initialized = false;
 
-
 export default {
-  async fetch(request, env) {
-    // Get or create a sandbox instance
-    const sandbox = getSandbox(env.Sandbox, "data-processor");
+	async fetch(request, env) {
+		// Get or create a sandbox instance
+		const sandbox = getSandbox(env.Sandbox, "data-processor");
 
+		// Check for WebSocket upgrade
+		const upgrade = request.headers.get("Upgrade")?.toLowerCase();
 
-    // Check for WebSocket upgrade
-    const upgrade = request.headers.get("Upgrade")?.toLowerCase();
-
-
-    if (upgrade === "websocket") {
-      // Initialize server on first connection
-      if (!initialized) {
-        await sandbox.writeFile(
-          "/workspace/server.js",
-          `Bun.serve({
+		if (upgrade === "websocket") {
+			// Initialize server on first connection
+			if (!initialized) {
+				await sandbox.writeFile(
+					"/workspace/server.js",
+					`Bun.serve({
             port: 8080,
             fetch(req, server) {
               server.upgrade(req);
@@ -289,35 +233,28 @@ export default {
               }
             }
           });`,
-        );
-        await sandbox.startProcess("bun /workspace/server.js");
-        initialized = true;
-      }
-      // Connect to WebSocket server
-      return await sandbox.wsConnect(request, 8080);
-    }
+				);
+				await sandbox.startProcess("bun /workspace/server.js");
+				initialized = true;
+			}
+			// Connect to WebSocket server
+			return await sandbox.wsConnect(request, 8080);
+		}
 
-
-    return new Response("Processed real-time data");
-  },
+		return new Response("Processed real-time data");
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { getSandbox } from '@cloudflare/sandbox';
 
-
 export { Sandbox } from '@cloudflare/sandbox';
-
 
 let initialized = false;
 
-
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
-
 
      // Get or create a sandbox instance
     const sandbox = getSandbox(env.Sandbox, 'data-processor');
@@ -325,7 +262,6 @@ export default {
 
     // Check for WebSocket upgrade
     const upgrade = request.headers.get('Upgrade')?.toLowerCase();
-
 
     if (upgrade === 'websocket') {
       // Initialize server on first connection
@@ -353,9 +289,7 @@ export default {
       return await sandbox.wsConnect(request, 8080);
     }
 
-
     return new Response('Processed real-time data');
-
 
 }
 };
@@ -369,17 +303,10 @@ This pattern is useful when you need streaming data from sandbox services but wa
 
 Verify request has WebSocket headers:
 
-* [  JavaScript ](#tab-panel-11373)
-* [  TypeScript ](#tab-panel-11374)
-
-**JavaScript**
-
 ```js
 console.log(request.headers.get("Upgrade")); // 'websocket'
 console.log(request.headers.get("Connection")); // 'Upgrade'
 ```
-
-**TypeScript**
 
 ```ts
 console.log(request.headers.get('Upgrade'));    // 'websocket'
@@ -390,16 +317,12 @@ console.log(request.headers.get('Connection')); // 'Upgrade'
 
 Expose ports in Dockerfile for `wrangler dev`:
 
-**Dockerfile**
-
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:0.3.3
-
 
 COPY echo-server.ts /workspace/echo-server.ts
 COPY startup.sh /container-server/startup.sh
 RUN chmod +x /container-server/startup.sh
-
 
 # Required for local development
 EXPOSE 8080
@@ -416,7 +339,14 @@ Port exposure in Dockerfile is only required for local development. In productio
 * [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs for WebSocket services in development
 * [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Managing long-running services
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/websocket-connections/#page","headline":"WebSocket connections · Cloudflare Sandbox SDK docs","description":"Connect to WebSocket servers running in sandboxes.","url":"https://developers.cloudflare.com/sandbox/guides/websocket-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/websocket-connections/","name":"WebSocket connections"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/websocket-connections/#page","headline":"WebSocket connections · Cloudflare Sandbox SDK docs","description":"Connect to WebSocket servers running in sandboxes.","url":"https://developers.cloudflare.com/sandbox/guides/websocket-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

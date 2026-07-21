@@ -1,16 +1,18 @@
 ---
-title: Bundling
 description: Review Wrangler's default bundling.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Bundling
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bundling
 
-# Bundling
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/bundling/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, Wrangler bundles your Worker code using [esbuild ↗](https://esbuild.github.io/). This means that Wrangler has built-in support for importing modules from [npm ↗](https://www.npmjs.com/) defined in your `package.json`. To review the exact code that Wrangler will upload to Cloudflare, run `npx wrangler deploy --dry-run --outdir dist`, which will show your Worker code after Wrangler's bundling.
 
@@ -38,31 +40,24 @@ Refer to [Bundling configuration](https://developers.cloudflare.com/workers/wran
 
 For example, with the following import, `text` will be a string containing the contents of `example.txt`:
 
-**JavaScript**
-
 ```js
 import text from "./example.txt";
 ```
 
 This is also the basis for importing Wasm, as in the following example:
 
-**TypeScript**
-
 ```ts
 import wasm from "./example.wasm";
-
 
 // Instantiate Wasm modules in the module scope
 const instance = await WebAssembly.instantiate(wasm);
 
-
 export default {
-  fetch() {
-    const result = instance.exports.exported_func();
+	fetch() {
+		const result = instance.exports.exported_func();
 
-
-    return new Response(result);
-  },
+		return new Response(result);
+	},
 };
 ```
 
@@ -91,11 +86,9 @@ This approach is useful for supporting lazy loading of large or dynamically impo
 
 You can use `process.env.NODE_ENV` to conditionally run code based on the build context:
 
-**TypeScript**
-
 ```ts
 if (process.env.NODE_ENV === "development") {
-  console.log("Running in development mode");
+	console.log("Running in development mode");
 }
 ```
 
@@ -123,7 +116,7 @@ Wrangler respects the [conditional exports field ↗](https://nodejs.org/api/pac
 
 ## Disable bundling
 
-Warning
+Caution
 
 Disabling bundling is not recommended in most scenarios. Use this option only when deploying code pre-processed by other tooling.
 
@@ -137,7 +130,14 @@ Some framework tools, or custom pre-build processes, generate a modified Wrangle
 
 See [Generated Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#generated-wrangler-configuration) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/bundling/#page","headline":"Bundling · Cloudflare Workers docs","description":"Review Wrangler's default bundling.","url":"https://developers.cloudflare.com/workers/wrangler/bundling/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/bundling/","name":"Bundling"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/bundling/#page","headline":"Bundling · Cloudflare Workers docs","description":"Review Wrangler's default bundling.","url":"https://developers.cloudflare.com/workers/wrangler/bundling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

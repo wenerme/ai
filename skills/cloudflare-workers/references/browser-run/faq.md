@@ -1,16 +1,18 @@
 ---
-title: FAQ
 description: Find answers to frequently asked questions about Browser Run, including errors, troubleshooting, and session management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQ
 
-# FAQ
+Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions about Browser Run (formerly Browser Rendering).
 
@@ -59,10 +61,10 @@ Quick Actions example:
 
 ```json
 {
-  "url": "https://example.com",
-  "goToOptions": {
-    "waitUntil": "networkidle2"
-  }
+	"url": "https://example.com",
+	"goToOptions": {
+		"waitUntil": "networkidle2"
+	}
 }
 ```
 
@@ -112,10 +114,10 @@ HTTP Basic Auth:
 
 ```json
 {
-  "authenticate": {
-    "username": "user",
-    "password": "pass"
-  }
+	"authenticate": {
+		"username": "user",
+		"password": "pass"
+	}
 }
 ```
 
@@ -123,16 +125,16 @@ Cookie-based authentication:
 
 ```json
 {
-  "cookies": [
-    {
-      "name": "session_id",
-      "value": "abc123",
-      "domain": "example.com",
-      "path": "/",
-      "secure": true,
-      "httpOnly": true
-    }
-  ]
+	"cookies": [
+		{
+			"name": "session_id",
+			"value": "abc123",
+			"domain": "example.com",
+			"path": "/",
+			"secure": true,
+			"httpOnly": true
+		}
+	]
 }
 ```
 
@@ -140,9 +142,9 @@ Token-based authentication:
 
 ```json
 {
-  "setExtraHTTPHeaders": {
-    "Authorization": "Bearer your-token"
-  }
+	"setExtraHTTPHeaders": {
+		"Authorization": "Bearer your-token"
+	}
 }
 ```
 
@@ -161,7 +163,7 @@ You must be on an Enterprise plan to allowlist Browser Run on your own website b
 Browser Run uses different [bot detection IDs](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) depending on the method. Use the ID that matches the method you want to allowlist.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page of your account and domain.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**, such as `Allow Browser Run`.
 4. Under **When incoming requests match**, use the **Field** dropdown to choose _Bot Detection ID_. For **Operator**, select _equals_. For **Value**, enter the [bot detection ID](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) for the method you want to allowlist.
@@ -202,32 +204,21 @@ A single browser can run many tabs, but all tabs share the same browser process 
 
 If you reuse a session but still need isolation between tasks, use an incognito browser context. Incognito contexts isolate cookies, local storage, and cache from each other and from the default context, so you can run separate tasks in tabs within the same browser without data leaking between them.
 
-* [ Puppeteer ](#tab-panel-7509)
-* [ Playwright ](#tab-panel-7510)
-
-**TypeScript**
-
 ```ts
 import puppeteer from "@cloudflare/puppeteer";
 
-
 const browser = await puppeteer.connect(env.MYBROWSER, sessionId);
 // or await puppeteer.launch(env.MYBROWSER);
-
 
 const context = await browser.createBrowserContext();
 const page = await context.newPage();
 ```
 
-**TypeScript**
-
 ```ts
 import { connect } from "@cloudflare/playwright";
 
-
 const browser = await connect(env.BROWSER, sessionId);
 // or use the browser returned by acquire()
-
 
 const context = await browser.newContext();
 const page = await context.newPage();
@@ -256,7 +247,14 @@ For [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Play
 
 For the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/), all crawl job results are stored in R2 for 14 days after completion.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/faq/#page","headline":"Frequently asked questions about Cloudflare Browser Run · Cloudflare Browser Run docs","description":"Find answers to frequently asked questions about Browser Run, including errors, troubleshooting, and session management.","url":"https://developers.cloudflare.com/browser-run/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/faq/","name":"FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/faq/#page","headline":"Frequently asked questions about Cloudflare Browser Run · Cloudflare Browser Run docs","description":"Find answers to frequently asked questions about Browser Run, including errors, troubleshooting, and session management.","url":"https://developers.cloudflare.com/browser-run/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

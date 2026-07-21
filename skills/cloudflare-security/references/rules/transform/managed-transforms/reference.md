@@ -1,16 +1,18 @@
 ---
-title: Available Managed Transforms
 description: Learn about Cloudflare's Managed Transforms for modifying HTTP headers, including bot protection, TLS client auth, and leaked credentials checks.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Available Managed Transforms
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Available Managed Transforms
 
-# Available Managed Transforms
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the available Managed Transforms. They can modify HTTP request headers or response headers.
 
@@ -166,7 +168,14 @@ Adds several security-related HTTP response headers. The added response headers 
 
 To increase protection, [enable HTTP Strict Transport Security (HSTS)](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/) for your website.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/managed-transforms/reference/#page","headline":"Available Managed Transforms · Cloudflare Rules docs","description":"Learn about Cloudflare's Managed Transforms for modifying HTTP headers, including bot protection, TLS client auth, and leaked credentials checks.","url":"https://developers.cloudflare.com/rules/transform/managed-transforms/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","Headers"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/managed-transforms/","name":"Managed Transforms"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/managed-transforms/reference/","name":"Available Managed Transforms"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/managed-transforms/reference/#page","headline":"Available Managed Transforms · Cloudflare Rules docs","description":"Learn about Cloudflare's Managed Transforms for modifying HTTP headers, including bot protection, TLS client auth, and leaked credentials checks.","url":"https://developers.cloudflare.com/rules/transform/managed-transforms/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","Headers"]}
 ```

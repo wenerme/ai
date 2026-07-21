@@ -1,16 +1,18 @@
 ---
-title: ArtifactFS
 description: Mount large repos without waiting for full clones.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: ArtifactFS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  ArtifactFS
 
-# ArtifactFS
+Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/guides/artifact-fs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ArtifactFS mounts a Git repository as a local filesystem without waiting for a full clone. It works well when your environment needs a working tree quickly and can tolerate file contents hydrating on demand.
 
@@ -43,12 +45,10 @@ This example assumes you already have a working FUSE implementation on the host,
 ```bash
 go install github.com/cloudflare/artifact-fs/cmd/artifact-fs@latest
 
-
 export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_CREATE_OR_GET_RESPONSE>"
 export ARTIFACTS_TOKEN="<YOUR_READ_TOKEN>"
 export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
 export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
-
 
 artifact-fs add-repo \
   --name starter-repo \
@@ -56,9 +56,7 @@ artifact-fs add-repo \
   --branch main \
   --mount-root /tmp
 
-
 artifact-fs daemon --root /tmp &
-
 
 ls /tmp/starter-repo/
 cat /tmp/starter-repo/README.md
@@ -67,7 +65,14 @@ git -C /tmp/starter-repo log --oneline -5
 
 Use a short-lived token in the authenticated remote URL. If you need a smaller repo or a simpler local workflow, use a normal [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/) clone instead.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/artifact-fs/#page","headline":"ArtifactFS · Cloudflare Artifacts docs","description":"Mount large repos without waiting for full clones.","url":"https://developers.cloudflare.com/artifacts/guides/artifact-fs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/guides/artifact-fs/","name":"ArtifactFS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/artifact-fs/#page","headline":"ArtifactFS · Cloudflare Artifacts docs","description":"Mount large repos without waiting for full clones.","url":"https://developers.cloudflare.com/artifacts/guides/artifact-fs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

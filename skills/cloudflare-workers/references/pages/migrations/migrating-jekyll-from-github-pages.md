@@ -1,16 +1,18 @@
 ---
-title: Migrating a Jekyll-based site from GitHub Pages
 description: Learn how to migrate a Jekyll-based site from GitHub Pages to Cloudflare Pages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Migrating a Jekyll-based site from GitHub Pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrating a Jekyll-based site from GitHub Pages
 
-# Migrating a Jekyll-based site from GitHub Pages
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to migrate an existing [GitHub Pages site using Jekyll ↗](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll) to Cloudflare Pages. Jekyll is one of the most popular static site generators used with GitHub Pages, and migrating your GitHub Pages site to Cloudflare Pages will take a few short steps.
 
@@ -50,14 +52,10 @@ Specifically, you will need to create a `Gemfile` and install the `github-pages`
 
 [Version 2 of the Pages build environment](https://developers.cloudflare.com/pages/configuration/build-image/#languages-and-runtime) will use Ruby 3.2.2 for the default Jekyll build. Please make sure your local development environment is compatible.
 
-**Set Ruby Version**
-
 ```sh
 brew install ruby@3.2
 export PATH="/usr/local/opt/ruby@3.2/bin:$PATH"
 ```
-
-**Create a Gemfile**
 
 ```sh
 cd my-github-pages-repo
@@ -65,8 +63,6 @@ bundle init
 ```
 
 Open the `Gemfile` that was created for you, and add the following line to the bottom of the file:
-
-**Specifying the github-pages version**
 
 ```ruby
 gem "github-pages", group: :jekyll_plugins
@@ -77,20 +73,15 @@ Your `Gemfile` should resemble the below:
 ```ruby
 # frozen_string_literal: true
 
-
 source "https://rubygems.org"
 
-
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
-
 
 # gem "rails"
 gem "github-pages", group: :jekyll_plugins
 ```
 
 Run `bundle update`, which will install the `github-pages` gem for you, and create a `Gemfile.lock` file with the resolved dependency versions.
-
-**Running bundle update**
 
 ```sh
 bundle update
@@ -100,8 +91,6 @@ bundle update
 This should complete successfully. If not, verify that you have copied the `github-pages` line above exactly, and have not commented it out with a leading `#`.
 
 You will now need to commit these files to your repository so that Cloudflare Pages can reference them in the following steps:
-
-**Commit Gemfile and Gemfile.lock**
 
 ```sh
 git add Gemfile Gemfile.lock
@@ -120,7 +109,7 @@ If you are configuring your Cloudflare Pages site for the first time, refer to t
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Pages** \> **Import an existing Git repository**.
 3. Select the new GitHub repository that you created and, in the **Set up builds and deployments** section, provide the following information:
 
@@ -152,7 +141,14 @@ Refer to the [adding a custom domain](https://developers.cloudflare.com/pages/co
 * Understand how to [rollback a potentially broken deployment](https://developers.cloudflare.com/pages/configuration/rollbacks/) to a previously working version.
 * [Configure redirects](https://developers.cloudflare.com/pages/configuration/redirects/) so that visitors are always directed to your 'canonical' custom domain.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/#page","headline":"Migrating a Jekyll-based site from GitHub Pages · Cloudflare Pages docs","description":"Learn how to migrate a Jekyll-based site from GitHub Pages to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Ruby"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/migrations/","name":"Migration guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/migrations/migrating-jekyll-from-github-pages/","name":"Migrating a Jekyll-based site from GitHub Pages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/#page","headline":"Migrating a Jekyll-based site from GitHub Pages · Cloudflare Pages docs","description":"Learn how to migrate a Jekyll-based site from GitHub Pages to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Ruby"]}
 ```

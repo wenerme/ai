@@ -1,16 +1,18 @@
 ---
-title: NLWeb
 description: Deploy NLWeb with AI Search to enable conversational natural language queries on your website.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: NLWeb
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  NLWeb
 
-# NLWeb
+Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/nlweb/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Enable conversational search on your website with NLWeb and Cloudflare AI Search. This template crawls your site, indexes the content, and deploys NLWeb-standard endpoints to serve both people and AI agents.
 
@@ -31,7 +33,7 @@ You can deploy NLWeb on your website directly through the AI Search dashboard:
 
 1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 2. Go to **AI** \> **AI Search**.
-[ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+[ Go to **AI Search** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 3. Select **Create AI Search**.
 4. Select **Website** as a data source.
 5. Follow the instructions to create an AI Search instance.
@@ -68,22 +70,19 @@ You can use the embeddable snippet to add a search UI directly into your website
 <link rel="stylesheet" href="https://ask.example.com/nlweb-dropdown-chat.css" />
 <link rel="stylesheet" href="https://ask.example.com/common-chat-styles.css" />
 
-
 <!-- Add container on body -->
 <div id="docs-search-container"></div>
 
-
 <!-- Include JavaScript -->
 <script type="module">
-  import { NLWebDropdownChat } from "https://ask.example.com/nlweb-dropdown-chat.js";
+	import { NLWebDropdownChat } from "https://ask.example.com/nlweb-dropdown-chat.js";
 
-
-  const chat = new NLWebDropdownChat({
-    containerId: "docs-search-container",
-    site: "https://ask.example.com",
-    placeholder: "Search for docs...",
-    endpoint: "https://ask.example.com",
-  });
+	const chat = new NLWebDropdownChat({
+		containerId: "docs-search-container",
+		site: "https://ask.example.com",
+		placeholder: "Search for docs...",
+		endpoint: "https://ask.example.com",
+	});
 </script>
 ```
 
@@ -108,7 +107,14 @@ The simplest way to apply changes or updates is to redeploy the Worker template:
 
 Now you can use this Worker as the new NLWeb endpoint for your website.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/nlweb/#page","headline":"NLWeb · Cloudflare AI Search docs","description":"Deploy NLWeb with AI Search to enable conversational natural language queries on your website.","url":"https://developers.cloudflare.com/ai-search/how-to/nlweb/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/nlweb/","name":"NLWeb"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/nlweb/#page","headline":"NLWeb · Cloudflare AI Search docs","description":"Deploy NLWeb with AI Search to enable conversational natural language queries on your website.","url":"https://developers.cloudflare.com/ai-search/how-to/nlweb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

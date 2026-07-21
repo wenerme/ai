@@ -1,16 +1,18 @@
 ---
-title: SQL queries supported
 description: Review SQL syntax supported by Log Explorer.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: SQL queries supported
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SQL queries supported
 
-# SQL queries supported
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/log-explorer/sql-queries/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page outlines the SQL features supported by Log Explorer, including common aggregation functions, expressions, and query clauses.
 
@@ -135,7 +137,14 @@ Used for arithmetic, comparison, logical operations:
 * Bitwise: `&`, `|`, `^`, `>>`, `<<`
 * String concat: `||`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/sql-queries/#page","headline":"SQL queries supported · Cloudflare Log Explorer docs","description":"Review SQL syntax supported by Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/sql-queries/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/sql-queries/","name":"SQL queries supported"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/sql-queries/#page","headline":"SQL queries supported · Cloudflare Log Explorer docs","description":"Review SQL syntax supported by Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/sql-queries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

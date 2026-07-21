@@ -1,16 +1,18 @@
 ---
-title: Available skip options
 description: Available skip options for WAF custom rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Available skip options
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Available skip options
 
-# Available skip options
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/custom-rules/skip/options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following sections cover the available skip options in custom rules.
 
@@ -84,7 +86,14 @@ When disabled, Cloudflare will not log any requests matching the current skip ru
 
 If you do not specify this option in the API, the default value is `true` for custom rules with the skip action (logs requests matching the skip rule).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/options/#page","headline":"Available skip options · Cloudflare Web Application Firewall (WAF) docs","description":"Available skip options for WAF custom rules.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/skip/","name":"Configure a rule with the Skip action"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/custom-rules/skip/options/","name":"Available skip options"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/options/#page","headline":"Available skip options · Cloudflare Web Application Firewall (WAF) docs","description":"Available skip options for WAF custom rules.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

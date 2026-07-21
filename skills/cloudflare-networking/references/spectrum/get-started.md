@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Create a Spectrum application to proxy TCP or UDP traffic through Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum is available on all paid plans. Pro and Business support selected protocols only, whereas Enterprise supports all TCP and UDP based traffic. Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/) for more configuration details.
 
@@ -25,7 +27,7 @@ To create a Spectrum application using an IP address, Cloudflare normally assign
 Add your application via Dashboard
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
 3. Select your **Application Type**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -45,60 +47,58 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-**Create Spectrum application using a name for the origin**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "protocol": "tcp/22",
-    "dns": {
-        "type": "CNAME",
-        "name": "ssh.example.com"
-    },
-    "origin_direct": [
-        "tcp://192.0.2.1:22"
-    ],
-    "proxy_protocol": "off",
-    "ip_firewall": true,
-    "tls": "full",
-    "edge_ips": {
-        "type": "dynamic",
-        "connectivity": "all"
-    },
-    "traffic_type": "direct",
-    "argo_smart_routing": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"protocol": "tcp/22",
+		"dns": {
+				"type": "CNAME",
+				"name": "ssh.example.com"
+		},
+		"origin_direct": [
+				"tcp://192.0.2.1:22"
+		],
+		"proxy_protocol": "off",
+		"ip_firewall": true,
+		"tls": "full",
+		"edge_ips": {
+				"type": "dynamic",
+				"connectivity": "all"
+		},
+		"traffic_type": "direct",
+		"argo_smart_routing": true
+	}'
 ```
 
 **Example data:**
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": {
-    "id": "ea95132c15732412d22c1476fa83f27a",
-    "protocol": "tcp/22",
-    "dns": {
-      "type": "CNAME",
-      "name": "ssh.example.com"
-    },
-    "origin_direct": ["tcp://192.0.2.1:22"],
-    "proxy_protocol": "off",
-    "ip_firewall": true,
-    "tls": "full",
-    "edge_ips": {
-      "type": "dynamic",
-      "connectivity": "all"
-    },
-    "traffic_type": "direct",
-    "argo_smart_routing": true,
-    "created_on": "2014-01-02T02:20:00Z",
-    "modified_on": "2014-01-02T02:20:00Z"
-  }
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": {
+		"id": "ea95132c15732412d22c1476fa83f27a",
+		"protocol": "tcp/22",
+		"dns": {
+			"type": "CNAME",
+			"name": "ssh.example.com"
+		},
+		"origin_direct": ["tcp://192.0.2.1:22"],
+		"proxy_protocol": "off",
+		"ip_firewall": true,
+		"tls": "full",
+		"edge_ips": {
+			"type": "dynamic",
+			"connectivity": "all"
+		},
+		"traffic_type": "direct",
+		"argo_smart_routing": true,
+		"created_on": "2014-01-02T02:20:00Z",
+		"modified_on": "2014-01-02T02:20:00Z"
+	}
 }
 ```
 
@@ -109,7 +109,7 @@ To create a Spectrum application using a CNAME record, you will need to create a
 Add your application via Dashboard
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
 3. Select your **Application Type**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -128,46 +128,44 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-**Create Spectrum application using a name for the origin**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "dns": {
-        "type": "CNAME",
-        "name": "spectrum-cname.example.com"
-    },
-    "ip_firewall": false,
-    "protocol": "tcp/22",
-    "proxy_protocol": "off",
-    "tls": "off",
-    "origin_dns": {
-        "name": "cname-to-origin.example.com",
-        "ttl": 1200
-    },
-    "origin_port": 22
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"dns": {
+				"type": "CNAME",
+				"name": "spectrum-cname.example.com"
+		},
+		"ip_firewall": false,
+		"protocol": "tcp/22",
+		"proxy_protocol": "off",
+		"tls": "off",
+		"origin_dns": {
+				"name": "cname-to-origin.example.com",
+				"ttl": 1200
+		},
+		"origin_port": 22
+	}'
 ```
 
 **Example data:**
 
 ```json
 {
-  "dns": {
-    "type": "CNAME",
-    "name": "spectrum-cname.example.com"
-  },
-  "ip_firewall": false,
-  "protocol": "tcp/22",
-  "proxy_protocol": "off",
-  "tls": "off",
-  "origin_dns": {
-    "name": "cname-to-origin.example.com",
-    "ttl": 1200
-  },
-  "origin_port": 22
+	"dns": {
+		"type": "CNAME",
+		"name": "spectrum-cname.example.com"
+	},
+	"ip_firewall": false,
+	"protocol": "tcp/22",
+	"proxy_protocol": "off",
+	"tls": "off",
+	"origin_dns": {
+		"name": "cname-to-origin.example.com",
+		"ttl": 1200
+	},
+	"origin_port": 22
 }
 ```
 
@@ -182,7 +180,7 @@ To prevent issues with DNS resolution for a Spectrum application, do not use the
 Add your application via Dashboard
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
 3. Select your **[Application Type](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type)**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -202,27 +200,25 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-**Create Spectrum application using a name for the origin**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "dns": {
-        "type": "CNAME",
-        "name": "spectrum-cname.example.com"
-    },
-    "ip_firewall": false,
-    "protocol": "tcp/22",
-    "proxy_protocol": "off",
-    "tls": "off",
-    "origin_dns": {
-        "name": "cname-to-origin.example.com",
-        "ttl": 1200
-    },
-    "origin_port": 22
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"dns": {
+				"type": "CNAME",
+				"name": "spectrum-cname.example.com"
+		},
+		"ip_firewall": false,
+		"protocol": "tcp/22",
+		"proxy_protocol": "off",
+		"tls": "off",
+		"origin_dns": {
+				"name": "cname-to-origin.example.com",
+				"ttl": 1200
+		},
+		"origin_port": 22
+	}'
 ```
 
 **Example data:**
@@ -265,7 +261,7 @@ For Cloudflare WAN (formerly Magic WAN) as the connector, refer to [Get started 
 Add your application via Dashboard
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**.
 3. Under **Application Type**, select **TCP** or **UDP**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -287,31 +283,29 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Zone Settings Write`
 
-**Create Spectrum application using a name for the origin**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "protocol": "tcp/22",
-    "dns": {
-        "type": "CNAME",
-        "name": "ssh.example.com"
-    },
-    "origin_direct": [
-        "tcp://10.0.0.5:22"
-    ],
-    "virtual_network_id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-    "proxy_protocol": "off",
-    "ip_firewall": true,
-    "tls": "off",
-    "edge_ips": {
-        "type": "dynamic",
-        "connectivity": "all"
-    },
-    "traffic_type": "direct"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"protocol": "tcp/22",
+		"dns": {
+				"type": "CNAME",
+				"name": "ssh.example.com"
+		},
+		"origin_direct": [
+				"tcp://10.0.0.5:22"
+		],
+		"virtual_network_id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+		"proxy_protocol": "off",
+		"ip_firewall": true,
+		"tls": "off",
+		"edge_ips": {
+				"type": "dynamic",
+				"connectivity": "all"
+		},
+		"traffic_type": "direct"
+	}'
 ```
 
 Set `origin_direct` to the private IP of your origin and `virtual_network_id` to the ID of the virtual network that the IP is routable within. You can list virtual networks for your account with the [List virtual networks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/virtual%5Fnetworks/methods/list/) endpoint.
@@ -320,29 +314,29 @@ Set `origin_direct` to the private IP of your origin and `virtual_network_id` to
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": {
-    "id": "ea95132c15732412d22c1476fa83f27a",
-    "protocol": "tcp/22",
-    "dns": {
-      "type": "CNAME",
-      "name": "ssh.example.com"
-    },
-    "origin_direct": ["tcp://10.0.0.5:22"],
-    "virtual_network_id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-    "proxy_protocol": "off",
-    "ip_firewall": true,
-    "tls": "off",
-    "edge_ips": {
-      "type": "dynamic",
-      "connectivity": "all"
-    },
-    "traffic_type": "direct",
-    "created_on": "2014-01-02T02:20:00Z",
-    "modified_on": "2014-01-02T02:20:00Z"
-  }
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": {
+		"id": "ea95132c15732412d22c1476fa83f27a",
+		"protocol": "tcp/22",
+		"dns": {
+			"type": "CNAME",
+			"name": "ssh.example.com"
+		},
+		"origin_direct": ["tcp://10.0.0.5:22"],
+		"virtual_network_id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+		"proxy_protocol": "off",
+		"ip_firewall": true,
+		"tls": "off",
+		"edge_ips": {
+			"type": "dynamic",
+			"connectivity": "all"
+		},
+		"traffic_type": "direct",
+		"created_on": "2014-01-02T02:20:00Z",
+		"modified_on": "2014-01-02T02:20:00Z"
+	}
 }
 ```
 
@@ -352,7 +346,14 @@ You can now proxy traffic through Cloudflare without additional configuration. A
 
 If you have any feedback, please [let us know ↗](https://community.cloudflare.com/c/website-application-performance/spectrum/48).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/get-started/#page","headline":"Get started · Cloudflare Spectrum docs","description":"Create a Spectrum application to proxy TCP or UDP traffic through Cloudflare.","url":"https://developers.cloudflare.com/spectrum/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/get-started/#page","headline":"Get started · Cloudflare Spectrum docs","description":"Create a Spectrum application to proxy TCP or UDP traffic through Cloudflare.","url":"https://developers.cloudflare.com/spectrum/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

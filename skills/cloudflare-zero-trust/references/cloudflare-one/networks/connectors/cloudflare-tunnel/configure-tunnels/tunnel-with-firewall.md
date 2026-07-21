@@ -1,17 +1,19 @@
 ---
-title: Tunnel with firewall
 description: Configure firewall rules to allow `cloudflared` egress traffic while blocking all ingress, implementing a positive security model.
 
-image: https://developers.cloudflare.com/zt-preview.png
+title: Tunnel with firewall
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tunnel with firewall
 
-# Tunnel with firewall
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can implement a positive security model with Cloudflare Tunnel by blocking all ingress traffic and allowing only egress traffic from `cloudflared`. Only the services specified in your tunnel configuration will be exposed to the outside world.
 
@@ -192,16 +194,16 @@ dig A region1.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.167
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.67
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.57
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.107
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.27
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.7
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.227
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.47
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.37
-region1.v2.argotunnel.com. 86400 IN  A  198.41.192.77
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.167
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.67
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.57
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.107
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.27
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.7
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.227
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.47
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.37
+region1.v2.argotunnel.com. 86400 IN	A	198.41.192.77
 ...
 ```
 
@@ -212,16 +214,16 @@ dig AAAA region1.v2.argotunnel.com
 ```sh
 ...
 ;; ANSWER SECTION:
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::1
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::2
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::3
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::4
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::5
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::6
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::7
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::8
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::9
-region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::10
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::1
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::2
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::3
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::4
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::5
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::6
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::7
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::8
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::9
+region1.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a0::10
 ...
 ```
 
@@ -231,16 +233,16 @@ dig A region2.v2.argotunnel.com
 
 ```sh
 ;; ANSWER SECTION:
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.13
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.193
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.33
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.233
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.53
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.63
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.113
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.73
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.43
-region2.v2.argotunnel.com. 86400 IN  A  198.41.200.23
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.13
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.193
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.33
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.233
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.53
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.63
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.113
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.73
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.43
+region2.v2.argotunnel.com. 86400 IN	A	198.41.200.23
 ...
 ```
 
@@ -251,16 +253,16 @@ dig AAAA region2.v2.argotunnel.com
 ```sh
 ...
 ;; ANSWER SECTION:
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::1
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::2
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::3
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::4
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::5
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::6
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::7
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::8
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::9
-region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::1
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::2
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::3
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::4
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::5
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::6
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::7
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::8
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::9
+region2.v2.argotunnel.com. 86400 IN	AAAA	2606:4700:a8::10
 ...
 ```
 
@@ -269,8 +271,6 @@ region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10
 On Windows, you can use PowerShell commands if `dig` is not available.
 
 To test DNS:
-
-**PowerShell**
 
 ```powershell
 Resolve-DnsName -Name _v2-origintunneld._tcp.argotunnel.com SRV
@@ -285,8 +285,6 @@ _v2-origintunneld._tcp.argotunnel.com       SRV    112   Answer     region1.v2.a
 
 To test ports:
 
-**PowerShell**
-
 ```powershell
 tnc region1.v2.argotunnel.com -port 443
 ```
@@ -299,8 +297,6 @@ InterfaceAlias   : Ethernet
 SourceAddress    : 10.0.2.15
 TcpTestSucceeded : True
 ```
-
-**PowerShell**
 
 ```powershell
 tnc region1.v2.argotunnel.com -port 7844
@@ -315,7 +311,14 @@ SourceAddress    : 10.0.2.15
 TcpTestSucceeded : True
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/#page","headline":"Tunnel with firewall · Cloudflare One docs","description":"Configure firewall rules to allow cloudflared egress traffic while blocking all ingress, implementing a positive security model.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","PowerShell","Linux"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/","name":"Configure a tunnel"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/","name":"Tunnel with firewall"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/#page","headline":"Tunnel with firewall · Cloudflare One docs","description":"Configure firewall rules to allow cloudflared egress traffic while blocking all ingress, implementing a positive security model.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","PowerShell","Linux"]}
 ```

@@ -1,24 +1,24 @@
 ---
-title: Observability
 description: Subscribe to structured Agent events for RPC calls, state changes, schedules, workflows, and MCP connections via diagnostics channels.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Observability
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Observability
 
-# Observability
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/operations/observability/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents emit structured events for every significant operation — RPC calls, state changes, schedule execution, workflow transitions, MCP connections, and more. These events are published to [diagnostics channels](https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/) and are silent by default (zero overhead when nobody is listening).
 
 ## Event structure
 
 Every event has these fields:
-
-**TypeScript**
 
 ```ts
 {
@@ -57,48 +57,37 @@ Events are routed to named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-6995)
-* [  TypeScript ](#tab-panel-6996)
-
-**JavaScript**
-
 ```js
 import { subscribe } from "agents/observability";
 
-
 const unsub = subscribe("rpc", (event) => {
-  if (event.type === "rpc") {
-    console.log(`RPC call: ${event.payload.method}`);
-  }
-  if (event.type === "rpc:error") {
-    console.error(
-      `RPC failed: ${event.payload.method} — ${event.payload.error}`,
-    );
-  }
+	if (event.type === "rpc") {
+		console.log(`RPC call: ${event.payload.method}`);
+	}
+	if (event.type === "rpc:error") {
+		console.error(
+			`RPC failed: ${event.payload.method} — ${event.payload.error}`,
+		);
+	}
 });
-
 
 // Clean up when done
 unsub();
 ```
 
-**TypeScript**
-
 ```ts
 import { subscribe } from "agents/observability";
 
-
 const unsub = subscribe("rpc", (event) => {
-  if (event.type === "rpc") {
-    console.log(`RPC call: ${event.payload.method}`);
-  }
-  if (event.type === "rpc:error") {
-    console.error(
-      `RPC failed: ${event.payload.method} — ${event.payload.error}`,
-    );
-  }
+	if (event.type === "rpc") {
+		console.log(`RPC call: ${event.payload.method}`);
+	}
+	if (event.type === "rpc:error") {
+		console.error(
+			`RPC failed: ${event.payload.method} — ${event.payload.error}`,
+		);
+	}
 });
-
 
 // Clean up when done
 unsub();
@@ -112,28 +101,19 @@ The typed helper uses camelCase keys, so agent-tool recovery is `subscribe("agen
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-6991)
-* [  TypeScript ](#tab-panel-6992)
-
-**JavaScript**
-
 ```js
 import { subscribe } from "node:diagnostics_channel";
 
-
 subscribe("agents:schedule", (event) => {
-  console.log(event);
+	console.log(event);
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { subscribe } from "node:diagnostics_channel";
 
-
 subscribe("agents:schedule", (event) => {
-  console.log(event);
+	console.log(event);
 });
 ```
 
@@ -141,38 +121,31 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-6997)
-* [  TypeScript ](#tab-panel-6998)
-
-**JavaScript**
-
 ```js
 export default {
-  async tail(events) {
-    for (const event of events) {
-      for (const msg of event.diagnosticsChannelEvents) {
-        // msg.channel is "agents:rpc", "agents:workflow", etc.
-        // msg.message is the typed event payload
-        console.log(msg.timestamp, msg.channel, msg.message);
-      }
-    }
-  },
+	async tail(events) {
+		for (const event of events) {
+			for (const msg of event.diagnosticsChannelEvents) {
+				// msg.channel is "agents:rpc", "agents:workflow", etc.
+				// msg.message is the typed event payload
+				console.log(msg.timestamp, msg.channel, msg.message);
+			}
+		}
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async tail(events) {
-    for (const event of events) {
-      for (const msg of event.diagnosticsChannelEvents) {
-        // msg.channel is "agents:rpc", "agents:workflow", etc.
-        // msg.message is the typed event payload
-        console.log(msg.timestamp, msg.channel, msg.message);
-      }
-    }
-  },
+	async tail(events) {
+		for (const event of events) {
+			for (const msg of event.diagnosticsChannelEvents) {
+				// msg.channel is "agents:rpc", "agents:workflow", etc.
+				// msg.message is the typed event payload
+				console.log(msg.timestamp, msg.channel, msg.message);
+			}
+		}
+	},
 };
 ```
 
@@ -182,76 +155,56 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-6999)
-* [  TypeScript ](#tab-panel-7000)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 
-
 const myObservability = {
-  emit(event) {
-    // Send to your logging service, filter events, etc.
-    if (event.type === "rpc:error") {
-      console.error(event.payload.method, event.payload.error);
-    }
-  },
+	emit(event) {
+		// Send to your logging service, filter events, etc.
+		if (event.type === "rpc:error") {
+			console.error(event.payload.method, event.payload.error);
+		}
+	},
 };
 
-
 class MyAgent extends Agent {
-  observability = myObservability;
+	observability = myObservability;
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 import type { Observability } from "agents/observability";
 
-
 const myObservability: Observability = {
-  emit(event) {
-    // Send to your logging service, filter events, etc.
-    if (event.type === "rpc:error") {
-      console.error(event.payload.method, event.payload.error);
-    }
-  },
+	emit(event) {
+		// Send to your logging service, filter events, etc.
+		if (event.type === "rpc:error") {
+			console.error(event.payload.method, event.payload.error);
+		}
+	},
 };
 
-
 class MyAgent extends Agent {
-  override observability = myObservability;
+	override observability = myObservability;
 }
 ```
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-6993)
-* [  TypeScript ](#tab-panel-6994)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 
-
 class MyAgent extends Agent {
-  observability = undefined;
+	observability = undefined;
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
 
-
 class MyAgent extends Agent {
-  override observability = undefined;
+	override observability = undefined;
 }
 ```
 
@@ -393,13 +346,26 @@ These events track chat message lifecycle, client-side tool interactions, and Th
 
 ## Next steps
 
-[ Configuration ](https://developers.cloudflare.com/agents/runtime/operations/configuration/) wrangler.jsonc setup and deployment.
+### [ Configuration ](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
 
-[ Tail Workers ](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) Forward diagnostics channel events to a Tail Worker for production monitoring.
+ wrangler.jsonc setup and deployment.
 
-[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
+### [ Tail Workers ](https://developers.cloudflare.com/workers/observability/logs/tail-workers/)
+
+ Forward diagnostics channel events to a Tail Worker for production monitoring.
+
+### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+
+ Complete API reference for the Agents SDK.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/observability/#page","headline":"Observability · Cloudflare Agents docs","description":"Subscribe to structured Agent events for RPC calls, state changes, schedules, workflows, and MCP connections via diagnostics channels.","url":"https://developers.cloudflare.com/agents/runtime/operations/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/observability/","name":"Observability"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/observability/#page","headline":"Observability · Cloudflare Agents docs","description":"Subscribe to structured Agent events for RPC calls, state changes, schedules, workflows, and MCP connections via diagnostics channels.","url":"https://developers.cloudflare.com/agents/runtime/operations/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

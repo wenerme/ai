@@ -1,16 +1,18 @@
 ---
-title: Service bindings
 description: Facilitate Worker-to-Worker communication.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Service bindings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Service bindings
 
-# Service bindings
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## About Service bindings
 
@@ -35,23 +37,16 @@ You add a Service binding by modifying the [Wrangler configuration file](https:/
 
 For example, if you want Worker A to be able to call Worker B — you'd add the following to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for Worker A:
 
-* [  wrangler.jsonc ](#tab-panel-12828)
-* [  wrangler.toml ](#tab-panel-12829)
-
-**JSONC**
-
 ```jsonc
 {
-  "services": [
-    {
-      "binding": "<BINDING_NAME>",
-      "service": "<WORKER_NAME>"
-    }
-  ]
+	"services": [
+		{
+			"binding": "<BINDING_NAME>",
+			"service": "<WORKER_NAME>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[services]]
@@ -73,20 +68,13 @@ Worker A that declares a Service binding to Worker B can call Worker B in two di
 
 This example [extends the WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#the-workerentrypoint-class) to support RPC-based Service bindings. First, create the Worker that you want to communicate with. Let's call this "Worker B". Worker B exposes the public method, `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-12826)
-* [  wrangler.toml ](#tab-panel-12827)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "worker_b",
-  "main": "./src/workerB.js"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "worker_b",
+	"main": "./src/workerB.js"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -94,67 +82,53 @@ name = "worker_b"
 main = "./src/workerB.js"
 ```
 
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class WorkerB extends WorkerEntrypoint {
-  // Currently, entrypoints without a named handler are not supported
-  async fetch() {
-    return new Response(null, { status: 404 });
-  }
+	// Currently, entrypoints without a named handler are not supported
+	async fetch() {
+		return new Response(null, { status: 404 });
+	}
 
-
-  async add(a, b) {
-    return a + b;
-  }
+	async add(a, b) {
+		return a + b;
+	}
 }
 ```
 
 Next, create the Worker that will call Worker B. Let's call this "Worker A". Worker A declares a binding to Worker B. This is what gives it permission to call public methods on Worker B.
 
-* [  wrangler.jsonc ](#tab-panel-12830)
-* [  wrangler.toml ](#tab-panel-12831)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "worker_a",
-  "main": "./src/workerA.js",
-  "services": [
-    {
-      "binding": "WORKER_B",
-      "service": "worker_b"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "worker_a",
+	"main": "./src/workerA.js",
+	"services": [
+		{
+			"binding": "WORKER_B",
+			"service": "worker_b"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "worker_a"
 main = "./src/workerA.js"
 
-
 [[services]]
 binding = "WORKER_B"
 service = "worker_b"
 ```
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const result = await env.WORKER_B.add(1, 2);
-    return new Response(result);
-  },
+	async fetch(request, env) {
+		const result = await env.WORKER_B.add(1, 2);
+		return new Response(result);
+	},
 };
 ```
 
@@ -183,7 +157,7 @@ Your worker has access to the following bindings:
 
 Wrangler also supports running multiple Workers at once with one command. To try it out, pass multiple `-c` flags to Wrangler, like this: `wrangler dev -c wrangler.json -c ../other-worker/wrangler.json`. The first config will be treated as the _primary_ worker, which will be exposed over HTTP as usual at `http://localhost:8787`. The remaining config files will be treated as _secondary_ and will only be accessible via a service binding from the primary worker.
 
-Warning
+Caution
 
 Support for running multiple Workers at once with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗](https://github.com/cloudflare/workers-sdk/issues/new)
 
@@ -217,7 +191,14 @@ Service bindings have the following limits:
 * A single request has a maximum of 32 Worker invocations, and each call to a Service binding counts towards this limit. Subsequent calls will throw an exception.
 * Calling a service binding does not count towards [simultaneous open connection limits](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings - Runtime APIs · Cloudflare Workers docs","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/service-bindings/","name":"Service bindings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings - Runtime APIs · Cloudflare Workers docs","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

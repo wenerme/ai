@@ -1,16 +1,18 @@
 ---
-title: Plans
 description: Compare API Shield feature availability and endpoint limits across Cloudflare plans.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Plans
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Plans
 
-# Plans
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/plans/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Free, Pro, Business, and Enterprise customers without an API Shield subscription can access [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) and [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), but no other [API Shield](https://developers.cloudflare.com/api-shield/) features.
 
@@ -26,7 +28,14 @@ Limits to endpoints apply to Endpoint Management and Schema validation. Refer to
 | **Enterprise without API Shield** | 500             | 10               | 5 MB                       | Log or Block |
 | **Enterprise with API Shield**    | 10,000          | 10+              | 10+ MB                     | Log or Block |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/plans/#page","headline":"Plans · Cloudflare API Shield docs","description":"Compare API Shield feature availability and endpoint limits across Cloudflare plans.","url":"https://developers.cloudflare.com/api-shield/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/plans/","name":"Plans"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/plans/#page","headline":"Plans · Cloudflare API Shield docs","description":"Compare API Shield feature availability and endpoint limits across Cloudflare plans.","url":"https://developers.cloudflare.com/api-shield/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -49,4 +49,4 @@ When you customize the Agent Platform, apply the following best practices:
 
 ## Related topics
 
-- [Hooks for GitLab Duo CLI](../../gitlab_duo_cli/_index.md#hooks)
+- [Hooks for GitLab Duo CLI](../../gitlab_duo_cli/customize.md#hooks)

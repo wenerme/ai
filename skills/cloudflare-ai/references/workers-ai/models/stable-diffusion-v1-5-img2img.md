@@ -1,22 +1,28 @@
 ---
-title: stable-diffusion-v1-5-img2img
 description: Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: stable-diffusion-v1-5-img2img
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)
 
-#  stable-diffusion-v1-5-img2img Beta
+#  stable-diffusion-v1-5-img2img
 
-Text-to-Image • RunwayML
+ Beta
 
-`@cf/runwayml/stable-diffusion-v1-5-img2img`
+ Text-to-Image • RunwayML
+
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/runwayml/stable-diffusion-v1-5-img2img `
+
+* Cloudflare-hosted
 
 Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.
 
@@ -27,59 +33,7 @@ Stable Diffusion is a latent text-to-image diffusion model capable of generating
 | Beta              | Yes                                                                      |
 | Unit Pricing      | $0.00 per step                                                           |
 
-## Usage
-
-* [  TypeScript ](#tab-panel-5564)
-* [  curl ](#tab-panel-5565)
-
-```ts
-export interface Env {
-  AI: Ai;
-}
-
-
-export default {
-  async fetch(request, env): Promise<Response> {
-
-
-    // Picture of a dog
-    const exampleInputImage = await fetch(
-      "https://pub-1fb693cb11cc46b2b2f656f51e015a2c.r2.dev/dog.png"
-    );
-
-
-    const inputs = {
-      prompt: "Change to a lion",
-      image: [...new Uint8Array(await exampleInputImage.arrayBuffer())],
-    };
-
-
-    const response = await env.AI.run(
-      "@cf/runwayml/stable-diffusion-v1-5-img2img",
-      inputs
-    );
-
-
-    return new Response(response, {
-      headers: {
-        "content-type": "image/png",
-      },
-    });
-  },
-} satisfies ExportedHandler<Env>;
-```
-
-```sh
-curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/runwayml/stable-diffusion-v1-5-img2img  \
-  -X POST  \
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-  -d '{ "prompt": "cyberpunk cat" }'
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-5566)
-* [ Output ](#tab-panel-5567)
 
 prompt
 
@@ -133,7 +87,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/#page","headline":"stable-diffusion-v1-5-img2img (RunwayML) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.","url":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/#page","headline":"stable-diffusion-v1-5-img2img (RunwayML) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images. Img2img generate a new image from an input image with Stable Diffusion.","url":"https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-img2img/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

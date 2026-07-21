@@ -1,16 +1,18 @@
 ---
-title: Browser TTL
 description: Configure cache-control settings for Cloudflare Images at the account or variant level.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Browser TTL
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Browser TTL
 
-# Browser TTL
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Browser TTL controls how long an image stays in a browser's cache and specifically configures the `cache-control` response header.
 
@@ -26,8 +28,6 @@ You can use two custom settings to control the Browser TTL, an account or a name
 
 Setting the Browser TTL per account overrides the default TTL.
 
-**Example**
-
 ```bash
 curl --request PATCH 'https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config' \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -42,8 +42,6 @@ When the Browser TTL is set to one year for all images, the response for the `ca
 ### Browser TTL for a named variant
 
 Setting the Browser TTL for a named variant is a more granular option that overrides all of the above when creating or updating an image variant, specifically the `browser_ttl` option in seconds.
-
-**Example**
 
 ```bash
 curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_TAG>/images/v1/variants' \
@@ -64,7 +62,14 @@ Note
 
 [Private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/) do not respect default or custom TTL settings. The private images cache time is set according to the expiration time and can be as short as one hour.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/#page","headline":"Browser TTL · Cloudflare Images docs","description":"Configure cache-control settings for Cloudflare Images at the account or variant level.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/hosted-images/","name":"Hosted images"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/hosted-images/browser-ttl/","name":"Browser TTL"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/#page","headline":"Browser TTL · Cloudflare Images docs","description":"Configure cache-control settings for Cloudflare Images at the account or variant level.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

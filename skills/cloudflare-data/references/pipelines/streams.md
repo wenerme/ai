@@ -1,16 +1,18 @@
 ---
-title: Streams
 description: Durable, buffered queues that receive and store events for processing in Cloudflare Pipelines.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Streams
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Streams
 
-# Streams
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/streams/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Streams are durable, buffered queues that receive and store events for processing in [Cloudflare Pipelines](https://developers.cloudflare.com/pipelines/). They provide reliable data ingestion via HTTP endpoints and Worker bindings, ensuring no data loss even during downstream processing delays or failures.
 
@@ -20,13 +22,26 @@ Streams currently accept events in JSON format and support both structured event
 
 ## Learn more
 
-[ Manage streams ](https://developers.cloudflare.com/pipelines/streams/manage-streams/) Create, configure, and delete streams using Wrangler or the API.
+### [ Manage streams ](https://developers.cloudflare.com/pipelines/streams/manage-streams/)
 
-[ Writing to streams ](https://developers.cloudflare.com/pipelines/streams/writing-to-streams/) Send events to streams via HTTP endpoints or Worker bindings.
+ Create, configure, and delete streams using Wrangler or the API.
 
-[ Logpush as a source ](https://developers.cloudflare.com/pipelines/streams/logpush/) Use Cloudflare Logpush to send logs from Cloudflare products to a Pipelines stream.
+### [ Writing to streams ](https://developers.cloudflare.com/pipelines/streams/writing-to-streams/)
+
+ Send events to streams via HTTP endpoints or Worker bindings.
+
+### [ Logpush as a source ](https://developers.cloudflare.com/pipelines/streams/logpush/)
+
+ Use Cloudflare Logpush to send logs from Cloudflare products to a Pipelines stream.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pipelines/streams/#page","headline":"Streams · Cloudflare Pipelines Docs","description":"Durable, buffered queues that receive and store events for processing in Cloudflare Pipelines.","url":"https://developers.cloudflare.com/pipelines/streams/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/streams/","name":"Streams"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/pipelines/streams/#page","headline":"Streams · Cloudflare Pipelines Docs","description":"Durable, buffered queues that receive and store events for processing in Cloudflare Pipelines.","url":"https://developers.cloudflare.com/pipelines/streams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

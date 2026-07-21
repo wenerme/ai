@@ -1,16 +1,18 @@
 ---
-title: Code Mode API reference
 description: Reference the public classes, functions, options, runtime methods, connector hooks, and result types exported by Code Mode.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Code Mode API reference
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Code Mode API reference
 
-# Code Mode API reference
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/api-reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Code Mode publishes six package entry points. Import framework-specific APIs from their matching entry point:
 
@@ -31,11 +33,9 @@ The main entry point does not require the optional AI SDK, TanStack AI, or Zod p
 
 #### `createCodemodeRuntime()`
 
-**TypeScript**
-
 ```ts
 function createCodemodeRuntime(
-  options: CreateCodemodeRuntimeOptions,
+	options: CreateCodemodeRuntimeOptions,
 ): CodemodeRuntimeHandle;
 ```
 
@@ -52,24 +52,22 @@ Creates the host-side control plane for a named Code Mode runtime.
 | maxExecutions   | number                | No       | Terminal records kept when a new run begins. Defaults to 50. Running and paused executions are not pruned. |
 | transformResult | TransformResult       | No       | Reshapes a completed result returned to the model. The audit trail retains the unmodified result.          |
 
-**TypeScript**
-
 ```ts
 interface CodemodeRuntimeHandle {
-  tool(
-    options?: CodemodeRuntimeToolOptions,
-  ): Tool<ProxyToolInput, ProxyToolOutput>;
-  approve(options: CodemodeApproveOptions): Promise<ProxyToolOutput>;
-  reject(options: CodemodeRejectOptions): Promise<boolean>;
-  rollback(options: CodemodeRollbackOptions): Promise<void>;
-  pending(executionId?: string): Promise<PendingAction[]>;
-  expirePaused(options?: CodemodeExpireOptions): Promise<string[]>;
-  executions(limit?: number): Promise<ExecutionState[]>;
-  deleteExecution(id: string): Promise<boolean>;
-  pruneExecutions(keep?: number): Promise<number>;
-  saveSnippet(name: string, options: SaveSnippetOptions): Promise<Snippet>;
-  snippets(): Promise<Snippet[]>;
-  deleteSnippet(name: string): Promise<boolean>;
+	tool(
+		options?: CodemodeRuntimeToolOptions,
+	): Tool<ProxyToolInput, ProxyToolOutput>;
+	approve(options: CodemodeApproveOptions): Promise<ProxyToolOutput>;
+	reject(options: CodemodeRejectOptions): Promise<boolean>;
+	rollback(options: CodemodeRollbackOptions): Promise<void>;
+	pending(executionId?: string): Promise<PendingAction[]>;
+	expirePaused(options?: CodemodeExpireOptions): Promise<string[]>;
+	executions(limit?: number): Promise<ExecutionState[]>;
+	deleteExecution(id: string): Promise<boolean>;
+	pruneExecutions(keep?: number): Promise<number>;
+	saveSnippet(name: string, options: SaveSnippetOptions): Promise<Snippet>;
+	snippets(): Promise<Snippet[]>;
+	deleteSnippet(name: string): Promise<boolean>;
 }
 ```
 
@@ -92,14 +90,11 @@ The handle methods have these effects:
 
 The method option types are:
 
-**TypeScript**
-
 ```ts
 type CodemodeRuntimeToolOptions = {
-  description?: string;
-  connectorHints?: Record<string, string>;
+	description?: string;
+	connectorHints?: Record<string, string>;
 };
-
 
 type CodemodeApproveOptions = { executionId: string };
 type CodemodeRejectOptions = { seq: number; executionId: string };
@@ -109,11 +104,9 @@ type CodemodeExpireOptions = { maxAgeMs?: number };
 
 #### `CodemodeRuntime`
 
-**TypeScript**
-
 ```ts
 class CodemodeRuntime extends DurableObject<unknown> {
-  constructor(ctx: DurableObjectState, env: unknown);
+	constructor(ctx: DurableObjectState, env: unknown);
 }
 ```
 
@@ -129,31 +122,27 @@ The main entry point also exports these runtime constants:
 
 ### Runtime tool input and output
 
-**TypeScript**
-
 ```ts
 type ProxyToolInput = { code: string };
 
-
 type ProxyToolOutput =
-  | {
-      status: "completed";
-      executionId: string;
-      result: unknown;
-      logs?: string[];
-    }
-  | {
-      status: "paused";
-      executionId: string;
-      pending: PendingAction[];
-    }
-  | {
-      status: "error";
-      executionId: string;
-      error: string;
-      logs?: string[];
-    };
-
+	| {
+			status: "completed";
+			executionId: string;
+			result: unknown;
+			logs?: string[];
+	  }
+	| {
+			status: "paused";
+			executionId: string;
+			pending: PendingAction[];
+	  }
+	| {
+			status: "error";
+			executionId: string;
+			error: string;
+			logs?: string[];
+	  };
 
 type TransformResult = (result: unknown) => unknown | Promise<unknown>;
 ```
@@ -162,50 +151,45 @@ Sandbox and replay errors use the `error` output variant. They do not throw thro
 
 ### Execution records
 
-**TypeScript**
-
 ```ts
 type ExecutionStatus =
-  | "running"
-  | "paused"
-  | "completed"
-  | "error"
-  | "rejected"
-  | "rolled_back";
-
+	| "running"
+	| "paused"
+	| "completed"
+	| "error"
+	| "rejected"
+	| "rolled_back";
 
 type ExecutionState = {
-  id: string;
-  code: string;
-  status: ExecutionStatus;
-  log: ToolLogEntry[];
-  result?: unknown;
-  error?: string;
-  logs?: string[];
-  connectors?: string[];
-  createdAt: number;
-  updatedAt: number;
+	id: string;
+	code: string;
+	status: ExecutionStatus;
+	log: ToolLogEntry[];
+	result?: unknown;
+	error?: string;
+	logs?: string[];
+	connectors?: string[];
+	createdAt: number;
+	updatedAt: number;
 };
-
 
 type ToolLogEntry = {
-  seq: number;
-  connector: string;
-  method: string;
-  args: unknown;
-  result?: unknown;
-  requiresApproval: boolean;
-  ephemeral?: boolean;
-  state: "executing" | "applied" | "pending" | "reverted" | "error";
+	seq: number;
+	connector: string;
+	method: string;
+	args: unknown;
+	result?: unknown;
+	requiresApproval: boolean;
+	ephemeral?: boolean;
+	state: "executing" | "applied" | "pending" | "reverted" | "error";
 };
 
-
 type PendingAction = {
-  executionId: string;
-  seq: number;
-  connector: string;
-  method: string;
-  args: unknown;
+	executionId: string;
+	seq: number;
+	connector: string;
+	method: string;
+	args: unknown;
 };
 ```
 
@@ -213,27 +197,23 @@ type PendingAction = {
 
 The runtime decision type is:
 
-**TypeScript**
-
 ```ts
 type ToolDecision =
-  | { kind: "replay"; result: unknown }
-  | { kind: "execute"; seq: number }
-  | { kind: "pause"; seq: number };
+	| { kind: "replay"; result: unknown }
+	| { kind: "execute"; seq: number }
+	| { kind: "pause"; seq: number };
 ```
 
 ### Sandbox `codemode` API
 
 `runtime.tool()` injects a `codemode` global into generated sandbox code.
 
-**TypeScript**
-
 ```ts
 declare const codemode: {
-  search(query: string): Promise<SearchOutput>;
-  describe(target: string): Promise<DescribeOutput>;
-  step<T>(name: string, fn: () => T | Promise<T>): Promise<T>;
-  run(name: string, input?: unknown): Promise<unknown>;
+	search(query: string): Promise<SearchOutput>;
+	describe(target: string): Promise<DescribeOutput>;
+	step<T>(name: string, fn: () => T | Promise<T>): Promise<T>;
+	run(name: string, input?: unknown): Promise<unknown>;
 };
 ```
 
@@ -250,53 +230,46 @@ Use `step()` around nondeterministic or side-effectful sandbox work that does no
 
 The discovery output types are:
 
-**TypeScript**
-
 ```ts
 type SearchResult = {
-  path: string;
-  connector: string;
-  method: string;
-  description?: string;
-  kind: "method" | "snippet";
-  score: number;
+	path: string;
+	connector: string;
+	method: string;
+	description?: string;
+	kind: "method" | "snippet";
+	score: number;
 };
-
 
 type SearchOutput = {
-  results: SearchResult[];
-  total: number;
-  truncated: boolean;
+	results: SearchResult[];
+	total: number;
+	truncated: boolean;
 };
 
-
 type DescribeOutput = {
-  path: string;
-  description?: string;
-  types: string;
-  kind: "connector" | "method" | "snippet";
+	path: string;
+	description?: string;
+	types: string;
+	kind: "connector" | "method" | "snippet";
 };
 ```
 
 ### Snippet types
 
-**TypeScript**
-
 ```ts
 interface SaveSnippetOptions {
-  description?: string;
-  inputSchema?: unknown;
-  executionId: string;
+	description?: string;
+	inputSchema?: unknown;
+	executionId: string;
 }
 
-
 interface Snippet {
-  name: string;
-  description: string;
-  code: string;
-  savedAt: number;
-  inputSchema?: unknown;
-  connectors?: string[];
+	name: string;
+	description: string;
+	code: string;
+	savedAt: number;
+	inputSchema?: unknown;
+	connectors?: string[];
 }
 ```
 
@@ -306,49 +279,42 @@ interface Snippet {
 
 #### `Executor`
 
-**TypeScript**
-
 ```ts
 interface Executor {
-  execute(
-    code: string,
-    providersOrFns:
-      | ResolvedProvider[]
-      | Record<string, (...args: unknown[]) => Promise<unknown>>,
-    options?: ExecuteOptions,
-  ): Promise<ExecuteResult>;
+	execute(
+		code: string,
+		providersOrFns:
+			| ResolvedProvider[]
+			| Record<string, (...args: unknown[]) => Promise<unknown>>,
+		options?: ExecuteOptions,
+	): Promise<ExecuteResult>;
 }
 ```
 
 Custom executors should report failures in `ExecuteResult.error` instead of throwing.
 
-**TypeScript**
-
 ```ts
 interface ExecuteResult {
-  result: unknown;
-  error?: string;
-  logs?: string[];
+	result: unknown;
+	error?: string;
+	logs?: string[];
 }
-
 
 interface ResolvedProvider {
-  name: string;
-  fns: Record<string, (...args: unknown[]) => Promise<unknown>>;
-  prelude?: string;
+	name: string;
+	fns: Record<string, (...args: unknown[]) => Promise<unknown>>;
+	prelude?: string;
 }
-
 
 interface ConnectorBinding {
-  name: string;
-  binding: {
-    callTool(method: string, args: unknown): Promise<unknown>;
-  };
+	name: string;
+	binding: {
+		callTool(method: string, args: unknown): Promise<unknown>;
+	};
 }
 
-
 interface ExecuteOptions {
-  connectors?: ConnectorBinding[];
+	connectors?: ConnectorBinding[];
 }
 ```
 
@@ -356,18 +322,16 @@ Passing a function record instead of `ResolvedProvider[]` is deprecated. It crea
 
 #### `DynamicWorkerExecutor`
 
-**TypeScript**
-
 ```ts
 class DynamicWorkerExecutor implements Executor {
-  constructor(options: DynamicWorkerExecutorOptions);
-  execute(
-    code: string,
-    providersOrFns:
-      | ResolvedProvider[]
-      | Record<string, (...args: unknown[]) => Promise<unknown>>,
-    options?: ExecuteOptions,
-  ): Promise<ExecuteResult>;
+	constructor(options: DynamicWorkerExecutorOptions);
+	execute(
+		code: string,
+		providersOrFns:
+			| ResolvedProvider[]
+			| Record<string, (...args: unknown[]) => Promise<unknown>>,
+		options?: ExecuteOptions,
+	): Promise<ExecuteResult>;
 }
 ```
 
@@ -385,12 +349,10 @@ The executor validates provider and connector namespaces. Names must be valid Ja
 
 #### `ToolDispatcher`
 
-**TypeScript**
-
 ```ts
 class ToolDispatcher extends RpcTarget {
-  constructor(fns: Record<string, (...args: unknown[]) => Promise<unknown>>);
-  call(name: string, argsJson?: string): Promise<string>;
+	constructor(fns: Record<string, (...args: unknown[]) => Promise<unknown>>);
+	call(name: string, argsJson?: string): Promise<string>;
 }
 ```
 
@@ -398,14 +360,12 @@ class ToolDispatcher extends RpcTarget {
 
 #### `runCode()`
 
-**TypeScript**
-
 ```ts
 function runCode(options: {
-  code: string;
-  executor: Executor;
-  providers: ResolvedProvider[];
-  connectors?: ConnectorBinding[];
+	code: string;
+	executor: Executor;
+	providers: ResolvedProvider[];
+	connectors?: ConnectorBinding[];
 }): Promise<{ result: unknown; logs?: string[] }>;
 ```
 
@@ -413,13 +373,11 @@ Normalizes and executes code. An `ExecuteResult.error` causes `runCode()` to thr
 
 ### Tool providers
 
-**TypeScript**
-
 ```ts
 interface ToolProvider {
-  name?: string;
-  tools: ToolDescriptors | ToolSet | SimpleToolRecord;
-  types?: string;
+	name?: string;
+	tools: ToolDescriptors | ToolSet | SimpleToolRecord;
+	types?: string;
 }
 ```
 
@@ -431,8 +389,6 @@ Tool providers have these fields:
 | tools | Tool descriptors, an AI SDK ToolSet, or records containing execute.                |
 | types | TypeScript declarations shown to the model. Code Mode generates them when omitted. |
 
-**TypeScript**
-
 ```ts
 function resolveProvider(provider: ToolProvider): ResolvedProvider;
 ```
@@ -443,40 +399,36 @@ The main-entry implementation does not validate inputs against schemas. It exclu
 
 #### `CodemodeConnector`
 
-**TypeScript**
-
 ```ts
 abstract class CodemodeConnector<
-  Env = unknown,
-  Props = unknown,
+	Env = unknown,
+	Props = unknown,
 > extends WorkerEntrypoint<Env, Props> {
-  constructor(ctx: DurableObjectState | ExecutionContext, env: Env);
+	constructor(ctx: DurableObjectState | ExecutionContext, env: Env);
 
+	abstract name(): string;
+	protected instructions(): string | undefined;
+	protected abstract tools(): ConnectorTools | Promise<ConnectorTools>;
+	protected tool(name: string, tool: ConnectorTool): ConnectorTool;
 
-  abstract name(): string;
-  protected instructions(): string | undefined;
-  protected abstract tools(): ConnectorTools | Promise<ConnectorTools>;
-  protected tool(name: string, tool: ConnectorTool): ConnectorTool;
-
-
-  describe(): Promise<ConnectorDescription>;
-  executeTool(
-    method: string,
-    args: unknown,
-    ctx?: ToolExecuteContext,
-  ): Promise<unknown>;
-  revertAction(
-    method: string,
-    args: unknown,
-    result: unknown,
-    ctx?: ToolExecuteContext,
-  ): Promise<boolean>;
-  onPassEnd(executionId: string, status: PassEndStatus): Promise<void>;
-  disposeExecution(
-    executionId: string,
-    status: ExecutionEndStatus,
-  ): Promise<void>;
-  getTypeScriptTypes(): Promise<string>;
+	describe(): Promise<ConnectorDescription>;
+	executeTool(
+		method: string,
+		args: unknown,
+		ctx?: ToolExecuteContext,
+	): Promise<unknown>;
+	revertAction(
+		method: string,
+		args: unknown,
+		result: unknown,
+		ctx?: ToolExecuteContext,
+	): Promise<boolean>;
+	onPassEnd(executionId: string, status: PassEndStatus): Promise<void>;
+	disposeExecution(
+		executionId: string,
+		status: ExecutionEndStatus,
+	): Promise<void>;
+	getTypeScriptTypes(): Promise<string>;
 }
 ```
 
@@ -497,26 +449,23 @@ The base class derives `describe()`, `executeTool()`, `revertAction()`, and `get
 
 #### Connector tool types
 
-**TypeScript**
-
 ```ts
 type ConnectorTool = {
-  description?: string;
-  inputSchema?: JSONSchema7;
-  outputSchema?: JSONSchema7;
-  requiresApproval?: boolean;
-  replay?: "log" | "reexecute";
-  execute: (
-    args: unknown,
-    ctx?: ToolExecuteContext,
-  ) => Promise<unknown> | unknown;
-  revert?: (
-    args: unknown,
-    result: unknown,
-    ctx?: ToolExecuteContext,
-  ) => Promise<void> | void;
+	description?: string;
+	inputSchema?: JSONSchema7;
+	outputSchema?: JSONSchema7;
+	requiresApproval?: boolean;
+	replay?: "log" | "reexecute";
+	execute: (
+		args: unknown,
+		ctx?: ToolExecuteContext,
+	) => Promise<unknown> | unknown;
+	revert?: (
+		args: unknown,
+		result: unknown,
+		ctx?: ToolExecuteContext,
+	) => Promise<void> | void;
 };
-
 
 type ConnectorTools = Record<string, ConnectorTool>;
 type ToolExecuteContext = { executionId: string };
@@ -528,31 +477,27 @@ type ToolExecuteContext = { executionId: string };
 
 #### `McpConnector`
 
-**TypeScript**
-
 ```ts
 abstract class McpConnector<
-  Env = unknown,
-  Props = unknown,
+	Env = unknown,
+	Props = unknown,
 > extends CodemodeConnector<Env, Props> {
-  protected abstract createConnection():
-    | McpConnectionLike
-    | Promise<McpConnectionLike>;
-  protected toolName(tool: McpTool): string;
+	protected abstract createConnection():
+		| McpConnectionLike
+		| Promise<McpConnectionLike>;
+	protected toolName(tool: McpTool): string;
 }
 ```
 
 `McpConnector` converts each MCP tool into a connector method. `toolName()` defaults to `sanitizeToolName(tool.name)`. Override it to resolve naming collisions.
 
-**TypeScript**
-
 ```ts
 interface McpConnectionLike {
-  name?: string;
-  client: Pick<Client, "callTool">;
-  instructions?: string;
-  tools?: McpTool[];
-  fetchTools?: () => Promise<McpTool[]>;
+	name?: string;
+	client: Pick<Client, "callTool">;
+	instructions?: string;
+	tools?: McpTool[];
+	fetchTools?: () => Promise<McpTool[]>;
 }
 ```
 
@@ -560,18 +505,16 @@ The connector uses `tools` when that array is non-empty. Otherwise, it calls `fe
 
 #### `OpenApiConnector`
 
-**TypeScript**
-
 ```ts
 abstract class OpenApiConnector<
-  Env = unknown,
-  Props = unknown,
+	Env = unknown,
+	Props = unknown,
 > extends CodemodeConnector<Env, Props> {
-  protected abstract spec():
-    | Record<string, unknown>
-    | Promise<Record<string, unknown>>;
-  protected abstract request(options: OpenApiRequestOptions): Promise<unknown>;
-  protected exposeSpec(): boolean;
+	protected abstract spec():
+		| Record<string, unknown>
+		| Promise<Record<string, unknown>>;
+	protected abstract request(options: OpenApiRequestOptions): Promise<unknown>;
+	protected exposeSpec(): boolean;
 }
 ```
 
@@ -579,15 +522,13 @@ abstract class OpenApiConnector<
 
 Every OpenAPI connector exposes a low-level `request` method. `exposeSpec()` defaults to `false`. Return `true` to also expose `spec`.
 
-**TypeScript**
-
 ```ts
 type OpenApiRequestOptions = {
-  path: string;
-  method?: string;
-  params?: Record<string, unknown>;
-  body?: unknown;
-  headers?: Record<string, string>;
+	path: string;
+	method?: string;
+	params?: Record<string, unknown>;
+	body?: unknown;
+	headers?: Record<string, string>;
 };
 ```
 
@@ -595,46 +536,36 @@ Derived operation tools substitute path parameters. They pass query values as `p
 
 #### Connector lifecycle and description types
 
-**TypeScript**
-
 ```ts
 type ExecutionEndStatus = "completed" | "error" | "rejected" | "rolled_back";
 
-
 type PassEndStatus = ExecutionEndStatus | "paused";
 
-
 type ToolAnnotations = {
-  requiresApproval?: boolean;
-  replay?: "log" | "reexecute";
+	requiresApproval?: boolean;
+	replay?: "log" | "reexecute";
 };
 
-
 type ConnectorDescription = {
-  name: string;
-  instructions?: string;
-  descriptors: JsonSchemaToolDescriptors;
-  annotations?: Record<string, ToolAnnotations>;
+	name: string;
+	instructions?: string;
+	descriptors: JsonSchemaToolDescriptors;
+	annotations?: Record<string, ToolAnnotations>;
 };
 ```
 
 ### JSON Schema utilities
 
-**TypeScript**
-
 ```ts
 interface JsonSchemaToolDescriptor {
-  description?: string;
-  inputSchema: JSONSchema7;
-  outputSchema?: JSONSchema7;
+	description?: string;
+	inputSchema: JSONSchema7;
+	outputSchema?: JSONSchema7;
 }
-
 
 type JsonSchemaToolDescriptors = Record<string, JsonSchemaToolDescriptor>;
 
-
 function generateTypesFromJsonSchema(tools: JsonSchemaToolDescriptors): string;
-
 
 function jsonSchemaToType(schema: JSONSchema7, typeName: string): string;
 ```
@@ -652,12 +583,10 @@ The main entry point provides these code and result utilities:
 | truncateResponse | (text: string, options?: TruncateOptions) => string    | Truncates text to a character budget and appends a size marker.                                                               |
 | truncateResult   | (value: unknown, options?: TruncateOptions) => unknown | Preserves small structured values. Oversized serializable values become truncated JSON text.                                  |
 
-**TypeScript**
-
 ```ts
 type TruncateOptions = {
-  maxChars?: number;
-  maxTokens?: number;
+	maxChars?: number;
+	maxTokens?: number;
 };
 ```
 
@@ -669,20 +598,16 @@ This entry point requires the `ai` and `zod` peer dependencies.
 
 ### `createCodeTool()`
 
-**TypeScript**
-
 ```ts
 function createCodeTool(
-  options: CreateCodeToolOptions,
+	options: CreateCodeToolOptions,
 ): Tool<CodeInput, CodeOutput>;
 
-
 interface CreateCodeToolOptions {
-  tools: ToolProviderTools | ToolProvider[];
-  executor: Executor;
-  description?: string;
+	tools: ToolProviderTools | ToolProvider[];
+	executor: Executor;
+	description?: string;
 }
-
 
 type CodeInput = { code: string };
 type CodeOutput = { result: unknown; logs?: string[] };
@@ -702,43 +627,36 @@ The AI SDK entry point provides these tool-provider utilities:
 | generateTypes   | (tools: ToolDescriptors \| ToolSet, namespace?: string) => string | Generates declarations from AI SDK or Zod schemas. The namespace defaults to codemode.                                  |
 | resolveProvider | (provider: ToolProvider) => ResolvedProvider                      | Filters approval-gated tools, validates input with AI SDK asSchema() when available, and extracts executable functions. |
 
-**TypeScript**
-
 ```ts
 interface ToolDescriptor {
-  description?: string;
-  inputSchema: ZodType;
-  outputSchema?: ZodType;
-  execute?: (args: unknown) => Promise<unknown>;
+	description?: string;
+	inputSchema: ZodType;
+	outputSchema?: ZodType;
+	execute?: (args: unknown) => Promise<unknown>;
 }
-
 
 type ToolDescriptors = Record<string, ToolDescriptor>;
 ```
 
 ### `ToolSetConnector`
 
-**TypeScript**
-
 ```ts
 class ToolSetConnector extends CodemodeConnector {
-  constructor(
-    ctx: DurableObjectState | ExecutionContext,
-    options: ToolSetConnectorOptions,
-  );
+	constructor(
+		ctx: DurableObjectState | ExecutionContext,
+		options: ToolSetConnectorOptions,
+	);
 }
 
-
 function toolSetConnector(
-  ctx: DurableObjectState | ExecutionContext,
-  options: ToolSetConnectorOptions,
+	ctx: DurableObjectState | ExecutionContext,
+	options: ToolSetConnectorOptions,
 ): ToolSetConnector;
 
-
 interface ToolSetConnectorOptions {
-  name?: string;
-  instructions?: string;
-  tools: ToolSet;
+	name?: string;
+	instructions?: string;
+	tools: ToolSet;
 }
 ```
 
@@ -750,15 +668,12 @@ This entry point requires the MCP SDK and Zod peer dependencies.
 
 ### `codeMcpServer()`
 
-**TypeScript**
-
 ```ts
 interface CodeMcpServerOptions {
-  server: McpServer;
-  executor: Executor;
-  description?: string;
+	server: McpServer;
+	executor: Executor;
+	description?: string;
 }
-
 
 function codeMcpServer(options: CodeMcpServerOptions): Promise<McpServer>;
 ```
@@ -769,28 +684,24 @@ A custom description can contain `{{types}}`, which the wrapper replaces with ge
 
 ### `openApiMcpServer()`
 
-**TypeScript**
-
 ```ts
 interface OpenApiMcpServerOptions {
-  spec: Record<string, unknown>;
-  executor: Executor;
-  request: (options: RequestOptions) => Promise<unknown>;
-  name?: string;
-  version?: string;
-  description?: string;
+	spec: Record<string, unknown>;
+	executor: Executor;
+	request: (options: RequestOptions) => Promise<unknown>;
+	name?: string;
+	version?: string;
+	description?: string;
 }
-
 
 interface RequestOptions {
-  method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-  path: string;
-  query?: Record<string, string | number | boolean | undefined>;
-  body?: unknown;
-  contentType?: string;
-  rawBody?: boolean;
+	method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+	path: string;
+	query?: Record<string, string | number | boolean | undefined>;
+	body?: unknown;
+	contentType?: string;
+	rawBody?: boolean;
 }
-
 
 function openApiMcpServer(options: OpenApiMcpServerOptions): McpServer;
 ```
@@ -811,8 +722,6 @@ The `search` and `execute` tool descriptions use fixed example snippets. Unlike 
 This entry point requires the `@tanstack/ai` and `zod` peer dependencies.
 
 ### `createCodeTool()`
-
-**TypeScript**
 
 ```ts
 function createCodeTool(options: CreateCodeToolOptions): ServerTool;
@@ -839,20 +748,17 @@ The browser entry point uses browser APIs and plain JSON Schema. It does not req
 
 ### `createBrowserCodeTool()`
 
-**TypeScript**
-
 ```ts
 function createBrowserCodeTool(
-  options: CreateBrowserCodeToolOptions,
+	options: CreateBrowserCodeToolOptions,
 ): BrowserCodeToolDescriptor;
 
-
 interface CreateBrowserCodeToolOptions {
-  tools:
-    | JsonSchemaExecutableToolDescriptor[]
-    | JsonSchemaExecutableToolDescriptors;
-  executor?: Executor;
-  description?: string;
+	tools:
+		| JsonSchemaExecutableToolDescriptor[]
+		| JsonSchemaExecutableToolDescriptors;
+	executor?: Executor;
+	description?: string;
 }
 ```
 
@@ -860,71 +766,63 @@ Array-form tools must include `name`. Object-form tools use each record key as t
 
 The `tools` option also accepts descriptors with `needsApproval?: boolean | ((...args: unknown[]) => unknown)`. Tools with `needsApproval: true` or a function-valued `needsApproval` are excluded. Tools with `needsApproval: false` remain callable. JSON Schema contributes model-facing declarations but does not perform runtime validation.
 
-**TypeScript**
-
 ```ts
 interface JsonSchemaExecutableToolDescriptor extends JsonSchemaToolDescriptor {
-  name?: string;
-  execute: (args: Record<string, unknown>) => Promise<unknown>;
+	name?: string;
+	execute: (args: Record<string, unknown>) => Promise<unknown>;
 }
 
-
 type JsonSchemaExecutableToolDescriptors = Record<
-  string,
-  JsonSchemaExecutableToolDescriptor
+	string,
+	JsonSchemaExecutableToolDescriptor
 >;
 ```
 
 The returned descriptor has this shape:
 
-**TypeScript**
-
 ```ts
 interface BrowserCodeToolDescriptor {
-  name: string;
-  description: string;
-  inputSchema: {
-    type: "object";
-    properties: {
-      code: { type: "string"; description: string };
-    };
-    required: ["code"];
-  };
-  outputSchema: {
-    type: "object";
-    properties: {
-      result: { description: string };
-      logs: {
-        type: "array";
-        items: { type: "string" };
-        description: string;
-      };
-    };
-    required: ["result"];
-  };
-  execute(args: CodeInput): Promise<CodeOutput>;
+	name: string;
+	description: string;
+	inputSchema: {
+		type: "object";
+		properties: {
+			code: { type: "string"; description: string };
+		};
+		required: ["code"];
+	};
+	outputSchema: {
+		type: "object";
+		properties: {
+			result: { description: string };
+			logs: {
+				type: "array";
+				items: { type: "string" };
+				description: string;
+			};
+		};
+		required: ["result"];
+	};
+	execute(args: CodeInput): Promise<CodeOutput>;
 }
 ```
 
 ### `IframeSandboxExecutor`
 
-**TypeScript**
-
 ```ts
 class IframeSandboxExecutor implements Executor {
-  constructor(options?: IframeSandboxExecutorOptions);
-  execute(
-    code: string,
-    providersOrFns:
-      | ResolvedProvider[]
-      | Record<string, (...args: unknown[]) => Promise<unknown>>,
-  ): Promise<ExecuteResult>;
+	constructor(options?: IframeSandboxExecutorOptions);
+	execute(
+		code: string,
+		providersOrFns:
+			| ResolvedProvider[]
+			| Record<string, (...args: unknown[]) => Promise<unknown>>,
+	): Promise<ExecuteResult>;
 }
 
-
 interface IframeSandboxExecutorOptions {
-  timeout?: number;
-  csp?: string;
+	timeout?: number;
+	csp?: string;
 }
 ```
 
@@ -943,8 +841,6 @@ This entry point also exports the framework-independent `Executor`, `ExecuteResu
 
 The Vite entry point has one default export:
 
-**TypeScript**
-
 ```ts
 function codemodeVitePlugin(): Plugin;
 ```
@@ -955,15 +851,20 @@ The plugin leaves the entry module unchanged if it already exports `CodemodeRunt
 
 Without the plugin, add the export manually:
 
-**TypeScript**
-
 ```ts
 export { CodemodeRuntime } from "@cloudflare/codemode";
 ```
 
 A connector import can target one connector file or a directory. A directory import re-exports every matching connector file under that directory.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/#page","headline":"Code Mode API reference · Cloudflare Agents docs","description":"Reference the public classes, functions, options, runtime methods, connector hooks, and result types exported by Code Mode.","url":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/tools/","name":"Tools"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/tools/codemode/","name":"Code Mode"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/tools/codemode/api-reference/","name":"Code Mode API reference"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/#page","headline":"Code Mode API reference · Cloudflare Agents docs","description":"Reference the public classes, functions, options, runtime methods, connector hooks, and result types exported by Code Mode.","url":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

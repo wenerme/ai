@@ -1,16 +1,18 @@
 ---
-title: Cross-domain authentication
 description: Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cross-domain authentication
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cross-domain authentication
 
-# Cross-domain authentication
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When your Agents are deployed, to keep things secure, send a token from the client, then verify it on the server. This guide covers authentication patterns for WebSocket connections to agents.
 
@@ -44,46 +46,35 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-6979)
-* [  TypeScript ](#tab-panel-6980)
-
-**JavaScript**
-
 ```js
 import { useAgent } from "agents/react";
 
-
 function ChatComponent() {
-  const agent = useAgent({
-    agent: "my-agent",
-    query: {
-      token: "demo-token-123",
-      userId: "demo-user",
-    },
-  });
+	const agent = useAgent({
+		agent: "my-agent",
+		query: {
+			token: "demo-token-123",
+			userId: "demo-user",
+		},
+	});
 
-
-  // Use agent to make calls, access state, etc.
+	// Use agent to make calls, access state, etc.
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { useAgent } from "agents/react";
 
-
 function ChatComponent() {
-  const agent = useAgent({
-    agent: "my-agent",
-    query: {
-      token: "demo-token-123",
-      userId: "demo-user",
-    },
-  });
+	const agent = useAgent({
+		agent: "my-agent",
+		query: {
+			token: "demo-token-123",
+			userId: "demo-user",
+		},
+	});
 
-
-  // Use agent to make calls, access state, etc.
+	// Use agent to make calls, access state, etc.
 }
 ```
 
@@ -91,80 +82,65 @@ function ChatComponent() {
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-6985)
-* [  TypeScript ](#tab-panel-6986)
-
-**JavaScript**
-
 ```js
 import { useAgent } from "agents/react";
 import { Suspense, useCallback } from "react";
 
-
 function ChatComponent() {
-  const asyncQuery = useCallback(async () => {
-    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
-    return {
-      token,
-      userId: user.id,
-      timestamp: Date.now().toString(),
-    };
-  }, []);
+	const asyncQuery = useCallback(async () => {
+		const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
+		return {
+			token,
+			userId: user.id,
+			timestamp: Date.now().toString(),
+		};
+	}, []);
 
+	const agent = useAgent({
+		agent: "my-agent",
+		query: asyncQuery,
+	});
 
-  const agent = useAgent({
-    agent: "my-agent",
-    query: asyncQuery,
-  });
-
-
-  // Use agent to make calls, access state, etc.
+	// Use agent to make calls, access state, etc.
 }
 
-
 function App() {
-  return (
-    <Suspense fallback={<div>Authenticating...</div>}>
-      <ChatComponent />
-    </Suspense>
-  );
+	return (
+		<Suspense fallback={<div>Authenticating...</div>}>
+			<ChatComponent />
+		</Suspense>
+	);
 }
 ```
 
-**TypeScript**
-
-```ts
+```tsx
 import { useAgent } from "agents/react";
 import { Suspense, useCallback } from "react";
 
-
 function ChatComponent() {
-  const asyncQuery = useCallback(async () => {
-    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
-    return {
-      token,
-      userId: user.id,
-      timestamp: Date.now().toString(),
-    };
-  }, []);
+	const asyncQuery = useCallback(async () => {
+		const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
+		return {
+			token,
+			userId: user.id,
+			timestamp: Date.now().toString(),
+		};
+	}, []);
 
+	const agent = useAgent({
+		agent: "my-agent",
+		query: asyncQuery,
+	});
 
-  const agent = useAgent({
-    agent: "my-agent",
-    query: asyncQuery,
-  });
-
-
-  // Use agent to make calls, access state, etc.
+	// Use agent to make calls, access state, etc.
 }
 
-
 function App() {
-  return (
-    <Suspense fallback={<div>Authenticating...</div>}>
-      <ChatComponent />
-    </Suspense>
-  );
+	return (
+		<Suspense fallback={<div>Authenticating...</div>}>
+			<ChatComponent />
+		</Suspense>
+	);
 }
 ```
 
@@ -172,122 +148,99 @@ function App() {
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-6987)
-* [  TypeScript ](#tab-panel-6988)
-
-**JavaScript**
-
 ```js
 import { useAgent } from "agents/react";
 import { useCallback } from "react";
 
-
 const validateToken = async (token) => {
-  // An example of how you might implement this
-  const res = await fetch(`${API_HOST}/api/users/me`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+	// An example of how you might implement this
+	const res = await fetch(`${API_HOST}/api/users/me`, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
 
-
-  return res.ok;
+	return res.ok;
 };
-
 
 const refreshToken = async () => {
-  // Depends on implementation:
-  // - You could use a longer-lived token to refresh the expired token
-  // - De-auth the app and prompt the user to log in manually
-  // - ...
+	// Depends on implementation:
+	// - You could use a longer-lived token to refresh the expired token
+	// - De-auth the app and prompt the user to log in manually
+	// - ...
 };
 
-
 function useJWTAgent(agentName) {
-  const asyncQuery = useCallback(async () => {
-    let token = localStorage.getItem("jwt");
+	const asyncQuery = useCallback(async () => {
+		let token = localStorage.getItem("jwt");
 
+		// If no token OR the token is no longer valid
+		// request a fresh token
+		if (!token || !(await validateToken(token))) {
+			token = await refreshToken();
+			localStorage.setItem("jwt", token);
+		}
 
-    // If no token OR the token is no longer valid
-    // request a fresh token
-    if (!token || !(await validateToken(token))) {
-      token = await refreshToken();
-      localStorage.setItem("jwt", token);
-    }
+		return {
+			token,
+		};
+	}, []);
 
+	const agent = useAgent({
+		agent: agentName,
+		query: asyncQuery,
+		queryDeps: [], // Run on mount
+	});
 
-    return {
-      token,
-    };
-  }, []);
-
-
-  const agent = useAgent({
-    agent: agentName,
-    query: asyncQuery,
-    queryDeps: [], // Run on mount
-  });
-
-
-  return agent;
+	return agent;
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { useAgent } from "agents/react";
 import { useCallback } from "react";
 
-
 const validateToken = async (token: string) => {
-  // An example of how you might implement this
-  const res = await fetch(`${API_HOST}/api/users/me`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+	// An example of how you might implement this
+	const res = await fetch(`${API_HOST}/api/users/me`, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
 
-
-  return res.ok;
+	return res.ok;
 };
-
 
 const refreshToken = async () => {
-  // Depends on implementation:
-  // - You could use a longer-lived token to refresh the expired token
-  // - De-auth the app and prompt the user to log in manually
-  // - ...
+	// Depends on implementation:
+	// - You could use a longer-lived token to refresh the expired token
+	// - De-auth the app and prompt the user to log in manually
+	// - ...
 };
 
-
 function useJWTAgent(agentName: string) {
-  const asyncQuery = useCallback(async () => {
-    let token = localStorage.getItem("jwt");
+	const asyncQuery = useCallback(async () => {
+		let token = localStorage.getItem("jwt");
 
+		// If no token OR the token is no longer valid
+		// request a fresh token
+		if (!token || !(await validateToken(token))) {
+			token = await refreshToken();
+			localStorage.setItem("jwt", token);
+		}
 
-    // If no token OR the token is no longer valid
-    // request a fresh token
-    if (!token || !(await validateToken(token))) {
-      token = await refreshToken();
-      localStorage.setItem("jwt", token);
-    }
+		return {
+			token,
+		};
+	}, []);
 
+	const agent = useAgent({
+		agent: agentName,
+		query: asyncQuery,
+		queryDeps: [], // Run on mount
+	});
 
-    return {
-      token,
-    };
-  }, []);
-
-
-  const agent = useAgent({
-    agent: agentName,
-    query: asyncQuery,
-    queryDeps: [], // Run on mount
-  });
-
-
-  return agent;
+	return agent;
 }
 ```
 
@@ -297,111 +250,87 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-6981)
-* [  TypeScript ](#tab-panel-6982)
-
-**JavaScript**
-
 ```js
 import { useAgent } from "agents/react";
 
-
 function StaticCrossDomainAuth() {
-  const agent = useAgent({
-    agent: "my-agent",
-    host: "https://my-agent.example.workers.dev",
-    query: {
-      token: "demo-token-123",
-      userId: "demo-user",
-    },
-  });
+	const agent = useAgent({
+		agent: "my-agent",
+		host: "https://my-agent.example.workers.dev",
+		query: {
+			token: "demo-token-123",
+			userId: "demo-user",
+		},
+	});
 
-
-  // Use agent to make calls, access state, etc.
+	// Use agent to make calls, access state, etc.
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { useAgent } from "agents/react";
 
-
 function StaticCrossDomainAuth() {
-  const agent = useAgent({
-    agent: "my-agent",
-    host: "https://my-agent.example.workers.dev",
-    query: {
-      token: "demo-token-123",
-      userId: "demo-user",
-    },
-  });
+	const agent = useAgent({
+		agent: "my-agent",
+		host: "https://my-agent.example.workers.dev",
+		query: {
+			token: "demo-token-123",
+			userId: "demo-user",
+		},
+	});
 
-
-  // Use agent to make calls, access state, etc.
+	// Use agent to make calls, access state, etc.
 }
 ```
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-6983)
-* [  TypeScript ](#tab-panel-6984)
-
-**JavaScript**
-
 ```js
 import { useAgent } from "agents/react";
 import { useCallback } from "react";
 
-
 function AsyncCrossDomainAuth() {
-  const asyncQuery = useCallback(async () => {
-    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
-    return {
-      token,
-      userId: user.id,
-      timestamp: Date.now().toString(),
-    };
-  }, []);
+	const asyncQuery = useCallback(async () => {
+		const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
+		return {
+			token,
+			userId: user.id,
+			timestamp: Date.now().toString(),
+		};
+	}, []);
 
+	const agent = useAgent({
+		agent: "my-agent",
+		host: "https://my-agent.example.workers.dev",
+		query: asyncQuery,
+	});
 
-  const agent = useAgent({
-    agent: "my-agent",
-    host: "https://my-agent.example.workers.dev",
-    query: asyncQuery,
-  });
-
-
-  // Use agent to make calls, access state, etc.
+	// Use agent to make calls, access state, etc.
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { useAgent } from "agents/react";
 import { useCallback } from "react";
 
-
 function AsyncCrossDomainAuth() {
-  const asyncQuery = useCallback(async () => {
-    const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
-    return {
-      token,
-      userId: user.id,
-      timestamp: Date.now().toString(),
-    };
-  }, []);
+	const asyncQuery = useCallback(async () => {
+		const [token, user] = await Promise.all([getAuthToken(), getCurrentUser()]);
+		return {
+			token,
+			userId: user.id,
+			timestamp: Date.now().toString(),
+		};
+	}, []);
 
+	const agent = useAgent({
+		agent: "my-agent",
+		host: "https://my-agent.example.workers.dev",
+		query: asyncQuery,
+	});
 
-  const agent = useAgent({
-    agent: "my-agent",
-    host: "https://my-agent.example.workers.dev",
-    query: asyncQuery,
-  });
-
-
-  // Use agent to make calls, access state, etc.
+	// Use agent to make calls, access state, etc.
 }
 ```
 
@@ -409,110 +338,91 @@ function AsyncCrossDomainAuth() {
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-6989)
-* [  TypeScript ](#tab-panel-6990)
-
-**JavaScript**
-
 ```js
 import { Agent, Connection, ConnectionContext } from "agents";
 
-
 export class SecureAgent extends Agent {
-  async onConnect(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const token = url.searchParams.get("token");
-    const userId = url.searchParams.get("userId");
+	async onConnect(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const token = url.searchParams.get("token");
+		const userId = url.searchParams.get("userId");
 
+		// Verify the token
+		if (!token || !(await this.verifyToken(token, userId))) {
+			connection.close(4001, "Unauthorized");
+			return;
+		}
 
-    // Verify the token
-    if (!token || !(await this.verifyToken(token, userId))) {
-      connection.close(4001, "Unauthorized");
-      return;
-    }
+		// Store user info on the connection state
+		connection.setState({ userId, authenticated: true });
+	}
 
+	async verifyToken(token, userId) {
+		// Implement your token verification logic
+		// For example, verify a JWT signature, check expiration, etc.
+		try {
+			const payload = await verifyJWT(token, this.env.JWT_SECRET);
+			return payload.sub === userId && payload.exp > Date.now() / 1000;
+		} catch {
+			return false;
+		}
+	}
 
-    // Store user info on the connection state
-    connection.setState({ userId, authenticated: true });
-  }
+	async onMessage(connection, message) {
+		// Check if connection is authenticated
+		if (!connection.state?.authenticated) {
+			connection.send(JSON.stringify({ error: "Not authenticated" }));
+			return;
+		}
 
-
-  async verifyToken(token, userId) {
-    // Implement your token verification logic
-    // For example, verify a JWT signature, check expiration, etc.
-    try {
-      const payload = await verifyJWT(token, this.env.JWT_SECRET);
-      return payload.sub === userId && payload.exp > Date.now() / 1000;
-    } catch {
-      return false;
-    }
-  }
-
-
-  async onMessage(connection, message) {
-    // Check if connection is authenticated
-    if (!connection.state?.authenticated) {
-      connection.send(JSON.stringify({ error: "Not authenticated" }));
-      return;
-    }
-
-
-    // Process message for authenticated user
-    const userId = connection.state.userId;
-    // ...
-  }
+		// Process message for authenticated user
+		const userId = connection.state.userId;
+		// ...
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, Connection, ConnectionContext } from "agents";
 
-
 export class SecureAgent extends Agent {
-  async onConnect(connection: Connection, ctx: ConnectionContext) {
-    const url = new URL(ctx.request.url);
-    const token = url.searchParams.get("token");
-    const userId = url.searchParams.get("userId");
+	async onConnect(connection: Connection, ctx: ConnectionContext) {
+		const url = new URL(ctx.request.url);
+		const token = url.searchParams.get("token");
+		const userId = url.searchParams.get("userId");
 
+		// Verify the token
+		if (!token || !(await this.verifyToken(token, userId))) {
+			connection.close(4001, "Unauthorized");
+			return;
+		}
 
-    // Verify the token
-    if (!token || !(await this.verifyToken(token, userId))) {
-      connection.close(4001, "Unauthorized");
-      return;
-    }
+		// Store user info on the connection state
+		connection.setState({ userId, authenticated: true });
+	}
 
+	private async verifyToken(token: string, userId: string): Promise<boolean> {
+		// Implement your token verification logic
+		// For example, verify a JWT signature, check expiration, etc.
+		try {
+			const payload = await verifyJWT(token, this.env.JWT_SECRET);
+			return payload.sub === userId && payload.exp > Date.now() / 1000;
+		} catch {
+			return false;
+		}
+	}
 
-    // Store user info on the connection state
-    connection.setState({ userId, authenticated: true });
-  }
+	async onMessage(connection: Connection, message: string) {
+		// Check if connection is authenticated
+		if (!connection.state?.authenticated) {
+			connection.send(JSON.stringify({ error: "Not authenticated" }));
+			return;
+		}
 
-
-  private async verifyToken(token: string, userId: string): Promise<boolean> {
-    // Implement your token verification logic
-    // For example, verify a JWT signature, check expiration, etc.
-    try {
-      const payload = await verifyJWT(token, this.env.JWT_SECRET);
-      return payload.sub === userId && payload.exp > Date.now() / 1000;
-    } catch {
-      return false;
-    }
-  }
-
-
-  async onMessage(connection: Connection, message: string) {
-    // Check if connection is authenticated
-    if (!connection.state?.authenticated) {
-      connection.send(JSON.stringify({ error: "Not authenticated" }));
-      return;
-    }
-
-
-    // Process message for authenticated user
-    const userId = connection.state.userId;
-    // ...
-  }
+		// Process message for authenticated user
+		const userId = connection.state.userId;
+		// ...
+	}
 }
 ```
 
@@ -527,15 +437,30 @@ export class SecureAgent extends Agent {
 
 ## Next steps
 
-[ Routing ](https://developers.cloudflare.com/agents/runtime/communication/routing/) Routing and authentication hooks.
+### [ Routing ](https://developers.cloudflare.com/agents/runtime/communication/routing/)
 
-[ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/) Real-time bidirectional communication.
+ Routing and authentication hooks.
 
-[ GitHub OAuth agent example ](https://github.com/cloudflare/agents/tree/main/examples/auth-agent) Protect an app built with Agents using GitHub OAuth, HTTP-only cookies, and server-owned Durable Object routing.
+### [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
 
-[ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/) Complete API reference for the Agents SDK.
+ Real-time bidirectional communication.
+
+### [ GitHub OAuth agent example ](https://github.com/cloudflare/agents/tree/main/examples/auth-agent)
+
+ Protect an app built with Agents using GitHub OAuth, HTTP-only cookies, and server-owned Durable Object routing.
+
+### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+
+ Complete API reference for the Agents SDK.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/#page","headline":"Cross-domain authentication · Cloudflare Agents docs","description":"Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.","url":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/operations/","name":"Operations"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/operations/cross-domain-authentication/","name":"Cross-domain authentication"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/#page","headline":"Cross-domain authentication · Cloudflare Agents docs","description":"Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.","url":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

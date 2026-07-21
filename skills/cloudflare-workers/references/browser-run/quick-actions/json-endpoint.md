@@ -1,16 +1,18 @@
 ---
-title: /json - Capture structured data using AI
 description: Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: /json - Capture structured data using AI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  /json - Capture structured data using AI
 
-# /json - Capture structured data using AI
+Last updated Jul 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `/json` endpoint extracts structured data from a webpage. You can specify the expected output using either a `prompt` or a `response_format` parameter which accepts a JSON schema. The endpoint returns the extracted data in JSON format.
 
@@ -53,10 +55,6 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-7561)
-* [ TypeScript SDK ](#tab-panel-7562)
-* [ Workers binding ](#tab-panel-7563)
-
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 
 ```bash
@@ -96,113 +94,105 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```json
 {
-  "success": true,
-  "result": {
-    "products": [
-      {
-        "name": "Build a RAG app",
-        "link": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai/"
-      },
-      {
-        "name": "Workers AI",
-        "link": "https://developers.cloudflare.com/workers-ai/"
-      },
-      {
-        "name": "Vectorize",
-13 collapsed lines
-        "link": "https://developers.cloudflare.com/vectorize/"
-      },
-      {
-        "name": "AI Gateway",
-        "link": "https://developers.cloudflare.com/ai-gateway/"
-      },
-      {
-        "name": "AI Playground",
-        "link": "https://playground.ai.cloudflare.com/"
-      }
-    ]
-  }
+	"success": true,
+	"result": {
+		"products": [
+			{
+				"name": "Build a RAG app",
+				"link": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai/"
+			},
+			{
+				"name": "Workers AI",
+				"link": "https://developers.cloudflare.com/workers-ai/"
+			},
+			{
+				"name": "Vectorize",
+				"link": "https://developers.cloudflare.com/vectorize/"
+			},
+			{
+				"name": "AI Gateway",
+				"link": "https://developers.cloudflare.com/ai-gateway/"
+			},
+			{
+				"name": "AI Playground",
+				"link": "https://playground.ai.cloudflare.com/"
+			}
+		]
+	}
 }
 ```
 
 Below is an example using the TypeScript SDK:
 
-**TypeScript**
-
 ```typescript
 import Cloudflare from "cloudflare";
 
-
 const client = new Cloudflare({
-  apiToken: process.env["CLOUDFLARE_API_TOKEN"], // This is the default and can be omitted
+	apiToken: process.env["CLOUDFLARE_API_TOKEN"], // This is the default and can be omitted
 });
 
-
 const json = await client.browserRendering.json.create({
-  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
-  url: "https://developers.cloudflare.com/",
-  prompt: "Get me the list of AI products",
-  response_format: {
-    type: "json_schema",
-    json_schema: {
-      type: "object",
-      properties: {
-        products: {
-          type: "array",
-          items: {
-            type: "object",
-            properties: {
-              name: {
-                type: "string",
-              },
-              link: {
-                type: "string",
-              },
-            },
-            required: ["name"],
-          },
-        },
-      },
-    },
-  },
+	account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+	url: "https://developers.cloudflare.com/",
+	prompt: "Get me the list of AI products",
+	response_format: {
+		type: "json_schema",
+		json_schema: {
+			type: "object",
+			properties: {
+				products: {
+					type: "array",
+					items: {
+						type: "object",
+						properties: {
+							name: {
+								type: "string",
+							},
+							link: {
+								type: "string",
+							},
+						},
+						required: ["name"],
+					},
+				},
+			},
+		},
+	},
 });
 console.log(json);
 ```
 
-**TypeScript**
-
 ```typescript
 interface Env {
-  BROWSER: BrowserRun;
+	BROWSER: BrowserRun;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    return await env.BROWSER.quickAction("json", {
-      url: "https://developers.cloudflare.com/",
-      prompt: "Get me the list of AI products",
-      response_format: {
-        type: "json_schema",
-        json_schema: {
-          type: "object",
-          properties: {
-            products: {
-              type: "array",
-              items: {
-                type: "object",
-                properties: {
-                  name: { type: "string" },
-                  link: { type: "string" },
-                },
-                required: ["name"],
-              },
-            },
-          },
-        },
-      },
-    });
-  },
+	async fetch(request, env): Promise<Response> {
+		return await env.BROWSER.quickAction("json", {
+			url: "https://developers.cloudflare.com/",
+			prompt: "Get me the list of AI products",
+			response_format: {
+				type: "json_schema",
+				json_schema: {
+					type: "object",
+					properties: {
+						products: {
+							type: "array",
+							items: {
+								type: "object",
+								properties: {
+									name: { type: "string" },
+									link: { type: "string" },
+								},
+								required: ["name"],
+							},
+						},
+					},
+				},
+			},
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -222,16 +212,16 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```json
 {
-  "success": true,
-  "result": {
-    "AI Products": [
-      "Build a RAG app",
-      "Workers AI",
-      "Vectorize",
-      "AI Gateway",
-      "AI Playground"
-    ]
-  }
+	"success": true,
+	"result": {
+		"AI Products": [
+			"Build a RAG app",
+			"Workers AI",
+			"Vectorize",
+			"AI Gateway",
+			"AI Playground"
+		]
+	}
 }
 ```
 
@@ -244,103 +234,102 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
   -H 'authorization: Bearer <apiToken>' \
   -H 'content-type: application/json' \
   -d '{
-  "url": "https://developers.cloudflare.com/",
-  "response_format": {
-    "type": "json_schema",
-    "json_schema": {
-      "type": "object",
-      "properties": {
-      "products": {
-        "type": "array",
-        "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-          "type": "string"
-          },
-          "link": {
-          "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-        }
-      }
-      }
-    }
+	"url": "https://developers.cloudflare.com/",
+	"response_format": {
+		"type": "json_schema",
+		"json_schema": {
+			"type": "object",
+			"properties": {
+			"products": {
+				"type": "array",
+				"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+					"type": "string"
+					},
+					"link": {
+					"type": "string"
+					}
+				},
+				"required": [
+					"name"
+				]
+				}
+			}
+			}
+		}
     }
   }'
 ```
 
 ```json
 {
-  "success": true,
-  "result": {
-    "products": [
-      {
-        "name": "Workers",
-        "link": "https://developers.cloudflare.com/workers/"
-      },
-      {
-        "name": "Pages",
-        "link": "https://developers.cloudflare.com/pages/"
-      },
-55 collapsed lines
-      {
-        "name": "R2",
-        "link": "https://developers.cloudflare.com/r2/"
-      },
-      {
-        "name": "Images",
-        "link": "https://developers.cloudflare.com/images/"
-      },
-      {
-        "name": "Stream",
-        "link": "https://developers.cloudflare.com/stream/"
-      },
-      {
-        "name": "Build a RAG app",
-        "link": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai/"
-      },
-      {
-        "name": "Workers AI",
-        "link": "https://developers.cloudflare.com/workers-ai/"
-      },
-      {
-        "name": "Vectorize",
-        "link": "https://developers.cloudflare.com/vectorize/"
-      },
-      {
-        "name": "AI Gateway",
-        "link": "https://developers.cloudflare.com/ai-gateway/"
-      },
-      {
-        "name": "AI Playground",
-        "link": "https://playground.ai.cloudflare.com/"
-      },
-      {
-        "name": "Access",
-        "link": "https://developers.cloudflare.com/cloudflare-one/access-controls/policies/"
-      },
-      {
-        "name": "Tunnel",
-        "link": "https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/"
-      },
-      {
-        "name": "Gateway",
-        "link": "https://developers.cloudflare.com/cloudflare-one/traffic-policies/"
-      },
-      {
-        "name": "Browser Isolation",
-        "link": "https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/"
-      },
-      {
-        "name": "Replace your VPN",
-        "link": "https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/"
-      }
-    ]
-  }
+	"success": true,
+	"result": {
+		"products": [
+			{
+				"name": "Workers",
+				"link": "https://developers.cloudflare.com/workers/"
+			},
+			{
+				"name": "Pages",
+				"link": "https://developers.cloudflare.com/pages/"
+			},
+			{
+				"name": "R2",
+				"link": "https://developers.cloudflare.com/r2/"
+			},
+			{
+				"name": "Images",
+				"link": "https://developers.cloudflare.com/images/"
+			},
+			{
+				"name": "Stream",
+				"link": "https://developers.cloudflare.com/stream/"
+			},
+			{
+				"name": "Build a RAG app",
+				"link": "https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai/"
+			},
+			{
+				"name": "Workers AI",
+				"link": "https://developers.cloudflare.com/workers-ai/"
+			},
+			{
+				"name": "Vectorize",
+				"link": "https://developers.cloudflare.com/vectorize/"
+			},
+			{
+				"name": "AI Gateway",
+				"link": "https://developers.cloudflare.com/ai-gateway/"
+			},
+			{
+				"name": "AI Playground",
+				"link": "https://playground.ai.cloudflare.com/"
+			},
+			{
+				"name": "Access",
+				"link": "https://developers.cloudflare.com/cloudflare-one/access-controls/policies/"
+			},
+			{
+				"name": "Tunnel",
+				"link": "https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/"
+			},
+			{
+				"name": "Gateway",
+				"link": "https://developers.cloudflare.com/cloudflare-one/traffic-policies/"
+			},
+			{
+				"name": "Browser Isolation",
+				"link": "https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/"
+			},
+			{
+				"name": "Replace your VPN",
+				"link": "https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/"
+			}
+		]
+	}
 }
 ```
 
@@ -394,11 +383,11 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```json
 {
-  "success": true,
-  "result": {
-    "h1": "Heading 1",
-    "h2": "Heading 2"
-  }
+	"success": true,
+	"result": {
+		"h1": "Heading 1",
+		"h2": "Heading 2"
+	}
 }
 ```
 
@@ -443,10 +432,10 @@ The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `ne
 
 ```json
 {
-  "url": "https://example.com",
-  "gotoOptions": {
-    "waitUntil": "networkidle0"
-  }
+	"url": "https://example.com",
+	"gotoOptions": {
+		"waitUntil": "networkidle0"
+	}
 }
 ```
 
@@ -464,7 +453,14 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#page","headline":"/json - Capture structured data using AI · Cloudflare Browser Run docs","description":"Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/json-endpoint/","name":"/json - Capture structured data using AI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#page","headline":"/json - Capture structured data using AI · Cloudflare Browser Run docs","description":"Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

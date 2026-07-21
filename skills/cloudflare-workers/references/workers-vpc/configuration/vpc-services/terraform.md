@@ -1,16 +1,18 @@
 ---
-title: Configure with Terraform
 description: Learn how to manage VPC Services using the Cloudflare Terraform provider.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configure with Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure with Terraform
 
-# Configure with Terraform
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 VPC Services can be managed as infrastructure using the [cloudflare\_connectivity\_directory\_service ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity%5Fdirectory%5Fservice) resource in the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/).
 
@@ -36,7 +38,6 @@ resource "cloudflare_connectivity_directory_service" "my_private_api" {
   http_port  = 80
   https_port = 443
 
-
   host = {
     hostname = "internal-api.example.com"
     resolver_network = {
@@ -53,7 +54,6 @@ resource "cloudflare_connectivity_directory_service" "my_private_api" {
   account_id = var.account_id
   name       = "my-private-api"
   type       = "http"
-
 
   host = {
     hostname = "internal-api.example.com"
@@ -77,7 +77,6 @@ resource "cloudflare_connectivity_directory_service" "my_private_api" {
   http_port  = 8080
   https_port = 8443
 
-
   host = {
     ipv4 = "10.0.1.50"
     ipv6 = "fe80::1"
@@ -100,7 +99,6 @@ resource "cloudflare_connectivity_directory_service" "my_database" {
   tcp_port     = 5432
   app_protocol = "postgresql"
 
-
   host = {
     ipv4 = "10.0.0.5"
     network = {
@@ -122,14 +120,12 @@ resource "cloudflare_connectivity_directory_service" "my_database" {
   tcp_port     = 5432
   app_protocol = "postgresql"
 
-
   host = {
     ipv4 = "10.0.0.5"
     network = {
       tunnel_id = var.tunnel_id
     }
   }
-
 
   tls_settings = {
     cert_verification_mode = "verify_ca"
@@ -162,13 +158,11 @@ resource "cloudflare_worker_version" "my_worker_version" {
   compatibility_date = "2025-02-21" # Set this to today's date
   main_module        = "worker.js"
 
-
   modules = [{
     name         = "worker.js"
     content_type = "application/javascript+module"
     content_file = "build/worker.js"
   }]
-
 
   bindings = [{
     type       = "vpc_service"
@@ -222,7 +216,6 @@ data "cloudflare_connectivity_directory_services" "all_http" {
   type       = "http"
 }
 
-
 data "cloudflare_connectivity_directory_services" "all_tcp" {
   account_id = var.account_id
   type       = "tcp"
@@ -238,20 +231,16 @@ resource "cloudflare_connectivity_directory_service" "example" {
   name       = "my-private-api"         # Human-readable name
   type       = "http"                   # Service type: "http" or "tcp"
 
-
   # HTTP-specific (optional, defaults to 80/443)
   http_port  = 80                       # HTTP port
   https_port = 443                      # HTTPS port
-
 
   # TCP-specific (tcp_port is required when type = "tcp")
   # tcp_port     = 5432                 # TCP port
   # app_protocol = "postgresql"         # Optional: "postgresql" or "mysql"
 
-
   host = {
     # Use hostname OR ipv4/ipv6, not both
-
 
     # Option A: Hostname-based
     hostname = "internal-api.example.com"
@@ -259,7 +248,6 @@ resource "cloudflare_connectivity_directory_service" "example" {
       tunnel_id    = "tunnel-uuid"      # Required — Cloudflare Tunnel ID
       resolver_ips = ["10.0.0.53"]      # Optional — custom DNS resolver IPs
     }
-
 
     # Option B: IP-based
     # ipv4 = "10.0.1.50"               # IPv4 address
@@ -269,12 +257,10 @@ resource "cloudflare_connectivity_directory_service" "example" {
     # }
   }
 
-
   # Optional TLS settings
   # tls_settings = {
   #   cert_verification_mode = "verify_full"  # "verify_full", "verify_ca", or "disabled"
   # }
-
 
   # Read-only (computed by the API)
   # id         — Terraform resource ID
@@ -286,7 +272,14 @@ resource "cloudflare_connectivity_directory_service" "example" {
 
 For the full schema, refer to the [Terraform registry documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity%5Fdirectory%5Fservice).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#page","headline":"Configure with Terraform · Cloudflare Workers VPC","description":"Learn how to manage VPC Services using the Cloudflare Terraform provider.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/configuration/vpc-services/","name":"VPC Services"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-vpc/configuration/vpc-services/terraform/","name":"Configure with Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#page","headline":"Configure with Terraform · Cloudflare Workers VPC","description":"Learn how to manage VPC Services using the Cloudflare Terraform provider.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Nameserver options
 description: Available nameserver configuration options.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Nameserver options
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Nameserver options
 
-# Nameserver options
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/nameservers/nameserver-options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the sections below to learn about different Cloudflare nameserver options. Note that the availability of these options depends on your plan. Also, if you acquired your domain from Cloudflare Registrar, your domain already uses and [must remain](https://developers.cloudflare.com/registrar/faq/#can-i-change-my-nameservers) on Cloudflare nameservers.
 
@@ -20,7 +22,7 @@ When you add a domain on a [primary (full)](https://developers.cloudflare.com/dn
 
 The default assignment method is to use [standard nameservers](https://developers.cloudflare.com/dns/nameservers/#standard-nameservers) and favor consistent nameserver names across all zones within an account. Nonetheless, in case there are conflicts, you may get different nameserver names, even for domains that are within the same account.
 
-Warning
+Caution
 
 To prevent domain hijacking, you can no longer preset Cloudflare nameservers at your registrar before creating the respective zone in Cloudflare. If you preset your nameservers and then add the domain, your domain will be assigned a new pair of nameservers.
 
@@ -42,7 +44,7 @@ If you have an Enterprise account, you also have the option to [configure your o
 * **Advanced nameservers**: Cloudflare uses the same method as the default - trying to keep nameserver names consistent for different zones within an account - but uses the specific [Foundation DNS nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/).
 * **Account custom nameservers**: Cloudflare automatically assigns a set of [account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/) that you have previously configured for your account. In this method, **Set 1** will be attempted first and, in case of any conflicts, Cloudflare will cycle through the other nameserver sets, in ascending order.
 
-Warning
+Caution
 
 DNS zone defaults are only applied at the moment a new zone is created and will not impact already existing zones, nor zones that existed previously and are being revived.
 
@@ -64,7 +66,7 @@ This means that responses to DNS queries made to the zone apex and requesting `N
 
 * Cloudflare will activate a primary zone (full setup) even if its [nameservers listed at the registrar](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) include nameservers from other DNS providers.
 
-Warning
+Caution
 
 If you choose this option and you also want to use DNSSEC on your zone, make sure to set up [multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/).
 
@@ -80,7 +82,14 @@ The default TTL is 24 hours (or 86,400 seconds), but you have the option to lowe
 
 This setting can also be configured as a [DNS zone default](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/), meaning new zones created in your account will automatically start with the value you define.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/nameserver-options/#page","headline":"Nameserver options · Cloudflare DNS docs","description":"Available nameserver configuration options.","url":"https://developers.cloudflare.com/dns/nameservers/nameserver-options/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/nameservers/","name":"Nameservers"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/nameservers/nameserver-options/","name":"Nameserver options"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/nameserver-options/#page","headline":"Nameserver options · Cloudflare DNS docs","description":"Available nameserver configuration options.","url":"https://developers.cloudflare.com/dns/nameservers/nameserver-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,18 +1,20 @@
 ---
-title: Environment variables and secrets
 description: Configuring environment variables and secrets for local development
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Environment variables and secrets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Environment variables and secrets
 
-# Environment variables and secrets
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/local-development/environment-variables/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 Do not use `vars` to store sensitive information in your Worker's Wrangler configuration file. Use secrets instead.
 
@@ -22,11 +24,11 @@ Note
 
 You can use the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
 
+Note
+
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
-
-**.dev.vars / .env**
 
 ```bash
 SECRET_KEY="value"
@@ -48,7 +50,7 @@ When you select a Cloudflare environment in your local development, the correspo
   * `.env.<environment-name>`
   * `.env` (least specific)
 
-Controlling `.env` handling
+Controlling \`.env\` handling
 
 It is possible to control how `.env` files are loaded in local development by setting environment variables on the process running the tools.
 
@@ -61,8 +63,6 @@ Here are steps to set up environment variables for local development using eithe
 
 1. Create a `.dev.vars` / `.env` file in your project root.
 2. Add key-value pairs:
-
-**.dev.vars/.env**
 ```ini
 API_HOST="localhost:3000"
 DEBUG="true"
@@ -100,8 +100,6 @@ To simulate different local environments, you can provide environment-specific f
 
 1. Create a file named `.dev.vars.<environment-name>`/`.env.<environment-name>`. For example, we can use `.dev.vars.staging`/`.env.staging`.
 2. Add key-value pairs:
-
-**.dev.vars.staging/.env.staging**
 ```ini
 API_HOST="staging.localhost:3000"
 DEBUG="false"
@@ -141,7 +139,14 @@ CLOUDFLARE_ENV=staging pnpm vite dev
 * To learn how to configure multiple environments in Wrangler configuration, [read the documentation](https://developers.cloudflare.com/workers/wrangler/environments/#%5Ftop).
 * To learn how to use Wrangler environments and Vite environments together, [read the Vite plugin documentation](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/environment-variables/#page","headline":"Environment variables and secrets · Cloudflare Workers docs","description":"Configuring environment variables and secrets for local development","url":"https://developers.cloudflare.com/workers/local-development/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/local-development/environment-variables/","name":"Environment variables and secrets"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/environment-variables/#page","headline":"Environment variables and secrets · Cloudflare Workers docs","description":"Configuring environment variables and secrets for local development","url":"https://developers.cloudflare.com/workers/local-development/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

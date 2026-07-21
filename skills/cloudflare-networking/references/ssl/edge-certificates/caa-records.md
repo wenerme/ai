@@ -1,16 +1,18 @@
 ---
-title: Add CAA records
 description: Add CAA DNS records to control which CAs can issue certificates.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Add CAA records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add CAA records
 
-# Add CAA records
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A Certificate Authority Authorization (CAA) DNS record specifies which certificate authorities (CAs) are allowed to issue certificates for a domain. This record reduces the chance of unauthorized certificate issuance and promotes standardization across your organization.
 
@@ -48,21 +50,17 @@ If Cloudflare has automatically added CAA records on your behalf, these records 
 ```bash
 ➜  ~ dig example.com caa +short
 
-
 # CAA records added by Google Trust Services
 0 issue "pki.goog; cansignhttpexchanges=yes"
 0 issuewild "pki.goog; cansignhttpexchanges=yes"
-
 
 # CAA records added by Let's Encrypt
 0 issue "letsencrypt.org"
 0 issuewild "letsencrypt.org"
 
-
 # CAA records added by SSL.com
 0 issue "ssl.com"
 0 issuewild "ssl.com"
-
 
 # CAA records added by Sectigo
 0 issue "sectigo.com"
@@ -77,13 +75,10 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-11470)
-* [ API ](#tab-panel-11471)
-
 To add a CAA record in the dashboard,
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. For **Type**, select **CAA**.
 4. For **Name**, type your domain.
@@ -111,7 +106,14 @@ dig yourdomain.com CAA +short
 dig cname-target.com CAA +short
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/caa-records/#page","headline":"Add CAA records · Cloudflare SSL/TLS docs","description":"Add CAA DNS records to control which CAs can issue certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/caa-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/caa-records/","name":"Add CAA records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/caa-records/#page","headline":"Add CAA records · Cloudflare SSL/TLS docs","description":"Add CAA DNS records to control which CAs can issue certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/caa-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

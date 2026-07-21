@@ -1,16 +1,18 @@
 ---
-title: Gateway analytics (DNS, HTTP, network sessions)
 description: Reference information for Gateway analytics (DNS, HTTP, network sessions) in Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Gateway analytics (DNS, HTTP, network sessions)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Gateway analytics (DNS, HTTP, network sessions)
 
-# Gateway analytics (DNS, HTTP, network sessions)
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Gateway analytics include three separate dashboards:
 
@@ -123,27 +125,33 @@ To explore the schema, you can use a GraphQL client such as [GraphiQL ↗](https
 3. Compose a query to access your Gateway Analytics datasets. For example, you can query the `gatewayResolverQueriesAdaptiveGroups` dataset to return the adaptive groups of DNS queries resolved by Gateway:
 ```graphql
 query GatewaySampleQuery($accountTag: string!, $start: Time) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      gatewayResolverQueriesAdaptiveGroups(
-        filter: { datetime_gt: $start }
-        limit: 10
-      ) {
-        count
-        dimensions {
-          queryNameReversed
-          resolverDecision
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			gatewayResolverQueriesAdaptiveGroups(
+				filter: { datetime_gt: $start }
+				limit: 10
+			) {
+				count
+				dimensions {
+					queryNameReversed
+					resolverDecision
+				}
+			}
+		}
+	}
 }
 ```
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgHYhfZAEYArJl69M3ABwAtEAF8gA)
 
 For more information, refer to [Compose a query in GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/#page","headline":"Gateway analytics (DNS, HTTP, network sessions) · Cloudflare One docs","description":"Reference information for Gateway analytics (DNS, HTTP, network sessions) in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/analytics/","name":"Dashboards"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/analytics/gateway/","name":"Gateway analytics (DNS, HTTP, network sessions)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/#page","headline":"Gateway analytics (DNS, HTTP, network sessions) · Cloudflare One docs","description":"Reference information for Gateway analytics (DNS, HTTP, network sessions) in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
 ```

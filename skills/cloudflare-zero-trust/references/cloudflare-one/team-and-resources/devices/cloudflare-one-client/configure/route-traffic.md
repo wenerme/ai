@@ -1,16 +1,18 @@
 ---
-title: Route traffic
 description: How Route traffic works in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Route traffic
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Route traffic
 
-# Route traffic
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When the Cloudflare One Client (formerly WARP) is deployed on a device, Cloudflare will process all DNS queries and network traffic by default. However, under certain circumstances, you may need to exclude specific DNS queries or network traffic from the Cloudflare One Client. For example, you may need to resolve an internal hostname with a private DNS resolver instead of Cloudflare's [public DNS resolver](https://developers.cloudflare.com/1.1.1.1/).
 
@@ -19,11 +21,11 @@ Cloudflare recommends Enterprise users configure [Gateway resolver policies](htt
 Additionally, there are three options you can configure to exclude traffic from the Cloudflare One Client:
 
 * [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/): Send DNS requests for specific domains to a resolver other than Cloudflare Gateway. Use this when you have private hostnames that do not resolve on the public Internet (for example, internal corporate domains).
-Warning
+Caution
 Gateway will not encrypt, monitor, or apply DNS policies to DNS queries to domain names entered in Local Domain Fallback.
 * [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) Exclude mode: Exclude specific IP addresses or domains from the WARP tunnel. Excluded traffic bypasses the Cloudflare One Client and is handled by the local machine. Use this mode when you want most traffic to go through Gateway, but need to exclude certain routes for app compatibility or to run alongside a [third-party VPN](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/vpn/).
 * [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) Include mode: Only route traffic to specific IP addresses or domains through the WARP tunnel. All other traffic bypasses the Cloudflare One Client. Use this mode when you only want specific traffic processed by Gateway, such as traffic to resources behind [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
-Warning
+Caution
 Gateway will not encrypt, manage, or monitor traffic excluded from the Cloudflare One Client by a Split Tunnel configuration.
 
 ## How the Cloudflare One Client handles DNS requests
@@ -117,7 +119,14 @@ To manually configure a DNS suffix on Windows:
 7. Select **Add**, enter your DNS suffix and select **Add**.
 8. Select **OK** on all windows to apply changes.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/#page","headline":"Route traffic · Cloudflare One docs","description":"How Route traffic works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/","name":"Route traffic"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/#page","headline":"Route traffic · Cloudflare One docs","description":"How Route traffic works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

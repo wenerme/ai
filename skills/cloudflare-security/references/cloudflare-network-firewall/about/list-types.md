@@ -1,16 +1,18 @@
 ---
-title: List types
 description: IP list types available for Network Firewall policies.
-image: https://developers.cloudflare.com/zt-preview.png
+title: List types
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  List types
 
-# List types
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Threat intelligence
 
@@ -26,7 +28,14 @@ Use [IP lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#i
 
 Geo-blocking enables you to selectively allow or block traffic to any country. Refer to [Block a country](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/add-policies/#block-a-country) to check an example of how to block a country.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/#page","headline":"List types · Cloudflare Network Firewall docs","description":"IP list types available for Network Firewall policies.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/about/list-types/","name":"List types"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/#page","headline":"List types · Cloudflare Network Firewall docs","description":"IP list types available for Network Firewall policies.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

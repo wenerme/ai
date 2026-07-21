@@ -1,16 +1,18 @@
 ---
-title: RPC (WorkerEntrypoint)
 description: Facilitate Worker-to-Worker communication via RPC.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: RPC (WorkerEntrypoint)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  RPC (WorkerEntrypoint)
 
-# RPC (WorkerEntrypoint)
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) allow one Worker to call into another, without going through a publicly-accessible URL.
 
@@ -28,20 +30,13 @@ For example, the following Worker implements the public method `add(a, b)`:
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-12856)
-* [  wrangler.toml ](#tab-panel-12857)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "worker_b",
-  "main": "./src/workerB.js"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "worker_b",
+	"main": "./src/workerB.js"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -49,56 +44,40 @@ name = "worker_b"
 main = "./src/workerB.js"
 ```
 
-* [  JavaScript ](#tab-panel-12863)
-* [  TypeScript ](#tab-panel-12864)
-* [  Python ](#tab-panel-12865)
-
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class extends WorkerEntrypoint {
-  async fetch() {
-    return new Response("Hello from Worker B");
-  }
+	async fetch() {
+		return new Response("Hello from Worker B");
+	}
 
-
-  add(a, b) {
-    return a + b;
-  }
+	add(a, b) {
+		return a + b;
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class extends WorkerEntrypoint {
-  async fetch() {
-    return new Response("Hello from Worker B");
-  }
+	async fetch() {
+		return new Response("Hello from Worker B");
+	}
 
-
-  add(a: number, b: number) {
-    return a + b;
-  }
+	add(a: number, b: number) {
+		return a + b;
+	}
 }
 ```
-
-**Python**
 
 ```python
 from workers import WorkerEntrypoint, Response
 
-
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         return Response("Hello from Worker B")
-
 
     def add(self, a: int, b: int) -> int:
         return a + b
@@ -106,32 +85,24 @@ class Default(WorkerEntrypoint):
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-12858)
-* [  wrangler.toml ](#tab-panel-12859)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "worker_a",
-  "main": "./src/workerA.js",
-  "services": [
-    {
-      "binding": "WORKER_B",
-      "service": "worker_b"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "worker_a",
+	"main": "./src/workerA.js",
+	"services": [
+		{
+			"binding": "WORKER_B",
+			"service": "worker_b"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "worker_a"
 main = "./src/workerA.js"
-
 
 [[services]]
 binding = "WORKER_B"
@@ -140,42 +111,31 @@ service = "worker_b"
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-12860)
-* [  TypeScript ](#tab-panel-12861)
-* [  Python ](#tab-panel-12862)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const result = await env.WORKER_B.add(1, 2);
-    return new Response(result);
-  },
+	async fetch(request, env) {
+		const result = await env.WORKER_B.add(1, 2);
+		return new Response(result);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 export default {
-  async fetch(request, env) {
-    const result = await env.WORKER_B.add(1, 2);
-    return new Response(result);
-  },
+	async fetch(request, env) {
+		const result = await env.WORKER_B.add(1, 2);
+		return new Response(result);
+	},
 };
 ```
-
-**Python**
 
 ```python
 from workers import WorkerEntrypoint, Response
 
-
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         result = await self.env.WORKER_B.add(1, 2)
-    return Response(f"Result: {result}")
+		return Response(f"Result: {result}")
 ```
 
 You do not need to learn, implement, or think about special protocols to use the RPC system. The client, in this case Worker A, calls Worker B and tells it to execute a specific procedure using specific arguments that the client provides. This is accomplished with standard JavaScript classes.
@@ -184,25 +144,16 @@ You do not need to learn, implement, or think about special protocols to use the
 
 To provide RPC methods from your Worker, you must extend the `WorkerEntrypoint` class, as shown in the example below:
 
-* [  JavaScript ](#tab-panel-12836)
-* [  Python ](#tab-panel-12837)
-
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 export default class extends WorkerEntrypoint {
   async add(a, b) { return a + b; }
 }
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def add(self, a, b):
@@ -217,27 +168,19 @@ The [env](https://developers.cloudflare.com/workers/runtime-apis/bindings) objec
 
 For example, a Worker that declares a binding to the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) `GREETING`:
 
-* [  wrangler.jsonc ](#tab-panel-12846)
-* [  wrangler.toml ](#tab-panel-12847)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker",
-  "vars": {
-    "GREETING": "Hello"
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker",
+	"vars": {
+		"GREETING": "Hello"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
-
 
 [vars]
 GREETING = "Hello"
@@ -245,18 +188,11 @@ GREETING = "Hello"
 
 Can access it by calling `this.env.GREETING`:
 
-* [  JavaScript ](#tab-panel-12838)
-* [  Python ](#tab-panel-12839)
-
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class extends WorkerEntrypoint {
   fetch() { return new Response("Hello from my-worker"); }
-
 
   async greet(name) {
     return this.env.GREETING + name;
@@ -264,16 +200,12 @@ export default class extends WorkerEntrypoint {
 }
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         return Response("Hello from my-worker")
-
 
     async def greet(self, name):
         return self.env.GREETING + name
@@ -287,18 +219,11 @@ The [ctx](https://developers.cloudflare.com/workers/runtime-apis/context) object
 
 For example, you can extend the lifetime of the invocation context by calling the `waitUntil()` method:
 
-* [  JavaScript ](#tab-panel-12840)
-* [  Python ](#tab-panel-12841)
-
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export default class extends WorkerEntrypoint {
   fetch() { return new Response("Hello from my-worker"); }
-
 
   async signup(email, name) {
     // sendEvent() will continue running, even after this method returns a value to the caller
@@ -307,30 +232,24 @@ export default class extends WorkerEntrypoint {
     return "Success";
   }
 
-
   async #sendEvent(eventName, email) {
     //...
   }
 }
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         return Response("Hello from my-worker")
-
 
     async def signup(self, email, name):
         # _send_event() will continue running, even after this method returns a value to the caller
         self.ctx.waitUntil(self._send_event("signup", email))
         # Perform any other work
         return "Success"
-
 
     async def _send_event(self, event_name, email):
         # ...
@@ -341,27 +260,18 @@ class Default(WorkerEntrypoint):
 
 If your Worker has a [static assets binding](https://developers.cloudflare.com/workers/static-assets/binding/), you can call `this.env.ASSETS.fetch()` from within an RPC method. Since RPC methods do not receive a `request` parameter, construct a `Request` or URL with any hostname — the hostname is ignored by the assets binding, only the pathname matters:
 
-* [  JavaScript ](#tab-panel-12854)
-* [  TypeScript ](#tab-panel-12855)
-
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class ImageWorker extends WorkerEntrypoint {
-  async getImage(path) {
-    return this.env.ASSETS.fetch(new Request(`https://assets.local${path}`));
-  }
+	async getImage(path) {
+		return this.env.ASSETS.fetch(new Request(`https://assets.local${path}`));
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 export class ImageWorker extends WorkerEntrypoint {
   async getImage(path: string): Promise<Response> {
@@ -374,16 +284,9 @@ export class ImageWorker extends WorkerEntrypoint {
 
 The caller can then invoke this method via RPC:
 
-* [  JavaScript ](#tab-panel-12850)
-* [  TypeScript ](#tab-panel-12851)
-
-**JavaScript**
-
 ```js
 const response = await env.IMAGE_SERVICE.getImage("/images/logo.png");
 ```
-
-**TypeScript**
 
 ```ts
 const response = await env.IMAGE_SERVICE.getImage("/images/logo.png");
@@ -399,31 +302,23 @@ You can also export any number of named `WorkerEntrypoint` classes from within a
 
 You can use this to group multiple pieces of compute together. For example, you might create a distinct `WorkerEntrypoint` for each permission role in your application, and use these to provide role-specific RPC methods:
 
-* [  wrangler.jsonc ](#tab-panel-12848)
-* [  wrangler.toml ](#tab-panel-12849)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "todo-app",
-  "d1_databases": [
-    {
-      "binding": "D1",
-      "database_name": "todo-app-db",
-      "database_id": "<unique-ID-for-your-database>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "todo-app",
+	"d1_databases": [
+		{
+			"binding": "D1",
+			"database_name": "todo-app-db",
+			"database_id": "<unique-ID-for-your-database>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "todo-app"
-
 
 [[d1_databases]]
 binding = "D1"
@@ -431,14 +326,8 @@ database_name = "todo-app-db"
 database_id = "<unique-ID-for-your-database>"
 ```
 
-* [  JavaScript ](#tab-panel-12842)
-* [  Python ](#tab-panel-12843)
-
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
-
 
 export class AdminEntrypoint extends WorkerEntrypoint {
   async createUser(username) {
@@ -447,14 +336,12 @@ export class AdminEntrypoint extends WorkerEntrypoint {
       .run();
   }
 
-
   async deleteUser(username) {
     await this.env.D1.prepare("DELETE FROM users WHERE username = ?")
       .bind(username)
       .run();
   }
 }
-
 
 export class UserEntrypoint extends WorkerEntrypoint {
   async getTasks(userId) {
@@ -465,7 +352,6 @@ export class UserEntrypoint extends WorkerEntrypoint {
       .run();
   }
 
-
   async createTask(userId, title) {
     await this.env.D1.prepare(
       "INSERT INTO tasks (user_id, title) VALUES (?, ?)"
@@ -475,7 +361,6 @@ export class UserEntrypoint extends WorkerEntrypoint {
   }
 }
 
-
 export default class extends WorkerEntrypoint {
   async fetch(request, env) {
     return new Response("Hello from my to do app");
@@ -483,29 +368,22 @@ export default class extends WorkerEntrypoint {
 }
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
-
 
 class AdminEntrypoint(WorkerEntrypoint):
     async def create_user(self, username):
         await self.env.D1.prepare("INSERT INTO users (username) VALUES (?)").bind(username).run()
 
-
     async def delete_user(self, username):
         await self.env.D1.prepare("DELETE FROM users WHERE username = ?").bind(username).run()
-
 
 class UserEntrypoint(WorkerEntrypoint):
     async def get_tasks(self, user_id):
         return await self.env.D1.prepare("SELECT title FROM tasks WHERE user_id = ?").bind(user_id).run()
 
-
     async def create_task(self, user_id, title):
         await self.env.D1.prepare("INSERT INTO tasks (user_id, title) VALUES (?, ?)").bind(user_id, title).run()
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -514,42 +392,29 @@ class Default(WorkerEntrypoint):
 
 You can then declare a Service binding directly to `AdminEntrypoint` in another Worker:
 
-* [  wrangler.jsonc ](#tab-panel-12852)
-* [  wrangler.toml ](#tab-panel-12853)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "admin-app",
-  "services": [
-    {
-      "binding": "ADMIN",
-      "service": "todo-app",
-      "entrypoint": "AdminEntrypoint"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "admin-app",
+	"services": [
+		{
+			"binding": "ADMIN",
+			"service": "todo-app",
+			"entrypoint": "AdminEntrypoint"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "admin-app"
-
 
 [[services]]
 binding = "ADMIN"
 service = "todo-app"
 entrypoint = "AdminEntrypoint"
 ```
-
-* [  JavaScript ](#tab-panel-12844)
-* [  Python ](#tab-panel-12845)
-
-**JavaScript**
 
 ```js
 export default {
@@ -560,11 +425,8 @@ export default {
 };
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -584,7 +446,14 @@ You can try out a complete example of this to do app, as well as a Discord bot b
 * [ TypeScript ](https://developers.cloudflare.com/workers/runtime-apis/rpc/typescript/)
 * [ Error handling ](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#page","headline":"Service bindings - RPC (WorkerEntrypoint) · Cloudflare Workers docs","description":"Facilitate Worker-to-Worker communication via RPC.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/service-bindings/","name":"Service bindings"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/runtime-apis/bindings/service-bindings/rpc/","name":"RPC (WorkerEntrypoint)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#page","headline":"Service bindings - RPC (WorkerEntrypoint) · Cloudflare Workers docs","description":"Facilitate Worker-to-Worker communication via RPC.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
 ```

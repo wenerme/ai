@@ -1,16 +1,18 @@
 ---
-title: Discover and secure your API endpoints (Free, Pro, and Business)
 description: Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Discover and secure your API endpoints (Free, Pro, and Business)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Discover and secure your API endpoints (Free, Pro, and Business)
 
-# Discover and secure your API endpoints (Free, Pro, and Business)
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Once your API is in production and receiving traffic, you need to decide which endpoints to protect first, what restrictions to apply, and how to monitor for abuse without blocking legitimate clients. This guide walks through that process in five stages: inventory your endpoints, enforce encrypted connections, restrict access to expected traffic patterns, block automated abuse, and monitor the results.
 
@@ -51,7 +53,7 @@ API requests carry credentials, tokens, and response data that attackers can int
 Set your encryption mode to **Full (Strict)** to encrypt traffic between visitors and Cloudflare and between Cloudflare and your origin server. This mode requires a valid certificate on your origin.
 
 1. In the Cloudflare dashboard, go to the SSL/TLS **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. For **SSL/TLS encryption**, select **Full (Strict)**.
 
 For more information on encryption modes and their requirements, refer to [SSL/TLS encryption modes](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/).
@@ -65,10 +67,10 @@ Note
 If only some parts of your application support HTTPS, do not turn on Always Use HTTPS. Use a [single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) to redirect specific API paths instead. Refer to [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) for an example.
 
 1. In the Cloudflare dashboard, go to the SSL/TLS **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Verify that your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/) is not set to **Off**. The Always Use HTTPS option is not visible when encryption is off.
 3. Go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 4. Turn on **Always Use HTTPS**.
 
 ### Set minimum TLS version to 1.2
@@ -78,7 +80,7 @@ Since APIs can carry sensitive information, like credentials and tokens, you wan
 TLS 1.0 and 1.1 have known vulnerabilities. Setting the minimum to TLS 1.2 rejects connections from clients using older protocols.
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Minimum TLS Version**, select **TLS 1.2**.
 
 For more information, refer to [Minimum TLS Version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/).
@@ -88,7 +90,7 @@ For more information, refer to [Minimum TLS Version](https://developers.cloudfla
 [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/) changes HTTP links to HTTPS within HTML responses. For API endpoints that return JSON or other non-HTML content, this rewriting is unnecessary and can cause unexpected behavior if API clients follow rewritten URLs. If your domain serves only API traffic, turn off this setting.
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Turn off **Automatic HTTPS Rewrites**.
 
 Note
@@ -105,11 +107,8 @@ API clients typically include a `Content-Type` header and may include an `Author
 
 The following custom security rule blocks requests to `/api/` paths that are missing a `Content-Type` header. Adjust the path and header checks to match your API.
 
-* [  New dashboard ](#tab-panel-11840)
-* [ Old dashboard ](#tab-panel-11841)
-
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Define the rule name. For example, `Block API requests missing Content-Type`.
 4. In the expression editor, enter:
@@ -134,11 +133,8 @@ The following custom security rule blocks requests to `/api/` paths that are mis
 
 If your `/api/users` endpoint only accepts `GET` and `POST` requests, block all other HTTP methods on that path. This prevents attackers from probing with `PUT`, `DELETE`, or `PATCH` requests against endpoints that do not support them.
 
-* [  New dashboard ](#tab-panel-11842)
-* [ Old dashboard ](#tab-panel-11843)
-
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Define the rule name. For example, `Block unexpected methods on /api/users`.
 4. In the expression editor, enter:
@@ -178,11 +174,8 @@ Create separate rate limiting rules for authenticated and unauthenticated endpoi
 
 The following example limits requests to `/api/auth/login` to 10 per minute per IP address. Adjust the path, request threshold, and period for your endpoints.
 
-* [  New dashboard ](#tab-panel-11846)
-* [ Old dashboard ](#tab-panel-11847)
-
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Rate limiting rules**.
 3. Enter a descriptive name. For example, `Rate limit login endpoint`.
 4. In the **Field** drop-down, select **URI Path**. Set **Operator** to **equals** and **Value** to `/api/auth/login`.
@@ -229,11 +222,8 @@ If you are on a Cloudflare Pro or Business plan, go to the [next section](#creat
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to your entire domain and is available on all plans at no additional cost.
 
-* [  New dashboard ](#tab-panel-11852)
-* [ Old dashboard ](#tab-panel-11853)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
@@ -250,11 +240,8 @@ For more information on Bot Fight Mode behavior and limitations, refer to [Bot F
 
 If your API receives traffic from known automated clients (monitoring services, partner APIs, CI/CD systems), create a [custom security rule with the _Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/) to exclude them from bot protections. Create the exception rule before turning on Super Bot Fight Mode in the next section.
 
-* [  New dashboard ](#tab-panel-11844)
-* [ Old dashboard ](#tab-panel-11845)
-
 1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Define the rule name. For example, `Skip bot protections for monitoring service`.
 4. Build an expression that matches your known bot traffic. For example, to skip protections for requests from a specific IP range with a known User-Agent:
@@ -294,11 +281,8 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 
 To configure Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-11854)
-* [ Old dashboard ](#tab-panel-11855)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
@@ -364,11 +348,8 @@ After deploying your security rules, review the results to identify false positi
 
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) shows every request that your rules matched, including the action taken and the rule that triggered it. Filter by your API path prefix to see what Cloudflare is blocking and why.
 
-* [  New dashboard ](#tab-panel-11848)
-* [ Old dashboard ](#tab-panel-11849)
-
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Add a filter for **URI Path** starts with `/api/`.
 4. Review the events. Look for legitimate clients that are being blocked (false positives). Common indicators of false positives:
@@ -391,11 +372,8 @@ If you find false positives, update your custom rules to exclude the affected tr
 
 Rate limiting thresholds that are too tight block legitimate clients. Thresholds that are too loose allow abuse. Review rate limiting events in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to find the right balance.
 
-* [  New dashboard ](#tab-panel-11850)
-* [ Old dashboard ](#tab-panel-11851)
-
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Filter by **Action** equals **Block** and **Service** equals **Rate limiting**.
 4. Check whether blocked requests come from legitimate clients or abusive traffic.
@@ -418,7 +396,7 @@ Enterprise customers can use the **Request rate analysis** tab in [Security Anal
 Cloudflare Notifications can alert you when security event volume exceeds a threshold, indicating a potential attack or a misconfigured rule.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. Filter by **WAF** and select **Security Events Alert**.
 4. Define a name for the notification and the delivery method (email, webhook, or PagerDuty).
@@ -469,7 +447,14 @@ Enterprise customers have access to the [Advanced Security Events Alert](https:/
 * [BOLA vulnerability detection](https://developers.cloudflare.com/api-shield/security/bola-vulnerability-detection/) — Detect endpoints at risk of Broken Object Level Authorization (BOLA) attacks
 * [Vulnerability Scanner](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/) — Test your API endpoints for common vulnerabilities
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/#page","headline":"Discover and secure your API endpoints (Free, Pro, and Business) · Cloudflare use cases","description":"Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.","url":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Security"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/solutions/","name":"Solution guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/solutions/discover-secure-api-endpoints/","name":"Discover and secure your API endpoints (Free, Pro, and Business)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/#page","headline":"Discover and secure your API endpoints (Free, Pro, and Business) · Cloudflare use cases","description":"Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.","url":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Security"]}
 ```

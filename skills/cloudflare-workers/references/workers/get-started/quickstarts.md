@@ -1,16 +1,18 @@
 ---
-title: Templates
 description: GitHub repositories that are designed to be a starting point for building a new Cloudflare Workers project.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Templates
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Templates
 
-# Templates
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/get-started/quickstarts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Templates are GitHub repositories that are designed to be a starting point for building a new Cloudflare Workers project. To start any of the projects below, run:
 
@@ -916,8 +918,14 @@ pnpm create cloudflare@latest --template=cloudflare/templates/x402-proxy-templat
 ---
 
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/get-started/quickstarts/#page","headline":"Templates · Cloudflare Workers docs","description":"GitHub repositories that are designed to be a starting point for building a new Cloudflare Workers project.","url":"https://developers.cloudflare.com/workers/get-started/quickstarts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/get-started/quickstarts/","name":"Templates"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/get-started/quickstarts/#page","headline":"Templates · Cloudflare Workers docs","description":"GitHub repositories that are designed to be a starting point for building a new Cloudflare Workers project.","url":"https://developers.cloudflare.com/workers/get-started/quickstarts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

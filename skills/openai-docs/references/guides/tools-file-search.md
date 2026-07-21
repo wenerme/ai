@@ -105,7 +105,7 @@ print(vector_store.id)
 
 ```javascript
 const vectorStore = await openai.vectorStores.create({
-    name: "knowledge_base",
+  name: "knowledge_base",
 });
 console.log(vectorStore.id);
 ```
@@ -124,11 +124,8 @@ print(result)
 ```
 
 ```javascript
-await openai.vectorStores.files.create(
-    vectorStore.id,
-    {
-        file_id: fileId,
-    }
+await openai.vectorStores.files.create(vectorStore.id, {
+  file_id: fileId,
 });
 ```
 
@@ -147,9 +144,7 @@ print(result)
 ```
 
 ```javascript
-const result = await openai.vectorStores.files.list({
-    vector_store_id: vectorStore.id,
-});
+const result = await openai.vectorStores.files.list(vectorStore.id);
 console.log(result);
 ```
 
@@ -178,14 +173,14 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "What is deep research by OpenAI?",
-    tools: [
-        {
-            type: "file_search",
-            vector_store_ids: ["<vector_store_id>"],
-        },
-    ],
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: "file_search",
+      vector_store_ids: ["<vector_store_id>"],
+    },
+  ],
 });
 console.log(response);
 ```
@@ -312,15 +307,17 @@ print(response)
 
 ```javascript
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "What is deep research by OpenAI?",
-    tools: [{
-        type: "file_search",
-        vector_store_ids: ["<vector_store_id>"],
-        // highlight-start
-        max_num_results: 2,
-        // highlight-end
-    }],
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: "file_search",
+      vector_store_ids: ["<vector_store_id>"],
+      // highlight-start
+      max_num_results: 2,
+      // highlight-end
+    },
+  ],
 });
 console.log(response);
 ```
@@ -351,15 +348,17 @@ print(response)
 
 ```javascript
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "What is deep research by OpenAI?",
-    tools: [{
-        type: "file_search",
-        vector_store_ids: ["<vector_store_id>"],
-    }],
-    // highlight-start
-    include: ["file_search_call.results"],
-    // highlight-end
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: "file_search",
+      vector_store_ids: ["<vector_store_id>"],
+    },
+  ],
+  // highlight-start
+  include: ["file_search_call.results"],
+  // highlight-end
 });
 console.log(response);
 ```
@@ -395,19 +394,21 @@ print(response)
 
 ```javascript
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "What is deep research by OpenAI?",
-    tools: [{
-        type: "file_search",
-        vector_store_ids: ["<vector_store_id>"],
-        // highlight-start
-        filters: {
-            type: "in",
-            key: "category",
-            value: ["blog", "announcement"]
-        }
-        // highlight-end
-    }]
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: "file_search",
+      vector_store_ids: ["<vector_store_id>"],
+      // highlight-start
+      filters: {
+        type: "in",
+        key: "category",
+        value: ["blog", "announcement"],
+      },
+      // highlight-end
+    },
+  ],
 });
 console.log(response);
 ```

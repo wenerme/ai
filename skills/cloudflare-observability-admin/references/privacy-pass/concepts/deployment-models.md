@@ -1,16 +1,18 @@
 ---
-title: Deployment Models
 description: Who operates each Privacy Pass role and example deployment models.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deployment Models
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deployment Models
 
-# Deployment Models
+Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page covers how a deployment of Privacy Pass is structured: who operates each of the four roles, detailed example deployment models, which deployment models work for different customer needs, and Privacy Pass as a part of other products.
 
@@ -87,7 +89,14 @@ Privacy Pass also powers existing Cloudflare products. The most established exam
 * [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) — what deploying one of these models with Cloudflare looks like.
 * [Replace CAPTCHAs with Private Access Tokens (Apple WWDC22) ↗](https://developer.apple.com/videos/play/wwdc2022/10077/) — Apple's overview of its Private Access Token deployment.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/#page","headline":"Deployment Models · Cloudflare Privacy Pass docs","description":"Who operates each Privacy Pass role and example deployment models.","url":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-pass/","name":"Privacy Pass"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-pass/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-pass/concepts/deployment-models/","name":"Deployment Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/#page","headline":"Deployment Models · Cloudflare Privacy Pass docs","description":"Who operates each Privacy Pass role and example deployment models.","url":"https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

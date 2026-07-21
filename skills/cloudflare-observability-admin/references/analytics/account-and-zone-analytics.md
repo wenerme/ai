@@ -1,28 +1,37 @@
 ---
-title: Account and zone analytics
 description: View traffic metrics for accounts and zones.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Account and zone analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Account and zone analytics
 
-# Account and zone analytics
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Visit the following pages to learn more about account and zone analytics:
 
+* [ Zone Analytics ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/)
 * [ Account analytics (beta) ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/)
-* [ Cloudflare analytics with Workers ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/)
 * [ Security reports ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/)
 * [ Status codes ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/status-codes/)
+* [ Cloudflare analytics with Workers ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/)
 * [ Threat types ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/threat-types/)
 * [ Total threats stopped ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/total-threats-stopped/)
-* [ Zone Analytics ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/#page","headline":"Account and zone analytics · Cloudflare Analytics docs","description":"View traffic metrics for accounts and zones.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/account-and-zone-analytics/","name":"Account and zone analytics"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/#page","headline":"Account and zone analytics · Cloudflare Analytics docs","description":"View traffic metrics for accounts and zones.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

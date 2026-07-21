@@ -1,16 +1,18 @@
 ---
-title: External Services
 description: Connect Cloudflare Workers to external services using libraries, SDKs, and secure authentication.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: External Services
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  External Services
 
-# External Services
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/integrations/external-services/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Many external services provide libraries and SDKs to interact with their APIs. While many Node-compatible libraries work on Workers right out of the box, some, which implement `fs`, `http/net`, or access the browser `window` do not directly translate to the Workers runtime, which is v8-based.
 
@@ -24,8 +26,6 @@ wrangler secret put SECRET_NAME
 
 Then, retrieve the secret value in your code using the following code snippet:
 
-**JavaScript**
-
 ```js
 const secretValue = env.SECRET_NAME;
 ```
@@ -36,7 +36,14 @@ For services that require mTLS authentication, use [mTLS certificates](https://d
 
 Use [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) when communicating with external APIs, which treat your Worker as your core application.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/integrations/external-services/#page","headline":"External Services · Cloudflare Workers docs","description":"Connect Cloudflare Workers to external services using libraries, SDKs, and secure authentication.","url":"https://developers.cloudflare.com/workers/configuration/integrations/external-services/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/integrations/","name":"Integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/integrations/external-services/","name":"External Services"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/integrations/external-services/#page","headline":"External Services · Cloudflare Workers docs","description":"Connect Cloudflare Workers to external services using libraries, SDKs, and secure authentication.","url":"https://developers.cloudflare.com/workers/configuration/integrations/external-services/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

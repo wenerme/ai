@@ -1,16 +1,18 @@
 ---
-title: Integrate Microsoft MCAS with Cloudflare Zero Trust
 description: With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Integrate Microsoft MCAS with Cloudflare Zero Trust
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Integrate Microsoft MCAS with Cloudflare Zero Trust
 
-# Integrate Microsoft MCAS with Cloudflare Zero Trust
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Many security teams rely on Microsoft MCAS (Microsoft Cloud App Security), Microsoft's CASB solution, to identify and block threats on the Internet, as well as allow or block access to cloud applications. This tutorial covers how to integrate MCAS with Cloudflare Zero Trust, and create Gateway HTTP policies to ensure visibility and control over data.
 
@@ -84,7 +86,14 @@ Now when trying to visit one of the MCAS defined sites, the user will be blocked
 
 ![Access Restricted](https://developers.cloudflare.com/_astro/mcas-block-page.Bgzcx6ig_ZPxsLe.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/#page","headline":"Integrate Microsoft MCAS with Cloudflare Zero Trust · Cloudflare One docs","description":"With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/","name":"Integrate Microsoft MCAS with Cloudflare Zero Trust"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/#page","headline":"Integrate Microsoft MCAS with Cloudflare Zero Trust · Cloudflare One docs","description":"With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}
 ```

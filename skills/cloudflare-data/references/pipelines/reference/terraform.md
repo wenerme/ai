@@ -1,16 +1,18 @@
 ---
-title: Terraform
 description: Configure Pipelines and R2 Data Catalog with Terraform using the Cloudflare provider.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Terraform
 
-# Terraform
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/reference/terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example shows how to configure [Pipelines](https://developers.cloudflare.com/pipelines/) and [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/) with Terraform using the [Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (v5.19.0+).
 
@@ -59,17 +61,14 @@ terraform {
   }
 }
 
-
 provider "cloudflare" {
   api_token = var.cloudflare_api_token
 }
-
 
 variable "cloudflare_api_token" {
   type      = string
   sensitive = true
 }
-
 
 variable "cloudflare_account_id" {
   type = string
@@ -83,38 +82,31 @@ Create `main.tf`:
 ```hcl
 # --- R2 bucket and Data Catalog ---
 
-
 resource "cloudflare_r2_bucket" "pipeline_bucket" {
   account_id = var.cloudflare_account_id
   name       = "my-pipeline-bucket"
 }
-
 
 resource "cloudflare_r2_data_catalog" "pipeline_catalog" {
   account_id  = var.cloudflare_account_id
   bucket_name = cloudflare_r2_bucket.pipeline_bucket.name
 }
 
-
 # --- Scoped API token for the sink ---
-
 
 data "cloudflare_account_api_token_permission_groups_list" "r2_bucket_item_write" {
   account_id = var.cloudflare_account_id
   name       = "Workers R2 Storage Bucket Item Write"
 }
 
-
 data "cloudflare_account_api_token_permission_groups_list" "r2_data_catalog_write" {
   account_id = var.cloudflare_account_id
   name       = "Workers R2 Data Catalog Write"
 }
 
-
 resource "cloudflare_account_token" "sink_token" {
   name       = "pipeline-sink-token"
   account_id = var.cloudflare_account_id
-
 
   policies = [{
     effect = "allow"
@@ -128,9 +120,7 @@ resource "cloudflare_account_token" "sink_token" {
   }]
 }
 
-
 # --- Stream ---
-
 
 resource "cloudflare_pipeline_stream" "my_stream" {
   account_id = var.cloudflare_account_id
@@ -155,9 +145,7 @@ resource "cloudflare_pipeline_stream" "my_stream" {
   }
 }
 
-
 # --- Sink (R2 Data Catalog) ---
-
 
 resource "cloudflare_pipeline_sink" "my_sink" {
   account_id = var.cloudflare_account_id
@@ -177,9 +165,7 @@ resource "cloudflare_pipeline_sink" "my_sink" {
   }
 }
 
-
 # --- Pipeline ---
-
 
 resource "cloudflare_pipeline" "my_pipeline" {
   account_id = var.cloudflare_account_id
@@ -199,7 +185,6 @@ variable "r2_access_key_id" {
   type      = string
   sensitive = true
 }
-
 
 variable "r2_access_key_secret" {
   type      = string
@@ -242,16 +227,13 @@ output "pipeline_id" {
   value = cloudflare_pipeline.my_pipeline.id
 }
 
-
 output "pipeline_status" {
   value = cloudflare_pipeline.my_pipeline.status
 }
 
-
 output "stream_endpoint" {
   value = cloudflare_pipeline_stream.my_stream.endpoint
 }
-
 
 output "sink_id" {
   value = cloudflare_pipeline_sink.my_sink.id
@@ -291,7 +273,14 @@ To remove all resources created by this configuration:
 terraform destroy
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/reference/terraform/#page","headline":"Terraform · Cloudflare Pipelines Docs","description":"Configure Pipelines and R2 Data Catalog with Terraform using the Cloudflare provider.","url":"https://developers.cloudflare.com/pipelines/reference/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/reference/terraform/","name":"Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/reference/terraform/#page","headline":"Terraform · Cloudflare Pipelines Docs","description":"Configure Pipelines and R2 Data Catalog with Terraform using the Cloudflare provider.","url":"https://developers.cloudflare.com/pipelines/reference/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

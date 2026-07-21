@@ -1,16 +1,18 @@
 ---
-title: Outages
 description: Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Outages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Outages
 
-# Outages
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/outages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Radar Outage Center (CROC) ↗](https://radar.cloudflare.com/outage-center) provides data on outages occurring around the world.
 
@@ -37,42 +39,42 @@ curl "https://api.cloudflare.com/client/v4/radar/annotations/outages?limit=5&off
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "result": {
-    "annotations": [
-      {
-        "dataSource": "ALL",
-        "description": null,
-        "scope": "Multiple regions/cities",
-        "startDate": "2022-10-25T00:00:00Z",
-        "endDate": null,
-        "locations": ["UA"],
-        "asns": [],
-        "eventType": "OUTAGE",
-        "linkedUrl": "https://www.npr.org/2022/10/22/1130742768/ukraine-power-grid-outages-record-damage",
-        "outage": {
-          "outageCause": "POWER_OUTAGE",
-          "outageType": "REGIONAL"
-        }
-      },
-      {
-        "dataSource": "ALL",
-        "description": null,
-        "scope": "Multiple cities in Florida",
-        "startDate": "2022-09-28T19:00:00Z",
-        "endDate": "2022-11-02T00:00:00Z",
-        "locations": ["US"],
-        "asns": [],
-        "eventType": "OUTAGE",
-        "linkedUrl": "https://x.com/CloudflareRadar/status/1575229448353349632",
-        "outage": {
-          "outageCause": "WEATHER",
-          "outageType": "REGIONAL"
-        }
-      }
-    ]
-  }
+	"success": true,
+	"errors": [],
+	"result": {
+		"annotations": [
+			{
+				"dataSource": "ALL",
+				"description": null,
+				"scope": "Multiple regions/cities",
+				"startDate": "2022-10-25T00:00:00Z",
+				"endDate": null,
+				"locations": ["UA"],
+				"asns": [],
+				"eventType": "OUTAGE",
+				"linkedUrl": "https://www.npr.org/2022/10/22/1130742768/ukraine-power-grid-outages-record-damage",
+				"outage": {
+					"outageCause": "POWER_OUTAGE",
+					"outageType": "REGIONAL"
+				}
+			},
+			{
+				"dataSource": "ALL",
+				"description": null,
+				"scope": "Multiple cities in Florida",
+				"startDate": "2022-09-28T19:00:00Z",
+				"endDate": "2022-11-02T00:00:00Z",
+				"locations": ["US"],
+				"asns": [],
+				"eventType": "OUTAGE",
+				"linkedUrl": "https://x.com/CloudflareRadar/status/1575229448353349632",
+				"outage": {
+					"outageCause": "WEATHER",
+					"outageType": "REGIONAL"
+				}
+			}
+		]
+	}
 }
 ```
 
@@ -80,7 +82,14 @@ Refer to the [API reference](https://developers.cloudflare.com/api/resources/rad
 
 Having data on a given outage allows you to examine its impact through both [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) (like in the [Tonga outage](https://developers.cloudflare.com/radar/get-started/making-comparisons/#use-specific-timestamps) and [others ↗](https://blog.cloudflare.com/q3-2022-internet-disruption-summary/)) and [HTTP](https://developers.cloudflare.com/radar/investigate/http-requests/) data (for example, did the outage affect more mobile than desktop traffic?).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/outages/#page","headline":"Outages · Cloudflare Radar docs","description":"Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.","url":"https://developers.cloudflare.com/radar/investigate/outages/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/outages/","name":"Outages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/outages/#page","headline":"Outages · Cloudflare Radar docs","description":"Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.","url":"https://developers.cloudflare.com/radar/investigate/outages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

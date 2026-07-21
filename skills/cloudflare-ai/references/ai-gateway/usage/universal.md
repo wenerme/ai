@@ -1,16 +1,18 @@
 ---
-title: Universal Endpoint (Deprecated)
 description: Route requests to any AI provider through a single AI Gateway endpoint with support for fallbacks and retries.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Universal Endpoint (Deprecated)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Universal Endpoint (Deprecated)
 
-# Universal Endpoint (Deprecated)
+Last updated May 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/universal/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deprecated
 
@@ -30,8 +32,6 @@ The payload expects an array of messages. Each message is an object with the fol
 * `query`: the payload as the provider expects it in their official API.
 
 ## cURL example
-
-**Request**
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
@@ -103,12 +103,10 @@ Configure the timeout by setting a `requestTimeout` property (in milliseconds) w
 
 The timeout is based on when the first part of the response comes back. As long as the first part of the response returns within the specified timeframe — such as when streaming a response — your gateway will wait for the response.
 
-**Request timeout example**
-
 ```bash
 curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
-  --header 'Content-Type: application/json' \
-  --data '[
+	--header 'Content-Type: application/json' \
+	--data '[
     {
         "provider": "workers-ai",
         "endpoint": "@cf/meta/llama-3.1-8b-instruct",
@@ -120,7 +118,6 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
             "requestTimeout": 1000
         },
         "query": {
-34 collapsed lines
             "messages": [
                 {
                     "role": "system",
@@ -152,7 +149,7 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
                 }
             ]
         },
-        "config": {
+				"config": {
             "requestTimeout": 3000
         },
     }
@@ -165,13 +162,11 @@ The Universal Endpoint supports automatic retries for failed requests, with a ma
 
 Configure the retry settings with the following properties in the provider-specific `config`:
 
-**TypeScript**
-
 ```ts
 config:{
-  maxAttempts?: number;
-  retryDelay?: number;
-  backoff?: "constant" | "linear" | "exponential";
+	maxAttempts?: number;
+	retryDelay?: number;
+	backoff?: "constant" | "linear" | "exponential";
 }
 ```
 
@@ -181,12 +176,10 @@ config:{
 
 On the final retry attempt, your gateway will wait until the request completes, regardless of how long it takes. Each provider can have different retry settings.
 
-**Request retry example**
-
 ```bash
 curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
-  --header 'Content-Type: application/json' \
-  --data '[
+	--header 'Content-Type: application/json' \
+	--data '[
     {
         "provider": "workers-ai",
         "endpoint": "@cf/meta/llama-3.1-8b-instruct",
@@ -196,10 +189,9 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
         },
         "config": {
             "maxAttempts": 2,
-            "retryDelay": 1000,
-            "backoff": "constant"
+						"retryDelay": 1000,
+						"backoff": "constant"
         },
-39 collapsed lines
         "query": {
             "messages": [
                 {
@@ -232,102 +224,88 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
                 }
             ]
         },
-        "config": {
+				"config": {
             "maxAttempts": 4,
-            "retryDelay": 1000,
-            "backoff": "exponential"
+						"retryDelay": 1000,
+						"backoff": "exponential"
         },
     }
 ]'
 ```
 
-## WebSockets API beta
+## WebSockets API  beta
 
 The Universal Endpoint can also be accessed via a [WebSockets API](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/) which provides a single persistent connection, enabling continuous communication. This API supports all AI providers connected to AI Gateway, including those that do not natively support WebSockets.
 
 ### WebSockets example
 
-**JavaScript**
-
 ```javascript
 import WebSocket from "ws";
 const ws = new WebSocket(
-  "wss://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/",
-  {
-    headers: {
-      "cf-aig-authorization": "Bearer AI_GATEWAY_TOKEN",
-    },
-  },
+	"wss://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/",
+	{
+		headers: {
+			"cf-aig-authorization": "Bearer AI_GATEWAY_TOKEN",
+		},
+	},
 );
-
 
 ws.send(
-  JSON.stringify({
-    type: "universal.create",
-    request: {
-      eventId: "my-request",
-      provider: "workers-ai",
-      endpoint: "@cf/meta/llama-3.1-8b-instruct",
-      headers: {
-        Authorization: "Bearer WORKERS_AI_TOKEN",
-        "Content-Type": "application/json",
-      },
-      query: {
-        prompt: "tell me a joke",
-      },
-    },
-  }),
+	JSON.stringify({
+		type: "universal.create",
+		request: {
+			eventId: "my-request",
+			provider: "workers-ai",
+			endpoint: "@cf/meta/llama-3.1-8b-instruct",
+			headers: {
+				Authorization: "Bearer WORKERS_AI_TOKEN",
+				"Content-Type": "application/json",
+			},
+			query: {
+				prompt: "tell me a joke",
+			},
+		},
+	}),
 );
 
-
 ws.on("message", function incoming(message) {
-  console.log(message.toString());
+	console.log(message.toString());
 });
 ```
 
 ## Workers Binding example
 
-* [  wrangler.jsonc ](#tab-panel-7178)
-* [  wrangler.toml ](#tab-panel-7179)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai": {
-    "binding": "AI",
-  },
+	"ai": {
+		"binding": "AI",
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
 binding = "AI"
 ```
 
-**src/index.ts**
-
 ```typescript
 type Env = {
-  AI: Ai;
+	AI: Ai;
 };
 
-
 export default {
-  async fetch(request: Request, env: Env) {
-    return env.AI.gateway("my-gateway").run({
-      provider: "workers-ai",
-      endpoint: "@cf/meta/llama-3.1-8b-instruct",
-      headers: {
-        authorization: "Bearer my-api-token",
-      },
-      query: {
-        prompt: "tell me a joke",
-      },
-    });
-  },
+	async fetch(request: Request, env: Env) {
+		return env.AI.gateway("my-gateway").run({
+			provider: "workers-ai",
+			endpoint: "@cf/meta/llama-3.1-8b-instruct",
+			headers: {
+				authorization: "Bearer my-api-token",
+			},
+			query: {
+				prompt: "tell me a joke",
+			},
+		});
+	},
 };
 ```
 
@@ -403,7 +381,14 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
   ]'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/universal/#page","headline":"Universal Endpoint (Deprecated) · Cloudflare AI Gateway docs","description":"Route requests to any AI provider through a single AI Gateway endpoint with support for fallbacks and retries.","url":"https://developers.cloudflare.com/ai-gateway/usage/universal/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/universal/","name":"Universal Endpoint (Deprecated)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/universal/#page","headline":"Universal Endpoint (Deprecated) · Cloudflare AI Gateway docs","description":"Route requests to any AI provider through a single AI Gateway endpoint with support for fallbacks and retries.","url":"https://developers.cloudflare.com/ai-gateway/usage/universal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

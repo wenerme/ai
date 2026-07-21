@@ -1,25 +1,22 @@
 ---
-title: Workers Binding
 description: Convert documents to Markdown using the Workers AI binding and toMarkdown method.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Binding
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Binding
 
-# Workers Binding
+Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare’s serverless platform allows you to run code at the edge to build full-stack applications with [Workers](https://developers.cloudflare.com/workers/). A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Worker or Pages Function to interact with resources on the Cloudflare Developer Platform.
 
 To use our Markdown Conversion service directly from your Workers, create an AI binding either in the Cloudflare dashboard (refer to [AI bindings](https://developers.cloudflare.com/pages/functions/bindings/#workers-ai) for instructions), or you can update your [Wrangler file](https://developers.cloudflare.com/workers/wrangler/configuration/). Add the following to your Wrangler file:
-
-* [  wrangler.jsonc ](#tab-panel-12102)
-* [  wrangler.toml ](#tab-panel-12103)
-
-**JSONC**
 
 ```jsonc
 {
@@ -29,8 +26,6 @@ To use our Markdown Conversion service directly from your Workers, create an AI 
   }
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
@@ -43,109 +38,87 @@ binding = "AI" # i.e. available in your Worker on env.AI
 
 In this example, we fetch a PDF document and an image from R2 and feed them both to `env.AI.toMarkdown`. The result is a list of converted documents. Workers AI models are used automatically to detect and summarize the image.
 
-* [  JavaScript ](#tab-panel-12112)
-* [  TypeScript ](#tab-panel-12113)
-
-**JavaScript**
-
 ```js
 import { Env } from "./env";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/somatosensory.pdf
-    const pdf = await env.R2.get("somatosensory.pdf");
+	async fetch(request, env, ctx) {
+		// https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/somatosensory.pdf
+		const pdf = await env.R2.get("somatosensory.pdf");
 
+		// https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/cat.jpeg
+		const cat = await env.R2.get("cat.jpeg");
 
-    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/cat.jpeg
-    const cat = await env.R2.get("cat.jpeg");
-
-
-    return Response.json(
-      await env.AI.toMarkdown([
-        {
-          name: "somatosensory.pdf",
-          blob: new Blob([await pdf.arrayBuffer()], {
-            type: "application/pdf",
-          }),
-        },
-        {
-          name: "cat.jpeg",
-          blob: new Blob([await cat.arrayBuffer()], {
-            type: "image/jpeg",
-          }),
-        },
-      ]),
-    );
-  },
+		return Response.json(
+			await env.AI.toMarkdown([
+				{
+					name: "somatosensory.pdf",
+					blob: new Blob([await pdf.arrayBuffer()], {
+						type: "application/pdf",
+					}),
+				},
+				{
+					name: "cat.jpeg",
+					blob: new Blob([await cat.arrayBuffer()], {
+						type: "image/jpeg",
+					}),
+				},
+			]),
+		);
+	},
 };
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 import { Env } from "./env";
 
-
 export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/somatosensory.pdf
-    const pdf = await env.R2.get("somatosensory.pdf");
+	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		// https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/somatosensory.pdf
+		const pdf = await env.R2.get("somatosensory.pdf");
 
+		// https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/cat.jpeg
+		const cat = await env.R2.get("cat.jpeg");
 
-    // https://pub-979cb28270cc461d94bc8a169d8f389d.r2.dev/cat.jpeg
-    const cat = await env.R2.get("cat.jpeg");
-
-
-    return Response.json(
-      await env.AI.toMarkdown([
-        {
-          name: "somatosensory.pdf",
-          blob: new Blob([await pdf.arrayBuffer()], {
-            type: "application/pdf",
-          }),
-        },
-        {
-          name: "cat.jpeg",
-          blob: new Blob([await cat.arrayBuffer()], {
-            type: "image/jpeg",
-          }),
-        },
-      ]),
-    );
-  },
+		return Response.json(
+			await env.AI.toMarkdown([
+				{
+					name: "somatosensory.pdf",
+					blob: new Blob([await pdf.arrayBuffer()], {
+						type: "application/pdf",
+					}),
+				},
+				{
+					name: "cat.jpeg",
+					blob: new Blob([await cat.arrayBuffer()], {
+						type: "image/jpeg",
+					}),
+				},
+			]),
+		);
+	},
 };
 ```
 
 ### Getting supported file formats
 
-* [  JavaScript ](#tab-panel-12106)
-* [  TypeScript ](#tab-panel-12107)
-
-**JavaScript**
-
 ```js
 import { Env } from "./env";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    return Response.json(await env.AI.toMarkdown().supported());
-  },
+	async fetch(request, env, ctx) {
+		return Response.json(await env.AI.toMarkdown().supported());
+	},
 };
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 import { Env } from "./env";
 
-
 export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-    return Response.json(await env.AI.toMarkdown().supported());
-  },
+	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		return Response.json(await env.AI.toMarkdown().supported());
+	},
 };
 ```
 
@@ -155,24 +128,17 @@ export default {
 
 Takes a document or list of documents in different formats and converts them to Markdown.
 
-* [  JavaScript ](#tab-panel-12104)
-* [  TypeScript ](#tab-panel-12105)
-
-**JavaScript**
-
 ```js
 const result = await env.AI.toMarkdown({
-  name: "document.pdf",
-  blob: new Blob([documentBuffer]),
+	name: "document.pdf",
+	blob: new Blob([documentBuffer]),
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 const result = await env.AI.toMarkdown({
-  name: "document.pdf",
-  blob: new Blob([documentBuffer]),
+	name: "document.pdf",
+	blob: new Blob([documentBuffer]),
 });
 ```
 
@@ -222,24 +188,17 @@ const result = await env.AI.toMarkdown({
 
 This method is similar to `env.AI.toMarkdown` except that it is exposed through a new handle. It takes the same arguments and returns the same values.
 
-* [  JavaScript ](#tab-panel-12110)
-* [  TypeScript ](#tab-panel-12111)
-
-**JavaScript**
-
 ```js
 const result = await env.AI.toMarkdown().transform({
-  name: "document.pdf",
-  blob: new Blob([documentBuffer]),
+	name: "document.pdf",
+	blob: new Blob([documentBuffer]),
 });
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 const result = await env.AI.toMarkdown().transform({
-  name: "document.pdf",
-  blob: new Blob([documentBuffer]),
+	name: "document.pdf",
+	blob: new Blob([documentBuffer]),
 });
 ```
 
@@ -247,18 +206,11 @@ const result = await env.AI.toMarkdown().transform({
 
 Returns a list of file formats that are currently supported for markdown conversion. See [Supported formats](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/supported-formats/) for the full list of file formats that can be converted into Markdown.
 
-* [  JavaScript ](#tab-panel-12108)
-* [  TypeScript ](#tab-panel-12109)
-
-**JavaScript**
-
 ```js
 const formats = await env.AI.toMarkdown().supported();
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 const formats = await env.AI.toMarkdown().supported();
 ```
 
@@ -275,7 +227,14 @@ const formats = await env.AI.toMarkdown().supported();
 
   * The [mime type ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME%5Ftypes/Common%5Ftypes) of files of this format
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/#page","headline":"Workers Binding · Cloudflare Workers AI docs","description":"Convert documents to Markdown using the Workers AI binding and toMarkdown method.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/markdown-conversion/","name":"Markdown Conversion"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/markdown-conversion/usage/","name":"Usage"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers-ai/features/markdown-conversion/usage/binding/","name":"Workers Binding"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/#page","headline":"Workers Binding · Cloudflare Workers AI docs","description":"Convert documents to Markdown using the Workers AI binding and toMarkdown method.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

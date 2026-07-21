@@ -1,16 +1,18 @@
 ---
-title: Available settings
 description: Available settings for Cache Rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Available settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Available settings
 
-# Available settings
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 These are the settings that you can configure when creating a cache rule.
 
@@ -108,8 +110,6 @@ API configuration object name: `"edge_ttl"`.
 | bypass\_by\_default | Use cache control-header if present, bypass cache if not.                                                                                                        |
 |                     |                                                                                                                                                                  |
 
-**API configuration example**
-
 ```json
 "action_parameters": {
     "cache": true,
@@ -138,6 +138,7 @@ API configuration object name: `"edge_ttl"`.
         "mode": "respect_origin"
     }
 }
+
 ```
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples.
@@ -155,8 +156,6 @@ API configuration object name: `"browser_ttl"`.
 API values for the `"mode"` property: `"respect_origin"`, `"override_origin"`, `"bypass_by_default"`.
 
 API values for the `"default"` property (integer): values available depend on your plan. Refer to [Browser Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#browser-cache-ttl).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -205,8 +204,6 @@ API information
 API configuration object name: `"cache_key"`.
 
 API values: `"ignore_query_strings_order"`, `"cache_deception_armor"`, `"cache_by_device_type"`, `"custom_key"` (`"header"`, `"cookie"`, `"host"`, `"query_string"`, `"user"`).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -270,8 +267,6 @@ API configuration object name: `"cache_reserve"`.
 
 API property name for enabling Cache Reserve: `"eligible"` (boolean).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "cache": true
@@ -300,8 +295,6 @@ API information
 
 API configuration property name: `"additional_cacheable_ports"` (array of integer values).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
     "cache": true
@@ -320,8 +313,6 @@ API information
 
 API configuration property name: `"read_timeout"` (integer).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "cache": true,
@@ -338,8 +329,6 @@ Defines if Cloudflare will serve stale content while updating the latest content
 API information
 
 API configuration property name: `"serve_stale"` \> `"disable_stale_while_updating"` (boolean).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -360,8 +349,6 @@ API information
 
 API configuration property name: `"respect_strong_etags"` (boolean).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "cache": true,
@@ -379,8 +366,6 @@ API information
 
 API configuration property name: `"origin_error_page_passthru"` (boolean).
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "cache": true,
@@ -397,8 +382,6 @@ When this option is enabled, Cloudflare will aim to strictly adhere to [RFC 7234
 API information
 
 API configuration property name: `"origin_cache_control"` (boolean).
-
-**API configuration example**
 
 ```json
 "action_parameters": {
@@ -458,8 +441,6 @@ API configuration object name: `"vary"`.
 
 The following example normalizes `accept` and `accept-language`, and bypasses cache for any other header in the origin `Vary` response:
 
-**API configuration example**
-
 ```json
 "action_parameters": {
   "cache": true,
@@ -483,7 +464,14 @@ The following example normalizes `accept` and `accept-language`, and bypasses ca
 
 Refer to [Create a cache rule via API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests) for complete API examples, or to the [Terraform example](https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#page","headline":"Cache Rules settings · Cloudflare Cache (CDN) docs","description":"Available settings for Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/cache-rules/","name":"Cache Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/cache-rules/settings/","name":"Available settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#page","headline":"Cache Rules settings · Cloudflare Cache (CDN) docs","description":"Available settings for Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

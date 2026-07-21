@@ -1,16 +1,18 @@
 ---
-title: Postmaster
 description: Reference page with postmaster information for professionals, as well as configuration details for Email Service.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Postmaster
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Postmaster
 
-# Postmaster
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/reference/postmaster/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page provides technical information about Email Service to professionals who administer email systems, and other email providers.
 
@@ -41,7 +43,6 @@ Email Sending and Email Routing use separate DKIM selectors. You can find the DK
 ```sh
 # Email Sending DKIM
 dig TXT cf-bounce._domainkey.example.com +short
-
 
 # Email Routing DKIM
 dig TXT cf2024-1._domainkey.example.com +short
@@ -218,7 +219,14 @@ Email Routing does not support sending or replying from your Cloudflare domain. 
 
 The `.` character, which performs special actions in email providers like Gmail, is treated as a normal character in routing rule email patterns.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/postmaster/#page","headline":"Postmaster · Cloudflare Email Service docs","description":"Reference page with postmaster information for professionals, as well as configuration details for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/postmaster/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/reference/postmaster/","name":"Postmaster"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/postmaster/#page","headline":"Postmaster · Cloudflare Email Service docs","description":"Reference page with postmaster information for professionals, as well as configuration details for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/postmaster/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

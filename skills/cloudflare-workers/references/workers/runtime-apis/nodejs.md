@@ -1,16 +1,18 @@
 ---
-title: Node.js compatibility
 description: Node.js APIs available in Cloudflare Workers
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Node.js compatibility
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Node.js compatibility
 
-# Node.js compatibility
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you write a Worker, you may need to import packages from [npm ↗](https://www.npmjs.com/). Many npm packages rely on APIs from the [Node.js runtime ↗](https://nodejs.org/en/about), and will not work unless these Node.js APIs are available.
 
@@ -23,25 +25,18 @@ Cloudflare Workers provides a subset of Node.js APIs in two forms:
 
 To enable built-in Node.js APIs and add polyfills, add the `nodejs_compat` compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and ensure that your Worker's [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-12891)
-* [  wrangler.toml ](#tab-panel-12892)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": ["nodejs_compat"],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
+	"compatibility_flags": ["nodejs_compat"],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 ```
 
 ## Supported Node.js APIs
@@ -130,24 +125,24 @@ This allows you to import packages that use these Node.js modules, even if certa
 
 If you need to enable only the Node.js `AsyncLocalStorage` API, you can enable the `nodejs_als` compatibility flag:
 
-* [  wrangler.jsonc ](#tab-panel-12893)
-* [  wrangler.toml ](#tab-panel-12894)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": ["nodejs_als"],
+	"compatibility_flags": ["nodejs_als"],
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_als" ]
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/#page","headline":"Node.js compatibility · Cloudflare Workers docs","description":"Node.js APIs available in Cloudflare Workers","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/#page","headline":"Node.js compatibility · Cloudflare Workers docs","description":"Node.js APIs available in Cloudflare Workers","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

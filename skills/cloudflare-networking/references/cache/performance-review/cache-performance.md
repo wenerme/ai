@@ -1,16 +1,18 @@
 ---
-title: Cache performance
 description: Measure and improve cache performance for your site.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cache performance
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cache performance
 
-# Cache performance
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/performance-review/cache-performance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Optimize cache ratios
 
@@ -34,7 +36,7 @@ Use [Cache Analytics](https://developers.cloudflare.com/cache/performance-review
   * Identify the issue: Select **Add filter** and select **Cache status equals Dynamic**.
   * Resolution: Set a Cloudflare Cache Rule to [cache dynamic content](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything/).
 
-Warning
+Caution
 
 This option caches all HTML regardless of the presence of dynamic content (content that changes per visitor, such as time of visit, location, or device). If you use this approach to cache pages containing dynamic content, visitors may receive information not intended for them. To avoid caching dynamic content, add a condition to the rule's matching criteria to exclude it. Some examples include:
 
@@ -51,7 +53,14 @@ This option caches all HTML regardless of the presence of dynamic content (conte
   * Identify the issue: Select **Add filter** and select **Cache status equals Miss**.
   * Resolution: [Enable Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/#enable-tiered-cache) or [create a custom cache key](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/custom-cache-key/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/performance-review/cache-performance/#page","headline":"Cache performance · Cloudflare Cache (CDN) docs","description":"Measure and improve cache performance for your site.","url":"https://developers.cloudflare.com/cache/performance-review/cache-performance/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/performance-review/","name":"Performance review"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/performance-review/cache-performance/","name":"Cache performance"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/performance-review/cache-performance/#page","headline":"Cache performance · Cloudflare Cache (CDN) docs","description":"Measure and improve cache performance for your site.","url":"https://developers.cloudflare.com/cache/performance-review/cache-performance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

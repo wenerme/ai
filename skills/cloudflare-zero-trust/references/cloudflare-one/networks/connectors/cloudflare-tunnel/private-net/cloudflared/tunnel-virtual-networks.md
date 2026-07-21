@@ -1,16 +1,18 @@
 ---
-title: Virtual networks
 description: Virtual networks in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Virtual networks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Virtual networks
 
-# Virtual networks
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -52,15 +54,11 @@ Here are a few scenarios where virtual networks may prove useful:
 
 In this example, "private network" refers to a distinct environment (such as staging or production) that has its own overlapping IP address space (`10.128.0.1/32` staging and `10.128.0.1/32` production). If your environments use non-overlapping IPs, you do not need a separate tunnel for each. Instead, you can add multiple routes to a single tunnel.
 
-* [ Dashboard ](#tab-panel-7958)
-* [ Terraform (v5) ](#tab-panel-7959)
-* [ Locally-managed tunnels ](#tab-panel-7960)
-
 To route overlapping IPs over virtual networks:
 
 1. Create two unique virtual networks:
   1. In the Cloudflare dashboard, go to **Networking** \> **Routes** \> **Virtual networks**.
-  [ Go to **Virtual networks** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes/virtual-networks)
+  [ Go to **Virtual networks** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes/virtual-networks)
   2. Select **Create virtual network**.
   3. Name your virtual network `staging-vnet` and select **Save**.
   4. Repeat Steps 1a-1d to create another virtual network called `production-vnet`.
@@ -70,7 +68,7 @@ To route overlapping IPs over virtual networks:
   3. Name your tunnel `Staging tunnel` and select **Create**.
   4. Install the connector within your staging environment.
   5. Go to **Networking** \> **Routes**.
-  [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+  [ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
   6. Select **Create route** \> **Tunnel CIDR**.
   7. Select `Staging tunnel`, enter `10.128.0.1/32` as the network, and select _staging-vnet_ as the virtual network. Select **Create route**.
   8. Repeat Steps 2a-2d to create another tunnel called `Production tunnel`. Be sure to install the connector within your production environment.
@@ -86,46 +84,46 @@ To route overlapping IPs over virtual networks:
 2. Create two unique virtual networks:
 ```tf
 resource "cloudflare_zero_trust_tunnel_cloudflared_virtual_network" "staging_vnet" {
-  account_id = var.cloudflare_account_id
-  name       = "staging-vnet"
-  comment    = "Staging virtual network"
-  is_default = false
+	account_id = var.cloudflare_account_id
+	name       = "staging-vnet"
+	comment    = "Staging virtual network"
+	is_default = false
 }
 resource "cloudflare_zero_trust_tunnel_cloudflared_virtual_network" "production_vnet" {
-  account_id = var.cloudflare_account_id
-  name       = "production-vnet"
-  comment    = "Production virtual network"
-  is_default = false
+	account_id = var.cloudflare_account_id
+	name       = "production-vnet"
+	comment    = "Production virtual network"
+	is_default = false
 }
 ```
 3. Create a Cloudflare Tunnel for each private network with overlapping IPs (one tunnel per isolated environment, for example staging and production):
 ```tf
 resource "cloudflare_zero_trust_tunnel_cloudflared" "staging_tunnel" {
-  account_id = var.cloudflare_account_id
-  name       = "Staging tunnel"
-  config_src = "cloudflare"
+	account_id = var.cloudflare_account_id
+	name       = "Staging tunnel"
+	config_src = "cloudflare"
 }
 resource "cloudflare_zero_trust_tunnel_cloudflared" "production_tunnel" {
-  account_id = var.cloudflare_account_id
-  name       = "Production tunnel"
-  config_src = "cloudflare"
+	account_id = var.cloudflare_account_id
+	name       = "Production tunnel"
+	config_src = "cloudflare"
 }
 ```
 4. Route `10.128.0.1/32` through `Staging tunnel` and assign it to `staging-vnet`. Route `10.128.0.1/32` through `Production tunnel` and assign it to `production-vnet`.
 ```tf
 resource "cloudflare_zero_trust_tunnel_cloudflared_route" "staging_tunnel_route" {
-  account_id         = var.cloudflare_account_id
-  tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.staging_tunnel.id
-  network            = "10.128.0.1/32"
-  comment            = "Staging tunnel route"
-  virtual_network_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+	account_id         = var.cloudflare_account_id
+	tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.staging_tunnel.id
+	network            = "10.128.0.1/32"
+	comment            = "Staging tunnel route"
+	virtual_network_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
 }
 resource "cloudflare_zero_trust_tunnel_cloudflared_route" "production_tunnel_route" {
-  account_id         = var.cloudflare_account_id
-  tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.production_tunnel.id
-  network            = "10.128.0.1/32"
-  comment            = "Production tunnel route"
-  virtual_network_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.production_vnet.id
+	account_id         = var.cloudflare_account_id
+	tunnel_id          = cloudflare_zero_trust_tunnel_cloudflared.production_tunnel.id
+	network            = "10.128.0.1/32"
+	comment            = "Production tunnel route"
+	virtual_network_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.production_vnet.id
 }
 ```
 5. [Get the token](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/#get-the-tunnel-token) for each tunnel.
@@ -195,13 +193,10 @@ You can use now the Cloudflare One Client to [switch between virtual networks](#
 
 ## Delete a virtual network
 
-* [ Dashboard ](#tab-panel-7956)
-* [ Locally-managed tunnels ](#tab-panel-7957)
-
 To delete a virtual network:
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. On the **Routes** tab, check that no routes are assigned to the virtual network you are trying to delete. If the virtual network is in use, delete those routes or reassign them to a different virtual network first.
 3. Go to the **Virtual networks** tab and find your virtual network.
 4. Select the three-dot menu and choose **Delete**.
@@ -229,9 +224,6 @@ You can verify that the virtual network was successfully deleted by typing `clou
 
 ### Windows, macOS, and Linux
 
-* [ Version 2026.2+ ](#tab-panel-7954)
-* [ Version 2026.1 and earlier ](#tab-panel-7955)
-
 1. Open the Cloudflare One Client.
 2. Go to **Home**.
 3. In the **VNET** dropdown, choose the virtual network you want to connect to (for example, `staging-vnet`).
@@ -250,7 +242,14 @@ When you visit `10.128.0.3/32`, the Cloudflare One Client will route your reques
 
 When you visit `10.128.0.3/32`, the Cloudflare One Client will route your request to the staging environment.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#page","headline":"Virtual networks · Cloudflare One docs","description":"Virtual networks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/","name":"Private networks"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/","name":"Connect with cloudflared"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/","name":"Virtual networks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#page","headline":"Virtual networks · Cloudflare One docs","description":"Virtual networks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

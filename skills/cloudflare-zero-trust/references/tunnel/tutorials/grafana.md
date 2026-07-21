@@ -1,16 +1,18 @@
 ---
-title: Monitor Cloudflare Tunnel with Grafana
 description: This tutorial covers how to create the metrics endpoint and set up the Prometheus server.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Monitor Cloudflare Tunnel with Grafana
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitor Cloudflare Tunnel with Grafana
 
-# Monitor Cloudflare Tunnel with Grafana
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/tutorials/grafana/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Grafana ↗](https://grafana.com/) is a dashboard tool that visualizes data stored in other databases. You can use Grafana to convert your [tunnel metrics](https://developers.cloudflare.com/tunnel/monitoring/#metrics) into actionable insights.
 
@@ -80,7 +82,6 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"] ## Address of Prometheus dashboard
 
-
   - job_name: "cloudflared"
     static_configs:
       - targets: ["198.168.1.1:60123"] ## cloudflared server IP and the --metrics port configured for the tunnel
@@ -126,7 +127,14 @@ To test without an account, you can enter `admin` for both the username and pass
 
 You can add operations to the queries to modify what is displayed. For example, you could show all tunnel requests over a recent period of time, such as a day, rather than all tunnel requests since metrics began reporting.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/tutorials/grafana/#page","headline":"Monitor Cloudflare Tunnel with Grafana · Cloudflare Docs","description":"This tutorial covers how to create the metrics endpoint and set up the Prometheus server.","url":"https://developers.cloudflare.com/tunnel/tutorials/grafana/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Grafana","Integration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/tutorials/grafana/","name":"Monitor Cloudflare Tunnel with Grafana"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/tutorials/grafana/#page","headline":"Monitor Cloudflare Tunnel with Grafana · Cloudflare Docs","description":"This tutorial covers how to create the metrics endpoint and set up the Prometheus server.","url":"https://developers.cloudflare.com/tunnel/tutorials/grafana/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Grafana","Integration"]}
 ```

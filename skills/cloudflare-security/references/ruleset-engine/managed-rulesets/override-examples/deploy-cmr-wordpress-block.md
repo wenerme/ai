@@ -1,16 +1,18 @@
 ---
-title: Set WordPress rules to Block
 description: Deploy the Cloudflare Managed Ruleset with WordPress rules set to Block.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set WordPress rules to Block
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set WordPress rules to Block
 
-# Set WordPress rules to Block
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow the steps below to create a rule that executes a managed ruleset and defines an override for rules with a specific tag.
 
@@ -49,31 +51,29 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "expression": "true",
-            "action_parameters": {
-                "id": "<MANAGED_RULESET_ID>",
-                "overrides": {
-                    "categories": [
-                        {
-                            "category": "wordpress",
-                            "action": "block"
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "true",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID>",
+								"overrides": {
+										"categories": [
+												{
+														"category": "wordpress",
+														"action": "block"
+												}
+										]
+								}
+						}
+				}
+		]
+	}'
 ```
 
 ## Account-level example
@@ -99,34 +99,39 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-**Update an account entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
-            "action_parameters": {
-                "id": "<MANAGED_RULESET_ID>",
-                "overrides": {
-                    "categories": [
-                        {
-                            "category": "wordpress",
-                            "action": "block"
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "cf.zone.name eq \"example.com\" and cf.zone.plan eq \"ENT\"",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID>",
+								"overrides": {
+										"categories": [
+												{
+														"category": "wordpress",
+														"action": "block"
+												}
+										]
+								}
+						}
+				}
+		]
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/#page","headline":"Use tag overrides to set WordPress rules to Block · Cloudflare Ruleset Engine docs","description":"Deploy the Cloudflare Managed Ruleset with WordPress rules set to Block.","url":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/managed-rulesets/","name":"Work with managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/managed-rulesets/override-examples/","name":"Override examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/","name":"Set WordPress rules to Block"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/#page","headline":"Use tag overrides to set WordPress rules to Block · Cloudflare Ruleset Engine docs","description":"Deploy the Cloudflare Managed Ruleset with WordPress rules set to Block.","url":"https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
 ```

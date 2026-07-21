@@ -1,16 +1,18 @@
 ---
-title: Additional configurations
 description: Terraform configuration examples for Cloudflare rulesets, redirects, caching, and more.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Additional configurations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Additional configurations
 
-# Additional configurations
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/additional-configurations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 * [ WAF Managed Rules configuration using Terraform ](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/)
 * [ DDoS managed rulesets configuration using Terraform ](https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/)
@@ -25,7 +27,14 @@ image: https://developers.cloudflare.com/core-services-preview.png
 * [ Snippets ](https://developers.cloudflare.com/rules/snippets/create-terraform/)
 * [ Workers ](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/additional-configurations/#page","headline":"Additional configurations · Cloudflare Terraform docs","description":"Terraform configuration examples for Cloudflare rulesets, redirects, caching, and more.","url":"https://developers.cloudflare.com/terraform/additional-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/terraform/additional-configurations/#page","headline":"Additional configurations · Cloudflare Terraform docs","description":"Terraform configuration examples for Cloudflare rulesets, redirects, caching, and more.","url":"https://developers.cloudflare.com/terraform/additional-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

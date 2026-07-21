@@ -1,16 +1,18 @@
 ---
-title: Transform via fetch
 description: Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Transform via fetch
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Transform via fetch
 
-# Transform via fetch
+Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers lets you optimize images with a custom URL scheme.
 
@@ -30,17 +32,15 @@ The resizing feature is accessed via the [options](https://developers.cloudflare
 
 In your worker, where you would fetch the image using `fetch(request)`, add options like in the following example:
 
-**JavaScript**
-
 ```js
 fetch(imageURL, {
-  cf: {
-    image: {
-      fit: "scale-down",
-      width: 800,
-      height: 600,
-    },
-  },
+	cf: {
+		image: {
+			fit: "scale-down",
+			width: 800,
+			height: 600,
+		},
+	},
 });
 ```
 
@@ -64,20 +64,17 @@ To perform resizing and optimizations, the Worker must be able to fetch the orig
 
 You must detect which requests must go directly to the origin server. When the `image-resizing` string is present in the `Via` header, it means that it is a request coming from another Worker and should be directed to the origin server:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request) {
-    // If this request is coming from image resizing worker,
-    // avoid causing an infinite loop by resizing it again:
-    if (/image-resizing/.test(request.headers.get("via"))) {
-      return fetch(request);
-    }
+	async fetch(request) {
+		// If this request is coming from image resizing worker,
+		// avoid causing an infinite loop by resizing it again:
+		if (/image-resizing/.test(request.headers.get("via"))) {
+			return fetch(request);
+		}
 
-
-    // Now you can safely use image resizing here
-  },
+		// Now you can safely use image resizing here
+	},
 };
 ```
 
@@ -101,17 +98,14 @@ When an image cannot be resized — for example, because the image does not exis
 
 By default, the error will be forwarded to the browser, but you can decide how to handle errors. For example, you can redirect the browser to the original, unresized image instead:
 
-**JavaScript**
-
 ```js
 const response = await fetch(imageURL, options);
 
-
 if (response.ok || response.redirected) {
-  // fetch() may respond with status 304
-  return response;
+	// fetch() may respond with status 304
+	return response;
 } else {
-  return Response.redirect(imageURL, 307);
+	return Response.redirect(imageURL, 307);
 }
 ```
 
@@ -119,15 +113,13 @@ Keep in mind that if the original images on your server are very large, it may b
 
 You can also replace failed images with a placeholder image:
 
-**JavaScript**
-
 ```js
 const response = await fetch(imageURL, options);
 if (response.ok || response.redirected) {
-  return response;
+	return response;
 } else {
-  // Change to a URL on your server
-  return fetch("https://img.example.com/blank-placeholder.png");
+	// Change to a URL on your server
+	return fetch("https://img.example.com/blank-placeholder.png");
 }
 ```
 
@@ -135,84 +127,73 @@ if (response.ok || response.redirected) {
 
 Assuming you [set up a Worker](https://developers.cloudflare.com/workers/get-started/guide/) on `https://example.com/image-resizing` to handle URLs like `https://example.com/image-resizing?width=80&image=https://example.com/uploads/avatar1.jpg`:
 
-**JavaScript**
-
 ```js
 /**
  * Fetch and log a request
  * @param {Request} request
  */
 export default {
-  async fetch(request) {
-    // Parse request URL to get access to query string
-    let url = new URL(request.url);
+	async fetch(request) {
+		// Parse request URL to get access to query string
+		let url = new URL(request.url);
 
+		// Cloudflare-specific options are in the cf object.
+		let options = { cf: { image: {} } };
 
-    // Cloudflare-specific options are in the cf object.
-    let options = { cf: { image: {} } };
+		// Copy parameters from query string to request options.
+		// You can implement various different parameters here.
+		if (url.searchParams.has("fit"))
+			options.cf.image.fit = url.searchParams.get("fit");
+		if (url.searchParams.has("width"))
+			options.cf.image.width = parseInt(url.searchParams.get("width"), 10);
+		if (url.searchParams.has("height"))
+			options.cf.image.height = parseInt(url.searchParams.get("height"), 10);
+		if (url.searchParams.has("quality"))
+			options.cf.image.quality = parseInt(url.searchParams.get("quality"), 10);
 
+		// Your Worker is responsible for automatic format negotiation. Check the Accept header.
+		const accept = request.headers.get("Accept");
+		if (/image\/avif/.test(accept)) {
+			options.cf.image.format = "avif";
+		} else if (/image\/webp/.test(accept)) {
+			options.cf.image.format = "webp";
+		}
 
-    // Copy parameters from query string to request options.
-    // You can implement various different parameters here.
-    if (url.searchParams.has("fit"))
-      options.cf.image.fit = url.searchParams.get("fit");
-    if (url.searchParams.has("width"))
-      options.cf.image.width = parseInt(url.searchParams.get("width"), 10);
-    if (url.searchParams.has("height"))
-      options.cf.image.height = parseInt(url.searchParams.get("height"), 10);
-    if (url.searchParams.has("quality"))
-      options.cf.image.quality = parseInt(url.searchParams.get("quality"), 10);
+		// Get URL of the original (full size) image to resize.
+		// You could adjust the URL here, e.g., prefix it with a fixed address of your server,
+		// so that user-visible URLs are shorter and cleaner.
+		const imageURL = url.searchParams.get("image");
+		if (!imageURL)
+			return new Response('Missing "image" value', { status: 400 });
 
+		try {
+			// TODO: Customize validation logic
+			const { hostname, pathname } = new URL(imageURL);
 
-    // Your Worker is responsible for automatic format negotiation. Check the Accept header.
-    const accept = request.headers.get("Accept");
-    if (/image\/avif/.test(accept)) {
-      options.cf.image.format = "avif";
-    } else if (/image\/webp/.test(accept)) {
-      options.cf.image.format = "webp";
-    }
+			// Optionally, only allow URLs with JPEG, PNG, GIF, or WebP file extensions
+			// @see https://developers.cloudflare.com/images/url-format#supported-formats-and-limitations
+			if (!/\.(jpe?g|png|gif|webp)$/i.test(pathname)) {
+				return new Response("Disallowed file extension", { status: 400 });
+			}
 
+			// Demo: Only accept "example.com" images
+			if (hostname !== "example.com") {
+				return new Response('Must use "example.com" source images', {
+					status: 403,
+				});
+			}
+		} catch (err) {
+			return new Response('Invalid "image" value', { status: 400 });
+		}
 
-    // Get URL of the original (full size) image to resize.
-    // You could adjust the URL here, e.g., prefix it with a fixed address of your server,
-    // so that user-visible URLs are shorter and cleaner.
-    const imageURL = url.searchParams.get("image");
-    if (!imageURL)
-      return new Response('Missing "image" value', { status: 400 });
+		// Build a request that passes through request headers
+		const imageRequest = new Request(imageURL, {
+			headers: request.headers,
+		});
 
-
-    try {
-      // TODO: Customize validation logic
-      const { hostname, pathname } = new URL(imageURL);
-
-
-      // Optionally, only allow URLs with JPEG, PNG, GIF, or WebP file extensions
-      // @see https://developers.cloudflare.com/images/url-format#supported-formats-and-limitations
-      if (!/\.(jpe?g|png|gif|webp)$/i.test(pathname)) {
-        return new Response("Disallowed file extension", { status: 400 });
-      }
-
-
-      // Demo: Only accept "example.com" images
-      if (hostname !== "example.com") {
-        return new Response('Must use "example.com" source images', {
-          status: 403,
-        });
-      }
-    } catch (err) {
-      return new Response('Invalid "image" value', { status: 400 });
-    }
-
-
-    // Build a request that passes through request headers
-    const imageRequest = new Request(imageURL, {
-      headers: request.headers,
-    });
-
-
-    // Returning fetch() with resizing options will pass through response with the resized image.
-    return fetch(imageRequest, options);
-  },
+		// Returning fetch() with resizing options will pass through response with the resized image.
+		return fetch(imageRequest, options);
+	},
 };
 ```
 
@@ -224,7 +205,14 @@ Resized images are always cached. They are cached as additional variants under a
 
 If you use the `cacheKey` fetch option to unify the caches of multiple source URLs, do not include any resizing options in the `cacheKey`. Doing so will fragment the cache and hurt caching performance. The `cacheKey` should reference only the full-size source image URL, not any of its resized versions.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/#page","headline":"Transform via fetch · Cloudflare Images docs","description":"Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.","url":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/transform-via-workers/","name":"Transform via fetch"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/#page","headline":"Transform via fetch · Cloudflare Images docs","description":"Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.","url":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

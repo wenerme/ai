@@ -1,16 +1,18 @@
 ---
-title: Mutual TLS
 description: Mutual TLS in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Mutual TLS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Mutual TLS
 
-# Mutual TLS
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Mutual TLS (mTLS) authentication ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) requires both the client and the server to present certificates during the TLS handshake. In the Cloudflare Access implementation, the CA you upload is used to verify the client certificate (server certificate verification is handled by standard TLS). Access mTLS serves two purposes:
 
@@ -59,7 +61,7 @@ If the client certificate is directly signed by the root CA, you only need to up
 <rootCA.pem>
 -----END CERTIFICATE-----
 ```
-Do not include any SSL/TLS server certificates; Access only uses the CA chain to verify the connection between the user's device and Cloudflare.
+ Do not include any SSL/TLS server certificates; Access only uses the CA chain to verify the connection between the user's device and Cloudflare.
 1. In **Associated hostnames**, enter the fully-qualified domain names (FQDN) that will use this certificate.
 These FQDNs will be the hostnames used for the resources being protected in the [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). You must associate the Root CA with the FQDN that the application being protected uses.
 2. Save the policy.
@@ -100,7 +102,7 @@ curl -sv https://auth.example.com --cert example.pem --key key.pem
 
 When the authentication process completes successfully, a `CF_Authorization Set-Cookie` header returns in the response.
 
-Warning
+Caution
 
 Cloudflare Gateway cannot inspect traffic to mTLS-protected domains. If a device has the Cloudflare One Client turned on and passes HTTP requests through Gateway, access will be blocked unless you [bypass HTTP inspection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) for the domain.
 
@@ -223,40 +225,40 @@ You can install these packages from the [Cloudflare SSL GitHub repository ↗](h
   * **CSR**. Create a file named `ca-csr.json` and add the following JSON blob, then save the file.
   ```json
   {
-    "CN": "Access Testing CA",
-    "key": {
-      "algo": "rsa",
-      "size": 4096
-    },
-    "names": [
-      {
-        "C": "US",
-        "L": "Austin",
-        "O": "Access Testing",
-        "OU": "TX",
-        "ST": "Texas"
-      }
-    ]
+  	"CN": "Access Testing CA",
+  	"key": {
+  		"algo": "rsa",
+  		"size": 4096
+  	},
+  	"names": [
+  		{
+  			"C": "US",
+  			"L": "Austin",
+  			"O": "Access Testing",
+  			"OU": "TX",
+  			"ST": "Texas"
+  		}
+  	]
   }
   ```
   * **config**. Create a file named `ca-config.json` and add the following JSON blob, then save the file.
   ```json
   {
-    "signing": {
-      "default": {
-        "expiry": "8760h"
-      },
-      "profiles": {
-        "server": {
-          "usages": ["signing", "key encipherment", "server auth"],
-          "expiry": "8760h"
-        },
-        "client": {
-          "usages": ["signing", "key encipherment", "client auth"],
-          "expiry": "8760h"
-        }
-      }
-    }
+  	"signing": {
+  		"default": {
+  			"expiry": "8760h"
+  		},
+  		"profiles": {
+  			"server": {
+  				"usages": ["signing", "key encipherment", "server auth"],
+  				"expiry": "8760h"
+  			},
+  			"client": {
+  				"usages": ["signing", "key encipherment", "client auth"],
+  				"expiry": "8760h"
+  			}
+  		}
+  	}
   }
   ```
 3. Now, run the following command to generate the root CA with those files.
@@ -279,21 +281,21 @@ To generate a client certificate that will authenticate against the uploaded roo
 1. Create a file named `client-csr.json` and add the following JSON blob:
 ```json
 {
-  "CN": "James Royal",
-  "hosts": [""],
-  "key": {
-    "algo": "rsa",
-    "size": 4096
-  },
-  "names": [
-    {
-      "C": "US",
-      "L": "Austin",
-      "O": "Access",
-      "OU": "Access Admins",
-      "ST": "Texas"
-    }
-  ]
+	"CN": "James Royal",
+	"hosts": [""],
+	"key": {
+		"algo": "rsa",
+		"size": 4096
+	},
+	"names": [
+		{
+			"C": "US",
+			"L": "Austin",
+			"O": "Access",
+			"OU": "Access Admins",
+			"ST": "Texas"
+		}
+	]
 }
 ```
 2. Now, use the following command to generate a client certificate with the Cloudflare PKI toolkit:
@@ -429,7 +431,7 @@ In addition to enforcing mTLS authentication for your host, you can also forward
 
 To avoid adding the certificate to every single request, the certificate is only forwarded on the first request of an mTLS connection.
 
-Warning
+Caution
 
 This process is only available on accounts with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/).
 
@@ -442,22 +444,20 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Mutual TLS Certificates Write`
 
-**Update an mTLS certificate's hostname settings**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \
-  --request PUT \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '{
-    "settings": [
-        {
-            "hostname": "<HOSTNAME>",
-            "china_network": false,
-            "client_certificate_forwarding": true
-        }
-    ]
-  }'
+	--request PUT \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '{
+		"settings": [
+				{
+						"hostname": "<HOSTNAME>",
+						"china_network": false,
+						"client_certificate_forwarding": true
+				}
+		]
+	}'
 ```
 
 Once `client_certificate_forwarding` is set to `true`, every request within an mTLS connection will now include the following headers:
@@ -477,19 +477,17 @@ You can also [modify HTTP response headers](https://developers.cloudflare.com/ru
 
 Additionally, Workers can provide details around the [client certificate](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
 
-**JavaScript**
-
 ```js
 const tlsHeaders = {
-  "X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,
-  "X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,
-  "X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,
-  "X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,
-  "X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,
-  "X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,
-  "X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,
-  "X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,
-  "X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,
+	"X-CERT-ISSUER-DN": request.cf.tlsClientAuth.certIssuerDN,
+	"X-CERT-SUBJECT-DN": request.cf.tlsClientAuth.certSubjectDN,
+	"X-CERT-ISSUER-DN-L": request.cf.tlsClientAuth.certIssuerDNLegacy,
+	"X-CERT-SUBJECT-DN-L": request.cf.tlsClientAuth.certSubjectDNLegacy,
+	"X-CERT-SERIAL": request.cf.tlsClientAuth.certSerial,
+	"X-CERT-FINGER": request.cf.tlsClientAuth.certFingerprintSHA1,
+	"X-CERT-VERIFY": request.cf.tlsClientAuth.certVerify,
+	"X-CERT-NOTBE": request.cf.tlsClientAuth.certNotBefore,
+	"X-CERT-NOTAF": request.cf.tlsClientAuth.certNotAfter,
 };
 ```
 
@@ -522,7 +520,14 @@ Purchase of [Access](https://developers.cloudflare.com/cloudflare-one/access-con
 
 Upload a [renewed certificate](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS · Cloudflare One docs","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/service-credentials/","name":"Service credentials"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","name":"Mutual TLS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS · Cloudflare One docs","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

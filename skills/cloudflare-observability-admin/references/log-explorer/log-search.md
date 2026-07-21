@@ -1,16 +1,18 @@
 ---
-title: Log Search
 description: Search and explore stored logs via dashboard or API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Log Search
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Log Search
 
-# Log Search
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/log-explorer/log-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Log Explorer enables you to store and explore your Cloudflare logs directly within the Cloudflare dashboard or API, giving you visibility into your logs without the need to forward them to third-party services. Logs are stored on Cloudflare's global network using the R2 object storage platform and can be queried via the dashboard or SQL API.
 
@@ -38,7 +40,7 @@ The key difference is that Log Explorer shows actual traffic, while Trace shows 
 You can filter and view your logs via the Cloudflare dashboard or the API.
 
 1. In the Cloudflare dashboard, go to the **Log Explorer** \> **Log Search** page.
-[ Go to **Log search** ](https://dash.cloudflare.com/?to=/:account/log-explorer/log-search)
+[ Go to **Log search** ↗ ](https://dash.cloudflare.com/?to=/:account/log-explorer/log-search)
 2. Select the **Dataset** you want to use and in **Columns** select the dataset fields. If you selected a zone scoped dataset, select the zone you would like to use.
 3. Enter a **Limit**. A limit is the maximum number of results to return, for example, 50.
 4. Select the **Time period** from which you want to query, for example, the previous 12 hours.
@@ -50,11 +52,11 @@ For example, to find an HTTP request with a specific [Ray ID](https://developers
 
 ```sql
 SELECT
-  clientRequestScheme,
-  clientRequestHost,
-  clientRequestMethod,
-  edgeResponseStatus,
-  clientRequestUserAgent
+	clientRequestScheme,
+	clientRequestHost,
+	clientRequestMethod,
+	edgeResponseStatus,
+	clientRequestUserAgent
 FROM http_requests
 WHERE RayID = '806c30a3cec56817'
 LIMIT 1
@@ -64,16 +66,16 @@ As another example, to find Cloudflare Access requests with selected columns fro
 
 ```sql
 SELECT
-  CreatedAt,
-  AppDomain,
-  AppUUID,
-  Action,
-  Allowed,
-  Country,
-  RayID,
-  Email,
-  IPAddress,
-  UserUID
+	CreatedAt,
+	AppDomain,
+	AppUUID,
+	Action,
+	Allowed,
+	Country,
+	RayID,
+	Email,
+	IPAddress,
+	UserUID
 FROM access_requests
 WHERE Date >= '2025-02-06' AND Date <= '2025-02-06' AND CreatedAt >= '2025-02-06T12:28:39Z' AND CreatedAt <= '2025-02-06T12:58:39Z'
 ```
@@ -113,22 +115,22 @@ All the tables supported by Log Explorer contain a special column called `date`,
 
 ```sql
 SELECT
-  clientip,
-  clientrequesthost,
-  clientrequestmethod,
-  clientrequesturi,
-  edgeendtimestamp,
-  edgeresponsestatus,
-  originresponsestatus,
-  edgestarttimestamp,
-  rayid,
-  clientcountry,
-  clientrequestpath,
-  date
+	clientip,
+	clientrequesthost,
+	clientrequestmethod,
+	clientrequesturi,
+	edgeendtimestamp,
+	edgeresponsestatus,
+	originresponsestatus,
+	edgestarttimestamp,
+	rayid,
+	clientcountry,
+	clientrequestpath,
+	date
 FROM
-  http_requests
+	http_requests
 WHERE
-  date = '2023-10-12' LIMIT 500
+	date = '2023-10-12' LIMIT 500
 ```
 
 ### Additional query optimization tips
@@ -137,7 +139,14 @@ WHERE
 * Omit `ORDER BY` and `LIMIT` clauses. These clauses can slow down queries, especially when dealing with large datasets. For queries that return a large number of records, reduce the time frame instead of limiting to the newest `N` records from a broader time frame.
 * Select only necessary columns. For example, replace `SELECT *` with the list of specific columns you need. You can also use `SELECT RayId` as a first iteration and follow up with a query that filters by the Ray IDs to retrieve additional columns. Additionally, you can use `SELECT COUNT(*)` to probe for time frames with matching records without retrieving the full dataset.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/log-search/#page","headline":"Log Search · Cloudflare Log Explorer docs","description":"Search and explore stored logs via dashboard or API.","url":"https://developers.cloudflare.com/log-explorer/log-search/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/log-search/","name":"Log Search"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/log-search/#page","headline":"Log Search · Cloudflare Log Explorer docs","description":"Search and explore stored logs via dashboard or API.","url":"https://developers.cloudflare.com/log-explorer/log-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

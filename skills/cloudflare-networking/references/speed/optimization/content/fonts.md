@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Fonts
 description: Serve Google Fonts from your domain to improve privacy and performance.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Fonts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Fonts
 
-# Cloudflare Fonts
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/content/fonts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Fonts is a feature designed for websites that use [Google Fonts ↗](https://fonts.google.com/). It rewrites Google Fonts to be delivered from a website’s own origin, eliminating the need to rely on third-party font providers. Cloudflare Fonts is tailored to improve website performance and user privacy without the need for any code changes or self-hosting of fonts.
 
@@ -39,7 +41,7 @@ Samsung Internet 5+
 To enable Cloudflare Fonts for your entire domain:
 
 1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to **Content Optimization**.
 3. For **Cloudflare Fonts**, switch the toggle to **On**.
 
@@ -57,7 +59,14 @@ While Cloudflare Fonts offers powerful font optimization capabilities, it is imp
 * **CSP headers**: Cloudflare Fonts does not modify [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy) headers. Certain CSP configurations may make Cloudflare Fonts stop working, such as restrictions on inline styles through [style-src ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/style-src), or restriction of fonts originating from the site's own origin via [font-src ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/font-src).
 * **Fallback mechanism**: In cases where Cloudflare Fonts does not support a specific page, it will gracefully fallback to using Google Fonts.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/content/fonts/#page","headline":"Cloudflare Fonts · Cloudflare Speed docs","description":"Serve Google Fonts from your domain to improve privacy and performance.","url":"https://developers.cloudflare.com/speed/optimization/content/fonts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/fonts/","name":"Cloudflare Fonts"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/speed/optimization/content/fonts/#page","headline":"Cloudflare Fonts · Cloudflare Speed docs","description":"Serve Google Fonts from your domain to improve privacy and performance.","url":"https://developers.cloudflare.com/speed/optimization/content/fonts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
 ```

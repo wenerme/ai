@@ -1,16 +1,18 @@
 ---
-title: Environment variables
 description: Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Environment variables
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Environment variables
 
-# Environment variables
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/configuration/environment-variables/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Pass configuration, secrets, and runtime settings to your sandboxes using environment variables.
 
@@ -20,27 +22,19 @@ These environment variables configure how the Sandbox SDK behaves. Set these as 
 
 ### SANDBOX\_TRANSPORT
 
-|             |                       |
-| ----------- | --------------------- |
 | **Type**    | "http" \| "websocket" |
+| ----------- | --------------------- |
 | **Default** | "http"                |
 
 Controls the transport protocol for SDK-to-container communication. WebSocket transport multiplexes all operations over a single persistent connection, avoiding [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when performing many SDK operations per request.
 
-* [  wrangler.jsonc ](#tab-panel-11077)
-* [  wrangler.toml ](#tab-panel-11078)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "SANDBOX_TRANSPORT": "websocket"
-  }
+	"vars": {
+		"SANDBOX_TRANSPORT": "websocket"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -51,29 +45,21 @@ See [Transport modes](https://developers.cloudflare.com/sandbox/configuration/tr
 
 ### COMMAND\_TIMEOUT\_MS
 
-|             |                       |
-| ----------- | --------------------- |
 | **Type**    | number (milliseconds) |
+| ----------- | --------------------- |
 | **Default** | None (no timeout)     |
 
 Sets a global default timeout for every `exec()` call. When set, any command that exceeds this duration raises an error on the caller side and closes the connection.
 
 Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [createSession()](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) both override this value. For more details on timeout precedence, refer to [Execute commands - Timeouts](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
 
-* [  wrangler.jsonc ](#tab-panel-11079)
-* [  wrangler.toml ](#tab-panel-11080)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "COMMAND_TIMEOUT_MS": "30000"
-  }
+	"vars": {
+		"COMMAND_TIMEOUT_MS": "30000"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -92,27 +78,22 @@ The Sandbox SDK provides three methods for setting environment variables, each s
 
 Set environment variables globally for all commands in the sandbox:
 
-**TypeScript**
-
 ```typescript
 const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 
-
 // Set once, available for all subsequent commands
 await sandbox.setEnvVars({
-  DATABASE_URL: env.DATABASE_URL,
-  API_KEY: env.API_KEY,
+	DATABASE_URL: env.DATABASE_URL,
+	API_KEY: env.API_KEY,
 });
-
 
 await sandbox.exec("python migrate.py"); // Has DATABASE_URL and API_KEY
 await sandbox.exec("python seed.py"); // Has DATABASE_URL and API_KEY
 
-
 // Unset variables by passing undefined
 await sandbox.setEnvVars({
-  API_KEY: "new-key", // Updates API_KEY
-  OLD_SECRET: undefined, // Unsets OLD_SECRET
+	API_KEY: "new-key", // Updates API_KEY
+	OLD_SECRET: undefined, // Unsets OLD_SECRET
 });
 ```
 
@@ -120,13 +101,11 @@ await sandbox.setEnvVars({
 
 **Unsetting variables**: Pass `undefined` or `null` to unset environment variables:
 
-**TypeScript**
-
 ```typescript
 await sandbox.setEnvVars({
-  API_KEY: 'new-key',     // Sets API_KEY
-  OLD_SECRET: undefined,  // Unsets OLD_SECRET
-  DEBUG_MODE: null        // Unsets DEBUG_MODE
+	API_KEY: 'new-key',     // Sets API_KEY
+	OLD_SECRET: undefined,  // Unsets OLD_SECRET
+	DEBUG_MODE: null        // Unsets DEBUG_MODE
 });
 ```
 
@@ -134,22 +113,19 @@ await sandbox.setEnvVars({
 
 Pass environment variables for a specific command:
 
-**TypeScript**
-
 ```typescript
 await sandbox.exec("node app.js", {
-  env: {
-    NODE_ENV: "production",
-    PORT: "3000",
-  },
+	env: {
+		NODE_ENV: "production",
+		PORT: "3000",
+	},
 });
-
 
 // Also works with startProcess()
 await sandbox.startProcess("python server.py", {
-  env: {
-    DATABASE_URL: env.DATABASE_URL,
-  },
+	env: {
+		DATABASE_URL: env.DATABASE_URL,
+	},
 });
 ```
 
@@ -163,16 +139,13 @@ Per-command environment variables with `undefined` values are skipped (treated a
 
 Create an isolated session with its own environment variables:
 
-**TypeScript**
-
 ```typescript
 const session = await sandbox.createSession({
-  env: {
-    DATABASE_URL: env.DATABASE_URL,
-    SECRET_KEY: env.SECRET_KEY,
-  },
+	env: {
+		DATABASE_URL: env.DATABASE_URL,
+		SECRET_KEY: env.SECRET_KEY,
+	},
 });
-
 
 // All commands in this session have these vars
 await session.exec("python migrate.py");
@@ -185,18 +158,15 @@ await session.exec("python seed.py");
 
 The Sandbox SDK supports unsetting environment variables by passing `undefined` or `null` values. This enables idiomatic JavaScript patterns for managing configuration:
 
-**TypeScript**
-
 ```typescript
 await sandbox.setEnvVars({
-  // Set new values
-  API_KEY: 'new-key',
-  DATABASE_URL: env.DATABASE_URL,
+	// Set new values
+	API_KEY: 'new-key',
+	DATABASE_URL: env.DATABASE_URL,
 
-
-  // Unset variables (removes them from the environment)
-  OLD_API_KEY: undefined,
-  TEMP_TOKEN: null
+	// Unset variables (removes them from the environment)
+	OLD_API_KEY: undefined,
+	TEMP_TOKEN: null
 });
 ```
 
@@ -208,13 +178,10 @@ await sandbox.setEnvVars({
 
 **Remove sensitive data after use:**
 
-**TypeScript**
-
 ```typescript
 // Use a temporary token
 await sandbox.setEnvVars({ TEMP_TOKEN: 'abc123' });
 await sandbox.exec('curl -H "Authorization: $TEMP_TOKEN" api.example.com');
-
 
 // Clean up the token
 await sandbox.setEnvVars({ TEMP_TOKEN: undefined });
@@ -222,19 +189,15 @@ await sandbox.setEnvVars({ TEMP_TOKEN: undefined });
 
 **Conditional environment setup:**
 
-**TypeScript**
-
 ```typescript
 await sandbox.setEnvVars({
-  API_KEY: env.API_KEY,
-  DEBUG_MODE: env.NODE_ENV === 'development' ? 'true' : undefined,
-  PROFILING: env.ENABLE_PROFILING ? 'true' : undefined
+	API_KEY: env.API_KEY,
+	DEBUG_MODE: env.NODE_ENV === 'development' ? 'true' : undefined,
+	PROFILING: env.ENABLE_PROFILING ? 'true' : undefined
 });
 ```
 
 **Reset to system defaults:**
-
-**TypeScript**
 
 ```typescript
 // Unset to fall back to container's default NODE_ENV
@@ -254,56 +217,46 @@ wrangler secret put DATABASE_URL
 
 Then pass them to your sandbox:
 
-**TypeScript**
-
 ```typescript
 import { getSandbox } from "@cloudflare/sandbox";
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 interface Env {
-  Sandbox: DurableObjectNamespace<Sandbox>;
-  OPENAI_API_KEY: string;
-  DATABASE_URL: string;
+	Sandbox: DurableObjectNamespace<Sandbox>;
+	OPENAI_API_KEY: string;
+	DATABASE_URL: string;
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const sandbox = getSandbox(env.Sandbox, "user-sandbox");
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const sandbox = getSandbox(env.Sandbox, "user-sandbox");
 
+		// Option 1: Set globally for all commands
+		await sandbox.setEnvVars({
+			OPENAI_API_KEY: env.OPENAI_API_KEY,
+			DATABASE_URL: env.DATABASE_URL,
+		});
+		await sandbox.exec("python analyze.py");
 
-    // Option 1: Set globally for all commands
-    await sandbox.setEnvVars({
-      OPENAI_API_KEY: env.OPENAI_API_KEY,
-      DATABASE_URL: env.DATABASE_URL,
-    });
-    await sandbox.exec("python analyze.py");
+		// Option 2: Pass per-command
+		await sandbox.exec("python analyze.py", {
+			env: {
+				OPENAI_API_KEY: env.OPENAI_API_KEY,
+			},
+		});
 
-
-    // Option 2: Pass per-command
-    await sandbox.exec("python analyze.py", {
-      env: {
-        OPENAI_API_KEY: env.OPENAI_API_KEY,
-      },
-    });
-
-
-    return Response.json({ success: true });
-  },
+		return Response.json({ success: true });
+	},
 };
 ```
 
 ### Combine default and specific variables
 
-**TypeScript**
-
 ```typescript
 const defaults = { NODE_ENV: "production", LOG_LEVEL: "info" };
 
-
 await sandbox.exec("npm start", {
-  env: { ...defaults, PORT: "3000", API_KEY: env.API_KEY },
+	env: { ...defaults, PORT: "3000", API_KEY: env.API_KEY },
 });
 ```
 
@@ -311,25 +264,21 @@ await sandbox.exec("npm start", {
 
 Run different tasks with different environment variables concurrently:
 
-**TypeScript**
-
 ```typescript
 // Production database session
 const prodSession = await sandbox.createSession({
-  env: { DATABASE_URL: env.PROD_DATABASE_URL },
+	env: { DATABASE_URL: env.PROD_DATABASE_URL },
 });
-
 
 // Staging database session
 const stagingSession = await sandbox.createSession({
-  env: { DATABASE_URL: env.STAGING_DATABASE_URL },
+	env: { DATABASE_URL: env.STAGING_DATABASE_URL },
 });
-
 
 // Run migrations on both concurrently
 await Promise.all([
-  prodSession.exec("python migrate.py"),
-  stagingSession.exec("python migrate.py"),
+	prodSession.exec("python migrate.py"),
+	stagingSession.exec("python migrate.py"),
 ]);
 ```
 
@@ -354,44 +303,36 @@ When mounting S3-compatible object storage, the SDK uses **s3fs-fuse** under the
 wrangler secret put AWS_ACCESS_KEY_ID
 # Paste your R2 Access Key ID
 
-
 wrangler secret put AWS_SECRET_ACCESS_KEY
 # Paste your R2 Secret Access Key
 ```
 
 **Mount buckets with automatic credential detection:**
 
-**TypeScript**
-
 ```typescript
 import { getSandbox } from "@cloudflare/sandbox";
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 interface Env {
-  Sandbox: DurableObjectNamespace<Sandbox>;
-  AWS_ACCESS_KEY_ID: string;
-  AWS_SECRET_ACCESS_KEY: string;
+	Sandbox: DurableObjectNamespace<Sandbox>;
+	AWS_ACCESS_KEY_ID: string;
+	AWS_SECRET_ACCESS_KEY: string;
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const sandbox = getSandbox(env.Sandbox, "data-processor");
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const sandbox = getSandbox(env.Sandbox, "data-processor");
 
+		// Credentials automatically detected from environment
+		await sandbox.mountBucket("my-r2-bucket", "/data", {
+			endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
+		});
 
-    // Credentials automatically detected from environment
-    await sandbox.mountBucket("my-r2-bucket", "/data", {
-      endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-    });
+		// Access mounted bucket using standard file operations
+		await sandbox.exec("python", { args: ["process.py", "/data/input.csv"] });
 
-
-    // Access mounted bucket using standard file operations
-    await sandbox.exec("python", { args: ["process.py", "/data/input.csv"] });
-
-
-    return Response.json({ success: true });
-  },
+		return Response.json({ success: true });
+	},
 };
 ```
 
@@ -399,15 +340,13 @@ The SDK automatically detects `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` fr
 
 **Pass credentials explicitly** (if using custom secret names):
 
-**TypeScript**
-
 ```typescript
 await sandbox.mountBucket("my-r2-bucket", "/data", {
-  endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
-  credentials: {
-    accessKeyId: env.R2_ACCESS_KEY_ID,
-    secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-  },
+	endpoint: "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
+	credentials: {
+		accessKeyId: env.R2_ACCESS_KEY_ID,
+		secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+	},
 });
 ```
 
@@ -428,19 +367,15 @@ When the same variable is set at multiple levels, the most specific level takes 
 
 Example:
 
-**TypeScript**
-
 ```typescript
 // In Dockerfile: ENV NODE_ENV=development
-
 
 // Sandbox-level
 await sandbox.setEnvVars({ NODE_ENV: "staging" });
 
-
 // Command-level overrides all
 await sandbox.exec("node app.js", {
-  env: { NODE_ENV: "production" }, // This wins
+	env: { NODE_ENV: "production" }, // This wins
 });
 ```
 
@@ -453,7 +388,14 @@ await sandbox.exec("node app.js", {
 * [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Understanding data isolation
 * [Proxy requests to external APIs](https://developers.cloudflare.com/sandbox/guides/proxy-requests/) \- Keep credentials out of the sandbox entirely using a Worker proxy
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Sandbox SDK docs","description":"Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.","url":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/environment-variables/","name":"Environment variables"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Sandbox SDK docs","description":"Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.","url":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

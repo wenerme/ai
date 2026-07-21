@@ -1,26 +1,25 @@
 ---
-title: Build developer portals
 description: Create interactive API documentation portals from saved endpoints or schemas.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Build developer portals
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build developer portals
 
-# Build developer portals
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Once your endpoints are saved, API Shield doubles as an API catalog. API Shield can build an interactive documentation portal with the knowledge it has of your APIs, or you can upload a new OpenAPI schema file to build a documentation portal ad-hoc.
 
 To create a developer portal:
 
-* [  New dashboard ](#tab-panel-7332)
-* [ Old dashboard ](#tab-panel-7333)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **API abuse**.
 3. On **Create a developer portal**, select **Create site**.
 4. Upload an OpenAPI v3.0 schema file or choose to select an existing schema from API Shield.
@@ -56,7 +55,14 @@ This feature currently uses the open source [Redoc ↗](https://github.com/Redoc
 
 To modify the resulting page, download the project files before creating the Pages project. You can create a new Pages project with the modified files you have made to meet your branding guidelines.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/#page","headline":"Build developer portals · Cloudflare API Shield docs","description":"Create interactive API documentation portals from saved endpoints or schemas.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/management-and-monitoring/","name":"Management and Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/management-and-monitoring/developer-portal/","name":"Build developer portals"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/#page","headline":"Build developer portals · Cloudflare API Shield docs","description":"Create interactive API documentation portals from saved endpoints or schemas.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

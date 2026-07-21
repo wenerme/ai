@@ -1,16 +1,18 @@
 ---
-title: Review audit logs - v1
 description: Access and review account audit logs.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Review audit logs - v1
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Review audit logs - v1
 
-# Review audit logs - v1
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/application-security/account-security/review-audit-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -32,7 +34,7 @@ To access audit logs in the Cloudflare dashboard:
 
 In the Cloudflare dashboard, go to the **Audit Logs** page.
 
-[ Go to **Audit logs** ](https://dash.cloudflare.com/?to=/:account/audit-log)
+[ Go to **Audit logs** ↗ ](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 You can search these audit logs by user email or domain and filter by date range. To download audit logs, click **Download CSV**.
 
@@ -48,7 +50,14 @@ We recommending using the API for downloading historical audit log data.
 
 To maintain Audit Logs query performance, the Audit Logs API was modified on 2019-06-30 to return records with a maximum age of 18 months.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/account-security/review-audit-logs/#page","headline":"Review audit logs - v1 · Cloudflare Learning Paths","description":"Access and review account audit logs.","url":"https://developers.cloudflare.com/learning-paths/application-security/account-security/review-audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/application-security/account-security/","name":"Account security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/application-security/account-security/review-audit-logs/","name":"Review audit logs - v1"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/account-security/review-audit-logs/#page","headline":"Review audit logs - v1 · Cloudflare Learning Paths","description":"Access and review account audit logs.","url":"https://developers.cloudflare.com/learning-paths/application-security/account-security/review-audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

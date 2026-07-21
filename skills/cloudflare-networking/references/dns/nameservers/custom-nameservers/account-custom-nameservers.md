@@ -1,16 +1,18 @@
 ---
-title: Set up account custom nameservers
 description: With account-level custom nameservers, you can use the same custom nameservers for different zones in the account. The domain or domains that provide the nameservers names do not have to exist as zones in Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set up account custom nameservers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up account custom nameservers
 
-# Set up account custom nameservers
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Account custom nameservers (ACNS) allow you to define account-level custom nameservers and use them for different zones within a Cloudflare account.
 
@@ -45,11 +47,8 @@ Account owners that want to [use their own IP prefix](https://developers.cloudfl
 
 1. Create ACNS names and sets:
 
-* [ Dashboard ](#tab-panel-8812)
-* [ API ](#tab-panel-8813)
-
 1. In the Cloudflare dashboard, go to the account **Settings** page.
-[ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. For **Account custom nameservers**, select **Configure custom nameservers**.
 4. Insert a fully qualified domain name for **Nameserver name** and choose a **Nameserver set**. Follow the [configuration conditions](#configuration-conditions).
@@ -78,11 +77,8 @@ Cloudflare will assign an IPv4 and an IPv6 address to each ACNS name, and these 
 
 1. Choose an ACNS set as custom nameservers for a zone:
 
-* [ Dashboard ](#tab-panel-8806)
-* [ API ](#tab-panel-8807)
-
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. For **Custom nameservers**, select **Configure**.
 3. Select **Use your account custom nameservers** and choose a nameserver set from the list.
 4. Select **Save** to confirm.
@@ -98,11 +94,8 @@ Use the endpoint [Update DNS Settings for a Zone](https://developers.cloudflare.
 
 To make ACNS the default option for all new zones added to your account from now on:
 
-* [ Dashboard ](#tab-panel-8810)
-* [ API ](#tab-panel-8811)
-
 1. In the Cloudflare dashboard, go to the account **Settings** page.
-[ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. For **DNS zone defaults**, select **Configure defaults**.
 4. Change the **Nameserver assignment method** to **Account custom nameservers**.
@@ -125,9 +118,6 @@ Use the endpoint [Update DNS Settings for an Account](https://developers.cloudfl
 
 To remove ACNS from a zone, first update your nameservers to stop using ACNS:
 
-* [ Dashboard ](#tab-panel-8804)
-* [ API ](#tab-panel-8805)
-
 * If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to set your nameservers back to the regular Cloudflare branded nameservers.
 * If you are not using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), modify the domain's registrar to use your regular Cloudflare branded nameservers.
 
@@ -138,17 +128,21 @@ To remove ACNS from a zone, first update your nameservers to stop using ACNS:
 
 Following the [configuration conditions](#configuration-conditions), each set must have between two and five different nameserver names. When you delete all names or leave a set with only one nameserver name, the set will no longer be listed as an option for the zones in your account.
 
-* [ Dashboard ](#tab-panel-8808)
-* [ API ](#tab-panel-8809)
-
 1. In the Cloudflare dashboard, go to the account **Settings** page.
-[ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**.
 3. For **Account custom nameservers**, select **Delete** next to the ACNS name.
 
 Use the [Delete account custom nameserver endpoint](https://developers.cloudflare.com/api/resources/custom%5Fnameservers/methods/delete/) to delete a specific ACNS.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/#page","headline":"Account custom nameservers · Cloudflare DNS docs","description":"With account-level custom nameservers, you can use the same custom nameservers for different zones in the account. The domain or domains that provide the nameservers names do not have to exist as zones in Cloudflare.","url":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/nameservers/","name":"Nameservers"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/nameservers/custom-nameservers/","name":"Custom nameservers"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/nameservers/custom-nameservers/account-custom-nameservers/","name":"Set up account custom nameservers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/#page","headline":"Account custom nameservers · Cloudflare DNS docs","description":"With account-level custom nameservers, you can use the same custom nameservers for different zones in the account. The domain or domains that provide the nameservers names do not have to exist as zones in Cloudflare.","url":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

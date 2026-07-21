@@ -1,16 +1,18 @@
 ---
-title: Analytics and logs
 description: View DNS query analytics and configure Logpush for DNS logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Analytics and logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Analytics and logs
 
-# Analytics and logs
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/additional-options/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you use Cloudflare DNS, you can access data about DNS queries through a variety of sources.
 
@@ -38,7 +40,7 @@ When using GraphQL, you also have the option to get data for DNS queries across 
 
 For a quick summary, view your DNS analytics on the dashboard:
 
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
 
 The DNS analytics dashboard contains [four main panels](#panels). The filters and time frame that you specify at the top of the page apply to all of them.
 
@@ -99,8 +101,6 @@ query GetLastNXDOMAINResponses {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgGQIYGdEDkAaARAeQFkBBASSwCUx0AHAewDt0aYBvAKBhgDcBLMAHdI7LtxioAxpPohGidAAoAZnwA2iSAC52E6bPkAVVAHMdAIgAcAZlQAWAKwAmAOzWAbAEYARpIAmYJJOju7uyn4uyjYu3u4BDuYwAL4AlKLi4n7MJIyoalCIfJLoJH6otIU8YIpiGdxqfAC2fIg6ngAMne21daoa2ul1GWWaAPomYMAWTu1ODgC07e7znu7mADQ9QxA0DMxgAML0ARa4hKQUG1t1I2CjapPTswtLK5bm19xJnzD0EAEQABCUB0AG1boVGnc8ABRADKBwAutc0pwhtwAF5MMDGEw-UCQKBYVBQn47OhMFhHAL48DQQxQWhgH4QprMobfDKc5IcJJAA&variables=N4XyA)
-
 Get the overall query count per account
 
 ```graphql
@@ -121,8 +121,6 @@ query GetTotalDNSQueryCount {
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgFQPaIIYBsAiA5AZQEVxoBhVEAO0RgG8AoGGANwEswB3Sep5mDAGNBlGgGcAFADM2WRJABc9AcNEoMAcyUAiABwBmDABYArACYA7PoBsARgBGggCZhBZ09etSnFqQYv21i4m2jAAvgCUvPz8TlRiAIJU2FCIbIKJThgADmksYHAQlNmSfDHMMnKK0eUxWfIA+hpgwDpmAAxmJgC07T3tttpltTD1YA1YLW2d-T367UMj4cMxWGwAtmyISrYrMFGMSyLUiHthw+fM52FAA&variables=N4XyA)
-
 ---
 
 ## Logs
@@ -131,7 +129,14 @@ Logs let Enterprise customers view [detailed information](https://developers.clo
 
 For help setting up Logpush, refer to [Logpush](https://developers.cloudflare.com/logs/logpush/) documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/analytics/#page","headline":"Analytics and logs · Cloudflare DNS docs","description":"View DNS query analytics and configure Logpush for DNS logs.","url":"https://developers.cloudflare.com/dns/additional-options/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/additional-options/analytics/","name":"Analytics and logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/analytics/#page","headline":"Analytics and logs · Cloudflare DNS docs","description":"View DNS query analytics and configure Logpush for DNS logs.","url":"https://developers.cloudflare.com/dns/additional-options/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
 ```

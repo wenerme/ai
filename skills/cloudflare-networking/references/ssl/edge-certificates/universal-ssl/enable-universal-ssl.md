@@ -1,16 +1,18 @@
 ---
-title: Enable Universal SSL certificates
 description: Turn on Universal SSL certificates for your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enable Universal SSL certificates
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable Universal SSL certificates
 
-# Enable Universal SSL certificates
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
 
@@ -72,7 +74,14 @@ Universal certificates have a 90-day validity period. The auto renewal period st
 
 For details, refer to [Validity periods and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/#page","headline":"Enable Universal SSL certificates · Cloudflare SSL/TLS docs","description":"Turn on Universal SSL certificates for your domain.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/universal-ssl/","name":"Universal SSL"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/universal-ssl/enable-universal-ssl/","name":"Enable Universal SSL certificates"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/#page","headline":"Enable Universal SSL certificates · Cloudflare SSL/TLS docs","description":"Turn on Universal SSL certificates for your domain.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

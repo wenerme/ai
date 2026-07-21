@@ -1,16 +1,18 @@
 ---
-title: Common API calls
 description: Example API requests for managing Programmable Flow Protection programs and rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Common API calls
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Common API calls
 
-# Common API calls
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following sections contain example requests for common API calls. For a list of available API endpoints, refer to [Endpoints](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/#endpoints).
 
@@ -18,14 +20,10 @@ The following sections contain example requests for common API calls. For a list
 
 This example fetches all Programmable Flow Protection programs in the account.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
-
-**Response**
 
 ```json
 {
@@ -50,8 +48,6 @@ This example uploads a new eBPF program written in C. The program source code is
 
 Include the optional `X-Program-Name` header to specify a human-readable program name. If omitted, the API generates a UUID as the program name.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -59,8 +55,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
 --header "X-Program-Name: my-rate-limiter" \
 --data-binary "@/path/to/program.c"
 ```
-
-**Response**
 
 ```json
 {
@@ -78,8 +72,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
 ```
 
 If the program fails compilation or verification, the API returns a detailed error message:
-
-**Example error response**
 
 ```json
 {
@@ -99,8 +91,6 @@ If the program fails compilation or verification, the API returns a detailed err
 
 This example updates an existing program with new source code. You can update a program even if it is currently in use by one or more rules. If the new program fails compilation or verification, the update fails and the existing program remains active.
 
-**Request**
-
 ```bash
 curl --request PATCH \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}" \
@@ -108,8 +98,6 @@ curl --request PATCH \
 --header "Content-Type: text/plain" \
 --data-binary "@/path/to/updated-program.c"
 ```
-
-**Response**
 
 ```json
 {
@@ -130,15 +118,11 @@ curl --request PATCH \
 
 This example deletes a program. You cannot delete a program that is currently referenced by an active rule.
 
-**Request**
-
 ```bash
 curl --request DELETE \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
-
-**Response**
 
 ```json
 {
@@ -153,14 +137,10 @@ curl --request DELETE \
 
 This example fetches all Programmable Flow Protection rules in the account.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
-
-**Response**
 
 ```json
 {
@@ -186,8 +166,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
 
 This example creates a Programmable Flow Protection rule with a global scope in monitoring mode.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -199,8 +177,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
   "mode": "monitoring"
 }'
 ```
-
-**Response**
 
 ```json
 {
@@ -226,8 +202,6 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example creates a rule scoped to the Western Europe region with an expression filter.
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -240,8 +214,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
   "expression": "ip.dst in { 192.0.2.0/24 }"
 }'
 ```
-
-**Response**
 
 ```json
 {
@@ -267,8 +239,6 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example updates an existing rule. You can update the mode, scope, and expression, but not the program. To change the program, delete the rule and create a new one.
 
-**Request**
-
 ```bash
 curl --request PATCH \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}" \
@@ -278,8 +248,6 @@ curl --request PATCH \
   "mode": "enabled"
 }'
 ```
-
-**Response**
 
 ```json
 {
@@ -305,15 +273,11 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 This example deletes an existing rule.
 
-**Request**
-
 ```bash
 curl --request DELETE \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}" \
 --header "Authorization: Bearer <API_TOKEN>"
 ```
-
-**Response**
 
 ```json
 {
@@ -330,8 +294,6 @@ This example runs a program against a PCAP file for debugging. The API returns a
 
 The request body must contain the PCAP file in binary format. The API automatically detects the IP header offset based on the input PCAP. To override automatic detection, use the optional `ip_offset` query parameter to specify the number of bytes the IP header is offset by in each packet (for example, `14` for Ethernet frames).
 
-**Request**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}/pcap" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -347,7 +309,14 @@ The output PCAP file contains the same packets as the input file, but with annot
 * `Analytics tag`: the custom network analytics tag set by the program on this packet, if any
 * `Challenge packet`: the challenge packet emitted from the program back to the client, if any
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/#page","headline":"Common API calls · Cloudflare DDoS Protection docs","description":"Example API requests for managing Programmable Flow Protection programs and rules.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/","name":"API configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/","name":"Programmable Flow Protection"}},{"@type":"ListItem","position":6,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/","name":"Common API calls"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/#page","headline":"Common API calls · Cloudflare DDoS Protection docs","description":"Example API requests for managing Programmable Flow Protection programs and rules.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

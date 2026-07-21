@@ -1,16 +1,18 @@
 ---
-title: Device client settings
 description: Reference information for Device client settings in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Device client settings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Device client settings
 
-# Device client settings
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Device client settings (formerly WARP) allow you to customize the Cloudflare One Client modes and permissions available to end users.
 
@@ -67,9 +69,6 @@ The user will have an unlimited amount of time to activate their code.
 #### Enter the override code
 
 To activate the override code on a user device:
-
-* [ Version 2026.2+ ](#tab-panel-8121)
-* [ Version 2026.1 and earlier ](#tab-panel-8122)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -406,10 +405,6 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-8123)
-* [ Linux ](#tab-panel-8124)
-* [ Android and ChromeOS ](#tab-panel-8125)
-
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.
 
@@ -501,19 +496,19 @@ ipconfig /all
 Windows IP Configuration
 ...
 Unknown adapter CloudflareWARP:
-  Connection-specific DNS Suffix  . :
-  Description . . . . . . . . . . . : (SCCM) Cloudflare WARP Interface Tunnel
-  Physical Address. . . . . . . . . :
-  DHCP Enabled. . . . . . . . . . . : No
-  Autoconfiguration Enabled . . . . : Yes
-  IPv6 Address. . . . . . . . . . . : 2001:db8:110:8f79:145:f180:fc4:8106(Preferred)
-  Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)
-  IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)
-  Subnet Mask . . . . . . . . . . . : 255.255.255.255
-  Default Gateway . . . . . . . . . :
-  DNS Servers . . . . . . . . . . . : 127.0.2.2
-                                      127.0.2.3
-  NetBIOS over Tcpip. . . . . . . . : Disabled
+	Connection-specific DNS Suffix  . :
+	Description . . . . . . . . . . . : (SCCM) Cloudflare WARP Interface Tunnel
+	Physical Address. . . . . . . . . :
+	DHCP Enabled. . . . . . . . . . . : No
+	Autoconfiguration Enabled . . . . : Yes
+	IPv6 Address. . . . . . . . . . . : 2001:db8:110:8f79:145:f180:fc4:8106(Preferred)
+	Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)
+	IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)
+	Subnet Mask . . . . . . . . . . . : 255.255.255.255
+	Default Gateway . . . . . . . . . :
+	DNS Servers . . . . . . . . . . . : 127.0.2.2
+																			127.0.2.3
+	NetBIOS over Tcpip. . . . . . . . : Disabled
 ```
 2. In Microsoft SCCM:
 a. [Create a boundary ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundaries#create-a-boundary) with the following settings:
@@ -587,11 +582,11 @@ Unknown adapter CloudflareWARP:
     Subnet Mask . . . . . . . . . . . : 255.255.255.255
     Default Gateway . . . . . . . . . :
     DNS Servers . . . . . . . . . . . : 127.0.2.2
-                                        127.0.2.3
+    																		127.0.2.3
     NetBIOS over Tcpip. . . . . . . . : Enabled
 ```
 
-### VNET availability Beta
+### VNET availability  Beta
 
 Feature availability
 
@@ -612,7 +607,7 @@ By default, the Cloudflare One Client shows every [virtual network](https://deve
 
 For example, if your QA team uses a `staging-vnet` and your sales team should never reach it, you can assign the sales device profile to only include `production-vnet`. Sales users will not see `staging-vnet` in the dropdown.
 
-### DNS search suffixes Beta
+### DNS search suffixes  Beta
 
 Feature availability
 
@@ -637,7 +632,14 @@ Use **DNS search suffixes** to deploy an ordered list of up to 25 suffixes to th
 
 1. Current versions of iOS do not allow LAN traffic to route through the WARP tunnel. Therefore, this feature is not needed on iOS. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#page","headline":"Device client settings · Cloudflare One docs","description":"Reference information for Device client settings in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/","name":"Device client settings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#page","headline":"Device client settings · Cloudflare One docs","description":"Reference information for Device client settings in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE"]}
 ```

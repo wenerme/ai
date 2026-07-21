@@ -1,16 +1,18 @@
 ---
-title: Build using Core SDK
 description: Initialize and build with the RealtimeKit Core SDK for full control over video calls.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build using Core SDK
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build using Core SDK
 
-# Build using Core SDK
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ### Initialize Core SDK
 
@@ -30,16 +32,12 @@ npm i @cloudflare/realtimekit-react
 
 Use the `useRealtimeKitClient` hook to initialise the SDK.
 
-**App.tsx**
-
 ```ts
 import { useEffect } from 'react';
 import { useRealtimeKitClient } from '@cloudflare/realtimekit-react';
 
-
 export default function App() {
-  const [meeting, initMeeting] = useRealtimeKitClient();
-
+	const [meeting, initMeeting] = useRealtimeKitClient();
 
     useEffect(() => {
       const meetingDefaultOptions = {
@@ -47,21 +45,17 @@ export default function App() {
         video: true,
       };
 
-
-      initMeeting({
+    	initMeeting({
         authToken: "<auth-token>",
         defaults: meetingDefaultOptions, // optional
       });
     }, []);
 
-
     useEffect(() => {
-      // next - if (meeting) meeting.join();
+    	// next - if (meeting) meeting.join();
     }, [meeting])
 
-
     return <div></div>;
-
 
 }
 ```
@@ -82,24 +76,20 @@ Alternatively, you can also use the CDN.
 
 You can initialise the SDK using `RealtimeKitClient.init`.
 
-**JavaScript**
-
 ```js
-  const authToken = <auth-token>;
-
+	const authToken = <auth-token>;
 
   const meetingDefaultOptions = {
     audio: true,
     video: true,
   };
 
-
-  RealtimeKitClient.init({
-    authToken,
-    defaults: meetingDefaultOptions, // optional
-  }).then((meeting) => {
-    // next - meeting.join();
-  });
+	RealtimeKitClient.init({
+	  authToken,
+	  defaults: meetingDefaultOptions, // optional
+	}).then((meeting) => {
+		// next - meeting.join();
+	});
 ```
 
 Use the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) to fetch the `authToken`.
@@ -112,26 +102,23 @@ npm i @cloudflare/realtimekit-angular
 
 You can initialise the SDK using `RealtimeKitClient.init`.
 
-**TypeScript**
-
 ```ts
 class AppComponent {
-  title = "MyProject";
-  @ViewChild("myid") meetingComponent: RtkMeeting;
-  rtkMeeting: RealtimeKitClient;
+	title = "MyProject";
+	@ViewChild("myid") meetingComponent: RtkMeeting;
+	rtkMeeting: RealtimeKitClient;
 
-
-  async ngAfterViewInit() {
-    const meetingDefaultOptions = {
-      audio: true,
-      video: true,
-    };
-    const meeting = await RealtimeKitClient.init({
-      authToken: "<auth-token>",
-      defaults: meetingDefaultOptions, // optional
-    });
-    // next - meeting.join();
-  }
+	async ngAfterViewInit() {
+		const meetingDefaultOptions = {
+			audio: true,
+			video: true,
+		};
+		const meeting = await RealtimeKitClient.init({
+			authToken: "<auth-token>",
+			defaults: meetingDefaultOptions, // optional
+		});
+		// next - meeting.join();
+	}
 }
 ```
 
@@ -139,15 +126,11 @@ Use the [Add participant API](https://developers.cloudflare.com/api/resources/re
 
 Initialize the RealtimeKit SDK by obtaining an instance of `RealtimeKitClient` using the `RealtimeKitMeetingBuilder` helper.
 
-**Kotlin**
-
 ```kotlin
 val meeting = RealtimeKitMeetingBuilder.build(activity)
 ```
 
 Configure the meeting properties in the `RtkMeetingInfo` class with a valid participant `authToken` from the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/).
-
-**Kotlin**
 
 ```kotlin
 val meetingInfo =
@@ -160,8 +143,6 @@ val meetingInfo =
 
 Initialize the meeting by calling the `init()` method. This establishes a connection with the RealtimeKit meeting server.
 
-**Kotlin**
-
 ```kotlin
 meeting.init(
   meetingInfo,
@@ -172,15 +153,11 @@ meeting.init(
 
 Initialize the RealtimeKit SDK by creating an instance of `RealtimeKitClient`.
 
-**Swift**
-
 ```swift
 let meeting = RealtimeKitiOSClientBuilder().build()
 ```
 
 Add the required listeners to receive callbacks for meeting events.
-
-**Swift**
 
 ```swift
 meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
@@ -190,8 +167,6 @@ meeting.addSelfEventListener(selfEventListener: self)
 
 Configure the meeting properties in the `RtkMeetingInfo` class with a valid participant `authToken` from the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/).
 
-**Swift**
-
 ```swift
 let meetingInfo = RtkMeetingInfo(authToken: authToken,
                                   enableAudio: true,
@@ -200,23 +175,17 @@ let meetingInfo = RtkMeetingInfo(authToken: authToken,
 
 Initialize the meeting by calling the `doInit()` method. This establishes a connection with the RealtimeKit meeting server.
 
-**Swift**
-
 ```swift
 meeting.doInit(meetingInfo: meetingInfo, onSuccess: {}, onFailure: {_ in})
 ```
 
 Initialize the RealtimeKit SDK by creating an instance of `RealtimeKitClient`.
 
-**Dart**
-
 ```dart
 final meeting = RealtimeKitClient();
 ```
 
 Configure the meeting properties in the `RtkMeetingInfo` class with a valid participant `authToken` from the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/).
-
-**Dart**
 
 ```dart
 final meetingInfo = RtkMeetingInfo(
@@ -228,15 +197,11 @@ final meetingInfo = RtkMeetingInfo(
 
 Initialize the connection by calling the `init()` method. This establishes a connection with the RealtimeKit meeting server.
 
-**Dart**
-
 ```dart
 meeting.init(meetingInfo);
 ```
 
 Subscribe to the `RtkMeetingRoomEventListener` to receive callbacks for meeting events.
-
-**Dart**
 
 ```dart
 meeting.addMeetingRoomEventListener(RoomStateNotifier());
@@ -244,13 +209,10 @@ meeting.addMeetingRoomEventListener(RoomStateNotifier());
 
 Initialize the RealtimeKit SDK using the `useRealtimeKitClient` hook.
 
-**JavaScript**
-
 ```js
 import React from 'react';
 import { View, Text } from 'react-native';
 import { useRealtimeKitClient, RealtimeKitProvider } from '@cloudflare/realtimekit-react-native';
-
 
 export default function App() {
   const [meeting, initMeeting] = useRealtimeKitClient();
@@ -268,7 +230,6 @@ export default function App() {
     init();
     // next - if (meeting) meeting.joinRoom();
   }, []);
-
 
   if (meeting) {
     return (
@@ -292,60 +253,58 @@ Use the [Add participant API](https://developers.cloudflare.com/api/resources/re
 
 You can **optionally** configure meeting defaults, media quality, screen share preferences, simulcast settings, ice connection behavior, logging, and error handling while initializing the SDK.
 
-**TypeScript**
-
 ```ts
 init({
-  authToken: "<auth_token>",
-  defaults: {
-    video: true,
-    audio: true,
-    mediaConfiguration: {
-      // Configure custom video quality (e.g., 1080p). Disable simulcast using `simulcastConfig` override for single-layer streaming.
-      video: {
-        width: { ideal: 1920 },
-        height: { ideal: 1080 },
-        frameRate: { ideal: 15 },
-      },
-      screenshare: {
-        frameRate: { ideal: 15, max: 30 }, // Default 5
-        displaySurface: "monitor", // Given surface is suggested to the end user
-      },
-    },
-  },
-  overrides: {
-    simulcastConfig: {
-      // If you want to disable simulcast
-      disable: false,
-      // If you want to pass custom simulcast encodings
-      encodings: [
-        {
-          rid: "f", // full / highest quality
-          scaleResolutionDownBy: 1.0,
-          maxBitrate: 2500000, // ~2.5 Mbps
-        },
-        {
-          rid: "h", // half
-          scaleResolutionDownBy: 2.0,
-          maxBitrate: 900000, // ~0.9 Mbps
-        },
-        {
-          rid: "q", // quarter
-          scaleResolutionDownBy: 4.0,
-          maxBitrate: 250000, // ~0.25 Mbps
-        },
-      ],
-    },
-    forceRelay: false, // forceRelay, if true, TURN will be preferred over STUN
-  },
-  modules: {
-    devTools: {
-      logs: true, // Prints SDK logs to console, Useful in initial integration phase
-    },
-  },
-  onError: (error) => {
-    console.error(error); // SDK errors, Useful in detecting common issues
-  },
+	authToken: "<auth_token>",
+	defaults: {
+		video: true,
+		audio: true,
+		mediaConfiguration: {
+			// Configure custom video quality (e.g., 1080p). Disable simulcast using `simulcastConfig` override for single-layer streaming.
+			video: {
+				width: { ideal: 1920 },
+				height: { ideal: 1080 },
+				frameRate: { ideal: 15 },
+			},
+			screenshare: {
+				frameRate: { ideal: 15, max: 30 }, // Default 5
+				displaySurface: "monitor", // Given surface is suggested to the end user
+			},
+		},
+	},
+	overrides: {
+		simulcastConfig: {
+			// If you want to disable simulcast
+			disable: false,
+			// If you want to pass custom simulcast encodings
+			encodings: [
+				{
+					rid: "f", // full / highest quality
+					scaleResolutionDownBy: 1.0,
+					maxBitrate: 2500000, // ~2.5 Mbps
+				},
+				{
+					rid: "h", // half
+					scaleResolutionDownBy: 2.0,
+					maxBitrate: 900000, // ~0.9 Mbps
+				},
+				{
+					rid: "q", // quarter
+					scaleResolutionDownBy: 4.0,
+					maxBitrate: 250000, // ~0.25 Mbps
+				},
+			],
+		},
+		forceRelay: false, // forceRelay, if true, TURN will be preferred over STUN
+	},
+	modules: {
+		devTools: {
+			logs: true, // Prints SDK logs to console, Useful in initial integration phase
+		},
+	},
+	onError: (error) => {
+		console.error(error); // SDK errors, Useful in detecting common issues
+	},
 });
 ```
 
@@ -364,80 +323,81 @@ You can pass the following options as `defaults` to alter default behavior.
 | **isNonPreferredDevice**  | Allows you to set specific devices as "not preferred"         | (device: MediaDeviceInfo) => boolean | false    |
 | **recording**             | Allows you to configure recording settings                    | RecordingConfig                      | false    |
 
+Note
+
 By default, audio and video are auto enabled, as per preset permissions. SDK uses 640x480 quality as default for group calls, which can be overridden with `mediaConfiguration`. By default, the SDK automatically switches to the best available device and marks virtual devices as not preferred.
 
 Reference for the types:
 
-**TypeScript**
-
 ```ts
 interface AudioQualityConstraints {
-  echoCancellation?: boolean;
-  noiseSuppression?: boolean;
-  autoGainControl?: boolean;
-  enableStereo?: boolean;
-  enableHighBitrate?: boolean;
+	echoCancellation?: boolean;
+	noiseSuppression?: boolean;
+	autoGainControl?: boolean;
+	enableStereo?: boolean;
+	enableHighBitrate?: boolean;
 }
-
 
 interface VideoQualityConstraints {
-  width: { ideal: number };
-  height: { ideal: number };
-  frameRate?: { ideal: number };
+	width: { ideal: number };
+	height: { ideal: number };
+	frameRate?: { ideal: number };
 }
-
 
 interface ScreenshareQualityConstraints {
-  width?: { max: number };
-  height?: { max: number };
-  frameRate?: {
-    ideal: number;
-    max: number;
-  };
-  displaySurface?: "window" | "monitor" | "browser";
-  selfBrowserSurface?: "include" | "exclude";
+	width?: { max: number };
+	height?: { max: number };
+	frameRate?: {
+		ideal: number;
+		max: number;
+	};
+	displaySurface?: "window" | "monitor" | "browser";
+	selfBrowserSurface?: "include" | "exclude";
 }
-
 
 interface MediaConfiguration {
-  video?: VideoQualityConstraints;
-  audio?: AudioQualityConstraints;
-  screenshare?: ScreenshareQualityConstraints;
+	video?: VideoQualityConstraints;
+	audio?: AudioQualityConstraints;
+	screenshare?: ScreenshareQualityConstraints;
 }
-
 
 interface RecordingConfig {
-  fileNamePrefix?: string;
-  videoConfig?: {
-    height?: number;
-    width?: number;
-    codec?: string;
-  };
+	fileNamePrefix?: string;
+	videoConfig?: {
+		height?: number;
+		width?: number;
+		codec?: string;
+	};
 }
-
 
 interface DefaultOptions {
-  video?: boolean;
-  audio?: boolean;
-  mediaConfiguration?: MediaConfiguration;
-  isNonPreferredDevice?: (device: MediaDeviceInfo) => boolean;
-  autoSwitchAudioDevice?: boolean;
-  recording?: RecordingConfig;
+	video?: boolean;
+	audio?: boolean;
+	mediaConfiguration?: MediaConfiguration;
+	isNonPreferredDevice?: (device: MediaDeviceInfo) => boolean;
+	autoSwitchAudioDevice?: boolean;
+	recording?: RecordingConfig;
 }
 
-
 interface Overrides {
-  simulcastConfig?: {
-    disable?: boolean;
-    encodings?: RTCRtpEncodingParameters[];
-  };
-  forceRelay?: boolean;
+	simulcastConfig?: {
+		disable?: boolean;
+		encodings?: RTCRtpEncodingParameters[];
+	};
+	forceRelay?: boolean;
 }
 ```
 
 You can configure meeting defaults using `enableAudio` and `enableVideo` parameters.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/#page","headline":"Build using Core SDK · Cloudflare Realtime docs","description":"Initialize and build with the RealtimeKit Core SDK for full control over video calls.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/#page","headline":"Build using Core SDK · Cloudflare Realtime docs","description":"Initialize and build with the RealtimeKit Core SDK for full control over video calls.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

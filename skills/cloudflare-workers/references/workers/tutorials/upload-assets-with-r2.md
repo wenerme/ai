@@ -1,16 +1,18 @@
 ---
-title: Securely access and upload assets with Cloudflare R2
 description: This tutorial explains how to create a TypeScript-based Cloudflare Workers project that can securely access files from and upload files to a CloudFlare R2 bucket.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Securely access and upload assets with Cloudflare R2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Securely access and upload assets with Cloudflare R2
 
-# Securely access and upload assets with Cloudflare R2
+Last updated Mar 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to create a TypeScript-based Cloudflare Workers project that can securely access files from and upload files to a [Cloudflare R2](https://developers.cloudflare.com/r2/) bucket. Cloudflare R2 allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services.
 
@@ -74,23 +76,16 @@ After your new R2 bucket is ready, use it inside your Worker application.
 
 Use your R2 bucket inside your Worker project by modifying the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include an R2 bucket [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Add the following R2 bucket binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13093)
-* [  wrangler.toml ](#tab-panel-13094)
-
-**JSONC**
-
 ```jsonc
 {
-  "r2_buckets": [
-    {
-      "binding": "MY_BUCKET",
-      "bucket_name": "<YOUR_BUCKET_NAME>"
-    }
-  ]
+	"r2_buckets": [
+		{
+			"binding": "MY_BUCKET",
+			"bucket_name": "<YOUR_BUCKET_NAME>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[r2_buckets]]
@@ -108,35 +103,30 @@ After setting up an R2 bucket binding, you will implement the functionalities fo
 
 To fetch files from the R2 bucket, use the `BINDING.get` function. In the below example, the R2 bucket binding is called `MY_BUCKET`. Using `.get(key)`, you can retrieve an asset based on the URL pathname as the key. In this example, the URL pathname is `/image.png`, and the asset key is `image.png`.
 
-**TypeScript**
-
 ```ts
 interface Env {
-  MY_BUCKET: R2Bucket;
+	MY_BUCKET: R2Bucket;
 }
 export default {
-  async fetch(request, env): Promise<Response> {
-    // For example, the request URL my-worker.account.workers.dev/image.png
-    const url = new URL(request.url);
-    const key = url.pathname.slice(1);
-    // Retrieve the key "image.png"
-    const object = await env.MY_BUCKET.get(key);
+	async fetch(request, env): Promise<Response> {
+		// For example, the request URL my-worker.account.workers.dev/image.png
+		const url = new URL(request.url);
+		const key = url.pathname.slice(1);
+		// Retrieve the key "image.png"
+		const object = await env.MY_BUCKET.get(key);
 
+		if (object === null) {
+			return new Response("Object Not Found", { status: 404 });
+		}
 
-    if (object === null) {
-      return new Response("Object Not Found", { status: 404 });
-    }
+		const headers = new Headers();
+		object.writeHttpMetadata(headers);
+		headers.set("etag", object.httpEtag);
 
-
-    const headers = new Headers();
-    object.writeHttpMetadata(headers);
-    headers.set("etag", object.httpEtag);
-
-
-    return new Response(object.body, {
-      headers,
-    });
-  },
+		return new Response(object.body, {
+			headers,
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -154,36 +144,31 @@ npx wrangler secret put AUTH_SECRET
 
 Now, add a new code path that handles a `PUT` HTTP request. This new code will check that the previously uploaded secret is correctly used for authentication, and then upload to R2 using `MY_BUCKET.put(key, data)`:
 
-**TypeScript**
-
 ```ts
 interface Env {
-  MY_BUCKET: R2Bucket;
-  AUTH_SECRET: string;
+	MY_BUCKET: R2Bucket;
+	AUTH_SECRET: string;
 }
 export default {
-  async fetch(request, env): Promise<Response> {
-    if (request.method === "PUT") {
-      // Note that you could require authentication for all requests
-      // by moving this code to the top of the fetch function.
-      const auth = request.headers.get("Authorization");
-      const expectedAuth = `Bearer ${env.AUTH_SECRET}`;
+	async fetch(request, env): Promise<Response> {
+		if (request.method === "PUT") {
+			// Note that you could require authentication for all requests
+			// by moving this code to the top of the fetch function.
+			const auth = request.headers.get("Authorization");
+			const expectedAuth = `Bearer ${env.AUTH_SECRET}`;
 
+			if (!auth || auth !== expectedAuth) {
+				return new Response("Unauthorized", { status: 401 });
+			}
 
-      if (!auth || auth !== expectedAuth) {
-        return new Response("Unauthorized", { status: 401 });
-      }
+			const url = new URL(request.url);
+			const key = url.pathname.slice(1);
+			await env.MY_BUCKET.put(key, request.body);
+			return new Response(`Object ${key} uploaded successfully!`);
+		}
 
-
-      const url = new URL(request.url);
-      const key = url.pathname.slice(1);
-      await env.MY_BUCKET.put(key, request.body);
-      return new Response(`Object ${key} uploaded successfully!`);
-    }
-
-
-    // include the previous code here...
-  },
+		// include the previous code here...
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -207,7 +192,14 @@ To build more with R2 and Workers, refer to [Tutorials](https://developers.cloud
 
 If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/#page","headline":"Securely access and upload assets with Cloudflare R2 · Cloudflare Workers docs","description":"This tutorial explains how to create a TypeScript-based Cloudflare Workers project that can securely access files from and upload files to a CloudFlare R2 bucket.","url":"https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/upload-assets-with-r2/","name":"Securely access and upload assets with Cloudflare R2"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/#page","headline":"Securely access and upload assets with Cloudflare R2 · Cloudflare Workers docs","description":"This tutorial explains how to create a TypeScript-based Cloudflare Workers project that can securely access files from and upload files to a CloudFlare R2 bucket.","url":"https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

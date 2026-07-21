@@ -1,16 +1,18 @@
 ---
-title: Simulcast
 description: Send multiple video quality levels with WebRTC simulcast on Realtime SFU.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Simulcast
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Simulcast
 
-# Simulcast
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/sfu/simulcast/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Simulcast is a feature of WebRTC that allows a publisher to send multiple video streams of the same media at different qualities. For example, this is useful for scenarios where you want to send a high quality stream for desktop users and a lower quality stream for mobile users.
 
@@ -70,16 +72,14 @@ a=rid:q send
 
 If the publisher endpoint is a browser you can include these by specifying `sendEncodings` when creating the transceiver like this:
 
-**JavaScript**
-
 ```js
 const transceiver = peerConnection.addTransceiver(track, {
-  direction: "sendonly",
-  sendEncodings: [
-    { scaleResolutionDownBy: 1, rid: "f" },
-    { scaleResolutionDownBy: 2, rid: "h" },
-    { scaleResolutionDownBy: 4, rid: "q" },
-  ],
+	direction: "sendonly",
+	sendEncodings: [
+		{ scaleResolutionDownBy: 1, rid: "f" },
+		{ scaleResolutionDownBy: 2, rid: "h" },
+		{ scaleResolutionDownBy: 4, rid: "q" },
+	],
 });
 ```
 
@@ -93,7 +93,14 @@ Here's an example of how to use simulcast with Cloudflare Realtime:
 
 For more examples, check out the [Realtime Examples GitHub repository ↗](https://github.com/cloudflare/calls-examples/tree/main/echo-simulcast).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/simulcast/#page","headline":"Simulcast · Cloudflare Realtime docs","description":"Send multiple video quality levels with WebRTC simulcast on Realtime SFU.","url":"https://developers.cloudflare.com/realtime/sfu/simulcast/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/sfu/","name":"Realtime SFU"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/sfu/simulcast/","name":"Simulcast"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/simulcast/#page","headline":"Simulcast · Cloudflare Realtime docs","description":"Send multiple video quality levels with WebRTC simulcast on Realtime SFU.","url":"https://developers.cloudflare.com/realtime/sfu/simulcast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: E-commerce
 description: Protect and accelerate online stores with Cloudflare WAF, DDoS protection, caching, image optimization, and Waiting Room.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: E-commerce
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  E-commerce
 
-# E-commerce
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/e-commerce/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 E-commerce applications require exceptional performance, security, and reliability. Cloudflare protects and accelerates online stores with application security against attacks, bot security against credential stuffing and fraud, cache and image optimization for fast global delivery of product pages, load balancing and Waiting Room for handling traffic spikes, and Zaraz for server-side analytics and marketing tags.
 
@@ -66,15 +68,22 @@ Handle flash sales, seasonal peaks, and viral demand:
 
 ## Related resources
 
-[E-commerce case studies](https://www.cloudflare.com/case-studies/?industry=Ecommerce%20%26%20Retail)
+### [ E-commerce case studies ](https://www.cloudflare.com/case-studies/?industry=Ecommerce%20%26%20Retail)
 
 Explore how e-commerce companies use Cloudflare.
 
-[Reference architectures](https://developers.cloudflare.com/reference-architecture/)
+### [ Reference architectures ](https://developers.cloudflare.com/reference-architecture/)
 
 Detailed diagrams and design patterns for enterprise deployments.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/e-commerce/#page","headline":"E-commerce · Use cases · Cloudflare use cases","description":"Protect and accelerate online stores with Cloudflare WAF, DDoS protection, caching, image optimization, and Waiting Room.","url":"https://developers.cloudflare.com/use-cases/e-commerce/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/e-commerce/","name":"E-commerce"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/e-commerce/#page","headline":"E-commerce · Use cases · Cloudflare use cases","description":"Protect and accelerate online stores with Cloudflare WAF, DDoS protection, caching, image optimization, and Waiting Room.","url":"https://developers.cloudflare.com/use-cases/e-commerce/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,40 +1,47 @@
 ---
-title: Send Bot Management information to origin
 description: Send [Bots](/bots/) information to your origin. Refer to [Bot Management variables](/bots/reference/bot-management-variables/) for a full list of available fields.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Send Bot Management information to origin
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Send Bot Management information to origin
+#  Send Bot Management information to origin
 
 Send [Bots](https://developers.cloudflare.com/bots/) information to your origin. Refer to [Bot Management variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/) for a full list of available fields.
 
-**JavaScript**
+Last updated Mar 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/snippets/examples/bot-data-to-origin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ```js
 export default {
-  async fetch(request) {
-    // Clone the original request to construct a new request
-    const newRequest = new Request(request);
-    // Set Bot Management headers on a new request to the origin: https://developers.cloudflare.com/bots/reference/bot-management-variables/#workers-variables
-    newRequest.headers.set("bot-score", request.cf.botManagement.score); // bot score (integer)
-    newRequest.headers.set(
-      "verified-bot",
-      request.cf.botManagement.verifiedBot,
-    ); // verified bot (boolean)
-    newRequest.headers.set("ja4", request.cf.botManagement.ja4); // JA4 fingerprint hash (string)
-    // Serve response to the new request from the origin
-    return await fetch(newRequest);
-  },
+	async fetch(request) {
+		// Clone the original request to construct a new request
+		const newRequest = new Request(request);
+		// Set Bot Management headers on a new request to the origin: https://developers.cloudflare.com/bots/reference/bot-management-variables/#workers-variables
+		newRequest.headers.set("bot-score", request.cf.botManagement.score); // bot score (integer)
+		newRequest.headers.set(
+			"verified-bot",
+			request.cf.botManagement.verifiedBot,
+		); // verified bot (boolean)
+		newRequest.headers.set("ja4", request.cf.botManagement.ja4); // JA4 fingerprint hash (string)
+		// Serve response to the new request from the origin
+		return await fetch(newRequest);
+	},
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/bot-data-to-origin/#page","headline":"Send Bot Management information to origin · Cloudflare Rules docs","description":"Send Bots information to your origin. Refer to Bot Management variables for a full list of available fields.","url":"https://developers.cloudflare.com/rules/snippets/examples/bot-data-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","Request modification"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/examples/","name":"Snippets examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/snippets/examples/bot-data-to-origin/","name":"Send Bot Management information to origin"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/bot-data-to-origin/#page","headline":"Send Bot Management information to origin · Cloudflare Rules docs","description":"Send Bots information to your origin. Refer to Bot Management variables for a full list of available fields.","url":"https://developers.cloudflare.com/rules/snippets/examples/bot-data-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","Request modification"]}
 ```

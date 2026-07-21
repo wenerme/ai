@@ -1,16 +1,18 @@
 ---
-title: Transition legacy Vectorize indexes
 description: Migrate from legacy Vectorize V1 indexes to the current V2 format.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Transition legacy Vectorize indexes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Transition legacy Vectorize indexes
 
-# Transition legacy Vectorize indexes
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024\. Your Vectorize index may be a legacy index if it fulfills any of the following crieria:
 
@@ -47,24 +49,20 @@ Watch this space for the upcoming capability to migrate legacy (V1) indexes to t
 1. Wrangler now supports operations on the new version of Vectorize (V2) indexes by default. To use Wrangler commands for legacy (V1) indexes, the `--deprecated-v1` flag must be enabled. Please note that this flag is only supported to create, get, list and delete indexes and to insert vectors.
 2. Refer to the [REST API](https://developers.cloudflare.com/api/resources/vectorize/subresources/indexes/methods/create/) page for details on the routes and payload types for the new Vectorize (V2) indexes.
 3. To use the new version of Vectorize indexes in Workers, the environment binding must be defined as a `Vectorize` interface.
-
-**TypeScript**
 ```typescript
 export interface Env {
-  // This makes your vector index methods available on env.VECTORIZE.*
-  // For example, env.VECTORIZE.insert() or query()
-  VECTORIZE: Vectorize;
+	// This makes your vector index methods available on env.VECTORIZE.*
+	// For example, env.VECTORIZE.insert() or query()
+	VECTORIZE: Vectorize;
 }
 ```
 The `Vectorize` interface includes the type changes and the capabilities supported by new Vectorize (V2) indexes.
 For legacy Vectorize (V1) indexes, use the `VectorizeIndex` interface.
-
-**TypeScript**
 ```typescript
 export interface Env {
-  // This makes your vector index methods available on env.VECTORIZE.*
-  // For example, env.VECTORIZE.insert() or query()
-  VECTORIZE: VectorizeIndex;
+	// This makes your vector index methods available on env.VECTORIZE.*
+	// For example, env.VECTORIZE.insert() or query()
+	VECTORIZE: VectorizeIndex;
 }
 ```
 4. With the new Vectorize (V2) version, the `returnMetadata` option for the [query operation](https://developers.cloudflare.com/vectorize/reference/client-api/#query-vectors) now expects either `all`, `indexed` or `none` string values. For legacy Vectorize (V1), the `returnMetadata` option was a boolean field.
@@ -72,7 +70,14 @@ export interface Env {
 These mutation operations are: [Vector Inserts](https://developers.cloudflare.com/vectorize/reference/client-api/#insert-vectors), [Vector Upserts](https://developers.cloudflare.com/vectorize/reference/client-api/#upsert-vectors), [Vector Deletes](https://developers.cloudflare.com/vectorize/reference/client-api/#delete-vectors-by-id), [Metadata Index Creation](https://developers.cloudflare.com/vectorize/reference/client-api/#create-metadata-index), [Metadata Index Deletion](https://developers.cloudflare.com/vectorize/reference/client-api/#delete-metadata-index).
 To check the identifier and the timestamp of the last mutation processed, use the Vectorize [Info command](https://developers.cloudflare.com/vectorize/reference/client-api/#get-index-info).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/#page","headline":"Transition legacy Vectorize indexes · Cloudflare Vectorize docs","description":"Migrate from legacy Vectorize V1 indexes to the current V2 format.","url":"https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/transition-vectorize-legacy/","name":"Transition legacy Vectorize indexes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/#page","headline":"Transition legacy Vectorize indexes · Cloudflare Vectorize docs","description":"Migrate from legacy Vectorize V1 indexes to the current V2 format.","url":"https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

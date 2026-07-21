@@ -1,16 +1,18 @@
 ---
-title: How it works
 description: How Security Insights scans your account and produces security findings.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: How it works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How it works
 
-# How it works
+Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/security-insights/how-it-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare runs regular security scans on your account. These scans check your Cloudflare account settings, DNS record configurations, and product configurations — such as SSL/TLS, WAF, and Access — across all domains in your account.
 
@@ -45,7 +47,14 @@ Cloudflare performs scans automatically for all accounts and zones by default. O
 
 Eligible accounts (Business, Enterprise, or Teams plans) can also manually start a scan. Refer to [Get started](https://developers.cloudflare.com/security-center/get-started/) for instructions.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/how-it-works/#page","headline":"How it works · Security dashboard docs","description":"How Security Insights scans your account and produces security findings.","url":"https://developers.cloudflare.com/security/security-insights/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/security-insights/","name":"Security Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/security/security-insights/how-it-works/","name":"How it works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/how-it-works/#page","headline":"How it works · Security dashboard docs","description":"How Security Insights scans your account and produces security findings.","url":"https://developers.cloudflare.com/security/security-insights/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

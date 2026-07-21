@@ -1,16 +1,10 @@
 ---
-title: SASE - Connect and secure from any network to anywhere
 description: Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video, you will learn all of the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: SASE - Connect and secure from any network to anywhere
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt
-> Use this file to discover all available pages before exploring further.
-
-[Skip to content](#%5Ftop)
-
-# SASE - Connect and secure from any network to anywhere
+[Skip to content ](#main-content)
 
 Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video, you will learn all of the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.
 
@@ -18,20 +12,19 @@ Chapters
 
 * ![Introduction to SASE and the Need for Modern, Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction to SASE and the Need for Modern, Secure Corporate Networking** 0s
+ **Introduction to SASE and the Need for Modern, Secure Corporate Networking**  0s
 * ![Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=117s)
 
- **Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations** 01m57s
+ **Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations**  01m57s
 * ![Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=167s)
 
- **Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach** 02m47s
+ **Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach**  02m47s
 * ![Integrating Private Networks and Data Centers using various methods](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=257s)
 
- **Integrating Private Networks and Data Centers using various methods** 04m17s
+ **Integrating Private Networks and Data Centers using various methods**  04m17s
 * ![Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=317s)
 
- **Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management** 05m17s
-
+ **Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management**  05m17s
 
 Transcript
 
@@ -240,5 +233,5 @@ corporate networking,and all the developer content the Internet
 can hold. Follow us online and thanks forwatching!
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-4-connect-secure/#page","headline":"SASE - Connect and secure from any network to anywhere | Cloudflare Docs","description":"Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video, you will learn all of the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.","url":"https://developers.cloudflare.com/videos/sase-4-connect-secure/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-4-connect-secure/#page","headline":"SASE - Connect and secure from any network to anywhere | Cloudflare Docs","description":"Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video, you will learn all of the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.","url":"https://developers.cloudflare.com/videos/sase-4-connect-secure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

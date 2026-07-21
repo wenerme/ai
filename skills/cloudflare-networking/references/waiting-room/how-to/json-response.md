@@ -1,16 +1,18 @@
 ---
-title: Get JSON response for mobile and other non-browser traffic
 description: Return JSON responses for mobile apps and non-browser clients.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get JSON response for mobile and other non-browser traffic
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get JSON response for mobile and other non-browser traffic
 
-# Get JSON response for mobile and other non-browser traffic
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/how-to/json-response/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you need to manage traffic in a non-browser environment such as a mobile app or web app, Cloudflare provides a JSON-friendly waiting room that can be consumed via your API endpoints:
 
@@ -34,27 +36,23 @@ To receive a JSON response, you first need to enable that option in your waiting
 
 Make a request to your waiting room endpoint with the header `Accept: application/json`. Note that the header has to match exactly `Accept: application/json`. If it is anything else or has any additional content such as `Accept: application/json, text/html` the response will not return in the JSON format. You must retry the request every `refreshIntervalSeconds` in order for users to advance in the queue.
 
-**Request**
-
 ```bash
 curl "https://example.com/waitingroom" \
 --header "Accept: application/json"
 ```
 
-**Response**
-
 ```json
 {
-  "cfWaitingRoom": {
-    "inWaitingRoom": true,
-    "waitTime": 5,
-    "waitTimeKnown": true,
-    "waitTimeFormatted": "5 minutes",
-    "queueIsFull": false,
-    "queueAll": false,
-    "lastUpdated": "2021-08-03T23:46:00.000Z",
-    "refreshIntervalSeconds": 20
-  }
+	"cfWaitingRoom": {
+		"inWaitingRoom": true,
+		"waitTime": 5,
+		"waitTimeKnown": true,
+		"waitTimeFormatted": "5 minutes",
+		"queueIsFull": false,
+		"queueAll": false,
+		"lastUpdated": "2021-08-03T23:46:00.000Z",
+		"refreshIntervalSeconds": 20
+	}
 }
 ```
 
@@ -83,31 +81,27 @@ These are some of the places where the JSON-friendly response can be consumed (t
   * **Consume JSON data** \- Make a request to the Waiting Room endpoint with the `Accept: application/json` header.
   Here is an example, demonstrating the usage of the waiting room endpoint inside a Worker. The request headers include the necessary `accept` and `cookie` header values that are required by the Waiting Room API. The accept header ensures that a JSON-friendly response is returned, if a user is queued. Otherwise, if the request is sent to the origin, then whatever the response origin returns gets returned back. In this example, a hardcoded `__cfwaitingroom` value is embedded in the cookie field. In a real-life application, however, we expect that a cookie returned by the Waiting Room API is used in each of the subsequent requests to ensure that the user is placed accordingly in the queue and let through to the origin when it is the users turn.
 
-**JavaScript**
-
 ```javascript
 const waitingroomSite = "https://examples.cloudflareworkers.com/waiting-room";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const init = {
-      headers: {
-        accept: "application/json",
-        cookie: "__cfwaitingroom=F)J@NcRfUjXnZr4u7x!A%D*G-KaPdSgV",
-      },
-    };
+	async fetch(request, env, ctx) {
+		const init = {
+			headers: {
+				accept: "application/json",
+				cookie: "__cfwaitingroom=F)J@NcRfUjXnZr4u7x!A%D*G-KaPdSgV",
+			},
+		};
 
-
-    return fetch(waitingroomSite, init)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.cfWaitingRoom.inWaitingRoom) {
-          return Response("in waiting room", { "content-type": "text/html" });
-        }
-        return new Response(response);
-      });
-  },
+		return fetch(waitingroomSite, init)
+			.then((response) => response.json())
+			.then((response) => {
+				if (response.cfWaitingRoom.inWaitingRoom) {
+					return Response("in waiting room", { "content-type": "text/html" });
+				}
+				return new Response(response);
+			});
+	},
 };
 ```
 
@@ -115,7 +109,14 @@ Note
 
 Only Advanced Waiting Room customers can support JSON-friendly format with their waiting rooms. For more details, refer to our [Plans page](https://developers.cloudflare.com/waiting-room/plans/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/json-response/#page","headline":"Get JSON response for mobile and other non-browser traffic · Cloudflare Waiting Room docs","description":"Return JSON responses for mobile apps and non-browser clients.","url":"https://developers.cloudflare.com/waiting-room/how-to/json-response/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/json-response/","name":"Get JSON response for mobile and other non-browser traffic"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/json-response/#page","headline":"Get JSON response for mobile and other non-browser traffic · Cloudflare Waiting Room docs","description":"Return JSON responses for mobile apps and non-browser clients.","url":"https://developers.cloudflare.com/waiting-room/how-to/json-response/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

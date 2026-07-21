@@ -1,16 +1,18 @@
 ---
-title: Query Magic Transit tunnel bandwidth analytics with GraphQL
 description: Query tunnel bandwidth analytics with the GraphQL API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Query Magic Transit tunnel bandwidth analytics with GraphQL
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Query Magic Transit tunnel bandwidth analytics with GraphQL
 
-# Query Magic Transit tunnel bandwidth analytics with GraphQL
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/analytics/query-bandwidth/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example uses the GraphQL Analytics API to query Magic Transit ingress tunnel traffic over a specified time period.
 
@@ -53,7 +55,6 @@ PAYLOAD='{ "query":
   }
 }'
 
-
 # curl with Legacy API Key
 curl https://api.cloudflare.com/client/v4/graphql \
 --header "X-Auth-Email: <EMAIL>" \
@@ -61,7 +62,6 @@ curl https://api.cloudflare.com/client/v4/graphql \
 --header "Accept: application/json" \
 --header "Content-Type: application/json" \
 --data "$(echo $PAYLOAD)"
-
 
 # curl with API Token
 curl https://api.cloudflare.com/client/v4/graphql \
@@ -81,7 +81,6 @@ curl https://api.cloudflare.com/client/v4/graphql \
 --header "Accept: application/json" \
 --header "Content-Type: application/json" \
 --data "$(echo $PAYLOAD)" | jq .
-
 
 ## Example response:
 #=> {
@@ -118,7 +117,14 @@ curl https://api.cloudflare.com/client/v4/graphql \
 1. For details, refer to [Authenticate with a Cloudflare API key](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-key-auth/). [↩](#user-content-fnref-1)
 2. For details, refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/). [↩](#user-content-fnref-2)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/analytics/query-bandwidth/#page","headline":"Query Magic Transit tunnel bandwidth analytics with GraphQL · Cloudflare Magic Transit docs","description":"Query tunnel bandwidth analytics with the GraphQL API.","url":"https://developers.cloudflare.com/magic-transit/analytics/query-bandwidth/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Shell"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/analytics/","name":"Analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/analytics/query-bandwidth/","name":"Query Magic Transit tunnel bandwidth analytics with GraphQL"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/analytics/query-bandwidth/#page","headline":"Query Magic Transit tunnel bandwidth analytics with GraphQL · Cloudflare Magic Transit docs","description":"Query tunnel bandwidth analytics with the GraphQL API.","url":"https://developers.cloudflare.com/magic-transit/analytics/query-bandwidth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Shell"]}
 ```

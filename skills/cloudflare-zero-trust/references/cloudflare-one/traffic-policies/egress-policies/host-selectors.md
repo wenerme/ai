@@ -1,16 +1,18 @@
 ---
-title: Host selectors
 description: Configure Host selectors in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Host selectors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Host selectors
 
-# Host selectors
+Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -39,27 +41,22 @@ These selectors require additional configuration before they work.
 
 To turn on the selectors for your account:
 
-* [ Dashboard ](#tab-panel-8269)
-* [ API ](#tab-panel-8270)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Policy settings**, turn on **Allow egress policy host selectors**.
 
 Use the [Patch Zero Trust account configuration](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/configurations/methods/edit/) endpoint to update your Zero Trust configuration. For example:
 
-**Patch Zero Trust account configuration**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configuration" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "settings": {
-        "host_selector": {
-            "enabled": true
-        }
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"settings": {
+				"host_selector": {
+						"enabled": true
+				}
+		}
+	}'
 ```
 
 ## Prerequisites
@@ -86,12 +83,12 @@ To configure your Zero Trust organization to use Host selectors with Egress poli
   * **iOS**: [Cloudflare One Client version 1.11](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios) or later
   * **Android and Chrome OS**: [Cloudflare One Client version 2.4.2](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#android) or later.
 If you need to support devices running prior versions of WARP, add and deploy the following key-value pair to your devices' [WARP configuration file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/) (`mdm.xml` on Windows and Linux or `com.cloudflare.warp.plist` on macOS):
-```xml
+```diff
 <array>
-  <dict>
-    <key>doh_in_tunnel</key>
-    <true/>
-  </dict>
+	<dict>
++		<key>doh_in_tunnel</key>
++		<true/>
+	</dict>
 </array>
 ```
 2. In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) such that the initial resolved IPs route through the WARP tunnel. Configuration depends on your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode):
@@ -148,7 +145,14 @@ Host selectors do not support HTTPS DNS record types. When a domain uses HTTPS r
 
 If you need to apply egress policies to a domain that uses HTTPS records, use an IP-based selector (such as [Destination IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#destination-ip)) instead.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#page","headline":"Host selectors · Cloudflare One docs","description":"Configure Host selectors in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/egress-policies/","name":"Egress policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/egress-policies/host-selectors/","name":"Host selectors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#page","headline":"Host selectors · Cloudflare One docs","description":"Configure Host selectors in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

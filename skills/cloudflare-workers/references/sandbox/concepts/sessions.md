@@ -1,16 +1,18 @@
 ---
-title: Session management
 description: Sandbox SDK sessions are shell execution contexts within a single sandbox.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Session management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Session management
 
-# Session management
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/concepts/sessions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sessions are bash shell execution contexts within a sandbox. Think of them as terminal tabs in the same computer.
 
@@ -23,16 +25,12 @@ Sessions are useful for organizing work inside one sandbox. They are not a secur
 
 By default, every sandbox has a default session that maintains shell state between commands while the container is active:
 
-**TypeScript**
-
 ```typescript
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
-
 
 // These commands run in the default session
 await sandbox.exec("cd /app");
 await sandbox.exec("pwd");  // Output: /app
-
 
 await sandbox.exec("export MY_VAR=hello");
 await sandbox.exec("echo $MY_VAR");  // Output: hello
@@ -42,13 +40,10 @@ Working directory, environment variables, and exported variables carry over betw
 
 If you set `enableDefaultSession: false` when calling `getSandbox()`, operations without an explicit `sessionId` run in isolation instead of using the default session:
 
-**TypeScript**
-
 ```typescript
 const sandbox = getSandbox(env.Sandbox, 'my-sandbox', {
   enableDefaultSession: false
 });
-
 
 await sandbox.exec("cd /app");
 await sandbox.exec("pwd");  // Output: /workspace (cd was not inherited)
@@ -60,8 +55,6 @@ Without the default session, the second command does not inherit shell state fro
 
 The container automatically creates sessions on first use. If you reference a non-existent session ID, the container creates it with default settings:
 
-**TypeScript**
-
 ```typescript
 // This session does not exist yet
 const result = await sandbox.exec('echo hello', { sessionId: 'new-session' });
@@ -72,8 +65,6 @@ const result = await sandbox.exec('echo hello', { sessionId: 'new-session' });
 
 This behavior is particularly relevant after deleting a session:
 
-**TypeScript**
-
 ```typescript
 // Create and configure a session
 const session = await sandbox.createSession({
@@ -81,10 +72,8 @@ const session = await sandbox.createSession({
   env: { MY_VAR: 'value' }
 });
 
-
 // Delete the session
 await sandbox.deleteSession('temp');
-
 
 // Using the same session ID again works - auto-created with defaults
 const result = await sandbox.exec('echo $MY_VAR', { sessionId: 'temp' });
@@ -97,8 +86,6 @@ This auto-creation means commands still run when they reference a non-existent s
 
 Create additional sessions for separate workflows in the same sandbox:
 
-**TypeScript**
-
 ```typescript
 const buildSession = await sandbox.createSession({
   id: "build",
@@ -106,13 +93,11 @@ const buildSession = await sandbox.createSession({
   cwd: "/build"
 });
 
-
 const testSession = await sandbox.createSession({
   id: "test",
   env: { NODE_ENV: "test" },
   cwd: "/test"
 });
-
 
 // Different shell contexts
 await buildSession.exec("npm run build");
@@ -121,14 +106,11 @@ await testSession.exec("npm test");
 
 You can also set a default command timeout for all commands in a session:
 
-**TypeScript**
-
 ```typescript
 const session = await sandbox.createSession({
   id: "ci",
   commandTimeoutMs: 30000 // 30s timeout for all commands
 });
-
 
 await session.exec("npm test"); // Times out after 30s if still running
 ```
@@ -141,8 +123,6 @@ Each session has its own:
 
 **Shell environment**:
 
-**TypeScript**
-
 ```typescript
 await session1.exec("export MY_VAR=hello");
 await session2.exec("echo $MY_VAR");  // Empty - different shell
@@ -150,16 +130,12 @@ await session2.exec("echo $MY_VAR");  // Empty - different shell
 
 **Working directory**:
 
-**TypeScript**
-
 ```typescript
 await session1.exec("cd /workspace/project1");
 await session2.exec("pwd");  // Different working directory
 ```
 
 **Environment variables** (set via `createSession` options):
-
-**TypeScript**
 
 ```typescript
 const session1 = await sandbox.createSession({
@@ -176,16 +152,12 @@ All sessions in a sandbox share:
 
 **Filesystem**:
 
-**TypeScript**
-
 ```typescript
 await session1.writeFile('/workspace/file.txt', 'data');
 await session2.readFile('/workspace/file.txt');  // Can read it
 ```
 
 **Processes**:
-
-**TypeScript**
 
 ```typescript
 await session1.startProcess('node server.js');
@@ -202,8 +174,6 @@ await session2.listProcesses();  // Sees the server
 
 **Example - separate dev and runtime environments**:
 
-**TypeScript**
-
 ```typescript
 // Phase 1: AI agent writes code (with API keys)
 const devSession = await sandbox.createSession({
@@ -211,7 +181,6 @@ const devSession = await sandbox.createSession({
   env: { ANTHROPIC_API_KEY: env.ANTHROPIC_API_KEY }
 });
 await devSession.exec('ai-tool "build a web server"');
-
 
 // Phase 2: Run the code (without API keys)
 const appSession = await sandbox.createSession({
@@ -234,8 +203,6 @@ await appSession.exec("node server.js");
 
 **Clean up temporary sessions** to free resources while keeping the sandbox running:
 
-**TypeScript**
-
 ```typescript
 try {
   const session = await sandbox.createSession({ id: 'temp' });
@@ -247,8 +214,6 @@ try {
 
 **Default session cannot be deleted**:
 
-**TypeScript**
-
 ```typescript
 // This throws an error
 await sandbox.deleteSession('default');
@@ -259,12 +224,9 @@ await sandbox.deleteSession('default');
 
 **Sessions share the sandbox filesystem** \- file operations affect all sessions:
 
-**TypeScript**
-
 ```typescript
 // Bad - affects all sessions
 await session.exec('rm -rf /workspace/*');
-
 
 // For user data or untrusted code, use a separate sandbox
 const userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
@@ -275,7 +237,14 @@ const userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
 * [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox management
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Complete session API reference
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sessions/#page","headline":"Session management · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sessions are shell execution contexts within a single sandbox.","url":"https://developers.cloudflare.com/sandbox/concepts/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/concepts/sessions/","name":"Session management"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sessions/#page","headline":"Session management · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sessions are shell execution contexts within a single sandbox.","url":"https://developers.cloudflare.com/sandbox/concepts/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot Snippets
 description: Common Snippet errors and how to resolve them.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshoot Snippets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot Snippets
 
-# Troubleshoot Snippets
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/snippets/errors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 1201: Snippet tried to continue to origin multiple times
 
@@ -73,7 +75,14 @@ The name you define when creating a Snippet will be used as the Snippet ID and c
 
 To change the name of your Snippet, create a new Snippet and delete the old one.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/errors/#page","headline":"Troubleshoot Snippets · Cloudflare Rules docs","description":"Common Snippet errors and how to resolve them.","url":"https://developers.cloudflare.com/rules/snippets/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/errors/","name":"Troubleshoot Snippets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/errors/#page","headline":"Troubleshoot Snippets · Cloudflare Rules docs","description":"Common Snippet errors and how to resolve them.","url":"https://developers.cloudflare.com/rules/snippets/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Maintenance
 description: Maintain and manage Cloudflare One Appliances.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Maintenance
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Maintenance
 
-# Maintenance
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 * [ Activate Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/activate-appliance/)
 * [ Deactivate Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/deactivate-appliance/)
@@ -24,7 +26,14 @@ image: https://developers.cloudflare.com/zt-preview.png
 * [ Register a hardware Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/register-appliance/)
 * [ Remove appliances ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/remove-appliances/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/#page","headline":"Maintenance · Cloudflare WAN docs","description":"Maintain and manage Cloudflare One Appliances.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/appliance/","name":"Configure with Appliance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/appliance/maintenance/","name":"Maintenance"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/#page","headline":"Maintenance · Cloudflare WAN docs","description":"Maintain and manage Cloudflare One Appliances.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

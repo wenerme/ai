@@ -1,16 +1,18 @@
 ---
-title: Add custom HTTP headers
 description: Customize HTTP headers on Cloudflare Pages using a Workers function.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Add custom HTTP headers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add custom HTTP headers
 
-# Add custom HTTP headers
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -26,37 +28,30 @@ Before continuing, ensure that your Cloudflare Pages project is connected to a [
 
 Workers functions are written in [JavaScript ↗](https://www.cloudflare.com/learning/serverless/serverless-javascript/). When a Worker makes a request to a Cloudflare Pages application, it will receive a response. The response a Worker receives is immutable, meaning it cannot be changed. In order to add, delete, or alter headers, clone the response and modify the headers on a new `Response` instance. Return the new response to the browser with your desired header changes. An example of this is shown below:
 
-**Setting custom headers with a Workers function**
-
 ```js
 export default {
-  async fetch(request) {
-    // This proxies your Pages application under the condition that your Worker script is deployed on the same custom domain as your Pages project
-    const response = await fetch(request);
+	async fetch(request) {
+		// This proxies your Pages application under the condition that your Worker script is deployed on the same custom domain as your Pages project
+		const response = await fetch(request);
 
+		// Clone the response so that it is no longer immutable
+		const newResponse = new Response(response.body, response);
 
-    // Clone the response so that it is no longer immutable
-    const newResponse = new Response(response.body, response);
+		// Add a custom header with a value
+		newResponse.headers.append(
+			"x-workers-hello",
+			"Hello from Cloudflare Workers",
+		);
 
+		// Delete headers
+		newResponse.headers.delete("x-header-to-delete");
+		newResponse.headers.delete("x-header2-to-delete");
 
-    // Add a custom header with a value
-    newResponse.headers.append(
-      "x-workers-hello",
-      "Hello from Cloudflare Workers",
-    );
+		// Adjust the value for an existing header
+		newResponse.headers.set("x-header-to-change", "NewValue");
 
-
-    // Delete headers
-    newResponse.headers.delete("x-header-to-delete");
-    newResponse.headers.delete("x-header2-to-delete");
-
-
-    // Adjust the value for an existing header
-    newResponse.headers.set("x-header-to-change", "NewValue");
-
-
-    return newResponse;
-  },
+		return newResponse;
+	},
 };
 ```
 
@@ -72,8 +67,6 @@ For example, [here is a Workers script](https://developers.cloudflare.com/worker
 
 If you would like to skip writing this file yourself, you can use our `custom-headers-example` [template ↗](https://github.com/kristianfreeman/custom-headers-example) to generate a new Workers function with [wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the Workers CLI tool.
 
-**Generating a serverless function with wrangler**
-
 ```sh
 git clone https://github.com/cloudflare/custom-headers-example
 cd custom-headers-example
@@ -82,23 +75,16 @@ npm install
 
 To operate your Workers function alongside your Pages application, deploy it to the same custom domain as your Pages application. To do this, update the Wrangler file in your project with your account and zone details:
 
-* [  wrangler.jsonc ](#tab-panel-10299)
-* [  wrangler.toml ](#tab-panel-10300)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "custom-headers-example",
-  "account_id": "FILL-IN-YOUR-ACCOUNT-ID",
-  "workers_dev": false,
-  "route": "FILL-IN-YOUR-WEBSITE.com/*",
-  "zone_id": "FILL-IN-YOUR-ZONE-ID"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "custom-headers-example",
+	"account_id": "FILL-IN-YOUR-ACCOUNT-ID",
+	"workers_dev": false,
+	"route": "FILL-IN-YOUR-WEBSITE.com/*",
+	"zone_id": "FILL-IN-YOUR-ZONE-ID"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -119,7 +105,14 @@ npx wrangler deploy
 
 After you have deployed your Worker, your desired HTTP header adjustments will take effect. While the Worker is deployed, you should continue to see the content from your Pages application as normal.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/#page","headline":"Add custom HTTP headers · Cloudflare Pages docs","description":"Customize HTTP headers on Cloudflare Pages using a Workers function.","url":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/add-custom-http-headers/","name":"Add custom HTTP headers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/#page","headline":"Add custom HTTP headers · Cloudflare Pages docs","description":"Customize HTTP headers on Cloudflare Pages using a Workers function.","url":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

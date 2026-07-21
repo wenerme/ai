@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Ray ID
 description: Use Cloudflare Ray IDs to identify and trace individual requests through Security Events, Log Explorer, and server logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Ray ID
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Ray ID
 
-# Cloudflare Ray ID
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A **Cloudflare Ray ID** is an identifier given to every request that goes through Cloudflare.
 
@@ -18,7 +20,7 @@ Ray IDs are particularly useful when evaluating Security Events for patterns or 
 
 Ray IDs are added as a [request header, cf-ray](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ray), to the connection from Cloudflare to the origin web server. As such the Ray IDs can be found using the Developer Tools in your browser or using curl with the `-v` option to show the headers.
 
-Warning
+Caution
 
 Ray IDs are not guaranteed to be unique for every request. In some situations, different requests may have the same Ray ID.
 
@@ -48,7 +50,14 @@ Enterprise customers can enable Ray ID as a field in their [Cloudflare Logs](htt
 
 For more details about sending Ray IDs to your server logs, refer to the [Cf-Ray](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ray) header.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/#page","headline":"Cloudflare Ray ID · Cloudflare Fundamentals docs","description":"Use Cloudflare Ray IDs to identify and trace individual requests through Security Events, Log Explorer, and server logs.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/cloudflare-ray-id/","name":"Cloudflare Ray ID"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/#page","headline":"Cloudflare Ray ID · Cloudflare Fundamentals docs","description":"Use Cloudflare Ray IDs to identify and trace individual requests through Security Events, Log Explorer, and server logs.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

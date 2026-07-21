@@ -111,7 +111,7 @@ To select a model for a non-Agentic Chat feature:
 1. Select a model from the dropdown list to set as the default model.
 1. Optional. To apply the model to all features in the section, select **Apply to all**.
 
-To specify a model for the GitLab Duo CLI, see [select a model](../gitlab_duo_cli/_index.md#select-a-model).
+To specify a model for the GitLab Duo CLI, see [select a model](../gitlab_duo_cli/use.md#select-a-model).
 
 ### Selecting the right model
 

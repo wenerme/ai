@@ -1,16 +1,18 @@
 ---
-title: Switch between Zero Trust organizations
 description: Switch between Zero Trust organizations in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Switch between Zero Trust organizations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Switch between Zero Trust organizations
 
-# Switch between Zero Trust organizations
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -41,37 +43,35 @@ An MDM file supports a maximum of 25 configurations. The following example inclu
 
 ### XML
 
-**mdm.xml**
-
 ```xml
 <dict>
-  <key>configs</key>
-  <array>
-    <dict>
-      <key>organization</key>
-      <string>mycompany</string>
-      <key>display_name</key>
-      <string>Production environment</string>
-    </dict>
-    <dict>
-      <key>organization</key>
-      <string>mycompany</string>
-      <key>override_api_endpoint</key>
-      <string>203.0.113.0</string>
-      <key>override_doh_endpoint</key>
-      <string>203.0.113.0</string>
-      <key>override_warp_endpoint</key>
-      <string>203.0.113.0:0</string>
-      <key>display_name</key>
-      <string>China employees</string>
-    </dict>
-    <dict>
-      <key>organization</key>
-      <string>test-org</string>
-      <key>display_name</key>
-      <string>Test environment</string>
-    </dict>
-  </array>
+	<key>configs</key>
+	<array>
+		<dict>
+			<key>organization</key>
+			<string>mycompany</string>
+			<key>display_name</key>
+			<string>Production environment</string>
+		</dict>
+		<dict>
+			<key>organization</key>
+			<string>mycompany</string>
+			<key>override_api_endpoint</key>
+			<string>203.0.113.0</string>
+			<key>override_doh_endpoint</key>
+			<string>203.0.113.0</string>
+			<key>override_warp_endpoint</key>
+			<string>203.0.113.0:0</string>
+			<key>display_name</key>
+			<string>China employees</string>
+		</dict>
+		<dict>
+			<key>organization</key>
+			<string>test-org</string>
+			<key>display_name</key>
+			<string>Test environment</string>
+		</dict>
+	</array>
 </dict>
 ```
 
@@ -86,9 +86,6 @@ An MDM file supports a maximum of 25 configurations. The following example inclu
 ## Switch organizations in the Cloudflare One Client
 
 To switch to a different organization as a user:
-
-* [ Windows, macOS, and Linux ](#tab-panel-8155)
-* [ iOS and Android ](#tab-panel-8156)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Home**. The **Configuration** dropdown will show the organizations that the admin has configured for your device.
@@ -119,7 +116,14 @@ When switching organizations or connecting for the first time, keep the followin
 
 1. Logging out is only possible if [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) is enabled for your device. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#page","headline":"Switch between Zero Trust organizations · Cloudflare One docs","description":"Switch between Zero Trust organizations in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/","name":"Switch between Zero Trust organizations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#page","headline":"Switch between Zero Trust organizations · Cloudflare One docs","description":"Switch between Zero Trust organizations in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML"]}
 ```

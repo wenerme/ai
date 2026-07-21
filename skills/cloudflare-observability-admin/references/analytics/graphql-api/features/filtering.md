@@ -1,16 +1,18 @@
 ---
-title: Filtering
 description: Apply filters to GraphQL Analytics API queries.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Filtering
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Filtering
 
-# Filtering
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Filters constrain queries to a particular account or set of zones, requests by date, or those from a specific user agent, for example. Without filters, queries can suffer performance degradation, results can exceed supported bounds, and the data returned can be noisy.
 
@@ -122,20 +124,18 @@ Filtering times are based on event start timestamps, which means requests that e
 
 ```graphql
 query GeneralExample($zoneTag: string, $start: Time) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      httpRequestsAdaptiveGroups(
-        filter: { datetime_gt: $start, clientCountryName: "GB" }
-        limit: 1
-      ) {
-        count
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			httpRequestsAdaptiveGroups(
+				filter: { datetime_gt: $start, clientCountryName: "GB" }
+				limit: 1
+			) {
+				count
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mAdpAhgGwKIA8UFsAOaYAFACQBeA9sgCooDmAXDAM4AuEAlovQDQyl2KCG2Y1OuMAEoYAbwBQMGADdOYAO6Q5ipTCrIWxAGac0bSM1l7qYOkwH7bDGAF8ZC3boAWbNvgBKYKBg7CwAggAmKPhsnMpgcBCUIPiGOp5KJmYWcjBR5rGSAPr0ogJCIvwAxmhqiGwAwsn10AByeGDMAERwAEJdrukZtbicZQCMQ0ruU7pVzWyzLkPLSssuQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVGIwgAvkA)
 
 ### Filter on a specific node
 
@@ -239,7 +239,14 @@ Add the `requestSource` filter for `eyeball` to return request, data transfer, a
 
 Subqueries are not currently supported. You can use two GraphQL queries as a workaround for this limitation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/filtering/#page","headline":"Filtering · Cloudflare Analytics docs","description":"Apply filters to GraphQL Analytics API queries.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/graphql-api/","name":"GraphQL Analytics API"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/graphql-api/features/","name":"Features"}},{"@type":"ListItem","position":5,"item":{"@id":"/analytics/graphql-api/features/filtering/","name":"Filtering"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/features/filtering/#page","headline":"Filtering · Cloudflare Analytics docs","description":"Apply filters to GraphQL Analytics API queries.","url":"https://developers.cloudflare.com/analytics/graphql-api/features/filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: How endpoints and pools become unhealthy
 description: How endpoints and pools become unhealthy.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How endpoints and pools become unhealthy
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How endpoints and pools become unhealthy
 
-# How endpoints and pools become unhealthy
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When we talk about dynamic load balancing, that means your load balancer only directs requests to endpoints that can handle the traffic.
 
@@ -108,7 +110,14 @@ If a load balancer reaches **Critical** health and the pool serving as your fall
 * If Cloudflare proxies your hostname, you will see a 530 HTTP/1016 Origin DNS failure.
 * If Cloudflare does not proxy your hostname, you will see the SOA record.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#page","headline":"How endpoints and pools become unhealthy · Cloudflare Load Balancing docs","description":"How endpoints and pools become unhealthy.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/understand-basics/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/understand-basics/health-details/","name":"How endpoints and pools become unhealthy"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#page","headline":"How endpoints and pools become unhealthy · Cloudflare Load Balancing docs","description":"How endpoints and pools become unhealthy.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

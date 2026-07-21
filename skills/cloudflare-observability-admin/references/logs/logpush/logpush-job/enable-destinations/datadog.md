@@ -1,33 +1,32 @@
 ---
-title: Enable Datadog
 description: Push Cloudflare logs to Datadog.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Enable Datadog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Enable Datadog
 
-# Enable Datadog
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Logpush supports pushing logs directly to Datadog via the Cloudflare dashboard or via API.
 
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+For account: [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
+For domain (also known as zone): [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 1. In **Select a destination**, choose **Datadog**.
 2. Enter or select the following destination information:
 
   * **Datadog URL Endpoint**, which can be either one below. You can find the difference at [Datadog API reference ↗](https://docs.datadoghq.com/api/latest/logs/).
-
-* [ v1 ](#tab-panel-10208)
-* [ v2 ](#tab-panel-10209)
 
 * `http-intake.logs.datadoghq.com/v1/input`
 
@@ -72,9 +71,6 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
 * **destination\_conf** \- A log destination consisting of an endpoint URL, authorization header, and zero or more optional parameters that Datadog supports in the string format below.
 
   * **<DATADOG\_ENDPOINT\_URL>**: The Datadog HTTP logs intake endpoint, which can be either one below. You can find the difference at [Datadog API reference ↗](https://docs.datadoghq.com/api/latest/logs/).
-
-  * [ v1 ](#tab-panel-10210)
-  * [ v2 ](#tab-panel-10211)
 [https://http-intake.logs.datadoghq.com/v1/input\` ↗](https://http-intake.logs.datadoghq.com/v1/input%60)
 `https://http-intake.logs.datadoghq.com/api/v2/logs`
 * `<DATADOG_API_KEY>`: The Datadog API token can be retrieved by following [these steps ↗](https://docs.datadoghq.com/account%5Fmanagement/api-app-keys/#add-an-api-key-or-client-token). For example, `20e6d94e8c57924ad1be3c29bcaee0197d`.
@@ -95,32 +91,30 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Write`
 
-**Create Logpush job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "<DOMAIN_NAME>",
-    "destination_conf": "datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>&ddsource=cloudflare&service=<SERVICE>&host=<HOST>&ddtags=<TAGS>",
-    "output_options": {
-        "field_names": [
-            "ClientIP",
-            "ClientRequestHost",
-            "ClientRequestMethod",
-            "ClientRequestURI",
-            "EdgeEndTimestamp",
-            "EdgeResponseBytes",
-            "EdgeResponseStatus",
-            "EdgeStartTimestamp",
-            "RayID"
-        ],
-        "timestamp_format": "rfc3339"
-    },
-    "dataset": "http_requests",
-    "enabled": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "<DOMAIN_NAME>",
+		"destination_conf": "datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>&ddsource=cloudflare&service=<SERVICE>&host=<HOST>&ddtags=<TAGS>",
+		"output_options": {
+				"field_names": [
+						"ClientIP",
+						"ClientRequestHost",
+						"ClientRequestMethod",
+						"ClientRequestURI",
+						"EdgeEndTimestamp",
+						"EdgeResponseBytes",
+						"EdgeResponseStatus",
+						"EdgeStartTimestamp",
+						"RayID"
+				],
+				"timestamp_format": "rfc3339"
+		},
+		"dataset": "http_requests",
+		"enabled": true
+	}'
 ```
 
 Response:
@@ -174,7 +168,14 @@ The above limits are hardcoded defaults. It is not possible to override these li
 
 These limitations may result in noticeable log ingestion delay within Datadog following high traffic events. Logpush will not drop unsent logs, so all logs will be uploaded to Datadog in due time.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/#page","headline":"Enable Logpush to Datadog · Cloudflare Logs docs","description":"Push Cloudflare logs to Datadog.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/logpush/","name":"Logpush"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/logpush/logpush-job/","name":"Logpush job setup"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/","name":"Enable destinations"}},{"@type":"ListItem","position":6,"item":{"@id":"/logs/logpush/logpush-job/enable-destinations/datadog/","name":"Enable Datadog"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/#page","headline":"Enable Logpush to Datadog · Cloudflare Logs docs","description":"Push Cloudflare logs to Datadog.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/datadog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

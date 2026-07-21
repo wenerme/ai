@@ -1,21 +1,23 @@
 ---
-title: Create a rule
 description: Create an Advanced DDoS Protection rule for TCP, DNS, or flow-based mitigation.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a rule
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a rule
 
-# Create a rule
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Create an Advanced DNS Protection rule
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection** \> **Advanced DNS Protection**.
 3. Select **Create Advanced DNS Protection rule**.
 4. In **Mode**, select a [mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) for the rule.
@@ -29,7 +31,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 To create a [SYN flood rule](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/#syn-flood-protection) or an [out-of-state TCP](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/#out-of-state-tcp-protection) rule:
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection** \> **Advanced TCP Protection**.
 3. Depending on the rule you are creating, do one of the following:
 
@@ -51,7 +53,7 @@ Filters take precedence over rules. For details on how the execution mode is det
 To create a [Programmable Flow Protection rule](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection):
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Advanced Protection** \> **Programmable Flow Protection**.
 3. In **General Settings**, select a program. The chosen program must have a status of `success`, indicating it has successfully compiled and passed verification. This field is required.
 4. In **General Settings**, select a [mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) for the rule. This field is required.
@@ -59,7 +61,14 @@ To create a [Programmable Flow Protection rule](https://developers.cloudflare.co
 6. Under **Set scope**, optionally select a packet filter expression. If you choose to apply a rule to a subset of incoming packets, select the IP and UDP characteristics to filter on. The default setting applies a rule to all UDP packets.
 7. Select **Deploy**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/#page","headline":"Create an Advanced DDoS Protection rule · Cloudflare DDoS Protection docs","description":"Create an Advanced DDoS Protection rule for TCP, DNS, or flow-based mitigation.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/how-to/create-rule/","name":"Create a rule"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/#page","headline":"Create an Advanced DDoS Protection rule · Cloudflare DDoS Protection docs","description":"Create an Advanced DDoS Protection rule for TCP, DNS, or flow-based mitigation.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-rule/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

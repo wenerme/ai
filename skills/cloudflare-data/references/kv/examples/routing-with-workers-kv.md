@@ -1,18 +1,20 @@
 ---
-title: Route requests across various web servers
 description: Example of how to use Workers KV to build a distributed application configuration store.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Route requests across various web servers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Route requests across various web servers
+#  Route requests across various web servers
 
 Store routing data in Workers KV to route requests across various web servers with Workers
+
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Using Workers KV to store routing data to route requests across various web servers with Workers is an ideal use case for Workers KV. Routing workloads can have high read volume, and Workers KV's low-latency reads can help ensure that routing decisions are made quickly and efficiently.
 
@@ -30,33 +32,24 @@ In this example, a multi-tenant e-Commerce application is built on Cloudflare Wo
 
 For simplicity of demonstration, the storefront will be identified with a path element containing the storefront ID, where `https://<WORKER_HOSTNAME>/<STOREFRONT_ID>/...` is the URL pattern for the storefront. You may prefer to use subdomains to identify storefronts in a real-world scenario.
 
-* [ index.ts ](#tab-panel-9814)
-* [ wrangler.jsonc ](#tab-panel-9815)
-
-**index.ts**
-
 ```js
+
 // Example routing data stored in Workers KV:
 // Key: "storefrontA" | Value: {"origin": "https://storefrontA-server.example.com"}
 // Key: "storefrontB" | Value: {"origin": "https://storefrontB-server.example.com"}
-
 
 interface Env {
 ROUTING_CONFIG: KVNamespace;
 }
 
-
 export default {
   async fetch(request, env, ctx) {
-
 
     // Parse the URL to extract the storefront ID from the path
     const url = new URL(request.url);
     const pathParts = url.pathname.split('/').filter(part => part !== '');
 
-
     // Check if a storefront ID is provided in the path, otherwise return 400
-6 collapsed lines
     if (pathParts.length === 0) {
       return new Response('Welcome to our multi-tenant platform. Please specify a storefront ID in the URL path.', {
         status: 400,
@@ -64,20 +57,16 @@ export default {
       });
     }
 
-
     // Extract the storefront ID from the first path segment
     const storefrontId = pathParts[0];
-
 
     try {
       // Look up the storefront configuration in KV using env.ROUTING_CONFIG
       const storefrontConfig = await env.ROUTING_CONFIG.get<{
-          origin: string;
-        }>(storefrontId, {type: "json"});
-
+    			origin: string;
+    		}>(storefrontId, {type: "json"});
 
       // If no configuration is found, return a 404
-6 collapsed lines
       if (!storefrontConfig) {
         return new Response(`Storefront "${storefrontId}" not found.`, {
           status: 404,
@@ -85,13 +74,11 @@ export default {
         });
       }
 
-
       // Construct the new URL for the origin server
       // Remove the storefront ID from the path when forwarding
       const newPathname = '/' + pathParts.slice(1).join('/');
       const originUrl = new URL(newPathname, storefrontConfig.origin);
       originUrl.search = url.search;
-
 
       // Create a new request to the origin server
       const originRequest = new Request(originUrl, {
@@ -101,26 +88,20 @@ export default {
         redirect: 'follow'
       });
 
-
       // Send the request to the origin server
       const response = await fetch(originRequest);
 
-
-        console.log(response.status)
-
+    		console.log(response.status)
 
       // Clone the response and add a custom header
       const modifiedResponse = new Response(response.body, response);
       modifiedResponse.headers.set('X-Served-By', 'Cloudflare Worker');
       modifiedResponse.headers.set('X-Storefront-ID', storefrontId);
 
-
       return modifiedResponse;
-
 
     } catch (error) {
       // Handle any errors
-5 collapsed lines
       console.error(`Error processing request for storefront ${storefrontId}:`, error);
       return new Response('An error occurred while processing your request.', {
         status: 500,
@@ -128,26 +109,25 @@ export default {
       });
     }
 
-
 }
 } satisfies ExportedHandler<Env>;
 ```
 
 ```json
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "<ENTER_WORKER_NAME>",
-  "main": "src/index.ts",
-  "compatibility_date": "2025-03-03",
-  "observability": {
-    "enabled": true
-  },
-  "kv_namespaces": [
-    {
-      "binding": "ROUTING_CONFIG",
-      "id": "<YOUR_BINDING_ID>"
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "<ENTER_WORKER_NAME>",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-03-03",
+	"observability": {
+		"enabled": true
+	},
+	"kv_namespaces": [
+		{
+			"binding": "ROUTING_CONFIG",
+			"id": "<YOUR_BINDING_ID>"
+		}
+	]
 }
 ```
 
@@ -158,7 +138,14 @@ In this example, the Cloudflare Worker receives a request and extracts the store
 * [Rust support in Workers](https://developers.cloudflare.com/workers/languages/rust/).
 * [Using KV in Workers](https://developers.cloudflare.com/kv/get-started/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/#page","headline":"Route requests across various web servers · Cloudflare Workers KV docs","description":"Example of how to use Workers KV to build a distributed application configuration store.","url":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/examples/routing-with-workers-kv/","name":"Route requests across various web servers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/#page","headline":"Route requests across various web servers · Cloudflare Workers KV docs","description":"Example of how to use Workers KV to build a distributed application configuration store.","url":"https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Workers binding
 description: Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers binding
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers binding
 
-# Workers binding
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to create, list, update, and delete AI Search instances from a Cloudflare Worker. You can also check instance configuration and monitor indexing progress.
 
@@ -25,11 +27,6 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-7194)
-* [  wrangler.toml ](#tab-panel-7195)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -43,11 +40,8 @@ Access all instances within a [namespace](https://developers.cloudflare.com/ai-s
 }
 ```
 
-**TOML**
-
 ```toml
 compatibility_date = "2026-03-27"
-
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -64,11 +58,6 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-7196)
-* [  wrangler.toml ](#tab-panel-7197)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -82,11 +71,8 @@ Bind directly to a single instance in the `default` namespace. Use this when you
 }
 ```
 
-**TOML**
-
 ```toml
 compatibility_date = "2026-03-27"
-
 
 [[ai_search]]
 binding = "MY_SEARCH"
@@ -107,12 +93,10 @@ The following methods are only available when using the `ai_search_namespaces` b
 
 Returns a handle to a specific instance. This is **synchronous** and does not make a network call. The instance is resolved lazily when you call methods like `search()` or `info()`.
 
-**TypeScript**
-
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
 const results = await instance.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
 });
 ```
 
@@ -126,14 +110,11 @@ const results = await instance.search({
 
 Returns all instances within the namespace.
 
-**TypeScript**
-
 ```ts
 const { result, result_info } = await env.AI_SEARCH.list();
 
-
 for (const instance of result) {
-  console.log(`${instance.id} (${instance.type}) - ${instance.status}`);
+	console.log(`${instance.id} (${instance.type}) - ${instance.status}`);
 }
 // result_info.total_count contains the total number of instances
 ```
@@ -172,13 +153,10 @@ Creates a new instance and returns a handle to it. You can create instances back
 
 AI Search instances come with [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) where you can upload documents directly.
 
-**TypeScript**
-
 ```ts
 const instance = await env.AI_SEARCH.create({
-  id: "knowledge-base",
+	id: "knowledge-base",
 });
-
 
 // Upload documents using the Items API
 await instance.items.upload("guide.pdf", pdfArrayBuffer);
@@ -188,13 +166,11 @@ await instance.items.upload("guide.pdf", pdfArrayBuffer);
 
 Automatically crawl and index a website that you own. For more configuration options, refer to [Website data source](https://developers.cloudflare.com/ai-search/configuration/data-source/website/).
 
-**TypeScript**
-
 ```ts
 const instance = await env.AI_SEARCH.create({
-  id: "my-docs",
-  type: "web-crawler",
-  source: "developers.cloudflare.com",
+	id: "my-docs",
+	type: "web-crawler",
+	source: "developers.cloudflare.com",
 });
 ```
 
@@ -202,94 +178,92 @@ const instance = await env.AI_SEARCH.create({
 
 Index documents stored in an [R2](https://developers.cloudflare.com/r2/) bucket. For more configuration options, refer to [R2 data source](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/).
 
-**TypeScript**
-
 ```ts
 const instance = await env.AI_SEARCH.create({
-  id: "internal-docs",
-  type: "r2",
-  source: "my-docs-bucket",
+	id: "internal-docs",
+	type: "r2",
+	source: "my-docs-bucket",
 });
 ```
 
 #### Parameters
 
-`id` ` string ` required
+`id` ` string `required
 
 The unique identifier for the AI Search instance. Must be 1-64 characters and match the pattern `^[a-z0-9_]+(?:-[a-z0-9_]+)*$`.
 
 ---
 
-`type` ` string ` optional
+`type` ` string `optional
 
 The type of data source. Valid values: `r2`, `web-crawler`. Required when creating an instance with a data source. Omit when creating an empty instance for use with the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/).
 
 ---
 
-`source` ` string ` optional
+`source` ` string `optional
 
 The data source location. For `r2` type, this is the R2 bucket name. For `web-crawler` type, this is the website domain. Required when `type` is specified.
 
 ---
 
-`source_params` ` object ` optional
+`source_params` ` object `optional
 
 Additional parameters for the data source.
 
-* `prefix` ` string ` optional
+* `prefix` ` string `optional
 
   * For R2 sources, limits indexing to objects with this key prefix.
-* `r2_jurisdiction` ` string ` optional
+* `r2_jurisdiction` ` string `optional
 
   * The jurisdiction for the R2 bucket, for example `eu`.
-* `include_items` ` array ` optional
+* `include_items` ` array `optional
 
   * Glob patterns for paths to include in indexing. For example: `["/blog/**", "/docs/**/*.html"]`.
-* `exclude_items` ` array ` optional
+* `exclude_items` ` array `optional
 
   * Glob patterns for paths to exclude from indexing. For example: `["/admin/**", "/private/**"]`.
-* `web_crawler` ` object ` optional
+* `web_crawler` ` object `optional
 
   * Configuration for web crawler sources.
-  * `parse_type` ` string ` optional
+  * `parse_type` ` string `optional
 
     * The parsing method. Valid value: `sitemap`.
-  * `parse_options` ` object ` optional
+  * `parse_options` ` object `optional
 
-    * `include_headers` ` object ` optional
+    * `include_headers` ` object `optional
 
       * Custom HTTP headers to include when crawling.
-    * `include_images` ` boolean ` optional
+    * `include_images` ` boolean `optional
 
       * Whether to include images in the index.
-    * `specific_sitemaps` ` array ` optional
+    * `specific_sitemaps` ` array `optional
 
       * Specific sitemap URLs to crawl. For example: `["https://example.com/sitemap.xml"]`.
-    * `use_browser_rendering` ` boolean ` optional
+    * `use_browser_rendering` ` boolean `optional
 
       * Use Browser Run (formerly Browser Rendering) to crawl JavaScript-rendered pages.
-  * `store_options` ` object ` optional
+  * `store_options` ` object `optional
 
-    * `storage_type` ` string ` optional
+    * `storage_type` ` string `optional
 
       * The storage type. Valid value: `r2`.
-    * `storage_id` ` string ` optional
+    * `storage_id` ` string `optional
 
       * The storage bucket ID.
-    * `r2_jurisdiction` ` string ` optional
+    * `r2_jurisdiction` ` string `optional
 
       * The jurisdiction for the storage bucket.
 
 ---
 
-`index_method` ` object ` optional
+`index_method` ` object `optional
 
 Configures which indexing methods are enabled for the instance. Determines whether vector (semantic) search, keyword search, or both are available. At least one must be `true`.
 
-* `vector` ` boolean ` optional
+* `vector` ` boolean `optional
 
   * Enable vector-based semantic search. Defaults to `true`.
-* `keyword` ` boolean ` optional
+* `keyword` ` boolean `optional
 
   * Enable keyword-based search. Defaults to `false`.
 
@@ -297,146 +271,146 @@ Set both to `true` for hybrid search.
 
 ---
 
-`fusion_method` ` string ` optional
+`fusion_method` ` string `optional
 
 Controls how vector and keyword scores are combined when using hybrid search. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to `rrf`.
 
 ---
 
-`indexing_options` ` object ` optional
+`indexing_options` ` object `optional
 
 Configuration for how content is indexed.
 
-* `keyword_tokenizer` ` string ` optional
+* `keyword_tokenizer` ` string `optional
   * The tokenizer used for keyword search indexing. Valid values: `porter` (stemming-based), `trigram` (character n-gram). Defaults to `porter`.
 
 ---
 
-`retrieval_options` ` object ` optional
+`retrieval_options` ` object `optional
 
 Default retrieval configuration for the instance. These defaults can be overridden per-request using `ai_search_options`.
 
-* `keyword_match_mode` ` string ` optional
+* `keyword_match_mode` ` string `optional
 
   * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
-* `boost_by` ` array ` optional
+* `boost_by` ` array `optional
 
   * Default boost fields applied to all search queries. Maximum 3 items. Each item has:
-    * `field` ` string ` required \- The metadata field name to boost by. Maximum 64 characters.
-    * `direction` ` string ` optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`.
+    * `field` ` string `required \- The metadata field name to boost by. Maximum 64 characters.
+    * `direction` ` string `optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`.
 
 ---
 
-`sync_interval` ` number ` optional
+`sync_interval` ` number `optional
 
 Seconds between automatic data source syncs. Valid values: `3600`, `7200`, `14400`, `21600`, `43200`, `86400`. Defaults to `21600` (6 hours).
 
 ---
 
-`token_id` ` string ` optional
+`token_id` ` string `optional
 
 The UUID of the [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) to use for this instance. Only required if you have never created an AI Search instance before. Refer to the [API get started guide](https://developers.cloudflare.com/ai-search/get-started/api/) for how to create and register a service token.
 
 ---
 
-`ai_gateway_id` ` string ` optional
+`ai_gateway_id` ` string `optional
 
 The AI Gateway ID to route requests through for logging and analytics.
 
 ---
 
-`embedding_model` ` string ` optional
+`embedding_model` ` string `optional
 
 The embedding model to use for vectorizing content.
 
 ---
 
-`ai_search_model` ` string ` optional
+`ai_search_model` ` string `optional
 
 The text-generation model to use for generating responses.
 
 ---
 
-`rewrite_query` ` boolean ` optional
+`rewrite_query` ` boolean `optional
 
 Enable query rewriting to improve retrieval accuracy. Defaults to `false`.
 
 ---
 
-`rewrite_model` ` string ` optional
+`rewrite_model` ` string `optional
 
 The model to use for query rewriting.
 
 ---
 
-`reranking` ` boolean ` optional
+`reranking` ` boolean `optional
 
 Enable reranking to reorder retrieved results by semantic relevance. Defaults to `false`.
 
 ---
 
-`reranking_model` ` string ` optional
+`reranking_model` ` string `optional
 
 The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.
 
 ---
 
-`chunk_size` ` number ` optional
+`chunk_size` ` number `optional
 
 The size of chunks when splitting documents. Minimum value: `64`.
 
 ---
 
-`chunk_overlap` ` number ` optional
+`chunk_overlap` ` number `optional
 
 The overlap between chunks. Minimum value: `0`.
 
 ---
 
-`max_num_results` ` number ` optional
+`max_num_results` ` number `optional
 
 The default maximum number of results to return. Minimum value: `1`.
 
 ---
 
-`score_threshold` ` number ` optional
+`score_threshold` ` number `optional
 
 The default minimum score threshold for results. Minimum value: `0`.
 
 ---
 
-`cache` ` boolean ` optional
+`cache` ` boolean `optional
 
 Enable response caching. Defaults to `true`.
 
 ---
 
-`cache_threshold` ` string ` optional
+`cache_threshold` ` string `optional
 
 The cache matching threshold. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`. Defaults to `close_enough`.
 
 ---
 
-`cache_ttl` ` number ` optional
+`cache_ttl` ` number `optional
 
 The cache entry TTL in seconds. Valid values are `600`, `1800`, `3600`, `7200`, `21600`, `43200`, `86400`, `172800`, `259200`, and `518400`. Defaults to `172800`.
 
 ---
 
-`custom_metadata` ` array ` optional
+`custom_metadata` ` array `optional
 
 Custom metadata fields to extract and index from documents.
 
-* `field_name` ` string ` required
+* `field_name` ` string `required
 
   * The name of the metadata field.
-* `data_type` ` string ` required
+* `data_type` ` string `required
 
   * The data type of the field. Valid values: `text`, `number`, `boolean`, `datetime`.
 
 ---
 
-`enable` ` boolean ` optional
+`enable` ` boolean `optional
 
 Whether the instance is enabled. Defaults to `true`.
 
@@ -447,8 +421,6 @@ Returns an `AiSearchInstance` handle that is immediately usable for calling meth
 ### `delete()`
 
 Permanently deletes an instance and all its indexed content. This action cannot be undone.
-
-**TypeScript**
 
 ```ts
 await env.AI_SEARCH.delete("old-docs");
@@ -464,7 +436,7 @@ await env.AI_SEARCH.delete("old-docs");
 
 Returns `void`. Throws an error if the instance does not exist.
 
-Warning
+Caution
 
 Deleting an instance permanently removes all indexed data, including embeddings, chunks, and source files.
 
@@ -478,12 +450,10 @@ The examples below use the namespace binding.
 
 Partially updates the instance configuration. Only the fields you pass are modified.
 
-**TypeScript**
-
 ```ts
 const updated = await env.AI_SEARCH.get("my-instance").update({
-  ai_search_model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-  reranking: true,
+	ai_search_model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+	reranking: true,
 });
 ```
 
@@ -519,8 +489,6 @@ Returns the updated instance configuration. Same shape as [info()](#response-2).
 ### `info()`
 
 Returns the current configuration and metadata for the instance.
-
-**TypeScript**
 
 ```ts
 const info = await env.AI_SEARCH.get("my-instance").info();
@@ -562,8 +530,6 @@ const info = await env.AI_SEARCH.get("my-instance").info();
 
 Returns the current indexing progress for the instance. Use this to poll for completion after creating an instance or uploading files.
 
-**TypeScript**
-
 ```ts
 const stats = await env.AI_SEARCH.get("my-instance").stats();
 ```
@@ -590,22 +556,27 @@ const stats = await env.AI_SEARCH.get("my-instance").stats();
 
 Local development is supported by proxying requests to your deployed AI Search instance. Add `remote: true` to your binding configuration to enable local development with `wrangler dev`.
 
-**JSONC**
-
 ```jsonc
 // wrangler.jsonc
 {
-  "ai_search": [
-    {
-      "binding": "MY_SEARCH",
-      "instance_name": "my-instance",
-      "remote": true,
-    },
-  ],
+	"ai_search": [
+		{
+			"binding": "MY_SEARCH",
+			"instance_name": "my-instance",
+			"remote": true,
+		},
+	],
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/instances/","name":"Instances"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/instances/workers-binding/","name":"Workers binding"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

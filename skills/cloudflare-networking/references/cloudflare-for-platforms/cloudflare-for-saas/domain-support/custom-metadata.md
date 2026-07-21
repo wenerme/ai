@@ -1,16 +1,18 @@
 ---
-title: Custom metadata
 description: Configure per-hostname settings such as URL rewriting and custom headers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Custom metadata
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom metadata
 
-# Custom metadata
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You may wish to configure per-hostname (customer) settings beyond the scale of Rules or Rate Limiting.
 
@@ -42,23 +44,21 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Edit Custom Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "ssl": {
-        "method": "http",
-        "type": "dv"
-    },
-    "custom_metadata": {
-        "customer_id": "12345",
-        "redirect_to_https": true,
-        "security_tag": "low"
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"ssl": {
+				"method": "http",
+				"type": "dv"
+		},
+		"custom_metadata": {
+				"customer_id": "12345",
+				"redirect_to_https": true,
+				"security_tag": "low"
+		}
+	}'
 ```
 
 Changes to metadata will propagate across Cloudflare's edge within 30 seconds.
@@ -71,52 +71,43 @@ The metadata object will be accessible on each request using the `request.cf.hos
 
 In the example below we will use the user\_id in the Worker that was submitted using the API call above `"custom_metadata":{"customer_id":"12345","redirect_to_https": true,"security_tag":"low"}`, and set a request header to send the `customer_id` to the origin:
 
-* [  JavaScript ](#tab-panel-7673)
-* [  TypeScript ](#tab-panel-7674)
-
-**JavaScript**
-
 ```js
 export default {
-  /**
-   * Fetch and add a X-Customer-Id header to the origin based on hostname
-   * @param {Request} request
-   */
-  async fetch(request, env, ctx) {
-    const customer_id = request.cf.hostMetadata.customer_id;
-    const newHeaders = new Headers(request.headers);
-    newHeaders.append("X-Customer-Id", customer_id);
+	/**
+	 * Fetch and add a X-Customer-Id header to the origin based on hostname
+	 * @param {Request} request
+	 */
+	async fetch(request, env, ctx) {
+		const customer_id = request.cf.hostMetadata.customer_id;
+		const newHeaders = new Headers(request.headers);
+		newHeaders.append("X-Customer-Id", customer_id);
 
-
-    const init = {
-      headers: newHeaders,
-      method: request.method,
-    };
-    return fetch(request.url, init);
-  },
+		const init = {
+			headers: newHeaders,
+			method: request.method,
+		};
+		return fetch(request.url, init);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  /**
-   * Fetch and add a X-Customer-Id header to the origin based on hostname
-   * @param {Request} request
-   */
-  async fetch(request, env, ctx): Promise<Response> {
-    const customer_id = request.cf.hostMetadata.customer_id;
-    const newHeaders = new Headers(request.headers);
-    newHeaders.append("X-Customer-Id", customer_id);
+	/**
+	 * Fetch and add a X-Customer-Id header to the origin based on hostname
+	 * @param {Request} request
+	 */
+	async fetch(request, env, ctx): Promise<Response> {
+		const customer_id = request.cf.hostMetadata.customer_id;
+		const newHeaders = new Headers(request.headers);
+		newHeaders.append("X-Customer-Id", customer_id);
 
-
-    const init = {
-      headers: newHeaders,
-      method: request.method,
-    };
-    return fetch(request.url, init);
-  },
+		const init = {
+			headers: newHeaders,
+			method: request.method,
+		};
+		return fetch(request.url, init);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -163,7 +154,14 @@ Be careful when modifying the schema. Adding, removing, or changing keys and pos
 
 [Terraform](https://developers.cloudflare.com/terraform/) only allows maps of a single type, so Cloudflare's Terraform support for custom metadata for custom hostnames is limited to string keys and values.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/#page","headline":"Custom metadata · Cloudflare for Platforms docs","description":"Configure per-hostname settings such as URL rewriting and custom headers.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","TypeScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/domain-support/","name":"Custom hostnames"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/","name":"Custom metadata"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/#page","headline":"Custom metadata · Cloudflare for Platforms docs","description":"Configure per-hostname settings such as URL rewriting and custom headers.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON","TypeScript"]}
 ```

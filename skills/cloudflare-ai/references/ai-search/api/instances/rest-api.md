@@ -1,16 +1,18 @@
 ---
-title: REST API
 description: Manage AI Search instances and sync jobs over HTTP using the Instances REST API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: REST API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  REST API
 
-# REST API
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/api/instances/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the AI Search REST API to manage instances and sync jobs over HTTP.
 
@@ -19,7 +21,7 @@ Use the AI Search REST API to manage instances and sync jobs over HTTP.
 All requests require an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
 1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[ Go to **API Tokens** ](https://dash.cloudflare.com/profile/api-tokens)
+[ Go to **API Tokens** ↗ ](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
@@ -93,7 +95,14 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
   -H "Authorization: Bearer <API_TOKEN>"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Manage AI Search instances and sync jobs over HTTP using the Instances REST API.","url":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/instances/","name":"Instances"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/instances/rest-api/","name":"REST API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/#page","headline":"REST API · Cloudflare AI Search docs","description":"Manage AI Search instances and sync jobs over HTTP using the Instances REST API.","url":"https://developers.cloudflare.com/ai-search/api/instances/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

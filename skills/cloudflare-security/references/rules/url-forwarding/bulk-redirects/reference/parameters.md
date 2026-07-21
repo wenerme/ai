@@ -1,16 +1,18 @@
 ---
-title: URL redirect parameters
 description: Configurable parameters for Bulk Redirect rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: URL redirect parameters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  URL redirect parameters
 
-# URL redirect parameters
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A URL redirect has a source URL, a target URL, a status code, and some additional parameters that affect its URL matching behavior and runtime behavior.
 
@@ -38,7 +40,7 @@ For more information on the supported URL components, refer to [Supported URL co
 
 ## Subpath matching
 
-API field: `subpath_matching` ` Boolean ` default: false
+API field: `subpath_matching` ` Boolean `default: false
 
 If `true`, the current redirect will apply the subpath matching algorithm to the request URL when determining if there is a match for the current URL redirect.
 
@@ -48,7 +50,7 @@ For more information, refer to [Matching the source URL of redirects](https://de
 
 ## Include subdomains
 
-API field: `include_subdomains` ` Boolean ` default: false
+API field: `include_subdomains` ` Boolean `default: false
 
 If `true`, the source URL hostname will also apply to any subdomains — the redirect will match for all subdomains to the left of the domain portion of the source URL, as well as the specified domain.
 
@@ -58,19 +60,19 @@ For more information, refer to [Matching the source URL of redirects](https://de
 
 ## Preserve query string
 
-API field: `preserve_query_string` ` Boolean ` default: false
+API field: `preserve_query_string` ` Boolean `default: false
 
 If `true`, the redirect URL will keep the query string of the original request.
 
 For example, a URL redirect from `/my-folder/` to `/other-folder/` with **Preserve query string** enabled will redirect a request from `/my-folder/?name=value` to `/other-folder/?name=value`. If **Preserve query string** is disabled, the request will be redirected from `/my-folder/?name=value` to `/other-folder/`.
 
-Warning
+Caution
 
 When **Preserve query string** is enabled, the final redirect URL uses the original request's query string. Any query string on the target URL is discarded — even when the original request has no query string of its own. To add a fixed query parameter to redirected URLs, leave **Preserve query string** disabled and include the parameter directly in the target URL.
 
 ## Preserve path suffix
 
-API field: `preserve_path_suffix` ` Boolean ` default: true
+API field: `preserve_path_suffix` ` Boolean `default: true
 
 Applicable only when [**Subpath matching**](#subpath-matching) is enabled. If `true`, defines that the redirect URL will include the remaining (non-matched) path elements of the source URL, if any.
 
@@ -78,7 +80,7 @@ For example, when both **Subpath matching** and **Preserve path suffix** are ena
 
 ## Status code
 
-API field: `status_code` ` Integer ` default: 301
+API field: `status_code` ` Integer `default: 301
 API values: `301`, `302`, `307`, or `308`.
 
 The HTTP status code returned to the client when redirecting:
@@ -88,7 +90,14 @@ The HTTP status code returned to the client when redirecting:
 * **307 - Advanced: Temporary, HTTP method preserved**: The page has temporarily moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
 * **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/#page","headline":"URL redirect parameters · Cloudflare Rules docs","description":"Configurable parameters for Bulk Redirect rules.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/parameters/","name":"URL redirect parameters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/#page","headline":"URL redirect parameters · Cloudflare Rules docs","description":"Configurable parameters for Bulk Redirect rules.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

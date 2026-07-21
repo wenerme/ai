@@ -1,16 +1,18 @@
 ---
-title: Onboard a domain
 description: Learn how to onboard your domain to Cloudflare, to speed up and protect your website or application.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Onboard a domain
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Onboard a domain
 
-# Onboard a domain
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 After you onboard your domain, Cloudflare will act as the [reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy) and [DNS provider](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-dns-provider) for your site.
 
@@ -23,7 +25,7 @@ If you need a new domain, you can [buy one from Cloudflare](https://developers.c
 ## 1\. Add your domain
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Domains** ](https://dash.cloudflare.com/?to=/:account/domains/overview)
+[ Go to **Domains** ↗ ](https://dash.cloudflare.com/?to=/:account/domains/overview)
 2. Select **Onboard a domain**.
 3. Enter your website's apex domain (for example, `example.com`), choose how you would like to add your DNS records, and select **Continue**.
 Note
@@ -141,7 +143,14 @@ If you encounter unexpected results when changing your nameservers, refer to the
 1. The provider you purchased your domain from [↩](#user-content-fnref-1)
 2. Enterprise customers can onboard these using [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/). [↩](#user-content-fnref-2)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/add-site/#page","headline":"Onboard a domain · Cloudflare Fundamentals docs","description":"Learn how to onboard your domain to Cloudflare, to speed up and protect your website or application.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-domains/add-site/","name":"Onboard a domain"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/add-site/#page","headline":"Onboard a domain · Cloudflare Fundamentals docs","description":"Learn how to onboard your domain to Cloudflare, to speed up and protect your website or application.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

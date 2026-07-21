@@ -1,16 +1,18 @@
 ---
-title: SaaS security overview
 description: Understand SaaS application security layers.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: SaaS security overview
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SaaS security overview
 
-# SaaS security overview
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/saas-security-overview/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The concept of SaaS (software-as-a-service) security is top of mind for many security organizations but is not explicitly defined. When organizations approach Cloudflare for help securing their SaaS apps, it can mean a number of different things with a number of ideal outcomes. Cloudflare distills SaaS security into three key concepts:
 
@@ -20,7 +22,14 @@ The concept of SaaS (software-as-a-service) security is top of mind for many sec
 
 Cloudflare offers multiple solutions that achieve and sometimes overlap with all three of the defined concepts. Through combinations of Access for SaaS identity proxy, WARP with dedicated IP addresses, Browser Isolation, and CASB API, Cloudflare helps define and address any potential SaaS security goals.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/saas-security-overview/#page","headline":"SaaS security overview · Cloudflare Learning Paths","description":"Understand SaaS application security layers.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/saas-security-overview/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/secure-saas-applications/","name":"Secure SaaS applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/secure-saas-applications/saas-security-overview/","name":"SaaS security overview"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/saas-security-overview/#page","headline":"SaaS security overview · Cloudflare Learning Paths","description":"Understand SaaS application security layers.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/saas-security-overview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

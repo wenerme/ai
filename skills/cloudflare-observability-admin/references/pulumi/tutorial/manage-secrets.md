@@ -1,16 +1,18 @@
 ---
-title: Manage secrets with Pulumi ESC
 description: Pulumi ESC (Environments, Secrets, and Configuration) is a secure and robust secrets management solution. The tutorial will walk you through how to develop with Wrangler while following security best practices.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage secrets with Pulumi ESC
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pulumi/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage secrets with Pulumi ESC
 
-# Manage secrets with Pulumi ESC
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pulumi/tutorial/manage-secrets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will receive step-by-step instructions on using Pulumi ESC (Environments, Secrets, and Configuration), which is a secure and robust secrets management solution.
 
@@ -168,7 +170,14 @@ As `.dev.vars` files may often contain secrets, they should not be committed to 
 
 You have configured Pulumi ESC Environments to load secrets for Wrangler commands, enhancing security during development with Wrangler. The externalized secrets are now reusable across Workers. [Learn more about Pulumi ESC features and integrations ↗](https://www.pulumi.com/docs/esc/) or follow the [Deploy a Worker with Pulumi](https://developers.cloudflare.com/pulumi/tutorial/hello-world/) tutorial.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/manage-secrets/#page","headline":"Manage secrets with Pulumi ESC · Pulumi docs","description":"Pulumi ESC (Environments, Secrets, and Configuration) is a secure and robust secrets management solution. The tutorial will walk you through how to develop with Wrangler while following security best practices.","url":"https://developers.cloudflare.com/pulumi/tutorial/manage-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pulumi/","name":"Pulumi"}},{"@type":"ListItem","position":3,"item":{"@id":"/pulumi/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/pulumi/tutorial/manage-secrets/","name":"Manage secrets with Pulumi ESC"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/manage-secrets/#page","headline":"Manage secrets with Pulumi ESC · Pulumi docs","description":"Pulumi ESC (Environments, Secrets, and Configuration) is a secure and robust secrets management solution. The tutorial will walk you through how to develop with Wrangler while following security best practices.","url":"https://developers.cloudflare.com/pulumi/tutorial/manage-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

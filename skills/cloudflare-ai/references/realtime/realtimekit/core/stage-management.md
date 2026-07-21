@@ -1,16 +1,18 @@
 ---
-title: Stage Management
 description: Manage webinar stage access and publish permissions in RealtimeKit meetings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Stage Management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Stage Management
 
-# Stage Management
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to use stage management APIs for Webinar (WebRTC) use cases in Cloudflare RealtimeKit.
 
@@ -34,31 +36,21 @@ The stage module can be accessed under the `meeting.stage` namespace.
 console.log("Stage object:", meeting.stage);
 ```
 
-**TypeScript**
-
 ```typescript
 console.log("Stage object:", meeting.stage);
 ```
-
-**JavaScript**
 
 ```js
 console.log("Stage object:", meeting.stage);
 ```
 
-**Kotlin**
-
 ```kotlin
 Log.d("Stage", "Stage object: ${meeting.stage}")
 ```
 
-**Swift**
-
 ```swift
 print("Stage object: \(meeting.stage)")
 ```
-
-**Dart**
 
 ```dart
 print("Stage object: ${meeting.stage}");
@@ -78,31 +70,21 @@ The `meeting.stage.status` property returns the current stage status of the loca
 console.log("Stage status:", meeting.stage.status);
 ```
 
-**TypeScript**
-
 ```typescript
 console.log("Stage status:", meeting.stage.status);
 ```
-
-**JavaScript**
 
 ```js
 console.log("Stage status:", meeting.stage.status);
 ```
 
-**Kotlin**
-
 ```kotlin
 Log.d("Stage", "Stage status: ${meeting.stage.stageStatus}")
 ```
 
-**Swift**
-
 ```swift
 print("Stage status: \(meeting.stage.stageStatus)")
 ```
-
-**Dart**
 
 ```dart
 print("Stage status: ${meeting.stage.status}");
@@ -135,31 +117,21 @@ This method connects the user to the media room, enabling them to interact with 
 await meeting.stage.join();
 ```
 
-**TypeScript**
-
 ```typescript
 await meeting.stage.join();
 ```
-
-**JavaScript**
 
 ```js
 await meeting.stage.join();
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.stage.join()
 ```
 
-**Swift**
-
 ```swift
 meeting.stage.join()
 ```
-
-**Dart**
 
 ```dart
 meeting.stage.join();
@@ -177,31 +149,21 @@ By employing this method, the user will be disconnected from the media room and 
 await meeting.stage.leave();
 ```
 
-**TypeScript**
-
 ```typescript
 await meeting.stage.leave();
 ```
-
-**JavaScript**
 
 ```js
 await meeting.stage.leave();
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.stage.leave()
 ```
 
-**Swift**
-
 ```swift
 meeting.stage.leave()
 ```
-
-**Dart**
 
 ```dart
 meeting.stage.leave();
@@ -219,31 +181,21 @@ A privileged user can grant access to stage for a set of users with the `grantAc
 await meeting.stage.grantAccess(userIds);
 ```
 
-**TypeScript**
-
 ```typescript
 await meeting.stage.grantAccess(userIds);
 ```
-
-**JavaScript**
 
 ```js
 await meeting.stage.grantAccess(userIds);
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.stage.grantAccess(userIds)
 ```
 
-**Swift**
-
 ```swift
 meeting.stage.grantAccess(userIds: userIds)
 ```
-
-**Dart**
 
 ```dart
 meeting.stage.grantAccess(userIds);
@@ -277,31 +229,21 @@ A privileged user can deny access to stage for a set of users with the `denyAcce
 await meeting.stage.denyAccess(userIds);
 ```
 
-**TypeScript**
-
 ```typescript
 await meeting.stage.denyAccess(userIds);
 ```
-
-**JavaScript**
 
 ```js
 await meeting.stage.denyAccess(userIds);
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.stage.denyAccess(userIds)
 ```
 
-**Swift**
-
 ```swift
 meeting.stage.denyAccess(userIds: userIds)
 ```
-
-**Dart**
 
 ```dart
 meeting.stage.denyAccess(userIds);
@@ -335,31 +277,21 @@ A privileged user can remove a set of users from stage using the `kick` method.
 await meeting.stage.kick(userIds);
 ```
 
-**TypeScript**
-
 ```typescript
 await meeting.stage.kick(userIds);
 ```
-
-**JavaScript**
 
 ```js
 await meeting.stage.kick(userIds);
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.stage.kick(userIds)
 ```
 
-**Swift**
-
 ```swift
 meeting.stage.kick(userIds: userIds)
 ```
-
-**Dart**
 
 ```dart
 meeting.stage.kick(userIds);
@@ -399,31 +331,21 @@ When the host calls this method, their status will be updated to `ACCEPTED_TO_JO
 await meeting.stage.requestAccess();
 ```
 
-**TypeScript**
-
 ```typescript
 await meeting.stage.requestAccess();
 ```
-
-**JavaScript**
 
 ```js
 await meeting.stage.requestAccess();
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.stage.requestAccess()
 ```
 
-**Swift**
-
 ```swift
 meeting.stage.requestAccess()
 ```
-
-**Dart**
 
 ```dart
 meeting.stage.requestAccess();
@@ -441,31 +363,21 @@ You can call this method to cancel your stage request.
 await meeting.stage.cancelRequestAccess();
 ```
 
-**TypeScript**
-
 ```typescript
 await meeting.stage.cancelRequestAccess();
 ```
-
-**JavaScript**
 
 ```js
 await meeting.stage.cancelRequestAccess();
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.stage.cancelRequestAccess()
 ```
 
-**Swift**
-
 ```swift
 meeting.stage.cancelRequestAccess()
 ```
-
-**Dart**
 
 ```dart
 meeting.stage.cancelRequestAccess();
@@ -485,7 +397,7 @@ Emitted when there is an update to stage access requests.
 
 ```jsx
 meeting.stage.on("stageAccessRequestUpdate", (data) => {
-  console.log("Stage access request updated:", data);
+	console.log("Stage access request updated:", data);
 });
 ```
 
@@ -494,67 +406,55 @@ Alternatively, you can use React hooks to listen for stage updates:
 ```jsx
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react";
 
-
 // useRealtimeKitSelector hook only works when `RealtimeKitProvider` is used.
 const stageStatus = useRealtimeKitSelector((m) => m.stage.status);
 ```
 
-**TypeScript**
-
 ```typescript
 meeting.stage.on("stageAccessRequestUpdate", (data) => {
-  console.log("Stage access request updated:", data);
+	console.log("Stage access request updated:", data);
 });
 ```
-
-**JavaScript**
 
 ```js
 meeting.stage.on("stageAccessRequestUpdate", (data) => {
-  console.log("Stage access request updated:", data);
+	console.log("Stage access request updated:", data);
 });
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.addStageEventListener(object : RtkStageEventListener {
-  override fun onStageAccessRequestsUpdated(accessRequests: List<RtkRemoteParticipant>) {
-    // Stage access requests list updated
-    Log.d("Stage", "Access requests updated: ${accessRequests.size}")
-  }
+	override fun onStageAccessRequestsUpdated(accessRequests: List<RtkRemoteParticipant>) {
+		// Stage access requests list updated
+		Log.d("Stage", "Access requests updated: ${accessRequests.size}")
+	}
 })
 ```
 
-**Swift**
-
 ```swift
 extension WebinarViewModel: RtkStageEventListener {
-  func onStageAccessRequestsUpdated(accessRequests: [RtkRemoteParticipant]) {
-    // Stage access requests list updated
-    print("Access requests updated: \(accessRequests.count)")
-  }
+	func onStageAccessRequestsUpdated(accessRequests: [RtkRemoteParticipant]) {
+		// Stage access requests list updated
+		print("Access requests updated: \(accessRequests.count)")
+	}
 }
 ```
 
-**Dart**
-
 ```dart
 class StageEventListener extends RtkStageEventListener {
-  @override
-  void onStageAccessRequestsUpdated(List<RtkRemoteParticipant> accessRequests) {
-    // Stage access requests list updated
-    print("Access requests updated: ${accessRequests.length}");
-  }
+	@override
+	void onStageAccessRequestsUpdated(List<RtkRemoteParticipant> accessRequests) {
+		// Stage access requests list updated
+		print("Access requests updated: ${accessRequests.length}");
+	}
 }
-
 
 meeting.addStageEventListener(StageEventListener());
 ```
 
 ```tsx
 meeting.stage.on("stageAccessRequestUpdate", (data) => {
-  console.log("Stage access request updated:", data);
+	console.log("Stage access request updated:", data);
 });
 ```
 
@@ -562,7 +462,6 @@ Alternatively, you can use React hooks to listen for stage updates:
 
 ```tsx
 import { useRealtimeKitSelector } from "@cloudflare/realtimekit-react-native";
-
 
 // useRealtimeKitSelector hook only works when `RealtimeKitProvider` is used.
 const stageStatus = useRealtimeKitSelector((m) => m.stage.status);
@@ -574,66 +473,55 @@ Emitted when the host accepts the join stage request or invites a user directly 
 
 ```jsx
 meeting.stage.on("acceptPresentRequests", (data) => {
-  console.log("Present requests accepted:", data);
+	console.log("Present requests accepted:", data);
 });
 ```
-
-**TypeScript**
 
 ```typescript
 meeting.stage.on("acceptPresentRequests", (data) => {
-  console.log("Present requests accepted:", data);
+	console.log("Present requests accepted:", data);
 });
 ```
-
-**JavaScript**
 
 ```js
 meeting.stage.on("acceptPresentRequests", (data) => {
-  console.log("Present requests accepted:", data);
+	console.log("Present requests accepted:", data);
 });
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.addStageEventListener(object : RtkStageEventListener {
-  override fun onStageAccessRequestAccepted() {
-    // Host accepted the join stage request or invited user directly to stage
-    Log.d("Stage", "Access request accepted")
-  }
+	override fun onStageAccessRequestAccepted() {
+		// Host accepted the join stage request or invited user directly to stage
+		Log.d("Stage", "Access request accepted")
+	}
 })
 ```
 
-**Swift**
-
 ```swift
 extension WebinarViewModel: RtkStageEventListener {
-  func onStageAccessRequestAccepted() {
-    // Host accepted the join stage request or invited user directly to stage
-    print("Access request accepted")
-  }
+	func onStageAccessRequestAccepted() {
+		// Host accepted the join stage request or invited user directly to stage
+		print("Access request accepted")
+	}
 }
 ```
 
-**Dart**
-
 ```dart
 class StageEventListener extends RtkStageEventListener {
-  @override
-  void onStageAccessRequestAccepted() {
-    // Host accepted the join stage request or invited user directly to stage
-    print("Access request accepted");
-  }
+	@override
+	void onStageAccessRequestAccepted() {
+		// Host accepted the join stage request or invited user directly to stage
+		print("Access request accepted");
+	}
 }
-
 
 meeting.addStageEventListener(StageEventListener());
 ```
 
 ```tsx
 meeting.stage.on("acceptPresentRequests", (data) => {
-  console.log("Present requests accepted:", data);
+	console.log("Present requests accepted:", data);
 });
 ```
 
@@ -643,66 +531,55 @@ Emitted when the local user's stage status changes.
 
 ```jsx
 meeting.stage.on("stageStatusUpdate", (status) => {
-  console.log("Stage status updated:", status);
+	console.log("Stage status updated:", status);
 });
 ```
-
-**TypeScript**
 
 ```typescript
 meeting.stage.on("stageStatusUpdate", (status) => {
-  console.log("Stage status updated:", status);
+	console.log("Stage status updated:", status);
 });
 ```
-
-**JavaScript**
 
 ```js
 meeting.stage.on("stageStatusUpdate", (status) => {
-  console.log("Stage status updated:", status);
+	console.log("Stage status updated:", status);
 });
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.addStageEventListener(object : RtkStageEventListener {
-  override fun onStageStatusUpdated(oldStatus: StageStatus, newStatus: StageStatus) {
-    // Local user's stage status changed
-    Log.d("Stage", "Status updated from $oldStatus to $newStatus")
-  }
+	override fun onStageStatusUpdated(oldStatus: StageStatus, newStatus: StageStatus) {
+		// Local user's stage status changed
+		Log.d("Stage", "Status updated from $oldStatus to $newStatus")
+	}
 })
 ```
 
-**Swift**
-
 ```swift
 extension WebinarViewModel: RtkStageEventListener {
-  func onStageStatusUpdated(oldStatus: StageStatus, newStatus: StageStatus) {
-    // Local user's stage status changed
-    print("Status updated from \(oldStatus) to \(newStatus)")
-  }
+	func onStageStatusUpdated(oldStatus: StageStatus, newStatus: StageStatus) {
+		// Local user's stage status changed
+		print("Status updated from \(oldStatus) to \(newStatus)")
+	}
 }
 ```
 
-**Dart**
-
 ```dart
 class StageEventListener extends RtkStageEventListener {
-  @override
-  void onStageStatusUpdated(StageStatus oldStatus, StageStatus newStatus) {
-    // Local user's stage status changed
-    print("Status updated from $oldStatus to $newStatus");
-  }
+	@override
+	void onStageStatusUpdated(StageStatus oldStatus, StageStatus newStatus) {
+		// Local user's stage status changed
+		print("Status updated from $oldStatus to $newStatus");
+	}
 }
-
 
 meeting.addStageEventListener(StageEventListener());
 ```
 
 ```tsx
 meeting.stage.on("stageStatusUpdate", (status) => {
-  console.log("Stage status updated:", status);
+	console.log("Stage status updated:", status);
 });
 ```
 
@@ -712,66 +589,55 @@ Emitted when a new participant requests to join the stage.
 
 ```jsx
 meeting.stage.on("newStageRequest", (request) => {
-  console.log("New stage request:", request);
+	console.log("New stage request:", request);
 });
 ```
-
-**TypeScript**
 
 ```typescript
 meeting.stage.on("newStageRequest", (request) => {
-  console.log("New stage request:", request);
+	console.log("New stage request:", request);
 });
 ```
-
-**JavaScript**
 
 ```js
 meeting.stage.on("newStageRequest", (request) => {
-  console.log("New stage request:", request);
+	console.log("New stage request:", request);
 });
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.addStageEventListener(object : RtkStageEventListener {
-  override fun onNewStageAccessRequest(participant: RtkRemoteParticipant) {
-    // New participant requested to join the stage
-    Log.d("Stage", "New stage request from: ${participant.name}")
-  }
+	override fun onNewStageAccessRequest(participant: RtkRemoteParticipant) {
+		// New participant requested to join the stage
+		Log.d("Stage", "New stage request from: ${participant.name}")
+	}
 })
 ```
 
-**Swift**
-
 ```swift
 extension WebinarViewModel: RtkStageEventListener {
-  func onNewStageAccessRequest(participant: RtkRemoteParticipant) {
-    // New participant requested to join the stage
-    print("New stage request from: \(participant.name)")
-  }
+	func onNewStageAccessRequest(participant: RtkRemoteParticipant) {
+		// New participant requested to join the stage
+		print("New stage request from: \(participant.name)")
+	}
 }
 ```
 
-**Dart**
-
 ```dart
 class StageEventListener extends RtkStageEventListener {
-  @override
-  void onNewStageAccessRequest(RtkRemoteParticipant participant) {
-    // New participant requested to join the stage
-    print("New stage request from: ${participant.name}");
-  }
+	@override
+	void onNewStageAccessRequest(RtkRemoteParticipant participant) {
+		// New participant requested to join the stage
+		print("New stage request from: ${participant.name}");
+	}
 }
-
 
 meeting.addStageEventListener(StageEventListener());
 ```
 
 ```tsx
 meeting.stage.on("newStageRequest", (request) => {
-  console.log("New stage request:", request);
+	console.log("New stage request:", request);
 });
 ```
 
@@ -781,66 +647,55 @@ Emitted when a stage request is approved by the host.
 
 ```jsx
 meeting.stage.on("stageRequestApproved", (data) => {
-  console.log("Stage request approved:", data);
+	console.log("Stage request approved:", data);
 });
 ```
-
-**TypeScript**
 
 ```typescript
 meeting.stage.on("stageRequestApproved", (data) => {
-  console.log("Stage request approved:", data);
+	console.log("Stage request approved:", data);
 });
 ```
-
-**JavaScript**
 
 ```js
 meeting.stage.on("stageRequestApproved", (data) => {
-  console.log("Stage request approved:", data);
+	console.log("Stage request approved:", data);
 });
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.addStageEventListener(object : RtkStageEventListener {
-  override fun onStageAccessRequestAccepted() {
-    // Host accepted the join stage request or invited user directly to stage
-    Log.d("Stage", "Stage request approved")
-  }
+	override fun onStageAccessRequestAccepted() {
+		// Host accepted the join stage request or invited user directly to stage
+		Log.d("Stage", "Stage request approved")
+	}
 })
 ```
 
-**Swift**
-
 ```swift
 extension WebinarViewModel: RtkStageEventListener {
-  func onStageAccessRequestAccepted() {
-    // Host accepted the join stage request or invited user directly to stage
-    print("Stage request approved")
-  }
+	func onStageAccessRequestAccepted() {
+		// Host accepted the join stage request or invited user directly to stage
+		print("Stage request approved")
+	}
 }
 ```
 
-**Dart**
-
 ```dart
 class StageEventListener extends RtkStageEventListener {
-  @override
-  void onStageAccessRequestAccepted() {
-    // Host accepted the join stage request or invited user directly to stage
-    print("Stage request approved");
-  }
+	@override
+	void onStageAccessRequestAccepted() {
+		// Host accepted the join stage request or invited user directly to stage
+		print("Stage request approved");
+	}
 }
-
 
 meeting.addStageEventListener(StageEventListener());
 ```
 
 ```tsx
 meeting.stage.on("stageRequestApproved", (data) => {
-  console.log("Stage request approved:", data);
+	console.log("Stage request approved:", data);
 });
 ```
 
@@ -850,70 +705,66 @@ Emitted when the host rejects a stage request.
 
 ```jsx
 meeting.stage.on("stageRequestRejected", (data) => {
-  console.log("Stage request rejected:", data);
+	console.log("Stage request rejected:", data);
 });
 ```
-
-**TypeScript**
 
 ```typescript
 meeting.stage.on("stageRequestRejected", (data) => {
-  console.log("Stage request rejected:", data);
+	console.log("Stage request rejected:", data);
 });
 ```
-
-**JavaScript**
 
 ```js
 meeting.stage.on("stageRequestRejected", (data) => {
-  console.log("Stage request rejected:", data);
+	console.log("Stage request rejected:", data);
 });
 ```
 
-**Kotlin**
-
 ```kotlin
 meeting.addStageEventListener(object : RtkStageEventListener {
-  override fun onStageAccessRequestRejected() {
-    // Host rejected the join stage request
-    Log.d("Stage", "Stage request rejected")
-  }
+	override fun onStageAccessRequestRejected() {
+		// Host rejected the join stage request
+		Log.d("Stage", "Stage request rejected")
+	}
 })
 ```
 
-**Swift**
-
 ```swift
 extension WebinarViewModel: RtkStageEventListener {
-  func onStageAccessRequestRejected() {
-    // Host rejected the join stage request
-    print("Stage request rejected")
-  }
+	func onStageAccessRequestRejected() {
+		// Host rejected the join stage request
+		print("Stage request rejected")
+	}
 }
 ```
 
-**Dart**
-
 ```dart
 class StageEventListener extends RtkStageEventListener {
-  @override
-  void onStageAccessRequestRejected() {
-    // Host rejected the join stage request
-    print("Stage request rejected");
-  }
+	@override
+	void onStageAccessRequestRejected() {
+		// Host rejected the join stage request
+		print("Stage request rejected");
+	}
 }
-
 
 meeting.addStageEventListener(StageEventListener());
 ```
 
 ```tsx
 meeting.stage.on("stageRequestRejected", (data) => {
-  console.log("Stage request rejected:", data);
+	console.log("Stage request rejected:", data);
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/#page","headline":"Stage Management · Cloudflare Realtime docs","description":"Manage webinar stage access and publish permissions in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/stage-management/","name":"Stage Management"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/#page","headline":"Stage Management · Cloudflare Realtime docs","description":"Manage webinar stage access and publish permissions in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

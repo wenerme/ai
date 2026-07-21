@@ -1,16 +1,18 @@
 ---
-title: Manage payouts
 description: Manage Stripe payouts for Pay Per Crawl revenue.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage payouts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage payouts
 
-# Manage payouts
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 graph LR
 A[Enable in<br>account settings] --> B[Set a pay per <br/>crawl price ]
@@ -31,7 +33,7 @@ When you're ready to receive payments for your accrued crawler activity, connect
 A person with **Administrator** or **Super Administrator** access must set up the Stripe connection:
 
 1. In the Cloudflare dashboard, go to **Manage Account** \> **Settings**.
-[ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Select **Pay Per Crawl**.
 3. In the **Stripe account** section, select **Connect**.
 4. Select **Continue to Stripe**.
@@ -58,7 +60,14 @@ Cloudflare manages the complete billing lifecycle:
 * Your accrued balance is not currently visible in the dashboard. You can request balance updates from your Cloudflare team.
 * Payouts are subject to settlement periods and minimum payout thresholds.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/#page","headline":"Manage payouts · Cloudflare AI Crawl Control docs","description":"Manage Stripe payouts for Pay Per Crawl revenue.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Stripe"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/","name":"Pay Per Crawl"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/","name":"Use pay per crawl as a site owner"}},{"@type":"ListItem","position":6,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/","name":"Manage payouts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/#page","headline":"Manage payouts · Cloudflare AI Crawl Control docs","description":"Manage Stripe payouts for Pay Per Crawl revenue.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Stripe"]}
 ```

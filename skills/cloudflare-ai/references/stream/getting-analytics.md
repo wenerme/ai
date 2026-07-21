@@ -1,16 +1,18 @@
 ---
-title: Analytics
 description: Access server-side video analytics for Cloudflare Stream via the dashboard or GraphQL API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Analytics
 
-# Analytics
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/getting-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Stream provides server-side analytics that can be used to:
 
@@ -21,12 +23,19 @@ Stream provides server-side analytics that can be used to:
 You can access data on either:
 
 * The Stream **Analytics** page of the Cloudflare dashboard.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/stream/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/analytics)
 * The [GraphQL Analytics API](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics).
 
 Users will need the **Analytics** permission to access analytics via Dash or GraphQL.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/getting-analytics/#page","headline":"Analytics · Cloudflare Stream docs","description":"Access server-side video analytics for Cloudflare Stream via the dashboard or GraphQL API.","url":"https://developers.cloudflare.com/stream/getting-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/getting-analytics/","name":"Analytics"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/getting-analytics/#page","headline":"Analytics · Cloudflare Stream docs","description":"Access server-side video analytics for Cloudflare Stream via the dashboard or GraphQL API.","url":"https://developers.cloudflare.com/stream/getting-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Reference Architecture using Cloudflare SASE with Microsoft
 description: This reference architecture explains how Microsoft and Cloudflare can be integrated together. By leveraging Cloudflare's secure network access, risky user isolation, and application and data visibility, organizations can consolidate management.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Reference Architecture using Cloudflare SASE with Microsoft
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Reference Architecture using Cloudflare SASE with Microsoft
 
-# Reference Architecture using Cloudflare SASE with Microsoft
+Last updated Mar 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-microsoft/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -116,7 +118,14 @@ Figure 4: A summary of Cloudflare SASE and Microsoft integrations
 * [Overview of Microsoft and Cloudflare partnership ↗](https://www.cloudflare.com/partners/technology-partners/microsoft/)
 * [Set up Microsoft Entra ID (formerly Azure Active Directory) as an identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#set-up-entra-id-as-an-identity-provider)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-microsoft/#page","headline":"Reference Architecture using Cloudflare SASE with Microsoft · Cloudflare Reference Architecture docs","description":"This reference architecture explains how Microsoft and Cloudflare can be integrated together. By leveraging Cloudflare's secure network access, risky user isolation, and application and data visibility, organizations can consolidate management.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-microsoft/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/cloudflare-sase-with-microsoft/","name":"Reference Architecture using Cloudflare SASE with Microsoft"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-microsoft/#page","headline":"Reference Architecture using Cloudflare SASE with Microsoft · Cloudflare Reference Architecture docs","description":"This reference architecture explains how Microsoft and Cloudflare can be integrated together. By leveraging Cloudflare's secure network access, risky user isolation, and application and data visibility, organizations can consolidate management.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-microsoft/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

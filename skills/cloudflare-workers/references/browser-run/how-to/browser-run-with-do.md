@@ -1,16 +1,18 @@
 ---
-title: Deploy a Browser Run Worker with Durable Objects
 description: Use the Browser Run API along with Durable Objects to take screenshots from web pages and store them in R2.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy a Browser Run Worker with Durable Objects
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy a Browser Run Worker with Durable Objects
 
-# Deploy a Browser Run Worker with Durable Objects
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By following this guide, you will create a Worker that uses the Browser Run API along with [Durable Objects](https://developers.cloudflare.com/durable-objects/) to take screenshots from web pages and store them in [R2](https://developers.cloudflare.com/r2/).
 
@@ -94,79 +96,68 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-7531)
-* [  wrangler.toml ](#tab-panel-7532)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "rendering-api-demo",
-  "main": "src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": ["nodejs_compat"],
-  "account_id": "<ACCOUNT_ID>",
-  // Browser Run API binding
-  "browser": {
-    "binding": "MYBROWSER",
-  },
-  // Bind an R2 Bucket
-  "r2_buckets": [
-    {
-      "binding": "BUCKET",
-      "bucket_name": "screenshots",
-      "preview_bucket_name": "screenshots-test",
-    },
-  ],
-  // Binding to a Durable Object
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "BROWSER",
-        "class_name": "Browser",
-      },
-    ],
-  },
-  "migrations": [
-    {
-      "tag": "v1", // Should be unique for each entry
-      "new_sqlite_classes": [
-        // Array of new classes
-        "Browser",
-      ],
-    },
-  ],
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "rendering-api-demo",
+	"main": "src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": ["nodejs_compat"],
+	"account_id": "<ACCOUNT_ID>",
+	// Browser Run API binding
+	"browser": {
+		"binding": "MYBROWSER",
+	},
+	// Bind an R2 Bucket
+	"r2_buckets": [
+		{
+			"binding": "BUCKET",
+			"bucket_name": "screenshots",
+			"preview_bucket_name": "screenshots-test",
+		},
+	],
+	// Binding to a Durable Object
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "BROWSER",
+				"class_name": "Browser",
+			},
+		],
+	},
+	"migrations": [
+		{
+			"tag": "v1", // Should be unique for each entry
+			"new_sqlite_classes": [
+				// Array of new classes
+				"Browser",
+			],
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "rendering-api-demo"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
 account_id = "<ACCOUNT_ID>"
 
-
 [browser]
 binding = "MYBROWSER"
-
 
 [[r2_buckets]]
 binding = "BUCKET"
 bucket_name = "screenshots"
 preview_bucket_name = "screenshots-test"
 
-
 [[durable_objects.bindings]]
 name = "BROWSER"
 class_name = "Browser"
-
 
 [[migrations]]
 tag = "v1"
@@ -179,285 +170,237 @@ The code below uses Durable Object to instantiate a browser using Puppeteer. It 
 
 The Durable Object keeps a browser session open for 60 seconds after last use. If a browser session is open, any requests will re-use the existing session rather than creating a new one. Update your Worker code by copy and pasting the following:
 
-* [  JavaScript ](#tab-panel-7533)
-* [  TypeScript ](#tab-panel-7534)
-
-**JavaScript**
-
 ```js
 import { DurableObject } from "cloudflare:workers";
 import * as puppeteer from "@cloudflare/puppeteer";
 
-
 export default {
-  async fetch(request, env) {
-    const obj = env.BROWSER.getByName("browser");
+	async fetch(request, env) {
+		const obj = env.BROWSER.getByName("browser");
 
+		// Send a request to the Durable Object, then await its response
+		const resp = await obj.fetch(request);
 
-    // Send a request to the Durable Object, then await its response
-    const resp = await obj.fetch(request);
-
-
-    return resp;
-  },
+		return resp;
+	},
 };
-
 
 const KEEP_BROWSER_ALIVE_IN_SECONDS = 60;
 
-
 export class Browser extends DurableObject {
-  browser;
-  keptAliveInSeconds = 0;
-  storage;
+	browser;
+	keptAliveInSeconds = 0;
+	storage;
 
+	constructor(state, env) {
+		super(state, env);
+		this.storage = state.storage;
+	}
 
-  constructor(state, env) {
-    super(state, env);
-    this.storage = state.storage;
-  }
+	async fetch(request) {
+		// Screen resolutions to test out
+		const width = [1920, 1366, 1536, 360, 414];
+		const height = [1080, 768, 864, 640, 896];
 
+		// Use the current date and time to create a folder structure for R2
+		const nowDate = new Date();
+		const coeff = 1000 * 60 * 5;
+		const roundedDate = new Date(
+			Math.round(nowDate.getTime() / coeff) * coeff,
+		).toString();
+		const folder = roundedDate.split(" GMT")[0];
 
-  async fetch(request) {
-    // Screen resolutions to test out
-    const width = [1920, 1366, 1536, 360, 414];
-    const height = [1080, 768, 864, 640, 896];
+		// If there is a browser session open, re-use it
+		if (!this.browser || !this.browser.isConnected()) {
+			console.log(`Browser DO: Starting new instance`);
+			try {
+				this.browser = await puppeteer.launch(this.env.MYBROWSER);
+			} catch (e) {
+				console.log(
+					`Browser DO: Could not start browser instance. Error: ${e}`,
+				);
+			}
+		}
 
+		// Reset keptAlive after each call to the DO
+		this.keptAliveInSeconds = 0;
 
-    // Use the current date and time to create a folder structure for R2
-    const nowDate = new Date();
-    const coeff = 1000 * 60 * 5;
-    const roundedDate = new Date(
-      Math.round(nowDate.getTime() / coeff) * coeff,
-    ).toString();
-    const folder = roundedDate.split(" GMT")[0];
+		// Check if browser exists before opening page
+		if (!this.browser)
+			return new Response("Browser launch failed", { status: 500 });
 
+		const page = await this.browser.newPage();
 
-    // If there is a browser session open, re-use it
-    if (!this.browser || !this.browser.isConnected()) {
-      console.log(`Browser DO: Starting new instance`);
-      try {
-        this.browser = await puppeteer.launch(this.env.MYBROWSER);
-      } catch (e) {
-        console.log(
-          `Browser DO: Could not start browser instance. Error: ${e}`,
-        );
-      }
-    }
+		// Take screenshots of each screen size
+		for (let i = 0; i < width.length; i++) {
+			await page.setViewport({ width: width[i], height: height[i] });
+			await page.goto("https://workers.cloudflare.com/");
+			const fileName = `screenshot_${width[i]}x${height[i]}`;
+			const sc = await page.screenshot();
 
+			await this.env.BUCKET.put(`${folder}/${fileName}.jpg`, sc);
+		}
 
-    // Reset keptAlive after each call to the DO
-    this.keptAliveInSeconds = 0;
+		// Close tab when there is no more work to be done on the page
+		await page.close();
 
+		// Reset keptAlive after performing tasks to the DO
+		this.keptAliveInSeconds = 0;
 
-    // Check if browser exists before opening page
-    if (!this.browser)
-      return new Response("Browser launch failed", { status: 500 });
+		// Set the first alarm to keep DO alive
+		const currentAlarm = await this.storage.getAlarm();
+		if (currentAlarm == null) {
+			console.log(`Browser DO: setting alarm`);
+			const TEN_SECONDS = 10 * 1000;
+			await this.storage.setAlarm(Date.now() + TEN_SECONDS);
+		}
 
+		return new Response("success");
+	}
 
-    const page = await this.browser.newPage();
+	async alarm() {
+		this.keptAliveInSeconds += 10;
 
-
-    // Take screenshots of each screen size
-    for (let i = 0; i < width.length; i++) {
-      await page.setViewport({ width: width[i], height: height[i] });
-      await page.goto("https://workers.cloudflare.com/");
-      const fileName = `screenshot_${width[i]}x${height[i]}`;
-      const sc = await page.screenshot();
-
-
-      await this.env.BUCKET.put(`${folder}/${fileName}.jpg`, sc);
-    }
-
-
-    // Close tab when there is no more work to be done on the page
-    await page.close();
-
-
-    // Reset keptAlive after performing tasks to the DO
-    this.keptAliveInSeconds = 0;
-
-
-    // Set the first alarm to keep DO alive
-    const currentAlarm = await this.storage.getAlarm();
-    if (currentAlarm == null) {
-      console.log(`Browser DO: setting alarm`);
-      const TEN_SECONDS = 10 * 1000;
-      await this.storage.setAlarm(Date.now() + TEN_SECONDS);
-    }
-
-
-    return new Response("success");
-  }
-
-
-  async alarm() {
-    this.keptAliveInSeconds += 10;
-
-
-    // Extend browser DO life
-    if (this.keptAliveInSeconds < KEEP_BROWSER_ALIVE_IN_SECONDS) {
-      console.log(
-        `Browser DO: has been kept alive for ${this.keptAliveInSeconds} seconds. Extending lifespan.`,
-      );
-      await this.storage.setAlarm(Date.now() + 10 * 1000);
-      // You can ensure the ws connection is kept alive by requesting something
-      // or just let it close automatically when there is no work to be done
-      // for example, `await this.browser.version()`
-    } else {
-      console.log(
-        `Browser DO: exceeded life of ${KEEP_BROWSER_ALIVE_IN_SECONDS}s.`,
-      );
-      if (this.browser) {
-        console.log(`Closing browser.`);
-        await this.browser.close();
-      }
-    }
-  }
+		// Extend browser DO life
+		if (this.keptAliveInSeconds < KEEP_BROWSER_ALIVE_IN_SECONDS) {
+			console.log(
+				`Browser DO: has been kept alive for ${this.keptAliveInSeconds} seconds. Extending lifespan.`,
+			);
+			await this.storage.setAlarm(Date.now() + 10 * 1000);
+			// You can ensure the ws connection is kept alive by requesting something
+			// or just let it close automatically when there is no work to be done
+			// for example, `await this.browser.version()`
+		} else {
+			console.log(
+				`Browser DO: exceeded life of ${KEEP_BROWSER_ALIVE_IN_SECONDS}s.`,
+			);
+			if (this.browser) {
+				console.log(`Closing browser.`);
+				await this.browser.close();
+			}
+		}
+	}
 }
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBmACwAmYQHYRADgCMogKwAuFizbAOcLjT4CRE6XMVKAsACgAwuioQApnewARKAGcY6N1Gi2VJTTwCYhIqOGB7BgAiKBp7AA8AOgArNyjSVCgwR3DImLik1KjLGztHCGwAFToYe384GBgwPgIoW2RkuAA3ODdeBFgIAGpgdFxwe0tLKGBPJBIAbxJnEAQ4MmyAeTJk+14IEgBfAIR0YBIo3jBKXFQwRDqAd0wAa3sENKILGbmDgCoSL0SDAQI17A53iczhcAAJXG53B7IEFgiEIdIWCwJX4kXD2VBwcAHBYWEiAtx0Ki8ALg3gACwAFAh7ABHED2NwQAA0JEcXQAlItSWSSLxbJySOgdiQGLyqF1EgAhABKmwA6gBlACiysSAHNwYq6AA5XIMqJkU6PNzvKL8r7CsnIZAkDWOXCAkjMtkcg4QdAkCB0+zLVbrbIkba7fY8oOOQGPOA+Eg+NxejmeKg2x2i8UHZkeGUJpMHKXJRKoWmM73szn2zEi9MQVZUdMeL5kw5ciyHB1irMHADSWq1AAUAPoq9Xa5XjgCCABkAJIANS146XxvH2qsm2Nzg1RYAbIIHdjMAcrr004qrTaELz4g4aGmVmsNvYo3ticLLehre8HYkG8MAQHOzRdPYS5UG6-a4GmsqnsKnKYHABoOmS-acggID7JgDKcgQ9g8nygoko2bigu8BGEA4JHyvWjZBu4iQoWsBpFoRDisf67H2EBhwNuSlLUpWED0kyrK1hAZE5s6rr9PY8YFugYAgL4WaBgGDgSpQEA5lhByPFAuBBkWADa8gAJziIIPLyMIR5HvZSiOTyjl2SQoiKAAukBmF5iQwZQHqdIHLKlmCLInlSEesg8rIR6iDySWebIVlHn5QlOi6ACqNqBsGoqrMydi4kRgI0IGMwhv6orMhVcABKpeIPthuHNsyzUPsq4gGYFVD-s4FWylQ9iPMsREMoxIqGbm+KoEW8iCCtJAAiea0kEo-m5gOXqUHEuDDQ4RZjRNx32AyOZkgAsgQdKJKc3AMoNjwXfq4KVDV00kC6YoLYKAL-agqDdo2-KJP6GoQAMVB6tNO1zRgYCtUWT2He9HjNBA5okAA4jdlR2uZghZXJLpLotcZde4np-gBbUct4tiSrUVA8syXAFT4OZQItDIAITMW4iT0-eJAAD4SyQQt0ixYvvIk7ilGN+z2Lg02yY2AVZqp9iJNc8MAAa3v+4vOJs-jQ4g0Bw6E40pgOcBUvYRszUx9BCtrIrC6Ld6QrKcCJsmKK1GiBuElSjK+3yiQ3QAmlOmo6u7IrHLwBD0iQDL2Fr3u7W4esG+g8PXdrJv+w+Fv+DY4AeoNByEfMCsPrEhEu4kJBaggpwIP4AAkCz2IcRtg-nqedjmgnkyQyocuCwH2KB4FQJBgKoA4D72HAWcZ2AYBaYVIYWzmvsgWBEFQTBey2PBRZITPVjBrwLwpotLePu4EBpmQ+KYCG6A2axD1MCNC9heb81lvLSu-Iy7Mk6q2M6s8MzikulEU2DMSD3GoFnAkWR1ZRB5EsLiIA3D+CUKtQ49Z+p7XgBxQOwc-RyxFi3RIZ1RxgIRtlX6LpKhwDeCQPozJHBuDpOgb+kpFrbyzkIpSrZvAAC9wGNjYNnbIBwoD31IJogAPCQYypkHrZDhkGbRQwhh50bEHEsoCDSsXBCuKA41fgMiWAYoM-h3F0nMlAHyPJgqhQgP4AJYUfE+SOBPYsIcwH6nEegc0YUIAwDIc6Z4CA3gfESPCEAtx7jMiyWcZAdodo6wlJkbIpoIhFiNrIkRYiIDjkHl4sJhx4iDxCRAFpRsSkF0btSBhNi6H61qVmepXCy7WOTDHeUSpcpWGHJURIIIcZG0HsjVqhxkBrPwZU4eKQYB6lHoI3gqdp6NnklYa4BVCBkH0cGVs1MQy00GiQUYXU0mvzqr-XEtgAEPKKkMnMkyDhDKyVcy61DzkujnjaA458V5rzgBvSEtQECaGAYGXoLw0x1TjMsTYp9mGJHhZfaCsFb4IRIA-KFroF54syB8A4cA8nnDqm8Je+LASXxoRKXgJVyjgUQOcAZUyiVsRiQaC+QquGNj5tnPlPcBUsplKNcAYBLGzXFEXQ2DIK5m0hNXQR4JbYgOZUKt2PS5qVC1FuHce4DxLUEJtZaK0enAsKixcVdjYWCqwAyd6r0fpDBINa21Wpdz7g1Kc7h8CWz2wmjCzMNpzSUV4LwJmxThRnOElSLl0qNVnyXhfVeV9yUvhIEMWUy0MIinklqJ87pyCV05c0SsEDs6FuXqS6+cE0x6OHGOScqpk6zkXKudcm5tzhvtVGr22ssLapLldfOJA9WYMNXSIEv94zny5SW7qJBB6duLZBMlN8XzHBtL2zu9bnw8Dtq2jMztEijzLpE91vsvXDPBL64A-qiJsP-EGkgy1nUrUEJE+S8dKCimdnKSiXU8XWl2qrDSKY0y7uZfusgdB0w+k5BiwuERmJwzLvJTAJBkikIOOolMl5wWAnUmcVoe8wC4cePco+NM0wvI+Yfb5uBflkZdKohI4QmjEVXR+olrDIIfDaFQaaRsp68jAAVci86tXZGLqXFda7zaW0fOm9W6ssF8wAYtQeA6JxJxnPOZca4NxhojQeQ4ItX3e0iXKhkvsW4asbAu7TOqjaXK8Bi1hFqy5kmk9A-VCAwVeAhT0wSjYUtHB7JYdQzBNDaF0DwfgQgxCSBkMIBQygSi2GfBUVwHgwsaX8IEbQpAwgRGiMRuA2h0gBHwS1vIGwpTFGsJV8oVQah1EBI0ZoGcNIdELlQKYFgFhRGAEmKg45RjjGyFEFQ+Q8SFDSIcTLWWcvBDy-oQrRgStlaUMwSwQA)
-
-**TypeScript**
+[ Run Worker in Playground ](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAGwAmAJziA7OMEyALMIBcLFm2Ac4XGnwEiJ0uQuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWUMCeSCQA3iTOIAhwZNkA8mTJ9rwQJAC+AQjowCRRvGCUuKhgiHUA7pgA1vYIaUQWM3MHAFQkXokGAgRr2BzvE5nC4AASuNzuD2QILBEIQ6QsFgSvxIuHsqDg4AOCwsAEhenQqLwAuDeAALAAUCHsAEcQPY3BAADQkRxdACUizJpN4tk5JHQOxIDF5VC6iQAQgAlTYAdQAygBRJWJADm4IVdAAcrkGVEyKdHm53lF+V9hchkCR1Y5cICSMy2RyDhB0CQIHT7MtVutsiRtrt9jyA45AY84D4SD43B6OZ4qNbhaKMwdmR5pXGEwdJclEqhaYzPezOXbMaTScyIKsqKmPF9SYcuRZDvbs+KANKazUABQA+sq1VqlaOAIIAGQAkgA1TWjhdG0daqybI3OdUF0SCe3YzAHK69FMKy3WhC8+IOGgplZrDb2CN7Ylki3oK3vdtvGAIBnZounsBcqBdbNcBTGUjzJTlMDgfV7RFMUIAQEB9kwBlOQIeweT5QUSXrNxQXeHDCAcAi5VresA3cRIELWfUC1whxGN9Zj7HbQ46wpKkaQgekmVZasICIh0nXVfp7FjPN0DAEBfAzf0-QccVKAgLM0JIR4oFwAMCwAbWEaRBB5YQAGZRFECyAFZrJ5azzJIZRFAAXXbVCcxIQMoF1OkDhlEzBAADhcmRRFCnlQtERQeTilzQskURPLrUlHRIABVa1-UDEheFWZk7FxPDARof0ZiDX0CuZMq4ACBS8VvTkMP2VYgzYEglXEbSfKoH9nDKmUqHsR5ljwhlaO88VRXxVAC2EQRlpIAFD1Wkg7K8vtc0oOJcCGhwC1G8bDvsBlhVJABZAg6USU5uAZAbHjOvVwUqKqppIJ05tQVBBQBX7UC7et+USX11XQ2JdSm7adIwMBmoLB79tejxmggM0SAAcSuypbSMwQ0skkgFwWmNmSTFMGu-X8Wo5bxbAlWoqB5ZkuFynxhSgBaGQAQnotxElpm8SAAHzFkgBbpBiRfeRJ3FKUb9nsXApok+sZoU+xEmuGGAAMrx-UXnE2fxIcQaAqF1UIxqTHM4Cpex9em0l0LoIVNbdmWhbl28ZTgeNExRWo0V1wkqUZQXEj5RIroATQnDVtVd45eAIekSAZewNc1vttd19AYcu+tDevSFTf8GxwDdAaDlw+Y-ft3CncSEhNQQU4EH8AASBZ7EOfWQc11PhV4kmlQ5cESAAoCQKDOBUAcW97DgTP07AMBVLyoNTeFaPZ+AqBQPAyDbGggs4JJqxA14F4kwWpuEncCAUzIfFMCDdAWeh4EkPsbmvNpay3Lggfkl1GzNltuNSeHgxTnSiEbOmJB7jUEzgSLIqsog8iWGxEAbh-B2RWocWsfVxTwBYgHIOPofbC1AYkE6w5-6w3SplSocA3gkD6MyRwbg6ToFfhKBaq9M7cNki2bwAAvAB9YuoMmyAcKAl9SBKIADy6X0gGXWjhdQBhUUMIYudyTUL-vqRi4IlxQDGr8BkSw9IGTpP4exAYjJQHcjyPyAUID+E8YFVx7kjiu0DkWUxOtdQCPQGaQKEAYAEMdM8BAbwPiJHhCAW49xmQpLOMgW0XkZoHEyNkE0EQCz6zEbw-hEBRx92cXSfxhx4h918RAep+s8k7S4dSKhISKE63KRmSpLDLrBMTNHWOCospWEHJURIIJMb6z7gjZqhxkCLMwcUgeKQYC6iHp06a496yZSsNcXKhAyC6UDC2CmQZ3ChD9KMSmCT741XfriWwX8rn5V6cKEZBxekpJOedUhhynSwOnofeegIl6QlqAgTQv9CBuBeCmGqMZlibH3rQiFx8wIQT2OfGCJAr4gudNPNFmQPgHDgBk84NU3j2BgOiwE88yFniKuUYCiBzjdNGbQpi-83pzy5Sw+sPMs6FU7hyml0oRrgDAEY-O2RC4GyQSbM2XDwRWxttSrlLt2k6UqJqDcW4dx7kWoIDaS1lp5N+XlBi-KzHWiFVgBkr1npfSGCQQ1xrNTbl3OqfZ6VIEIBbCdbqaZ4FmlIrwXgDNclkgOfxakOqXW5wPgyueOLT74sfCQIYMolooQyk6TU95XTkFAUy5o5ZAFZ3TYBI+J88VQRTOowcI5xwqmTtOecy5Vzrk3L601AbPb1kVTrPWF0vZl2NhXdVdIgTv1jLPZlOLGq3j7vWzNTaz6PmONaFtbdS0Ph4NbFBPM0yO0SEPS6QSTHRwdX08EnKXVup-B6kgS1LXLUEK7TK8dKAFUdrKUilM0VWgKrYZWykqYzwzau0C5APZVm9L-NwZxwQy2tpdTKmASDJHwQcBRSYzyAsBEpM4rQN5gA9o8S5O9Ka3IGrpV429Xm4HeThp0XUEjhCaPhEg+tbXRz9okUCHw2hUCmvrMevIwC5WImOsUBdJ0lxncgyud5Y2q1Vue8sQiSB93bWOJOU5ZyLhXGuH1fq9yHCFjekeeSxUMhE6AoxWslWTv1scrwv9RN6pLsJ2hon4TWhFfWXiEWE3dgsJYdQzBNDaF0DwfgQgxBSFkPIJQwgSi2AfBUVwcDvDKX8IEbQpAwgRGiBEQg2h0gBEwZVvIGxJTFGsHl8oVQah1EBI0Zo6dlIdHQ1QKYFgFhRGAAmKgo5RjjGyFEFQ+Q8SFDSIcOL8XEvBGS-oNLRhMumGEMwSwQA)
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
 import * as puppeteer from "@cloudflare/puppeteer";
 
-
 interface Env {
-  MYBROWSER: Fetcher;
-  BUCKET: R2Bucket;
-  BROWSER: DurableObjectNamespace;
+	MYBROWSER: Fetcher;
+	BUCKET: R2Bucket;
+	BROWSER: DurableObjectNamespace;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const obj = env.BROWSER.getByName("browser");
+	async fetch(request, env): Promise<Response> {
+		const obj = env.BROWSER.getByName("browser");
 
+		// Send a request to the Durable Object, then await its response
+		const resp = await obj.fetch(request);
 
-    // Send a request to the Durable Object, then await its response
-    const resp = await obj.fetch(request);
-
-
-    return resp;
-  },
+		return resp;
+	},
 } satisfies ExportedHandler<Env>;
-
 
 const KEEP_BROWSER_ALIVE_IN_SECONDS = 60;
 
-
 export class Browser extends DurableObject<Env> {
-  private browser?: puppeteer.Browser;
-  private keptAliveInSeconds: number = 0;
-  private storage: DurableObjectStorage;
+	private browser?: puppeteer.Browser;
+	private keptAliveInSeconds: number = 0;
+	private storage: DurableObjectStorage;
 
+	constructor(state: DurableObjectState, env: Env) {
+		super(state, env);
+		this.storage = state.storage;
+	}
 
-  constructor(state: DurableObjectState, env: Env) {
-    super(state, env);
-    this.storage = state.storage;
-  }
+	async fetch(request: Request): Promise<Response> {
+		// Screen resolutions to test out
+		const width: number[] = [1920, 1366, 1536, 360, 414];
+		const height: number[] = [1080, 768, 864, 640, 896];
 
+		// Use the current date and time to create a folder structure for R2
+		const nowDate = new Date();
+		const coeff = 1000 * 60 * 5;
+		const roundedDate = new Date(
+			Math.round(nowDate.getTime() / coeff) * coeff,
+		).toString();
+		const folder = roundedDate.split(" GMT")[0];
 
-  async fetch(request: Request): Promise<Response> {
-    // Screen resolutions to test out
-    const width: number[] = [1920, 1366, 1536, 360, 414];
-    const height: number[] = [1080, 768, 864, 640, 896];
+		// If there is a browser session open, re-use it
+		if (!this.browser || !this.browser.isConnected()) {
+			console.log(`Browser DO: Starting new instance`);
+			try {
+				this.browser = await puppeteer.launch(this.env.MYBROWSER);
+			} catch (e) {
+				console.log(
+					`Browser DO: Could not start browser instance. Error: ${e}`,
+				);
+			}
+		}
 
+		// Reset keptAlive after each call to the DO
+		this.keptAliveInSeconds = 0;
 
-    // Use the current date and time to create a folder structure for R2
-    const nowDate = new Date();
-    const coeff = 1000 * 60 * 5;
-    const roundedDate = new Date(
-      Math.round(nowDate.getTime() / coeff) * coeff,
-    ).toString();
-    const folder = roundedDate.split(" GMT")[0];
+		// Check if browser exists before opening page
+		if (!this.browser)
+			return new Response("Browser launch failed", { status: 500 });
 
+		const page = await this.browser.newPage();
 
-    // If there is a browser session open, re-use it
-    if (!this.browser || !this.browser.isConnected()) {
-      console.log(`Browser DO: Starting new instance`);
-      try {
-        this.browser = await puppeteer.launch(this.env.MYBROWSER);
-      } catch (e) {
-        console.log(
-          `Browser DO: Could not start browser instance. Error: ${e}`,
-        );
-      }
-    }
+		// Take screenshots of each screen size
+		for (let i = 0; i < width.length; i++) {
+			await page.setViewport({ width: width[i], height: height[i] });
+			await page.goto("https://workers.cloudflare.com/");
+			const fileName = `screenshot_${width[i]}x${height[i]}`;
+			const sc = await page.screenshot();
 
+			await this.env.BUCKET.put(`${folder}/${fileName}.jpg`, sc);
+		}
 
-    // Reset keptAlive after each call to the DO
-    this.keptAliveInSeconds = 0;
+		// Close tab when there is no more work to be done on the page
+		await page.close();
 
+		// Reset keptAlive after performing tasks to the DO
+		this.keptAliveInSeconds = 0;
 
-    // Check if browser exists before opening page
-    if (!this.browser)
-      return new Response("Browser launch failed", { status: 500 });
+		// Set the first alarm to keep DO alive
+		const currentAlarm = await this.storage.getAlarm();
+		if (currentAlarm == null) {
+			console.log(`Browser DO: setting alarm`);
+			const TEN_SECONDS = 10 * 1000;
+			await this.storage.setAlarm(Date.now() + TEN_SECONDS);
+		}
 
+		return new Response("success");
+	}
 
-    const page = await this.browser.newPage();
+	async alarm(): Promise<void> {
+		this.keptAliveInSeconds += 10;
 
-
-    // Take screenshots of each screen size
-    for (let i = 0; i < width.length; i++) {
-      await page.setViewport({ width: width[i], height: height[i] });
-      await page.goto("https://workers.cloudflare.com/");
-      const fileName = `screenshot_${width[i]}x${height[i]}`;
-      const sc = await page.screenshot();
-
-
-      await this.env.BUCKET.put(`${folder}/${fileName}.jpg`, sc);
-    }
-
-
-    // Close tab when there is no more work to be done on the page
-    await page.close();
-
-
-    // Reset keptAlive after performing tasks to the DO
-    this.keptAliveInSeconds = 0;
-
-
-    // Set the first alarm to keep DO alive
-    const currentAlarm = await this.storage.getAlarm();
-    if (currentAlarm == null) {
-      console.log(`Browser DO: setting alarm`);
-      const TEN_SECONDS = 10 * 1000;
-      await this.storage.setAlarm(Date.now() + TEN_SECONDS);
-    }
-
-
-    return new Response("success");
-  }
-
-
-  async alarm(): Promise<void> {
-    this.keptAliveInSeconds += 10;
-
-
-    // Extend browser DO life
-    if (this.keptAliveInSeconds < KEEP_BROWSER_ALIVE_IN_SECONDS) {
-      console.log(
-        `Browser DO: has been kept alive for ${this.keptAliveInSeconds} seconds. Extending lifespan.`,
-      );
-      await this.storage.setAlarm(Date.now() + 10 * 1000);
-      // You can ensure the ws connection is kept alive by requesting something
-      // or just let it close automatically when there is no work to be done
-      // for example, `await this.browser.version()`
-    } else {
-      console.log(
-        `Browser DO: exceeded life of ${KEEP_BROWSER_ALIVE_IN_SECONDS}s.`,
-      );
-      if (this.browser) {
-        console.log(`Closing browser.`);
-        await this.browser.close();
-      }
-    }
-  }
+		// Extend browser DO life
+		if (this.keptAliveInSeconds < KEEP_BROWSER_ALIVE_IN_SECONDS) {
+			console.log(
+				`Browser DO: has been kept alive for ${this.keptAliveInSeconds} seconds. Extending lifespan.`,
+			);
+			await this.storage.setAlarm(Date.now() + 10 * 1000);
+			// You can ensure the ws connection is kept alive by requesting something
+			// or just let it close automatically when there is no work to be done
+			// for example, `await this.browser.version()`
+		} else {
+			console.log(
+				`Browser DO: exceeded life of ${KEEP_BROWSER_ALIVE_IN_SECONDS}s.`,
+			);
+			if (this.browser) {
+				console.log(`Closing browser.`);
+				await this.browser.close();
+			}
+		}
+	}
 }
 ```
 
@@ -479,7 +422,14 @@ Run [npx wrangler deploy](https://developers.cloudflare.com/workers/wrangler/com
 * Get started with [Durable Objects](https://developers.cloudflare.com/durable-objects/get-started/)
 * [Using R2 from Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/#page","headline":"Deploy a Browser Run Worker with Durable Objects · Cloudflare Browser Run docs","description":"Use the Browser Run API along with Durable Objects to take screenshots from web pages and store them in R2.","url":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/how-to/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/how-to/browser-run-with-do/","name":"Deploy a Browser Run Worker with Durable Objects"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/#page","headline":"Deploy a Browser Run Worker with Durable Objects · Cloudflare Browser Run docs","description":"Use the Browser Run API along with Durable Objects to take screenshots from web pages and store them in R2.","url":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

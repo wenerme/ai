@@ -1,16 +1,18 @@
 ---
-title: Release notes
 description: Review recent changes to Cloudflare Radar.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Release notes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Release notes
 
-# Release notes
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/release-notes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/radar/release-notes/index.xml)
 
@@ -274,7 +276,14 @@ image: https://developers.cloudflare.com/cf-twitter-card.png
 * Updated layer 3 [timeseries](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries/) endpoint to support fetching both current and new data sources. For retro-compatibility reasons, fetching the new data source requires sending the parameter `metric=bytes` else the current data source will be returned.
 * Deprecated old layer 3 endpoints timeseries\_groups and summary. Users should upgrade to newer endpoints.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/radar/release-notes/#page","headline":"Release notes · Cloudflare Radar docs","description":"Review recent changes to Cloudflare Radar.","url":"https://developers.cloudflare.com/radar/release-notes/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/release-notes/","name":"Release notes"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/radar/release-notes/#page","headline":"Release notes · Cloudflare Radar docs","description":"Review recent changes to Cloudflare Radar.","url":"https://developers.cloudflare.com/radar/release-notes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

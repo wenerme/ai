@@ -1,16 +1,18 @@
 ---
-title: JSON objects
 description: JSON object structure for rulesets and rules in API requests.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: JSON objects
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  JSON objects
 
-# JSON objects
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page describes the JSON objects used in API requests creating or updating rulesets and their rules via Rulesets API, as well as the objects returned by the API.
 
@@ -20,22 +22,22 @@ A fully populated ruleset object has the following JSON structure.
 
 ```json
 {
-  "id": "6a359df138c442b385d20140d4d96919",
-  "name": "Example Ruleset",
-  "description": "Description of Example Ruleset",
-  "kind": "custom",
-  "version": "2",
-  "phase": "http_request_firewall_custom",
-  "rules": [
-    {
-      "id": "fdb0dd271f3f40b19679cc5d91396024",
-      "version": "2",
-      "action": "block",
-      "expression": "cf.zone.name eq \"example.com\" ",
-      "last_updated": "2022-07-20T10:44:29.124515Z"
-    }
-  ],
-  "last_updated": "2022-07-20T10:44:29.124515Z"
+	"id": "6a359df138c442b385d20140d4d96919",
+	"name": "Example Ruleset",
+	"description": "Description of Example Ruleset",
+	"kind": "custom",
+	"version": "2",
+	"phase": "http_request_firewall_custom",
+	"rules": [
+		{
+			"id": "fdb0dd271f3f40b19679cc5d91396024",
+			"version": "2",
+			"action": "block",
+			"expression": "cf.zone.name eq \"example.com\" ",
+			"last_updated": "2022-07-20T10:44:29.124515Z"
+		}
+	],
+	"last_updated": "2022-07-20T10:44:29.124515Z"
 }
 ```
 
@@ -80,18 +82,18 @@ A fully populated rule JSON object has the following structure:
 
 ```json
 {
-  "id": "fdb0dd271f3f40b19679cc5d91396024",
-  "version": "2",
-  "ref": "<REF>",
-  "description": "<DESCRIPTION>",
-  "action": "block",
-  "action_parameters": [
-    // action parameters vary according to the action
-  ],
-  "categories": ["<CATEGORY_1>", "<CATEGORY_2>"],
-  "expression": "cf.zone.name eq \"example.com\"",
-  "last_updated": "2025-07-20T10:44:29.124515Z",
-  "enabled": true
+	"id": "fdb0dd271f3f40b19679cc5d91396024",
+	"version": "2",
+	"ref": "<REF>",
+	"description": "<DESCRIPTION>",
+	"action": "block",
+	"action_parameters": [
+		// action parameters vary according to the action
+	],
+	"categories": ["<CATEGORY_1>", "<CATEGORY_2>"],
+	"expression": "cf.zone.name eq \"example.com\"",
+	"last_updated": "2025-07-20T10:44:29.124515Z",
+	"enabled": true
 }
 ```
 
@@ -137,7 +139,14 @@ The JSON object properties for a rule are defined as follows:
 
   * When set to `true`, the current rule is enabled.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/#page","headline":"JSON objects · Cloudflare Ruleset Engine docs","description":"JSON object structure for rulesets and rules in API requests.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rulesets-api/","name":"Rulesets API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rulesets-api/json-object/","name":"JSON objects"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/#page","headline":"JSON objects · Cloudflare Ruleset Engine docs","description":"JSON object structure for rulesets and rules in API requests.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Override expressions
 description: Expression fields and operators for scoping Network-layer DDoS overrides.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Override expressions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Override expressions
 
-# Override expressions
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Set an override expression for the Network-layer DDoS Attack Protection managed ruleset to define a specific scope for [sensitivity level](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/#sensitivity-level) or [action](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/#action) adjustments.
 
@@ -62,7 +64,14 @@ In a common scenario, an attack originating from thousands of IPs can target a s
 
 Each expression is limited to 4,000 characters, which means you can enter approximately a maximum of 200 IP addresses in a single expression. However, you can enter IP addresses in CIDR format, which allows you to include a larger number of IP addresses. For example, you can use `192.0.0.0/24` to match IP addresses from `192.0.0.0` to `192.0.0.255`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/#page","headline":"Override expressions for Network-layer DDoS Attack Protection · Cloudflare DDoS Protection docs","description":"Expression fields and operators for scoping Network-layer DDoS overrides.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/managed-rulesets/","name":"Managed rulesets"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/managed-rulesets/network/","name":"Network-layer DDoS Attack Protection"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/managed-rulesets/network/network-overrides/","name":"Overrides"}},{"@type":"ListItem","position":6,"item":{"@id":"/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/","name":"Override expressions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/#page","headline":"Override expressions for Network-layer DDoS Attack Protection · Cloudflare DDoS Protection docs","description":"Expression fields and operators for scoping Network-layer DDoS overrides.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP"]}
 ```

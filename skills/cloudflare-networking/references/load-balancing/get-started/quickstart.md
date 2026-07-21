@@ -1,16 +1,18 @@
 ---
-title: Quickstart
 description: Create a load balancer with pools and monitors in a few steps.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Quickstart
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Quickstart
 
-# Quickstart
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/get-started/quickstart/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Get up and running quickly with Load Balancing. For more in-depth explanations, refer to the [Learning path](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/).
 
@@ -33,9 +35,6 @@ A monitor issues health monitor requests at regular intervals to evaluate the he
 
 When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/), your load balancer takes that pool out of the endpoint rotation.
 
-* [ Dashboard ](#tab-panel-10167)
-* [ API ](#tab-panel-10168)
-
 **Set up the monitor**
 
 You can create a monitor within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Monitors** tab:
@@ -44,14 +43,12 @@ You can create a monitor within the [load balancer workflow](https://developers.
 2. Select the **Monitors** tab.
 3. Select **Create monitor**.
 4. Add the following information:
-
   * **Type**: The protocol to use for health monitors
     * _Non-enterprise customers_: Choose **HTTP**, **HTTPS**, or **TCP**.
     * _Enterprise customers_: Choose **HTTP**, **HTTPS**, **TCP**, **UDP ICMP**, **ICMP Ping**, or **SMTP**.
   * **Path**: The endpoint path to run health monitor requests against
   * **Port**: The destination port for health monitors
 5. For additional settings, select **Advanced health monitor settings**:
-
   * **Interval**:
     * By increasing the default, you can improve failover time, but you may also increase load on your endpoints.
     * Minimum time in seconds is 60 (Pro), 15 (Business), and 10 (Enterprise).
@@ -84,7 +81,7 @@ Make sure that your firewall or web server does not block or rate limit your con
 
 Each health monitor has the HTTP user-agent of `"Mozilla/5.0 (compatible; Cloudflare-Traffic-Manager/1.0; +https://www.cloudflare.com/traffic-manager/; pool-id: $poolid)"`, where the `$poolid` is the first 16 characters of the [associated pool](https://developers.cloudflare.com/load-balancing/pools/).
 
-Warning
+Caution
 
 If you know that your endpoint is healthy but Load Balancing is reporting it as unhealthy, refer to our [Monitor troubleshooting guide](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/#why-is-my-endpoint-or-pool-considered-unhealthy).
 
@@ -97,42 +94,38 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-**Create Monitor**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "https",
-    "description": "Login page monitor",
-    "method": "GET",
-    "path": "/health",
-    "header": {
-        "Host": [
-            "example.com"
-        ],
-        "X-App-ID": [
-            "abc123"
-        ]
-    },
-    "port": 8080,
-    "timeout": 3,
-    "retries": 0,
-    "interval": 90,
-    "expected_body": "alive",
-    "expected_codes": "2xx",
-    "follow_redirects": true,
-    "allow_insecure": true,
-    "consecutive_up": 3,
-    "consecutive_down": 2,
-    "probe_zone": "example.com"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "https",
+		"description": "Login page monitor",
+		"method": "GET",
+		"path": "/health",
+		"header": {
+				"Host": [
+						"example.com"
+				],
+				"X-App-ID": [
+						"abc123"
+				]
+		},
+		"port": 8080,
+		"timeout": 3,
+		"retries": 0,
+		"interval": 90,
+		"expected_body": "alive",
+		"expected_codes": "2xx",
+		"follow_redirects": true,
+		"allow_insecure": true,
+		"consecutive_up": 3,
+		"consecutive_down": 2,
+		"probe_zone": "example.com"
+	}'
 ```
 
 The response contains the complete definition of the new monitor.
-
-**Response**
 
 ```json
 {
@@ -176,7 +169,7 @@ Make sure that your firewall or web server does not block or rate limit your con
 
 Each health monitor has the HTTP user-agent of `"Mozilla/5.0 (compatible; Cloudflare-Traffic-Manager/1.0; +https://www.cloudflare.com/traffic-manager/; pool-id: $poolid)"`, where the `$poolid` is the first 16 characters of the [associated pool](https://developers.cloudflare.com/load-balancing/pools/).
 
-Warning
+Caution
 
 If you know that your endpoint is healthy but Load Balancing is reporting it as unhealthy, refer to our [Monitor troubleshooting guide](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/#why-is-my-endpoint-or-pool-considered-unhealthy).
 
@@ -198,9 +191,6 @@ Example monitor configuration
 Within Cloudflare, pools represent your endpoints and how they are organized. As such, a pool can be a group of several endpoints, or you could also have only one endpoint (an origin server, for example) per pool.
 
 If you are familiar with DNS terminology, think of a pool as a “record set,” except Cloudflare only returns addresses that are considered healthy. You can attach health monitors to individual pools for customized monitoring. A pool can have either a single monitor or a monitor group attached — but not both.
-
-* [ Dashboard ](#tab-panel-10171)
-* [ API ](#tab-panel-10172)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -242,60 +232,56 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-**Create Pool**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Primary data center - Provider XYZ",
-    "name": "primary-dc-1",
-    "enabled": false,
-    "load_shedding": {
-        "default_percent": 0,
-        "default_policy": "random",
-        "session_percent": 0,
-        "session_policy": "hash"
-    },
-    "minimum_origins": 2,
-    "monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
-    "check_regions": [
-        "WEU",
-        "ENAM"
-    ],
-    "origins": [
-        {
-            "name": "app-server-1",
-            "address": "0.0.0.0",
-            "enabled": true,
-            "weight": 0.56,
-            "header": {
-                "Host": [
-                    "example.com"
-                ]
-            }
-        }
-    ],
-    "origin_steering": {
-        "policy": "random"
-    },
-    "notification_filter": {
-        "origin": {
-            "disable": false,
-            "healthy": null
-        },
-        "pool": {
-            "disable": false,
-            "healthy": null
-        }
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Primary data center - Provider XYZ",
+		"name": "primary-dc-1",
+		"enabled": false,
+		"load_shedding": {
+				"default_percent": 0,
+				"default_policy": "random",
+				"session_percent": 0,
+				"session_policy": "hash"
+		},
+		"minimum_origins": 2,
+		"monitor": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+		"check_regions": [
+				"WEU",
+				"ENAM"
+		],
+		"origins": [
+				{
+						"name": "app-server-1",
+						"address": "0.0.0.0",
+						"enabled": true,
+						"weight": 0.56,
+						"header": {
+								"Host": [
+										"example.com"
+								]
+						}
+				}
+		],
+		"origin_steering": {
+				"policy": "random"
+		},
+		"notification_filter": {
+				"origin": {
+						"disable": false,
+						"healthy": null
+				},
+				"pool": {
+						"disable": false,
+						"healthy": null
+				}
+		}
+	}'
 ```
 
 The response contains the complete definition of the new pool.
-
-**Response**
 
 ```json
 {
@@ -366,9 +352,6 @@ After creating the pool, you would also want to [create a new notification](http
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-10165)
-* [ API ](#tab-panel-10166)
-
 To confirm pool health using the dashboard:
 
 1. Go to **Load Balancing**.
@@ -393,9 +376,6 @@ If you notice that healthy pools are being marked unhealthy:
 Instead of starting on your production domain, you likely should create a load balancer on a test or staging domain. This may involve temporary changes to your monitors and pools, depending on your infrastructure setup.
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
-
-* [ Dashboard ](#tab-panel-10169)
-* [ API ](#tab-panel-10170)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -468,53 +448,49 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancers Write`
 
-**Create Load Balancer**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Load Balancer for lb.example.com",
-    "name": "lb.example.com",
-    "enabled": true,
-    "ttl": 30,
-    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
-    "default_pools": [
-        "17b5962d775c646f3f9725cbc7a53df4",
-        "9290f38c5d07c2e2f4df57b1f61d4196",
-        "00920f38ce07c2e2f4df50b1f61d4194"
-    ],
-    "proxied": true,
-    "steering_policy": "random_steering",
-    "session_affinity": "cookie",
-    "session_affinity_attributes": {
-        "samesite": "Auto",
-        "secure": "Auto",
-        "drain_duration": 100,
-        "zero_downtime_failover": "sticky"
-    },
-    "session_affinity_ttl": 5000,
-    "adaptive_routing": {
-        "failover_across_pools": true
-    },
-    "location_strategy": {
-        "prefer_ecs": "always",
-        "mode": "resolver_ip"
-    },
-    "random_steering": {
-        "pool_weights": {
-            "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
-            "9290f38c5d07c2e2f4df57b1f61d4196": 0.5
-        },
-        "default_weight": 0.2
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Load Balancer for lb.example.com",
+		"name": "lb.example.com",
+		"enabled": true,
+		"ttl": 30,
+		"fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
+		"default_pools": [
+				"17b5962d775c646f3f9725cbc7a53df4",
+				"9290f38c5d07c2e2f4df57b1f61d4196",
+				"00920f38ce07c2e2f4df50b1f61d4194"
+		],
+		"proxied": true,
+		"steering_policy": "random_steering",
+		"session_affinity": "cookie",
+		"session_affinity_attributes": {
+				"samesite": "Auto",
+				"secure": "Auto",
+				"drain_duration": 100,
+				"zero_downtime_failover": "sticky"
+		},
+		"session_affinity_ttl": 5000,
+		"adaptive_routing": {
+				"failover_across_pools": true
+		},
+		"location_strategy": {
+				"prefer_ecs": "always",
+				"mode": "resolver_ip"
+		},
+		"random_steering": {
+				"pool_weights": {
+						"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+						"9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+				},
+				"default_weight": 0.2
+		}
+	}'
 ```
 
 The response contains the complete definition of the new load balancer.
-
-**Response**
 
 ```json
 {
@@ -587,7 +563,7 @@ Since this is a service with [usage-based billing](https://developers.cloudflare
 To set up those notifications:
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On **Alert Type** of **Usage Based Billing**, click **Select**.
 3. Fill out the following information:
 
@@ -603,7 +579,6 @@ Some plans also have access to alerts through [PagerDuty](https://developers.clo
 
 You may want to further customize how your load balancer routes traffic or integrate your load balancer with other Cloudflare products:
 
-* [ Additional DNS records ](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/)
 * [ Cloudflare Tunnel (published applications) ](https://developers.cloudflare.com/load-balancing/additional-options/cloudflare-tunnel/)
 * [ Spectrum ](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/)
 * [ Perform planned maintenance ](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/)
@@ -613,8 +588,16 @@ You may want to further customize how your load balancer routes traffic or integ
 * [ Override HTTP Host headers ](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/)
 * [ Custom load balancing rules ](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
 * [ Integrate with PagerDuty ](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/)
+* [ Additional DNS records ](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/get-started/quickstart/#page","headline":"Quickstart · Cloudflare Load Balancing docs","description":"Create a load balancer with pools and monitors in a few steps.","url":"https://developers.cloudflare.com/load-balancing/get-started/quickstart/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/get-started/quickstart/","name":"Quickstart"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/get-started/quickstart/#page","headline":"Quickstart · Cloudflare Load Balancing docs","description":"Create a load balancer with pools and monitors in a few steps.","url":"https://developers.cloudflare.com/load-balancing/get-started/quickstart/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

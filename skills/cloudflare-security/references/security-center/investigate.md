@@ -1,16 +1,18 @@
 ---
-title: Investigate
 description: Look up threat intelligence for IPs, domains, URLs, and AS numbers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Investigate
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Investigate
 
-# Investigate
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/investigate/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 User permission
 
@@ -24,7 +26,14 @@ You can learn more about the IP addresses in your logs by searching via the IP a
 
 Investigate also shows [Web Application Firewall ↗](https://developers.cloudflare.com/waf/) analytics for your websites behind Cloudflare to help you discover what your vulnerabilities are, where attacks come from, and what to do about it.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/investigate/#page","headline":"Investigate · Cloudflare Security Center docs","description":"Look up threat intelligence for IPs, domains, URLs, and AS numbers.","url":"https://developers.cloudflare.com/security-center/investigate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/investigate/","name":"Investigate"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/investigate/#page","headline":"Investigate · Cloudflare Security Center docs","description":"Look up threat intelligence for IPs, domains, URLs, and AS numbers.","url":"https://developers.cloudflare.com/security-center/investigate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

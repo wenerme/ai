@@ -1,16 +1,18 @@
 ---
-title: Regional Hostnames
 description: Regionalize proxied hostnames by assigning a region through the dashboard or Regional Hostnames API.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Regional Hostnames
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Regional Hostnames
 
-# Regional Hostnames
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -27,7 +29,7 @@ You can configure Regional Hostnames through the dashboard or via API.
 To use Regional Services, you need to first create a DNS record in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Records** page.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Follow these steps to [create a DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 3. From the **Region** dropdown, select the region you would like to use on your domain. This value will be applied to all DNS records on the same hostname. This means that if you have two DNS records of the same hostname and change the region for one of them, both records will have the same region.
 
@@ -53,31 +55,27 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `DNS Read`
 * `DNS Write`
 
-**List Regions**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/regional_hostnames/regions" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Response**
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "result": [
-    {
-      "key": "ca",
-      "label": "Canada"
-    },
-    {
-      "key": "eu",
-      "label": "Europe"
-    }
-  ],
-  "messages": []
+	"success": true,
+	"errors": [],
+	"result": [
+		{
+			"key": "ca",
+			"label": "Canada"
+		},
+		{
+			"key": "eu",
+			"label": "Europe"
+		}
+	],
+	"messages": []
 }
 ```
 
@@ -88,30 +86,26 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Create Regional Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "hostname": "ca.regional.ipam.rocks",
-    "region_key": "ca"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"hostname": "ca.regional.ipam.rocks",
+		"region_key": "ca"
+	}'
 ```
-
-**Response**
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "result": {
-    "hostname": "ca.regional.ipam.rocks",
-    "region_key": "ca",
-    "created_on": "2023-01-13T23:59:45.276558Z"
-  },
-  "messages": []
+	"success": true,
+	"errors": [],
+	"result": {
+		"hostname": "ca.regional.ipam.rocks",
+		"region_key": "ca",
+		"created_on": "2023-01-13T23:59:45.276558Z"
+	},
+	"messages": []
 }
 ```
 
@@ -123,28 +117,24 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `DNS Read`
 * `DNS Write`
 
-**List Regional Hostnames**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Response**
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "result": [
-    {
-      "hostname": "ca.regional.ipam.rocks",
-      "region_key": "ca",
-      "created_on": "2023-01-14T00:47:57.060267Z"
-    }
-  ],
-  "messages": []
+	"success": true,
+	"errors": [],
+	"result": [
+		{
+			"hostname": "ca.regional.ipam.rocks",
+			"region_key": "ca",
+			"created_on": "2023-01-14T00:47:57.060267Z"
+		}
+	],
+	"messages": []
 }
 ```
 
@@ -156,26 +146,22 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `DNS Read`
 * `DNS Write`
 
-**Fetch Regional Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Response**
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "result": {
-    "hostname": "ca.regional.ipam.rocks",
-    "region_key": "ca",
-    "created_on": "2023-01-13T23:59:45.276558Z"
-  },
-  "messages": []
+	"success": true,
+	"errors": [],
+	"result": {
+		"hostname": "ca.regional.ipam.rocks",
+		"region_key": "ca",
+		"created_on": "2023-01-13T23:59:45.276558Z"
+	},
+	"messages": []
 }
 ```
 
@@ -186,29 +172,25 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Update Regional Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "region_key": "eu"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"region_key": "eu"
+	}'
 ```
-
-**Response**
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "result": {
-    "hostname": "ca.regional.ipam.rocks",
-    "region_key": "eu",
-    "created_on": "2023-01-13T23:59:45.276558Z"
-  },
-  "messages": []
+	"success": true,
+	"errors": [],
+	"result": {
+		"hostname": "ca.regional.ipam.rocks",
+		"region_key": "eu",
+		"created_on": "2023-01-13T23:59:45.276558Z"
+	},
+	"messages": []
 }
 ```
 
@@ -219,22 +201,18 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Delete Regional Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/addressing/regional_hostnames/$HOSTNAME" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
-
-**Response**
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "result": null,
-  "messages": []
+	"success": true,
+	"errors": [],
+	"result": null,
+	"messages": []
 }
 ```
 
@@ -246,7 +224,14 @@ To verify that your regional map is being applied correctly, check the `IngressC
 
 You can also configure Regional Services using Terraform. For more details, refer to the [cloudflare\_regional\_hostname resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/regional%5Fhostname) in the Terraform documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#page","headline":"Regional Hostnames · Cloudflare Data Localization Suite docs","description":"Regionalize proxied hostnames by assigning a region through the dashboard or Regional Hostnames API.","url":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/regional-services/","name":"Regional Services"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/regional-services/regional-hostnames/","name":"Regional Hostnames"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#page","headline":"Regional Hostnames · Cloudflare Data Localization Suite docs","description":"Regionalize proxied hostnames by assigning a region through the dashboard or Regional Hostnames API.","url":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

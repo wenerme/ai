@@ -1,16 +1,18 @@
 ---
-title: Policies FAQ
 description: Review frequently asked questions about policies in Cloudflare Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Policies FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Policies FAQ
 
-# Policies FAQ
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/faq/policies-faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/cloudflare-one/faq/)
 
@@ -70,7 +72,14 @@ Or you could define this geolocation policy using a [Require](https://developers
 
 If a user from country C attempts to access the application, in both the Include and Require scenarios, the user will receive the Forbidden page. This is because Country C was not defined in either scenario. Therefore, Cloudflare has determined that this user cannot meet policy requirements and will receive the Forbidden status page.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/faq/policies-faq/#page","headline":"Policies FAQ · Cloudflare One docs","description":"Review frequently asked questions about policies in Cloudflare Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/faq/policies-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/faq/","name":"FAQ"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/faq/policies-faq/","name":"Policies FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/faq/policies-faq/#page","headline":"Policies FAQ · Cloudflare One docs","description":"Review frequently asked questions about policies in Cloudflare Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/faq/policies-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

@@ -1,25 +1,24 @@
 ---
-title: Create load balancer on test domain
 description: Learn about create load balancer on test domain in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Create load balancer on test domain
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create load balancer on test domain
 
-# Create load balancer on test domain
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/load-balancing/setup/test-load-balancer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Instead of starting on your production domain, you likely should create a load balancer on a test or staging domain. This may involve temporary changes to your monitors and pools, depending on your infrastructure setup.
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
 ## Create a load balancer
-
-* [ Dashboard ](#tab-panel-9931)
-* [ API ](#tab-panel-9932)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -92,53 +91,49 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancers Write`
 
-**Create Load Balancer**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Load Balancer for lb.example.com",
-    "name": "lb.example.com",
-    "enabled": true,
-    "ttl": 30,
-    "fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
-    "default_pools": [
-        "17b5962d775c646f3f9725cbc7a53df4",
-        "9290f38c5d07c2e2f4df57b1f61d4196",
-        "00920f38ce07c2e2f4df50b1f61d4194"
-    ],
-    "proxied": true,
-    "steering_policy": "random_steering",
-    "session_affinity": "cookie",
-    "session_affinity_attributes": {
-        "samesite": "Auto",
-        "secure": "Auto",
-        "drain_duration": 100,
-        "zero_downtime_failover": "sticky"
-    },
-    "session_affinity_ttl": 5000,
-    "adaptive_routing": {
-        "failover_across_pools": true
-    },
-    "location_strategy": {
-        "prefer_ecs": "always",
-        "mode": "resolver_ip"
-    },
-    "random_steering": {
-        "pool_weights": {
-            "de90f38ced07c2e2f4df50b1f61d4194": 0.3,
-            "9290f38c5d07c2e2f4df57b1f61d4196": 0.5
-        },
-        "default_weight": 0.2
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Load Balancer for lb.example.com",
+		"name": "lb.example.com",
+		"enabled": true,
+		"ttl": 30,
+		"fallback_pool": "17b5962d775c646f3f9725cbc7a53df4",
+		"default_pools": [
+				"17b5962d775c646f3f9725cbc7a53df4",
+				"9290f38c5d07c2e2f4df57b1f61d4196",
+				"00920f38ce07c2e2f4df50b1f61d4194"
+		],
+		"proxied": true,
+		"steering_policy": "random_steering",
+		"session_affinity": "cookie",
+		"session_affinity_attributes": {
+				"samesite": "Auto",
+				"secure": "Auto",
+				"drain_duration": 100,
+				"zero_downtime_failover": "sticky"
+		},
+		"session_affinity_ttl": 5000,
+		"adaptive_routing": {
+				"failover_across_pools": true
+		},
+		"location_strategy": {
+				"prefer_ecs": "always",
+				"mode": "resolver_ip"
+		},
+		"random_steering": {
+				"pool_weights": {
+						"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+						"9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+				},
+				"default_weight": 0.2
+		}
+	}'
 ```
 
 The response contains the complete definition of the new load balancer.
-
-**Response**
 
 ```json
 {
@@ -180,7 +175,14 @@ The response contains the complete definition of the new load balancer.
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/test-load-balancer/#page","headline":"Create load balancer on test domain · Cloudflare Learning Paths","description":"Learn about create load balancer on test domain in this guide.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/test-load-balancer/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/setup/","name":"Setup"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/setup/test-load-balancer/","name":"Create load balancer on test domain"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/test-load-balancer/#page","headline":"Create load balancer on test domain · Cloudflare Learning Paths","description":"Learn about create load balancer on test domain in this guide.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/test-load-balancer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

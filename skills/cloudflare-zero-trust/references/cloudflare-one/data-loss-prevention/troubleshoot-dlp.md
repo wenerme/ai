@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot DLP
 description: Troubleshoot common DLP issues in Cloudflare One.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Troubleshoot DLP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot DLP
 
-# Troubleshoot DLP
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to troubleshoot common issues with Data Loss Prevention (DLP).
 
@@ -19,9 +21,6 @@ Use this guide to troubleshoot common issues with Data Loss Prevention (DLP).
 DLP not inspecting or blocking content is the most common issue reported. If you have configured a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/) but it fails to inspect or block traffic, the cause is almost always that the traffic is not being decrypted. To use DLP to scan the content of HTTPS requests, you must turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/).
 
 To turn on TLS decryption:
-
-* [ Dashboard ](#tab-panel-7848)
-* [ Terraform (v5) ](#tab-panel-7849)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -32,12 +31,12 @@ To turn on TLS decryption:
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    tls_decrypt = {
-      enabled = true
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		tls_decrypt = {
+			enabled = true
+		}
+	}
 }
 ```
 
@@ -95,7 +94,14 @@ If you cannot use the _DLP Profile_ selector when creating an HTTP policy or are
 1. Incorrect plan. These features require a Zero Trust Enterprise plan. If you believe your account should have this entitlement, contact your account team to confirm your subscription details.
 2. Permissions issue. You may not have the required administrative privileges to configure DLP settings. Check with your Cloudflare account administrator.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/#page","headline":"Troubleshoot DLP · Cloudflare One docs","description":"Troubleshoot common DLP issues in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/data-loss-prevention/troubleshoot-dlp/","name":"Troubleshoot DLP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/#page","headline":"Troubleshoot DLP · Cloudflare One docs","description":"Troubleshoot common DLP issues in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

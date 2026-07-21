@@ -1,16 +1,18 @@
 ---
-title: Timed DNS policies
 description: Reference information for Timed DNS policies in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Timed DNS policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Timed DNS policies
 
-# Timed DNS policies
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare Gateway policies apply at all times when turned on. With timed DNS policies, you can control when DNS policies are active — for example, to block social media only during work hours or to temporarily allow access to a restricted site for a maintenance window. You can configure a policy to be active during specific time periods or set the policy to expire after a certain duration.
 
@@ -35,7 +37,7 @@ To set a duration for a DNS policy:
 
 When a policy turns off, it will remain off until you turn it back on.
 
-Warning
+Caution
 
 The duration timer does not pause when you turn the policy off. It is calculated as an absolute end time from when the policy was first turned on.
 
@@ -57,9 +59,6 @@ For policies with an exact end time, you can change the time before the policy t
 
 You can use Gateway to create a new DNS policy with a schedule or add a schedule to an existing policy.
 
-* [ Dashboard ](#tab-panel-8267)
-* [ API ](#tab-panel-8268)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.
 3. In **Apply durations and schedules**, turn on **Policy schedule**.
@@ -69,22 +68,20 @@ You can use Gateway to create a new DNS policy with a schedule or add a schedule
 
 To schedule a policy with the API, use the [Create a Zero Trust Gateway rule endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) with the `schedule` parameter set to your desired days of the week, times of day, and an optional time zone. For example:
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "block",
-    "name": "Block gambling sites on weekends",
-    "traffic": "any(dns.content_category[*] in {\"Gambling\"})",
-    "schedule": {
-        "sat": "08:00-17:00",
-        "sun": "08:00-17:00",
-        "timezone": "Europe/Paris"
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "block",
+		"name": "Block gambling sites on weekends",
+		"traffic": "any(dns.content_category[*] in {\"Gambling\"})",
+		"schedule": {
+				"sat": "08:00-17:00",
+				"sun": "08:00-17:00",
+				"timezone": "Europe/Paris"
+		}
+	}'
 ```
 
 The policy's schedule will appear in the Cloudflare dashboard under **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS** when you select the policy.
@@ -103,26 +100,24 @@ Users on VPNs or corporate proxies may have their time zone inferred incorrectly
 
 The following command creates a DNS policy to block `facebook.com` only on weekdays from 8:00 AM - 12:30 PM and 1:30 PM - 5:00 PM in the Chicago, USA time zone.
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "office-no-facebook-policy",
-    "action": "block",
-    "traffic": "dns.fqdn == \"facebook.com\"",
-    "enabled": true,
-    "schedule": {
-        "time_zone": "America/Chicago",
-        "mon": "08:00-12:30,13:30-17:00",
-        "tue": "08:00-12:30,13:30-17:00",
-        "wed": "08:00-12:30,13:30-17:00",
-        "thu": "08:00-12:30,13:30-17:00",
-        "fri": "08:00-12:30,13:30-17:00"
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "office-no-facebook-policy",
+		"action": "block",
+		"traffic": "dns.fqdn == \"facebook.com\"",
+		"enabled": true,
+		"schedule": {
+				"time_zone": "America/Chicago",
+				"mon": "08:00-12:30,13:30-17:00",
+				"tue": "08:00-12:30,13:30-17:00",
+				"wed": "08:00-12:30,13:30-17:00",
+				"thu": "08:00-12:30,13:30-17:00",
+				"fri": "08:00-12:30,13:30-17:00"
+		}
+	}'
 ```
 
 Refer to [this table ↗](https://en.wikipedia.org/wiki/List%5Fof%5Ftz%5Fdatabase%5Ftime%5Fzones#List) for a list of all time zone identifiers.
@@ -131,29 +126,34 @@ Refer to [this table ↗](https://en.wikipedia.org/wiki/List%5Fof%5Ftz%5Fdatabas
 
 The following command creates a DNS policy to block `clockin.com` only on weekends in the time zone where the user is currently located.
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "clock-in-policy",
-    "action": "block",
-    "traffic": "dns.fqdn == \"clockin.com\"",
-    "enabled": true,
-    "schedule": {
-        "sat": "00:00-24:00",
-        "sun": "00:00-24:00"
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "clock-in-policy",
+		"action": "block",
+		"traffic": "dns.fqdn == \"clockin.com\"",
+		"enabled": true,
+		"schedule": {
+				"sat": "00:00-24:00",
+				"sun": "00:00-24:00"
+		}
+	}'
 ```
 
 Note
 
 Gateway will not change the policy's `enabled` status when inside or outside of the time period specified. When enabled, Gateway activates or deactivates the policy according to its schedule. When disabled, the policy is always deactivated.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/#page","headline":"Timed DNS policies · Cloudflare One docs","description":"Reference information for Timed DNS policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/dns-policies/","name":"DNS policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/dns-policies/timed-policies/","name":"Timed DNS policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/#page","headline":"Timed DNS policies · Cloudflare One docs","description":"Reference information for Timed DNS policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","REST API"]}
 ```

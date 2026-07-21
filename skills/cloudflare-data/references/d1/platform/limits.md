@@ -1,16 +1,18 @@
 ---
-title: Limits
 description: D1 account and database limits for storage, queries, row sizes, and SQL statements.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limits
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limits
 
-# Limits
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/platform/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 | Feature                                                                                                                          | Limit                                                     |
 | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
@@ -53,7 +55,7 @@ D1 is designed for horizontal scale out across multiple, smaller (10 GB) databas
 
 Each D1 database can store up to 10 GB of data.
 
-Warning
+Caution
 
 Note that the 10 GB limit of a D1 database cannot be further increased.
 
@@ -100,7 +102,14 @@ For more information on a Worker's simultaneous connections, refer to [Simultane
 4. Requests to Cloudflare API must resolve in 30 seconds. Therefore, this duration limit also applies to the entire batch call. [↩](#user-content-fnref-4)
 5. The imported file is uploaded to R2\. Refer to [R2 upload limit](https://developers.cloudflare.com/r2/platform/limits). [↩](#user-content-fnref-5)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/platform/limits/#page","headline":"Limits · Cloudflare D1 docs","description":"D1 account and database limits for storage, queries, row sizes, and SQL statements.","url":"https://developers.cloudflare.com/d1/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/platform/limits/","name":"Limits"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/platform/limits/#page","headline":"Limits · Cloudflare D1 docs","description":"D1 account and database limits for storage, queries, row sizes, and SQL statements.","url":"https://developers.cloudflare.com/d1/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

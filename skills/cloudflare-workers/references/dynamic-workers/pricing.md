@@ -1,16 +1,18 @@
 ---
-title: Pricing
 description: Dynamic Workers pricing is based on requests, CPU time, and the number of unique Dynamic Workers created per day.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Pricing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Pricing
 
-# Pricing
+Last updated Jun 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Dynamic Workers pricing is based on three dimensions: Dynamic Workers created daily, requests, and CPU time.
 
@@ -55,18 +57,18 @@ You can also query this count through the [GraphQL Analytics API](https://develo
 
 ```graphql
 query getDynamicWorkersCount(
-  $accountTag: string!
-  $filter: AccountWorkersInvocationsByOwnerAndScriptGroupsFilter_InputObject
+	$accountTag: string!
+	$filter: AccountWorkersInvocationsByOwnerAndScriptGroupsFilter_InputObject
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      workersInvocationsByOwnerAndScriptGroups(limit: 10000, filter: $filter) {
-        uniq {
-          distinctDynamicWorkerCount
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			workersInvocationsByOwnerAndScriptGroups(limit: 10000, filter: $filter) {
+				uniq {
+					distinctDynamicWorkerCount
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -74,11 +76,11 @@ Use variables to set the account and billing-period date range:
 
 ```json
 {
-  "accountTag": "<ACCOUNT_ID>",
-  "filter": {
-    "date_geq": "2026-06-01",
-    "date_leq": "2026-06-30"
-  }
+	"accountTag": "<ACCOUNT_ID>",
+	"filter": {
+		"date_geq": "2026-06-01",
+		"date_leq": "2026-06-30"
+	}
 }
 ```
 
@@ -104,7 +106,14 @@ Unlike standard Workers (where only execution time is billed), Dynamic Workers b
 * **Startup time**: The compute required to initialize the isolate and parse your code.
 * **Execution time**: The compute time your code spends actively processing logic, excluding time spent waiting on I/O.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/pricing/#page","headline":"Pricing · Cloudflare Dynamic Workers docs","description":"Dynamic Workers pricing is based on requests, CPU time, and the number of unique Dynamic Workers created per day.","url":"https://developers.cloudflare.com/dynamic-workers/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/pricing/","name":"Pricing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/pricing/#page","headline":"Pricing · Cloudflare Dynamic Workers docs","description":"Dynamic Workers pricing is based on requests, CPU time, and the number of unique Dynamic Workers created per day.","url":"https://developers.cloudflare.com/dynamic-workers/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

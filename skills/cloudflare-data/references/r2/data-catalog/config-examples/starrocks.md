@@ -1,16 +1,18 @@
 ---
-title: StarRocks
 description: Connect StarRocks to R2 Data Catalog to query and modify Iceberg tables.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: StarRocks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  StarRocks
 
-# StarRocks
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/config-examples/starrocks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below is an example of using [StarRocks ↗](https://docs.starrocks.io/docs/data%5Fsource/catalog/iceberg/iceberg%5Fcatalog/#rest) to connect, query, modify data from R2 Data Catalog (read-write).
 
@@ -28,7 +30,6 @@ In your running StarRocks instance, run these commands:
 ```sql
 -- Create an Iceberg catalog named `r2` and set it as the current catalog
 
-
 CREATE EXTERNAL CATALOG r2
 PROPERTIES
 (
@@ -40,18 +41,13 @@ PROPERTIES
     "iceberg.catalog.warehouse" = "<r2_warehouse_name>"
 );
 
-
 SET CATALOG r2;
-
 
 -- Create a database and display all databases in newly connected catalog
 
-
 CREATE DATABASE testdb;
 
-
 SHOW DATABASES FROM r2;
-
 
 +--------------------+
 | Database           |
@@ -62,7 +58,14 @@ SHOW DATABASES FROM r2;
 2 rows in set (0.66 sec)
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/starrocks/#page","headline":"StarRocks · Cloudflare R2 docs","description":"Connect StarRocks to R2 Data Catalog to query and modify Iceberg tables.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/starrocks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/starrocks/","name":"StarRocks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/starrocks/#page","headline":"StarRocks · Cloudflare R2 docs","description":"Connect StarRocks to R2 Data Catalog to query and modify Iceberg tables.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/starrocks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

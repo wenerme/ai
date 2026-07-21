@@ -1,16 +1,18 @@
 ---
-title: fs
 description: Use the Node.js fs module in Cloudflare Workers to access a virtual file system for reading and writing files.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: fs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  fs
 
-# fs
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -20,14 +22,10 @@ You can use [node:fs ↗](https://nodejs.org/api/fs.html) to access a virtual fi
 
 The `node:fs` module is available in Workers runtimes that support Node.js compatibility using the `nodejs_compat` compatibility flag. Any Worker running with `nodejs_compat` enabled and with a compatibility date of `2025-09-01` or later will have access to `node:fs` by default. It is also possible to enable `node:fs` on Workers with an earlier compatibility date using a combination of the `nodejs_compat` and `enable_nodejs_fs_module`flags. To disable `node:fs` you can set the `disable_nodejs_fs_module` flag.
 
-**JavaScript**
-
 ```js
 import { readFileSync, writeFileSync } from "node:fs";
 
-
 const config = readFileSync("/bundle/config.txt", "utf8");
-
 
 writeFileSync("/tmp/abc.txt", "Hello, world!");
 ```
@@ -37,6 +35,7 @@ The Workers Virtual File System (VFS) is a memory-based file system that allows 
 The directory structure initially looks like:
 
 ```plaintext
+
 /bundle
 └── (one file for each module in your Worker bundle)
 /tmp
@@ -50,41 +49,34 @@ The directory structure initially looks like:
 
 The `/bundle` directory contains the files for all modules included in your Worker bundle, which you can read using APIs like `readFileSync` or `read(...)`, etc. These are always read-only. Reading from the bundle can be useful when you need to read a config file or a template.
 
-**JavaScript**
-
 ```js
 import { readFileSync } from "node:fs";
-
 
 // The config.txt file would be included in your Worker bundle.
 // Refer to the Wrangler documentation for details on how to
 // include additional files.
 const config = readFileSync("/bundle/config.txt", "utf8");
 
-
 export default {
-  async fetch(request) {
-    return new Response(`Config contents: ${config}`);
-  },
+	async fetch(request) {
+		return new Response(`Config contents: ${config}`);
+	},
 };
 ```
 
 The `/tmp` directory is writable, and you can use it to create temporary files or directories. You can also create symlinks in this directory. However, the contents of `/tmp` are not persistent and are unique to each request. This means that files created in `/tmp` within the context of one request will not be available in other concurrent or subsequent requests.
 
-**JavaScript**
-
 ```js
 import { writeFileSync, readFileSync } from "node:fs";
 
-
 export default {
-  fetch(request) {
-    // The file `/tmp/hello.txt` will only exist for the duration
-    // of this request.
-    writeFileSync("/tmp/hello.txt", "Hello, world!");
-    const contents = readFileSync("/tmp/hello.txt", "utf8");
-    return new Response(`File contents: ${contents}`);
-  },
+	fetch(request) {
+		// The file `/tmp/hello.txt` will only exist for the duration
+		// of this request.
+		writeFileSync("/tmp/hello.txt", "Hello, world!");
+		const contents = readFileSync("/tmp/hello.txt", "utf8");
+		return new Response(`File contents: ${contents}`);
+	},
 };
 ```
 
@@ -117,7 +109,14 @@ The following `node:fs` APIs are not supported in Workers, or are only partially
 
 The full `node:fs` API is documented in the [Node.js documentation for node:fs ↗](https://nodejs.org/api/fs.html).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/#page","headline":"fs · Cloudflare Workers docs","description":"Use the Node.js fs module in Cloudflare Workers to access a virtual file system for reading and writing files.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/fs/","name":"fs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/#page","headline":"fs · Cloudflare Workers docs","description":"Use the Node.js fs module in Cloudflare Workers to access a virtual file system for reading and writing files.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

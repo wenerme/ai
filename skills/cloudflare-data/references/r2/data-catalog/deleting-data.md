@@ -1,16 +1,18 @@
 ---
-title: Deleting data
 description: How to properly delete data from R2 Data Catalog
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deleting data
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deleting data
 
-# Deleting data
+Last updated May 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/deleting-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deleting data from R2 Data Catalog or any Apache Iceberg catalog requires that operations are done in a transaction through the catalog itself. Manually deleting metadata or data files directly can lead to data catalog corruption.
 
@@ -30,13 +32,12 @@ Learn more in the [table maintenance](https://developers.cloudflare.com/r2/data-
 ```bash
 # Enable automatic snapshot expiration for entire catalog
 npx wrangler r2 bucket catalog snapshot-expiration enable my-bucket \
-  --older-than-days 30 \
-  --retain-last 5
-
+	--older-than-days 30 \
+	--retain-last 5
 
 # Enable automatic compaction for entire catalog
 npx wrangler r2 bucket catalog compaction enable my-bucket \
-  --target-size 256
+	--target-size 256
 ```
 
 Refer to additional examples in the [manage catalogs](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/) documentation.
@@ -53,19 +54,15 @@ The following are basic examples using PySpark but similar operations can be per
 
 ### Deleting rows from a table
 
-**Python**
-
 ```py
 # Creates new snapshots and marks old files for cleanup
 spark.sql("""
-  DELETE FROM r2dc.namespace.table_name
-  WHERE column_name = 'value'
+	DELETE FROM r2dc.namespace.table_name
+	WHERE column_name = 'value'
 """)
-
 
 # The following is effectively a TRUNCATE operation
 spark.sql("DELETE FROM r2dc.namespace.table_name")
-
 
 # For large deletes, use partitioned tables and delete entire partitions for faster performance:
 spark.sql("""
@@ -76,27 +73,22 @@ spark.sql("""
 
 ### Dropping tables and namespaces
 
-**Python**
-
 ```py
 # Removes table from catalog but keeps data files in R2 storage
 spark.sql("DROP TABLE r2dc.namespace.table_name")
-
 
 # ⚠️  DANGER: Permanently deletes all data files from R2
 # This operation cannot be undone
 spark.sql("DROP TABLE r2dc.namespace.table_name PURGE")
 
-
 # Use CASCADE to drop all tables within the namespace
 spark.sql("DROP NAMESPACE r2dc.namespace_name CASCADE")
-
 
 # You will need to PURGE the tables before running CASCADE to permanently delete data files
 # This can be done with a loop over all tables in the namespace
 tables = spark.sql("SHOW TABLES IN r2dc.namespace_name").collect()
 for row in tables:
-  table_name = row['tableName']
+	table_name = row['tableName']
   spark.sql(f"DROP TABLE r2dc.namespace_name.{table_name} PURGE")
 spark.sql("DROP NAMESPACE r2dc.namespace_name CASCADE")
 ```
@@ -107,19 +99,16 @@ Data loss warning
 
 ### Manual maintenance operations
 
-**Python**
-
 ```py
 # Remove old metadata and data files marked for deletion
 # The following retains the last 5 snapshots and deletes files older than Nov 28, 2024
 spark.sql("""
-  CALL r2dc.system.expire_snapshots(
+	CALL r2dc.system.expire_snapshots(
     table => 'r2dc.namespace_name.table_name',
     older_than => TIMESTAMP '2024-11-28 00:00:00',
      retain_last => 5
   )
 """)
-
 
 # Removes unreferenced data files from R2 storage (orphan files)
 spark.sql("""
@@ -127,7 +116,6 @@ spark.sql("""
     table => 'namespace.table_name'
   )
 """)
-
 
 # Rewrite data files with a target file size (e.g., 512 MB)
 spark.sql("""
@@ -149,31 +137,31 @@ Apache Iceberg uses a layered metadata structure to manage table data efficientl
 * **data-\*.parquet**: Parquet files containing actual table data
 * **Note**: Unchanged manifest files are reused across snapshots
 
-Warning
+Caution
 
 Manually modifying or deleting any of these files directly can lead to data catalog corruption.
 
-* Directorymetadata.json **Metadata File** \- Points to current snapshot
+* metadata.json **Metadata File** \- Points to current snapshot
   * Table Schema
   * Partition Spec
   * Sort Order
-  * DirectorySnapshots
-    * Directorysnapshot-3051729675574597004.avro **Snapshot 1** (Historical)
-      * Directorymanifest-list-abc123.avro **Manifest List**
-        * Directorymanifest-file-001.avro **Manifest File**
+  * Snapshots
+    * snapshot-3051729675574597004.avro **Snapshot 1** (Historical)
+      * manifest-list-abc123.avro **Manifest List**
+        * manifest-file-001.avro **Manifest File**
           * data-00001.parquet (10 MB, 50K rows)
           * data-00002.parquet (12 MB, 60K rows)
           * data-00003.parquet (11 MB, 55K rows)
-        * Directorymanifest-file-002.avro
+        * manifest-file-002.avro
           * data-00004.parquet (9 MB, 45K rows)
           * data-00005.parquet (10 MB, 50K rows)
-    * Directorysnapshot-3051729675574597005.avro **Snapshot 2** (Current)
-      * Directorymanifest-list-def456.avro **Manifest List**
-        * Directorymanifest-file-001.avro _(reused from Snapshot 1)_
+    * snapshot-3051729675574597005.avro **Snapshot 2** (Current)
+      * manifest-list-def456.avro **Manifest List**
+        * manifest-file-001.avro _(reused from Snapshot 1)_
           * data-00001.parquet
           * data-00002.parquet
           * data-00003.parquet
-        * Directorymanifest-file-003.avro _(new)_
+        * manifest-file-003.avro _(new)_
           * data-00006.parquet (11 MB, 53K rows)
           * data-00007.parquet (10 MB, 51K rows)
           * data-00008.parquet (12 MB, 58K rows)
@@ -231,7 +219,14 @@ R2 Data Catalog can automate [rewriting data files](https://developers.cloudflar
 
 1. Time travel available until `expire_snapshots` is called [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/deleting-data/#page","headline":"Deleting data · Cloudflare R2 docs","description":"How to properly delete data from R2 Data Catalog","url":"https://developers.cloudflare.com/r2/data-catalog/deleting-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/deleting-data/","name":"Deleting data"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/deleting-data/#page","headline":"Deleting data · Cloudflare R2 docs","description":"How to properly delete data from R2 Data Catalog","url":"https://developers.cloudflare.com/r2/data-catalog/deleting-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

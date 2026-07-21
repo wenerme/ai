@@ -1,16 +1,18 @@
 ---
-title: Find appropriate rate limit
 description: Use Security Analytics request rate data to determine an appropriate rate limit.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Find appropriate rate limit
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Find appropriate rate limit
 
-# Find appropriate rate limit
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The **Request rate analysis** tab in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) displays data on the request rate for traffic matching the selected filters and time period. Use this tab to determine the most appropriate rate limit for incoming traffic matching the applied filters.
 
@@ -43,7 +45,7 @@ For more information on how Cloudflare calculates the request rate of incoming t
 ### 1\. Define the scope
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. In the **Traffic analysis** tab, select a specific time period:
 
   * To look at the regular rate distribution, specify a period with non-peak traffic.
@@ -77,7 +79,14 @@ Answering the following questions during your adjustments can help you with your
 It is recommended that you first deploy the rule with the _Log_ action to validate the threshold, and change the action later to block or challenge incoming requests when you are confident about the rule behavior.
 3. To save and deploy your rate limiting rule, select **Deploy**. If you are not ready to deploy your rule, select **Save as Draft**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/#page","headline":"Find an appropriate rate limit · Cloudflare Web Application Firewall (WAF) docs","description":"Use Security Analytics request rate data to determine an appropriate rate limit.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/find-rate-limit/","name":"Find appropriate rate limit"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/#page","headline":"Find an appropriate rate limit · Cloudflare Web Application Firewall (WAF) docs","description":"Use Security Analytics request rate data to determine an appropriate rate limit.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

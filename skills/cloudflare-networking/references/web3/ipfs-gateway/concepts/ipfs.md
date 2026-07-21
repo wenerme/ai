@@ -1,16 +1,18 @@
 ---
-title: Interplanetary File System (IPFS)
 description: How the InterPlanetary File System stores and retrieves content.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Interplanetary File System (IPFS)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Interplanetary File System (IPFS)
 
-# Interplanetary File System (IPFS)
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Interplanetary File System (IPFS) is a peer-to-peer file storage network. Instead of storing files on a single server (the way traditional web hosting works), IPFS distributes files across many computers around the world.
 
@@ -59,7 +61,14 @@ Directories make it possible to address an entire static website with a single C
 
 For help with additional concepts, refer to the [IPFS ↗](https://docs.ipfs.tech/concepts/) documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/#page","headline":"Interplanetary File System (IPFS) · Cloudflare Web3 docs","description":"How the InterPlanetary File System stores and retrieves content.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ipfs-gateway/","name":"IPFS Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ipfs-gateway/concepts/","name":"Concepts"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ipfs-gateway/concepts/ipfs/","name":"Interplanetary File System (IPFS)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/#page","headline":"Interplanetary File System (IPFS) · Cloudflare Web3 docs","description":"How the InterPlanetary File System stores and retrieves content.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

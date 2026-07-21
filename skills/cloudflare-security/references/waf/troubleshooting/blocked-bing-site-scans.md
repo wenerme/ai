@@ -1,16 +1,18 @@
 ---
-title: Bing's Site Scan blocked by a managed rule
 description: A WAF managed rule may block site scans performed by Bing Webmaster Tools.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Bing's Site Scan blocked by a managed rule
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bing's Site Scan blocked by a managed rule
 
-# Bing's Site Scan blocked by a managed rule
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Microsoft [Bing Webmaster Tools ↗](https://www.bing.com/webmaster/tools) provides a Site Scan feature that crawls your website searching for possible SEO improvements.
 
@@ -35,7 +37,14 @@ To check the rule order, use one of the following methods:
 
 For more information on creating exceptions, refer to [Create exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/#page","headline":"Bing's Site Scan blocked by a managed rule · Cloudflare Web Application Firewall (WAF) docs","description":"A WAF managed rule may block site scans performed by Bing Webmaster Tools.","url":"https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/troubleshooting/blocked-bing-site-scans/","name":"Bing's Site Scan blocked by a managed rule"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/#page","headline":"Bing's Site Scan blocked by a managed rule · Cloudflare Web Application Firewall (WAF) docs","description":"A WAF managed rule may block site scans performed by Bing Webmaster Tools.","url":"https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","Debugging"]}
 ```

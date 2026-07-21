@@ -1,39 +1,38 @@
 ---
-title: Grok 4.20 Multi-Agent
 description: xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Grok 4.20 Multi-Agent
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)
 
 #  Grok 4.20 Multi-Agent
 
-Text Generation • xAI
+ Text Generation • xAI
 
-`xai/grok-4.20-multi-agent-0309`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` xai/grok-4.20-multi-agent-0309 `
+
+* Third-party
 
 xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.
 
-| Model Info                                                                 |                                                                                                                                  |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,000,000 tokens                                                                                                                 |
-| Terms and License                                                          | [link ↗](https://x.ai/legal/terms-of-service)                                                                                    |
-| More information                                                           | [link ↗](https://x.ai/)                                                                                                          |
-| Request formats                                                            | Responses                                                                                                                        |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-multi-agent-0309) |
+| Model Info                                                                  |                                                                                                                                   |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,000,000 tokens                                                                                                                  |
+| Terms and License                                                           | [link ↗](https://x.ai/legal/terms-of-service)                                                                                     |
+| More information                                                            | [link ↗](https://x.ai/)                                                                                                           |
+| Request formats                                                             | Responses                                                                                                                         |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-multi-agent-0309) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-2150)
-* [ cURL ](#tab-panel-2151)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -52,9 +51,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "input": "What are the three laws of thermodynamics?"
 }'
 ```
-
-* [ Output ](#tab-panel-2160)
-* [ Raw response ](#tab-panel-2161)
 
 **The three laws of thermodynamics** (often referred to as the first, second, and third) are fundamental principles in physics that govern energy, heat, work, and entropy in physical systems. There is also a foundational "zeroth law" that is logically prior but was formalized later, which is why it is numbered zero.
 
@@ -159,11 +155,6 @@ These laws form the foundation of classical thermodynamics, with wide applicatio
 
 **With Instructions**  — Using instructions to set the agent persona
 
-* [ TypeScript ](#tab-panel-2152)
-* [ cURL ](#tab-panel-2153)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'xai/grok-4.20-multi-agent-0309',
@@ -186,9 +177,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "instructions": "You are a careful research assistant. Keep answers short and cite sources when relevant."
 }'
 ```
-
-* [ Output ](#tab-panel-2162)
-* [ Raw response ](#tab-panel-2163)
 
 The Moon appears larger near the horizon because of a perceptual illusion (not an optical one): the brain interprets the horizon as farther away than the zenith due to distance cues from terrain and the flattened-dome appearance of the sky, so it scales up the Moon's perceived size to match its unchanged angular diameter. High in the sky with no such references, the Moon looks comparatively smaller.
 
@@ -271,11 +259,6 @@ The Moon appears larger near the horizon because of a perceptual illusion (not a
 
 **Multi-turn Conversation**  — Continuing a conversation by passing typed input items
 
-* [ TypeScript ](#tab-panel-2158)
-* [ cURL ](#tab-panel-2159)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'xai/grok-4.20-multi-agent-0309',
@@ -318,9 +301,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "max_output_tokens": 8192
 }'
 ```
-
-* [ Output ](#tab-panel-2164)
-* [ Raw response ](#tab-panel-2165)
 
 **Day 1:** Begin your Tokyo food journey by savoring fresh Edomae-style nigiri sushi at Tsukiji Outer Market, where skilled chefs pair perfectly seasoned rice with the day's freshest seafood straight from the market.
 **Day 2:** Dive into a rich bowl of tonkotsu ramen in a bustling Shinjuku shop, featuring silky pork-bone broth, springy noodles, chashu pork, and a marinated egg for ultimate comfort.
@@ -405,11 +385,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Web Search**  — Letting the agent use xAI built-in web search to answer with current info
 
-* [ TypeScript ](#tab-panel-2154)
-* [ cURL ](#tab-panel-2155)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'xai/grok-4.20-multi-agent-0309',
@@ -437,9 +412,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-2168)
-* [ Raw response ](#tab-panel-2169)
 
 **Top xAI news stories this week (late April to early May 2026):**[[1]](https://techcrunch.com/2026/04/30/elon-musk-testifies-that-xai-trained-grok-on-openai-models/)[[2]](https://x.ai/news)
 
@@ -665,11 +637,6 @@ These reflect xAI’s rapid product iteration in voice/agent capabilities and mo
 
 **With Reasoning**  — Asking the agent to think harder before responding
 
-* [ TypeScript ](#tab-panel-2156)
-* [ cURL ](#tab-panel-2157)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'xai/grok-4.20-multi-agent-0309',
@@ -696,9 +663,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-2166)
-* [ Raw response ](#tab-panel-2167)
 
 The two trains are moving toward each other, so the distance between them closes at a combined rate of 60 + 80 = 140 mph.
 
@@ -790,9 +754,6 @@ To verify, in that time the first train travels 60 * (45/7) = 2700/7 ≈ 385.71 
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-2170)
-* [ Output ](#tab-panel-2171)
 
 ▶input
 
@@ -972,7 +933,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-
 
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/#page","headline":"Grok 4.20 Multi-Agent (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/#page","headline":"Grok 4.20 Multi-Agent (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

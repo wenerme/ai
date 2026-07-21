@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Learn how to view and use data from Network Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/network-analytics/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Requirements
 
@@ -23,7 +25,7 @@ Network Analytics requires the following:
 ## View the Network Analytics dashboard
 
 1. In the Cloudflare dashboard, go to the **Network Analytics** page.
-[ Go to **Network analytics** ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+[ Go to **Network analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 2. Select an account that has access to Magic Transit or Spectrum.
 3. Configure the displayed data. You can [adjust the time range](https://developers.cloudflare.com/analytics/network-analytics/configure/time-range/), [select the main metric](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/#select-high-level-metric) (total packets or total bytes), [apply filters](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/#apply-filters), and more.
 
@@ -45,7 +47,14 @@ Users with the `Analytics` role will have visibility to IDs but will not see the
 * [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/)
 * Override names
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/get-started/#page","headline":"Get started with Network Analytics · Cloudflare Analytics docs","description":"Learn how to view and use data from Network Analytics.","url":"https://developers.cloudflare.com/analytics/network-analytics/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/network-analytics/","name":"Network analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/network-analytics/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/get-started/#page","headline":"Get started with Network Analytics · Cloudflare Analytics docs","description":"Learn how to view and use data from Network Analytics.","url":"https://developers.cloudflare.com/analytics/network-analytics/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

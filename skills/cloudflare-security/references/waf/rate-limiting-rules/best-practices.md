@@ -1,16 +1,18 @@
 ---
-title: Rate limiting best practices
 description: Typical rate limiting configurations for login protection, API abuse, and more.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rate limiting best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rate limiting best practices
 
-# Rate limiting best practices
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following sections cover typical rate limiting configurations for common use cases. You can combine the provided example rules and adjust them to your own scenario.
 
@@ -244,7 +246,6 @@ Consider an application that handles the operation and its parameters through th
 POST https://api.store.com/merchant
 Cookie: session_id=12345
 
-
 Body:
 {
   "action": "lookup_price",
@@ -414,7 +415,6 @@ The following examples are based on an application that accepts reviews for movi
 POST https://moviereviews.example.com/graphql
 Cookie: session_id=12345
 
-
 Body:
 {
   "data": {
@@ -474,7 +474,14 @@ Refer to [API Shield documentation ↗](https://developers.cloudflare.com/api-sh
 
 1. The HTTP header name uses a misspelling of "referrer". [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#page","headline":"Rate limiting best practices · Cloudflare Web Application Firewall (WAF) docs","description":"Typical rate limiting configurations for login protection, API abuse, and more.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Account takeover","Authentication","Scraping"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/best-practices/","name":"Rate limiting best practices"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#page","headline":"Rate limiting best practices · Cloudflare Web Application Firewall (WAF) docs","description":"Typical rate limiting configurations for login protection, API abuse, and more.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Account takeover","Authentication","Scraping"]}
 ```

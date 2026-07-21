@@ -1,16 +1,18 @@
 ---
-title: Unified API (OpenAI compat)
 description: Send requests to multiple AI providers through a single OpenAI-compatible endpoint on AI Gateway.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Unified API (OpenAI compat)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Unified API (OpenAI compat)
 
-# Unified API (OpenAI compat)
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deprecated
 
@@ -53,228 +55,204 @@ Stored Key (BYOK)
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{cf_api_token}",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	apiKey: "{cf_api_token}",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "openai/gpt-5.2",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "openai/gpt-5.2",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{cf_api_token}",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	apiKey: "{cf_api_token}",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "anthropic/claude-4-5-sonnet",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "anthropic/claude-4-5-sonnet",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{cf_api_token}",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	apiKey: "{cf_api_token}",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "google/gemini-2.5-pro",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "google/gemini-2.5-pro",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{cf_api_token}",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	apiKey: "{cf_api_token}",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "grok/grok-4",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "grok/grok-4",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{cf_api_token}",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	apiKey: "{cf_api_token}",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "dynamic/customer-support",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "dynamic/customer-support",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{cf_api_token}",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	apiKey: "{cf_api_token}",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{openai_api_token}",
+	apiKey: "{openai_api_token}",
   defaultHeaders: {
       // if gateway is authenticated
       "cf-aig-authorization": `Bearer {cf_api_token}`,
   },
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "openai/gpt-5.2",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "openai/gpt-5.2",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{anthropic_api_token}",
+	apiKey: "{anthropic_api_token}",
   defaultHeaders: {
       // if gateway is authenticated
       "cf-aig-authorization": `Bearer {cf_api_token}`,
   },
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "anthropic/claude-4-5-sonnet",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "anthropic/claude-4-5-sonnet",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{google_api_token}",
+	apiKey: "{google_api_token}",
   defaultHeaders: {
       // if gateway is authenticated
       "cf-aig-authorization": `Bearer {cf_api_token}`,
   },
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "google/gemini-2.5-pro",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "google/gemini-2.5-pro",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{grok_api_token}",
+	apiKey: "{grok_api_token}",
   defaultHeaders: {
       // if gateway is authenticated
       "cf-aig-authorization": `Bearer {cf_api_token}`,
   },
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "grok/grok-4",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "grok/grok-4",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{dynamic_api_token}",
+	apiKey: "{dynamic_api_token}",
   defaultHeaders: {
       // if gateway is authenticated
       "cf-aig-authorization": `Bearer {cf_api_token}`,
   },
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "dynamic/customer-support",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "dynamic/customer-support",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
 ```javascript
 import OpenAI from "openai";
 
-
 const client = new OpenAI({
-  apiKey: "{workers-ai_api_token}",
+	apiKey: "{workers-ai_api_token}",
   defaultHeaders: {
       // if gateway is authenticated
       "cf-aig-authorization": `Bearer {cf_api_token}`,
   },
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat",
 });
 
-
 const response = await client.chat.completions.create({
-  model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-  messages: [{ role: "user", content: "Hello, world!" }],
+	model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+	messages: [{ role: "user", content: "Hello, world!" }],
 });
 ```
 
@@ -283,16 +261,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified();
-
 
 const { text } = await generateText({
   model: aigateway(unified('openai/gpt-5.2')),
@@ -305,16 +280,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified();
-
 
 const { text } = await generateText({
   model: aigateway(unified('anthropic/claude-4-5-sonnet')),
@@ -327,16 +299,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified();
-
 
 const { text } = await generateText({
   model: aigateway(unified('google/gemini-2.5-pro')),
@@ -349,16 +318,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified();
-
 
 const { text } = await generateText({
   model: aigateway(unified('grok/grok-4')),
@@ -371,16 +337,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified();
-
 
 const { text } = await generateText({
   model: aigateway(unified('dynamic/customer-support')),
@@ -393,16 +356,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified();
-
 
 const { text } = await generateText({
   model: aigateway(unified('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
@@ -415,16 +375,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(unified('openai/gpt-5.2')),
@@ -437,16 +394,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(unified('anthropic/claude-4-5-sonnet')),
@@ -459,16 +413,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(unified('google/gemini-2.5-pro')),
@@ -481,16 +432,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(unified('grok/grok-4')),
@@ -503,16 +451,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(unified('dynamic/customer-support')),
@@ -525,16 +470,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(unified('workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
@@ -547,17 +489,14 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createOpenAI } from 'ai-gateway-provider/providers/openai';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
-
 
 const openai = createOpenAI();
 
-
 const { text } = await generateText({
   model: aigateway(openai.chat('gpt-5.2')),
   prompt: 'What is Cloudflare?',
@@ -569,16 +508,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createAnthropic } from 'ai-gateway-provider/providers/anthropic';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const anthropic = createAnthropic();
-
 
 const { text } = await generateText({
   model: aigateway(anthropic('claude-4-5-sonnet')),
@@ -591,16 +527,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createGoogle } from 'ai-gateway-provider/providers/google';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const google = createGoogle();
-
 
 const { text } = await generateText({
   model: aigateway(google('gemini-2.5-pro')),
@@ -613,16 +546,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createXai } from 'ai-gateway-provider/providers/xai';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const xai = createXai();
-
 
 const { text } = await generateText({
   model: aigateway(xai('grok-4')),
@@ -635,16 +565,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified();
-
 
 const { text } = await generateText({
   model: aigateway(unified('customer-support')),
@@ -657,16 +584,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified();
-
 
 const { text } = await generateText({
   model: aigateway(unified('@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
@@ -679,16 +603,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createOpenAI } from 'ai-gateway-provider/providers/openai';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const openai = createOpenAI({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(openai.chat('gpt-5.2')),
@@ -701,16 +622,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createAnthropic } from 'ai-gateway-provider/providers/anthropic';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const anthropic = createAnthropic({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(anthropic('claude-4-5-sonnet')),
@@ -723,16 +641,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createGoogle } from 'ai-gateway-provider/providers/google';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const google = createGoogle({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(google('gemini-2.5-pro')),
@@ -745,16 +660,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createXai } from 'ai-gateway-provider/providers/xai';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const xai = createXai({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(xai('grok-4')),
@@ -767,16 +679,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(unified('customer-support')),
@@ -789,16 +698,13 @@ import { createAiGateway } from 'ai-gateway-provider';
 import { createUnified } from 'ai-gateway-provider/providers/unified';
 import { generateText } from "ai";
 
-
 const aigateway = createAiGateway({
   accountId: "{CLOUDFLARE_ACCOUNT_ID}",
   gateway: '{GATEWAY_NAME}',
   apiKey: '{CF_AIG_TOKEN}',
 });
 
-
 const unified = createUnified({ apiKey: '{API_KEY}' });
-
 
 const { text } = await generateText({
   model: aigateway(unified('@cf/meta/llama-3.3-70b-instruct-fp8-fast')),
@@ -806,7 +712,7 @@ const { text } = await generateText({
 });
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -821,7 +727,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -836,7 +742,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -851,7 +757,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -866,7 +772,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -881,7 +787,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Content-Type: application/json' \
@@ -896,7 +802,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {openai_api_token}' \
@@ -912,7 +818,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {anthropic_api_token}' \
@@ -928,7 +834,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {google_api_token}' \
@@ -944,7 +850,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {grok_api_token}' \
@@ -960,7 +866,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {dynamic_api_token}' \
@@ -976,7 +882,7 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
   }'
 ```
 
-```curl
+```plaintext
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions \
   --header 'cf-aig-authorization: Bearer {CF_AIG_TOKEN}' \
   --header 'Authorization: Bearer {workers-ai_api_token}' \
@@ -1011,7 +917,14 @@ The OpenAI-compatible endpoint supports models from the following providers:
 * [Baseten](https://developers.cloudflare.com/ai-gateway/usage/providers/baseten/)
 * [Parallel](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/chat-completion/#page","headline":"Unified API (OpenAI compat) · Cloudflare AI Gateway docs","description":"Send requests to multiple AI providers through a single OpenAI-compatible endpoint on AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/usage/chat-completion/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/chat-completion/","name":"Unified API (OpenAI compat)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/chat-completion/#page","headline":"Unified API (OpenAI compat) · Cloudflare AI Gateway docs","description":"Send requests to multiple AI providers through a single OpenAI-compatible endpoint on AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/usage/chat-completion/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

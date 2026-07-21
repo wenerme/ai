@@ -1,16 +1,18 @@
 ---
-title: Monitoring
 description: Monitor tunnel health, connectors, and connection status.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Monitoring
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitoring
 
-# Monitoring
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/monitoring/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel exposes logs, metrics, and diagnostic tools to help you monitor tunnel health and resolve issues.
 
@@ -18,7 +20,7 @@ Cloudflare Tunnel exposes logs, metrics, and diagnostic tools to help you monito
 
 You can check your tunnel connection status in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) by going to **Networking** \> **Tunnels**, or by running `cloudflared tunnel list`.
 
-[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
 
 | Status       | Meaning                                                                                                                                                                                                                                                                                                                                                               | Recommended Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -94,9 +96,6 @@ cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
 ### Remote log streaming
 
 You can stream real-time logs from a running tunnel without SSH access to the server.
-
-* [ CLI ](#tab-panel-11803)
-* [ Dashboard ](#tab-panel-11804)
 
 The `cloudflared` daemon can stream logs from any tunnel in your account to the local command line. `cloudflared` must be installed on both your local machine and the origin server.
 
@@ -352,7 +351,14 @@ The `cloudflared-diag-YYYY-MM-DDThh-mm-ss.zip` archive contains the files listed
 
 1. If the log file is blank, you may need to [set \--loglevel to debug](#server-side-logs) when you start the tunnel. The `--loglevel` parameter is only required if you ran the tunnel from the CLI using a `cloudflared tunnel run` command. It is not necessary if the tunnel runs as a Linux/macOS service or runs in Docker/Kubernetes. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/monitoring/#page","headline":"Monitoring · Cloudflare Docs","description":"Monitor tunnel health, connectors, and connection status.","url":"https://developers.cloudflare.com/tunnel/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/monitoring/","name":"Monitoring"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/monitoring/#page","headline":"Monitoring · Cloudflare Docs","description":"Monitor tunnel health, connectors, and connection status.","url":"https://developers.cloudflare.com/tunnel/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

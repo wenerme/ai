@@ -1,16 +1,10 @@
 ---
-title: SASE - Protect your users from Internet risks
 description: The Internet has become part of your corporate network; however, browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: SASE - Protect your users from Internet risks
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/videos/llms.txt
-> Use this file to discover all available pages before exploring further.
-
-[Skip to content](#%5Ftop)
-
-# SASE - Protect your users from Internet risks
+[Skip to content ](#main-content)
 
 The Internet has become part of your corporate network; however, browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.
 
@@ -18,23 +12,22 @@ Chapters
 
 * ![Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=1s)
 
- **Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking** 1s
+ **Introduction to Cloudflare's SASE and the Importance of Secure Corporate Networking**  1s
 * ![Using Secure Web Gateway to Inspect and Control Internet Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=66s)
 
- **Using Secure Web Gateway to Inspect and Control Internet Traffic** 01m06s
+ **Using Secure Web Gateway to Inspect and Control Internet Traffic**  01m06s
 * ![Protecting Users with DNS Filtering and Threat Intelligence](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=124s)
 
- **Protecting Users with DNS Filtering and Threat Intelligence** 02m04s
+ **Protecting Users with DNS Filtering and Threat Intelligence**  02m04s
 * ![Implementing Network-Level Security Policies for Private and Public Traffic](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=217s)
 
- **Implementing Network-Level Security Policies for Private and Public Traffic** 03m37s
+ **Implementing Network-Level Security Policies for Private and Public Traffic**  03m37s
 * ![Advanced HTTP Filtering and Data Loss Prevention with Cloudflare](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=263s)
 
- **Advanced HTTP Filtering and Data Loss Prevention with Cloudflare** 04m23s
+ **Advanced HTTP Filtering and Data Loss Prevention with Cloudflare**  04m23s
 * ![Isolating Risky Websites and Preventing Data Leaks with Browser Isolation](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/48a3b49b7cdfaef0b3044d1530c82c19/thumbnails/thumbnail.jpg?fit=crop&time=348s)
 
- **Isolating Risky Websites and Preventing Data Leaks with Browser Isolation** 05m48s
-
+ **Isolating Risky Websites and Preventing Data Leaks with Browser Isolation**  05m48s
 
 Transcript
 
@@ -277,5 +270,5 @@ corporate networking,and all the developer content the Internet
 can hold. Follow us online and thanks forwatching!
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-5-protect-users/#page","headline":"SASE - Protect your users from Internet risks | Cloudflare Docs","description":"The Internet has become part of your corporate network; however, browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.","url":"https://developers.cloudflare.com/videos/sase-5-protect-users/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-5-protect-users/#page","headline":"SASE - Protect your users from Internet risks | Cloudflare Docs","description":"The Internet has become part of your corporate network; however, browsing the web comes with hidden risks including malware, phishing attacks, and malicious websites. In this video, we will explore how Cloudflare's Secure Web Gateway (SWG) helps keep users safe by filtering and inspecting Internet traffic in real time. Whether you are protecting a remote workforce or securing an entire organization, Cloudflare ensures that users can access the web securely — without sacrificing speed or productivity.","url":"https://developers.cloudflare.com/videos/sase-5-protect-users/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

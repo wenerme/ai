@@ -1,16 +1,18 @@
 ---
-title: Isolate Access applications
 description: Learn about isolate access applications in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Isolate Access applications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Isolate Access applications
 
-# Isolate Access applications
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -64,9 +66,6 @@ with HTTP policies applied"]
 
 **Policy 1: Allow employees who pass device posture checks**
 
-* [ Dashboard ](#tab-panel-9889)
-* [ API ](#tab-panel-9890)
-
 | Action | Rule type | Selector                                                                                                                                              | Value                    |
 | ------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | Allow  | Include   | Emails ending in                                                                                                                                      | @team.com                |
@@ -105,9 +104,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_
 To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/create/).
 
 **Policy 2: Allow and isolate contractors**
-
-* [ Dashboard ](#tab-panel-9891)
-* [ API ](#tab-panel-9892)
 
 | Action | Rule type | Selector         | Value                       |
 | ------ | --------- | ---------------- | --------------------------- |
@@ -148,9 +144,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_
 ### Disable file downloads in isolated browser
 
 Prevents users on unmanaged devices from downloading any files from your private application.
-
-* [ Dashboard ](#tab-panel-9893)
-* [ API ](#tab-panel-9894)
 
 | Selector                     | Operator | Value                    | Logic | Action  |
 | ---------------------------- | -------- | ------------------------ | ----- | ------- |
@@ -230,9 +223,6 @@ Block users on unmanaged devices from downloading files that contain credit card
 * **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
 * **Policy 2: Block credit card numbers**
 
-* [ Dashboard ](#tab-panel-9895)
-* [ API ](#tab-panel-9896)
-
 | Selector                                                                                           | Operator | Value                      | Logic | Action |
 | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ----- | ------ |
 | Host                                                                                               | in       | internal.site.com          | And   | Block  |
@@ -306,7 +296,14 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 To configure a DLP profile, refer to [Update predefined profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/predefined/methods/update/) or [Create custom profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/custom/methods/create/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#page","headline":"Isolate Access applications · Cloudflare Learning Paths","description":"Learn about isolate access applications in this guide.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/advanced-workflows/","name":"Advanced workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/advanced-workflows/isolate-application/","name":"Isolate Access applications"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#page","headline":"Isolate Access applications · Cloudflare Learning Paths","description":"Learn about isolate access applications in this guide.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

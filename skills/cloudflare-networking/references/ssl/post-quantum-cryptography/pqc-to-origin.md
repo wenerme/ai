@@ -1,16 +1,18 @@
 ---
-title: Post-quantum between Cloudflare and origin servers
 description: Learn about post-quantum cryptography in connections from Cloudflare to your origin servers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Post-quantum between Cloudflare and origin servers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Post-quantum between Cloudflare and origin servers
 
-# Post-quantum between Cloudflare and origin servers
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page covers post-quantum cryptography on the TLS connection between Cloudflare's edge and your origin server. Cloudflare supports both [post-quantum key agreement](#post-quantum-key-agreement) (X25519MLKEM768) and [post-quantum signatures](#post-quantum-signatures) (ML-DSA via Authenticated Origin Pulls and Custom Origin Trust Store) on this connection.
 
@@ -48,15 +50,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-**Change Origin Post-Quantum Encryption setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_post_quantum_encryption" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": "<YOUR_CHOSEN_SETTING>"
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": "<YOUR_CHOSEN_SETTING>"
+	}'
 ```
 
 The possible values are:
@@ -110,7 +110,6 @@ openssl req -new -x509 \
   -days 10950 \
   -subj "/CN=ML-DSA Origin CA"
 
-
 # Leaf certificate signed by the CA (15-year validity)
 openssl genpkey \
   -algorithm mldsa44 \
@@ -154,7 +153,7 @@ Refer to the [AOP setup guide for origin servers](https://developers.cloudflare.
 
 Upload the ML-DSA CA certificate (the `ca.crt` file generated earlier) as a [Custom Origin Trust Store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/) entry. Cloudflare will then trust any origin server certificate that chains to that CA under [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/).
 
-Warning
+Caution
 
 Uploading a Custom Origin Trust Store CA replaces the default publicly trusted CAs for the zone. Cloudflare will no longer trust origin certificates signed by public CAs on that zone while the COTS entry is in place. Refer to [Custom Origin Trust Store — Limitations](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/#limitations) for details.
 
@@ -193,7 +192,14 @@ Presenting an ML-DSA certificate on the authenticating side is not enough on its
 
 1. When, to remove a round trip, a client makes a guess of what the server supports. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#page","headline":"Post-quantum between Cloudflare and origin servers · Cloudflare SSL/TLS docs","description":"Learn about post-quantum cryptography in connections from Cloudflare to your origin servers.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/post-quantum-cryptography/","name":"Post-quantum cryptography (PQC)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/post-quantum-cryptography/pqc-to-origin/","name":"Post-quantum between Cloudflare and origin servers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#page","headline":"Post-quantum between Cloudflare and origin servers · Cloudflare SSL/TLS docs","description":"Learn about post-quantum cryptography in connections from Cloudflare to your origin servers.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 ```

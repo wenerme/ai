@@ -1,16 +1,18 @@
 ---
-title: About
 description: Core concepts for Spectrum, including BYOIP, DDoS, load balancing, and static IPs.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: About
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  About
 
-# About
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/about/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 For more information about concepts related to Spectrum, refer to the sections below.
 
@@ -20,7 +22,14 @@ For more information about concepts related to Spectrum, refer to the sections b
 * [ FTP ](https://developers.cloudflare.com/spectrum/about/ftp/)
 * [ Static IP ](https://developers.cloudflare.com/spectrum/about/static-ip/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/spectrum/about/#page","headline":"About · Cloudflare Spectrum docs","description":"Core concepts for Spectrum, including BYOIP, DDoS, load balancing, and static IPs.","url":"https://developers.cloudflare.com/spectrum/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/about/","name":"About"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/spectrum/about/#page","headline":"About · Cloudflare Spectrum docs","description":"Core concepts for Spectrum, including BYOIP, DDoS, load balancing, and static IPs.","url":"https://developers.cloudflare.com/spectrum/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

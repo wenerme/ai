@@ -1,16 +1,18 @@
 ---
-title: Managed networks
 description: Managed networks in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Managed networks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Managed networks
 
-# Managed networks
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -67,36 +69,32 @@ Note
 The Cloudflare One Client requires certificates to include `CN` and `subjectAltName` metadata. You can use `example.com` or any other domain.
 2. Configure an HTTPS server on your network to use this certificate and key. The example below demonstrates how to serve the TLS certificate from an nginx container in Docker:
 a. Create an nginx configuration file called `nginx.conf`:
-
-**nginx.conf**
 ```txt
 events {
 worker_connections  1024;
 }
 http {
-    server {
-      listen              443 ssl;
-      ssl_certificate     /certs/cert.pem;
-      ssl_certificate_key /certs/key.pem;
-      location / {
-            return 200;
-      }
-    }
+		server {
+			listen              443 ssl;
+			ssl_certificate     /certs/cert.pem;
+			ssl_certificate_key /certs/key.pem;
+			location / {
+						return 200;
+			}
+		}
 }
 ```
 If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.
 b. Add the nginx image to your Docker compose file:
-
-**docker-compose.yml**
 ```yml
 services:
-  nginx:
-    image: nginx:latest
-    ports:
-      - 3333:443
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./certs:/certs:ro
+	nginx:
+		image: nginx:latest
+		ports:
+			- 3333:443
+		volumes:
+			- ./nginx.conf:/etc/nginx/nginx.conf:ro
+			- ./certs:/certs:ro
 ```
 If needed, replace `./nginx.conf` and `./certs` with the locations of your nginx configuration file and certificate.
 c. Start the server:
@@ -115,20 +113,16 @@ To create a TLS endpoint using Windows Internet Information Services (IIS) Manag
 
 1. Run Powershell as administrator.
 2. Generate a self-signed certificate:
-
-**PowerShell**
 ```powershell
 New-SelfSignedCertificate -CertStoreLocation Cert:\LocalMachine\My -DnsName "office-name.example.internal" -FriendlyName "Cloudflare Managed Network Certificate" -NotAfter (Get-Date).AddYears(10)
 ```
 ```powershell
-  PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
+	PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\My
 Thumbprint                                Subject
 ----------                                -------
 0660C4FCD15F69C49BD080FEEA4136B3D302B41B  CN=office-name.example.internal
 ```
 3. Extract the certificate's SHA-256 fingerprint:
-
-**PowerShell**
 ```powershell
 [System.BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash((Get-ChildItem Cert:\LocalMachine\My | Where-Object { $_.FriendlyName -eq "Cloudflare Managed Network Certificate" }).RawData)) -replace "-", ""
 ```
@@ -162,9 +156,6 @@ The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https:
 
 The SHA-256 fingerprint is only required if your TLS endpoint uses a self-signed certificate.
 
-* [ Local certificate ](#tab-panel-8096)
-* [ Remote server ](#tab-panel-8097)
-
 To obtain the SHA-256 fingerprint of a local certificate:
 
 ```sh
@@ -191,9 +182,6 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ## 3\. Add managed network to Cloudflare One
 
-* [ Dashboard ](#tab-panel-8092)
-* [ Terraform (v5) ](#tab-panel-8093)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
 2. Select **Managed networks** and select **Add new managed network**.
 3. Name your network location.
@@ -209,13 +197,13 @@ We recommend using the private IP of your managed network endpoint and not a hos
 2. Add a managed network using the [cloudflare\_zero\_trust\_device\_managed\_network ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fmanaged%5Fnetwork) resource:
 ```tf
 resource "cloudflare_zero_trust_device_managed_networks" "office" {
-  account_id = var.cloudflare_account_id
-  name       = "Office managed network"
-  type       = "tls"
-  config = {
-    tls_sockaddr = "192.168.185.198:3333"
-    sha256       = "DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662"
-  }
+	account_id = var.cloudflare_account_id
+	name       = "Office managed network"
+	type       = "tls"
+	config = {
+		tls_sockaddr = "192.168.185.198:3333"
+		sha256       = "DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662"
+	}
 }
 ```
 
@@ -226,9 +214,6 @@ Split Tunnels in Include mode
 If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) in **Include** mode, ensure that your Split Tunnel entries do not contain the TLS endpoint IP address; otherwise the Cloudflare One Client will exclude the entire Split Tunnel entry from the tunnel. For example, if you are currently including `10.0.0.0/8` but your TLS endpoint is on `10.0.0.1`, use our [IP subtraction calculator](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to remove `10.0.0.1` from `10.0.0.0/8`.
 
 ## 4\. Configure device profile
-
-* [ Dashboard ](#tab-panel-8094)
-* [ Terraform (v5) ](#tab-panel-8095)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Create a [new profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) or edit an existing profile.
@@ -243,17 +228,16 @@ In [cloudflare\_zero\_trust\_device\_custom\_profile ↗](https://registry.terra
 
 ```tf
 resource "cloudflare_zero_trust_device_custom_profile" "office" {
-  account_id            = var.cloudflare_account_id
-  name                  = "Office"
-  description           = "Devices connected to the office network"
-  precedence            = 1
-  service_mode_v2       = {mode = "warp"}
+	account_id            = var.cloudflare_account_id
+	name                  = "Office"
+	description           = "Devices connected to the office network"
+	precedence            = 1
+	service_mode_v2       = {mode = "warp"}
 
-
-  match = trimspace(replace(<<-EOT
-    network == "${cloudflare_zero_trust_device_managed_networks.office.name}"
-  EOT
-  , "\n", " "))
+	match = trimspace(replace(<<-EOT
+		network == "${cloudflare_zero_trust_device_managed_networks.office.name}"
+	EOT
+	, "\n", " "))
 }
 ```
 
@@ -273,7 +257,14 @@ To check if the Cloudflare One Client detects the network location:
 * [Device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) \- Defines how the Cloudflare One Client behaves and what users can do.
 * [Cloudflare One Client troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/) \- Troubleshoot common Cloudflare One Client issues.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/#page","headline":"Managed networks · Cloudflare One docs","description":"Managed networks in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","PowerShell"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/","name":"Managed networks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/#page","headline":"Managed networks · Cloudflare One docs","description":"Managed networks in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","PowerShell"]}
 ```

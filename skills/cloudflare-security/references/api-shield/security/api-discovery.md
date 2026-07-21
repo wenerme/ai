@@ -1,16 +1,18 @@
 ---
-title: API Discovery
 description: Map out and understand your API attack surface with API Discovery.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: API Discovery
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  API Discovery
 
-# API Discovery
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/api-discovery/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Most development teams struggle to keep track of their APIs. Cloudflare API Discovery helps you map out and understand your API attack surface — the full set of endpoints that could be targeted by attackers.
 
@@ -74,11 +76,8 @@ Your API endpoints are discovered with both session identifier-based discovery a
 
 To access machine learning-based discovery:
 
-* [  New dashboard ](#tab-panel-7356)
-* [ Old dashboard ](#tab-panel-7357)
-
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Discovery** tab.
 3. Filter the source results by `Session Identifier` or `Machine Learning` to view results from each discovery method.
 
@@ -98,7 +97,14 @@ API endpoints are discovered based on machine learning or session identifiers. M
 
 API Discovery is only available for Enterprise customers. If you are an Enterprise customer interested in this product, contact your account team.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/api-discovery/#page","headline":"API Discovery · Cloudflare API Shield docs","description":"Map out and understand your API attack surface with API Discovery.","url":"https://developers.cloudflare.com/api-shield/security/api-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/api-discovery/","name":"API Discovery"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/api-discovery/#page","headline":"API Discovery · Cloudflare API Shield docs","description":"Map out and understand your API attack surface with API Discovery.","url":"https://developers.cloudflare.com/api-shield/security/api-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

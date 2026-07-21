@@ -1,16 +1,18 @@
 ---
-title: Cloudflare 5xx errors
 description: Troubleshoot Cloudflare 5xx server error codes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare 5xx errors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare 5xx errors
 
-# Cloudflare 5xx errors
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When troubleshooting most `5XX` errors, the correct course of action is to first contact your hosting provider or site administrator to troubleshoot and gather data. The following sections outline:
 
@@ -40,7 +42,7 @@ Error analytics per domain are available within [Zone Analytics](https://develop
 To view Error Analytics:
 
 1. In the Cloudflare dashboard, go to the **HTTP Traffic** page.
-[ Go to **HTTP Traffic** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/traffic)
+[ Go to **HTTP Traffic** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/traffic)
 2. Select **Add filter**, select **Edge status code** or **Origin status code** and choose any `5xx` error code that you want to diagnose.
 
 ### Log Explorer
@@ -97,7 +99,14 @@ For a complete description of this error refer to the [Error 526](https://develo
 
 For a complete description of this error refer to the [Error 530](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-530/) page.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#page","headline":"Cloudflare 5xx errors · Cloudflare Support docs","description":"Troubleshoot Cloudflare 5xx server error codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/","name":"Cloudflare 5xx errors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#page","headline":"Cloudflare 5xx errors · Cloudflare Support docs","description":"Troubleshoot Cloudflare 5xx server error codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

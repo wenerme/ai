@@ -1,16 +1,18 @@
 ---
-title: Tiered Cache
 description: Reduce origin requests with tiered cache topology.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Tiered Cache
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tiered Cache
 
-# Tiered Cache
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/tiered-cache/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Tiered Cache uses the size of the Cloudflare network to reduce requests to customer origins by dramatically increasing cache hit ratios. With data centers around the world, Cloudflare caches content very close to end users. However, if a piece of content is not in cache, the Cloudflare edge data centers must contact the origin server to receive the cacheable content.
 
@@ -85,7 +87,7 @@ You can enable Tiered Cache in the dashboard or via API.
 ### Enable Tiered Cache in the dashboard
 
 1. In the Cloudflare dashboard, go to the **Tiered Cache** page.
-[ Go to **Tiered Cache** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
+[ Go to **Tiered Cache** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
 2. From **Tiered Cache**, toggle the button to **enabled**.
 3. In **Tiered Cache Topology**, you can control how your origin connects to Cloudflare’s data centers. You can select:
 
@@ -99,15 +101,13 @@ You can enable Tiered Cache in the dashboard or via API.
 
 To enable Tiered Cache via API use the following cURL example:
 
-**Patch Tiered Caching setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/argo/tiered_caching" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": "on"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": "on"
+	}'
 ```
 
 You can also configure Tiered Cache Topology via API, for instance:
@@ -120,15 +120,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-**Patch Smart Tiered Cache setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/tiered_cache_smart_topology_enable" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": "on"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": "on"
+	}'
 ```
 
 Enable Regional Tiered Cache
@@ -139,15 +137,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-**Change Regional Tiered Cache setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/regional_tiered_cache" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": "on"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": "on"
+	}'
 ```
 
 For more API examples and configuration options for Tiered Cache, refer to the [API documentation](https://developers.cloudflare.com/api/resources/argo/subresources/tiered%5Fcaching/methods/get/).
@@ -161,7 +157,7 @@ Cloud region hints are available on all plan types (Free, Pro, Business, and Ent
 #### Set a cloud region hint in the dashboard
 
 1. Go to **Caching** \> **Tiered Cache** \> **Origin Configuration**.
-[ Go to **Tiered Cache** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
+[ Go to **Tiered Cache** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
 2. Find your origin IP or hostname and select **Set Region Hint**.
 3. Select your cloud provider and region (for example, `aws:us-east-1` or `gcp:europe-west1`).
 
@@ -169,27 +165,23 @@ Cloud region hints are available on all plan types (Free, Pro, Business, and Ent
 
 To see all available cloud providers and regions, use the supported regions endpoint:
 
-**List supported cloud vendors and regions**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions/supported_regions" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 #### Set a cloud region hint via API
 
-**Create or update an origin cloud region mapping**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "ip": "203.0.113.1",
-    "vendor": "aws",
-    "region": "us-east-1"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"ip": "203.0.113.1",
+		"vendor": "aws",
+		"region": "us-east-1"
+	}'
 ```
 
 Note
@@ -200,7 +192,14 @@ Note
 
 To confirm that Tiered Cache is working, make sure you have the value of [CacheTieredFill](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/#cachetieredfill) in your http\_requests logs, this will indicate if Tiered Cache was used to serve the request.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/tiered-cache/#page","headline":"Tiered Cache · Cloudflare Cache (CDN) docs","description":"Reduce origin requests with tiered cache topology.","url":"https://developers.cloudflare.com/cache/how-to/tiered-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/tiered-cache/","name":"Tiered Cache"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/tiered-cache/#page","headline":"Tiered Cache · Cloudflare Cache (CDN) docs","description":"Reduce origin requests with tiered cache topology.","url":"https://developers.cloudflare.com/cache/how-to/tiered-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Logging"]}
 ```

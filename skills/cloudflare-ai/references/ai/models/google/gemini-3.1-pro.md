@@ -1,40 +1,40 @@
 ---
-title: Gemini 3.1 Pro
 description: Google's most intelligent Gemini model with improved reasoning, a medium thinking level, and a 1M token context window.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Gemini 3.1 Pro
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
 #  Gemini 3.1 Pro
 
-Text Generation • Google
+ Text Generation • Google
 
-`google/gemini-3.1-pro`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` google/gemini-3.1-pro `
+
+* Third-party
+* Zero data retention
 
 Google's most intelligent Gemini model with improved reasoning, a medium thinking level, and a 1M token context window.
 
-| Model Info                                                                 |                                                                                                                         |
-| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                        |
-| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
-| More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                  |
-| Zero data retention                                                        | Yes                                                                                                                     |
-| Request formats                                                            | Chat Completions                                                                                                        |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-pro) |
+| Model Info                                                                  |                                                                                                                          |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                         |
+| Terms and License                                                           | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                         |
+| More information                                                            | [link ↗](https://deepmind.google/technologies/gemini/)                                                                   |
+| Zero data retention                                                         | Yes                                                                                                                      |
+| Request formats                                                             | Chat Completions                                                                                                         |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-pro) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-640)
-* [ cURL ](#tab-panel-641)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -64,9 +64,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   }
 }'
 ```
-
-* [ Output ](#tab-panel-646)
-* [ Raw response ](#tab-panel-647)
 
 The laws of thermodynamics are the fundamental principles that describe how energy moves and changes within the universe. While the prompt asks for the "three" laws, there are actually four (scientists later added a "Zeroth" law).
 
@@ -150,11 +147,6 @@ A famous and humorous way physicists remember the laws of thermodynamics is by c
 
 **With System Instruction**  — Using a system instruction to set context
 
-* [ TypeScript ](#tab-panel-642)
-* [ cURL ](#tab-panel-643)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'google/gemini-3.1-pro',
@@ -199,9 +191,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   }
 }'
 ```
-
-* [ Output ](#tab-panel-650)
-* [ Raw response ](#tab-panel-651)
 
 To read a JSON file in Python, you can use the built-in `json` module.
 
@@ -301,11 +290,6 @@ except json.JSONDecodeError:
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-648)
-* [ cURL ](#tab-panel-649)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'google/gemini-3.1-pro',
@@ -371,9 +355,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-652)
-* [ Raw response ](#tab-panel-653)
-
 The best stops really depend on which route you decide to take! There are three
 
 ```json
@@ -423,11 +404,6 @@ The best stops really depend on which route you decide to take! There are three
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-644)
-* [ cURL ](#tab-panel-645)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'google/gemini-3.1-pro',
@@ -468,9 +444,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   }
 }'
 ```
-
-* [ Output ](#tab-panel-654)
-* [ Raw response ](#tab-panel-655)
 
 The air in Elias Vance’s apartment smelled of stale copper
 
@@ -524,9 +497,6 @@ The air in Elias Vance’s apartment smelled of stale copper
 Schema variant
 
 Generate ContentChat Completions
-
-* [ Input ](#tab-panel-656)
-* [ Output ](#tab-panel-657)
 
 ▶contents\[\]
 
@@ -650,7 +620,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/sche
 
 Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/#page","headline":"Gemini 3.1 Pro (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's most intelligent Gemini model with improved reasoning, a medium thinking level, and a 1M token context window.","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/#page","headline":"Gemini 3.1 Pro (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's most intelligent Gemini model with improved reasoning, a medium thinking level, and a 1M token context window.","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.1-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

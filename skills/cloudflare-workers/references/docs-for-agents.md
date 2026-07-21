@@ -1,16 +1,18 @@
 ---
-title: Docs for agents
 description: Connect AI agents and LLMs to Cloudflare docs
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Docs for agents
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/docs-for-agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Docs for agents
 
-# Docs for agents
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/docs-for-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI agents — tools like Cursor, GitHub Copilot, and Claude Code — can answer questions about Cloudflare products, generate configuration, and call Cloudflare APIs on your behalf. Cloudflare documentation provides content in agent-friendly formats, agent skills, and MCP servers so your AI agent can look up documentation and interact with Cloudflare services directly.
 
@@ -20,11 +22,17 @@ This page explains the available approaches and how to set them up.
 
 These resources cover different aspects of using AI agents with Cloudflare documentation. Start with the one most relevant to you:
 
-[ Understand key concepts ](#concepts) Learn about agent skills and MCP (Model Context Protocol).
+### [ Understand key concepts ](#concepts)
 
-[ Set up your agent ](https://developers.cloudflare.com/agent-setup/) Install skills and MCP servers for your specific AI tool.
+ Learn about agent skills and MCP (Model Context Protocol).
 
-[ Extract documentation in agent-friendly format ](#markdown-documentation-for-llms) Minimize token usage while improving the accuracy of your agent's responses.
+### [ Set up your agent ](https://developers.cloudflare.com/agent-setup/)
+
+ Install skills and MCP servers for your specific AI tool.
+
+### [ Extract documentation in agent-friendly format ](#markdown-documentation-for-llms)
+
+ Minimize token usage while improving the accuracy of your agent's responses.
 
 ## Concepts
 
@@ -129,7 +137,14 @@ The full Cloudflare API OpenAPI specification is available for AI coding tools, 
 
 For the full API reference, refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/docs-for-agents/#page","headline":"Docs for agents · Docs for agents docs","description":"Connect AI agents and LLMs to Cloudflare docs","url":"https://developers.cloudflare.com/docs-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/docs-for-agents/","name":"Docs for agents"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/docs-for-agents/#page","headline":"Docs for agents · Docs for agents docs","description":"Connect AI agents and LLMs to Cloudflare docs","url":"https://developers.cloudflare.com/docs-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

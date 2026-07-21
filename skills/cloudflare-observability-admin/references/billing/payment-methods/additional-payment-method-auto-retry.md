@@ -1,16 +1,18 @@
 ---
-title: Additional payment method auto-retry
 description: How Cloudflare retries failed payments using additional payment methods on file.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Additional payment method auto-retry
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Additional payment method auto-retry
 
-# Additional payment method auto-retry
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If a subscription renewal payment fails on your primary payment method, Cloudflare automatically retries the payment using your additional payment methods on file. This keeps your services active without requiring you to take action.
 
@@ -45,7 +47,7 @@ When an additional payment method is charged, you receive an email with:
 ## Manage your payment methods
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to the **Subscriptions** page and open the **Payment methods** panel.
 3. Review your primary and additional payment methods.
 
@@ -73,7 +75,14 @@ Your next renewal always attempts your primary (default) payment method first. A
 
 The label "Backup payment method" was renamed to "Additional payment method" in the Cloudflare dashboard. The auto-retry behavior described on this page is unchanged.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/#page","headline":"Additional payment method auto-retry · Cloudflare Billing docs","description":"How Cloudflare retries failed payments using additional payment methods on file.","url":"https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/payment-methods/","name":"Payment methods"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/payment-methods/additional-payment-method-auto-retry/","name":"Additional payment method auto-retry"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/#page","headline":"Additional payment method auto-retry · Cloudflare Billing docs","description":"How Cloudflare retries failed payments using additional payment methods on file.","url":"https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

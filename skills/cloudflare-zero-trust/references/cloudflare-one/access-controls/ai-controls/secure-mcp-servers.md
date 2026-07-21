@@ -1,16 +1,18 @@
 ---
-title: Secure MCP servers
 description: Secure MCP servers with Cloudflare Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Secure MCP servers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Secure MCP servers
 
-# Secure MCP servers
+Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can secure [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) with Cloudflare Access. Choose an approach based on who manages the MCP server code and hostname:
 
@@ -57,9 +59,6 @@ The following guide uses a remote MCP server on [Cloudflare Workers](https://dev
 
 To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) to your Cloudflare account:
 
-* [ Dashboard ](#tab-panel-7747)
-* [ CLI ](#tab-panel-7748)
-
 1. Select the following button to launch the quickstart flow:
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access)
 2. Select the account that contains your Zero Trust organization.
@@ -98,23 +97,21 @@ npx wrangler kv namespace create "OAUTH_KV"
 The command will output the binding name and KV namespace ID:
 ```sh
 {
-  "kv_namespaces": [
-    {
-      "binding": "OAUTH_KV",
-      "id": "<YOUR_KV_NAMESPACE_ID>"
-    }
-  ]
+	"kv_namespaces": [
+		{
+			"binding": "OAUTH_KV",
+			"id": "<YOUR_KV_NAMESPACE_ID>"
+		}
+	]
 }
 ```
 4. Open `wrangler.jsonc` in an editor and insert your `OAUTH_KV` namespace ID:
-
-**JSONC**
 ```jsonc
 "kv_namespaces": [
-  {
-    "binding": "OAUTH_KV",
-    "id": "<YOUR_KV_NAMESPACE_ID>"
-  }
+	{
+		"binding": "OAUTH_KV",
+		"id": "<YOUR_KV_NAMESPACE_ID>"
+	}
 ],
 ```
 5. You can now deploy the Worker to Cloudflare's global network:
@@ -125,9 +122,6 @@ npx wrangler deploy
 The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev`.
 
 ### 2\. Create an Access for SaaS app
-
-* [ Dashboard ](#tab-panel-7751)
-* [ API ](#tab-panel-7752)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Select **Create new application**.
@@ -156,33 +150,31 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Access: Apps and Policies Write`
-
-**Add an Access application**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "MCP server",
-    "type": "saas",
-    "saas_app": {
-        "auth_type": "oidc",
-        "redirect_uris": [
-            "https://mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev/callback"
-        ],
-        "grant_type": [
-            "authorization_code",
-            "refresh_tokens"
-        ],
-        "refresh_token_options": {
-            "lifetime": "90d"
-        }
-    },
-    "policies": [
-        "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
-    ],
-    "allowed_idps": []
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "MCP server",
+		"type": "saas",
+		"saas_app": {
+				"auth_type": "oidc",
+				"redirect_uris": [
+						"https://mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev/callback"
+				],
+				"grant_type": [
+						"authorization_code",
+						"refresh_tokens"
+				],
+				"refresh_token_options": {
+						"lifetime": "90d"
+				}
+		},
+		"policies": [
+				"f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+		],
+		"allowed_idps": []
+	}'
 ```
 2. Copy the `client_id` and `client_secret` returned in the response.
 3. Build the OAuth endpoint URLs using your team name and the `client_id` returned in the response:
@@ -199,11 +191,8 @@ Your MCP server needs to perform an OAuth 2.0 authorization flow to get an `acce
 
 To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-example-mcp-server):
 
-* [ Dashboard ](#tab-panel-7749)
-* [ CLI ](#tab-panel-7750)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the `mcp-server-cf-access` Worker.
 3. Go to **Settings**.
 4. Under **Variables and Secrets**, update each secret with the corresponding value obtained from the [Access for SaaS app](#2-create-an-access-for-saas-app).
@@ -269,7 +258,14 @@ Workers AI Playground will show a **Connected** status. The MCP server should su
 
 To allow the MCP server to make authenticated requests to other self-hosted applications on behalf of the user, create a [Linked App Token](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/linked-apps/) policy on the downstream application. The MCP server forwards the `Cf-Access-Jwt-Assertion` header it receives from Access as a `Cf-Access-Token` header to the downstream application.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/#page","headline":"Secure MCP servers · Cloudflare One docs","description":"Secure MCP servers with Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/","name":"AI controls"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/","name":"Secure MCP servers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/#page","headline":"Secure MCP servers · Cloudflare One docs","description":"Secure MCP servers with Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

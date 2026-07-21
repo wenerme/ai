@@ -1,16 +1,18 @@
 ---
-title: Configuration
 description: Manage Cloudflare Workers project settings, bindings, and deployment options.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration
 
-# Configuration
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Worker configuration is managed through a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), which defines your project settings, bindings, and deployment options. Wrangler is the command-line tool used to develop, test, and deploy Workers.
 
@@ -29,7 +31,14 @@ For more information on Wrangler, refer to [Wrangler](https://developers.cloudfl
 * [ Secrets ](https://developers.cloudflare.com/workers/configuration/secrets/)
 * [ Workers Sites ](https://developers.cloudflare.com/workers/configuration/sites/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Manage Cloudflare Workers project settings, bindings, and deployment options.","url":"https://developers.cloudflare.com/workers/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Manage Cloudflare Workers project settings, bindings, and deployment options.","url":"https://developers.cloudflare.com/workers/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

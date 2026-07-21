@@ -1,16 +1,18 @@
 ---
-title: Proxy requests to external APIs
 description: Keep credentials secure by routing sandbox requests through a Worker proxy that injects authentication at request time.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Proxy requests to external APIs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Proxy requests to external APIs
 
-# Proxy requests to external APIs
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/proxy-requests/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When a sandbox needs to call an external API, you might pass credentials directly into the sandbox process. That approach works, but it means the sandbox holds a live credential that any code running inside it can read, copy, or misuse.
 
@@ -97,51 +99,38 @@ The framework exports:
 
 Create a `ServiceConfig` for each external API you want to proxy. This example proxies a generic HTTP API that expects a Bearer token:
 
-* [  JavaScript ](#tab-panel-11359)
-* [  TypeScript ](#tab-panel-11360)
-
-**JavaScript**
-
 ```js
 export const myApi = {
-  // All requests to /proxy/myapi/* are forwarded to this base URL
-  target: "https://api.example.com",
+	// All requests to /proxy/myapi/* are forwarded to this base URL
+	target: "https://api.example.com",
 
+	// Extract the JWT from the Authorization header
+	validate: (req) =>
+		req.headers.get("Authorization")?.replace("Bearer ", "") ?? null,
 
-  // Extract the JWT from the Authorization header
-  validate: (req) =>
-    req.headers.get("Authorization")?.replace("Bearer ", "") ?? null,
-
-
-  // Replace the JWT with the real API key before forwarding
-  transform: async (req, ctx) => {
-    req.headers.set("Authorization", `Bearer ${ctx.env.MY_API_KEY}`);
-    return req;
-  },
+	// Replace the JWT with the real API key before forwarding
+	transform: async (req, ctx) => {
+		req.headers.set("Authorization", `Bearer ${ctx.env.MY_API_KEY}`);
+		return req;
+	},
 };
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import type { ServiceConfig } from '../proxy';
-
 
 interface Env {
   MY_API_KEY: string;
   PROXY_JWT_SECRET: string;
 }
 
-
 export const myApi: ServiceConfig<Env> = {
   // All requests to /proxy/myapi/* are forwarded to this base URL
   target: 'https://api.example.com',
 
-
   // Extract the JWT from the Authorization header
   validate: (req) =>
     req.headers.get('Authorization')?.replace('Bearer ', '') ?? null,
-
 
   // Replace the JWT with the real API key before forwarding
   transform: async (req, ctx) => {
@@ -157,73 +146,56 @@ The `transform` function receives the outgoing request and a context object cont
 
 Register your services with `createProxyHandler` and issue tokens to sandboxes using `createProxyToken`:
 
-* [  JavaScript ](#tab-panel-11361)
-* [  TypeScript ](#tab-panel-11362)
-
-**JavaScript**
-
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 import { createProxyHandler, createProxyToken } from "./proxy";
 import { myApi } from "./services/myapi";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 const proxyHandler = createProxyHandler({
-  mountPath: "/proxy",
-  jwtSecret: (env) => env.PROXY_JWT_SECRET,
-  services: { myapi: myApi },
+	mountPath: "/proxy",
+	jwtSecret: (env) => env.PROXY_JWT_SECRET,
+	services: { myapi: myApi },
 });
 
-
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		// Route all /proxy/* requests through the proxy handler
+		if (url.pathname.startsWith("/proxy/")) {
+			return proxyHandler(request, env);
+		}
 
-    // Route all /proxy/* requests through the proxy handler
-    if (url.pathname.startsWith("/proxy/")) {
-      return proxyHandler(request, env);
-    }
+		// Create a sandbox and issue it a short-lived token
+		const sandboxId = "my-sandbox";
+		const sandbox = getSandbox(env.Sandbox, sandboxId);
+		const token = await createProxyToken({
+			secret: env.PROXY_JWT_SECRET,
+			sandboxId,
+			expiresIn: "15m",
+		});
 
+		const proxyBase = `https://${url.hostname}`;
 
-    // Create a sandbox and issue it a short-lived token
-    const sandboxId = "my-sandbox";
-    const sandbox = getSandbox(env.Sandbox, sandboxId);
-    const token = await createProxyToken({
-      secret: env.PROXY_JWT_SECRET,
-      sandboxId,
-      expiresIn: "15m",
-    });
+		// Pass the token and proxy base URL to the sandbox
+		await sandbox.setEnvVars({
+			PROXY_TOKEN: token,
+			PROXY_BASE: proxyBase,
+		});
 
-
-    const proxyBase = `https://${url.hostname}`;
-
-
-    // Pass the token and proxy base URL to the sandbox
-    await sandbox.setEnvVars({
-      PROXY_TOKEN: token,
-      PROXY_BASE: proxyBase,
-    });
-
-
-    return Response.json({ message: "Sandbox ready" });
-  },
+		return Response.json({ message: "Sandbox ready" });
+	},
 };
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 import { getSandbox } from '@cloudflare/sandbox';
 import { createProxyHandler, createProxyToken } from './proxy';
 import { myApi } from './services/myapi';
 
-
 export { Sandbox } from '@cloudflare/sandbox';
-
 
 interface Env {
   Sandbox: DurableObjectNamespace;
@@ -231,24 +203,20 @@ interface Env {
   PROXY_JWT_SECRET: string;
 }
 
-
 const proxyHandler = createProxyHandler<Env>({
   mountPath: '/proxy',
   jwtSecret: (env) => env.PROXY_JWT_SECRET,
   services: { myapi: myApi }
 });
 
-
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
-
 
     // Route all /proxy/* requests through the proxy handler
     if (url.pathname.startsWith('/proxy/')) {
       return proxyHandler(request, env);
     }
-
 
     // Create a sandbox and issue it a short-lived token
     const sandboxId = 'my-sandbox';
@@ -259,16 +227,13 @@ export default {
       expiresIn: '15m'
     });
 
-
     const proxyBase = `https://${url.hostname}`;
-
 
     // Pass the token and proxy base URL to the sandbox
     await sandbox.setEnvVars({
       PROXY_TOKEN: token,
       PROXY_BASE: proxyBase
     });
-
 
     return Response.json({ message: 'Sandbox ready' });
   }
@@ -290,12 +255,9 @@ curl "$PROXY_BASE/proxy/myapi/v1/endpoint" \
 
 Or from Python running inside the sandbox:
 
-**Python**
-
 ```python
 import os
 import requests
-
 
 response = requests.post(
     f"{os.environ['PROXY_BASE']}/proxy/myapi/v1/endpoint",
@@ -323,34 +285,26 @@ The SDK then sends all requests to your Worker proxy, which validates the token 
 
 To proxy additional APIs, define another `ServiceConfig` and add it to `createProxyHandler`:
 
-* [  JavaScript ](#tab-panel-11357)
-* [  TypeScript ](#tab-panel-11358)
-
-**JavaScript**
-
 ```js
 export const anotherApi = {
-  target: "https://api.another-service.com",
-  validate: (req) =>
-    req.headers.get("Authorization")?.replace("Bearer ", "") ?? null,
-  transform: async (req, ctx) => {
-    req.headers.set("Authorization", `Bearer ${ctx.env.ANOTHER_API_KEY}`);
-    return req;
-  },
+	target: "https://api.another-service.com",
+	validate: (req) =>
+		req.headers.get("Authorization")?.replace("Bearer ", "") ?? null,
+	transform: async (req, ctx) => {
+		req.headers.set("Authorization", `Bearer ${ctx.env.ANOTHER_API_KEY}`);
+		return req;
+	},
 };
-
 
 // In your Worker:
 const proxyHandler = createProxyHandler({
-  mountPath: "/proxy",
-  jwtSecret: (env) => env.PROXY_JWT_SECRET,
-  services: { myapi: myApi, another: anotherApi },
+	mountPath: "/proxy",
+	jwtSecret: (env) => env.PROXY_JWT_SECRET,
+	services: { myapi: myApi, another: anotherApi },
 });
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 export const anotherApi: ServiceConfig<Env> = {
   target: 'https://api.another-service.com',
   validate: (req) => req.headers.get('Authorization')?.replace('Bearer ', '') ?? null,
@@ -359,7 +313,6 @@ export const anotherApi: ServiceConfig<Env> = {
     return req;
   }
 };
-
 
 // In your Worker:
 const proxyHandler = createProxyHandler<Env>({
@@ -383,23 +336,16 @@ The JWT is missing, expired, or signed with the wrong secret. Verify that:
 
 To issue a fresh token and pass it to the sandbox:
 
-* [  JavaScript ](#tab-panel-11353)
-* [  TypeScript ](#tab-panel-11354)
-
-**JavaScript**
-
 ```js
 const freshToken = await createProxyToken({
-  secret: env.PROXY_JWT_SECRET,
-  sandboxId,
-  expiresIn: "15m",
+	secret: env.PROXY_JWT_SECRET,
+	sandboxId,
+	expiresIn: "15m",
 });
 await sandbox.setEnvVars({ PROXY_TOKEN: freshToken });
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 const freshToken = await createProxyToken({
   secret: env.PROXY_JWT_SECRET,
   sandboxId,
@@ -416,22 +362,15 @@ The service name in the URL must match the key in the `services` object. A reque
 
 Log the request URL in `transform` to confirm the path is being rewritten correctly:
 
-* [  JavaScript ](#tab-panel-11355)
-* [  TypeScript ](#tab-panel-11356)
-
-**JavaScript**
-
 ```js
 transform: async (req, ctx) => {
-  console.log("Proxying to:", req.url);
-  req.headers.set("Authorization", `Bearer ${ctx.env.MY_API_KEY}`);
-  return req;
+	console.log("Proxying to:", req.url);
+	req.headers.set("Authorization", `Bearer ${ctx.env.MY_API_KEY}`);
+	return req;
 };
 ```
 
-**TypeScript**
-
-```ts
+```plaintext
 transform: async (req, ctx) => {
   console.log('Proxying to:', req.url);
   req.headers.set('Authorization', `Bearer ${ctx.env.MY_API_KEY}`);
@@ -446,7 +385,14 @@ transform: async (req, ctx) => {
 * [Work with Git](https://developers.cloudflare.com/sandbox/guides/git-workflows/) — Git operations in sandboxes
 * [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) — simpler alternative for lower-risk credentials
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/#page","headline":"Proxy requests to external APIs · Cloudflare Sandbox SDK docs","description":"Keep credentials secure by routing sandbox requests through a Worker proxy that injects authentication at request time.","url":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/guides/","name":"How-to guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/guides/proxy-requests/","name":"Proxy requests to external APIs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/#page","headline":"Proxy requests to external APIs · Cloudflare Sandbox SDK docs","description":"Keep credentials secure by routing sandbox requests through a Worker proxy that injects authentication at request time.","url":"https://developers.cloudflare.com/sandbox/guides/proxy-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

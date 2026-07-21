@@ -1,16 +1,18 @@
 ---
-title: Custom pages
 description: Configure custom error and block pages.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Custom pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom pages
 
-# Custom pages
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/custom-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Design your custom HTML page and host it online anywhere. Once published, Cloudflare will use the customized page instead of serving our standard page to your visitors.
 
@@ -28,7 +30,14 @@ Pages you can customize:
 * Managed challenge / I'm Under Attack Mode
 * Rate limiting block
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/custom-pages/#page","headline":"Custom pages · Cloudflare Learning Paths","description":"Configure custom error and block pages.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/custom-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/surge-readiness/concepts/","name":"Prerequisites"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/surge-readiness/concepts/custom-pages/","name":"Custom pages"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/custom-pages/#page","headline":"Custom pages · Cloudflare Learning Paths","description":"Configure custom error and block pages.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/concepts/custom-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Hyperdrive
 description: Wrangler commands for managing Hyperdrive database configurations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Hyperdrive
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Hyperdrive
 
-# Hyperdrive
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Manage [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) database configurations using Wrangler.
 
@@ -20,20 +22,18 @@ To manage mTLS client certificates and CA chain certificates used by Hyperdrive,
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-13315)
-* [  pnpm ](#tab-panel-13316)
-* [  yarn ](#tab-panel-13317)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler hyperdrive create [NAME]
 ```
 
-```sh
-pnpm wrangler hyperdrive create [NAME]
+```
+yarn wrangler hyperdrive create [NAME]
 ```
 
-```sh
-yarn wrangler hyperdrive create [NAME]
+```
+pnpm wrangler hyperdrive create [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -102,20 +102,18 @@ Use a specific auth profile
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-13318)
-* [  pnpm ](#tab-panel-13319)
-* [  yarn ](#tab-panel-13320)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler hyperdrive delete [ID]
 ```
 
-```sh
-pnpm wrangler hyperdrive delete [ID]
+```
+yarn wrangler hyperdrive delete [ID]
 ```
 
-```sh
-yarn wrangler hyperdrive delete [ID]
+```
+pnpm wrangler hyperdrive delete [ID]
 ```
 
 * `[ID]` ` string ` required
@@ -146,20 +144,18 @@ Use a specific auth profile
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-13321)
-* [  pnpm ](#tab-panel-13322)
-* [  yarn ](#tab-panel-13323)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler hyperdrive get [ID]
 ```
 
-```sh
-pnpm wrangler hyperdrive get [ID]
+```
+yarn wrangler hyperdrive get [ID]
 ```
 
-```sh
-yarn wrangler hyperdrive get [ID]
+```
+pnpm wrangler hyperdrive get [ID]
 ```
 
 * `[ID]` ` string ` required
@@ -190,20 +186,18 @@ Use a specific auth profile
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-13324)
-* [  pnpm ](#tab-panel-13325)
-* [  yarn ](#tab-panel-13326)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler hyperdrive list
 ```
 
-```sh
-pnpm wrangler hyperdrive list
+```
+yarn wrangler hyperdrive list
 ```
 
-```sh
-yarn wrangler hyperdrive list
+```
+pnpm wrangler hyperdrive list
 ```
 
 Global flags
@@ -231,20 +225,18 @@ Use a specific auth profile
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-13327)
-* [  pnpm ](#tab-panel-13328)
-* [  yarn ](#tab-panel-13329)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler hyperdrive update [ID]
 ```
 
-```sh
-pnpm wrangler hyperdrive update [ID]
+```
+yarn wrangler hyperdrive update [ID]
 ```
 
-```sh
-yarn wrangler hyperdrive update [ID]
+```
+pnpm wrangler hyperdrive update [ID]
 ```
 
 * `[ID]` ` string ` required
@@ -307,7 +299,14 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` ` string `
 Use a specific auth profile
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/#page","headline":"Hyperdrive · Cloudflare Workers docs","description":"Wrangler commands for managing Hyperdrive database configurations.","url":"https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/hyperdrive/","name":"Hyperdrive"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/#page","headline":"Hyperdrive · Cloudflare Workers docs","description":"Wrangler commands for managing Hyperdrive database configurations.","url":"https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

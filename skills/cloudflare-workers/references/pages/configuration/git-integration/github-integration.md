@@ -1,16 +1,18 @@
 ---
-title: GitHub integration
 description: Connect a GitHub repository to Cloudflare Pages for automatic deployments, preview URLs, and check runs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GitHub integration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  GitHub integration
 
-# GitHub integration
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can connect each Cloudflare Pages project to a GitHub repository, and Cloudflare will automatically deploy your code every time you push a change to a branch.
 
@@ -86,9 +88,8 @@ If you see errors where Cloudflare Pages cannot access your git repository, you 
   * Navigate to **Settings > Builds** for the Pages project and select **Manage** under Git Repository.
   * Alternatively, visit these links to find the Cloudflare Workers and Pages installation and select **Configure**:
 
-|                  |                                                                                    |
-| ---------------- | ---------------------------------------------------------------------------------- |
 | **Individual**   | https://github.com/settings/installations                                          |
+| ---------------- | ---------------------------------------------------------------------------------- |
 | **Organization** | https://github.com/organizations/<YOUR\_ORGANIZATION\_NAME>/settings/installations |
 
 1. In the Cloudflare Workers and Pages GitHub App settings page, navigate to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.
@@ -97,7 +98,14 @@ If you see errors where Cloudflare Pages cannot access your git repository, you 
 4. You should be redirected to the create project page with your GitHub account or organization in the account list.
 5. Attempt to make a new deployment with your project which was previously broken.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#page","headline":"GitHub integration · Cloudflare Pages docs","description":"Connect a GitHub repository to Cloudflare Pages for automatic deployments, preview URLs, and check runs.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/git-integration/","name":"Git integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/configuration/git-integration/github-integration/","name":"GitHub integration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#page","headline":"GitHub integration · Cloudflare Pages docs","description":"Connect a GitHub repository to Cloudflare Pages for automatic deployments, preview URLs, and check runs.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

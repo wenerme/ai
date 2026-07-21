@@ -1,16 +1,18 @@
 ---
-title: Directives
 description: Monitor AI crawler interactions with your robots.txt files.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Directives
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Directives
 
-# Directives
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The **Directives** tab in AI Crawl Control provides insights into how AI crawlers interact with your `robots.txt` files across your hostnames. You can monitor request patterns, verify file availability, identify crawlers that violate your directives, and assess your site's readiness for AI agents.
 
@@ -18,7 +20,7 @@ To access directives insights:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**.
-[ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+[ Go to **AI Crawl Control** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 3. Go to the **Directives** tab.
 
 ## Check managed robots.txt status
@@ -95,7 +97,14 @@ The scan is powered by [isitagentready.com ↗](https://isitagentready.com). Res
 * [Analyze AI traffic](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/)
 * [Cloudflare WAF](https://developers.cloudflare.com/waf/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/#page","headline":"Directives · Cloudflare AI Crawl Control docs","description":"Monitor AI crawler interactions with your robots.txt files.","url":"https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/track-robots-txt/","name":"Directives"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/#page","headline":"Directives · Cloudflare AI Crawl Control docs","description":"Monitor AI crawler interactions with your robots.txt files.","url":"https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

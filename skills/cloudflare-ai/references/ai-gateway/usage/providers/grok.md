@@ -1,16 +1,18 @@
 ---
-title: xAI
 description: Route xAI (Grok) API requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: xAI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  xAI
 
-# xAI
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/providers/grok/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Endpoint
 
@@ -35,8 +37,6 @@ When making requests to Grok, ensure you have the following:
 
 ### cURL
 
-**Request**
-
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok/v1/chat/completions \
   --header 'content-type: application/json' \
@@ -56,34 +56,29 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok/v1/chat
 
 If you are using the OpenAI SDK with JavaScript, you can set your endpoint like this:
 
-**JavaScript**
-
 ```js
 import OpenAI from "openai";
 
-
 const openai = new OpenAI({
-  apiKey: "<api key>",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok",
+	apiKey: "<api key>",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok",
 });
-
 
 const completion = await openai.chat.completions.create({
-  model: "grok-4",
-  messages: [
-    {
-      role: "system",
-      content:
-        "You are Grok, a chatbot inspired by the Hitchhiker's Guide to the Galaxy.",
-    },
-    {
-      role: "user",
-      content: "What is the meaning of life, the universe, and everything?",
-    },
-  ],
+	model: "grok-4",
+	messages: [
+		{
+			role: "system",
+			content:
+				"You are Grok, a chatbot inspired by the Hitchhiker's Guide to the Galaxy.",
+		},
+		{
+			role: "user",
+			content: "What is the meaning of life, the universe, and everything?",
+		},
+	],
 });
-
 
 console.log(completion.choices[0].message);
 ```
@@ -92,19 +87,15 @@ console.log(completion.choices[0].message);
 
 If you are using the OpenAI SDK with Python, you can set your endpoint like this:
 
-**Python**
-
 ```python
 import os
 from openai import OpenAI
-
 
 XAI_API_KEY = os.getenv("XAI_API_KEY")
 client = OpenAI(
     api_key=XAI_API_KEY,
     base_url="https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok",
 )
-
 
 completion = client.chat.completions.create(
     model="grok-4",
@@ -114,7 +105,6 @@ completion = client.chat.completions.create(
     ],
 )
 
-
 print(completion.choices[0].message)
 ```
 
@@ -122,32 +112,27 @@ print(completion.choices[0].message)
 
 If you are using the Anthropic SDK with JavaScript, you can set your endpoint like this:
 
-**JavaScript**
-
 ```js
 import Anthropic from "@anthropic-ai/sdk";
 
-
 const anthropic = new Anthropic({
-  apiKey: "<api key>",
-  baseURL:
-    "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok",
+	apiKey: "<api key>",
+	baseURL:
+		"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok",
 });
-
 
 const msg = await anthropic.messages.create({
-  model: "grok-beta",
-  max_tokens: 128,
-  system:
-    "You are Grok, a chatbot inspired by the Hitchhiker's Guide to the Galaxy.",
-  messages: [
-    {
-      role: "user",
-      content: "What is the meaning of life, the universe, and everything?",
-    },
-  ],
+	model: "grok-beta",
+	max_tokens: 128,
+	system:
+		"You are Grok, a chatbot inspired by the Hitchhiker's Guide to the Galaxy.",
+	messages: [
+		{
+			role: "user",
+			content: "What is the meaning of life, the universe, and everything?",
+		},
+	],
 });
-
 
 console.log(msg);
 ```
@@ -156,19 +141,15 @@ console.log(msg);
 
 If you are using the Anthropic SDK with Python, you can set your endpoint like this:
 
-**Python**
-
 ```python
 import os
 from anthropic import Anthropic
-
 
 XAI_API_KEY = os.getenv("XAI_API_KEY")
 client = Anthropic(
     api_key=XAI_API_KEY,
     base_url="https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok",
 )
-
 
 message = client.messages.create(
     model="grok-beta",
@@ -181,7 +162,6 @@ message = client.messages.create(
         },
     ],
 )
-
 
 print(message.content)
 ```
@@ -197,12 +177,20 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
+
 {
 "model": "grok/{model}"
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/grok/#page","headline":"xAI · Cloudflare AI Gateway docs","description":"Route xAI (Grok) API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/grok/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/grok/","name":"xAI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/grok/#page","headline":"xAI · Cloudflare AI Gateway docs","description":"Route xAI (Grok) API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/grok/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

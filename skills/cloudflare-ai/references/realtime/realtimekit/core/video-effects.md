@@ -1,16 +1,18 @@
 ---
-title: Video Effects
 description: Add background blur and virtual backgrounds to video feeds in RealtimeKit meetings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Video Effects
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Video Effects
 
-# Video Effects
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Add video background effects and blur to participant video feeds in your RealtimeKit meetings using the Core SDK.
 
@@ -48,11 +50,9 @@ bun add @cloudflare/realtimekit-virtual-background
 
 Disable the default per frame rendering of video middleware to improve speed and quality by letting this middleware control it on its own:
 
-**JavaScript**
-
 ```javascript
 await meeting.self.setVideoMiddlewareGlobalConfig({
-  disablePerFrameCanvasRendering: true,
+	disablePerFrameCanvasRendering: true,
 });
 ```
 
@@ -60,16 +60,13 @@ await meeting.self.setVideoMiddlewareGlobalConfig({
 
 Create a video background transformer object:
 
-**JavaScript**
-
 ```javascript
 import RealtimeKitVideoBackgroundTransformer from "@cloudflare/realtimekit-virtual-background";
 
-
 const videoBackgroundTransformer =
-  await RealtimeKitVideoBackgroundTransformer.init({
-    meeting,
-  });
+	await RealtimeKitVideoBackgroundTransformer.init({
+		meeting,
+	});
 ```
 
 ### 3\. Apply background effects
@@ -80,16 +77,13 @@ The `videoBackgroundTransformer` exposes two types of middlewares:
 
 Use `createStaticBackgroundVideoMiddleware` to set an image as the background:
 
-**JavaScript**
-
 ```javascript
 const imageUrl = "https://images.unsplash.com/photo-1487088678257-3a541e6e3922";
 
-
 meeting.self.addVideoMiddleware(
-  await videoBackgroundTransformer.createStaticBackgroundVideoMiddleware(
-    imageUrl,
-  ),
+	await videoBackgroundTransformer.createStaticBackgroundVideoMiddleware(
+		imageUrl,
+	),
 );
 ```
 
@@ -97,11 +91,9 @@ meeting.self.addVideoMiddleware(
 
 Use `createBackgroundBlurVideoMiddleware` to blur the background. Pass `blurStrength` (0-100) as a parameter (50% by default):
 
-**JavaScript**
-
 ```javascript
 meeting.self.addVideoMiddleware(
-  await videoBackgroundTransformer.createBackgroundBlurVideoMiddleware(50),
+	await videoBackgroundTransformer.createBackgroundBlurVideoMiddleware(50),
 );
 ```
 
@@ -109,21 +101,18 @@ meeting.self.addVideoMiddleware(
 
 Check browser support before initializing:
 
-**JavaScript**
-
 ```javascript
 if (RealtimeKitVideoBackgroundTransformer.isSupported()) {
-  const videoBackgroundTransformer =
-    await RealtimeKitVideoBackgroundTransformer.init({
-      meeting: meeting,
-    });
+	const videoBackgroundTransformer =
+		await RealtimeKitVideoBackgroundTransformer.init({
+			meeting: meeting,
+		});
 
-
-  meeting.self.addVideoMiddleware(
-    await videoBackgroundTransformer.createStaticBackgroundVideoMiddleware(
-      imageUrl,
-    ),
-  );
+	meeting.self.addVideoMiddleware(
+		await videoBackgroundTransformer.createStaticBackgroundVideoMiddleware(
+			imageUrl,
+		),
+	);
 }
 ```
 
@@ -135,21 +124,19 @@ Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabl
 
 For better, sharper results, pass a custom segmentation configuration:
 
-**JavaScript**
-
 ```javascript
 const videoBackgroundTransformer =
-  await RealtimeKitVideoBackgroundTransformer.init({
-    meeting,
-    segmentationConfig: {
-      model: "mlkit", // 'meet' | 'mlkit'
-      backend: "wasmSimd",
-      inputResolution: "256x256", // '256x144' for meet
-      pipeline: "webgl2", // 'webgl2' | 'canvas2dCpu'
-      // canvas2dCpu gives sharper blur, webgl2 is faster
-      targetFps: 35,
-    },
-  });
+	await RealtimeKitVideoBackgroundTransformer.init({
+		meeting,
+		segmentationConfig: {
+			model: "mlkit", // 'meet' | 'mlkit'
+			backend: "wasmSimd",
+			inputResolution: "256x256", // '256x144' for meet
+			pipeline: "webgl2", // 'webgl2' | 'canvas2dCpu'
+			// canvas2dCpu gives sharper blur, webgl2 is faster
+			targetFps: 35,
+		},
+	});
 ```
 
 ## Installation
@@ -179,90 +166,77 @@ import { useState, useEffect } from "react";
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
 import RealtimeKitVideoBackgroundTransformer from "@cloudflare/realtimekit-virtual-background";
 
-
 function App() {
-  const [meeting] = useRealtimeKitClient();
-  const [videoBackgroundTransformer, setVideoBackgroundTransformer] =
-    useState(null);
+	const [meeting] = useRealtimeKitClient();
+	const [videoBackgroundTransformer, setVideoBackgroundTransformer] =
+		useState(null);
 
+	useEffect(() => {
+		const initializeTransformer = async () => {
+			if (!meeting) return;
 
-  useEffect(() => {
-    const initializeTransformer = async () => {
-      if (!meeting) return;
+			// Check browser support
+			if (!RealtimeKitVideoBackgroundTransformer.isSupported()) {
+				console.warn("Video background not supported in this browser");
+				return;
+			}
 
+			// Disable default per frame rendering
+			await meeting.self.setVideoMiddlewareGlobalConfig({
+				disablePerFrameCanvasRendering: true,
+			});
 
-      // Check browser support
-      if (!RealtimeKitVideoBackgroundTransformer.isSupported()) {
-        console.warn("Video background not supported in this browser");
-        return;
-      }
+			// Initialize transformer
+			const transformer = await RealtimeKitVideoBackgroundTransformer.init({
+				meeting,
+			});
 
+			setVideoBackgroundTransformer(transformer);
+		};
 
-      // Disable default per frame rendering
-      await meeting.self.setVideoMiddlewareGlobalConfig({
-        disablePerFrameCanvasRendering: true,
-      });
+		initializeTransformer();
+	}, [meeting]);
 
+	const applyStaticBackground = async (imageUrl) => {
+		if (!videoBackgroundTransformer) return;
 
-      // Initialize transformer
-      const transformer = await RealtimeKitVideoBackgroundTransformer.init({
-        meeting,
-      });
+		meeting.self.addVideoMiddleware(
+			await videoBackgroundTransformer.createStaticBackgroundVideoMiddleware(
+				imageUrl,
+			),
+		);
+	};
 
+	const applyBlur = async (blurStrength = 50) => {
+		if (!videoBackgroundTransformer) return;
 
-      setVideoBackgroundTransformer(transformer);
-    };
+		meeting.self.addVideoMiddleware(
+			await videoBackgroundTransformer.createBackgroundBlurVideoMiddleware(
+				blurStrength,
+			),
+		);
+	};
 
+	const removeBackground = () => {
+		// Remove all video middlewares
+		meeting.self.removeVideoMiddleware();
+	};
 
-    initializeTransformer();
-  }, [meeting]);
-
-
-  const applyStaticBackground = async (imageUrl) => {
-    if (!videoBackgroundTransformer) return;
-
-
-    meeting.self.addVideoMiddleware(
-      await videoBackgroundTransformer.createStaticBackgroundVideoMiddleware(
-        imageUrl,
-      ),
-    );
-  };
-
-
-  const applyBlur = async (blurStrength = 50) => {
-    if (!videoBackgroundTransformer) return;
-
-
-    meeting.self.addVideoMiddleware(
-      await videoBackgroundTransformer.createBackgroundBlurVideoMiddleware(
-        blurStrength,
-      ),
-    );
-  };
-
-
-  const removeBackground = () => {
-    // Remove all video middlewares
-    meeting.self.removeVideoMiddleware();
-  };
-
-
-  return (
-    <div>
-      <button
-        onClick={() =>
-          applyStaticBackground(
-            "https://images.unsplash.com/photo-1487088678257-3a541e6e3922",
-          )
-        }
-      >
-        Apply Background
-      </button>
-      <button onClick={() => applyBlur(50)}>Apply Blur</button>
-      <button onClick={removeBackground}>Remove Background</button>
-    </div>
-  );
+	return (
+		<div>
+			<button
+				onClick={() =>
+					applyStaticBackground(
+						"https://images.unsplash.com/photo-1487088678257-3a541e6e3922",
+					)
+				}
+			>
+				Apply Background
+			</button>
+			<button onClick={() => applyBlur(50)}>Apply Blur</button>
+			<button onClick={removeBackground}>Remove Background</button>
+		</div>
+	);
 }
 ```
 
@@ -276,15 +250,15 @@ For better, sharper results, pass a custom segmentation configuration:
 
 ```jsx
 const transformer = await RealtimeKitVideoBackgroundTransformer.init({
-  meeting,
-  segmentationConfig: {
-    model: "mlkit", // 'meet' | 'mlkit'
-    backend: "wasmSimd",
-    inputResolution: "256x256", // '256x144' for meet
-    pipeline: "webgl2", // 'webgl2' | 'canvas2dCpu'
-    // canvas2dCpu gives sharper blur, webgl2 is faster
-    targetFps: 35,
-  },
+	meeting,
+	segmentationConfig: {
+		model: "mlkit", // 'meet' | 'mlkit'
+		backend: "wasmSimd",
+		inputResolution: "256x256", // '256x144' for meet
+		pipeline: "webgl2", // 'webgl2' | 'canvas2dCpu'
+		// canvas2dCpu gives sharper blur, webgl2 is faster
+		targetFps: 35,
+	},
 });
 ```
 
@@ -312,82 +286,69 @@ bun add @cloudflare/realtimekit-virtual-background
 
 In your component TypeScript file:
 
-**TypeScript**
-
 ```typescript
 import { Component, OnInit } from "@angular/core";
 import RealtimeKitClient from "@cloudflare/realtimekit";
 import RealtimeKitVideoBackgroundTransformer from "@cloudflare/realtimekit-virtual-background";
 
-
 @Component({
-  selector: "app-meeting",
-  templateUrl: "./meeting.component.html",
+	selector: "app-meeting",
+	templateUrl: "./meeting.component.html",
 })
 export class MeetingComponent implements OnInit {
-  meeting: any;
-  videoBackgroundTransformer: any;
+	meeting: any;
+	videoBackgroundTransformer: any;
 
+	async ngOnInit() {
+		// Initialize meeting
+		this.meeting = await RealtimeKitClient.init({
+			authToken: "<participant_auth_token>",
+		});
 
-  async ngOnInit() {
-    // Initialize meeting
-    this.meeting = await RealtimeKitClient.init({
-      authToken: "<participant_auth_token>",
-    });
+		await this.meeting.join();
 
+		// Check browser support
+		if (!RealtimeKitVideoBackgroundTransformer.isSupported()) {
+			console.warn("Video background not supported in this browser");
+			return;
+		}
 
-    await this.meeting.join();
+		// Disable default per frame rendering
+		await this.meeting.self.setVideoMiddlewareGlobalConfig({
+			disablePerFrameCanvasRendering: true,
+		});
 
+		// Initialize transformer
+		this.videoBackgroundTransformer =
+			await RealtimeKitVideoBackgroundTransformer.init({
+				meeting: this.meeting,
+			});
+	}
 
-    // Check browser support
-    if (!RealtimeKitVideoBackgroundTransformer.isSupported()) {
-      console.warn("Video background not supported in this browser");
-      return;
-    }
+	async applyStaticBackground(imageUrl: string) {
+		if (!this.videoBackgroundTransformer) return;
 
+		this.meeting.self.addVideoMiddleware(
+			await this.videoBackgroundTransformer.createStaticBackgroundVideoMiddleware(
+				imageUrl,
+			),
+		);
+	}
 
-    // Disable default per frame rendering
-    await this.meeting.self.setVideoMiddlewareGlobalConfig({
-      disablePerFrameCanvasRendering: true,
-    });
+	async applyBlur(blurStrength: number = 50) {
+		if (!this.videoBackgroundTransformer) return;
 
+		this.meeting.self.addVideoMiddleware(
+			await this.videoBackgroundTransformer.createBackgroundBlurVideoMiddleware(
+				blurStrength,
+			),
+		);
+	}
 
-    // Initialize transformer
-    this.videoBackgroundTransformer =
-      await RealtimeKitVideoBackgroundTransformer.init({
-        meeting: this.meeting,
-      });
-  }
-
-
-  async applyStaticBackground(imageUrl: string) {
-    if (!this.videoBackgroundTransformer) return;
-
-
-    this.meeting.self.addVideoMiddleware(
-      await this.videoBackgroundTransformer.createStaticBackgroundVideoMiddleware(
-        imageUrl,
-      ),
-    );
-  }
-
-
-  async applyBlur(blurStrength: number = 50) {
-    if (!this.videoBackgroundTransformer) return;
-
-
-    this.meeting.self.addVideoMiddleware(
-      await this.videoBackgroundTransformer.createBackgroundBlurVideoMiddleware(
-        blurStrength,
-      ),
-    );
-  }
-
-
-  removeBackground() {
-    // Remove all video middlewares
-    this.meeting.self.removeVideoMiddleware();
-  }
+	removeBackground() {
+		// Remove all video middlewares
+		this.meeting.self.removeVideoMiddleware();
+	}
 }
 ```
 
@@ -395,9 +356,9 @@ In your component template:
 
 ```html
 <button
-  (click)="applyStaticBackground('https://images.unsplash.com/photo-1487088678257-3a541e6e3922')"
+	(click)="applyStaticBackground('https://images.unsplash.com/photo-1487088678257-3a541e6e3922')"
 >
-  Apply Background
+	Apply Background
 </button>
 <button (click)="applyBlur(50)">Apply Blur</button>
 <button (click)="removeBackground()">Remove Background</button>
@@ -411,21 +372,19 @@ Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabl
 
 For better, sharper results, pass a custom segmentation configuration:
 
-**TypeScript**
-
 ```typescript
 this.videoBackgroundTransformer =
-  await RealtimeKitVideoBackgroundTransformer.init({
-    meeting: this.meeting,
-    segmentationConfig: {
-      model: "mlkit", // 'meet' | 'mlkit'
-      backend: "wasmSimd",
-      inputResolution: "256x256", // '256x144' for meet
-      pipeline: "webgl2", // 'webgl2' | 'canvas2dCpu'
-      // canvas2dCpu gives sharper blur, webgl2 is faster
-      targetFps: 35,
-    },
-  });
+	await RealtimeKitVideoBackgroundTransformer.init({
+		meeting: this.meeting,
+		segmentationConfig: {
+			model: "mlkit", // 'meet' | 'mlkit'
+			backend: "wasmSimd",
+			inputResolution: "256x256", // '256x144' for meet
+			pipeline: "webgl2", // 'webgl2' | 'canvas2dCpu'
+			// canvas2dCpu gives sharper blur, webgl2 is faster
+			targetFps: 35,
+		},
+	});
 ```
 
 ## Installation
@@ -443,16 +402,12 @@ dependencies {
 
 This package currently exposes `VirtualBackgroundVideoFilter` which can be used with `FilterVideoProcessor`:
 
-**Kotlin**
-
 ```kotlin
 // Create a virtual background filter with a custom background image.
 val bgFilter = VirtualBackgroundVideoFilter(context, R.drawable.background)
 
-
 // Initialize the video processor with the filter.
 val processor = FilterVideoProcessor(eglBase, bgFilter)
-
 
 // // Set the video processor on the meeting builder.
 val meeting = RealtimeKitMeetingBuilder
@@ -474,23 +429,17 @@ We provide three types of video processors:
 
 Nonetheless, you can also create your own custom video processors by implementing the `VideoProcessor` interface directly:
 
-**Kotlin**
-
 ```kotlin
 import realtimekit.org.webrtc.VideoFrame
 import realtimekit.org.webrtc.VideoProcessor
 import realtimekit.org.webrtc.VideoSink
 
-
 class CustomVideoProcessor : VideoProcessor {
   override fun onCapturerStarted(started: Boolean) {}
 
-
   override fun onCapturerStopped() {}
 
-
   override fun onFrameCaptured(frame: VideoFrame?) {}
-
 
   override fun setSink(sink: VideoSink?) {}
 }
@@ -500,21 +449,16 @@ class CustomVideoProcessor : VideoProcessor {
 
 Once you have created and configured your `VideoProcessor`, pass it to the `RealtimeKitMeetingBuilder` object. This will process video frames captured by the camera before they are sent to other participants or rendered locally:
 
-**Kotlin**
-
 ```kotlin
 // Assuming 'myCustomProcessor' is an instance of any VideoProcessor implementation
 // (for example, ChainVideoProcessor, FilterVideoProcessor, and more).
 
-
 val myCustomProcessor = CustomProcessor()
-
 
 // Set the video processor on the meeting builder.
 val meeting = RealtimeKitMeetingBuilder
   .setVideoProcessor(processor = myCustomProcessor)
   .build(activity)
-
 
 // You can also pass an EglBase to the builder
 // This is useful when using FilterVideoProcessor
@@ -524,7 +468,14 @@ val meeting = RealtimeKitMeetingBuilder
   .build(activity)
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/#page","headline":"Video Effects · Cloudflare Realtime docs","description":"Add background blur and virtual backgrounds to video feeds in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/video-effects/","name":"Video Effects"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/#page","headline":"Video Effects · Cloudflare Realtime docs","description":"Add background blur and virtual backgrounds to video feeds in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

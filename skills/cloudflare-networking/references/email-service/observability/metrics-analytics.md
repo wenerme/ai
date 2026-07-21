@@ -1,16 +1,18 @@
 ---
-title: Metrics and analytics
 description: Query Email Service sending metrics and delivery rates via the dashboard or GraphQL Analytics API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics and analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics and analytics
 
-# Metrics and analytics
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/observability/metrics-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Email Service exposes analytics that allow you to inspect email sending performance and delivery rates across all your domains.
 
@@ -112,9 +114,9 @@ The following are common GraphQL queries that you can use to retrieve informatio
 
 ```json
 {
-  "zoneTag": "<YOUR_ZONE_ID>",
-  "start": "2024-07-15",
-  "end": "2024-07-30"
+	"zoneTag": "<YOUR_ZONE_ID>",
+	"start": "2024-07-15",
+	"end": "2024-07-30"
 }
 ```
 
@@ -124,25 +126,23 @@ To query the count of emails for a given date range, grouped by `date` and `stat
 
 ```graphql
 query EmailSendingByStatus($zoneTag: string!, $start: Date!, $end: Date!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      emailSendingAdaptiveGroups(
-        filter: { date_geq: $start, date_leq: $end }
-        limit: 10000
-        orderBy: [date_DESC]
-      ) {
-        count
-        dimensions {
-          date
-          status
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			emailSendingAdaptiveGroups(
+				filter: { date_geq: $start, date_leq: $end }
+				limit: 10000
+				orderBy: [date_DESC]
+			) {
+				count
+				dimensions {
+					date
+					status
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwCEoMAXJckAZwAoASALwHtswAVJQgLhhvIQChAIQAaGAwFII5PgBEqYcZJy4FSkQEoYAbwBQMGADcUYAO6Q9hozFbt6AM3TlIfXXbadufZl66EMAC+Oga2tmDI6Fh4wgCCuEgADuQoxmAA4hAsIEn0NuFGzmiuEO4wia4A+oRgwL7SshKVYFVodb5qwQWFaCgIKHIwAIwADOOjPeEsELiQpHwA2i1V8nAYAMIAulMwobtGAMY52OQHFf04NChsNNaFhS3nRtLUNOdBu5-h391BQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEYAnBRAwoAE2bsuvAexABfIA)
 
 #### Delivery failure analysis
 
@@ -150,26 +150,24 @@ To investigate delivery failure causes for a specific date range, grouped by `er
 
 ```graphql
 query EmailDeliveryFailures($zoneTag: string!, $start: Date!, $end: Date!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      emailSendingAdaptiveGroups(
-        filter: { date_geq: $start, date_leq: $end, status: "deliveryFailed" }
-        limit: 10000
-        orderBy: [date_DESC]
-      ) {
-        count
-        dimensions {
-          date
-          errorCause
-          sendingDomain
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			emailSendingAdaptiveGroups(
+				filter: { date_geq: $start, date_leq: $end, status: "deliveryFailed" }
+				limit: 10000
+				orderBy: [date_DESC]
+			) {
+				count
+				dimensions {
+					date
+					errorCause
+					sendingDomain
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2ARMaUDdJQBiqaIEYAzgBQAkAXgPYB2YAKkgOYBcMFALhBRMOAQgA0MGvyQQ+PDEj5hxksEwAm8xcoCUMAN4AoGDFwowAd0gHjJmIxbUAZuiUQe++8zace9b+wcMAC+ekZ2dmDI6ADKaupCHACC6kgADnx4YADiEAwgadS2ESYuaG4eMKlKAPocYMB+0rIS1WA1aA1+8RLSfCAUPABE6thZ0MToYOpDIcUlOAgocjAAjAAMm+vzEQwQoxAAQlA8ANptNRhwMQDCALo7MGGPJgDG+Ux8L1UoCGoUKGYFBsJRKbW+JkgeQgNyQAzAEN48USGAY0SY32CjyxERxc2CQA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEYAnBRAwoAE2bsuvAexABfIA)
 
 #### Hourly volume
 
@@ -177,25 +175,23 @@ To query email sending volume grouped by hour, useful for identifying traffic pa
 
 ```graphql
 query EmailSendingHourlyVolume($zoneTag: string!, $start: Time!, $end: Time!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      emailSendingAdaptiveGroups(
-        filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }
-        limit: 10000
-        orderBy: [datetimeHour_ASC]
-      ) {
-        count
-        dimensions {
-          datetimeHour
-          status
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			emailSendingAdaptiveGroups(
+				filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }
+				limit: 10000
+				orderBy: [datetimeHour_ASC]
+			) {
+				count
+				dimensions {
+					datetimeHour
+					status
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2BlMA7AJi7AcwAkB7ECNKANVLRATAAoASAL1OzABUlCAuGAGcALhAKEAhABoYLUUggjB3FIxlycuFWrCSAlDADeAKBgwAbijAB3SMbPmYHLkKYAzdCMiCjzzjx8guwBvIQwAL6Gpk5OYMjoWHgSAIK4SAAOIigWYADiEOQZbo6x5p5o3hC+MOne2YxkFAD6hGDAwQpKsnVgDWBNEM1o7cFakaVlaGooyjAAjAAMy4uTsaQQuJAAQlCCANq9-YPNKRgAwgC6azDRN+YAxuTYIve1uthCKJxCDmVlR10gze5gUIhAQjeERu0NisImESAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVABZOGCiBhQAJs3ZdeAoS2ESps+QF8gA)
 
 #### Individual email events
 
@@ -203,34 +199,32 @@ To query individual email events for troubleshooting specific delivery issues. T
 
 ```graphql
 query RecentEmailEvents($zoneTag: string!, $start: Time!, $end: Time!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      emailSendingAdaptive(
-        filter: { datetime_geq: $start, datetime_leq: $end }
-        limit: 50
-        orderBy: [datetime_DESC]
-      ) {
-        datetime
-        from
-        to
-        subject
-        status
-        eventType
-        sendingDomain
-        messageId
-        errorCause
-        errorDetail
-        dkim
-        dmarc
-        spf
-        isSpam
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			emailSendingAdaptive(
+				filter: { datetime_geq: $start, datetime_leq: $end }
+				limit: 50
+				orderBy: [datetime_DESC]
+			) {
+				datetime
+				from
+				to
+				subject
+				status
+				eventType
+				sendingDomain
+				messageId
+				errorCause
+				errorDetail
+				dkim
+				dmarc
+				spf
+				isSpam
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFwKIFsCGBLAGwwDdU0BnACgBIAvAexTABUcBzALhnLQjxTYBCADQxqPHBDRdmeLGBFjUAExlyFAShgBvAFAwYxPGADukHfoMwGTKgDNCaSF23XGLdlzrvWbGAF8tPSsrMFxCAGUVfjYAQWUcAAc0PFJKSxCDBwInCBcYBKcU+QB9NjBgLwkpUUKwYrASggqvFQCMzII5PGkYAFYABg6Q+ghlSAAhKC4AbTqGkoARDAiAYQBdYZggrYN59V2YOwh6LEO0ekPyEAAjACskNCu0HDQQckOwUnRmKESwK7RASLU74FCHeTkcjsMAASWUnwgJwgqxw7wBmVCSNGi3q+AIh2UAGs5ITcBBEFdEnZDnhyBFEjgzpj-B1WQZWf4gA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVABZOGCiBhQAJs3ZdeAoS2ESps+QF8gA)
 
 #### Email routing operations
 
@@ -238,25 +232,23 @@ To query the count of routed emails for a given date range, grouped by `date` an
 
 ```graphql
 query EmailRoutingByStatus($zoneTag: string!, $start: Date!, $end: Date!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      emailRoutingAdaptiveGroups(
-        filter: { date_geq: $start, date_leq: $end }
-        limit: 10000
-        orderBy: [date_DESC]
-      ) {
-        count
-        dimensions {
-          date
-          status
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			emailRoutingAdaptiveGroups(
+				filter: { date_geq: $start, date_leq: $end }
+				limit: 10000
+				orderBy: [date_DESC]
+			) {
+				count
+				dimensions {
+					date
+					status
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2AlA9iALigOwHMAhKAZVyVxAGcAKAEgC8sCwAVJIgLhltwRCRAIQAaGIwFIIuPgBFqYcZLAEAJgqUiAlDADeAKBgwAbijAB3SAeMmYrdgwBm6XJD76HbTtz4sfLiIYAF89I3t7MGR0bDxhAEF1JAAHfFMwAHEIHBSGO0iTVzR3CE8YZPcAfSIwYH9pWQlKsCq0Ov81dVCCwrQUBBQ5GABGAAYJsd7IrAh1SDI+AG0Wqvk4cgBhAF1pmHC9kwBjHAJcQ4qBtVoUNlpbQsKWi5NpGloLkL2vyJ+ekKAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEYAnBRAwoAE2bsuvAexABfIA)
 
 #### Routing rule activity
 
@@ -264,26 +256,24 @@ To see which routing rules are matching emails, grouped by `ruleMatched` and `ac
 
 ```graphql
 query EmailRoutingRuleActivity($zoneTag: string!, $start: Date!, $end: Date!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      emailRoutingAdaptiveGroups(
-        filter: { date_geq: $start, date_leq: $end }
-        limit: 10000
-        orderBy: [date_DESC]
-      ) {
-        count
-        dimensions {
-          date
-          ruleMatched
-          action
-        }
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			emailRoutingAdaptiveGroups(
+				filter: { date_geq: $start, date_leq: $end }
+				limit: 10000
+				orderBy: [date_DESC]
+			) {
+				count
+				dimensions {
+					date
+					ruleMatched
+					action
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAogWwIYEsA2AlA9iALigOwHMMQ0wBBAY3wDcVcoAKAEgC8sCwAVJIgLhgBnXBEJEAhABoYLEUgi5BAESS4w02WAIATFWo0BKGAG8AUDBj0wAd0imLlmBy5CmAM3TqIgk8848fILsAbxEMAC+xuZOTmDI6Nh44hQ6SAAOdGAA4hA46W6OsZaeaN6+MGnqAPpEYMDB8ooyVWDV5A1aupFFxWgoCAyCAIwADOOjvbFYEDqQAEJQggDardXKcADKAMIAulMw0QeWVDgEuMeVA9pCKJxCDsXFrZeWEGRgALJqVAAWYDpXjAkDQ7gRLhEDpDYtCehEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2bgEYAnBRAwoAE2bsuvAexABfIA)
 
 #### Individual routing events
 
@@ -291,33 +281,31 @@ To query individual routing events for troubleshooting:
 
 ```graphql
 query RecentRoutingEvents($zoneTag: string!, $start: Time!, $end: Time!) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      emailRoutingAdaptive(
-        filter: { datetime_geq: $start, datetime_leq: $end }
-        limit: 50
-        orderBy: [datetime_DESC]
-      ) {
-        datetime
-        from
-        to
-        subject
-        status
-        action
-        ruleMatched
-        messageId
-        errorDetail
-        dkim
-        dmarc
-        spf
-        isSpam
-      }
-    }
-  }
+	viewer {
+		zones(filter: { zoneTag: $zoneTag }) {
+			emailRoutingAdaptive(
+				filter: { datetime_geq: $start, datetime_leq: $end }
+				limit: 50
+				orderBy: [datetime_DESC]
+			) {
+				datetime
+				from
+				to
+				subject
+				status
+				action
+				ruleMatched
+				messageId
+				errorDetail
+				dkim
+				dmarc
+				spf
+				isSpam
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASmAxmAdgFzgexGgligcwFEA3VNAZwAoASAL0xTABUBDAgLhgrQnwICEAGhg0erCGi7NcAWzDDRqACbS5CgJQwA3gCgYMErjAB3SDv0GYDJtQBmuADZpIXbdcYt2Xep7YEYAF8tPSsrMFlWJywcfgBBZVYABzwyKkswgwdnVx0YRJc8eQB9AjBgH3FJEQKwIrBix3KfFSCMzMc5XCkYAFYABnawzAhlSAAhKC4AbVr64oARIgBlAGEAXSGYEK2DOfVdmDsITFlDtExDihAAIwArJDQrtFY0EApD1kQ8RkOIECaAFlXogABZgZSHeQUCjsMAASUhmXCEBOEAWdSijkOygA1nIcZEIIgrkk7IdcBRlklWGdkYF2gyDAzAkA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2B2buzgBGAKyo2bVABZOGCiBhQAJs3ZdeAoS2ESps+QF8gA)
 
 Note
 
@@ -329,7 +317,14 @@ The `*AdaptiveGroups` datasets use `Date` type filters (`date_geq`, `date_leq`) 
 * [Audit logs](https://developers.cloudflare.com/email-service/observability/audit-logs/) — track configuration changes.
 * [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) — full GraphQL API reference.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Email Service docs","description":"Query Email Service sending metrics and delivery rates via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/email-service/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/observability/","name":"Observability and logs"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/observability/metrics-analytics/","name":"Metrics and analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/observability/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare Email Service docs","description":"Query Email Service sending metrics and delivery rates via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/email-service/observability/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

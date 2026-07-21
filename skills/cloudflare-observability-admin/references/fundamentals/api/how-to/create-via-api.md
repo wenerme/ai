@@ -1,16 +1,18 @@
 ---
-title: Create tokens via API
 description: Learn how to create API tokens via Cloudflare's API. Follow steps to define access policies, set restrictions, and generate tokens securely.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create tokens via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create tokens via API
 
-# Create tokens via API
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Generate new API tokens on the fly via the API. Before you can do this, you must create an API token in the Cloudflare dashboard that can create subsequent tokens.
 
@@ -50,24 +52,24 @@ Each token can contain multiple policies.
 
 ```json
 [
-  {
-    "id": "f267e341f3dd4697bd3b9f71dd96247f",
-    "effect": "allow",
-    "resources": {
-      "com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
-      "com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
-    },
-    "permission_groups": [
-      {
-        "id": "c8fed203ed3043cba015a93ad1616f1f",
-        "name": "Zone Read"
-      },
-      {
-        "id": "82e64a83756745bbbb1c9c2701bf816b",
-        "name": "DNS Read"
-      }
-    ]
-  }
+	{
+		"id": "f267e341f3dd4697bd3b9f71dd96247f",
+		"effect": "allow",
+		"resources": {
+			"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
+			"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+		},
+		"permission_groups": [
+			{
+				"id": "c8fed203ed3043cba015a93ad1616f1f",
+				"name": "Zone Read"
+			},
+			{
+				"id": "82e64a83756745bbbb1c9c2701bf816b",
+				"name": "DNS Read"
+			}
+		]
+	}
 ]
 ```
 
@@ -117,12 +119,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `API Tokens Write`
 * `API Tokens Read`
 
-**List Token Permission Groups**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/user/tokens/permission_groups" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -145,7 +145,7 @@ curl "https://api.cloudflare.com/client/v4/user/tokens/permission_groups" \
       ]
     },
     // (...)
-  ]
+	]
 }
 ```
 
@@ -159,10 +159,10 @@ Limit usage of a token by client IP address filters with the following object:
 
 ```json
 {
-  "request.ip": {
-    "in": ["199.27.128.0/21", "2400:cb00::/32"],
-    "not_in": ["199.27.128.0/21", "2400:cb00::/32"]
-  }
+	"request.ip": {
+		"in": ["199.27.128.0/21", "2400:cb00::/32"],
+		"not_in": ["199.27.128.0/21", "2400:cb00::/32"]
+	}
 }
 ```
 
@@ -171,9 +171,6 @@ Each parameter in the `in` and `not_in` objects must be in CIDR notation. For ex
 ### 3\. Create the token
 
 Combine the previous information to create a token as in the following example:
-
-* [ Account token ](#tab-panel-9373)
-* [ User token ](#tab-panel-9374)
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/tokens" \
@@ -298,7 +295,14 @@ curl "https://api.cloudflare.com/client/v4/user/tokens" \
 }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/#page","headline":"Create tokens via API · Cloudflare Fundamentals docs","description":"Learn how to create API tokens via Cloudflare's API. Follow steps to define access policies, set restrictions, and generate tokens securely.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/how-to/create-via-api/","name":"Create tokens via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/#page","headline":"Create tokens via API · Cloudflare Fundamentals docs","description":"Learn how to create API tokens via Cloudflare's API. Follow steps to define access policies, set restrictions, and generate tokens securely.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

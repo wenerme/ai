@@ -1,16 +1,18 @@
 ---
-title: Supported API methods
 description: Ethereum JSON-RPC methods supported by the Cloudflare gateway.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Supported API methods
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supported API methods
 
-# Supported API methods
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The full list of API methods that are supported by an Ethereum Gateway is given below. The gateway returns a `403` if a method is specified that is not supported.
 
@@ -93,8 +95,6 @@ This method returns an `Array` of traces matching the given filter.
 
 #### Example
 
-**trace\_filter Request**
-
 ```sh
 curl https://web3-trial.cloudflare-eth.com/v1/mainnet \
 -X POST \
@@ -120,31 +120,31 @@ curl https://web3-trial.cloudflare-eth.com/v1/mainnet \
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "result": [
-    {
-      "action": {
-        "from": "0xedc763b3e418cd14767b3be02b667619a6374076",
-        "callType": "call",
-        "gas": "0x8462",
-        "input": "0x095ea7b30000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-        "to": "0x7ff4169a6b5122b664c51c95727d87750ec07c84",
-        "value": "0x0"
-      },
-      "blockHash": "0x351e7c06ec010c8f7e7358eb580238dd23e1e129be96822aa93ebb6da08558e6",
-      "blockNumber": 13416771,
-      "result": {
-        "gasUsed": "0x6009",
-        "output": "0x0000000000000000000000000000000000000000000000000000000000000001"
-      },
-      "subtraces": 0,
-      "traceAddress": [],
-      "transactionHash": "0x054bbb9fbb855bf23f755e548c7409f45fc5eff8a824b2ad06380bc038d7b049",
-      "transactionPosition": 54,
-      "type": "call"
-    }
-  ],
-  "id": 1
+	"jsonrpc": "2.0",
+	"result": [
+		{
+			"action": {
+				"from": "0xedc763b3e418cd14767b3be02b667619a6374076",
+				"callType": "call",
+				"gas": "0x8462",
+				"input": "0x095ea7b30000000000000000000000007a250d5630b4cf539739df2c5dacb4c659f2488dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+				"to": "0x7ff4169a6b5122b664c51c95727d87750ec07c84",
+				"value": "0x0"
+			},
+			"blockHash": "0x351e7c06ec010c8f7e7358eb580238dd23e1e129be96822aa93ebb6da08558e6",
+			"blockNumber": 13416771,
+			"result": {
+				"gasUsed": "0x6009",
+				"output": "0x0000000000000000000000000000000000000000000000000000000000000001"
+			},
+			"subtraces": 0,
+			"traceAddress": [],
+			"transactionHash": "0x054bbb9fbb855bf23f755e548c7409f45fc5eff8a824b2ad06380bc038d7b049",
+			"transactionPosition": 54,
+			"type": "call"
+		}
+	],
+	"id": 1
 }
 ```
 
@@ -160,7 +160,14 @@ The `trace_filter` method has some limitations to ensure that our nodes are not 
 1. **Limitations**: Max block count of 10\. [↩](#user-content-fnref-2)
 2. **Limitations**: Max block range of 800 blocks. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/#page","headline":"Supported API methods - Ethereum Gateway · Cloudflare Web3 docs","description":"Ethereum JSON-RPC methods supported by the Cloudflare gateway.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ethereum-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ethereum-gateway/reference/supported-api-methods/","name":"Supported API methods"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/#page","headline":"Supported API methods - Ethereum Gateway · Cloudflare Web3 docs","description":"Ethereum JSON-RPC methods supported by the Cloudflare gateway.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

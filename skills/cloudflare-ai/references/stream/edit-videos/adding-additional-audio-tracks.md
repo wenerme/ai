@@ -1,16 +1,18 @@
 ---
-title: Add additional audio tracks
 description: Upload and manage additional audio tracks for Cloudflare Stream videos via the API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Add additional audio tracks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add additional audio tracks
 
-# Add additional audio tracks
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/edit-videos/adding-additional-audio-tracks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A video must be uploaded before additional audio tracks can be attached to it. In the following example URLs, the video’s UID is referenced as `VIDEO_UID`.
 
@@ -30,8 +32,6 @@ curl -X POST \
  -d '{"url": "https://www.examplestorage.com/audio_file.mp3", "label": "Example Audio Label"}' \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/copy
 ```
-
-**Example response to add additional audio tracks**
 
 ```json
 {
@@ -71,8 +71,6 @@ curl -X POST \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio
 ```
 
-**Example response to add Additional audio tracks**
-
 ```json
 {
  "result": {
@@ -96,8 +94,6 @@ curl \
  -H 'Authorization: Bearer <API_TOKEN>' \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio
 ```
-
-**Example response to get the audio tracks associated with a video**
 
 ```json
 {
@@ -138,8 +134,6 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/au
 
 Editing the `default` status of an audio track to `true` will mark all other audio tracks on the video `default` status to `false`.
 
-**Example response to edit the audio tracks associated with a video**
-
 ```json
 {
   "result": {
@@ -168,8 +162,6 @@ Deleting a `default` audio track is not allowed. You must assign another audio t
 
 If there is an entry in `errors` response field, the audio track has not been deleted.
 
-**Example response to delete an audio track**
-
 ```json
 {
   "result": "ok",
@@ -179,7 +171,14 @@ If there is an entry in `errors` response field, the audio track has not been de
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/adding-additional-audio-tracks/#page","headline":"Add additional audio tracks · Cloudflare Stream docs","description":"Upload and manage additional audio tracks for Cloudflare Stream videos via the API.","url":"https://developers.cloudflare.com/stream/edit-videos/adding-additional-audio-tracks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/edit-videos/","name":"Edit videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/edit-videos/adding-additional-audio-tracks/","name":"Add additional audio tracks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/adding-additional-audio-tracks/#page","headline":"Add additional audio tracks · Cloudflare Stream docs","description":"Upload and manage additional audio tracks for Cloudflare Stream videos via the API.","url":"https://developers.cloudflare.com/stream/edit-videos/adding-additional-audio-tracks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

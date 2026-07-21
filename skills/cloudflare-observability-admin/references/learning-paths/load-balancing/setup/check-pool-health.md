@@ -1,21 +1,20 @@
 ---
-title: Check pool health
 description: Verify pool and server health status.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Check pool health
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Check pool health
 
-# Check pool health
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/load-balancing/setup/check-pool-health/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
-
-* [ Dashboard ](#tab-panel-9925)
-* [ API ](#tab-panel-9926)
 
 To confirm pool health using the dashboard:
 
@@ -36,7 +35,14 @@ If you notice that healthy pools are being marked unhealthy:
 * Review [how endpoints and pools become unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
 * Refer to the [Troubleshooting section](https://developers.cloudflare.com/load-balancing/troubleshooting/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/check-pool-health/#page","headline":"Check pool health · Cloudflare Learning Paths","description":"Verify pool and server health status.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/check-pool-health/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/setup/","name":"Setup"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/setup/check-pool-health/","name":"Check pool health"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/check-pool-health/#page","headline":"Check pool health · Cloudflare Learning Paths","description":"Verify pool and server health status.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/setup/check-pool-health/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

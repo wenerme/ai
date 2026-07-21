@@ -1,16 +1,18 @@
 ---
-title: Routes
 description: Map URL patterns to Cloudflare Workers to run your code on matching requests.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Routes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Routes
 
-# Routes
+Last updated Jun 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/routing/routes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -32,7 +34,7 @@ To add a route, you must have:
 2. A Worker to invoke.
 3. A DNS record set up for the [domain](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/) or [subdomain](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/) proxied by Cloudflare (also known as [orange-clouded](https://developers.cloudflare.com/dns/proxy-status/#benefits)) you would like to route to.
 
-Warning
+Caution
 
 Route setup will differ depending on if your application's origin is a Worker or not. If your Worker is your application's origin, use [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 
@@ -49,7 +51,7 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 To set up a route in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Go to **Settings** \> **Domains & Routes** \> **Add** \> **Route**.
 4. Select the zone and enter the route pattern.
@@ -61,34 +63,26 @@ Before you set up a route, make sure you have a DNS record set up for the [domai
 
 To configure a route using your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), refer to the following example.
 
-* [  wrangler.jsonc ](#tab-panel-12367)
-* [  wrangler.toml ](#tab-panel-12368)
-
-**JSONC**
-
 ```jsonc
 {
-  "routes": [
-    {
-      "pattern": "subdomain.example.com/*",
-      "zone_name": "example.com"
-    },
-    // or
-    {
-      "pattern": "subdomain.example.com/*",
-      "zone_id": "<YOUR_ZONE_ID>"
-    }
-  ]
+	"routes": [
+		{
+			"pattern": "subdomain.example.com/*",
+			"zone_name": "example.com"
+		},
+		// or
+		{
+			"pattern": "subdomain.example.com/*",
+			"zone_id": "<YOUR_ZONE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[routes]]
 pattern = "subdomain.example.com/*"
 zone_name = "example.com"
-
 
 [[routes]]
 pattern = "subdomain.example.com/*"
@@ -98,38 +92,30 @@ zone_id = "<YOUR_ZONE_ID>"
 Add the `zone_name` or `zone_id` option after each route. The `zone_name` and `zone_id` options are interchangeable. If using `zone_id`, find your zone ID by:
 
 1. Go to the Zone Overview page in the Cloudflare dashboard.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/)
 2. Find the **Zone ID** in the left-hand side of **Overview**.
 
 To add multiple routes:
 
-* [  wrangler.jsonc ](#tab-panel-12369)
-* [  wrangler.toml ](#tab-panel-12370)
-
-**JSONC**
-
 ```jsonc
 {
-  "routes": [
-    {
-      "pattern": "subdomain.example.com/*",
-      "zone_name": "example.com"
-    },
-    {
-      "pattern": "subdomain-two.example.com/example",
-      "zone_id": "<YOUR_ZONE_ID>"
-    }
-  ]
+	"routes": [
+		{
+			"pattern": "subdomain.example.com/*",
+			"zone_name": "example.com"
+		},
+		{
+			"pattern": "subdomain-two.example.com/example",
+			"zone_id": "<YOUR_ZONE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[routes]]
 pattern = "subdomain.example.com/*"
 zone_name = "example.com"
-
 
 [[routes]]
 pattern = "subdomain-two.example.com/example"
@@ -197,7 +183,7 @@ If a route pattern hostname begins with `*`, then it matches the host and all su
 * `*example.com/` matches `https://example.com/` and `https://www.example.com/`.
 * `*.example.com/` matches `https://www.example.com/` but not `https://example.com/`.
 
-Warning
+Caution
 
 Because `*` matches zero or more of **any character** (not just subdomains), `*example.com` will also match hostnames that are not subdomains of `example.com`. If you only want to match `example.com` and its subdomains, use two separate routes (`example.com/*` and `*.example.com/*`) instead.
 
@@ -216,7 +202,7 @@ If a route pattern path ends with `*`, then it matches all suffixes of that path
 
 * `https://example.com/path*` matches `https://example.com/path` and `https://example.com/path2` and `https://example.com/path/readme.txt`
 
-Warning
+Caution
 
 There is a well-known bug associated with path matching concerning wildcards (`*`) and forward slashes (`/`) that is documented in [Known issues](https://developers.cloudflare.com/workers/platform/known-issues/).
 
@@ -224,11 +210,18 @@ There is a well-known bug associated with path matching concerning wildcards (`*
 
 All domains and subdomains must have a [DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) to be proxied on Cloudflare and used to invoke a Worker. For example, if you want to put a Worker on `myname.example.com`, and you have added `example.com` to Cloudflare but have not added any DNS records for `myname.example.com`, any request to `myname.example.com` will result in the error `ERR_NAME_NOT_RESOLVED`.
 
-Warning
+Caution
 
 If you have previously used the Cloudflare dashboard to add an `AAAA` record for `myname` to `example.com`, pointing to `100::` (the [reserved IPv6 discard prefix ↗](https://tools.ietf.org/html/rfc6666)), Cloudflare recommends creating a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) pointing to your Worker instead.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/routes/#page","headline":"Routes · Cloudflare Workers docs","description":"Map URL patterns to Cloudflare Workers to run your code on matching requests.","url":"https://developers.cloudflare.com/workers/configuration/routing/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/routing/","name":"Routes and domains"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/routing/routes/","name":"Routes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/routes/#page","headline":"Routes · Cloudflare Workers docs","description":"Map URL patterns to Cloudflare Workers to run your code on matching requests.","url":"https://developers.cloudflare.com/workers/configuration/routing/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

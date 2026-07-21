@@ -1,16 +1,18 @@
 ---
-title: Deployment management
 description: Upload versions independently and control when and how they are deployed to your Worker's traffic.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deployment management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deployment management
 
-# Deployment management
+Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, a new version is created and immediately deployed to 100% of traffic when you use any of the following:
 
@@ -51,7 +53,7 @@ To apply changes to a Worker's triggers ([routes, domains](https://developers.cl
 ### Via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Edit code**.
 3. Make your changes, then select the **down arrow** next to **Deploy** \> **Save**.
 
@@ -86,7 +88,7 @@ You can also set the traffic percentage to less than 100% to start a [gradual de
 ### Via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Deployments**.
 3. Select **Promote deployment** and choose the version you want to deploy.
 
@@ -114,7 +116,14 @@ Refer to [Migrate from Service Workers to ES modules](https://developers.cloudfl
 
 Uploading a version that changes Durable Object class lifecycle is not supported. This applies to both the declarative [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field and the legacy [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array - any change that creates, deletes, renames, or transfers a Durable Object class must be applied through [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/#page","headline":"Deployment management · Cloudflare Workers docs","description":"Upload versions independently and control when and how they are deployed to your Worker's traffic.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/deployment-management/","name":"Deployment management"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/#page","headline":"Deployment management · Cloudflare Workers docs","description":"Upload versions independently and control when and how they are deployed to your Worker's traffic.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

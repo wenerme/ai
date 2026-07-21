@@ -1,18 +1,20 @@
 ---
-title: Rewrite page path for visitors in specific countries
 description: Create two URL rewrite rules (part of Transform Rules) to rewrite the path of the welcome page for visitors in specific countries.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rewrite page path for visitors in specific countries
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Rewrite page path for visitors in specific countries
+#  Rewrite page path for visitors in specific countries
 
 Create two URL rewrite rules (part of Transform Rules) to rewrite the path of the welcome page for visitors in specific countries.
+
+Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To have a welcome page in two languages, create two URL rewrite rules with a static rewrite of the path component:
 
@@ -44,7 +46,14 @@ Text after **Path** \> **Rewrite to** \> _Static_:
 /welcome-pt.html
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/#page","headline":"Rewrite page path for visitors in specific countries · Cloudflare Rules docs","description":"Create two URL rewrite rules (part of Transform Rules) to rewrite the path of the welcome page for visitors in specific countries.","url":"https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/examples/","name":"Transform Rules examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/examples/rewrite-welcome-for-countries/","name":"Rewrite page path for visitors in specific countries"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/#page","headline":"Rewrite page path for visitors in specific countries · Cloudflare Rules docs","description":"Create two URL rewrite rules (part of Transform Rules) to rewrite the path of the welcome page for visitors in specific countries.","url":"https://developers.cloudflare.com/rules/transform/examples/rewrite-welcome-for-countries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
 ```

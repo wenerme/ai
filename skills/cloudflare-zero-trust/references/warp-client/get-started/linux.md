@@ -1,16 +1,18 @@
 ---
-title: Linux
 description: Install and configure WARP on Linux.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Linux
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Linux
 
-# Linux
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/warp-client/get-started/linux/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Looking for Zero Trust?
 
@@ -102,7 +104,14 @@ You can find logs required to debug WARP issues by running `sudo warp-diag`. Thi
 
 To report bugs or provide feedback to the team use the command `sudo warp-diag feedback`. This will submit a support ticket.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/get-started/linux/#page","headline":"Linux desktop client · Cloudflare WARP client docs","description":"Install and configure WARP on Linux.","url":"https://developers.cloudflare.com/warp-client/get-started/linux/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux","CLI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/warp-client/","name":"WARP Client"}},{"@type":"ListItem","position":3,"item":{"@id":"/warp-client/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/warp-client/get-started/linux/","name":"Linux"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/get-started/linux/#page","headline":"Linux desktop client · Cloudflare WARP client docs","description":"Install and configure WARP on Linux.","url":"https://developers.cloudflare.com/warp-client/get-started/linux/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux","CLI"]}
 ```

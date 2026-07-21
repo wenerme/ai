@@ -1,16 +1,18 @@
 ---
-title: Compatibility dates
 description: Opt into a specific version of the Workers runtime for your Workers project.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Compatibility dates
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Compatibility dates
 
-# Compatibility dates
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/compatibility-dates/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare regularly updates the Workers runtime. These updates apply to all Workers globally and should never cause a Worker that is already deployed to stop functioning. Sometimes, though, some changes may be backwards-incompatible. In particular, there might be bugs in the runtime API that existing Workers may inadvertently depend upon. Cloudflare implements bug fixes that new Workers can opt into while existing Workers will continue to see the buggy behavior to prevent breaking deployed Workers.
 
@@ -31,19 +33,12 @@ However, even though you do not need to update the `compatibility_date` field, i
 
 The compatibility date can be set in a Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
-* [  wrangler.jsonc ](#tab-panel-12317)
-* [  wrangler.toml ](#tab-panel-12318)
-
-**JSONC**
-
 ```jsonc
 {
-  // Opt into backwards-incompatible changes through April 5, 2022.
-  "compatibility_date": "2022-04-05"
+	// Opt into backwards-incompatible changes through April 5, 2022.
+	"compatibility_date": "2022-04-05"
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_date = "2022-04-05"
@@ -61,7 +56,14 @@ The compatibility date can be set when uploading a Worker using the [Workers Scr
 
 If a compatibility date is not specified on upload via the API, it defaults to the oldest compatibility date, before any flags took effect (2021-11-02). When creating new Workers, it is highly recommended to set the compatibility date to the current date when uploading via the API.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/compatibility-dates/#page","headline":"Compatibility dates · Cloudflare Workers docs","description":"Opt into a specific version of the Workers runtime for your Workers project.","url":"https://developers.cloudflare.com/workers/configuration/compatibility-dates/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/compatibility-dates/","name":"Compatibility dates"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/compatibility-dates/#page","headline":"Compatibility dates · Cloudflare Workers docs","description":"Opt into a specific version of the Workers runtime for your Workers project.","url":"https://developers.cloudflare.com/workers/configuration/compatibility-dates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

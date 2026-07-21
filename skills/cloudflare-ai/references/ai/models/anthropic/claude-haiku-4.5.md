@@ -1,40 +1,40 @@
 ---
-title: Claude Haiku 4.5
 description: Claude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Claude Haiku 4.5
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
 #  Claude Haiku 4.5
 
-Text Generation • Anthropic
+ Text Generation • Anthropic
 
-`anthropic/claude-haiku-4.5`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` anthropic/claude-haiku-4.5 `
+
+* Third-party
+* Zero data retention
 
 Claude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.
 
-| Model Info                                                                 |                                                                                                                              |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                               |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/haiku)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                          |
-| Request formats                                                            | Anthropic Messages                                                                                                           |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
+| Model Info                                                                  |                                                                                                                               |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                |
+| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
+| More information                                                            | [link ↗](https://www.anthropic.com/claude/haiku)                                                                              |
+| Zero data retention                                                         | Yes                                                                                                                           |
+| Request formats                                                             | Anthropic Messages                                                                                                            |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-160)
-* [ cURL ](#tab-panel-161)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -62,9 +62,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-164)
-* [ Raw response ](#tab-panel-165)
 
 # The Three Laws of Thermodynamics
 
@@ -110,11 +107,6 @@ These laws form the foundation of thermodynamics and explain why perpetual motio
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-162)
-* [ cURL ](#tab-panel-163)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-haiku-4.5',
@@ -145,9 +137,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.3
 }'
 ```
-
-* [ Output ](#tab-panel-168)
-* [ Raw response ](#tab-panel-169)
 
 # Reading a JSON File in Python
 
@@ -251,11 +240,6 @@ The `with` statement is recommended because it automatically closes the file whe
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-172)
-* [ cURL ](#tab-panel-173)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-haiku-4.5',
@@ -301,9 +285,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-174)
-* [ Raw response ](#tab-panel-175)
 
 # Good Stops on the SF to LA Route
 
@@ -355,11 +336,6 @@ What's your timeline? Are you interested in nature, wine, food, or something els
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-166)
-* [ cURL ](#tab-panel-167)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-haiku-4.5',
@@ -393,9 +369,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.8
 }'
 ```
-
-* [ Output ](#tab-panel-176)
-* [ Raw response ](#tab-panel-177)
 
 # The Photograph
 
@@ -444,11 +417,6 @@ It was a warning.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-170)
-* [ cURL ](#tab-panel-171)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-haiku-4.5',
@@ -477,9 +445,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "stream": true
 }'
 ```
-
-* [ Output ](#tab-panel-180)
-* [ Raw response ](#tab-panel-181)
 
 # Recursion Explained
 
@@ -728,11 +693,6 @@ Recursion is elegant but always ensure you have a clear base case!
 
 **Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-178)
-* [ cURL ](#tab-panel-179)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-haiku-4.5',
@@ -773,9 +733,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-182)
-* [ Raw response ](#tab-panel-183)
 
 Let me search for more recent news from this week specifically.
 
@@ -1035,9 +992,6 @@ Let me search for more recent news from this week specifically.
 
 ## Parameters
 
-* [ Input ](#tab-panel-184)
-* [ Output ](#tab-panel-185)
-
 ▶messages\[\]
 
 `array`required
@@ -1104,7 +1058,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5
 
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/#page","headline":"Claude Haiku 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/#page","headline":"Claude Haiku 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

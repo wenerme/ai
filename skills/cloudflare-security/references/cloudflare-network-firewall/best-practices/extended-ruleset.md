@@ -1,16 +1,18 @@
 ---
-title: Extended ruleset
 description: Extended ruleset configuration for comprehensive protection.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Extended ruleset
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Extended ruleset
 
-# Extended ruleset
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/extended-ruleset/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you are unable to export your current perimeter firewall rules, consider identifying categories of systems or user groups that reside on your Magic Transit prefixes. For example:
 
@@ -123,7 +125,14 @@ Restrict the source based on whether the server is expecting traffic from the ge
 * `IP Destination Address { non-web server } and UDP dst port in \<valid ports> — Permit`
 * `IP Destination Address { web server } — Block`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/extended-ruleset/#page","headline":"Extended suggested ruleset · Cloudflare Network Firewall docs","description":"Extended ruleset configuration for comprehensive protection.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/extended-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/best-practices/extended-ruleset/","name":"Extended ruleset"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/extended-ruleset/#page","headline":"Extended suggested ruleset · Cloudflare Network Firewall docs","description":"Extended ruleset configuration for comprehensive protection.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/extended-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
 ```

@@ -1,22 +1,24 @@
 ---
-title: Redirects
 description: Define URL redirects for your Cloudflare Pages site using a _redirects file.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Redirects
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Redirects
 
-# Redirects
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/redirects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To apply custom redirects on Cloudflare Pages, declare your redirects in a plain text file called `_redirects` without a file extension, in the static asset directory of your project. This file will not itself be served as a static asset, but will instead be parsed by Cloudflare Pages and its rules will be applied to static asset responses.
 
 If you are using a framework, you will often have a directory named `public/` or `static/`, and this usually contains deploy-ready assets, such as favicons, `robots.txt` files, and site manifests. These files get copied over to a final output directory during the build, so this is the perfect place to author your `_redirects` file. If you are not using a framework, the `_redirects` file can go directly into your [build output directory](https://developers.cloudflare.com/pages/configuration/build-configuration/).
 
-Warning
+Caution
 
 Redirects defined in the `_redirects` file are not applied to requests served by [Pages Functions](https://developers.cloudflare.com/pages/functions/), even if the Function route matches the URL pattern. If your Pages application uses Functions, you must migrate any behaviors from the `_redirects` file to the code in the appropriate `/functions` route, or [exclude the route from Functions](https://developers.cloudflare.com/pages/functions/routing/#create-a-%5Froutesjson-file).
 
@@ -30,16 +32,16 @@ Only one redirect can be defined per line and must follow this format, otherwise
 [source] [destination] [code?]
 ```
 
-* `source` ` string ` required
+* `source` ` string `required
 
   * A file path.
   * Can include [wildcards (\*)](#splats) and [placeholders](#placeholders).
   * Because fragments are evaluated by your browser and not Cloudflare's network, any fragments in the source are not evaluated.
-* `destination` ` string ` required
+* `destination` ` string `required
 
   * A file path or external link.
   * Can include fragments, query strings, [splats](#splats), and [placeholders](#placeholders).
-* `code` ` number ` (default: 302) optional
+* `code` ` number `(default: 302) optional
 
   * Optional parameter
 
@@ -143,7 +145,14 @@ To use Bulk Redirects, refer to the [Bulk Redirects dashboard documentation](htt
 
 * [Transform Rules](https://developers.cloudflare.com/rules/transform/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/redirects/#page","headline":"Redirects · Cloudflare Pages docs","description":"Define URL redirects for your Cloudflare Pages site using a \\_redirects file.","url":"https://developers.cloudflare.com/pages/configuration/redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/redirects/","name":"Redirects"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/redirects/#page","headline":"Redirects · Cloudflare Pages docs","description":"Define URL redirects for your Cloudflare Pages site using a \\_redirects file.","url":"https://developers.cloudflare.com/pages/configuration/redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

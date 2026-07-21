@@ -1,16 +1,18 @@
 ---
-title: Reference Architecture Diagrams
 description: Browse reference architecture diagrams by solution area.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Reference Architecture Diagrams
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Reference Architecture Diagrams
 
-# Reference Architecture Diagrams
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Diagrams, design patterns, and detailed best practices to help you generate solutions with Cloudflare products.
 
@@ -27,7 +29,14 @@ Reference architecture documents and diagrams are designed to provide a foundati
 * [ Serverless ](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/)
 * [ Storage ](https://developers.cloudflare.com/reference-architecture/diagrams/storage/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/#page","headline":"Reference Architecture Diagrams · Cloudflare Reference Architecture docs","description":"Browse reference architecture diagrams by solution area.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/#page","headline":"Reference Architecture Diagrams · Cloudflare Reference Architecture docs","description":"Browse reference architecture diagrams by solution area.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

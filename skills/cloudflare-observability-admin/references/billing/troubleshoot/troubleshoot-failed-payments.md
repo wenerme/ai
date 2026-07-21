@@ -1,16 +1,18 @@
 ---
-title: Resolve a payment failure
 description: Fix failed payment and declined card errors.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Resolve a payment failure
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Resolve a payment failure
 
-# Resolve a payment failure
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If a payment fails when purchasing a product, changing a subscription, or paying an invoice, you may see one of the following error messages:
 
@@ -63,7 +65,7 @@ After you check the items above, retry your transaction in the Cloudflare dashbo
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** \> **Billing**.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 3. Go to **Invoices and documents**.
 4. Select **Pay now** next to your invoice. You can also open the invoice PDF and select the payment link.
 5. Follow the on-screen instructions to retry the payment.
@@ -82,7 +84,14 @@ After payment succeeds, allow up to 24 hours for Cloudflare to recognize the pay
 * [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your payment method
 * [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/#page","headline":"Resolve a payment failure · Cloudflare Billing docs","description":"Fix failed payment and declined card errors.","url":"https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/troubleshoot-failed-payments/","name":"Resolve a payment failure"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/#page","headline":"Resolve a payment failure · Cloudflare Billing docs","description":"Fix failed payment and declined card errors.","url":"https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

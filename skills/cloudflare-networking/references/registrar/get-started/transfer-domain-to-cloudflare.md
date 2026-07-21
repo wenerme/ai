@@ -1,16 +1,18 @@
 ---
-title: Transfer your domain to Cloudflare
 description: Transfer a domain to Cloudflare Registrar from another registrar.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Transfer your domain to Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Transfer your domain to Cloudflare
 
-# Transfer your domain to Cloudflare
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Transferring a domain moves your registration from your current registrar to Cloudflare.
 
@@ -146,7 +148,7 @@ Authorization codes are usually only valid for a limited period. Request the cod
 
 **In the Cloudflare dashboard:**
 
-[ Go to **Transfer domains** ](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
+[ Go to **Transfer domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
 
 Select your domain and enter the authorization code. For most generic TLDs (such as `.com`, `.net`, and `.org`), the transfer price includes a one-year registration extension from your current expiration date. This is an ICANN requirement for gTLD transfers. Country-code domains follow their own registry policies — for example, `.uk` transfers do not add an extra year or charge a transfer fee.
 
@@ -166,7 +168,7 @@ Enter the contact information for your registration. Cloudflare Registrar redact
 
 You can [modify your contact information](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/) later.
 
-Warning
+Caution
 
 Some TLDs have additional registrant verification requirements. For `.ca`, `.mx`, and `.nz` domains, you may receive a separate email to verify your registrant contact information after the transfer completes. Failure to complete this verification within the required timeframe may result in domain suspension.
 
@@ -246,7 +248,14 @@ For example, Netlify asks customers that host websites with them to add a `CNAME
 
 You may also want to [enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/#1-activate-dnssec-in-cloudflare).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#page","headline":"Transfer your domain to Cloudflare · Cloudflare Registrar docs","description":"Transfer a domain to Cloudflare Registrar from another registrar.","url":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/registrar/get-started/transfer-domain-to-cloudflare/","name":"Transfer your domain to Cloudflare"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#page","headline":"Transfer your domain to Cloudflare · Cloudflare Registrar docs","description":"Transfer a domain to Cloudflare Registrar from another registrar.","url":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: WebSockets
 description: Handle real-time WebSocket connections, messages, broadcasts, and lifecycle hooks in the Agents SDK.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: WebSockets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WebSockets
 
-# WebSockets
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/websockets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agents support WebSocket connections for real-time, bi-directional communication. This page covers server-side WebSocket handling. For client-side connection, refer to the [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/).
 
@@ -33,52 +35,41 @@ Agents have several lifecycle hooks that fire at different points:
 
 `onStart()` is called once when the agent first starts, before any connections are established:
 
-* [  JavaScript ](#tab-panel-6499)
-* [  TypeScript ](#tab-panel-6500)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  async onStart() {
-    // Initialize resources
-    console.log(`Agent ${this.name} starting...`);
+	async onStart() {
+		// Initialize resources
+		console.log(`Agent ${this.name} starting...`);
 
+		// Load data from storage
+		const savedData = this.sql`SELECT * FROM cache`;
+		for (const row of savedData) {
+			// Rebuild in-memory state from persistent storage
+		}
+	}
 
-    // Load data from storage
-    const savedData = this.sql`SELECT * FROM cache`;
-    for (const row of savedData) {
-      // Rebuild in-memory state from persistent storage
-    }
-  }
-
-
-  onConnect(connection) {
-    // By the time connections arrive, onStart has completed
-  }
+	onConnect(connection) {
+		// By the time connections arrive, onStart has completed
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends Agent {
-  async onStart() {
-    // Initialize resources
-    console.log(`Agent ${this.name} starting...`);
+	async onStart() {
+		// Initialize resources
+		console.log(`Agent ${this.name} starting...`);
 
+		// Load data from storage
+		const savedData = this.sql`SELECT * FROM cache`;
+		for (const row of savedData) {
+			// Rebuild in-memory state from persistent storage
+		}
+	}
 
-    // Load data from storage
-    const savedData = this.sql`SELECT * FROM cache`;
-    for (const row of savedData) {
-      // Rebuild in-memory state from persistent storage
-    }
-  }
-
-
-  onConnect(connection: Connection) {
-    // By the time connections arrive, onStart has completed
-  }
+	onConnect(connection: Connection) {
+		// By the time connections arrive, onStart has completed
+	}
 }
 ```
 
@@ -86,76 +77,61 @@ export class MyAgent extends Agent {
 
 Define `onConnect` and `onMessage` methods on your Agent to accept WebSocket connections:
 
-* [  JavaScript ](#tab-panel-6505)
-* [  TypeScript ](#tab-panel-6506)
-
-**JavaScript**
-
 ```js
 import { Agent, Connection, ConnectionContext, WSMessage } from "agents";
 
-
 export class ChatAgent extends Agent {
-  async onConnect(connection, ctx) {
-    // Connections are automatically accepted
-    // Access the original request for auth, headers, cookies
-    const url = new URL(ctx.request.url);
-    const token = url.searchParams.get("token");
+	async onConnect(connection, ctx) {
+		// Connections are automatically accepted
+		// Access the original request for auth, headers, cookies
+		const url = new URL(ctx.request.url);
+		const token = url.searchParams.get("token");
 
+		if (!token) {
+			connection.close(4001, "Unauthorized");
+			return;
+		}
 
-    if (!token) {
-      connection.close(4001, "Unauthorized");
-      return;
-    }
+		// Store user info on this connection
+		connection.setState({ authenticated: true });
+	}
 
-
-    // Store user info on this connection
-    connection.setState({ authenticated: true });
-  }
-
-
-  async onMessage(connection, message) {
-    if (typeof message === "string") {
-      // Handle text message
-      const data = JSON.parse(message);
-      connection.send(JSON.stringify({ received: data }));
-    }
-  }
+	async onMessage(connection, message) {
+		if (typeof message === "string") {
+			// Handle text message
+			const data = JSON.parse(message);
+			connection.send(JSON.stringify({ received: data }));
+		}
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, Connection, ConnectionContext, WSMessage } from "agents";
 
-
 export class ChatAgent extends Agent {
-  async onConnect(connection: Connection, ctx: ConnectionContext) {
-    // Connections are automatically accepted
-    // Access the original request for auth, headers, cookies
-    const url = new URL(ctx.request.url);
-    const token = url.searchParams.get("token");
+	async onConnect(connection: Connection, ctx: ConnectionContext) {
+		// Connections are automatically accepted
+		// Access the original request for auth, headers, cookies
+		const url = new URL(ctx.request.url);
+		const token = url.searchParams.get("token");
 
+		if (!token) {
+			connection.close(4001, "Unauthorized");
+			return;
+		}
 
-    if (!token) {
-      connection.close(4001, "Unauthorized");
-      return;
-    }
+		// Store user info on this connection
+		connection.setState({ authenticated: true });
+	}
 
-
-    // Store user info on this connection
-    connection.setState({ authenticated: true });
-  }
-
-
-  async onMessage(connection: Connection, message: WSMessage) {
-    if (typeof message === "string") {
-      // Handle text message
-      const data = JSON.parse(message);
-      connection.send(JSON.stringify({ received: data }));
-    }
-  }
+	async onMessage(connection: Connection, message: WSMessage) {
+		if (typeof message === "string") {
+			// Handle text message
+			const data = JSON.parse(message);
+			connection.send(JSON.stringify({ received: data }));
+		}
+	}
 }
 ```
 
@@ -178,62 +154,50 @@ Each connected client has a unique `Connection` object:
 
 Store data specific to each connection (user info, preferences, etc.):
 
-* [  JavaScript ](#tab-panel-6509)
-* [  TypeScript ](#tab-panel-6510)
-
-**JavaScript**
-
 ```js
 export class ChatAgent extends Agent {
-  async onConnect(connection, ctx) {
-    const userId = new URL(ctx.request.url).searchParams.get("userId");
+	async onConnect(connection, ctx) {
+		const userId = new URL(ctx.request.url).searchParams.get("userId");
 
+		connection.setState({
+			userId: userId || "anonymous",
+			role: "user",
+			joinedAt: Date.now(),
+		});
+	}
 
-    connection.setState({
-      userId: userId || "anonymous",
-      role: "user",
-      joinedAt: Date.now(),
-    });
-  }
-
-
-  async onMessage(connection, message) {
-    // Access connection-specific state
-    console.log(`Message from ${connection.state.userId}`);
-  }
+	async onMessage(connection, message) {
+		// Access connection-specific state
+		console.log(`Message from ${connection.state.userId}`);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 interface ConnectionState {
-  userId: string;
-  role: "admin" | "user";
-  joinedAt: number;
+	userId: string;
+	role: "admin" | "user";
+	joinedAt: number;
 }
 
-
 export class ChatAgent extends Agent {
-  async onConnect(
-    connection: Connection<ConnectionState>,
-    ctx: ConnectionContext,
-  ) {
-    const userId = new URL(ctx.request.url).searchParams.get("userId");
+	async onConnect(
+		connection: Connection<ConnectionState>,
+		ctx: ConnectionContext,
+	) {
+		const userId = new URL(ctx.request.url).searchParams.get("userId");
 
+		connection.setState({
+			userId: userId || "anonymous",
+			role: "user",
+			joinedAt: Date.now(),
+		});
+	}
 
-    connection.setState({
-      userId: userId || "anonymous",
-      role: "user",
-      joinedAt: Date.now(),
-    });
-  }
-
-
-  async onMessage(connection: Connection<ConnectionState>, message: WSMessage) {
-    // Access connection-specific state
-    console.log(`Message from ${connection.state.userId}`);
-  }
+	async onMessage(connection: Connection<ConnectionState>, message: WSMessage) {
+		// Access connection-specific state
+		console.log(`Message from ${connection.state.userId}`);
+	}
 }
 ```
 
@@ -241,52 +205,43 @@ export class ChatAgent extends Agent {
 
 Use `this.broadcast()` to send a message to all connected clients:
 
-* [  JavaScript ](#tab-panel-6503)
-* [  TypeScript ](#tab-panel-6504)
-
-**JavaScript**
-
 ```js
 export class ChatAgent extends Agent {
-  async onMessage(connection, message) {
-    // Broadcast to all connected clients
-    this.broadcast(
-      JSON.stringify({
-        from: connection.id,
-        message: message,
-        timestamp: Date.now(),
-      }),
-    );
-  }
+	async onMessage(connection, message) {
+		// Broadcast to all connected clients
+		this.broadcast(
+			JSON.stringify({
+				from: connection.id,
+				message: message,
+				timestamp: Date.now(),
+			}),
+		);
+	}
 
-
-  // Broadcast from any method
-  async notifyAll(event, data) {
-    this.broadcast(JSON.stringify({ event, data }));
-  }
+	// Broadcast from any method
+	async notifyAll(event, data) {
+		this.broadcast(JSON.stringify({ event, data }));
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class ChatAgent extends Agent {
-  async onMessage(connection: Connection, message: WSMessage) {
-    // Broadcast to all connected clients
-    this.broadcast(
-      JSON.stringify({
-        from: connection.id,
-        message: message,
-        timestamp: Date.now(),
-      }),
-    );
-  }
+	async onMessage(connection: Connection, message: WSMessage) {
+		// Broadcast to all connected clients
+		this.broadcast(
+			JSON.stringify({
+				from: connection.id,
+				message: message,
+				timestamp: Date.now(),
+			}),
+		);
+	}
 
-
-  // Broadcast from any method
-  async notifyAll(event: string, data: unknown) {
-    this.broadcast(JSON.stringify({ event, data }));
-  }
+	// Broadcast from any method
+	async notifyAll(event: string, data: unknown) {
+		this.broadcast(JSON.stringify({ event, data }));
+	}
 }
 ```
 
@@ -294,26 +249,19 @@ export class ChatAgent extends Agent {
 
 Pass an array of connection IDs to exclude from the broadcast:
 
-* [  JavaScript ](#tab-panel-6497)
-* [  TypeScript ](#tab-panel-6498)
-
-**JavaScript**
-
 ```js
 // Broadcast to everyone except the sender
 this.broadcast(
-  JSON.stringify({ type: "user-typing", userId: "123" }),
-  [connection.id], // Do not send to the originator
+	JSON.stringify({ type: "user-typing", userId: "123" }),
+	[connection.id], // Do not send to the originator
 );
 ```
-
-**TypeScript**
 
 ```ts
 // Broadcast to everyone except the sender
 this.broadcast(
-  JSON.stringify({ type: "user-typing", userId: "123" }),
-  [connection.id], // Do not send to the originator
+	JSON.stringify({ type: "user-typing", userId: "123" }),
+	[connection.id], // Do not send to the originator
 );
 ```
 
@@ -321,60 +269,47 @@ this.broadcast(
 
 Tag connections for easy filtering. Override `getConnectionTags()` to assign tags when a connection is established:
 
-* [  JavaScript ](#tab-panel-6511)
-* [  TypeScript ](#tab-panel-6512)
-
-**JavaScript**
-
 ```js
 export class ChatAgent extends Agent {
-  getConnectionTags(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const role = url.searchParams.get("role");
+	getConnectionTags(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const role = url.searchParams.get("role");
 
+		const tags = [];
+		if (role === "admin") tags.push("admin");
+		if (role === "moderator") tags.push("moderator");
 
-    const tags = [];
-    if (role === "admin") tags.push("admin");
-    if (role === "moderator") tags.push("moderator");
+		return tags; // Up to 9 tags, max 256 chars each
+	}
 
-
-    return tags; // Up to 9 tags, max 256 chars each
-  }
-
-
-  // Later, broadcast only to admins
-  notifyAdmins(message) {
-    for (const conn of this.getConnections("admin")) {
-      conn.send(message);
-    }
-  }
+	// Later, broadcast only to admins
+	notifyAdmins(message) {
+		for (const conn of this.getConnections("admin")) {
+			conn.send(message);
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class ChatAgent extends Agent {
-  getConnectionTags(connection: Connection, ctx: ConnectionContext): string[] {
-    const url = new URL(ctx.request.url);
-    const role = url.searchParams.get("role");
+	getConnectionTags(connection: Connection, ctx: ConnectionContext): string[] {
+		const url = new URL(ctx.request.url);
+		const role = url.searchParams.get("role");
 
+		const tags: string[] = [];
+		if (role === "admin") tags.push("admin");
+		if (role === "moderator") tags.push("moderator");
 
-    const tags: string[] = [];
-    if (role === "admin") tags.push("admin");
-    if (role === "moderator") tags.push("moderator");
+		return tags; // Up to 9 tags, max 256 chars each
+	}
 
-
-    return tags; // Up to 9 tags, max 256 chars each
-  }
-
-
-  // Later, broadcast only to admins
-  notifyAdmins(message: string) {
-    for (const conn of this.getConnections("admin")) {
-      conn.send(message);
-    }
-  }
+	// Later, broadcast only to admins
+	notifyAdmins(message: string) {
+		for (const conn of this.getConnections("admin")) {
+			conn.send(message);
+		}
+	}
 }
 ```
 
@@ -393,48 +328,41 @@ export class ChatAgent extends Agent {
 
 Messages can be strings or binary (`ArrayBuffer` / `ArrayBufferView`):
 
-* [  JavaScript ](#tab-panel-6507)
-* [  TypeScript ](#tab-panel-6508)
-
-**JavaScript**
-
 ```js
 export class FileAgent extends Agent {
-  async onMessage(connection, message) {
-    if (message instanceof ArrayBuffer) {
-      // Handle binary upload
-      const bytes = new Uint8Array(message);
-      await this.processFile(bytes);
-      connection.send(
-        JSON.stringify({ status: "received", size: bytes.length }),
-      );
-    } else if (typeof message === "string") {
-      // Handle text command
-      const command = JSON.parse(message);
-      // ...
-    }
-  }
+	async onMessage(connection, message) {
+		if (message instanceof ArrayBuffer) {
+			// Handle binary upload
+			const bytes = new Uint8Array(message);
+			await this.processFile(bytes);
+			connection.send(
+				JSON.stringify({ status: "received", size: bytes.length }),
+			);
+		} else if (typeof message === "string") {
+			// Handle text command
+			const command = JSON.parse(message);
+			// ...
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class FileAgent extends Agent {
-  async onMessage(connection: Connection, message: WSMessage) {
-    if (message instanceof ArrayBuffer) {
-      // Handle binary upload
-      const bytes = new Uint8Array(message);
-      await this.processFile(bytes);
-      connection.send(
-        JSON.stringify({ status: "received", size: bytes.length }),
-      );
-    } else if (typeof message === "string") {
-      // Handle text command
-      const command = JSON.parse(message);
-      // ...
-    }
-  }
+	async onMessage(connection: Connection, message: WSMessage) {
+		if (message instanceof ArrayBuffer) {
+			// Handle binary upload
+			const bytes = new Uint8Array(message);
+			await this.processFile(bytes);
+			connection.send(
+				JSON.stringify({ status: "received", size: bytes.length }),
+			);
+		} else if (typeof message === "string") {
+			// Handle text command
+			const command = JSON.parse(message);
+			// ...
+		}
+	}
 }
 ```
 
@@ -446,78 +374,65 @@ Agents automatically send JSON text frames (identity, state, MCP servers) to eve
 
 Handle connection errors and disconnections. The `onError` method has two overloads — one for WebSocket connection errors and one for server-level errors:
 
-* [  JavaScript ](#tab-panel-6517)
-* [  TypeScript ](#tab-panel-6518)
-
-**JavaScript**
-
 ```js
 export class ChatAgent extends Agent {
-  // WebSocket connection error
+	// WebSocket connection error
 
+	// Server-level error (not tied to a specific connection)
 
-  // Server-level error (not tied to a specific connection)
+	onError(connectionOrError, error) {
+		if (error) {
+			console.error(`Connection ${connectionOrError.id} error:`, error);
+		} else {
+			console.error("Server error:", connectionOrError);
+		}
+	}
 
+	async onClose(connection, code, reason, wasClean) {
+		console.log(`Connection ${connection.id} closed: ${code} ${reason}`);
 
-  onError(connectionOrError, error) {
-    if (error) {
-      console.error(`Connection ${connectionOrError.id} error:`, error);
-    } else {
-      console.error("Server error:", connectionOrError);
-    }
-  }
-
-
-  async onClose(connection, code, reason, wasClean) {
-    console.log(`Connection ${connection.id} closed: ${code} ${reason}`);
-
-
-    this.broadcast(
-      JSON.stringify({
-        event: "user-left",
-        userId: connection.state?.userId,
-      }),
-    );
-  }
+		this.broadcast(
+			JSON.stringify({
+				event: "user-left",
+				userId: connection.state?.userId,
+			}),
+		);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class ChatAgent extends Agent {
-  // WebSocket connection error
-  onError(connection: Connection, error: unknown): void;
-  // Server-level error (not tied to a specific connection)
-  onError(error: unknown): void;
-  onError(connectionOrError: Connection | unknown, error?: unknown) {
-    if (error) {
-      console.error(
-        `Connection ${(connectionOrError as Connection).id} error:`,
-        error,
-      );
-    } else {
-      console.error("Server error:", connectionOrError);
-    }
-  }
+	// WebSocket connection error
+	onError(connection: Connection, error: unknown): void;
+	// Server-level error (not tied to a specific connection)
+	onError(error: unknown): void;
+	onError(connectionOrError: Connection | unknown, error?: unknown) {
+		if (error) {
+			console.error(
+				`Connection ${(connectionOrError as Connection).id} error:`,
+				error,
+			);
+		} else {
+			console.error("Server error:", connectionOrError);
+		}
+	}
 
+	async onClose(
+		connection: Connection,
+		code: number,
+		reason: string,
+		wasClean: boolean,
+	) {
+		console.log(`Connection ${connection.id} closed: ${code} ${reason}`);
 
-  async onClose(
-    connection: Connection,
-    code: number,
-    reason: string,
-    wasClean: boolean,
-  ) {
-    console.log(`Connection ${connection.id} closed: ${code} ${reason}`);
-
-
-    this.broadcast(
-      JSON.stringify({
-        event: "user-left",
-        userId: connection.state?.userId,
-      }),
-    );
-  }
+		this.broadcast(
+			JSON.stringify({
+				event: "user-left",
+				userId: connection.state?.userId,
+			}),
+		);
+	}
 }
 ```
 
@@ -539,22 +454,15 @@ Agents support hibernation — they can sleep when inactive and wake when needed
 
 Hibernation is enabled by default. To disable:
 
-* [  JavaScript ](#tab-panel-6501)
-* [  TypeScript ](#tab-panel-6502)
-
-**JavaScript**
-
 ```js
 export class AlwaysOnAgent extends Agent {
-  static options = { hibernate: false };
+	static options = { hibernate: false };
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class AlwaysOnAgent extends Agent {
-  static options = { hibernate: false };
+	static options = { hibernate: false };
 }
 ```
 
@@ -577,50 +485,37 @@ export class AlwaysOnAgent extends Agent {
 
 Store important data in `this.state` or SQLite, not in class properties:
 
-* [  JavaScript ](#tab-panel-6513)
-* [  TypeScript ](#tab-panel-6514)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  initialState = { counter: 0 };
+	initialState = { counter: 0 };
 
+	// Do not do this - lost on hibernation
+	localCounter = 0;
 
-  // Do not do this - lost on hibernation
-  localCounter = 0;
+	onMessage(connection, message) {
+		// Persists across hibernation
+		this.setState({ counter: this.state.counter + 1 });
 
-
-  onMessage(connection, message) {
-    // Persists across hibernation
-    this.setState({ counter: this.state.counter + 1 });
-
-
-    // Lost after hibernation
-    this.localCounter++;
-  }
+		// Lost after hibernation
+		this.localCounter++;
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends Agent<Env, { counter: number }> {
-  initialState = { counter: 0 };
+	initialState = { counter: 0 };
 
+	// Do not do this - lost on hibernation
+	private localCounter = 0;
 
-  // Do not do this - lost on hibernation
-  private localCounter = 0;
+	onMessage(connection: Connection, message: WSMessage) {
+		// Persists across hibernation
+		this.setState({ counter: this.state.counter + 1 });
 
-
-  onMessage(connection: Connection, message: WSMessage) {
-    // Persists across hibernation
-    this.setState({ counter: this.state.counter + 1 });
-
-
-    // Lost after hibernation
-    this.localCounter++;
-  }
+		// Lost after hibernation
+		this.localCounter++;
+	}
 }
 ```
 
@@ -630,284 +525,242 @@ export class MyAgent extends Agent<Env, { counter: number }> {
 
 Track who is online using per-connection state. Connection state is automatically cleaned up when users disconnect:
 
-* [  JavaScript ](#tab-panel-6521)
-* [  TypeScript ](#tab-panel-6522)
-
-**JavaScript**
-
 ```js
 export class PresenceAgent extends Agent {
-  onConnect(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const name = url.searchParams.get("name") || "Anonymous";
+	onConnect(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const name = url.searchParams.get("name") || "Anonymous";
 
+		connection.setState({
+			name,
+			joinedAt: Date.now(),
+			lastSeen: Date.now(),
+		});
 
-    connection.setState({
-      name,
-      joinedAt: Date.now(),
-      lastSeen: Date.now(),
-    });
+		// Send current presence to new user
+		connection.send(
+			JSON.stringify({
+				type: "presence",
+				users: this.getPresence(),
+			}),
+		);
 
+		// Notify others that someone joined
+		this.broadcastPresence();
+	}
 
-    // Send current presence to new user
-    connection.send(
-      JSON.stringify({
-        type: "presence",
-        users: this.getPresence(),
-      }),
-    );
+	onClose(connection) {
+		// No manual cleanup needed - connection state is automatically gone
+		this.broadcastPresence();
+	}
 
+	onMessage(connection, message) {
+		if (message === "ping") {
+			connection.setState((prev) => ({
+				...prev,
+				lastSeen: Date.now(),
+			}));
+			connection.send("pong");
+		}
+	}
 
-    // Notify others that someone joined
-    this.broadcastPresence();
-  }
+	getPresence() {
+		const users = {};
+		for (const conn of this.getConnections()) {
+			if (conn.state) {
+				users[conn.id] = {
+					name: conn.state.name,
+					lastSeen: conn.state.lastSeen,
+				};
+			}
+		}
+		return users;
+	}
 
-
-  onClose(connection) {
-    // No manual cleanup needed - connection state is automatically gone
-    this.broadcastPresence();
-  }
-
-
-  onMessage(connection, message) {
-    if (message === "ping") {
-      connection.setState((prev) => ({
-        ...prev,
-        lastSeen: Date.now(),
-      }));
-      connection.send("pong");
-    }
-  }
-
-
-  getPresence() {
-    const users = {};
-    for (const conn of this.getConnections()) {
-      if (conn.state) {
-        users[conn.id] = {
-          name: conn.state.name,
-          lastSeen: conn.state.lastSeen,
-        };
-      }
-    }
-    return users;
-  }
-
-
-  broadcastPresence() {
-    this.broadcast(
-      JSON.stringify({
-        type: "presence",
-        users: this.getPresence(),
-      }),
-    );
-  }
+	broadcastPresence() {
+		this.broadcast(
+			JSON.stringify({
+				type: "presence",
+				users: this.getPresence(),
+			}),
+		);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 type UserState = {
-  name: string;
-  joinedAt: number;
-  lastSeen: number;
+	name: string;
+	joinedAt: number;
+	lastSeen: number;
 };
 
-
 export class PresenceAgent extends Agent {
-  onConnect(connection: Connection<UserState>, ctx: ConnectionContext) {
-    const url = new URL(ctx.request.url);
-    const name = url.searchParams.get("name") || "Anonymous";
+	onConnect(connection: Connection<UserState>, ctx: ConnectionContext) {
+		const url = new URL(ctx.request.url);
+		const name = url.searchParams.get("name") || "Anonymous";
 
+		connection.setState({
+			name,
+			joinedAt: Date.now(),
+			lastSeen: Date.now(),
+		});
 
-    connection.setState({
-      name,
-      joinedAt: Date.now(),
-      lastSeen: Date.now(),
-    });
+		// Send current presence to new user
+		connection.send(
+			JSON.stringify({
+				type: "presence",
+				users: this.getPresence(),
+			}),
+		);
 
+		// Notify others that someone joined
+		this.broadcastPresence();
+	}
 
-    // Send current presence to new user
-    connection.send(
-      JSON.stringify({
-        type: "presence",
-        users: this.getPresence(),
-      }),
-    );
+	onClose(connection: Connection) {
+		// No manual cleanup needed - connection state is automatically gone
+		this.broadcastPresence();
+	}
 
+	onMessage(connection: Connection<UserState>, message: WSMessage) {
+		if (message === "ping") {
+			connection.setState((prev) => ({
+				...prev!,
+				lastSeen: Date.now(),
+			}));
+			connection.send("pong");
+		}
+	}
 
-    // Notify others that someone joined
-    this.broadcastPresence();
-  }
+	private getPresence() {
+		const users: Record<string, { name: string; lastSeen: number }> = {};
+		for (const conn of this.getConnections<UserState>()) {
+			if (conn.state) {
+				users[conn.id] = {
+					name: conn.state.name,
+					lastSeen: conn.state.lastSeen,
+				};
+			}
+		}
+		return users;
+	}
 
-
-  onClose(connection: Connection) {
-    // No manual cleanup needed - connection state is automatically gone
-    this.broadcastPresence();
-  }
-
-
-  onMessage(connection: Connection<UserState>, message: WSMessage) {
-    if (message === "ping") {
-      connection.setState((prev) => ({
-        ...prev!,
-        lastSeen: Date.now(),
-      }));
-      connection.send("pong");
-    }
-  }
-
-
-  private getPresence() {
-    const users: Record<string, { name: string; lastSeen: number }> = {};
-    for (const conn of this.getConnections<UserState>()) {
-      if (conn.state) {
-        users[conn.id] = {
-          name: conn.state.name,
-          lastSeen: conn.state.lastSeen,
-        };
-      }
-    }
-    return users;
-  }
-
-
-  private broadcastPresence() {
-    this.broadcast(
-      JSON.stringify({
-        type: "presence",
-        users: this.getPresence(),
-      }),
-    );
-  }
+	private broadcastPresence() {
+		this.broadcast(
+			JSON.stringify({
+				type: "presence",
+				users: this.getPresence(),
+			}),
+		);
+	}
 }
 ```
 
 ### Chat room with broadcast
 
-* [  JavaScript ](#tab-panel-6519)
-* [  TypeScript ](#tab-panel-6520)
-
-**JavaScript**
-
 ```js
 export class ChatRoom extends Agent {
-  onConnect(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const username = url.searchParams.get("username") || "Anonymous";
+	onConnect(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const username = url.searchParams.get("username") || "Anonymous";
 
+		connection.setState({ username });
 
-    connection.setState({ username });
+		// Notify others
+		this.broadcast(
+			JSON.stringify({
+				type: "join",
+				user: username,
+				timestamp: Date.now(),
+			}),
+			[connection.id], // Do not send to the joining user
+		);
+	}
 
+	onMessage(connection, message) {
+		if (typeof message !== "string") return;
 
-    // Notify others
-    this.broadcast(
-      JSON.stringify({
-        type: "join",
-        user: username,
-        timestamp: Date.now(),
-      }),
-      [connection.id], // Do not send to the joining user
-    );
-  }
+		const { username } = connection.state;
 
+		this.broadcast(
+			JSON.stringify({
+				type: "message",
+				user: username,
+				text: message,
+				timestamp: Date.now(),
+			}),
+		);
+	}
 
-  onMessage(connection, message) {
-    if (typeof message !== "string") return;
-
-
-    const { username } = connection.state;
-
-
-    this.broadcast(
-      JSON.stringify({
-        type: "message",
-        user: username,
-        text: message,
-        timestamp: Date.now(),
-      }),
-    );
-  }
-
-
-  onClose(connection) {
-    const { username } = connection.state || {};
-    if (username) {
-      this.broadcast(
-        JSON.stringify({
-          type: "leave",
-          user: username,
-          timestamp: Date.now(),
-        }),
-      );
-    }
-  }
+	onClose(connection) {
+		const { username } = connection.state || {};
+		if (username) {
+			this.broadcast(
+				JSON.stringify({
+					type: "leave",
+					user: username,
+					timestamp: Date.now(),
+				}),
+			);
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 type Message = {
-  type: "message" | "join" | "leave";
-  user: string;
-  text?: string;
-  timestamp: number;
+	type: "message" | "join" | "leave";
+	user: string;
+	text?: string;
+	timestamp: number;
 };
 
-
 export class ChatRoom extends Agent {
-  onConnect(connection: Connection, ctx: ConnectionContext) {
-    const url = new URL(ctx.request.url);
-    const username = url.searchParams.get("username") || "Anonymous";
+	onConnect(connection: Connection, ctx: ConnectionContext) {
+		const url = new URL(ctx.request.url);
+		const username = url.searchParams.get("username") || "Anonymous";
 
+		connection.setState({ username });
 
-    connection.setState({ username });
+		// Notify others
+		this.broadcast(
+			JSON.stringify({
+				type: "join",
+				user: username,
+				timestamp: Date.now(),
+			} satisfies Message),
+			[connection.id], // Do not send to the joining user
+		);
+	}
 
+	onMessage(connection: Connection, message: WSMessage) {
+		if (typeof message !== "string") return;
 
-    // Notify others
-    this.broadcast(
-      JSON.stringify({
-        type: "join",
-        user: username,
-        timestamp: Date.now(),
-      } satisfies Message),
-      [connection.id], // Do not send to the joining user
-    );
-  }
+		const { username } = connection.state as { username: string };
 
+		this.broadcast(
+			JSON.stringify({
+				type: "message",
+				user: username,
+				text: message,
+				timestamp: Date.now(),
+			} satisfies Message),
+		);
+	}
 
-  onMessage(connection: Connection, message: WSMessage) {
-    if (typeof message !== "string") return;
-
-
-    const { username } = connection.state as { username: string };
-
-
-    this.broadcast(
-      JSON.stringify({
-        type: "message",
-        user: username,
-        text: message,
-        timestamp: Date.now(),
-      } satisfies Message),
-    );
-  }
-
-
-  onClose(connection: Connection) {
-    const { username } = (connection.state as { username: string }) || {};
-    if (username) {
-      this.broadcast(
-        JSON.stringify({
-          type: "leave",
-          user: username,
-          timestamp: Date.now(),
-        } satisfies Message),
-      );
-    }
-  }
+	onClose(connection: Connection) {
+		const { username } = (connection.state as { username: string }) || {};
+		if (username) {
+			this.broadcast(
+				JSON.stringify({
+					type: "leave",
+					user: username,
+					timestamp: Date.now(),
+				} satisfies Message),
+			);
+		}
+	}
 }
 ```
 
@@ -915,31 +768,24 @@ export class ChatRoom extends Agent {
 
 By default, agents send JSON text frames (identity, state sync, MCP server lists) to every connection. Override `shouldSendProtocolMessages` to suppress them for specific connections — for example, binary-only clients that cannot handle JSON text frames:
 
-* [  JavaScript ](#tab-panel-6515)
-* [  TypeScript ](#tab-panel-6516)
-
-**JavaScript**
-
 ```js
 export class IoTAgent extends Agent {
-  shouldSendProtocolMessages(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    return url.searchParams.get("protocol") !== "binary";
-  }
+	shouldSendProtocolMessages(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		return url.searchParams.get("protocol") !== "binary";
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class IoTAgent extends Agent {
-  shouldSendProtocolMessages(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    return url.searchParams.get("protocol") !== "binary";
-  }
+	shouldSendProtocolMessages(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		return url.searchParams.get("protocol") !== "binary";
+	}
 }
 ```
 
@@ -971,13 +817,26 @@ Refer to [Client SDK](https://developers.cloudflare.com/agents/communication-cha
 
 ## Next steps
 
-[ State synchronization ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) Sync state between agents and clients.
+### [ State synchronization ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
-[ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) RPC over WebSockets for method calls.
+ Sync state between agents and clients.
 
-[ Cross-domain authentication ](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/) Secure WebSocket connections across domains.
+### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+
+ RPC over WebSockets for method calls.
+
+### [ Cross-domain authentication ](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/)
+
+ Secure WebSocket connections across domains.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/websockets/#page","headline":"WebSockets · Cloudflare Agents docs","description":"Handle real-time WebSocket connections, messages, broadcasts, and lifecycle hooks in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/communication/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/websockets/","name":"WebSockets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/websockets/#page","headline":"WebSockets · Cloudflare Agents docs","description":"Handle real-time WebSocket connections, messages, broadcasts, and lifecycle hooks in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/communication/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: About
 description: How Cloudflare Web3 gateways connect HTTP clients to decentralized networks.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: About
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  About
 
-# About
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/about/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Web3 gateways let your application interact with decentralized networks (IPFS and Ethereum) using standard HTTP requests. Instead of running your own IPFS or Ethereum node, you point your domain at Cloudflare and the gateway handles network communication on your behalf.
 
@@ -35,7 +37,14 @@ Write operations submit new data to the network. For example, sending a transact
 
 From there, the network's validators select transactions from the mempool, group them into a block, and reach consensus on the block's validity. Once the block is accepted, it becomes part of the permanent blockchain record. The gateway returns a transaction ID so your application can track the result.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/about/#page","headline":"About · Cloudflare Web3 docs","description":"How Cloudflare Web3 gateways connect HTTP clients to decentralized networks.","url":"https://developers.cloudflare.com/web3/about/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/about/","name":"About"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/about/#page","headline":"About · Cloudflare Web3 docs","description":"How Cloudflare Web3 gateways connect HTTP clients to decentralized networks.","url":"https://developers.cloudflare.com/web3/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

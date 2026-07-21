@@ -1,18 +1,20 @@
 ---
-title: Email sending
 description: Test Email Service sending Workers locally using wrangler dev with simulated email delivery.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Email sending
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Email sending
+#  Email sending
 
 Test email sending Workers locally using wrangler dev with simulated email delivery
+
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/local-development/sending/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Test email sending functionality locally using `wrangler dev` to simulate email delivery and verify your sending logic before deploying.
 
@@ -33,27 +35,19 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-9266)
-* [  wrangler.toml ](#tab-panel-9267)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "email-sending-worker",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "send_email": [{ "name": "EMAIL" }],
+	"name": "email-sending-worker",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"send_email": [{ "name": "EMAIL" }],
 }
 ```
-
-**TOML**
 
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[send_email]]
 name = "EMAIL"
@@ -65,32 +59,24 @@ Using [remote bindings](https://developers.cloudflare.com/workers/local-developm
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9268)
-* [  wrangler.toml ](#tab-panel-9269)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "email-sending-worker",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "send_email": [
-    {
-      "name": "EMAIL",
-      "remote": true,
-    },
-  ],
+	"name": "email-sending-worker",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"send_email": [
+		{
+			"name": "EMAIL",
+			"remote": true,
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[send_email]]
 name = "EMAIL"
@@ -99,7 +85,7 @@ remote = true
 
 Then run `wrangler dev` as usual. Calls to `env.EMAIL.send()` will send actual emails through Email Service while your Worker code runs locally.
 
-Warning
+Caution
 
 Remote bindings send real emails to real recipients. Use test email addresses to avoid sending unintended emails during development.
 
@@ -109,52 +95,46 @@ When running `wrangler dev` without remote bindings, the email binding is simula
 
 ## Basic sending worker
 
-**JavaScript**
-
 ```javascript
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method !== "POST") {
-      return new Response("Method not allowed", { status: 405 });
-    }
+	async fetch(request, env, ctx) {
+		if (request.method !== "POST") {
+			return new Response("Method not allowed", { status: 405 });
+		}
 
+		try {
+			const emailData = await request.json();
 
-    try {
-      const emailData = await request.json();
+			console.log("Sending email:", {
+				to: emailData.to,
+				from: emailData.from,
+				subject: emailData.subject,
+			});
 
+			const response = await env.EMAIL.send(emailData);
 
-      console.log("Sending email:", {
-        to: emailData.to,
-        from: emailData.from,
-        subject: emailData.subject,
-      });
-
-
-      const response = await env.EMAIL.send(emailData);
-
-
-      return new Response(
-        JSON.stringify({
-          success: true,
-          id: response.messageId,
-        }),
-        {
-          headers: { "Content-Type": "application/json" },
-        },
-      );
-    } catch (error) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: error.message,
-        }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
-        },
-      );
-    }
-  },
+			return new Response(
+				JSON.stringify({
+					success: true,
+					id: response.messageId,
+				}),
+				{
+					headers: { "Content-Type": "application/json" },
+				},
+			);
+		} catch (error) {
+			return new Response(
+				JSON.stringify({
+					success: false,
+					error: error.message,
+				}),
+				{
+					status: 500,
+					headers: { "Content-Type": "application/json" },
+				},
+			);
+		}
+	},
 };
 ```
 
@@ -188,7 +168,6 @@ From: sender@yourdomain.com
 To: recipient@example.com
 Subject: Test Email
 
-
 Text: /tmp/miniflare-.../files/email-text/<message-id>.txt
 ```
 
@@ -213,7 +192,14 @@ This limitation only affects local development — `ArrayBuffer` content works c
 * Deploy your sending worker: [Send emails get started](https://developers.cloudflare.com/email-service/get-started/send-emails/)
 * See advanced patterns: [Email sending examples](https://developers.cloudflare.com/email-service/examples/email-sending/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/local-development/sending/","name":"Email sending"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/sending/#page","headline":"Email sending · Cloudflare Email Service docs","description":"Test Email Service sending Workers locally using wrangler dev with simulated email delivery.","url":"https://developers.cloudflare.com/email-service/local-development/sending/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

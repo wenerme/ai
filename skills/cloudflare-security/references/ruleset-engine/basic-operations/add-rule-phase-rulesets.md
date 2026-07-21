@@ -1,16 +1,18 @@
 ---
-title: Add rules to phase entry point rulesets
 description: Add rules to phase entry point rulesets using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Add rules to phase entry point rulesets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add rules to phase entry point rulesets
 
-# Add rules to phase entry point rulesets
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/basic-operations/add-rule-phase-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) contains an ordered list of rules that run in that phase. A rule in an entry point ruleset can execute a different ruleset. You can have entry point rulesets for each phase at the account level and at the zone level.
 
@@ -51,68 +53,66 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "execute",
-            "action_parameters": {
-                "id": "<MANAGED_RULESET_ID_1>"
-            },
-            "expression": "true"
-        },
-        {
-            "action": "execute",
-            "action_parameters": {
-                "id": "<MANAGED_RULESET_ID_2>"
-            },
-            "expression": "true"
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "execute",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID_1>"
+						},
+						"expression": "true"
+				},
+				{
+						"action": "execute",
+						"action_parameters": {
+								"id": "<MANAGED_RULESET_ID_2>"
+						},
+						"expression": "true"
+				}
+		]
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Default",
-    "description": "",
-    "kind": "zone",
-    "version": "1",
-    "rules": [
-      {
-        "id": "<RULE_ID_1>",
-        "version": "1",
-        "action": "execute",
-        "expression": "true",
-        "action_parameters": {
-          "id": "<MANAGED_RULESET_ID_1>"
-        },
-        "last_updated": "2021-06-17T15:42:37.917815Z"
-      },
-      {
-        "id": "<RULE_ID_2>",
-        "version": "1",
-        "action": "execute",
-        "expression": "true",
-        "action_parameters": {
-          "id": "<MANAGED_RULESET_ID_2>"
-        },
-        "last_updated": "2021-06-17T15:42:37.917815Z"
-      }
-    ],
-    "last_updated": "2021-06-17T15:42:37.917815Z",
-    "phase": "http_request_firewall_managed"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Default",
+		"description": "",
+		"kind": "zone",
+		"version": "1",
+		"rules": [
+			{
+				"id": "<RULE_ID_1>",
+				"version": "1",
+				"action": "execute",
+				"expression": "true",
+				"action_parameters": {
+					"id": "<MANAGED_RULESET_ID_1>"
+				},
+				"last_updated": "2021-06-17T15:42:37.917815Z"
+			},
+			{
+				"id": "<RULE_ID_2>",
+				"version": "1",
+				"action": "execute",
+				"expression": "true",
+				"action_parameters": {
+					"id": "<MANAGED_RULESET_ID_2>"
+				},
+				"last_updated": "2021-06-17T15:42:37.917815Z"
+			}
+		],
+		"last_updated": "2021-06-17T15:42:37.917815Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -145,61 +145,66 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "execute",
-    "action_parameters": {
-        "id": "<MANAGED_RULESET_ID>"
-    },
-    "expression": "true"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "execute",
+		"action_parameters": {
+				"id": "<MANAGED_RULESET_ID>"
+		},
+		"expression": "true"
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Zone-level phase entry point ruleset",
-    "description": "",
-    "kind": "root",
-    "version": "2",
-    "rules": [
-      {
-        "id": "<EXISTING_RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "expression": "true",
-        "action_parameters": {
-          "id": "<ANOTHER_MANAGED_RULESET_ID>"
-        },
-        "last_updated": "2021-03-17T15:42:37.917815Z"
-      },
-      {
-        "id": "<NEW_RULE_ID>",
-        "version": "1",
-        "action": "execute",
-        "expression": "true",
-        "action_parameters": {
-          "id": "<MANAGED_RULESET_ID>"
-        },
-        "last_updated": "2021-06-30T15:42:37.917815Z"
-      }
-    ],
-    "last_updated": "2021-06-30T15:42:37.917815Z",
-    "phase": "http_request_firewall_managed"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Zone-level phase entry point ruleset",
+		"description": "",
+		"kind": "root",
+		"version": "2",
+		"rules": [
+			{
+				"id": "<EXISTING_RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"expression": "true",
+				"action_parameters": {
+					"id": "<ANOTHER_MANAGED_RULESET_ID>"
+				},
+				"last_updated": "2021-03-17T15:42:37.917815Z"
+			},
+			{
+				"id": "<NEW_RULE_ID>",
+				"version": "1",
+				"action": "execute",
+				"expression": "true",
+				"action_parameters": {
+					"id": "<MANAGED_RULESET_ID>"
+				},
+				"last_updated": "2021-06-30T15:42:37.917815Z"
+			}
+		],
+		"last_updated": "2021-06-30T15:42:37.917815Z",
+		"phase": "http_request_firewall_managed"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/add-rule-phase-rulesets/#page","headline":"Add rules to phase entry point rulesets · Cloudflare Ruleset Engine docs","description":"Add rules to phase entry point rulesets using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/add-rule-phase-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/basic-operations/","name":"Basic API operations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/basic-operations/add-rule-phase-rulesets/","name":"Add rules to phase entry point rulesets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/add-rule-phase-rulesets/#page","headline":"Add rules to phase entry point rulesets · Cloudflare Ruleset Engine docs","description":"Add rules to phase entry point rulesets using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/add-rule-phase-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

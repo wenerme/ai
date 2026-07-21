@@ -1,16 +1,18 @@
 ---
-title: Pricing
 description: Cloudflare Images pricing for transformations, storage, and delivery on Free and Paid plans.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Pricing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Pricing
 
-# Pricing
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, all users are on the Images Free plan. The Free plan includes access to the transformations feature, which lets you optimize images stored outside of Images, like in [R2](https://developers.cloudflare.com/r2/).
 
@@ -114,7 +116,14 @@ A retail website has a product page that uses Images to serve 10 images. If the 
 9. 2,000 original images × 5 sizes [↩](#user-content-fnref-4)
 10. (5,000 transformations / 1,000) × $0.50 [↩](#user-content-fnref-10)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/pricing/#page","headline":"Pricing · Cloudflare Images docs","description":"Cloudflare Images pricing for transformations, storage, and delivery on Free and Paid plans.","url":"https://developers.cloudflare.com/images/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/pricing/","name":"Pricing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/pricing/#page","headline":"Pricing · Cloudflare Images docs","description":"Cloudflare Images pricing for transformations, storage, and delivery on Free and Paid plans.","url":"https://developers.cloudflare.com/images/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: What is a DDoS attack?
 description: Learn about what is a ddos attack? in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: What is a DDoS attack?
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  What is a DDoS attack?
 
-# What is a DDoS attack?
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/concepts/ddos-attacks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A distributed denial-of-service (DDoS) attack is where a large number of computers or devices, usually controlled by a single attacker, attempt to access a website or online service all at once. This flood of traffic can overwhelm the website's origin servers, causing the site to slow down or even crash.
 
@@ -36,7 +38,14 @@ DDoS attacks can be devastating for businesses and organizations that rely on th
 
 For more resources on DDoS attacks and how they work, refer to our [Learning Center ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/concepts/ddos-attacks/#page","headline":"What is a DDoS attack? · Cloudflare Learning Paths","description":"Learn about what is a ddos attack? in this guide.","url":"https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/concepts/ddos-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/prevent-ddos-attacks/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/prevent-ddos-attacks/concepts/ddos-attacks/","name":"What is a DDoS attack?"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/concepts/ddos-attacks/#page","headline":"What is a DDoS attack? · Cloudflare Learning Paths","description":"Learn about what is a ddos attack? in this guide.","url":"https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/concepts/ddos-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

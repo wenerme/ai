@@ -1,16 +1,18 @@
 ---
-title: Parallel
 description: Route Parallel API requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Parallel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Parallel
 
-# Parallel
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Parallel ↗](https://parallel.ai/) is a web API purpose-built for AIs, providing production-ready outputs with minimal hallucination and evidence-based results.
 
@@ -91,6 +93,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
+
 {
 "model": "parallel/{model}"
 }
@@ -98,35 +101,30 @@ Specify:
 
 #### JavaScript SDK example
 
-**JavaScript**
-
 ```js
 import OpenAI from "openai";
-
 
 const apiKey = "{parallel_api_key}";
 const accountId = "{account_id}";
 const gatewayId = "{gateway_id}";
 const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/compat`;
 
-
 const client = new OpenAI({
-  apiKey,
-  baseURL,
+	apiKey,
+	baseURL,
 });
 
-
 try {
-  const model = "parallel/speed";
-  const messages = [{ role: "user", content: "Hello!" }];
-  const chatCompletion = await client.chat.completions.create({
-    model,
-    messages,
-  });
-  const response = chatCompletion.choices[0].message;
-  console.log(response);
+	const model = "parallel/speed";
+	const messages = [{ role: "user", content: "Hello!" }];
+	const chatCompletion = await client.chat.completions.create({
+		model,
+		messages,
+	});
+	const response = chatCompletion.choices[0].message;
+	console.log(response);
 } catch (e) {
-  console.error(e);
+	console.error(e);
 }
 ```
 
@@ -145,7 +143,14 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1b
   }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/#page","headline":"Parallel · Cloudflare AI Gateway docs","description":"Route Parallel API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/parallel/","name":"Parallel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/#page","headline":"Parallel · Cloudflare AI Gateway docs","description":"Route Parallel API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

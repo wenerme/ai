@@ -1,16 +1,18 @@
 ---
-title: Error codes
 description: Error codes returned by the Cloudflare Spectrum API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Error codes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Error codes
 
-# Error codes
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/reference/error-codes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page documents error codes returned by the [Spectrum API](https://developers.cloudflare.com/api/resources/spectrum/subresources/apps/), along with recommended fixes to help with troubleshooting.
 
@@ -185,7 +187,14 @@ A hostname with the same DNS name already exists but belongs to a different zone
 * If the DNS name was previously used on another zone you control, delete the application on that zone first.
 * Contact Cloudflare support if none of these apply — the hostname may need to be cleaned up internally.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/error-codes/#page","headline":"Error codes · Cloudflare Spectrum docs","description":"Error codes returned by the Cloudflare Spectrum API.","url":"https://developers.cloudflare.com/spectrum/reference/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/error-codes/","name":"Error codes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/error-codes/#page","headline":"Error codes · Cloudflare Spectrum docs","description":"Error codes returned by the Cloudflare Spectrum API.","url":"https://developers.cloudflare.com/spectrum/reference/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

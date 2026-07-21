@@ -1,16 +1,18 @@
 ---
-title: Recovering from a hacked site
 description: Steps to recover your website after a hack and prevent future compromises using Cloudflare security features.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Recovering from a hacked site
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Recovering from a hacked site
 
-# Recovering from a hacked site
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/security/recovering-from-hacked-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If your website has been hacked recently, review the recommended steps below to recover a hacked website and prevent future hacks.
 
@@ -35,7 +37,14 @@ To prevent the risk of a hacked site:
 * If you have an admin login page, protect it with Cloudflare's [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) or a [Cloudflare Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 * Use a backup service so you can avoid losing valid content.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/security/recovering-from-hacked-site/#page","headline":"Recovering from a hacked site · Cloudflare Fundamentals docs","description":"Steps to recover your website after a hack and prevent future compromises using Cloudflare security features.","url":"https://developers.cloudflare.com/fundamentals/security/recovering-from-hacked-site/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/security/recovering-from-hacked-site/","name":"Recovering from a hacked site"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/security/recovering-from-hacked-site/#page","headline":"Recovering from a hacked site · Cloudflare Fundamentals docs","description":"Steps to recover your website after a hack and prevent future compromises using Cloudflare security features.","url":"https://developers.cloudflare.com/fundamentals/security/recovering-from-hacked-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

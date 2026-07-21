@@ -1,16 +1,18 @@
 ---
-title: Limits
 description: Limits for Cloudflare Workflows, including maximum steps, payload sizes, and instance concurrency.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limits
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limits
 
-# Limits
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/reference/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Limits that apply to authoring, deploying, and running Workflows are detailed below.
 
@@ -53,49 +55,43 @@ Instances that are in a `waiting` state — either sleeping via `step.sleep`, wa
 
 For example, consider a Workflow that does some work, waits for 30 days, and then continues with more work:
 
-**src/index.ts**
-
 ```ts
 import {
-  WorkflowEntrypoint,
-  WorkflowStep,
-  WorkflowEvent,
+	WorkflowEntrypoint,
+	WorkflowStep,
+	WorkflowEvent,
 } from "cloudflare:workers";
 
-
 type Env = {
-  MY_WORKFLOW: Workflow;
+	MY_WORKFLOW: Workflow;
 };
 
-
 export class MyWorkflow extends WorkflowEntrypoint<Env> {
-  async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {
-    await step.do("initial work", async () => {
-      let resp = await fetch("https://api.cloudflare.com/client/v4/ips");
-      return await resp.json<any>();
-    });
+	async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {
+		await step.do("initial work", async () => {
+			let resp = await fetch("https://api.cloudflare.com/client/v4/ips");
+			return await resp.json<any>();
+		});
 
+		await step.sleep("wait 30 days", "30 days");
 
-    await step.sleep("wait 30 days", "30 days");
-
-
-    await step.do(
-      "make a call to write that could maybe, just might, fail",
-      {
-        retries: {
-          limit: 5,
-          delay: "5 seconds",
-          backoff: "exponential",
-        },
-        timeout: "15 minutes",
-      },
-      async () => {
-        if (Math.random() > 0.5) {
-          throw new Error("API call to $STORAGE_SYSTEM failed");
-        }
-      },
-    );
-  }
+		await step.do(
+			"make a call to write that could maybe, just might, fail",
+			{
+				retries: {
+					limit: 5,
+					delay: "5 seconds",
+					backoff: "exponential",
+				},
+				timeout: "15 minutes",
+			},
+			async () => {
+				if (Math.random() > 0.5) {
+					throw new Error("API call to $STORAGE_SYSTEM failed");
+				}
+			},
+		);
+	}
 }
 ```
 
@@ -132,22 +128,15 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-14059)
-* [  wrangler.toml ](#tab-panel-14060)
-
-**JSONC**
-
 ```jsonc
 {
-  // ...rest of your configuration...
-  "limits": {
-    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
-  },
-  // ...rest of your configuration...
+	// ...rest of your configuration...
+	"limits": {
+		"cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
+	},
+	// ...rest of your configuration...
 }
 ```
-
-**TOML**
 
 ```toml
 [limits]
@@ -170,22 +159,15 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-14061)
-* [  wrangler.toml ](#tab-panel-14062)
-
-**JSONC**
-
 ```jsonc
 {
-  // ...rest of your configuration...
-  "limits": {
-    "subrequests": 10000000, // 10 million (maximum)
-  },
-  // ...rest of your configuration...
+	// ...rest of your configuration...
+	"limits": {
+		"subrequests": 10000000, // 10 million (maximum)
+	},
+	// ...rest of your configuration...
 }
 ```
-
-**TOML**
 
 ```toml
 [limits]
@@ -223,7 +205,14 @@ The following table summarizes the wall time limits for different types of Worke
 8. Workflow instance state and logs will be retained for 3 days on the Workers Free plan and for 30 days on the Workers Paid plan. [↩](#user-content-fnref-2)
 9. Match pattern: \_`^[a-zA-Z0-9_][a-zA-Z0-9-_]\*$`\_ [↩](#user-content-fnref-4) [↩2](#user-content-fnref-4-2)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/limits/#page","headline":"Limits · Cloudflare Workflows docs","description":"Limits for Cloudflare Workflows, including maximum steps, payload sizes, and instance concurrency.","url":"https://developers.cloudflare.com/workflows/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/limits/","name":"Limits"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/limits/#page","headline":"Limits · Cloudflare Workflows docs","description":"Limits for Cloudflare Workflows, including maximum steps, payload sizes, and instance concurrency.","url":"https://developers.cloudflare.com/workflows/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

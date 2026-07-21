@@ -1,16 +1,18 @@
 ---
-title: Policies
 description: Understand how Cloudflare account member policies combine actors, roles, and scopes to define access permissions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Policies
 
-# Policies
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-members/policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Policies define what access a given user has to your account or domains, and are constructed out of three parts:
 
@@ -46,7 +48,14 @@ To understand a member’s full access, check both the **Members** and **User Gr
 
 Cloudflare is actively working on improvements to consolidate this view in a future update.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/policies/#page","headline":"Policies · Cloudflare Fundamentals docs","description":"Understand how Cloudflare account member policies combine actors, roles, and scopes to define access permissions.","url":"https://developers.cloudflare.com/fundamentals/manage-members/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/policies/","name":"Policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/policies/#page","headline":"Policies · Cloudflare Fundamentals docs","description":"Understand how Cloudflare account member policies combine actors, roles, and scopes to define access permissions.","url":"https://developers.cloudflare.com/fundamentals/manage-members/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -7,13 +7,13 @@
 | [Set up `reasoning.effort`](#set-up-reasoningeffort)                            | Quality, cost, latency              |
 | [Set up `text.verbosity`](#set-up-textverbosity)                                | Quality, cost, latency              |
 | [Set up the assistant `phase` parameter](#set-up-the-assistant-phase-parameter) | Quality, cost                       |
-| [Use `tool_search`](#use-tool_search)                                           | Cost, latency                       |
+| [Use `tool_search`](#use-toolsearch)                                            | Cost, latency                       |
 | [Use Programmatic Tool Calling](#use-programmatic-tool-calling)                 | Quality, cost, latency              |
 | [Use Multi-agent for parallel work](#use-multi-agent-for-parallel-work)         | Quality, cost, latency              |
 | [Leverage built-in tools](#leverage-built-in-tools)                             | Quality                             |
 | [Leverage compaction](#leverage-compaction)                                     | Cost                                |
-| [Use `prompt_cache_key`](#use-prompt_cache_key)                                 | Latency, cost                       |
-| [Use `reasoning.encrypted_content`](#use-reasoningencrypted_content)            | Quality, latency                    |
+| [Use `prompt_cache_key`](#use-promptcachekey)                                   | Latency, cost                       |
+| [Use `reasoning.encrypted_content`](#use-reasoningencryptedcontent)             | Quality, latency                    |
 | [Set image detail intentionally](#set-image-detail-intentionally)               | Quality, cost, latency              |
 | [Send a safety identifier](#send-a-safety-identifier)                           | Safety, reliability                 |
 | [Use `background=True`](#use-backgroundtrue)                                    | Resumability                        |
@@ -253,6 +253,7 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
+/** @type {OpenAI.Responses.Tool} */
 const billingNamespace = {
   type: "namespace",
   name: "billing",
@@ -261,7 +262,8 @@ const billingNamespace = {
     {
       type: "function",
       name: "lookup_invoice",
-      description: "Look up invoice state, taxes, credits, and payment attempts.",
+      description:
+        "Look up invoice state, taxes, credits, and payment attempts.",
       parameters: {
         type: "object",
         properties: {
@@ -276,10 +278,12 @@ const billingNamespace = {
   ],
 };
 
+/** @type {OpenAI.Responses.Tool} */
 const crmNamespace = {
   type: "namespace",
   name: "crm",
-  description: "CRM tools for account ownership, plans, health, and payment history.",
+  description:
+    "CRM tools for account ownership, plans, health, and payment history.",
   tools: [
     {
       type: "function",
@@ -654,6 +658,7 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
+/** @type {OpenAI.Responses.ResponseInput} */
 const history = [
   {
     role: "user",

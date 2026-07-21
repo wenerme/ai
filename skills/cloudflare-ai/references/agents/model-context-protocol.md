@@ -1,16 +1,18 @@
 ---
-title: Model Context Protocol (MCP)
 description: Build and deploy remote MCP servers on Cloudflare to connect AI agents with external tools and services.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Model Context Protocol (MCP)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Model Context Protocol (MCP)
 
-# Model Context Protocol (MCP)
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can build and deploy [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/) servers on Cloudflare.
 
@@ -42,7 +44,14 @@ The MCP standard supports two modes of operation:
 
 Go to the [Getting Started](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) guide to learn how to build and deploy your first remote MCP server to Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/model-context-protocol/#page","headline":"Model Context Protocol (MCP) · Cloudflare Agents docs","description":"Build and deploy remote MCP servers on Cloudflare to connect AI agents with external tools and services.","url":"https://developers.cloudflare.com/agents/model-context-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/model-context-protocol/#page","headline":"Model Context Protocol (MCP) · Cloudflare Agents docs","description":"Build and deploy remote MCP servers on Cloudflare to connect AI agents with external tools and services.","url":"https://developers.cloudflare.com/agents/model-context-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

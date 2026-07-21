@@ -1,16 +1,18 @@
 ---
-title: Google Chat
 description: Create a Google Chat bot with the Pages Plugin for responding to messages and sending alerts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Google Chat
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Google Chat
 
-# Google Chat
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/plugins/google-chat/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Google Chat Pages Plugin creates a Google Chat bot which can respond to messages. It also includes an API for interacting with Google Chat (for example, for creating messages) without the need for user input. This API is useful for situations such as alerts.
 
@@ -36,19 +38,15 @@ bun add @cloudflare/pages-plugin-google-chat
 
 ## Usage
 
-**TypeScript**
-
 ```typescript
 import googleChatPlugin from "@cloudflare/pages-plugin-google-chat";
 
-
 export const onRequest: PagesFunction = googleChatPlugin(async (message) => {
-  if (message.text.includes("ping")) {
-    return { text: "pong" };
-  }
+	if (message.text.includes("ping")) {
+		return { text: "pong" };
+	}
 
-
-  return { text: "Sorry, I could not understand your message." };
+	return { text: "Sorry, I could not understand your message." };
 });
 ```
 
@@ -62,34 +60,29 @@ The Plugin only exposes a single route, which is the URL you should set in the G
 
 The Google Chat API can be called directly using the `GoogleChatAPI` class:
 
-**TypeScript**
-
 ```typescript
 import { GoogleChatAPI } from "@cloudflare/pages-plugin-google-chat/api";
 
-
 export const onRequest: PagesFunction = () => {
-  // Initialize a GoogleChatAPI with your service account's credentials
-  const googleChat = new GoogleChatAPI({
-    credentials: {
-      client_email: "SERVICE_ACCOUNT_EMAIL_ADDRESS",
-      private_key: "SERVICE_ACCOUNT_PRIVATE_KEY",
-    },
-  });
+	// Initialize a GoogleChatAPI with your service account's credentials
+	const googleChat = new GoogleChatAPI({
+		credentials: {
+			client_email: "SERVICE_ACCOUNT_EMAIL_ADDRESS",
+			private_key: "SERVICE_ACCOUNT_PRIVATE_KEY",
+		},
+	});
 
+	// Post a message
+	// https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/create
+	const message = await googleChat.createMessage(
+		{ parent: "spaces/AAAAAAAAAAA" },
+		undefined,
+		{
+			text: "I'm an alert!",
+		},
+	);
 
-  // Post a message
-  // https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/create
-  const message = await googleChat.createMessage(
-    { parent: "spaces/AAAAAAAAAAA" },
-    undefined,
-    {
-      text: "I'm an alert!",
-    },
-  );
-
-
-  return new Response("Alert sent.");
+	return new Response("Alert sent.");
 };
 ```
 
@@ -108,7 +101,14 @@ The following functions are available on a `GoogleChatAPI` instance. Each take u
 * [updateMessage ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/update)
 * [getAttachment ↗](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages.attachments/get)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/google-chat/#page","headline":"Google Chat · Cloudflare Pages docs","description":"Create a Google Chat bot with the Pages Plugin for responding to messages and sending alerts.","url":"https://developers.cloudflare.com/pages/functions/plugins/google-chat/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/google-chat/","name":"Google Chat"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/google-chat/#page","headline":"Google Chat · Cloudflare Pages docs","description":"Create a Google Chat bot with the Pages Plugin for responding to messages and sending alerts.","url":"https://developers.cloudflare.com/pages/functions/plugins/google-chat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

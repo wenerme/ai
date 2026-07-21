@@ -1,16 +1,18 @@
 ---
-title: Cloudflare IP addresses
 description: Allow Cloudflare IP addresses at your origin server and configure your firewall to prevent accidental blocking of proxied traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare IP addresses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare IP addresses
 
-# Cloudflare IP addresses
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you add a domain to Cloudflare and [proxy its DNS records](https://developers.cloudflare.com/dns/proxy-status/), visitors who look up your domain receive a Cloudflare IP address instead of your origin server's real IP address. This hides your origin server's IP address and allows Cloudflare to optimize, cache, and protect all requests before forwarding them to you.
 
@@ -41,7 +43,6 @@ The following example demonstrates how you could use an iptables rule to allow a
 ```bash
 # For IPv4 addresses
 iptables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
-
 
 # For IPv6 addresses
 ip6tables -I INPUT -p tcp -m multiport --dports http,https -s $ip -j ACCEPT
@@ -102,7 +103,14 @@ AWS VPC route tables sometimes include a route covering `172.16.0.0/12` (or a br
 
 This issue does not appear in security group audits because security groups are evaluated at the instance level, not the routing layer.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/#page","headline":"Cloudflare IP addresses · Cloudflare Fundamentals docs","description":"Allow Cloudflare IP addresses at your origin server and configure your firewall to prevent accidental blocking of proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/concepts/cloudflare-ip-addresses/","name":"Cloudflare IP addresses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/#page","headline":"Cloudflare IP addresses · Cloudflare Fundamentals docs","description":"Allow Cloudflare IP addresses at your origin server and configure your firewall to prevent accidental blocking of proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

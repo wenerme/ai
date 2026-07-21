@@ -1,16 +1,18 @@
 ---
-title: Geolocation
 description: Privacy Proxy preserves user geolocation using geohashes to select egress IPs that match the client's geographic region.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Geolocation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Geolocation
 
-# Geolocation
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy preserves user geolocation without exposing real IP addresses. This ensures location-based services work correctly while maintaining privacy.
 
@@ -98,7 +100,14 @@ The geohash is cryptographically protected to prevent clients from spoofing thei
 
 * [Geo-egress: Improving WARP user experience on a larger network ↗](https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network/) \- How Cloudflare implements geolocation-aware egress.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/#page","headline":"Geolocation · Cloudflare Privacy Proxy docs","description":"Privacy Proxy preserves user geolocation using geohashes to select egress IPs that match the client's geographic region.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/concepts/geolocation/","name":"Geolocation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/#page","headline":"Geolocation · Cloudflare Privacy Proxy docs","description":"Privacy Proxy preserves user geolocation using geohashes to select egress IPs that match the client's geographic region.","url":"https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

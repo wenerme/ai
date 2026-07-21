@@ -1,16 +1,18 @@
 ---
-title: Connect to MySQL
 description: Use Hyperdrive to connect to MySQL and MySQL-compatible databases from Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Connect to MySQL
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect to MySQL
 
-# Connect to MySQL
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive supports MySQL and MySQL-compatible databases, [popular drivers](#supported-drivers), and Object Relational Mapper (ORM) libraries that use those drivers.
 
@@ -31,35 +33,27 @@ npx wrangler hyperdrive create my-first-hyperdrive --connection-string="mysql://
 
 The command above will output the ID of your Hyperdrive, which you will need to set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-9477)
-* [  wrangler.toml ](#tab-panel-9478)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -91,27 +85,20 @@ Other drivers and ORMs not listed may also be supported: this list is not exhaus
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-9479)
-* [  wrangler.toml ](#tab-panel-9480)
-
-**JSONC**
-
 ```jsonc
 {
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20"
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21"
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 ```
 
 ## Supported TLS (SSL) modes
@@ -166,35 +153,27 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9481)
-* [  wrangler.toml ](#tab-panel-9482)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -203,45 +182,39 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new `connection` instance and pass the Hyperdrive parameters:
 
-**TypeScript**
-
 ```ts
 // mysql2 v3.13.0 or later is required
 import { createConnection } from "mysql2/promise";
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Create a new connection on each request. Hyperdrive maintains the underlying
-    // database connection pool, so creating a new connection is fast.
-    const connection = await createConnection({
-      host: env.HYPERDRIVE.host,
-      user: env.HYPERDRIVE.user,
-      password: env.HYPERDRIVE.password,
-      database: env.HYPERDRIVE.database,
-      port: env.HYPERDRIVE.port,
+	async fetch(request, env, ctx): Promise<Response> {
+		// Create a new connection on each request. Hyperdrive maintains the underlying
+		// database connection pool, so creating a new connection is fast.
+		const connection = await createConnection({
+			host: env.HYPERDRIVE.host,
+			user: env.HYPERDRIVE.user,
+			password: env.HYPERDRIVE.password,
+			database: env.HYPERDRIVE.database,
+			port: env.HYPERDRIVE.port,
 
+			// Required to enable mysql2 compatibility for Workers
+			disableEval: true,
+		});
 
-      // Required to enable mysql2 compatibility for Workers
-      disableEval: true,
-    });
+		try {
+			// Sample query
+			const [results, fields] = await connection.query("SHOW tables;");
 
-
-    try {
-      // Sample query
-      const [results, fields] = await connection.query("SHOW tables;");
-
-
-      // Return result rows as JSON
-      return Response.json({ results, fields });
-    } catch (e) {
-      console.error(e);
-      return Response.json(
-        { error: e instanceof Error ? e.message : e },
-        { status: 500 },
-      );
-    }
-  },
+			// Return result rows as JSON
+			return Response.json({ results, fields });
+		} catch (e) {
+			console.error(e);
+			return Response.json(
+				{ error: e instanceof Error ? e.message : e },
+				{ status: 500 },
+			);
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -275,35 +248,27 @@ bun add mysql
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-9483)
-* [  wrangler.toml ](#tab-panel-9484)
-
-**JSONC**
-
 ```jsonc
 {
-  // required for database drivers to function
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<your-hyperdrive-id-here>"
-    }
-  ]
+	// required for database drivers to function
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "<your-hyperdrive-id-here>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -312,46 +277,40 @@ id = "<your-hyperdrive-id-here>"
 
 Create a new connection and pass the Hyperdrive parameters:
 
-**TypeScript**
-
 ```ts
 import { createConnection } from "mysql";
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const result = await new Promise<any>((resolve) => {
-      // Create a connection using the mysql driver with the Hyperdrive credentials (only accessible from your Worker).
-      const connection = createConnection({
-        host: env.HYPERDRIVE.host,
-        user: env.HYPERDRIVE.user,
-        password: env.HYPERDRIVE.password,
-        database: env.HYPERDRIVE.database,
-        port: env.HYPERDRIVE.port,
-      });
+	async fetch(request, env, ctx): Promise<Response> {
+		const result = await new Promise<any>((resolve) => {
+			// Create a connection using the mysql driver with the Hyperdrive credentials (only accessible from your Worker).
+			const connection = createConnection({
+				host: env.HYPERDRIVE.host,
+				user: env.HYPERDRIVE.user,
+				password: env.HYPERDRIVE.password,
+				database: env.HYPERDRIVE.database,
+				port: env.HYPERDRIVE.port,
+			});
 
+			connection.connect((error: { message: string }) => {
+				if (error) {
+					throw new Error(error.message);
+				}
 
-      connection.connect((error: { message: string }) => {
-        if (error) {
-          throw new Error(error.message);
-        }
+				// Sample query
+				connection.query("SHOW tables;", [], (error, rows, fields) => {
+					resolve({ fields, rows });
+				});
+			});
+		});
 
-
-        // Sample query
-        connection.query("SHOW tables;", [], (error, rows, fields) => {
-          resolve({ fields, rows });
-        });
-      });
-    });
-
-
-    // Return result  as JSON
-    return new Response(JSON.stringify(result), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  },
+		// Return result  as JSON
+		return new Response(JSON.stringify(result), {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -368,7 +327,14 @@ To identify active connections to your MySQL database server from Hyperdrive:
 * Learn more about how to use the [Socket API](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets) in a Worker.
 * Understand the [protocols supported by Workers](https://developers.cloudflare.com/workers/reference/protocols/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/#page","headline":"Connect to MySQL · Cloudflare Hyperdrive docs","description":"Use Hyperdrive to connect to MySQL and MySQL-compatible databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/examples/connect-to-mysql/","name":"Connect to MySQL"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/#page","headline":"Connect to MySQL · Cloudflare Hyperdrive docs","description":"Use Hyperdrive to connect to MySQL and MySQL-compatible databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

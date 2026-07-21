@@ -1,16 +1,18 @@
 ---
-title: About
 description: How Authenticated Origin Pulls use mTLS to verify Cloudflare connections.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: About
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  About
 
-# About
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Simple explanation
 
@@ -20,7 +22,7 @@ Authenticated Origin Pulls makes sure that all of these `origin pulls` come from
 
 This block also applies for requests to [unproxied DNS records](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records) in Cloudflare.
 
-Warning
+Caution
 
 The Cloudflare-provided certificate used by [global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/) is not exclusive to your account. It only guarantees that a request is coming from the Cloudflare network.
 
@@ -70,7 +72,14 @@ With Authenticated Origin Pulls, Cloudflare performs standard TLS handshakes bet
 
 This additional layer of authentication ensures that any HTTPS requests outside of Cloudflare will not receive a response from your origin.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/#page","headline":"How Authenticated Origin Pulls works · Cloudflare SSL/TLS docs","description":"How Authenticated Origin Pulls use mTLS to verify Cloudflare connections.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/","name":"Authenticated Origin Pulls (mTLS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/explanation/","name":"About"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/#page","headline":"How Authenticated Origin Pulls works · Cloudflare SSL/TLS docs","description":"How Authenticated Origin Pulls use mTLS to verify Cloudflare connections.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Update a rule in a ruleset
 description: Update a specific rule in a ruleset using the API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Update a rule in a ruleset
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Update a rule in a ruleset
 
-# Update a rule in a ruleset
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Applies one or more changes to an existing rule in a ruleset at the account or zone level.
 
@@ -41,54 +43,52 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account Rulesets Write`
 * `Logs Write`
 
-**Update an account ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "js_challenge",
-    "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
-    "description": "challenge GB and FR based on bot score"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "js_challenge",
+		"expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+		"description": "challenge GB and FR based on bot score"
+	}'
 ```
 
 ```json
 {
-  "result": {
-    "id": "<RULESET_ID>",
-    "name": "Custom Ruleset 1",
-    "description": "My first custom ruleset",
-    "kind": "custom",
-    "version": "11",
-    "rules": [
-      {
-        "id": "<RULE_ID_1>",
-        "version": "2",
-        "action": "js_challenge",
-        "expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
-        "description": "challenge GB and FR based on bot score",
-        "last_updated": "2023-03-22T12:54:58.144683Z",
-        "ref": "<RULE_REF_1>",
-        "enabled": true
-      },
-      {
-        "id": "<RULE_ID_2>",
-        "version": "1",
-        "action": "challenge",
-        "expression": "not http.request.uri.path matches \"^/api/.*$\"",
-        "last_updated": "2022-11-23T11:36:24.192361Z",
-        "ref": "<RULE_REF_2>",
-        "enabled": true
-      }
-    ],
-    "last_updated": "2023-03-22T12:54:58.144683Z",
-    "phase": "http_request_firewall_custom"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<RULESET_ID>",
+		"name": "Custom Ruleset 1",
+		"description": "My first custom ruleset",
+		"kind": "custom",
+		"version": "11",
+		"rules": [
+			{
+				"id": "<RULE_ID_1>",
+				"version": "2",
+				"action": "js_challenge",
+				"expression": "(ip.src.country in {\"GB\" \"FR\"} and cf.bot_management.score < 20 and not cf.bot_management.verified_bot)",
+				"description": "challenge GB and FR based on bot score",
+				"last_updated": "2023-03-22T12:54:58.144683Z",
+				"ref": "<RULE_REF_1>",
+				"enabled": true
+			},
+			{
+				"id": "<RULE_ID_2>",
+				"version": "1",
+				"action": "challenge",
+				"expression": "not http.request.uri.path matches \"^/api/.*$\"",
+				"last_updated": "2022-11-23T11:36:24.192361Z",
+				"ref": "<RULE_REF_2>",
+				"enabled": true
+			}
+		],
+		"last_updated": "2023-03-22T12:54:58.144683Z",
+		"phase": "http_request_firewall_custom"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -112,12 +112,12 @@ The following examples build upon the following (abbreviated) ruleset:
 
 ```json
 {
-  "rules": [
-    { "id": "<RULE_ID_1>" },
-    { "id": "<RULE_ID_2>" },
-    { "id": "<RULE_ID_3>" },
-    { "id": "<RULE_ID_4>" }
-  ]
+	"rules": [
+		{ "id": "<RULE_ID_1>" },
+		{ "id": "<RULE_ID_2>" },
+		{ "id": "<RULE_ID_3>" },
+		{ "id": "<RULE_ID_4>" }
+	]
 }
 ```
 
@@ -150,17 +150,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_2" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "position": {
-        "before": ""
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"position": {
+				"before": ""
+		}
+	}'
 ```
 
 In this case, the new rule order would be:
@@ -196,17 +194,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_2" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "position": {
-        "after": "<RULE_ID_3>"
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"position": {
+				"after": "<RULE_ID_3>"
+		}
+	}'
 ```
 
 In this case, the new rule order would be:
@@ -242,24 +238,29 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID_1" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "position": {
-        "index": 3
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"position": {
+				"index": 3
+		}
+	}'
 ```
 
 In this case, the new rule order would be:
 
 `<RULE_ID_2>`, `<RULE_ID_3>`, `<RULE_ID_1>`, `<RULE_ID_4>`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#page","headline":"Update a rule in a ruleset · Cloudflare Ruleset Engine docs","description":"Update a specific rule in a ruleset using the API.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rulesets-api/","name":"Rulesets API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rulesets-api/update-rule/","name":"Update a rule in a ruleset"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#page","headline":"Update a rule in a ruleset · Cloudflare Ruleset Engine docs","description":"Update a specific rule in a ruleset using the API.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

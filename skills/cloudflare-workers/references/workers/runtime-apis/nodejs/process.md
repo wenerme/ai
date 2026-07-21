@@ -1,16 +1,18 @@
 ---
-title: process
 description: Use the Node.js process module in Cloudflare Workers for environment variables, event handling, and runtime information.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: process
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  process
 
-# process
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -40,38 +42,31 @@ Setting any value on `process.env` will coerce that value into a string.
 
 Instead of using `process.env`, you can [import env from cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables and all other bindings from anywhere in your code.
 
-**JavaScript**
-
 ```js
 import * as process from "node:process";
 
-
 export default {
-  fetch(req, env) {
-    // Set process.env.FOO to the value of env.FOO if process.env.FOO is not already set
-    // and env.FOO is a string.
-    process.env.FOO ??= (() => {
-      if (typeof env.FOO === "string") {
-        return env.FOO;
-      }
-    })();
-  },
+	fetch(req, env) {
+		// Set process.env.FOO to the value of env.FOO if process.env.FOO is not already set
+		// and env.FOO is a string.
+		process.env.FOO ??= (() => {
+			if (typeof env.FOO === "string") {
+				return env.FOO;
+			}
+		})();
+	},
 };
 ```
 
 It is strongly recommended that you _do not_ replace the entire `process.env` object with the cloudflare `env` object. Doing so will cause you to lose any environment variables that were set previously and will cause unexpected behavior for other Workers running in the same isolate. Specifically, it would cause inconsistency with the `process.env` object when accessed via named imports.
 
-**JavaScript**
-
 ```js
 import * as process from "node:process";
 import { env } from "node:process";
 
-
 process.env === env; // true! they are the same object
 process.env = {}; // replace the object! Do not do this!
 process.env === env; // false! they are no longer the same object
-
 
 // From this point forward, any changes to process.env will not be reflected in env,
 // and vice versa!
@@ -81,18 +76,14 @@ process.env === env; // false! they are no longer the same object
 
 The Workers implementation of `process.nextTick()` is a wrapper for the standard Web Platform API [queueMicrotask() ↗](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask).
 
-**JavaScript**
-
 ```js
 import { env, nextTick } from "node:process";
-
 
 env["FOO"] = "bar";
 console.log(env["FOO"]); // Prints: bar
 
-
 nextTick(() => {
-  console.log("next tick");
+	console.log("next tick");
 });
 ```
 
@@ -114,7 +105,14 @@ This ensures compatibility with inspector and structured logging outputs.
 
 While [process.hrtime ↗](https://nodejs.org/docs/latest/api/process.html#processhrtimetime) high-resolution timer is available, it provides an inaccurate timer for compatibility only.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/#page","headline":"process · Cloudflare Workers docs","description":"Use the Node.js process module in Cloudflare Workers for environment variables, event handling, and runtime information.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/process/","name":"process"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/#page","headline":"process · Cloudflare Workers docs","description":"Use the Node.js process module in Cloudflare Workers for environment variables, event handling, and runtime information.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/process/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

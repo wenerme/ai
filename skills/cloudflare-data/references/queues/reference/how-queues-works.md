@@ -1,16 +1,18 @@
 ---
-title: How Queues Works
 description: Learn about Queues architecture including producers, consumers, and message lifecycle.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: How Queues Works
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Queues Works
 
-# How Queues Works
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/reference/how-queues-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Queues is a flexible messaging queue that allows you to queue messages for asynchronous processing. Message queues are great at decoupling components of applications, like the checkout and order fulfillment services for an e-commerce site. Decoupled services are easier to reason about, deploy, and implement, allowing you to ship features that delight your customers without worrying about synchronizing complex deployments. Queues also allow you to batch and buffer calls to downstream services and APIs.
 
@@ -43,13 +45,10 @@ A producer is the term for a client that is publishing or producing messages on 
 
 For example, if we bound a queue named `my-first-queue` to a binding of `MY_FIRST_QUEUE`, messages can be written to the queue by calling `send()` on the binding:
 
-**TypeScript**
-
 ```ts
 interface Env {
   readonly MY_FIRST_QUEUE: Queue;
 }
-
 
 export default {
   async fetch(req, env, ctx): Promise<Response> {
@@ -58,7 +57,6 @@ export default {
       method: req.method,
       headers: Object.fromEntries(req.headers),
     };
-
 
     await env.MY_FIRST_QUEUE.send(message); // This will throw an exception if the send fails for any reason
     return new Response("Sent!");
@@ -82,13 +80,10 @@ Messages published to a queue can be published in different formats, depending o
 
 To explicitly set the content type or specify an alternative content type, pass the `contentType` option to the `send()` method of your queue:
 
-**TypeScript**
-
 ```ts
 interface Env {
   readonly MY_FIRST_QUEUE: Queue;
 }
-
 
 export default {
   async fetch(req, env, ctx): Promise<Response> {
@@ -111,13 +106,10 @@ export default {
 
 To only accept simple strings when writing to a queue, set `{ contentType: "text" }` instead:
 
-**TypeScript**
-
 ```ts
 interface Env {
   readonly MY_FIRST_QUEUE: Queue;
 }
-
 
 export default {
   async fetch(req, env, ctx): Promise<Response> {
@@ -149,13 +141,10 @@ A queue can only have one type of consumer configured.
 
 A consumer is the term for a client that is subscribing to or _consuming_ messages from a queue. In its most basic form, a consumer is defined by creating a `queue` handler in a Worker:
 
-**TypeScript**
-
 ```ts
 interface Env {
   // Add your bindings here, e.g. KV namespaces, R2 buckets, D1 databases
 }
-
 
 export default {
   async queue(batch, env, ctx): Promise<void> {
@@ -171,26 +160,19 @@ export default {
 
 You then connect that consumer to a queue with `wrangler queues consumer <queue-name> <worker-script-name>` or by defining a `[[queues.consumers]]` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) manually:
 
-* [  wrangler.jsonc ](#tab-panel-10487)
-* [  wrangler.toml ](#tab-panel-10488)
-
-**JSONC**
-
 ```jsonc
 {
-  "queues": {
-    "consumers": [
-      {
-        "queue": "<your-queue-name>",
-        "max_batch_size": 100, // optional
-        "max_batch_timeout": 30 // optional
-      }
-    ]
-  }
+	"queues": {
+		"consumers": [
+			{
+				"queue": "<your-queue-name>",
+				"max_batch_size": 100, // optional
+				"max_batch_timeout": 30 // optional
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[queues.consumers]]
@@ -212,13 +194,10 @@ Notably, you can use the same consumer with multiple queues. The queue handler t
 
 For example, a consumer configured to consume messages from multiple queues would resemble the following:
 
-**TypeScript**
-
 ```ts
 interface Env {
   // Add your bindings here
 }
-
 
 export default {
   async queue(batch, env, ctx): Promise<void> {
@@ -259,7 +238,14 @@ Any JSON serializable object can be published to a queue. For most developers, t
 
 Messages themselves can be [batched when delivered to a consumer](https://developers.cloudflare.com/queues/configuration/batching-retries/). By default, messages within a batch are treated as all or nothing when determining retries. If the last message in a batch fails to be processed, the entire batch will be retried. You can also choose to [explicitly acknowledge](https://developers.cloudflare.com/queues/configuration/batching-retries/) messages as they are successfully processed, and/or mark individual messages to be retried.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/reference/how-queues-works/#page","headline":"How Queues Works · Cloudflare Queues docs","description":"Learn about Queues architecture including producers, consumers, and message lifecycle.","url":"https://developers.cloudflare.com/queues/reference/how-queues-works/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/reference/how-queues-works/","name":"How Queues Works"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/reference/how-queues-works/#page","headline":"How Queues Works · Cloudflare Queues docs","description":"Learn about Queues architecture including producers, consumers, and message lifecycle.","url":"https://developers.cloudflare.com/queues/reference/how-queues-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

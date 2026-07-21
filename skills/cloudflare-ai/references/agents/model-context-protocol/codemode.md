@@ -1,16 +1,18 @@
 ---
-title: Code Mode MCP server patterns
 description: Understand single-code-tool and search-and-execute patterns for exposing tools and large APIs through MCP.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Code Mode MCP server patterns
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Code Mode MCP server patterns
 
-# Code Mode MCP server patterns
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/codemode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A Code Mode MCP server lets any Model Context Protocol (MCP) client use model-written code without providing its own sandbox. The MCP server exposes code execution as its tool interface and runs generated JavaScript in an isolated Worker.
 
@@ -29,20 +31,16 @@ The single-tool pattern wraps an existing MCP server with `codeMcpServer()`. Ins
 
 The `code` tool description contains generated TypeScript definitions for every upstream tool. The model writes JavaScript against a `codemode` namespace:
 
-**JavaScript**
-
 ```js
 async () => {
-  const projects = await codemode.list_projects({ status: "active" });
-  const tasks = [];
+	const projects = await codemode.list_projects({ status: "active" });
+	const tasks = [];
 
+	for (const project of projects) {
+		tasks.push(...(await codemode.list_tasks({ projectId: project.id })));
+	}
 
-  for (const project of projects) {
-    tasks.push(...(await codemode.list_tasks({ projectId: project.id })));
-  }
-
-
-  return tasks.filter((task) => task.status === "blocked");
+	return tasks.filter((task) => task.status === "blocked");
 };
 ```
 
@@ -63,17 +61,15 @@ The server exposes two MCP tools:
 
 The model first calls `search` with code such as:
 
-**JavaScript**
-
 ```js
 async () => {
-  const spec = await codemode.spec();
-  return Object.entries(spec.paths)
-    .filter(([path]) => path.includes("/rulesets"))
-    .map(([path, operations]) => ({
-      path,
-      methods: Object.keys(operations),
-    }));
+	const spec = await codemode.spec();
+	return Object.entries(spec.paths)
+		.filter(([path]) => path.includes("/rulesets"))
+		.map(([path, operations]) => ({
+			path,
+			methods: Object.keys(operations),
+		}));
 };
 ```
 
@@ -81,17 +77,14 @@ The complete OpenAPI document remains inside the sandbox. Only the returned subs
 
 After selecting an operation, the model calls `execute`:
 
-**JavaScript**
-
 ```js
 async () => {
-  const response = await codemode.request({
-    method: "GET",
-    path: `/zones/${zoneId}/rulesets`,
-  });
+	const response = await codemode.request({
+		method: "GET",
+		path: `/zones/${zoneId}/rulesets`,
+	});
 
-
-  return response.result.map(({ id, name, phase }) => ({ id, name, phase }));
+	return response.result.map(({ id, name, phase }) => ({ id, name, phase }));
 };
 ```
 
@@ -111,11 +104,22 @@ Code execution does not replace authorization. Enforce permissions and any requi
 
 Use `codeMcpServer()` when an existing MCP server already defines the operations and schemas the model needs. Use `openApiMcpServer()` when a large OpenAPI catalog needs progressive discovery and a fixed model-context footprint.
 
-[ Build a single-tool server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/) Wrap an existing MCP server with one code tool.
+### [ Build a single-tool server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/)
 
-[ Build a search and execute server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/) Publish a large OpenAPI service through progressive discovery.
+ Wrap an existing MCP server with one code tool.
+
+### [ Build a search and execute server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/)
+
+ Publish a large OpenAPI service through progressive discovery.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/codemode/#page","headline":"Code Mode MCP server patterns · Cloudflare Agents docs","description":"Understand single-code-tool and search-and-execute patterns for exposing tools and large APIs through MCP.","url":"https://developers.cloudflare.com/agents/model-context-protocol/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/codemode/","name":"Code Mode MCP server patterns"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/codemode/#page","headline":"Code Mode MCP server patterns · Cloudflare Agents docs","description":"Understand single-code-tool and search-and-execute patterns for exposing tools and large APIs through MCP.","url":"https://developers.cloudflare.com/agents/model-context-protocol/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
 ```

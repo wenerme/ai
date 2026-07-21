@@ -1,16 +1,18 @@
 ---
-title: Agent Skills
 description: Give an agent a catalog of on-demand instructions, resources, and scripts with agents/skills, activated by the model only when a task matches.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Agent Skills
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Agent Skills
 
-# Agent Skills
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Agent Skills are on-demand instructions, resources, and scripts. A skill source provides a catalog of skill names and descriptions; the agent adds that catalog to the system prompt and exposes tools the model can use when a user task matches a skill — so a large library of capabilities does not bloat every prompt.
 
@@ -24,63 +26,51 @@ The skills engine lives in `agents/skills` and is framework-agnostic, so any age
 
 Bundled skills are usually imported with the Agents Vite plugin:
 
-* [  JavaScript ](#tab-panel-6529)
-* [  TypeScript ](#tab-panel-6530)
-
-**JavaScript**
-
 ```js
 import { Think, skills } from "@cloudflare/think";
 import bundledSkills from "agents:skills"; // resolves to ./skills next to this file
 
-
 export class MyAgent extends Think {
-  getSkills() {
-    return [
-      bundledSkills,
-      skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" }),
-    ];
-  }
+	getSkills() {
+		return [
+			bundledSkills,
+			skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" }),
+		];
+	}
 
-
-  getSkillScriptRunner() {
-    return skills.runner({
-      loader: this.env.LOADER,
-      workspaceInstance: this.workspace,
-    });
-  }
+	getSkillScriptRunner() {
+		return skills.runner({
+			loader: this.env.LOADER,
+			workspaceInstance: this.workspace,
+		});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think, skills } from "@cloudflare/think";
 import bundledSkills from "agents:skills"; // resolves to ./skills next to this file
 
-
 type Env = {
-  AI: Ai;
-  LOADER: WorkerLoader;
-  SKILLS_BUCKET: R2Bucket;
+	AI: Ai;
+	LOADER: WorkerLoader;
+	SKILLS_BUCKET: R2Bucket;
 };
 
-
 export class MyAgent extends Think<Env> {
-  getSkills() {
-    return [
-      bundledSkills,
-      skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" }),
-    ];
-  }
+	getSkills() {
+		return [
+			bundledSkills,
+			skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" }),
+		];
+	}
 
-
-  getSkillScriptRunner() {
-    return skills.runner({
-      loader: this.env.LOADER,
-      workspaceInstance: this.workspace,
-    });
-  }
+	getSkillScriptRunner() {
+		return skills.runner({
+			loader: this.env.LOADER,
+			workspaceInstance: this.workspace,
+		});
+	}
 }
 ```
 
@@ -112,18 +102,11 @@ Skills are not always-on system prompt text. Use `getSystemPrompt()` or a Sessio
 
 Script execution is opt-in and requires a Worker Loader binding:
 
-* [  wrangler.jsonc ](#tab-panel-6523)
-* [  wrangler.toml ](#tab-panel-6524)
-
-**JSONC**
-
 ```jsonc
 {
-  "worker_loaders": [{ "binding": "LOADER" }]
+	"worker_loaders": [{ "binding": "LOADER" }]
 }
 ```
-
-**TOML**
 
 ```toml
 [[worker_loaders]]
@@ -134,33 +117,25 @@ binding = "LOADER"
 
 JavaScript and TypeScript scripts are function-style:
 
-* [  JavaScript ](#tab-panel-6525)
-* [  TypeScript ](#tab-panel-6526)
-
-**JavaScript**
-
 ```js
 export default async function run(input, ctx) {
-  const guide = ctx.files["references/style-guide.md"]; // bundled text resources
-  const docs = await ctx.workspace.readFile("README.md"); // gated by permission
-  const summary = await ctx.tools.call("summarize", { input }); // explicit tools
-  await ctx.output.writeFile("notes.md", summary); // scratch artifact
-  return { ok: true };
+	const guide = ctx.files["references/style-guide.md"]; // bundled text resources
+	const docs = await ctx.workspace.readFile("README.md"); // gated by permission
+	const summary = await ctx.tools.call("summarize", { input }); // explicit tools
+	await ctx.output.writeFile("notes.md", summary); // scratch artifact
+	return { ok: true };
 }
 ```
-
-**TypeScript**
 
 ```ts
 import type { SkillRunContext } from "@cloudflare/think";
 
-
 export default async function run(input: unknown, ctx: SkillRunContext) {
-  const guide = ctx.files["references/style-guide.md"]; // bundled text resources
-  const docs = await ctx.workspace.readFile("README.md"); // gated by permission
-  const summary = await ctx.tools.call("summarize", { input }); // explicit tools
-  await ctx.output.writeFile("notes.md", summary); // scratch artifact
-  return { ok: true };
+	const guide = ctx.files["references/style-guide.md"]; // bundled text resources
+	const docs = await ctx.workspace.readFile("README.md"); // gated by permission
+	const summary = await ctx.tools.call("summarize", { input }); // explicit tools
+	await ctx.output.writeFile("notes.md", summary); // scratch artifact
+	return { ok: true };
 }
 ```
 
@@ -170,32 +145,23 @@ Passing `workspaceInstance` gives scripts read-only workspace access by default.
 
 ## Example
 
-* [  JavaScript ](#tab-panel-6527)
-* [  TypeScript ](#tab-panel-6528)
-
-**JavaScript**
-
 ```js
 import { Think, skills } from "@cloudflare/think";
 
-
 export class SkillsAgent extends Think {
-  getSkills() {
-    return [skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" })];
-  }
+	getSkills() {
+		return [skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" })];
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think, skills } from "@cloudflare/think";
 
-
 export class SkillsAgent extends Think<Env> {
-  getSkills() {
-    return [skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" })];
-  }
+	getSkills() {
+		return [skills.r2(this.env.SKILLS_BUCKET, { prefix: "skills/" })];
+	}
 }
 ```
 
@@ -206,7 +172,14 @@ Refer to the [agent-skills example ↗](https://github.com/cloudflare/agents/tre
 * [Think](https://developers.cloudflare.com/agents/harnesses/think/) — wires `getSkills()` and `getSkillScriptRunner()` into the agentic loop
 * [Think tools](https://developers.cloudflare.com/agents/harnesses/think/tools/) — how skill tools merge with workspace, custom, MCP, and client tools
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-skills/#page","headline":"Agent Skills · Cloudflare Agents docs","description":"Give an agent a catalog of on-demand instructions, resources, and scripts with agents/skills, activated by the model only when a task matches.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-skills/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/execution/","name":"Execution"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/execution/agent-skills/","name":"Agent Skills"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-skills/#page","headline":"Agent Skills · Cloudflare Agents docs","description":"Give an agent a catalog of on-demand instructions, resources, and scripts with agents/skills, activated by the model only when a task matches.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-skills/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Models
 description: Configure which AI models AI Search uses for embedding, generation, reranking, and query rewriting.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Models
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Models
 
-# Models
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/models/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Search uses models at multiple stages. You can configure which models are used, or let AI Search automatically select a smart default for you.
 
@@ -71,7 +73,14 @@ Learn more about models and their lifecycle status in [supported models](https:/
 * Plan migration efforts according to the communicated end-of-life date.
 * Migrate and test the recommended replacement models before the end-of-life date.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/#page","headline":"Models · Cloudflare AI Search docs","description":"Configure which AI models AI Search uses for embedding, generation, reranking, and query rewriting.","url":"https://developers.cloudflare.com/ai-search/configuration/models/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/#page","headline":"Models · Cloudflare AI Search docs","description":"Configure which AI models AI Search uses for embedding, generation, reranking, and query rewriting.","url":"https://developers.cloudflare.com/ai-search/configuration/models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

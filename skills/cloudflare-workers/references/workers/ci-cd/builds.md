@@ -1,16 +1,18 @@
 ---
-title: Builds
 description: Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Builds
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Builds
 
-# Builds
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/builds/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) lets you connect a new or existing Worker to a GitHub or GitLab repository, enabling automated builds and deployments for your Worker on push.
 
@@ -21,7 +23,7 @@ The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd
 To create a new Worker and connect it to a GitHub or GitLab repository:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select **Get started** next to **Import a repository**.
 4. Under **Import a repository**, select a **Git account**.
@@ -34,13 +36,13 @@ To create a new Worker and connect it to a GitHub or GitLab repository:
 To connect an existing Worker to a GitHub or GitLab repository:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the Worker you want to connect to a repository.
 3. Select **Settings** and then **Builds**.
 4. Select **Connect** and follow the prompts to connect the repository to your Worker and configure your [build settings](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/).
 5. Push a commit to your Git repository to trigger a build and deploy to your Worker.
 
-Warning
+Caution
 
 When connecting a repository to a Workers project, the Worker name in the Cloudflare dashboard must match the `name` in the Wrangler configuration file in the specified root directory, or the build will fail. This ensures that the Worker deployed from the repository is consistent with the Worker registered in the Cloudflare dashboard. For details, see [Workers name requirement](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/#workers-name-requirement).
 
@@ -70,7 +72,7 @@ If a build succeeds, it is uploaded as a version. If the build is configured to 
 To disconnect a Worker from a GitHub or GitLab repository:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the Worker you want to disconnect from a repository.
 3. Select **Settings** and then **Builds**.
 4. Select **Disconnect**.
@@ -79,7 +81,14 @@ If you want to switch to a different repository for your Worker, you must first 
 
 To disable automatic deployments while still allowing builds to run automatically and save as [versions](https://developers.cloudflare.com/workers/versions-and-deployments/) (without promoting them to an active deployment), update your deploy command to: `npx wrangler versions upload`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds · Cloudflare Workers docs","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/builds/","name":"Builds"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds · Cloudflare Workers docs","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

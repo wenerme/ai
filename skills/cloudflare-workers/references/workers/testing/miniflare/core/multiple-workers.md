@@ -1,56 +1,53 @@
 ---
-title: Multiple Workers
 description: Miniflare allows you to run multiple workers in the same instance. All Workers can be defined at the same level, using the workers option.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Multiple Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Multiple Workers
 
-# Multiple Workers
+Last updated Jan 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/core/multiple-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Miniflare allows you to run multiple workers in the same instance. All Workers can be defined at the same level, using the `workers` option.
 
 Here's an example that uses a service binding to increment a value in a shared KV namespace:
 
-**JavaScript**
-
 ```js
 import { Miniflare, Response } from "miniflare";
 
-
 const message = "The count is ";
 const mf = new Miniflare({
-  // Options shared between workers such as HTTP and persistence configuration
-  // should always be defined at the top level.
-  host: "0.0.0.0",
-  port: 8787,
-  kvPersist: true,
+	// Options shared between workers such as HTTP and persistence configuration
+	// should always be defined at the top level.
+	host: "0.0.0.0",
+	port: 8787,
+	kvPersist: true,
 
-
-  workers: [
-    {
-      name: "worker",
-      kvNamespaces: { COUNTS: "counts" },
-      serviceBindings: {
-        INCREMENTER: "incrementer",
-        // Service bindings can also be defined as custom functions, with access
-        // to anything defined outside Miniflare.
-        async CUSTOM(request) {
-          // `request` is the incoming `Request` object.
-          return new Response(message);
-        },
-      },
-      modules: true,
-      script: `export default {
+	workers: [
+		{
+			name: "worker",
+			kvNamespaces: { COUNTS: "counts" },
+			serviceBindings: {
+				INCREMENTER: "incrementer",
+				// Service bindings can also be defined as custom functions, with access
+				// to anything defined outside Miniflare.
+				async CUSTOM(request) {
+					// `request` is the incoming `Request` object.
+					return new Response(message);
+				},
+			},
+			modules: true,
+			script: `export default {
         async fetch(request, env, ctx) {
           // Get the message defined outside
           const response = await env.CUSTOM.fetch("http://host/");
           const message = await response.text();
-
 
           // Increment the count 3 times
           await env.INCREMENTER.fetch("http://host/");
@@ -58,18 +55,17 @@ const mf = new Miniflare({
           await env.INCREMENTER.fetch("http://host/");
           const count = await env.COUNTS.get("count");
 
-
           return new Response(message + count);
         }
       }`,
-    },
-    {
-      name: "incrementer",
-      // Note we're using the same `COUNTS` namespace as before, but binding it
-      // to `NUMBERS` instead.
-      kvNamespaces: { NUMBERS: "counts" },
-      // Worker formats can be mixed-and-matched
-      script: `addEventListener("fetch", (event) => {
+		},
+		{
+			name: "incrementer",
+			// Note we're using the same `COUNTS` namespace as before, but binding it
+			// to `NUMBERS` instead.
+			kvNamespaces: { NUMBERS: "counts" },
+			// Worker formats can be mixed-and-matched
+			script: `addEventListener("fetch", (event) => {
         event.respondWith(handleRequest());
       })
       async function handleRequest() {
@@ -77,8 +73,8 @@ const mf = new Miniflare({
         await NUMBERS.put("count", count.toString());
         return new Response(count.toString());
       }`,
-    },
-  ],
+		},
+	],
 });
 const res = await mf.dispatchFetch("http://localhost");
 console.log(await res.text()); // "The count is 3"
@@ -89,16 +85,14 @@ await mf.dispose();
 
 You can enable routing by specifying `routes` via the API, using the [standard route syntax](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior). Note port numbers are ignored:
 
-**JavaScript**
-
 ```js
 const mf = new Miniflare({
-  workers: [
-    {
-      scriptPath: "./api/worker.js",
-      routes: ["http://127.0.0.1/api*", "api.mf/*"],
-    },
-  ],
+	workers: [
+		{
+			scriptPath: "./api/worker.js",
+			routes: ["http://127.0.0.1/api*", "api.mf/*"],
+		},
+	],
 });
 ```
 
@@ -118,8 +112,6 @@ $ curl "http://localhost:8787/todos/update/1" -H "Host: api.mf"
 
 When using the API, Miniflare will use the request's URL to determine which Worker to dispatch to.
 
-**JavaScript**
-
 ```js
 // Dispatches to the "api" worker
 const res = await mf.dispatchFetch("http://api.mf/todos/update/1", { ... });
@@ -129,7 +121,14 @@ const res = await mf.dispatchFetch("http://api.mf/todos/update/1", { ... });
 
 Miniflare supports the `script_name` option for accessing Durable Objects exported by other scripts. See [📌 Durable Objects](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects#using-a-class-exported-by-another-script)for more details.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/core/multiple-workers/#page","headline":"Multiple Workers · Cloudflare Workers docs","description":"Miniflare allows you to run multiple workers in the same instance. All Workers can be defined at the same level, using the workers option.","url":"https://developers.cloudflare.com/workers/testing/miniflare/core/multiple-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/core/","name":"Core"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/miniflare/core/multiple-workers/","name":"Multiple Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/core/multiple-workers/#page","headline":"Multiple Workers · Cloudflare Workers docs","description":"Miniflare allows you to run multiple workers in the same instance. All Workers can be defined at the same level, using the workers option.","url":"https://developers.cloudflare.com/workers/testing/miniflare/core/multiple-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

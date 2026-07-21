@@ -1,16 +1,18 @@
 ---
-title: 3xx Redirection
 description: Understand 3xx redirection HTTP status codes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: 3xx Redirection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  3xx Redirection
 
-# 3xx Redirection
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 3xx codes are a class of responses which indicate that the HTTP client must take another course of action to obtain the complete requested resource.
 
@@ -150,7 +152,14 @@ The 308 Permanent Redirect status is commonly used for permanent resource reloca
 
 Cloudflare can handle 308 Permanent Redirects efficiently, ensuring redirection while maintaining request integrity. These redirects can be configured using [Redirect Rules](https://developers.cloudflare.com/rules/url-forwarding/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/#page","headline":"3xx Redirection · Cloudflare Support docs","description":"Understand 3xx redirection HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/3xx-redirection/","name":"3xx Redirection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/#page","headline":"3xx Redirection · Cloudflare Support docs","description":"Understand 3xx redirection HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

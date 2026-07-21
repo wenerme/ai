@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Enable malicious upload detection for file upload endpoints.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/malicious-uploads/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -18,13 +20,8 @@ WAF content scanning is available to customers on an Enterprise plan with a paid
 
 ## 1\. Turn on the detection
 
-* [  New dashboard ](#tab-panel-11987)
-* [ Old dashboard ](#tab-panel-11988)
-* [ API ](#tab-panel-11989)
-* [ Terraform ](#tab-panel-11990)
-
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Turn on **Malicious uploads detection**.
 
@@ -40,20 +37,18 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-**Enable Content Scanning**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/enable" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Use the `cloudflare_content_scanning` resource to enable content scanning for a zone. For example:
 
 ```terraform
 resource "cloudflare_content_scanning" "zone_content_scanning_example" {
-  zone_id = var.cloudflare_zone_id
-  enabled = true
+	zone_id = var.cloudflare_zone_id
+	enabled = true
 }
 ```
 
@@ -120,13 +115,8 @@ For additional examples, refer to [Example rules](https://developers.cloudflare.
 
 To check uploaded content in a way that is not covered by the default configuration, add a [custom scan expression](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).
 
-* [  New dashboard ](#tab-panel-11991)
-* [ Old dashboard ](#tab-panel-11992)
-* [ API ](#tab-panel-11993)
-* [ Terraform ](#tab-panel-11994)
-
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Under **Malicious uploads detection** \> **Configurations**, select the edit icon.
 4. Select **Add content location**.
@@ -154,17 +144,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone WAF Write`
 * `Account WAF Write`
 
-**Add Custom Scan Expressions**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/content-upload-scan/payloads" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '[
-    {
-        "payload": "lookup_json_string(http.request.body.raw, \"file\")"
-    }
-  ]'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '[
+		{
+				"payload": "lookup_json_string(http.request.body.raw, \"file\")"
+		}
+	]'
 ```
 
 The above request will add the following expression to the current list of custom scan expressions:
@@ -184,7 +172,14 @@ resource "cloudflare_content_scanning_expression" "my_custom_scan_expression" {
 
 For more information, refer to [Custom scan expressions](https://developers.cloudflare.com/waf/detections/malicious-uploads/#custom-scan-expressions).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/get-started/#page","headline":"Get started with malicious uploads detection · Cloudflare Web Application Firewall (WAF) docs","description":"Enable malicious upload detection for file upload endpoints.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/malicious-uploads/","name":"Malicious uploads detection"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/malicious-uploads/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/get-started/#page","headline":"Get started with malicious uploads detection · Cloudflare Web Application Firewall (WAF) docs","description":"Enable malicious upload detection for file upload endpoints.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

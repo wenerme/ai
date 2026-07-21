@@ -1,16 +1,18 @@
 ---
-title: Rust
 description: Write Workers in 100% Rust using the [`workers-rs` crate](https://github.com/cloudflare/workers-rs)
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Rust
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rust
 
-# Rust
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/languages/rust/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers provides support for Rust via the [workers-rs crate ↗](https://github.com/cloudflare/workers-rs), which makes [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to developer platform products, such as [Workers KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [R2](https://developers.cloudflare.com/r2/), and [Queues](https://developers.cloudflare.com/queues/), available directly from your Rust code.
 
@@ -70,7 +72,6 @@ With your new project generated, write your Worker code. Find the entrypoint to 
 
 ```rust
 use worker::*;
-
 
 #[event(fetch)]
 async fn main(req: Request, env: Env, ctx: Context) -> Result<Response> {
@@ -171,31 +172,25 @@ To patch the JavaScript that `wasm-bindgen` emits:
 1. Run `wasm-pack build --target bundler` as you normally would.
 2. Patch the JavaScript file that it produces (the following code block assumes the file is called `mywasmlib.js`):
 
-**JavaScript**
-
 ```js
 import * as imports from "./mywasmlib_bg.js";
-
 
 // switch between both syntax for node and for workerd
 import wkmod from "./mywasmlib_bg.wasm";
 import * as nodemod from "./mywasmlib_bg.wasm";
 if (typeof process !== "undefined" && process.release.name === "node") {
-  imports.__wbg_set_wasm(nodemod);
+	imports.__wbg_set_wasm(nodemod);
 } else {
-  const instance = new WebAssembly.Instance(wkmod, {
-    "./mywasmlib_bg.js": imports,
-  });
-  imports.__wbg_set_wasm(instance.exports);
+	const instance = new WebAssembly.Instance(wkmod, {
+		"./mywasmlib_bg.js": imports,
+	});
+	imports.__wbg_set_wasm(instance.exports);
 }
-
 
 export * from "./mywasmlib_bg.js";
 ```
 
 1. In your Worker entrypoint, import the function and use it directly:
-
-**JavaScript**
 
 ```js
 import { myFunction } from "path/to/mylib.js";
@@ -219,8 +214,6 @@ To run the resulting Wasm binary on Workers, `workers-rs` includes a build tool 
 
 Unoptimized Rust Wasm binaries can be large and may exceed Worker bundle size limits or experience long startup times. The template project pre-configures several useful size optimizations in your `Cargo.toml` file:
 
-**TOML**
-
 ```toml
 [profile.release]
 lto = true
@@ -234,7 +227,14 @@ Finally, `worker-bundle` automatically invokes [wasm-opt ↗](https://github.com
 
 * [Rust Wasm Book ↗](https://rustwasm.github.io/docs/book/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/rust/#page","headline":"Cloudflare Workers — Rust language support · Cloudflare Workers docs","description":"Write Workers in 100% Rust using the workers-rs crate","url":"https://developers.cloudflare.com/workers/languages/rust/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/languages/","name":"Languages"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/languages/rust/","name":"Rust"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/rust/#page","headline":"Cloudflare Workers — Rust language support · Cloudflare Workers docs","description":"Write Workers in 100% Rust using the workers-rs crate","url":"https://developers.cloudflare.com/workers/languages/rust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

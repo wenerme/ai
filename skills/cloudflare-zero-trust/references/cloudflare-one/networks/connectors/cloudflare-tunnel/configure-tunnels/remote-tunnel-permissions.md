@@ -1,17 +1,19 @@
 ---
-title: Tunnel permissions
 description: Manage tunnel tokens and control who can run your remotely-managed tunnels.
 
-image: https://developers.cloudflare.com/zt-preview.png
+title: Tunnel permissions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tunnel permissions
 
-# Tunnel permissions
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A remotely-managed tunnel only requires the tunnel token to run. Anyone with access to the token will be able to run the tunnel.
 
@@ -19,12 +21,8 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-7918)
-* [ API ](#tab-panel-7919)
-* [ Terraform (v5) ](#tab-panel-7920)
-
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select a tunnel to open its detail page.
 3. On the **Overview** tab, select **Add a replica** to reveal the installation command. Copy the command into a text editor (do not run the command). The token is the `eyJ...` string.
 
@@ -37,12 +35,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Connector: cloudflared Write`
 * `Cloudflare Tunnel Write`
 
-**Get a Cloudflare Tunnel token**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/token" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```sh
@@ -58,8 +54,8 @@ The token value can be found in the `result`.
 
 ```tf
 data "cloudflare_zero_trust_tunnel_cloudflared_token" "tunnel_token" {
-  account_id = var.cloudflare_account_id
-  tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
+	account_id = var.cloudflare_account_id
+	tunnel_id = cloudflare_zero_trust_tunnel_cloudflared.example_tunnel.id
 }
 ```
 
@@ -70,8 +66,8 @@ Example: Output to CLI
 1. Output the tunnel token to the Terraform state file:
 ```tf
 output "tunnel_token" {
-  value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
-  sensitive   = true
+	value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
+	sensitive   = true
 }
 ```
 2. Apply the configuration:
@@ -92,12 +88,11 @@ Example: Store in HashiCorp Vault
 
 ```tf
 resource "vault_generic_secret" "tunnel_token" {
-  path         = "kv/cloudflare/tunnel_token"
+	path         = "kv/cloudflare/tunnel_token"
 
-
-  data_json = jsonencode({
-    "TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
-  })
+	data_json = jsonencode({
+		"TUNNEL_TOKEN" = data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token
+	})
 }
 ```
 
@@ -109,11 +104,8 @@ To rotate a tunnel token:
 
 1. Refresh the token on Cloudflare:
 
-  * [ Dashboard ](#tab-panel-7921)
-  * [ API ](#tab-panel-7922)
-
   1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-  [ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+  [ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
   2. Select a tunnel to open its detail page.
   3. On the **Overview** tab, select **Refresh token**.
   4. Copy the `cloudflared` installation command for your operating system. This command contains the new token.
@@ -131,37 +123,35 @@ To rotate a tunnel token:
     * `Cloudflare One Connectors Write`
     * `Cloudflare One Connector: cloudflared Write`
     * `Cloudflare Tunnel Write`
-
-**Update a Cloudflare Tunnel**
   ```bash
   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-      "name": "Example tunnel",
-      "tunnel_secret": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="
-    }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+  		"name": "Example tunnel",
+  		"tunnel_secret": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="
+  	}'
   ```
   ```sh
   {
-    "success": true,
-    "errors": [],
-    "messages": [],
-    "result": {
-      "id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-      "account_tag": "699d98642c564d2e855e9661899b7252",
-      "created_at": "2024-12-04T22:03:26.291225Z",
-      "deleted_at": null,
-      "name": "Example tunnel",
-      "connections": [],
-      "conns_active_at": null,
-      "conns_inactive_at": "2024-12-04T22:03:26.291225Z",
-      "tun_type": "cfd_tunnel",
-      "metadata": {},
-      "status": "inactive",
-      "remote_config": true,
-      "token": "eyJhIjoiNWFiNGU5Z..."
-    }
+  	"success": true,
+  	"errors": [],
+  	"messages": [],
+  	"result": {
+  		"id": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+  		"account_tag": "699d98642c564d2e855e9661899b7252",
+  		"created_at": "2024-12-04T22:03:26.291225Z",
+  		"deleted_at": null,
+  		"name": "Example tunnel",
+  		"connections": [],
+  		"conns_active_at": null,
+  		"conns_inactive_at": "2024-12-04T22:03:26.291225Z",
+  		"tun_type": "cfd_tunnel",
+  		"metadata": {},
+  		"status": "inactive",
+  		"remote_config": true,
+  		"token": "eyJhIjoiNWFiNGU5Z..."
+  	}
   }
   ```
   3. Copy the `token` value shown in the output.
@@ -192,12 +182,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `Cloudflare One Connectors Write`
   * `Cloudflare One Connector: cloudflared Write`
   * `Cloudflare Tunnel Write`
-
-**Clean up Cloudflare Tunnel connections**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNNEL_ID/connections" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 This will clean up any unauthorized connections and prevent users from connecting to your network.
 3. On each `cloudflared` replica, update `cloudflared` to use the new token. For example, on a Linux host:
@@ -227,7 +215,14 @@ Additional permissions needed to [route traffic to a public hostname](https://de
 
 You can also scope permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances instead of granting account-wide access. Refer to [Granular permissions for Tunnels and Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/#page","headline":"Tunnel permissions · Cloudflare One docs","description":"Manage tunnel tokens and control who can run your remotely-managed tunnels.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/","name":"Configure a tunnel"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/","name":"Tunnel permissions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/#page","headline":"Tunnel permissions · Cloudflare One docs","description":"Manage tunnel tokens and control who can run your remotely-managed tunnels.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","Terraform"]}
 ```

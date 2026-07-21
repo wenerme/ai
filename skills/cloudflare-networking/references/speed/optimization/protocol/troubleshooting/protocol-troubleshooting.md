@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot protocol issues
 description: Resolve common HTTP/2 and HTTP/3 connection issues.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshoot protocol issues
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot protocol issues
 
-# Troubleshoot protocol issues
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers common HTTP/2 and HTTP/3 issues, including origin incompatibility, multiplexing errors, and browser errors, with steps to diagnose and resolve them.
 
@@ -75,7 +77,14 @@ This forces Chrome to use HTTP/2 for that hostname without disabling HTTP/3 glob
 
 After changing `Alt-Svc`, remember that browsers may cache the advertised alternative service for up to 24 hours.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/#page","headline":"Troubleshoot protocol issues · Cloudflare Speed docs","description":"Resolve common HTTP/2 and HTTP/3 connection issues.","url":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/protocol/","name":"Protocol optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/protocol/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/","name":"Troubleshoot protocol issues"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/#page","headline":"Troubleshoot protocol issues · Cloudflare Speed docs","description":"Resolve common HTTP/2 and HTTP/3 connection issues.","url":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

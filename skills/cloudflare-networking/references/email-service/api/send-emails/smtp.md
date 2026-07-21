@@ -1,16 +1,18 @@
 ---
-title: SMTP
 description: Send emails from any SMTP-capable application or mail client using authenticated SMTP submission on smtp.mx.cloudflare.net.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: SMTP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SMTP
 
-# SMTP
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/api/send-emails/smtp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Email Service exposes an authenticated SMTP submission endpoint so you can send emails from any application, framework, or off-the-shelf mail client that speaks SMTP. Use SMTP when the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) and the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) are not a good fit — for example, when integrating an existing application that already speaks SMTP, or a language-native SMTP library (Nodemailer, `smtplib`, PHPMailer, JavaMail).
 
@@ -53,10 +55,8 @@ From: welcome@yourdomain.com
 To: recipient@example.com
 Subject: Welcome to our service!
 
-
 Thanks for signing up.
 EOF
-
 
 curl --ssl-reqd \
   --url "smtps://smtp.mx.cloudflare.net:465" \
@@ -109,7 +109,6 @@ $ openssl s_client -quiet -connect smtp.mx.cloudflare.net:465 -crlf
 From: welcome@yourdomain.com
 To: recipient@example.com
 Subject: Welcome
-
 
 Thanks for signing up.
 .
@@ -193,7 +192,14 @@ For authentication problems related to SPF, DKIM, or DMARC on the recipient side
 * [Email headers](https://developers.cloudflare.com/email-service/reference/headers/) — supported headers and threading hints.
 * [Limits](https://developers.cloudflare.com/email-service/platform/limits/) — account, message, and session limits.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/#page","headline":"SMTP · Cloudflare Email Service docs","description":"Send emails from any SMTP-capable application or mail client using authenticated SMTP submission on smtp.mx.cloudflare.net.","url":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/api/send-emails/","name":"Send emails"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/api/send-emails/smtp/","name":"SMTP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/#page","headline":"SMTP · Cloudflare Email Service docs","description":"Send emails from any SMTP-capable application or mail client using authenticated SMTP submission on smtp.mx.cloudflare.net.","url":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

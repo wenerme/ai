@@ -1,18 +1,20 @@
 ---
-title: Setup
 description: Learn how to set up Geo Key Manager and choose the geographical boundaries of where your private encryption keys are stored.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Setup
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Setup
 
-# Setup
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-## Geo Key Manager v2 Beta
+## Geo Key Manager v2  Beta
 
 Note
 
@@ -40,18 +42,16 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Access: Mutual TLS Certificates Write`
 * `SSL and Certificates Write`
 
-**Create SSL Configuration**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "certificate": "certificate",
-    "private_key": "<PRIVATE_KEY>",
-    "policy": "(country: US) and (region: EU)",
-    "type": "sni_custom"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"certificate": "certificate",
+		"private_key": "<PRIVATE_KEY>",
+		"policy": "(country: US) and (region: EU)",
+		"type": "sni_custom"
+	}'
 ```
 
 Store private keys in the E.U., but not in France
@@ -62,18 +62,16 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Access: Mutual TLS Certificates Write`
 * `SSL and Certificates Write`
 
-**Create SSL Configuration**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_certificates" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "certificate": "certificate",
-    "private_key": "<PRIVATE_KEY>",
-    "policy": "(region: EU) and (not country: FR)",
-    "type": "sni_custom"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"certificate": "certificate",
+		"private_key": "<PRIVATE_KEY>",
+		"policy": "(region: EU) and (not country: FR)",
+		"type": "sni_custom"
+	}'
 ```
 
 Note
@@ -83,9 +81,6 @@ For more information on the `policy` field, refer to [Supported options](https:/
 ## Geo Key Manager v1
 
 The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set of High Security Data Centers. If you would like to restrict your private key to another country or region, [apply for the closed beta ↗](https://www.cloudflare.com/lp/geo-key-manager/) of the new version.
-
-* [ Dashboard ](#tab-panel-11480)
-* [ API ](#tab-panel-11481)
 
 To use Geo Key Manager in the dashboard:
 
@@ -105,7 +100,14 @@ When sending the [POST](https://developers.cloudflare.com/api/resources/custom%5
 * `eu`
 * `highest_security`([more details](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/#highest-security-data-centers))
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/setup/#page","headline":"Setup - Geo Key Manager · Cloudflare SSL/TLS docs","description":"Learn how to set up Geo Key Manager and choose the geographical boundaries of where your private encryption keys are stored.","url":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Compliance","Geolocation"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/geokey-manager/","name":"Geo Key Manager"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/geokey-manager/setup/","name":"Setup"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/setup/#page","headline":"Setup - Geo Key Manager · Cloudflare SSL/TLS docs","description":"Learn how to set up Geo Key Manager and choose the geographical boundaries of where your private encryption keys are stored.","url":"https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Compliance","Geolocation"]}
 ```

@@ -1,26 +1,25 @@
 ---
-title: Sandbox options
 description: Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Sandbox options
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sandbox options
 
-# Sandbox options
+Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configure sandbox behavior by passing options when creating a sandbox instance with `getSandbox()`.
 
 ## Available options
 
-**TypeScript**
-
 ```ts
 import { getSandbox } from '@cloudflare/sandbox';
-
 
 const sandbox = getSandbox(binding, sandboxId, options?: SandboxOptions);
 ```
@@ -33,27 +32,19 @@ Controls what happens when you call sandbox methods without an explicit `session
 
 Use `enableDefaultSession: true` for interactive or stateful workflows where commands should share working directory and exported variables. Use `enableDefaultSession: false` for stateless request handling where one call should not affect the next one. It is recommended to set this to `false` — default session support will be removed in a future version of the Sandbox SDK, and using `createSession()` explicitly is the preferred pattern going forward.
 
-* [  JavaScript ](#tab-panel-11087)
-* [  TypeScript ](#tab-panel-11088)
-
-**JavaScript**
-
 ```js
 // Default behavior: implicit operations use the default session
 const statefulSandbox = getSandbox(env.Sandbox, "user-123");
-
 
 await statefulSandbox.exec("cd /workspace/app");
 const statefulResult = await statefulSandbox.exec("pwd");
 // statefulResult.stdout: "/workspace/app"
 // The second exec inherited the working directory from the first.
 
-
 // Sessionless behavior: implicit operations do not share shell state
 const statelessSandbox = getSandbox(env.Sandbox, "api-worker", {
-  enableDefaultSession: false,
+	enableDefaultSession: false,
 });
-
 
 await statelessSandbox.exec("cd /workspace/app");
 const statelessResult = await statelessSandbox.exec("pwd");
@@ -61,24 +52,19 @@ const statelessResult = await statelessSandbox.exec("pwd");
 // The second exec did not inherit shell state from the first.
 ```
 
-**TypeScript**
-
 ```ts
 // Default behavior: implicit operations use the default session
 const statefulSandbox = getSandbox(env.Sandbox, 'user-123');
-
 
 await statefulSandbox.exec('cd /workspace/app');
 const statefulResult = await statefulSandbox.exec('pwd');
 // statefulResult.stdout: "/workspace/app"
 // The second exec inherited the working directory from the first.
 
-
 // Sessionless behavior: implicit operations do not share shell state
 const statelessSandbox = getSandbox(env.Sandbox, 'api-worker', {
   enableDefaultSession: false
 });
-
 
 await statelessSandbox.exec('cd /workspace/app');
 const statelessResult = await statelessSandbox.exec('pwd');
@@ -96,31 +82,22 @@ Keep the container alive indefinitely by preventing automatic shutdown. When `tr
 
 The `keepAlive` flag persists across Durable Object hibernation and wakeup cycles. Once enabled, you do not need to re-set it after the sandbox wakes from hibernation.
 
-* [  JavaScript ](#tab-panel-11085)
-* [  TypeScript ](#tab-panel-11086)
-
-**JavaScript**
-
 ```js
 // For long-running processes that need the container to stay alive
 const sandbox = getSandbox(env.Sandbox, "user-123", {
-  keepAlive: true,
+	keepAlive: true,
 });
-
 
 // Run your long-running process
 await sandbox.startProcess("python long_running_script.py");
 
-
 // Important: Must explicitly destroy when done
 try {
-  // Your work here
+	// Your work here
 } finally {
-  await sandbox.destroy(); // Required to prevent containers running indefinitely
+	await sandbox.destroy(); // Required to prevent containers running indefinitely
 }
 ```
-
-**TypeScript**
 
 ```ts
 // For long-running processes that need the container to stay alive
@@ -128,10 +105,8 @@ const sandbox = getSandbox(env.Sandbox, 'user-123', {
   keepAlive: true
 });
 
-
 // Run your long-running process
 await sandbox.startProcess('python long_running_script.py');
-
 
 // Important: Must explicitly destroy when done
 try {
@@ -155,32 +130,23 @@ Bug fix in v0.2.17
 
 Prior to v0.2.17, the `sleepAfter` option passed to `getSandbox()` was ignored due to a timing issue. The option is now properly applied when creating sandbox instances.
 
-* [  JavaScript ](#tab-panel-11083)
-* [  TypeScript ](#tab-panel-11084)
-
-**JavaScript**
-
 ```js
 // Sleep after 30 seconds of inactivity
 const sandbox = getSandbox(env.Sandbox, "user-123", {
-  sleepAfter: "30s",
+	sleepAfter: "30s",
 });
-
 
 // Sleep after 5 minutes (using number)
 const sandbox2 = getSandbox(env.Sandbox, "user-456", {
-  sleepAfter: 300, // 300 seconds = 5 minutes
+	sleepAfter: 300, // 300 seconds = 5 minutes
 });
 ```
-
-**TypeScript**
 
 ```ts
 // Sleep after 30 seconds of inactivity
 const sandbox = getSandbox(env.Sandbox, 'user-123', {
   sleepAfter: '30s'
 });
-
 
 // Sleep after 5 minutes (using number)
 const sandbox2 = getSandbox(env.Sandbox, 'user-456', {
@@ -198,30 +164,22 @@ When `keepAlive: true` is set, `sleepAfter` is ignored and the sandbox never sle
 
 Configure timeouts for container startup operations.
 
-* [  JavaScript ](#tab-panel-11089)
-* [  TypeScript ](#tab-panel-11090)
-
-**JavaScript**
-
 ```js
 // Extended startup with custom Dockerfile work
 // (installing packages, starting services before SDK)
 const sandbox = getSandbox(env.Sandbox, "data-processor", {
-  containerTimeouts: {
-    portReadyTimeoutMS: 180_000, // 3 minutes for startup work
-  },
+	containerTimeouts: {
+		portReadyTimeoutMS: 180_000, // 3 minutes for startup work
+	},
 });
-
 
 // Wait longer during traffic spikes
 const sandbox2 = getSandbox(env.Sandbox, "user-env", {
-  containerTimeouts: {
-    instanceGetTimeoutMS: 60_000, // 1 minute for provisioning
-  },
+	containerTimeouts: {
+		instanceGetTimeoutMS: 60_000, // 1 minute for provisioning
+	},
 });
 ```
-
-**TypeScript**
 
 ```ts
 // Extended startup with custom Dockerfile work
@@ -231,7 +189,6 @@ const sandbox = getSandbox(env.Sandbox, 'data-processor', {
     portReadyTimeoutMS: 180_000  // 3 minutes for startup work
   }
 });
-
 
 // Wait longer during traffic spikes
 const sandbox2 = getSandbox(env.Sandbox, 'user-env', {
@@ -264,21 +221,14 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 * `SANDBOX_LOG_LEVEL` \- Minimum log level: `debug`, `info`, `warn`, `error`. **Default**: `info`
 * `SANDBOX_LOG_FORMAT` \- Output format: `json`, `pretty`. **Default**: `json`
 
-* [  wrangler.jsonc ](#tab-panel-11081)
-* [  wrangler.toml ](#tab-panel-11082)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "SANDBOX_LOG_LEVEL": "debug",
-    "SANDBOX_LOG_FORMAT": "pretty"
-  }
+	"vars": {
+		"SANDBOX_LOG_LEVEL": "debug",
+		"SANDBOX_LOG_FORMAT": "pretty"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -300,11 +250,6 @@ Lowercase sandbox IDs when creating sandboxes. When `true`, the ID you provide i
 
 **Why this matters**: Preview URLs extract the sandbox ID from the hostname, which is always lowercase due to DNS case-insensitivity. Without normalization, a sandbox created with "MyProject-123" becomes unreachable via preview URL because the URL routing looks for "myproject-123" (different Durable Object).
 
-* [  JavaScript ](#tab-panel-11091)
-* [  TypeScript ](#tab-panel-11092)
-
-**JavaScript**
-
 ```js
 // Without normalization (default)
 const sandbox1 = getSandbox(env.Sandbox, "MyProject-123");
@@ -312,17 +257,14 @@ const sandbox1 = getSandbox(env.Sandbox, "MyProject-123");
 // Preview URL: 8000-myproject-123.example.com
 // Problem: URL routes to "myproject-123" (different DO)
 
-
 // With normalization
 const sandbox2 = getSandbox(env.Sandbox, "MyProject-123", {
-  normalizeId: true,
+	normalizeId: true,
 });
 // Creates Durable Object with ID: "myproject-123"
 // Preview URL: 8000-myproject-123.example.com
 // Works: URL routes to "myproject-123" (same DO)
 ```
-
-**TypeScript**
 
 ```ts
 // Without normalization (default)
@@ -330,7 +272,6 @@ const sandbox1 = getSandbox(env.Sandbox, 'MyProject-123');
 // Creates Durable Object with ID: "MyProject-123"
 // Preview URL: 8000-myproject-123.example.com
 // Problem: URL routes to "myproject-123" (different DO)
-
 
 // With normalization
 const sandbox2 = getSandbox(env.Sandbox, 'MyProject-123', {
@@ -388,7 +329,14 @@ With `keepAlive`, containers send automatic heartbeat pings every 30 seconds to 
 * [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/) \- Create and manage sandboxes with `setKeepAlive()`
 * [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox lifecycle
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#page","headline":"Sandbox options · Cloudflare Sandbox SDK docs","description":"Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.","url":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/sandbox-options/","name":"Sandbox options"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#page","headline":"Sandbox options · Cloudflare Sandbox SDK docs","description":"Configure Sandbox SDK behavior with sleep timeouts, resource limits, and container settings.","url":"https://developers.cloudflare.com/sandbox/configuration/sandbox-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

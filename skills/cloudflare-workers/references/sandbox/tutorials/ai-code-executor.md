@@ -1,16 +1,18 @@
 ---
-title: Build an AI code executor
 description: Use Claude to generate Python code from natural language and execute it securely in sandboxes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build an AI code executor
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build an AI code executor
 
-# Build an AI code executor
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build an AI-powered code execution system using Sandbox SDK and Claude. Turn natural language questions into Python code, execute it securely, and return results.
 
@@ -82,98 +84,82 @@ bun add @anthropic-ai/sdk
 
 Replace the contents of `src/index.ts`:
 
-**TypeScript**
-
 ```typescript
 import { getSandbox, type Sandbox } from '@cloudflare/sandbox';
 import Anthropic from '@anthropic-ai/sdk';
 
-
 export { Sandbox } from '@cloudflare/sandbox';
 
-
 interface Env {
-  Sandbox: DurableObjectNamespace<Sandbox>;
-  ANTHROPIC_API_KEY: string;
+	Sandbox: DurableObjectNamespace<Sandbox>;
+	ANTHROPIC_API_KEY: string;
 }
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    if (request.method !== 'POST' || new URL(request.url).pathname !== '/execute') {
-      return new Response('POST /execute with { "question": "your question" }');
-    }
+	async fetch(request: Request, env: Env): Promise<Response> {
+		if (request.method !== 'POST' || new URL(request.url).pathname !== '/execute') {
+			return new Response('POST /execute with { "question": "your question" }');
+		}
 
+		try {
+			const { question } = await request.json();
 
-    try {
-      const { question } = await request.json();
+			if (!question) {
+				return Response.json({ error: 'Question is required' }, { status: 400 });
+			}
 
-
-      if (!question) {
-        return Response.json({ error: 'Question is required' }, { status: 400 });
-      }
-
-
-      // Use Claude to generate Python code
-      const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
-      const codeGeneration = await anthropic.messages.create({
-        model: 'claude-sonnet-4-5',
-        max_tokens: 1024,
-        messages: [{
-          role: 'user',
-          content: `Generate Python code to answer: "${question}"
-
+			// Use Claude to generate Python code
+			const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+			const codeGeneration = await anthropic.messages.create({
+				model: 'claude-sonnet-4-5',
+				max_tokens: 1024,
+				messages: [{
+					role: 'user',
+					content: `Generate Python code to answer: "${question}"
 
 Requirements:
 - Use only Python standard library
 - Print the result using print()
 - Keep code simple and safe
 
-
 Return ONLY the code, no explanations.`
-        }],
-      });
+				}],
+			});
 
+			const generatedCode = codeGeneration.content[0]?.type === 'text'
+				? codeGeneration.content[0].text
+				: '';
 
-      const generatedCode = codeGeneration.content[0]?.type === 'text'
-        ? codeGeneration.content[0].text
-        : '';
+			if (!generatedCode) {
+				return Response.json({ error: 'Failed to generate code' }, { status: 500 });
+			}
 
+			// Strip markdown code fences if present
+			const cleanCode = generatedCode
+				.replace(/^```python?\n?/, '')
+				.replace(/\n?```\s*$/, '')
+				.trim();
 
-      if (!generatedCode) {
-        return Response.json({ error: 'Failed to generate code' }, { status: 500 });
-      }
+			// Execute the code in a sandbox
+			const sandbox = getSandbox(env.Sandbox, 'demo-user');
+			await sandbox.writeFile('/tmp/code.py', cleanCode);
+			const result = await sandbox.exec('python /tmp/code.py');
 
+			return Response.json({
+				success: result.success,
+				question,
+				code: generatedCode,
+				output: result.stdout,
+				error: result.stderr
+			});
 
-      // Strip markdown code fences if present
-      const cleanCode = generatedCode
-        .replace(/^```python?\n?/, '')
-        .replace(/\n?```\s*$/, '')
-        .trim();
-
-
-      // Execute the code in a sandbox
-      const sandbox = getSandbox(env.Sandbox, 'demo-user');
-      await sandbox.writeFile('/tmp/code.py', cleanCode);
-      const result = await sandbox.exec('python /tmp/code.py');
-
-
-      return Response.json({
-        success: result.success,
-        question,
-        code: generatedCode,
-        output: result.stdout,
-        error: result.stderr
-      });
-
-
-    } catch (error: any) {
-      return Response.json(
-        { error: 'Internal server error', message: error.message },
-        { status: 500 }
-      );
-    }
-  },
+		} catch (error: any) {
+			return Response.json(
+				{ error: 'Internal server error', message: error.message },
+				{ status: 500 }
+			);
+		}
+	},
 };
 ```
 
@@ -247,7 +233,7 @@ npx wrangler secret put ANTHROPIC_API_KEY
 
 Paste your API key from the [Anthropic Console ↗](https://console.anthropic.com/) when prompted.
 
-Warning
+Caution
 
 After first deployment, wait 2-3 minutes for container provisioning. Check status with `npx wrangler containers list`.
 
@@ -261,12 +247,10 @@ curl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \
   -H "Content-Type: application/json" \
   -d '{"question": "Calculate the factorial of 5"}'
 
-
 # Statistics
 curl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \
   -H "Content-Type: application/json" \
   -d '{"question": "What is the mean of [10, 20, 30, 40, 50]?"}'
-
 
 # String manipulation
 curl -X POST https://ai-code-executor.YOUR_SUBDOMAIN.workers.dev/execute \
@@ -297,7 +281,14 @@ You created an AI code execution system that:
 * [Workers AI](https://developers.cloudflare.com/workers-ai/) \- Use Cloudflare's built-in models
 * [workers-ai-provider package ↗](https://github.com/cloudflare/ai/tree/main/packages/workers-ai-provider) \- Official Workers AI integration
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/#page","headline":"Build an AI code executor · Cloudflare Sandbox SDK docs","description":"Use Claude to generate Python code from natural language and execute it securely in sandboxes.","url":"https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/ai-code-executor/","name":"Build an AI code executor"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/#page","headline":"Build an AI code executor · Cloudflare Sandbox SDK docs","description":"Use Claude to generate Python code from natural language and execute it securely in sandboxes.","url":"https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

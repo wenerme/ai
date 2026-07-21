@@ -1,16 +1,18 @@
 ---
-title: IPs utilization
 description: Monitor dedicated egress IP capacity and concurrent connections with GraphQL.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: IPs utilization
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  IPs utilization
 
-# IPs utilization
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/) to get aggregate data and monitor your dedicated IPs capacity (formerly known as Aegis).
 
@@ -71,7 +73,6 @@ query AegisIpUtilizationQuery(
         }
       }
 
-
       maxByPopUtilization: aegisIpUtilizationAdaptiveGroups(
         limit: 100
         filter: {
@@ -88,7 +89,6 @@ query AegisIpUtilizationQuery(
           popUtilizationKey
         }
       }
-
 
       filterPopUtilization: aegisIpUtilizationAdaptiveGroups(
         limit: 100
@@ -108,7 +108,6 @@ query AegisIpUtilizationQuery(
         }
       }
 
-
       filterIPUtilization: aegisIpUtilizationAdaptiveGroups(
         limit: 100
         filter: {
@@ -126,7 +125,6 @@ query AegisIpUtilizationQuery(
           popUtilizationKey
         }
       }
-
 
       filterOriginUtilization: aegisIpUtilizationAdaptiveGroups(
         limit: 100
@@ -150,9 +148,14 @@ query AegisIpUtilizationQuery(
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAgmA5gSwM4EkAOBVALsgG2QC8BDfAewDsBFcaACgCgYYASUgY04pCtwAqpRAC4YqXBGRVELdgBNyYfAFswAZVykIuMRKky5bRbmXI1AUSry9k6bICUMAN5yAbsjAB3SC7msQfCIySioxLh4+XFQGADNCUwgxZxgI3n4hUXY0qMyYAF8nV1YS1LdEACEoAAUKHCCScmRqcKQ0LDxCRtC4RUx8NzAAcQheTBj-UpgiFWRdGABGAAYlydL4gkTktamTMzUAMWRBgFlpQLBUAH1EMGAxYyVVDS0dHdK956PT89NrgjuD0+5jAVnk7wKEIoEHkkCqYgA2sDDscwGcqBdrnB1ABhAC6OyKENI5T8UymgS6IWaVAh+Qh8hBVFQNNQZPJJWRYG+aN+lwhrEwdU6wSa1AA0mAoHSdvSdipSAAPKq1epUsVhVJtDBq0U9PoDYajEDjZgc6bmOZiZarc0bLbs81cnnozE3QEKJ4gzTaXACmDO1Guv5XAH3T2mZ5gmXm6GwiDwmBIr0on4YkPY-GEx1TBWKnPkyl6mkxjmMtTM1kF3Yp7lBvmof1C3XdGmS6Xm+nkuXk+2QVUi1stLUoHWD6nUXqkfqokZjCbmmZWxYrCF9pLVj61l0N93hx6R72vP3m1iBtNusNA2vR08wZsAOVIajEACIADw4gAyAHlsAARA4vzgAAlCwrmqH9qgAPlfUtyTjOEoERc9eXTS4rkzAlySJc0803EoiyHWlOwZJkWWoNlilPVDg35O9m3HDV23gkoeymdd0GqJjQlaUcOgaCcqCnGdBjnE0Fw5Jd5htNcEkgbY71o3dbn3LkfTeJTt3rdD-g9A99lBax-SQCBLh1N93wATT-ECrgsIYwPUdQri42DWNKRCE2QpNlN0zDcWwqZcI5fDqPNIihI8zlyKrcKy20i8-ibYVBOYqVovY9Z5IgH8pBQKgeJpPj2hbISRMNcTTQhaTrVXO0csUmjErQt1VOvQ81A0k9ms6uskowq8I0M29T2hZACssn8QPQIZ0AfVzqkwh9-wg6aBHc0jYxhJCUJauisUC7N4tKML-UijVorPWLKIIs99obFKyvSjsOS7KZ3tYd76XyIA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQATMRAU0QEsBbNgZURgAToiwgASgFEACgBl8kigHUqyABIU+ycVVIBxBs1YcebSfCZipchctUatO-SAC+QA)
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/#page","headline":"IPs utilization · Cloudflare Smart Shield docs","description":"Monitor dedicated egress IP capacity and concurrent connections with GraphQL.","url":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/configuration/dedicated-egress-ips/","name":"Dedicated CDN Egress IPs"}},{"@type":"ListItem","position":5,"item":{"@id":"/smart-shield/configuration/dedicated-egress-ips/ips-utilization/","name":"IPs utilization"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/#page","headline":"IPs utilization · Cloudflare Smart Shield docs","description":"Monitor dedicated egress IP capacity and concurrent connections with GraphQL.","url":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Generate Credentials
 description: Create TURN keys and generate short-lived credentials for Cloudflare Realtime TURN clients.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Generate Credentials
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Generate Credentials
 
-# Generate Credentials
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/turn/generate-credentials/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare will issue TURN keys, but these keys cannot be used as credentials with `turn.cloudflare.com`. To use TURN, you need to create credentials with a expiring TTL value.
 
@@ -41,25 +43,25 @@ The **201 (Created)** response below can then be passed on to your front-end app
 ```json
 {
   "iceServers": [
-    {
-      "urls": [
-        "stun:stun.cloudflare.com:3478",
-        "stun:stun.cloudflare.com:53"
-      ]
-    },
-    {
-      "urls": [
-        "turn:turn.cloudflare.com:3478?transport=udp",
-        "turn:turn.cloudflare.com:53?transport=udp",
-        "turn:turn.cloudflare.com:3478?transport=tcp",
-        "turn:turn.cloudflare.com:80?transport=tcp",
-        "turns:turn.cloudflare.com:5349?transport=tcp",
-        "turns:turn.cloudflare.com:443?transport=tcp"
-      ],
-      "username": "bc91b63e2b5d759f8eb9f3b58062439e0a0e15893d76317d833265ad08d6631099ce7c7087caabb31ad3e1c386424e3e",
-      "credential": "ebd71f1d3edbc2b0edae3cd5a6d82284aeb5c3b8fdaa9b8e3bf9cec683e0d45fe9f5b44e5145db3300f06c250a15b4a0"
-    }
-  ]
+		{
+			"urls": [
+				"stun:stun.cloudflare.com:3478",
+				"stun:stun.cloudflare.com:53"
+			]
+		},
+		{
+			"urls": [
+				"turn:turn.cloudflare.com:3478?transport=udp",
+				"turn:turn.cloudflare.com:53?transport=udp",
+				"turn:turn.cloudflare.com:3478?transport=tcp",
+				"turn:turn.cloudflare.com:80?transport=tcp",
+				"turns:turn.cloudflare.com:5349?transport=tcp",
+				"turns:turn.cloudflare.com:443?transport=tcp"
+			],
+			"username": "bc91b63e2b5d759f8eb9f3b58062439e0a0e15893d76317d833265ad08d6631099ce7c7087caabb31ad3e1c386424e3e",
+			"credential": "ebd71f1d3edbc2b0edae3cd5a6d82284aeb5c3b8fdaa9b8e3bf9cec683e0d45fe9f5b44e5145db3300f06c250a15b4a0"
+		}
+	]
 }
 ```
 
@@ -69,28 +71,26 @@ The list of returned URLs contains URLs with the primary and alternate ports. Th
 
 Use `iceServers` as follows when instantiating the `RTCPeerConnection`:
 
-**JavaScript**
-
 ```js
 const myPeerConnection = new RTCPeerConnection({
   iceServers: [
     {
       urls: [
-        "stun:stun.cloudflare.com:3478",
-        "stun:stun.cloudflare.com:53"
-      ]
-    },
-    {
-      urls: [
-        "turn:turn.cloudflare.com:3478?transport=udp",
-        "turn:turn.cloudflare.com:53?transport=udp",
-        "turn:turn.cloudflare.com:3478?transport=tcp",
-        "turn:turn.cloudflare.com:80?transport=tcp",
-        "turns:turn.cloudflare.com:5349?transport=tcp",
-        "turns:turn.cloudflare.com:443?transport=tcp"
+				"stun:stun.cloudflare.com:3478",
+				"stun:stun.cloudflare.com:53"
+			]
+		},
+		{
+			urls: [
+				"turn:turn.cloudflare.com:3478?transport=udp",
+				"turn:turn.cloudflare.com:53?transport=udp",
+				"turn:turn.cloudflare.com:3478?transport=tcp",
+				"turn:turn.cloudflare.com:80?transport=tcp",
+				"turns:turn.cloudflare.com:5349?transport=tcp",
+				"turns:turn.cloudflare.com:443?transport=tcp"
       ],
-      "username": "bc91b63e2b5d759f8eb9f3b58062439e0a0e15893d76317d833265ad08d6631099ce7c7087caabb31ad3e1c386424e3e",
-      "credential": "ebd71f1d3edbc2b0edae3cd5a6d82284aeb5c3b8fdaa9b8e3bf9cec683e0d45fe9f5b44e5145db3300f06c250a15b4a0"
+			"username": "bc91b63e2b5d759f8eb9f3b58062439e0a0e15893d76317d833265ad08d6631099ce7c7087caabb31ad3e1c386424e3e",
+			"credential": "ebd71f1d3edbc2b0edae3cd5a6d82284aeb5c3b8fdaa9b8e3bf9cec683e0d45fe9f5b44e5145db3300f06c250a15b4a0"
     },
   ],
 });
@@ -112,7 +112,14 @@ https://rtc.live.cloudflare.com/v1/turn/keys/$TURN_KEY_ID/credentials/$USERNAME/
 
 A **204 (No Content)** response is returned if the credential is successfully revoked.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/generate-credentials/#page","headline":"Generate Credentials · Cloudflare Realtime docs","description":"Create TURN keys and generate short-lived credentials for Cloudflare Realtime TURN clients.","url":"https://developers.cloudflare.com/realtime/turn/generate-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/generate-credentials/","name":"Generate Credentials"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/generate-credentials/#page","headline":"Generate Credentials · Cloudflare Realtime docs","description":"Create TURN keys and generate short-lived credentials for Cloudflare Realtime TURN clients.","url":"https://developers.cloudflare.com/realtime/turn/generate-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

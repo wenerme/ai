@@ -1,16 +1,18 @@
 ---
-title: Custom builds
 description: Customize how your code is compiled, before being processed by Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Custom builds
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom builds
 
-# Custom builds
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/custom-builds/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Custom builds are a way for you to customize how your code is compiled, before being processed by Wrangler.
 
@@ -22,34 +24,27 @@ Wrangler runs [esbuild ↗](https://esbuild.github.io/) by default as part of th
 
 Custom builds are configured by adding a `[build]` section in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and using the following options for configuring your custom build.
 
-* `command` ` string ` optional
+* `command` ` string `optional
 
   * The command used to build your Worker. On Linux and macOS, the command is executed in the `sh` shell and the `cmd` shell for Windows. The `&&` and `||` shell operators may be used. This command will be run as part of `wrangler dev` and `npx wrangler deploy`.
-* `cwd` ` string ` optional
+* `cwd` ` string `optional
 
   * The directory in which the command is executed.
-* `watch_dir` ` string | string\[] ` optional
+* `watch_dir` ` string | string\[] `optional
 
   * The directory to watch for changes while using `wrangler dev`. Defaults to the current working directory.
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-13907)
-* [  wrangler.toml ](#tab-panel-13908)
-
-**JSONC**
-
 ```jsonc
 {
-  "build": {
-    "command": "npm run build",
-    "cwd": "build_cwd",
-    "watch_dir": "build_watch_dir"
-  }
+	"build": {
+		"command": "npm run build",
+		"cwd": "build_cwd",
+		"watch_dir": "build_watch_dir"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [build]
@@ -84,7 +79,14 @@ else
 fi
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/custom-builds/#page","headline":"Custom builds · Cloudflare Workers docs","description":"Customize how your code is compiled, before being processed by Wrangler.","url":"https://developers.cloudflare.com/workers/wrangler/custom-builds/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/custom-builds/","name":"Custom builds"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/custom-builds/#page","headline":"Custom builds · Cloudflare Workers docs","description":"Customize how your code is compiled, before being processed by Wrangler.","url":"https://developers.cloudflare.com/workers/wrangler/custom-builds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

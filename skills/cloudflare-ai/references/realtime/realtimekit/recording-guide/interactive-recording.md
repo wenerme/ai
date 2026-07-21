@@ -1,16 +1,18 @@
 ---
-title: Interactive Recordings with Timed Metadata
 description: Learn how to enable interactive recording with RealtimeKit's capabilities. Follow our guide for effective configuration and management.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Interactive Recordings with Timed Metadata
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Interactive Recordings with Timed Metadata
 
-# Interactive Recordings with Timed Metadata
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's interactive recording feature allows you to add timed metadata to your video stream. Timed metadata serves as cue points for clients to display information and trigger time-aligned actions. The metadata is available to clients in the form of [ID3 ↗](https://en.wikipedia.org/wiki/ID3) tags on the playback timeline.
 
@@ -34,8 +36,6 @@ This parameter enables you to add timed metadata to your recordings, which is ma
 
 1. In [RealtimeKitClient ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient), call the `broadcastMessage` method with the parameters, `ID3` (as a string) and `yourData` (the data you want to send as timed metadata) on the [participants ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient#module%5FRealtimeKitClient+participants) object.
 
-**TypeScript**
-
 ```ts
 meeting.participants.broadcastMessage(“ID3Data”, yourData);
 ```
@@ -47,8 +47,6 @@ This action should only be performed after the recording has been initiated and 
 The recommended time to perform this action is after the recording indicator has been displayed for 3 to 4 seconds.
 
 1. To stop sending the data, call the following method. Once you make this call, you will no longer be able to send additional ID3 data.
-
-**TypeScript**
 
 ```ts
 meeting.participants.broadcastMessage(“ID3Data”,”CLOSE_TRANSPORT”)
@@ -62,8 +60,6 @@ If you do not pass this parameter, the ID3 metadata stream will automatically be
 It's also important to note that the length of each segment depends on the frames of the video. Therefore, each segment may not have the same length, although it is typically close to the specified segment length when the recording was started. By default, the segment length is set to 10 seconds.
 
 1. You can play the stream using the [hls.js ↗](https://github.com/video-dev/hls.js/).
-
-**JavaScript**
 
 ```js
 const onFragChanged = (_) => {
@@ -93,7 +89,14 @@ const onFragChanged = (_) => {
 hls.on(Hls.Events.FRAG_CHANGED, onFragChanged);
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/#page","headline":"Interactive Recordings with Timed Metadata · Cloudflare Realtime docs","description":"Learn how to enable interactive recording with RealtimeKit's capabilities. Follow our guide for effective configuration and management.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/recording-guide/","name":"Recording"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/recording-guide/interactive-recording/","name":"Interactive Recordings with Timed Metadata"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/#page","headline":"Interactive Recordings with Timed Metadata · Cloudflare Realtime docs","description":"Learn how to enable interactive recording with RealtimeKit's capabilities. Follow our guide for effective configuration and management.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

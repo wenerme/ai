@@ -1,16 +1,18 @@
 ---
-title: Webhooks
 description: Receive RealtimeKit events in your application through signed HTTP callbacks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Webhooks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Webhooks
 
-# Webhooks
+Last updated Jun 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/webhooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Webhooks let your backend receive RealtimeKit events as they happen. RealtimeKit sends an HTTP `POST` request to your configured endpoint with a JSON payload when a subscribed event occurs, such as when a meeting starts, a participant joins, or a recording is uploaded.
 
@@ -30,83 +32,67 @@ Webhook events are subscription-only. Your endpoint receives only the events inc
 
 Your webhook endpoint must accept JSON `POST` requests. The endpoint can handle multiple event types by switching on the `event` field in the request body.
 
-* [  JavaScript ](#tab-panel-10821)
-* [  TypeScript ](#tab-panel-10822)
-
-**src/index.js**
-
 ```js
 async function handleEvent(event) {
-  switch (event.event) {
-    case "meeting.participantJoined":
-      // Update attendance records.
-      break;
-    case "recording.statusUpdate":
-      // Track recording state changes.
-      break;
-    default:
-      console.log(`Unhandled RealtimeKit event: ${event.event}`);
-  }
+	switch (event.event) {
+		case "meeting.participantJoined":
+			// Update attendance records.
+			break;
+		case "recording.statusUpdate":
+			// Track recording state changes.
+			break;
+		default:
+			console.log(`Unhandled RealtimeKit event: ${event.event}`);
+	}
 }
 
-
 export default {
-  async fetch(request, _env, ctx) {
-    const url = new URL(request.url);
+	async fetch(request, _env, ctx) {
+		const url = new URL(request.url);
 
+		if (request.method !== "POST" || url.pathname !== "/webhook") {
+			return new Response("Not found", { status: 404 });
+		}
 
-    if (request.method !== "POST" || url.pathname !== "/webhook") {
-      return new Response("Not found", { status: 404 });
-    }
+		const event = await request.json();
+		ctx.waitUntil(handleEvent(event));
 
-
-    const event = await request.json();
-    ctx.waitUntil(handleEvent(event));
-
-
-    return new Response(null, { status: 200 });
-  },
+		return new Response(null, { status: 200 });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 type RealtimeKitWebhookEvent = {
-  event: string;
+	event: string;
 };
 
-
 async function handleEvent(event: RealtimeKitWebhookEvent): Promise<void> {
-  switch (event.event) {
-    case "meeting.participantJoined":
-      // Update attendance records.
-      break;
-    case "recording.statusUpdate":
-      // Track recording state changes.
-      break;
-    default:
-      console.log(`Unhandled RealtimeKit event: ${event.event}`);
-  }
+	switch (event.event) {
+		case "meeting.participantJoined":
+			// Update attendance records.
+			break;
+		case "recording.statusUpdate":
+			// Track recording state changes.
+			break;
+		default:
+			console.log(`Unhandled RealtimeKit event: ${event.event}`);
+	}
 }
 
-
 export default {
-  async fetch(request, _env, ctx): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request, _env, ctx): Promise<Response> {
+		const url = new URL(request.url);
 
+		if (request.method !== "POST" || url.pathname !== "/webhook") {
+			return new Response("Not found", { status: 404 });
+		}
 
-    if (request.method !== "POST" || url.pathname !== "/webhook") {
-      return new Response("Not found", { status: 404 });
-    }
+		const event = await request.json<RealtimeKitWebhookEvent>();
+		ctx.waitUntil(handleEvent(event));
 
-
-    const event = await request.json<RealtimeKitWebhookEvent>();
-    ctx.waitUntil(handleEvent(event));
-
-
-    return new Response(null, { status: 200 });
-  },
+		return new Response(null, { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -162,11 +148,11 @@ The response includes a PEM-encoded public key:
 
 ```json
 {
-  "success": true,
-  "data": {
-    "publicKey": "-----BEGIN PUBLIC KEY-----\n...\n-----END PUBLIC KEY-----"
-  },
-  "message": ""
+	"success": true,
+	"data": {
+		"publicKey": "-----BEGIN PUBLIC KEY-----\n...\n-----END PUBLIC KEY-----"
+	},
+	"message": ""
 }
 ```
 
@@ -174,185 +160,150 @@ The response includes a PEM-encoded public key:
 
 Verify `rtk-signature` against the raw request body. Do not reserialize parsed JSON before verification because changes in whitespace or key order can change the signed bytes.
 
-* [  JavaScript ](#tab-panel-10823)
-* [  TypeScript ](#tab-panel-10824)
-
-**src/index.js**
-
 ```js
 async function verifySignature(publicKeyPem, signature, body) {
-  const publicKey = await crypto.subtle.importKey(
-    "spki",
-    Uint8Array.from(atob(publicKeyPem), (c) => c.charCodeAt(0)),
-    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
-    false,
-    ["verify"],
-  );
+	const publicKey = await crypto.subtle.importKey(
+		"spki",
+		Uint8Array.from(atob(publicKeyPem), (c) => c.charCodeAt(0)),
+		{ name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+		false,
+		["verify"],
+	);
 
-
-  return crypto.subtle.verify(
-    "RSASSA-PKCS1-v1_5",
-    publicKey,
-    Uint8Array.from(atob(signature), (c) => c.charCodeAt(0)),
-    body,
-  );
+	return crypto.subtle.verify(
+		"RSASSA-PKCS1-v1_5",
+		publicKey,
+		Uint8Array.from(atob(signature), (c) => c.charCodeAt(0)),
+		body,
+	);
 }
-
 
 async function handleEvent(event) {
-  // Process the event.
+	// Process the event.
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const signature = request.headers.get("rtk-signature");
+	async fetch(request, env, ctx) {
+		const signature = request.headers.get("rtk-signature");
 
+		if (!signature) {
+			return new Response("Missing signature", {
+				status: 400,
+			});
+		}
 
-    if (!signature) {
-      return new Response("Missing signature", {
-        status: 400,
-      });
-    }
+		const body = await request.arrayBuffer();
 
+		const resp = await fetch(env.REALTIMEKIT_WEBHOOK_PUBLIC_KEY_URL);
+		if (!resp.ok) {
+			return new Response("Missing public key", {
+				status: 400,
+			});
+		}
 
-    const body = await request.arrayBuffer();
+		const respBody = await resp.json();
 
+		const cleanPem = respBody.data.publicKey
+			.replace(/\\n/g, "")
+			.replace(/-----BEGIN PUBLIC KEY-----/, "")
+			.replace(/-----END PUBLIC KEY-----/, "")
+			.replace(/\s+/g, "");
 
-    const resp = await fetch(env.REALTIMEKIT_WEBHOOK_PUBLIC_KEY_URL);
-    if (!resp.ok) {
-      return new Response("Missing public key", {
-        status: 400,
-      });
-    }
+		const verified = await verifySignature(cleanPem, signature, body);
 
+		if (!verified) {
+			return new Response("Invalid signature", { status: 401 });
+		}
 
-    const respBody = await resp.json();
+		const event = JSON.parse(new TextDecoder().decode(body));
 
+		ctx.waitUntil(handleEvent(event));
 
-    const cleanPem = respBody.data.publicKey
-      .replace(/\\n/g, "")
-      .replace(/-----BEGIN PUBLIC KEY-----/, "")
-      .replace(/-----END PUBLIC KEY-----/, "")
-      .replace(/\s+/g, "");
-
-
-    const verified = await verifySignature(cleanPem, signature, body);
-
-
-    if (!verified) {
-      return new Response("Invalid signature", { status: 401 });
-    }
-
-
-    const event = JSON.parse(new TextDecoder().decode(body));
-
-
-    ctx.waitUntil(handleEvent(event));
-
-
-    return new Response(null, { status: 200 });
-  },
+		return new Response(null, { status: 200 });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 type Env = {
-  REALTIMEKIT_WEBHOOK_PUBLIC_KEY_URL: string;
+	REALTIMEKIT_WEBHOOK_PUBLIC_KEY_URL: string;
 };
-
 
 type RealtimeKitWebhookEvent = {
-  event: string;
+	event: string;
 };
 
-
 async function verifySignature(
-  publicKeyPem: string,
-  signature: string,
-  body: ArrayBuffer,
+	publicKeyPem: string,
+	signature: string,
+	body: ArrayBuffer,
 ): Promise<boolean> {
-  const publicKey = await crypto.subtle.importKey(
-    "spki",
-    Uint8Array.from(atob(publicKeyPem), (c) => c.charCodeAt(0)),
-    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
-    false,
-    ["verify"],
-  );
+	const publicKey = await crypto.subtle.importKey(
+		"spki",
+		Uint8Array.from(atob(publicKeyPem), (c) => c.charCodeAt(0)),
+		{ name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+		false,
+		["verify"],
+	);
 
-
-  return crypto.subtle.verify(
-    "RSASSA-PKCS1-v1_5",
-    publicKey,
-    Uint8Array.from(atob(signature), (c) => c.charCodeAt(0)),
-    body,
-  );
+	return crypto.subtle.verify(
+		"RSASSA-PKCS1-v1_5",
+		publicKey,
+		Uint8Array.from(atob(signature), (c) => c.charCodeAt(0)),
+		body,
+	);
 }
-
 
 async function handleEvent(event: RealtimeKitWebhookEvent): Promise<void> {
-  // Process the event.
+	// Process the event.
 }
 
-
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    const signature = request.headers.get("rtk-signature");
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
+		const signature = request.headers.get("rtk-signature");
 
+		if (!signature) {
+			return new Response("Missing signature", {
+				status: 400,
+			});
+		}
 
-    if (!signature) {
-      return new Response("Missing signature", {
-        status: 400,
-      });
-    }
+		const body = await request.arrayBuffer();
 
+		const resp = await fetch(env.REALTIMEKIT_WEBHOOK_PUBLIC_KEY_URL);
+		if (!resp.ok) {
+			return new Response("Missing public key", {
+				status: 400,
+			});
+		}
 
-    const body = await request.arrayBuffer();
+		const respBody = await resp.json<{
+			success: true;
+			data: { publicKey: string };
+		}>();
 
+		const cleanPem = respBody.data.publicKey
+			.replace(/\\n/g, "")
+			.replace(/-----BEGIN PUBLIC KEY-----/, "")
+			.replace(/-----END PUBLIC KEY-----/, "")
+			.replace(/\s+/g, "");
 
-    const resp = await fetch(env.REALTIMEKIT_WEBHOOK_PUBLIC_KEY_URL);
-    if (!resp.ok) {
-      return new Response("Missing public key", {
-        status: 400,
-      });
-    }
+		const verified = await verifySignature(cleanPem, signature, body);
 
+		if (!verified) {
+			return new Response("Invalid signature", { status: 401 });
+		}
 
-    const respBody = await resp.json<{
-      success: true;
-      data: { publicKey: string };
-    }>();
+		const event = JSON.parse(new TextDecoder().decode(body));
 
+		ctx.waitUntil(handleEvent(event));
 
-    const cleanPem = respBody.data.publicKey
-      .replace(/\\n/g, "")
-      .replace(/-----BEGIN PUBLIC KEY-----/, "")
-      .replace(/-----END PUBLIC KEY-----/, "")
-      .replace(/\s+/g, "");
-
-
-    const verified = await verifySignature(cleanPem, signature, body);
-
-
-    if (!verified) {
-      return new Response("Invalid signature", { status: 401 });
-    }
-
-
-    const event = JSON.parse(new TextDecoder().decode(body));
-
-
-    ctx.waitUntil(handleEvent(event));
-
-
-    return new Response(null, { status: 200 });
-  },
+		return new Response(null, { status: 200 });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -395,19 +346,19 @@ All webhook payloads include an `event` field. The remaining fields depend on th
 
 ```json
 {
-  "event": "meeting.started",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "title": "Weekly sync",
-    "status": "LIVE",
-    "createdAt": "2026-06-03T10:00:00.000Z",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "startedAt": "2026-06-03T10:00:00.000Z",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  }
+	"event": "meeting.started",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"title": "Weekly sync",
+		"status": "LIVE",
+		"createdAt": "2026-06-03T10:00:00.000Z",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"startedAt": "2026-06-03T10:00:00.000Z",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	}
 }
 ```
 
@@ -415,21 +366,21 @@ All webhook payloads include an `event` field. The remaining fields depend on th
 
 ```json
 {
-  "event": "meeting.ended",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "title": "Weekly sync",
-    "status": "LIVE",
-    "createdAt": "2026-06-03T10:00:00.000Z",
-    "startedAt": "2026-06-03T10:00:00.000Z",
-    "endedAt": "2026-06-03T10:30:00.000Z",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  },
-  "reason": "ALL_PARTICIPANTS_LEFT"
+	"event": "meeting.ended",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"title": "Weekly sync",
+		"status": "LIVE",
+		"createdAt": "2026-06-03T10:00:00.000Z",
+		"startedAt": "2026-06-03T10:00:00.000Z",
+		"endedAt": "2026-06-03T10:30:00.000Z",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	},
+	"reason": "ALL_PARTICIPANTS_LEFT"
 }
 ```
 
@@ -439,25 +390,25 @@ The `reason` value can be `HOST_ENDED_MEETING` or `ALL_PARTICIPANTS_LEFT`.
 
 ```json
 {
-  "event": "meeting.participantJoined",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "title": "Weekly sync",
-    "status": "LIVE",
-    "createdAt": "2026-06-03T10:00:00.000Z",
-    "startedAt": "2026-06-03T10:00:00.000Z",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  },
-  "participant": {
-    "peerId": "e32fb785-ddd0-4b96-b577-879327c0082f",
-    "userDisplayName": "Mary Sue",
-    "customParticipantId": "user-123",
-    "joinedAt": "2026-06-03T10:05:00.000Z"
-  }
+	"event": "meeting.participantJoined",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"title": "Weekly sync",
+		"status": "LIVE",
+		"createdAt": "2026-06-03T10:00:00.000Z",
+		"startedAt": "2026-06-03T10:00:00.000Z",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	},
+	"participant": {
+		"peerId": "e32fb785-ddd0-4b96-b577-879327c0082f",
+		"userDisplayName": "Mary Sue",
+		"customParticipantId": "user-123",
+		"joinedAt": "2026-06-03T10:05:00.000Z"
+	}
 }
 ```
 
@@ -467,27 +418,27 @@ Use `customParticipantId` for your own participant identifier. `clientSpecificId
 
 ```json
 {
-  "event": "meeting.participantLeft",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "title": "Weekly sync",
-    "status": "LIVE",
-    "createdAt": "2026-06-03T10:00:00.000Z",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "startedAt": "2026-06-03T10:00:00.000Z",
-    "endedAt": "2026-06-03T10:30:00.000Z",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  },
-  "participant": {
-    "peerId": "e32fb785-ddd0-4b96-b577-879327c0082f",
-    "userDisplayName": "Mary Sue",
-    "customParticipantId": "user-123",
-    "joinedAt": "2026-06-03T10:05:00.000Z",
-    "leftAt": "2026-06-03T10:25:00.000Z"
-  }
+	"event": "meeting.participantLeft",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"title": "Weekly sync",
+		"status": "LIVE",
+		"createdAt": "2026-06-03T10:00:00.000Z",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"startedAt": "2026-06-03T10:00:00.000Z",
+		"endedAt": "2026-06-03T10:30:00.000Z",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	},
+	"participant": {
+		"peerId": "e32fb785-ddd0-4b96-b577-879327c0082f",
+		"userDisplayName": "Mary Sue",
+		"customParticipantId": "user-123",
+		"joinedAt": "2026-06-03T10:05:00.000Z",
+		"leftAt": "2026-06-03T10:25:00.000Z"
+	}
 }
 ```
 
@@ -495,19 +446,19 @@ Use `customParticipantId` for your own participant identifier. `clientSpecificId
 
 ```json
 {
-  "event": "meeting.chatSynced",
-  "title": "Weekly sync",
-  "endedAt": "2026-06-03T10:30:00.000Z",
-  "createdAt": "2026-06-03T10:00:00.000Z",
-  "meetingId": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-  "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-  "startedAt": "2026-06-03T10:00:00.000Z",
-  "chatDownloadUrl": "https://example.com/chat.json",
-  "chatDownloadUrlExpiry": "2026-06-10T10:30:00.000Z",
-  "organizedBy": {
-    "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-    "name": "Example organization"
-  }
+	"event": "meeting.chatSynced",
+	"title": "Weekly sync",
+	"endedAt": "2026-06-03T10:30:00.000Z",
+	"createdAt": "2026-06-03T10:00:00.000Z",
+	"meetingId": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+	"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+	"startedAt": "2026-06-03T10:00:00.000Z",
+	"chatDownloadUrl": "https://example.com/chat.json",
+	"chatDownloadUrlExpiry": "2026-06-10T10:30:00.000Z",
+	"organizedBy": {
+		"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+		"name": "Example organization"
+	}
 }
 ```
 
@@ -517,36 +468,36 @@ RealtimeKit sends `recording.statusUpdate` when a recording moves through its li
 
 ```json
 {
-  "event": "recording.statusUpdate",
-  "recording": {
-    "id": "97cb480d-5840-4528-ace3-919b5e386c68",
-    "recordingId": "97cb480d-5840-4528-ace3-919b5e386c68",
-    "status": "UPLOADED",
-    "downloadUrl": "https://example.com/recording.mp4",
-    "audioDownloadUrl": "https://example.com/recording.mp3",
-    "downloadUrlExpiry": "2026-06-10T10:30:00.000Z",
-    "startedTime": "2026-06-03T10:00:00.000Z",
-    "stoppedTime": "2026-06-03T10:30:00.000Z",
-    "fileSize": "2044680",
-    "outputFileName": "weekly-sync.mp4",
-    "meetingId": "50c8940e-1b97-402a-97d6-2708b7feca41",
-    "recordingDuration": 1800,
-    "organizationId": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-    "roomUUID": "05e57591-d89e-45c9-ae44-08dc1eaad0e0"
-  },
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "title": "Weekly sync",
-    "status": "LIVE",
-    "createdAt": "2026-06-03T10:00:00.000Z",
-    "startedAt": "2026-06-03T10:00:00.000Z",
-    "endedAt": "2026-06-03T10:30:00.000Z",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  }
+	"event": "recording.statusUpdate",
+	"recording": {
+		"id": "97cb480d-5840-4528-ace3-919b5e386c68",
+		"recordingId": "97cb480d-5840-4528-ace3-919b5e386c68",
+		"status": "UPLOADED",
+		"downloadUrl": "https://example.com/recording.mp4",
+		"audioDownloadUrl": "https://example.com/recording.mp3",
+		"downloadUrlExpiry": "2026-06-10T10:30:00.000Z",
+		"startedTime": "2026-06-03T10:00:00.000Z",
+		"stoppedTime": "2026-06-03T10:30:00.000Z",
+		"fileSize": "2044680",
+		"outputFileName": "weekly-sync.mp4",
+		"meetingId": "50c8940e-1b97-402a-97d6-2708b7feca41",
+		"recordingDuration": 1800,
+		"organizationId": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+		"roomUUID": "05e57591-d89e-45c9-ae44-08dc1eaad0e0"
+	},
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"title": "Weekly sync",
+		"status": "LIVE",
+		"createdAt": "2026-06-03T10:00:00.000Z",
+		"startedAt": "2026-06-03T10:00:00.000Z",
+		"endedAt": "2026-06-03T10:30:00.000Z",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	}
 }
 ```
 
@@ -556,23 +507,23 @@ Livestream statuses include `LIVE`, `OFFLINE`, and `IDLE`.
 
 ```json
 {
-  "event": "livestreaming.statusUpdate",
-  "streamId": "d231d346-c422-43a6-a324-c0d65b79c8a7",
-  "status": "LIVE",
-  "manualIngest": false,
-  "playbackUrl": "https://example.com/live.m3u8",
-  "ingestServer": "rtmps://example.com/live",
-  "streamKey": "stream-key",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "title": "Weekly sync",
-    "createdAt": "2026-06-03T10:00:00.000Z",
-    "status": "LIVE",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  }
+	"event": "livestreaming.statusUpdate",
+	"streamId": "d231d346-c422-43a6-a324-c0d65b79c8a7",
+	"status": "LIVE",
+	"manualIngest": false,
+	"playbackUrl": "https://example.com/live.m3u8",
+	"ingestServer": "rtmps://example.com/live",
+	"streamKey": "stream-key",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"title": "Weekly sync",
+		"createdAt": "2026-06-03T10:00:00.000Z",
+		"status": "LIVE",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	}
 }
 ```
 
@@ -580,22 +531,22 @@ Livestream statuses include `LIVE`, `OFFLINE`, and `IDLE`.
 
 ```json
 {
-  "event": "meeting.transcript",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "title": "Weekly sync",
-    "endedAt": "2026-06-03T10:30:00.000Z",
-    "createdAt": "2026-06-03T10:00:00.000Z",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "startedAt": "2026-06-03T10:00:00.000Z",
-    "status": "LIVE",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  },
-  "transcriptDownloadUrl": "https://example.com/transcript.csv",
-  "transcriptDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
+	"event": "meeting.transcript",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"title": "Weekly sync",
+		"endedAt": "2026-06-03T10:30:00.000Z",
+		"createdAt": "2026-06-03T10:00:00.000Z",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"startedAt": "2026-06-03T10:00:00.000Z",
+		"status": "LIVE",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	},
+	"transcriptDownloadUrl": "https://example.com/transcript.csv",
+	"transcriptDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
 }
 ```
 
@@ -603,21 +554,28 @@ Livestream statuses include `LIVE`, `OFFLINE`, and `IDLE`.
 
 ```json
 {
-  "event": "meeting.summary",
-  "meeting": {
-    "id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
-    "sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
-    "organizedBy": {
-      "id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
-      "name": "Example organization"
-    }
-  },
-  "summaryDownloadUrl": "https://example.com/summary.txt",
-  "summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
+	"event": "meeting.summary",
+	"meeting": {
+		"id": "bbb8940e-1b97-402a-97d6-2708b7feca41",
+		"sessionId": "05e57591-d89e-45c9-ae44-08dc1eaad0e0",
+		"organizedBy": {
+			"id": "c94c437b-592a-4a39-b9e2-47ef1451e43b",
+			"name": "Example organization"
+		}
+	},
+	"summaryDownloadUrl": "https://example.com/summary.txt",
+	"summaryDownloadUrlExpiry": "2026-06-10T10:30:00.000Z"
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/#page","headline":"Webhooks · Cloudflare Realtime docs","description":"Receive RealtimeKit events in your application through signed HTTP callbacks.","url":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/webhooks/","name":"Webhooks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/#page","headline":"Webhooks · Cloudflare Realtime docs","description":"Receive RealtimeKit events in your application through signed HTTP callbacks.","url":"https://developers.cloudflare.com/realtime/realtimekit/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

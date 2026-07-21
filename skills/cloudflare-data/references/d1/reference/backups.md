@@ -1,16 +1,18 @@
 ---
-title: Backups (Legacy)
 description: Create, list, download, and restore legacy snapshot-based backups for D1 alpha databases using Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Backups (Legacy)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Backups (Legacy)
 
-# Backups (Legacy)
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/reference/backups/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 has built-in support for creating and restoring backups of your databases with wrangler v3, including support for scheduled automatic backups and manual backup management.
 
@@ -37,6 +39,7 @@ wrangler d1 backup list existing-db
 ```
 
 ```sh
+
 ┌──────────────┬──────────────────────────────────────┬────────────┬─────────┐
 │ created_at   │ id                                   │ num_tables │ size    │
 ├──────────────┼──────────────────────────────────────┼────────────┼─────────┤
@@ -86,6 +89,7 @@ wrangler d1 backup download example-db 123a81a2-ab91-4c2e-8ebc-64d69633faf1
 ```
 
 ```sh
+
 🌀 Downloading backup 123a81a2-ab91-4c2e-8ebc-64d69633faf1 from 'example-db'
 🌀 Saving to /Users/you/projects/example-db.123a81a2.sqlite3
 🌀 Done!
@@ -95,7 +99,7 @@ The database backup will be download to the current working directory in native 
 
 ## Restoring a backup
 
-Warning
+Caution
 
 Restoring a backup will overwrite the existing version of your D1 database in-place. We recommend you make a manual backup before you restore a database, so that you have a backup to revert to if you accidentally restore the wrong backup or break your application.
 
@@ -114,7 +118,14 @@ Done!
 
 Any queries against the database will immediately query the current (restored) version once the restore has completed.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/backups/#page","headline":"Backups (Legacy) · Cloudflare D1 docs","description":"Create, list, download, and restore legacy snapshot-based backups for D1 alpha databases using Wrangler.","url":"https://developers.cloudflare.com/d1/reference/backups/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/reference/backups/","name":"Backups (Legacy)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/backups/#page","headline":"Backups (Legacy) · Cloudflare D1 docs","description":"Create, list, download, and restore legacy snapshot-based backups for D1 alpha databases using Wrangler.","url":"https://developers.cloudflare.com/d1/reference/backups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

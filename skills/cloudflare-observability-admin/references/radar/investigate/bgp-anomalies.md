@@ -1,16 +1,18 @@
 ---
-title: BGP anomalies
 description: Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: BGP anomalies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  BGP anomalies
 
-# BGP anomalies
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/bgp-anomalies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To access Cloudflare Radar BGP Anomaly Detection results, you will first need to create an API token that includes a `Account:Radar` permission. All the following examples should work with a free-tier Cloudflare account.
 
@@ -210,35 +212,27 @@ cd hijack-alerts
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-10802)
-* [  wrangler.toml ](#tab-panel-10803)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "hijack-alerts",
-  "main": "src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "triggers": {
-    "crons": [
-      "*/5 * * * *"
-    ]
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "hijack-alerts",
+	"main": "src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"triggers": {
+		"crons": [
+			"*/5 * * * *"
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "hijack-alerts"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [triggers]
 crons = [ "*/5 * * * *" ]
@@ -246,24 +240,17 @@ crons = [ "*/5 * * * *" ]
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-10800)
-* [  wrangler.toml ](#tab-panel-10801)
-
-**JSONC**
-
 ```jsonc
 {
-  "kv_namespaces": [
-    {
-      "binding": "HIJACKS_KV",
-      "id": "KV_ID_FOR_PRODUCTION",
-      "preview_id": "TEMPORARY_KV_FOR_DEV_ENVIRONMENT"
-    }
-  ]
+	"kv_namespaces": [
+		{
+			"binding": "HIJACKS_KV",
+			"id": "KV_ID_FOR_PRODUCTION",
+			"preview_id": "TEMPORARY_KV_FOR_DEV_ENVIRONMENT"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[kv_namespaces]]
@@ -278,26 +265,23 @@ Start with the API fetching function.
 
 The following `apiFetch(env, paramsStr)` handles taking in a request parameters string, construct proper headers and fetch from the Cloudflare API BGP hijacks endpoint.
 
-**JavaScript**
-
 ```javascript
 async function apiFetch(env, paramsStr) {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${env.CF_API_TOKEN}`,
-    },
-  };
-  const res = await fetch(
-    `https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?${paramsStr}`,
-    config,
-  );
+	const config = {
+		headers: {
+			Authorization: `Bearer ${env.CF_API_TOKEN}`,
+		},
+	};
+	const res = await fetch(
+		`https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?${paramsStr}`,
+		config,
+	);
 
-
-  if (!res.ok) {
-    console.log(JSON.stringify(res));
-    return null;
-  }
-  return await res.json();
+	if (!res.ok) {
+		console.log(JSON.stringify(res));
+		return null;
+	}
+	return await res.json();
 }
 ```
 
@@ -305,9 +289,8 @@ The `env` parameter is passed in from the caller, and we do not need to worry ab
 
 Now in our main cron trigger function, we will need to construct the query parameters and call the API fetch function. The default cron trigger worker script is defined as the follows:
 
-**JavaScript**
-
 ```javascript
+
 export default {
     async scheduled(controller, env, ctx) {
     ...
@@ -319,8 +302,6 @@ In our example, we use the `env` variables to get the runtime variables like the
 
 First, we will need to learn about what are the new events. We define new events as the events the app has not yet processed. We use the Cloudflare KV bucket previously created and defined (`HIJACKS_KV`) to save and retrieve the most recent processed event ID.
 
-**JavaScript**
-
 ```javascript
 let kv_latest_id = parseInt(await env.HIJACKS_KV.get("latest_id"));
 const first_batch = isNaN(kv_latest_id);
@@ -328,47 +309,40 @@ const first_batch = isNaN(kv_latest_id);
 
 The main loop that checks for the most recent events looks like this (some of the validation code is skipped):
 
-**JavaScript**
-
 ```javascript
 let new_events = [];
 let page = 1;
 while (true) {
-  // query for events
-  const query_params = `per_page=10&page=${page}&involvedAsn=${env.TARGET_ASN}&sortBy=ID&sortOrder=DESC`;
-  const data = await apiFetch(env, query_params);
+	// query for events
+	const query_params = `per_page=10&page=${page}&involvedAsn=${env.TARGET_ASN}&sortBy=ID&sortOrder=DESC`;
+	const data = await apiFetch(env, query_params);
 
+	// first batch, save KV value only
+	if (first_batch) {
+		await env.HIJACKS_KV.put("latest_id", events[0].id.toString());
+		return;
+	}
 
-  // first batch, save KV value only
-  if (first_batch) {
-    await env.HIJACKS_KV.put("latest_id", events[0].id.toString());
-    return;
-  }
+	// some validation skipped
+	// ...
 
-
-  // some validation skipped
-  // ...
-
-
-  let reached_last = false;
-  for (const event of data.result.events) {
-    if (event.id <= kv_latest_id) {
-      // reached the latest events
-      reached_last = true;
-      break;
-    }
-    new_events.push(event);
-  }
-  if (reached_last) {
-    break;
-  }
-  page += 1;
+	let reached_last = false;
+	for (const event of data.result.events) {
+		if (event.id <= kv_latest_id) {
+			// reached the latest events
+			reached_last = true;
+			break;
+		}
+		new_events.push(event);
+	}
+	if (reached_last) {
+		break;
+	}
+	page += 1;
 }
 ```
 
 Now that we have all the newly detected events saved in `new_events` variable, we can then send out alerts:
-
-**JavaScript**
 
 ```javascript
 // sort events by increasing ID order
@@ -376,7 +350,7 @@ new_events.sort((a, b) => a.id - b.id);
 const kv_latest_id = new_events[new_events.length - 1].id;
 // push new events
 for (const event of new_events) {
-  await send_alert(env, event);
+	await send_alert(env, event);
 }
 // update latest_id KV value
 await env.HIJACKS_KV.put("latest_id", kv_latest_id.toString());
@@ -386,15 +360,12 @@ await env.HIJACKS_KV.put("latest_id", kv_latest_id.toString());
 
 The function `send_alert` handles constructing alert message and sending out alerts using webhook. Here we demonstrate an example plain-text message template using Google Hangouts webhook. Users can customize the message and the use of webhook based on their platform of choice and needs.
 
-**JavaScript**
-
 ```javascript
 async function send_hangout_alert(env, event) {
-  const webhook_url = `${env.WEBHOOK_URL}&threadKey=bgp-hijacks-event-${event.id}`;
+	const webhook_url = `${env.WEBHOOK_URL}&threadKey=bgp-hijacks-event-${event.id}`;
 
-
-  const data = JSON.stringify({
-    text: `Detected BGP hijack event (${event.id}):
+	const data = JSON.stringify({
+		text: `Detected BGP hijack event (${event.id}):
 Detected time: *${event.min_hijack_ts} UTC*
 Detected ASN: *${event.hijacker_asn}*
 Expected ASN(s): *${event.victim_asns.join(" ")}*
@@ -402,14 +373,14 @@ Prefixes: *${event.prefixes.join(" ")}*
 Tags: *${event.tags.map((tag) => tag.name).join(" ")}*
 Peer Count: *${event.peer_ip_count}*
 `,
-  });
-  await fetch(webhook_url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-    },
-    body: data,
-  });
+	});
+	await fetch(webhook_url, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json; charset=UTF-8",
+		},
+		body: data,
+	});
 }
 ```
 
@@ -423,24 +394,17 @@ If you have [Email Routing](https://developers.cloudflare.com/email-service/) en
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-10804)
-* [  wrangler.toml ](#tab-panel-10805)
-
-**JSONC**
-
 ```jsonc
 {
-  "send_email": [
-    {
-      "type": "send_email",
-      "name": "SEND_EMAIL_BINDING",
-      "destination_address": "<YOUR_EMAIL>@example.com"
-    }
-  ]
+	"send_email": [
+		{
+			"type": "send_email",
+			"name": "SEND_EMAIL_BINDING",
+			"destination_address": "<YOUR_EMAIL>@example.com"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[send_email]]
@@ -451,37 +415,34 @@ destination_address = "<YOUR_EMAIL>@example.com"
 
 Then, you can create an email-sending function to send alert emails to your configured destination address:
 
-**JavaScript**
-
 ```javascript
 async function send_email_alert(hijacker, prefixes, victims) {
-  const msg = createMimeMessage();
-  msg.setSender({
-    name: "BGP Hijack Alerter",
-    addr: "<YOUR_APP>@<YOUR_APP_DOMAIN>",
-  });
-  msg.setRecipient("<YOUR_EMAIL>@example.com");
-  msg.setSubject("BGP hijack alert");
-  msg.addMessage({
-    contentType: "text/plain",
-    data: `BGP hijack detected:
+	const msg = createMimeMessage();
+	msg.setSender({
+		name: "BGP Hijack Alerter",
+		addr: "<YOUR_APP>@<YOUR_APP_DOMAIN>",
+	});
+	msg.setRecipient("<YOUR_EMAIL>@example.com");
+	msg.setSubject("BGP hijack alert");
+	msg.addMessage({
+		contentType: "text/plain",
+		data: `BGP hijack detected:
     Detected origin: ${hijacker}
     Expected origins: ${victims.join(" ")}
     Prefixes: ${prefixes.join(" ")}
     `,
-  });
+	});
 
-
-  var message = new EmailMessage(
-    "<YOUR_APP>@<YOUR_APP_DOMAIN>",
-    "<YOUR_EMAIL>@example.com",
-    msg.asRaw(),
-  );
-  try {
-    await env.SEND_EMAIL_BINDING.send(message);
-  } catch (e) {
-    return new Response(e.message);
-  }
+	var message = new EmailMessage(
+		"<YOUR_APP>@<YOUR_APP_DOMAIN>",
+		"<YOUR_EMAIL>@example.com",
+		msg.asRaw(),
+	);
+	try {
+		await env.SEND_EMAIL_BINDING.send(message);
+	} catch (e) {
+		return new Response(e.message);
+	}
 }
 ```
 
@@ -489,7 +450,14 @@ async function send_email_alert(hijacker, prefixes, victims) {
 
 Refer to our API documentation for [BGP route leaks](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/leaks/subresources/events/methods/list/) and [BGP hijacks](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/hijacks/subresources/events/methods/list/) for more information on these topics.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/#page","headline":"BGP anomalies · Cloudflare Radar docs","description":"Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/bgp-anomalies/","name":"BGP anomalies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/#page","headline":"BGP anomalies · Cloudflare Radar docs","description":"Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.","url":"https://developers.cloudflare.com/radar/investigate/bgp-anomalies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

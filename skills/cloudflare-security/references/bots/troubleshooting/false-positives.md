@@ -1,16 +1,18 @@
 ---
-title: Handle False Positives from Bot Fight Mode or Super Bot Fight Mode
 description: Resolve false positives where legitimate traffic is blocked by bot protection.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Handle False Positives from Bot Fight Mode or Super Bot Fight Mode
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Handle False Positives from Bot Fight Mode or Super Bot Fight Mode
 
-# Handle False Positives from Bot Fight Mode or Super Bot Fight Mode
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/troubleshooting/false-positives/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Bot Fight Mode (BFM)](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) and [Super Bot Fight Mode (SBFM)](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) are designed to stop active attacks quickly. Due to their aggressive nature, false positives can occur where legitimate human or automated traffic is incorrectly challenged or blocked.
 
@@ -29,7 +31,14 @@ Bot Fight Mode can still trigger if you have IP Access rules, but it cannot trig
 
 If you encounter persistent false positives, you can [disable the feature in the Cloudflare dashboard](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/#disable-bot-fight-mode).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/troubleshooting/false-positives/#page","headline":"Handle False Positives from Bot Fight Mode or Super Bot Fight Mode · Cloudflare bot solutions docs","description":"Resolve false positives where legitimate traffic is blocked by bot protection.","url":"https://developers.cloudflare.com/bots/troubleshooting/false-positives/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/troubleshooting/false-positives/","name":"Handle False Positives from Bot Fight Mode or Super Bot Fight Mode"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/troubleshooting/false-positives/#page","headline":"Handle False Positives from Bot Fight Mode or Super Bot Fight Mode · Cloudflare bot solutions docs","description":"Resolve false positives where legitimate traffic is blocked by bot protection.","url":"https://developers.cloudflare.com/bots/troubleshooting/false-positives/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

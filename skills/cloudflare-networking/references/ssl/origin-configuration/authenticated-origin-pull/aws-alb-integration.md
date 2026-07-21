@@ -1,16 +1,18 @@
 ---
-title: AWS integration
 description: Learn how to set up Cloudflare Authenticated Origin Pulls with the AWS Application Load Balancer.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: AWS integration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  AWS integration
 
-# AWS integration
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will walk you through how to set up [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) authenticated origin pulls to securely connect to an AWS Application Load Balancer using [mutual TLS verify ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html).
 
@@ -98,7 +100,6 @@ curl --verbose https://<your-application-load-balancer>
 MYCERT="$(cat cert.crt|perl -pe 's/\r?\n/\\n/'|sed -e 's/..$//')"
 MYKEY="$(cat cert.key|perl -pe 's/\r?\n/\\n/'|sed -e's/..$//')"
 
-
 request_body=$(< <(cat <<EOF
 {
 "certificate": "$MYCERT",
@@ -108,9 +109,7 @@ request_body=$(< <(cat <<EOF
 EOF
 ))
 
-
 # Push the certificate
-
 
 curl --silent \
 "https://api.cloudflare.com/client/v4/zones/$ZONEID/origin_tls_client_auth/hostnames/certificates" \
@@ -127,21 +126,19 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Enable or Disable a Hostname for Client Authentication**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "config": [
-        {
-            "enabled": true,
-            "cert_id": "<CERT_ID>",
-            "hostname": "<YOUR_HOSTNAME>"
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"config": [
+				{
+						"enabled": true,
+						"cert_id": "<CERT_ID>",
+						"hostname": "<YOUR_HOSTNAME>"
+				}
+		]
+	}'
 ```
 
 Note
@@ -156,47 +153,48 @@ Make sure your [encryption mode](https://developers.cloudflare.com/ssl/origin-co
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `SSL and Certificates Write`
-
-**Enable or Disable a Hostname for Client Authentication**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "config": [
-        {
-            "enabled": false,
-            "cert_id": "<CERT_ID>",
-            "hostname": "<YOUR_HOSTNAME>"
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"config": [
+				{
+						"enabled": false,
+						"cert_id": "<CERT_ID>",
+						"hostname": "<YOUR_HOSTNAME>"
+				}
+		]
+	}'
 ```
 2. (Optional) Use a [GET request](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/list/) to obtain a list of the client certificate IDs. You will need the ID of the certificate you want to remove for the following step.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `SSL and Certificates Write`
   * `SSL and Certificates Read`
-
-**List Certificates**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames/certificates" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 3. Use the [Delete hostname client certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/delete/) endpoint to remove the certificate you had uploaded.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `SSL and Certificates Write`
-
-**Delete Hostname Client Certificate**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames/certificates/$CERTIFICATE_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/#page","headline":"AWS integration · Cloudflare SSL/TLS docs","description":"Learn how to set up Cloudflare Authenticated Origin Pulls with the AWS Application Load Balancer.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/","name":"Authenticated Origin Pulls (mTLS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/","name":"AWS integration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/#page","headline":"AWS integration · Cloudflare SSL/TLS docs","description":"Learn how to set up Cloudflare Authenticated Origin Pulls with the AWS Application Load Balancer.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS"]}
 ```

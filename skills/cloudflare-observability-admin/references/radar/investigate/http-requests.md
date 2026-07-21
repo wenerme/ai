@@ -1,16 +1,18 @@
 ---
-title: HTTP requests
 description: Analyze HTTP request data in Cloudflare Radar by device type, IP version, bot class, and top locations using timeseries, summary, and top endpoints.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: HTTP requests
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP requests
 
-# HTTP requests
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/http-requests/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 While in [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) we can inspect bytes and packets reaching Cloudflare's edge routers, in HTTP requests we are a layer above in the [OSI model ↗](https://en.wikipedia.org/wiki/OSI%5Fmodel). HTTP requests examines complete HTTP requests from end users that reach websites served by Cloudflare's [CDN ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/).
 
@@ -95,16 +97,16 @@ Here is the abbreviated response:
   "success": true,
   "errors": [],
   "result": {
-    "human": {
-      "mobile": "54.967243",
-      "desktop": "44.974006",
-      "other": "0.058751"
-    },
-    "bot": {
-      "desktop": "83.275452",
-      "mobile": "16.707455",
-      "other": "0.017093"
-    }
+		"human": {
+			"mobile": "54.967243",
+			"desktop": "44.974006",
+			"other": "0.058751"
+		},
+		"bot": {
+			"desktop": "83.275452",
+			"mobile": "16.707455",
+			"other": "0.017093"
+		}
   }
 }
 ```
@@ -127,14 +129,14 @@ This returns the following:
   "success": true,
   "errors": [],
   "result": {
-    "human": {
-      "IPv4": "76.213647",
-      "IPv6": "23.786353"
-    },
-    "bot": {
-      "IPv4": "91.492032",
-      "IPv6": "8.507968"
-    }
+		"human": {
+			"IPv4": "76.213647",
+			"IPv6": "23.786353"
+		},
+		"bot": {
+			"IPv4": "91.492032",
+			"IPv6": "8.507968"
+		}
   }
 }
 ```
@@ -161,33 +163,33 @@ curl "https://api.cloudflare.com/client/v4/radar/http/top/locations/ip_version/I
   "success": true,
   "errors": [],
   "result": {
-    "ipv6": [
-      {
-        "clientCountryAlpha2": "IN",
-        "clientCountryName": "India",
-        "value": "50.612747"
-      },
-      {
-        "clientCountryAlpha2": "MY",
-        "clientCountryName": "Malaysia",
-        "value": "46.233654"
-      },
-      {
-        "clientCountryAlpha2": "UY",
-        "clientCountryName": "Uruguay",
-        "value": "39.796762"
-      },
-      {
-        "clientCountryAlpha2": "LK",
-        "clientCountryName": "Sri Lanka",
-        "value": "39.709355"
-      },
-      {
-        "clientCountryAlpha2": "VN",
-        "clientCountryName": "Vietnam",
-        "value": "39.1514"
-      }
-    ]
+		"ipv6": [
+			{
+				"clientCountryAlpha2": "IN",
+				"clientCountryName": "India",
+				"value": "50.612747"
+			},
+			{
+				"clientCountryAlpha2": "MY",
+				"clientCountryName": "Malaysia",
+				"value": "46.233654"
+			},
+			{
+				"clientCountryAlpha2": "UY",
+				"clientCountryName": "Uruguay",
+				"value": "39.796762"
+			},
+			{
+				"clientCountryAlpha2": "LK",
+				"clientCountryName": "Sri Lanka",
+				"value": "39.709355"
+			},
+			{
+				"clientCountryAlpha2": "VN",
+				"clientCountryName": "Vietnam",
+				"value": "39.1514"
+			}
+		]
   }
 }
 ```
@@ -200,7 +202,14 @@ For more information refer to the [API reference](https://developers.cloudflare.
 
 Refer to [Application layer attacks](https://developers.cloudflare.com/radar/investigate/application-layer-attacks/) to learn more about mitigfated HTTP requests.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/http-requests/#page","headline":"HTTP requests · Cloudflare Radar docs","description":"Analyze HTTP request data in Cloudflare Radar by device type, IP version, bot class, and top locations using timeseries, summary, and top endpoints.","url":"https://developers.cloudflare.com/radar/investigate/http-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/http-requests/","name":"HTTP requests"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/http-requests/#page","headline":"HTTP requests · Cloudflare Radar docs","description":"Analyze HTTP request data in Cloudflare Radar by device type, IP version, bot class, and top locations using timeseries, summary, and top endpoints.","url":"https://developers.cloudflare.com/radar/investigate/http-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

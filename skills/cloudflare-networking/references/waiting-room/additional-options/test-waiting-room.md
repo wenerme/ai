@@ -1,16 +1,18 @@
 ---
-title: Test a waiting room
 description: Follow this tutorial to test your waiting room behavior in response to load. To accurately simulate traffic, run your test script or planner for a period of time longer than a minute, ideally more than 2-3 minutes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Test a waiting room
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Test a waiting room
 
-# Test a waiting room
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/additional-options/test-waiting-room/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow this tutorial to test your waiting room behavior in response to load. To accurately simulate traffic through your waiting room with a load test, run your test script or planner for a period of time longer than a minute, ideally more than 2-3 minutes. You can run a load test using a variety of tools including [loader.io ↗](http://loader.io), [jmeter ↗](http://jmeter.apache.org), and [postman.com ↗](http://postman.com). You can also write a plain shell script to simulate user requests (each representing a distinct user).
 
@@ -117,7 +119,14 @@ Note
 
 Obtain your API token from the dashboard. Make sure your API token grants access to the **Analytics** resource. For more information on how to get the API token, follow the [Configure Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) guide.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/test-waiting-room/#page","headline":"Test a waiting room · Cloudflare Waiting Room docs","description":"Follow this tutorial to test your waiting room behavior in response to load. To accurately simulate traffic, run your test script or planner for a period of time longer than a minute, ideally more than 2-3 minutes.","url":"https://developers.cloudflare.com/waiting-room/additional-options/test-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/additional-options/","name":"Additional options"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/additional-options/test-waiting-room/","name":"Test a waiting room"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/test-waiting-room/#page","headline":"Test a waiting room · Cloudflare Waiting Room docs","description":"Follow this tutorial to test your waiting room behavior in response to load. To accurately simulate traffic, run your test script or planner for a period of time longer than a minute, ideally more than 2-3 minutes.","url":"https://developers.cloudflare.com/waiting-room/additional-options/test-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

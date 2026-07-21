@@ -1,16 +1,18 @@
 ---
-title: Migrate from reCAPTCHA
 description: Migrate from Google reCAPTCHA to Cloudflare Turnstile.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Migrate from reCAPTCHA
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrate from reCAPTCHA
 
-# Migrate from reCAPTCHA
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/migration/recaptcha/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you are using reCAPTCHA today, you can switch seamlessly to Cloudflare Turnstile by following the step-by-step guide below to assist with the upgrade process.
 
@@ -23,13 +25,11 @@ Turnstile migration is currently compatible up to reCAPTCHA v2.
 ## Client-side integration
 
 1. Update the client-side integration by inserting the Turnstile script snippet in your HTML's `<head>` element.
-
-**Turnstile script snippet**
 ```html
 <script
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha"
-  async
-  defer
+	src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha"
+	async
+	defer
 ></script>
 ```
 Note
@@ -63,7 +63,14 @@ Turnstile's Siteverify endpoint does _not_ support this and only accepts `POST` 
 
 Refer to [server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/migration/recaptcha/#page","headline":"Migrate from reCAPTCHA · Cloudflare Turnstile docs","description":"Migrate from Google reCAPTCHA to Cloudflare Turnstile.","url":"https://developers.cloudflare.com/turnstile/migration/recaptcha/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/migration/","name":"Migration"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/migration/recaptcha/","name":"Migrate from reCAPTCHA"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/migration/recaptcha/#page","headline":"Migrate from reCAPTCHA · Cloudflare Turnstile docs","description":"Migrate from Google reCAPTCHA to Cloudflare Turnstile.","url":"https://developers.cloudflare.com/turnstile/migration/recaptcha/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 ```

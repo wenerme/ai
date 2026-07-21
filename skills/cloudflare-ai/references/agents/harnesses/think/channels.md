@@ -1,16 +1,18 @@
 ---
-title: Channels
 description: Apply per-channel policy, select a channel on a turn, and deliver out-of-band notices across web, messenger, voice, and custom surfaces.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Channels
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Channels
 
-# Channels
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/channels/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Experimental
 
@@ -24,74 +26,65 @@ Every Think agent always has an implicit `web` channel (the WebSocket chat your 
 
 Override `configureChannels()` to return a map of channel id to `ChannelDefinition`. The id is how you select the channel on a turn:
 
-* [  JavaScript ](#tab-panel-6079)
-* [  TypeScript ](#tab-panel-6080)
-
-**JavaScript**
-
 ```js
 import { Think, messengerChannel } from "@cloudflare/think";
 import { telegram } from "@chat-adapter/telegram";
 
-
 export class Assistant extends Think {
-  configureChannels() {
-    return {
-      // Override policy for the built-in web channel.
-      web: {
-        kind: "web",
-        ingress: { transport: "websocket" },
-        instructions: "You are chatting in a web app. Use markdown freely.",
-      },
-      // A voice channel with tighter limits.
-      voice: {
-        kind: "voice",
-        ingress: { transport: "voice" },
-        instructions: "Keep replies short and speakable. No markdown.",
-        maxTurns: 3,
-      },
-      // A messenger channel (Chat SDK webhook).
-      telegram: messengerChannel(
-        telegram({
-          /* adapter config */
-        }),
-      ),
-    };
-  }
+	configureChannels() {
+		return {
+			// Override policy for the built-in web channel.
+			web: {
+				kind: "web",
+				ingress: { transport: "websocket" },
+				instructions: "You are chatting in a web app. Use markdown freely.",
+			},
+			// A voice channel with tighter limits.
+			voice: {
+				kind: "voice",
+				ingress: { transport: "voice" },
+				instructions: "Keep replies short and speakable. No markdown.",
+				maxTurns: 3,
+			},
+			// A messenger channel (Chat SDK webhook).
+			telegram: messengerChannel(
+				telegram({
+					/* adapter config */
+				}),
+			),
+		};
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Think, messengerChannel } from "@cloudflare/think";
 import { telegram } from "@chat-adapter/telegram";
 
-
 export class Assistant extends Think<Env> {
-  configureChannels() {
-    return {
-      // Override policy for the built-in web channel.
-      web: {
-        kind: "web",
-        ingress: { transport: "websocket" },
-        instructions: "You are chatting in a web app. Use markdown freely.",
-      },
-      // A voice channel with tighter limits.
-      voice: {
-        kind: "voice",
-        ingress: { transport: "voice" },
-        instructions: "Keep replies short and speakable. No markdown.",
-        maxTurns: 3,
-      },
-      // A messenger channel (Chat SDK webhook).
-      telegram: messengerChannel(
-        telegram({
-          /* adapter config */
-        }),
-      ),
-    };
-  }
+	configureChannels() {
+		return {
+			// Override policy for the built-in web channel.
+			web: {
+				kind: "web",
+				ingress: { transport: "websocket" },
+				instructions: "You are chatting in a web app. Use markdown freely.",
+			},
+			// A voice channel with tighter limits.
+			voice: {
+				kind: "voice",
+				ingress: { transport: "voice" },
+				instructions: "Keep replies short and speakable. No markdown.",
+				maxTurns: 3,
+			},
+			// A messenger channel (Chat SDK webhook).
+			telegram: messengerChannel(
+				telegram({
+					/* adapter config */
+				}),
+			),
+		};
+	}
 }
 ```
 
@@ -131,26 +124,19 @@ Channel policy is applied as an **overridable default** before [beforeTurn](http
 
 Pass `channel` to [runTurn()](https://developers.cloudflare.com/agents/harnesses/think/#runturn) (or `chat()`) to run a turn on a specific channel. The channel id is stamped onto the user message, so a continued or recovered turn re-resolves the same channel and re-applies its policy:
 
-* [  JavaScript ](#tab-panel-6073)
-* [  TypeScript ](#tab-panel-6074)
-
-**JavaScript**
-
 ```js
 export class Assistant extends Think {
-  async speak() {
-    await this.runTurn({ input: "Read this out loud", channel: "voice" });
-  }
+	async speak() {
+		await this.runTurn({ input: "Read this out loud", channel: "voice" });
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class Assistant extends Think<Env> {
-  async speak() {
-    await this.runTurn({ input: "Read this out loud", channel: "voice" });
-  }
+	async speak() {
+		await this.runTurn({ input: "Read this out loud", channel: "voice" });
+	}
 }
 ```
 
@@ -160,47 +146,36 @@ Inside a turn, the active channel is available as `this.activeChannel` (a `Chann
 
 `deliverNotice()` sends a message to a channel **without** starting a model turn. Use it for status updates ("your import finished") or to surface an action's [reply attachment](https://developers.cloudflare.com/agents/harnesses/think/actions/#reply-attachments) — it does not run inference, does not enter the turn queue, and is therefore safe to call from inside a tool's `execute`:
 
-* [  JavaScript ](#tab-panel-6075)
-* [  TypeScript ](#tab-panel-6076)
-
-**JavaScript**
-
 ```js
 export class Assistant extends Think {
-  async notify() {
-    await this.deliverNotice("Your export is ready to download.");
+	async notify() {
+		await this.deliverNotice("Your export is ready to download.");
 
-
-    await this.deliverNotice("Background research finished.", {
-      informModel: true, // also record it in the transcript so the next turn knows
-    });
-  }
+		await this.deliverNotice("Background research finished.", {
+			informModel: true, // also record it in the transcript so the next turn knows
+		});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 export class Assistant extends Think<Env> {
-  async notify() {
-    await this.deliverNotice("Your export is ready to download.");
+	async notify() {
+		await this.deliverNotice("Your export is ready to download.");
 
-
-    await this.deliverNotice("Background research finished.", {
-      informModel: true, // also record it in the transcript so the next turn knows
-    });
-  }
+		await this.deliverNotice("Background research finished.", {
+			informModel: true, // also record it in the transcript so the next turn knows
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 type DeliverNoticeOptions = {
-  channel?: string; // defaults to the active turn's channel, else "web"
-  informModel?: boolean; // also write to the model-visible transcript (default false)
-  kind?: "final" | "interim" | "notice" | "command"; // wire tag (default "notice")
-  thread?: string; // required for out-of-turn delivery to a multi-thread messenger
+	channel?: string; // defaults to the active turn's channel, else "web"
+	informModel?: boolean; // also write to the model-visible transcript (default false)
+	kind?: "final" | "interim" | "notice" | "command"; // wire tag (default "notice")
+	thread?: string; // required for out-of-turn delivery to a multi-thread messenger
 };
 ```
 
@@ -220,36 +195,27 @@ Override `renderAttachment(attachment)` to turn an action reply attachment into 
 
 Channel activity is reported on the `channel` observability channel:
 
-* [  JavaScript ](#tab-panel-6077)
-* [  TypeScript ](#tab-panel-6078)
-
-**JavaScript**
-
 ```js
 import { subscribe } from "agents/observability";
 
-
 const unsubscribe = subscribe("channel", (event) => {
-  // event.type is one of:
-  //   "channel:resolved"  — a turn resolved a registered channel
-  //   "channel:delivered" — a turn's final reply was delivered
-  //   "notice:delivered"  — deliverNotice() succeeded
-  //   "notice:failed"     — deliverNotice() threw
+	// event.type is one of:
+	//   "channel:resolved"  — a turn resolved a registered channel
+	//   "channel:delivered" — a turn's final reply was delivered
+	//   "notice:delivered"  — deliverNotice() succeeded
+	//   "notice:failed"     — deliverNotice() threw
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { subscribe } from "agents/observability";
 
-
 const unsubscribe = subscribe("channel", (event) => {
-  // event.type is one of:
-  //   "channel:resolved"  — a turn resolved a registered channel
-  //   "channel:delivered" — a turn's final reply was delivered
-  //   "notice:delivered"  — deliverNotice() succeeded
-  //   "notice:failed"     — deliverNotice() threw
+	// event.type is one of:
+	//   "channel:resolved"  — a turn resolved a registered channel
+	//   "channel:delivered" — a turn's final reply was delivered
+	//   "notice:delivered"  — deliverNotice() succeeded
+	//   "notice:failed"     — deliverNotice() threw
 });
 ```
 
@@ -270,7 +236,14 @@ const unsubscribe = subscribe("channel", (event) => {
 * [Actions](https://developers.cloudflare.com/agents/harnesses/think/actions/) — record reply attachments for `renderAttachment()`.
 * [Voice](https://developers.cloudflare.com/agents/communication-channels/voice/) — real-time speech surfaces.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/channels/#page","headline":"Channels · Cloudflare Agents docs","description":"Apply per-channel policy, select a channel on a turn, and deliver out-of-band notices across web, messenger, voice, and custom surfaces.","url":"https://developers.cloudflare.com/agents/harnesses/think/channels/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/harnesses/think/","name":"Think"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/harnesses/think/channels/","name":"Channels"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/channels/#page","headline":"Channels · Cloudflare Agents docs","description":"Apply per-channel policy, select a channel on a turn, and deliver out-of-band notices across web, messenger, voice, and custom surfaces.","url":"https://developers.cloudflare.com/agents/harnesses/think/channels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

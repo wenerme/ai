@@ -1,16 +1,18 @@
 ---
-title: Routes
 description: Routes in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Routes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Routes
 
-# Routes
+Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, a Mesh node is reachable only by its own [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips). To make other devices on the subnet behind the node reachable — servers, databases, printers, IoT devices that cannot run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) — add a route to the node. A Mesh node supports two types of routes:
 
@@ -42,11 +44,8 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 
 ### Add a route
 
-* [ Dashboard ](#tab-panel-7909)
-* [ API ](#tab-panel-7910)
-
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
+[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select your Mesh node.
 3. Go to the **Routes** tab.
 4. Select **Add route**.
@@ -60,23 +59,18 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
-**Create a tunnel route**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "network": "10.0.0.0/24",
-    "tunnel_id": "{mesh_node_id}",
-    "comment": "Staging subnet"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"network": "10.0.0.0/24",
+		"tunnel_id": "{mesh_node_id}",
+		"comment": "Staging subnet"
+	}'
 ```
 
 ### Edit a route
-
-* [ Dashboard ](#tab-panel-7911)
-* [ API ](#tab-panel-7912)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the edit icon next to the route you want to modify.
@@ -89,22 +83,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
-**Update a tunnel route**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "network": "10.0.0.0/24",
-    "comment": "Updated description"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"network": "10.0.0.0/24",
+		"comment": "Updated description"
+	}'
 ```
 
 ### Delete a route
-
-* [ Dashboard ](#tab-panel-7907)
-* [ API ](#tab-panel-7908)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the delete icon next to the route.
@@ -116,12 +105,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
-**Delete a tunnel route**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$ROUTE_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ## Configure Split Tunnels
@@ -245,9 +232,6 @@ For a deeper look at the packet flow behind hostname routing, refer to the [anno
 * **Run a supported Mesh node version.** Hostname routing requires the Mesh node to run Linux Cloudflare One Client version `2026.6.822.0` or newer.
 * **Enable the Gateway proxy** with TCP, UDP, and ICMP:
 
-  * [ Dashboard ](#tab-panel-7905)
-  * [ Terraform (v5) ](#tab-panel-7906)
-
   1. Go to **Traffic policies** \> **Traffic settings**.
   2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
   3. Select **TCP**.
@@ -260,9 +244,9 @@ For a deeper look at the packet flow behind hostname routing, refer to the [anno
   2. Turn on the TCP and/or UDP proxy using the [cloudflare\_zero\_trust\_device\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fsettings) resource:
   ```tf
   resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
-    account_id            = var.cloudflare_account_id
+  	account_id            = var.cloudflare_account_id
     gateway_proxy_enabled = true
-    gateway_udp_proxy_enabled = true
+  	gateway_udp_proxy_enabled = true
   }
   ```
 Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
@@ -277,11 +261,8 @@ Cloudflare will now proxy traffic from enrolled devices, except for the traffic 
 
 ### Add a hostname route
 
-* [ Dashboard ](#tab-panel-7913)
-* [ API ](#tab-panel-7914)
-
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
+[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select your Mesh node.
 3. Go to the **Routes** tab.
 4. Select **Add route**, then select **Private hostname**.
@@ -305,17 +286,15 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Cloudflare One Networks Write`
 * `Cloudflare Tunnel Write`
 
-**Create hostname route**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/routes/hostname" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "hostname": "wiki.internal.local",
-    "tunnel_id": "{mesh_node_id}",
-    "comment": "Internal wiki"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"hostname": "wiki.internal.local",
+		"tunnel_id": "{mesh_node_id}",
+		"comment": "Internal wiki"
+	}'
 ```
 
 ### Configure DNS resolution
@@ -327,8 +306,6 @@ For a **private** hostname, Gateway must be able to resolve the hostname to its 
 By default, the Mesh node resolves the hostname using the DNS resolver configured on its host machine (for example, in `/etc/resolv.conf` on Linux) — the same way `cloudflared` does. If the node can already resolve the hostname to its private IP through that resolver, no further configuration is required.
 
 If the node cannot resolve the hostname on its own, the simplest option is to add an entry to the node's hosts file (for example, `/etc/hosts` on Linux) mapping the hostname to its private IP. Unlike a Cloudflare Tunnel, a Mesh node does **not** require you to run a dedicated DNS server:
-
-**/etc/hosts**
 
 ```txt
 10.0.0.50 wiki.internal.local
@@ -379,7 +356,14 @@ To avoid this issue, choose one of the following options:
 * **Opt out of Local Network Access restrictions (Chrome 142-152)**: Use the [LocalNetworkAccessRestrictionsTemporaryOptOut ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessRestrictionsTemporaryOptOut) Chrome Enterprise policy to completely opt out of Local Network Access restrictions. This is a temporary policy and will be removed after Chrome 152.
 * **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to _Disabled_. This approach is suitable for individual users but not for enterprise-wide deployment.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#page","headline":"Configure routes for Cloudflare Mesh · Cloudflare One docs","description":"Routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/","name":"Cloudflare Mesh"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/routes/","name":"Routes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#page","headline":"Configure routes for Cloudflare Mesh · Cloudflare One docs","description":"Routes in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

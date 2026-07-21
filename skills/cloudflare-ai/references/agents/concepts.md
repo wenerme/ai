@@ -1,16 +1,18 @@
 ---
-title: Concepts
 description: Understand the core concepts behind Cloudflare Agents, including state, tools, workflows, and memory.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Concepts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Concepts
 
-# Concepts
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 * [ What are agents? ](https://developers.cloudflare.com/agents/concepts/what-are-agents/)
 * [ Conversation state and memory ](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/)
@@ -19,7 +21,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 * [ Using Agents with Workflows ](https://developers.cloudflare.com/agents/concepts/workflows/)
 * [ Agentic patterns ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/#page","headline":"Concepts · Cloudflare Agents docs","description":"Understand the core concepts behind Cloudflare Agents, including state, tools, workflows, and memory.","url":"https://developers.cloudflare.com/agents/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/#page","headline":"Concepts · Cloudflare Agents docs","description":"Understand the core concepts behind Cloudflare Agents, including state, tools, workflows, and memory.","url":"https://developers.cloudflare.com/agents/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

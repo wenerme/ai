@@ -1,16 +1,18 @@
 ---
-title: Scaling and benchmarking
 description: Scale and benchmark Keyless SSL key servers.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Scaling and benchmarking
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Scaling and benchmarking
 
-# Scaling and benchmarking
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Keyless SSL technology was designed to scale to accommodate any sized workload using vertical and horizontal scaling, and pre-computation techniques wherever possible, such as ECDSA. The goals of the architectural design of the key server are to minimize latency while maximizing signing operations per second.
 
@@ -36,10 +38,10 @@ We conducted benchmarks using [Cloudflare's gokeyless bench tool ↗](https://gi
 
 ```txt
 c5$ cat /proc/cpuinfo|grep "model name"
-model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
-model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
-model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
-model name  : Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
+model name	: Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
+model name	: Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
+model name	: Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
+model name	: Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz
 ```
 
 By default, bench runs with one worker goroutine per core (4) and a maximum number of operating system threads equal to the total number of cores (in this case, `GOMAXPROCS=4`). As expected and explained above, ECDSA signature performance far exceeds that of RSA. The [results show](#results) that each core of this c5.xl machine can perform over 10,000 ECDSA signing operations/second and approximately 200 RSA signing operations/second.
@@ -64,7 +66,14 @@ Total operations completed: 46560
 Average operation duration: 1.288659ms.
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/#page","headline":"Scaling and benchmarking · Cloudflare SSL/TLS docs","description":"Scale and benchmark Keyless SSL key servers.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/keyless-ssl/","name":"Keyless SSL"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/keyless-ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/keyless-ssl/reference/scaling-and-benchmarking/","name":"Scaling and benchmarking"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/#page","headline":"Scaling and benchmarking · Cloudflare SSL/TLS docs","description":"Scale and benchmark Keyless SSL key servers.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

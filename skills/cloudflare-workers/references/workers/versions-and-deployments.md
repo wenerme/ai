@@ -1,16 +1,18 @@
 ---
-title: Versions &amp; deployments
 description: Understand how Workers tracks changes with versions and releases them with deployments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Versions &amp; deployments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Versions & deployments
 
-# Versions & deployments
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/versions-and-deployments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Every time you change your Worker's code or configuration, Workers creates a **version**. A **deployment** determines which version(s) are actively serving traffic.
 
@@ -47,7 +49,7 @@ Wrangler allows you to view the 100 most recent versions and deployments. Refer 
 ### Via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Deployments**.
 
 ## Next steps
@@ -59,7 +61,14 @@ Wrangler allows you to view the 100 most recent versions and deployments. Refer 
 * [Version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) \- Send a request to a specific version by ID for smoke testing and pinning between Workers
 * [Rollbacks](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/) \- Revert to a previously deployed version
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/#page","headline":"Versions & deployments · Cloudflare Workers docs","description":"Understand how Workers tracks changes with versions and releases them with deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/#page","headline":"Versions & deployments · Cloudflare Workers docs","description":"Understand how Workers tracks changes with versions and releases them with deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

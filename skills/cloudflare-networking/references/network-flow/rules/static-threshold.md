@@ -1,16 +1,18 @@
 ---
-title: Static threshold rule
 description: Create static threshold rules for traffic limits.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Static threshold rule
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Static threshold rule
 
-# Static threshold rule
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/rules/static-threshold/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A static threshold rule monitors your network traffic against a fixed threshold you define, measured in bits or packets per second. Network Flow (formerly Magic Network Monitoring) compares total traffic across all IP prefixes and addresses in the rule against this threshold. If traffic exceeds the threshold for the configured duration, Network Flow sends an alert.
 
@@ -66,7 +68,7 @@ Cloudflare recommends that you set a rule threshold that is two times larger tha
 To find the maximum non-attack traffic for a one minute time interval over the past 14-30 days, filter for the specific rule you want to analyze:
 
 1. Go to the **Network flow** page.
-[ Go to **Network flow** ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+[ Go to **Network flow** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
 1. Select **Add filter**.
 2. In **New filter**, use the drop-down menus to create the following filter:
 
@@ -88,7 +90,14 @@ Your IP prefixes may experience inconsistent spikes across one-minute intervals.
 
 After updating your first set of thresholds based on historical data, monitor for Network Flow alerts to verify the thresholds are appropriate. Adjust thresholds and duration over time to find the right alert sensitivity for your network environment.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/static-threshold/#page","headline":"Static threshold rule · Cloudflare Network Flow docs","description":"Create static threshold rules for traffic limits.","url":"https://developers.cloudflare.com/network-flow/rules/static-threshold/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/rules/","name":"Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/rules/static-threshold/","name":"Static threshold rule"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/rules/static-threshold/#page","headline":"Static threshold rule · Cloudflare Network Flow docs","description":"Create static threshold rules for traffic limits.","url":"https://developers.cloudflare.com/network-flow/rules/static-threshold/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

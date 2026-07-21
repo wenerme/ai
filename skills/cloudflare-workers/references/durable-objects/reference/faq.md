@@ -1,16 +1,18 @@
 ---
-title: FAQs
 description: Frequently asked questions about Durable Objects pricing, limits, and metrics.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: FAQs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQs
 
-# FAQs
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/reference/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Pricing
 
@@ -61,22 +63,15 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-9146)
-* [  wrangler.toml ](#tab-panel-9147)
-
-**JSONC**
-
 ```jsonc
 {
-  // ...rest of your configuration...
-  "limits": {
-    "cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
-  },
-  // ...rest of your configuration...
+	// ...rest of your configuration...
+	"limits": {
+		"cpu_ms": 300000, // 300,000 milliseconds = 5 minutes
+	},
+	// ...rest of your configuration...
 }
 ```
-
-**TOML**
 
 ```toml
 [limits]
@@ -95,21 +90,19 @@ Read operations (such as `SELECT` queries, `get()`, and `list()` calls) will con
 
 To handle this error in your Durable Object, catch the exception thrown by the storage API:
 
-**TypeScript**
-
 ```ts
 try {
-  this.ctx.storage.sql.exec(
-    "INSERT INTO my_table (key, value) VALUES (?, ?)",
-    key,
-    value,
-  );
+	this.ctx.storage.sql.exec(
+		"INSERT INTO my_table (key, value) VALUES (?, ?)",
+		key,
+		value,
+	);
 } catch (e) {
-  if (e.message.includes("SQLITE_FULL")) {
-    // Storage limit reached — reads and deletes still work
-    // Consider deleting old data or returning a meaningful error to the caller
-  }
-  throw e;
+	if (e.message.includes("SQLITE_FULL")) {
+		// Storage limit reached — reads and deletes still work
+		// Consider deleting old data or returning a meaningful error to the caller
+	}
+	throw e;
 }
 ```
 
@@ -119,7 +112,14 @@ try {
 
 You can use `$workers.durableObjectId` to identify the specific Durable Object instance that generated the log entry.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/faq/#page","headline":"FAQs · Cloudflare Durable Objects docs","description":"Frequently asked questions about Durable Objects pricing, limits, and metrics.","url":"https://developers.cloudflare.com/durable-objects/reference/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/faq/","name":"FAQs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/faq/#page","headline":"FAQs · Cloudflare Durable Objects docs","description":"Frequently asked questions about Durable Objects pricing, limits, and metrics.","url":"https://developers.cloudflare.com/durable-objects/reference/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

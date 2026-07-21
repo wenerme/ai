@@ -1,16 +1,18 @@
 ---
-title: Application token
 description: Learn how Cloudflare Access uses application tokens to secure your origin. Understand JWT structure and payloads.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Application token
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Application token
 
-# Application token
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access includes the application token with all authenticated requests to your origin. A typical JWT looks like this:
 
@@ -28,9 +30,9 @@ Unless your application is connected to Access through Cloudflare Tunnel, your a
 
 ```json
 {
-  "alg": "RS256",
-  "kid": "9338abe1baf2fe492f646a736f25afbf7b025e35c627be4f60c414d4c73069b8",
-  "typ": "JWT"
+	"alg": "RS256",
+	"kid": "9338abe1baf2fe492f646a736f25afbf7b025e35c627be4f60c414d4c73069b8",
+	"typ": "JWT"
 }
 ```
 
@@ -46,16 +48,16 @@ The payload contains the actual claim and user information to pass to the applic
 
 ```json
 {
-  "aud": ["32eafc7626e974616deaf0dc3ce63d7bcbed58a2731e84d06bc3cdf1b53c4228"],
-  "email": "user@example.com",
-  "exp": 1659474457,
-  "iat": 1659474397,
-  "nbf": 1659474397,
-  "iss": "https://yourteam.cloudflareaccess.com",
-  "type": "app",
-  "identity_nonce": "6ei69kawdKzMIAPF",
-  "sub": "7335d417-61da-459d-899c-0a01c76a2f94",
-  "country": "US"
+	"aud": ["32eafc7626e974616deaf0dc3ce63d7bcbed58a2731e84d06bc3cdf1b53c4228"],
+	"email": "user@example.com",
+	"exp": 1659474457,
+	"iat": 1659474397,
+	"nbf": 1659474397,
+	"iss": "https://yourteam.cloudflareaccess.com",
+	"type": "app",
+	"identity_nonce": "6ei69kawdKzMIAPF",
+	"sub": "7335d417-61da-459d-899c-0a01c76a2f94",
+	"country": "US"
 }
 ```
 
@@ -119,13 +121,13 @@ Access will return a JSON structure containing the following data:
 
 ```json
 {
-  "type": "app",
-  "aud": ["32eafc7626e974616deaf0dc3ce63d7bcbed58a2731e84d06bc3cdf1b53c4228"],
-  "exp": 1659474457,
-  "iss": "https://yourteam.cloudflareaccess.com",
-  "common_name": "e367826f93b8d71185e03fe518aff3b4.access",
-  "iat": 1659474397,
-  "sub": ""
+	"type": "app",
+	"aud": ["32eafc7626e974616deaf0dc3ce63d7bcbed58a2731e84d06bc3cdf1b53c4228"],
+	"exp": 1659474457,
+	"iss": "https://yourteam.cloudflareaccess.com",
+	"common_name": "e367826f93b8d71185e03fe518aff3b4.access",
+	"iat": 1659474397,
+	"sub": ""
 }
 ```
 
@@ -145,7 +147,14 @@ Cloudflare generates the signature by signing the encoded header and payload usi
 
 For more information on JWTs, refer to [jwt.io ↗](https://jwt.io/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#page","headline":"Application token · Cloudflare One docs","description":"Learn how Cloudflare Access uses application tokens to secure your origin. Understand JWT structure and payloads.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/","name":"Authorization cookie"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/","name":"Application token"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#page","headline":"Application token · Cloudflare One docs","description":"Learn how Cloudflare Access uses application tokens to secure your origin. Understand JWT structure and payloads.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

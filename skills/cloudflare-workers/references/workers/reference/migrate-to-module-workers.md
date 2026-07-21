@@ -1,16 +1,18 @@
 ---
-title: Migrate from Service Workers to ES Modules
 description: Write your Worker code in ES modules syntax for an optimized experience.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Migrate from Service Workers to ES Modules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrate from Service Workers to ES Modules
 
-# Migrate from Service Workers to ES Modules
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will show you how to migrate your Workers from the [Service Worker ↗](https://developer.mozilla.org/en-US/docs/Web/API/Service%5FWorker%5FAPI) format to the [ES modules ↗](https://blog.cloudflare.com/workers-javascript-modules/) format.
 
@@ -34,18 +36,14 @@ Service Workers are deprecated, but still supported. We recommend using [Module 
 
 With the Service Worker syntax, the example Worker looks like:
 
-**JavaScript**
-
 ```js
 async function handler(request) {
   const base = 'https://example.com';
   const statusCode = 301;
 
-
   const destination = new URL(request.url, base);
   return Response.redirect(destination.toString(), statusCode);
 }
-
 
 // Initialize Worker
 addEventListener('fetch', event => {
@@ -55,14 +53,11 @@ addEventListener('fetch', event => {
 
 Workers using ES modules format replace the `addEventListener` syntax with an object definition, which must be the file's default export (via `export default`). The previous example code becomes:
 
-**JavaScript**
-
 ```js
 export default {
   fetch(request) {
     const base = "https://example.com";
     const statusCode = 301;
-
 
     const source = new URL(request.url);
     const destination = new URL(source.pathname, base);
@@ -83,23 +78,16 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-12792)
-* [  wrangler.toml ](#tab-panel-12793)
-
-**JSONC**
-
 ```jsonc
 {
-  "kv_namespaces": [
-    {
-      "binding": "TODO",
-      "id": "<ID>"
-    }
-  ]
+	"kv_namespaces": [
+		{
+			"binding": "TODO",
+			"id": "<ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[kv_namespaces]]
@@ -117,19 +105,15 @@ To learn more about how to reference KV from Workers, refer to the [KV bindings 
 
 In Service Worker syntax, your `TODO` KV namespace binding is defined in the global scope of your Worker. Your `TODO` KV namespace binding is available to use anywhere in your Worker application's code.
 
-**JavaScript**
-
 ```js
 addEventListener("fetch", async (event) => {
   return await getTodos()
 });
 
-
 async function getTodos() {
   // Get the value for the "to-do:123" key
   // NOTE: Relies on the TODO KV binding that maps to the "My Tasks" namespace.
   let value = await TODO.get("to-do:123");
-
 
   // Return the value, as is, for the Response
   event.respondWith(new Response(value));
@@ -142,11 +126,8 @@ In ES modules format, bindings are only available inside the `env` parameter tha
 
 To access the `TODO` KV namespace binding in your Worker code, the `env` parameter must be passed from the `fetch` handler in your Worker to the `getTodos` function.
 
-**JavaScript**
-
 ```js
 import { getTodos } from './todos'
-
 
 export default {
   async fetch(request, env, ctx) {
@@ -159,8 +140,6 @@ export default {
 
 The following code represents a `getTodos` function that calls the `get` function on the `TODO` KV binding.
 
-**JavaScript**
-
 ```js
 async function getTodos(env) {
   // NOTE: Relies on the TODO KV binding which has been provided inside of
@@ -168,7 +147,6 @@ async function getTodos(env) {
   let value = await env.TODO.get("to-do:123");
   return new Response(value);
 }
-
 
 export { getTodos }
 ```
@@ -179,29 +157,21 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12794)
-* [  wrangler.toml ](#tab-panel-12795)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker-dev",
-  // Define top-level environment variables
-  // using the {"vars": "key": "value"} format
-  "vars": {
-    "API_ACCOUNT_ID": "<EXAMPLE-ACCOUNT-ID>"
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker-dev",
+	// Define top-level environment variables
+	// using the {"vars": "key": "value"} format
+	"vars": {
+		"API_ACCOUNT_ID": "<EXAMPLE-ACCOUNT-ID>"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker-dev"
-
 
 [vars]
 API_ACCOUNT_ID = "<EXAMPLE-ACCOUNT-ID>"
@@ -210,8 +180,6 @@ API_ACCOUNT_ID = "<EXAMPLE-ACCOUNT-ID>"
 ### Environment variables in Service Worker format
 
 In Service Worker format, the `API_ACCOUNT_ID` is defined in the global scope of your Worker application. Your `API_ACCOUNT_ID` environment variable is available to use anywhere in your Worker application's code.
-
-**JavaScript**
 
 ```js
 addEventListener("fetch", async (event) => {
@@ -224,8 +192,6 @@ addEventListener("fetch", async (event) => {
 
 In ES modules format, environment variables are available through the `env` parameter provided at the entrypoint to your Worker application:
 
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env, ctx) {
@@ -237,36 +203,25 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-12796)
-* [  TypeScript ](#tab-panel-12797)
-
-**JavaScript**
-
 ```js
 import { env } from "cloudflare:workers";
-
 
 // Access environment variables at the top level
 const accountId = env.API_ACCOUNT_ID;
 
-
 export default {
-  async fetch(request) {
-    console.log(accountId); // Logs "<EXAMPLE-ACCOUNT-ID>"
-    return new Response("Hello, world!");
-  },
+	async fetch(request) {
+		console.log(accountId); // Logs "<EXAMPLE-ACCOUNT-ID>"
+		return new Response("Hello, world!");
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { env } from "cloudflare:workers";
 
-
 // Access environment variables at the top level
 const accountId = env.API_ACCOUNT_ID;
-
 
 export default {
   async fetch(request: Request): Promise<Response> {
@@ -284,8 +239,6 @@ To handle a [Cron Trigger](https://developers.cloudflare.com/workers/configurati
 
 This example code:
 
-**JavaScript**
-
 ```js
 addEventListener("scheduled", (event) => {
   // ...
@@ -293,8 +246,6 @@ addEventListener("scheduled", (event) => {
 ```
 
 Then becomes:
-
-**JavaScript**
 
 ```js
 export default {
@@ -310,14 +261,11 @@ Workers often need access to data not in the `request` object. For example, some
 
 This example code:
 
-**JavaScript**
-
 ```js
 async function triggerEvent(event) {
   // Fetch some data
   console.log('cron processed', event.scheduledTime);
 }
-
 
 // Initialize Worker
 addEventListener('scheduled', event => {
@@ -327,14 +275,11 @@ addEventListener('scheduled', event => {
 
 Then becomes:
 
-**JavaScript**
-
 ```js
 async function triggerEvent(event) {
   // Fetch some data
   console.log('cron processed', event.scheduledTime);
 }
-
 
 export default {
   async scheduled(event, env, ctx) {
@@ -352,13 +297,10 @@ A Worker written in Service Worker syntax consists of two parts:
 
 When a request is received on one of Cloudflare’s global network servers for a URL matching a Worker, Cloudflare's server passes the request to the Workers runtime. This dispatches a `FetchEvent` in the [isolate](https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates) where the Worker is running.
 
-**JavaScript**
-
 ```js
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request));
 });
-
 
 async function handleRequest(request) {
   return new Response('Hello worker!', {
@@ -403,17 +345,13 @@ If a `fetch` event handler does not call `respondWith`, the runtime delivers the
 
 If no `fetch` event handler calls `respondWith`, then the runtime forwards the request to the origin as if the Worker did not. However, if there is no origin – or the Worker itself is your origin server, which is always true for `*.workers.dev` domains – then you must call `respondWith` for a valid response.
 
-**JavaScript**
-
 ```js
 // Format: Service Worker
 addEventListener('fetch', event => {
   let { pathname } = new URL(event.request.url);
 
-
   // Allow "/ignore/*" URLs to hit origin
   if (pathname.startsWith('/ignore/')) return;
-
 
   // Otherwise, respond with something
   event.respondWith(handler(event));
@@ -428,29 +366,23 @@ With the Service Worker format, `waitUntil` is available within the `event` beca
 
 With the ES modules format, `waitUntil` is moved and available on the `context` parameter object.
 
-**JavaScript**
-
 ```js
 // Format: Service Worker
 addEventListener('fetch', event => {
   event.respondWith(handler(event));
 });
 
-
 async function handler(event) {
   // Forward / Proxy original request
   let res = await fetch(event.request);
-
 
   // Add custom header(s)
   res = new Response(res.body, res);
   res.headers.set('x-foo', 'bar');
 
-
   // Cache the response
   // NOTE: Does NOT block / wait
   event.waitUntil(caches.default.put(event.request, res.clone()));
-
 
   // Done
   return res;
@@ -467,8 +399,6 @@ With the Service Worker format, `passThroughOnException` is added to the `FetchE
 
 With the ES modules format, `passThroughOnException` is available on the `context` parameter object.
 
-**JavaScript**
-
 ```js
 // Format: Service Worker
 addEventListener('fetch', event => {
@@ -478,7 +408,14 @@ addEventListener('fetch', event => {
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#page","headline":"Migrate from Service Workers to ES Modules · Cloudflare Workers docs","description":"Write your Worker code in ES modules syntax for an optimized experience.","url":"https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/reference/migrate-to-module-workers/","name":"Migrate from Service Workers to ES Modules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#page","headline":"Migrate from Service Workers to ES Modules · Cloudflare Workers docs","description":"Write your Worker code in ES modules syntax for an optimized experience.","url":"https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Writing to streams
 description: Send data to streams via Worker bindings or HTTP endpoints
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Writing to streams
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Writing to streams
 
-# Writing to streams
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/streams/writing-to-streams/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Send events to streams using [Worker bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or HTTP endpoints for client-side applications and external systems.
 
@@ -22,23 +24,16 @@ Worker bindings provide a secure way to send data to streams from [Workers](http
 
 Add a pipeline binding to your Wrangler file that points to your stream:
 
-* [  wrangler.jsonc ](#tab-panel-10353)
-* [  wrangler.toml ](#tab-panel-10354)
-
-**JSONC**
-
 ```jsonc
 {
-  "pipelines": [
-    {
-      "binding": "STREAM",
-      "stream": "<STREAM_ID>"
-    }
-  ]
+	"pipelines": [
+		{
+			"binding": "STREAM",
+			"stream": "<STREAM_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[pipelines]]
@@ -58,38 +53,27 @@ The pipeline binding exposes a method for sending data to your stream:
 
 Sends an array of JSON-serializable records to the stream. Returns a Promise that resolves when records are confirmed as ingested.
 
-* [  JavaScript ](#tab-panel-10355)
-* [  TypeScript ](#tab-panel-10356)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const events = await request.json();
+	async fetch(request, env, ctx) {
+		const events = await request.json();
 
+		await env.STREAM.send(events);
 
-    await env.STREAM.send(events);
-
-
-    return new Response("Events sent");
-  },
+		return new Response("Events sent");
+	},
 };
 ```
 
-**TypeScript**
-
-```ts
+```typescript
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const events = await request.json<Record<string, unknown>[]>();
+	async fetch(request, env, ctx): Promise<Response> {
+		const events = await request.json<Record<string, unknown>[]>();
 
+		await env.STREAM.send(events);
 
-    await env.STREAM.send(events);
-
-
-    return new Response("Events sent");
-  },
+		return new Response("Events sent");
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -103,19 +87,17 @@ After running `wrangler types`, the generated `worker-configuration.d.ts` file c
 
 Below is an example of what generated types look like in `worker-configuration.d.ts` for a stream named `ecommerce_stream`:
 
-**TypeScript**
-
 ```typescript
 declare namespace Cloudflare {
-  type EcommerceStreamRecord = {
-    user_id: string;
-    event_type: string;
-    product_id?: string;
-    amount?: number;
-  };
-  interface Env {
-    STREAM: import("cloudflare:pipelines").Pipeline<Cloudflare.EcommerceStreamRecord>;
-  }
+	type EcommerceStreamRecord = {
+		user_id: string;
+		event_type: string;
+		product_id?: string;
+		amount?: number;
+	};
+	interface Env {
+		STREAM: import("cloudflare:pipelines").Pipeline<Cloudflare.EcommerceStreamRecord>;
+	}
 }
 ```
 
@@ -184,7 +166,14 @@ Streams handle validation differently based on their configuration:
 
 For structured streams, ensure your events match the schema definition. Invalid events will be accepted but dropped, so validate your data before sending to avoid dropped events. When using Worker bindings, run `wrangler types` to generate [typed pipeline bindings](#typed-pipeline-bindings) that catch schema violations at compile time. You can also query the [user error metrics](https://developers.cloudflare.com/pipelines/observability/metrics/#user-error-metrics) to monitor dropped events and diagnose schema validation issues.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/streams/writing-to-streams/#page","headline":"Writing to streams · Cloudflare Pipelines Docs","description":"Send data to streams via Worker bindings or HTTP endpoints","url":"https://developers.cloudflare.com/pipelines/streams/writing-to-streams/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":3,"item":{"@id":"/pipelines/streams/","name":"Streams"}},{"@type":"ListItem","position":4,"item":{"@id":"/pipelines/streams/writing-to-streams/","name":"Writing to streams"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/streams/writing-to-streams/#page","headline":"Writing to streams · Cloudflare Pipelines Docs","description":"Send data to streams via Worker bindings or HTTP endpoints","url":"https://developers.cloudflare.com/pipelines/streams/writing-to-streams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

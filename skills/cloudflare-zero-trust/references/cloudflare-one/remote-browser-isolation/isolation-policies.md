@@ -1,16 +1,18 @@
 ---
-title: Isolation policies
 description: Reference information for Isolation policies in Browser Isolation.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Isolation policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Isolation policies
 
-# Isolation policies
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 With Browser Isolation, you can define policies to dynamically isolate websites based on identity, security threats, or content.
 
@@ -117,7 +119,7 @@ Mouse input remains available to allow users to browse a website by following hy
 * _Allow_: (Default) Users can print isolated web pages to their local machine.
 * _Do not allow_: Prohibits users from printing isolated web pages to their local machine.
 
-## Custom block dialog Beta
+## Custom block dialog  Beta
 
 With custom block dialogs, you can host a custom block page when users are blocked from taking specific actions, like [copying](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#copy-from-remote-to-client), [pasting](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#paste-from-client-to-remote), [downloading](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#file-downloads), [uploading](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#file-uploads), [performing keyboard inputs](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#keyboard), or [printing](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#printing), within an isolated browser session.
 
@@ -138,132 +140,109 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-8058)
-* [ API ](#tab-panel-8059)
-
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
 | Security Categories | in       | _All security risks_ | Isolate |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Isolate all security threats",
-    "description": "Isolate security threats such as malware and phishing",
-    "enabled": true,
-    "action": "isolate",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Isolate all security threats",
+		"description": "Isolate security threats such as malware and phishing",
+		"enabled": true,
+		"action": "isolate",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 ### Isolate high risk content
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-8060)
-* [ API ](#tab-panel-8061)
-
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
 | Content Categories | in       | _Security Risks_ | Isolate |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Isolate high risk content",
-    "description": "Isolate high risk content categories such as newly registered domains",
-    "enabled": true,
-    "action": "isolate",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.uri.content_category[*] in {32 169 177 128})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Isolate high risk content",
+		"description": "Isolate high risk content categories such as newly registered domains",
+		"enabled": true,
+		"action": "isolate",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.uri.content_category[*] in {32 169 177 128})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 ### Isolate news and media
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-8062)
-* [ API ](#tab-panel-8063)
-
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
 | Content Categories | in       | _News and Media_ | Isolate |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Isolate news and media",
-    "description": "Isolate news and media sites, which are targets for malvertising attacks",
-    "enabled": true,
-    "action": "isolate",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.uri.content_category[*] in {122})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Isolate news and media",
+		"description": "Isolate news and media sites, which are targets for malvertising attacks",
+		"enabled": true,
+		"action": "isolate",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.uri.content_category[*] in {122})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 ### Isolate uncategorized content
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-8064)
-* [ API ](#tab-panel-8065)
-
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
 | Content Categories | not in   | _All content categories_ | Isolate |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Isolate uncategorized content",
-    "description": "Isolate content not categorized by Cloudflare Radar",
-    "enabled": true,
-    "action": "isolate",
-    "filters": [
-        "http"
-    ],
-    "traffic": "not(any(http.request.uri.content_category[*] in {2 67 125 133 3 75 183 89 182 6 90 91 144 150 7 70 74 76 79 92 96 100 106 107 116 120 121 122 127 139 156 164 99 9 101 137 10 103 146 11 12 77 98 108 110 111 118 126 129 172 168 113 33 179 166 15 115 119 124 141 161 17 85 87 102 157 135 138 180 162 140 142 32 169 177 128 22 73 82 88 148 23 24 181 71 72 173 78 84 86 94 97 104 105 114 174 93 130 132 136 147 149 154 158 152 26 69 184 81 95 109 123 145 155 159 160 163 165 167}))",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Isolate uncategorized content",
+		"description": "Isolate content not categorized by Cloudflare Radar",
+		"enabled": true,
+		"action": "isolate",
+		"filters": [
+				"http"
+		],
+		"traffic": "not(any(http.request.uri.content_category[*] in {2 67 125 133 3 75 183 89 182 6 90 91 144 150 7 70 74 76 79 92 96 100 106 107 116 120 121 122 127 139 156 164 99 9 101 137 10 103 146 11 12 77 98 108 110 111 118 126 129 172 168 113 33 179 166 15 115 119 124 141 161 17 85 87 102 157 135 138 180 162 140 142 32 169 177 128 22 73 82 88 148 23 24 181 71 72 173 78 84 86 94 97 104 105 114 174 93 130 132 136 147 149 154 158 152 26 69 184 81 95 109 123 145 155 159 160 163 165 167}))",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 ### Isolate ChatGPT
 
 Isolate the use of ChatGPT.
-
-* [ Dashboard ](#tab-panel-8066)
-* [ API ](#tab-panel-8067)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |
@@ -271,27 +250,32 @@ Isolate the use of ChatGPT.
 
 In **Configure policy settings**, you can customize restrictions for ChatGPT. For example, to prevent your users from inputting sensitive information, you can select **Disable copy / paste** and **Disable file uploads**.
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Isolate ChatGPT",
-    "description": "Isolate the use of ChatGPT",
-    "enabled": true,
-    "action": "isolate",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(app.ids[*] in {1199})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Isolate ChatGPT",
+		"description": "Isolate the use of ChatGPT",
+		"enabled": true,
+		"action": "isolate",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(app.ids[*] in {1199})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#page","headline":"Isolation policies · Cloudflare One docs","description":"Reference information for Isolation policies in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/remote-browser-isolation/","name":"Remote browser isolation"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/remote-browser-isolation/isolation-policies/","name":"Isolation policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#page","headline":"Isolation policies · Cloudflare One docs","description":"Reference information for Isolation policies in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

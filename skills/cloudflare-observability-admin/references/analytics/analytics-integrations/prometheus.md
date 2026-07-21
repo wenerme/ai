@@ -1,16 +1,18 @@
 ---
-title: Prometheus
 description: This tutorial explains how to export Cloudflare metrics to Prometheus using the Cloudflare Prometheus Exporter.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Prometheus
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Prometheus
 
-# Prometheus
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to export Cloudflare metrics to [Prometheus ↗](https://prometheus.io/) using the [Cloudflare Prometheus Exporter ↗](https://github.com/cloudflare/cloudflare-prometheus-exporter), an open-source tool built on Cloudflare Workers with Durable Objects.
 
@@ -75,8 +77,6 @@ Create a Cloudflare API token with the following permissions:
 
 Add the exporter as a scrape target in your Prometheus configuration:
 
-**YAML**
-
 ```yaml
 scrape_configs:
   - job_name: 'cloudflare'
@@ -89,8 +89,6 @@ scrape_configs:
 ### With Basic Auth
 
 If you configured Basic Auth on the exporter, update your Prometheus configuration:
-
-**YAML**
 
 ```yaml
 scrape_configs:
@@ -171,7 +169,14 @@ Free tier zones still export:
 
 You can monitor skipped zones with the `cloudflare_zones_skipped_free_tier` metric.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/#page","headline":"Prometheus · Cloudflare Analytics docs","description":"This tutorial explains how to export Cloudflare metrics to Prometheus using the Cloudflare Prometheus Exporter.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-integrations/","name":"Analytics integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-integrations/prometheus/","name":"Prometheus"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/#page","headline":"Prometheus · Cloudflare Analytics docs","description":"This tutorial explains how to export Cloudflare metrics to Prometheus using the Cloudflare Prometheus Exporter.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

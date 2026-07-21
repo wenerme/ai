@@ -197,17 +197,29 @@ Alternatively, you can use the [Agents SDK](https://developers.openai.com/api/do
 Use the apply patch tool with the Agents SDK
 
 ```javascript
-import { applyDiff, Agent, run, applyPatchTool, Editor } from "@openai/agents";
+import {
+  applyDiff,
+  Agent,
+  run,
+  applyPatchTool,
+  type ApplyPatchOperation,
+  type ApplyPatchResult,
+  type Editor,
+} from "@openai/agents";
 
 class WorkspaceEditor implements Editor {
-  async createFile(operation) {
+  async createFile(
+    operation: Extract<ApplyPatchOperation, { type: "create_file" }>
+  ): Promise<ApplyPatchResult> {
     // convert the diff to the file content
     const content = applyDiff("", operation.diff, "create");
     // write the file content to the file system
     return { status: "completed", output: `Created ${operation.path}` };
   }
 
-  async updateFile(operation) {
+  async updateFile(
+    operation: Extract<ApplyPatchOperation, { type: "update_file" }>
+  ): Promise<ApplyPatchResult> {
     // read the file content from the file system
     const current = "";
     // convert the diff to the new file content
@@ -216,7 +228,9 @@ class WorkspaceEditor implements Editor {
     return { status: "completed", output: `Updated ${operation.path}` };
   }
 
-  async deleteFile(operation) {
+  async deleteFile(
+    operation: Extract<ApplyPatchOperation, { type: "delete_file" }>
+  ): Promise<ApplyPatchResult> {
     // delete the file from the file system
     return { status: "completed", output: `Deleted ${operation.path}` };
   }
@@ -227,7 +241,8 @@ const editor = new WorkspaceEditor();
 const agent = new Agent({
   name: "Patch Assistant",
   model: "gpt-5.6",
-  instructions: "You can edit files inside the /tmp directory using the apply_patch tool.",
+  instructions:
+    "You can edit files inside the /tmp directory using the apply_patch tool.",
   tools: [
     applyPatchTool({
       editor,

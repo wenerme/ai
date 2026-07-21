@@ -1,16 +1,18 @@
 ---
-title: Error codes
 description: Error codes returned by the Cloudflare Queues JavaScript and REST APIs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Error codes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Error codes
 
-# Error codes
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/reference/error-codes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page documents error codes returned by Queues when using the [Queues Cloudflare API](https://developers.cloudflare.com/api/resources/queues/methods/create/).
 
@@ -18,15 +20,13 @@ This page documents error codes returned by Queues when using the [Queues Cloudf
 
 For the [JavaScript APIs](https://developers.cloudflare.com/queues/configuration/javascript-apis/), Queues operations throw exceptions that you can catch. The error code is included at the end of the `message` property:
 
-**JavaScript**
-
 ```js
 try {
-  await env.MY_QUEUE.send("message", { delaySeconds: 999999 });
+	await env.MY_QUEUE.send("message", { delaySeconds: 999999 });
     return new Response("Sent message to the queue");
 } catch (error) {
-  console.error(error);
-  return new Response("Failed to send message to the queue", { status: 500 });
+	console.error(error);
+	return new Response("Failed to send message to the queue", { status: 500 });
 }
 ```
 
@@ -84,7 +84,14 @@ For the [Cloudflare API via HTTP](https://developers.cloudflare.com/api/resource
 | ---------- | -------------------- | ------------- |
 | 15000      | UnknownInternalError | Unknown error |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/reference/error-codes/#page","headline":"Error codes · Cloudflare Queues docs","description":"Error codes returned by the Cloudflare Queues JavaScript and REST APIs.","url":"https://developers.cloudflare.com/queues/reference/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/reference/error-codes/","name":"Error codes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/reference/error-codes/#page","headline":"Error codes · Cloudflare Queues docs","description":"Error codes returned by the Cloudflare Queues JavaScript and REST APIs.","url":"https://developers.cloudflare.com/queues/reference/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

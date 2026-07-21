@@ -1,16 +1,18 @@
 ---
-title: Early Hints for SaaS
 description: Enable Early Hints per custom hostname to preload resources and speed up page loads.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Early Hints for SaaS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Early Hints for SaaS
 
-# Early Hints for SaaS
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/) allows the browser to begin loading resources while the origin server is compiling the full response. This improves webpage’s loading speed for the end user. As a SaaS provider, you may prioritize speed for some of your custom hostnames. Using custom metadata, you can [enable Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/#enable-early-hints) per custom hostname.
 
@@ -33,27 +35,25 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Create Custom Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "hostname": "<CUSTOM_HOSTNAME>",
-    "ssl": {
-        "method": "http",
-        "type": "dv",
-        "settings": {
-            "http2": "on",
-            "min_tls_version": "1.2",
-            "tls_1_3": "on",
-            "early_hints": "on"
-        },
-        "bundle_method": "ubiquitous",
-        "wildcard": false
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"hostname": "<CUSTOM_HOSTNAME>",
+		"ssl": {
+				"method": "http",
+				"type": "dv",
+				"settings": {
+						"http2": "on",
+						"min_tls_version": "1.2",
+						"tls_1_3": "on",
+						"early_hints": "on"
+				},
+				"bundle_method": "ubiquitous",
+				"wildcard": false
+		}
+	}'
 ```
 
 1. For an existing custom hostname, locate the `id` of that hostname via a `GET` call:
@@ -64,12 +64,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
-**List Custom Hostnames**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames?hostname=%7Bhostname%7D" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. Then make an API call such as the example below, specifying `"early_hints": "on"`:
@@ -79,29 +77,34 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Edit Custom Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "ssl": {
-        "method": "http",
-        "type": "dv",
-        "settings": {
-            "http2": "on",
-            "min_tls_version": "1.2",
-            "tls_1_3": "on",
-            "early_hints": "on"
-        }
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"ssl": {
+				"method": "http",
+				"type": "dv",
+				"settings": {
+						"http2": "on",
+						"min_tls_version": "1.2",
+						"tls_1_3": "on",
+						"early_hints": "on"
+				}
+		}
+	}'
 ```
 
 Currently, all options within `settings` are required in order to prevent those options from being set to default. You can pull the current settings state prior to updating Early Hints by leveraging the output that returns the `id` for the hostname.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/#page","headline":"Early Hints for SaaS · Cloudflare for Platforms docs","description":"Enable Early Hints per custom hostname to preload resources and speed up page loads.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/performance/","name":"Performance"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/","name":"Early Hints for SaaS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/#page","headline":"Early Hints for SaaS · Cloudflare for Platforms docs","description":"Enable Early Hints per custom hostname to preload resources and speed up page loads.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

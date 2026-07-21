@@ -1,16 +1,18 @@
 ---
-title: Python Workers API
 description: Reference for the Python Workflows SDK, including WorkflowEntrypoint, step methods, and configuration options.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Python Workers API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Python Workers API
 
-# Python Workers API
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/python/python-workers-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers the Python Workflows SDK, with instructions on how to build and create workflows using Python.
 
@@ -18,11 +20,8 @@ This guide covers the Python Workflows SDK, with instructions on how to build an
 
 The `WorkflowEntrypoint` is the main entrypoint for a Python workflow. It extends the `WorkflowEntrypoint` class, and implements the `run` method.
 
-**Python**
-
 ```python
 from workers import WorkflowEntrypoint
-
 
 class MyWorkflow(WorkflowEntrypoint):
     async def run(self, event, step):
@@ -46,11 +45,8 @@ Note
 
 Older compatibility behavior supports explicit dependency lists with `depends=[...]`. For new workflows, prefer implicit dependency resolution by parameter name.
 
-**Python**
-
 ```python
 from workers import WorkflowEntrypoint
-
 
 class MyWorkflow(WorkflowEntrypoint):
     async def run(self, event, step):
@@ -58,7 +54,6 @@ class MyWorkflow(WorkflowEntrypoint):
         async def my_first_step():
             # do some work
             return "Hello World!"
-
 
         await my_first_step()
 ```
@@ -71,8 +66,6 @@ When returning state from a step, you must make sure that the returned value is 
   * `name` — the name of the step.
   * `duration` — the duration to sleep until, in either seconds or as a `WorkflowDuration` compatible string.
 
-**Python**
-
 ```python
 async def run(self, event, step):
     await step.sleep("my-sleep-step", "10 seconds")
@@ -82,11 +75,8 @@ async def run(self, event, step):
   * `name` — the name of the step.
   * `timestamp` — a `datetime.datetime` object or seconds from the Unix epoch to sleep the workflow instance until.
 
-**Python**
-
 ```python
 import datetime
-
 
 async def run(self, event, step):
     await step.sleep_until("my-sleep-step", datetime.datetime.now() + datetime.timedelta(seconds=10))
@@ -96,8 +86,6 @@ async def run(self, event, step):
   * `name` — the name of the step.
   * `event_type` — the type of event to wait for.
   * `timeout` — the timeout for the `wait_for_event` call. The default timeout is 24 hours.
-
-**Python**
 
 ```python
 async def run(self, event, step):
@@ -123,8 +111,6 @@ Note
 
 Some built-in Python errors (e.g.: `ValueError`, `TypeError`) will work correctly. User defined exceptions, as well as other built-in Python errors will not and should be caught with the `Exception` class.
 
-**Python**
-
 ```python
 async def run(self, event, step):
     async def try_step(fn):
@@ -133,12 +119,10 @@ async def run(self, event, step):
         except Exception as e:
             print(f"Successfully caught {type(e).__name__}: {e}")
 
-
     @step.do("my_failing")
     async def my_failing():
         print("Executing my_failing")
         raise TypeError("Intentional error in my_failing")
-
 
     await try_step(my_failing)
 ```
@@ -147,11 +131,8 @@ async def run(self, event, step):
 
 The Python Workflows SDK provides a `NonRetryableError` class that can be used to signal that a step should not be retried.
 
-**Python**
-
 ```python
 from workers.workflows import NonRetryableError
-
 
 raise NonRetryableError(message)
 ```
@@ -160,11 +141,8 @@ raise NonRetryableError(message)
 
 You can bind a step to a specific retry policy by passing a `WorkflowStepConfig` object to the `config` parameter of the `step.do` decorator. With Python Workflows, you need to make sure that your `dict` respects the [WorkflowStepConfig](https://developers.cloudflare.com/workflows/build/workers-api/#workflowstepconfig) type.
 
-**Python**
-
 ```python
 from workers import WorkflowEntrypoint
-
 
 class DemoWorkflowClass(WorkflowEntrypoint):
     async def run(self, event, step):
@@ -184,11 +162,8 @@ If you define a `ctx` parameter, the [step context](https://developers.cloudflar
 | attempt | int  | The current attempt number (1-indexed).                                                          |
 | config  | dict | The resolved retry and timeout configuration for this step.                                      |
 
-**Python**
-
 ```python
 from workers import WorkflowEntrypoint
-
 
 class CtxWorkflow(WorkflowEntrypoint):
     async def run(self, event, step):
@@ -200,7 +175,6 @@ class CtxWorkflow(WorkflowEntrypoint):
             print(ctx["config"])          # resolved step config
             return ctx["attempt"]
 
-
         return await read_context()
 ```
 
@@ -210,11 +184,8 @@ Note that `env` is a JavaScript object exposed to the Python script via [JsProxy
 
 Let's consider the previous binding called `MY_WORKFLOW`. Here's how you would create a new instance:
 
-**Python**
-
 ```python
 from workers import Response, WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -222,7 +193,14 @@ class Default(WorkerEntrypoint):
         return Response.json({"status": "success"})
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/python/python-workers-api/#page","headline":"Python Workers API · Cloudflare Workflows docs","description":"Reference for the Python Workflows SDK, including WorkflowEntrypoint, step methods, and configuration options.","url":"https://developers.cloudflare.com/workflows/python/python-workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/python/","name":"Python Workflows SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/python/python-workers-api/","name":"Python Workers API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/python/python-workers-api/#page","headline":"Python Workers API · Cloudflare Workflows docs","description":"Reference for the Python Workflows SDK, including WorkflowEntrypoint, step methods, and configuration options.","url":"https://developers.cloudflare.com/workflows/python/python-workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

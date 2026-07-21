@@ -1,16 +1,18 @@
 ---
-title: Workers
 description: Wrangler commands for creating, developing, deploying, and managing Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers
 
-# Workers
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler commands for creating, developing, deploying, and managing Workers.
 
@@ -22,11 +24,11 @@ Create a new project via the [create-cloudflare-cli (C3) tool](https://developer
 wrangler init [<NAME>] [OPTIONS]
 ```
 
-* `NAME` ` string ` optional (default: name of working directory)
+* `NAME` ` string `optional (default: name of working directory)
   * The name of the Workers project. This is both the directory name and `name` property in the generated [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/).
-* `--yes` ` boolean ` optional
+* `--yes` ` boolean `optional
   * Answer yes to any prompts for new projects.
-* `--from-dash` ` string ` optional
+* `--from-dash` ` string `optional
   * Fetch a Worker initialized from the dashboard. This is done by passing the flag and the Worker name. `wrangler init --from-dash <WORKER_NAME>`.
   * The `--from-dash` command will not automatically sync changes made to the dashboard after the command is used. Therefore, it is recommended that you continue using the CLI.
 
@@ -54,84 +56,120 @@ Note
 None of the options for this command are required. Many of these options can be set in your Wrangler file. Refer to the [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration) documentation for more information.
 
 * `SCRIPT` ` string `
+
   * The path to an entry point for your Worker. Only required if your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) does not include a `main` key (for example, `main = "index.js"`).
-* `--name` ` string ` optional
+* `--name` ` string `optional
+
   * Name of the Worker.
-* `--config`, `-c` ` string[] ` optional
+* `--config`, `-c` ` string[] `optional
+
   * Path(s) to [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). If not provided, Wrangler will use the nearest config file based on your current working directory.
   * You can provide multiple configuration files to run multiple Workers in one dev session like this: `wrangler dev -c ./wrangler.toml -c ../other-worker/wrangler.toml`. The first config will be treated as the _primary_ Worker, which will be exposed over HTTP. The remaining config files will only be accessible via a service binding from the primary Worker.
-* `--no-bundle` ` boolean ` (default: false) optional
+* `--no-bundle` ` boolean `(default: false) optional
+
   * Skip Wrangler's build steps. Particularly useful when using custom builds. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/) for more information.
-* `--env` ` string ` optional
+* `--env` ` string `optional
+
   * Perform on a specific environment.
-* `--compatibility-date` ` string ` optional
+* `--compatibility-date` ` string `optional
+
   * A date in the form yyyy-mm-dd, which will be used to determine which version of the Workers runtime is used.
-* `--compatibility-flags`, `--compatibility-flag` ` string[] ` optional
+* `--compatibility-flags`, `--compatibility-flag` ` string[] `optional
+
   * Flags to use for compatibility checks.
-* `--latest` ` boolean ` (default: true) optional
+* `--latest` ` boolean `(default: true) optional
+
   * Use the latest version of the Workers runtime.
-* `--ip` ` string ` optional
+* `--ip` ` string `optional
+
   * IP address to listen on, defaults to `localhost`.
-* `--port` ` number ` optional
+* `--port` ` number `optional
+
   * Port to listen on.
-* `--inspector-port` ` number ` optional
+* `--inspector-port` ` number `optional
+
   * Port for devtools to connect to.
-* `--routes`, `--route` ` string[] ` optional
+* `--routes`, `--route` ` string[] `optional
+
   * Routes to upload.
   * For example: `--route example.com/*`.
-* `--host` ` string ` optional
+* `--host` ` string `optional
+
   * Host to forward requests to, defaults to the zone of project.
-* `--local-protocol` ` 'http'|'https' ` (default: http) optional
+* `--local-protocol` ` 'http'|'https' `(default: http) optional
+
   * Protocol to listen to requests on.
-* `--https-key-path` ` string ` optional
+* `--https-key-path` ` string `optional
+
   * Path to a custom certificate key.
-* `--https-cert-path` ` string ` optional
+* `--https-cert-path` ` string `optional
+
   * Path to a custom certificate.
-* `--local-upstream` ` string ` optional
+* `--local-upstream` ` string `optional
+
   * Host to act as origin in local mode, defaults to `dev.host` or route.
-* `--assets` ` string ` optional beta
+* `--assets` ` string `optional beta
+
   * Folder of static assets to be served. Replaces [Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/). Visit [assets](https://developers.cloudflare.com/workers/static-assets/) for more information.
-* `--site` ` string ` optional deprecated, use \`--assets\`
+* `--site` ` string `optional deprecated, use \`--assets\`
+
   * Folder of static assets for Workers Sites.
-  Warning
+  Caution
   Workers Sites is deprecated. Please use [Workers Assets](https://developers.cloudflare.com/workers/static-assets/) or [Pages](https://developers.cloudflare.com/pages/).
-* `--site-include` ` string[] ` optional deprecated
+* `--site-include` ` string[] `optional deprecated
+
   * Array of `.gitignore`\-style patterns that match file or directory names from the sites directory. Only matched items will be uploaded.
-* `--site-exclude` ` string[] ` optional deprecated
+* `--site-exclude` ` string[] `optional deprecated
+
   * Array of `.gitignore`\-style patterns that match file or directory names from the sites directory. Matched items will not be uploaded.
-* `--upstream-protocol` ` 'http'|'https' ` (default: https) optional
+* `--upstream-protocol` ` 'http'|'https' `(default: https) optional
+
   * Protocol to forward requests to host on.
-* `--var` ` key:value\[] ` optional
+* `--var` ` key:value\[] `optional
+
   * Array of `key:value` pairs to inject as variables into your code. The value will always be passed as a string to your Worker.
   * For example, `--var "git_hash:'$(git rev-parse HEAD)'" "test:123"` makes the `git_hash` and `test` variables available in your Worker's `env`.
   * This flag is an alternative to defining [vars](https://developers.cloudflare.com/workers/wrangler/configuration/#non-inheritable-keys) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). If defined in both places, this flag's values will be used.
-* `--define` ` key:value\[] ` optional
+* `--define` ` key:value\[] `optional
+
   * Array of `key:value` pairs to replace global identifiers in your code.
   * For example, `--define "GIT_HASH:'$(git rev-parse HEAD)'"` will replace all uses of `GIT_HASH` with the actual value at build time.
   * This flag is an alternative to defining [define](https://developers.cloudflare.com/workers/wrangler/configuration/#non-inheritable-keys) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). If defined in both places, this flag's values will be used.
-* `--tsconfig` ` string ` optional
+* `--tsconfig` ` string `optional
+
   * Path to a custom `tsconfig.json` file.
-* `--minify` ` boolean ` optional
+* `--minify` ` boolean `optional
+
   * Minify the Worker.
-* `--persist-to` ` string ` optional
+* `--persist-to` ` string `optional
+
   * Specify directory to use for local persistence.
-* `--remote` ` boolean ` (default: false) optional
+* `--remote` ` boolean `(default: false) optional
+
   * Develop against remote resources and data stored on Cloudflare's network.
-* `--tunnel` ` boolean ` (default: false) optional
+* `--tunnel` ` boolean `(default: false) optional
+
   * Expose your local dev server over a Cloudflare Tunnel. For more information, refer to [Share a local dev server](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/).
-* `--tunnel-name` ` string ` optional
+* `--tunnel-name` ` string `optional
+
   * Use an existing named Cloudflare Tunnel. Combine with `--tunnel` to open it automatically at startup.
-* `--test-scheduled` ` boolean ` (default: false) optional
+* `--test-scheduled` ` boolean `(default: false) optional
+
   * Exposes a `/__scheduled` fetch route which will trigger a scheduled event (Cron Trigger) for testing during development. To simulate different cron patterns, a `cron` query parameter can be passed in: `/__scheduled?cron=*+*+*+*+*` or `/cdn-cgi/handler/scheduled?cron=*+*+*+*+*`.
-* `--log-level` ` 'debug'|'info'|'log'|'warn'|'error|'none' ` (default: log) optional
+* `--log-level` ` 'debug'|'info'|'log'|'warn'|'error|'none' `(default: log) optional
+
   * Specify Wrangler's logging level.
-* `--show-interactive-dev-session` ` boolean ` (default: true if the terminal supports interactivity) optional
+* `--show-interactive-dev-session` ` boolean `(default: true if the terminal supports interactivity) optional
+
   * Show the interactive dev session.
 * `--alias` `Array<string>`
+
   * Specify modules to alias using [module aliasing](https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing).
-* `--types` ` boolean ` (default: false) optional
+* `--types` ` boolean `(default: false) optional
+
   * Generate types from your Worker configuration.
-* `--local` ` boolean ` (default: false) optional
+* `--local` ` boolean `(default: false) optional
+
   * Run in local mode. In this mode:
     * the Worker code is running locally on your machine
     * all [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) are disabled, which behaves exactly as if they were configured with `remote: false`.
@@ -183,104 +221,104 @@ None of the options for this command are required. Also, many can be set in your
       * This overrides the eventual `assets` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
       * This is equivalent to the `--assets` option listed below.
       * Note: this option currently only works only in interactive mode (so not in CI systems).
-* `--name` ` string ` optional
+* `--name` ` string `optional
 
   * Name of the Worker.
-* `--no-bundle` ` boolean ` (default: false) optional
+* `--no-bundle` ` boolean `(default: false) optional
 
   * Skip Wrangler's build steps. Particularly useful when using custom builds. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/) for more information.
-* `--env` ` string ` optional
+* `--env` ` string `optional
 
   * Perform on a specific environment.
   Note
   If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), you select the environment at dev or build time via the `CLOUDFLARE_ENV` environment variable rather than the `--env` flag. Otherwise, environments are defined in your Worker config file as usual. For more detail on using environments with the Cloudflare Vite plugin, refer to the [plugin documentation](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/).
-* `--outdir` ` string ` optional
+* `--outdir` ` string `optional
 
   * Path to directory where Wrangler will write the bundled Worker files.
-* `--compatibility-date` ` string ` optional
+* `--compatibility-date` ` string `optional
 
   * A date in the form yyyy-mm-dd, which will be used to determine which version of the Workers runtime is used.
-* `--compatibility-flags`, `--compatibility-flag` ` string[] ` optional
+* `--compatibility-flags`, `--compatibility-flag` ` string[] `optional
 
   * Flags to use for compatibility checks.
-* `--latest` ` boolean ` (default: true) optional
+* `--latest` ` boolean `(default: true) optional
 
   * Use the latest version of the Workers runtime.
-* `--assets` ` string ` optional beta
+* `--assets` ` string `optional beta
 
   * Folder of static assets to be served. Replaces [Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/). Visit [assets](https://developers.cloudflare.com/workers/static-assets/) for more information.
-* `--site` ` string ` optional deprecated, use \`--assets\`
+* `--site` ` string `optional deprecated, use \`--assets\`
 
   * Folder of static assets for Workers Sites.
-  Warning
+  Caution
   Workers Sites is deprecated. Please use [Workers Assets](https://developers.cloudflare.com/workers/static-assets/) or [Pages](https://developers.cloudflare.com/pages/).
-* `--site-include` ` string[] ` optional deprecated
+* `--site-include` ` string[] `optional deprecated
 
   * Array of `.gitignore`\-style patterns that match file or directory names from the sites directory. Only matched items will be uploaded.
-* `--site-exclude` ` string[] ` optional deprecated
+* `--site-exclude` ` string[] `optional deprecated
 
   * Array of `.gitignore`\-style patterns that match file or directory names from the sites directory. Matched items will not be uploaded.
-* `--var` ` key:value\[] ` optional
+* `--var` ` key:value\[] `optional
 
   * Array of `key:value` pairs to inject as variables into your code. The value will always be passed as a string to your Worker.
   * For example, `--var git_hash:$(git rev-parse HEAD) test:123` makes the `git_hash` and `test` variables available in your Worker's `env`.
   * This flag is an alternative to defining [vars](https://developers.cloudflare.com/workers/wrangler/configuration/#non-inheritable-keys) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). If defined in both places, this flag's values will be used.
-* `--define` ` key:value\[] ` optional
+* `--define` ` key:value\[] `optional
 
   * Array of `key:value` pairs to replace global identifiers in your code.
   * For example, `--define GIT_HASH:$(git rev-parse HEAD)` will replace all uses of `GIT_HASH` with the actual value at build time.
   * This flag is an alternative to defining [define](https://developers.cloudflare.com/workers/wrangler/configuration/#non-inheritable-keys) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). If defined in both places, this flag's values will be used.
-* `--triggers`, `--schedule`, `--schedules` ` string[] ` optional
+* `--triggers`, `--schedule`, `--schedules` ` string[] `optional
 
   * Cron schedules to attach to the deployed Worker. Refer to [Cron Trigger Examples](https://developers.cloudflare.com/workers/configuration/cron-triggers/#examples).
 * `--routes`, `--route` string\[\] optional
 
   * Routes where this Worker will be deployed.
   * For example: `--route example.com/*`.
-* `--domain` ` string[] ` optional
+* `--domain` ` string[] `optional
 
   * Custom domains where this Worker will be deployed.
   * For example: `--domain example.com`.
-* `--tsconfig` ` string ` optional
+* `--tsconfig` ` string `optional
 
   * Path to a custom `tsconfig.json` file.
-* `--minify` ` boolean ` optional
+* `--minify` ` boolean `optional
 
   * Minify the bundled Worker before deploying.
-* `--dry-run` ` boolean ` (default: false) optional
+* `--dry-run` ` boolean `(default: false) optional
 
   * Compile a project without actually deploying to live servers. Combined with `--outdir`, this is also useful for testing the output of `npx wrangler deploy`. It also gives developers a chance to upload our generated sourcemap to a service like Sentry, so that errors from the Worker can be mapped against source code, but before the service goes live.
-* `--keep-vars` ` boolean ` (default: false) optional
+* `--keep-vars` ` boolean `(default: false) optional
 
   * It is recommended best practice to treat your Wrangler developer environment as a source of truth for your Worker configuration, and avoid making changes via the Cloudflare dashboard.
   * If you change your environment variables in the Cloudflare dashboard, Wrangler will override them the next time you deploy. If you want to disable this behaviour set `keep-vars` to `true`.
   * Secrets are never deleted by a deployment whether this flag is true or false.
-* `--secrets-file` ` string ` optional
+* `--secrets-file` ` string `optional
 
   * Path to a file containing secrets to upload alongside the deployment. Accepts JSON or `.env` format — the same formats used by [wrangler secret bulk](#secret-bulk). Existing secrets not included in the file are preserved from the previous version. Refer to [Secrets — Upload secrets alongside code](https://developers.cloudflare.com/workers/configuration/secrets/#upload-secrets-alongside-code) for more details.
-* `--dispatch-namespace` ` string ` optional
+* `--dispatch-namespace` ` string `optional
 
   * Specify the [Workers for Platforms dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace) to upload this Worker to.
-* `--metafile` ` string ` optional
+* `--metafile` ` string `optional
 
   * Specify a file to write the build metadata from esbuild to. If flag is used without a path string, this defaults to `bundle-meta.json` inside the directory specified by `--outdir`. This can be useful for understanding the bundle size.
-* `--containers-rollout` ` immediate | gradual ` optional
+* `--containers-rollout` ` immediate | gradual `optional
 
   * Specify the [rollout strategy](https://developers.cloudflare.com/containers/faq#how-do-container-updates-and-rollouts-work) for [Containers](https://developers.cloudflare.com/containers) associated with the Worker. If set to `immediate`, 100% of container instances will be updated in one rollout step, overriding any configuration in `rollout_step_percentage`. Note that `rollout_active_grace_period`, if configured, still applies.
   * Defaults to `gradual`, where the default rollout is 10% then 100% of instances.
-* `--strict` ` boolean ` (default: false) optional
+* `--strict` ` boolean `(default: false) optional
 
   * Turns on strict mode for the deployment command, meaning that the command will be more defensive and prevent deployments which could introduce potential issues. In particular, this mode prevents deployments if the deployment would potentially override remote settings in non-interactive environments.
-* `--tag` ` string ` optional
+* `--tag` ` string `optional
 
   * A tag for this Worker version. Matches the behavior of `wrangler versions upload --tag`.
-* `--message` ` string ` optional
+* `--message` ` string `optional
 
   * A descriptive message for this Worker version and deployment. Matches the behavior of `wrangler versions upload --message`. The message is also applied to the deployment.
-* `--yes` ` boolean ` (default: false) optional
+* `--yes` ` boolean `(default: false) optional
 
   * Skip confirmation prompts and run [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) non-interactively using detected settings. Only applicable when no Wrangler configuration file exists in your project.
-* `--temporary` ` boolean ` optional
+* `--temporary` ` boolean `optional
 
   * Deploy with a temporary preview account when no Cloudflare credentials are available. Requires Wrangler 4.102.0 or later. Wrangler prints a claim URL that lets you claim the deployment within 60 minutes. This is intended for AI agents and other first-time deployment flows. If Wrangler can already use OAuth, `CLOUDFLARE_API_TOKEN`, or a global API key, this flag returns an error. For more information, refer to [Claim deployments](https://developers.cloudflare.com/workers/platform/claim-deployments/).
 
@@ -305,11 +343,11 @@ wrangler delete [<SCRIPT>] [OPTIONS]
 
 * `SCRIPT` ` string `
   * The path to an entry point for your Worker. Only required if your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) does not include a `main` key (for example, `main = "index.js"`).
-* `--name` ` string ` optional
+* `--name` ` string `optional
   * Name of the Worker.
-* `--env` ` string ` optional
+* `--env` ` string `optional
   * Perform on a specific environment.
-* `--dry-run` ` boolean ` (default: false) optional
+* `--dry-run` ` boolean `(default: false) optional
   * Do not actually delete the Worker. This is useful for testing the output of `wrangler delete`.
 
 The following global flags work on every command:
@@ -327,20 +365,18 @@ The following global flags work on every command:
 
 🪄 Setup a project to work on Cloudflare
 
-* [  npm ](#tab-panel-13717)
-* [  pnpm ](#tab-panel-13718)
-* [  yarn ](#tab-panel-13719)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler setup
 ```
 
-```sh
-pnpm wrangler setup
+```
+yarn wrangler setup
 ```
 
-```sh
-yarn wrangler setup
+```
+pnpm wrangler setup
 ```
 
 * `--yes` ` boolean ` alias: --y default: false
@@ -385,20 +421,18 @@ This action creates a new [version](https://developers.cloudflare.com/workers/ve
 
 Create or update a secret for a Worker
 
-* [  npm ](#tab-panel-13720)
-* [  pnpm ](#tab-panel-13721)
-* [  yarn ](#tab-panel-13722)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secret put [KEY]
 ```
 
-```sh
-pnpm wrangler secret put [KEY]
+```
+yarn wrangler secret put [KEY]
 ```
 
-```sh
-yarn wrangler secret put [KEY]
+```
+pnpm wrangler secret put [KEY]
 ```
 
 * `[KEY]` ` string ` required
@@ -449,20 +483,18 @@ echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangl
 
 Delete a secret from a Worker
 
-* [  npm ](#tab-panel-13723)
-* [  pnpm ](#tab-panel-13724)
-* [  yarn ](#tab-panel-13725)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secret delete [KEY]
 ```
 
-```sh
-pnpm wrangler secret delete [KEY]
+```
+yarn wrangler secret delete [KEY]
 ```
 
-```sh
-yarn wrangler secret delete [KEY]
+```
+pnpm wrangler secret delete [KEY]
 ```
 
 * `[KEY]` ` string ` required
@@ -495,20 +527,18 @@ Use a specific auth profile
 
 List all secrets for a Worker
 
-* [  npm ](#tab-panel-13726)
-* [  pnpm ](#tab-panel-13727)
-* [  yarn ](#tab-panel-13728)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secret list
 ```
 
-```sh
-pnpm wrangler secret list
+```
+yarn wrangler secret list
 ```
 
-```sh
-yarn wrangler secret list
+```
+pnpm wrangler secret list
 ```
 
 * `--name` ` string `
@@ -558,20 +588,18 @@ npx wrangler secret list
 
 Create, update, or delete multiple secrets for a Worker in a single request, with up to 100 secrets per command.
 
-* [  npm ](#tab-panel-13729)
-* [  pnpm ](#tab-panel-13730)
-* [  yarn ](#tab-panel-13731)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler secret bulk [FILE]
 ```
 
-```sh
-pnpm wrangler secret bulk [FILE]
+```
+yarn wrangler secret bulk [FILE]
 ```
 
-```sh
-yarn wrangler secret bulk [FILE]
+```
+pnpm wrangler secret bulk [FILE]
 ```
 
 * `[FILE]` ` string `
@@ -608,9 +636,9 @@ The following is an example of creating, updating, and deleting secrets from a J
 
 ```json
 {
-  "secret-name-1": "secret-value-1",
-  "secret-name-2": "secret-value-2",
-  "secret-name-3": null
+	"secret-name-1": "secret-value-1",
+	"secret-name-2": "secret-value-2",
+	"secret-name-3": null
 }
 ```
 
@@ -624,7 +652,6 @@ npx wrangler secret bulk < secrets.json
 ✨ Successfully created secret for key: secret-name-2
 💥 Successfully deleted secret for key: secret-name-3
 
-
 Finished processing secrets file:
 ✨ 2 secrets successfully created
 💥 1 secrets successfully deleted
@@ -636,20 +663,18 @@ Finished processing secrets file:
 
 🦚 Start a log tailing session for a Worker
 
-* [  npm ](#tab-panel-13732)
-* [  pnpm ](#tab-panel-13733)
-* [  yarn ](#tab-panel-13734)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler tail [WORKER]
 ```
 
-```sh
-pnpm wrangler tail [WORKER]
+```
+yarn wrangler tail [WORKER]
 ```
 
-```sh
-yarn wrangler tail [WORKER]
+```
+pnpm wrangler tail [WORKER]
 ```
 
 * `[WORKER]` ` string `
@@ -714,20 +739,18 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Upload a new [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker that is not deployed immediately.
 
-* [  npm ](#tab-panel-13735)
-* [  pnpm ](#tab-panel-13736)
-* [  yarn ](#tab-panel-13737)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler versions upload [PATH]
 ```
 
-```sh
-pnpm wrangler versions upload [PATH]
+```
+yarn wrangler versions upload [PATH]
 ```
 
-```sh
-yarn wrangler versions upload [PATH]
+```
+pnpm wrangler versions upload [PATH]
 ```
 
 * `[PATH]` ` string `
@@ -804,20 +827,18 @@ Use a specific auth profile
 
 Deploy a previously created [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker all at once or create a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) to incrementally shift traffic to a new version by following an interactive prompt.
 
-* [  npm ](#tab-panel-13738)
-* [  pnpm ](#tab-panel-13739)
-* [  yarn ](#tab-panel-13740)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler versions deploy [VERSION-SPECS]
 ```
 
-```sh
-pnpm wrangler versions deploy [VERSION-SPECS]
+```
+yarn wrangler versions deploy [VERSION-SPECS]
 ```
 
-```sh
-yarn wrangler versions deploy [VERSION-SPECS]
+```
+pnpm wrangler versions deploy [VERSION-SPECS]
 ```
 
 * `--name` ` string `
@@ -868,20 +889,18 @@ For example: `wrangler versions deploy 095f00a7-23a7-43b7-a227-e4c97cab5f22@10% 
 
 Retrieve details for the 10 most recent versions. Details include `Version ID`, `Created on`, `Author`, `Source`, and optionally, `Tag` or `Message`.
 
-* [  npm ](#tab-panel-13741)
-* [  pnpm ](#tab-panel-13742)
-* [  yarn ](#tab-panel-13743)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler versions list
 ```
 
-```sh
-pnpm wrangler versions list
+```
+yarn wrangler versions list
 ```
 
-```sh
-yarn wrangler versions list
+```
+pnpm wrangler versions list
 ```
 
 * `--name` ` string `
@@ -914,20 +933,18 @@ Use a specific auth profile
 
 View the details of a specific version of your Worker
 
-* [  npm ](#tab-panel-13744)
-* [  pnpm ](#tab-panel-13745)
-* [  yarn ](#tab-panel-13746)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler versions view [VERSION-ID]
 ```
 
-```sh
-pnpm wrangler versions view [VERSION-ID]
+```
+yarn wrangler versions view [VERSION-ID]
 ```
 
-```sh
-yarn wrangler versions view [VERSION-ID]
+```
+pnpm wrangler versions view [VERSION-ID]
 ```
 
 * `[VERSION-ID]` ` string ` required
@@ -962,20 +979,18 @@ Use a specific auth profile
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-13747)
-* [  pnpm ](#tab-panel-13748)
-* [  yarn ](#tab-panel-13749)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler versions secret put [KEY]
 ```
 
-```sh
-pnpm wrangler versions secret put [KEY]
+```
+yarn wrangler versions secret put [KEY]
 ```
 
-```sh
-yarn wrangler versions secret put [KEY]
+```
+pnpm wrangler versions secret put [KEY]
 ```
 
 * `[KEY]` ` string `
@@ -1012,20 +1027,18 @@ Use a specific auth profile
 
 Delete a secret variable from a Worker
 
-* [  npm ](#tab-panel-13750)
-* [  pnpm ](#tab-panel-13751)
-* [  yarn ](#tab-panel-13752)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler versions secret delete [KEY]
 ```
 
-```sh
-pnpm wrangler versions secret delete [KEY]
+```
+yarn wrangler versions secret delete [KEY]
 ```
 
-```sh
-yarn wrangler versions secret delete [KEY]
+```
+pnpm wrangler versions secret delete [KEY]
 ```
 
 * `[KEY]` ` string `
@@ -1062,20 +1075,18 @@ Use a specific auth profile
 
 Create or update a secret variable for a Worker
 
-* [  npm ](#tab-panel-13753)
-* [  pnpm ](#tab-panel-13754)
-* [  yarn ](#tab-panel-13755)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler versions secret bulk [FILE]
 ```
 
-```sh
-pnpm wrangler versions secret bulk [FILE]
+```
+yarn wrangler versions secret bulk [FILE]
 ```
 
-```sh
-yarn wrangler versions secret bulk [FILE]
+```
+pnpm wrangler versions secret bulk [FILE]
 ```
 
 * `[FILE]` ` string `
@@ -1119,24 +1130,22 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 ### `triggers deploy`
 
 
-Experimental
+ Experimental
 
 Apply changes to triggers (Routes or domains and Cron Triggers) when using `wrangler versions upload`
 
-* [  npm ](#tab-panel-13756)
-* [  pnpm ](#tab-panel-13757)
-* [  yarn ](#tab-panel-13758)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler triggers deploy
 ```
 
-```sh
-pnpm wrangler triggers deploy
+```
+yarn wrangler triggers deploy
 ```
 
-```sh
-yarn wrangler triggers deploy
+```
+pnpm wrangler triggers deploy
 ```
 
 * `--name` ` string `
@@ -1183,20 +1192,18 @@ The minimum required wrangler version to use these commands is 3.40.0\. For vers
 
 Displays the 10 most recent deployments of your Worker
 
-* [  npm ](#tab-panel-13759)
-* [  pnpm ](#tab-panel-13760)
-* [  yarn ](#tab-panel-13761)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler deployments list
 ```
 
-```sh
-pnpm wrangler deployments list
+```
+yarn wrangler deployments list
 ```
 
-```sh
-yarn wrangler deployments list
+```
+pnpm wrangler deployments list
 ```
 
 * `--name` ` string `
@@ -1229,20 +1236,18 @@ Use a specific auth profile
 
 View the current state of your production
 
-* [  npm ](#tab-panel-13762)
-* [  pnpm ](#tab-panel-13763)
-* [  yarn ](#tab-panel-13764)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler deployments status
 ```
 
-```sh
-pnpm wrangler deployments status
+```
+yarn wrangler deployments status
 ```
 
-```sh
-yarn wrangler deployments status
+```
+pnpm wrangler deployments status
 ```
 
 * `--name` ` string `
@@ -1273,7 +1278,7 @@ Use a specific auth profile
 
 ## `rollback`
 
-Warning
+Caution
 
 A rollback will immediately create a new deployment with the specified version of your Worker and become the active deployment across all your deployed routes and domains. This change will not affect work in your local development environment.
 
@@ -1281,11 +1286,11 @@ A rollback will immediately create a new deployment with the specified version o
 wrangler rollback [<VERSION_ID>] [OPTIONS]
 ```
 
-* `VERSION_ID` ` string ` optional
+* `VERSION_ID` ` string `optional
   * The ID of the version you wish to roll back to. If not supplied, the `rollback` command defaults to the version uploaded before the latest version.
-* `--name` ` string ` optional
+* `--name` ` string `optional
   * Perform on a specific Worker rather than inheriting from the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
-* `--message` ` string ` optional
+* `--message` ` string `optional
   * Add message for rollback. Accepts empty string. When specified, interactive prompts for rollback confirmation and message are skipped.
 
 The following global flags work on every command:
@@ -1321,33 +1326,31 @@ To generate types for only a specific environment, use the `--env` flag.
 
 ### Options
 
-* `PATH` ` string ` (default: \`./worker-configuration.d.ts\`)
+* `PATH` ` string `(default: \`./worker-configuration.d.ts\`)
   * The path to where types for your Worker will be written.
   * The path must have a `d.ts` extension.
-* `--env` ` string ` optional
+* `--env` ` string `optional
   * Generate types for bindings in a specific environment only, rather than aggregating bindings from all environments.
-* `--env-interface` ` string ` (default: \`Env\`)
+* `--env-interface` ` string `(default: \`Env\`)
   * The name of the interface to generate for the environment object.
   * Not valid if the Worker uses the Service Worker syntax.
-* `--include-runtime` ` boolean ` (default: true)
+* `--include-runtime` ` boolean `(default: true)
   * Whether to generate runtime types based on the`compatibility_date` and `compatibility_flags` in your [config file](https://developers.cloudflare.com/workers/wrangler/configuration/).
-* `--include-env` ` boolean ` (default: true)
+* `--include-env` ` boolean `(default: true)
   * Whether to generate `Env` types based on your Worker bindings.
-* `--strict-vars` ` boolean ` optional (default: true)
+* `--strict-vars` ` boolean `optional (default: true)
   * Control the types that Wrangler generates for `vars` bindings.
   * If `true`, (the default) Wrangler generates literal and union types for bindings (e.g. `myVar: 'my dev variable' | 'my prod variable'`).
   * If `false`, Wrangler generates generic types (e.g. `myVar: string`). This is useful when variables change frequently, especially when working across multiple environments.
-* `--check` ` boolean ` optional
+* `--check` ` boolean `optional
   * Check if the generated types at the specified path are up-to-date without regenerating them.
   * Exits with code 0 if types are up-to-date, or code 1 if types are out-of-date.
   * Useful for CI/CD pipelines and pre-commit hooks to ensure types have been regenerated after configuration changes.
-* `--config`, `-c` ` string[] ` optional
+* `--config`, `-c` ` string[] `optional
   * Path(s) to [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). If the Worker you are generating types for has service bindings or bindings to Durable Objects, you can also provide the paths to those configuration files so that the generated `Env` type will include RPC types. For example, given a Worker with a service binding, `wrangler types -c wrangler.toml -c ../bound-worker/wrangler.toml` will generate an `Env` type like this:
-
-**TypeScript**
 ```ts
 interface Env {
-  SERVICE_BINDING: Service<import("../bound-worker/src/index").Entrypoint>;
+	SERVICE_BINDING: Service<import("../bound-worker/src/index").Entrypoint>;
 }
 ```
 
@@ -1371,11 +1374,11 @@ You should use the CPU profile that `wrangler check startup` generates in order 
 wrangler check startup
 ```
 
-* `--args` ` string ` optional
+* `--args` ` string `optional
   * To customise the way `wrangler check startup` builds your Worker for analysis, provide the exact arguments you use when deploying your Worker with `wrangler deploy`, or your Pages project with `wrangler pages functions build`. For instance, if you deploy your Worker with `wrangler deploy --no-bundle`, you should use `wrangler check startup --args="--no-bundle"` to profile the startup phase.
-* `--worker` ` string ` optional
+* `--worker` ` string `optional
   * If you don't use Wrangler to deploy your Worker, you can use this argument to provide a Worker bundle to analyse. This should be a file path to a serialized multipart upload, with the exact same format as [the API expects](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/).
-* `--pages` ` boolean ` optional
+* `--pages` ` boolean `optional
   * If you don't use a Wrangler config file with your Pages project (i.e. a Wrangler config file containing `pages_build_output_dir`), use this flag to force `wrangler check startup` to treat your project as a Pages project.
 
 The following global flags work on every command:
@@ -1387,7 +1390,14 @@ The following global flags work on every command:
 * `--cwd` ` string `
   * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers · Cloudflare Workers docs","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/workers/","name":"Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers · Cloudflare Workers docs","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

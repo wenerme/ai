@@ -1,16 +1,18 @@
 ---
-title: Fallbacks
 description: Specify model or provider fallbacks in AI Gateway to handle request failures and ensure reliability.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Fallbacks
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Fallbacks
 
-# Fallbacks
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Specify model or provider fallbacks with your [Universal endpoint](https://developers.cloudflare.com/ai-gateway/usage/universal/) to handle request failures and ensure reliability.
 
@@ -35,8 +37,6 @@ graph TD
 
 
 You can add as many fallbacks as you need, just by adding another object in the array.
-
-**Request**
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
@@ -92,7 +92,14 @@ When using the [Universal endpoint](https://developers.cloudflare.com/ai-gateway
 * `cf-aig-step:2` – The request fell back to the third model.
 * Subsequent steps – Each fallback increments the step number by 1.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/#page","headline":"Fallbacks · Cloudflare AI Gateway docs","description":"Specify model or provider fallbacks in AI Gateway to handle request failures and ensure reliability.","url":"https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/configuration/fallbacks/","name":"Fallbacks"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/#page","headline":"Fallbacks · Cloudflare AI Gateway docs","description":"Specify model or provider fallbacks in AI Gateway to handle request failures and ensure reliability.","url":"https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Top Level Domains supported
 description: View supported top-level domains for registration.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Top Level Domains supported
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Top Level Domains supported
 
-# Top Level Domains supported
+Last updated May 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/top-level-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports over 400 [top-level domains (TLDs) ↗](https://www.cloudflare.com/learning/dns/top-level-domain/) and is always evaluating adding new TLDs. We have no specific timeframes for TLDs not yet listed. You can find the full list of supported and coming soon TLDs on the [TLD policies page ↗](https://www.cloudflare.com/tld-policies/).
 
@@ -31,7 +33,14 @@ Possible causes for the domain not being available include:
 
 When transferring a domain to Cloudflare Registrar, refer to [Domain is in a restricted status](https://developers.cloudflare.com/registrar/troubleshooting/#domain-is-in-a-restricted-status) for statuses that can block a transfer.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/#page","headline":"Top Level Domains supported · Cloudflare Registrar docs","description":"View supported top-level domains for registration.","url":"https://developers.cloudflare.com/registrar/top-level-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/registrar/","name":"Registrar"}},{"@type":"ListItem","position":3,"item":{"@id":"/registrar/top-level-domains/","name":"Top Level Domains supported"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/top-level-domains/#page","headline":"Top Level Domains supported · Cloudflare Registrar docs","description":"View supported top-level domains for registration.","url":"https://developers.cloudflare.com/registrar/top-level-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

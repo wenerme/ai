@@ -1,16 +1,18 @@
 ---
-title: sFlow configuration
 description: A step-by-step configuration guide for exporting sFlow data to Cloudflare's network.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: sFlow configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  sFlow configuration
 
-# sFlow configuration
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/routers/sflow-config/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configure your router to export sFlow data to Cloudflare's network for analysis in Network Flow (formerly Magic Network Monitoring). sFlow is a network monitoring protocol that samples network traffic to provide visibility into your network's performance and traffic patterns.
 
@@ -54,7 +56,14 @@ After configuring sFlow, verify that data is being sent to Cloudflare:
 2. Check your router status in the Cloudflare dashboard under **Network flow** \> **Configure Network flow** \> **Check routers** (visible during onboarding) or view analytics in the **Network flow** page.
 3. If data is not appearing, verify your sFlow exporter settings and confirm your router's public IP address matches the IP registered with Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/routers/sflow-config/#page","headline":"sFlow configuration · Cloudflare Network Flow docs","description":"A step-by-step configuration guide for exporting sFlow data to Cloudflare's network.","url":"https://developers.cloudflare.com/network-flow/routers/sflow-config/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/routers/","name":"Routers"}},{"@type":"ListItem","position":4,"item":{"@id":"/network-flow/routers/sflow-config/","name":"sFlow configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/routers/sflow-config/#page","headline":"sFlow configuration · Cloudflare Network Flow docs","description":"A step-by-step configuration guide for exporting sFlow data to Cloudflare's network.","url":"https://developers.cloudflare.com/network-flow/routers/sflow-config/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
 ```

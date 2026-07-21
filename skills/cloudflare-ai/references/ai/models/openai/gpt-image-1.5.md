@@ -1,38 +1,38 @@
 ---
-title: GPT Image 1.5
 description: OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GPT Image 1.5
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  GPT Image 1.5
 
-Text-to-Image • OpenAI
+ Text-to-Image • OpenAI
 
-`openai/gpt-image-1.5`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` openai/gpt-image-1.5 `
+
+* Third-party
+* Zero data retention
 
 OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.
 
-| Model Info          |                                                                                                                        |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information    | [link ↗](https://openai.com/)                                                                                          |
-| Zero data retention | Yes                                                                                                                    |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-1.5) |
+| Model Info          |                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://openai.com/policies/)                                                                                  |
+| More information    | [link ↗](https://openai.com/)                                                                                           |
+| Zero data retention | Yes                                                                                                                     |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-1.5) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1516)
-* [ cURL ](#tab-panel-1517)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -54,9 +54,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1514)
-* [ Raw response ](#tab-panel-1515)
-
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png)
 
 ```json
@@ -74,11 +71,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **High Quality**  — Generate a high-quality detailed image
-
-* [ TypeScript ](#tab-panel-1520)
-* [ cURL ](#tab-panel-1521)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -105,9 +97,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1518)
-* [ Raw response ](#tab-panel-1519)
-
 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png)
 
 ```json
@@ -123,11 +112,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Low Quality Draft**  — Fast, rough draft for iteration
-
-* [ TypeScript ](#tab-panel-1524)
-* [ cURL ](#tab-panel-1525)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -153,9 +137,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1522)
-* [ Raw response ](#tab-panel-1523)
-
 ![Low Quality Draft](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png)
 
 ```json
@@ -171,11 +152,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Medium Quality**  — Balanced quality for most uses
-
-* [ TypeScript ](#tab-panel-1528)
-* [ cURL ](#tab-panel-1529)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -202,9 +178,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1526)
-* [ Raw response ](#tab-panel-1527)
-
 ![Medium Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png)
 
 ```json
@@ -220,11 +193,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Auto Quality**  — Let the model pick an appropriate quality level
-
-* [ TypeScript ](#tab-panel-1532)
-* [ cURL ](#tab-panel-1533)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -251,9 +219,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1530)
-* [ Raw response ](#tab-panel-1531)
-
 ![Auto Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png)
 
 ```json
@@ -269,9 +234,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-1534)
-* [ Output ](#tab-panel-1535)
 
 prompt
 
@@ -303,7 +265,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/schem
 
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/#page","headline":"GPT Image 1.5 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/#page","headline":"GPT Image 1.5 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

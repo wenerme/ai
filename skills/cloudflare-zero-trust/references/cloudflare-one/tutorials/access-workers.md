@@ -1,16 +1,18 @@
 ---
-title: Create custom headers for Cloudflare Access-protected origins with Workers
 description: This tutorial covers how to use a Cloudflare Worker to add custom headers to traffic. The headers will be sent to origin services protected by Cloudflare Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Create custom headers for Cloudflare Access-protected origins with Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create custom headers for Cloudflare Access-protected origins with Workers
 
-# Create custom headers for Cloudflare Access-protected origins with Workers
+Last updated Jan 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial covers how to use a [Cloudflare Worker](https://developers.cloudflare.com/workers/) to add custom HTTP headers to traffic, and how to send those custom headers to your origin services protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
@@ -25,48 +27,37 @@ Some applications and networking implementations require specific custom headers
 ## Before you begin
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. If this is your first Worker, select **Create Worker**. Otherwise, select **Create application**, then select **Create Worker**.
 3. Enter an identifiable name for the Worker, then select **Deploy**.
 4. Select **Edit code**.
 5. Input the following Worker:
 
-* [  JavaScript ](#tab-panel-8378)
-* [  TypeScript ](#tab-panel-8379)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const { headers } = request;
-    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
+	async fetch(request, env, ctx) {
+		const { headers } = request;
+		const cfaccessemail = headers.get("cf-access-authenticated-user-email");
 
+		const requestWithID = new Request(request);
+		requestWithID.headers.set("company-user-id", cfaccessemail);
 
-    const requestWithID = new Request(request);
-    requestWithID.headers.set("company-user-id", cfaccessemail);
-
-
-    return fetch(requestWithID);
-  },
+		return fetch(requestWithID);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const { headers } = request;
-    const cfaccessemail = headers.get("cf-access-authenticated-user-email");
+	async fetch(request, env, ctx): Promise<Response> {
+		const { headers } = request;
+		const cfaccessemail = headers.get("cf-access-authenticated-user-email");
 
+		const requestWithID = new Request(request);
+		requestWithID.headers.set("company-user-id", cfaccessemail);
 
-    const requestWithID = new Request(request);
-    requestWithID.headers.set("company-user-id", cfaccessemail);
-
-
-    return fetch(requestWithID);
-  },
+		return fetch(requestWithID);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -82,8 +73,6 @@ Your Worker is now ready to send custom headers to your Access-protected origin 
 
 The Worker will now insert a custom header into requests that match the defined route. For example:
 
-**Example custom header**
-
 ```http
 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
     "Accept-Encoding": "gzip",
@@ -93,7 +82,14 @@ The Worker will now insert a custom header into requests that match the defined 
     "Connection": "keep-alive"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/#page","headline":"Create custom headers for Cloudflare Access-protected origins with Workers · Cloudflare One docs","description":"This tutorial covers how to use a Cloudflare Worker to add custom headers to traffic. The headers will be sent to origin services protected by Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/access-workers/","name":"Create custom headers for Cloudflare Access-protected origins with Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/#page","headline":"Create custom headers for Cloudflare Access-protected origins with Workers · Cloudflare One docs","description":"This tutorial covers how to use a Cloudflare Worker to add custom headers to traffic. The headers will be sent to origin services protected by Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

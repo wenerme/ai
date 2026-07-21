@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Resolver for Firefox
 description: How 1.1.1.1 works as the trusted resolver for Firefox.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Cloudflare Resolver for Firefox
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Resolver for Firefox
 
-# Cloudflare Resolver for Firefox
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Frequently asked questions about the Cloudflare resolver for Firefox
 
@@ -78,7 +80,14 @@ Cloudflare commits to using the information collected from the Cloudflare resolv
 
 Cloudflare does not block or filter content through the Cloudflare resolver for Firefox. As part of its agreement with Mozilla, Cloudflare provides only direct DNS resolution. If Cloudflare were to receive written requests from law enforcement and government agencies to block access to domains or content through the Cloudflare resolver for Firefox, Cloudflare would, in consultation with Mozilla, exhaust its legal remedies before complying with such a request. We also commit to documenting any government request to block access in our semi-annual transparency report, unless legally prohibited from doing so.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/#page","headline":"Cloudflare Resolver for Firefox | Cloudflare Docs","description":"How 1.1.1.1 works as the trusted resolver for Firefox.","url":"https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/privacy/","name":"Privacy"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/privacy/cloudflare-resolver-firefox/","name":"Cloudflare Resolver for Firefox"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/#page","headline":"Cloudflare Resolver for Firefox | Cloudflare Docs","description":"How 1.1.1.1 works as the trusted resolver for Firefox.","url":"https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
 ```

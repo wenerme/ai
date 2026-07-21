@@ -1,16 +1,18 @@
 ---
-title: Diagnostic logs
 description: Reference information for Diagnostic logs in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Diagnostic logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Diagnostic logs
 
-# Diagnostic logs
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare One Client (formerly WARP) provides diagnostic logs that you can use to troubleshoot connectivity issues on a device.
 
@@ -18,38 +20,34 @@ Chapters
 
 * ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction** 0s
+ **Introduction**  0s
 * ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)
 
- **What are warp-diag files?** 44s
+ **What are warp-diag files?**  44s
 * ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)
 
- **How to download and navigate warp-diag files** 1m16s
+ **How to download and navigate warp-diag files**  1m16s
 * ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)
 
- **warp-status.txt** 2m06s
+ **warp-status.txt**  2m06s
 * ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)
 
- **warp-settings.txt** 2m29s
+ **warp-settings.txt**  2m29s
 * ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)
 
- **daemon.log** 3m37s
+ **daemon.log**  3m37s
 * ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)
 
- **Addition tips** 8m07s
+ **Addition tips**  8m07s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)
 
- **Conclusion** 8m43s
+ **Conclusion**  8m43s
 
 ## macOS/Windows/Linux
 
 ### Collect logs via the CLI
 
 To view client logs on desktop devices:
-
-* [ macOS ](#tab-panel-8168)
-* [ Windows ](#tab-panel-8169)
-* [ Linux ](#tab-panel-8170)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:
@@ -293,9 +291,6 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-8166)
-* [ Android/ChromeOS ](#tab-panel-8167)
-
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.
 3. Collect extension logs:
@@ -341,7 +336,14 @@ The `warp-debugging-info-<date>-<time>.zip` archive contains the following files
 | native\_tunnel.log       | Logs from the core VPN tunnel service, including connection state changes and packet flow operations between the device and Cloudflare's network. Similar to the desktop daemon.log file. |
 | <connection\_id>.sqlog   | QUIC protocol event logs used to debug MASQUE/HTTP3 tunnel connections.                                                                                                                   |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#page","headline":"Diagnostic logs · Cloudflare One docs","description":"Reference information for Diagnostic logs in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","Video"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/","name":"Troubleshoot the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/","name":"Diagnostic logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#page","headline":"Diagnostic logs · Cloudflare One docs","description":"Reference information for Diagnostic logs in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","Video"]}
 ```

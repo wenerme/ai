@@ -1,16 +1,18 @@
 ---
-title: Request rate calculation
 description: How Cloudflare tracks and calculates request rates using rule characteristics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Request rate calculation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Request rate calculation
 
-# Request rate calculation
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare tracks request rates by maintaining separate counters for each unique combination of values in a rule's characteristics.
 
@@ -164,7 +166,14 @@ Request 3 matches the rule expression and therefore Cloudflare evaluates the rat
 
 Request 4 matches the rule expression and therefore Cloudflare evaluates the rate limiting rule. The request is no longer within the maximum score per period defined in the rule (the counter has the value `450` and the maximum score is `400`). Cloudflare applies the action defined in the rate limiting rule configuration, blocking request 4 and any later requests that match the rate limiting rule for ten minutes.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/#page","headline":"How Cloudflare determines the request rate · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare tracks and calculates request rates using rule characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/request-rate/","name":"Request rate calculation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/#page","headline":"How Cloudflare determines the request rate · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare tracks and calculates request rates using rule characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

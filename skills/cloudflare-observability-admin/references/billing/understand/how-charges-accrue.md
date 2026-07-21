@@ -1,16 +1,18 @@
 ---
-title: How charges accrue
 description: How a request generates billable usage across Cloudflare products.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How charges accrue
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How charges accrue
 
-# How charges accrue
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/understand/how-charges-accrue/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Every request to a Cloudflare-proxied domain can touch multiple products, each with its own billing dimension. This page walks through a realistic request lifecycle and shows which products generate charges at each stage.
 
@@ -135,7 +137,14 @@ The key takeaway: **cached responses are the cheapest path**. Every cache hit av
 * [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) — Track daily usage-based costs
 * [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) — Get notified when spend crosses a threshold
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/#page","headline":"How charges accrue · Cloudflare Billing docs","description":"How a request generates billable usage across Cloudflare products.","url":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/understand/","name":"Understand"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/understand/how-charges-accrue/","name":"How charges accrue"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/#page","headline":"How charges accrue · Cloudflare Billing docs","description":"How a request generates billable usage across Cloudflare products.","url":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

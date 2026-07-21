@@ -1,16 +1,18 @@
 ---
-title: Create a rate limiting rule via API
 description: Create zone-level rate limiting rules using the Rulesets API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a rate limiting rule via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a rate limiting rule via API
 
-# Create a rate limiting rule via API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a rate limiting rule via API at the zone level.
 
@@ -34,27 +36,25 @@ To create a rate limiting rule for a zone, add a rule with a `ratelimit` object 
 
 This example adds a rate limiting rule to the `http_ratelimit` phase entry point ruleset for the zone with ID `$ZONE_ID`. The phase entry point ruleset already exists, with ID `$RULESET_ID`.
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "My rate limiting rule",
-    "expression": "(http.request.uri.path matches \"^/api/\")",
-    "action": "block",
-    "ratelimit": {
-        "characteristics": [
-            "cf.colo.id",
-            "ip.src",
-            "http.request.headers[\"x-api-key\"]"
-        ],
-        "period": 60,
-        "requests_per_period": 100,
-        "mitigation_timeout": 600
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "My rate limiting rule",
+		"expression": "(http.request.uri.path matches \"^/api/\")",
+		"action": "block",
+		"ratelimit": {
+				"characteristics": [
+						"cf.colo.id",
+						"ip.src",
+						"http.request.headers[\"x-api-key\"]"
+				],
+				"period": 60,
+				"requests_per_period": 100,
+				"mitigation_timeout": 600
+		}
+	}'
 ```
 
 To define a specific position for the new rule, include a `position` object in the request body according to the guidelines in [Change the order of a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#change-the-order-of-a-rule-in-a-ruleset).
@@ -67,34 +67,32 @@ This example adds a rate limiting rule to the `http_ratelimit` phase entry point
 
 The new rule defines a [custom response](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/#configure-a-custom-response-for-blocked-requests) for requests blocked due to rate limiting.
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "My rate limiting rule",
-    "expression": "(http.request.uri.path matches \"^/api/\")",
-    "action": "block",
-    "action_parameters": {
-        "response": {
-            "status_code": 403,
-            "content": "You have been rate limited.",
-            "content_type": "text/plain"
-        }
-    },
-    "ratelimit": {
-        "characteristics": [
-            "cf.colo.id",
-            "ip.src",
-            "http.request.headers[\"x-api-key\"]"
-        ],
-        "period": 60,
-        "requests_per_period": 100,
-        "mitigation_timeout": 600
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "My rate limiting rule",
+		"expression": "(http.request.uri.path matches \"^/api/\")",
+		"action": "block",
+		"action_parameters": {
+				"response": {
+						"status_code": 403,
+						"content": "You have been rate limited.",
+						"content_type": "text/plain"
+				}
+		},
+		"ratelimit": {
+				"characteristics": [
+						"cf.colo.id",
+						"ip.src",
+						"http.request.headers[\"x-api-key\"]"
+				],
+				"period": 60,
+				"requests_per_period": 100,
+				"mitigation_timeout": 600
+		}
+	}'
 ```
 
 To define a specific position for the new rule, include a `position` object in the request body according to the guidelines in [Change the order of a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#change-the-order-of-a-rule-in-a-ruleset).
@@ -107,28 +105,26 @@ This example adds a rate limiting rule to the `http_ratelimit` phase entry point
 
 The new rule does not consider requests for cached assets when calculating the rate (`"requests_to_origin": true`).
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "My rate limiting rule",
-    "expression": "(http.request.uri.path matches \"^/api/\")",
-    "action": "block",
-    "ratelimit": {
-        "characteristics": [
-            "cf.colo.id",
-            "ip.src",
-            "http.request.headers[\"x-api-key\"]"
-        ],
-        "period": 60,
-        "requests_per_period": 100,
-        "mitigation_timeout": 600,
-        "requests_to_origin": true
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "My rate limiting rule",
+		"expression": "(http.request.uri.path matches \"^/api/\")",
+		"action": "block",
+		"ratelimit": {
+				"characteristics": [
+						"cf.colo.id",
+						"ip.src",
+						"http.request.headers[\"x-api-key\"]"
+				],
+				"period": 60,
+				"requests_per_period": 100,
+				"mitigation_timeout": 600,
+				"requests_to_origin": true
+		}
+	}'
 ```
 
 To define a specific position for the new rule, include a `position` object in the request body according to the guidelines in [Change the order of a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#change-the-order-of-a-rule-in-a-ruleset).
@@ -145,28 +141,26 @@ This example adds a rate limiting rule to the `http_ratelimit` phase entry point
 
 The new rule is a complexity-based rate limiting rule that takes the `my-score` HTTP response header into account to calculate a total complexity score for the client. The counter with the total score is updated when there is a match for the rate limiting rule's counting expression (in this case, the same as the rule expression since `counting_expression` is an empty string). When this total score becomes larger than `400` during a period of `60` seconds (one minute), any later client requests will be blocked for a period of `600` seconds (10 minutes).
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "My complexity-based rate limiting rule",
-    "expression": "(http.request.uri.path wildcard \"/graphql/*\")",
-    "action": "block",
-    "ratelimit": {
-        "characteristics": [
-            "cf.colo.id",
-            "http.request.headers[\"x-api-key\"]"
-        ],
-        "score_response_header_name": "my-score",
-        "score_per_period": 400,
-        "period": 60,
-        "mitigation_timeout": 600,
-        "counting_expression": ""
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "My complexity-based rate limiting rule",
+		"expression": "(http.request.uri.path wildcard \"/graphql/*\")",
+		"action": "block",
+		"ratelimit": {
+				"characteristics": [
+						"cf.colo.id",
+						"http.request.headers[\"x-api-key\"]"
+				],
+				"score_response_header_name": "my-score",
+				"score_per_period": 400,
+				"period": 60,
+				"mitigation_timeout": 600,
+				"counting_expression": ""
+		}
+	}'
 ```
 
 To define a specific position for the new rule, include a `position` object in the request body according to the guidelines in [Change the order of a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/#change-the-order-of-a-rule-in-a-ruleset).
@@ -191,7 +185,14 @@ These operations are covered in the Ruleset Engine documentation. The Ruleset En
 
 For instructions on deploying rate limiting rules at the account level via API, refer to [Create a rate limiting ruleset via API](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-api/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/#page","headline":"Create a rate limiting rule via API for a zone · Cloudflare Web Application Firewall (WAF) docs","description":"Create zone-level rate limiting rules using the Rulesets API.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/create-api/","name":"Create a rate limiting rule via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/#page","headline":"Create a rate limiting rule via API for a zone · Cloudflare Web Application Firewall (WAF) docs","description":"Create zone-level rate limiting rules using the Rulesets API.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

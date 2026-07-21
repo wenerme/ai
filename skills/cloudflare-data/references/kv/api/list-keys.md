@@ -1,29 +1,24 @@
 ---
-title: List keys
 description: Enumerate all keys in a Workers KV namespace using the list() method, with support for pagination and filtering by prefix.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: List keys
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  List keys
 
-# List keys
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/api/list-keys/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To list all the keys in your KV namespace, call the `list()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
-
-* [  JavaScript ](#tab-panel-9761)
-* [  Python ](#tab-panel-9762)
-
-**JavaScript**
 
 ```js
 env.NAMESPACE.list();
 ```
-
-**Python**
 
 ```py
 await self.env.NAMESPACE.list()
@@ -35,17 +30,11 @@ The `list()` method returns a promise you can `await` on to get the value.
 
 An example of listing keys from within a Worker:
 
-* [  JavaScript ](#tab-panel-9763)
-* [  Python ](#tab-panel-9764)
-
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env, ctx) {
     try {
       const value = await env.NAMESPACE.list();
-
 
       return new Response(JSON.stringify(value.keys), {
         status: 200
@@ -59,17 +48,13 @@ export default {
 };
 ```
 
-**Python**
-
 ```py
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         try:
             value = await self.env.NAMESPACE.list()
-
 
             return Response.json(value["keys"])
         except Exception as e:
@@ -86,16 +71,9 @@ The following method is provided to list the keys of KV:
 
 To list all the keys in your KV namespace, call the `list()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any KV namespace you have bound to your Worker code:
 
-* [  JavaScript ](#tab-panel-9765)
-* [  Python ](#tab-panel-9766)
-
-**TypeScript**
-
 ```ts
 env.NAMESPACE.list(options?)
 ```
-
-**Python**
 
 ```py
 self.env.NAMESPACE.list(options)
@@ -141,18 +119,11 @@ If `list_complete` is `false`, there are more keys to fetch, even if the `keys` 
 
 Consider storing your values in metadata if your values fit in the [metadata-size limit](https://developers.cloudflare.com/kv/platform/limits/). Storing values in metadata is more efficient than a `list()` followed by a `get()` per key. When using `put()`, leave the `value` parameter empty and instead include a property in the metadata object:
 
-* [  JavaScript ](#tab-panel-9767)
-* [  Python ](#tab-panel-9768)
-
-**JavaScript**
-
 ```js
 await NAMESPACE.put(key, "", {
   metadata: { value: value },
 });
 ```
-
-**Python**
 
 ```py
 await self.env.NAMESPACE.put(key, "", metadata={"value": value})
@@ -168,11 +139,6 @@ List all the keys starting with a particular prefix.
 
 For example, you may have structured your keys with a user, a user ID, and key names, separated by colons (such as `user:1:<key>`). You could get the keys for user number one by using the following code:
 
-* [  JavaScript ](#tab-panel-9769)
-* [  Python ](#tab-panel-9770)
-
-**JavaScript**
-
 ```js
 export default {
   async fetch(request, env, ctx) {
@@ -182,11 +148,8 @@ export default {
 };
 ```
 
-**Python**
-
 ```py
 from workers import WorkerEntrypoint, Response
-
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
@@ -204,29 +167,18 @@ Keys are always returned in lexicographically sorted order according to their UT
 
 If there are more keys to fetch, the `list_complete` key will be set to `false` and a `cursor` will also be returned. In this case, you can call `list()` again with the `cursor` value to get the next batch of keys:
 
-* [  JavaScript ](#tab-panel-9771)
-* [  Python ](#tab-panel-9772)
-
-**JavaScript**
-
 ```js
 const value = await NAMESPACE.list();
 
-
 const cursor = value.cursor;
-
 
 const next_value = await NAMESPACE.list({ cursor: cursor });
 ```
 
-**Python**
-
 ```py
 value = await self.env.NAMESPACE.list()
 
-
 cursor = value.get("cursor")
-
 
 next_value = await self.env.NAMESPACE.list(cursor=cursor)
 ```
@@ -241,18 +193,11 @@ When de-paginating a large result set while also providing a `prefix` argument, 
 
 Consider storing your values in metadata if your values fit in the [metadata-size limit](https://developers.cloudflare.com/kv/platform/limits/). Storing values in metadata is more efficient than a `list()` followed by a `get()` per key. When using `put()`, leave the `value` parameter empty and instead include a property in the metadata object:
 
-* [  JavaScript ](#tab-panel-9773)
-* [  Python ](#tab-panel-9774)
-
-**JavaScript**
-
 ```js
 await NAMESPACE.put(key, "", {
   metadata: { value: value },
 });
 ```
-
-**Python**
 
 ```py
 await self.env.NAMESPACE.put(key, "", metadata={"value": value})
@@ -262,7 +207,14 @@ await self.env.NAMESPACE.put(key, "", metadata={"value": value})
 
 You can also [list keys on the command line with Wrangler](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-namespace-list) or [with the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/list/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/list-keys/#page","headline":"List keys · Cloudflare Workers KV docs","description":"Enumerate all keys in a Workers KV namespace using the list() method, with support for pagination and filtering by prefix.","url":"https://developers.cloudflare.com/kv/api/list-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/api/list-keys/","name":"List keys"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/list-keys/#page","headline":"List keys · Cloudflare Workers KV docs","description":"Enumerate all keys in a Workers KV namespace using the list() method, with support for pagination and filtering by prefix.","url":"https://developers.cloudflare.com/kv/api/list-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

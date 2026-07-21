@@ -1,16 +1,18 @@
 ---
-title: 6 – Revert configuration
 description: Sometimes, you may have to roll back configuration changes. To revert your configuration, check out the desired branch and ask Terraform to move your Cloudflare settings back in time.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: 6 – Revert configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  6 – Revert configuration
 
-# 6 – Revert configuration
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/tutorial/revert-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sometimes, you may have to roll back configuration changes. For example, you might want to run performance tests on a new configuration or maybe you mistyped an IP address and brought your entire site down.
 
@@ -68,7 +70,6 @@ Git will open your default editor with a commit message. Save and close to accep
 ```sh
 Revert "Add Page Rules for security and redirects"
 
-
 This reverts commit f1a2b3c4d5e6f7a8b9c0d1e2f3g4h5i6j7k8l9m0.
 ```
 
@@ -85,9 +86,7 @@ Expected output:
 ```sh
 Plan: 0 to add, 0 to change, 2 to destroy.
 
-
 Terraform will perform the following actions:
-
 
   # cloudflare_page_rule.expensive_endpoint_security will be destroyed
   # cloudflare_page_rule.legacy_redirect will be destroyed
@@ -109,7 +108,6 @@ cloudflare_page_rule.legacy_redirect: Destroying...
 cloudflare_page_rule.expensive_endpoint_security: Destruction complete after 1s
 cloudflare_page_rule.legacy_redirect: Destruction complete after 1s
 
-
 Apply complete! Resources: 0 added, 0 changed, 2 destroyed.
 ```
 
@@ -123,14 +121,20 @@ Test that the Page Rules are no longer active:
 # This should now return 404 (no redirect)
 curl -I https://www.example.com/old-location.php
 
-
 # This should return normal response (no Under Attack mode)
 curl -I https://www.example.com/expensive-db-call
 ```
 
 Your configuration has been successfully reverted. The Page Rules are removed, and your zone settings are back to the previous state. Git's version control ensures you can always recover or revert changes safely.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/revert-configuration/#page","headline":"Revert configuration · Cloudflare Terraform docs","description":"Sometimes, you may have to roll back configuration changes. To revert your configuration, check out the desired branch and ask Terraform to move your Cloudflare settings back in time.","url":"https://developers.cloudflare.com/terraform/tutorial/revert-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/tutorial/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/tutorial/revert-configuration/","name":"6 – Revert configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/revert-configuration/#page","headline":"Revert configuration · Cloudflare Terraform docs","description":"Sometimes, you may have to roll back configuration changes. To revert your configuration, check out the desired branch and ask Terraform to move your Cloudflare settings back in time.","url":"https://developers.cloudflare.com/terraform/tutorial/revert-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

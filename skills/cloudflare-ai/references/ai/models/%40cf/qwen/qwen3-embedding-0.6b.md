@@ -1,45 +1,44 @@
 ---
-title: qwen3-embedding-0.6b
 description: The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: qwen3-embedding-0.6b
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Qwen logo](https://developers.cloudflare.com/_astro/qwen.CVqFFn5h.svg)
 
 #  qwen3-embedding-0.6b
 
-Text Embeddings • Qwen
+ Text Embeddings • Qwen
 
-`@cf/qwen/qwen3-embedding-0.6b`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-embedding-0.6b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/qwen/qwen3-embedding-0.6b `
+
+* Cloudflare-hosted
 
 The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.
 
-| Model Info                                                                 |                           |
-| -------------------------------------------------------------------------- | ------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens              |
-| Unit Pricing                                                               | $0.012 per M input tokens |
+| Model Info                                                                  |                           |
+| --------------------------------------------------------------------------- | ------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens              |
+| Unit Pricing                                                                | $0.012 per M input tokens |
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2646)
-* [  Python ](#tab-panel-2647)
-* [  curl ](#tab-panel-2648)
-
 ```ts
+
 export interface Env {
   AI: Ai;
 }
 
-
 export default {
   async fetch(request, env): Promise<Response> {
-
 
     // Can be a string or array of strings]
     const stories = [
@@ -48,7 +47,6 @@ export default {
       "This is a story about a hugging emoji",
     ];
 
-
     const embeddings = await env.AI.run(
       "@cf/qwen/qwen3-embedding-0.6b",
       {
@@ -56,13 +54,13 @@ export default {
       }
     );
 
-
     return Response.json(embeddings);
   },
 } satisfies ExportedHandler<Env>;
 ```
 
 ```py
+
 import os
 import requests
 
@@ -70,13 +68,11 @@ import requests
 ACCOUNT_ID = "your-account-id"
 AUTH_TOKEN = os.environ.get("CLOUDFLARE_AUTH_TOKEN")
 
-
 stories = [
   'This is a story about an orange cloud',
   'This is a story about a llama',
   'This is a story about a hugging emoji'
 ]
-
 
 response = requests.post(
   f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/qwen/qwen3-embedding-0.6b",
@@ -84,11 +80,11 @@ response = requests.post(
   json={"text": stories}
 )
 
-
 print(response.json())
 ```
 
 ```sh
+
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/qwen/qwen3-embedding-0.6b  \
   -X POST  \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -97,12 +93,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
-Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
-
-* [ Input ](#tab-panel-2649)
-* [ Output ](#tab-panel-2650)
 
 ▶queries
 
@@ -130,11 +123,18 @@ instruction
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json "Download")
+Input [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3-embedding-0.6b/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3-embedding-0.6b/schema-input.json "Download")
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Download")
+Output [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3-embedding-0.6b/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3-embedding-0.6b/schema-output.json "Download")
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-embedding-0.6b/#page","headline":"qwen3-embedding-0.6b (Qwen) · Cloudflare AI docs · Cloudflare AI docs","description":"The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.","url":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-embedding-0.6b/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-embedding-0.6b/#page","headline":"qwen3-embedding-0.6b (Qwen) · Cloudflare AI docs · Cloudflare AI docs","description":"The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.","url":"https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen3-embedding-0.6b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

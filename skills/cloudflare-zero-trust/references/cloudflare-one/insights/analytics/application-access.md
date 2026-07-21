@@ -1,16 +1,18 @@
 ---
-title: Application Access Report
 description: Reference information for Application Access Report in Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Application Access Report
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Application Access Report
 
-# Application Access Report
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Application Access Report provides a high-level summary of [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) usage across your organization. This dashboard helps administrators monitor authentication patterns, identity provider usage, and Access configuration metrics. If Access is not configured in your account, the dashboard appears empty.
 
@@ -88,7 +90,14 @@ Provides a summary of Access configurations made by admin in your organization, 
 
 This section helps administrators audit their Access setup and verify that expected resources and policies are in place.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/#page","headline":"Application Access Report · Cloudflare One docs","description":"Reference information for Application Access Report in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO","Authentication"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/analytics/","name":"Dashboards"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/analytics/application-access/","name":"Application Access Report"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/#page","headline":"Application Access Report · Cloudflare One docs","description":"Reference information for Application Access Report in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO","Authentication"]}
 ```

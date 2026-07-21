@@ -1,16 +1,18 @@
 ---
-title: Purging the cache
 description: Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Purging the cache
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Purging the cache
 
-# Purging the cache
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/purge/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Your Worker can invalidate its own cached responses at any time using the purge API. Purging is useful when data changes and the new value is more important than the performance benefit of continuing to serve the cached response — for example, after a content update, a user action, or a webhook from an upstream system.
 
@@ -25,48 +27,35 @@ There are two equivalent ways to trigger a purge from inside your Worker:
 
 Both forms call into the same API and behave identically. Pick whichever reads more cleanly for your code.
 
-* [  JavaScript ](#tab-panel-12285)
-* [  TypeScript ](#tab-panel-12286)
-
-**src/index.js**
-
 ```js
 import { cache } from "cloudflare:workers";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // Using the module import — no need to thread ctx through helper functions.
-    await cache.purge({ tags: ["blog-posts"] });
+	async fetch(request, env, ctx) {
+		// Using the module import — no need to thread ctx through helper functions.
+		await cache.purge({ tags: ["blog-posts"] });
 
+		// Equivalent, using ctx directly:
+		// await ctx.cache.purge({ tags: ["blog-posts"] });
 
-    // Equivalent, using ctx directly:
-    // await ctx.cache.purge({ tags: ["blog-posts"] });
-
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
-
-**src/index.ts**
 
 ```ts
 import { cache } from "cloudflare:workers";
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Using the module import — no need to thread ctx through helper functions.
-    await cache.purge({ tags: ["blog-posts"] });
+	async fetch(request, env, ctx): Promise<Response> {
+		// Using the module import — no need to thread ctx through helper functions.
+		await cache.purge({ tags: ["blog-posts"] });
 
+		// Equivalent, using ctx directly:
+		// await ctx.cache.purge({ tags: ["blog-posts"] });
 
-    // Equivalent, using ctx directly:
-    // await ctx.cache.purge({ tags: ["blog-posts"] });
-
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -90,103 +79,81 @@ The returned promise resolves to a result object you can inspect to confirm succ
 
 Purge after a write by calling `ctx.cache.purge()` at the end of any handler that mutates data:
 
-* [  JavaScript ](#tab-panel-12293)
-* [  TypeScript ](#tab-panel-12294)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    if (request.method === "POST") {
-      const body = await request.json();
+	async fetch(request, env, ctx) {
+		if (request.method === "POST") {
+			const body = await request.json();
 
+			// Mutate your data source (D1, KV, an origin, and so on), then invalidate
+			// every cached response tagged for this post.
+			await ctx.cache.purge({
+				tags: [`post-${body.postId}`, "post-list"],
+			});
 
-      // Mutate your data source (D1, KV, an origin, and so on), then invalidate
-      // every cached response tagged for this post.
-      await ctx.cache.purge({
-        tags: [`post-${body.postId}`, "post-list"],
-      });
+			return new Response("Updated", { status: 200 });
+		}
 
-
-      return new Response("Updated", { status: 200 });
-    }
-
-
-    // Handle cacheable reads here.
-    return new Response("Hello", {
-      headers: { "Cache-Control": "public, max-age=3600" },
-    });
-  },
+		// Handle cacheable reads here.
+		return new Response("Hello", {
+			headers: { "Cache-Control": "public, max-age=3600" },
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    if (request.method === "POST") {
-      const body = await request.json<{ postId: string }>();
+	async fetch(request, env, ctx): Promise<Response> {
+		if (request.method === "POST") {
+			const body = await request.json<{ postId: string }>();
 
+			// Mutate your data source (D1, KV, an origin, and so on), then invalidate
+			// every cached response tagged for this post.
+			await ctx.cache.purge({
+				tags: [`post-${body.postId}`, "post-list"],
+			});
 
-      // Mutate your data source (D1, KV, an origin, and so on), then invalidate
-      // every cached response tagged for this post.
-      await ctx.cache.purge({
-        tags: [`post-${body.postId}`, "post-list"],
-      });
+			return new Response("Updated", { status: 200 });
+		}
 
-
-      return new Response("Updated", { status: 200 });
-    }
-
-
-    // Handle cacheable reads here.
-    return new Response("Hello", {
-      headers: { "Cache-Control": "public, max-age=3600" },
-    });
-  },
+		// Handle cacheable reads here.
+		return new Response("Hello", {
+			headers: { "Cache-Control": "public, max-age=3600" },
+		});
+	},
 } satisfies ExportedHandler;
 ```
 
 You can combine fields in a single call. For example, `purge({ tags: ["blog-posts"], pathPrefixes: ["/blog/"] })` purges everything that matches **either** tag or path-prefix — the fields are unioned, not intersected. Use this when one logical invalidation affects responses tagged by multiple schemes.
 
-* [  JavaScript ](#tab-panel-12287)
-* [  TypeScript ](#tab-panel-12288)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // Combined call: invalidates everything tagged "blog-posts" AND
-    // everything under /blog/ in a single round-trip.
-    await ctx.cache.purge({
-      tags: ["blog-posts"],
-      pathPrefixes: ["/blog/"],
-    });
+	async fetch(request, env, ctx) {
+		// Combined call: invalidates everything tagged "blog-posts" AND
+		// everything under /blog/ in a single round-trip.
+		await ctx.cache.purge({
+			tags: ["blog-posts"],
+			pathPrefixes: ["/blog/"],
+		});
 
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Combined call: invalidates everything tagged "blog-posts" AND
-    // everything under /blog/ in a single round-trip.
-    await ctx.cache.purge({
-      tags: ["blog-posts"],
-      pathPrefixes: ["/blog/"],
-    });
+	async fetch(request, env, ctx): Promise<Response> {
+		// Combined call: invalidates everything tagged "blog-posts" AND
+		// everything under /blog/ in a single round-trip.
+		await ctx.cache.purge({
+			tags: ["blog-posts"],
+			pathPrefixes: ["/blog/"],
+		});
 
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -196,48 +163,39 @@ Tags are attached to responses via the `Cache-Tag` response header, and purged l
 
 ### Attach tags on write
 
-* [  JavaScript ](#tab-panel-12291)
-* [  TypeScript ](#tab-panel-12292)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    const url = new URL(request.url);
-    const postId = url.pathname.split("/").pop() ?? "unknown";
-    const body = { id: postId, title: `Post ${postId}` };
+	async fetch(request) {
+		const url = new URL(request.url);
+		const postId = url.pathname.split("/").pop() ?? "unknown";
+		const body = { id: postId, title: `Post ${postId}` };
 
-
-    return new Response(JSON.stringify(body), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=3600",
-        "Cache-Tag": `post,post-${postId},blog`,
-      },
-    });
-  },
+		return new Response(JSON.stringify(body), {
+			headers: {
+				"Content-Type": "application/json",
+				"Cache-Control": "public, max-age=3600",
+				"Cache-Tag": `post,post-${postId},blog`,
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const url = new URL(request.url);
-    const postId = url.pathname.split("/").pop() ?? "unknown";
-    const body = { id: postId, title: `Post ${postId}` };
+	async fetch(request): Promise<Response> {
+		const url = new URL(request.url);
+		const postId = url.pathname.split("/").pop() ?? "unknown";
+		const body = { id: postId, title: `Post ${postId}` };
 
-
-    return new Response(JSON.stringify(body), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=3600",
-        "Cache-Tag": `post,post-${postId},blog`,
-      },
-    });
-  },
+		return new Response(JSON.stringify(body), {
+			headers: {
+				"Content-Type": "application/json",
+				"Cache-Control": "public, max-age=3600",
+				"Cache-Tag": `post,post-${postId},blog`,
+			},
+		});
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -247,40 +205,29 @@ Tag values must be **printable ASCII** (no spaces, no Unicode), each tag is at m
 
 ### Trigger the purge
 
-* [  JavaScript ](#tab-panel-12289)
-* [  TypeScript ](#tab-panel-12290)
-
-**src/admin.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const postId = new URL(request.url).searchParams.get("id");
-    if (!postId) return new Response("Missing id", { status: 400 });
+	async fetch(request, env, ctx) {
+		const postId = new URL(request.url).searchParams.get("id");
+		if (!postId) return new Response("Missing id", { status: 400 });
 
+		await ctx.cache.purge({ tags: [`post-${postId}`] });
 
-    await ctx.cache.purge({ tags: [`post-${postId}`] });
-
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
 
-**src/admin.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const postId = new URL(request.url).searchParams.get("id");
-    if (!postId) return new Response("Missing id", { status: 400 });
+	async fetch(request, env, ctx): Promise<Response> {
+		const postId = new URL(request.url).searchParams.get("id");
+		if (!postId) return new Response("Missing id", { status: 400 });
 
+		await ctx.cache.purge({ tags: [`post-${postId}`] });
 
-    await ctx.cache.purge({ tags: [`post-${postId}`] });
-
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -292,68 +239,55 @@ Tags are scoped to the entrypoint that called `purge()`. A tag named `user-42` a
 
 To invalidate groups of related responses in one call, tag each response with multiple tags representing every level of hierarchy it belongs to — sometimes called "soft tags":
 
-* [  JavaScript ](#tab-panel-12305)
-* [  TypeScript ](#tab-panel-12306)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    const path = new URL(request.url).pathname;
+	async fetch(request) {
+		const path = new URL(request.url).pathname;
 
+		// Build a list of hierarchical tags for the current path.
+		// A response at /blog/2025/02/hello gets tags for:
+		//   _path:/blog/, _path:/blog/2025/, _path:/blog/2025/02/, _path:/blog/2025/02/hello
+		const segments = path.split("/").filter(Boolean);
+		const tags = segments.map(
+			(_, i) => `_path:/${segments.slice(0, i + 1).join("/")}/`,
+		);
 
-    // Build a list of hierarchical tags for the current path.
-    // A response at /blog/2025/02/hello gets tags for:
-    //   _path:/blog/, _path:/blog/2025/, _path:/blog/2025/02/, _path:/blog/2025/02/hello
-    const segments = path.split("/").filter(Boolean);
-    const tags = segments.map(
-      (_, i) => `_path:/${segments.slice(0, i + 1).join("/")}/`,
-    );
+		const body = `<!doctype html><title>${path}</title>`;
 
-
-    const body = `<!doctype html><title>${path}</title>`;
-
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": "text/html",
-        "Cache-Control": "public, max-age=3600",
-        "Cache-Tag": tags.join(","),
-      },
-    });
-  },
+		return new Response(body, {
+			headers: {
+				"Content-Type": "text/html",
+				"Cache-Control": "public, max-age=3600",
+				"Cache-Tag": tags.join(","),
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const path = new URL(request.url).pathname;
+	async fetch(request): Promise<Response> {
+		const path = new URL(request.url).pathname;
 
+		// Build a list of hierarchical tags for the current path.
+		// A response at /blog/2025/02/hello gets tags for:
+		//   _path:/blog/, _path:/blog/2025/, _path:/blog/2025/02/, _path:/blog/2025/02/hello
+		const segments = path.split("/").filter(Boolean);
+		const tags = segments.map(
+			(_, i) => `_path:/${segments.slice(0, i + 1).join("/")}/`,
+		);
 
-    // Build a list of hierarchical tags for the current path.
-    // A response at /blog/2025/02/hello gets tags for:
-    //   _path:/blog/, _path:/blog/2025/, _path:/blog/2025/02/, _path:/blog/2025/02/hello
-    const segments = path.split("/").filter(Boolean);
-    const tags = segments.map(
-      (_, i) => `_path:/${segments.slice(0, i + 1).join("/")}/`,
-    );
+		const body = `<!doctype html><title>${path}</title>`;
 
-
-    const body = `<!doctype html><title>${path}</title>`;
-
-
-    return new Response(body, {
-      headers: {
-        "Content-Type": "text/html",
-        "Cache-Control": "public, max-age=3600",
-        "Cache-Tag": tags.join(","),
-      },
-    });
-  },
+		return new Response(body, {
+			headers: {
+				"Content-Type": "text/html",
+				"Cache-Control": "public, max-age=3600",
+				"Cache-Tag": tags.join(","),
+			},
+		});
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -367,35 +301,26 @@ By default, Workers Caching [partitions the cache by Worker version](https://dev
 
 Add the [version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12283)
-* [  wrangler.toml ](#tab-panel-12284)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "cache": { "enabled": true, "cross_version_cache": true },
-  "version_metadata": { "binding": "CF_VERSION_METADATA" },
+	"name": "my-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"cache": { "enabled": true, "cross_version_cache": true },
+	"version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [cache]
 enabled = true
 cross_version_cache = true
-
 
 [version_metadata]
 binding = "CF_VERSION_METADATA"
@@ -403,92 +328,71 @@ binding = "CF_VERSION_METADATA"
 
 Then prepend the version ID to your tags:
 
-* [  JavaScript ](#tab-panel-12303)
-* [  TypeScript ](#tab-panel-12304)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const { id: versionId } = env.CF_VERSION_METADATA;
-    const postId = new URL(request.url).pathname.split("/").pop() ?? "unknown";
+	async fetch(request, env, ctx) {
+		const { id: versionId } = env.CF_VERSION_METADATA;
+		const postId = new URL(request.url).pathname.split("/").pop() ?? "unknown";
 
-
-    return new Response(JSON.stringify({ id: postId }), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=3600",
-        // Include the version ID as a tag so you can purge by version later.
-        "Cache-Tag": `post,post-${postId},v:${versionId}`,
-      },
-    });
-  },
+		return new Response(JSON.stringify({ id: postId }), {
+			headers: {
+				"Content-Type": "application/json",
+				"Cache-Control": "public, max-age=3600",
+				// Include the version ID as a tag so you can purge by version later.
+				"Cache-Tag": `post,post-${postId},v:${versionId}`,
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 interface Env {
-  CF_VERSION_METADATA: WorkerVersionMetadata;
+	CF_VERSION_METADATA: WorkerVersionMetadata;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const { id: versionId } = env.CF_VERSION_METADATA;
-    const postId = new URL(request.url).pathname.split("/").pop() ?? "unknown";
+	async fetch(request, env, ctx): Promise<Response> {
+		const { id: versionId } = env.CF_VERSION_METADATA;
+		const postId = new URL(request.url).pathname.split("/").pop() ?? "unknown";
 
-
-    return new Response(JSON.stringify({ id: postId }), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=3600",
-        // Include the version ID as a tag so you can purge by version later.
-        "Cache-Tag": `post,post-${postId},v:${versionId}`,
-      },
-    });
-  },
+		return new Response(JSON.stringify({ id: postId }), {
+			headers: {
+				"Content-Type": "application/json",
+				"Cache-Control": "public, max-age=3600",
+				// Include the version ID as a tag so you can purge by version later.
+				"Cache-Tag": `post,post-${postId},v:${versionId}`,
+			},
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
 When you want to invalidate everything a specific version wrote — for example, after a rollback — purge the version tag:
 
-* [  JavaScript ](#tab-panel-12295)
-* [  TypeScript ](#tab-panel-12296)
-
-**src/admin.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const versionId = new URL(request.url).searchParams.get("version");
-    if (!versionId) return new Response("Missing version", { status: 400 });
+	async fetch(request, env, ctx) {
+		const versionId = new URL(request.url).searchParams.get("version");
+		if (!versionId) return new Response("Missing version", { status: 400 });
 
+		await ctx.cache.purge({ tags: [`v:${versionId}`] });
 
-    await ctx.cache.purge({ tags: [`v:${versionId}`] });
-
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
 
-**src/admin.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const versionId = new URL(request.url).searchParams.get("version");
-    if (!versionId) return new Response("Missing version", { status: 400 });
+	async fetch(request, env, ctx): Promise<Response> {
+		const versionId = new URL(request.url).searchParams.get("version");
+		if (!versionId) return new Response("Missing version", { status: 400 });
 
+		await ctx.cache.purge({ tags: [`v:${versionId}`] });
 
-    await ctx.cache.purge({ tags: [`v:${versionId}`] });
-
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -496,38 +400,29 @@ export default {
 
 `pathPrefixes` invalidates every cached response whose **request path** begins with one of the given prefixes:
 
-* [  JavaScript ](#tab-panel-12297)
-* [  TypeScript ](#tab-panel-12298)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // Invalidate everything under /blog/2025/ for the current entrypoint.
-    await ctx.cache.purge({
-      pathPrefixes: ["/blog/2025/"],
-    });
+	async fetch(request, env, ctx) {
+		// Invalidate everything under /blog/2025/ for the current entrypoint.
+		await ctx.cache.purge({
+			pathPrefixes: ["/blog/2025/"],
+		});
 
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Invalidate everything under /blog/2025/ for the current entrypoint.
-    await ctx.cache.purge({
-      pathPrefixes: ["/blog/2025/"],
-    });
+	async fetch(request, env, ctx): Promise<Response> {
+		// Invalidate everything under /blog/2025/ for the current entrypoint.
+		await ctx.cache.purge({
+			pathPrefixes: ["/blog/2025/"],
+		});
 
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -539,38 +434,29 @@ Entries in `pathPrefixes` are **paths**, not full URLs. A prefix must not includ
 
 There is no dedicated "purge by URL" mode. To invalidate a single cached URL, pass its path as a single-element `pathPrefixes` array:
 
-* [  JavaScript ](#tab-panel-12301)
-* [  TypeScript ](#tab-panel-12302)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    // Invalidate the cached response for exactly /blog/2026/hello-world.
-    await ctx.cache.purge({
-      pathPrefixes: ["/blog/2026/hello-world"],
-    });
+	async fetch(request, env, ctx) {
+		// Invalidate the cached response for exactly /blog/2026/hello-world.
+		await ctx.cache.purge({
+			pathPrefixes: ["/blog/2026/hello-world"],
+		});
 
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // Invalidate the cached response for exactly /blog/2026/hello-world.
-    await ctx.cache.purge({
-      pathPrefixes: ["/blog/2026/hello-world"],
-    });
+	async fetch(request, env, ctx): Promise<Response> {
+		// Invalidate the cached response for exactly /blog/2026/hello-world.
+		await ctx.cache.purge({
+			pathPrefixes: ["/blog/2026/hello-world"],
+		});
 
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -580,32 +466,23 @@ Because `pathPrefixes` matches on the start of the request path, passing the ful
 
 Invalidate every cached response stored by the calling entrypoint:
 
-* [  JavaScript ](#tab-panel-12299)
-* [  TypeScript ](#tab-panel-12300)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    await ctx.cache.purge({ purgeEverything: true });
+	async fetch(request, env, ctx) {
+		await ctx.cache.purge({ purgeEverything: true });
 
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    await ctx.cache.purge({ purgeEverything: true });
+	async fetch(request, env, ctx): Promise<Response> {
+		await ctx.cache.purge({ purgeEverything: true });
 
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -619,44 +496,33 @@ Purges triggered by `ctx.cache.purge()` use Cloudflare's [Instant Purge](https:/
 
 `purge()` resolves to a result object. Check `success` to confirm the purge was accepted, and inspect `errors` if it was not:
 
-* [  JavaScript ](#tab-panel-12307)
-* [  TypeScript ](#tab-panel-12308)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const result = await ctx.cache.purge({ tags: ["blog-posts"] });
+	async fetch(request, env, ctx) {
+		const result = await ctx.cache.purge({ tags: ["blog-posts"] });
 
+		if (!result.success) {
+			console.error("Cache purge failed", result.errors);
+			return new Response("Purge failed", { status: 500 });
+		}
 
-    if (!result.success) {
-      console.error("Cache purge failed", result.errors);
-      return new Response("Purge failed", { status: 500 });
-    }
-
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const result = await ctx.cache.purge({ tags: ["blog-posts"] });
+	async fetch(request, env, ctx): Promise<Response> {
+		const result = await ctx.cache.purge({ tags: ["blog-posts"] });
 
+		if (!result.success) {
+			console.error("Cache purge failed", result.errors);
+			return new Response("Purge failed", { status: 500 });
+		}
 
-    if (!result.success) {
-      console.error("Cache purge failed", result.errors);
-      return new Response("Purge failed", { status: 500 });
-    }
-
-
-    return new Response("Purged", { status: 200 });
-  },
+		return new Response("Purged", { status: 200 });
+	},
 } satisfies ExportedHandler;
 ```
 
@@ -666,7 +532,14 @@ On failure, each error in `errors` carries a numeric `code` and a human-readable
 
 `purge()` uses the same rate-limiting system as Cloudflare's zone purge API. For the rate limits that apply to your account's plan, refer to [Availability and limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits). When the purge is rate-limited, `success` is `false` and `errors` contains an entry describing the rejection.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache · Cloudflare Workers docs","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/cache/","name":"Workers Cache"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/cache/purge/","name":"Purging the cache"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache · Cloudflare Workers docs","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

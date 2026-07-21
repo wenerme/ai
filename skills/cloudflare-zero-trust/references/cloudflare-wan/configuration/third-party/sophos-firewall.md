@@ -1,16 +1,18 @@
 ---
-title: Sophos Firewall
 description: Connect Sophos Firewall to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Sophos Firewall
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sophos Firewall
 
-# Sophos Firewall
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/sophos-firewall/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial shows you how to use Cloudflare WAN (formerly Magic WAN) with the following versions of the Sophos Firewall:
 
@@ -224,10 +226,8 @@ tcpdump -nn proto 1
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
 
-
 13:09:55.500453 xfrm1, IN: IP 172.70.51.31 > 172.64.240.252: ICMP echo request, id 33504, seq 0, length 64
 13:09:55.500480 xfrm1, OUT: IP 172.64.240.252 > 172.70.51.31: ICMP echo reply, id 33504, seq 0, length 64
-
 
 13:09:55.504669 xfrm1, IN: IP 172.71.29.66 > 172.64.240.252: ICMP echo request, id 60828, seq 0, length 64
 13:09:55.504695 xfrm1, OUT: IP 172.64.240.252 > 172.71.29.66: ICMP echo reply, id 60828, seq 0, length 64
@@ -253,7 +253,7 @@ _Note: Labels in this image may reflect a previous product name._
 
 Access the CLI and type `system gre tunnel show` to check the status of a GRE tunnel. When the tunnel is working, its status will show up as **Enabled**.
 
-![The GRE tunnel will show a status of Enabled when working.](https://developers.cloudflare.com/_astro/gre-status-enabled.CkTEu5BC_1WI6zo.webp) ![The GRE tunnel will show a status of Enabled when working.](https://developers.cloudflare.com/_astro/gre-status-enabled-b.D8-vH0Du_Z2feWHr.webp)
+![The GRE tunnel will show a status of Enabled when working.](https://developers.cloudflare.com/_astro/gre-status-enabled.CkTEu5BC_1WI6zo.webp)![The GRE tunnel will show a status of Enabled when working.](https://developers.cloudflare.com/_astro/gre-status-enabled-b.D8-vH0Du_Z2feWHr.webp)
 
 ## Troubleshooting
 
@@ -267,7 +267,14 @@ If a tunnel shows a connected status at both ends, but is not established:
 * Perform `tcpdump` to check if packets are going through the VPN or GRE tunnel as expected.
 * Perform a packet capture on Cloudflare to see if traffic is reaching the Cloudflare platform.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/sophos-firewall/#page","headline":"Sophos Firewall · Cloudflare WAN docs","description":"Connect Sophos Firewall to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/sophos-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/sophos-firewall/","name":"Sophos Firewall"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/sophos-firewall/#page","headline":"Sophos Firewall · Cloudflare WAN docs","description":"Connect Sophos Firewall to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/sophos-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

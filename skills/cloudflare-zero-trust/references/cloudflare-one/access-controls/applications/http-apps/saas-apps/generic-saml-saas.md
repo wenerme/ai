@@ -1,16 +1,18 @@
 ---
-title: Generic SAML application
 description: Generic SAML application in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Generic SAML application
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Generic SAML application
 
-# Generic SAML application
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page provides generic instructions for setting up a SaaS application in Cloudflare Access using the SAML authentication protocol.
 
@@ -114,15 +116,11 @@ JSONata transformations are not compatible with [SAML attribute statements](#sam
 
 For example, the following JSONata script merges group names into a list and adds an `eduPersonPrincipalName` field which maps to the user email.
 
-**JSONata expression**
-
 ```txt
 $merge([$, {"groups": groups.name, 'eduPersonPrincipalName': email}])
 ```
 
 Here is an example of a user identity before applying the JSONata transform:
-
-**User identity before JSONata transform**
 
 ```json
 {
@@ -222,8 +220,6 @@ Remove groups attribute
 
 The following JSONata script removes the `groups` SAML attribute. This can be useful if your SaaS application does not need to receive user group information.
 
-**JSONata expression**
-
 ```txt
 $ ~> |$|{}, ['groups']|
 ```
@@ -269,8 +265,6 @@ Rename groups field and remove group ID
 
 The following JSONata script changes the `groups.name` field from `name` to `group_name` and removes the `groups.id` field:
 
-**JSONata expression**
-
 ```txt
 {
   "account_id": account_id,
@@ -283,7 +277,7 @@ The following JSONata script changes the `groups.name` field from `name` to `gro
   "email": email,
   "gateway_account_id": gateway_account_id,
   "geo": geo,
-  "groups": $map($.groups, function($group) {
+	"groups": $map($.groups, function($group) {
     {"group_name": $group.name}}),
   "iat": iat,
   "id": id,
@@ -342,8 +336,6 @@ Result after applying the JSONata transform:
 Filter groups by name
 
 The following JSONata script filters groups to those that match a regular expression.
-
-**JSONata expression**
 
 ```txt
 $merge([$, { "groups": $filter(groups, function($v) { $contains($v.name, /Administrator/) }) }])
@@ -408,8 +400,6 @@ The NameID transform is only available through the API. To configure it, update 
 
 For example, to modify the user's email so that it includes a `+sandbox` suffix (useful when connecting multiple instances of the same SaaS app):
 
-**Set a NameID transform via the API**
-
 ```bash
 curl --request PUT \
 https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
@@ -428,8 +418,6 @@ Given a user with the email `jdoe@company.com`, this expression produces a `Name
 Use employee ID as NameID
 
 To send a non-email attribute such as an employee ID, reference the attribute name directly in the JSONata expression. The attribute must be available in the user's identity from the IdP.
-
-**Set employee\_id as NameID**
 
 ```bash
 curl --request PUT \
@@ -450,8 +438,6 @@ Remove NameID transform
 
 To revert to the default behavior (sending the user's email as the `NameID`), set the field to an empty string:
 
-**Remove NameID transform**
-
 ```bash
 curl --request PUT \
 https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} \
@@ -465,7 +451,14 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} 
 }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/#page","headline":"Generic SAML application · Cloudflare One docs","description":"Generic SAML application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/saas-apps/","name":"SaaS applications"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/","name":"Generic SAML application"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/#page","headline":"Generic SAML application · Cloudflare One docs","description":"Generic SAML application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 ```

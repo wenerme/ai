@@ -1,16 +1,18 @@
 ---
-title: Cohere
 description: Route Cohere API requests through AI Gateway for observability and control.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cohere
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cohere
 
-# Cohere
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/usage/providers/cohere/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Cohere ↗](https://cohere.com/) build AI models designed to solve real-world business challenges.
 
@@ -37,8 +39,6 @@ When making requests to Cohere, ensure you have the following:
 
 ### cURL
 
-**Request**
-
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1/chat \
   --header 'Authorization: Token {cohere_api_token}' \
@@ -57,34 +57,28 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1/ch
 
 If using the [cohere-python-sdk ↗](https://github.com/cohere-ai/cohere-python), set your endpoint like this:
 
-**Python**
-
 ```js
+
 import cohere
 import os
-
 
 api_key = os.getenv('API_KEY')
 account_id = '{account_id}'
 gateway_id = '{gateway_id}'
 base_url = f"https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1"
 
-
 co = cohere.Client(
   api_key=api_key,
   base_url=base_url,
 )
 
-
 message = "hello world!"
 model = "command-r-plus"
-
 
 chat = co.chat(
   message=message,
   model=model
 )
-
 
 print(chat)
 ```
@@ -100,12 +94,20 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
+
 {
 "model": "cohere/{model}"
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/cohere/#page","headline":"Cohere · Cloudflare AI Gateway docs","description":"Route Cohere API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/cohere/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/cohere/","name":"Cohere"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/providers/cohere/#page","headline":"Cohere · Cloudflare AI Gateway docs","description":"Route Cohere API requests through AI Gateway for observability and control.","url":"https://developers.cloudflare.com/ai-gateway/usage/providers/cohere/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

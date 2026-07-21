@@ -1,16 +1,18 @@
 ---
-title: Cron Triggers
 description: Enable your Worker to be executed on a schedule.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cron Triggers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cron Triggers
 
-# Cron Triggers
+Last updated Jun 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/cron-triggers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -30,40 +32,29 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-12327)
-* [  TypeScript ](#tab-panel-12328)
-* [  Python ](#tab-panel-12329)
-
-**JavaScript**
-
 ```js
 export default {
-  async scheduled(controller, env, ctx) {
-    console.log("cron processed");
-  },
+	async scheduled(controller, env, ctx) {
+		console.log("cron processed");
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 interface Env {}
 export default {
-  async scheduled(
-    controller: ScheduledController,
-    env: Env,
-    ctx: ExecutionContext,
-  ) {
-    console.log("cron processed");
-  },
+	async scheduled(
+		controller: ScheduledController,
+		env: Env,
+		ctx: ExecutionContext,
+	) {
+		console.log("cron processed");
+	},
 };
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def scheduled(self, controller, env, ctx):
@@ -90,28 +81,21 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-12332)
-* [  wrangler.toml ](#tab-panel-12333)
-
-**JSONC**
-
 ```jsonc
 {
-  "triggers": {
-    // Schedule cron triggers:
-    // - At every 3rd minute
-    // - At 15:00 (UTC) on first day of the month
-    // - At 23:59 (UTC) on the last weekday of the month
-    "crons": [
-      "*/3 * * * *",
-      "0 15 1 * *",
-      "59 23 LW * *"
-    ]
-  }
+	"triggers": {
+		// Schedule cron triggers:
+		// - At every 3rd minute
+		// - At 15:00 (UTC) on first day of the month
+		// - At 23:59 (UTC) on the last weekday of the month
+		"crons": [
+			"*/3 * * * *",
+			"0 15 1 * *",
+			"59 23 LW * *"
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [triggers]
@@ -120,26 +104,19 @@ crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-12334)
-* [  wrangler.toml ](#tab-panel-12335)
-
-**JSONC**
-
 ```jsonc
 {
-  "env": {
-    "dev": {
-      "triggers": {
-        "crons": [
-          "0 * * * *"
-        ]
-      }
-    }
-  }
+	"env": {
+		"dev": {
+			"triggers": {
+				"crons": [
+					"0 * * * *"
+				]
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [env.dev.triggers]
@@ -151,7 +128,7 @@ crons = [ "0 * * * *" ]
 To add Cron Triggers in the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker > **Settings** \> **Triggers** \> **Cron Triggers**.
 
 ## Supported cron expressions
@@ -239,7 +216,7 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*&time=174585
 To view the execution history of Cron Triggers, view **Cron Events**:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your **Worker**.
 3. Select **Settings**.
 4. Under **Trigger Events**, select **View events**.
@@ -259,7 +236,7 @@ Refer to [Metrics and Analytics](https://developers.cloudflare.com/workers/obser
 To delete a Cron Trigger on a deployed Worker via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
 3. Go to **Triggers** \> select the three dot icon next to the Cron Trigger you want to remove > **Delete**.
 
@@ -272,21 +249,14 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-12330)
-* [  wrangler.toml ](#tab-panel-12331)
-
-**JSONC**
-
 ```jsonc
 {
-  "triggers": {
-    // Remove all cron triggers:
-    "crons": []
-  }
+	"triggers": {
+		// Remove all cron triggers:
+		"crons": []
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [triggers]
@@ -306,7 +276,7 @@ Renewable energy can be purchased in a number of ways, including through on-site
 Green Compute can be configured at the account level:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In the **Account details** section, find **Compute Setting**.
 3. Select **Change**.
 4. Select **Green Compute**.
@@ -317,7 +287,14 @@ Green Compute can be configured at the account level:
 * [Triggers](https://developers.cloudflare.com/workers/wrangler/configuration/#triggers) \- Review Wrangler configuration file syntax for Cron Triggers.
 * Learn how to access Cron Triggers in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cron-triggers/#page","headline":"Cron Triggers · Cloudflare Workers docs","description":"Enable your Worker to be executed on a schedule.","url":"https://developers.cloudflare.com/workers/configuration/cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/cron-triggers/","name":"Cron Triggers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cron-triggers/#page","headline":"Cron Triggers · Cloudflare Workers docs","description":"Enable your Worker to be executed on a schedule.","url":"https://developers.cloudflare.com/workers/configuration/cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

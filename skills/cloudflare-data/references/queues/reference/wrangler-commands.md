@@ -1,16 +1,18 @@
 ---
-title: Wrangler commands
 description: Wrangler CLI commands for creating, managing, and interacting with Cloudflare Queues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Wrangler commands
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Wrangler commands
 
-# Wrangler commands
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/reference/wrangler-commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Queues Wrangler commands use REST APIs to interact with the control plane. This page lists the Wrangler commands for Queues.
 
@@ -18,20 +20,18 @@ Queues Wrangler commands use REST APIs to interact with the control plane. This 
 
 List queues
 
-* [  npm ](#tab-panel-10489)
-* [  pnpm ](#tab-panel-10490)
-* [  yarn ](#tab-panel-10491)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues list
 ```
 
-```sh
-pnpm wrangler queues list
+```
+yarn wrangler queues list
 ```
 
-```sh
-yarn wrangler queues list
+```
+pnpm wrangler queues list
 ```
 
 * `--page` ` number `
@@ -62,20 +62,18 @@ Use a specific auth profile
 
 Create a queue
 
-* [  npm ](#tab-panel-10492)
-* [  pnpm ](#tab-panel-10493)
-* [  yarn ](#tab-panel-10494)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues create [NAME]
 ```
 
-```sh
-pnpm wrangler queues create [NAME]
+```
+yarn wrangler queues create [NAME]
 ```
 
-```sh
-yarn wrangler queues create [NAME]
+```
+pnpm wrangler queues create [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -110,20 +108,18 @@ Use a specific auth profile
 
 Update a queue
 
-* [  npm ](#tab-panel-10495)
-* [  pnpm ](#tab-panel-10496)
-* [  yarn ](#tab-panel-10497)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues update [NAME]
 ```
 
-```sh
-pnpm wrangler queues update [NAME]
+```
+yarn wrangler queues update [NAME]
 ```
 
-```sh
-yarn wrangler queues update [NAME]
+```
+pnpm wrangler queues update [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -158,20 +154,18 @@ Use a specific auth profile
 
 Delete a queue
 
-* [  npm ](#tab-panel-10498)
-* [  pnpm ](#tab-panel-10499)
-* [  yarn ](#tab-panel-10500)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues delete [NAME]
 ```
 
-```sh
-pnpm wrangler queues delete [NAME]
+```
+yarn wrangler queues delete [NAME]
 ```
 
-```sh
-yarn wrangler queues delete [NAME]
+```
+pnpm wrangler queues delete [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -202,20 +196,18 @@ Use a specific auth profile
 
 Get queue information
 
-* [  npm ](#tab-panel-10501)
-* [  pnpm ](#tab-panel-10502)
-* [  yarn ](#tab-panel-10503)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues info [NAME]
 ```
 
-```sh
-pnpm wrangler queues info [NAME]
+```
+yarn wrangler queues info [NAME]
 ```
 
-```sh
-yarn wrangler queues info [NAME]
+```
+pnpm wrangler queues info [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -246,20 +238,18 @@ Use a specific auth profile
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10504)
-* [  pnpm ](#tab-panel-10505)
-* [  yarn ](#tab-panel-10506)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
+```
+yarn wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
+```
+pnpm wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -304,20 +294,18 @@ Use a specific auth profile
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10507)
-* [  pnpm ](#tab-panel-10508)
-* [  yarn ](#tab-panel-10509)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
+```
+yarn wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
+```
+pnpm wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -350,20 +338,18 @@ Use a specific auth profile
 
 List consumers for a queue
 
-* [  npm ](#tab-panel-10510)
-* [  pnpm ](#tab-panel-10511)
-* [  yarn ](#tab-panel-10512)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer list [QUEUE-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer list [QUEUE-NAME]
+```
+yarn wrangler queues consumer list [QUEUE-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer list [QUEUE-NAME]
+```
+pnpm wrangler queues consumer list [QUEUE-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -396,20 +382,18 @@ Use a specific auth profile
 
 Add a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-10513)
-* [  pnpm ](#tab-panel-10514)
-* [  yarn ](#tab-panel-10515)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer http add [QUEUE-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer http add [QUEUE-NAME]
+```
+yarn wrangler queues consumer http add [QUEUE-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer http add [QUEUE-NAME]
+```
+pnpm wrangler queues consumer http add [QUEUE-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -450,20 +434,18 @@ Use a specific auth profile
 
 Remove a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-10516)
-* [  pnpm ](#tab-panel-10517)
-* [  yarn ](#tab-panel-10518)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer http remove [QUEUE-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer http remove [QUEUE-NAME]
+```
+yarn wrangler queues consumer http remove [QUEUE-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer http remove [QUEUE-NAME]
+```
+pnpm wrangler queues consumer http remove [QUEUE-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -494,20 +476,18 @@ Use a specific auth profile
 
 List HTTP pull consumers for a queue
 
-* [  npm ](#tab-panel-10519)
-* [  pnpm ](#tab-panel-10520)
-* [  yarn ](#tab-panel-10521)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer http list [QUEUE-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer http list [QUEUE-NAME]
+```
+yarn wrangler queues consumer http list [QUEUE-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer http list [QUEUE-NAME]
+```
+pnpm wrangler queues consumer http list [QUEUE-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -540,20 +520,18 @@ Use a specific auth profile
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10522)
-* [  pnpm ](#tab-panel-10523)
-* [  yarn ](#tab-panel-10524)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
+```
+yarn wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
+```
+pnpm wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -598,20 +576,18 @@ Use a specific auth profile
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-10525)
-* [  pnpm ](#tab-panel-10526)
-* [  yarn ](#tab-panel-10527)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
+```
+yarn wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
+```
+pnpm wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -644,20 +620,18 @@ Use a specific auth profile
 
 List worker consumers for a queue
 
-* [  npm ](#tab-panel-10528)
-* [  pnpm ](#tab-panel-10529)
-* [  yarn ](#tab-panel-10530)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues consumer worker list [QUEUE-NAME]
 ```
 
-```sh
-pnpm wrangler queues consumer worker list [QUEUE-NAME]
+```
+yarn wrangler queues consumer worker list [QUEUE-NAME]
 ```
 
-```sh
-yarn wrangler queues consumer worker list [QUEUE-NAME]
+```
+pnpm wrangler queues consumer worker list [QUEUE-NAME]
 ```
 
 * `[QUEUE-NAME]` ` string ` required
@@ -690,20 +664,18 @@ Use a specific auth profile
 
 Pause message delivery for a queue
 
-* [  npm ](#tab-panel-10531)
-* [  pnpm ](#tab-panel-10532)
-* [  yarn ](#tab-panel-10533)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues pause-delivery [NAME]
 ```
 
-```sh
-pnpm wrangler queues pause-delivery [NAME]
+```
+yarn wrangler queues pause-delivery [NAME]
 ```
 
-```sh
-yarn wrangler queues pause-delivery [NAME]
+```
+pnpm wrangler queues pause-delivery [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -734,20 +706,18 @@ Use a specific auth profile
 
 Resume message delivery for a queue
 
-* [  npm ](#tab-panel-10534)
-* [  pnpm ](#tab-panel-10535)
-* [  yarn ](#tab-panel-10536)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues resume-delivery [NAME]
 ```
 
-```sh
-pnpm wrangler queues resume-delivery [NAME]
+```
+yarn wrangler queues resume-delivery [NAME]
 ```
 
-```sh
-yarn wrangler queues resume-delivery [NAME]
+```
+pnpm wrangler queues resume-delivery [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -778,20 +748,18 @@ Use a specific auth profile
 
 Purge messages from a queue
 
-* [  npm ](#tab-panel-10537)
-* [  pnpm ](#tab-panel-10538)
-* [  yarn ](#tab-panel-10539)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues purge [NAME]
 ```
 
-```sh
-pnpm wrangler queues purge [NAME]
+```
+yarn wrangler queues purge [NAME]
 ```
 
-```sh
-yarn wrangler queues purge [NAME]
+```
+pnpm wrangler queues purge [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -824,20 +792,18 @@ Use a specific auth profile
 
 Create a new event subscription for a queue
 
-* [  npm ](#tab-panel-10540)
-* [  pnpm ](#tab-panel-10541)
-* [  yarn ](#tab-panel-10542)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues subscription create [QUEUE]
 ```
 
-```sh
-pnpm wrangler queues subscription create [QUEUE]
+```
+yarn wrangler queues subscription create [QUEUE]
 ```
 
-```sh
-yarn wrangler queues subscription create [QUEUE]
+```
+pnpm wrangler queues subscription create [QUEUE]
 ```
 
 * `[QUEUE]` ` string ` required
@@ -882,20 +848,18 @@ Use a specific auth profile
 
 List event subscriptions for a queue
 
-* [  npm ](#tab-panel-10543)
-* [  pnpm ](#tab-panel-10544)
-* [  yarn ](#tab-panel-10545)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues subscription list [QUEUE]
 ```
 
-```sh
-pnpm wrangler queues subscription list [QUEUE]
+```
+yarn wrangler queues subscription list [QUEUE]
 ```
 
-```sh
-yarn wrangler queues subscription list [QUEUE]
+```
+pnpm wrangler queues subscription list [QUEUE]
 ```
 
 * `[QUEUE]` ` string ` required
@@ -932,20 +896,18 @@ Use a specific auth profile
 
 Get details about a specific event subscription
 
-* [  npm ](#tab-panel-10546)
-* [  pnpm ](#tab-panel-10547)
-* [  yarn ](#tab-panel-10548)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues subscription get [QUEUE]
 ```
 
-```sh
-pnpm wrangler queues subscription get [QUEUE]
+```
+yarn wrangler queues subscription get [QUEUE]
 ```
 
-```sh
-yarn wrangler queues subscription get [QUEUE]
+```
+pnpm wrangler queues subscription get [QUEUE]
 ```
 
 * `[QUEUE]` ` string ` required
@@ -980,20 +942,18 @@ Use a specific auth profile
 
 Delete an event subscription from a queue
 
-* [  npm ](#tab-panel-10549)
-* [  pnpm ](#tab-panel-10550)
-* [  yarn ](#tab-panel-10551)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues subscription delete [QUEUE]
 ```
 
-```sh
-pnpm wrangler queues subscription delete [QUEUE]
+```
+yarn wrangler queues subscription delete [QUEUE]
 ```
 
-```sh
-yarn wrangler queues subscription delete [QUEUE]
+```
+pnpm wrangler queues subscription delete [QUEUE]
 ```
 
 * `[QUEUE]` ` string ` required
@@ -1028,20 +988,18 @@ Use a specific auth profile
 
 Update an existing event subscription
 
-* [  npm ](#tab-panel-10552)
-* [  pnpm ](#tab-panel-10553)
-* [  yarn ](#tab-panel-10554)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler queues subscription update [QUEUE]
 ```
 
-```sh
-pnpm wrangler queues subscription update [QUEUE]
+```
+yarn wrangler queues subscription update [QUEUE]
 ```
 
-```sh
-yarn wrangler queues subscription update [QUEUE]
+```
+pnpm wrangler queues subscription update [QUEUE]
 ```
 
 * `[QUEUE]` ` string ` required
@@ -1078,7 +1036,14 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` ` string `
 Use a specific auth profile
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/queues/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Queues docs","description":"Wrangler CLI commands for creating, managing, and interacting with Cloudflare Queues.","url":"https://developers.cloudflare.com/queues/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/reference/wrangler-commands/","name":"Wrangler commands"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/queues/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Queues docs","description":"Wrangler CLI commands for creating, managing, and interacting with Cloudflare Queues.","url":"https://developers.cloudflare.com/queues/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

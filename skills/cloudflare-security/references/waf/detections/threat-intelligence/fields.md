@@ -1,16 +1,18 @@
 ---
-title: Threat intelligence fields
 description: Fields available for threat intelligence detection in rule expressions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Threat intelligence fields
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Threat intelligence fields
 
-# Threat intelligence fields
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The threat intelligence detection populates the following fields when the client IP address is found in the threat intelligence database. If the IP address is not found, the fields are empty.
 
@@ -57,7 +59,14 @@ The `cf.intel.ip.target_industries` field uses a fixed set of industry names. Ex
 
 For the complete list, refer to [Threat Events](https://developers.cloudflare.com/security-center/cloudforce-one/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/#page","headline":"Threat intelligence fields · Cloudflare Web Application Firewall (WAF) docs","description":"Fields available for threat intelligence detection in rule expressions.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/threat-intelligence/","name":"Threat intelligence"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/threat-intelligence/fields/","name":"Threat intelligence fields"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/#page","headline":"Threat intelligence fields · Cloudflare Web Application Firewall (WAF) docs","description":"Fields available for threat intelligence detection in rule expressions.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}
 ```

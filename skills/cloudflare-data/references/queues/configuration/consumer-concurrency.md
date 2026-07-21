@@ -1,16 +1,18 @@
 ---
-title: Consumer concurrency
 description: Automatically scale out Queues consumer Workers horizontally to process messages faster.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Consumer concurrency
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Consumer concurrency
 
-# Consumer concurrency
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Consumer concurrency allows a [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#consumers) processing messages from a queue to automatically scale out horizontally to keep up with the rate that messages are being written to a queue.
 
@@ -68,7 +70,7 @@ You can configure the concurrency of your consumer Worker in two ways:
 To configure the concurrency settings for your consumer Worker from the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Queues** page.
-[ Go to **Queues** ](https://dash.cloudflare.com/?to=/:account/workers/queues)
+[ Go to **Queues** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select your queue > **Settings**.
 3. Select **Edit Consumer** under Consumer details.
 4. Set **Maximum consumer invocations** to a value between `1` and `250`. This value represents the maximum number of concurrent consumer invocations available to your queue.
@@ -85,25 +87,18 @@ Ensure you are using the latest version of [wrangler](https://developers.cloudfl
 
 To set a fixed maximum number of concurrent consumer invocations for a given queue, configure a `max_concurrency` in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-10456)
-* [  wrangler.toml ](#tab-panel-10457)
-
-**JSONC**
-
 ```jsonc
 {
-  "queues": {
-    "consumers": [
-      {
-        "queue": "my-queue",
-        "max_concurrency": 1
-      }
-    ]
-  }
+	"queues": {
+		"consumers": [
+			{
+				"queue": "my-queue",
+				"max_concurrency": 1
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[queues.consumers]]
@@ -126,7 +121,14 @@ Billing for consumers follows the [Workers standard usage model](https://develop
 
 A consumer Worker that takes 2 seconds to process a batch of messages will incur the same overall costs to process 50 million (50,000,000) messages, whether it does so concurrently (faster) or individually (slower).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/consumer-concurrency/#page","headline":"Consumer concurrency · Cloudflare Queues docs","description":"Automatically scale out Queues consumer Workers horizontally to process messages faster.","url":"https://developers.cloudflare.com/queues/configuration/consumer-concurrency/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/consumer-concurrency/","name":"Consumer concurrency"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/consumer-concurrency/#page","headline":"Consumer concurrency · Cloudflare Queues docs","description":"Automatically scale out Queues consumer Workers horizontally to process messages faster.","url":"https://developers.cloudflare.com/queues/configuration/consumer-concurrency/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

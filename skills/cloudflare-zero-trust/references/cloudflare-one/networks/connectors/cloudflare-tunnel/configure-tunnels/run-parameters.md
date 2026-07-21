@@ -1,27 +1,25 @@
 ---
-title: Tunnel run parameters
 description: Modify tunnel service parameters to control how `cloudflared` runs on your system, including logging, connection settings, and protocol options.
 
-image: https://developers.cloudflare.com/zt-preview.png
+title: Tunnel run parameters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tunnel run parameters
 
-# Tunnel run parameters
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the configuration flags for the `cloudflared tunnel run` command. For a remotely-managed tunnel, add these flags to the [tunnel service](#add-run-parameters-to-tunnel-service). If you are using a locally-managed tunnel, add these flags to your [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/) as key/value pairs.
 
 ## Add run parameters to tunnel service
 
 Remotely-managed tunnels run as a service on your OS. To add run parameters to the tunnel service file:
-
-* [ Linux ](#tab-panel-7923)
-* [ macOS ](#tab-panel-7924)
-* [ Windows ](#tab-panel-7925)
 
 On Linux, Cloudflare Tunnel installs itself as a system service using `systemctl`. By default, the service will be named `cloudflared.service`. To configure your tunnel on Linux:
 
@@ -111,7 +109,6 @@ On Windows, Cloudflare Tunnel installs itself as a system service using the Regi
 ```txt
 C:\Program Files (x86)\cloudflared\.\cloudflared.exe tunnel --loglevel info --logfile <PATH> run --token <TOKEN VALUE>
 ```
-
 ![Modify cloudflared service in the Registry Editor](https://developers.cloudflare.com/_astro/remote-management-windows.BFUIIr2f_Z1Rbddd.webp)
 
 ## Parameters
@@ -318,7 +315,14 @@ For remotely-managed tunnels only. Requires `2025.4.0` or later.
 
 Associates the `cloudflared` instance with a specific tunnel using a file which contains the token.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#page","headline":"Tunnel run parameters · Cloudflare One docs","description":"Modify tunnel service parameters to control how cloudflared runs on your system, including logging, connection settings, and protocol options.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/","name":"Configure a tunnel"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/","name":"Tunnel run parameters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#page","headline":"Tunnel run parameters · Cloudflare One docs","description":"Modify tunnel service parameters to control how cloudflared runs on your system, including logging, connection settings, and protocol options.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
 ```

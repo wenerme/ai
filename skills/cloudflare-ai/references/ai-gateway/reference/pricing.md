@@ -1,16 +1,18 @@
 ---
-title: Pricing
 description: Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Pricing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Pricing
 
-# Pricing
+Last updated May 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/reference/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway is available to use on all plans.
 
@@ -45,7 +47,7 @@ DLP profiles are shared at the account level with [Cloudflare One](https://devel
 
 ## Unified Billing
 
-A 5% fee is applied to all credits purchased through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/). For example, a $100 credit purchase will result in a $105 charge. Inference pricing from providers is passed through with no markup — you pay the same per-token rates as you would directly with the provider.
+A 5% fee is applied to all credits purchased through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/). For example, a `100 credit purchase will result in a `105 charge. Inference pricing from providers is passed through with no markup — you pay the same per-token rates as you would directly with the provider.
 
 ## Logpush
 
@@ -59,7 +61,14 @@ Logpush is only available on the Workers Paid plan.
 
 Prices subject to change. If you are an Enterprise customer, reach out to your account team to confirm pricing details.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/pricing/#page","headline":"Pricing · Cloudflare AI Gateway docs","description":"Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.","url":"https://developers.cloudflare.com/ai-gateway/reference/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/reference/pricing/","name":"Pricing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/pricing/#page","headline":"Pricing · Cloudflare AI Gateway docs","description":"Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.","url":"https://developers.cloudflare.com/ai-gateway/reference/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

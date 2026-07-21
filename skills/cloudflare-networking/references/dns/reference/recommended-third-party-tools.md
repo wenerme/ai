@@ -1,16 +1,18 @@
 ---
-title: Recommended third-party tools
 description: List of recommended third-party tools for DNS testing and troubleshooting.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Recommended third-party tools
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Recommended third-party tools
 
-# Recommended third-party tools
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use the third-party tools listed below to test and troubleshoot DNS settings.
 
@@ -19,7 +21,14 @@ You can use the third-party tools listed below to test and troubleshoot DNS sett
 * [dns.google ↗](https://dns.google): A web-based tool, similar to Dig Web Interface, where users can get DNS responses for specific queries.
 * [Mess with DNS ↗](https://messwithdns.net): An educational resource that encourages users to experiment with DNS records by providing users with a domain where they are free to play around and break things during the learning process.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/#page","headline":"Recommended third-party tools · Cloudflare DNS docs","description":"List of recommended third-party tools for DNS testing and troubleshooting.","url":"https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/reference/recommended-third-party-tools/","name":"Recommended third-party tools"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/#page","headline":"Recommended third-party tools · Cloudflare DNS docs","description":"List of recommended third-party tools for DNS testing and troubleshooting.","url":"https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

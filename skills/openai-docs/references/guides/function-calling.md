@@ -150,6 +150,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 // 1. Define a list of callable tools for the model
+/** @type {OpenAI.Responses.Tool[]} */
 const tools = [
   {
     type: "function",
@@ -175,6 +176,7 @@ function getHoroscope(sign) {
 }
 
 // Create a running input list we will add to over time
+/** @type {OpenAI.Responses.ResponseInput} */
 let input = [
   { role: "user", content: "What is my horoscope? I am an Aquarius." },
 ];
@@ -406,19 +408,19 @@ for tool_call in response.output:
 
 ```javascript
 for (const toolCall of response.output) {
-    if (toolCall.type !== "function_call") {
-        continue;
-    }
+  if (toolCall.type !== "function_call") {
+    continue;
+  }
 
-    const name = toolCall.name;
-    const args = JSON.parse(toolCall.arguments);
+  const name = toolCall.name;
+  const args = JSON.parse(toolCall.arguments);
 
-    const result = callFunction(name, args);
-    input.push({
-        type: "function_call_output",
-        call_id: toolCall.call_id,
-        output: result.toString()
-    });
+  const result = await callFunction(name, args);
+  input.push({
+    type: "function_call_output",
+    call_id: toolCall.call_id,
+    output: result.toString(),
+  });
 }
 ```
 
@@ -438,12 +440,12 @@ def call_function(name, args):
 
 ```javascript
 const callFunction = async (name, args) => {
-    if (name === "get_weather") {
-        return getWeather(args.latitude, args.longitude);
-    }
-    if (name === "send_email") {
-        return sendEmail(args.to, args.body);
-    }
+  if (name === "get_weather") {
+    return getWeather(args.latitude, args.longitude);
+  }
+  if (name === "send_email") {
+    return sendEmail(args.to, args.body);
+  }
 };
 ```
 
@@ -474,9 +476,9 @@ response = client.responses.create(
 
 ```javascript
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input,
-    tools,
+  model: "gpt-5.6",
+  input,
+  tools,
 });
 ```
 
@@ -691,32 +693,35 @@ import { OpenAI } from "openai";
 
 const openai = new OpenAI();
 
-const tools = [{
+/** @type {OpenAI.Responses.Tool[]} */
+const tools = [
+  {
     type: "function",
     name: "get_weather",
     description: "Get current temperature for provided coordinates in celsius.",
     parameters: {
-        type: "object",
-        properties: {
-            latitude: { type: "number" },
-            longitude: { type: "number" }
-        },
-        required: ["latitude", "longitude"],
-        additionalProperties: false
+      type: "object",
+      properties: {
+        latitude: { type: "number" },
+        longitude: { type: "number" },
+      },
+      required: ["latitude", "longitude"],
+      additionalProperties: false,
     },
-    strict: true
-}];
+    strict: true,
+  },
+];
 
 const stream = await openai.responses.create({
-    model: "gpt-5.6",
-    input: [{ role: "user", content: "What's the weather like in Paris today?" }],
-    tools,
-    stream: true,
-    store: true,
+  model: "gpt-5.6",
+  input: [{ role: "user", content: "What's the weather like in Paris today?" }],
+  tools,
+  stream: true,
+  store: true,
 });
 
 for await (const event of stream) {
-    console.log(event)
+  console.log(event);
 }
 ```
 
@@ -777,15 +782,15 @@ for event in stream:
 const finalToolCalls = {};
 
 for await (const event of stream) {
-    if (event.type === 'response.output_item.added') {
-        finalToolCalls[event.output_index] = event.item;
-    } else if (event.type === 'response.function_call_arguments.delta') {
-        const index = event.output_index;
+  if (event.type === "response.output_item.added") {
+    finalToolCalls[event.output_index] = event.item;
+  } else if (event.type === "response.function_call_arguments.delta") {
+    const index = event.output_index;
 
-        if (finalToolCalls[index]) {
-            finalToolCalls[index].arguments += event.delta;
-        }
+    if (finalToolCalls[index]) {
+      finalToolCalls[index].arguments += event.delta;
     }
+  }
 }
 ```
 
@@ -1106,11 +1111,13 @@ print(response.output)
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const grammar = "^(?P<month>January|February|March|April|May|June|July|August|September|October|November|December)\s+(?P<day>\d{1,2})(?:st|nd|rd|th)?\s+(?P<year>\d{4})\s+at\s+(?P<hour>0?[1-9]|1[0-2])(?P<ampm>AM|PM)$";
+const grammar =
+  "^(?P<month>January|February|March|April|May|June|July|August|September|October|November|December)\\s+(?P<day>\\d{1,2})(?:st|nd|rd|th)?\\s+(?P<year>\\d{4})\\s+at\\s+(?P<hour>0?[1-9]|1[0-2])(?P<ampm>AM|PM)$";
 
 const response = await client.responses.create({
   model: "gpt-5.6",
-  input: "Use the timestamp tool to save a timestamp for August 7th 2025 at 10AM.",
+  input:
+    "Use the timestamp tool to save a timestamp for August 7th 2025 at 10AM.",
   tools: [
     {
       type: "custom",

@@ -1,16 +1,18 @@
 ---
-title: Monitor waiting room status
 description: Monitor active users and queue status in real time.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Monitor waiting room status
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitor waiting room status
 
-# Monitor waiting room status
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can monitor the status of your waiting rooms using the [dashboard](#status-in-the-dashboard) or the [API](#status-in-the-api).
 
@@ -46,12 +48,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Waiting Rooms Read`
 * `Waiting Rooms Write`
 
-**Get waiting room status**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/status" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The response is:
@@ -67,12 +67,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Waiting Rooms Read`
 * `Waiting Rooms Write`
 
-**Waiting room details**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 The endpoint above [fetches all settings](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/get/) for a configured waiting room:
@@ -129,7 +127,14 @@ Note
 
 Note that Waiting Room is designed to handle legitimate traffic. If you notice frequent or abnormal queueing behavior, ensure that you are properly handling malicious and automated traffic using Cloudflare security products.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room/#page","headline":"Monitor waiting room status · Cloudflare Waiting Room docs","description":"Monitor active users and queue status in real time.","url":"https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/monitor-waiting-room/","name":"Monitor waiting room status"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room/#page","headline":"Monitor waiting room status · Cloudflare Waiting Room docs","description":"Monitor active users and queue status in real time.","url":"https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

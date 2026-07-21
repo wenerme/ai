@@ -1,16 +1,18 @@
 ---
-title: SQL reference
 description: Comprehensive reference for SQL syntax, functions, and data types supported in R2 SQL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: SQL reference
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SQL reference
 
-# SQL reference
+Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/sql-reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -105,7 +107,6 @@ SELECT region, total_amount * 1.1 AS total_with_tax FROM my_namespace.sales_data
 ```sql
 -- Unique combinations
 SELECT DISTINCT region, department FROM my_namespace.sales_data
-
 
 -- First row per region by amount
 SELECT DISTINCT ON (region) region, customer_id, total_amount
@@ -233,7 +234,6 @@ FROM namespace.table1 alias1
   ON alias1.column = alias2.column
 [WHERE conditions]
 
-
 -- Implicit join
 SELECT columns
 FROM namespace.table1 alias1, namespace.table2 alias2
@@ -282,7 +282,6 @@ Nested (parenthesized) joins are not supported. Write multi-way joins as a flat 
 ```sql
 -- Not supported
 SELECT * FROM (t1 JOIN t2 ON t1.id = t2.id) JOIN t3 ON t2.id = t3.id
-
 
 -- Supported
 SELECT * FROM t1 JOIN t2 ON t1.id = t2.id JOIN t3 ON t2.id = t3.id
@@ -367,7 +366,7 @@ GROUP BY zone_id
 LIMIT 10
 ```
 
-Warning
+Caution
 
 `NOT IN` subqueries are not supported on nullable columns. If the subquery column can contain `NULL` values, use `NOT EXISTS` instead.
 
@@ -490,15 +489,12 @@ SELECT * FROM namespace_name.table_name WHERE condition [AND | OR condition ...]
 SELECT * FROM my_namespace.sales_data
 WHERE timestamp BETWEEN '2025-09-24T01:00:00Z' AND '2025-09-25T01:00:00Z'
 
-
 SELECT * FROM my_namespace.sales_data
 WHERE status = 200 AND response_time > 1000
-
 
 SELECT * FROM my_namespace.sales_data
 WHERE (region = 'North' OR region = 'South')
   AND total_amount IS NOT NULL
-
 
 SELECT * FROM my_namespace.sales_data
 WHERE department ILIKE '%eng%'
@@ -524,7 +520,6 @@ SELECT department, COUNT(*) AS dept_count
 FROM my_namespace.sales_data
 GROUP BY department
 
-
 SELECT department, category, SUM(total_amount) AS total
 FROM my_namespace.sales_data
 GROUP BY department, category
@@ -544,12 +539,10 @@ SELECT department, SUM(total_amount) AS total
 FROM my_namespace.sales_data
 GROUP BY ROLLUP(department)
 
-
 -- Every combination of department and category
 SELECT department, category, SUM(total_amount) AS total
 FROM my_namespace.sales_data
 GROUP BY CUBE(department, category)
-
 
 -- Explicit groupings
 SELECT department, category, SUM(total_amount) AS total
@@ -577,7 +570,6 @@ SELECT department, COUNT(*) AS dept_count
 FROM my_namespace.sales_data
 GROUP BY department
 HAVING COUNT(*) > 1000
-
 
 SELECT region, SUM(total_amount) AS total
 FROM my_namespace.sales_data
@@ -607,7 +599,6 @@ FROM my_namespace.sales_data
 WHERE total_amount IS NOT NULL
 ORDER BY total_amount DESC
 LIMIT 50
-
 
 SELECT department, COUNT(*) AS dept_count
 FROM my_namespace.sales_data
@@ -666,7 +657,6 @@ SELECT customer_id, region,
        ROW_NUMBER() OVER (PARTITION BY region ORDER BY total_amount DESC) AS rank_in_region,
        LAG(total_amount) OVER (PARTITION BY region ORDER BY total_amount DESC) AS prev_amount
 FROM my_namespace.sales_data
-
 
 -- Running total with an explicit frame
 SELECT customer_id, total_amount,
@@ -838,10 +828,8 @@ LIMIT 10
 -- CAST
 SELECT CAST(total_amount AS INT) AS amount_int FROM my_namespace.sales_data LIMIT 5
 
-
 -- TRY_CAST (returns NULL on failure instead of error)
 SELECT TRY_CAST(customer_id AS INT) AS id_int FROM my_namespace.sales_data LIMIT 5
-
 
 -- Shorthand (::)
 SELECT total_amount::INT AS amount_int FROM my_namespace.sales_data LIMIT 5
@@ -938,7 +926,14 @@ ORDER BY total_amount DESC
 LIMIT 20
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/#page","headline":"SQL reference · R2 SQL docs","description":"Comprehensive reference for SQL syntax, functions, and data types supported in R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/sql-reference/","name":"SQL reference"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/#page","headline":"SQL reference · R2 SQL docs","description":"Comprehensive reference for SQL syntax, functions, and data types supported in R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 ```

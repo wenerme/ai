@@ -1,16 +1,18 @@
 ---
-title: Manage miscategorization reports
 description: Submit domain miscategorization reports using the Cloudflare API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage miscategorization reports
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage miscategorization reports
 
-# Manage miscategorization reports
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/intel-apis/manage-miscategorization-reports/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will show you how to manage miscategorization of reports. To complete this guide, you will need to generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
@@ -19,9 +21,8 @@ This guide will show you how to manage miscategorization of reports. To complete
 3. Name the token, and grant permissions.
 4. Send a `POST` request to the miscategorization [API endpoint ↗](https://developers.cloudflare.com/api/resources/intel/subresources/miscategorizations/methods/create/). You can find an example below:
 
-**Example of a POST request to miscategorization API**
-
 ```json
+
 export URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/intel/miscategorization"
 curl -X POST "$URL" \
      -H "Authorization: Bearer $TOKEN" \
@@ -55,7 +56,14 @@ You should receive a response with the value `"success": true`:
 
 Once you send the request, the Cloudflare Support team will receive it and will be able to take action.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/intel-apis/manage-miscategorization-reports/#page","headline":"Manage miscategorization reports · Cloudflare Security Center docs","description":"Submit domain miscategorization reports using the Cloudflare API.","url":"https://developers.cloudflare.com/security-center/intel-apis/manage-miscategorization-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/intel-apis/","name":"Threat Intelligence APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/security-center/intel-apis/manage-miscategorization-reports/","name":"Manage miscategorization reports"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/intel-apis/manage-miscategorization-reports/#page","headline":"Manage miscategorization reports · Cloudflare Security Center docs","description":"Submit domain miscategorization reports using the Cloudflare API.","url":"https://developers.cloudflare.com/security-center/intel-apis/manage-miscategorization-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

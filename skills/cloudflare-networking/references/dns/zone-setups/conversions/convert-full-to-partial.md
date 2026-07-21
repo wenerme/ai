@@ -1,16 +1,18 @@
 ---
-title: Convert full setup to partial setup
 description: Convert a full DNS setup to a partial CNAME setup.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Convert full setup to partial setup
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Convert full setup to partial setup
 
-# Convert full setup to partial setup
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you initially configured a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/), you can later convert your zone to use a CNAME setup (also known as partial setup). This guide assumes your zone is already in an [active status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/#active).
 
@@ -23,7 +25,7 @@ A CNAME setup allows you to use [Cloudflare's reverse proxy](https://developers.
 ### Consider CNAME setup limitations
 
 * A CNAME setup requires a CNAME record for each proxied hostname but, following [RFC 1912 ↗](https://datatracker.ietf.org/doc/html/rfc1912#section-2.4), CNAME records are not allowed on the zone apex (`example.com`). With a CNAME setup, you can only proxy the zone apex if your authoritative DNS provider supports [CNAME flattening ↗](https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/) (or an equivalent like ALIAS/ANAME records), or if you create A/AAAA records pointing the apex directly to Cloudflare [anycast IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/). Otherwise, you can only proxy subdomains.
-Warning
+Caution
 Cloudflare only recommends the A/AAAA approach if you use [Static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/) or [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/), because standard Cloudflare anycast IPs can change.
 * Once your zone is using CNAME setup, on the dashboard, you will only be able to create A, AAAA, and CNAME records, which are the DNS record types that can be [proxied](https://developers.cloudflare.com/dns/proxy-status/).
 
@@ -42,13 +44,10 @@ To avoid downtime, replace your Universal SSL certificates with an [advanced cer
 ## 1\. Prepare new DNS provider
 
 1. Export a zone file
-
-  * [ Dashboard ](#tab-panel-8822)
-  * [ API ](#tab-panel-8823)
 To export records using the dashboard:
 
   1. In the Cloudflare dashboard, go to the **DNS Records** page.
-  [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+  [ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
   2. Select **Import and Export**.
   3. Select **Export**.
 To export records using the API, send a [GET request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/export/).
@@ -56,12 +55,10 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `DNS Read`
   * `DNS Write`
-
-**Export DNS Records**
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 2. Import the zone file into your new primary DNS provider.
 3. At your new authoritative DNS provider, create or update records so that you have CNAME records pointing to `{your-hostname}.cdn.cloudflare.net` for every hostname you wish to proxy through Cloudflare.
@@ -72,9 +69,6 @@ www.example.com CNAME www.example.com.cdn.cloudflare.net
 ```
 
 ## 2\. Convert the zone
-
-* [ Dashboard ](#tab-panel-8820)
-* [ API ](#tab-panel-8821)
 
 1. On the Cloudflare dashboard, go to the zone's **Overview** page.
 2. Select **Convert to CNAME DNS Setup** and then **Convert** to confirm.
@@ -109,7 +103,14 @@ Update the nameservers at your domain registrar to point to your new authoritati
 
 In Cloudflare, remove all records that are not of type A, AAAA, or CNAME, and also remove any A, AAAA, or CNAME records for hostnames you do not want to proxy after the conversion. After this cleanup, only the A, AAAA, or CNAME records for hostnames you want to proxy should remain in Cloudflare, and those same hostnames should have CNAME records pointing to `{your-hostname}.cdn.cloudflare.net` at your new authoritative DNS provider.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/#page","headline":"Convert full setup to partial setup · Cloudflare DNS docs","description":"Convert a full DNS setup to a partial CNAME setup.","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/conversions/","name":"DNS setup conversions"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/conversions/convert-full-to-partial/","name":"Convert full setup to partial setup"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/#page","headline":"Convert full setup to partial setup · Cloudflare DNS docs","description":"Convert a full DNS setup to a partial CNAME setup.","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

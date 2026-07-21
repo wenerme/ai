@@ -1,16 +1,18 @@
 ---
-title: Domain categories
 description: Reference information for Domain categories in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Domain categories
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Domain categories
 
-# Domain categories
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Gateway allows you to block known and potential security risks on the public Internet, as well as specific categories of content. Domains are categorized by [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/), Cloudflare's threat intelligence solution. To review the categories for a specific domain, use [Cloudflare Radar](https://developers.cloudflare.com/radar/glossary/#content-categories).
 
@@ -260,13 +262,11 @@ data "cloudflare_zero_trust_gateway_categories_list" "categories" {
   account_id = var.cloudflare_account_id
 }
 
-
 locals {
   main_categories_map = {
     for idx, c in data.cloudflare_zero_trust_gateway_categories_list.categories.result :
     c.name => c.id
   }
-
 
   subcategories_map = merge(flatten([
     for idx, c in data.cloudflare_zero_trust_gateway_categories_list.categories.result : {
@@ -275,7 +275,6 @@ locals {
     }
   ])...)
 }
-
 
 resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_tech_categories" {
   account_id = var.cloudflare_account_id
@@ -291,7 +290,14 @@ resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_tech_categories" {
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#page","headline":"Domain categories · Cloudflare One docs","description":"Reference information for Domain categories in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/domain-categories/","name":"Domain categories"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#page","headline":"Domain categories · Cloudflare One docs","description":"Reference information for Domain categories in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

@@ -1,26 +1,30 @@
 ---
-title: Review Security Insights
 description: Review, filter, and resolve security insights detected across your domains.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Review Security Insights
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Review Security Insights
 
-# Review Security Insights
+Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/security-insights/review-insights/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Check the **Security Insights** tab for a list of detected insights that you should address.
 
 For each detected insight, you can resolve it or archive it, after understanding its risks.
 
 1. In the Cloudflare dashboard, go to the **Security Insights** page.
-[ Go to **Security insights** ](https://dash.cloudflare.com/?to=/:account/security-center)
+[ Go to **Security insights** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Next to the insight you wish to address, select **Details** to review it.
 
 ## Resolve an insight
+
+Caution
 
 Insights will not be automatically removed from your dashboard when you address them. You must either manually [archive insights](#archive-insights), manually trigger another scan or wait for the automatic scan to run as per [scan frequency](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency).
 
@@ -45,7 +49,7 @@ You can export security insights to a CSV format directly from the dashboard.
 To export security insights:
 
 1. In the Cloudflare dashboard, go to the **Security Insights** page.
-[ Go to **Security insights** ](https://dash.cloudflare.com/?to=/:account/security-center)
+[ Go to **Security insights** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Select **Export insights**.
 
 Exporting security insights allow you to perform a deeper analysis of your insights.
@@ -59,7 +63,7 @@ You can archive one or more insights from the dashboard.
 To archive insights:
 
 1. In the Cloudflare dashboard, go to the **Security Insights** page.
-[ Go to **Security insights** ](https://dash.cloudflare.com/?to=/:account/security-center)
+[ Go to **Security insights** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Select the insight(s) you want to archive, then select **Archive selected**.
 
 Alternatively, to archive an insight:
@@ -74,13 +78,20 @@ You can enable alerts for critical insights.
 To enable alerts:
 
 1. In the Cloudflare dashboard, go to the **Security Insights** page.
-[ Go to **Security insights** ](https://dash.cloudflare.com/?to=/:account/security-center)
+[ Go to **Security insights** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Select the security insight(s) you want to create an alert for, then select **Create alert for selected classes**.
 3. Enter the notification name, and choose one or more insights classes to filter a notification.
 4. Select **Add email recipient** and enter an email address to receive the alert.
 5. Select **Save**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/review-insights/#page","headline":"Review Security Insights · Security dashboard docs","description":"Review, filter, and resolve security insights detected across your domains.","url":"https://developers.cloudflare.com/security/security-insights/review-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/security-insights/","name":"Security Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/security/security-insights/review-insights/","name":"Review Security Insights"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/review-insights/#page","headline":"Review Security Insights · Security dashboard docs","description":"Review, filter, and resolve security insights detected across your domains.","url":"https://developers.cloudflare.com/security/security-insights/review-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

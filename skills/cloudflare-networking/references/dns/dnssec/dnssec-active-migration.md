@@ -1,20 +1,22 @@
 ---
-title: Migrate an existing zone with DNSSEC enabled
 description: Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Migrate an existing zone with DNSSEC enabled
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Migrate an existing zone with DNSSEC enabled
 
-# Migrate an existing zone with DNSSEC enabled
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.
 
-Warning
+Caution
 
 This procedure involves cross-importing the [zone signing keys (ZSKs) ↗](https://www.cloudflare.com/learning/dns/dns-records/dnskey-ds-records/) from one provider to the other. To learn more about this, consider this article [about multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/) or refer to [RFC 8901 ↗](https://www.rfc-editor.org/rfc/rfc8901.html).
 
@@ -37,15 +39,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Edit DNSSEC Status**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "status": "active"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"status": "active"
+	}'
 ```
 
 1. On the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, enable **Multi-signer DNSSEC**. Or use the following [API request](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/).
@@ -55,15 +55,13 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Edit DNSSEC Status**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "dnssec_multi_signer": true
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"dnssec_multi_signer": true
+	}'
 ```
 
 ## 2\. Cross-import ZSKs
@@ -77,23 +75,21 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Create DNS Record**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "DNSKEY",
-    "name": "<ZONE_NAME>",
-    "data": {
-        "flags": 256,
-        "protocol": 3,
-        "algorithm": 13,
-        "public_key": "<PUBLIC_KEY>"
-    },
-    "ttl": 3600
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "DNSKEY",
+		"name": "<ZONE_NAME>",
+		"data": {
+				"flags": 256,
+				"protocol": 3,
+				"algorithm": 13,
+				"public_key": "<PUBLIC_KEY>"
+		},
+		"ttl": 3600
+	}'
 ```
 
 1. Get Cloudflare's ZSK using either the API or a query from one of the assigned Cloudflare nameservers.
@@ -175,7 +171,14 @@ multisigner.info. 3600 IN DS 48553 13 2 893709B51A9C53D011A4054B15FC5454BEDF68E7
 
 In this example, both DS records have a TTL of `3600` seconds. Cloudflare's DS record always has the key tag set to `2371`, so the second line of the response is the DS record of the other provider.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/#page","headline":"DNSSEC migration tutorial · Cloudflare DNS docs","description":"Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/dnssec/","name":"DNSSEC"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/dnssec/dnssec-active-migration/","name":"Migrate an existing zone with DNSSEC enabled"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/#page","headline":"DNSSEC migration tutorial · Cloudflare DNS docs","description":"Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Data classification
 description: Understand how Data Classification works in Cloudflare DLP.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Data classification
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Data classification
 
-# Data classification
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Data Classification extends Cloudflare DLP with a reusable layer for identifying, organizing, and labeling sensitive content. Instead of building all detection logic directly inside a DLP profile, you can define labels and reusable classification rules, then apply them in custom DLP profiles.
 
@@ -61,7 +63,14 @@ To get started:
 * [Build a data class](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/) — Create reusable classification rules and apply them in custom DLP profiles.
 * [Configure DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) — Apply detection entries, data classes, and labels in DLP scanning workflows.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/#page","headline":"Data classification · Cloudflare One docs","description":"Understand how Data Classification works in Cloudflare DLP.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/data-loss-prevention/data-classification/","name":"Data classification"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/#page","headline":"Data classification · Cloudflare One docs","description":"Understand how Data Classification works in Cloudflare DLP.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

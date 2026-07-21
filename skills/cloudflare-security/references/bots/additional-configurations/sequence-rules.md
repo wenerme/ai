@@ -1,20 +1,22 @@
 ---
-title: Sequence rules
 description: Detect and mitigate bot traffic based on cookie-based request sequences.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Sequence rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sequence rules
 
-# Sequence rules
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Sequence rules](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/) uses cookies to track the order of requests a user has made and the time between requests and makes them available via [Cloudflare Rules](https://developers.cloudflare.com/rules/). This allows you to write rules that match valid or invalid sequences. The specific cookies used to validate sequences are called sequence cookies.
 
-`431` error
+\`431\` error
 
 Too many concurrent requests to your zone may add cookies that create a header that is too large, causing a `431` error.
 
@@ -46,11 +48,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule via the Cloudflare dashboard
 
-* [  New dashboard ](#tab-panel-7485)
-* [ Old dashboard ](#tab-panel-7486)
-
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:
@@ -102,8 +101,6 @@ Note
 
 The short ID will not be visible until your account team has enabled this feature for you.
 
-**API call**
-
 ```bash
 curl --request PUT \
 https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \
@@ -132,8 +129,6 @@ Note
 
 The short ID will not be visible until your account team has enabled this feature for you.
 
-**API call**
-
 ```bash
 curl --request PUT https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -152,14 +147,10 @@ Cloudflare only stores up to the 10 most recent operations in a sequence for up 
 
 The customer must request endpoint A before endpoint B.
 
-**Valid sequence**
-
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and
 any(cf.sequence.previous_ops[*] == "aaaaaaaa")
 ```
-
-**Invalid sequence**
 
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and
@@ -168,14 +159,10 @@ not any(cf.sequence.previous_ops[*] == "aaaaaaaa")
 
 Customer must request endpoint A at least one second before endpoint B.
 
-**Valid sequence**
-
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and
 cf.sequence.msec_since_op["aaaaaaaa"] ge 1000
 ```
-
-**Invalid sequence**
 
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and
@@ -194,7 +181,14 @@ Cloudflare only supports HTTPS requests since our cookies set the `Secure` attri
 
 Sequence rules is currently in private beta. If you would like to be included in the beta, contact your account team.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/#page","headline":"Sequence rules · Cloudflare bot solutions docs","description":"Detect and mitigate bot traffic based on cookie-based request sequences.","url":"https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/additional-configurations/sequence-rules/","name":"Sequence rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/#page","headline":"Sequence rules · Cloudflare bot solutions docs","description":"Detect and mitigate bot traffic based on cookie-based request sequences.","url":"https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Community Plugins
 description: Browse community-maintained Pages Plugins for asset negotiation, reverse proxying, and more.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Community Plugins
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Community Plugins
 
-# Community Plugins
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/plugins/community-plugins/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following are some of the community-maintained Pages Plugins. If you have created a Pages Plugin and would like to share it with developers, create a PR to add it to this alphabetically-ordered list using the link in the footer.
 
@@ -30,7 +32,14 @@ Allows developers to quickly create a tRPC server with a Cloudflare Pages Functi
 * [pages-plugin-twind ↗](https://github.com/helloimalastair/twind-plugin)
 Automatically injects Tailwind CSS styles into HTML pages after analyzing which classes are used.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/community-plugins/#page","headline":"Community Plugins · Cloudflare Pages docs","description":"Browse community-maintained Pages Plugins for asset negotiation, reverse proxying, and more.","url":"https://developers.cloudflare.com/pages/functions/plugins/community-plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/community-plugins/","name":"Community Plugins"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/plugins/community-plugins/#page","headline":"Community Plugins · Cloudflare Pages docs","description":"Browse community-maintained Pages Plugins for asset negotiation, reverse proxying, and more.","url":"https://developers.cloudflare.com/pages/functions/plugins/community-plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

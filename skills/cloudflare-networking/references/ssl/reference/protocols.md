@@ -1,16 +1,18 @@
 ---
-title: TLS protocols
 description: Explore Cloudflare's support for TLS protocols from 1.0 to 1.3. Learn about differences, security standards, and recommendations on what version to use.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: TLS protocols
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TLS protocols
 
-# TLS protocols
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/reference/protocols/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports the following TLS protocols:
 
@@ -50,7 +52,14 @@ However, not all browser versions support TLS 1.2 and above. Depending on your p
 * [Transport Layer Security ↗](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/)
 * [PCI Security Standards Council ↗](https://www.pcisecuritystandards.org/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/protocols/#page","headline":"TLS protocols · Cloudflare SSL/TLS docs","description":"Explore Cloudflare's support for TLS protocols from 1.0 to 1.3. Learn about differences, security standards, and recommendations on what version to use.","url":"https://developers.cloudflare.com/ssl/reference/protocols/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/reference/protocols/","name":"TLS protocols"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/protocols/#page","headline":"TLS protocols · Cloudflare SSL/TLS docs","description":"Explore Cloudflare's support for TLS protocols from 1.0 to 1.3. Learn about differences, security standards, and recommendations on what version to use.","url":"https://developers.cloudflare.com/ssl/reference/protocols/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

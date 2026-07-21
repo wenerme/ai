@@ -1,16 +1,18 @@
 ---
-title: Monitor detections
 description: Review email threat detection results.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Monitor detections
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Monitor detections
 
-# Monitor detections
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Spam and Malicious emails are blocked outright by Email security, but Suspicious and Spoof dispositions should be monitored. Suspicious messages should be investigated by a security analyst to determine the legitimacy of the message.
 
@@ -41,7 +43,14 @@ Additional information on search can be found on the [Screen criteria](https://d
 
 With Email security, you can export messages to a CSV file. Via the dashboard, you can export up to 1,000 rows. If you want to export all messages, you can use the [API ↗](https://developers.cloudflare.com/api/resources/email%5Fsecurity/subresources/investigate/methods/get/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/#page","headline":"Monitor detections · Cloudflare Learning Paths","description":"Review email threat detection results.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/monitor-your-inbox/","name":"Monitor your email activity"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/","name":"Monitor detections"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/#page","headline":"Monitor detections · Cloudflare Learning Paths","description":"Review email threat detection results.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Optimizing and securing connected transportation systems
 description: This diagram showcases Cloudflare components optimizing connected transportation systems. It illustrates how their technologies minimize latency, ensure reliability, and strengthen security for critical data flow.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Optimizing and securing connected transportation systems
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Optimizing and securing connected transportation systems
 
-# Optimizing and securing connected transportation systems
+Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A connected transport system is an integrated network of vehicles, infrastructure, and/or services that rely on constant data exchange in real-time to improve safety, efficiency, and mobility. Examples include public transportation (buses, trams, and trains), emergency vehicles (ambulances, fire trucks, and police cars), fleet management systems (logistics and delivery trucks), autonomous vehicles, connected infrastructure (traffic lights, road signs), platooning systems (truck convoys), drone delivery vehicles, and connected cars. They can be broadly categorized into:
 
@@ -56,7 +58,14 @@ These components work together to deliver an optimized, secure, and reliable sol
 * [Video - Quick API Shield Demo ↗](https://www.youtube.com/watch?v=zzw2jIGcv5A)
 * [MTLS at Cloudflare](https://developers.cloudflare.com/learning-paths/mtls/concepts/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/#page","headline":"Optimizing and securing connected transportation systems · Cloudflare Reference Architecture docs","description":"This diagram showcases Cloudflare components optimizing connected transportation systems. It illustrates how their technologies minimize latency, ensure reliability, and strengthen security for critical data flow.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/iot/","name":"Internet of Things (IoT)"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/","name":"Optimizing and securing connected transportation systems"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/#page","headline":"Optimizing and securing connected transportation systems · Cloudflare Reference Architecture docs","description":"This diagram showcases Cloudflare components optimizing connected transportation systems. It illustrates how their technologies minimize latency, ensure reliability, and strengthen security for critical data flow.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

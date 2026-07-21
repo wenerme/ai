@@ -1,16 +1,18 @@
 ---
-title: WebRTC
 description: Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: WebRTC
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WebRTC
 
-# WebRTC
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/webrtc-beta/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sub-second latency live streaming (using WHIP) and playback (using WHEP) to unlimited concurrent viewers.
 
@@ -29,10 +31,8 @@ WebRTC streaming is currently in beta, and we'd love to hear what you think. Joi
 Create a live input using one of the two options:
 
 * Use the **Live inputs** page of the Cloudflare dashboard.
-[ Go to **Live inputs** ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 * Make a POST request to the [/live\_inputs API endpoint](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/create/)
-
-**API response from a POST request to /live\_inputs**
 
 ```json
 {
@@ -55,20 +55,16 @@ Every live input has a unique URL that one creator can be stream to. This URL sh
 Copy the URL from either:
 
 * The **Live inputs** page of the Cloudflare dashboard.
-[ Go to **Live inputs** ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 * The `webRTC` key in the API response (see above).
 
 Paste this URL into the example code.
-
-**Simplified example code**
 
 ```javascript
 // Add a <video> element to the HTML page this code runs in:
 // <video id="input-video" autoplay muted></video>
 
-
 import WHIPClient from "./WHIPClient.js";
-
 
 const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTC URL from your live input here
 const videoElement = document.getElementById("input-video");
@@ -84,22 +80,18 @@ You can also use this URL with any client that supports the [WebRTC-HTTP ingesti
 Copy the URL from either:
 
 * The **Live inputs** page of the Cloudflare dashboard.
-[ Go to **Live inputs** ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 * The `webRTCPlayback` key in the API response (see above)
 
 There are no limits on the number of concurrent viewers.
 
 Paste this URL into the example code.
 
-**Simplified example code**
-
 ```javascript
 // Add a <video> element to the HTML page this code runs in:
 // <video id="output-video" autoplay muted></video>
 
-
 import WHEPClient from "./WHEPClient.js";
-
 
 const url = "<WEBRTC_URL_FROM_YOUR_LIVE_INPUT>"; // add the webRTCPlayback URL from your live input here
 const videoElement = document.getElementById("output-video");
@@ -164,7 +156,14 @@ You can find the specific version of WHIP and WHEP being used in the `protocol-v
 * WHIP and WHEP must be used together — we do not yet support streaming using RTMP/SRT and playing using WHEP, or streaming using WHIP and playing using HLS or DASH. (coming soon)
 * Once generally available, WebRTC streaming will be priced just like the rest of Cloudflare Stream, based on minutes stored and minutes of video delivered.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/webrtc-beta/#page","headline":"WebRTC · Cloudflare Stream docs","description":"Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/webrtc-beta/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/webrtc-beta/","name":"WebRTC"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/webrtc-beta/#page","headline":"WebRTC · Cloudflare Stream docs","description":"Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/webrtc-beta/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

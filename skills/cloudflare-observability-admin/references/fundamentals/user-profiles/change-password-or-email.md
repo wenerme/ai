@@ -1,16 +1,18 @@
 ---
-title: Email address and password
 description: Learn how to change your email address or password associated with your account.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Email address and password
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Email address and password
 
-# Email address and password
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Change email address
 
@@ -79,7 +81,14 @@ If you still cannot access the email address associated with your Cloudflare acc
 
 Cloudflare requires these steps to prevent account hijacking.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#page","headline":"Email address and password · Cloudflare Fundamentals docs","description":"Learn how to change your email address or password associated with your account.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/user-profiles/","name":"User profiles"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/user-profiles/change-password-or-email/","name":"Email address and password"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#page","headline":"Email address and password · Cloudflare Fundamentals docs","description":"Learn how to change your email address or password associated with your account.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

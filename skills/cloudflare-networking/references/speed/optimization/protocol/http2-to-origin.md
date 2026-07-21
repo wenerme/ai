@@ -1,16 +1,18 @@
 ---
-title: HTTP/2 to Origin
 description: Use HTTP/2 for connections between Cloudflare and your origin.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: HTTP/2 to Origin
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP/2 to Origin
 
-# HTTP/2 to Origin
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A protocol is a set of rules governing the exchange or transmission of data between devices. One of the most important protocols that run on the human-computer interaction layer, where applications can access the network services, is HTTP (Hypertext Transfer Protocol).
 
@@ -29,7 +31,7 @@ At Cloudflare, HTTP/2 connection to the origin is enabled by default.
 If you wish to disable HTTP/2 to Origin, you can follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to the **Protocol Optimization** tab and under **HTTP/2 to Origin** set the toggle to **Off**.
 
 ## Connection multiplexing
@@ -101,15 +103,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Settings Write`
 * `Zone Write`
 
-**Change Origin H2 Max Streams Setting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/origin_h2_max_streams" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "value": 100
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"value": 100
+	}'
 ```
 
 Refer to the [API documentation](https://developers.cloudflare.com/api/python/resources/zones/subresources/settings/methods/edit/) for more information.
@@ -195,7 +195,14 @@ Note that if the origin does not support HTTP/2, Cloudflare will initiate an HTT
 
 If you are unsure if your server supports HTTP/2, we suggest checking your origin server's documentation or using a testing tool for HTTP/2 implementation (for example, [h2spec ↗](https://github.com/summerwind/h2spec)).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/#page","headline":"HTTP/2 to Origin · Cloudflare Speed docs","description":"Use HTTP/2 for connections between Cloudflare and your origin.","url":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/protocol/","name":"Protocol optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/protocol/http2-to-origin/","name":"HTTP/2 to Origin"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/#page","headline":"HTTP/2 to Origin · Cloudflare Speed docs","description":"Use HTTP/2 for connections between Cloudflare and your origin.","url":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

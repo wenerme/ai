@@ -1,16 +1,18 @@
 ---
-title: Autonomous responses
 description: Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Autonomous responses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Autonomous responses
 
-# Autonomous responses
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Send messages and trigger LLM responses from the server without a human action. Use this for scheduled follow-ups, queue processing, email-triggered responses, and autonomous agent workflows.
 
@@ -41,54 +43,45 @@ Use `saveMessages()` when the caller can wait for the model turn to finish.
 
 Use `submitMessages()` with Think when the caller needs a fast durable receipt, idempotent retry, and later status inspection. This is useful for webhook handlers, RPC callers, and parent Workers with strict timeout limits:
 
-* [  JavaScript ](#tab-panel-5613)
-* [  TypeScript ](#tab-panel-5614)
-
-**JavaScript**
-
 ```js
 const submission = await this.submitMessages(
-  [
-    {
-      id: crypto.randomUUID(),
-      role: "user",
-      parts: [
-        { type: "text", text: `Webhook event: ${JSON.stringify(payload)}` },
-      ],
-    },
-  ],
-  { idempotencyKey: payload.id },
+	[
+		{
+			id: crypto.randomUUID(),
+			role: "user",
+			parts: [
+				{ type: "text", text: `Webhook event: ${JSON.stringify(payload)}` },
+			],
+		},
+	],
+	{ idempotencyKey: payload.id },
 );
 
-
 return Response.json({
-  submissionId: submission.submissionId,
-  status: submission.status,
-  accepted: submission.accepted,
+	submissionId: submission.submissionId,
+	status: submission.status,
+	accepted: submission.accepted,
 });
 ```
 
-**TypeScript**
-
 ```ts
 const submission = await this.submitMessages(
-  [
-    {
-      id: crypto.randomUUID(),
-      role: "user",
-      parts: [
-        { type: "text", text: `Webhook event: ${JSON.stringify(payload)}` },
-      ],
-    },
-  ],
-  { idempotencyKey: payload.id },
+	[
+		{
+			id: crypto.randomUUID(),
+			role: "user",
+			parts: [
+				{ type: "text", text: `Webhook event: ${JSON.stringify(payload)}` },
+			],
+		},
+	],
+	{ idempotencyKey: payload.id },
 );
 
-
 return Response.json({
-  submissionId: submission.submissionId,
-  status: submission.status,
-  accepted: submission.accepted,
+	submissionId: submission.submissionId,
+	status: submission.status,
+	accepted: submission.accepted,
 });
 ```
 
@@ -116,31 +109,24 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
-* [  JavaScript ](#tab-panel-5611)
-* [  TypeScript ](#tab-panel-5612)
-
-**JavaScript**
-
 ```js
 const stable = await this.waitUntilStable({ timeout: 30_000 });
 if (!stable) {
-  // The conversation is blocked on a user interaction or an in-flight
-  // stream that did not complete within 30 seconds.
-  console.warn("Conversation not stable, skipping server-driven message");
-  return;
+	// The conversation is blocked on a user interaction or an in-flight
+	// stream that did not complete within 30 seconds.
+	console.warn("Conversation not stable, skipping server-driven message");
+	return;
 }
 // Safe to read this.messages and call saveMessages.
 ```
 
-**TypeScript**
-
 ```ts
 const stable = await this.waitUntilStable({ timeout: 30_000 });
 if (!stable) {
-  // The conversation is blocked on a user interaction or an in-flight
-  // stream that did not complete within 30 seconds.
-  console.warn("Conversation not stable, skipping server-driven message");
-  return;
+	// The conversation is blocked on a user interaction or an in-flight
+	// stream that did not complete within 30 seconds.
+	console.warn("Conversation not stable, skipping server-driven message");
+	return;
 }
 // Safe to read this.messages and call saveMessages.
 ```
@@ -153,94 +139,79 @@ Without this guard, you risk reading stale messages or overlapping with an in-fl
 
 A daily digest agent that summarizes activity every morning. Cron schedules are idempotent by default, so calling `schedule()` in `onStart` is safe — it does not create duplicates across Durable Object restarts.
 
-* [  JavaScript ](#tab-panel-5619)
-* [  TypeScript ](#tab-panel-5620)
-
-**JavaScript**
-
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
 
-
 export class DigestAgent extends AIChatAgent {
-  async onChatMessage() {
-    // ... your LLM call
-  }
+	async onChatMessage() {
+		// ... your LLM call
+	}
 
+	async onStart() {
+		await this.schedule("0 9 * * *", "dailyDigest");
+	}
 
-  async onStart() {
-    await this.schedule("0 9 * * *", "dailyDigest");
-  }
+	async dailyDigest() {
+		const stable = await this.waitUntilStable({ timeout: 30_000 });
+		if (!stable) {
+			console.warn("Conversation not stable, skipping daily digest");
+			return;
+		}
 
-
-  async dailyDigest() {
-    const stable = await this.waitUntilStable({ timeout: 30_000 });
-    if (!stable) {
-      console.warn("Conversation not stable, skipping daily digest");
-      return;
-    }
-
-
-    await this.saveMessages((messages) => [
-      ...messages,
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        parts: [
-          {
-            type: "text",
-            text: "Summarize what happened since your last digest.",
-          },
-        ],
-        createdAt: new Date(),
-      },
-    ]);
-    // At this point the LLM has responded and the message is persisted.
-  }
+		await this.saveMessages((messages) => [
+			...messages,
+			{
+				id: crypto.randomUUID(),
+				role: "user",
+				parts: [
+					{
+						type: "text",
+						text: "Summarize what happened since your last digest.",
+					},
+				],
+				createdAt: new Date(),
+			},
+		]);
+		// At this point the LLM has responded and the message is persisted.
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
 
-
 export class DigestAgent extends AIChatAgent {
-  async onChatMessage() {
-    // ... your LLM call
-  }
+	async onChatMessage() {
+		// ... your LLM call
+	}
 
+	async onStart() {
+		await this.schedule("0 9 * * *", "dailyDigest");
+	}
 
-  async onStart() {
-    await this.schedule("0 9 * * *", "dailyDigest");
-  }
+	async dailyDigest() {
+		const stable = await this.waitUntilStable({ timeout: 30_000 });
+		if (!stable) {
+			console.warn("Conversation not stable, skipping daily digest");
+			return;
+		}
 
-
-  async dailyDigest() {
-    const stable = await this.waitUntilStable({ timeout: 30_000 });
-    if (!stable) {
-      console.warn("Conversation not stable, skipping daily digest");
-      return;
-    }
-
-
-    await this.saveMessages((messages) => [
-      ...messages,
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        parts: [
-          {
-            type: "text",
-            text: "Summarize what happened since your last digest.",
-          },
-        ],
-        createdAt: new Date(),
-      },
-    ]);
-    // At this point the LLM has responded and the message is persisted.
-  }
+		await this.saveMessages((messages) => [
+			...messages,
+			{
+				id: crypto.randomUUID(),
+				role: "user",
+				parts: [
+					{
+						type: "text",
+						text: "Summarize what happened since your last digest.",
+					},
+				],
+				createdAt: new Date(),
+			},
+		]);
+		// At this point the LLM has responded and the message is persisted.
+	}
 }
 ```
 
@@ -250,30 +221,27 @@ The function form of `saveMessages` — `saveMessages((messages) => [...])` — 
 
 When you control the trigger, a simple loop is the clearest pattern:
 
-**TypeScript**
-
 ```ts
 async processQueue() {
-  for (const task of this.taskQueue) {
-    const stable = await this.waitUntilStable({ timeout: 30_000 });
-    if (!stable) {
-      console.warn("Conversation not stable, stopping queue processing");
-      break;
-    }
+	for (const task of this.taskQueue) {
+		const stable = await this.waitUntilStable({ timeout: 30_000 });
+		if (!stable) {
+			console.warn("Conversation not stable, stopping queue processing");
+			break;
+		}
 
-
-    await this.saveMessages((messages) => [
-      ...messages,
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        parts: [{ type: "text", text: task }],
-        createdAt: new Date(),
-      },
-    ]);
-    // LLM has responded. this.messages is updated. Next iteration.
-  }
-  this.taskQueue = [];
+		await this.saveMessages((messages) => [
+			...messages,
+			{
+				id: crypto.randomUUID(),
+				role: "user",
+				parts: [{ type: "text", text: task }],
+				createdAt: new Date(),
+			},
+		]);
+		// LLM has responded. this.messages is updated. Next iteration.
+	}
+	this.taskQueue = [];
 }
 ```
 
@@ -281,111 +249,98 @@ No special hooks needed — `saveMessages` returns after the full turn completes
 
 ### Email-triggered
 
-**TypeScript**
-
 ```ts
 async onEmail(email: AgentEmail) {
-  const stable = await this.waitUntilStable({ timeout: 30_000 });
-  if (!stable) {
-    console.warn("Conversation not stable, cannot process email");
-    return;
-  }
+	const stable = await this.waitUntilStable({ timeout: 30_000 });
+	if (!stable) {
+		console.warn("Conversation not stable, cannot process email");
+		return;
+	}
 
+	const subject = email.headers.get("subject") ?? "(no subject)";
+	const body = await new Response(email.raw).text();
 
-  const subject = email.headers.get("subject") ?? "(no subject)";
-  const body = await new Response(email.raw).text();
-
-
-  await this.saveMessages((messages) => [
-    ...messages,
-    {
-      id: crypto.randomUUID(),
-      role: "user",
-      parts: [
-        {
-          type: "text",
-          text: `Email from ${email.from}: ${subject}\n\n${body}`,
-        },
-      ],
-      createdAt: new Date(),
-    },
-  ]);
+	await this.saveMessages((messages) => [
+		...messages,
+		{
+			id: crypto.randomUUID(),
+			role: "user",
+			parts: [
+				{
+					type: "text",
+					text: `Email from ${email.from}: ${subject}\n\n${body}`,
+				},
+			],
+			createdAt: new Date(),
+		},
+	]);
 }
 ```
 
 ### Webhook-triggered
 
-**TypeScript**
-
 ```ts
 async onRequest(request: Request): Promise<Response> {
-  const url = new URL(request.url);
+	const url = new URL(request.url);
 
+	if (url.pathname.endsWith("/webhook") && request.method === "POST") {
+		const stable = await this.waitUntilStable({ timeout: 30_000 });
+		if (!stable) {
+			return new Response("Agent is busy", { status: 503 });
+		}
 
-  if (url.pathname.endsWith("/webhook") && request.method === "POST") {
-    const stable = await this.waitUntilStable({ timeout: 30_000 });
-    if (!stable) {
-      return new Response("Agent is busy", { status: 503 });
-    }
+		const payload = await request.json();
+		try {
+			await this.saveMessages((messages) => [
+				...messages,
+				{
+					id: crypto.randomUUID(),
+					role: "user",
+					parts: [
+						{
+							type: "text",
+							text: `Webhook event: ${JSON.stringify(payload)}`,
+						},
+					],
+					createdAt: new Date(),
+				},
+			]);
+			return new Response("ok");
+		} catch (error) {
+			console.error("Failed to process webhook:", error);
+			return new Response("Internal error", { status: 500 });
+		}
+	}
 
-
-    const payload = await request.json();
-    try {
-      await this.saveMessages((messages) => [
-        ...messages,
-        {
-          id: crypto.randomUUID(),
-          role: "user",
-          parts: [
-            {
-              type: "text",
-              text: `Webhook event: ${JSON.stringify(payload)}`,
-            },
-          ],
-          createdAt: new Date(),
-        },
-      ]);
-      return new Response("ok");
-    } catch (error) {
-      console.error("Failed to process webhook:", error);
-      return new Response("Internal error", { status: 500 });
-    }
-  }
-
-
-  return super.onRequest(request);
+	return super.onRequest(request);
 }
 ```
 
 If the webhook provider expects a quick response, use `submitMessages()` instead. This gives the provider a durable acknowledgement and lets it safely retry with the same idempotency key:
 
-**TypeScript**
-
 ```ts
 async onRequest(request: Request): Promise<Response> {
-  if (request.method !== "POST") return super.onRequest(request);
+	if (request.method !== "POST") return super.onRequest(request);
 
+	const payload = await request.json<{ id: string }>();
+	const submission = await this.submitMessages(
+		[
+			{
+				id: crypto.randomUUID(),
+				role: "user",
+				parts: [
+					{ type: "text", text: `Webhook event: ${JSON.stringify(payload)}` },
+				],
+			},
+		],
+		{ idempotencyKey: payload.id },
+	);
 
-  const payload = await request.json<{ id: string }>();
-  const submission = await this.submitMessages(
-    [
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        parts: [
-          { type: "text", text: `Webhook event: ${JSON.stringify(payload)}` },
-        ],
-      },
-    ],
-    { idempotencyKey: payload.id },
-  );
-
-
-  return Response.json({
-    submissionId: submission.submissionId,
-    accepted: submission.accepted,
-    status: submission.status,
-  });
+	return Response.json({
+		submissionId: submission.submissionId,
+		accepted: submission.accepted,
+		status: submission.status,
+	});
 }
 ```
 
@@ -393,24 +348,21 @@ async onRequest(request: Request): Promise<Response> {
 
 Use `persistMessages` to add messages that the LLM will see on its next turn, without starting a turn now:
 
-**TypeScript**
-
 ```ts
 async addBackgroundContext(data: string) {
-  const stable = await this.waitUntilStable({ timeout: 30_000 });
-  if (!stable) return;
+	const stable = await this.waitUntilStable({ timeout: 30_000 });
+	if (!stable) return;
 
-
-  await this.persistMessages([
-    ...this.messages,
-    {
-      id: crypto.randomUUID(),
-      role: "user",
-      parts: [{ type: "text", text: `[Background context]: ${data}` }],
-      createdAt: new Date(),
-    },
-  ]);
-  // Message is stored and broadcast to clients, but no LLM call happens.
+	await this.persistMessages([
+		...this.messages,
+		{
+			id: crypto.randomUUID(),
+			role: "user",
+			parts: [{ type: "text", text: `[Background context]: ${data}` }],
+			createdAt: new Date(),
+		},
+	]);
+	// Message is stored and broadcast to clients, but no LLM call happens.
 }
 ```
 
@@ -420,67 +372,54 @@ async addBackgroundContext(data: string) {
 
 ### Broadcasting state
 
-* [  JavaScript ](#tab-panel-5615)
-* [  TypeScript ](#tab-panel-5616)
-
-**JavaScript**
-
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
 
-
 export class ChatAgent extends AIChatAgent {
-  async onChatMessage() {
-    // ... your LLM call
-  }
+	async onChatMessage() {
+		// ... your LLM call
+	}
 
-
-  async onChatResponse(result) {
-    if (result.status === "completed") {
-      this.broadcast(JSON.stringify({ streaming: false }));
-    }
-  }
+	async onChatResponse(result) {
+		if (result.status === "completed") {
+			this.broadcast(JSON.stringify({ streaming: false }));
+		}
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { AIChatAgent, type ChatResponseResult } from "@cloudflare/ai-chat";
 
-
 export class ChatAgent extends AIChatAgent {
-  async onChatMessage() {
-    // ... your LLM call
-  }
+	async onChatMessage() {
+		// ... your LLM call
+	}
 
-
-  protected async onChatResponse(result: ChatResponseResult) {
-    if (result.status === "completed") {
-      this.broadcast(JSON.stringify({ streaming: false }));
-    }
-  }
+	protected async onChatResponse(result: ChatResponseResult) {
+		if (result.status === "completed") {
+			this.broadcast(JSON.stringify({ streaming: false }));
+		}
+	}
 }
 ```
 
 ### Analytics
 
-**TypeScript**
-
 ```ts
 protected async onChatResponse(result: ChatResponseResult) {
-  try {
-    await fetch("https://analytics.example.com/event", {
-      method: "POST",
-      body: JSON.stringify({
-        requestId: result.requestId,
-        status: result.status,
-        continuation: result.continuation,
-      }),
-    });
-  } catch (error) {
-    console.error("Analytics reporting failed:", error);
-  }
+	try {
+		await fetch("https://analytics.example.com/event", {
+			method: "POST",
+			body: JSON.stringify({
+				requestId: result.requestId,
+				status: result.status,
+				continuation: result.continuation,
+			}),
+		});
+	} catch (error) {
+		console.error("Analytics reporting failed:", error);
+	}
 }
 ```
 
@@ -488,30 +427,26 @@ protected async onChatResponse(result: ChatResponseResult) {
 
 An agent can inspect its own response and decide whether to continue. This works for user-initiated messages too — you cannot predict what the user will ask, but you can react to what the agent said.
 
-**TypeScript**
-
 ```ts
 protected async onChatResponse(result: ChatResponseResult) {
-  if (result.status !== "completed") return;
+	if (result.status !== "completed") return;
 
+	const lastText = result.message.parts
+		.filter((p) => p.type === "text")
+		.map((p) => p.text)
+		.join("");
 
-  const lastText = result.message.parts
-    .filter((p) => p.type === "text")
-    .map((p) => p.text)
-    .join("");
-
-
-  if (lastText.includes("[NEEDS_MORE_RESEARCH]")) {
-    await this.saveMessages((messages) => [
-      ...messages,
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        parts: [{ type: "text", text: "Continue your research." }],
-        createdAt: new Date(),
-      },
-    ]);
-  }
+	if (lastText.includes("[NEEDS_MORE_RESEARCH]")) {
+		await this.saveMessages((messages) => [
+			...messages,
+			{
+				id: crypto.randomUUID(),
+				role: "user",
+				parts: [{ type: "text", text: "Continue your research." }],
+				createdAt: new Date(),
+			},
+		]);
+	}
 }
 ```
 
@@ -521,22 +456,20 @@ When `saveMessages` is called from inside `onChatResponse`, the inner turn runs 
 
 When queue items can be added by external events (user messages, webhooks) at any time, `onChatResponse` lets you drain the queue after every response regardless of who triggered it:
 
-**TypeScript**
-
 ```ts
 protected async onChatResponse(result: ChatResponseResult) {
-  if (result.status === "completed" && this.taskQueue.length > 0) {
-    const next = this.taskQueue.shift()!;
-    await this.saveMessages((messages) => [
-      ...messages,
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        parts: [{ type: "text", text: next }],
-        createdAt: new Date(),
-      },
-    ]);
-  }
+	if (result.status === "completed" && this.taskQueue.length > 0) {
+		const next = this.taskQueue.shift()!;
+		await this.saveMessages((messages) => [
+			...messages,
+			{
+				id: crypto.randomUUID(),
+				role: "user",
+				parts: [{ type: "text", text: next }],
+				createdAt: new Date(),
+			},
+		]);
+	}
 }
 ```
 
@@ -566,41 +499,37 @@ Use `isStreaming` for most UI concerns (disabling the send button, showing a loa
 import { useAgent } from "agents/react";
 import { useAgentChat } from "@cloudflare/ai-chat/react";
 
-
 function Chat() {
-  const agent = useAgent({ agent: "ChatAgent" });
-  const { messages, sendMessage, isStreaming, isServerStreaming } =
-    useAgentChat({ agent });
+	const agent = useAgent({ agent: "ChatAgent" });
+	const { messages, sendMessage, isStreaming, isServerStreaming } =
+		useAgentChat({ agent });
 
+	return (
+		<div>
+			{messages.map((m) => (
+				<div key={m.id}>{/* render message */}</div>
+			))}
 
-  return (
-    <div>
-      {messages.map((m) => (
-        <div key={m.id}>{/* render message */}</div>
-      ))}
+			{isServerStreaming && <div>Agent is working in the background...</div>}
+			{!isServerStreaming && isStreaming && <div>Agent is responding...</div>}
 
-
-      {isServerStreaming && <div>Agent is working in the background...</div>}
-      {!isServerStreaming && isStreaming && <div>Agent is responding...</div>}
-
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const input = e.currentTarget.elements.namedItem(
-            "input",
-          ) as HTMLInputElement;
-          sendMessage({ text: input.value });
-          input.value = "";
-        }}
-      >
-        <input name="input" placeholder="Type a message..." />
-        <button type="submit" disabled={isStreaming}>
-          Send
-        </button>
-      </form>
-    </div>
-  );
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					const input = e.currentTarget.elements.namedItem(
+						"input",
+					) as HTMLInputElement;
+					sendMessage({ text: input.value });
+					input.value = "";
+				}}
+			>
+				<input name="input" placeholder="Type a message..." />
+				<button type="submit" disabled={isStreaming}>
+					Send
+				</button>
+			</form>
+		</div>
+	);
 }
 ```
 
@@ -628,48 +557,39 @@ The `messageConcurrency` setting on `AIChatAgent` controls how overlapping user 
 
 Pass an `AbortSignal` when the same Durable Object starts and controls the turn:
 
-* [  JavaScript ](#tab-panel-5617)
-* [  TypeScript ](#tab-panel-5618)
-
-**JavaScript**
-
 ```js
 const controller = new AbortController();
 const result = await this.saveMessages(
-  [
-    {
-      id: crypto.randomUUID(),
-      role: "user",
-      parts: [{ type: "text", text: "Run the long analysis." }],
-    },
-  ],
-  { signal: controller.signal },
+	[
+		{
+			id: crypto.randomUUID(),
+			role: "user",
+			parts: [{ type: "text", text: "Run the long analysis." }],
+		},
+	],
+	{ signal: controller.signal },
 );
 
-
 if (result.status === "aborted") {
-  // Partial chunks already streamed are persisted.
+	// Partial chunks already streamed are persisted.
 }
 ```
-
-**TypeScript**
 
 ```ts
 const controller = new AbortController();
 const result = await this.saveMessages(
-  [
-    {
-      id: crypto.randomUUID(),
-      role: "user",
-      parts: [{ type: "text", text: "Run the long analysis." }],
-    },
-  ],
-  { signal: controller.signal },
+	[
+		{
+			id: crypto.randomUUID(),
+			role: "user",
+			parts: [{ type: "text", text: "Run the long analysis." }],
+		},
+	],
+	{ signal: controller.signal },
 );
 
-
 if (result.status === "aborted") {
-  // Partial chunks already streamed are persisted.
+	// Partial chunks already streamed are persisted.
 }
 ```
 
@@ -693,15 +613,30 @@ Use `cancelFiber(fiberId)` when the durable unit was accepted with `startFiber()
 
 ## Next steps
 
-[ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) Full API reference for AIChatAgent, saveMessages, persistMessages, and onChatResponse.
+### [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
 
-[ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) Delayed, cron, and interval scheduling for agent callbacks.
+ Full API reference for AIChatAgent, saveMessages, persistMessages, and onChatResponse.
 
-[ Webhooks ](https://developers.cloudflare.com/agents/communication-channels/webhooks/) Receive webhook events and route them to agent instances.
+### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
-[ Email routing ](https://developers.cloudflare.com/agents/communication-channels/email/) Handle inbound emails in your agent.
+ Delayed, cron, and interval scheduling for agent callbacks.
+
+### [ Webhooks ](https://developers.cloudflare.com/agents/communication-channels/webhooks/)
+
+ Receive webhook events and route them to agent instances.
+
+### [ Email routing ](https://developers.cloudflare.com/agents/communication-channels/email/)
+
+ Handle inbound emails in your agent.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/#page","headline":"Autonomous responses · Cloudflare Agents docs","description":"Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/communication-channels/","name":"Communication channels"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/communication-channels/chat/","name":"Chat"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/communication-channels/chat/autonomous-responses/","name":"Autonomous responses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/#page","headline":"Autonomous responses · Cloudflare Agents docs","description":"Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

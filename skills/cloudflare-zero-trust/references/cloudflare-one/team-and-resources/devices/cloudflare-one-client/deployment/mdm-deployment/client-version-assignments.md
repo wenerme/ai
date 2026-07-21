@@ -1,16 +1,18 @@
 ---
-title: Client version assignments
 description: Assign a target Cloudflare One Client version to groups of devices from the Cloudflare dashboard.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Client version assignments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Client version assignments
 
-# Client version assignments
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Client version assignments let you target a specific Cloudflare One Client (formerly WARP) version at a group of devices from the Cloudflare dashboard, without touching your MDM file or asking users to update the client themselves.
 
@@ -53,10 +55,6 @@ When a device is targeted by a deployment group, the client suppresses the local
 
 ## Set up a deployment group
 
-* [ Dashboard ](#tab-panel-8150)
-* [ API ](#tab-panel-8151)
-* [ Terraform (v6) ](#tab-panel-8152)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices**.
 2. Select the **Management** tab.
 3. Under **Client version assignments**, select **Manage**.
@@ -68,29 +66,27 @@ When a device is targeted by a deployment group, the client suppresses the local
 
 Send a `POST` request to the [Deployment Groups API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/deployment%5Fgroups/methods/create/):
 
-**Create deployment group**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deployment-groups" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Engineering Ring 0",
-    "version_config": [
-        {
-            "target_environment": "windows",
-            "version": "2026.6.0"
-        },
-        {
-            "target_environment": "macos",
-            "version": "2026.6.0"
-        }
-    ],
-    "policy_ids": [
-        "<POLICY_UUID_1>",
-        "<POLICY_UUID_2>"
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Engineering Ring 0",
+		"version_config": [
+				{
+						"target_environment": "windows",
+						"version": "2026.6.0"
+				},
+				{
+						"target_environment": "macos",
+						"version": "2026.6.0"
+				}
+		],
+		"policy_ids": [
+				"<POLICY_UUID_1>",
+				"<POLICY_UUID_2>"
+		]
+	}'
 ```
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
@@ -99,22 +95,22 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deployme
 2. Create a deployment group using the [cloudflare\_zero\_trust\_device\_deployment\_groups ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdeployment%5Fgroups) resource:
 ```tf
 resource "cloudflare_zero_trust_device_deployment_groups" "example" {
-  account_id = var.cloudflare_account_id
-  name       = "Engineering Ring 0"
-  version_config = [
-    {
-      target_environment = "windows"
-      version            = "2026.6.0"
-    },
-    {
-      target_environment = "macos"
-      version            = "2026.6.0"
-    },
-  ]
-  policy_ids = [
-    "<POLICY_UUID_1>",
-    "<POLICY_UUID_2>",
-  ]
+	account_id = var.cloudflare_account_id
+	name       = "Engineering Ring 0"
+	version_config = [
+		{
+			target_environment = "windows"
+			version            = "2026.6.0"
+		},
+		{
+			target_environment = "macos"
+			version            = "2026.6.0"
+		},
+	]
+	policy_ids = [
+		"<POLICY_UUID_1>",
+		"<POLICY_UUID_2>",
+	]
 }
 ```
 
@@ -160,7 +156,14 @@ Starting in version `2026.6.0`, the client install adds a second persistent OS s
 
 If a device does not receive its assigned version, collect diagnostic logs using [warp-diag](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/). The diagnostic archive includes an `updater/` directory with per-attempt installer logs and a human-readable update history summary that you can share with Cloudflare Support.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/#page","headline":"Client version assignments · Cloudflare One docs","description":"Assign a target Cloudflare One Client version to groups of devices from the Cloudflare dashboard.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/","name":"Client version assignments"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/#page","headline":"Client version assignments · Cloudflare One docs","description":"Assign a target Cloudflare One Client version to groups of devices from the Cloudflare dashboard.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

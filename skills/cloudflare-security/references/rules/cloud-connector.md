@@ -1,16 +1,18 @@
 ---
-title: Cloud Connector
 description: Route matching requests to cloud provider storage buckets and services.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloud Connector
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloud Connector
 
-# Cloud Connector
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/cloud-connector/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloud Connector (Beta) allows you to route matching incoming traffic from your website to a public cloud provider that you define: [Cloudflare R2](https://developers.cloudflare.com/r2/) object storage or an external provider such as AWS, Google Cloud, and Azure. With Cloud Connector, you can manage traffic to cloud-hosted content through the same Cloudflare dashboard you use for the rest of your website, without having to configure additional rules.
 
@@ -52,7 +54,14 @@ Cloud Connector is available in beta to all customers. The maximum number of rul
 | Availability    | Yes  | Yes | Yes      | Yes        |
 | Number of rules | 10   | 25  | 50       | 300        |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/#page","headline":"Cloud Connector · Cloudflare Rules docs","description":"Route matching requests to cloud provider storage buckets and services.","url":"https://developers.cloudflare.com/rules/cloud-connector/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/cloud-connector/","name":"Cloud Connector"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/#page","headline":"Cloud Connector · Cloudflare Rules docs","description":"Route matching requests to cloud provider storage buckets and services.","url":"https://developers.cloudflare.com/rules/cloud-connector/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Error 520
 description: Troubleshoot HTTP 520 error responses.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Error 520
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Error 520
 
-# Error 520
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 520: web server returns an unknown error
 
@@ -63,7 +65,7 @@ To distinguish between the two, check the `CacheStatus` field in the same log re
 * `CacheStatus` is `hit` or `revalidated` → no origin contact; `OriginResponseStatus = 0` is expected
 * `CacheStatus` is `miss` or `expired` → Cloudflare contacted the origin; `OriginResponseStatus = 0` indicates a failed connection
 
-Warning
+Caution
 
 Do not conclude your origin returned a 5xx error solely because `OriginResponseStatus = 0`. Always check `CacheStatus` first to determine whether Cloudflare contacted the origin at all.
 
@@ -71,7 +73,14 @@ Do not conclude your origin returned a 5xx error solely because `OriginResponseS
 
 Use [Origin Analytics](https://developers.cloudflare.com/speed/origin-analytics/) to compare what your origin returned (`originResponseStatus`) with what Cloudflare served to the end user (`edgeResponseStatus`). If your origin returned a `200` but Cloudflare served a `520`, the response was likely malformed — for example, oversized headers or an early connection close. The **Top endpoints** table can help you identify which paths are producing `520` errors.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/#page","headline":"Error 520 · Cloudflare Support docs","description":"Troubleshoot HTTP 520 error responses.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/","name":"Cloudflare 5xx errors"}},{"@type":"ListItem","position":6,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/","name":"Error 520"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/#page","headline":"Error 520 · Cloudflare Support docs","description":"Troubleshoot HTTP 520 error responses.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

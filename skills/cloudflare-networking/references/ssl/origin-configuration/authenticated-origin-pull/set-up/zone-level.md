@@ -1,16 +1,18 @@
 ---
-title: Zone-level
 description: Set up zone-level Authenticated Origin Pulls with a custom certificate.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Zone-level
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Zone-level
 
-# Zone-level
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you enable zone-level Authenticated Origin Pulls (AOP), all proxied traffic to your zone is authenticated at the origin web server using a certificate that you upload. Unlike [global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), which uses a Cloudflare-provided certificate shared across all accounts, zone-level AOP uses your own certificate for stricter security.
 
@@ -20,7 +22,7 @@ When you enable zone-level Authenticated Origin Pulls (AOP), all proxied traffic
 
 Make sure your zone is using an [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) of **Full** or higher.
 
-Warning
+Caution
 
 Zone-level AOP certificates are also applied to [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) configured on a Cloudflare for SaaS zone. If you need a different AOP certificate for different custom hostnames, use [per-hostname AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/).
 
@@ -60,11 +62,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload your certificate to Cloudflare
 
-* [ Dashboard ](#tab-panel-11514)
-* [ API ](#tab-panel-11515)
-
 1. Go to the **Origin Server** page.
-[ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+[ Go to **Origin Server** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. Select the **Authenticated Origin Pulls** tab.
 3. In the **Zone-level** section, select **Upload certificate**.
 4. Paste the certificate and private key, then select **Continue**.
@@ -109,17 +108,14 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 4\. Enable zone-level Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-11516)
-* [ API ](#tab-panel-11517)
-
 1. Go to the **Origin Server** page.
-[ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+[ Go to **Origin Server** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. Select the **Authenticated Origin Pulls** tab.
 3. In the **Zone-level** section, switch the toggle to **On**.
 
 Use the [Set Enablement for Zone](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/settings/methods/update/) endpoint to enable zone-level Authenticated Origin Pulls.
 
-Warning
+Caution
 
 This endpoint is separate from the [global AOP toggle](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), which uses the zone settings `tls_client_auth` setting. Make sure you use the correct endpoint for the configuration you intend.
 
@@ -169,7 +165,14 @@ Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notificati
 
 Refer to [Manage certificates](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/manage-certificates/) for further options.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/#page","headline":"Zone-level authenticated origin pulls · Cloudflare SSL/TLS docs","description":"Set up zone-level Authenticated Origin Pulls with a custom certificate.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/origin-configuration/","name":"Origin server"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/","name":"Authenticated Origin Pulls (mTLS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/set-up/","name":"Setup"}},{"@type":"ListItem","position":6,"item":{"@id":"/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/","name":"Zone-level"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/#page","headline":"Zone-level authenticated origin pulls · Cloudflare SSL/TLS docs","description":"Set up zone-level Authenticated Origin Pulls with a custom certificate.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

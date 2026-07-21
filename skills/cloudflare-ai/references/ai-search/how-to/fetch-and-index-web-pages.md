@@ -1,16 +1,18 @@
 ---
-title: Fetch and index single web pages
 description: Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Fetch and index single web pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Fetch and index single web pages
 
-# Fetch and index single web pages
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide builds a Worker that fetches a single web page's rendered HTML with the [Browser Run](https://developers.cloudflare.com/browser-run/) [/content endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) and uploads it to an [AI Search](https://developers.cloudflare.com/ai-search/) instance's [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/). AI Search then indexes the page so it is searchable, the same as any other uploaded document. The Worker also exposes a `/search` endpoint that queries the indexed pages, so one service both indexes and searches.
 
@@ -69,18 +71,13 @@ cd fetch-and-index
 
 Add both bindings to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/): a [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) for Browser Run and an [AI Search namespace binding](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) for uploads. The `/content` endpoint runs through the browser binding, so you do not need to install Puppeteer or any other package.
 
-* [  wrangler.jsonc ](#tab-panel-7239)
-* [  wrangler.toml ](#tab-panel-7240)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "fetch-and-index",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -95,19 +92,15 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
 }
 ```
 
-**TOML**
-
 ```toml
 name = "fetch-and-index"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [browser]
 binding = "BROWSER"
 remote = true
-
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -121,229 +114,197 @@ The browser binding's `quickAction` method requires a compatibility date of `202
 
 Update `src/index.ts`. This Worker has two routes: a request with a `?url=` parameter fetches that page's rendered HTML and indexes it, and a request to `/search?q=` queries the indexed content. Replace `my-instance` with the name of your instance.
 
-* [  JavaScript ](#tab-panel-7241)
-* [  TypeScript ](#tab-panel-7242)
-
-**src/index.js**
-
 ```js
 // The instance that indexes the fetched page.
 const INSTANCE_ID = "my-instance";
 
-
 // Build a stable item key that ends in .html, so AI Search converts the HTML
 // to Markdown before indexing it.
 function itemKey(pageUrl) {
-  const slug = `${pageUrl.hostname}${pageUrl.pathname}`
-    .replace(/[^a-zA-Z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-  return `${slug || "index"}.html`;
+	const slug = `${pageUrl.hostname}${pageUrl.pathname}`
+		.replace(/[^a-zA-Z0-9]+/g, "-")
+		.replace(/^-+|-+$/g, "");
+	return `${slug || "index"}.html`;
 }
 
-
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		// Search route: query the indexed content and return the matching chunks.
+		if (url.pathname === "/search") {
+			const query = url.searchParams.get("q");
+			if (!query) {
+				return new Response("Add a ?q= query parameter", { status: 400 });
+			}
+			const results = await env.AI_SEARCH.get(INSTANCE_ID).search({ query });
+			return Response.json({
+				query: results.search_query,
+				results: results.chunks.map((chunk) => ({
+					key: chunk.item.key,
+					score: chunk.score,
+					text: chunk.text,
+				})),
+			});
+		}
 
-    // Search route: query the indexed content and return the matching chunks.
-    if (url.pathname === "/search") {
-      const query = url.searchParams.get("q");
-      if (!query) {
-        return new Response("Add a ?q= query parameter", { status: 400 });
-      }
-      const results = await env.AI_SEARCH.get(INSTANCE_ID).search({ query });
-      return Response.json({
-        query: results.search_query,
-        results: results.chunks.map((chunk) => ({
-          key: chunk.item.key,
-          score: chunk.score,
-          text: chunk.text,
-        })),
-      });
-    }
+		// Index route: fetch a URL's rendered HTML and index it.
+		const target = url.searchParams.get("url");
+		if (!target) {
+			return new Response(
+				"Add a ?url= parameter to index a page, or use /search?q= to search",
+				{ status: 400 },
+			);
+		}
 
+		const pageUrl = new URL(target);
 
-    // Index route: fetch a URL's rendered HTML and index it.
-    const target = url.searchParams.get("url");
-    if (!target) {
-      return new Response(
-        "Add a ?url= parameter to index a page, or use /search?q= to search",
-        { status: 400 },
-      );
-    }
+		// Fetch the fully rendered HTML with the Browser Run /content endpoint.
+		// networkidle2 waits until the page has no more than two network
+		// connections for at least 500 ms, giving client-side JavaScript time
+		// to render the content.
+		const response = await env.BROWSER.quickAction("content", {
+			url: pageUrl.toString(),
+			gotoOptions: {
+				waitUntil: "networkidle2",
+				timeout: 30000,
+			},
+		});
 
+		if (!response.ok) {
+			const detail = (await response.text()).slice(0, 500);
+			return new Response(
+				`Browser Run failed with ${response.status}: ${detail}`,
+				{ status: 502 },
+			);
+		}
 
-    const pageUrl = new URL(target);
+		// The /content endpoint returns a JSON envelope with the rendered HTML
+		// in the result field.
+		const data = await response.json();
 
+		if (!data.success || typeof data.result !== "string") {
+			return new Response("Browser Run returned an unsuccessful response", {
+				status: 502,
+			});
+		}
 
-    // Fetch the fully rendered HTML with the Browser Run /content endpoint.
-    // networkidle2 waits until the page has no more than two network
-    // connections for at least 500 ms, giving client-side JavaScript time
-    // to render the content.
-    const response = await env.BROWSER.quickAction("content", {
-      url: pageUrl.toString(),
-      gotoOptions: {
-        waitUntil: "networkidle2",
-        timeout: 30000,
-      },
-    });
+		const html = data.result;
 
+		// Upload the rendered HTML to built-in storage. uploadAndPoll waits until
+		// the page is indexed and searchable.
+		const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
+			itemKey(pageUrl),
+			html,
+			{ timeoutMs: 60_000 },
+		);
 
-    if (!response.ok) {
-      const detail = (await response.text()).slice(0, 500);
-      return new Response(
-        `Browser Run failed with ${response.status}: ${detail}`,
-        { status: 502 },
-      );
-    }
-
-
-    // The /content endpoint returns a JSON envelope with the rendered HTML
-    // in the result field.
-    const data = await response.json();
-
-
-    if (!data.success || typeof data.result !== "string") {
-      return new Response("Browser Run returned an unsuccessful response", {
-        status: 502,
-      });
-    }
-
-
-    const html = data.result;
-
-
-    // Upload the rendered HTML to built-in storage. uploadAndPoll waits until
-    // the page is indexed and searchable.
-    const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
-      itemKey(pageUrl),
-      html,
-      { timeoutMs: 60_000 },
-    );
-
-
-    return Response.json({ key: item.key, status: item.status });
-  },
+		return Response.json({ key: item.key, status: item.status });
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export interface Env {
-  BROWSER: BrowserRun;
-  AI_SEARCH: AiSearchNamespace;
+	BROWSER: BrowserRun;
+	AI_SEARCH: AiSearchNamespace;
 }
-
 
 // The instance that indexes the fetched page.
 const INSTANCE_ID = "my-instance";
 
-
 // Build a stable item key that ends in .html, so AI Search converts the HTML
 // to Markdown before indexing it.
 function itemKey(pageUrl: URL): string {
-  const slug = `${pageUrl.hostname}${pageUrl.pathname}`
-    .replace(/[^a-zA-Z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-  return `${slug || "index"}.html`;
+	const slug = `${pageUrl.hostname}${pageUrl.pathname}`
+		.replace(/[^a-zA-Z0-9]+/g, "-")
+		.replace(/^-+|-+$/g, "");
+	return `${slug || "index"}.html`;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request, env): Promise<Response> {
+		const url = new URL(request.url);
 
+		// Search route: query the indexed content and return the matching chunks.
+		if (url.pathname === "/search") {
+			const query = url.searchParams.get("q");
+			if (!query) {
+				return new Response("Add a ?q= query parameter", { status: 400 });
+			}
+			const results = await env.AI_SEARCH.get(INSTANCE_ID).search({ query });
+			return Response.json({
+				query: results.search_query,
+				results: results.chunks.map((chunk) => ({
+					key: chunk.item.key,
+					score: chunk.score,
+					text: chunk.text,
+				})),
+			});
+		}
 
-    // Search route: query the indexed content and return the matching chunks.
-    if (url.pathname === "/search") {
-      const query = url.searchParams.get("q");
-      if (!query) {
-        return new Response("Add a ?q= query parameter", { status: 400 });
-      }
-      const results = await env.AI_SEARCH.get(INSTANCE_ID).search({ query });
-      return Response.json({
-        query: results.search_query,
-        results: results.chunks.map((chunk) => ({
-          key: chunk.item.key,
-          score: chunk.score,
-          text: chunk.text,
-        })),
-      });
-    }
+		// Index route: fetch a URL's rendered HTML and index it.
+		const target = url.searchParams.get("url");
+		if (!target) {
+			return new Response(
+				"Add a ?url= parameter to index a page, or use /search?q= to search",
+				{ status: 400 },
+			);
+		}
 
+		const pageUrl = new URL(target);
 
-    // Index route: fetch a URL's rendered HTML and index it.
-    const target = url.searchParams.get("url");
-    if (!target) {
-      return new Response(
-        "Add a ?url= parameter to index a page, or use /search?q= to search",
-        { status: 400 },
-      );
-    }
+		// Fetch the fully rendered HTML with the Browser Run /content endpoint.
+		// networkidle2 waits until the page has no more than two network
+		// connections for at least 500 ms, giving client-side JavaScript time
+		// to render the content.
+		const response = await env.BROWSER.quickAction("content", {
+			url: pageUrl.toString(),
+			gotoOptions: {
+				waitUntil: "networkidle2",
+				timeout: 30000,
+			},
+		});
 
+		if (!response.ok) {
+			const detail = (await response.text()).slice(0, 500);
+			return new Response(
+				`Browser Run failed with ${response.status}: ${detail}`,
+				{ status: 502 },
+			);
+		}
 
-    const pageUrl = new URL(target);
+		// The /content endpoint returns a JSON envelope with the rendered HTML
+		// in the result field.
+		const data = (await response.json()) as {
+			success: boolean;
+			result?: string;
+		};
 
+		if (!data.success || typeof data.result !== "string") {
+			return new Response("Browser Run returned an unsuccessful response", {
+				status: 502,
+			});
+		}
 
-    // Fetch the fully rendered HTML with the Browser Run /content endpoint.
-    // networkidle2 waits until the page has no more than two network
-    // connections for at least 500 ms, giving client-side JavaScript time
-    // to render the content.
-    const response = await env.BROWSER.quickAction("content", {
-      url: pageUrl.toString(),
-      gotoOptions: {
-        waitUntil: "networkidle2",
-        timeout: 30000,
-      },
-    });
+		const html = data.result;
 
+		// Upload the rendered HTML to built-in storage. uploadAndPoll waits until
+		// the page is indexed and searchable.
+		const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
+			itemKey(pageUrl),
+			html,
+			{ timeoutMs: 60_000 },
+		);
 
-    if (!response.ok) {
-      const detail = (await response.text()).slice(0, 500);
-      return new Response(
-        `Browser Run failed with ${response.status}: ${detail}`,
-        { status: 502 },
-      );
-    }
-
-
-    // The /content endpoint returns a JSON envelope with the rendered HTML
-    // in the result field.
-    const data = (await response.json()) as {
-      success: boolean;
-      result?: string;
-    };
-
-
-    if (!data.success || typeof data.result !== "string") {
-      return new Response("Browser Run returned an unsuccessful response", {
-        status: 502,
-      });
-    }
-
-
-    const html = data.result;
-
-
-    // Upload the rendered HTML to built-in storage. uploadAndPoll waits until
-    // the page is indexed and searchable.
-    const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
-      itemKey(pageUrl),
-      html,
-      { timeoutMs: 60_000 },
-    );
-
-
-    return Response.json({ key: item.key, status: item.status });
-  },
+		return Response.json({ key: item.key, status: item.status });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
 The `.html` item key tells AI Search to run the content through [Markdown conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/), which strips boilerplate such as the header and footer before indexing.
 
-Warning
+Caution
 
 Fetch only URLs you trust. A Worker that fetches arbitrary user-supplied URLs can become an open proxy. Consider restricting the accepted hostnames to an allowlist. Uploaded content is also limited to 4 MB per item.
 
@@ -361,54 +322,48 @@ To add fields to an existing instance, use the dashboard under **Settings**, or 
 
 Next, use the Browser Run [/json endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) to extract those fields from the same page. It runs through the same browser binding and returns structured JSON that matches a schema you provide. In the `fetch` handler from step 3, after you have the rendered `html` and before the upload, add:
 
-**TypeScript**
-
 ```ts
 // Extract structured metadata from the page with the /json endpoint.
 // response_format constrains the model to the fields you defined above.
 // Treat extraction as best-effort: if it fails, index the page without metadata.
 const metadata: Record<string, string> = {};
 try {
-  const jsonResponse = await env.BROWSER.quickAction("json", {
-    url: pageUrl.toString(),
-    prompt: "Extract the page title and its top-level section.",
-    response_format: {
-      type: "json_schema",
-      json_schema: {
-        type: "object",
-        properties: {
-          title: { type: "string" },
-          section: { type: "string" },
-        },
-        required: ["title"],
-      },
-    },
-  });
+	const jsonResponse = await env.BROWSER.quickAction("json", {
+		url: pageUrl.toString(),
+		prompt: "Extract the page title and its top-level section.",
+		response_format: {
+			type: "json_schema",
+			json_schema: {
+				type: "object",
+				properties: {
+					title: { type: "string" },
+					section: { type: "string" },
+				},
+				required: ["title"],
+			},
+		},
+	});
 
+	const extracted = (await jsonResponse.json()) as {
+		result?: Record<string, unknown>;
+	};
 
-  const extracted = (await jsonResponse.json()) as {
-    result?: Record<string, unknown>;
-  };
-
-
-  // Metadata values must be strings, so coerce each value and drop empty ones.
-  for (const [key, value] of Object.entries(extracted.result ?? {})) {
-    if (value) metadata[key] = String(value);
-  }
+	// Metadata values must be strings, so coerce each value and drop empty ones.
+	for (const [key, value] of Object.entries(extracted.result ?? {})) {
+		if (value) metadata[key] = String(value);
+	}
 } catch {
-  // Ignore extraction errors and index the page without metadata.
+	// Ignore extraction errors and index the page without metadata.
 }
 ```
 
 Then pass `metadata` in the upload options:
 
-**TypeScript**
-
 ```ts
 const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
-  itemKey(pageUrl),
-  html,
-  { timeoutMs: 60_000, metadata },
+	itemKey(pageUrl),
+	html,
+	{ timeoutMs: 60_000, metadata },
 );
 ```
 
@@ -442,14 +397,14 @@ curl "http://localhost:8787/search?q=what+is+this+domain+for"
 
 ```json
 {
-  "query": "what is this domain for",
-  "results": [
-    {
-      "key": "example-com.html",
-      "score": 0.75,
-      "text": "# Example Domain\nThis domain is for use in documentation examples..."
-    }
-  ]
+	"query": "what is this domain for",
+	"results": [
+		{
+			"key": "example-com.html",
+			"score": 0.75,
+			"text": "# Example Domain\nThis domain is for use in documentation examples..."
+		}
+	]
 }
 ```
 
@@ -462,13 +417,26 @@ npx wrangler deploy
 
 ## Next steps
 
-[ Browser Run /content endpoint ](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) Fetch the fully rendered HTML of a page after JavaScript runs, with options for load behavior and blocking.
+### [ Browser Run /content endpoint ](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
 
-[ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) Full reference for uploading, listing, and deleting documents in built-in storage.
+ Fetch the fully rendered HTML of a page after JavaScript runs, with options for load behavior and blocking.
 
-[ Website data source ](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) Crawl and index a domain you own automatically, following its sitemap.
+### [ Items Workers binding ](https://developers.cloudflare.com/ai-search/api/items/workers-binding/)
+
+ Full reference for uploading, listing, and deleting documents in built-in storage.
+
+### [ Website data source ](https://developers.cloudflare.com/ai-search/configuration/data-source/website/)
+
+ Crawl and index a domain you own automatically, following its sitemap.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages · Cloudflare AI Search docs","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/fetch-and-index-web-pages/","name":"Fetch and index single web pages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages · Cloudflare AI Search docs","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

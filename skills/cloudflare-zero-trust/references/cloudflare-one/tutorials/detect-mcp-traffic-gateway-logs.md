@@ -1,16 +1,18 @@
 ---
-title: Detect MCP traffic in Gateway logs
 description: Scan Gateway logs for unauthorized MCP traffic.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Detect MCP traffic in Gateway logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Detect MCP traffic in Gateway logs
 
-# Detect MCP traffic in Gateway logs
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Organizations may lack visibility into Model Context Protocol (MCP) traffic, which can allow employees to connect to remote MCP servers outside of IT oversight. These connections risk the exfiltration of sensitive internal data and credentials, tool injection attacks or software supply chain risks.
 
@@ -47,11 +49,6 @@ MCP traffic can be identified by three signals:
 
 The following GraphQL query scans Gateway logs for the first two signals:
 
-* [  JavaScript ](#tab-panel-8395)
-* [  TypeScript ](#tab-panel-8396)
-
-**JavaScript**
-
 ```js
 const query = `
   query MCPTrafficScan($accountTag: string, $since: string, $until: string) {
@@ -81,30 +78,25 @@ const query = `
   }
 `;
 
-
 const variables = {
-  accountTag: "<YOUR_ACCOUNT_ID>",
-  since: "<START_DATE>", // ISO-8601 format, for example 2025-03-08T00:00:00Z
-  until: "<END_DATE>", // Up to 30 days after start date
+	accountTag: "<YOUR_ACCOUNT_ID>",
+	since: "<START_DATE>", // ISO-8601 format, for example 2025-03-08T00:00:00Z
+	until: "<END_DATE>", // Up to 30 days after start date
 };
 
-
 const response = await fetch("https://api.cloudflare.com/client/v4/graphql", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${apiToken}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ query, variables }),
+	method: "POST",
+	headers: {
+		Authorization: `Bearer ${apiToken}`,
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify({ query, variables }),
 });
-
 
 const data = await response.json();
 const groups =
-  data.data?.viewer?.accounts?.[0]?.gatewayHttpRequestsAdaptiveGroups || [];
+	data.data?.viewer?.accounts?.[0]?.gatewayHttpRequestsAdaptiveGroups || [];
 ```
-
-**TypeScript**
 
 ```ts
 const query = `
@@ -135,27 +127,24 @@ const query = `
   }
 `;
 
-
 const variables = {
-  accountTag: "<YOUR_ACCOUNT_ID>",
-  since: "<START_DATE>", // ISO-8601 format, for example 2025-03-08T00:00:00Z
-  until: "<END_DATE>", // Up to 30 days after start date
+	accountTag: "<YOUR_ACCOUNT_ID>",
+	since: "<START_DATE>", // ISO-8601 format, for example 2025-03-08T00:00:00Z
+	until: "<END_DATE>", // Up to 30 days after start date
 };
 
-
 const response = await fetch("https://api.cloudflare.com/client/v4/graphql", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${apiToken}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ query, variables }),
+	method: "POST",
+	headers: {
+		Authorization: `Bearer ${apiToken}`,
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify({ query, variables }),
 });
-
 
 const data = await response.json();
 const groups =
-  data.data?.viewer?.accounts?.[0]?.gatewayHttpRequestsAdaptiveGroups || [];
+	data.data?.viewer?.accounts?.[0]?.gatewayHttpRequestsAdaptiveGroups || [];
 ```
 
 Replace `<YOUR_ACCOUNT_ID>` with your Cloudflare account ID. Replace `<START_DATE>` and `<END_DATE>` with ISO-8601 timestamps covering your desired time range (up to 30 days).
@@ -164,59 +153,47 @@ Replace `<YOUR_ACCOUNT_ID>` with your Cloudflare account ID. Replace `<START_DAT
 
 Each group in the response represents aggregated traffic for a specific `httpHost` and `action` combination. Parse the results to identify unblocked MCP connections:
 
-* [  JavaScript ](#tab-panel-8389)
-* [  TypeScript ](#tab-panel-8390)
-
-**JavaScript**
-
 ```js
 const hits = groups.map((group) => ({
-  domain: group.dimensions.httpHost,
-  requestCount: group.count,
-  users: group.dimensions.users || [],
-  actions: {
-    allowed: group.dimensions.action === "allow" ? group.count : 0,
-    blocked: group.dimensions.action === "block" ? group.count : 0,
-  },
+	domain: group.dimensions.httpHost,
+	requestCount: group.count,
+	users: group.dimensions.users || [],
+	actions: {
+		allowed: group.dimensions.action === "allow" ? group.count : 0,
+		blocked: group.dimensions.action === "block" ? group.count : 0,
+	},
 }));
-
 
 const totalMCPRequests = hits.reduce((sum, h) => sum + h.requestCount, 0);
 const unblockedHits = hits.filter((h) => h.actions.allowed > 0);
-
 
 console.log(`Found ${totalMCPRequests} MCP requests`);
 console.log(`${unblockedHits.length} destinations are unblocked`);
 ```
 
-**TypeScript**
-
 ```ts
 interface MCPTrafficHit {
-  domain: string;
-  requestCount: number;
-  users: string[];
-  actions: {
-    allowed: number;
-    blocked: number;
-  };
+	domain: string;
+	requestCount: number;
+	users: string[];
+	actions: {
+		allowed: number;
+		blocked: number;
+	};
 }
 
-
 const hits: MCPTrafficHit[] = groups.map((group: any) => ({
-  domain: group.dimensions.httpHost,
-  requestCount: group.count,
-  users: group.dimensions.users || [],
-  actions: {
-    allowed: group.dimensions.action === "allow" ? group.count : 0,
-    blocked: group.dimensions.action === "block" ? group.count : 0,
-  },
+	domain: group.dimensions.httpHost,
+	requestCount: group.count,
+	users: group.dimensions.users || [],
+	actions: {
+		allowed: group.dimensions.action === "allow" ? group.count : 0,
+		blocked: group.dimensions.action === "block" ? group.count : 0,
+	},
 }));
-
 
 const totalMCPRequests = hits.reduce((sum, h) => sum + h.requestCount, 0);
 const unblockedHits = hits.filter((h) => h.actions.allowed > 0);
-
 
 console.log(`Found ${totalMCPRequests} MCP requests`);
 console.log(`${unblockedHits.length} destinations are unblocked`);
@@ -236,10 +213,10 @@ Every MCP request contains a `"method"` field:
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "tools/call",
-  "params": { "name": "read_file", "arguments": { "path": "/etc/passwd" } }
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "tools/call",
+	"params": { "name": "read_file", "arguments": { "path": "/etc/passwd" } }
 }
 ```
 
@@ -258,100 +235,93 @@ Before building detection patterns, note the following DLP limitations:
 
 MCP indicators can be found in JSON-RPC method fields. The following regex patterns cover the core MCP protocol methods:
 
-* [  JavaScript ](#tab-panel-8397)
-* [  TypeScript ](#tab-panel-8398)
-
-**JavaScript**
-
 ```js
 const DLP_REGEX_PATTERNS = [
-  {
-    name: "MCP Initialize Method",
-    regex: '"method"\\s{0,5}:\\s{0,5}"initialize"',
-  },
-  {
-    name: "MCP Tools Call",
-    regex: '"method"\\s{0,5}:\\s{0,5}"tools/call"',
-  },
-  {
-    name: "MCP Tools List",
-    regex: '"method"\\s{0,5}:\\s{0,5}"tools/list"',
-  },
-  {
-    name: "MCP Resources Read",
-    regex: '"method"\\s{0,5}:\\s{0,5}"resources/read"',
-  },
-  {
-    name: "MCP Resources List",
-    regex: '"method"\\s{0,5}:\\s{0,5}"resources/list"',
-  },
-  {
-    name: "MCP Prompts List",
-    regex: '"method"\\s{0,5}:\\s{0,5}"prompts/(list|get)"',
-  },
-  {
-    name: "MCP Sampling Create Message",
-    regex: '"method"\\s{0,5}:\\s{0,5}"sampling/createMessage"',
-  },
-  {
-    name: "MCP Protocol Version",
-    regex: '"protocolVersion"\\s{0,5}:\\s{0,5}"202[4-9]',
-  },
-  {
-    name: "MCP Notifications Initialized",
-    regex: '"method"\\s{0,5}:\\s{0,5}"notifications/initialized"',
-  },
-  {
-    name: "MCP Roots List",
-    regex: '"method"\\s{0,5}:\\s{0,5}"roots/list"',
-  },
+	{
+		name: "MCP Initialize Method",
+		regex: '"method"\\s{0,5}:\\s{0,5}"initialize"',
+	},
+	{
+		name: "MCP Tools Call",
+		regex: '"method"\\s{0,5}:\\s{0,5}"tools/call"',
+	},
+	{
+		name: "MCP Tools List",
+		regex: '"method"\\s{0,5}:\\s{0,5}"tools/list"',
+	},
+	{
+		name: "MCP Resources Read",
+		regex: '"method"\\s{0,5}:\\s{0,5}"resources/read"',
+	},
+	{
+		name: "MCP Resources List",
+		regex: '"method"\\s{0,5}:\\s{0,5}"resources/list"',
+	},
+	{
+		name: "MCP Prompts List",
+		regex: '"method"\\s{0,5}:\\s{0,5}"prompts/(list|get)"',
+	},
+	{
+		name: "MCP Sampling Create Message",
+		regex: '"method"\\s{0,5}:\\s{0,5}"sampling/createMessage"',
+	},
+	{
+		name: "MCP Protocol Version",
+		regex: '"protocolVersion"\\s{0,5}:\\s{0,5}"202[4-9]',
+	},
+	{
+		name: "MCP Notifications Initialized",
+		regex: '"method"\\s{0,5}:\\s{0,5}"notifications/initialized"',
+	},
+	{
+		name: "MCP Roots List",
+		regex: '"method"\\s{0,5}:\\s{0,5}"roots/list"',
+	},
 ];
 ```
 
-**TypeScript**
-
 ```ts
 const DLP_REGEX_PATTERNS = [
-  {
-    name: "MCP Initialize Method",
-    regex: '"method"\\s{0,5}:\\s{0,5}"initialize"',
-  },
-  {
-    name: "MCP Tools Call",
-    regex: '"method"\\s{0,5}:\\s{0,5}"tools/call"',
-  },
-  {
-    name: "MCP Tools List",
-    regex: '"method"\\s{0,5}:\\s{0,5}"tools/list"',
-  },
-  {
-    name: "MCP Resources Read",
-    regex: '"method"\\s{0,5}:\\s{0,5}"resources/read"',
-  },
-  {
-    name: "MCP Resources List",
-    regex: '"method"\\s{0,5}:\\s{0,5}"resources/list"',
-  },
-  {
-    name: "MCP Prompts List",
-    regex: '"method"\\s{0,5}:\\s{0,5}"prompts/(list|get)"',
-  },
-  {
-    name: "MCP Sampling Create Message",
-    regex: '"method"\\s{0,5}:\\s{0,5}"sampling/createMessage"',
-  },
-  {
-    name: "MCP Protocol Version",
-    regex: '"protocolVersion"\\s{0,5}:\\s{0,5}"202[4-9]',
-  },
-  {
-    name: "MCP Notifications Initialized",
-    regex: '"method"\\s{0,5}:\\s{0,5}"notifications/initialized"',
-  },
-  {
-    name: "MCP Roots List",
-    regex: '"method"\\s{0,5}:\\s{0,5}"roots/list"',
-  },
+	{
+		name: "MCP Initialize Method",
+		regex: '"method"\\s{0,5}:\\s{0,5}"initialize"',
+	},
+	{
+		name: "MCP Tools Call",
+		regex: '"method"\\s{0,5}:\\s{0,5}"tools/call"',
+	},
+	{
+		name: "MCP Tools List",
+		regex: '"method"\\s{0,5}:\\s{0,5}"tools/list"',
+	},
+	{
+		name: "MCP Resources Read",
+		regex: '"method"\\s{0,5}:\\s{0,5}"resources/read"',
+	},
+	{
+		name: "MCP Resources List",
+		regex: '"method"\\s{0,5}:\\s{0,5}"resources/list"',
+	},
+	{
+		name: "MCP Prompts List",
+		regex: '"method"\\s{0,5}:\\s{0,5}"prompts/(list|get)"',
+	},
+	{
+		name: "MCP Sampling Create Message",
+		regex: '"method"\\s{0,5}:\\s{0,5}"sampling/createMessage"',
+	},
+	{
+		name: "MCP Protocol Version",
+		regex: '"protocolVersion"\\s{0,5}:\\s{0,5}"202[4-9]',
+	},
+	{
+		name: "MCP Notifications Initialized",
+		regex: '"method"\\s{0,5}:\\s{0,5}"notifications/initialized"',
+	},
+	{
+		name: "MCP Roots List",
+		regex: '"method"\\s{0,5}:\\s{0,5}"roots/list"',
+	},
 ];
 ```
 
@@ -366,80 +336,69 @@ Pattern explanation:
 
 Send a `POST` request to create a custom DLP profile containing all detection patterns:
 
-* [  JavaScript ](#tab-panel-8393)
-* [  TypeScript ](#tab-panel-8394)
-
-**JavaScript**
-
 ```js
 const dlpProfile = {
-  name: "MCP-Shield: MCP JSON-RPC Detection",
-  description: "Detects MCP protocol JSON-RPC methods in HTTP request bodies.",
-  type: "custom",
-  entries: DLP_REGEX_PATTERNS.map((p) => ({
-    name: p.name,
-    enabled: true,
-    pattern: {
-      regex: p.regex,
-      validation: "luhn",
-    },
-  })),
+	name: "MCP-Shield: MCP JSON-RPC Detection",
+	description: "Detects MCP protocol JSON-RPC methods in HTTP request bodies.",
+	type: "custom",
+	entries: DLP_REGEX_PATTERNS.map((p) => ({
+		name: p.name,
+		enabled: true,
+		pattern: {
+			regex: p.regex,
+			validation: "luhn",
+		},
+	})),
 };
 
-
 const response = await fetch(
-  `https://api.cloudflare.com/client/v4/accounts/${accountId}/gateway/rules`,
-  {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiToken}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(dlpRule),
-  },
+	`https://api.cloudflare.com/client/v4/accounts/${accountId}/gateway/rules`,
+	{
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${apiToken}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(dlpRule),
+	},
 );
-
 
 const data = await response.json();
 if (data.success) {
-  console.log(`Created DLP profile: ${data.result.id}`);
+	console.log(`Created DLP profile: ${data.result.id}`);
 }
 ```
 
-**TypeScript**
-
 ```ts
 const dlpProfile = {
-  name: "MCP-Shield: MCP JSON-RPC Detection",
-  description: "Detects MCP protocol JSON-RPC methods in HTTP request bodies.",
-  type: "custom",
-  entries: DLP_REGEX_PATTERNS.map((p) => ({
-    name: p.name,
-    enabled: true,
-    pattern: {
-      regex: p.regex,
-      validation: "luhn",
-    },
-  })),
+	name: "MCP-Shield: MCP JSON-RPC Detection",
+	description: "Detects MCP protocol JSON-RPC methods in HTTP request bodies.",
+	type: "custom",
+	entries: DLP_REGEX_PATTERNS.map((p) => ({
+		name: p.name,
+		enabled: true,
+		pattern: {
+			regex: p.regex,
+			validation: "luhn",
+		},
+	})),
 };
 
-
 const response = await fetch(
-  `https://api.cloudflare.com/client/v4/accounts/${accountId}/gateway/rules`,
-  {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiToken}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(dlpRule),
-  },
+	`https://api.cloudflare.com/client/v4/accounts/${accountId}/gateway/rules`,
+	{
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${apiToken}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(dlpRule),
+	},
 );
-
 
 const data = await response.json();
 if (data.success) {
-  console.log(`Created DLP profile: ${data.result.id}`);
+	console.log(`Created DLP profile: ${data.result.id}`);
 }
 ```
 
@@ -449,36 +408,29 @@ Replace `${accountId}` with your Cloudflare account ID and `${apiToken}` with yo
 
 After the DLP profile exists, create a Gateway HTTP policy that blocks requests matching the profile:
 
-* [  JavaScript ](#tab-panel-8387)
-* [  TypeScript ](#tab-panel-8388)
-
-**JavaScript**
-
 ```js
 const dlpRule = {
-  name: "MCP-Shield: Block MCP JSON-RPC via DLP",
-  description: "Blocks requests with MCP JSON-RPC patterns detected by DLP",
-  precedence: 85,
-  enabled: true,
-  action: "block",
-  filters: ["http"],
-  traffic:
-    'any(http.request.body.scan.dlp.profiles[*] == "MCP-Shield: MCP JSON-RPC Detection")',
+	name: "MCP-Shield: Block MCP JSON-RPC via DLP",
+	description: "Blocks requests with MCP JSON-RPC patterns detected by DLP",
+	precedence: 85,
+	enabled: true,
+	action: "block",
+	filters: ["http"],
+	traffic:
+		'any(http.request.body.scan.dlp.profiles[*] == "MCP-Shield: MCP JSON-RPC Detection")',
 };
 ```
 
-**TypeScript**
-
 ```ts
 const dlpRule = {
-  name: "MCP-Shield: Block MCP JSON-RPC via DLP",
-  description: "Blocks requests with MCP JSON-RPC patterns detected by DLP",
-  precedence: 85,
-  enabled: true,
-  action: "block",
-  filters: ["http"],
-  traffic:
-    'any(http.request.body.scan.dlp.profiles[*] == "MCP-Shield: MCP JSON-RPC Detection")',
+	name: "MCP-Shield: Block MCP JSON-RPC via DLP",
+	description: "Blocks requests with MCP JSON-RPC patterns detected by DLP",
+	precedence: 85,
+	enabled: true,
+	action: "block",
+	filters: ["http"],
+	traffic:
+		'any(http.request.body.scan.dlp.profiles[*] == "MCP-Shield: MCP JSON-RPC Detection")',
 };
 ```
 
@@ -502,72 +454,57 @@ When analyzing Gateway logs, it is helpful to differentiate between two types of
 
 Extend the query processing from [Process the query results](#3-process-the-query-results) to classify traffic by comparing hostnames against your list of approved portal domains:
 
-* [  JavaScript ](#tab-panel-8391)
-* [  TypeScript ](#tab-panel-8392)
-
-**JavaScript**
-
 ```js
 const portalDomains = [
-  "mcp.yourcompany.com",
-  "mcp-portal.pages.dev",
-  "approved-mcp.workers.dev",
+	"mcp.yourcompany.com",
+	"mcp-portal.pages.dev",
+	"approved-mcp.workers.dev",
 ];
 
-
 const results = groups.map((group) => {
-  const isPortalTraffic = portalDomains.some((domain) =>
-    group.dimensions.httpHost.includes(domain),
-  );
+	const isPortalTraffic = portalDomains.some((domain) =>
+		group.dimensions.httpHost.includes(domain),
+	);
 
-
-  return {
-    domain: group.dimensions.httpHost,
-    requestCount: group.count,
-    users: group.dimensions.users || [],
-    trafficType: isPortalTraffic ? "portal" : "shadow",
-    riskLevel: isPortalTraffic ? "low" : "high",
-  };
+	return {
+		domain: group.dimensions.httpHost,
+		requestCount: group.count,
+		users: group.dimensions.users || [],
+		trafficType: isPortalTraffic ? "portal" : "shadow",
+		riskLevel: isPortalTraffic ? "low" : "high",
+	};
 });
-
 
 const portalTraffic = results.filter((r) => r.trafficType === "portal");
 const shadowTraffic = results.filter((r) => r.trafficType === "shadow");
-
 
 console.log("Portal traffic:", portalTraffic);
 console.log("Shadow MCP traffic:", shadowTraffic);
 ```
 
-**TypeScript**
-
 ```ts
 const portalDomains = [
-  "mcp.yourcompany.com",
-  "mcp-portal.pages.dev",
-  "approved-mcp.workers.dev",
+	"mcp.yourcompany.com",
+	"mcp-portal.pages.dev",
+	"approved-mcp.workers.dev",
 ];
 
-
 const results = groups.map((group) => {
-  const isPortalTraffic = portalDomains.some((domain) =>
-    group.dimensions.httpHost.includes(domain),
-  );
+	const isPortalTraffic = portalDomains.some((domain) =>
+		group.dimensions.httpHost.includes(domain),
+	);
 
-
-  return {
-    domain: group.dimensions.httpHost,
-    requestCount: group.count,
-    users: group.dimensions.users || [],
-    trafficType: isPortalTraffic ? "portal" : "shadow",
-    riskLevel: isPortalTraffic ? "low" : "high",
-  };
+	return {
+		domain: group.dimensions.httpHost,
+		requestCount: group.count,
+		users: group.dimensions.users || [],
+		trafficType: isPortalTraffic ? "portal" : "shadow",
+		riskLevel: isPortalTraffic ? "low" : "high",
+	};
 });
-
 
 const portalTraffic = results.filter((r) => r.trafficType === "portal");
 const shadowTraffic = results.filter((r) => r.trafficType === "shadow");
-
 
 console.log("Portal traffic:", portalTraffic);
 console.log("Shadow MCP traffic:", shadowTraffic);
@@ -585,7 +522,14 @@ Replace the `portalDomains` array with the actual domains of your approved MCP S
 * [Pages Functions](https://developers.cloudflare.com/pages/functions/)
 * [Logpush](https://developers.cloudflare.com/logs/logpush/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs · Cloudflare One docs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","name":"Detect MCP traffic in Gateway logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs · Cloudflare One docs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}
 ```

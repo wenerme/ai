@@ -1,16 +1,18 @@
 ---
-title: 2023-02-01 - Updates to security fields
 description: Review updates to security fields in log datasets.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: 2023-02-01 - Updates to security fields
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  2023-02-01 - Updates to security fields
 
-# 2023-02-01 - Updates to security fields
+Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare will deploy some updates to security-related fields in Cloudflare Logs. These updates will affect the following datasets:
 
@@ -124,7 +126,7 @@ After updating Logpush jobs, you may need to update external filters or reports 
 ### Update Logpush job in the dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.
-[ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+[ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Select **Edit** next to the Logpush job you wish to edit.
 3. Under **Select data fields**, update the fields in your job. The new security log fields are available under **General**.
 4. Select **Save changes**.
@@ -138,18 +140,25 @@ Follow the instructions in [Update output\_options](https://developers.cloudflar
 If you are already managing Logpush jobs via Terraform, update the `logpull_options` in your existing [cloudflare\_logpush\_job ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/logpush%5Fjob) Terraform resource. For example:
 
 ```diff
-resource "cloudflare_logpush_job" "example_job" {
-  enabled             = true
-  zone_id             = "<ZONE_ID>"
-  name                = "My-logpush-job"
-  logpull_options     = "fields=RayID,ClientIP,EdgeStartTimestamp,WAFAction,WAFProfile&timestamps=rfc3339"
-  logpull_options     = "fields=RayID,ClientIP,EdgeStartTimestamp,SecurityAction&timestamps=rfc3339"
-  destination_conf = "r2://cloudflare-logs/http_requests/date={DATE}?account-id=${var.account_id}&access-key-id=${cloudflare_api_token.logpush_r2_token.id}&secret-access-key=${sha256(cloudflare_api_token.logpush_r2_token.value)}"
-  dataset             = "http_requests"
-}
+  resource "cloudflare_logpush_job" "example_job" {
+    enabled             = true
+    zone_id             = "<ZONE_ID>"
+    name                = "My-logpush-job"
+-   logpull_options     = "fields=RayID,ClientIP,EdgeStartTimestamp,WAFAction,WAFProfile&timestamps=rfc3339"
++   logpull_options     = "fields=RayID,ClientIP,EdgeStartTimestamp,SecurityAction&timestamps=rfc3339"
+    destination_conf = "r2://cloudflare-logs/http_requests/date={DATE}?account-id=${var.account_id}&access-key-id=${cloudflare_api_token.logpush_r2_token.id}&secret-access-key=${sha256(cloudflare_api_token.logpush_r2_token.value)}"
+    dataset             = "http_requests"
+  }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/#page","headline":"2023-02-01 - Updates to security fields · Cloudflare Logs docs","description":"Review updates to security fields in log datasets.","url":"https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/reference/change-notices/","name":"Change notices"}},{"@type":"ListItem","position":5,"item":{"@id":"/logs/reference/change-notices/2023-02-01-security-fields-updates/","name":"2023-02-01 - Updates to security fields"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/#page","headline":"2023-02-01 - Updates to security fields · Cloudflare Logs docs","description":"Review updates to security fields in log datasets.","url":"https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

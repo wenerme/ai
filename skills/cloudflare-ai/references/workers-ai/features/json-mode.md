@@ -1,16 +1,18 @@
 ---
-title: JSON Mode
 description: Force Workers AI text generation models to return valid JSON output using response_format or JSON schemas.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: JSON Mode
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  JSON Mode
 
-# JSON Mode
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/json-mode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When we want text-generation AI models to interact with databases, services, and external systems programmatically, typically when using tool calling or building AI agents, we must have structured response formats rather than natural language.
 
@@ -130,7 +132,14 @@ Note that Workers AI can't guarantee that the model responds according to the re
 
 JSON Mode currently doesn't support streaming.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/features/json-mode/#page","headline":"JSON Mode · Cloudflare Workers AI docs","description":"Force Workers AI text generation models to return valid JSON output using response\\_format or JSON schemas.","url":"https://developers.cloudflare.com/workers-ai/features/json-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/json-mode/","name":"JSON Mode"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/features/json-mode/#page","headline":"JSON Mode · Cloudflare Workers AI docs","description":"Force Workers AI text generation models to return valid JSON output using response\\_format or JSON schemas.","url":"https://developers.cloudflare.com/workers-ai/features/json-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Roles
 description: Review the account-scoped, domain-scoped, and resource-scoped roles available for Cloudflare account members.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Roles
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Roles
 
-# Roles
+Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-members/roles/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Whenever you [add a new member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) to your account, you can assign policies to those users and make use of the available roles. Roles can only ever be assigned to their given scope and multiple roles can be assigned to a given policy.
 
@@ -141,7 +143,14 @@ Resource-scoped roles is currently in Beta.
 | Individual Cloudflare Tunnel instances    | Scopes permissions to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) instance. Refer to [Granular permissions for Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) for details.             |
 | Individual Cloudflare Mesh nodes          | Scopes permissions to a specific [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node. Refer to [Granular permissions for Cloudflare Tunnel and Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) for details. |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/roles/#page","headline":"Account roles · Cloudflare Fundamentals docs","description":"Review the account-scoped, domain-scoped, and resource-scoped roles available for Cloudflare account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/roles/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-members/","name":"Members and permissions"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/manage-members/roles/","name":"Roles"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/roles/#page","headline":"Account roles · Cloudflare Fundamentals docs","description":"Review the account-scoped, domain-scoped, and resource-scoped roles available for Cloudflare account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/roles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,39 +1,39 @@
 ---
-title: Qwen 3 Max
 description: Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, and multilingual capabilities, served via DashScope's OpenAI-compatible endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Qwen 3 Max
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.C3THgr9s.svg)
 
 #  Qwen 3 Max
 
-Text Generation • Alibaba
+ Text Generation • Alibaba
 
-`alibaba/qwen3-max`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` alibaba/qwen3-max `
+
+* Third-party
+* Zero data retention
 
 Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, and multilingual capabilities, served via DashScope's OpenAI-compatible endpoint.
 
-| Model Info          |                                                                                                                     |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                |
-| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                              |
-| Zero data retention | Yes                                                                                                                 |
-| Request formats     | Chat Completions, Responses                                                                                         |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3-max) |
+| Model Info          |                                                                                                                      |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                 |
+| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                               |
+| Zero data retention | Yes                                                                                                                  |
+| Request formats     | Chat Completions, Responses                                                                                          |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3-max) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-46)
-* [ cURL ](#tab-panel-47)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -57,9 +57,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-54)
-* [ Raw response ](#tab-panel-55)
 
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and entropy in physical systems:
 
@@ -123,11 +120,6 @@ So, while commonly referred to as “three laws,” modern physics includes **fo
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-48)
-* [ cURL ](#tab-panel-49)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3-max',
@@ -159,9 +151,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-60)
-* [ Raw response ](#tab-panel-61)
 
 To read a JSON file in Python, you can use the built-in `json` module. Here's the basic approach:
 
@@ -268,11 +257,6 @@ The `json.load()` function handles UTF-8 by default, so you usually don't need t
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-52)
-* [ cURL ](#tab-panel-53)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3-max',
@@ -318,9 +302,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-62)
-* [ Raw response ](#tab-panel-63)
 
 Great! The classic route from San Francisco to Los Angeles along the California coast—especially **Highway 1 (Pacific Coast Highway)**—is one of the most scenic drives in the world. While it takes longer than the inland I-5 freeway (about 8–10 hours without stops), it’s absolutely worth it for the views and experiences. Here are some top places to stop, roughly ordered from north to south:
 
@@ -415,11 +396,6 @@ Would you like help planning an itinerary based on how many days you have?
 
 **Creative Writing**  — Longer completion for creative output
 
-* [ TypeScript ](#tab-panel-50)
-* [ cURL ](#tab-panel-51)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3-max',
@@ -451,9 +427,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-64)
-* [ Raw response ](#tab-panel-65)
 
 Rain slicked the cobblestones of Blackwater Lane, turning the gaslight into smears of gold on wet stone. Detective Aris Thorne hunched deeper into his trench coat, the damp wool smell a familiar companion to the city’s usual perfume of coal smoke and despair. Another dead end—literally and figuratively—in the case of the vanished heiress, Elara Vance. The alley reeked of stale beer and something sharper, metallic.
 
@@ -499,11 +472,6 @@ Thorne crouched, ignoring the ache in his knees and the cold seeping through his
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-56)
-* [ cURL ](#tab-panel-57)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3-max',
@@ -534,9 +502,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   }
 }'
 ```
-
-* [ Output ](#tab-panel-68)
-* [ Raw response ](#tab-panel-69)
 
 **Recursion** is a programming technique where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
 
@@ -1979,11 +1944,6 @@ Each recursive call works on a **smaller version** of the original problem until
 
 **Web Search**  — Letting Qwen use DashScope's built-in web search via enable\_search
 
-* [ TypeScript ](#tab-panel-58)
-* [ cURL ](#tab-panel-59)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'alibaba/qwen3-max',
@@ -2018,9 +1978,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-66)
-* [ Raw response ](#tab-panel-67)
 
 As of the week ending June 23, 2026, the top Cloudflare news stories include:
 
@@ -2067,9 +2024,6 @@ As of the week ending June 23, 2026, the top Cloudflare news stories include:
 Schema variant
 
 Chat CompletionsResponses
-
-* [ Input ](#tab-panel-70)
-* [ Output ](#tab-panel-71)
 
 ▶messages\[\]
 
@@ -2229,7 +2183,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/schema-i
 
 Output [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/#page","headline":"Qwen 3 Max (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, and multilingual capabilities, served via DashScope's OpenAI-compatible endpoint.","url":"https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/#page","headline":"Qwen 3 Max (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, and multilingual capabilities, served via DashScope's OpenAI-compatible endpoint.","url":"https://developers.cloudflare.com/ai/models/alibaba/qwen3-max/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

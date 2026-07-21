@@ -1,16 +1,18 @@
 ---
-title: API examples
 description: API examples for configuring custom rules with the Skip action.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: API examples
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  API examples
 
-# API examples
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure custom rules via API.
 
@@ -29,42 +31,38 @@ However, the entry point ruleset may not exist yet. In this case, invoke the [Cr
 
 This example invokes the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add a skip rule to the existing `http_request_firewall_custom` phase entry point ruleset with ID `$RULESET_ID`. The rule will skip all remaining rules in the current ruleset for requests matching the rule expression.
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "skip",
-    "action_parameters": {
-        "ruleset": "current"
-    },
-    "expression": "http.request.uri.path contains \"/skip-current-ruleset/\"",
-    "description": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "skip",
+		"action_parameters": {
+				"ruleset": "current"
+		},
+		"expression": "http.request.uri.path contains \"/skip-current-ruleset/\"",
+		"description": ""
+	}'
 ```
 
 ## Skip a phase
 
 This example invokes the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add a rule to the existing `http_request_firewall_custom` phase entry point ruleset with ID `$RULESET_ID`. The rule will skip the `http_ratelimit` phase for requests matching the rule expression.
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "skip",
-    "action_parameters": {
-        "phases": [
-            "http_ratelimit"
-        ]
-    },
-    "expression": "http.request.uri.path contains \"/skip-phase/\"",
-    "description": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "skip",
+		"action_parameters": {
+				"phases": [
+						"http_ratelimit"
+				]
+		},
+		"expression": "http.request.uri.path contains \"/skip-phase/\"",
+		"description": ""
+	}'
 ```
 
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/) for the list of phases you can skip.
@@ -76,25 +74,23 @@ This example invokes the [Create a zone ruleset rule](https://developers.cloudfl
 * Skips the `http_ratelimit` phase
 * Disables event logging for the current rule
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "skip",
-    "action_parameters": {
-        "phases": [
-            "http_ratelimit"
-        ]
-    },
-    "logging": {
-        "enabled": false
-    },
-    "expression": "http.request.uri.path contains \"/disable-logging/\"",
-    "description": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "skip",
+		"action_parameters": {
+				"phases": [
+						"http_ratelimit"
+				]
+		},
+		"logging": {
+				"enabled": false
+		},
+		"expression": "http.request.uri.path contains \"/disable-logging/\"",
+		"description": ""
+	}'
 ```
 
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#log-requests-matching-the-skip-rule) for more information on disabling logging for requests that match a skip rule.
@@ -103,23 +99,21 @@ Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-r
 
 This example uses the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add a rule that skips the [Zone Lockdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/) and [User Agent Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/) products for requests matching the rule expression.
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "skip",
-    "action_parameters": {
-        "products": [
-            "zoneLockdown",
-            "uaBlock"
-        ]
-    },
-    "expression": "http.request.uri.path contains \"/skip-products/\"",
-    "description": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "skip",
+		"action_parameters": {
+				"products": [
+						"zoneLockdown",
+						"uaBlock"
+				]
+		},
+		"expression": "http.request.uri.path contains \"/skip-products/\"",
+		"description": ""
+	}'
 ```
 
 Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#skip-products) for the list of products you can skip.
@@ -128,25 +122,30 @@ Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-r
 
 This example invokes the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add a skip rule to the existing `http_request_firewall_custom` phase entry point ruleset with ID `$RULESET_ID`. The rule will skip all remaining rules in the `http_request_firewall_custom` phase for requests matching the rule expression.
 
-**Create a zone ruleset rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "action": "skip",
-    "action_parameters": {
-        "phase": "current"
-    },
-    "expression": "http.request.uri.path contains \"/skip-current-ruleset/\"",
-    "description": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"action": "skip",
+		"action_parameters": {
+				"phase": "current"
+		},
+		"expression": "http.request.uri.path contains \"/skip-current-ruleset/\"",
+		"description": ""
+	}'
 ```
 
 Currently, this skip option is only available at the zone level. Refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/#skip-the-remaining-custom-rules-current-phase) for more details.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/#page","headline":"API examples of custom rules with the Skip action · Cloudflare Web Application Firewall (WAF) docs","description":"API examples for configuring custom rules with the Skip action.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/skip/","name":"Configure a rule with the Skip action"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/custom-rules/skip/api-examples/","name":"API examples"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/#page","headline":"API examples of custom rules with the Skip action · Cloudflare Web Application Firewall (WAF) docs","description":"API examples for configuring custom rules with the Skip action.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

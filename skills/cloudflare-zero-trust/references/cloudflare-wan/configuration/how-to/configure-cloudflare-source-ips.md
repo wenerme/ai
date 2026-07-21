@@ -1,16 +1,18 @@
 ---
-title: Configure Cloudflare source IPs (beta)
 description: Configure the Cloudflare source IP range used when you receive traffic from Cloudflare services sent to your Cloudflare One private networks.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Configure Cloudflare source IPs (beta)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Cloudflare source IPs (beta)
 
-# Configure Cloudflare source IPs (beta)
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can configure the source IP address range used by Cloudflare whenever a Cloudflare service, such as Cloudflare Load Balancing, sends traffic to a Cloudflare One private network. This address range is referred to as the Cloudflare Source IP Prefix (or `cloudflare_source` subnet type in the API).
 
@@ -69,11 +71,8 @@ Note
 
 You need Unified Routing (beta) to configure source IPs. If your account is not yet migrated, contact your account team to discuss migration and availability.
 
-* [ Dashboard ](#tab-panel-8445)
-* [ API ](#tab-panel-8446)
-
 1. Go to the **Address space** page.
-[ Go to **Address space** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
+[ Go to **Address space** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
 2. Select the **Custom IPs** tab.
 3. Find the prefix you want to update. This is your new `/12` range.
 4. Select the three dots to the right of the prefix > **Edit**.
@@ -89,20 +88,25 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Cloudflare One Networks Write`
 
-**Update Cloudflare Source Subnet**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnets/cloudflare_source/$ADDRESS_FAMILY" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "comment": "example_comment",
-    "name": "IPv4 Cloudflare Source IPs",
-    "network": "100.64.0.0/12"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"comment": "example_comment",
+		"name": "IPv4 Cloudflare Source IPs",
+		"network": "100.64.0.0/12"
+	}'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/#page","headline":"Configure Cloudflare source IPs (beta) · Cloudflare WAN docs","description":"Configure the Cloudflare source IP range used when you receive traffic from Cloudflare services sent to your Cloudflare One private networks.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/","name":"Configure Cloudflare source IPs (beta)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/#page","headline":"Configure Cloudflare source IPs (beta) · Cloudflare WAN docs","description":"Configure the Cloudflare source IP range used when you receive traffic from Cloudflare services sent to your Cloudflare One private networks.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

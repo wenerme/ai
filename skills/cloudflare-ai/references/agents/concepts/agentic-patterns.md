@@ -1,16 +1,18 @@
 ---
-title: Agentic patterns
 description: Implement common AI agent patterns like prompt chaining, routing, parallelization, and orchestrator-workers on Cloudflare.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Agentic patterns
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Agentic patterns
 
-# Agentic patterns
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page lists and defines common patterns for implementing AI agents, based on [Anthropic's patterns for building effective agents ↗](https://www.anthropic.com/research/building-effective-agents).
 
@@ -22,24 +24,19 @@ Decomposes tasks into a sequence of steps, where each LLM call processes the out
 
 ![Figure 1: Prompt Chaining](https://developers.cloudflare.com/_astro/01-prompt-chaining.BLijYLLo_Z4mjQb.webp)
 
-**TypeScript**
-
 ```ts
 import { openai } from "@ai-sdk/openai";
 import { generateText, generateObject } from "ai";
 import { z } from "zod";
 
-
 export default async function generateMarketingCopy(input: string) {
   const model = openai("gpt-4o");
-
 
   // First step: Generate marketing copy
   const { text: copy } = await generateText({
     model,
     prompt: `Write persuasive marketing copy for: ${input}. Focus on benefits and emotional appeal.`,
   });
-
 
   // Perform quality check on copy
   const { object: qualityMetrics } = await generateObject({
@@ -54,10 +51,8 @@ export default async function generateMarketingCopy(input: string) {
     2. Emotional appeal (1-10)
     3. Clarity (1-10)
 
-
     Copy to evaluate: ${copy}`,
   });
-
 
   // If quality check fails, regenerate with more specific instructions
   if (
@@ -72,12 +67,10 @@ export default async function generateMarketingCopy(input: string) {
       ${qualityMetrics.emotionalAppeal < 7 ? "- Stronger emotional appeal" : ""}
       ${qualityMetrics.clarity < 7 ? "- Improved clarity and directness" : ""}
 
-
       Original copy: ${copy}`,
     });
     return { copy: improvedCopy, qualityMetrics };
   }
-
 
   return { copy, qualityMetrics };
 }
@@ -89,17 +82,13 @@ Classifies input and directs it to specialized followup tasks, allowing for sepa
 
 ![Figure 2: Routing](https://developers.cloudflare.com/_astro/2_Routing.CT-Tgwab_1YYXmR.webp)
 
-**TypeScript**
-
 ```ts
 import { openai } from '@ai-sdk/openai';
 import { generateObject, generateText } from 'ai';
 import { z } from 'zod';
 
-
 async function handleCustomerQuery(query: string) {
   const model = openai('gpt-4o');
-
 
   // First step: Classify the query type
   const { object: classification } = await generateObject({
@@ -112,13 +101,11 @@ async function handleCustomerQuery(query: string) {
     prompt: `Classify this customer query:
     ${query}
 
-
     Determine:
     1. Query type (general, refund, or technical)
     2. Complexity (simple or complex)
     3. Brief reasoning for classification`,
   });
-
 
   // Route based on classification
   // Set model and system prompt based on query type and complexity
@@ -138,7 +125,6 @@ async function handleCustomerQuery(query: string) {
     prompt: query,
   });
 
-
   return { response, classification };
 }
 ```
@@ -149,18 +135,14 @@ Enables simultaneous task processing through sectioning or voting mechanisms.
 
 ![Figure 3: Parallelization](https://developers.cloudflare.com/_astro/3_Parallelization.gkwf-xnL_1psyLV.webp)
 
-**TypeScript**
-
 ```ts
 import { openai } from '@ai-sdk/openai';
 import { generateText, generateObject } from 'ai';
 import { z } from 'zod';
 
-
 // Example: Parallel code review with multiple specialized reviewers
 async function parallelCodeReview(code: string) {
   const model = openai('gpt-4o');
-
 
   // Run parallel reviews
   const [securityReview, performanceReview, maintainabilityReview] =
@@ -178,7 +160,6 @@ async function parallelCodeReview(code: string) {
       ${code}`,
       }),
 
-
       generateObject({
         model,
         system:
@@ -191,7 +172,6 @@ async function parallelCodeReview(code: string) {
         prompt: `Review this code:
       ${code}`,
       }),
-
 
       generateObject({
         model,
@@ -207,13 +187,11 @@ async function parallelCodeReview(code: string) {
       }),
     ]);
 
-
   const reviews = [
     { ...securityReview.object, type: 'security' },
     { ...performanceReview.object, type: 'performance' },
     { ...maintainabilityReview.object, type: 'maintainability' },
   ];
-
 
   // Aggregate results using another model instance
   const { text: summary } = await generateText({
@@ -222,7 +200,6 @@ async function parallelCodeReview(code: string) {
     prompt: `Synthesize these code review results into a concise summary with key actions:
     ${JSON.stringify(reviews, null, 2)}`,
   });
-
 
   return { reviews, summary };
 }
@@ -234,13 +211,10 @@ A central LLM dynamically breaks down tasks, delegates to Worker LLMs, and synth
 
 ![Figure 4: Orchestrator Workers](https://developers.cloudflare.com/_astro/4_Orchestrator-Workers.jVghtZEj_Z6FePI.webp)
 
-**TypeScript**
-
 ```ts
 import { openai } from '@ai-sdk/openai';
 import { generateObject } from 'ai';
 import { z } from 'zod';
-
 
 async function implementFeature(featureRequest: string) {
   // Orchestrator: Plan the implementation
@@ -262,7 +236,6 @@ async function implementFeature(featureRequest: string) {
     ${featureRequest}`,
   });
 
-
   // Workers: Execute the planned changes
   const fileChanges = await Promise.all(
     implementationPlan.files.map(async file => {
@@ -276,7 +249,6 @@ async function implementFeature(featureRequest: string) {
           'You are an expert at safely removing code while ensuring no breaking changes.',
       }[file.changeType];
 
-
       const { object: change } = await generateObject({
         model: openai('gpt-4o'),
         schema: z.object({
@@ -287,11 +259,9 @@ async function implementFeature(featureRequest: string) {
         prompt: `Implement the changes for ${file.filePath} to support:
         ${file.purpose}
 
-
         Consider the overall feature context:
         ${featureRequest}`,
       });
-
 
       return {
         file,
@@ -299,7 +269,6 @@ async function implementFeature(featureRequest: string) {
       };
     }),
   );
-
 
   return {
     plan: implementationPlan,
@@ -314,19 +283,15 @@ One LLM generates responses while another provides evaluation and feedback in a 
 
 ![Figure 5: Evaluator-Optimizer](https://developers.cloudflare.com/_astro/5_Evaluator-Optimizer.uXTWfJxj_Z8n6xm.webp)
 
-**TypeScript**
-
 ```ts
 import { openai } from '@ai-sdk/openai';
 import { generateText, generateObject } from 'ai';
 import { z } from 'zod';
 
-
 async function translateWithFeedback(text: string, targetLanguage: string) {
   let currentTranslation = '';
   let iterations = 0;
   const MAX_ITERATIONS = 3;
-
 
   // Initial translation
   const { text: translation } = await generateText({
@@ -336,9 +301,7 @@ async function translateWithFeedback(text: string, targetLanguage: string) {
     ${text}`,
   });
 
-
   currentTranslation = translation;
-
 
   // Evaluation-optimization loop
   while (iterations < MAX_ITERATIONS) {
@@ -356,10 +319,8 @@ async function translateWithFeedback(text: string, targetLanguage: string) {
       system: 'You are an expert in evaluating literary translations.',
       prompt: `Evaluate this translation:
 
-
       Original: ${text}
       Translation: ${currentTranslation}
-
 
       Consider:
       1. Overall quality
@@ -367,7 +328,6 @@ async function translateWithFeedback(text: string, targetLanguage: string) {
       3. Preservation of nuance
       4. Cultural accuracy`,
     });
-
 
     // Check if quality meets threshold
     if (
@@ -379,7 +339,6 @@ async function translateWithFeedback(text: string, targetLanguage: string) {
       break;
     }
 
-
     // Generate improved translation based on feedback
     const { text: improvedTranslation } = await generateText({
       model: openai('gpt-4o'), // use a larger model
@@ -388,16 +347,13 @@ async function translateWithFeedback(text: string, targetLanguage: string) {
       ${evaluation.specificIssues.join('\n')}
       ${evaluation.improvementSuggestions.join('\n')}
 
-
       Original: ${text}
       Current Translation: ${currentTranslation}`,
     });
 
-
     currentTranslation = improvedTranslation;
     iterations++;
   }
-
 
   return {
     finalTranslation: currentTranslation,
@@ -406,7 +362,14 @@ async function translateWithFeedback(text: string, targetLanguage: string) {
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/#page","headline":"Agentic patterns · Cloudflare Agents docs","description":"Implement common AI agent patterns like prompt chaining, routing, parallelization, and orchestrator-workers on Cloudflare.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/concepts/agentic-patterns/","name":"Agentic patterns"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/#page","headline":"Agentic patterns · Cloudflare Agents docs","description":"Implement common AI agent patterns like prompt chaining, routing, parallelization, and orchestrator-workers on Cloudflare.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Bot Management
 description: Configure Bot Management for Enterprise to identify and act on automated traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Bot Management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bot Management
 
-# Bot Management
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/get-started/bot-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Bot Management for Enterprise is a paid add-on that provides sophisticated bot protection for your domain. Customers can identify automated traffic, take appropriate action, and view detailed analytics within the dashboard.
 
@@ -26,11 +28,8 @@ This Enterprise product provides the most flexibility to customers by:
 
 Bot Management is automatically enabled for Enterprise zones entitled with the add-on.
 
-* [  New dashboard ](#tab-panel-7495)
-* [ Old dashboard ](#tab-panel-7496)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot management**.
 4. Turn **Bot management** on.
@@ -63,11 +62,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-7497)
-* [ Old dashboard ](#tab-panel-7498)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot Management**.
 4. Under **Configurations**, select the edit icon for **Auto-updates to the Machine Learning Model** and turn it on.
@@ -110,7 +106,14 @@ These templates use wirefilter expression syntax. In these expressions, `eq` mea
 (not cf.bot_management.js_detection.passed and http.request.method eq "" and http.request.uri.path in {""})
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/get-started/bot-management/#page","headline":"Bot Management · Cloudflare bot solutions docs","description":"Configure Bot Management for Enterprise to identify and act on automated traffic.","url":"https://developers.cloudflare.com/bots/get-started/bot-management/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/get-started/","name":"Get started with Cloudflare bot solutions"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/get-started/bot-management/","name":"Bot Management"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/get-started/bot-management/#page","headline":"Bot Management · Cloudflare bot solutions docs","description":"Configure Bot Management for Enterprise to identify and act on automated traffic.","url":"https://developers.cloudflare.com/bots/get-started/bot-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

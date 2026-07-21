@@ -1,16 +1,18 @@
 ---
-title: Malicious uploads detection
 description: Scan uploaded files for malware and malicious content.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Malicious uploads detection
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Malicious uploads detection
 
-# Malicious uploads detection
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/malicious-uploads/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The malicious uploads detection is a [traffic detection](https://developers.cloudflare.com/waf/concepts/#detection-versus-mitigation) that scans files and other content uploaded to your application for malware.
 
@@ -105,7 +107,14 @@ When content scanning is enabled, you can use the following fields in WAF rules:
 
 For examples of rule expressions using these fields, refer to [Example rules](https://developers.cloudflare.com/waf/detections/malicious-uploads/example-rules/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/#page","headline":"Malicious uploads detection · Cloudflare Web Application Firewall (WAF) docs","description":"Scan uploaded files for malware and malicious content.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/malicious-uploads/","name":"Malicious uploads detection"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/#page","headline":"Malicious uploads detection · Cloudflare Web Application Firewall (WAF) docs","description":"Scan uploaded files for malware and malicious content.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

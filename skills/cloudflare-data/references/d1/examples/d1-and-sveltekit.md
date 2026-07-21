@@ -1,18 +1,20 @@
 ---
-title: Query D1 from SvelteKit
 description: Query a D1 database from a SvelteKit application.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Query D1 from SvelteKit
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Query D1 from SvelteKit
+#  Query D1 from SvelteKit
 
 Query a D1 database from a SvelteKit application.
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/examples/d1-and-sveltekit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [SvelteKit ↗](https://kit.svelte.dev/) is a full-stack framework that combines the Svelte front-end framework with Vite for server-side capabilities and rendering. You can query D1 from SvelteKit by configuring a [server endpoint ↗](https://kit.svelte.dev/docs/routing#server) with a binding to your D1 database(s).
 
@@ -30,76 +32,72 @@ The following example shows you how to create a server endpoint configured to qu
 
 The example also shows you how to configure both your app-wide types within `src/app.d.ts` to recognize your `D1Database` binding, import the `@sveltejs/adapter-cloudflare` adapter into `svelte.config.js`, and configure it to apply to all of your routes.
 
-* [  TypeScript ](#tab-panel-8584)
-
-**TypeScript**
-
 ```ts
 import type { RequestHandler } from "@sveltejs/kit";
 
-
 export async function GET({ request, platform }) {
-  try {
-    let result = await platform.env.DB.prepare(
-      "SELECT * FROM users LIMIT 5",
-    ).run();
-    return new Response(JSON.stringify(result), {
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch (error) {
-    return Response.json({ error: "Failed to fetch users" }, {
-      status: 500
-    });
-  }
+	try {
+		let result = await platform.env.DB.prepare(
+			"SELECT * FROM users LIMIT 5",
+		).run();
+		return new Response(JSON.stringify(result), {
+			headers: { "Content-Type": "application/json" },
+		});
+	} catch (error) {
+		return Response.json({ error: "Failed to fetch users" }, {
+			status: 500
+		});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare global {
-  namespace App {
-    // interface Error {}
-    // interface Locals {}
-    // interface PageData {}
-    interface Platform {
-      env: {
-        DB: D1Database;
-      };
-      context: {
-        waitUntil(promise: Promise<any>): void;
-      };
-      caches: CacheStorage & { default: Cache };
-    }
-  }
+	namespace App {
+		// interface Error {}
+		// interface Locals {}
+		// interface PageData {}
+		interface Platform {
+			env: {
+				DB: D1Database;
+			};
+			context: {
+				waitUntil(promise: Promise<any>): void;
+			};
+			caches: CacheStorage & { default: Cache };
+		}
+	}
 }
-
 
 export {};
 ```
 
-**JavaScript**
-
 ```js
 import adapter from "@sveltejs/adapter-cloudflare";
 
-
 export default {
-  kit: {
-    adapter: adapter({
-      // See below for an explanation of these options
-      routes: {
-        include: ["/*"],
-        exclude: ["<all>"],
-      },
-    }),
-  },
+	kit: {
+		adapter: adapter({
+			// See below for an explanation of these options
+			routes: {
+				include: ["/*"],
+				exclude: ["<all>"],
+			},
+		}),
+	},
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/d1-and-sveltekit/#page","headline":"Query D1 from SvelteKit · Cloudflare D1 docs","description":"Query a D1 database from a SvelteKit application.","url":"https://developers.cloudflare.com/d1/examples/d1-and-sveltekit/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SvelteKit","Svelte"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/d1-and-sveltekit/","name":"Query D1 from SvelteKit"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/d1-and-sveltekit/#page","headline":"Query D1 from SvelteKit · Cloudflare D1 docs","description":"Query a D1 database from a SvelteKit application.","url":"https://developers.cloudflare.com/d1/examples/d1-and-sveltekit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SvelteKit","Svelte"]}
 ```

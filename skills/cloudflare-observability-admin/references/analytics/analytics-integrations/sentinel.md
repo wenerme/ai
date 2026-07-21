@@ -1,16 +1,18 @@
 ---
-title: Sentinel
 description: Ingest Cloudflare logs into Microsoft Sentinel.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Sentinel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sentinel
 
-# Sentinel
+Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare has integrations with Microsoft Sentinel to make analyzing your Cloudflare data easier and in a centralized space. Cloudflare has two versions of this connector available. We recommend utilizing the latest Codeless Connector integration as it provides easier setup, cost management, and integrates with [Sentinel Data Lake ↗](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview).
 
@@ -292,7 +294,14 @@ SecurityRuleDescription
 [Microsoft Data Lake Overview ↗](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview)
 [About the CCF Platform ↗](https://learn.microsoft.com/en-us/azure/sentinel/create-codeless-connector)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/#page","headline":"Sentinel · Cloudflare Analytics docs","description":"Ingest Cloudflare logs into Microsoft Sentinel.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-integrations/","name":"Analytics integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-integrations/sentinel/","name":"Sentinel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/#page","headline":"Sentinel · Cloudflare Analytics docs","description":"Ingest Cloudflare logs into Microsoft Sentinel.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

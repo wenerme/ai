@@ -1,16 +1,18 @@
 ---
-title: Outbound Workers
 description: Intercept and control outgoing fetch requests from user Workers using Outbound Workers in Workers for Platforms.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Outbound Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Outbound Workers
 
-# Outbound Workers
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Outbound Workers sit between your customer's Workers and the public Internet. They give you visibility into all outgoing `fetch()` requests from user Workers.
 
@@ -37,35 +39,27 @@ To use Outbound Workers:
 
 Make sure that you have `wrangler@3.3.0` or later [installed](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-* [  wrangler.jsonc ](#tab-panel-7693)
-* [  wrangler.toml ](#tab-panel-7694)
-
-**JSONC**
-
 ```jsonc
 {
-  "dispatch_namespaces": [
-    {
-      "binding": "dispatcher",
-      "namespace": "<NAMESPACE_NAME>",
-      "outbound": {
-        "service": "<SERVICE_NAME>",
-        "parameters": [
-          "params_object"
-        ]
-      }
-    }
-  ]
+	"dispatch_namespaces": [
+		{
+			"binding": "dispatcher",
+			"namespace": "<NAMESPACE_NAME>",
+			"outbound": {
+				"service": "<SERVICE_NAME>",
+				"parameters": [
+					"params_object"
+				]
+			}
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[dispatch_namespaces]]
 binding = "dispatcher"
 namespace = "<NAMESPACE_NAME>"
-
 
   [dispatch_namespaces.outbound]
   service = "<SERVICE_NAME>"
@@ -74,41 +68,37 @@ namespace = "<NAMESPACE_NAME>"
 
 1. Edit your dynamic dispatch Worker to call the Outbound Worker and declare variables to pass on `dispatcher.get()`.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    try {
-      // parse the URL, read the subdomain
-      let workerName = new URL(request.url).host.split(".")[0];
+	async fetch(request, env) {
+		try {
+			// parse the URL, read the subdomain
+			let workerName = new URL(request.url).host.split(".")[0];
 
+			let context_from_dispatcher = {
+				customer_name: workerName,
+				url: request.url,
+			};
 
-      let context_from_dispatcher = {
-        customer_name: workerName,
-        url: request.url,
-      };
-
-
-      let userWorker = env.dispatcher.get(
-        workerName,
-        {},
-        {
-          // outbound arguments. object name must match parameters in the binding
-          outbound: {
-            params_object: context_from_dispatcher,
-          },
-        },
-      );
-      return await userWorker.fetch(request);
-    } catch (e) {
-      if (e.message.startsWith("Worker not found")) {
-        // we tried to get a worker that doesn't exist in our dispatch namespace
-        return new Response("", { status: 404 });
-      }
-      return new Response(e.message, { status: 500 });
-    }
-  },
+			let userWorker = env.dispatcher.get(
+				workerName,
+				{},
+				{
+					// outbound arguments. object name must match parameters in the binding
+					outbound: {
+						params_object: context_from_dispatcher,
+					},
+				},
+			);
+			return await userWorker.fetch(request);
+		} catch (e) {
+			if (e.message.startsWith("Worker not found")) {
+				// we tried to get a worker that doesn't exist in our dispatch namespace
+				return new Response("", { status: 404 });
+			}
+			return new Response(e.message, { status: 500 });
+		}
+	},
 };
 ```
 
@@ -116,49 +106,41 @@ export default {
 
 The following is an example of an Outbound Worker that logs the fetch request from user Worker and creates a JWT if the fetch request matches `api.example.com`.
 
-**JavaScript**
-
 ```js
 export default {
-  // this event is fired when the dispatched Workers make a subrequest
-  async fetch(request, env, ctx) {
-    // env contains the values we set in `dispatcher.get()`
-    const customer_name = env.customer_name;
-    const original_url = env.url;
+	// this event is fired when the dispatched Workers make a subrequest
+	async fetch(request, env, ctx) {
+		// env contains the values we set in `dispatcher.get()`
+		const customer_name = env.customer_name;
+		const original_url = env.url;
 
+		// log the request
+		ctx.waitUntil(
+			fetch("https://logs.example.com", {
+				method: "POST",
+				body: JSON.stringify({
+					customer_name,
+					original_url,
+				}),
+			}),
+		);
 
-    // log the request
-    ctx.waitUntil(
-      fetch("https://logs.example.com", {
-        method: "POST",
-        body: JSON.stringify({
-          customer_name,
-          original_url,
-        }),
-      }),
-    );
+		const url = new URL(original_url);
+		if (url.host === "api.example.com") {
+			// pre-auth requests to our API
+			const jwt = make_jwt_for_customer(customer_name);
 
+			let headers = new Headers(request.headers);
+			headers.set("Authorization", `Bearer ${jwt}`);
 
-    const url = new URL(original_url);
-    if (url.host === "api.example.com") {
-      // pre-auth requests to our API
-      const jwt = make_jwt_for_customer(customer_name);
+			// clone the request to set new headers using existing body
+			let new_request = new Request(request, { headers });
 
+			return fetch(new_request);
+		}
 
-      let headers = new Headers(request.headers);
-      headers.set("Authorization", `Bearer ${jwt}`);
-
-
-      // clone the request to set new headers using existing body
-      let new_request = new Request(request, { headers });
-
-
-      return fetch(new_request);
-    }
-
-
-    return fetch(request);
-  },
+		return fetch(request);
+	},
 };
 ```
 
@@ -166,7 +148,14 @@ Note
 
 Outbound Workers do not intercept fetch requests made from [Durable Objects](https://developers.cloudflare.com/durable-objects/) or [mTLS certificate bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/#page","headline":"Outbound Workers · Cloudflare for Platforms docs","description":"Intercept and control outgoing fetch requests from user Workers using Outbound Workers in Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/","name":"Configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/","name":"Outbound Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/#page","headline":"Outbound Workers · Cloudflare for Platforms docs","description":"Intercept and control outgoing fetch requests from user Workers using Outbound Workers in Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

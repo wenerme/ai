@@ -1,16 +1,18 @@
 ---
-title: Message Broadcast APIs
 description: Send custom broadcast messages to all participants in a RealtimeKit meeting.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Message Broadcast APIs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Message Broadcast APIs
 
-# Message Broadcast APIs
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The broadcast APIs allow a user to send custom messages to all other users in a meeting.
 
@@ -33,8 +35,6 @@ The Participants module on the meeting object allows you to broadcast messages t
 * If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
 * If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
 
-**TypeScript**
-
 ```ts
 const participants = useRealtimeKitSelector((m) => m.participants);
 participants.broadcastMessage(
@@ -44,18 +44,15 @@ participants.broadcastMessage(
 ): Promise<void>
 ```
 
-**TypeScript**
-
 ```ts
 type BroadcastMessagePayload = {
-  [key: string]: boolean | number | string | Date | ActiveTab;
+	[key: string]: boolean | number | string | Date | ActiveTab;
 };
 
-
 type BroadcastMessageTarget =
-  | { participantIds: string[] }
-  | { presetNames: string[] }
-  | { meetingIds: string[] };
+	| { participantIds: string[] }
+	| { presetNames: string[] }
+	| { meetingIds: string[] };
 ```
 
 | Param   | Type                         | Description                                                                          | Required |
@@ -69,8 +66,6 @@ type BroadcastMessageTarget =
 * If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
 * If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
 
-**TypeScript**
-
 ```ts
 meeting.participants.broadcastMessage(
   type: Exclude<string, 'spotlight'>,
@@ -79,18 +74,15 @@ meeting.participants.broadcastMessage(
 ): Promise<void>
 ```
 
-**TypeScript**
-
 ```ts
 type BroadcastMessagePayload = {
-  [key: string]: boolean | number | string | Date | ActiveTab;
+	[key: string]: boolean | number | string | Date | ActiveTab;
 };
 
-
 type BroadcastMessageTarget =
-  | { participantIds: string[] }
-  | { presetNames: string[] }
-  | { meetingIds: string[] };
+	| { participantIds: string[] }
+	| { presetNames: string[] }
+	| { meetingIds: string[] };
 ```
 
 | Param   | Type                         | Description                                                                          | Required |
@@ -104,8 +96,6 @@ type BroadcastMessageTarget =
 * If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
 * If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
 
-**TypeScript**
-
 ```ts
 meeting.participants.broadcastMessage(
   type: Exclude<string, 'spotlight'>,
@@ -114,52 +104,43 @@ meeting.participants.broadcastMessage(
 ): Promise<void>
 ```
 
-**TypeScript**
-
 ```ts
 type BroadcastMessagePayload = {
-  [key: string]: boolean | number | string | Date | ActiveTab;
+	[key: string]: boolean | number | string | Date | ActiveTab;
 };
 
-
 type BroadcastMessageTarget =
-  | { participantIds: string[] }
-  | { presetNames: string[] }
-  | { meetingIds: string[] };
+	| { participantIds: string[] }
+	| { presetNames: string[] }
+	| { meetingIds: string[] };
 ```
 
 ### Subscribe to Messages
 
 Use the `broadcastedMessage` event to listen for messages sent via `broadcastMessage` and handle them in your application.
 
-**TypeScript**
-
 ```ts
 const participants = useRealtimeKitSelector((m) => m.participants);
 participants.on("broadcastedMessage", ({ type, payload, timestamp }) => {
-  // handle message
+	// handle message
 });
 ```
 
-**TypeScript**
-
 ```ts
 meeting.participants.on(
-  "broadcastedMessage",
-  ({ type, payload, timestamp }) => {
-    // handle message
-  },
+	"broadcastedMessage",
+	({ type, payload, timestamp }) => {
+		// handle message
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 meeting.participants.on(
-  "broadcastedMessage",
-  ({ type, payload, timestamp }) => {
-    // handle message
-  },
+	"broadcastedMessage",
+	({ type, payload, timestamp }) => {
+		// handle message
+	},
 );
 ```
 
@@ -174,16 +155,13 @@ meeting.participants.on(
 
 #### Broadcast to everyone in the meeting
 
-**TypeScript**
-
 ```ts
 const participants = useRealtimeKitSelector((m) => m.participants);
 await participants.broadcastMessage("HAND_RAISE", {
-  raised: true,
-  userId: meeting.self.userId,
-  sentAt: new Date(),
+	raised: true,
+	userId: meeting.self.userId,
+	sentAt: new Date(),
 });
-
 
 participants.on(
 "broadcastedMessage",
@@ -195,15 +173,12 @@ if (type === "HAND_RAISE") {
 );
 ```
 
-**TypeScript**
-
 ```ts
 await meeting.participants.broadcastMessage("HAND_RAISE", {
-  raised: true,
-  userId: meeting.self.userId,
-  sentAt: new Date(),
+	raised: true,
+	userId: meeting.self.userId,
+	sentAt: new Date(),
 });
-
 
 meeting.participants.on(
 "broadcastedMessage",
@@ -215,15 +190,12 @@ if (type === "HAND_RAISE") {
 );
 ```
 
-**TypeScript**
-
 ```ts
 await meeting.participants.broadcastMessage("HAND_RAISE", {
-  raised: true,
-  userId: meeting.self.userId,
-  sentAt: new Date(),
+	raised: true,
+	userId: meeting.self.userId,
+	sentAt: new Date(),
 });
-
 
 meeting.participants.on(
 "broadcastedMessage",
@@ -239,40 +211,34 @@ if (type === "HAND_RAISE") {
 
 Only the participants with those participantIds receive the message.
 
-**TypeScript**
-
 ```ts
 const participants = useRealtimeKitSelector((m) => m.participants);
 await participants.broadcastMessage(
-  "PRIVATE_NOTE",
-  { message: "You are on stage in 30 seconds" },
-  {
-    participantIds: ["peer-id-1", "peer-id-2"],
-  },
+	"PRIVATE_NOTE",
+	{ message: "You are on stage in 30 seconds" },
+	{
+		participantIds: ["peer-id-1", "peer-id-2"],
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 await meeting.participants.broadcastMessage(
-  "PRIVATE_NOTE",
-  { message: "You are on stage in 30 seconds" },
-  {
-    participantIds: ["peer-id-1", "peer-id-2"],
-  },
+	"PRIVATE_NOTE",
+	{ message: "You are on stage in 30 seconds" },
+	{
+		participantIds: ["peer-id-1", "peer-id-2"],
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 await meeting.participants.broadcastMessage(
-  "PRIVATE_NOTE",
-  { message: "You are on stage in 30 seconds" },
-  {
-    participantIds: ["peer-id-1", "peer-id-2"],
-  },
+	"PRIVATE_NOTE",
+	{ message: "You are on stage in 30 seconds" },
+	{
+		participantIds: ["peer-id-1", "peer-id-2"],
+	},
 );
 ```
 
@@ -280,40 +246,34 @@ await meeting.participants.broadcastMessage(
 
 All participants whose preset name is `speaker` receive the message.
 
-**TypeScript**
-
 ```ts
 const participants = useRealtimeKitSelector((m) => m.participants);
 await participants.broadcastMessage(
-  "STAGE_INSTRUCTION",
-  { text: "Prepare for Q&A" },
-  {
-    presetNames: ["speaker"],
-  },
+	"STAGE_INSTRUCTION",
+	{ text: "Prepare for Q&A" },
+	{
+		presetNames: ["speaker"],
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 await meeting.participants.broadcastMessage(
-  "STAGE_INSTRUCTION",
-  { text: "Prepare for Q&A" },
-  {
-    presetNames: ["speaker"],
-  },
+	"STAGE_INSTRUCTION",
+	{ text: "Prepare for Q&A" },
+	{
+		presetNames: ["speaker"],
+	},
 );
 ```
 
-**TypeScript**
-
 ```ts
 await meeting.participants.broadcastMessage(
-  "STAGE_INSTRUCTION",
-  { text: "Prepare for Q&A" },
-  {
-    presetNames: ["speaker"],
-  },
+	"STAGE_INSTRUCTION",
+	{ text: "Prepare for Q&A" },
+	{
+		presetNames: ["speaker"],
+	},
 );
 ```
 
@@ -321,44 +281,45 @@ await meeting.participants.broadcastMessage(
 
 All participants in the specified meetings receive the message.
 
-**TypeScript**
-
 ```ts
 const participants = useRealtimeKitSelector((m) => m.participants);
 await participants.broadcastMessage(
-  "GLOBAL_ANNOUNCEMENT",
-  { text: "The event will end in 5 minutes." },
-  {
-    meetingIds: ["meeting-1", "meeting-2"],
-  },
+	"GLOBAL_ANNOUNCEMENT",
+	{ text: "The event will end in 5 minutes." },
+	{
+		meetingIds: ["meeting-1", "meeting-2"],
+	},
 );
 ```
-
-**TypeScript**
 
 ```ts
 await meeting.participants.broadcastMessage(
-  "GLOBAL_ANNOUNCEMENT",
-  { text: "The event will end in 5 minutes." },
-  {
-    meetingIds: ["meeting-1", "meeting-2"],
-  },
+	"GLOBAL_ANNOUNCEMENT",
+	{ text: "The event will end in 5 minutes." },
+	{
+		meetingIds: ["meeting-1", "meeting-2"],
+	},
 );
 ```
-
-**TypeScript**
 
 ```ts
 await meeting.participants.broadcastMessage(
-  "GLOBAL_ANNOUNCEMENT",
-  { text: "The event will end in 5 minutes." },
-  {
-    meetingIds: ["meeting-1", "meeting-2"],
-  },
+	"GLOBAL_ANNOUNCEMENT",
+	{ text: "The event will end in 5 minutes." },
+	{
+		meetingIds: ["meeting-1", "meeting-2"],
+	},
 );
 ```
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/#page","headline":"Message Broadcast APIs · Cloudflare Realtime docs","description":"Send custom broadcast messages to all participants in a RealtimeKit meeting.","url":"https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/broadcast-apis/","name":"Message Broadcast APIs"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/#page","headline":"Message Broadcast APIs · Cloudflare Realtime docs","description":"Send custom broadcast messages to all participants in a RealtimeKit meeting.","url":"https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

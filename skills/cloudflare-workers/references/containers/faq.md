@@ -1,35 +1,30 @@
 ---
-title: Frequently Asked Questions
 description: Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Frequently Asked Questions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Frequently Asked Questions
 
-# Frequently Asked Questions
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## How do Container logs work?
 
 To get logs in the Dashboard, including live tailing of logs, toggle `observability` to true in your Worker's wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-8535)
-* [  wrangler.toml ](#tab-panel-8536)
-
-**JSONC**
-
 ```jsonc
 {
-  "observability": {
-    "enabled": true
-  }
+	"observability": {
+		"enabled": true
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [observability]
@@ -121,11 +116,8 @@ Yes. Use the `docker:dind-rootless` base image since Containers run without root
 
 You must disable iptables when starting the Docker daemon because Containers do not support iptables manipulation:
 
-**Dockerfile**
-
 ```dockerfile
 FROM docker:dind-rootless
-
 
 # Start dockerd with iptables disabled, then run your app
 ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false & exec /path/to/your-app"]
@@ -133,18 +125,14 @@ ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tab
 
 If your application needs to wait for dockerd to become ready before using Docker, use an entrypoint script instead of the inline command above:
 
-**entrypoint.sh**
-
 ```sh
 #!/bin/sh
 set -eu
-
 
 # Wait for dockerd to be ready
 until docker version >/dev/null 2>&1; do
   sleep 0.2
 done
-
 
 exec /path/to/your-app
 ```
@@ -163,7 +151,14 @@ For a complete working example, see the [Docker-in-Docker Containers example ↗
 
 Refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/) for how to control outbound traffic and internet access.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions · Cloudflare Containers docs","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/faq/","name":"Frequently Asked Questions"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions · Cloudflare Containers docs","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

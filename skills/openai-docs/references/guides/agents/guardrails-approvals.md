@@ -21,11 +21,7 @@ Use input guardrails when you want a fast validation step to run before the expe
 Block a request with an input guardrail
 
 ```typescript
-import {
-  Agent,
-  InputGuardrailTripwireTriggered,
-  run,
-} from "@openai/agents";
+import { Agent, InputGuardrailTripwireTriggered, run } from "@openai/agents";
 import { z } from "zod";
 
 const guardrailAgent = new Agent({

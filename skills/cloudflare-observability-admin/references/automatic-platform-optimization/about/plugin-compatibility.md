@@ -1,16 +1,18 @@
 ---
-title: Plugin compatibility
 description: WordPress plugins supported and known to conflict with APO.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Plugin compatibility
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Plugin compatibility
 
-# Plugin compatibility
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Currently, WordPress offers over 50,000 plugins for download. As a result, testing the compatibility between APO and every available plugin is impossible. However, Cloudflare has a list of officially supported plugins and a list of plugins known to cause issues when APO is enabled.
 
@@ -47,7 +49,14 @@ The Cloudflare APO WordPress plugin does not support multisite WordPress install
 * [Imunify360 ↗](https://docs.imunify360.com/features/#webshield)
 * [Perfmatters ↗](https://perfmatters.io/docs/cloudflare-wordpress-settings/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/#page","headline":"Plugin compatibility · Cloudflare Automatic Platform Optimization docs","description":"WordPress plugins supported and known to conflict with APO.","url":"https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/automatic-platform-optimization/about/plugin-compatibility/","name":"Plugin compatibility"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/#page","headline":"Plugin compatibility · Cloudflare Automatic Platform Optimization docs","description":"WordPress plugins supported and known to conflict with APO.","url":"https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
 ```

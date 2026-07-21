@@ -1,20 +1,20 @@
 ---
-title: Set
 description: Set key-value pairs in the Zaraz data layer.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Set
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set
 
-# Set
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/web-api/set/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use `zaraz.set()` anywhere inside the `<body>` tag of a page:
-
-**JavaScript**
 
 ```js
 zaraz.set(key, value, [options])
@@ -22,19 +22,13 @@ zaraz.set(key, value, [options])
 
 Set is useful if you want to make a variable available in all your events without manually setting it every time you are using `zaraz.track()`. For the purpose of this example, assume users in your system have a unique identifier that you want to send to your tools. You might have many `zaraz.track()` calls all sharing this one parameter:
 
-**JavaScript**
-
 ```js
 zaraz.track("form completed", {userId: "ABC-123"})
 ```
 
-**JavaScript**
-
 ```js
 zaraz.track("button clicked", {userId: "ABC-123", value: 200})
 ```
-
-**JavaScript**
 
 ```js
 zaraz.track("cart viewed", {items: 3, userId: "ABC-123"})
@@ -45,8 +39,6 @@ Here, all the events are collecting the `userId` key, and the code for setting t
 Using the above data as the example, if you use `zaraz.set("userId", "ABC-123")` once, before the `zaraz.track()` calls, you can remove the `userId` key from all `zaraz.track()` calls.
 
 Another example:
-
-**JavaScript**
 
 ```js
 zaraz.set('product_name', 't-shirt', {scope: 'page'})
@@ -66,13 +58,18 @@ In the previous example, `{scope: 'page'}` makes the `product_name` property ava
 
 To unset a variable, set it to `undefined`. The variable will then be removed from all scopes it was included in, and will not be automatically sent with future `zaraz.track` calls. For example:
 
-**JavaScript**
-
 ```js
 zaraz.set('product_name', undefined)
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/web-api/set/#page","headline":"zaraz.set · Cloudflare Zaraz docs","description":"Set key-value pairs in the Zaraz data layer.","url":"https://developers.cloudflare.com/zaraz/web-api/set/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/web-api/","name":"Web API"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/web-api/set/","name":"Set"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/web-api/set/#page","headline":"zaraz.set · Cloudflare Zaraz docs","description":"Set key-value pairs in the Zaraz data layer.","url":"https://developers.cloudflare.com/zaraz/web-api/set/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: DNS record types
 description: DNS record types supported by Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: DNS record types
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNS record types
 
-# DNS record types
+Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page provides information about some of the different types of DNS records that you can manage on Cloudflare. For guidance on how to add, edit, or delete DNS records, refer to [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
@@ -65,47 +67,43 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Create DNS Record**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "A",
-    "name": "www.example.com",
-    "content": "192.0.2.1",
-    "ttl": 3600,
-    "proxied": false
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "A",
+		"name": "www.example.com",
+		"content": "192.0.2.1",
+		"ttl": 3600,
+		"proxied": false
+	}'
 ```
-
-**Response**
 
 ```json
 {
-  "result": {
-    "id": "<ID>",
-    "zone_id": "<ZONE_ID>",
-    "zone_name": "example.com",
-    "name": "www.example.com",
-    "type": "A",
-    "content": "192.0.2.1",
-    "proxiable": true,
-    "proxied": false,
-    "ttl": 1,
-    "locked": false,
-    "meta": {
-      "source": "primary"
-    },
-    "comment": null,
-    "tags": [],
-    "created_on": "2023-01-17T20:37:05.368097Z",
-    "modified_on": "2023-01-17T20:37:05.368097Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ID>",
+		"zone_id": "<ZONE_ID>",
+		"zone_name": "example.com",
+		"name": "www.example.com",
+		"type": "A",
+		"content": "192.0.2.1",
+		"proxiable": true,
+		"proxied": false,
+		"ttl": 1,
+		"locked": false,
+		"meta": {
+			"source": "primary"
+		},
+		"comment": null,
+		"tags": [],
+		"created_on": "2023-01-17T20:37:05.368097Z",
+		"modified_on": "2023-01-17T20:37:05.368097Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -168,47 +166,43 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Create DNS Record**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "CNAME",
-    "name": "www.example.com",
-    "content": "www.another-example.com",
-    "ttl": 3600,
-    "proxied": false
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "CNAME",
+		"name": "www.example.com",
+		"content": "www.another-example.com",
+		"ttl": 3600,
+		"proxied": false
+	}'
 ```
-
-**Response**
 
 ```json
 {
-  "result": {
-    "id": "<ID>",
-    "zone_id": "<ZONE_ID>",
-    "zone_name": "example.com",
-    "name": "www.example.com",
-    "type": "CNAME",
-    "content": "www.another-example.com",
-    "proxiable": true,
-    "proxied": false,
-    "ttl": 1,
-    "locked": false,
-    "meta": {
-      "source": "primary"
-    },
-    "comment": null,
-    "tags": [],
-    "created_on": "2023-01-17T20:37:05.368097Z",
-    "modified_on": "2023-01-17T20:37:05.368097Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ID>",
+		"zone_id": "<ZONE_ID>",
+		"zone_name": "example.com",
+		"name": "www.example.com",
+		"type": "CNAME",
+		"content": "www.another-example.com",
+		"proxiable": true,
+		"proxied": false,
+		"ttl": 1,
+		"locked": false,
+		"meta": {
+			"source": "primary"
+		},
+		"comment": null,
+		"tags": [],
+		"created_on": "2023-01-17T20:37:05.368097Z",
+		"modified_on": "2023-01-17T20:37:05.368097Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -285,60 +279,56 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `DNS Write`
 
-**Create DNS Record**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "type": "SRV",
-    "name": "_xmpp._tcp.example.com",
-    "data": {
-        "priority": 10,
-        "weight": 5,
-        "port": 5223,
-        "target": "server.example.com"
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"type": "SRV",
+		"name": "_xmpp._tcp.example.com",
+		"data": {
+				"priority": 10,
+				"weight": 5,
+				"port": 5223,
+				"target": "server.example.com"
+		}
+	}'
 ```
-
-**Response**
 
 ```json
 {
-  "result": {
-    "id": "<ID>",
-    "zone_id": "<ZONE_ID>",
-    "zone_name": "example.com",
-    "name": "_xmpp._tcp.example.com",
-    "type": "SRV",
-    "content": "5 5223 server.example.com",
-    "priority": 10,
-    "proxiable": false,
-    "proxied": false,
-    "ttl": 1,
-    "locked": false,
-    "data": {
-      "port": 5223,
-      "priority": 10,
-      "target": "server.example.com",
-      "weight": 5
-    },
-    "meta": {
-      "auto_added": false,
-      "managed_by_apps": false,
-      "managed_by_argo_tunnel": false,
-      "source": "primary"
-    },
-    "comment": null,
-    "tags": [],
-    "created_on": "2022-11-08T15:57:39.585977Z",
-    "modified_on": "2022-11-08T15:57:39.585977Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ID>",
+		"zone_id": "<ZONE_ID>",
+		"zone_name": "example.com",
+		"name": "_xmpp._tcp.example.com",
+		"type": "SRV",
+		"content": "5 5223 server.example.com",
+		"priority": 10,
+		"proxiable": false,
+		"proxied": false,
+		"ttl": 1,
+		"locked": false,
+		"data": {
+			"port": 5223,
+			"priority": 10,
+			"target": "server.example.com",
+			"weight": 5
+		},
+		"meta": {
+			"auto_added": false,
+			"managed_by_apps": false,
+			"managed_by_argo_tunnel": false,
+			"source": "primary"
+		},
+		"comment": null,
+		"tags": [],
+		"created_on": "2022-11-08T15:57:39.585977Z",
+		"modified_on": "2022-11-08T15:57:39.585977Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -498,7 +488,14 @@ For field definitions, refer to the [API documentation](https://developers.cloud
 
 Cloudflare also supports other record types that are less common, such as URI, NAPTR, and certificate-related record types (SSHFP, TLSA, SMIMEA, and CERT). Refer to our [blog post ↗](https://blog.cloudflare.com/additional-record-types-available-with-cloudflare-dns/) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#page","headline":"DNS record types · Cloudflare DNS docs","description":"DNS record types supported by Cloudflare.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/reference/dns-record-types/","name":"DNS record types"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#page","headline":"DNS record types · Cloudflare DNS docs","description":"DNS record types supported by Cloudflare.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

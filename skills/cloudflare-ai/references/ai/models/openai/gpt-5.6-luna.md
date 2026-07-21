@@ -1,39 +1,38 @@
 ---
-title: GPT-5.6 Luna
 description: GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GPT-5.6 Luna
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
 #  GPT-5.6 Luna
 
-Text Generation • OpenAI
+ Text Generation • OpenAI
 
-`openai/gpt-5.6-luna`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` openai/gpt-5.6-luna `
+
+* Third-party
 
 GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.
 
-| Model Info                                                                 |                                                                                                                       |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,050,000 tokens                                                                                                      |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                         |
-| Request formats                                                            | Responses                                                                                                             |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-luna) |
+| Model Info                                                                  |                                                                                                                        |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,050,000 tokens                                                                                                       |
+| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                 |
+| More information                                                            | [link ↗](https://openai.com/)                                                                                          |
+| Request formats                                                             | Responses                                                                                                              |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-luna) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1484)
-* [ cURL ](#tab-panel-1485)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -56,9 +55,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "max_output_tokens": 256
 }'
 ```
-
-* [ Output ](#tab-panel-1488)
-* [ Raw response ](#tab-panel-1489)
 
 - **Protects system stability:** Prevents overload, reduces outages, and ensures predictable performance during traffic spikes.
 - **Ensures fair access:** Stops individual users or applications from consuming disproportionate resources.
@@ -165,11 +161,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 **Pull Request Description**  — Using instructions for a cost-sensitive drafting task
 
-* [ TypeScript ](#tab-panel-1486)
-* [ cURL ](#tab-panel-1487)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'openai/gpt-5.6-luna',
@@ -194,9 +185,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "max_output_tokens": 256
 }'
 ```
-
-* [ Output ](#tab-panel-1490)
-* [ Raw response ](#tab-panel-1491)
 
 ## Summary
 Prevents duplicate webhook deliveries by ensuring each event is processed only once, even when retries or concurrent requests occur.
@@ -308,9 +296,6 @@ All existing and new tests pass.
 
 ## Parameters
 
-* [ Input ](#tab-panel-1492)
-* [ Output ](#tab-panel-1493)
-
 ▶input
 
 `one of`required
@@ -389,7 +374,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema
 
 Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/#page","headline":"GPT-5.6 Luna (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/#page","headline":"GPT-5.6 Luna (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

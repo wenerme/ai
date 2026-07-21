@@ -1,16 +1,18 @@
 ---
-title: WARP modes
 description: Available WARP connection modes and their behavior.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: WARP modes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WARP modes
 
-# WARP modes
+Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/warp-client/warp-modes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The WARP client has several modes to better suit different connection needs.
 
@@ -36,7 +38,7 @@ This mode is available in three flavors:
 
 If the site you are visiting is already a Cloudflare customer, the content is immediately sent to your device. If not, Cloudflare uses its global network of data centers to devise the shortest path to the site. For more information, refer to our blog post [Introducing WARP: Fixing Mobile Internet Performance and Security ↗](https://blog.cloudflare.com/1111-warp-better-vpn/).
 
-Warning
+Caution
 
 WARP does not provide anonymity, and it is not designed to prevent servers you communicate with from identifying you. WARP also does not allow you to pretend to be accessing the Internet from a different country.
 
@@ -78,7 +80,14 @@ WARP+ Unlimited is now active on this device. You can use your license key on up
 **iOS**: 1.11.1
 **Windows, macOS, and Linux**: 2025.6.1335.0 [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/warp-modes/#page","headline":"WARP modes · Cloudflare WARP client docs","description":"Available WARP connection modes and their behavior.","url":"https://developers.cloudflare.com/warp-client/warp-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/warp-client/","name":"WARP Client"}},{"@type":"ListItem","position":3,"item":{"@id":"/warp-client/warp-modes/","name":"WARP modes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/warp-modes/#page","headline":"WARP modes · Cloudflare WARP client docs","description":"Available WARP connection modes and their behavior.","url":"https://developers.cloudflare.com/warp-client/warp-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 ```

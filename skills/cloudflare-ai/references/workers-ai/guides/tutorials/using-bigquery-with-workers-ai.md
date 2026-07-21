@@ -1,16 +1,18 @@
 ---
-title: Using BigQuery with Workers AI
 description: Learn how to ingest data stored outside of Cloudflare as an input to Workers AI models.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Using BigQuery with Workers AI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Using BigQuery with Workers AI
 
-# Using BigQuery with Workers AI
+Last updated Jan 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The easiest way to get started with [Workers AI](https://developers.cloudflare.com/workers-ai/) is to try it out in the [Multi-modal Playground ↗](https://multi-modal.ai.cloudflare.com/) and the [LLM playground ↗](https://playground.ai.cloudflare.com/). If you decide that you want to integrate your code with Workers AI, you may then decide to use its [REST API endpoints](https://developers.cloudflare.com/workers-ai/get-started/rest-api/) or a [Worker binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
 
@@ -32,13 +34,11 @@ To ingest the data into Cloudflare and feed it into Workers AI, you will be usin
 
 After following the steps to create a Worker, you should have the following code in your new Worker project:
 
-**JavaScript**
-
 ```javascript
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello World!");
+	},
 };
 ```
 
@@ -66,17 +66,17 @@ Your downloaded key JSON file from Google Cloud Platform should have the followi
 
 ```json
 {
-  "type": "service_account",
-  "project_id": "<your_project_id>",
-  "private_key_id": "<your_private_key_id>",
-  "private_key": "<your_private_key>",
-  "client_email": "<your_service_account_id>@<your_project_id>.iam.gserviceaccount.com",
-  "client_id": "<your_oauth2_client_id>",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/<your_service_account_id>%40<your_project_id>.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
+	"type": "service_account",
+	"project_id": "<your_project_id>",
+	"private_key_id": "<your_private_key_id>",
+	"private_key": "<your_private_key>",
+	"client_email": "<your_service_account_id>@<your_project_id>.iam.gserviceaccount.com",
+	"client_id": "<your_oauth2_client_id>",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/<your_service_account_id>%40<your_project_id>.iam.gserviceaccount.com",
+	"universe_domain": "googleapis.com"
 }
 ```
 
@@ -133,17 +133,15 @@ Make sure to include `.dev.vars` in your project `.gitignore` file to prevent yo
 
 Check the secrets are loaded correctly in `src/index.js` by logging their values into a console output, as follows:
 
-**JavaScript**
-
 ```javascript
 export default {
-  async fetch(request, env, ctx) {
-    console.log("BQ_CLIENT_EMAIL: ", env.BQ_CLIENT_EMAIL);
-    console.log("BQ_PRIVATE_KEY: ", env.BQ_PRIVATE_KEY);
-    console.log("BQ_PRIVATE_KEY_ID: ", env.BQ_PRIVATE_KEY_ID);
-    console.log("BQ_PROJECT_ID: ", env.BQ_PROJECT_ID);
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		console.log("BQ_CLIENT_EMAIL: ", env.BQ_CLIENT_EMAIL);
+		console.log("BQ_PRIVATE_KEY: ", env.BQ_PRIVATE_KEY);
+		console.log("BQ_PRIVATE_KEY_ID: ", env.BQ_PRIVATE_KEY_ID);
+		console.log("BQ_PROJECT_ID: ", env.BQ_PROJECT_ID);
+		return new Response("Hello World!");
+	},
 };
 ```
 
@@ -189,8 +187,6 @@ To verify that the installation succeeded, you can run `npm list`, which lists a
 
 Now that you have installed the `jose` library, it is time to import it and add a function to your code that generates a signed JSON Web Token (JWT):
 
-**JavaScript**
-
 ```javascript
 import * as jose from 'jose';
 ...
@@ -198,36 +194,34 @@ const generateBQJWT = async (aCryptoKey, env) => {
 const algorithm = "RS256";
 const audience = "https://bigquery.googleapis.com/";
 const expiryAt = (new Date().valueOf() / 1000);
-  const privateKey = await jose.importPKCS8(env.BQ_PRIVATE_KEY, algorithm);
+	const privateKey = await jose.importPKCS8(env.BQ_PRIVATE_KEY, algorithm);
 
-
-  // Generate signed JSON Web Token (JWT)
-  return new jose.SignJWT()
-      .setProtectedHeader({
-          typ: 'JWT',
-          alg: algorithm,
-          kid: env.BQ_PRIVATE_KEY_ID
-      })
-      .setIssuer(env.BQ_CLIENT_EMAIL)
-      .setSubject(env.BQ_CLIENT_EMAIL)
-      .setAudience(audience)
-      .setExpirationTime(expiryAt)
-      .setIssuedAt()
-      .sign(privateKey)
+	// Generate signed JSON Web Token (JWT)
+	return new jose.SignJWT()
+    	.setProtectedHeader({
+        	typ: 'JWT',
+        	alg: algorithm,
+        	kid: env.BQ_PRIVATE_KEY_ID
+    	})
+    	.setIssuer(env.BQ_CLIENT_EMAIL)
+    	.setSubject(env.BQ_CLIENT_EMAIL)
+    	.setAudience(audience)
+    	.setExpirationTime(expiryAt)
+    	.setIssuedAt()
+    	.sign(privateKey)
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
+	async fetch(request, env, ctx) {
        ...
 // Create JWT to authenticate the BigQuery API call
-      let bqJWT;
-      try {
-          bqJWT = await generateBQJWT(env);
-      } catch (e) {
-          return new Response('An error has occurred while generating the JWT', { status: 500 })
-      }
-  },
+    	let bqJWT;
+    	try {
+        	bqJWT = await generateBQJWT(env);
+    	} catch (e) {
+        	return new Response('An error has occurred while generating the JWT', { status: 500 })
+    	}
+	},
        ...
 };
 ```
@@ -240,36 +234,34 @@ With the JWT token created in the previous step, issue an API request to BigQuer
 
 You will now query the table that you created in BigQuery earlier in this tutorial. This example uses a sampled version of the [Hacker News Corpus ↗](https://www.kaggle.com/datasets/hacker-news/hacker-news-corpus) that was used under its MIT licence and uploaded to BigQuery.
 
-**JavaScript**
-
 ```javascript
 const queryBQ = async (bqJWT, path) => {
-  const bqEndpoint = `https://bigquery.googleapis.com${path}`
-  // In this example, text is a field in the BigQuery table that is being queried (hn.news_sampled)
-  const query = 'SELECT text FROM hn.news_sampled LIMIT 3';
-  const response = await fetch(bqEndpoint, {
-      method: "POST",
-      body: JSON.stringify({
-          "query": query
-      }),
-      headers: {
-          Authorization: `Bearer ${bqJWT}`
-      }
-  })
-  return response.json()
+	const bqEndpoint = `https://bigquery.googleapis.com${path}`
+	// In this example, text is a field in the BigQuery table that is being queried (hn.news_sampled)
+	const query = 'SELECT text FROM hn.news_sampled LIMIT 3';
+	const response = await fetch(bqEndpoint, {
+    	method: "POST",
+    	body: JSON.stringify({
+        	"query": query
+    	}),
+    	headers: {
+        	Authorization: `Bearer ${bqJWT}`
+    	}
+	})
+	return response.json()
 }
 ...
 export default {
-  async fetch(request, env, ctx) {
-    ...
-        let ticketInfo;
-        try {
-        ticketInfo = await queryBQ(bqJWT);
-      } catch (e) {
-          return new Response('An error has occurred while querying BQ', { status: 500 });
-      }
-  ...
-  },
+	async fetch(request, env, ctx) {
+		...
+    		let ticketInfo;
+    		try {
+    		ticketInfo = await queryBQ(bqJWT);
+    	} catch (e) {
+        	return new Response('An error has occurred while querying BQ', { status: 500 });
+    	}
+	...
+	},
 };
 ```
 
@@ -281,129 +273,120 @@ Now that you have retrieved the data from BigQuery, your BigQuery API response s
 
 ```json
 {
-  ...
-  "schema": {
-      "fields": [
-          {
-              "name": "title",
-              "type": "STRING",
-              "mode": "NULLABLE"
-          },
-          {
-              "name": "text",
-              "type": "STRING",
-              "mode": "NULLABLE"
-          }
-      ]
-  },
-  ...
-  "rows": [
-      {
-          "f": [
-              {
-                  "v": "<some_value>"
-              },
-              {
-                  "v": "<some_value>"
-              }
-          ]
-      },
-      {
-          "f": [
-              {
-                  "v": "<some_value>"
-              },
-              {
-                  "v": "<some_value>"
-              }
-          ]
-      },
-      {
-          "f": [
-              {
-                  "v": "<some_value>"
-              },
-              {
-                  "v": "<some_value>"
-              }
-          ]
-      }
-  ],
-  ...
+	...
+	"schema": {
+    	"fields": [
+        	{
+            	"name": "title",
+            	"type": "STRING",
+            	"mode": "NULLABLE"
+        	},
+        	{
+            	"name": "text",
+            	"type": "STRING",
+            	"mode": "NULLABLE"
+        	}
+    	]
+	},
+	...
+	"rows": [
+    	{
+        	"f": [
+            	{
+                	"v": "<some_value>"
+            	},
+            	{
+                	"v": "<some_value>"
+            	}
+        	]
+    	},
+    	{
+        	"f": [
+            	{
+                	"v": "<some_value>"
+            	},
+            	{
+                	"v": "<some_value>"
+            	}
+        	]
+    	},
+    	{
+        	"f": [
+            	{
+                	"v": "<some_value>"
+            	},
+            	{
+                	"v": "<some_value>"
+            	}
+        	]
+    	}
+	],
+	...
 }
 ```
 
 This format may be difficult to read and work with when iterating through results. So you will now implement a function that maps the schema into each individual value, and the resulting output will be easier to read, as shown below. Each row corresponds to an object within an array.
 
-**JavaScript**
-
 ```javascript
 [
-  {
-    title: "<some_value>",
-    text: "<some_value>",
-  },
-  {
-    title: "<some_value>",
-    text: "<some_value>",
-  },
-  {
-    title: "<some_value>",
-    text: "<some_value>",
-  },
+	{
+		title: "<some_value>",
+		text: "<some_value>",
+	},
+	{
+		title: "<some_value>",
+		text: "<some_value>",
+	},
+	{
+		title: "<some_value>",
+		text: "<some_value>",
+	},
 ];
 ```
 
 Create a `formatRows` function that takes a number of rows and fields returned from the BigQuery response body and returns an array of results as objects with named fields.
 
-**JavaScript**
-
 ```javascript
 const formatRows = (rowsWithoutFieldNames, fields) => {
-  // Index to fieldName
-  const fieldsByIndex = new Map();
+	// Index to fieldName
+	const fieldsByIndex = new Map();
 
+	// Load all fields by name and have their index in the array result as their key
+	fields.forEach((field, index) => {
+    	fieldsByIndex.set(index, field.name)
+	})
 
-  // Load all fields by name and have their index in the array result as their key
-  fields.forEach((field, index) => {
-      fieldsByIndex.set(index, field.name)
-  })
+	// Iterate through rows
+	const rowsWithFieldNames = rowsWithoutFieldNames.map(row => {
+    	// Per each row represented by an array f, iterate through the unnamed values and find their field names by searching them in the fieldsByIndex.
+    	let newRow = {}
+    	row.f.forEach((field, index) => {
+        	const fieldName = fieldsByIndex.get(index);
+        	if (fieldName) {
+		// For every field in a row, add them to newRow
+            	newRow = ({ ...newRow, [fieldName]: field.v });
+        	}
+    	})
+    	return newRow
+	})
 
-
-  // Iterate through rows
-  const rowsWithFieldNames = rowsWithoutFieldNames.map(row => {
-      // Per each row represented by an array f, iterate through the unnamed values and find their field names by searching them in the fieldsByIndex.
-      let newRow = {}
-      row.f.forEach((field, index) => {
-          const fieldName = fieldsByIndex.get(index);
-          if (fieldName) {
-    // For every field in a row, add them to newRow
-              newRow = ({ ...newRow, [fieldName]: field.v });
-          }
-      })
-      return newRow
-  })
-
-
-  return rowsWithFieldNames
+	return rowsWithFieldNames
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    ...
-      // Transform output format into array of objects with named fields
-      let formattedResults;
+	async fetch(request, env, ctx) {
+		...
+    	// Transform output format into array of objects with named fields
+    	let formattedResults;
 
-
-      if ('rows' in ticketInfo) {
-          formattedResults = formatRows(ticketInfo.rows, ticketInfo.schema.fields);
-          console.log(formattedResults)
-      } else if ('error' in ticketInfo) {
-          return new Response(ticketInfo.error.message, { status: 500 })
-      }
-  ...
-  },
+    	if ('rows' in ticketInfo) {
+        	formattedResults = formatRows(ticketInfo.rows, ticketInfo.schema.fields);
+        	console.log(formattedResults)
+    	} else if ('error' in ticketInfo) {
+        	return new Response(ticketInfo.error.message, { status: 500 })
+    	}
+	...
+	},
 };
 ```
 
@@ -411,72 +394,60 @@ export default {
 
 Now that you have converted the response from the BigQuery API into an array of results, generate some tags and attach an associated sentiment score using an LLM via [Workers AI](https://developers.cloudflare.com/workers-ai/):
 
-**JavaScript**
-
 ```javascript
 const generateTags = (data, env) => {
-  return env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-      prompt: `Create three one-word tags for the following text. return only these three tags separated by a comma. don't return text that is not a category.Lowercase only. ${JSON.stringify(data)}`,
-  });
+	return env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+    	prompt: `Create three one-word tags for the following text. return only these three tags separated by a comma. don't return text that is not a category.Lowercase only. ${JSON.stringify(data)}`,
+	});
 }
-
 
 const generateSentimentScore = (data, env) => {
-  return env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-      prompt: `return a float number between 0 and 1 measuring the sentiment of the following text. 0 being negative and 1 positive. return only the number, no text. ${JSON.stringify(data)}`,
-  });
+	return env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+    	prompt: `return a float number between 0 and 1 measuring the sentiment of the following text. 0 being negative and 1 positive. return only the number, no text. ${JSON.stringify(data)}`,
+	});
 }
-
 
 // Iterates through values, sends them to an AI handler and encapsulates all responses into a single Promise
 const getAIGeneratedContent = (data, env, aiHandler) => {
-  let results = data?.map(dataPoint => {
-      return aiHandler(dataPoint, env)
-  })
-  return Promise.all(results)
+	let results = data?.map(dataPoint => {
+    	return aiHandler(dataPoint, env)
+	})
+	return Promise.all(results)
 }
 ...
 export default {
-  async fetch(request, env, ctx) {
-    ...
+	async fetch(request, env, ctx) {
+		...
 let summaries, sentimentScores;
-      try {
-          summaries = await getAIGeneratedContent(formattedResults, env, generateTags);
-          sentimentScores = await getAIGeneratedContent(formattedResults, env, generateSentimentScore)
-      } catch {
-          return new Response('There was an error while generating the text summaries or sentiment scores')
-      }
+    	try {
+        	summaries = await getAIGeneratedContent(formattedResults, env, generateTags);
+        	sentimentScores = await getAIGeneratedContent(formattedResults, env, generateSentimentScore)
+    	} catch {
+        	return new Response('There was an error while generating the text summaries or sentiment scores')
+    	}
 },
 
-
 formattedResults = formattedResults?.map((formattedResult, i) => {
-          if (sentimentScores[i].response && summaries[i].response) {
-              return {
-                  ...formattedResult,
-                  'sentiment': parseFloat(sentimentScores[i].response).toFixed(2),
-                  'tags': summaries[i].response.split(',').map((result) => result.trim())
-              }
-          }
-      }
+        	if (sentimentScores[i].response && summaries[i].response) {
+            	return {
+                	...formattedResult,
+                	'sentiment': parseFloat(sentimentScores[i].response).toFixed(2),
+                	'tags': summaries[i].response.split(',').map((result) => result.trim())
+            	}
+        	}
+    	}
 };
 ```
 
 Uncomment the following lines from the Wrangler file in your project:
 
-* [  wrangler.jsonc ](#tab-panel-12132)
-* [  wrangler.toml ](#tab-panel-12133)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai": {
-    "binding": "AI"
-  }
+	"ai": {
+		"binding": "AI"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
@@ -496,33 +467,33 @@ Once you access `http://localhost:8787` you should see an output similar to the 
 ```sh
 {
   "data": [
-  {
-    "text": "You can see a clear spike in submissions right around US Thanksgiving.",
-    "sentiment": "0.61",
-    "tags": [
-      "trends",
-      "submissions",
-      "thanksgiving"
-    ]
-  },
-  {
-    "text": "I didn't test the changes before I published them.  I basically did development on the running server. In fact for about 30 seconds the comments page was broken due to a bug.",
-    "sentiment": "0.35",
-    "tags": [
-      "software",
-      "deployment",
-      "error"
-    ]
-  },
-  {
-    "text": "I second that. As I recall, it's a very enjoyable 700-page brain dump by someone who's really into his subject. The writing has a personal voice; there are lots of asides, dry wit, and typos that suggest restrained editing. The discussion is intelligent and often theoretical (and Bartle is not scared to use mathematical metaphors), but the tone is not academic.",
-    "sentiment": "0.86",
-    "tags": [
-      "review",
-      "game",
-      "design"
-    ]
-  }
+	{
+  	"text": "You can see a clear spike in submissions right around US Thanksgiving.",
+  	"sentiment": "0.61",
+  	"tags": [
+    	"trends",
+    	"submissions",
+    	"thanksgiving"
+  	]
+	},
+	{
+  	"text": "I didn't test the changes before I published them.  I basically did development on the running server. In fact for about 30 seconds the comments page was broken due to a bug.",
+  	"sentiment": "0.35",
+  	"tags": [
+    	"software",
+    	"deployment",
+    	"error"
+  	]
+	},
+	{
+  	"text": "I second that. As I recall, it's a very enjoyable 700-page brain dump by someone who's really into his subject. The writing has a personal voice; there are lots of asides, dry wit, and typos that suggest restrained editing. The discussion is intelligent and often theoretical (and Bartle is not scared to use mathematical metaphors), but the tone is not academic.",
+  	"sentiment": "0.86",
+  	"tags": [
+    	"review",
+    	"game",
+    	"design"
+  	]
+	}
   ]
 }
 ```
@@ -533,177 +504,158 @@ The actual values and fields will mostly depend on the query made in Step 5 that
 
 All the code shown in the different steps is combined into the following code in `src/index.js`:
 
-**JavaScript**
-
 ```javascript
 import * as jose from "jose";
 
-
 const generateBQJWT = async (env) => {
-  const algorithm = "RS256";
-  const audience = "https://bigquery.googleapis.com/";
-  const expiryAt = new Date().valueOf() / 1000;
-  const privateKey = await jose.importPKCS8(env.BQ_PRIVATE_KEY, algorithm);
+	const algorithm = "RS256";
+	const audience = "https://bigquery.googleapis.com/";
+	const expiryAt = new Date().valueOf() / 1000;
+	const privateKey = await jose.importPKCS8(env.BQ_PRIVATE_KEY, algorithm);
 
-
-  // Generate signed JSON Web Token (JWT)
-  return new jose.SignJWT()
-    .setProtectedHeader({
-      typ: "JWT",
-      alg: algorithm,
-      kid: env.BQ_PRIVATE_KEY_ID,
-    })
-    .setIssuer(env.BQ_CLIENT_EMAIL)
-    .setSubject(env.BQ_CLIENT_EMAIL)
-    .setAudience(audience)
-    .setExpirationTime(expiryAt)
-    .setIssuedAt()
-    .sign(privateKey);
+	// Generate signed JSON Web Token (JWT)
+	return new jose.SignJWT()
+		.setProtectedHeader({
+			typ: "JWT",
+			alg: algorithm,
+			kid: env.BQ_PRIVATE_KEY_ID,
+		})
+		.setIssuer(env.BQ_CLIENT_EMAIL)
+		.setSubject(env.BQ_CLIENT_EMAIL)
+		.setAudience(audience)
+		.setExpirationTime(expiryAt)
+		.setIssuedAt()
+		.sign(privateKey);
 };
-
 
 const queryBQ = async (bgJWT, path) => {
-  const bqEndpoint = `https://bigquery.googleapis.com${path}`;
-  const query = "SELECT text FROM hn.news_sampled LIMIT 3";
-  const response = await fetch(bqEndpoint, {
-    method: "POST",
-    body: JSON.stringify({
-      query: query,
-    }),
-    headers: {
-      Authorization: `Bearer ${bgJWT}`,
-    },
-  });
-  return response.json();
+	const bqEndpoint = `https://bigquery.googleapis.com${path}`;
+	const query = "SELECT text FROM hn.news_sampled LIMIT 3";
+	const response = await fetch(bqEndpoint, {
+		method: "POST",
+		body: JSON.stringify({
+			query: query,
+		}),
+		headers: {
+			Authorization: `Bearer ${bgJWT}`,
+		},
+	});
+	return response.json();
 };
-
 
 const formatRows = (rowsWithoutFieldNames, fields) => {
-  // Index to fieldName
-  const fieldsByIndex = new Map();
+	// Index to fieldName
+	const fieldsByIndex = new Map();
 
+	fields.forEach((field, index) => {
+		fieldsByIndex.set(index, field.name);
+	});
 
-  fields.forEach((field, index) => {
-    fieldsByIndex.set(index, field.name);
-  });
+	const rowsWithFieldNames = rowsWithoutFieldNames.map((row) => {
+		// Map rows into an array of objects with field names
+		let newRow = {};
+		row.f.forEach((field, index) => {
+			const fieldName = fieldsByIndex.get(index);
+			if (fieldName) {
+				newRow = { ...newRow, [fieldName]: field.v };
+			}
+		});
+		return newRow;
+	});
 
-
-  const rowsWithFieldNames = rowsWithoutFieldNames.map((row) => {
-    // Map rows into an array of objects with field names
-    let newRow = {};
-    row.f.forEach((field, index) => {
-      const fieldName = fieldsByIndex.get(index);
-      if (fieldName) {
-        newRow = { ...newRow, [fieldName]: field.v };
-      }
-    });
-    return newRow;
-  });
-
-
-  return rowsWithFieldNames;
+	return rowsWithFieldNames;
 };
-
 
 const generateTags = (data, env) => {
-  return env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-    prompt: `Create three one-word tags for the following text. return only these three tags separated by a comma. don't return text that is not a category.Lowercase only. ${JSON.stringify(data)}`,
-  });
+	return env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+		prompt: `Create three one-word tags for the following text. return only these three tags separated by a comma. don't return text that is not a category.Lowercase only. ${JSON.stringify(data)}`,
+	});
 };
-
 
 const generateSentimentScore = (data, env) => {
-  return env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-    prompt: `return a float number between 0 and 1 measuring the sentiment of the following text. 0 being negative and 1 positive. return only the number, no text. ${JSON.stringify(data)}`,
-  });
+	return env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+		prompt: `return a float number between 0 and 1 measuring the sentiment of the following text. 0 being negative and 1 positive. return only the number, no text. ${JSON.stringify(data)}`,
+	});
 };
-
 
 const getAIGeneratedContent = (data, env, aiHandler) => {
-  let results = data?.map((dataPoint) => {
-    return aiHandler(dataPoint, env);
-  });
-  return Promise.all(results);
+	let results = data?.map((dataPoint) => {
+		return aiHandler(dataPoint, env);
+	});
+	return Promise.all(results);
 };
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // Create JWT to authenticate the BigQuery API call
-    let bqJWT;
-    try {
-      bqJWT = await generateBQJWT(env);
-    } catch (error) {
-      console.log(error);
-      return new Response("An error has occurred while generating the JWT", {
-        status: 500,
-      });
-    }
+	async fetch(request, env, ctx) {
+		// Create JWT to authenticate the BigQuery API call
+		let bqJWT;
+		try {
+			bqJWT = await generateBQJWT(env);
+		} catch (error) {
+			console.log(error);
+			return new Response("An error has occurred while generating the JWT", {
+				status: 500,
+			});
+		}
 
+		// Fetch results from BigQuery
+		let ticketInfo;
+		try {
+			ticketInfo = await queryBQ(
+				bqJWT,
+				`/bigquery/v2/projects/${env.BQ_PROJECT_ID}/queries`,
+			);
+		} catch (error) {
+			console.log(error);
+			return new Response("An error has occurred while querying BQ", {
+				status: 500,
+			});
+		}
 
-    // Fetch results from BigQuery
-    let ticketInfo;
-    try {
-      ticketInfo = await queryBQ(
-        bqJWT,
-        `/bigquery/v2/projects/${env.BQ_PROJECT_ID}/queries`,
-      );
-    } catch (error) {
-      console.log(error);
-      return new Response("An error has occurred while querying BQ", {
-        status: 500,
-      });
-    }
+		// Transform output format into array of objects with named fields
+		let formattedResults;
+		if ("rows" in ticketInfo) {
+			formattedResults = formatRows(ticketInfo.rows, ticketInfo.schema.fields);
+		} else if ("error" in ticketInfo) {
+			return new Response(ticketInfo.error.message, { status: 500 });
+		}
 
+		// Generate AI summaries and sentiment scores
+		let summaries, sentimentScores;
+		try {
+			summaries = await getAIGeneratedContent(
+				formattedResults,
+				env,
+				generateTags,
+			);
+			sentimentScores = await getAIGeneratedContent(
+				formattedResults,
+				env,
+				generateSentimentScore,
+			);
+		} catch {
+			return new Response(
+				"There was an error while generating the text summaries or sentiment scores",
+			);
+		}
 
-    // Transform output format into array of objects with named fields
-    let formattedResults;
-    if ("rows" in ticketInfo) {
-      formattedResults = formatRows(ticketInfo.rows, ticketInfo.schema.fields);
-    } else if ("error" in ticketInfo) {
-      return new Response(ticketInfo.error.message, { status: 500 });
-    }
+		// Add AI summaries and sentiment scores to previous results
+		formattedResults = formattedResults?.map((formattedResult, i) => {
+			if (sentimentScores[i].response && summaries[i].response) {
+				return {
+					...formattedResult,
+					sentiment: parseFloat(sentimentScores[i].response).toFixed(2),
+					tags: summaries[i].response.split(",").map((result) => result.trim()),
+				};
+			}
+		});
 
+		const response = { data: formattedResults };
 
-    // Generate AI summaries and sentiment scores
-    let summaries, sentimentScores;
-    try {
-      summaries = await getAIGeneratedContent(
-        formattedResults,
-        env,
-        generateTags,
-      );
-      sentimentScores = await getAIGeneratedContent(
-        formattedResults,
-        env,
-        generateSentimentScore,
-      );
-    } catch {
-      return new Response(
-        "There was an error while generating the text summaries or sentiment scores",
-      );
-    }
-
-
-    // Add AI summaries and sentiment scores to previous results
-    formattedResults = formattedResults?.map((formattedResult, i) => {
-      if (sentimentScores[i].response && summaries[i].response) {
-        return {
-          ...formattedResult,
-          sentiment: parseFloat(sentimentScores[i].response).toFixed(2),
-          tags: summaries[i].response.split(",").map((result) => result.trim()),
-        };
-      }
-    });
-
-
-    const response = { data: formattedResults };
-
-
-    return new Response(JSON.stringify(response), {
-      headers: { "Content-Type": "application/json" },
-    });
-  },
+		return new Response(JSON.stringify(response), {
+			headers: { "Content-Type": "application/json" },
+		});
+	},
 };
 ```
 
@@ -733,7 +685,14 @@ A use case to ingest data from other sources, like you did in this tutorial, is 
 
 To learn more about what other AI models you can use at Cloudflare, please visit the [Workers AI](https://developers.cloudflare.com/workers-ai) section of our docs.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/#page","headline":"Using BigQuery with Workers AI · Cloudflare Workers AI docs","description":"Learn how to ingest data stored outside of Cloudflare as an input to Workers AI models.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/","name":"Using BigQuery with Workers AI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/#page","headline":"Using BigQuery with Workers AI · Cloudflare Workers AI docs","description":"Learn how to ingest data stored outside of Cloudflare as an input to Workers AI models.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}
 ```

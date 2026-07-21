@@ -1,16 +1,18 @@
 ---
-title: Readonly connections
 description: Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Readonly connections
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Readonly connections
 
-# Readonly connections
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Readonly connections restrict certain WebSocket clients from modifying agent state while still letting them receive state updates and call non-mutating RPC methods.
 
@@ -29,65 +31,49 @@ This is useful for scenarios like:
 * **Multi-tenant scenarios**: Some tenants have read-only access
 * **Audit and monitoring connections**: Observers that should not affect the system
 
-* [  JavaScript ](#tab-panel-6405)
-* [  TypeScript ](#tab-panel-6406)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 
-
 export class DocAgent extends Agent {
-  shouldConnectionBeReadonly(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    return url.searchParams.get("mode") === "view";
-  }
+	shouldConnectionBeReadonly(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		return url.searchParams.get("mode") === "view";
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, type Connection, type ConnectionContext } from "agents";
 
-
 export class DocAgent extends Agent<Env, DocState> {
-  shouldConnectionBeReadonly(connection: Connection, ctx: ConnectionContext) {
-    const url = new URL(ctx.request.url);
-    return url.searchParams.get("mode") === "view";
-  }
+	shouldConnectionBeReadonly(connection: Connection, ctx: ConnectionContext) {
+		const url = new URL(ctx.request.url);
+		return url.searchParams.get("mode") === "view";
+	}
 }
 ```
-
-* [  JavaScript ](#tab-panel-6407)
-* [  TypeScript ](#tab-panel-6408)
-
-**JavaScript**
 
 ```js
 // Client - view-only mode
 const agent = useAgent({
-  agent: "DocAgent",
-  name: "doc-123",
-  query: { mode: "view" },
-  onStateUpdateError: (error) => {
-    toast.error("You're in view-only mode");
-  },
+	agent: "DocAgent",
+	name: "doc-123",
+	query: { mode: "view" },
+	onStateUpdateError: (error) => {
+		toast.error("You're in view-only mode");
+	},
 });
 ```
-
-**TypeScript**
 
 ```ts
 // Client - view-only mode
 const agent = useAgent({
-  agent: "DocAgent",
-  name: "doc-123",
-  query: { mode: "view" },
-  onStateUpdateError: (error) => {
-    toast.error("You're in view-only mode");
-  },
+	agent: "DocAgent",
+	name: "doc-123",
+	query: { mode: "view" },
+	onStateUpdateError: (error) => {
+		toast.error("You're in view-only mode");
+	},
 });
 ```
 
@@ -97,33 +83,26 @@ const agent = useAgent({
 
 Override `shouldConnectionBeReadonly` to evaluate each connection when it first connects. Return `true` to mark it readonly.
 
-* [  JavaScript ](#tab-panel-6411)
-* [  TypeScript ](#tab-panel-6412)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  shouldConnectionBeReadonly(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const role = url.searchParams.get("role");
-    return role === "viewer" || role === "guest";
-  }
+	shouldConnectionBeReadonly(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const role = url.searchParams.get("role");
+		return role === "viewer" || role === "guest";
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends Agent<Env, State> {
-  shouldConnectionBeReadonly(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    const role = url.searchParams.get("role");
-    return role === "viewer" || role === "guest";
-  }
+	shouldConnectionBeReadonly(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		const role = url.searchParams.get("role");
+		return role === "viewer" || role === "guest";
+	}
 }
 ```
 
@@ -133,52 +112,43 @@ This hook runs before the initial state is sent to the client, so the connection
 
 Use `setConnectionReadonly` to change a connection's readonly status dynamically:
 
-* [  JavaScript ](#tab-panel-6417)
-* [  TypeScript ](#tab-panel-6418)
-
-**JavaScript**
-
 ```js
 export class GameAgent extends Agent {
-  @callable()
-  async startSpectating() {
-    const { connection } = getCurrentAgent();
-    if (connection) {
-      this.setConnectionReadonly(connection, true);
-    }
-  }
+	@callable()
+	async startSpectating() {
+		const { connection } = getCurrentAgent();
+		if (connection) {
+			this.setConnectionReadonly(connection, true);
+		}
+	}
 
-
-  @callable()
-  async joinAsPlayer() {
-    const { connection } = getCurrentAgent();
-    if (connection) {
-      this.setConnectionReadonly(connection, false);
-    }
-  }
+	@callable()
+	async joinAsPlayer() {
+		const { connection } = getCurrentAgent();
+		if (connection) {
+			this.setConnectionReadonly(connection, false);
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class GameAgent extends Agent<Env, GameState> {
-  @callable()
-  async startSpectating() {
-    const { connection } = getCurrentAgent();
-    if (connection) {
-      this.setConnectionReadonly(connection, true);
-    }
-  }
+	@callable()
+	async startSpectating() {
+		const { connection } = getCurrentAgent();
+		if (connection) {
+			this.setConnectionReadonly(connection, true);
+		}
+	}
 
-
-  @callable()
-  async joinAsPlayer() {
-    const { connection } = getCurrentAgent();
-    if (connection) {
-      this.setConnectionReadonly(connection, false);
-    }
-  }
+	@callable()
+	async joinAsPlayer() {
+		const { connection } = getCurrentAgent();
+		if (connection) {
+			this.setConnectionReadonly(connection, false);
+		}
+	}
 }
 ```
 
@@ -186,57 +156,41 @@ export class GameAgent extends Agent<Env, GameState> {
 
 A connection can toggle its own readonly status via a callable. This is useful for lock/unlock UIs where viewers can opt into editing mode:
 
-* [  JavaScript ](#tab-panel-6413)
-* [  TypeScript ](#tab-panel-6414)
-
-**JavaScript**
-
 ```js
 import { Agent, callable, getCurrentAgent } from "agents";
 
-
 export class CollabAgent extends Agent {
-  @callable()
-  async setMyReadonly(readonly) {
-    const { connection } = getCurrentAgent();
-    if (connection) {
-      this.setConnectionReadonly(connection, readonly);
-    }
-  }
+	@callable()
+	async setMyReadonly(readonly) {
+		const { connection } = getCurrentAgent();
+		if (connection) {
+			this.setConnectionReadonly(connection, readonly);
+		}
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent, callable, getCurrentAgent } from "agents";
 
-
 export class CollabAgent extends Agent<Env, State> {
-  @callable()
-  async setMyReadonly(readonly: boolean) {
-    const { connection } = getCurrentAgent();
-    if (connection) {
-      this.setConnectionReadonly(connection, readonly);
-    }
-  }
+	@callable()
+	async setMyReadonly(readonly: boolean) {
+		const { connection } = getCurrentAgent();
+		if (connection) {
+			this.setConnectionReadonly(connection, readonly);
+		}
+	}
 }
 ```
 
 On the client:
-
-* [  JavaScript ](#tab-panel-6409)
-* [  TypeScript ](#tab-panel-6410)
-
-**JavaScript**
 
 ```js
 // Toggle between readonly and writable
 await agent.call("setMyReadonly", [true]); // lock
 await agent.call("setMyReadonly", [false]); // unlock
 ```
-
-**TypeScript**
 
 ```ts
 // Toggle between readonly and writable
@@ -248,34 +202,27 @@ await agent.call("setMyReadonly", [false]); // unlock
 
 Use `isConnectionReadonly` to check a connection's current status:
 
-* [  JavaScript ](#tab-panel-6415)
-* [  TypeScript ](#tab-panel-6416)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  @callable()
-  async getPermissions() {
-    const { connection } = getCurrentAgent();
-    if (connection) {
-      return { canEdit: !this.isConnectionReadonly(connection) };
-    }
-  }
+	@callable()
+	async getPermissions() {
+		const { connection } = getCurrentAgent();
+		if (connection) {
+			return { canEdit: !this.isConnectionReadonly(connection) };
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends Agent<Env, State> {
-  @callable()
-  async getPermissions() {
-    const { connection } = getCurrentAgent();
-    if (connection) {
-      return { canEdit: !this.isConnectionReadonly(connection) };
-    }
-  }
+	@callable()
+	async getPermissions() {
+		const { connection } = getCurrentAgent();
+		if (connection) {
+			return { canEdit: !this.isConnectionReadonly(connection) };
+		}
+	}
 }
 ```
 
@@ -290,48 +237,39 @@ Note
 
 `onStateUpdateError` also fires when `validateStateChange` rejects a client-originated state update (with the message `"State update rejected"`). This makes the callback useful for handling any rejected state write, not just readonly errors.
 
-* [  JavaScript ](#tab-panel-6419)
-* [  TypeScript ](#tab-panel-6420)
-
-**JavaScript**
-
 ```js
 const agent = useAgent({
-  agent: "MyAgent",
-  name: "instance",
-  // Fires when client-side setState() is blocked
-  onStateUpdateError: (error) => {
-    setError(error);
-  },
+	agent: "MyAgent",
+	name: "instance",
+	// Fires when client-side setState() is blocked
+	onStateUpdateError: (error) => {
+		setError(error);
+	},
 });
-
 
 // Fires when a callable that writes state is blocked
 try {
-  await agent.call("updateSettings", [newSettings]);
+	await agent.call("updateSettings", [newSettings]);
 } catch (e) {
-  setError(e instanceof Error ? e.message : String(e)); // "Connection is readonly"
+	setError(e instanceof Error ? e.message : String(e)); // "Connection is readonly"
 }
 ```
 
-**TypeScript**
-
 ```ts
 const agent = useAgent({
-  agent: "MyAgent",
-  name: "instance",
-  // Fires when client-side setState() is blocked
-  onStateUpdateError: (error) => {
-    setError(error);
-  },
+	agent: "MyAgent",
+	name: "instance",
+	// Fires when client-side setState() is blocked
+	onStateUpdateError: (error) => {
+		setError(error);
+	},
 });
-
 
 // Fires when a callable that writes state is blocked
 try {
-  await agent.call("updateSettings", [newSettings]);
+	await agent.call("updateSettings", [newSettings]);
 } catch (e) {
-  setError(e instanceof Error ? e.message : String(e)); // "Connection is readonly"
+	setError(e instanceof Error ? e.message : String(e)); // "Connection is readonly"
 }
 ```
 
@@ -339,16 +277,14 @@ To avoid showing errors in the first place, check permissions before rendering e
 
 ```tsx
 function Editor() {
-  const [canEdit, setCanEdit] = useState(false);
-  const agent = useAgent({ agent: "MyAgent", name: "instance" });
+	const [canEdit, setCanEdit] = useState(false);
+	const agent = useAgent({ agent: "MyAgent", name: "instance" });
 
+	useEffect(() => {
+		agent.call("getPermissions").then((p) => setCanEdit(p.canEdit));
+	}, []);
 
-  useEffect(() => {
-    agent.call("getPermissions").then((p) => setCanEdit(p.canEdit));
-  }, []);
-
-
-  return <button disabled={!canEdit}>{canEdit ? "Edit" : "View Only"}</button>;
+	return <button disabled={!canEdit}>{canEdit ? "Edit" : "View Only"}</button>;
 }
 ```
 
@@ -396,328 +332,270 @@ Callback on `AgentClient` and `useAgent` options. Called when the server rejects
 
 ### Query parameter based access
 
-* [  JavaScript ](#tab-panel-6423)
-* [  TypeScript ](#tab-panel-6424)
-
-**JavaScript**
-
 ```js
 export class DocumentAgent extends Agent {
-  shouldConnectionBeReadonly(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const mode = url.searchParams.get("mode");
-    return mode === "view";
-  }
+	shouldConnectionBeReadonly(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const mode = url.searchParams.get("mode");
+		return mode === "view";
+	}
 }
-
 
 // Client connects with readonly mode
 const agent = useAgent({
-  agent: "DocumentAgent",
-  name: "doc-123",
-  query: { mode: "view" },
-  onStateUpdateError: (error) => {
-    toast.error("Document is in view-only mode");
-  },
+	agent: "DocumentAgent",
+	name: "doc-123",
+	query: { mode: "view" },
+	onStateUpdateError: (error) => {
+		toast.error("Document is in view-only mode");
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 export class DocumentAgent extends Agent<Env, DocumentState> {
-  shouldConnectionBeReadonly(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    const mode = url.searchParams.get("mode");
-    return mode === "view";
-  }
+	shouldConnectionBeReadonly(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		const mode = url.searchParams.get("mode");
+		return mode === "view";
+	}
 }
-
 
 // Client connects with readonly mode
 const agent = useAgent({
-  agent: "DocumentAgent",
-  name: "doc-123",
-  query: { mode: "view" },
-  onStateUpdateError: (error) => {
-    toast.error("Document is in view-only mode");
-  },
+	agent: "DocumentAgent",
+	name: "doc-123",
+	query: { mode: "view" },
+	onStateUpdateError: (error) => {
+		toast.error("Document is in view-only mode");
+	},
 });
 ```
 
 ### Role-based access control
 
-* [  JavaScript ](#tab-panel-6433)
-* [  TypeScript ](#tab-panel-6434)
-
-**JavaScript**
-
 ```js
 export class CollaborativeAgent extends Agent {
-  shouldConnectionBeReadonly(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const role = url.searchParams.get("role");
-    return role === "viewer" || role === "guest";
-  }
+	shouldConnectionBeReadonly(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const role = url.searchParams.get("role");
+		return role === "viewer" || role === "guest";
+	}
 
+	onConnect(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const userId = url.searchParams.get("userId");
 
-  onConnect(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const userId = url.searchParams.get("userId");
+		console.log(
+			`User ${userId} connected (readonly: ${this.isConnectionReadonly(connection)})`,
+		);
+	}
 
+	@callable()
+	async upgradeToEditor() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return;
 
-    console.log(
-      `User ${userId} connected (readonly: ${this.isConnectionReadonly(connection)})`,
-    );
-  }
+		// Check permissions (pseudo-code)
+		const canUpgrade = await checkUserPermissions();
+		if (canUpgrade) {
+			this.setConnectionReadonly(connection, false);
+			return { success: true };
+		}
 
-
-  @callable()
-  async upgradeToEditor() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return;
-
-
-    // Check permissions (pseudo-code)
-    const canUpgrade = await checkUserPermissions();
-    if (canUpgrade) {
-      this.setConnectionReadonly(connection, false);
-      return { success: true };
-    }
-
-
-    throw new Error("Insufficient permissions");
-  }
+		throw new Error("Insufficient permissions");
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class CollaborativeAgent extends Agent<Env, CollabState> {
-  shouldConnectionBeReadonly(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    const role = url.searchParams.get("role");
-    return role === "viewer" || role === "guest";
-  }
+	shouldConnectionBeReadonly(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		const role = url.searchParams.get("role");
+		return role === "viewer" || role === "guest";
+	}
 
+	onConnect(connection: Connection, ctx: ConnectionContext) {
+		const url = new URL(ctx.request.url);
+		const userId = url.searchParams.get("userId");
 
-  onConnect(connection: Connection, ctx: ConnectionContext) {
-    const url = new URL(ctx.request.url);
-    const userId = url.searchParams.get("userId");
+		console.log(
+			`User ${userId} connected (readonly: ${this.isConnectionReadonly(connection)})`,
+		);
+	}
 
+	@callable()
+	async upgradeToEditor() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return;
 
-    console.log(
-      `User ${userId} connected (readonly: ${this.isConnectionReadonly(connection)})`,
-    );
-  }
+		// Check permissions (pseudo-code)
+		const canUpgrade = await checkUserPermissions();
+		if (canUpgrade) {
+			this.setConnectionReadonly(connection, false);
+			return { success: true };
+		}
 
-
-  @callable()
-  async upgradeToEditor() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return;
-
-
-    // Check permissions (pseudo-code)
-    const canUpgrade = await checkUserPermissions();
-    if (canUpgrade) {
-      this.setConnectionReadonly(connection, false);
-      return { success: true };
-    }
-
-
-    throw new Error("Insufficient permissions");
-  }
+		throw new Error("Insufficient permissions");
+	}
 }
 ```
 
 ### Admin dashboard
 
-* [  JavaScript ](#tab-panel-6435)
-* [  TypeScript ](#tab-panel-6436)
-
-**JavaScript**
-
 ```js
 export class MonitoringAgent extends Agent {
-  shouldConnectionBeReadonly(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    // Only admins can modify state
-    return url.searchParams.get("admin") !== "true";
-  }
+	shouldConnectionBeReadonly(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		// Only admins can modify state
+		return url.searchParams.get("admin") !== "true";
+	}
 
-
-  onStateChanged(state, source) {
-    if (source !== "server") {
-      // Log who modified the state
-      console.log(`State modified by connection ${source.id}`);
-    }
-  }
+	onStateChanged(state, source) {
+		if (source !== "server") {
+			// Log who modified the state
+			console.log(`State modified by connection ${source.id}`);
+		}
+	}
 }
-
 
 // Admin client (can modify)
 const adminAgent = useAgent({
-  agent: "MonitoringAgent",
-  name: "system",
-  query: { admin: "true" },
+	agent: "MonitoringAgent",
+	name: "system",
+	query: { admin: "true" },
 });
-
 
 // Viewer client (readonly)
 const viewerAgent = useAgent({
-  agent: "MonitoringAgent",
-  name: "system",
-  query: { admin: "false" },
-  onStateUpdateError: (error) => {
-    console.log("Viewer cannot modify state");
-  },
+	agent: "MonitoringAgent",
+	name: "system",
+	query: { admin: "false" },
+	onStateUpdateError: (error) => {
+		console.log("Viewer cannot modify state");
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 export class MonitoringAgent extends Agent<Env, SystemState> {
-  shouldConnectionBeReadonly(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    // Only admins can modify state
-    return url.searchParams.get("admin") !== "true";
-  }
+	shouldConnectionBeReadonly(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		// Only admins can modify state
+		return url.searchParams.get("admin") !== "true";
+	}
 
-
-  onStateChanged(state: SystemState, source: Connection | "server") {
-    if (source !== "server") {
-      // Log who modified the state
-      console.log(`State modified by connection ${source.id}`);
-    }
-  }
+	onStateChanged(state: SystemState, source: Connection | "server") {
+		if (source !== "server") {
+			// Log who modified the state
+			console.log(`State modified by connection ${source.id}`);
+		}
+	}
 }
-
 
 // Admin client (can modify)
 const adminAgent = useAgent({
-  agent: "MonitoringAgent",
-  name: "system",
-  query: { admin: "true" },
+	agent: "MonitoringAgent",
+	name: "system",
+	query: { admin: "true" },
 });
-
 
 // Viewer client (readonly)
 const viewerAgent = useAgent({
-  agent: "MonitoringAgent",
-  name: "system",
-  query: { admin: "false" },
-  onStateUpdateError: (error) => {
-    console.log("Viewer cannot modify state");
-  },
+	agent: "MonitoringAgent",
+	name: "system",
+	query: { admin: "false" },
+	onStateUpdateError: (error) => {
+		console.log("Viewer cannot modify state");
+	},
 });
 ```
 
 ### Dynamic permission changes
 
-* [  JavaScript ](#tab-panel-6437)
-* [  TypeScript ](#tab-panel-6438)
-
-**JavaScript**
-
 ```js
 export class GameAgent extends Agent {
-  @callable()
-  async startSpectatorMode() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return;
+	@callable()
+	async startSpectatorMode() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return;
 
+		this.setConnectionReadonly(connection, true);
+		return { mode: "spectator" };
+	}
 
-    this.setConnectionReadonly(connection, true);
-    return { mode: "spectator" };
-  }
+	@callable()
+	async joinAsPlayer() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return;
 
+		const canJoin = this.state.players.length < 4;
+		if (canJoin) {
+			this.setConnectionReadonly(connection, false);
+			return { mode: "player" };
+		}
 
-  @callable()
-  async joinAsPlayer() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return;
+		throw new Error("Game is full");
+	}
 
+	@callable()
+	async getMyPermissions() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return null;
 
-    const canJoin = this.state.players.length < 4;
-    if (canJoin) {
-      this.setConnectionReadonly(connection, false);
-      return { mode: "player" };
-    }
-
-
-    throw new Error("Game is full");
-  }
-
-
-  @callable()
-  async getMyPermissions() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return null;
-
-
-    return {
-      canEdit: !this.isConnectionReadonly(connection),
-      connectionId: connection.id,
-    };
-  }
+		return {
+			canEdit: !this.isConnectionReadonly(connection),
+			connectionId: connection.id,
+		};
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class GameAgent extends Agent<Env, GameState> {
-  @callable()
-  async startSpectatorMode() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return;
+	@callable()
+	async startSpectatorMode() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return;
 
+		this.setConnectionReadonly(connection, true);
+		return { mode: "spectator" };
+	}
 
-    this.setConnectionReadonly(connection, true);
-    return { mode: "spectator" };
-  }
+	@callable()
+	async joinAsPlayer() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return;
 
+		const canJoin = this.state.players.length < 4;
+		if (canJoin) {
+			this.setConnectionReadonly(connection, false);
+			return { mode: "player" };
+		}
 
-  @callable()
-  async joinAsPlayer() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return;
+		throw new Error("Game is full");
+	}
 
+	@callable()
+	async getMyPermissions() {
+		const { connection } = getCurrentAgent();
+		if (!connection) return null;
 
-    const canJoin = this.state.players.length < 4;
-    if (canJoin) {
-      this.setConnectionReadonly(connection, false);
-      return { mode: "player" };
-    }
-
-
-    throw new Error("Game is full");
-  }
-
-
-  @callable()
-  async getMyPermissions() {
-    const { connection } = getCurrentAgent();
-    if (!connection) return null;
-
-
-    return {
-      canEdit: !this.isConnectionReadonly(connection),
-      connectionId: connection.id,
-    };
-  }
+		return {
+			canEdit: !this.isConnectionReadonly(connection),
+			connectionId: connection.id,
+		};
+	}
 }
 ```
 
@@ -725,43 +603,38 @@ Client-side React component:
 
 ```tsx
 function GameComponent() {
-  const [canEdit, setCanEdit] = useState(false);
+	const [canEdit, setCanEdit] = useState(false);
 
+	const agent = useAgent({
+		agent: "GameAgent",
+		name: "game-123",
+		onStateUpdateError: (error) => {
+			toast.error("Cannot modify game state in spectator mode");
+		},
+	});
 
-  const agent = useAgent({
-    agent: "GameAgent",
-    name: "game-123",
-    onStateUpdateError: (error) => {
-      toast.error("Cannot modify game state in spectator mode");
-    },
-  });
+	useEffect(() => {
+		agent.call("getMyPermissions").then((perms) => {
+			setCanEdit(perms?.canEdit ?? false);
+		});
+	}, [agent]);
 
+	return (
+		<div>
+			<button onClick={() => agent.call("joinAsPlayer")} disabled={canEdit}>
+				Join as Player
+			</button>
 
-  useEffect(() => {
-    agent.call("getMyPermissions").then((perms) => {
-      setCanEdit(perms?.canEdit ?? false);
-    });
-  }, [agent]);
+			<button
+				onClick={() => agent.call("startSpectatorMode")}
+				disabled={!canEdit}
+			>
+				Switch to Spectator
+			</button>
 
-
-  return (
-    <div>
-      <button onClick={() => agent.call("joinAsPlayer")} disabled={canEdit}>
-        Join as Player
-      </button>
-
-
-      <button
-        onClick={() => agent.call("startSpectatorMode")}
-        disabled={!canEdit}
-      >
-        Switch to Spectator
-      </button>
-
-
-      <div>{canEdit ? "You can modify the game" : "You are spectating"}</div>
-    </div>
-  );
+			<div>{canEdit ? "You can modify the game" : "You are spectating"}</div>
+		</div>
+	);
 }
 ```
 
@@ -814,67 +687,53 @@ The enforcement happens inside `setState()` itself. When a `@callable()` method 
 
 The readonly check happens inside `this.setState()`, not at the start of the callable. If your method has side effects before the state write, those will still execute:
 
-* [  JavaScript ](#tab-panel-6421)
-* [  TypeScript ](#tab-panel-6422)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  @callable()
-  async processOrder(orderId) {
-    await sendConfirmationEmail(orderId); // runs even for readonly connections
-    await chargePayment(orderId); // runs too
-    this.setState({ ...this.state, orders: [...this.state.orders, orderId] }); // throws
-  }
+	@callable()
+	async processOrder(orderId) {
+		await sendConfirmationEmail(orderId); // runs even for readonly connections
+		await chargePayment(orderId); // runs too
+		this.setState({ ...this.state, orders: [...this.state.orders, orderId] }); // throws
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends Agent<Env, State> {
-  @callable()
-  async processOrder(orderId: string) {
-    await sendConfirmationEmail(orderId); // runs even for readonly connections
-    await chargePayment(orderId); // runs too
-    this.setState({ ...this.state, orders: [...this.state.orders, orderId] }); // throws
-  }
+	@callable()
+	async processOrder(orderId: string) {
+		await sendConfirmationEmail(orderId); // runs even for readonly connections
+		await chargePayment(orderId); // runs too
+		this.setState({ ...this.state, orders: [...this.state.orders, orderId] }); // throws
+	}
 }
 ```
 
 To avoid this, either check permissions before side effects or structure your code so the state write comes first:
 
-* [  JavaScript ](#tab-panel-6425)
-* [  TypeScript ](#tab-panel-6426)
-
-**JavaScript**
-
 ```js
 export class MyAgent extends Agent {
-  @callable()
-  async processOrder(orderId) {
-    // Write state first — throws immediately for readonly connections
-    this.setState({ ...this.state, orders: [...this.state.orders, orderId] });
-    // Side effects only run if setState succeeded
-    await sendConfirmationEmail(orderId);
-    await chargePayment(orderId);
-  }
+	@callable()
+	async processOrder(orderId) {
+		// Write state first — throws immediately for readonly connections
+		this.setState({ ...this.state, orders: [...this.state.orders, orderId] });
+		// Side effects only run if setState succeeded
+		await sendConfirmationEmail(orderId);
+		await chargePayment(orderId);
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class MyAgent extends Agent<Env, State> {
-  @callable()
-  async processOrder(orderId: string) {
-    // Write state first — throws immediately for readonly connections
-    this.setState({ ...this.state, orders: [...this.state.orders, orderId] });
-    // Side effects only run if setState succeeded
-    await sendConfirmationEmail(orderId);
-    await chargePayment(orderId);
-  }
+	@callable()
+	async processOrder(orderId: string) {
+		// Write state first — throws immediately for readonly connections
+		this.setState({ ...this.state, orders: [...this.state.orders, orderId] });
+		// Side effects only run if setState succeeded
+		await sendConfirmationEmail(orderId);
+		await chargePayment(orderId);
+	}
 }
 ```
 
@@ -882,76 +741,60 @@ export class MyAgent extends Agent<Env, State> {
 
 ### Combine with authentication
 
-* [  JavaScript ](#tab-panel-6429)
-* [  TypeScript ](#tab-panel-6430)
-
-**JavaScript**
-
 ```js
 export class SecureAgent extends Agent {
-  shouldConnectionBeReadonly(connection, ctx) {
-    const url = new URL(ctx.request.url);
-    const token = url.searchParams.get("token");
+	shouldConnectionBeReadonly(connection, ctx) {
+		const url = new URL(ctx.request.url);
+		const token = url.searchParams.get("token");
 
-
-    // Verify token and get permissions
-    const permissions = this.verifyToken(token);
-    return !permissions.canWrite;
-  }
+		// Verify token and get permissions
+		const permissions = this.verifyToken(token);
+		return !permissions.canWrite;
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class SecureAgent extends Agent<Env, State> {
-  shouldConnectionBeReadonly(
-    connection: Connection,
-    ctx: ConnectionContext,
-  ): boolean {
-    const url = new URL(ctx.request.url);
-    const token = url.searchParams.get("token");
+	shouldConnectionBeReadonly(
+		connection: Connection,
+		ctx: ConnectionContext,
+	): boolean {
+		const url = new URL(ctx.request.url);
+		const token = url.searchParams.get("token");
 
-
-    // Verify token and get permissions
-    const permissions = this.verifyToken(token);
-    return !permissions.canWrite;
-  }
+		// Verify token and get permissions
+		const permissions = this.verifyToken(token);
+		return !permissions.canWrite;
+	}
 }
 ```
 
 ### Provide clear user feedback
 
-* [  JavaScript ](#tab-panel-6427)
-* [  TypeScript ](#tab-panel-6428)
-
-**JavaScript**
-
 ```js
 const agent = useAgent({
-  agent: "MyAgent",
-  name: "instance",
-  onStateUpdateError: (error) => {
-    // User-friendly messages
-    if (error.includes("readonly")) {
-      showToast("You are in view-only mode. Upgrade to edit.");
-    }
-  },
+	agent: "MyAgent",
+	name: "instance",
+	onStateUpdateError: (error) => {
+		// User-friendly messages
+		if (error.includes("readonly")) {
+			showToast("You are in view-only mode. Upgrade to edit.");
+		}
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const agent = useAgent({
-  agent: "MyAgent",
-  name: "instance",
-  onStateUpdateError: (error) => {
-    // User-friendly messages
-    if (error.includes("readonly")) {
-      showToast("You are in view-only mode. Upgrade to edit.");
-    }
-  },
+	agent: "MyAgent",
+	name: "instance",
+	onStateUpdateError: (error) => {
+		// User-friendly messages
+		if (error.includes("readonly")) {
+			showToast("You are in view-only mode. Upgrade to edit.");
+		}
+	},
 });
 ```
 
@@ -959,59 +802,50 @@ const agent = useAgent({
 
 ```tsx
 function EditButton() {
-  const [canEdit, setCanEdit] = useState(false);
-  const agent = useAgent({
-    /* ... */
-  });
+	const [canEdit, setCanEdit] = useState(false);
+	const agent = useAgent({
+		/* ... */
+	});
 
+	useEffect(() => {
+		agent.call("checkPermissions").then((perms) => {
+			setCanEdit(perms.canEdit);
+		});
+	}, []);
 
-  useEffect(() => {
-    agent.call("checkPermissions").then((perms) => {
-      setCanEdit(perms.canEdit);
-    });
-  }, []);
-
-
-  return <button disabled={!canEdit}>{canEdit ? "Edit" : "View Only"}</button>;
+	return <button disabled={!canEdit}>{canEdit ? "Edit" : "View Only"}</button>;
 }
 ```
 
 ### Log access attempts
 
-* [  JavaScript ](#tab-panel-6431)
-* [  TypeScript ](#tab-panel-6432)
-
-**JavaScript**
-
 ```js
 export class AuditedAgent extends Agent {
-  onStateChanged(state, source) {
-    if (source !== "server") {
-      this.audit({
-        action: "state_update",
-        connectionId: source.id,
-        readonly: this.isConnectionReadonly(source),
-        timestamp: Date.now(),
-      });
-    }
-  }
+	onStateChanged(state, source) {
+		if (source !== "server") {
+			this.audit({
+				action: "state_update",
+				connectionId: source.id,
+				readonly: this.isConnectionReadonly(source),
+				timestamp: Date.now(),
+			});
+		}
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class AuditedAgent extends Agent<Env, State> {
-  onStateChanged(state: State, source: Connection | "server") {
-    if (source !== "server") {
-      this.audit({
-        action: "state_update",
-        connectionId: source.id,
-        readonly: this.isConnectionReadonly(source),
-        timestamp: Date.now(),
-      });
-    }
-  }
+	onStateChanged(state: State, source: Connection | "server") {
+		if (source !== "server") {
+			this.audit({
+				action: "state_update",
+				connectionId: source.id,
+				readonly: this.isConnectionReadonly(source),
+				timestamp: Date.now(),
+			});
+		}
+	}
 }
 ```
 
@@ -1028,7 +862,14 @@ export class AuditedAgent extends Agent<Env, State> {
 * [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
 * [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/#page","headline":"Readonly connections · Cloudflare Agents docs","description":"Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.","url":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/readonly-connections/","name":"Readonly connections"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/#page","headline":"Readonly connections · Cloudflare Agents docs","description":"Restrict WebSocket clients to view-only access so they receive state updates without modifying Agent state.","url":"https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

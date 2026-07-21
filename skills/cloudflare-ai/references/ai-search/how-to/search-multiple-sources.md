@@ -1,16 +1,18 @@
 ---
-title: Search across multiple instances
 description: Search a shared knowledge base and a tenant-specific one in a single query, and identify which instance each result came from.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Search across multiple instances
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Search across multiple instances
 
-# Search across multiple instances
+Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 AI Search can query several instances in one request, merge the results, and tag each result with the instance it came from. This guide uses that to search two knowledge bases together: a shared **general** knowledge base that every user can search, plus a **tenant-specific** knowledge base that holds one customer's private content. A single query returns relevant content from both.
 
@@ -67,18 +69,13 @@ cd multi-source-search
 
 Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Searching across instances is a method on the namespace binding, so a single binding can reach every instance in the namespace.
 
-* [  wrangler.jsonc ](#tab-panel-7259)
-* [  wrangler.toml ](#tab-panel-7260)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "multi-source-search",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -89,14 +86,11 @@ Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search
 }
 ```
 
-**TOML**
-
 ```toml
 name = "multi-source-search"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -110,18 +104,12 @@ The `remote` option lets `wrangler dev` proxy requests to your deployed instance
 
 Update `src/index.ts`. This Worker identifies the tenant from a request header, then searches the shared instance and that tenant's instance in one call. Each returned chunk carries an `instance_id`, so the Worker can group results by source.
 
-* [  JavaScript ](#tab-panel-7261)
-* [  TypeScript ](#tab-panel-7262)
-
-**src/index.js**
-
 ```js
 // The shared instance that every tenant can search.
 const GENERAL_INSTANCE = "general-knowledge";
 // Each tenant also has its own instance, holding only that tenant's content.
 const tenantInstance = (tenantId) => `tenant-${tenantId}`;
 
-
 // Seed content, so each instance returns something on the first query. In a
 // real app you would provision instances and their content ahead of time.
 const GENERAL_DOC = `# Support hours
@@ -129,96 +117,86 @@ Support is available Monday to Friday, 9am to 5pm UTC for all customers.`;
 const TENANT_DOC = `# Your plan
 This account is on the Enterprise plan with a dedicated success manager.`;
 
-
 export default {
-  async fetch(request, env) {
-    // Identify the tenant and read the query.
-    const tenantId = request.headers.get("x-tenant-id");
-    if (!tenantId) {
-      return new Response("Missing x-tenant-id header", { status: 400 });
-    }
-    const query = new URL(request.url).searchParams.get("q");
-    if (!query) {
-      return new Response("Add a ?q= query parameter", { status: 400 });
-    }
+	async fetch(request, env) {
+		// Identify the tenant and read the query.
+		const tenantId = request.headers.get("x-tenant-id");
+		if (!tenantId) {
+			return new Response("Missing x-tenant-id header", { status: 400 });
+		}
+		const query = new URL(request.url).searchParams.get("q");
+		if (!query) {
+			return new Response("Add a ?q= query parameter", { status: 400 });
+		}
 
+		// One-time setup for this demo: create both instances and seed each.
+		await ensureInstance(
+			env,
+			GENERAL_INSTANCE,
+			"support-hours.md",
+			GENERAL_DOC,
+		);
+		await ensureInstance(env, tenantInstance(tenantId), "plan.md", TENANT_DOC);
 
-    // One-time setup for this demo: create both instances and seed each.
-    await ensureInstance(
-      env,
-      GENERAL_INSTANCE,
-      "support-hours.md",
-      GENERAL_DOC,
-    );
-    await ensureInstance(env, tenantInstance(tenantId), "plan.md", TENANT_DOC);
+		// Search the shared instance and this tenant's instance in one call.
+		// AI Search fans out to both, merges the results, and tags each chunk
+		// with the instance_id it came from. You can pass 1 to 10 instance IDs.
+		const results = await env.AI_SEARCH.search({
+			query,
+			ai_search_options: {
+				instance_ids: [GENERAL_INSTANCE, tenantInstance(tenantId)],
+			},
+		});
 
+		// Use the instance_id tag to separate shared results from tenant results.
+		const fromGeneral = results.chunks.filter(
+			(chunk) => chunk.instance_id === GENERAL_INSTANCE,
+		);
+		const fromTenant = results.chunks.filter(
+			(chunk) => chunk.instance_id === tenantInstance(tenantId),
+		);
 
-    // Search the shared instance and this tenant's instance in one call.
-    // AI Search fans out to both, merges the results, and tags each chunk
-    // with the instance_id it came from. You can pass 1 to 10 instance IDs.
-    const results = await env.AI_SEARCH.search({
-      query,
-      ai_search_options: {
-        instance_ids: [GENERAL_INSTANCE, tenantInstance(tenantId)],
-      },
-    });
-
-
-    // Use the instance_id tag to separate shared results from tenant results.
-    const fromGeneral = results.chunks.filter(
-      (chunk) => chunk.instance_id === GENERAL_INSTANCE,
-    );
-    const fromTenant = results.chunks.filter(
-      (chunk) => chunk.instance_id === tenantInstance(tenantId),
-    );
-
-
-    return Response.json({
-      query: results.search_query,
-      general: fromGeneral.map((chunk) => ({
-        key: chunk.item.key,
-        text: chunk.text,
-      })),
-      tenant: fromTenant.map((chunk) => ({
-        key: chunk.item.key,
-        text: chunk.text,
-      })),
-      // If one instance fails, the other still returns. Failures land here.
-      errors: results.errors,
-    });
-  },
+		return Response.json({
+			query: results.search_query,
+			general: fromGeneral.map((chunk) => ({
+				key: chunk.item.key,
+				text: chunk.text,
+			})),
+			tenant: fromTenant.map((chunk) => ({
+				key: chunk.item.key,
+				text: chunk.text,
+			})),
+			// If one instance fails, the other still returns. Failures land here.
+			errors: results.errors,
+		});
+	},
 };
-
 
 // Create an instance with built-in storage and seed one document. Safe to call
 // on every request: create() throws if the instance already exists, so the
 // try/catch skips setup once it is in place.
 async function ensureInstance(env, id, key, content) {
-  try {
-    await env.AI_SEARCH.create({ id });
-    await env.AI_SEARCH.get(id).items.uploadAndPoll(key, content, {
-      timeoutMs: 60_000,
-    });
-  } catch {
-    // The instance already exists and has been seeded.
-  }
+	try {
+		await env.AI_SEARCH.create({ id });
+		await env.AI_SEARCH.get(id).items.uploadAndPoll(key, content, {
+			timeoutMs: 60_000,
+		});
+	} catch {
+		// The instance already exists and has been seeded.
+	}
 }
 ```
 
-**src/index.ts**
-
 ```ts
 export interface Env {
-  AI_SEARCH: AiSearchNamespace;
+	AI_SEARCH: AiSearchNamespace;
 }
-
 
 // The shared instance that every tenant can search.
 const GENERAL_INSTANCE = "general-knowledge";
 // Each tenant also has its own instance, holding only that tenant's content.
 const tenantInstance = (tenantId: string) => `tenant-${tenantId}`;
 
-
 // Seed content, so each instance returns something on the first query. In a
 // real app you would provision instances and their content ahead of time.
 const GENERAL_DOC = `# Support hours
@@ -226,84 +204,78 @@ Support is available Monday to Friday, 9am to 5pm UTC for all customers.`;
 const TENANT_DOC = `# Your plan
 This account is on the Enterprise plan with a dedicated success manager.`;
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    // Identify the tenant and read the query.
-    const tenantId = request.headers.get("x-tenant-id");
-    if (!tenantId) {
-      return new Response("Missing x-tenant-id header", { status: 400 });
-    }
-    const query = new URL(request.url).searchParams.get("q");
-    if (!query) {
-      return new Response("Add a ?q= query parameter", { status: 400 });
-    }
+	async fetch(request, env): Promise<Response> {
+		// Identify the tenant and read the query.
+		const tenantId = request.headers.get("x-tenant-id");
+		if (!tenantId) {
+			return new Response("Missing x-tenant-id header", { status: 400 });
+		}
+		const query = new URL(request.url).searchParams.get("q");
+		if (!query) {
+			return new Response("Add a ?q= query parameter", { status: 400 });
+		}
 
+		// One-time setup for this demo: create both instances and seed each.
+		await ensureInstance(
+			env,
+			GENERAL_INSTANCE,
+			"support-hours.md",
+			GENERAL_DOC,
+		);
+		await ensureInstance(env, tenantInstance(tenantId), "plan.md", TENANT_DOC);
 
-    // One-time setup for this demo: create both instances and seed each.
-    await ensureInstance(
-      env,
-      GENERAL_INSTANCE,
-      "support-hours.md",
-      GENERAL_DOC,
-    );
-    await ensureInstance(env, tenantInstance(tenantId), "plan.md", TENANT_DOC);
+		// Search the shared instance and this tenant's instance in one call.
+		// AI Search fans out to both, merges the results, and tags each chunk
+		// with the instance_id it came from. You can pass 1 to 10 instance IDs.
+		const results = await env.AI_SEARCH.search({
+			query,
+			ai_search_options: {
+				instance_ids: [GENERAL_INSTANCE, tenantInstance(tenantId)],
+			},
+		});
 
+		// Use the instance_id tag to separate shared results from tenant results.
+		const fromGeneral = results.chunks.filter(
+			(chunk) => chunk.instance_id === GENERAL_INSTANCE,
+		);
+		const fromTenant = results.chunks.filter(
+			(chunk) => chunk.instance_id === tenantInstance(tenantId),
+		);
 
-    // Search the shared instance and this tenant's instance in one call.
-    // AI Search fans out to both, merges the results, and tags each chunk
-    // with the instance_id it came from. You can pass 1 to 10 instance IDs.
-    const results = await env.AI_SEARCH.search({
-      query,
-      ai_search_options: {
-        instance_ids: [GENERAL_INSTANCE, tenantInstance(tenantId)],
-      },
-    });
-
-
-    // Use the instance_id tag to separate shared results from tenant results.
-    const fromGeneral = results.chunks.filter(
-      (chunk) => chunk.instance_id === GENERAL_INSTANCE,
-    );
-    const fromTenant = results.chunks.filter(
-      (chunk) => chunk.instance_id === tenantInstance(tenantId),
-    );
-
-
-    return Response.json({
-      query: results.search_query,
-      general: fromGeneral.map((chunk) => ({
-        key: chunk.item.key,
-        text: chunk.text,
-      })),
-      tenant: fromTenant.map((chunk) => ({
-        key: chunk.item.key,
-        text: chunk.text,
-      })),
-      // If one instance fails, the other still returns. Failures land here.
-      errors: results.errors,
-    });
-  },
+		return Response.json({
+			query: results.search_query,
+			general: fromGeneral.map((chunk) => ({
+				key: chunk.item.key,
+				text: chunk.text,
+			})),
+			tenant: fromTenant.map((chunk) => ({
+				key: chunk.item.key,
+				text: chunk.text,
+			})),
+			// If one instance fails, the other still returns. Failures land here.
+			errors: results.errors,
+		});
+	},
 } satisfies ExportedHandler<Env>;
-
 
 // Create an instance with built-in storage and seed one document. Safe to call
 // on every request: create() throws if the instance already exists, so the
 // try/catch skips setup once it is in place.
 async function ensureInstance(
-  env: Env,
-  id: string,
-  key: string,
-  content: string,
+	env: Env,
+	id: string,
+	key: string,
+	content: string,
 ) {
-  try {
-    await env.AI_SEARCH.create({ id });
-    await env.AI_SEARCH.get(id).items.uploadAndPoll(key, content, {
-      timeoutMs: 60_000,
-    });
-  } catch {
-    // The instance already exists and has been seeded.
-  }
+	try {
+		await env.AI_SEARCH.create({ id });
+		await env.AI_SEARCH.get(id).items.uploadAndPoll(key, content, {
+			timeoutMs: 60_000,
+		});
+	} catch {
+		// The instance already exists and has been seeded.
+	}
 }
 ```
 
@@ -329,19 +301,19 @@ The response separates results from the shared instance and the tenant instance:
 
 ```json
 {
-  "query": "support hours and my plan",
-  "general": [
-    {
-      "key": "support-hours.md",
-      "text": "# Support hours\nSupport is available..."
-    }
-  ],
-  "tenant": [
-    {
-      "key": "plan.md",
-      "text": "# Your plan\nThis account is on the Enterprise plan..."
-    }
-  ]
+	"query": "support hours and my plan",
+	"general": [
+		{
+			"key": "support-hours.md",
+			"text": "# Support hours\nSupport is available..."
+		}
+	],
+	"tenant": [
+		{
+			"key": "plan.md",
+			"text": "# Your plan\nThis account is on the Enterprise plan..."
+		}
+	]
 }
 ```
 
@@ -351,16 +323,13 @@ When every instance succeeds, the response has no `errors` field. If an instance
 
 To return a single written answer grounded in both instances instead of raw chunks, use `chatCompletions` with the same `instance_ids`. It retrieves from every listed instance, then generates one response from the combined context:
 
-**TypeScript**
-
 ```ts
 const completion = await env.AI_SEARCH.chatCompletions({
-  query,
-  ai_search_options: {
-    instance_ids: [GENERAL_INSTANCE, tenantInstance(tenantId)],
-  },
+	query,
+	ai_search_options: {
+		instance_ids: [GENERAL_INSTANCE, tenantInstance(tenantId)],
+	},
 });
-
 
 // The generated answer, grounded in both the shared and tenant content.
 const answer = completion.choices[0]?.message.content;
@@ -379,13 +348,26 @@ npx wrangler deploy
 
 ## Next steps
 
-[ Multi-tenant search isolation ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) Give each tenant its own instance, or share one instance with metadata filtering.
+### [ Multi-tenant search isolation ](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
-[ Namespaces ](https://developers.cloudflare.com/ai-search/concepts/namespaces/) How instances are grouped, and how the namespace binding addresses them.
+ Give each tenant its own instance, or share one instance with metadata filtering.
 
-[ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) Full reference for single-instance and multi-instance search and chat.
+### [ Namespaces ](https://developers.cloudflare.com/ai-search/concepts/namespaces/)
+
+ How instances are grouped, and how the namespace binding addresses them.
+
+### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+
+ Full reference for single-instance and multi-instance search and chat.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/#page","headline":"Search across multiple instances · Cloudflare AI Search docs","description":"Search a shared knowledge base and a tenant-specific one in a single query, and identify which instance each result came from.","url":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/search-multiple-sources/","name":"Search across multiple instances"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/#page","headline":"Search across multiple instances · Cloudflare AI Search docs","description":"Search a shared knowledge base and a tenant-specific one in a single query, and identify which instance each result came from.","url":"https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

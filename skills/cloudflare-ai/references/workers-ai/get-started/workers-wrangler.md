@@ -1,16 +1,18 @@
 ---
-title: Workers Bindings
 description: Deploy your first Cloudflare Workers AI project using the CLI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Bindings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Bindings
 
-# Workers Bindings
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through setting up and deploying your first Workers AI project. You will use [Workers](https://developers.cloudflare.com/workers/), a Workers AI binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.
 
@@ -68,20 +70,13 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12114)
-* [  wrangler.toml ](#tab-panel-12115)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai": {
-    "binding": "AI"
-  }
+	"ai": {
+		"binding": "AI"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
@@ -98,43 +93,33 @@ You are now ready to run an inference task in your Worker. In this case, you wil
 
 Update the `index.ts` file in your `hello-ai` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-12116)
-* [  TypeScript ](#tab-panel-12117)
-
-**index.js**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-      prompt: "What is the origin of the phrase Hello, World",
-    });
+	async fetch(request, env) {
+		const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+			prompt: "What is the origin of the phrase Hello, World",
+		});
 
-
-    return new Response(JSON.stringify(response));
-  },
+		return new Response(JSON.stringify(response));
+	},
 };
 ```
 
-**index.ts**
-
 ```ts
 export interface Env {
-  // If you set another name in the Wrangler config file as the value for 'binding',
-  // replace "AI" with the variable name you defined.
-  AI: Ai;
+	// If you set another name in the Wrangler config file as the value for 'binding',
+	// replace "AI" with the variable name you defined.
+	AI: Ai;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-      prompt: "What is the origin of the phrase Hello, World",
-    });
+	async fetch(request, env): Promise<Response> {
+		const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+			prompt: "What is the origin of the phrase Hello, World",
+		});
 
-
-    return new Response(JSON.stringify(response));
-  },
+		return new Response(JSON.stringify(response));
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -156,7 +141,7 @@ You will be prompted to log in after you run `wrangler dev`. When you run `npx w
 
 ```json
 {
-  "response": "Ah, a most excellent question, my dear human friend! *adjusts glasses*\n\nThe origin of the phrase \"Hello, World\" is a fascinating tale that spans several decades and multiple disciplines. It all began in the early days of computer programming, when a young man named Brian Kernighan was tasked with writing a simple program to demonstrate the basics of a new programming language called C.\nKernighan, a renowned computer scientist and author, was working at Bell Labs in the late 1970s when he created the program. He wanted to showcase the language's simplicity and versatility, so he wrote a basic \"Hello, World!\" program that printed the familiar greeting to the console.\nThe program was included in Kernighan and Ritchie's influential book \"The C Programming Language,\" published in 1978. The book became a standard reference for C programmers, and the \"Hello, World!\" program became a sort of \"Hello, World!\" for the programming community.\nOver time, the phrase \"Hello, World!\" became a shorthand for any simple program that demonstrated the basics"
+	"response": "Ah, a most excellent question, my dear human friend! *adjusts glasses*\n\nThe origin of the phrase \"Hello, World\" is a fascinating tale that spans several decades and multiple disciplines. It all began in the early days of computer programming, when a young man named Brian Kernighan was tasked with writing a simple program to demonstrate the basics of a new programming language called C.\nKernighan, a renowned computer scientist and author, was working at Bell Labs in the late 1970s when he created the program. He wanted to showcase the language's simplicity and versatility, so he wrote a basic \"Hello, World!\" program that printed the familiar greeting to the console.\nThe program was included in Kernighan and Ritchie's influential book \"The C Programming Language,\" published in 1978. The book became a standard reference for C programmers, and the \"Hello, World!\" program became a sort of \"Hello, World!\" for the programming community.\nOver time, the phrase \"Hello, World!\" became a shorthand for any simple program that demonstrated the basics"
 }
 ```
 
@@ -190,7 +175,14 @@ By finishing this tutorial, you have created a Worker, connected it to Workers A
 * [Models](https://developers.cloudflare.com/workers-ai/models/) \- Browse the Workers AI models catalog.
 * [AI SDK](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk) \- Learn how to integrate with an AI model.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#page","headline":"Get started - Workers and Wrangler · Cloudflare Workers AI docs","description":"Deploy your first Cloudflare Workers AI project using the CLI.","url":"https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/get-started/workers-wrangler/","name":"Workers Bindings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#page","headline":"Get started - Workers and Wrangler · Cloudflare Workers AI docs","description":"Deploy your first Cloudflare Workers AI project using the CLI.","url":"https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

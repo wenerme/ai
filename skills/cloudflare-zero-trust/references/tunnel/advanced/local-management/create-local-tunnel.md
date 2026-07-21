@@ -1,16 +1,18 @@
 ---
-title: Create a locally-managed tunnel
 description: Create and configure a locally-managed Cloudflare Tunnel.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a locally-managed tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a locally-managed tunnel
 
-# Create a locally-managed tunnel
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Follow this step-by-step guide to get your first tunnel up and running using the CLI.
 
@@ -23,16 +25,9 @@ Before you start, make sure you:
 
 ## 1\. Download and install `cloudflared`
 
-* [ Windows ](#tab-panel-11777)
-* [ macOS ](#tab-panel-11778)
-* [ Linux ](#tab-panel-11779)
-* [ Build from source ](#tab-panel-11780)
-
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`
 3. In PowerShell, change directory to your Downloads folder and run `.\cloudflared.exe --version`. It should output the version of `cloudflared`. Note that `cloudflared.exe` could be `cloudflared-windows-amd64.exe` or `cloudflared-windows-386.exe` if you have not renamed it.
-
-**PowerShell**
 ```powershell
 PS C:\Users\Administrator\Downloads\cloudflared-stable-windows-amd64> .\cloudflared.exe --version
 ```
@@ -193,7 +188,14 @@ Looking for private network routing?
 
 For Cloudflare One Client private network access, refer to the [Cloudflare One Tunnel documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/#file-structure-for-private-networks).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/#page","headline":"Create a locally-managed tunnel · Cloudflare Docs","description":"Create and configure a locally-managed Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","YAML","Linux","MacOS","Windows"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/local-management/","name":"Locally-managed tunnels"}},{"@type":"ListItem","position":5,"item":{"@id":"/tunnel/advanced/local-management/create-local-tunnel/","name":"Create a locally-managed tunnel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/#page","headline":"Create a locally-managed tunnel · Cloudflare Docs","description":"Create and configure a locally-managed Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/create-local-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","YAML","Linux","MacOS","Windows"]}
 ```

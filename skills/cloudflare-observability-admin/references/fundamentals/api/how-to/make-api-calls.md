@@ -1,16 +1,18 @@
 ---
-title: Make API calls
 description: Learn how to make API calls using Cloudflare's API with step-by-step instructions for Windows, including using curl and PowerShell, and handling JSON.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Make API calls
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Make API calls
 
-# Make API calls
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Once you [create your API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/), all API requests are authorized in the same way. Cloudflare uses the [RFC standard ↗](https://tools.ietf.org/html/rfc6750#section-2.1) `Authorization: Bearer <API_TOKEN>` interface. An example request is shown below.
 
@@ -116,8 +118,6 @@ PowerShell has specific cmdlets (`Invoke-RestMethod` and `ConvertFrom-Json`) for
 
 The following example uses the `Invoke-RestMethod` cmdlet:
 
-**PowerShell**
-
 ```powershell
 Invoke-RestMethod -URI "https://api.cloudflare.com/client/v4/zones/$Env:ZONE_ID/ssl/certificate_packs?ssl_status=all" -Method 'GET' -Headers @{'X-Auth-Email'=$Env:CLOUDFLARE_EMAIL;'X-Auth-Key'=$Env:CLOUDFLARE_API_KEY}
 ```
@@ -137,43 +137,41 @@ The command assumes that the environment variables `ZONE_ID`, `CLOUDFLARE_EMAIL`
 
 By default, the output will only contain the first level of the JSON object hierarchy (in the above example, the content of objects such as `hosts` and `certificates` is not shown). To show additional levels and format the output like the `jq` tool, you can use the `ConvertFrom-Json` cmdlet specifying the desired maximum depth (by default, `2`):
 
-**PowerShell**
-
 ```powershell
 Invoke-RestMethod -URI "https://api.cloudflare.com/client/v4/zones/$Env:ZONE_ID/ssl/certificate_packs?ssl_status=all" -Method 'GET' -Headers @{'X-Auth-Email'=$Env:CLOUDFLARE_EMAIL;'X-Auth-Key'=$Env:CLOUDFLARE_API_KEY} | ConvertTo-Json -Depth 5
 ```
 
 ```json
 {
-  "result": [
-    {
-      "id": "78411cfa-5727-4dc1-8d4a-773d01f17c7c",
-      "type": "universal",
-      "hosts": ["*.example.com", "example.com"],
-      "primary_certificate": "c173c8a1-9724-4e96-a748-2c4494186098",
-      "status": "active",
-      "certificates": [
-        {
-          "id": "c173c8a1-9724-4e96-a748-2c4494186098",
-          "hosts": ["*.example.com", "example.com"],
-          "issuer": "LetsEncrypt",
-          "signature": "ECDSAWithSHA384",
-          "status": "active",
-          "bundle_method": "ubiquitous",
-          "zone_id": "<ZONE_ID>",
-          "uploaded_on": "2023-02-02T11:20:25.403338Z",
-          "modified_on": "2022-12-08T00:26:15.577555Z",
-          "expires_on": "2023-03-07T23:26:12.000000Z",
-          "priority": null
-        }
-      ],
-      "created_on": "2022-12-09T23:11:06.010263Z",
-      "validity_days": 90,
-      "validation_method": "txt",
-      "certificate_authority": "lets_encrypt"
-    }
-  ]
-  // (...)
+	"result": [
+		{
+			"id": "78411cfa-5727-4dc1-8d4a-773d01f17c7c",
+			"type": "universal",
+			"hosts": ["*.example.com", "example.com"],
+			"primary_certificate": "c173c8a1-9724-4e96-a748-2c4494186098",
+			"status": "active",
+			"certificates": [
+				{
+					"id": "c173c8a1-9724-4e96-a748-2c4494186098",
+					"hosts": ["*.example.com", "example.com"],
+					"issuer": "LetsEncrypt",
+					"signature": "ECDSAWithSHA384",
+					"status": "active",
+					"bundle_method": "ubiquitous",
+					"zone_id": "<ZONE_ID>",
+					"uploaded_on": "2023-02-02T11:20:25.403338Z",
+					"modified_on": "2022-12-08T00:26:15.577555Z",
+					"expires_on": "2023-03-07T23:26:12.000000Z",
+					"priority": null
+				}
+			],
+			"created_on": "2022-12-09T23:11:06.010263Z",
+			"validity_days": 90,
+			"validation_method": "txt",
+			"certificate_authority": "lets_encrypt"
+		}
+	]
+	// (...)
 }
 ```
 
@@ -185,8 +183,6 @@ You can also use the curl tool in PowerShell. However, in PowerShell `curl` is a
 
 A typical `PATCH` request with curl will be similar to the following:
 
-**PowerShell**
-
 ```powershell
 curl.exe --request PATCH "https://api.cloudflare.com/client/v4/user/invites/{id}" --header "Authorization: Bearer $Env:CLOUDFLARE_API_TOKEN" --data '{\"status\": \"accepted\"}'
 ```
@@ -194,8 +190,6 @@ curl.exe --request PATCH "https://api.cloudflare.com/client/v4/user/invites/{id}
 To escape a double quote (`"`) character in a request body (specified with `-d` or `--data`), prepend it with another double quote (`"`) or a backslash (`\`). You must escape double quotes even when using single quotes (`'`) as string delimiters.
 
 To break a single command in two or more lines, use a backtick (`` ` ``) character as the line continuation character at the end of a line:
-
-**PowerShell**
 
 ```powershell
 curl.exe --request PATCH `
@@ -215,10 +209,6 @@ The procedure for setting and referencing environment variables depends on your 
 
 ### Define an environment variable
 
-* [ Linux and macOS ](#tab-panel-9375)
-* [ PowerShell ](#tab-panel-9376)
-* [ Windows Command Prompt ](#tab-panel-9377)
-
 To define a `ZONE_ID` environment variable for the current shell session, run the following command:
 
 ```sh
@@ -229,8 +219,6 @@ To define the variable for all new shell sessions for the current user, add the 
 
 To define a `ZONE_ID` environment variable for the current PowerShell session, run the following command:
 
-**PowerShell**
-
 ```powershell
 $Env:ZONE_ID='f2ea6707005a4da1af1b431202e96ac5'
 ```
@@ -238,8 +226,6 @@ $Env:ZONE_ID='f2ea6707005a4da1af1b431202e96ac5'
 To define the environment variable for all new PowerShell sessions of the current user, set the variable in your PowerShell profile. You can get the path to your PowerShell profile by running `echo $PROFILE`.
 
 Alternatively, set the variable for all new PowerShell sessions of the current user using the `SetEnvironmentVariable()` method of the `System.Environment` class. For example:
-
-**PowerShell**
 
 ```powershell
 [Environment]::SetEnvironmentVariable("ZONE_ID", "f2ea6707005a4da1af1b431202e96ac5", "User")
@@ -263,10 +249,6 @@ Running this command will not affect the current window. You will need to either
 
 ### Reference an environment variable
 
-* [ Linux and macOS ](#tab-panel-9378)
-* [ PowerShell ](#tab-panel-9379)
-* [ Windows Command Prompt ](#tab-panel-9380)
-
 When referencing an environment variable in a command, add a `$` prefix to the variable name (for example, `$ZONE_ID`). Make sure that the full string referencing the variable is either unquoted (if it does not contain spaces) or enclosed in double quotes (`""`).
 
 For example:
@@ -280,8 +262,6 @@ When referencing an environment variable in a command, add an `$Env:` prefix to 
 
 For example:
 
-**PowerShell**
-
 ```powershell
 Invoke-RestMethod -URI "https://api.cloudflare.com/client/v4/zones/$Env:ZONE_ID" -Method 'GET' -Headers @{'Authorization'="Bearer $Env:CLOUDFLARE_API_TOKEN"}
 ```
@@ -294,7 +274,14 @@ For example:
 curl "https://api.cloudflare.com/client/v4/zones/%ZONE_ID%" --header "Authorization: Bearer %CLOUDFLARE_API_TOKEN%"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#page","headline":"Make API calls · Cloudflare Fundamentals docs","description":"Learn how to make API calls using Cloudflare's API with step-by-step instructions for Windows, including using curl and PowerShell, and handling JSON.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/how-to/make-api-calls/","name":"Make API calls"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#page","headline":"Make API calls · Cloudflare Fundamentals docs","description":"Learn how to make API calls using Cloudflare's API with step-by-step instructions for Windows, including using curl and PowerShell, and handling JSON.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

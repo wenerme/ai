@@ -1,16 +1,18 @@
 ---
-title: TURN Feature Matrix
 description: Supported TURN protocols, RFCs, and STUN features on Cloudflare Realtime TURN.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: TURN Feature Matrix
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  TURN Feature Matrix
 
-# TURN Feature Matrix
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/turn/rfc-matrix/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## TURN client to TURN server protocols
 
@@ -37,7 +39,14 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 | DTLS support (for TURN)                         | No                                                                                                                                                                    | [draft-petithuguenin-tram-stun-dtls-00 ↗](https://datatracker.ietf.org/doc/html/draft-petithuguenin-tram-stun-dtls-00) |
 | Mobile ICE (MICE) support                       | No                                                                                                                                                                    | [draft-wing-tram-turn-mobility-02 ↗](http://tools.ietf.org/html/draft-wing-tram-turn-mobility-02)                      |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/rfc-matrix/#page","headline":"TURN Feature Matrix · Cloudflare Realtime docs","description":"Supported TURN protocols, RFCs, and STUN features on Cloudflare Realtime TURN.","url":"https://developers.cloudflare.com/realtime/turn/rfc-matrix/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/turn/","name":"TURN Service"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/turn/rfc-matrix/","name":"TURN Feature Matrix"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/turn/rfc-matrix/#page","headline":"TURN Feature Matrix · Cloudflare Realtime docs","description":"Supported TURN protocols, RFCs, and STUN features on Cloudflare Realtime TURN.","url":"https://developers.cloudflare.com/realtime/turn/rfc-matrix/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

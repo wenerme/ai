@@ -1,16 +1,18 @@
 ---
-title: Turn off Auto Minify via API
 description: Learn how to turn off Auto Minify via API in Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Turn off Auto Minify via API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Turn off Auto Minify via API
 
-# Turn off Auto Minify via API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/content/troubleshooting/disable-auto-minify/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If your site is still using deprecated features for [Auto Minify](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-08-05), turn off Auto Minify via API.
 
@@ -32,15 +34,15 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/settings/minify" \
 
 ```json
 {
-  "result": {
-    "id": "minify",
-    "value": { "css": "off", "html": "off", "js": "off" },
-    "modified_on": null,
-    "editable": true
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "minify",
+		"value": { "css": "off", "html": "off", "js": "off" },
+		"modified_on": null,
+		"editable": true
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -60,19 +62,26 @@ curl --request PATCH \
 
 ```json
 {
-  "result": {
-    "id": "minify",
-    "value": { "js": "off", "css": "off", "html": "off" },
-    "modified_on": "2024-11-15T19:32:20.882640Z",
-    "editable": true
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "minify",
+		"value": { "js": "off", "css": "off", "html": "off" },
+		"modified_on": "2024-11-15T19:32:20.882640Z",
+		"editable": true
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/disable-auto-minify/#page","headline":"Turn off Auto Minify via API · Cloudflare Speed docs","description":"Learn how to turn off Auto Minify via API in Cloudflare.","url":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/disable-auto-minify/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/content/troubleshooting/disable-auto-minify/","name":"Turn off Auto Minify via API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/disable-auto-minify/#page","headline":"Turn off Auto Minify via API · Cloudflare Speed docs","description":"Learn how to turn off Auto Minify via API in Cloudflare.","url":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/disable-auto-minify/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

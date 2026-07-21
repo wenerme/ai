@@ -1,16 +1,18 @@
 ---
-title: Developing with multiple Workers
 description: Learn how to develop with multiple Workers using different approaches and configurations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Developing with multiple Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Developing with multiple Workers
 
-# Developing with multiple Workers
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/local-development/multi-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When building complex applications, you may want to run multiple Workers during development. This guide covers the different approaches for running multiple Workers locally and when to use each approach.
 
@@ -44,12 +46,9 @@ The first config (`./app/wrangler.jsonc`) is treated as the primary Worker, expo
 
 Configure `auxiliaryWorkers` in your Vite configuration:
 
-**vite.config.js**
-
 ```js
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
-
 
 export default defineConfig({
   plugins: [
@@ -139,7 +138,14 @@ You can also combine both approaches — for example, run a group of Workers tog
 
 This setup is especially useful in larger projects where each team maintains a subset of Workers. Running everything in a single dev command might require significant restructuring or build integration that isn't always practical.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/multi-workers/#page","headline":"Developing with multiple Workers · Cloudflare Workers docs","description":"Learn how to develop with multiple Workers using different approaches and configurations.","url":"https://developers.cloudflare.com/workers/local-development/multi-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/local-development/","name":"Local development"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/local-development/multi-workers/","name":"Developing with multiple Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/multi-workers/#page","headline":"Developing with multiple Workers · Cloudflare Workers docs","description":"Learn how to develop with multiple Workers using different approaches and configurations.","url":"https://developers.cloudflare.com/workers/local-development/multi-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

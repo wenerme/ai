@@ -1,16 +1,18 @@
 ---
-title: Revalidation
 description: How Cloudflare revalidates stale cached content with your origin.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Revalidation
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Revalidation
 
-# Revalidation
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/concepts/revalidation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Stale-while-revalidate
 
@@ -49,7 +51,14 @@ For all available directives or behavior when Origin Cache Control is disabled, 
 
 When both [Last-Modified ↗](https://datatracker.ietf.org/doc/html/rfc7232?cf%5Fhistory%5Fstate=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A15%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.2) and [Etag ↗](https://datatracker.ietf.org/doc/html/rfc7232?cf%5Fhistory%5Fstate=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A13%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.3) headers are absent from the origin server response, Smart Edge Revalidation will use the time the object was cached on Cloudflare's global network as the `Last-Modified` header value. When a browser sends a revalidation request to Cloudflare using `If-Modified-Since` or `If-None-Match`, our global network can answer those revalidation questions using the `Last-Modified` header generated from Smart Edge Revalidation. In this way, our global network can ensure efficient revalidation even if the headers are not sent from the origin.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/revalidation/#page","headline":"Revalidation · Cloudflare Cache (CDN) docs","description":"How Cloudflare revalidates stale cached content with your origin.","url":"https://developers.cloudflare.com/cache/concepts/revalidation/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/concepts/revalidation/","name":"Revalidation"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/revalidation/#page","headline":"Revalidation · Cloudflare Cache (CDN) docs","description":"How Cloudflare revalidates stale cached content with your origin.","url":"https://developers.cloudflare.com/cache/concepts/revalidation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

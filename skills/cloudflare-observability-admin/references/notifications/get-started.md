@@ -1,16 +1,18 @@
 ---
-title: Configure Cloudflare Notifications
 description: Set up notifications via email, webhooks, or PagerDuty.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure Cloudflare Notifications
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Cloudflare Notifications
 
-# Configure Cloudflare Notifications
+Last updated May 4, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/notifications/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The list of notifications available depends on the type of account you have. Refer to [Available Notifications](https://developers.cloudflare.com/notifications/notification-available/) to learn more about what each notification does and what do to when receiving one.
 
@@ -35,7 +37,7 @@ This guide will help you create, edit, test, or delete notifications using the C
 You can create a notification via the Cloudflare dashboard.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. On the notification you want to create, choose **Select**.
 4. Name the notification.
@@ -55,7 +57,7 @@ The browser will navigate back to the list of notifications, where the new notif
 You can edit existing Notifications via the Cloudflare dashboard.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On the notification that you want to modify, select **Edit**.
 3. Make your changes as needed and select **Save**.
 
@@ -66,7 +68,7 @@ The browser will navigate back to the list of notifications.
 You can delete or disable existing Notifications via the Cloudflare dashboard.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On the notification that you want to disable, select the **Enabled** toggle. To delete it, select **Delete**.
 
 ### Mute a notification
@@ -74,7 +76,7 @@ You can delete or disable existing Notifications via the Cloudflare dashboard.
 You can temporarily mute a notification to stop receiving alerts for a set period of time. Muted notifications create a silence that automatically expires after the specified duration.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On the notification that you want to mute, select **Mute**.
 3. Select a duration preset (**1h**, **12h**, or **24h**), or set a custom time range using the **Start Time** and **End Time** fields.
 4. Select **Save**.
@@ -88,7 +90,7 @@ While a notification is muted, alerts that would have triggered it are suppresse
 You can view, edit, or delete existing silences from the **Silences** tab.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)
+[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select the **Silences** tab.
 3. To create a new silence, select **Add**. To modify an existing silence, select **Edit**. To remove a silence before it expires, select **Delete**.
 
@@ -98,7 +100,14 @@ To verify that notifications will be sent to the correct location or to view whi
 
 This action sends a notification with fake data.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/get-started/#page","headline":"Configure Cloudflare Notifications · Cloudflare Notifications docs","description":"Set up notifications via email, webhooks, or PagerDuty.","url":"https://developers.cloudflare.com/notifications/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/notifications/","name":"Notifications"}},{"@type":"ListItem","position":3,"item":{"@id":"/notifications/get-started/","name":"Configure Cloudflare Notifications"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/get-started/#page","headline":"Configure Cloudflare Notifications · Cloudflare Notifications docs","description":"Set up notifications via email, webhooks, or PagerDuty.","url":"https://developers.cloudflare.com/notifications/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

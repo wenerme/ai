@@ -1,16 +1,18 @@
 ---
-title: Path MTU Discovery (PMTUD)
 description: How Path MTU Discovery (PMTUD) works in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Path MTU Discovery (PMTUD)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Path MTU Discovery (PMTUD)
 
-# Path MTU Discovery (PMTUD)
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -45,11 +47,11 @@ PMTUD is disabled by default. To enable PMTUD on your devices, [deploy an MDM fi
 
 ```xml
 <dict>
-  <key>organization</key>
-  <string>your-team-name</string>
-  <key>warp_tunnel_protocol</key>
+	<key>organization</key>
+	<string>your-team-name</string>
+	<key>warp_tunnel_protocol</key>
   <string>masque</string>
-  <key>enable_pmtud</key>
+	<key>enable_pmtud</key>
   <true/>
 </dict>
 ```
@@ -67,7 +69,7 @@ warp-cli settings | grep -i pmtu
 ```
 
 ```sh
-(local policy)  PMTUD enabled: true
+(local policy)	PMTUD enabled: true
 ```
 
 If PMTUD is enabled, the output will show `PMTUD enabled: true`.
@@ -112,8 +114,6 @@ You can check your current network path MTU by collecting [Cloudflare One Client
 1. Run the `warp-diag` command on the device or [collect logs via the the dashboard](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#collect-logs-via-the-dashboard).
 2. Open the resulting `warp-debugging-info-<date>-<time>.zip` file.
 3. Open `connectivity.txt` and search for `PMTU`.
-
-**connectivity.txt**
 ```txt
 ====================================================================
 H3 Quic Connect
@@ -122,19 +122,26 @@ Testing H3 QUIC connectivity to 'https://cloudflare-quic.com/cdn-cgi/l4-stats' r
 IPv4:
 "
 Headers:
-  server address=104.18.26.14:443
-  ...
+	server address=104.18.26.14:443
+	...
 Body:
-  transport=TCP
-  ...
+	transport=TCP
+	...
 PMTU:
-  1500 bytes
+	1500 bytes
 "
 ```
 
 The example above shows an MTU of 1500 bytes, which meets the [recommended MTU requirements](#recommended-mtu) for the Cloudflare One Client. If your MTU falls below the recommended threshold, consider [enabling Path MTU Discovery](#enable-path-mtu-discovery) to optimize connection performance.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#page","headline":"Path MTU Discovery (PMTUD) · Cloudflare One docs","description":"How Path MTU Discovery (PMTUD) works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MASQUE","IPv6"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/","name":"Path MTU Discovery (PMTUD)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#page","headline":"Path MTU Discovery (PMTUD) · Cloudflare One docs","description":"How Path MTU Discovery (PMTUD) works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MASQUE","IPv6"]}
 ```

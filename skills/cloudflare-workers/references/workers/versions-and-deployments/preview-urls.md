@@ -1,16 +1,18 @@
 ---
-title: Preview URLs
 description: Preview URLs allow you to preview new versions of your project without deploying it to production.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Preview URLs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Preview URLs
 
-# Preview URLs
+Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Preview URLs allow you to preview new versions of your Worker without deploying it to production.
 
@@ -58,7 +60,7 @@ The [wrangler versions upload](https://developers.cloudflare.com/workers/wrangle
 #### View versioned preview URLs on the Workers dashboard
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
 3. Go to the **Deployments** tab, and find the version you would like to view.
 
@@ -95,7 +97,7 @@ When enabled, all preview URLs are available publicly. You can use [Cloudflare A
 To limit your preview URLs to authorized emails only:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Go to **Settings** \> **Domains & Routes**.
 4. For Preview URLs, click **Enable Cloudflare Access**.
@@ -115,7 +117,7 @@ Note:
 To toggle Preview URLs for a Worker:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Go to **Settings** \> **Domains & Routes**.
 4. For Preview URLs, click **Enable** or **Disable**.
@@ -133,35 +135,21 @@ Older Wrangler versions will default to Preview URLs being enabled.
 
 To toggle Preview URLs for a Worker, include any of the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-13099)
-* [  wrangler.toml ](#tab-panel-13100)
-
-**JSONC**
-
 ```jsonc
 {
-  "preview_urls": true
+	"preview_urls": true
 }
 ```
-
-**TOML**
 
 ```toml
 preview_urls = true
 ```
 
-* [  wrangler.jsonc ](#tab-panel-13101)
-* [  wrangler.toml ](#tab-panel-13102)
-
-**JSONC**
-
 ```jsonc
 {
-  "preview_urls": false
+	"preview_urls": false
 }
 ```
-
-**TOML**
 
 ```toml
 preview_urls = false
@@ -169,7 +157,7 @@ preview_urls = false
 
 If not given, `preview_urls = workers_dev` is the default.
 
-Warning
+Caution
 
 If you enable or disable Preview URLs in the Cloudflare dashboard, but do not update your Worker's Wrangler file accordingly, the Preview URLs status will change the next time you deploy your Worker with Wrangler.
 
@@ -180,7 +168,14 @@ If you enable or disable Preview URLs in the Cloudflare dashboard, but do not up
 * You cannot currently configure Preview URLs to run on a subdomain other than [workers.dev](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/).
 * You cannot view logs for Preview URLs today, this includes Workers Logs, Wrangler tail and Logpush.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#page","headline":"Preview URLs · Cloudflare Workers docs","description":"Preview URLs allow you to preview new versions of your project without deploying it to production.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/versions-and-deployments/","name":"Versions & deployments"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/versions-and-deployments/preview-urls/","name":"Preview URLs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#page","headline":"Preview URLs · Cloudflare Workers docs","description":"Preview URLs allow you to preview new versions of your project without deploying it to production.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

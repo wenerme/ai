@@ -1,16 +1,18 @@
 ---
-title: Connect through Cloudflare Access using kubectl
 description: Connecting to Cloudflare's network using kubectl. Create a Zero Trust policy for your machine. Create an outbound-only connection between your machine and Cloudflared's network.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Connect through Cloudflare Access using kubectl
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connect through Cloudflare Access using kubectl
 
-# Connect through Cloudflare Access using kubectl
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can connect to machines over `kubectl` using Cloudflare's Zero Trust platform.
 
@@ -85,12 +87,9 @@ vim ~/.cloudflared/config.yml
 
 Next, configure the Tunnel, replacing the example ID below with the ID of the Tunnel created above. Additionally, replace the hostname in this example with the hostname of the application configured with Cloudflare Access.
 
-**YAML**
-
 ```yaml
 tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
 credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-
 
 ingress:
   - hostname: azure.widgetcorp.tech
@@ -107,7 +106,7 @@ ingress:
 You can now create a DNS record that will route traffic to this Tunnel. Multiple DNS records can point to a single Tunnel and will send traffic to the configured service as long as the hostname is defined with an [ingress rule](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/#file-structure-for-public-hostnames).
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to the **DNS Records** page for your domain.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**. Choose `CNAME` as the record type. For **Name**, choose the hostname where you want to create a Tunnel. This should match the hostname of the Access policy.
 3. For **Target**, input the ID of your Tunnel followed by `.cfargotunnel.com`. For example:
 
@@ -151,7 +150,14 @@ With this service running, you can run a `kubectl` command and `cloudflared` wil
 alias kubeone="env HTTPS_PROXY=socks5://127.0.0.1:1234 kubectl"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/#page","headline":"Connect through Cloudflare Access using kubectl · Cloudflare One docs","description":"Connecting to Cloudflare's network using kubectl. Create a Zero Trust policy for your machine. Create an outbound-only connection between your machine and Cloudflared's network.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","TCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/kubectl/","name":"Connect through Cloudflare Access using kubectl"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/#page","headline":"Connect through Cloudflare Access using kubectl · Cloudflare One docs","description":"Connecting to Cloudflare's network using kubectl. Create a Zero Trust policy for your machine. Create an outbound-only connection between your machine and Cloudflared's network.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","TCP"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: ERR_SSL_PROTOCOL_ERROR
 description: Learn how to troubleshoot ERR_SSL_PROTOCOL_ERROR and similar SSL/TLS protocol errors when using Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: ERR_SSL_PROTOCOL_ERROR
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  ERR\_SSL\_PROTOCOL\_ERROR
 
-# ERR\_SSL\_PROTOCOL\_ERROR
+Last updated Jun 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If visitors to your site experience SSL protocol errors such as:
 
@@ -45,7 +47,7 @@ HTTP/3 uses the QUIC protocol over UDP, which some networks, firewalls, or devic
 
 Temporarily disable HTTP/3 to determine if it is the cause:
 
-1. In the Cloudflare dashboard, go to the **Protocol Optimization** page. [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+1. In the Cloudflare dashboard, go to the **Protocol Optimization** page. [ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Turn off **HTTP/3 (with QUIC)**.
 3. Ask the affected visitor to test again.
 
@@ -65,13 +67,13 @@ TLS 1.3 is the latest version of the TLS protocol and provides improved security
 
 ### How to test
 
-Warning
+Caution
 
 Disabling TLS 1.3 reduces security for all visitors. Only disable it temporarily for diagnostic purposes.
 
 Temporarily disable TLS 1.3 to determine if it is the cause:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Find **TLS 1.3** and turn it off.
 3. Ask the affected visitor to test again.
 
@@ -126,7 +128,14 @@ Check [Cloudflare Status ↗](https://www.cloudflarestatus.com/) to verify there
 
 If the issue persists and affects many visitors, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the diagnostic information collected.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/#page","headline":"Troubleshoot ERR_SSL_PROTOCOL_ERROR · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot ERR\\_SSL\\_PROTOCOL\\_ERROR and similar SSL/TLS protocol errors when using Cloudflare.","url":"https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/troubleshooting/err-ssl-protocol-error/","name":"ERR_SSL_PROTOCOL_ERROR"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/#page","headline":"Troubleshoot ERR_SSL_PROTOCOL_ERROR · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot ERR\\_SSL\\_PROTOCOL\\_ERROR and similar SSL/TLS protocol errors when using Cloudflare.","url":"https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

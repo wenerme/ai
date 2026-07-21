@@ -1,18 +1,20 @@
 ---
-title: Cache data with Workers KV
 description: Example of how to use Workers KV to build a distributed application configuration store.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cache data with Workers KV
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Cache data with Workers KV
+#  Cache data with Workers KV
 
 Cache data or API responses in Workers KV to improve application performance
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers KV can be used as a persistent, single, global cache accessible from Cloudflare Workers to speed up your application. Data cached in Workers KV is accessible from all other Cloudflare locations as well, and persists until expiry or deletion.
 
@@ -30,63 +32,48 @@ With Workers KV, the data is persisted by default to [central stores](https://de
 
 In the following `index.ts` file, the Worker fetches data from an external server and caches the response in Workers KV. If the data is already cached in Workers KV, the Worker reads the cached data from Workers KV instead of calling the external API.
 
-* [ index.ts ](#tab-panel-9807)
-* [ wrangler.jsonc ](#tab-panel-9808)
-
-**index.ts**
-
 ```js
 interface Env {
   CACHE_KV: KVNamespace;
 }
 
-
 export default {
   async fetch(request, env, ctx): Promise<Response> {
-
 
      const EXPIRATION_TTL = 30; // Cache expiration in seconds
     const url = 'https://example.com';
     const cacheKey = "cache-json-example";
 
-
     // Try to get data from KV cache first
     let data = await env.CACHE_KV.get(cacheKey, { type: 'json' });
     let fromCache = true;
-
 
     // If data is not in cache, fetch it from example.com
     if (!data) {
       console.log('Cache miss. Fetching fresh data from example.com');
       fromCache = false;
 
-
-        // In this example, we are fetching HTML content but it can also be API responses or any other data
+    		// In this example, we are fetching HTML content but it can also be API responses or any other data
       const response = await fetch(url);
-        const htmlData = await response.text();
+    		const htmlData = await response.text();
 
-
-        // In this example, we are converting HTML to JSON to demonstrate caching JSON data with Workers KV
-        // You could cache any type of data, or even cache the HTML data directly
-        data = helperConvertToJSON(htmlData);
-        // The expirationTtl option is used to set the expiration time for the cache entry (in seconds), otherwise it will be stored indefinitely
-        await env.CACHE_KV.put(cacheKey, JSON.stringify(data), { expirationTtl: EXPIRATION_TTL });
+    		// In this example, we are converting HTML to JSON to demonstrate caching JSON data with Workers KV
+    		// You could cache any type of data, or even cache the HTML data directly
+    		data = helperConvertToJSON(htmlData);
+    		// The expirationTtl option is used to set the expiration time for the cache entry (in seconds), otherwise it will be stored indefinitely
+    		await env.CACHE_KV.put(cacheKey, JSON.stringify(data), { expirationTtl: EXPIRATION_TTL });
     }
 
-
     // Return the appropriate response format
-      return new Response(JSON.stringify({
-        data,
-        fromCache
-      }), {
-        headers: { 'Content-Type': 'application/json' }
-      });
-
+    	return new Response(JSON.stringify({
+    		data,
+    		fromCache
+    	}), {
+    		headers: { 'Content-Type': 'application/json' }
+    	});
 
 }
 } satisfies ExportedHandler<Env>;
-31 collapsed lines
-
 
 // Helper function to convert HTML to JSON
 function helperConvertToJSON(html: string) {
@@ -95,12 +82,9 @@ const title = helperExtractTitle(html);
 const content = helperExtractContent(html);
 const lastUpdated = new Date().toISOString();
 
-
     return { title, content, lastUpdated };
 
-
 }
-
 
 // Helper function to extract title from HTML
 function helperExtractTitle(html: string) {
@@ -108,40 +92,36 @@ const titleMatch = html.match(/<title>(.\*?)<\/title>/i);
 return titleMatch ? titleMatch[1] : 'No title found';
 }
 
-
 // Helper function to extract content from HTML
 function helperExtractContent(html: string) {
 const bodyMatch = html.match(/<body>(.\*?)<\/body>/is);
 if (!bodyMatch) return 'No content found';
 
-
     // Strip HTML tags for a simple text representation
     const textContent = bodyMatch[1].replace(/<[^>]*>/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-
+    	.replace(/\s+/g, ' ')
+    	.trim();
 
     return textContent;
-
 
 }
 ```
 
 ```json
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "<ENTER_WORKER_NAME>",
-  "main": "src/index.ts",
-  "compatibility_date": "2025-03-03",
-  "observability": {
-    "enabled": true
-  },
-  "kv_namespaces": [
-    {
-      "binding": "CACHE_KV",
-      "id": "<YOUR_BINDING_ID>"
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "<ENTER_WORKER_NAME>",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-03-03",
+	"observability": {
+		"enabled": true
+	},
+	"kv_namespaces": [
+		{
+			"binding": "CACHE_KV",
+			"id": "<YOUR_BINDING_ID>"
+		}
+	]
 }
 ```
 
@@ -154,7 +134,14 @@ In this example, we convert HTML to JSON to demonstrate how to cache JSON data w
 * [Rust support in Workers](https://developers.cloudflare.com/workers/languages/rust/).
 * [Using KV in Workers](https://developers.cloudflare.com/kv/get-started/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/#page","headline":"Cache data with Workers KV · Cloudflare Workers KV docs","description":"Example of how to use Workers KV to build a distributed application configuration store.","url":"https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/examples/cache-data-with-workers-kv/","name":"Cache data with Workers KV"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/#page","headline":"Cache data with Workers KV · Cloudflare Workers KV docs","description":"Example of how to use Workers KV to build a distributed application configuration store.","url":"https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

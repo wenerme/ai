@@ -1,22 +1,29 @@
 ---
-title: uform-gen2-qwen-500m
 description: UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: uform-gen2-qwen-500m
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Unum logo](https://developers.cloudflare.com/_astro/unum.Cjjoj0_o.svg)
 
-#  uform-gen2-qwen-500m Beta
+#  uform-gen2-qwen-500m
 
-Image-to-Text • Unum
+ Beta
 
-`@cf/unum/uform-gen2-qwen-500m`
+ Image-to-Text • Unum
+
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/unum/uform-gen2-qwen-500m `
+
+* Cloudflare-hosted
+* Deprecated
 
 UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.
 
@@ -26,38 +33,7 @@ UForm-Gen is a small generative vision-language model primarily designed for Ima
 | More information | [link ↗](https://www.unum.cloud/) |
 | Beta             | Yes                               |
 
-## Usage
-
-**TypeScript**
-
-```ts
-export interface Env {
-  AI: Ai;
-}
-
-
-export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const res = await fetch("https://cataas.com/cat");
-    const blob = await res.arrayBuffer();
-    const input = {
-      image: [...new Uint8Array(blob)],
-      prompt: "Generate a caption for this image",
-      max_tokens: 512,
-    };
-    const response = await env.AI.run(
-      "@cf/unum/uform-gen2-qwen-500m",
-      input
-      );
-    return new Response(JSON.stringify(response));
-  },
-} satisfies ExportedHandler<Env>;
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-5580)
-* [ Output ](#tab-panel-5581)
 
 Option 1
 
@@ -79,7 +55,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-50
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/#page","headline":"uform-gen2-qwen-500m (Unum) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.","url":"https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/#page","headline":"uform-gen2-qwen-500m (Unum) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.","url":"https://developers.cloudflare.com/workers-ai/models/uform-gen2-qwen-500m/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

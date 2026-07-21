@@ -1,16 +1,18 @@
 ---
-title: https
 description: Use the Node.js https module in Cloudflare Workers for TLS-encrypted HTTP client and server functionality.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: https
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  https
 
-# https
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/https/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,8 +26,6 @@ To use the HTTPS client-side methods (`https.get`, `https.request`, etc.), you m
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-08-15` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your `wrangler.toml`:
 
-**TOML**
-
 ```toml
 compatibility_flags = ["nodejs_compat", "enable_nodejs_http_modules"]
 ```
@@ -36,15 +36,11 @@ To use the HTTPS server-side methods (`https.createServer`, `https.Server`, `htt
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-09-01` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your `wrangler.toml`:
 
-**TOML**
-
 ```toml
 compatibility_flags = ["nodejs_compat", "enable_nodejs_http_server_modules"]
 ```
 
 To use both client-side and server-side methods, enable both flags:
-
-**TOML**
 
 ```toml
 compatibility_flags = ["nodejs_compat", "enable_nodejs_http_modules", "enable_nodejs_http_server_modules"]
@@ -58,28 +54,25 @@ The `get` method performs a GET request to the specified URL and invokes the cal
 
 Because `get` is a wrapper around `fetch(...)`, it may be used only within an exported fetch or similar handler. Outside of such a handler, attempts to use `get` will throw an error.
 
-**JavaScript**
-
 ```js
 import { get } from "node:https";
 
-
 export default {
-  async fetch() {
-    const { promise, resolve, reject } = Promise.withResolvers();
-    get("https://example.com", (res) => {
-      let data = "";
-      res.setEncoding("utf8");
-      res.on("data", (chunk) => {
-        data += chunk;
-      });
-      res.on("end", () => {
-        resolve(new Response(data));
-      });
-      res.on("error", reject);
-    }).on("error", reject);
-    return promise;
-  },
+	async fetch() {
+		const { promise, resolve, reject } = Promise.withResolvers();
+		get("https://example.com", (res) => {
+			let data = "";
+			res.setEncoding("utf8");
+			res.on("data", (chunk) => {
+				data += chunk;
+			});
+			res.on("end", () => {
+				resolve(new Response(data));
+			});
+			res.on("error", reject);
+		}).on("error", reject);
+		return promise;
+	},
 };
 ```
 
@@ -101,38 +94,35 @@ The request method accepts all options from [http.request](https://developers.cl
 * `port`: default `443`
 * `agent`: default `https.globalAgent`
 
-**JavaScript**
-
 ```js
 import { request } from "node:https";
 import { strictEqual, ok } from "node:assert";
 
-
 export default {
-  async fetch() {
-    const { promise, resolve, reject } = Promise.withResolvers();
-    const req = request(
-      "https://developers.cloudflare.com/robots.txt",
-      {
-        method: "GET",
-      },
-      (res) => {
-        strictEqual(res.statusCode, 200);
-        let data = "";
-        res.setEncoding("utf8");
-        res.on("data", (chunk) => {
-          data += chunk;
-        });
-        res.once("error", reject);
-        res.on("end", () => {
-          ok(data.includes("User-agent"));
-          resolve(new Response(data));
-        });
-      },
-    );
-    req.end();
-    return promise;
-  },
+	async fetch() {
+		const { promise, resolve, reject } = Promise.withResolvers();
+		const req = request(
+			"https://developers.cloudflare.com/robots.txt",
+			{
+				method: "GET",
+			},
+			(res) => {
+				strictEqual(res.statusCode, 200);
+				let data = "";
+				res.setEncoding("utf8");
+				res.on("data", (chunk) => {
+					data += chunk;
+				});
+				res.once("error", reject);
+				res.on("end", () => {
+					ok(data.includes("User-agent"));
+					resolve(new Response(data));
+				});
+			},
+		);
+		req.end();
+		return promise;
+	},
 };
 ```
 
@@ -144,18 +134,14 @@ An implementation of the Node.js [https.createServer ↗](https://nodejs.org/doc
 
 The `createServer` method creates an HTTPS server instance that can handle incoming secure requests. It's a convenience function that creates a new `Server` instance and optionally sets up a request listener callback.
 
-**JavaScript**
-
 ```js
 import { createServer } from "node:https";
 import { httpServerHandler } from "cloudflare:node";
 
-
 const server = createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello from Node.js HTTPS server!");
+	res.writeHead(200, { "Content-Type": "text/plain" });
+	res.end("Hello from Node.js HTTPS server!");
 });
-
 
 server.listen(8080);
 export default httpServerHandler({ port: 8080 });
@@ -167,14 +153,11 @@ Note
 
 Failing to call `close()` on an HTTPS server may result in the server being leaked. To prevent this, call `close()` when you're done with the server, or use explicit resource management:
 
-**JavaScript**
-
 ```js
 import { createServer } from "node:https";
 
-
 await using server = createServer((req, res) => {
-  res.end("Hello World");
+	res.end("Hello World");
 });
 // Server will be automatically closed when it goes out of scope
 ```
@@ -191,16 +174,13 @@ An implementation of the Node.js [https.Server ↗](https://nodejs.org/docs/late
 
 In Node.js, the `https.Server` class represents an HTTPS server and provides methods for handling incoming secure requests. In Workers, handling of secure requests is provided by the Cloudflare infrastructure so there really is not much difference between using `https.Server` or `http.Server`. The workers runtime provides an implementation for completeness but most workers should probably just use [http.Server](https://developers.cloudflare.com/workers/runtime-apis/nodejs/http#server).
 
-**JavaScript**
-
 ```js
 import { Server } from "node:https";
 import { httpServerHandler } from "cloudflare:node";
 
-
 const server = new Server((req, res) => {
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.end(JSON.stringify({ message: "Hello from HTTPS Server!" }));
+	res.writeHead(200, { "Content-Type": "application/json" });
+	res.end(JSON.stringify({ message: "Hello from HTTPS Server!" }));
 });
 server.listen(8080);
 export default httpServerHandler({ port: 8080 });
@@ -228,7 +208,14 @@ Because the Workers implementation of `node:https` is a wrapper around the globa
 * Gaining direct access to the underlying `socket` is not supported.
 * Configuring TLS-specific options like `ca`, `cert`, `key`, `rejectUnauthorized`, etc, is not supported.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/https/#page","headline":"https · Cloudflare Workers docs","description":"Use the Node.js https module in Cloudflare Workers for TLS-encrypted HTTP client and server functionality.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/https/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/https/","name":"https"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/https/#page","headline":"https · Cloudflare Workers docs","description":"Use the Node.js https module in Cloudflare Workers for TLS-encrypted HTTP client and server functionality.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/https/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

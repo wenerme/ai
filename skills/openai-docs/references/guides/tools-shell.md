@@ -26,7 +26,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [
       { "type": "shell", "environment": { "type": "container_auto" } }
     ],
@@ -49,7 +49,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [{ type: "shell", environment: { type: "container_auto" } }],
   input: [
     {
@@ -75,7 +75,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[{"type": "shell", "environment": {"type": "container_auto"}}],
     input=[
         {
@@ -171,7 +171,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [
       {
         "type": "shell",
@@ -191,7 +191,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [
     {
       type: "shell",
@@ -213,7 +213,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[
         {
             "type": "shell",
@@ -259,8 +259,15 @@ const client = new OpenAI();
 const container = await client.containers.create({
   name: "skill-container",
   skills: [
-    { type: "skill_reference", skill_id: "skill_4db6f1a2c9e73508b41f9da06e2c7b5f" },
-    { type: "skill_reference", skill_id: "openai-spreadsheets", version: "latest" },
+    {
+      type: "skill_reference",
+      skill_id: "skill_4db6f1a2c9e73508b41f9da06e2c7b5f",
+    },
+    {
+      type: "skill_reference",
+      skill_id: "openai-spreadsheets",
+      version: "latest",
+    },
   ],
 });
 
@@ -300,7 +307,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tool_choice": "required",
     "tools": [
       {
@@ -329,7 +336,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tool_choice: "required",
   tools: [
     {
@@ -361,7 +368,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tool_choice="required",
     tools=[
         {
@@ -445,7 +452,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "tools": [
       {
         "type": "shell",
@@ -480,8 +487,10 @@ import OpenAI from "openai";
 
 const client = new OpenAI();
 
-const inlineZip = fs.readFileSync("csv_insights.zip").toString("base64");
-const reportCsv = fs.readFileSync("report.csv").toString("base64");
+const inlineZip = fs
+  .readFileSync("fixtures/csv_insights.zip")
+  .toString("base64");
+const reportCsv = fs.readFileSync("fixtures/report.csv").toString("base64");
 
 const container = await client.containers.create({
   name: "inline-skill-container",
@@ -500,7 +509,7 @@ const container = await client.containers.create({
 });
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   tools: [
     {
       type: "shell",
@@ -560,7 +569,7 @@ container = client.containers.create(
 )
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[
         {
             "type": "shell",
@@ -651,7 +660,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "input": [
       {
         "role": "user",
@@ -687,7 +696,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: [
     {
       role: "user",
@@ -726,7 +735,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "user",
@@ -770,7 +779,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "previous_response_id": "resp_2a8e5c9174d63b0f18a4c572de9f64a1b3c76d508e12f9ab47",
     "tools": [
       {
@@ -791,8 +800,9 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
-  previous_response_id: "resp_2a8e5c9174d63b0f18a4c572de9f64a1b3c76d508e12f9ab47",
+  model: "gpt-5.6",
+  previous_response_id:
+    "resp_2a8e5c9174d63b0f18a4c572de9f64a1b3c76d508e12f9ab47",
   tools: [
     {
       type: "shell",
@@ -814,7 +824,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     previous_response_id="resp_2a8e5c9174d63b0f18a4c572de9f64a1b3c76d508e12f9ab47",
     tools=[
         {
@@ -868,7 +878,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "instructions": "The local bash shell environment is on Mac.",
     "input": "find me the largest pdf file in ~/Documents",
     "tools": [{ "type": "shell", "environment": { "type": "local" } }]
@@ -881,7 +891,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     instructions="The local bash shell environment is on Mac.",
     input="find me the largest pdf file in ~/Documents",
     tools=[{"type": "shell", "environment": {"type": "local"}}],
@@ -896,10 +906,10 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.5",
-    instructions: "The local bash shell environment is on Mac.",
-    input: "find me the largest pdf file in ~/Documents",
-    tools: [{ type: "shell", environment: { type: "local" } }],
+  model: "gpt-5.6",
+  instructions: "The local bash shell environment is on Mac.",
+  input: "find me the largest pdf file in ~/Documents",
+  tools: [{ type: "shell", environment: { type: "local" } }],
 });
 
 console.log(response);
@@ -945,30 +955,33 @@ class ShellExecutor:
 ```
 
 ```javascript
-import { exec } from "node:child_process/promises";
+import { exec as execCallback } from "node:child_process";
+import { promisify } from "node:util";
+
+const exec = promisify(execCallback);
 
 class ShellExecutor {
-    constructor(defaultTimeoutMs = 60_000) {
-        this.defaultTimeoutMs = defaultTimeoutMs;
-    }
+  constructor(defaultTimeoutMs = 60_000) {
+    this.defaultTimeoutMs = defaultTimeoutMs;
+  }
 
-    async run(cmd, timeoutMs) {
-        const timeout = timeoutMs ?? this.defaultTimeoutMs;
+  async run(cmd, timeoutMs) {
+    const timeout = timeoutMs ?? this.defaultTimeoutMs;
 
-        try {
-            const { stdout, stderr } = await exec(cmd, { timeout });
-            return { stdout, stderr, exitCode: 0, timedOut: false };
-        } catch (error) {
-            const timedOut = Boolean(error?.killed) && error?.signal === "SIGTERM";
-            const exitCode = timedOut ? null : error?.code ?? null;
-            return {
-                stdout: error?.stdout ?? "",
-                stderr: error?.stderr ?? String(error),
-                exitCode,
-                timedOut,
-            };
-        }
+    try {
+      const { stdout, stderr } = await exec(cmd, { timeout });
+      return { stdout, stderr, exitCode: 0, timedOut: false };
+    } catch (error) {
+      const timedOut = Boolean(error?.killed) && error?.signal === "SIGTERM";
+      const exitCode = timedOut ? null : (error?.code ?? null);
+      return {
+        stdout: error?.stdout ?? "",
+        stderr: error?.stderr ?? String(error),
+        exitCode,
+        timedOut,
+      };
     }
+  }
 }
 ```
 
@@ -1042,7 +1055,7 @@ const shell = new LocalShell();
 
 const agent = new Agent({
   name: "Shell Assistant",
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   instructions:
     "You can execute shell commands to inspect the repository. Keep responses concise and include command output when helpful.",
   tools: [
@@ -1098,7 +1111,7 @@ shell_tool = ShellTool(
 
 agent = Agent(
     name="Shell Assistant",
-    model="gpt-5.5",
+    model="gpt-5.6",
     instructions="You can execute shell commands to inspect the repository. Keep responses concise and include command output when helpful.",
     tools=[shell_tool],
 )

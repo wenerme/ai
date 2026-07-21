@@ -1,16 +1,18 @@
 ---
-title: Best practices
 description: Follow recommended deployment best practices.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Best practices
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Best practices
 
-# Best practices
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Most customers have a heterogeneous private application portfolio; some are home-built, some are internal managed services, some have SSO integrations available, and some rely on HTML or other forms of authentication. With that in mind, we recommend that you mix-and-match [onboarding solutions](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/integrated-sso/#potential-solutions) to fit the needs of each individual application. As shown in the table below, you can bucket applications into a series of stack-ranked categories that prioritize ease of implementation and total organizational impact.
 
@@ -22,7 +24,14 @@ Most customers have a heterogeneous private application portfolio; some are home
 | New microservices being developed                                                                    | [Present applications exclusively on Cloudflare domains.](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/integrated-sso/#recommended-solution)  Optionally, [consume the Access JWT](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/#consume-the-cloudflare-jwt) as authentication in internal applications. | Developers can inject the JWT authorization mechanism directly into the codebase of their application and [use Terraform](https://developers.cloudflare.com/learning-paths/clientless-access/terraform/) to automatically build Cloudflare hostnames and policies for their applications. |
 | Internal API endpoints (including internal applications with dependencies on external/internal APIs) | Present internal APIs on Cloudflare domains, and build Access policies that accept [service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) alongside user-oriented policies.                                                                                                                                                                | Automated systems can authenticate via a [service token in the request header](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#connect-your-service-to-access), while end users continue to login through their IdP.                 |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/best-practices/#page","headline":"Best practices · Cloudflare Learning Paths","description":"Follow recommended deployment best practices.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/","name":"Migrate applications"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/best-practices/","name":"Best practices"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/best-practices/#page","headline":"Best practices · Cloudflare Learning Paths","description":"Follow recommended deployment best practices.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

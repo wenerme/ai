@@ -1,24 +1,24 @@
 ---
-title: Error codes
 description: Reference of R2 error codes returned by the Workers API and S3-compatible API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Error codes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Error codes
 
-# Error codes
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/error-codes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page documents error codes returned by R2 when using the [Workers API](https://developers.cloudflare.com/r2/api/workers/) or the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/), along with recommended fixes to help with troubleshooting.
 
 ## How errors are returned
 
 For the **Workers API**, R2 operations throw exceptions that you can catch. The error code is included at the end of the `message` property:
-
-**JavaScript**
 
 ```js
 try {
@@ -100,7 +100,14 @@ For the **S3-compatible API**, errors are returned as XML in the response body:
 | 10054      | ClientDisconnect   | 400         | Client disconnected before request completed.                                                                             | Check network connectivity and retry.                                                                                                |
 | 10058      | TooManyRequests    | 429         | Rate limit exceeded. Often caused by multiple concurrent requests to the same object key (limit: 1 write/second per key). | Check if multiple clients are accessing the same object key. See [R2 limits](https://developers.cloudflare.com/r2/platform/limits/). |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/error-codes/#page","headline":"Error codes · Cloudflare R2 docs","description":"Reference of R2 error codes returned by the Workers API and S3-compatible API.","url":"https://developers.cloudflare.com/r2/api/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/api/error-codes/","name":"Error codes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/error-codes/#page","headline":"Error codes · Cloudflare R2 docs","description":"Reference of R2 error codes returned by the Workers API and S3-compatible API.","url":"https://developers.cloudflare.com/r2/api/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

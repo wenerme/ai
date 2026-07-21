@@ -1,16 +1,18 @@
 ---
-title: PhishGuard
 description: PhishGuard in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: PhishGuard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  PhishGuard
 
-# PhishGuard
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 PhishGuard is a team of analysts that routinely inspects your email environment and responds to threats that come through your email inbox.
 
@@ -18,7 +20,7 @@ While Email security uses advanced technologies to protect your email inbox, Phi
 
 PhishGuard only works on a post-delivery environment (only emails that have already landed in your email inbox are reviewed). As a result, PhishGuard analysts may [submit a message for review](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/#submit-messages-for-review) or [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) based on their findings.
 
-Warning
+Caution
 
 Auto-moves are mandatory for PhishGuard customers.
 
@@ -105,7 +107,14 @@ If you select the three dots, you can:
 * Preview email.
 * [Move email](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/#page","headline":"PhishGuard · Cloudflare One docs","description":"PhishGuard in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/phishguard/","name":"PhishGuard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/#page","headline":"PhishGuard · Cloudflare One docs","description":"PhishGuard in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

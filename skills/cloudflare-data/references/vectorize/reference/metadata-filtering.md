@@ -1,16 +1,18 @@
 ---
-title: Metadata filtering
 description: Filter Vectorize query results by vector metadata using supported operators and indexes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metadata filtering
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metadata filtering
 
-# Metadata filtering
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/reference/metadata-filtering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In addition to providing an input vector to your query, you can also filter by [vector metadata](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/#metadata) associated with every vector. Query results will only include vectors that match the `filter` criteria, meaning that `filter` is applied first, and the `topK` results are taken from the filtered set.
 
@@ -115,7 +117,6 @@ For example, the following filter matches all values starting with "net":
 ```json
 { "pandas.nice": 42 }
 
-
 // looks for { "pandas": { "nice": 42 } }
 ```
 
@@ -149,37 +150,34 @@ npx wrangler vectorize create-metadata-index tutorial-index --property-name=stre
 
 Metadata can be added when [inserting or upserting vectors](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/#examples).
 
-**TypeScript**
-
 ```ts
 const newMetadataVectors: Array<VectorizeVector> = [
-  {
-    id: "1",
-    values: [32.4, 74.1, 3.2, ...],
-    metadata: { url: "/products/sku/13913913", streaming_platform: "netflix" },
-  },
-  {
-    id: "2",
-    values: [15.1, 19.2, 15.8, ...],
-    metadata: { url: "/products/sku/10148191", streaming_platform: "hbo" },
-  },
-  {
-    id: "3",
-    values: [0.16, 1.2, 3.8, ...],
-    metadata: { url: "/products/sku/97913813", streaming_platform: "amazon" },
-  },
-  {
-    id: "4",
-    values: [75.1, 67.1, 29.9, ...],
-    metadata: { url: "/products/sku/418313", streaming_platform: "netflix" },
-  },
-  {
-    id: "5",
-    values: [58.8, 6.7, 3.4, ...],
-    metadata: { url: "/products/sku/55519183", streaming_platform: "hbo" },
-  },
+	{
+		id: "1",
+		values: [32.4, 74.1, 3.2, ...],
+		metadata: { url: "/products/sku/13913913", streaming_platform: "netflix" },
+	},
+	{
+		id: "2",
+		values: [15.1, 19.2, 15.8, ...],
+		metadata: { url: "/products/sku/10148191", streaming_platform: "hbo" },
+	},
+	{
+		id: "3",
+		values: [0.16, 1.2, 3.8, ...],
+		metadata: { url: "/products/sku/97913813", streaming_platform: "amazon" },
+	},
+	{
+		id: "4",
+		values: [75.1, 67.1, 29.9, ...],
+		metadata: { url: "/products/sku/418313", streaming_platform: "netflix" },
+	},
+	{
+		id: "5",
+		values: [58.8, 6.7, 3.4, ...],
+		metadata: { url: "/products/sku/55519183", streaming_platform: "hbo" },
+	},
 ];
-
 
 // Upsert vectors with added metadata, returning a count of the vectors upserted and their vector IDs
 let upserted = await env.YOUR_INDEX.upsert(newMetadataVectors);
@@ -189,14 +187,12 @@ let upserted = await env.YOUR_INDEX.upsert(newMetadataVectors);
 
 Use the `query()` method:
 
-**TypeScript**
-
 ```ts
 let queryVector: Array<number> = [54.8, 5.5, 3.1, ...];
 let originalMatches = await env.YOUR_INDEX.query(queryVector, {
-  topK: 3,
-  returnValues: true,
-  returnMetadata: 'all',
+	topK: 3,
+	returnValues: true,
+	returnMetadata: 'all',
 });
 ```
 
@@ -204,50 +200,48 @@ Results without metadata filtering:
 
 ```json
 {
-  "count": 3,
-  "matches": [
-    {
-      "id": "5",
-      "score": 0.999909486,
-      "values": [58.79999923706055, 6.699999809265137, 3.4000000953674316],
-      "metadata": {
-        "url": "/products/sku/55519183",
-        "streaming_platform": "hbo"
-      }
-    },
-    {
-      "id": "4",
-      "score": 0.789848214,
-      "values": [75.0999984741211, 67.0999984741211, 29.899999618530273],
-      "metadata": {
-        "url": "/products/sku/418313",
-        "streaming_platform": "netflix"
-      }
-    },
-    {
-      "id": "2",
-      "score": 0.611976262,
-      "values": [15.100000381469727, 19.200000762939453, 15.800000190734863],
-      "metadata": {
-        "url": "/products/sku/10148191",
-        "streaming_platform": "hbo"
-      }
-    }
-  ]
+	"count": 3,
+	"matches": [
+		{
+			"id": "5",
+			"score": 0.999909486,
+			"values": [58.79999923706055, 6.699999809265137, 3.4000000953674316],
+			"metadata": {
+				"url": "/products/sku/55519183",
+				"streaming_platform": "hbo"
+			}
+		},
+		{
+			"id": "4",
+			"score": 0.789848214,
+			"values": [75.0999984741211, 67.0999984741211, 29.899999618530273],
+			"metadata": {
+				"url": "/products/sku/418313",
+				"streaming_platform": "netflix"
+			}
+		},
+		{
+			"id": "2",
+			"score": 0.611976262,
+			"values": [15.100000381469727, 19.200000762939453, 15.800000190734863],
+			"metadata": {
+				"url": "/products/sku/10148191",
+				"streaming_platform": "hbo"
+			}
+		}
+	]
 }
 ```
 
 The same `query()` method with a `filter` property supports metadata filtering.
 
-**TypeScript**
-
 ```ts
 let queryVector: Array<number> = [54.8, 5.5, 3.1, ...];
 let metadataMatches = await env.YOUR_INDEX.query(queryVector, {
-  topK: 3,
-  filter: { streaming_platform: "netflix" },
-  returnValues: true,
-  returnMetadata: 'all',
+	topK: 3,
+	filter: { streaming_platform: "netflix" },
+	returnValues: true,
+	returnMetadata: 'all',
 });
 ```
 
@@ -255,27 +249,27 @@ Results with metadata filtering:
 
 ```json
 {
-  "count": 2,
-  "matches": [
-    {
-      "id": "4",
-      "score": 0.789848214,
-      "values": [75.0999984741211, 67.0999984741211, 29.899999618530273],
-      "metadata": {
-        "url": "/products/sku/418313",
-        "streaming_platform": "netflix"
-      }
-    },
-    {
-      "id": "1",
-      "score": 0.491185264,
-      "values": [32.400001525878906, 74.0999984741211, 3.200000047683716],
-      "metadata": {
-        "url": "/products/sku/13913913",
-        "streaming_platform": "netflix"
-      }
-    }
-  ]
+	"count": 2,
+	"matches": [
+		{
+			"id": "4",
+			"score": 0.789848214,
+			"values": [75.0999984741211, 67.0999984741211, 29.899999618530273],
+			"metadata": {
+				"url": "/products/sku/418313",
+				"streaming_platform": "netflix"
+			}
+		},
+		{
+			"id": "1",
+			"score": 0.491185264,
+			"values": [32.400001525878906, 74.0999984741211, 3.200000047683716],
+			"metadata": {
+				"url": "/products/sku/13913913",
+				"streaming_platform": "netflix"
+			}
+		}
+	]
 }
 ```
 
@@ -284,7 +278,14 @@ Results with metadata filtering:
 * As of now, metadata indexes need to be created for Vectorize indexes _before_ vectors can be inserted to support metadata filtering.
 * Only indexes created on or after 2023-12-06 support metadata filtering. Previously created indexes cannot be migrated to support metadata filtering.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/metadata-filtering/#page","headline":"Metadata filtering · Cloudflare Vectorize docs","description":"Filter Vectorize query results by vector metadata using supported operators and indexes.","url":"https://developers.cloudflare.com/vectorize/reference/metadata-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/reference/metadata-filtering/","name":"Metadata filtering"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/metadata-filtering/#page","headline":"Metadata filtering · Cloudflare Vectorize docs","description":"Filter Vectorize query results by vector metadata using supported operators and indexes.","url":"https://developers.cloudflare.com/vectorize/reference/metadata-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

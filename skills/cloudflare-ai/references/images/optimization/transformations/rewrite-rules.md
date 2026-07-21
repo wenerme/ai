@@ -1,16 +1,18 @@
 ---
-title: Set up rewrite rules
 description: Use Transform Rules to rewrite URLs for Cloudflare Images transformations and serve images from custom paths.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Set up rewrite rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up rewrite rules
 
-# Set up rewrite rules
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use Transform Rules to rewrite URLs for every image that you transform through Images.
 
@@ -23,7 +25,7 @@ This page covers examples for the following scenarios:
 To create a rule:
 
 1. In the Cloudflare dashboard, go to the **Rules Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** next to **URL Rewrite Rules**.
 
 ## Before you start
@@ -46,13 +48,9 @@ Free and Pro plans support string matching rules (including wildcard operations)
 
 This example lets you rewrite a request from `example.com/images` to `example.com/cdn-cgi/image/`:
 
-**Text in Expression Editor**
-
 ```txt
 (starts_with(http.request.uri.path, "/images")) and (not (any(http.request.headers["via"][*] contains "image-resizing")))
 ```
-
-**Text in Path > Rewrite to > Dynamic**
 
 ```txt
 concat("/cdn-cgi/image", substring(http.request.uri.path, 7))
@@ -68,13 +66,9 @@ There is an advanced version of Transform Rules supporting regular expressions.
 
 This example lets you rewrite a request from `example.com/images` to `example.com/cdn-cgi/image/`:
 
-**Text in Expression Editor**
-
 ```txt
 (http.request.uri.path matches "^/images/.*$") and (not (any(http.request.headers["via"][*] contains "image-resizing")))
 ```
-
-**Text in Path > Rewrite to > Dynamic**
 
 ```txt
 regex_replace(http.request.uri.path, "^/images/", "/cdn-cgi/image/")
@@ -91,8 +85,6 @@ This example lets you rewrite your URL parameters to be compatible with Images:
 ```txt
 (http.request.uri matches "^/(.*)\\?width=([0-9]+)&height=([0-9]+)$")
 ```
-
-**Text in Path > Rewrite to > Dynamic**
 
 ```txt
 regex_replace(
@@ -116,13 +108,18 @@ This example lets you transform every image that is requested on your zone with 
 (http.request.uri.path.extension matches "(jpg)|(jpeg)|(png)|(gif)") and (not (any(http.request.headers["via"][*] contains "image-resizing")))
 ```
 
-**Text in Path > Rewrite to > Dynamic**
-
 ```txt
 regex_replace(http.request.uri.path, "/(.*)", "/cdn-cgi/image/format=auto/${1}")
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/#page","headline":"Serve images from custom paths · Cloudflare Images docs","description":"Use Transform Rules to rewrite URLs for Cloudflare Images transformations and serve images from custom paths.","url":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/rewrite-rules/","name":"Set up rewrite rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/#page","headline":"Serve images from custom paths · Cloudflare Images docs","description":"Use Transform Rules to rewrite URLs for Cloudflare Images transformations and serve images from custom paths.","url":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

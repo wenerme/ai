@@ -1,16 +1,18 @@
 ---
-title: Configuration file
 description: Reference information for Configuration file in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Configuration file
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration file
 
-# Configuration file
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -41,7 +43,6 @@ If you are exposing local services to the Internet, you can assign a public host
 tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
 credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
 
-
 ingress:
   - hostname: gitlab.widgetcorp.tech
     service: http://localhost:80
@@ -63,7 +64,6 @@ Here is an example configuration file that specifies several rules:
 ```yml
 tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
 credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
-
 
 ingress:
   # Rules map traffic from a hostname to a local service:
@@ -94,7 +94,6 @@ In addition to HTTP, `cloudflared` supports protocols like SSH, RDP, arbitrary T
 tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
 credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
 
-
 ingress:
   # Example of a request over TCP:
   - hostname: example.com
@@ -120,7 +119,6 @@ tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
 credentials-file: /root/.cloudflared/6ff42ae2-765d-4adf-8112-31c55c1551ef.json
 originRequest: # Top-level configuration
   connectTimeout: 30s
-
 
 ingress:
   # The localhost:8000 service inherits all root-level configuration.
@@ -160,8 +158,8 @@ cloudflared tunnel ingress rule https://foo.example.com
 ```sh
 Using rules from /usr/local/etc/cloudflared/config.yml
 Matched rule #3
-  hostname: *.example.com
-  service: https://localhost:8000
+	hostname: *.example.com
+	service: https://localhost:8000
 ```
 
 ## Update a configuration file
@@ -179,7 +177,14 @@ Traffic handling
 
 When the first instance of `cloudflared` is stopped, long-lived HTTP requests (for example, Websocket) and TCP connections (for example, SSH) will be dropped. UDP flows will also be dropped, as they are modeled based on timeouts. When the new replica connects, it will handle all new traffic, including new HTTP requests, TCP connections, and UDP flows.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/#page","headline":"Configuration file · Cloudflare One docs","description":"Reference information for Configuration file in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["YAML"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/","name":"Other tunnel types"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/","name":"Locally-managed tunnels"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/","name":"Configuration file"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/#page","headline":"Configuration file · Cloudflare One docs","description":"Reference information for Configuration file in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["YAML"]}
 ```

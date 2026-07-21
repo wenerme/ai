@@ -1,16 +1,18 @@
 ---
-title: Environments
 description: Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Environments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Environments
 
-# Environments
+Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/reference/environments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Environments provide isolated spaces where your code runs with specific dependencies and configurations. This can be useful for a number of reasons, such as compatibility testing or version management. Using different environments can help with code consistency, testing, and production segregation, which reduces the risk of errors when deploying code.
 
@@ -22,29 +24,22 @@ If you are using Wrangler environments, you must specify any [Durable Object bin
 
 Durable Object bindings are not inherited. For example, you can define an environment named `staging` as below:
 
-* [  wrangler.jsonc ](#tab-panel-9140)
-* [  wrangler.toml ](#tab-panel-9141)
-
-**JSONC**
-
 ```jsonc
 {
-  "env": {
-    "staging": {
-      "durable_objects": {
-        "bindings": [
-          {
-            "name": "EXAMPLE_CLASS",
-            "class_name": "DurableObjectExample"
-          }
-        ]
-      }
-    }
-  }
+	"env": {
+		"staging": {
+			"durable_objects": {
+				"bindings": [
+					{
+						"name": "EXAMPLE_CLASS",
+						"class_name": "DurableObjectExample"
+					}
+				]
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[env.staging.durable_objects.bindings]]
@@ -54,30 +49,23 @@ class_name = "DurableObjectExample"
 
 Because Wrangler appends the [environment name](https://developers.cloudflare.com/workers/wrangler/environments/) to the top-level name when publishing, for a Worker named `worker-name` the above example is equivalent to:
 
-* [  wrangler.jsonc ](#tab-panel-9142)
-* [  wrangler.toml ](#tab-panel-9143)
-
-**JSONC**
-
 ```jsonc
 {
-  "env": {
-    "staging": {
-      "durable_objects": {
-        "bindings": [
-          {
-            "name": "EXAMPLE_CLASS",
-            "class_name": "DurableObjectExample",
-            "script_name": "worker-name-staging"
-          }
-        ]
-      }
-    }
-  }
+	"env": {
+		"staging": {
+			"durable_objects": {
+				"bindings": [
+					{
+						"name": "EXAMPLE_CLASS",
+						"class_name": "DurableObjectExample",
+						"script_name": "worker-name-staging"
+					}
+				]
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[env.staging.durable_objects.bindings]]
@@ -90,30 +78,23 @@ script_name = "worker-name-staging"
 
 If you want an environment-specific binding that accesses the same Objects as the top-level binding, specify the top-level Worker code name explicitly using `script_name`:
 
-* [  wrangler.jsonc ](#tab-panel-9144)
-* [  wrangler.toml ](#tab-panel-9145)
-
-**JSONC**
-
 ```jsonc
 {
-  "env": {
-    "another": {
-      "durable_objects": {
-        "bindings": [
-          {
-            "name": "EXAMPLE_CLASS",
-            "class_name": "DurableObjectExample",
-            "script_name": "worker-name"
-          }
-        ]
-      }
-    }
-  }
+	"env": {
+		"another": {
+			"durable_objects": {
+				"bindings": [
+					{
+						"name": "EXAMPLE_CLASS",
+						"class_name": "DurableObjectExample",
+						"script_name": "worker-name"
+					}
+				]
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[env.another.durable_objects.bindings]]
@@ -143,15 +124,22 @@ KV-backed Durable Objects support remote development using the dashboard playgro
 To start remote development:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select an existing Worker.
 3. Select the **Edit code** icon located on the upper-right of the screen.
 
-Warning
+Caution
 
 Remote development is only available for KV-backed Durable Objects. SQLite-backed Durable Objects do not support remote development.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/environments/#page","headline":"Environments · Cloudflare Durable Objects docs","description":"Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.","url":"https://developers.cloudflare.com/durable-objects/reference/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/reference/environments/","name":"Environments"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/environments/#page","headline":"Environments · Cloudflare Durable Objects docs","description":"Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.","url":"https://developers.cloudflare.com/durable-objects/reference/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

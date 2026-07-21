@@ -1,16 +1,18 @@
 ---
-title: Parameters
 description: Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Parameters
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Parameters
 
-# Parameters
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Each Cloudflare One Client (formerly WARP) supports the following set of parameters as part of their deployment, regardless of the deployment mechanism.
 
@@ -326,7 +328,7 @@ Binds the registration to a non-exportable key stored in device hardware (Secure
 * `false` — (default) The Cloudflare One Client stores its API token in the device keystore.
 * `true` — The Cloudflare One Client generates a hardware-backed key during registration and uses mTLS for subsequent API calls.
 
-Warning
+Caution
 
 Changing this value after a device has registered forces the device to register again. Existing registrations are not migrated.
 
@@ -576,7 +578,14 @@ An optional property. `is_browser` will help the Cloudflare One Agent applicatio
 
 1. Traffic and DNS mode is supported in client version 2025.2.664.0 and below. In version 2025.4.589.1 and above, this parameter does not apply to Traffic and DNS mode because all DoH traffic goes inside of the WARP tunnel. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#page","headline":"Parameters · Cloudflare One docs","description":"Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML","Post-quantum"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/","name":"Deploy the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","name":"Managed deployment"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","name":"Parameters"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#page","headline":"Parameters · Cloudflare One docs","description":"Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML","Post-quantum"]}
 ```

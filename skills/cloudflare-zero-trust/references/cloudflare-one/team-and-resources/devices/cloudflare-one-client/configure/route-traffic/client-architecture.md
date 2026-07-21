@@ -1,16 +1,18 @@
 ---
-title: Client architecture
 description: Explore how the Cloudflare One Client routes DNS and IP traffic to apply your Zero Trust policies.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Client architecture
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Client architecture
 
-# Client architecture
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how the Cloudflare One Client (formerly WARP) interacts with a device's operating system to route traffic in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) mode.
 
@@ -84,10 +86,6 @@ R -- No --> G[Cloudflare Gateway]
 
 You can verify that the operating system is using the Cloudflare One Client's local DNS proxy:
 
-* [ macOS ](#tab-panel-8104)
-* [ Windows ](#tab-panel-8105)
-* [ Linux ](#tab-panel-8106)
-
 On macOS, open a terminal window and run `scutil --dns`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
 ```sh
@@ -115,8 +113,6 @@ resolver #2
 
 On Windows, open a PowerShell window and run `ipconfig`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
-**PowerShell**
-
 ```powershell
 ipconfig
 ```
@@ -124,9 +120,7 @@ ipconfig
 ```txt
 Windows IP Configuration
 
-
 Unknown adapter CloudflareWARP:
-
 
    Connection-specific DNS Suffix  . :
    Description . . . . . . . . . . . : Cloudflare WARP Interface Tunnel
@@ -179,13 +173,7 @@ Virtual interfaces allow the operating system to logically subdivide a physical 
 
 To view a list of all network interfaces on the operating system:
 
-* [ Windows ](#tab-panel-8110)
-* [ macOS ](#tab-panel-8111)
-* [ Linux ](#tab-panel-8112)
-
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
-
-**PowerShell**
 
 ```powershell
 ipconfig
@@ -194,9 +182,7 @@ ipconfig
 ```txt
 Windows IP Configuration
 
-
 Unknown adapter CloudflareWARP:
-
 
    Connection-specific DNS Suffix  . :
    Description . . . . . . . . . . . : Cloudflare WARP Interface Tunnel
@@ -222,10 +208,10 @@ ifconfig
 ```sh
 <redacted>
 utun3: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1280
-  inet 172.16.0.2 --> 172.16.0.2 netmask 0xffffffff
-  inet6 fe80::f6d4:88ff:fe82:6d9e%utun3 prefixlen 64 scopeid 0x17
-  inet6 2606:4700:110:8c7d:7369:7526:a59b:5636 prefixlen 128
-  nd6 options=201<PERFORMNUD,DAD>
+	inet 172.16.0.2 --> 172.16.0.2 netmask 0xffffffff
+	inet6 fe80::f6d4:88ff:fe82:6d9e%utun3 prefixlen 64 scopeid 0x17
+	inet6 2606:4700:110:8c7d:7369:7526:a59b:5636 prefixlen 128
+	nd6 options=201<PERFORMNUD,DAD>
 ```
 
 On Linux, run `ifconfig` or `ip addr`. When the Cloudflare One Client is turned on, you will see a `utun` interface with your device IP.
@@ -253,10 +239,6 @@ In the example above, the device IPv4 address is `172.16.0.2`.
 The Cloudflare One Client edits the system routing table to control what IP traffic goes to Gateway. The routing table indicates which network interface should handle packets to a particular IP address. By default, all traffic routes through the Cloudflare One Client's virtual interface except for the IPs and domains on your Split Tunnel exclude list (which use the default interface on your device).
 
 You can verify that the routing table matches your Split Tunnel rules:
-
-* [ macOS ](#tab-panel-8107)
-* [ Windows ](#tab-panel-8108)
-* [ Linux ](#tab-panel-8109)
 
 To view the entire routing table on macOS, run `netstat -r`.
 
@@ -296,8 +278,6 @@ To view the entire routing table on Windows, run `netstat -r`.
 
 You can also search the routing table for an IP address. In this example, we see that traffic to `1.1.1.1` is sent through the Cloudflare One Client's virtual interface:
 
-**PowerShell**
-
 ```powershell
 Find-NetRoute -RemoteIPAddress "1.1.1.1" | Select-Object InterfaceAlias -Last 1
 ```
@@ -309,8 +289,6 @@ CloudflareWARP
 ```
 
 In contrast, this DHCP address is excluded from the Cloudflare One Client and uses the default interface:
-
-**PowerShell**
 
 ```powershell
 Find-NetRoute -RemoteIPAddress "169.254.0.0" | Select-Object InterfaceAlias -Last 1
@@ -356,7 +334,14 @@ On iOS and Android/ChromeOS, the Cloudflare One Agent installs itself as a VPN c
 
 Note that ChromeOS runs the Android app in a virtual machine, rather than running a native Chrome app.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#page","headline":"Client architecture · Cloudflare One docs","description":"Explore how the Cloudflare One Client routes DNS and IP traffic to apply your Zero Trust policies.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/","name":"Route traffic"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/","name":"Client architecture"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#page","headline":"Client architecture · Cloudflare One docs","description":"Explore how the Cloudflare One Client routes DNS and IP traffic to apply your Zero Trust policies.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard"]}
 ```

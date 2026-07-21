@@ -1,16 +1,18 @@
 ---
-title: HTTP filtering
 description: HTTP filtering in Gateway.
-image: https://developers.cloudflare.com/zt-preview.png
+title: HTTP filtering
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  HTTP filtering
 
-# HTTP filtering
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Secure Web Gateway allows you to inspect HTTP traffic and control which websites users can visit. DNS filtering can only block or allow entire domains (for example, all of `dropbox.com`). HTTP filtering goes deeper — it inspects full URLs and request content, so you can block a specific page like `dropbox.com/shared-folder`, scan file uploads for sensitive data, or enforce acceptable use policies based on what users are actually doing on a site.
 
@@ -39,7 +41,7 @@ To verify your device is connected to Cloudflare One and traffic is flowing thro
 2. Under **Log traffic activity**, enable activity logging for all HTTP logs.
 3. On your device, open a browser and go to any website.
 4. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs** \> **HTTP**.
-5. Make sure HTTP requests from your device appear.
+5. Make sure HTTPrequests from your device appear.
 
 After creating your first HTTP policy in the next step, you can test it by visiting a URL that your policy should block and confirming the request is denied.
 
@@ -48,9 +50,6 @@ After creating your first HTTP policy in the next step, you can test it by visit
 An HTTP policy defines which requests to match (for example, uploads to file-sharing sites) and the action to take (for example, block).
 
 To create a new HTTP policy:
-
-* [ Dashboard ](#tab-panel-8275)
-* [ API ](#tab-panel-8276)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
@@ -75,54 +74,50 @@ Cloudflare also recommends adding a policy to block [known threats](https://deve
 | Account | Zero Trust | Edit       |
 2. (Optional) Configure your API environment variables to include your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and API token.
 3. Send a `POST` request to the [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) endpoint. For example, if you have configured TLS decryption, some applications that use [embedded certificates](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#inspection-limitations) may not support HTTP inspection, such as some Google products. You can create a policy to bypass inspection for these applications:
-
-**Create a Zero Trust Gateway rule**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Do not inspect applications",
-    "description": "Bypass TLS decryption for unsupported applications",
-    "precedence": 0,
-    "enabled": true,
-    "action": "off",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(app.type.ids[*] in {16})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Do not inspect applications",
+		"description": "Bypass TLS decryption for unsupported applications",
+		"precedence": 0,
+		"enabled": true,
+		"action": "off",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(app.type.ids[*] in {16})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 ```sh
 {
-   "success": true,
-   "errors": [],
-   "messages": []
+	 "success": true,
+	 "errors": [],
+	 "messages": []
 }
 ```
 The API will respond with a summary of the policy and the result of your request.
 Cloudflare also recommends adding a policy to block [known threats](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) such as Command & Control, Botnet and Malware based on Cloudflare's threat intelligence:
-
-**Create a Zero Trust Gateway rule**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Block known risks",
-    "description": "Block all default Cloudflare HTTP security categories",
-    "precedence": 0,
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Block known risks",
+		"description": "Block all default Cloudflare HTTP security categories",
+		"precedence": 0,
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.request.uri.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
@@ -131,7 +126,14 @@ For more information, refer to [HTTP policies](https://developers.cloudflare.com
 
 Refer to our list of [common HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies) for other policies you may want to create. Common additions include blocking file downloads by type, isolating risky websites in a [remote browser](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), and adding Do Not Inspect rules for applications that break under TLS decryption (for example, apps that use certificate pinning to enforce their own certificates). Do Not Inspect rules tell Gateway to skip decryption for specific destinations so those applications continue to work.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/#page","headline":"Set up HTTP filtering · Cloudflare One docs","description":"HTTP filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/get-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/get-started/http/","name":"HTTP filtering"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/#page","headline":"Set up HTTP filtering · Cloudflare One docs","description":"HTTP filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

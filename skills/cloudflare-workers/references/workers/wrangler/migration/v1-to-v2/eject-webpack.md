@@ -1,16 +1,18 @@
 ---
-title: 1. Migrate webpack projects
 description: Migrate webpack-based Workers projects from Wrangler v1 to v2 by ejecting your bundler configuration.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: 1. Migrate webpack projects
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  1\. Migrate webpack projects
 
-# 1\. Migrate webpack projects
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide describes the steps to migrate a webpack project from Wrangler v1 to Wrangler v2\. After completing this guide, [update your Wrangler version](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/update-v1-to-v2/).
 
@@ -73,15 +75,15 @@ You should see this reflected in your `package.json` file:
 
 ```json
 {
-  "name": "my-worker",
-  "version": "x.y.z",
-  // ...
-  "devDependencies": {
-    // ...
-    "wranglerjs-compat-webpack-plugin": "^x.y.z",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^x.y.z"
-  }
+	"name": "my-worker",
+	"version": "x.y.z",
+	// ...
+	"devDependencies": {
+		// ...
+		"wranglerjs-compat-webpack-plugin": "^x.y.z",
+		"webpack": "^4.46.0",
+		"webpack-cli": "^x.y.z"
+	}
 }
 ```
 
@@ -89,17 +91,14 @@ You should see this reflected in your `package.json` file:
 
 Modify your `webpack.config.js` file to include the plugin you just installed.
 
-**JavaScript**
-
 ```js
 const {
-  WranglerJsCompatWebpackPlugin,
+	WranglerJsCompatWebpackPlugin,
 } = require("wranglerjs-compat-webpack-plugin");
 
-
 module.exports = {
-  // ...
-  plugins: [new WranglerJsCompatWebpackPlugin()],
+	// ...
+	plugins: [new WranglerJsCompatWebpackPlugin()],
 };
 ```
 
@@ -107,13 +106,13 @@ module.exports = {
 
 ```json
 {
-  "name": "my-worker",
-  "version": "2.0.0",
-  // ...
-  "scripts": {
-    "build": "webpack" // <-- Add this line!
-    // ...
-  }
+	"name": "my-worker",
+	"version": "2.0.0",
+	// ...
+	"scripts": {
+		"build": "webpack" // <-- Add this line!
+		// ...
+	}
 }
 ```
 
@@ -121,20 +120,13 @@ module.exports = {
 
 Remove the `type` and `webpack_config` keys from your Wrangler file, as they are not supported anymore.
 
-* [  wrangler.jsonc ](#tab-panel-13923)
-* [  wrangler.toml ](#tab-panel-13924)
-
-**JSONC**
-
 ```jsonc
 {
-  // Remove these!
-  "type": "webpack",
-  "webpack_config": "webpack.config.js"
+	// Remove these!
+	"type": "webpack",
+	"webpack_config": "webpack.config.js"
 }
 ```
-
-**TOML**
 
 ```toml
 type = "webpack"
@@ -145,25 +137,17 @@ webpack_config = "webpack.config.js"
 
 Wrangler no longer has any knowledge of how to build your Worker. You will need to tell it how to call webpack and where to look for webpack's output. This translates into two fields:
 
-* [  wrangler.jsonc ](#tab-panel-13925)
-* [  wrangler.toml ](#tab-panel-13926)
-
-**JSONC**
-
 ```jsonc
 {
-  "main": "./worker/script.js", // by default, or whatever file webpack outputs
-  "build": {
-    "command": "npm run build" // or "yarn build"
-  }
+	"main": "./worker/script.js", // by default, or whatever file webpack outputs
+	"build": {
+		"command": "npm run build" // or "yarn build"
+	}
 }
 ```
 
-**TOML**
-
 ```toml
 main = "./worker/script.js"
-
 
 [build]
 command = "npm run build"
@@ -173,7 +157,14 @@ command = "npm run build"
 
 Try running `npx wrangler deploy` to test that your configuration works as expected.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/#page","headline":"1. Migrate webpack projects · Cloudflare Workers docs","description":"Migrate webpack-based Workers projects from Wrangler v1 to v2 by ejecting your bundler configuration.","url":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/migration/","name":"Migrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/","name":"Migrate from Wrangler v1 to v2"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/wrangler/migration/v1-to-v2/eject-webpack/","name":"1. Migrate webpack projects"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/#page","headline":"1. Migrate webpack projects · Cloudflare Workers docs","description":"Migrate webpack-based Workers projects from Wrangler v1 to v2 by ejecting your bundler configuration.","url":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

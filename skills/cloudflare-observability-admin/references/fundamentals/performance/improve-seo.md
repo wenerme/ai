@@ -1,16 +1,18 @@
 ---
-title: Improve SEO
 description: Use Cloudflare features like caching, HTTPS, and Crawler Hints to improve your website's search engine rankings.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Improve SEO
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Improve SEO
 
-# Improve SEO
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/performance/improve-seo/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The goal of Search Engine Optimization (SEO) is to get your website to rank higher on various search engine providers (Google, Bing, etc.).
 
@@ -64,7 +66,14 @@ The following characteristics do not affect your domain's SEO:
 * **Sites sharing IP addresses**: Search engines do not generally penalize domains using shared IP addresses unless several of these sites are malicious or spammy.
 * **Cloudflare caching**: When Cloudflare caches your content, it actually speeds up content delivery and only improves SEO. Our caching does not create duplicate content, rewrite URLs, or create additional subdomains.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/performance/improve-seo/#page","headline":"Improve SEO · Cloudflare Fundamentals docs","description":"Use Cloudflare features like caching, HTTPS, and Crawler Hints to improve your website's search engine rankings.","url":"https://developers.cloudflare.com/fundamentals/performance/improve-seo/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/performance/","name":"Performance"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/performance/improve-seo/","name":"Improve SEO"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/performance/improve-seo/#page","headline":"Improve SEO · Cloudflare Fundamentals docs","description":"Use Cloudflare features like caching, HTTPS, and Crawler Hints to improve your website's search engine rankings.","url":"https://developers.cloudflare.com/fundamentals/performance/improve-seo/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

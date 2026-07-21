@@ -1,16 +1,18 @@
 ---
-title: Magic Transit integration
 description: Integrate Network Flow with Magic Transit.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Magic Transit integration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Magic Transit integration
 
-# Magic Transit integration
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/magic-transit-integration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Magic Transit On Demand](https://developers.cloudflare.com/magic-transit/on-demand/) allows you to keep Magic Transit disabled during normal operations and activate it only when you need DDoS protection. Network Flow monitors your traffic while Magic Transit is off and detects attacks. When an attack is detected, you can enable Magic Transit automatically or manually.
 
@@ -45,7 +47,14 @@ To activate IP advertisement through the API, refer to the [IP Address Managemen
 
 To create Network Flow rules with auto-advertisement, refer to [Rule Auto-Advertisement](https://developers.cloudflare.com/network-flow/rules/#rule-auto-advertisement).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/magic-transit-integration/#page","headline":"Magic Transit integration · Cloudflare Network Flow docs","description":"Integrate Network Flow with Magic Transit.","url":"https://developers.cloudflare.com/network-flow/magic-transit-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-flow/magic-transit-integration/","name":"Magic Transit integration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/magic-transit-integration/#page","headline":"Magic Transit integration · Cloudflare Network Flow docs","description":"Integrate Network Flow with Magic Transit.","url":"https://developers.cloudflare.com/network-flow/magic-transit-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration"]}
 ```

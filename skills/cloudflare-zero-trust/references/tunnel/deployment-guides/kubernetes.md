@@ -1,16 +1,18 @@
 ---
-title: Kubernetes
 description: Deploy Cloudflare Tunnel on Kubernetes clusters.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Kubernetes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Kubernetes
 
-# Kubernetes
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/deployment-guides/kubernetes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Kubernetes ↗](https://kubernetes.io/) is a container orchestration tool that is used to deploy applications onto physical or virtual machines, scale the deployment to meet traffic demands, and push updates without downtime. The Kubernetes cluster, or environment, where the application instances are running is connected internally through a private network. You can install the `cloudflared` daemon inside of the Kubernetes cluster in order to connect applications inside of the cluster to Cloudflare.
 
@@ -78,8 +80,6 @@ mkdir tunnel-example
 cd tunnel-example
 ```
 3. In the `tunnel-example` directory, create a new file called `httpbin.yaml`. This file defines the Kubernetes deployment for the httpbin app.
-
-**httpbin.yaml**
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -104,8 +104,6 @@ spec:
             - containerPort: 80
 ```
 4. Create a new `httpbinsvc.yaml` file. This file defines a Kubernetes service that allows other apps in the cluster (such as `cloudflared`) to access the set of httpbin pods.
-
-**httpbinsvc.yaml**
 ```yaml
 apiVersion: v1
 kind: Service
@@ -160,8 +158,6 @@ Leave the Cloudflare Tunnel browser tab open while we focus on the Kubernetes de
 `cloudflared` uses a tunnel token to run a remotely-managed Cloudflare Tunnel. You can store the tunnel token in a [Kubernetes secret ↗](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 1. In GKE Cloud Shell, create a `tunnel-token.yaml` file with the following content. Make sure to replace `<YOUR_TUNNEL_TOKEN>` with your tunnel token (`eyJhIjoiNWFiNGU5Z...`).
-
-**tunnel-token.yaml**
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -188,8 +184,6 @@ tunnel-token   Opaque   1      100s
 To run the Cloudflare Tunnel in Kubernetes:
 
 1. Create a Kubernetes deployment for a remotely-managed Cloudflare Tunnel:
-
-**tunnel.yaml**
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -304,7 +298,14 @@ To test, open a new browser tab and go to `httpbin.<your-domain>.com`. You shoul
 
 You can optionally add [Cloudflare Access](https://developers.cloudflare.com/tunnel/integrations/#cloudflare-access) to control who can access the service.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/deployment-guides/kubernetes/#page","headline":"Kubernetes · Cloudflare Docs","description":"Deploy Cloudflare Tunnel on Kubernetes clusters.","url":"https://developers.cloudflare.com/tunnel/deployment-guides/kubernetes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","Integration"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/deployment-guides/","name":"Deployment guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/deployment-guides/kubernetes/","name":"Kubernetes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/deployment-guides/kubernetes/#page","headline":"Kubernetes · Cloudflare Docs","description":"Deploy Cloudflare Tunnel on Kubernetes clusters.","url":"https://developers.cloudflare.com/tunnel/deployment-guides/kubernetes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","Integration"]}
 ```

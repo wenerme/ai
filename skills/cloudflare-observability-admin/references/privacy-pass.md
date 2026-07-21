@@ -1,16 +1,18 @@
 ---
-title: Privacy Pass
 description: Overview of entire document – what's in the docs, why Privacy Pass matters, high-level use case descriptions, and why customers can trust Cloudflare to run Privacy Pass infrastructure.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Privacy Pass
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Privacy Pass
 
-# Privacy Pass
+Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-pass/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Pass, an [IETF standard ↗](https://datatracker.ietf.org/doc/html/rfc9576) that Cloudflare helped pioneer in 2017, offers a way for users to prove something about themselves–that they have passed a CAPTCHA, are of age, are part of a subscription class–to the site they are accessing, without revealing an identifier. The main mechanic is Privacy Pass tokens, which are the cryptographic tool that lets a service provider verify information about a user without learning who that user is or being able to track them across requests.
 
@@ -67,7 +69,14 @@ Implements the Oblivious HTTP (OHTTP) standard for request-level privacy, hiding
 
 Cloudflare's smart CAPTCHA alternative that can be embedded into any website, using Privacy Pass tokens as one of the signals used to decide whether or not a challenge is shown to a visitor.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-pass/#page","headline":"Privacy Pass · Cloudflare Privacy Pass docs","description":"Overview of entire document – what's in the docs, why Privacy Pass matters, high-level use case descriptions, and why customers can trust Cloudflare to run Privacy Pass infrastructure.","url":"https://developers.cloudflare.com/privacy-pass/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-pass/","name":"Privacy Pass"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-pass/#page","headline":"Privacy Pass · Cloudflare Privacy Pass docs","description":"Overview of entire document – what's in the docs, why Privacy Pass matters, high-level use case descriptions, and why customers can trust Cloudflare to run Privacy Pass infrastructure.","url":"https://developers.cloudflare.com/privacy-pass/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

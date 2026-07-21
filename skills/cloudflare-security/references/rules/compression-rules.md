@@ -1,16 +1,18 @@
 ---
-title: Compression Rules
 description: Customize response compression algorithms for specific content types and file extensions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Compression Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Compression Rules
 
-# Compression Rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/compression-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use Compression Rules to customize the compression applied to responses from Cloudflare's global network to your website visitors, based on the file extension and content type. Compression Rules are powered by the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
 
@@ -27,7 +29,7 @@ Compression Rules require that you [proxy the DNS records](https://developers.cl
 Cloudflare provides you with rules templates for common use cases.
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Templates**, and then select one of the available templates.
 
 You can also refer to the [Examples gallery](https://developers.cloudflare.com/rules/examples/) in the developer docs.
@@ -67,7 +69,14 @@ The following fields are commonly used in expressions of compression rules:
 
 When troubleshooting Compression Rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/#page","headline":"Compression Rules · Cloudflare Rules docs","description":"Customize response compression algorithms for specific content types and file extensions.","url":"https://developers.cloudflare.com/rules/compression-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/compression-rules/","name":"Compression Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/#page","headline":"Compression Rules · Cloudflare Rules docs","description":"Customize response compression algorithms for specific content types and file extensions.","url":"https://developers.cloudflare.com/rules/compression-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

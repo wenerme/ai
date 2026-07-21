@@ -1,16 +1,18 @@
 ---
-title: Track
 description: Send custom tracking events with the Zaraz Web API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Track
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Track
 
-# Track
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/web-api/track/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use `zaraz.track()` anywhere inside the `<body>` tag of a page.
 
@@ -20,15 +22,11 @@ Example of user events you might be interested in tracking are successful sign-u
 
 To start tracking events, use the `zaraz.track()` function like this:
 
-**JavaScript**
-
 ```js
 zaraz.track(eventName, [eventProperties]);
 ```
 
 The `eventName` parameter is a string, and the `eventProperties` parameter is an optional flat object of additional context you can attach to the event using your own keys of choice. For example, tracking a purchase with the value of 200 USD could look like this:
-
-**JavaScript**
 
 ```js
 zaraz.track("purchase", { value: 200, currency: "USD" });
@@ -48,7 +46,14 @@ In every tool you want to use this trigger, add an action with this trigger [con
 
 For more information regarding the properties you can use with `zaraz.track()`, refer to [Properties reference](https://developers.cloudflare.com/zaraz/reference/properties-reference/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/web-api/track/#page","headline":"zaraz.track · Cloudflare Zaraz docs","description":"Send custom tracking events with the Zaraz Web API.","url":"https://developers.cloudflare.com/zaraz/web-api/track/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/web-api/","name":"Web API"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/web-api/track/","name":"Track"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/web-api/track/#page","headline":"zaraz.track · Cloudflare Zaraz docs","description":"Send custom tracking events with the Zaraz Web API.","url":"https://developers.cloudflare.com/zaraz/web-api/track/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

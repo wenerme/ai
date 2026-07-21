@@ -1,16 +1,18 @@
 ---
-title: Configure MTA-STS
 description: Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configure MTA-STS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure MTA-STS
 
-# Configure MTA-STS
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/configuration/mta-sts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 MTA Strict Transport Security ([MTA-STS ↗](https://datatracker.ietf.org/doc/html/rfc8461)) was introduced by email service providers including Microsoft, Google and Yahoo as a solution to protect against downgrade and man-in-the-middle attacks in SMTP sessions, as well as solving the lack of security-first communication standards in email.
 
@@ -19,7 +21,7 @@ Suppose that `example.com` is your domain and uses Email Service. Here is how yo
 ## Add the `_mta-sts` DNS record
 
 1. In the Cloudflare dashboard, go to the **Records** page.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Create a new CNAME record with the name `_mta-sts` that points to Cloudflare's record `_mta-sts.mx.cloudflare.net`. Make sure to disable the proxy mode.
 ![MTA-STS CNAME record](https://developers.cloudflare.com/_astro/mta-sts-record.DbwO-t_X_1Mbxza.webp)
 3. Confirm that the record was created:
@@ -65,7 +67,14 @@ Email Service also supports MTA-STS upstream, which greatly improves security wh
 * [Postmaster](https://developers.cloudflare.com/email-service/reference/postmaster/) — TLS, ARC, and SMTP details for postmasters.
 * [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — review your domain's DNS records.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/mta-sts/#page","headline":"Configure MTA-STS · Cloudflare Email Service docs","description":"Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.","url":"https://developers.cloudflare.com/email-service/configuration/mta-sts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/configuration/mta-sts/","name":"Configure MTA-STS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/mta-sts/#page","headline":"Configure MTA-STS · Cloudflare Email Service docs","description":"Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.","url":"https://developers.cloudflare.com/email-service/configuration/mta-sts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

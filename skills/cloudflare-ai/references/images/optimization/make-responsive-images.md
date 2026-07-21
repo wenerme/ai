@@ -1,16 +1,18 @@
 ---
-title: Make responsive images
 description: Automatically resize images for optimal display on every device.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Make responsive images
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Make responsive images
 
-# Make responsive images
+Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/make-responsive-images/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Responsive design scales media elements to fit the screen they are displayed on.
 
@@ -47,10 +49,10 @@ The snippet below shows how `srcset` can be used within an `<img>` tag to serve 
 
 ```html
 <img
-  src="portrait-800w.jpg"
-  srcset="
-    portrait-1600.jpg 2x,
-  "
+	src="portrait-800w.jpg"
+	srcset="
+		portrait-1600.jpg 2x,
+	"
 />
 ```
 
@@ -58,8 +60,8 @@ Instead of pre-generating each size, use Images to point every `srcset` entry at
 
 ```html
 <img
-  src="/cdn-cgi/image/fit=contain,width=960/assets/product.jpg"
-  srcset="/cdn-cgi/image/fit=contain,width=1920/assets/product.jpg 2x"
+	src="/cdn-cgi/image/fit=contain,width=960/assets/product.jpg"
+	srcset="/cdn-cgi/image/fit=contain,width=1920/assets/product.jpg 2x"
 />
 ```
 
@@ -73,15 +75,15 @@ However, if the image scales with the viewport — that is, its CSS size changes
 
 ```html
 <img
-  width="100%"
-  srcset="
-    /cdn-cgi/image/fit=contain,width=320/assets/hero.jpg   320w,
-    /cdn-cgi/image/fit=contain,width=640/assets/hero.jpg   640w,
-    /cdn-cgi/image/fit=contain,width=960/assets/hero.jpg   960w,
-    /cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w,
-    /cdn-cgi/image/fit=contain,width=2560/assets/hero.jpg 2560w
-  "
-  src="/cdn-cgi/image/width=960/assets/hero.jpg"
+	width="100%"
+	srcset="
+		/cdn-cgi/image/fit=contain,width=320/assets/hero.jpg   320w,
+		/cdn-cgi/image/fit=contain,width=640/assets/hero.jpg   640w,
+		/cdn-cgi/image/fit=contain,width=960/assets/hero.jpg   960w,
+		/cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w,
+		/cdn-cgi/image/fit=contain,width=2560/assets/hero.jpg 2560w
+	"
+	src="/cdn-cgi/image/width=960/assets/hero.jpg"
 />
 ```
 
@@ -100,14 +102,14 @@ If the image can have a different size depending on media queries or other CSS p
 
 ```html
 <img
-  style="max-width: 640px"
-  srcset="
-    /cdn-cgi/image/fit=contain,width=320/assets/hero.jpg   320w,
-    /cdn-cgi/image/fit=contain,width=480/assets/hero.jpg   480w,
-    /cdn-cgi/image/fit=contain,width=640/assets/hero.jpg   640w,
-    /cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w
-  "
-  sizes="(max-width: 640px) 100vw, 640px"
+	style="max-width: 640px"
+	srcset="
+		/cdn-cgi/image/fit=contain,width=320/assets/hero.jpg   320w,
+		/cdn-cgi/image/fit=contain,width=480/assets/hero.jpg   480w,
+		/cdn-cgi/image/fit=contain,width=640/assets/hero.jpg   640w,
+		/cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w
+	"
+	sizes="(max-width: 640px) 100vw, 640px"
 />
 ```
 
@@ -162,8 +164,8 @@ Add the following in the `<head>` of your page before any other elements:
 
 ```html
 <meta
-  http-equiv="Delegate-CH"
-  content="sec-ch-dpr {ZONE}; sec-ch-viewport-width {ZONE}"
+	http-equiv="Delegate-CH"
+	content="sec-ch-dpr {ZONE}; sec-ch-viewport-width {ZONE}"
 />
 ```
 
@@ -189,7 +191,14 @@ The default sizes for user-agent detection are:
 
 You can override the default sizes using the [wmobile and wdesktop](https://developers.cloudflare.com/images/optimization/features/#width) sub-parameters, which accept positive integers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/make-responsive-images/#page","headline":"Make responsive images · Cloudflare Images docs","description":"Automatically resize images for optimal display on every device.","url":"https://developers.cloudflare.com/images/optimization/make-responsive-images/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/make-responsive-images/","name":"Make responsive images"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/make-responsive-images/#page","headline":"Make responsive images · Cloudflare Images docs","description":"Automatically resize images for optimal display on every device.","url":"https://developers.cloudflare.com/images/optimization/make-responsive-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

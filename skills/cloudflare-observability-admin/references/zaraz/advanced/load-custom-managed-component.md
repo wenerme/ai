@@ -1,16 +1,18 @@
 ---
-title: Custom Managed Components
 description: Load custom Managed Components in Zaraz.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Custom Managed Components
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom Managed Components
 
-# Custom Managed Components
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Zaraz supports loading custom third-party tools using [Managed Components ↗](https://managedcomponents.dev/). These can be Managed Components that you have developed yourself or that were developed by others. Using Custom Managed Components with Zaraz is done by converting them into a Cloudflare Worker running in your account.
 
@@ -26,28 +28,23 @@ To get started, you need have a JavaScript file ready for deployment, that expor
 
 In this guide, we will use a simple example of a Custom Managed Component that counts user visits and logs this data in the console:
 
-**JavaScript**
-
 ```javascript
 // File: index.js
 export default async function (manager) {
-  // Add a pageview event
-  manager.addEventListener("pageview", event, () => {
-    const { client } = event;
+	// Add a pageview event
+	manager.addEventListener("pageview", event, () => {
+		const { client } = event;
 
+		// Get the variable "counter" from the client's cookies and increase by 1
+		let counter = parseInt(client.get("counter")) || 0;
+		counter += 1;
 
-    // Get the variable "counter" from the client's cookies and increase by 1
-    let counter = parseInt(client.get("counter")) || 0;
-    counter += 1;
+		// Log the increased number
+		client.execute(`console.log('Views: ${counter}')`);
 
-
-    // Log the increased number
-    client.execute(`console.log('Views: ${counter}')`);
-
-
-    // Store the increased number for the next visit
-    client.set("counter", counter);
-  });
+		// Store the increased number for the next visit
+		client.set("counter", counter);
+	});
 }
 ```
 
@@ -64,7 +61,7 @@ Note
 As with regular tools, it is recommended that you [create the triggers](https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/) you need first, if the Custom Managed Component you are adding needs to start actions using firing triggers different from the default `Pageview` trigger.
 
 1. In the Cloudflare dashboard, go to the **Tag setup** page.
-[ Go to **Tag setup** ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+[ Go to **Tag setup** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
 2. Select **Tools Configuration** \> [**Third-party tools** ↗](https://dash.cloudflare.com/?to=/:account/:zone/zaraz/tools-config/tools/catalog).
 3. Select **Add new tool** and choose **Custom Managed Component** from the tools library page. Select **Continue** to confirm your selection.
 4. In **Select Custom MC**, choose a Custom Managed Component that you have deployed to your account, such as `custom-mc-my-new-counter-mc`. Select **Continue**.
@@ -85,7 +82,14 @@ As of now, Custom Managed Components do not support the use of the following met
 * `manager.proxy`
 * `manager.serve`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/#page","headline":"Custom Managed Components · Cloudflare Zaraz docs","description":"Load custom Managed Components in Zaraz.","url":"https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/advanced/","name":"Advanced options"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/advanced/load-custom-managed-component/","name":"Custom Managed Components"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/#page","headline":"Custom Managed Components · Cloudflare Zaraz docs","description":"Load custom Managed Components in Zaraz.","url":"https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

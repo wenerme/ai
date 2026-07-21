@@ -1,16 +1,18 @@
 ---
-title: Generic SAML 2.0
 description: Generic SAML 2.0 in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Generic SAML 2.0
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Generic SAML 2.0
 
-# Generic SAML 2.0
+Last updated Jun 4, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One integrates with any identity provider that supports SAML 2.0\. If your identity provider is not listed in the integration list of login methods in Cloudflare One, it can be configured using SAML 2.0 (or OpenID if OIDC based). Generic SAML can also be used if you would like to pass additional SAML headers or claims for an IdP in the integration list.
 
@@ -48,9 +50,6 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-7878)
-* [ Terraform (v5) ](#tab-panel-7879)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.
 3. Choose a descriptive name for your identity provider.
@@ -65,21 +64,21 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:
 ```tf
 resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {
-  account_id = var.cloudflare_account_id
-  name       = "Generic SAML example"
-  type       = "saml"
-  config      = {
-    sso_target_url = "https://example.com/1234/sso/saml"
-    issuer_url = "https://example.com/1234"
-    idp_public_certs = ["-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----"]
-    sign_request = false
-    email_attribute_name = "email"
-    attributes = ["employeeID", "groups"]
-  }
+	account_id = var.cloudflare_account_id
+	name       = "Generic SAML example"
+	type       = "saml"
+	config 		 = {
+		sso_target_url = "https://example.com/1234/sso/saml"
+		issuer_url = "https://example.com/1234"
+		idp_public_certs = ["-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----"]
+		sign_request = false
+		email_attribute_name = "email"
+		attributes = ["employeeID", "groups"]
+	}
 }
 ```
 
-Warning
+Caution
 
 Set a reminder for the expiry date of the signing certificate obtained from your generic SAML identity provider. After the certificate expires, you will need to generate a new signing certificate and re-add it to your Cloudflare configuration via the Cloudflare dashboard or Terraform.
 
@@ -165,7 +164,7 @@ Access supports the following encryption algorithms:
 | Content encryption | AES-128-CBC, AES-256-CBC, AES-128-GCM, AES-256-GCM |
 | Key transport      | RSA-OAEP (XML Encryption 1.0 and 1.1), RSA-1.5     |
 
-Warning
+Caution
 
 RSA-1.5 is supported for compatibility but is considered insecure. Use RSA-OAEP when your identity provider supports it.
 
@@ -184,7 +183,7 @@ To manually rotate a certificate:
 3. Under **SAML encryption**, select **Rotate certificate**.
 4. Upload the new certificate to your identity provider.
 
-Warning
+Caution
 
 If you rotate again before updating your IdP with the current certificate, the previous certificate will be immediately invalidated. This may break authentication for users whose IdP is still encrypting assertions with the old certificate.
 
@@ -230,7 +229,14 @@ Cloudflare Access extends support for multi-record SAML attributes such as group
 
 Cloudflare Access does not currently support partial attribute value references.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#page","headline":"Generic SAML 2.0 · Cloudflare One docs","description":"Generic SAML 2.0 in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/generic-saml/","name":"Generic SAML 2.0"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#page","headline":"Generic SAML 2.0 · Cloudflare One docs","description":"Generic SAML 2.0 in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 ```

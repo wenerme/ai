@@ -1,16 +1,18 @@
 ---
-title: Streams
 description: Use the Node.js streams API in Cloudflare Workers for readable, writable, and transform stream operations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Streams
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Streams
 
-# Streams
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -20,76 +22,74 @@ The [Node.js streams API ↗](https://nodejs.org/api/stream.html) is the origina
 
 Where possible, you should use the [WHATWG standard "Web Streams" API ↗](https://streams.spec.whatwg.org/), which is [supported in Workers ↗](https://streams.spec.whatwg.org/).
 
-**JavaScript**
-
 ```js
 import { Readable, Transform } from "node:stream";
 
-
 import { text } from "node:stream/consumers";
 
-
 import { pipeline } from "node:stream/promises";
-
 
 // A Node.js-style Transform that converts data to uppercase
 // and appends a newline to the end of the output.
 class MyTransform extends Transform {
-  constructor() {
-    super({ encoding: "utf8" });
-  }
-  _transform(chunk, _, cb) {
-    this.push(chunk.toString().toUpperCase());
-    cb();
-  }
-  _flush(cb) {
-    this.push("\n");
-    cb();
-  }
+	constructor() {
+		super({ encoding: "utf8" });
+	}
+	_transform(chunk, _, cb) {
+		this.push(chunk.toString().toUpperCase());
+		cb();
+	}
+	_flush(cb) {
+		this.push("\n");
+		cb();
+	}
 }
 
-
 export default {
-  async fetch() {
-    const chunks = [
-      "hello ",
-      "from ",
-      "the ",
-      "wonderful ",
-      "world ",
-      "of ",
-      "node.js ",
-      "streams!",
-    ];
+	async fetch() {
+		const chunks = [
+			"hello ",
+			"from ",
+			"the ",
+			"wonderful ",
+			"world ",
+			"of ",
+			"node.js ",
+			"streams!",
+		];
 
+		function nextChunk(readable) {
+			readable.push(chunks.shift());
+			if (chunks.length === 0) readable.push(null);
+			else queueMicrotask(() => nextChunk(readable));
+		}
 
-    function nextChunk(readable) {
-      readable.push(chunks.shift());
-      if (chunks.length === 0) readable.push(null);
-      else queueMicrotask(() => nextChunk(readable));
-    }
+		// A Node.js-style Readable that emits chunks from the
+		// array...
+		const readable = new Readable({
+			encoding: "utf8",
+			read() {
+				nextChunk(readable);
+			},
+		});
 
-
-    // A Node.js-style Readable that emits chunks from the
-    // array...
-    const readable = new Readable({
-      encoding: "utf8",
-      read() {
-        nextChunk(readable);
-      },
-    });
-
-
-    const transform = new MyTransform();
-    await pipeline(readable, transform);
-    return new Response(await text(transform));
-  },
+		const transform = new MyTransform();
+		await pipeline(readable, transform);
+		return new Response(await text(transform));
+	},
 };
 ```
 
 Refer to the [Node.js documentation for stream ↗](https://nodejs.org/api/stream.html) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/#page","headline":"Streams - Node.js APIs · Cloudflare Workers docs","description":"Use the Node.js streams API in Cloudflare Workers for readable, writable, and transform stream operations.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/nodejs/","name":"Node.js compatibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/nodejs/streams/","name":"Streams"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/#page","headline":"Streams - Node.js APIs · Cloudflare Workers docs","description":"Use the Node.js streams API in Cloudflare Workers for readable, writable, and transform stream operations.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

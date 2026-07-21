@@ -1,16 +1,18 @@
 ---
-title: Mixed content errors
 description: Fix mixed content errors caused by HTTP resources on HTTPS pages.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Mixed content errors
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Mixed content errors
 
-# Mixed content errors
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Domains added to Cloudflare receive SSL certificates and can serve traffic over HTTPS. However, after starting to use Cloudflare, some customers notice missing content or page rendering issues when they first serve HTTPS traffic.
 
@@ -68,7 +70,14 @@ Cloudflare recommends WordPress users to install the [Cloudflare WordPress plugi
 * [Debugging mixed content in Firefox ↗](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed%5Fcontent)
 * [Community Tip - Fixing mixed content errors ↗](https://community.cloudflare.com/t/community-tip-fixing-mixed-content-errors/42476)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/#page","headline":"Mixed content errors · Cloudflare SSL/TLS docs","description":"Fix mixed content errors caused by HTTP resources on HTTPS pages.","url":"https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/troubleshooting/mixed-content-errors/","name":"Mixed content errors"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/#page","headline":"Mixed content errors · Cloudflare SSL/TLS docs","description":"Fix mixed content errors caused by HTTP resources on HTTPS pages.","url":"https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

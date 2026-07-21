@@ -1,16 +1,18 @@
 ---
-title: Rules
 description: Reference information for Rules in Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rules
 
-# Rules
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 DEX rules allow you to create and manage testing policies for targeted user groups within your [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) (all devices with the Cloudflare One Client installed and connected to your Zero Trust organization). After creating a rule, you can use it to define the scope of a [test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to specific groups such as departments (like finance or sales), devices, and/or users. You can apply and reuse rules on your desired tests.
 
@@ -86,7 +88,14 @@ To create a new test using a rule from DEX rules:
 * [DEX HTTP test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/) \- Assess the accessibility of a web application.
 * [DEX Traceroute test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/) \- Measure the network path of an IP packet from an end-user device to a server.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/#page","headline":"Rules · Cloudflare One docs","description":"Reference information for Rules in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/rules/","name":"Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/#page","headline":"Rules · Cloudflare One docs","description":"Reference information for Rules in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 ```

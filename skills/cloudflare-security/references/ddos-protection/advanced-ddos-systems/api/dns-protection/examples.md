@@ -1,24 +1,24 @@
 ---
-title: Common API calls
 description: Example API requests for managing Advanced DNS Protection rules and settings.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Common API calls
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Common API calls
 
-# Common API calls
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following sections contain example requests for common API calls. For a list of available API endpoints, refer to [Endpoints](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/#endpoints).
 
 ## Get all DNS protection rules
 
 The following example retrieves the currently configured rules for Advanced DNS Protection.
-
-**Request**
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \
@@ -50,8 +50,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_
 ### Create DNS protection rule
 
 The following example creates an Advanced DNS Protection rule with a global scope.
-
-**Request**
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules" \
@@ -93,8 +91,6 @@ The following example updates an existing DNS protection rule with ID `{rule_id}
 
 The request body can contain only the fields you want to update (from `mode`, `profile_sensitivity`, `rate_sensitivity`, and `burst_sensitivity`).
 
-**Request**
-
 ```bash
 curl --request PATCH \
 "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}" \
@@ -128,7 +124,14 @@ curl --request PATCH \
 
 Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/json-objects/) for more information on the fields in the JSON body.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/examples/#page","headline":"Common API calls · Cloudflare DDoS Protection docs","description":"Example API requests for managing Advanced DNS Protection rules and settings.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/","name":"API configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/dns-protection/","name":"Advanced DNS Protection"}},{"@type":"ListItem","position":6,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/dns-protection/examples/","name":"Common API calls"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/examples/#page","headline":"Common API calls · Cloudflare DDoS Protection docs","description":"Example API requests for managing Advanced DNS Protection rules and settings.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

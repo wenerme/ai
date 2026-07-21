@@ -1,16 +1,18 @@
 ---
-title: Request handling
 description: Configure AI Gateway request timeouts and retries for reliable AI provider interactions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Request handling
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Request handling
 
-# Request handling
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -32,8 +34,6 @@ A timeout is set in milliseconds. The timeout is based on when the first part of
 ### Configuration
 
 For a provider-specific endpoint, configure the timeout value by adding a `cf-aig-request-timeout` header.
-
-**Request with timeout**
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -72,7 +72,14 @@ For a provider-specific endpoint, configure the retry settings by adding differe
 * `cf-aig-retry-delay` (number)
 * `cf-aig-backoff` ("constant" | "linear" | "exponential)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#page","headline":"Request handling · Cloudflare AI Gateway docs","description":"Configure AI Gateway request timeouts and retries for reliable AI provider interactions.","url":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/configuration/request-handling/","name":"Request handling"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#page","headline":"Request handling · Cloudflare AI Gateway docs","description":"Configure AI Gateway request timeouts and retries for reliable AI provider interactions.","url":"https://developers.cloudflare.com/ai-gateway/configuration/request-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

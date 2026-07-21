@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Mirage (deprecated)
 description: Lazy-load images and reduce bandwidth on mobile connections.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Mirage (deprecated)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Mirage (deprecated)
 
-# Cloudflare Mirage (deprecated)
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/images/mirage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deprecation notice
 
@@ -45,7 +47,14 @@ Instead of Mirage, use:
 * **[Lazy loading guide](https://developers.cloudflare.com/images/tutorials/optimize-mobile-viewing/)** \- Learn how to implement native lazy loading.
 * **[Responsive images guide](https://developers.cloudflare.com/images/optimization/make-responsive-images/)** \- Create images that adapt to different devices.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/images/mirage/#page","headline":"Cloudflare Mirage (deprecated) · Cloudflare Speed docs","description":"Lazy-load images and reduce bandwidth on mobile connections.","url":"https://developers.cloudflare.com/speed/optimization/images/mirage/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/images/","name":"Image optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/images/mirage/","name":"Cloudflare Mirage (deprecated)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/images/mirage/#page","headline":"Cloudflare Mirage (deprecated) · Cloudflare Speed docs","description":"Lazy-load images and reduce bandwidth on mobile connections.","url":"https://developers.cloudflare.com/speed/optimization/images/mirage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Profiling Memory
 description: Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Profiling Memory
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Profiling Memory
 
-# Profiling Memory
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Understanding Worker memory usage can help you optimize performance, avoid Out of Memory (OOM) errors when hitting [Worker memory limits](https://developers.cloudflare.com/workers/platform/limits/#memory), and fix memory leaks.
 
@@ -35,18 +37,15 @@ You can now inspect Worker memory.
 
 Let's look at an example to learn how to read a memory snapshot. Imagine you have the following Worker:
 
-**index.js**
-
 ```js
 let responseText = "Hello world!";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    let now = new Date().toISOString();
-    responseText = responseText + ` (Requested at: ${now})`;
-    return new Response(responseText.slice(0, 53));
-  },
+	async fetch(request, env, ctx) {
+		let now = new Date().toISOString();
+		responseText = responseText + ` (Requested at: ${now})`;
+		return new Response(responseText.slice(0, 53));
+	},
 };
 ```
 
@@ -68,8 +67,6 @@ Looking at these statistics, you can see that a lot of memory is dedicated to st
 
 The memory summary lists data types by the amount of memory they take up. When you click into "(string)", you can see a string that is far larger than the rest. The text shows that you are appending "Requested at" and a date repeatedly, inadvertently overwriting the global variable with an increasingly large string:
 
-**JavaScript**
-
 ```js
 responseText = responseText + ` (Requested at: ${now})`;
 ```
@@ -82,7 +79,14 @@ To learn more about how to use Memory Snapshotting, see [Google's documentation 
 
 To learn how to use DevTools to gain insight into CPU usage, see the [CPU Profiling Documentation](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/#page","headline":"Profiling Memory · Cloudflare Workers docs","description":"Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/dev-tools/","name":"DevTools"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/dev-tools/memory-usage/","name":"Profiling Memory"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/#page","headline":"Profiling Memory · Cloudflare Workers docs","description":"Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

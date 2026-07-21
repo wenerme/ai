@@ -1,16 +1,18 @@
 ---
-title: Wasm in JavaScript
 description: Import and instantiate WebAssembly modules in Cloudflare Workers using JavaScript.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Wasm in JavaScript
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Wasm in JavaScript
 
-# Wasm in JavaScript
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Wasm can be used from within a Worker written in JavaScript or TypeScript by importing a Wasm module, and instantiating an instance of this module using [WebAssembly.instantiate() ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/instantiate). This can be used to accelerate computationally intensive operations which do not involve significant I/O.
 
@@ -56,36 +58,31 @@ Wrangler will bundle any Wasm module that ends in `.wasm` or `.wasm?module`, so 
 
 After you have converted the WAT format to WebAssembly Binary Format, import and use the Wasm module in your existing JavaScript or TypeScript Worker:
 
-**TypeScript**
-
 ```typescript
 import mod from "./simple.wasm";
 
-
 // Define imports available to Wasm instance.
 const importObject = {
-  imports: {
-    imported_func: (arg: number) => {
-      console.log(`Hello from JavaScript: ${arg}`);
-    },
-  },
+	imports: {
+		imported_func: (arg: number) => {
+			console.log(`Hello from JavaScript: ${arg}`);
+		},
+	},
 };
-
 
 // Create instance of WebAssembly Module `mod`, supplying
 // the expected imports in `importObject`. This should be
 // done at the top level of the script to avoid instantiation on every request.
 const instance = await WebAssembly.instantiate(mod, importObject);
 
-
 export default {
-  async fetch() {
-    // Invoke the `exported_func` from our Wasm Instance with
-    // an argument.
-    const retval = instance.exports.exported_func(42);
-    // Return the return value!
-    return new Response(`Success: ${retval}`);
-  },
+	async fetch() {
+		// Invoke the `exported_func` from our Wasm Instance with
+		// an argument.
+		const retval = instance.exports.exported_func(42);
+		// Return the return value!
+		return new Response(`Success: ${retval}`);
+	},
 };
 ```
 
@@ -97,7 +94,14 @@ In practice, you will likely compile a language of your choice (such as Rust) to
 
 Alternatively, to write your entire Worker in Rust, Workers provides many of the same [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) when using the `workers-rs` crate. For more information, refer to the [Workers Rust guide](https://developers.cloudflare.com/workers/languages/rust/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/#page","headline":"Wasm in JavaScript · Cloudflare Workers docs","description":"Import and instantiate WebAssembly modules in Cloudflare Workers using JavaScript.","url":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/webassembly/","name":"WebAssembly (Wasm)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/webassembly/javascript/","name":"Wasm in JavaScript"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/#page","headline":"Wasm in JavaScript · Cloudflare Workers docs","description":"Import and instantiate WebAssembly modules in Cloudflare Workers using JavaScript.","url":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

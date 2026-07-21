@@ -1,16 +1,18 @@
 ---
-title: Build a Durable AI Agent
 description: Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build a Durable AI Agent
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build a Durable AI Agent
 
-# Build a Durable AI Agent
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/get-started/durable-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will build an AI agent that researches GitHub repositories. Give it a task like "Compare open-source LLM projects" and it will:
 
@@ -87,106 +89,104 @@ npm install agents @anthropic-ai/sdk
 Tools are functions the LLM can call to interact with external systems. You define the schema (what inputs the tool accepts) and the implementation (what it does). The LLM decides when to use each tool based on the task.
 
 1. Create `src/tools.ts` with two complementary tools:
-
-**src/tools.ts**
 ```ts
 export interface SearchReposInput {
-  query: string;
-  limit?: number;
+	query: string;
+	limit?: number;
 }
 export interface GetRepoInput {
-  owner: string;
-  repo: string;
+	owner: string;
+	repo: string;
 }
 interface GitHubSearchResponse {
-  items: Array<{ full_name: string; stargazers_count: number }>;
+	items: Array<{ full_name: string; stargazers_count: number }>;
 }
 interface GitHubRepoResponse {
-  full_name: string;
-  description: string;
-  stargazers_count: number;
-  forks_count: number;
-  open_issues_count: number;
-  language: string;
-  license: { name: string } | null;
-  updated_at: string;
+	full_name: string;
+	description: string;
+	stargazers_count: number;
+	forks_count: number;
+	open_issues_count: number;
+	language: string;
+	license: { name: string } | null;
+	updated_at: string;
 }
 export const searchReposTool = {
-  name: "search_repos" as const,
-  description:
-    "Search GitHub repositories by keyword. Returns top results. Use get_repo for details.",
-  input_schema: {
-    type: "object" as const,
-    properties: {
-      query: {
-        type: "string",
-        description: "Search query (e.g., 'typescript orm')",
-      },
-      limit: { type: "number", description: "Max results (default 5)" },
-    },
-    required: ["query"],
-  },
-  run: async (input: SearchReposInput): Promise<string> => {
-    const response = await fetch(
-      `https://api.github.com/search/repositories?q=${encodeURIComponent(input.query)}&sort=stars&per_page=${input.limit ?? 5}`,
-      {
-        headers: {
-          Accept: "application/vnd.github+json",
-          "User-Agent": "DurableAgent/1.0",
-        },
-      },
-    );
-    if (!response.ok) return `Search failed: ${response.status}`;
-    const data = await response.json<GitHubSearchResponse>();
-    return JSON.stringify(
-      data.items.map((r) => ({
-        name: r.full_name,
-        stars: r.stargazers_count,
-      })),
-    );
-  },
+	name: "search_repos" as const,
+	description:
+		"Search GitHub repositories by keyword. Returns top results. Use get_repo for details.",
+	input_schema: {
+		type: "object" as const,
+		properties: {
+			query: {
+				type: "string",
+				description: "Search query (e.g., 'typescript orm')",
+			},
+			limit: { type: "number", description: "Max results (default 5)" },
+		},
+		required: ["query"],
+	},
+	run: async (input: SearchReposInput): Promise<string> => {
+		const response = await fetch(
+			`https://api.github.com/search/repositories?q=${encodeURIComponent(input.query)}&sort=stars&per_page=${input.limit ?? 5}`,
+			{
+				headers: {
+					Accept: "application/vnd.github+json",
+					"User-Agent": "DurableAgent/1.0",
+				},
+			},
+		);
+		if (!response.ok) return `Search failed: ${response.status}`;
+		const data = await response.json<GitHubSearchResponse>();
+		return JSON.stringify(
+			data.items.map((r) => ({
+				name: r.full_name,
+				stars: r.stargazers_count,
+			})),
+		);
+	},
 };
 export const getRepoTool = {
-  name: "get_repo" as const,
-  description:
-    "Get detailed info about a GitHub repository including stars, forks, and description.",
-  input_schema: {
-    type: "object" as const,
-    properties: {
-      owner: {
-        type: "string",
-        description: "Repository owner (e.g., 'cloudflare')",
-      },
-      repo: {
-        type: "string",
-        description: "Repository name (e.g., 'workers-sdk')",
-      },
-    },
-    required: ["owner", "repo"],
-  },
-  run: async (input: GetRepoInput): Promise<string> => {
-    const response = await fetch(
-      `https://api.github.com/repos/${input.owner}/${input.repo}`,
-      {
-        headers: {
-          Accept: "application/vnd.github+json",
-          "User-Agent": "DurableAgent/1.0",
-        },
-      },
-    );
-    if (!response.ok) return `Repo not found: ${input.owner}/${input.repo}`;
-    const data = await response.json<GitHubRepoResponse>();
-    return JSON.stringify({
-      name: data.full_name,
-      description: data.description,
-      stars: data.stargazers_count,
-      forks: data.forks_count,
-      issues: data.open_issues_count,
-      language: data.language,
-      license: data.license?.name ?? "None",
-      updated: data.updated_at,
-    });
-  },
+	name: "get_repo" as const,
+	description:
+		"Get detailed info about a GitHub repository including stars, forks, and description.",
+	input_schema: {
+		type: "object" as const,
+		properties: {
+			owner: {
+				type: "string",
+				description: "Repository owner (e.g., 'cloudflare')",
+			},
+			repo: {
+				type: "string",
+				description: "Repository name (e.g., 'workers-sdk')",
+			},
+		},
+		required: ["owner", "repo"],
+	},
+	run: async (input: GetRepoInput): Promise<string> => {
+		const response = await fetch(
+			`https://api.github.com/repos/${input.owner}/${input.repo}`,
+			{
+				headers: {
+					Accept: "application/vnd.github+json",
+					"User-Agent": "DurableAgent/1.0",
+				},
+			},
+		);
+		if (!response.ok) return `Repo not found: ${input.owner}/${input.repo}`;
+		const data = await response.json<GitHubRepoResponse>();
+		return JSON.stringify({
+			name: data.full_name,
+			description: data.description,
+			stars: data.stargazers_count,
+			forks: data.forks_count,
+			issues: data.open_issues_count,
+			language: data.language,
+			license: data.license?.name ?? "None",
+			updated: data.updated_at,
+		});
+	},
 };
 export const tools = [searchReposTool, getRepoTool];
 ```
@@ -206,133 +206,114 @@ For a gentler introduction, refer to [Build your first Workflow](https://develop
 
 Create `src/workflow.ts`:
 
-**src/workflow.ts**
-
 ```ts
 import { AgentWorkflow } from "agents/workflows";
 import type { AgentWorkflowEvent, AgentWorkflowStep } from "agents/workflows";
 import Anthropic from "@anthropic-ai/sdk";
 import {
-  tools,
-  searchReposTool,
-  getRepoTool,
-  type SearchReposInput,
-  type GetRepoInput,
+	tools,
+	searchReposTool,
+	getRepoTool,
+	type SearchReposInput,
+	type GetRepoInput,
 } from "./tools";
 import type { ResearchAgent } from "./agent";
 
-
 type Params = { task: string };
 
-
 export class ResearchWorkflow extends AgentWorkflow<ResearchAgent, Params> {
-  async run(event: AgentWorkflowEvent<Params>, step: AgentWorkflowStep) {
-    const client = new Anthropic({ apiKey: this.env.ANTHROPIC_API_KEY });
+	async run(event: AgentWorkflowEvent<Params>, step: AgentWorkflowStep) {
+		const client = new Anthropic({ apiKey: this.env.ANTHROPIC_API_KEY });
 
+		const messages: Anthropic.MessageParam[] = [
+			{ role: "user", content: event.payload.task },
+		];
 
-    const messages: Anthropic.MessageParam[] = [
-      { role: "user", content: event.payload.task },
-    ];
+		const toolDefinitions = tools.map(({ run, ...rest }) => rest);
 
+		// Durable agent loop - each turn is checkpointed
+		for (let turn = 0; turn < 10; turn++) {
+			// Report progress to Agent and connected clients
+			await this.reportProgress({
+				step: `llm-turn-${turn}`,
+				status: "running",
+				percent: turn / 10,
+				message: `Processing turn ${turn + 1}...`,
+			});
 
-    const toolDefinitions = tools.map(({ run, ...rest }) => rest);
+			const response = (await step.do(
+				`llm-turn-${turn}`,
+				{ retries: { limit: 3, delay: "10 seconds", backoff: "exponential" } },
+				async () => {
+					const msg = await client.messages.create({
+						model: "claude-sonnet-4-5-20250929",
+						max_tokens: 4096,
+						tools: toolDefinitions,
+						messages,
+					});
+					// Serialize for Workflow state
+					return JSON.parse(JSON.stringify(msg));
+				},
+			)) as Anthropic.Message;
 
+			if (!response || !response.content) continue;
 
-    // Durable agent loop - each turn is checkpointed
-    for (let turn = 0; turn < 10; turn++) {
-      // Report progress to Agent and connected clients
-      await this.reportProgress({
-        step: `llm-turn-${turn}`,
-        status: "running",
-        percent: turn / 10,
-        message: `Processing turn ${turn + 1}...`,
-      });
+			messages.push({ role: "assistant", content: response.content });
 
+			if (response.stop_reason === "end_turn") {
+				const textBlock = response.content.find(
+					(b): b is Anthropic.TextBlock => b.type === "text",
+				);
+				const result = {
+					status: "complete",
+					turns: turn + 1,
+					result: textBlock?.text ?? null,
+				};
 
-      const response = (await step.do(
-        `llm-turn-${turn}`,
-        { retries: { limit: 3, delay: "10 seconds", backoff: "exponential" } },
-        async () => {
-          const msg = await client.messages.create({
-            model: "claude-sonnet-4-5-20250929",
-            max_tokens: 4096,
-            tools: toolDefinitions,
-            messages,
-          });
-          // Serialize for Workflow state
-          return JSON.parse(JSON.stringify(msg));
-        },
-      )) as Anthropic.Message;
+				// Report completion (durable)
+				await step.reportComplete(result);
+				return result;
+			}
 
+			const toolResults: Anthropic.ToolResultBlockParam[] = [];
 
-      if (!response || !response.content) continue;
+			for (const block of response.content) {
+				if (block.type !== "tool_use") continue;
 
+				// Broadcast tool execution to clients
+				this.broadcastToClients({
+					type: "tool_call",
+					tool: block.name,
+					turn,
+				});
 
-      messages.push({ role: "assistant", content: response.content });
+				const result = await step.do(
+					`tool-${turn}-${block.id}`,
+					{ retries: { limit: 2, delay: "5 seconds" } },
+					async () => {
+						switch (block.name) {
+							case "search_repos":
+								return searchReposTool.run(block.input as SearchReposInput);
+							case "get_repo":
+								return getRepoTool.run(block.input as GetRepoInput);
+							default:
+								return `Unknown tool: ${block.name}`;
+						}
+					},
+				);
 
+				toolResults.push({
+					type: "tool_result",
+					tool_use_id: block.id,
+					content: result,
+				});
+			}
 
-      if (response.stop_reason === "end_turn") {
-        const textBlock = response.content.find(
-          (b): b is Anthropic.TextBlock => b.type === "text",
-        );
-        const result = {
-          status: "complete",
-          turns: turn + 1,
-          result: textBlock?.text ?? null,
-        };
+			messages.push({ role: "user", content: toolResults });
+		}
 
-
-        // Report completion (durable)
-        await step.reportComplete(result);
-        return result;
-      }
-
-
-      const toolResults: Anthropic.ToolResultBlockParam[] = [];
-
-
-      for (const block of response.content) {
-        if (block.type !== "tool_use") continue;
-
-
-        // Broadcast tool execution to clients
-        this.broadcastToClients({
-          type: "tool_call",
-          tool: block.name,
-          turn,
-        });
-
-
-        const result = await step.do(
-          `tool-${turn}-${block.id}`,
-          { retries: { limit: 2, delay: "5 seconds" } },
-          async () => {
-            switch (block.name) {
-              case "search_repos":
-                return searchReposTool.run(block.input as SearchReposInput);
-              case "get_repo":
-                return getRepoTool.run(block.input as GetRepoInput);
-              default:
-                return `Unknown tool: ${block.name}`;
-            }
-          },
-        );
-
-
-        toolResults.push({
-          type: "tool_result",
-          tool_use_id: block.id,
-          content: result,
-        });
-      }
-
-
-      messages.push({ role: "user", content: toolResults });
-    }
-
-
-    return { status: "max_turns_reached", turns: 10 };
-  }
+		return { status: "max_turns_reached", turns: 10 };
+	}
 }
 ```
 
@@ -355,123 +336,107 @@ The Agent handles HTTP requests, WebSocket connections, and Workflow lifecycle e
 
 Create `src/agent.ts`:
 
-**src/agent.ts**
-
 ```ts
 import { Agent } from "agents";
 
-
 type State = {
-  currentWorkflow?: string;
-  status?: string;
+	currentWorkflow?: string;
+	status?: string;
 };
 
-
 export class ResearchAgent extends Agent<Env, State> {
-  initialState: State = {};
+	initialState: State = {};
 
+	// Start a research task - called via HTTP or WebSocket
+	async startResearch(task: string) {
+		const instanceId = await this.runWorkflow("RESEARCH_WORKFLOW", { task });
+		this.setState({
+			...this.state,
+			currentWorkflow: instanceId,
+			status: "running",
+		});
+		return { instanceId };
+	}
 
-  // Start a research task - called via HTTP or WebSocket
-  async startResearch(task: string) {
-    const instanceId = await this.runWorkflow("RESEARCH_WORKFLOW", { task });
-    this.setState({
-      ...this.state,
-      currentWorkflow: instanceId,
-      status: "running",
-    });
-    return { instanceId };
-  }
+	// Get status of a workflow
+	async getResearchStatus(instanceId: string) {
+		return this.getWorkflow(instanceId);
+	}
 
+	// Called when workflow reports progress
+	async onWorkflowProgress(
+		workflowName: string,
+		instanceId: string,
+		progress: unknown,
+	) {
+		// Broadcast to all connected WebSocket clients
+		this.broadcast(JSON.stringify({ type: "progress", instanceId, progress }));
+	}
 
-  // Get status of a workflow
-  async getResearchStatus(instanceId: string) {
-    return this.getWorkflow(instanceId);
-  }
+	// Called when workflow completes
+	async onWorkflowComplete(
+		workflowName: string,
+		instanceId: string,
+		result?: unknown,
+	) {
+		this.setState({ ...this.state, status: "complete" });
+		this.broadcast(JSON.stringify({ type: "complete", instanceId, result }));
+	}
 
-
-  // Called when workflow reports progress
-  async onWorkflowProgress(
-    workflowName: string,
-    instanceId: string,
-    progress: unknown,
-  ) {
-    // Broadcast to all connected WebSocket clients
-    this.broadcast(JSON.stringify({ type: "progress", instanceId, progress }));
-  }
-
-
-  // Called when workflow completes
-  async onWorkflowComplete(
-    workflowName: string,
-    instanceId: string,
-    result?: unknown,
-  ) {
-    this.setState({ ...this.state, status: "complete" });
-    this.broadcast(JSON.stringify({ type: "complete", instanceId, result }));
-  }
-
-
-  // Called when workflow errors
-  async onWorkflowError(
-    workflowName: string,
-    instanceId: string,
-    error: string,
-  ) {
-    this.setState({ ...this.state, status: "error" });
-    this.broadcast(JSON.stringify({ type: "error", instanceId, error }));
-  }
+	// Called when workflow errors
+	async onWorkflowError(
+		workflowName: string,
+		instanceId: string,
+		error: string,
+	) {
+		this.setState({ ...this.state, status: "error" });
+		this.broadcast(JSON.stringify({ type: "error", instanceId, error }));
+	}
 }
 ```
 
 ## 5\. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:
-
-  * [  wrangler.jsonc ](#tab-panel-14049)
-  * [  wrangler.toml ](#tab-panel-14050)
-
-**JSONC**
 ```jsonc
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "durable-ai-agent",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "observability": {
-    "enabled": true
-  },
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "ResearchAgent",
-        "class_name": "ResearchAgent"
-      }
-    ]
-  },
-  "workflows": [
-    {
-      "name": "research-workflow",
-      "binding": "RESEARCH_WORKFLOW",
-      "class_name": "ResearchWorkflow"
-    }
-  ],
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["ResearchAgent"]
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "durable-ai-agent",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"observability": {
+		"enabled": true
+	},
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "ResearchAgent",
+				"class_name": "ResearchAgent"
+			}
+		]
+	},
+	"workflows": [
+		{
+			"name": "research-workflow",
+			"binding": "RESEARCH_WORKFLOW",
+			"class_name": "ResearchWorkflow"
+		}
+	],
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["ResearchAgent"]
+		}
+	]
 }
 ```
-
-**TOML**
 ```toml
 "$schema" = "node_modules/wrangler/config-schema.json"
 name = "durable-ai-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 [observability]
 enabled = true
 [[durable_objects.bindings]]
@@ -497,78 +462,63 @@ The Worker routes requests to the Agent, which manages workflow lifecycle. Use `
 
 Replace `src/index.ts`:
 
-**src/index.ts**
-
 ```ts
 import { getAgentByName, routeAgentRequest } from "agents";
-
 
 export { ResearchAgent } from "./agent";
 export { ResearchWorkflow } from "./workflow";
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
 
+		// Route WebSocket connections to /agents/research-agent/{name}
+		const agentResponse = await routeAgentRequest(request, env);
+		if (agentResponse) return agentResponse;
 
-    // Route WebSocket connections to /agents/research-agent/{name}
-    const agentResponse = await routeAgentRequest(request, env);
-    if (agentResponse) return agentResponse;
+		// HTTP API for starting research tasks
+		if (request.method === "POST" && url.pathname === "/research") {
+			const { task, agentId } = await request.json<{
+				task: string;
+				agentId?: string;
+			}>();
 
+			// Get agent instance by name (creates if doesn't exist)
+			const agent = await getAgentByName(
+				env.ResearchAgent,
+				agentId ?? "default",
+			);
 
-    // HTTP API for starting research tasks
-    if (request.method === "POST" && url.pathname === "/research") {
-      const { task, agentId } = await request.json<{
-        task: string;
-        agentId?: string;
-      }>();
+			// Start the research workflow via RPC
+			const result = await agent.startResearch(task);
+			return Response.json(result);
+		}
 
+		// Check workflow status
+		if (url.pathname === "/status") {
+			const instanceId = url.searchParams.get("instanceId");
+			const agentId = url.searchParams.get("agentId") ?? "default";
 
-      // Get agent instance by name (creates if doesn't exist)
-      const agent = await getAgentByName(
-        env.ResearchAgent,
-        agentId ?? "default",
-      );
+			if (!instanceId) {
+				return Response.json({ error: "instanceId required" }, { status: 400 });
+			}
 
+			const agent = await getAgentByName(env.ResearchAgent, agentId);
+			const status = await agent.getResearchStatus(instanceId);
 
-      // Start the research workflow via RPC
-      const result = await agent.startResearch(task);
-      return Response.json(result);
-    }
+			return Response.json(status);
+		}
 
-
-    // Check workflow status
-    if (url.pathname === "/status") {
-      const instanceId = url.searchParams.get("instanceId");
-      const agentId = url.searchParams.get("agentId") ?? "default";
-
-
-      if (!instanceId) {
-        return Response.json({ error: "instanceId required" }, { status: 400 });
-      }
-
-
-      const agent = await getAgentByName(env.ResearchAgent, agentId);
-      const status = await agent.getResearchStatus(instanceId);
-
-
-      return Response.json(status);
-    }
-
-
-    return new Response("POST /research with { task } to start", {
-      status: 400,
-    });
-  },
+		return new Response("POST /research with { task } to start", {
+			status: 400,
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
 ## 7\. Develop locally
 
 1. Create a [.env file](https://developers.cloudflare.com/workers/wrangler/environments/#secrets-in-local-development) for local development:
-
-**.env**
 ```sh
 ANTHROPIC_API_KEY=your-api-key-here
 ```
@@ -614,7 +564,7 @@ npx wrangler workflows instances describe research-workflow latest
 ```
 This shows every step the agent took, including LLM calls, tool executions, timing, and any retries.
 You can also view this in the Cloudflare dashboard under **research-workflow**.
-[ Go to **Workflows** ](https://dash.cloudflare.com/?to=/:account/workers/workflows)
+[ Go to **Workflows** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/workflows)
 
 ## Real-time client integration
 
@@ -629,32 +579,29 @@ Connect to your Agent via WebSocket to receive real-time progress updates. The `
 import { useState } from "react";
 import { useAgent } from "agents/react";
 
-
 function ResearchUI({ agentId = "default" }) {
-  const [progress, setProgress] = useState(null);
+	const [progress, setProgress] = useState(null);
 
+	const { state } = useAgent({
+		agent: "research-agent", // Maps to ResearchAgent class
+		name: agentId, // Instance name
+		onMessage: (message) => {
+			const data = JSON.parse(message.data);
+			if (data.type === "progress") {
+				setProgress(data.progress);
+			}
+		},
+	});
 
-  const { state } = useAgent({
-    agent: "research-agent", // Maps to ResearchAgent class
-    name: agentId, // Instance name
-    onMessage: (message) => {
-      const data = JSON.parse(message.data);
-      if (data.type === "progress") {
-        setProgress(data.progress);
-      }
-    },
-  });
-
-
-  return (
-    <div>
-      {progress && (
-        <p>
-          {progress.message} ({Math.round(progress.percent * 100)}%)
-        </p>
-      )}
-    </div>
-  );
+	return (
+		<div>
+			{progress && (
+				<p>
+					{progress.message} ({Math.round(progress.percent * 100)}%)
+				</p>
+			)}
+		</div>
+	);
 }
 ```
 
@@ -662,17 +609,34 @@ Agent class names are automatically converted to kebab-case for URLs (`ResearchA
 
 ## Learn more
 
-[ Agents SDK Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) Complete API reference for AgentWorkflow, lifecycle callbacks, and bidirectional communication.
+### [ Agents SDK Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
 
-[ Events and parameters ](https://developers.cloudflare.com/workflows/build/events-and-parameters/) Pass data to Workflows and pause for external events with waitForEvent.
+ Complete API reference for AgentWorkflow, lifecycle callbacks, and bidirectional communication.
 
-[ Sleeping and retrying ](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) Configure retry behavior and sleep patterns.
+### [ Events and parameters ](https://developers.cloudflare.com/workflows/build/events-and-parameters/)
 
-[ Workers API ](https://developers.cloudflare.com/workflows/build/workers-api/) Explore the full Workflows API for programmatic control.
+ Pass data to Workflows and pause for external events with waitForEvent.
 
-[ Agents SDK ](https://developers.cloudflare.com/agents/) For interactive agents with real-time chat and WebSocket connections.
+### [ Sleeping and retrying ](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/)
+
+ Configure retry behavior and sleep patterns.
+
+### [ Workers API ](https://developers.cloudflare.com/workflows/build/workers-api/)
+
+ Explore the full Workflows API for programmatic control.
+
+### [ Agents SDK ](https://developers.cloudflare.com/agents/)
+
+ For interactive agents with real-time chat and WebSocket connections.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/durable-agents/#page","headline":"Build a Durable AI Agent · Cloudflare Workflows docs","description":"Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.","url":"https://developers.cloudflare.com/workflows/get-started/durable-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/get-started/durable-agents/","name":"Build a Durable AI Agent"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/durable-agents/#page","headline":"Build a Durable AI Agent · Cloudflare Workflows docs","description":"Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.","url":"https://developers.cloudflare.com/workflows/get-started/durable-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

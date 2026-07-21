@@ -1,16 +1,18 @@
 ---
-title: Workers API
 description: Send emails directly from Cloudflare Workers using the Email Service binding and send() method.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers API
 
-# Workers API
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Workers API provides native email sending capabilities directly from your Cloudflare Workers through bindings. If you are not using Workers, you can send emails using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) instead.
 
@@ -18,18 +20,11 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 Configure a `send_email` binding in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-9212)
-* [  wrangler.toml ](#tab-panel-9213)
-
-**JSONC**
-
 ```jsonc
 {
-  "send_email": [{ "name": "EMAIL" }],
+	"send_email": [{ "name": "EMAIL" }],
 }
 ```
-
-**TOML**
 
 ```toml
 [[send_email]]
@@ -44,51 +39,44 @@ Send a single email using the `send()` method on your email binding.
 
 ### Interface
 
-**TypeScript**
-
 ```ts
 interface SendEmail {
-  send(message: EmailMessage | EmailMessageBuilder): Promise<EmailSendResult>;
+	send(message: EmailMessage | EmailMessageBuilder): Promise<EmailSendResult>;
 }
-
 
 interface EmailAddress {
-  email: string;
-  name?: string;
+	email: string;
+	name?: string;
 }
-
 
 // Structured email builder (recommended)
 interface EmailMessageBuilder {
-  to: string | EmailAddress | (string | EmailAddress)[]; // Max 50 recipients
-  from: string | EmailAddress;
-  subject: string;
-  html?: string;
-  text?: string;
-  cc?: string | EmailAddress | (string | EmailAddress)[];
-  bcc?: string | EmailAddress | (string | EmailAddress)[];
-  replyTo?: string | EmailAddress;
-  attachments?: Attachment[];
-  // Custom headers. See /email-service/reference/headers/
-  headers?: { [key: string]: string };
-  // The combined number of addresses in `to`, `cc`, and `bcc` must not
-  // exceed 50. See /email-service/platform/limits/ for all limits.
+	to: string | EmailAddress | (string | EmailAddress)[]; // Max 50 recipients
+	from: string | EmailAddress;
+	subject: string;
+	html?: string;
+	text?: string;
+	cc?: string | EmailAddress | (string | EmailAddress)[];
+	bcc?: string | EmailAddress | (string | EmailAddress)[];
+	replyTo?: string | EmailAddress;
+	attachments?: Attachment[];
+	// Custom headers. See /email-service/reference/headers/
+	headers?: { [key: string]: string };
+	// The combined number of addresses in `to`, `cc`, and `bcc` must not
+	// exceed 50. See /email-service/platform/limits/ for all limits.
 }
-
 
 interface Attachment {
-  content: string | ArrayBuffer | ArrayBufferView; // Base64 string or binary content
-  filename: string;
-  type: string; // MIME type
-  disposition: "attachment" | "inline";
-  contentId?: string; // For inline attachments
+	content: string | ArrayBuffer | ArrayBufferView; // Base64 string or binary content
+	filename: string;
+	type: string; // MIME type
+	disposition: "attachment" | "inline";
+	contentId?: string; // For inline attachments
 }
-
 
 interface EmailSendResult {
-  messageId: string; // Unique email ID
+	messageId: string; // Unique email ID
 }
-
 
 // Errors are thrown as standard Error objects with a `code` property
 // try { await env.EMAIL.send(...) } catch (e) { console.log(e.code, e.message) }
@@ -100,15 +88,13 @@ When using `wrangler dev` without [remote bindings](https://developers.cloudflar
 
 ### Basic usage
 
-**TypeScript**
-
 ```ts
 const response = await env.EMAIL.send({
-  to: "recipient@example.com",
-  from: "welcome@yourdomain.com",
-  subject: "Welcome to our service!",
-  html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
-  text: "Welcome! Thanks for signing up.",
+	to: "recipient@example.com",
+	from: "welcome@yourdomain.com",
+	subject: "Welcome to our service!",
+	html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
+	text: "Welcome! Thanks for signing up.",
 });
 ```
 
@@ -118,22 +104,20 @@ For multiple recipients, CC/BCC, and named addresses, see [Specify recipients](h
 
 Send files by including base64-encoded content in the `attachments` array. The total message size must not exceed 5 MiB (including attachments).
 
-**TypeScript**
-
 ```ts
 const response = await env.EMAIL.send({
-  to: "customer@example.com",
-  from: "invoices@yourdomain.com",
-  subject: "Your Invoice",
-  html: "<h1>Invoice attached</h1><p>Please find your invoice attached.</p>",
-  attachments: [
-    {
-      content: "JVBERi0xLjQKJeLjz9MKMSAwIG9iag...", // Base64 PDF content
-      filename: "invoice-12345.pdf",
-      type: "application/pdf",
-      disposition: "attachment",
-    },
-  ],
+	to: "customer@example.com",
+	from: "invoices@yourdomain.com",
+	subject: "Your Invoice",
+	html: "<h1>Invoice attached</h1><p>Please find your invoice attached.</p>",
+	attachments: [
+		{
+			content: "JVBERi0xLjQKJeLjz9MKMSAwIG9iag...", // Base64 PDF content
+			filename: "invoice-12345.pdf",
+			type: "application/pdf",
+			disposition: "attachment",
+		},
+	],
 });
 ```
 
@@ -143,64 +127,58 @@ For inline images and file uploads, see [Email attachments](https://developers.c
 
 Handle email sending errors gracefully:
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    try {
-      const response = await env.EMAIL.send({
-        to: "user@example.com",
-        from: "noreply@yourdomain.com",
-        subject: "Test Email",
-        text: "This is a test email.",
-      });
+	async fetch(request: Request, env: Env): Promise<Response> {
+		try {
+			const response = await env.EMAIL.send({
+				to: "user@example.com",
+				from: "noreply@yourdomain.com",
+				subject: "Test Email",
+				text: "This is a test email.",
+			});
 
+			return new Response(
+				JSON.stringify({
+					success: true,
+					emailId: response.messageId,
+				}),
+			);
+		} catch (error) {
+			// Error has .code and .message properties
+			console.error("Email sending failed:", error.code, error.message);
 
-      return new Response(
-        JSON.stringify({
-          success: true,
-          emailId: response.messageId,
-        }),
-      );
-    } catch (error) {
-      // Error has .code and .message properties
-      console.error("Email sending failed:", error.code, error.message);
+			// Handle specific error types
+			switch (error.code) {
+				case "E_SENDER_NOT_VERIFIED":
+					return new Response(
+						JSON.stringify({
+							success: false,
+							error: "Please verify your sender domain first",
+						}),
+						{ status: 400 },
+					);
 
+				case "E_RATE_LIMIT_EXCEEDED":
+					return new Response(
+						JSON.stringify({
+							success: false,
+							error: "Rate limit exceeded. Please try again later",
+						}),
+						{ status: 429 },
+					);
 
-      // Handle specific error types
-      switch (error.code) {
-        case "E_SENDER_NOT_VERIFIED":
-          return new Response(
-            JSON.stringify({
-              success: false,
-              error: "Please verify your sender domain first",
-            }),
-            { status: 400 },
-          );
-
-
-        case "E_RATE_LIMIT_EXCEEDED":
-          return new Response(
-            JSON.stringify({
-              success: false,
-              error: "Rate limit exceeded. Please try again later",
-            }),
-            { status: 429 },
-          );
-
-
-        default:
-          return new Response(
-            JSON.stringify({
-              success: false,
-              error: error.message,
-            }),
-            { status: 500 },
-          );
-      }
-    }
-  },
+				default:
+					return new Response(
+						JSON.stringify({
+							success: false,
+							error: error.message,
+						}),
+						{ status: 500 },
+					);
+			}
+		}
+	},
 };
 ```
 
@@ -235,35 +213,30 @@ The following error codes may be returned when sending emails:
 
 The `EmailMessage` API remains supported for backward compatibility. Use it when you already have a raw [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) MIME message to send. For new code, prefer the structured [send() method](#send-method) above.
 
-**TypeScript**
-
 ```ts
 import { EmailMessage } from "cloudflare:email";
 import { createMimeMessage } from "mimetext";
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const msg = createMimeMessage();
-    msg.setSender({ name: "Sender", addr: "sender@yourdomain.com" });
-    msg.setRecipient("recipient@example.com");
-    msg.setSubject("Legacy Email");
-    msg.addMessage({
-      contentType: "text/html",
-      data: "<h1>Hello from legacy API</h1>",
-    });
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const msg = createMimeMessage();
+		msg.setSender({ name: "Sender", addr: "sender@yourdomain.com" });
+		msg.setRecipient("recipient@example.com");
+		msg.setSubject("Legacy Email");
+		msg.addMessage({
+			contentType: "text/html",
+			data: "<h1>Hello from legacy API</h1>",
+		});
 
+		const message = new EmailMessage(
+			"sender@yourdomain.com",
+			"recipient@example.com",
+			msg.asRaw(),
+		);
 
-    const message = new EmailMessage(
-      "sender@yourdomain.com",
-      "recipient@example.com",
-      msg.asRaw(),
-    );
-
-
-    await env.EMAIL.send(message);
-    return new Response("Legacy email sent");
-  },
+		await env.EMAIL.send(message);
+		return new Response("Legacy email sent");
+	},
 };
 ```
 
@@ -277,7 +250,14 @@ export default {
 * Learn about [email routing](https://developers.cloudflare.com/email-service/api/route-emails/) for handling incoming emails
 * Explore [email authentication](https://developers.cloudflare.com/email-service/concepts/email-authentication/) for better deliverability
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#page","headline":"Workers API · Cloudflare Email Service docs","description":"Send emails directly from Cloudflare Workers using the Email Service binding and send() method.","url":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/api/send-emails/","name":"Send emails"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-service/api/send-emails/workers-api/","name":"Workers API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#page","headline":"Workers API · Cloudflare Email Service docs","description":"Send emails directly from Cloudflare Workers using the Email Service binding and send() method.","url":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

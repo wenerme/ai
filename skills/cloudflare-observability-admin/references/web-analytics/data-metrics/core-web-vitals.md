@@ -1,16 +1,18 @@
 ---
-title: Core Web Vitals
 description: View Core Web Vitals metrics collected by Web Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Core Web Vitals
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Core Web Vitals
 
-# Core Web Vitals
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Core Web Vitals ↗](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/) are high-level metrics designed by Google to capture the user experience. Three core Web Vitals metrics are measured: Largest Contentful Paint, First Input Delay, and Cumulative Layout Shift. Each of these metrics is automatically assigned a rating of Good, Needs Improvement, or Poor based on the industry standard methodology and testing designed by Google. Page load time statistics are supplemented by First Paint and First Contentful Paint.
 
@@ -23,7 +25,7 @@ Core Web Vitals is currently only supported in Chromium browsers, with Safari an
 Core Web Vitals enables you to easily pinpoint which elements in a web page are affecting the user's experience while browsing your website, in a visual form. To access Core Web Vitals:
 
 1. In the Cloudflare dashboard, go to the **Web Analytics** page.
-[ Go to **Web analytics** ](https://dash.cloudflare.com/?to=/:account/web-analytics)
+[ Go to **Web analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/web-analytics)
 2. Select your website and select **Core Web Vitals**.
 
 ### Core Web Vitals metrics
@@ -88,7 +90,14 @@ Captures the layout information of the DOM element with the largest area, after 
 
 Captures the layout information of the DOM element with the largest area, before the shift in the page has occurred. This JSON value is shown as **Previous** in the **Debug View** section. To access it, scroll to the **Cumulative Layout Shifts (CLS)** graphic > **Debug View**. Select any element from that table to access the **Layout Shifts** section, where **Previous** is presented.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/#page","headline":"Core Web Vitals · Cloudflare Web Analytics docs","description":"View Core Web Vitals metrics collected by Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/data-metrics/","name":"Data and metrics"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/data-metrics/core-web-vitals/","name":"Core Web Vitals"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/#page","headline":"Core Web Vitals · Cloudflare Web Analytics docs","description":"View Core Web Vitals metrics collected by Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

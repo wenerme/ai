@@ -1,16 +1,18 @@
 ---
-title: Custom spans
 description: Create custom spans to trace your own application logic alongside Cloudflare's automatic instrumentation.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Custom spans
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom spans
 
-# Custom spans
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/traces/custom-spans/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers [automatically instruments](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/) platform operations like fetch calls, KV reads, and D1 queries. Custom spans let you extend this visibility into your own application logic, so you can trace custom code paths alongside the built-in instrumentation.
 
@@ -23,11 +25,6 @@ The custom spans API is available in two ways — both provide the same `enterSp
 
 Custom spans require tracing to be enabled on your Worker. If you have not already done so, set `observability.traces.enabled` to `true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability):
 
-* [  wrangler.jsonc ](#tab-panel-12760)
-* [  wrangler.toml ](#tab-panel-12761)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -38,8 +35,6 @@ Custom spans require tracing to be enabled on your Worker. If you have not alrea
   }
 }
 ```
-
-**TOML**
 
 ```toml
 [observability.traces]
@@ -60,39 +55,28 @@ Use `tracing.enterSpan()` to wrap a section of code in a named span. The span au
 
 The following example uses both access methods — the `cloudflare:workers` import and `ctx.tracing` — to show that they are interchangeable:
 
-* [  JavaScript ](#tab-panel-12762)
-* [  TypeScript ](#tab-panel-12763)
-
-**src/index.js**
-
 ```js
 import { tracing } from "cloudflare:workers";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // Using the import
-    return tracing.enterSpan("handleRequest", async (span) => {
-      span.setAttribute("url.path", new URL(request.url).pathname);
+	async fetch(request, env, ctx) {
+		// Using the import
+		return tracing.enterSpan("handleRequest", async (span) => {
+			span.setAttribute("url.path", new URL(request.url).pathname);
 
+			const user = await ctx.tracing.enterSpan("auth", async () => {
+				// Using ctx.tracing
+				return authenticate(request, env);
+			});
 
-      const user = await ctx.tracing.enterSpan("auth", async () => {
-        // Using ctx.tracing
-        return authenticate(request, env);
-      });
-
-
-      return buildResponse(user);
-    });
-  },
+			return buildResponse(user);
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 import { tracing } from "cloudflare:workers";
-
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext) {
@@ -100,12 +84,10 @@ export default {
     return tracing.enterSpan("handleRequest", async (span) => {
       span.setAttribute("url.path", new URL(request.url).pathname);
 
-
       const user = await ctx.tracing.enterSpan("auth", async () => {
         // Using ctx.tracing
         return authenticate(request, env);
       });
-
 
       return buildResponse(user);
     });
@@ -135,8 +117,6 @@ Creates a new span and runs `callback` inside it. The span is automatically ende
 * Nested `enterSpan` calls and runtime-created spans (such as `fetch` or KV operations) that run inside the callback automatically become children of this span.
 * The span ends when the callback returns synchronously, throws synchronously, or when its returned promise fulfills or rejects.
 
-**TypeScript**
-
 ```ts
 // Synchronous callback — span ends when the function returns
 const result = tracing.enterSpan("parse", (span) => {
@@ -144,14 +124,12 @@ const result = tracing.enterSpan("parse", (span) => {
   return JSON.parse(body);
 });
 
-
 // Async callback — span ends when the promise settles
 const data = await tracing.enterSpan("fetchData", async (span) => {
   const res = await fetch("https://api.example.com/data");
   span.setAttribute("http.response.status_code", res.status);
   return res.json();
 });
-
 
 // Forwarding arguments
 const doubled = tracing.enterSpan("compute", (span, x) => x * 2, 21);
@@ -172,8 +150,6 @@ Sets an attribute on the span.
 
 Attributes appear alongside the span in your traces and OpenTelemetry exports.
 
-**TypeScript**
-
 ```ts
 span.setAttribute("user.plan", "enterprise");
 span.setAttribute("item.count", 42);
@@ -185,8 +161,6 @@ span.setAttribute("cache.hit", true);
 A `readonly boolean` indicating whether this invocation is being traced. When the request is not sampled (based on your [head\_sampling\_rate](https://developers.cloudflare.com/workers/observability/traces/#sampling)), `isTraced` is `false` and `enterSpan` still runs the callback but does not record any telemetry.
 
 You can use this to skip expensive attribute computation when the request is not being traced:
-
-**TypeScript**
 
 ```ts
 tracing.enterSpan("process", (span) => {
@@ -201,57 +175,42 @@ tracing.enterSpan("process", (span) => {
 
 Spans nest automatically based on the JavaScript async context. Any `enterSpan` call or platform operation (like `fetch`, `env.MY_KV.get()`, and so on) that runs inside a callback becomes a child of the enclosing span.
 
-* [  JavaScript ](#tab-panel-12764)
-* [  TypeScript ](#tab-panel-12765)
-
-**src/index.js**
-
 ```js
 import { tracing } from "cloudflare:workers";
 
-
 async function handleOrder(env, orderId) {
-  return tracing.enterSpan("handleOrder", async (span) => {
-    span.setAttribute("order.id", orderId);
+	return tracing.enterSpan("handleOrder", async (span) => {
+		span.setAttribute("order.id", orderId);
 
+		// This KV read is automatically a child of "handleOrder"
+		const order = await env.ORDERS_KV.get(orderId, "json");
 
-    // This KV read is automatically a child of "handleOrder"
-    const order = await env.ORDERS_KV.get(orderId, "json");
+		// This nested span is also a child of "handleOrder"
+		const total = tracing.enterSpan("calculateTotal", (innerSpan) => {
+			innerSpan.setAttribute("item.count", order.items.length);
+			return order.items.reduce((sum, item) => sum + item.price, 0);
+		});
 
+		// This fetch is a child of "handleOrder"
+		await fetch("https://api.example.com/notify", {
+			method: "POST",
+			body: JSON.stringify({ orderId, total }),
+		});
 
-    // This nested span is also a child of "handleOrder"
-    const total = tracing.enterSpan("calculateTotal", (innerSpan) => {
-      innerSpan.setAttribute("item.count", order.items.length);
-      return order.items.reduce((sum, item) => sum + item.price, 0);
-    });
-
-
-    // This fetch is a child of "handleOrder"
-    await fetch("https://api.example.com/notify", {
-      method: "POST",
-      body: JSON.stringify({ orderId, total }),
-    });
-
-
-    return new Response(JSON.stringify({ orderId, total }));
-  });
+		return new Response(JSON.stringify({ orderId, total }));
+	});
 }
 ```
 
-**src/index.ts**
-
 ```ts
 import { tracing } from "cloudflare:workers";
-
 
 async function handleOrder(env: Env, orderId: string) {
   return tracing.enterSpan("handleOrder", async (span) => {
     span.setAttribute("order.id", orderId);
 
-
     // This KV read is automatically a child of "handleOrder"
     const order = await env.ORDERS_KV.get(orderId, "json");
-
 
     // This nested span is also a child of "handleOrder"
     const total = tracing.enterSpan("calculateTotal", (innerSpan) => {
@@ -259,13 +218,11 @@ async function handleOrder(env: Env, orderId: string) {
       return order.items.reduce((sum: number, item: any) => sum + item.price, 0);
     });
 
-
     // This fetch is a child of "handleOrder"
     await fetch("https://api.example.com/notify", {
       method: "POST",
       body: JSON.stringify({ orderId, total }),
     });
-
 
     return new Response(JSON.stringify({ orderId, total }));
   });
@@ -277,8 +234,6 @@ async function handleOrder(env: Env, orderId: string) {
 ## Logging within spans
 
 `console.log()` and other console methods emit log events that are automatically attributed to the currently active span. This means log output from inside an `enterSpan` callback is associated with that span in your traces and OpenTelemetry exports.
-
-**TypeScript**
 
 ```ts
 tracing.enterSpan("processPayment", async (span) => {
@@ -292,8 +247,6 @@ tracing.enterSpan("processPayment", async (span) => {
 
 The full type declarations for the custom spans API:
 
-**TypeScript**
-
 ```ts
 declare module "cloudflare:workers" {
   namespace tracing {
@@ -303,7 +256,6 @@ declare module "cloudflare:workers" {
       ...args: A
     ): T;
   }
-
 
   class Span {
     readonly isTraced: boolean;
@@ -327,7 +279,14 @@ The same API is available on the handler context as `ctx.tracing`, with the same
 
 For other tracing limitations, refer to the [known limitations](https://developers.cloudflare.com/workers/observability/traces/known-limitations/) page.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/custom-spans/#page","headline":"Custom spans · Cloudflare Workers docs","description":"Create custom spans to trace your own application logic alongside Cloudflare's automatic instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/custom-spans/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/traces/","name":"Traces"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/traces/custom-spans/","name":"Custom spans"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/custom-spans/#page","headline":"Custom spans · Cloudflare Workers docs","description":"Create custom spans to trace your own application logic alongside Cloudflare's automatic instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/custom-spans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Rules
 description: Structure and properties of rules in the Ruleset Engine.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rules
 
-# Rules
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/about/rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A rule defines a filter and an action to perform on the incoming requests that match the filter.
 
@@ -58,7 +60,14 @@ Note
 
 If you want to use the original field values in rules evaluated later, you can use raw fields (for example, `raw.http.request.uri.path`) in their expressions. These special fields are immutable during the entire request evaluation workflow. For a list of raw fields, refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=Raw+fields).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/about/rules/#page","headline":"Rules · Cloudflare Ruleset Engine docs","description":"Structure and properties of rules in the Ruleset Engine.","url":"https://developers.cloudflare.com/ruleset-engine/about/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/about/","name":"About"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/about/rules/","name":"Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/about/rules/#page","headline":"Rules · Cloudflare Ruleset Engine docs","description":"Structure and properties of rules in the Ruleset Engine.","url":"https://developers.cloudflare.com/ruleset-engine/about/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

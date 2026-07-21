@@ -1,18 +1,20 @@
 ---
-title: Limits
 description: Cloudflare Queues account limits for message size, throughput, retention, and concurrency.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Limits
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Limits
 
-# Limits
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/platform/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 The following limits apply to both Workers Paid and Workers Free plans with the exception of **Message Retention**, which is non-configurable at 24 hours for the Workers Free plan.
 
@@ -53,11 +55,6 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 
 By default, the maximum CPU time per consumer Worker invocation is set to 30 seconds, but can be increased by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10485)
-* [  wrangler.toml ](#tab-panel-10486)
-
-**JSONC**
-
 ```jsonc
 {
   // ...rest of your configuration...
@@ -67,8 +64,6 @@ By default, the maximum CPU time per consumer Worker invocation is set to 30 sec
   // ...rest of your configuration...
 }
 ```
-
-**TOML**
 
 ```toml
 [limits]
@@ -92,7 +87,14 @@ The following table summarizes the wall time limits for different types of Worke
 | [Durable Objects](https://developers.cloudflare.com/durable-objects/) (RPC / HTTP)                  | Unlimited       | No hard limit while the caller stays connected to the Durable Object. Durable Objects remain active while a request, RPC call, response stream, WebSocket, or pending I/O is in flight.                                                                                              |
 | [Workflows](https://developers.cloudflare.com/workflows/) (per step)                                | Unlimited       | Each step can run for an unlimited wall time. Individual steps are subject to the configured [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).                                                                                                  |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/platform/limits/#page","headline":"Limits · Cloudflare Queues docs","description":"Cloudflare Queues account limits for message size, throughput, retention, and concurrency.","url":"https://developers.cloudflare.com/queues/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/platform/limits/","name":"Limits"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/platform/limits/#page","headline":"Limits · Cloudflare Queues docs","description":"Cloudflare Queues account limits for message size, throughput, retention, and concurrency.","url":"https://developers.cloudflare.com/queues/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

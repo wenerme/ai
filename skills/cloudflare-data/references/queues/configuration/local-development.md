@@ -1,16 +1,18 @@
 ---
-title: Local Development
 description: Develop and test Cloudflare Queues locally using Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Local Development
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Local Development
 
-# Local Development
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/local-development/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Queues support local development workflows using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers. Wrangler runs the same version of Queues as Cloudflare runs globally.
 
@@ -34,7 +36,6 @@ npx wrangler@latest dev
 ------------------
 Your Worker and resources are simulated locally via Miniflare. For more information, see: https://developers.cloudflare.com/workers/testing/local-development.
 
-
 Your worker has access to the following bindings:
 - Queues: <QUEUE-NAME>
 ```
@@ -47,7 +48,7 @@ Refer to the [wrangler dev documentation](https://developers.cloudflare.com/work
 
 Wrangler supports running multiple Workers simultaneously with a single command. If your architecture separates the producer and consumer into distinct Workers, you can use this functionality to test the entire message flow locally.
 
-Warning
+Caution
 
 Support for running multiple Workers at once with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗](https://github.com/cloudflare/workers-sdk/issues/new)
 
@@ -78,7 +79,14 @@ Note
 
 * Queues does not support Wrangler remote mode (`wrangler dev --remote`).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/local-development/#page","headline":"Local Development · Cloudflare Queues docs","description":"Develop and test Cloudflare Queues locally using Wrangler.","url":"https://developers.cloudflare.com/queues/configuration/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/local-development/","name":"Local Development"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/local-development/#page","headline":"Local Development · Cloudflare Queues docs","description":"Develop and test Cloudflare Queues locally using Wrangler.","url":"https://developers.cloudflare.com/queues/configuration/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

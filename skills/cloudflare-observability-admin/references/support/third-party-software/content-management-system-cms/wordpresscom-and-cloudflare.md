@@ -1,16 +1,18 @@
 ---
-title: WordPress.com and Cloudflare
 description: Configure WordPress.com with Cloudflare services.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: WordPress.com and Cloudflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/support/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WordPress.com and Cloudflare
 
-# WordPress.com and Cloudflare
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/wordpresscom-and-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Getting started with WordPress.com and Cloudflare
 
@@ -80,7 +82,7 @@ Cloudflare's [Automatic Platform Optimization ↗](https://www.cloudflare.com/au
 
 ### **Requirements**
 
-Warning
+Caution
 
 The [Automatic Platform Optimization (APO) ↗](https://www.cloudflare.com/automatic-platform-optimization/wordpress/)feature requires that you be on a [Full Setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/)using Cloudflare nameservers.
 
@@ -138,7 +140,14 @@ As always, `cf-cache-status` displays if the asset hit the cache or was consider
 
 3\. You should see a change. The page should be cached with `cf-cache-status: HIT` and `cf-apo-via: cache` in a response header.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/wordpresscom-and-cloudflare/#page","headline":"WordPress.com and Cloudflare · Cloudflare Support docs","description":"Configure WordPress.com with Cloudflare services.","url":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/wordpresscom-and-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/third-party-software/","name":"Third-Party Software"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/third-party-software/content-management-system-cms/","name":"Content Management System (CMS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/third-party-software/content-management-system-cms/wordpresscom-and-cloudflare/","name":"WordPress.com and Cloudflare"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/wordpresscom-and-cloudflare/#page","headline":"WordPress.com and Cloudflare · Cloudflare Support docs","description":"Configure WordPress.com with Cloudflare services.","url":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/wordpresscom-and-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

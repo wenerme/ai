@@ -1,18 +1,20 @@
 ---
-title: Mount R2 buckets with FUSE
 description: Mount R2 buckets as filesystems using FUSE in Containers
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Mount R2 buckets with FUSE
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Mount R2 buckets with FUSE
+#  Mount R2 buckets with FUSE
 
 Mount R2 buckets as filesystems using FUSE in Containers
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 FUSE (Filesystem in Userspace) allows you to mount [R2 buckets](https://developers.cloudflare.com/r2/) as filesystems within Containers. Applications can then interact with R2 using standard filesystem operations rather than object storage APIs.
 
@@ -40,12 +42,10 @@ Dockerfile
 ```dockerfile
 FROM alpine:3.20
 
-
 # Install FUSE and dependencies
 RUN apk add --no-cache \
     --repository http://dl-cdn.alpinelinux.org/alpine/v3.20/main \
     ca-certificates fuse curl bash
-
 
 # Install tigrisfs
 RUN ARCH=$(uname -m) && \
@@ -56,7 +56,6 @@ RUN ARCH=$(uname -m) && \
     tar -xzf /tmp/tigrisfs.tar.gz -C /usr/local/bin/ && \
     rm /tmp/tigrisfs.tar.gz && \
     chmod +x /usr/local/bin/tigrisfs
-
 
 # Create startup script that mounts bucket and runs a command
 RUN printf '#!/bin/sh\n\
@@ -73,7 +72,6 @@ RUN printf '#!/bin/sh\n\
     ls -lah /mnt/r2\n\
     ' > /startup.sh && chmod +x /startup.sh
 
-
 EXPOSE 8080
 CMD ["/startup.sh"]
 ```
@@ -84,32 +82,23 @@ The startup script creates a mount point, starts tigrisfs in the background to m
 
 Your Container needs [R2 credentials](https://developers.cloudflare.com/r2/api/tokens/) and configuration passed as environment variables. Store credentials as [Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/), then pass them through the `envVars` property:
 
-* [  JavaScript ](#tab-panel-8507)
-* [  TypeScript ](#tab-panel-8508)
-
-**src/index.js**
-
 ```js
 import { Container, getContainer } from "@cloudflare/containers";
 
-
 export class FUSEDemo extends Container {
-  defaultPort = 8080;
-  sleepAfter = "10m";
-  envVars = {
-    AWS_ACCESS_KEY_ID: this.env.AWS_ACCESS_KEY_ID,
-    AWS_SECRET_ACCESS_KEY: this.env.AWS_SECRET_ACCESS_KEY,
-    R2_BUCKET_NAME: this.env.R2_BUCKET_NAME,
-    R2_ACCOUNT_ID: this.env.R2_ACCOUNT_ID,
-  };
+	defaultPort = 8080;
+	sleepAfter = "10m";
+	envVars = {
+		AWS_ACCESS_KEY_ID: this.env.AWS_ACCESS_KEY_ID,
+		AWS_SECRET_ACCESS_KEY: this.env.AWS_SECRET_ACCESS_KEY,
+		R2_BUCKET_NAME: this.env.R2_BUCKET_NAME,
+		R2_ACCOUNT_ID: this.env.R2_ACCOUNT_ID,
+	};
 }
 ```
 
-**src/index.ts**
-
 ```ts
 import { Container, getContainer } from "@cloudflare/containers";
-
 
 interface Env {
   FUSEDemo: DurableObjectNamespace<FUSEDemo>;
@@ -118,7 +107,6 @@ interface Env {
   R2_BUCKET_NAME: string;
   R2_ACCOUNT_ID: string;
 }
-
 
 export class FUSEDemo extends Container<Env> {
   defaultPort = 8080;
@@ -201,7 +189,14 @@ This is useful for shared assets or configuration files where you want to ensure
 * [s3fs ↗](https://github.com/s3fs-fuse/s3fs-fuse) \- Alternative FUSE adapter for S3-compatible storage
 * [gcsfuse ↗](https://github.com/GoogleCloudPlatform/gcsfuse) \- FUSE adapter for Google Cloud Storage buckets
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/#page","headline":"Mount R2 buckets with FUSE · Cloudflare Containers docs","description":"Mount R2 buckets as filesystems using FUSE in Containers","url":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/examples/r2-fuse-mount/","name":"Mount R2 buckets with FUSE"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/#page","headline":"Mount R2 buckets with FUSE · Cloudflare Containers docs","description":"Mount R2 buckets as filesystems using FUSE in Containers","url":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Granular permissions
 description: Scope Cloudflare member permissions to individual Cloudflare Tunnel instances.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Granular permissions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Granular permissions
 
-# Granular permissions
+Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/advanced/granular-permissions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can scope Cloudflare member permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances instead of granting account-wide access. This lets you delegate management of specific Tunnels — for example, letting an application team manage one Tunnel for its service without exposing every Tunnel in the account.
 
@@ -61,7 +63,14 @@ Members with an account-level role that covers Tunnels continue to see all Tunne
 * [Manage account members](https://developers.cloudflare.com/fundamentals/manage-members/manage/) — the member invite and edit flow.
 * [Granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) — the same RBAC capability applied to Cloudflare Mesh nodes alongside Tunnels.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/granular-permissions/#page","headline":"Granular permissions · Cloudflare Docs","description":"Scope Cloudflare member permissions to individual Cloudflare Tunnel instances.","url":"https://developers.cloudflare.com/tunnel/advanced/granular-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/advanced/","name":"Advanced"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/advanced/granular-permissions/","name":"Granular permissions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/granular-permissions/#page","headline":"Granular permissions · Cloudflare Docs","description":"Scope Cloudflare member permissions to individual Cloudflare Tunnel instances.","url":"https://developers.cloudflare.com/tunnel/advanced/granular-permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

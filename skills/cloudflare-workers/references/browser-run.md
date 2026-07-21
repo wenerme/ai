@@ -1,16 +1,18 @@
 ---
-title: Browser Run
 description: Control headless browsers with Cloudflare's Workers Browser Run API. Automate tasks, take screenshots, convert pages to PDFs, and test web apps.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Browser Run
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Browser Run
 
-# Browser Run
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Run headless Chrome on [Cloudflare's global network](https://developers.cloudflare.com/workers/) for browser automation, web scraping, testing, and content generation.
 
@@ -59,45 +61,52 @@ Browser Run offers two categories of integration methods:
 
 ## Related products
 
-**[Workers](https://developers.cloudflare.com/workers/)**
+[Workers](https://developers.cloudflare.com/workers/)
 
 Build serverless applications and deploy instantly across the globe for exceptional performance, reliability, and scale.
 
-**[Durable Objects](https://developers.cloudflare.com/durable-objects/)**
+[Durable Objects](https://developers.cloudflare.com/durable-objects/)
 
 A globally distributed coordination API with strongly consistent storage. Using Durable Objects to [persist browser sessions](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/) improves performance by eliminating the time that it takes to spin up a new browser session.
 
-**[Agents](https://developers.cloudflare.com/agents/)**
+[Agents](https://developers.cloudflare.com/agents/)
 
 Build AI-powered agents that autonomously navigate websites and perform tasks using [Playwright MCP](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/) or [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/).
 
 ## More resources
 
-[Get started](https://developers.cloudflare.com/browser-run/get-started/)
+### [ Get started ](https://developers.cloudflare.com/browser-run/get-started/)
 
 Choose an integration method and deploy your first project.
 
-[Limits](https://developers.cloudflare.com/browser-run/limits/)
+### [ Limits ](https://developers.cloudflare.com/browser-run/limits/)
 
 Learn about Browser Run limits.
 
-[Pricing](https://developers.cloudflare.com/browser-run/pricing/)
+### [ Pricing ](https://developers.cloudflare.com/browser-run/pricing/)
 
 Learn about Browser Run pricing.
 
-[Playwright API](https://developers.cloudflare.com/browser-run/playwright/)
+### [ Playwright API ](https://developers.cloudflare.com/browser-run/playwright/)
 
 Use Cloudflare's fork of Playwright for testing and automation.
 
-[Developer Discord](https://discord.cloudflare.com)
+### [ Developer Discord ](https://discord.cloudflare.com)
 
 Connect with the Workers community on Discord to ask questions, show what you are building, and discuss the platform with other developers.
 
-[@CloudflareDev](https://x.com/cloudflaredev)
+### [ @CloudflareDev ](https://x.com/cloudflaredev)
 
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/#page","headline":"Browser Run · Cloudflare Browser Run docs","description":"Control headless browsers with Cloudflare's Workers Browser Run API. Automate tasks, take screenshots, convert pages to PDFs, and test web apps.","url":"https://developers.cloudflare.com/browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/#page","headline":"Browser Run · Cloudflare Browser Run docs","description":"Control headless browsers with Cloudflare's Workers Browser Run API. Automate tasks, take screenshots, convert pages to PDFs, and test web apps.","url":"https://developers.cloudflare.com/browser-run/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

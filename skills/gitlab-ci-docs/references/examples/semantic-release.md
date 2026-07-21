@@ -46,12 +46,12 @@ Create a `.gitlab-ci.yml` with the following content:
 default:
   image: node:latest
   before_script:
-    - npm ci --cache .npm --prefer-offline
     - |
       {
         echo "@${CI_PROJECT_ROOT_NAMESPACE}:registry=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/"
         echo "${CI_API_V4_URL#https?}/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=\${CI_JOB_TOKEN}"
       } | tee -a .npmrc
+    - npm ci --cache .npm --prefer-offline
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:

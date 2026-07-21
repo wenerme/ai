@@ -1,16 +1,18 @@
 ---
-title: Refactor a Worker to a Pages Function
 description: Migrate an existing Cloudflare Worker into a Pages Function for your Pages project.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Refactor a Worker to a Pages Function
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Refactor a Worker to a Pages Function
 
-# Refactor a Worker to a Pages Function
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will learn how to refactor a Worker made to intake form submissions to a Pages Function that can be hosted on your Cloudflare Pages application. [Pages Functions](https://developers.cloudflare.com/pages/functions/) is a serverless function that lives within the same project directory as your application and is deployed with Cloudflare Pages. It enables you to run server-side code that adds dynamic functionality without running a dedicated server. You may want to refactor a Worker to a Pages Function for one of these reasons:
 
@@ -53,67 +55,58 @@ The following code block shows an example of a Worker that handles Airtable form
 
 The `submitHandler` async function is called if the pathname of the work is `/submit`. This function checks that the request method is a `POST` request and then proceeds to parse and post the form entries to Airtable using your credentials, which you can store using [Wrangler secret](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret).
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
+	async fetch(request, env, ctx) {
+		const url = new URL(request.url);
 
+		if (url.pathname === "/submit") {
+			return submitHandler(request, env);
+		}
 
-    if (url.pathname === "/submit") {
-      return submitHandler(request, env);
-    }
-
-
-    return fetch(request.url);
-  },
+		return fetch(request.url);
+	},
 };
 
-
 async function submitHandler(request, env) {
-  if (request.method !== "POST") {
-    return new Response("Method not allowed", {
-      status: 405,
-    });
-  }
-  const body = await request.formData();
+	if (request.method !== "POST") {
+		return new Response("Method not allowed", {
+			status: 405,
+		});
+	}
+	const body = await request.formData();
 
+	const { first_name, last_name, email, phone, subject, message } =
+		Object.fromEntries(body);
 
-  const { first_name, last_name, email, phone, subject, message } =
-    Object.fromEntries(body);
+	const reqBody = {
+		fields: {
+			"First Name": first_name,
+			"Last Name": last_name,
+			Email: email,
+			"Phone number": phone,
+			Subject: subject,
+			Message: message,
+		},
+	};
 
-
-  const reqBody = {
-    fields: {
-      "First Name": first_name,
-      "Last Name": last_name,
-      Email: email,
-      "Phone number": phone,
-      Subject: subject,
-      Message: message,
-    },
-  };
-
-
-  return HandleAirtableData(reqBody, env);
+	return HandleAirtableData(reqBody, env);
 }
 
-
 const HandleAirtableData = (body, env) => {
-  return fetch(
-    `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(
-      env.AIRTABLE_TABLE_NAME,
-    )}`,
-    {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,
-        "Content-type": `application/json`,
-      },
-    },
-  );
+	return fetch(
+		`https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(
+			env.AIRTABLE_TABLE_NAME,
+		)}`,
+		{
+			method: "POST",
+			body: JSON.stringify(body),
+			headers: {
+				Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,
+				"Content-type": `application/json`,
+			},
+		},
+	);
 };
 ```
 
@@ -123,11 +116,9 @@ To refactor the above Worker, go to your Pages project directory and create a `/
 
 Then, in the `form.js` file, export a single `onRequestPost`:
 
-**JavaScript**
-
 ```js
 export async function onRequestPost(context) {
-  return await submitHandler(context);
+	return await submitHandler(context);
 }
 ```
 
@@ -137,58 +128,50 @@ The above code takes a `request` and `env` as arguments which pass these propert
 
 Now, you will introduce the `submitHandler` function and pass the `env` parameter as a property. This will allow you to access `env` in the `HandleAirtableData` function below. This function does a `POST` request to Airtable using your Airtable credentials:
 
-**JavaScript**
-
 ```js
 export async function onRequestPost(context) {
-  return await submitHandler(context);
+	return await submitHandler(context);
 }
 
-
 async function submitHandler(context) {
-  const body = await context.request.formData();
+	const body = await context.request.formData();
 
+	const { first_name, last_name, email, phone, subject, message } =
+		Object.fromEntries(body);
 
-  const { first_name, last_name, email, phone, subject, message } =
-    Object.fromEntries(body);
+	const reqBody = {
+		fields: {
+			"First Name": first_name,
+			"Last Name": last_name,
+			Email: email,
+			"Phone number": phone,
+			Subject: subject,
+			Message: message,
+		},
+	};
 
-
-  const reqBody = {
-    fields: {
-      "First Name": first_name,
-      "Last Name": last_name,
-      Email: email,
-      "Phone number": phone,
-      Subject: subject,
-      Message: message,
-    },
-  };
-
-
-  return HandleAirtableData({ body: reqBody, env: env });
+	return HandleAirtableData({ body: reqBody, env: env });
 }
 ```
 
 Finally, create a `HandleAirtableData` function. This function will send a `fetch` request to Airtable with your Airtable credentials and the body of your request:
 
-**JavaScript**
-
 ```js
 // ..
 const HandleAirtableData = async function onRequest({ body, env }) {
-  return fetch(
-    `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(
-      env.AIRTABLE_TABLE_NAME,
-    )}`,
-    {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,
-        "Content-type": `application/json`,
-      },
-    },
-  );
+	return fetch(
+		`https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(
+			env.AIRTABLE_TABLE_NAME,
+		)}`,
+		{
+			method: "POST",
+			body: JSON.stringify(body),
+			headers: {
+				Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,
+				"Content-type": `application/json`,
+			},
+		},
+	);
 };
 ```
 
@@ -200,7 +183,14 @@ You can test your Function [locally using Wrangler](https://developers.cloudflar
 * [Plugins documentation](https://developers.cloudflare.com/pages/functions/plugins/)
 * [Functions documentation](https://developers.cloudflare.com/pages/functions/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/#page","headline":"Refactor a Worker to a Pages Function · Cloudflare Pages docs","description":"Migrate an existing Cloudflare Worker into a Pages Function for your Pages project.","url":"https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/refactor-a-worker-to-pages-functions/","name":"Refactor a Worker to a Pages Function"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/#page","headline":"Refactor a Worker to a Pages Function · Cloudflare Pages docs","description":"Migrate an existing Cloudflare Worker into a Pages Function for your Pages project.","url":"https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

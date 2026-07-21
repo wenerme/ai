@@ -1,16 +1,18 @@
 ---
-title: Changelog
 description: Track the latest updates and changes to Cloudflare DNS features.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Changelog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Changelog
 
-# Changelog
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dns.xml)
 
@@ -65,7 +67,7 @@ Available to all DNS Firewall customers as part of their existing subscription.
 
 In the Cloudflare dashboard, go to the **DNS Firewall** page.
 
-[ Go to **Clusters** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
+[ Go to **Clusters** ↗ ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
 
 For more information, refer to [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/).
 
@@ -115,7 +117,7 @@ Once the new experience is turned on for your account, look for the feedback lin
 
 You can now disable Cloudflare's reverse proxy across all zones in your account simultaneously using the new `enforce_dns_only` setting. When enabled, Cloudflare responds to DNS queries for all proxied records with your origin IP addresses instead of Cloudflare's anycast IPs. This account-level kill switch is designed for incident response scenarios where you need to quickly route traffic directly to your origin servers.
 
-Warning
+Caution
 
 Enabling this setting exposes your origin IP addresses and removes all Cloudflare protections — including DDoS mitigation, WAF, caching, and all other proxy-based features — for every zone in your account. Use with extreme caution and only after proper [preparations](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/#preparation).
 
@@ -179,9 +181,9 @@ Available to customers with the [Data Localization Suite](https://developers.clo
 #### Where to find it
 
 * **Authoritative DNS:** In the Cloudflare dashboard, select your zone and go to the **Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
 * **DNS Firewall:** In the Cloudflare dashboard, go to the **DNS Firewall Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
 
 For more information, refer to [DNS Analytics](https://developers.cloudflare.com/dns/additional-options/analytics/) and [DNS Firewall Analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/).
 
@@ -216,7 +218,7 @@ Available to all DNS Firewall customers as part of their existing subscription.
 #### Where to Find It
 
 * In the Cloudflare dashboard, go to the **DNS Firewall** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/dns-firewall/analytics)
 * Refer to the [DNS Firewall Analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/) to learn more.
 
 ## 2025-06-19
@@ -230,33 +232,29 @@ This allows users to query DNS analytics across multiple zones in their account,
 
 Here is an example to retrieve the most recent DNS queries across all zones in your account that resulted in an `NXDOMAIN` response over a given time frame. Please replace `a30f822fcd7c401984bf85d8f2a5111c` with your actual account ID.
 
-**GraphQL example for account-level DNS analytics**
-
 ```graphql
 query GetLatestNXDOMAINResponses {
-  viewer {
-    accounts(filter: { accountTag: "a30f822fcd7c401984bf85d8f2a5111c" }) {
-      dnsAnalyticsAdaptive(
-        filter: {
-          date_geq: "2025-06-16"
-          date_leq: "2025-06-18"
-          responseCode: "NXDOMAIN"
-        }
-        limit: 10000
-        orderBy: [datetime_DESC]
-      ) {
-        zoneTag
-        queryName
-        responseCode
-        queryType
-        datetime
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: "a30f822fcd7c401984bf85d8f2a5111c" }) {
+			dnsAnalyticsAdaptive(
+				filter: {
+					date_geq: "2025-06-16"
+					date_leq: "2025-06-18"
+					responseCode: "NXDOMAIN"
+				}
+				limit: 10000
+				orderBy: [datetime_DESC]
+			) {
+				zoneTag
+				queryName
+				responseCode
+				queryType
+				datetime
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4mALgGQIaLAZ0QOQBoAiA8gLICCAkjgEpYAOA9gHaZYwDeAUDDAG4CWYAO6QO3HjFQBjKQxBNEmABQAzfgBsMEAFwdJMuQoAqqAOa6ARKgDMABhUAOAExOVUgCYB2KQBZbARgBOBx8AI0cAVncHFSdUCP9EqQsYAF8ASjEJCXcWMiZUdShEfilMMndUOhLeMCVxbJ41TUhdLkbGyowAfVMwYEsnWycIgFpbADZR-wmLBo6YLrBu9X7B4bHJ6Yc5hYkIemZWAGEGdzBLfGJyKl2F1Pns9X4AW35EXX9bb9tHiQYIOcIAAhKC6ADaSxKL2WBAAogBlY4AXT+mXaCwAXswwCZTH8eKBIFAcKgYQSYAdMIwWGBTucKUToEYoHQwBSoa92R0HtleWlOKkgA&variables=N4XyA)
 
 To learn more and get started, refer to the [DNS Analytics documentation](https://developers.cloudflare.com/dns/additional-options/analytics/#analytics).
 
@@ -330,35 +328,33 @@ The affected fields are:
 
 An example record returned from the API would now look like the following:
 
-**Updated API Response**
-
 ```json
 {
-  "result": {
-    "id": "<ID>",
-    "zone_id": "<ZONE_ID>",
-    "zone_name": "example.com",
-    "name": "www.example.com",
-    "type": "A",
-    "content": "192.0.2.1",
-    "proxiable": true,
-    "proxied": false,
-    "ttl": 1,
-    "locked": false,
-    "meta": {
-      "auto_added": false,
-      "managed_by_apps": false,
-      "managed_by_argo_tunnel": false,
-      "source": "primary"
-    },
-    "comment": null,
-    "tags": [],
-    "created_on": "2025-03-17T20:37:05.368097Z",
-    "modified_on": "2025-03-17T20:37:05.368097Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "<ID>",
+		"zone_id": "<ZONE_ID>",
+		"zone_name": "example.com",
+		"name": "www.example.com",
+		"type": "A",
+		"content": "192.0.2.1",
+		"proxiable": true,
+		"proxied": false,
+		"ttl": 1,
+		"locked": false,
+		"meta": {
+			"auto_added": false,
+			"managed_by_apps": false,
+			"managed_by_argo_tunnel": false,
+			"source": "primary"
+		},
+		"comment": null,
+		"tags": [],
+		"created_on": "2025-03-17T20:37:05.368097Z",
+		"modified_on": "2025-03-17T20:37:05.368097Z"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -385,7 +381,14 @@ When creating [TXT records](https://developers.cloudflare.com/dns/manage-dns-rec
 
 Paid zones now have the option to flatten specific CNAME records. When using the API, specify the setting `cname_flatten` as `true` or `false`. Refer to the [documentation](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/#per-record) for details.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/dns/changelog/#page","headline":"Changelog · Cloudflare DNS docs","description":"Track the latest updates and changes to Cloudflare DNS features.","url":"https://developers.cloudflare.com/dns/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/changelog/","name":"Changelog"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/dns/changelog/#page","headline":"Changelog · Cloudflare DNS docs","description":"Track the latest updates and changes to Cloudflare DNS features.","url":"https://developers.cloudflare.com/dns/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Plans
 description: Compare Turnstile feature availability and widget limits across plans.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Plans
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Plans
 
-# Plans
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/plans/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Turnstile is available on the following plans:
 
@@ -53,7 +55,14 @@ Notes
 * Free users are limited to 20 widgets per account. Customers with Enterprise Bot Management and Enterprise Turnstile can have this limit increased. Contact your account team to discuss your requirements.
 * Turnstile can be used independently without requiring other Cloudflare services.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/turnstile/plans/#page","headline":"Cloudflare Turnstile plans · Cloudflare Turnstile docs","description":"Compare Turnstile feature availability and widget limits across plans.","url":"https://developers.cloudflare.com/turnstile/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/plans/","name":"Plans"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/turnstile/plans/#page","headline":"Cloudflare Turnstile plans · Cloudflare Turnstile docs","description":"Compare Turnstile feature availability and widget limits across plans.","url":"https://developers.cloudflare.com/turnstile/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

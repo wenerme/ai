@@ -1,16 +1,18 @@
 ---
-title: Bitbucket Cloud
 description: Reference information for Bitbucket Cloud in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Bitbucket Cloud
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bitbucket Cloud
 
-# Bitbucket Cloud
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/bitbucket-cloud/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Bitbucket Cloud integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Bitbucket Cloud Cloud account that could leave you and your organization vulnerable.
 
@@ -67,7 +69,14 @@ Flag repository issues, including branch protection, access, and update frequenc
 | Bitbucket Cloud: Repository Default Branch Protection does not enforce merge checks                       | 64440d40-91de-4d13-9280-d5afa418ccf0 | Low      |
 | Bitbucket Cloud: Key is older than 180 days                                                               | 0a135600-a109-434f-877c-1a6594dcd76d | Low      |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/bitbucket-cloud/#page","headline":"Bitbucket Cloud · Cloudflare One docs","description":"Reference information for Bitbucket Cloud in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/bitbucket-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/","name":"Cloud and SaaS integrations"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/bitbucket-cloud/","name":"Bitbucket Cloud"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/bitbucket-cloud/#page","headline":"Bitbucket Cloud · Cloudflare One docs","description":"Reference information for Bitbucket Cloud in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/bitbucket-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

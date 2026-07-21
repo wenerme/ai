@@ -1,16 +1,18 @@
 ---
-title: Records quick scan
 description: How Cloudflare scans and imports DNS records automatically.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Records quick scan
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Records quick scan
 
-# Records quick scan
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To help all customers get started when a new zone is created, Cloudflare offers a DNS records quick scan.
 
@@ -100,7 +102,14 @@ Since it is still common that visitors type `www.<DOMAIN>` in their browsers exp
 
 Mail exchanger (`MX`) and other record types combined with names like `mail`, `webmail`, or `smtp`, are also commonly found. As explained in the [Set up email records page](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/), there are several DNS records that can be used to make sure email reaches your mail server and to prevent other email senders from spoofing your domain.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/#page","headline":"Records quick scan · Cloudflare DNS docs","description":"How Cloudflare scans and imports DNS records automatically.","url":"https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/reference/dns-quick-scan/","name":"Records quick scan"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/#page","headline":"Records quick scan · Cloudflare DNS docs","description":"How Cloudflare scans and imports DNS records automatically.","url":"https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

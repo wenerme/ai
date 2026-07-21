@@ -1283,7 +1283,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 115 skills, 32543 files, 379 MiB total
+> 115 skills, 32564 files, 382 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1311,29 +1311,29 @@ Use when implementing React state management with Zustand, including context-sco
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
 | [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 125 | 5.1 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1101 | 10 MiB |
-| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1529 | 12 MiB |
-| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 3.0 MiB |
-| [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 31 KiB |
-| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 830 | 5.0 MiB |
-| [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1242 | 8.4 MiB |
-| [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.6 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 783 | 7.4 MiB |
-| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 930 | 9.7 MiB |
+| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1543 | 17 MiB |
+| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 2.9 MiB |
+| [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 32 KiB |
+| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 830 | 4.9 MiB |
+| [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1242 | 8.1 MiB |
+| [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.3 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 783 | 7.1 MiB |
+| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 930 | 9.4 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4845 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1590 | 9.5 MiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
-| [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 302 | 1.9 MiB |
+| [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 304 | 1.9 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
 | [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | 90 | 802 KiB |
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 554 KiB |
 | [gitea-docs](./skills/gitea-docs/SKILL.md) | 96 | 662 KiB |
-| [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 372 | 4.6 MiB |
+| [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 373 | 4.6 MiB |
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 244 | 14 MiB |
-| [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 1.9 MiB |
-| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 899 | 8.1 MiB |
+| [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 2.0 MiB |
+| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 903 | 8.1 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 464 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 700 KiB |

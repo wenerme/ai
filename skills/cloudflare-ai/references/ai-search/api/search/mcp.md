@@ -1,16 +1,18 @@
 ---
-title: MCP
 description: Expose AI Search content to AI agents through the Model Context Protocol (MCP) endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: MCP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  MCP
 
-# MCP
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/api/search/mcp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Model Context Protocol (MCP) endpoint allows AI agents to discover and interact with your AI Search content. This endpoint follows the [MCP specification ↗](https://modelcontextprotocol.io/) and provides tools for querying your indexed content.
 
@@ -18,7 +20,7 @@ The Model Context Protocol (MCP) endpoint allows AI agents to discover and inter
 
 Enable public endpoints for your AI Search instance:
 
-1. Go to **AI Search** in the Cloudflare dashboard. [ Go to **AI Search** ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [ Go to **AI Search** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance.
 3. Go to **Settings** \> **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**.
@@ -55,7 +57,14 @@ curl https://<INSTANCE_ID>.search.ai.cloudflare.com/mcp \
   }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/search/mcp/#page","headline":"MCP · Cloudflare AI Search docs","description":"Expose AI Search content to AI agents through the Model Context Protocol (MCP) endpoint.","url":"https://developers.cloudflare.com/ai-search/api/search/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/api/","name":"API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/api/search/","name":"Search"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/api/search/mcp/","name":"MCP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/search/mcp/#page","headline":"MCP · Cloudflare AI Search docs","description":"Expose AI Search content to AI agents through the Model Context Protocol (MCP) endpoint.","url":"https://developers.cloudflare.com/ai-search/api/search/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

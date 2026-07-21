@@ -1,16 +1,18 @@
 ---
-title: strongSwan
 description: Connect strongSwan to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: strongSwan
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  strongSwan
 
-# strongSwan
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/strongswan/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to set up strongSwan along with Cloudflare WAN (formerly Magic WAN). You will learn how to configure strongSwan, configure an IPsec tunnel, and create Policy-Based Routing (PBR).
 
@@ -52,12 +54,10 @@ charon {
     install_routes = no
     install_virtual_ip = no
 
-
     plugins {
         include strongswan.d/charon/*.conf
     }
 }
-
 
 include strongswan.d/*.conf
 ```
@@ -72,7 +72,6 @@ config setup
     charondebug="all"
     uniqueids = yes
 
-
 conn %default
     ikelifetime=24h
     rekey=yes
@@ -81,7 +80,6 @@ conn %default
     authby=secret
     dpdaction=restart
     closeaction=restart
-
 
 # Sample VPN connections
 conn cloudflare-ipsec
@@ -113,13 +111,10 @@ conn cloudflare-ipsec
 ```txt
 #!/bin/bash
 
-
 set -o nounset
 set -o errexit
 
-
 VTI_IF="vti0"
-
 
 case "${PLUTO_VERB}" in
     up-client)
@@ -211,7 +206,14 @@ sudo tcpdump -i vti0 host 172.64.240.252
 
 ![If you run tcpdump on vti0 you can check for decrypted packets](https://developers.cloudflare.com/_astro/tcpdump.CaDJay4I_ID4bt.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/strongswan/#page","headline":"strongSwan · Cloudflare WAN docs","description":"Connect strongSwan to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/strongswan/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/strongswan/","name":"strongSwan"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/strongswan/#page","headline":"strongSwan · Cloudflare WAN docs","description":"Connect strongSwan to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/strongswan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

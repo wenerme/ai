@@ -1,16 +1,18 @@
 ---
-title: Egress control
 description: Restrict, intercept, and audit outbound network access for dynamic Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Egress control
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Egress control
 
-# Egress control
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you run untrusted or AI-generated code in a dynamic Worker, you need to control what it can access on the network. You might want to:
 
@@ -25,13 +27,11 @@ The `globalOutbound` option in the `WorkerCode` object returned by `get()` or pa
 
 Set `globalOutbound` to `null` to fully isolate the dynamic Worker from the network:
 
-**JavaScript**
-
 ```js
 return {
-  mainModule: "index.js",
-  modules: { "index.js": code },
-  globalOutbound: null,
+	mainModule: "index.js",
+	modules: { "index.js": code },
+	globalOutbound: null,
 };
 ```
 
@@ -45,41 +45,35 @@ That said, if you need to offer compatibility with existing HTTP client librarie
 
 To intercept outbound requests, define a `WorkerEntrypoint` class in the loader Worker that acts as a gateway. Every `fetch()` and `connect()` call the dynamic Worker makes goes through this gateway instead of hitting the network directly. Pass the gateway to the dynamic Worker with `globalOutbound` and `ctx.exports`:
 
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class HttpGateway extends WorkerEntrypoint {
-  async fetch(request) {
-    // Every outbound fetch() from the dynamic Worker arrives here.
-    // Inspect, modify, block, or forward the request.
-    return fetch(request);
-  }
+	async fetch(request) {
+		// Every outbound fetch() from the dynamic Worker arrives here.
+		// Inspect, modify, block, or forward the request.
+		return fetch(request);
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const worker = env.LOADER.get("my-worker", async () => {
-      return {
-        compatibilityDate: "$today",
-        mainModule: "index.js",
-        modules: { "index.js": code },
+	async fetch(request, env, ctx) {
+		const worker = env.LOADER.get("my-worker", async () => {
+			return {
+				compatibilityDate: "$today",
+				mainModule: "index.js",
+				modules: { "index.js": code },
 
+				// Pass the gateway as a service binding.
+				// The dynamic Worker's fetch() and connect() calls
+				// are routed through HttpGateway instead of going
+				// to the network directly.
+				globalOutbound: ctx.exports.HttpGateway(),
+			};
+		});
 
-        // Pass the gateway as a service binding.
-        // The dynamic Worker's fetch() and connect() calls
-        // are routed through HttpGateway instead of going
-        // to the network directly.
-        globalOutbound: ctx.exports.HttpGateway(),
-      };
-    });
-
-
-    return worker.getEntrypoint().fetch(request);
-  },
+		return worker.getEntrypoint().fetch(request);
+	},
 };
 ```
 
@@ -91,61 +85,60 @@ A common pattern is attaching credentials to outbound requests so the dynamic Wo
 
 The dynamic Worker calls `fetch()` normally. `HttpGateway` intercepts the request, attaches the token from the loader Worker's environment, and forwards it. The dynamic Worker never has access to `API_TOKEN`.
 
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class HttpGateway extends WorkerEntrypoint {
-  async fetch(request) {
-    let url = new URL(request.url);
-    const headers = new Headers(request.headers);
+	async fetch(request) {
+		let url = new URL(request.url);
+		const headers = new Headers(request.headers);
 
+		// For requests to api.example.com, inject credentials.
+		if (url.hostname === "api.example.com") {
+			headers.set("Authorization", `Bearer ${this.env.API_TOKEN}`);
+			headers.set("X-Tenant-Id", this.ctx.props.tenantId);
+		}
 
-    // For requests to api.example.com, inject credentials.
-    if (url.hostname === "api.example.com") {
-      headers.set("Authorization", `Bearer ${this.env.API_TOKEN}`);
-      headers.set("X-Tenant-Id", this.ctx.props.tenantId);
-    }
-
-
-    return fetch(request, { headers });
-  }
+		return fetch(request, { headers });
+	}
 }
 
-
 export default {
-  async fetch(request, env, ctx) {
-    const tenantId = getTenantFromRequest(request);
+	async fetch(request, env, ctx) {
+		const tenantId = getTenantFromRequest(request);
 
+		const worker = env.LOADER.get(`tenant:${tenantId}`, async () => {
+			return {
+				mainModule: "index.js",
+				modules: {
+					"index.js": `
+						export default {
+							async fetch() {
+								const resp = await fetch("https://api.example.com/data");
+								return new Response(await resp.text());
+							},
+						};
+					`,
+				},
+				globalOutbound: ctx.exports.HttpGateway({
+					props: { tenantId },
+				}),
+			};
+		});
 
-    const worker = env.LOADER.get(`tenant:${tenantId}`, async () => {
-      return {
-        mainModule: "index.js",
-        modules: {
-          "index.js": `
-            export default {
-              async fetch() {
-                const resp = await fetch("https://api.example.com/data");
-                return new Response(await resp.text());
-              },
-            };
-          `,
-        },
-        globalOutbound: ctx.exports.HttpGateway({
-          props: { tenantId },
-        }),
-      };
-    });
-
-
-    return worker.getEntrypoint().fetch(request);
-  },
+		return worker.getEntrypoint().fetch(request);
+	},
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/#page","headline":"Egress control · Cloudflare Dynamic Workers docs","description":"Restrict, intercept, and audit outbound network access for dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/usage/","name":"Usage"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/usage/egress-control/","name":"Egress control"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/#page","headline":"Egress control · Cloudflare Dynamic Workers docs","description":"Restrict, intercept, and audit outbound network access for dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

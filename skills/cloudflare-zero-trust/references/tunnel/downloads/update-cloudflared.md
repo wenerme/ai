@@ -1,16 +1,18 @@
 ---
-title: Update cloudflared
 description: Update cloudflared to the latest version.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Update cloudflared
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Update cloudflared
 
-# Update cloudflared
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Updates will cause `cloudflared` to restart which will impact traffic currently being served. You can perform zero-downtime upgrades by using Cloudflare's [Load Balancer product](#update-with-cloudflare-load-balancer) or by using [multiple cloudflared instances](#update-with-multiple-cloudflared-instances).
 
@@ -18,24 +20,13 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/advanced/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-11797)
-* [ macOS ](#tab-panel-11798)
-* [ Debian ](#tab-panel-11799)
-* [ Red Hat ](#tab-panel-11800)
-* [ Docker ](#tab-panel-11801)
-* [ Other ](#tab-panel-11802)
-
 Run the following command:
-
-**PowerShell**
 
 ```powershell
 cloudflared update
 ```
 
 After running `cloudflared update` to update `cloudflared`, you must restart the service for it to take effect. Run:
-
-**PowerShell**
 
 ```powershell
 net start cloudflared
@@ -103,14 +94,14 @@ sudo systemctl restart cloudflared.service
 **If you created a remotely-managed tunnel using the dashboard:**
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select your tunnel to open its detail page.
 3. On the **Overview** tab, copy the Docker installation command. The copied command will contain your token.
 4. Paste this command into a terminal window.
 
 This command creates a new container from the latest `cloudflared` image. You can now delete the old container.
 
-Warning
+Caution
 
 Cloudflare recommends creating remotely-managed tunnels when working with Docker.
 
@@ -168,8 +159,6 @@ Windows systems require services to have a unique name and display name. You can
 1. Install and configure `cloudflared`.
 2. Next, create a service with a unique name and point to the `cloudflared` executable and configuration file.
 
-**PowerShell**
-
 ```powershell
 sc.exe create <unique-name> binPath='<path-to-exe>' --config '<path-to-config>' displayname="Unique Name"
 ```
@@ -177,13 +166,18 @@ sc.exe create <unique-name> binPath='<path-to-exe>' --config '<path-to-config>' 
 1. Proceed to create additional services with unique names.
 2. You can now start each unique service.
 
-**PowerShell**
-
 ```powershell
 sc.exe start <unique-name>
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/#page","headline":"Update cloudflared · Cloudflare Docs","description":"Update cloudflared to the latest version.","url":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Docker"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/tunnel/","name":"Cloudflare Tunnel"}},{"@type":"ListItem","position":3,"item":{"@id":"/tunnel/downloads/","name":"Downloads"}},{"@type":"ListItem","position":4,"item":{"@id":"/tunnel/downloads/update-cloudflared/","name":"Update cloudflared"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/#page","headline":"Update cloudflared · Cloudflare Docs","description":"Update cloudflared to the latest version.","url":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Docker"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Network diagram
 description: Visual overview of Smart Shield features and their role in origin protection.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Network diagram
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network diagram
 
-# Network diagram
+Last updated May 4, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/smart-shield/concepts/network-diagram/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The diagram below shows how requests flow through the Cloudflare network when Smart Shield is active, and where each feature applies along that path.
 
@@ -22,7 +24,14 @@ For dynamic (non-cacheable) requests, [Argo Smart Routing](https://developers.cl
 
 [Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/) run from multiple data centers to monitor whether your origin is online and responsive. [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) provide reserved IP addresses for traffic from Cloudflare to your origin, allowing you to restrict your origin firewall to a small allowlist.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/concepts/network-diagram/#page","headline":"Network diagram · Cloudflare Smart Shield docs","description":"Visual overview of Smart Shield features and their role in origin protection.","url":"https://developers.cloudflare.com/smart-shield/concepts/network-diagram/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/concepts/network-diagram/","name":"Network diagram"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/concepts/network-diagram/#page","headline":"Network diagram · Cloudflare Smart Shield docs","description":"Visual overview of Smart Shield features and their role in origin protection.","url":"https://developers.cloudflare.com/smart-shield/concepts/network-diagram/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

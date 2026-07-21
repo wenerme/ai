@@ -27,11 +27,9 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    tools: [
-        { type: "web_search" },
-    ],
-    input: "What was a positive news story from today?",
+  model: "gpt-5.6",
+  tools: [{ type: "web_search" }],
+  input: "What was a positive news story from today?",
 });
 
 console.log(response.output_text);
@@ -221,12 +219,14 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    tools: [{
-        type: "web_search",
-        search_context_size: "low",
-    }],
-    input: "What movie won best picture in 2025?",
+  model: "gpt-5.6",
+  tools: [
+    {
+      type: "web_search",
+      search_context_size: "low",
+    },
+  ],
+  input: "What movie won best picture in 2025?",
 });
 console.log(response.output_text);
 ```
@@ -287,24 +287,24 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    reasoning: { effort: "xhigh" },
-    tools: [
-        {
-            type: "web_search",
-            return_token_budget: "unlimited",
-        },
-    ],
-    input: [
-        "Research the economic impact of semaglutide on global healthcare systems.",
-        "",
-        "Do:",
-        "- Include specific figures, trends, statistics, and measurable outcomes.",
-        "- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.",
-        "- Include inline citations and return all source metadata.",
-        "",
-        "Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.",
-    ].join("\n"),
+  model: "gpt-5.6",
+  reasoning: { effort: "xhigh" },
+  tools: [
+    {
+      type: "web_search",
+      return_token_budget: "unlimited",
+    },
+  ],
+  input: [
+    "Research the economic impact of semaglutide on global healthcare systems.",
+    "",
+    "Do:",
+    "- Include specific figures, trends, statistics, and measurable outcomes.",
+    "- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.",
+    "- Include inline citations and return all source metadata.",
+    "",
+    "Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.",
+  ].join("\n"),
 });
 
 console.log(response.output_text);
@@ -389,30 +389,27 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    reasoning: { effort: "low" },
-    tools: [
-        {
-            type: "web_search",
-            filters: {
-                allowed_domains: [
-                    "pubmed.ncbi.nlm.nih.gov",
-                    "clinicaltrials.gov",
-                    "www.who.int",
-                    "www.cdc.gov",
-                    "www.fda.gov",
-                ],
-                blocked_domains: [
-                    "reddit.com",
-                    "quora.com",
-                    "wikipedia.org",
-                ],
-            },
-        },
-    ],
-    tool_choice: "auto",
-    include: ["web_search_call.action.sources"],
-    input: "Please perform a web search on how semaglutide is used in the treatment of diabetes.",
+  model: "gpt-5.6",
+  reasoning: { effort: "low" },
+  tools: [
+    {
+      type: "web_search",
+      filters: {
+        allowed_domains: [
+          "pubmed.ncbi.nlm.nih.gov",
+          "clinicaltrials.gov",
+          "www.who.int",
+          "www.cdc.gov",
+          "www.fda.gov",
+        ],
+        blocked_domains: ["reddit.com", "quora.com", "wikipedia.org"],
+      },
+    },
+  ],
+  tool_choice: "auto",
+  include: ["web_search_call.action.sources"],
+  input:
+    "Please perform a web search on how semaglutide is used in the treatment of diabetes.",
 });
 
 console.log(response.output_text);
@@ -499,20 +496,21 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    reasoning: { effort: "low" },
-    tools: [
-        {
-            type: "web_search",
-            search_content_types: ["image", "text"],
-            image_settings: {
-                max_results: 3,
-                caption: true,
-            },
-        },
-    ],
-    include: ["web_search_call.results"],
-    input: "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.",
+  model: "gpt-5.6",
+  reasoning: { effort: "low" },
+  tools: [
+    {
+      type: "web_search",
+      search_content_types: ["image", "text"],
+      image_settings: {
+        max_results: 3,
+        caption: true,
+      },
+    },
+  ],
+  include: ["web_search_call.results"],
+  input:
+    "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.",
 });
 
 console.log(response.output);
@@ -639,17 +637,19 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    tools: [{
-        type: "web_search",
-        user_location: {
-            type: "approximate",
-            country: "GB",
-            city: "London",
-            region: "London"
-        }
-    }],
-    input: "What are the best restaurants near me?",
+  model: "gpt-5.6",
+  tools: [
+    {
+      type: "web_search",
+      user_location: {
+        type: "approximate",
+        country: "GB",
+        city: "London",
+        region: "London",
+      },
+    },
+  ],
+  input: "What are the best restaurants near me?",
 });
 console.log(response.output_text);
 ```
@@ -710,9 +710,7 @@ const client = new OpenAI();
 
 const response = await client.responses.create({
   model: "gpt-5.6",
-  tools: [
-    { type: "web_search", external_web_access: false },
-  ],
+  tools: [{ type: "web_search", external_web_access: false }],
   tool_choice: "auto",
   input: "Find when the Eiffel Tower opened to the public and cite the source.",
 });

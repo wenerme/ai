@@ -1,16 +1,18 @@
 ---
-title: MongoDB SSH
 description: You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflared Tunnel.
-image: https://developers.cloudflare.com/zt-preview.png
+title: MongoDB SSH
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  MongoDB SSH
 
-# MongoDB SSH
+Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflare Tunnel. Cloudflare Tunnel requires a lightweight daemon, `cloudflared`, running alongside the deployment and as on the client side.
 
@@ -45,8 +47,6 @@ You can build a rule in Cloudflare Access to control who can connect to your Mon
 To be accessible over SSH, the Kubernetes deployment should manage both the MongoDB standalone service and an SSH proxy service. The configuration below will deploy 1 replica of the database service, available at port 27017, as well as an SSH proxy available at port 22.
 
  StatefulSet Configuration
-
-**YAML**
 
 ```yaml
 apiVersion: apps/v1
@@ -139,8 +139,6 @@ spec:
 The corresponding service definition should also specify the ports and target ports for the containers (in this case, the database service and the SSH proxy service).
 
 Service Definition
-
-**YAML**
 
 ```yaml
 apiVersion: v1
@@ -237,8 +235,6 @@ The configuration below will run a single replica of `cloudflared` as an ingress
 
 `cloudflared` Configuration
 
-**YAML**
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -318,7 +314,14 @@ This is a one-time step. When you next attempt to make an SSH connection to the 
 
 You can then set MongoDB Compass to connect to `localhost:27000`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/#page","headline":"MongoDB SSH · Cloudflare One docs","description":"You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflared Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MongoDB","SSH","Kubernetes"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/tutorials/mongodb-tunnel/","name":"MongoDB SSH"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/#page","headline":"MongoDB SSH · Cloudflare One docs","description":"You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflared Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MongoDB","SSH","Kubernetes"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Load Balancing
 description: Configure Load Balancing with Regional Services and Customer Metadata Boundary.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Load Balancing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Load Balancing
 
-# Load Balancing
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/how-to/load-balancing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following sections describe how to configure Load Balancing with Regional Services and Customer Metadata Boundary to control where load balancing decisions and traffic processing occur.
 
@@ -20,11 +22,8 @@ You can load balance traffic at different levels of the networking stack dependi
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that the Load Balancer is available only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-8742)
-* [ API ](#tab-panel-8743)
-
 1. In the Cloudflare dashboard, go to the **Load balancing** page.
-[ Go to **Load Balancing** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing)
+[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing)
 2. Follow the steps to [create a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/#create-a-load-balancer).
 3. From the **Data Localization** dropdown, select the region you would like to use on your domain.
 4. Select **Next** and continue with the regular setup.
@@ -41,7 +40,14 @@ With Customer Metadata Boundary set to `EU`, **Traffic** \> **Load Balancing Ana
 
 Refer to the [Load Balancing documentation](https://developers.cloudflare.com/load-balancing/) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/load-balancing/#page","headline":"Load Balancing · Cloudflare Data Localization Suite docs","description":"Configure Load Balancing with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/how-to/","name":"Configuration guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/how-to/load-balancing/","name":"Load Balancing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/load-balancing/#page","headline":"Load Balancing · Cloudflare Data Localization Suite docs","description":"Configure Load Balancing with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

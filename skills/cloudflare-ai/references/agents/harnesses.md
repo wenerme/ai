@@ -1,16 +1,18 @@
 ---
-title: Harnesses
 description: Understand agent harnesses — the loop that controls planning, tool use, and response flow.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Harnesses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Harnesses
 
-# Harnesses
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A harness is the loop that makes an agent behave like an agent instead of a single model call.
 
@@ -35,7 +37,9 @@ Use Project Think when you want an opinionated chat-agent harness with defaults 
 
 ## Current harnesses
 
-[ Project Think ](https://developers.cloudflare.com/agents/harnesses/think/) An opinionated chat agent harness with built-in tools, persistent memory, lifecycle hooks, streaming, and sub-agent RPC.
+### [ Project Think ](https://developers.cloudflare.com/agents/harnesses/think/)
+
+ An opinionated chat agent harness with built-in tools, persistent memory, lifecycle hooks, streaming, and sub-agent RPC.
 
 ## What a harness usually owns
 
@@ -50,13 +54,26 @@ A harness usually owns:
 
 ## Related resources
 
-[ Agents SDK runtime ](https://developers.cloudflare.com/agents/runtime/agents-api/) Build your own harness directly on the Agent class.
+### [ Agents SDK runtime ](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
-[ Sessions ](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) Store conversation context and memory across turns.
+ Build your own harness directly on the Agent class.
 
-[ Durable execution with fibers ](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) Recover long-running agent work after Durable Object eviction.
+### [ Sessions ](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)
+
+ Store conversation context and memory across turns.
+
+### [ Durable execution with fibers ](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
+
+ Recover long-running agent work after Durable Object eviction.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/#page","headline":"Harnesses · Cloudflare Agents docs","description":"Understand agent harnesses — the loop that controls planning, tool use, and response flow.","url":"https://developers.cloudflare.com/agents/harnesses/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/harnesses/","name":"Harnesses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/#page","headline":"Harnesses · Cloudflare Agents docs","description":"Understand agent harnesses — the loop that controls planning, tool use, and response flow.","url":"https://developers.cloudflare.com/agents/harnesses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

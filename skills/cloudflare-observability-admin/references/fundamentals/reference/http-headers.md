@@ -1,16 +1,18 @@
 ---
-title: Cloudflare HTTP headers
 description: Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare HTTP headers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare HTTP headers
 
-# Cloudflare HTTP headers
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/http-headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Request headers
 
@@ -67,7 +69,7 @@ To add a `True-Client-IP` HTTP header to requests, [enable the **Add "True-Clien
 
 Alternatively, if you do not wish to receive the `True-Client-IP` header or any HTTP header that may contain the visitor's IP address, [enable the **Remove visitor IP headers** Managed Transform](https://developers.cloudflare.com/rules/transform/managed-transforms/configure/).
 
-Warning
+Caution
 
 If you are using Cloudflare in a stacked CDN and authenticating HTTP requests based on the IP address value in the `True-Client-IP` header, you must add a `True-Client-IP` header to your requests. If you do not add this header, its value can be spoofed to any value.
 
@@ -191,7 +193,14 @@ The `Cf-Ray` value returned to the visitor will be the same `Cf-Ray` value that 
 
 A list of all possible `Cf-Cache-Status` values is contained in [Cloudflare cache responses](https://developers.cloudflare.com/cache/concepts/cache-responses/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/http-headers/#page","headline":"Cloudflare HTTP headers · Cloudflare Fundamentals docs","description":"Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/reference/http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/http-headers/","name":"Cloudflare HTTP headers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/http-headers/#page","headline":"Cloudflare HTTP headers · Cloudflare Fundamentals docs","description":"Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/reference/http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Artifacts
 description: Store, version, and share filesystem artifacts across Workers, APIs, and Git-compatible tools.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Artifacts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Artifacts
 
-# Artifacts
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Versioned storage that speaks Git.
 
@@ -31,35 +33,42 @@ Use Artifacts when you need to:
 
 The same repository can be addressed from [Workers](https://developers.cloudflare.com/artifacts/get-started/workers/), the REST API, and Git clients. You can create one repo per agent, user, branch, or task, keep each unit of work separate, and compare or merge the results later.
 
-[Get started](https://developers.cloudflare.com/artifacts/get-started/)
+### [ Get started ](https://developers.cloudflare.com/artifacts/get-started/)
 
 Create your first repo with Workers or the REST API.
 
-[Guides](https://developers.cloudflare.com/artifacts/guides/)
+### [ Guides ](https://developers.cloudflare.com/artifacts/guides/)
 
 Review authentication, imports, and ArtifactFS workflows.
 
-[Concepts](https://developers.cloudflare.com/artifacts/concepts/)
+### [ Concepts ](https://developers.cloudflare.com/artifacts/concepts/)
 
 Learn how Artifacts works and how to structure repository workflows.
 
-[API](https://developers.cloudflare.com/artifacts/api/)
+### [ API ](https://developers.cloudflare.com/artifacts/api/)
 
 Review the Workers binding, REST API, and Git protocol.
 
-[Observability](https://developers.cloudflare.com/artifacts/observability/)
+### [ Observability ](https://developers.cloudflare.com/artifacts/observability/)
 
 Explore metrics for understanding Artifact activity.
 
-[Examples](https://developers.cloudflare.com/artifacts/examples/)
+### [ Examples ](https://developers.cloudflare.com/artifacts/examples/)
 
 See example integrations with Git clients, isomorphic-git, and Sandbox SDK.
 
-[Platform](https://developers.cloudflare.com/artifacts/platform/)
+### [ Platform ](https://developers.cloudflare.com/artifacts/platform/)
 
 Review pricing, limits, and changelog entries for Artifacts.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/artifacts/#page","headline":"Artifacts · Cloudflare Artifacts docs","description":"Store, version, and share filesystem artifacts across Workers, APIs, and Git-compatible tools.","url":"https://developers.cloudflare.com/artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/artifacts/#page","headline":"Artifacts · Cloudflare Artifacts docs","description":"Store, version, and share filesystem artifacts across Workers, APIs, and Git-compatible tools.","url":"https://developers.cloudflare.com/artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

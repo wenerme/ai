@@ -1,16 +1,18 @@
 ---
-title: Media and streaming
 description: Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Media and streaming
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Media and streaming
 
-# Media and streaming
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/media-streaming/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Deliver video, images, and rich media at scale with encoding, optimization, and global distribution. Cloudflare Stream handles video upload, encoding, and adaptive bitrate delivery. Images transforms and optimizes images on-the-fly. R2 stores media files with zero egress fees. Cache serves content from 300+ edge locations. Hotlink Protection and signed URLs secure media from unauthorized access.
 
@@ -65,19 +67,26 @@ Handle media uploads from users at scale:
 
 ## Related resources
 
-[Stream documentation](https://developers.cloudflare.com/stream/)
+### [ Stream documentation ](https://developers.cloudflare.com/stream/)
 
 Complete documentation for video upload, encoding, and delivery.
 
-[Images documentation](https://developers.cloudflare.com/images/)
+### [ Images documentation ](https://developers.cloudflare.com/images/)
 
 Complete documentation for image optimization and transformation.
 
-[Media case studies](https://www.cloudflare.com/case-studies/?industry=Media%20%26%20Entertainment)
+### [ Media case studies ](https://www.cloudflare.com/case-studies/?industry=Media%20%26%20Entertainment)
 
 Explore how media companies use Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/media-streaming/#page","headline":"Media and streaming · Use cases · Cloudflare use cases","description":"Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.","url":"https://developers.cloudflare.com/use-cases/media-streaming/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/media-streaming/","name":"Media and streaming"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/media-streaming/#page","headline":"Media and streaming · Use cases · Cloudflare use cases","description":"Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.","url":"https://developers.cloudflare.com/use-cases/media-streaming/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

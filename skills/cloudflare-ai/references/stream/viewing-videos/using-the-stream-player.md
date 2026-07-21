@@ -1,33 +1,35 @@
 ---
-title: Use the Stream Player
 description: Embed and customize the Cloudflare Stream Player for on-demand and live video playback.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Use the Stream Player
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use the Stream Player
 
-# Use the Stream Player
+Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides a customizable web player that can play both on-demand and live video, and requires zero additional engineering work.
 
 To add the Stream Player to a web page, you can either:
 
 * Generate an embed code on the **Stream** page of the Cloudflare dashboard for a specific video or live input.
-[ Go to **Videos** ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
 * Use the code example below, replacing `<VIDEO_UID>` with the video UID (or [signed token](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/)) and `<CODE>` with the your unique customer code, which can be found in the Stream Dashboard.
 
 ```html
 <iframe
-  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
-  style="border: none"
-  height="720"
-  width="1280"
-  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-  allowfullscreen="true"
+	src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+	style="border: none"
+	height="720"
+	width="1280"
+	allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+	allowfullscreen="true"
 ></iframe>
 ```
 
@@ -62,12 +64,12 @@ Changing the `height` and `width` attributes on the `iframe` will change the pix
 
 ```html
 <iframe
-  src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
-  style="border: none"
-  height="400"
-  width="400"
-  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-  allowfullscreen="true"
+	src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+	style="border: none"
+	height="400"
+	width="400"
+	allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+	allowfullscreen="true"
 ></iframe>
 ```
 
@@ -78,12 +80,12 @@ To make an iframe responsive, it needs styles to enforce an aspect ratio by sett
 ```html
 <!-- padding-top calculation is height / width (assuming 16:9 aspect ratio) -->
 <div style="position: relative; padding-top: 56.25%">
-  <iframe
-    src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
-    style="border: none; position: absolute; top: 0; height: 100%; width: 100%"
-    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-    allowfullscreen="true"
-  ></iframe>
+	<iframe
+		src="https://customer-<CODE>.cloudflarestream.com/<VIDEO_UID>/iframe"
+		style="border: none; position: absolute; top: 0; height: 100%; width: 100%"
+		allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+		allowfullscreen="true"
+	></iframe>
 </div>
 ```
 
@@ -96,7 +98,7 @@ Player options are configured with querystring parameters in the iframe's `src` 
 * `autoplay` default: `false`
 
   * If the autoplay flag is included as a querystring parameter, the player will attempt to autoplay the video. If you don't want the video to autoplay, don't include the autoplay flag at all (instead of setting it to `autoplay=false`.) Note that mobile browsers generally do not support this attribute, the user must tap the screen to begin video playback. Please consider mobile users or users with Internet usage limits as some users don't have unlimited Internet access before using this attribute.
-  Warning
+  Caution
   Some browsers now prevent videos with audio from playing automatically. You may set `muted` to `true` to allow your videos to autoplay. For more information, refer to [New <video> Policies for iOS ↗](https://webkit.org/blog/6784/new-video-policies-for-ios/).
 * `controls` default: `true`
 
@@ -104,7 +106,7 @@ Player options are configured with querystring parameters in the iframe's `src` 
 * `defaultTextTrack`
 
   * Will initialize the player with the specified language code's text track enabled. The value should be the BCP-47 language code that was used to [upload the text track](https://developers.cloudflare.com/stream/edit-videos/adding-captions/). If the specified language code has no captions available, the player will behave as though no language code had been provided.
-  Warning
+  Caution
   This will _only_ work once during initialization. Beyond that point the user has full control over their text track settings.
 * `letterboxColor`
 
@@ -158,11 +160,18 @@ After a live stream ends, a recording is automatically generated and available w
 
 While the recording of the live stream is generating, the video may report as `not-found` or `not-started`.
 
-## Low-Latency HLS playback Beta
+## Low-Latency HLS playback  Beta
 
 If a Live Input is enabled for the Low-Latency HLS beta, the Stream player will automatically play in low-latency mode if possible. Refer to [Start a Live Stream](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api) to enable this option.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/#page","headline":"Use the Stream Player · Cloudflare Stream docs","description":"Embed and customize the Cloudflare Stream Player for on-demand and live video playback.","url":"https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/viewing-videos/","name":"Play video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/viewing-videos/using-the-stream-player/","name":"Use the Stream Player"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/#page","headline":"Use the Stream Player · Cloudflare Stream docs","description":"Embed and customize the Cloudflare Stream Player for on-demand and live video playback.","url":"https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

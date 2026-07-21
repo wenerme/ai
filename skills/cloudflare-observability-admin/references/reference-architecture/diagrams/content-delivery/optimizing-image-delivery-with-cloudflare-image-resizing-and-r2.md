@@ -1,16 +1,18 @@
 ---
-title: Optimizing image delivery with Cloudflare image resizing and R2
 description: Learn how to get a scalable, high-performance solution to optimizing image delivery.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Optimizing image delivery with Cloudflare image resizing and R2
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Optimizing image delivery with Cloudflare image resizing and R2
 
-# Optimizing image delivery with Cloudflare image resizing and R2
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -55,7 +57,14 @@ https://www.mywebsite.com/cdn-cgi/image/width=80,quality=75/uploads/image.jpg
 * [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
 * [Serverless image content management platform](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/#page","headline":"Optimizing image delivery with Cloudflare image resizing and R2 · Cloudflare Reference Architecture docs","description":"Learn how to get a scalable, high-performance solution to optimizing image delivery.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/content-delivery/","name":"Content Delivery"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/","name":"Optimizing image delivery with Cloudflare image resizing and R2"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/#page","headline":"Optimizing image delivery with Cloudflare image resizing and R2 · Cloudflare Reference Architecture docs","description":"Learn how to get a scalable, high-performance solution to optimizing image delivery.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/optimizing-image-delivery-with-cloudflare-image-resizing-and-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Verify your AI crawler
 description: Verify your AI crawler identity for Pay Per Crawl.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Verify your AI crawler
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Verify your AI crawler
 
-# Verify your AI crawler
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/verify-ai-crawler/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 graph LR
 A[Set up your<br>Cloudflare Account] --> B[Verify your<br>AI crawler]:::highlight
@@ -52,7 +54,7 @@ Ensure your AI crawler follows Cloudflare's [verified bots policy](https://devel
 Submit a form to add your AI crawler to Cloudflare's list of verified bots.
 
 1. In the Cloudflare dashboard, go to **Manage Account** \> **Settings**.
-[ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
+[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to the **Bot Submission Form** tab.
 3. Fill out the form with the following required information:
 
@@ -62,7 +64,14 @@ Submit a form to add your AI crawler to Cloudflare's list of verified bots.
   * **User-Agents Match Pattern**: Provide substring patterns that match your User-Agent (for example, `GoogleBot | GoogleScraper`).
 4. Select **Submit**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/verify-ai-crawler/#page","headline":"Verify your AI crawler · Cloudflare AI Crawl Control docs","description":"Verify your AI crawler identity for Pay Per Crawl.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/verify-ai-crawler/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/","name":"Pay Per Crawl"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/","name":"Use pay per crawl as an AI owner"}},{"@type":"ListItem","position":6,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/verify-ai-crawler/","name":"Verify your AI crawler"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/verify-ai-crawler/#page","headline":"Verify your AI crawler · Cloudflare AI Crawl Control docs","description":"Verify your AI crawler identity for Pay Per Crawl.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/verify-ai-crawler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

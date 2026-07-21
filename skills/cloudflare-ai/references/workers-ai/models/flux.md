@@ -1,22 +1,28 @@
 ---
-title: flux
 description: Flux is the first conversational speech recognition model built specifically for voice agents.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: flux
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)
 
 #  flux
 
-Automatic Speech Recognition • Deepgram
+ Automatic Speech Recognition • Deepgram
 
-`@cf/deepgram/flux`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/flux/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/deepgram/flux `
+
+* Cloudflare-hosted
+* Partner
+* Real-time
 
 Flux is the first conversational speech recognition model built specifically for voice agents.
 
@@ -27,92 +33,7 @@ Flux is the first conversational speech recognition model built specifically for
 | Real-time         | Yes                                  |
 | Unit Pricing      | $0.0077 per audio minute (websocket) |
 
-## Usage
-
-Step 1: Create a Worker that establishes a WebSocket connection
-
-**TypeScript**
-
-```ts
-export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const resp = await env.AI.run("@cf/deepgram/flux", {
-      encoding: "linear16",
-      sample_rate: "16000"
-    }, {
-      websocket: true
-    });
-    return resp;
-  },
-} satisfies ExportedHandler<Env>;
-```
-
-Step 2: Deploy your Worker
-
-```sh
-npx wrangler deploy
-```
-
-Step 3: Write a client script to connect to your Worker and send audio
-
-**JavaScript**
-
-```js
-const ws = new WebSocket('wss://<your-worker-url.com>');
-
-
-ws.onopen = () => {
-  console.log('Connected to WebSocket');
-
-
-  // Generate and send random audio bytes
-  // You can replace this part with a function
-  // that reads from your mic or other audio source
-  const audioData = generateRandomAudio();
-  ws.send(audioData);
-  console.log('Audio data sent');
-};
-
-
-ws.onmessage = (event) => {
-  // Transcription will be received here
-  // Add your custom logic to parse the data
-  console.log('Received:', event.data);
-};
-
-
-ws.onerror = (error) => {
-  console.error('WebSocket error:', error);
-};
-
-
-ws.onclose = () => {
-  console.log('WebSocket closed');
-};
-
-
-// Generate random audio data (1 second of noise at 44.1kHz, mono)
-function generateRandomAudio() {
-  const sampleRate = 44100;
-  const duration = 1;
-  const numSamples = sampleRate * duration;
-  const buffer = new ArrayBuffer(numSamples * 2);
-  const view = new Int16Array(buffer);
-
-
-  for (let i = 0; i < numSamples; i++) {
-    view[i] = Math.floor(Math.random() * 65536 - 32768);
-  }
-
-
-  return buffer;
-}
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-5266)
-* [ Output ](#tab-panel-5267)
 
 encoding
 
@@ -188,7 +109,14 @@ Input [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-input.
 
 Output [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/flux/#page","headline":"flux (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Flux is the first conversational speech recognition model built specifically for voice agents.","url":"https://developers.cloudflare.com/workers-ai/models/flux/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/flux/#page","headline":"flux (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Flux is the first conversational speech recognition model built specifically for voice agents.","url":"https://developers.cloudflare.com/workers-ai/models/flux/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

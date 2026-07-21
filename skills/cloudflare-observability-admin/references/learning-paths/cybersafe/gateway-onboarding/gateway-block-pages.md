@@ -1,16 +1,18 @@
 ---
-title: Block pages
 description: Learn about block pages in this guide.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Block pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Block pages
 
-# Block pages
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-block-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Enable the block page for DNS policies
 
@@ -33,9 +35,6 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-9899)
-* [ Terraform (v5) ](#tab-panel-9900)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
 3. Choose **Custom Gateway block page**. Gateway will display a preview of your custom block page. Available customizations include:
@@ -53,21 +52,21 @@ To customize your block page:
 2. In [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings), configure the `block_page` argument with your customizations:
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    block_page = {
-      enabled = true //do not use the default Gateway block page
-      mode = "customized_block_page" //use a custom block page
-      name = "Cloudflare"
-      logo_path = "https://logos.com/a.png"
-      header_text = "--header--"
-      footer_text = "--footer--"
-      mailto_address = "admin@example.com"
-      mailto_subject = "Blocked Request"
-      background_color = "#ffffff"
-      suppress_footer = false
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		block_page = {
+			enabled = true //do not use the default Gateway block page
+			mode = "customized_block_page" //use a custom block page
+			name = "Cloudflare"
+			logo_path = "https://logos.com/a.png"
+			header_text = "--header--"
+			footer_text = "--footer--"
+			mailto_address = "admin@example.com"
+			mailto_subject = "Blocked Request"
+			background_color = "#ffffff"
+			suppress_footer = false
+		}
+	}
 }
 ```
 
@@ -77,7 +76,14 @@ Gateway will now display a custom Gateway block page when your users visit a blo
 
 You can include an external logo image to display on your custom block page. The block page resizes all images to 146x146 pixels. The URL must be valid and no longer than 2048 characters. Accepted file types include SVG, PNG, JPEG, and GIF.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-block-pages/#page","headline":"Block pages · Cloudflare Learning Paths","description":"Learn about block pages in this guide.","url":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-block-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/cybersafe/gateway-onboarding/","name":"Onboarding Cloudflare Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/cybersafe/gateway-onboarding/gateway-block-pages/","name":"Block pages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-block-pages/#page","headline":"Block pages · Cloudflare Learning Paths","description":"Learn about block pages in this guide.","url":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-block-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Workers Bindings
 description: Create an AI binding to connect your Cloudflare Worker to Workers AI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Bindings
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Bindings
 
-# Workers Bindings
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/configuration/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Workers
 
@@ -20,20 +22,13 @@ To use Workers AI with Workers, you must create a Workers AI [binding](https://d
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-12094)
-* [  wrangler.toml ](#tab-panel-12095)
-
-**JSONC**
-
 ```jsonc
 {
-  "ai": {
-    "binding": "AI" // i.e. available in your Worker on env.AI
-  }
+	"ai": {
+		"binding": "AI" // i.e. available in your Worker on env.AI
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [ai]
@@ -52,8 +47,6 @@ To configure a Workers AI binding in your Pages Function, you must use the Cloud
 
 `async env.AI.run()` runs a model. Takes a model as the first parameter, and an object as the second parameter.
 
-**JavaScript**
-
 ```javascript
 const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
     prompt: "What is the origin of the phrase 'Hello, World'"
@@ -62,16 +55,14 @@ const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
 
 **Parameters**
 
-* `model` ` string ` required
+* `model` ` string `required
 
   * The model to run.
 
 **Supported options**
 
-  * `stream` ` boolean ` optional
+  * `stream` ` boolean `optional
     * Returns a stream of results as they are available.
-
-**JavaScript**
 
 ```javascript
 const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
@@ -79,13 +70,19 @@ const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
     stream: true
 });
 
-
 return new Response(answer, {
     headers: { "content-type": "text/event-stream" }
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/bindings/#page","headline":"Workers Bindings · Cloudflare Workers AI docs","description":"Create an AI binding to connect your Cloudflare Worker to Workers AI.","url":"https://developers.cloudflare.com/workers-ai/configuration/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/configuration/bindings/","name":"Workers Bindings"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/bindings/#page","headline":"Workers Bindings · Cloudflare Workers AI docs","description":"Create an AI binding to connect your Cloudflare Worker to Workers AI.","url":"https://developers.cloudflare.com/workers-ai/configuration/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

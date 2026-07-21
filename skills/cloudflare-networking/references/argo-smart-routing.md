@@ -1,16 +1,18 @@
 ---
-title: Argo Smart Routing
 description: Route traffic across the fastest network paths to reduce latency and packet loss.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Argo Smart Routing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/argo-smart-routing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Argo Smart Routing
 
-# Argo Smart Routing
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/argo-smart-routing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Speed up your global traffic with a single click
 
@@ -34,25 +36,25 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 ## Features
 
-###  Analytics
+[Analytics](https://developers.cloudflare.com/argo-smart-routing/analytics/)
 
 Argo Smart Routing includes comprehensive analytics to compare performance improvements with and without Argo enabled.
 
-[ Use Analytics ](https://developers.cloudflare.com/argo-smart-routing/analytics/)
+ Use Analytics
 
 ---
 
 ## Related products
 
-**[Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/)**
+[Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/)
 
 Increase cache hit ratios to reduce requests to your origin server.
 
-**[China Network](https://developers.cloudflare.com/china-network/)**
+[China Network](https://developers.cloudflare.com/china-network/)
 
 Improve security and performance within mainland China.
 
-**[Magic Transit](https://developers.cloudflare.com/magic-transit/)**
+[Magic Transit](https://developers.cloudflare.com/magic-transit/)
 
 Reduce latency and protect from DDoS attacks using the Cloudflare network.
 
@@ -60,15 +62,22 @@ Reduce latency and protect from DDoS attacks using the Cloudflare network.
 
 ## More resources
 
-[Plans](https://www.cloudflare.com/plans/#overview)
+### [ Plans ](https://www.cloudflare.com/plans/#overview)
 
 Compare available Cloudflare plans
 
-[Pricing](https://dash.cloudflare.com/?to=/:account/:zone/traffic/)
+### [ Pricing ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/)
 
 Explore pricing options for Argo in the dashboard
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/argo-smart-routing/#page","headline":"Overview · Cloudflare Argo Smart Routing docs","description":"Route traffic across the fastest network paths to reduce latency and packet loss.","url":"https://developers.cloudflare.com/argo-smart-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/argo-smart-routing/","name":"Argo Smart Routing"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/argo-smart-routing/#page","headline":"Overview · Cloudflare Argo Smart Routing docs","description":"Route traffic across the fastest network paths to reduce latency and packet loss.","url":"https://developers.cloudflare.com/argo-smart-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Region support
 description: Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Region support
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Region support
 
-# Region support
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/region-support/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Data Localization Suite allows you to restrict where your data is processed and stored. The table below shows which regions are available for each DLS feature:
 
@@ -131,7 +133,14 @@ Refer to the table below for the complete list of available regions and their de
 
 1. Only supported in [Geo Key Manager v2](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/), the current version with expanded region support. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3) [↩4](#user-content-fnref-1-4) [↩5](#user-content-fnref-1-5) [↩6](#user-content-fnref-1-6) [↩7](#user-content-fnref-1-7) [↩8](#user-content-fnref-1-8) [↩9](#user-content-fnref-1-9)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/region-support/#page","headline":"Region support · Cloudflare Data Localization Suite docs","description":"Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/region-support/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/region-support/","name":"Region support"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/region-support/#page","headline":"Region support · Cloudflare Data Localization Suite docs","description":"Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/region-support/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

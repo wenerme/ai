@@ -1,16 +1,18 @@
 ---
-title: Add Human Feedback using API
 description: Submit human feedback on AI Gateway request logs using the Cloudflare API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Add Human Feedback using API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Add Human Feedback using API
 
-# Add Human Feedback using API
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will walk you through the steps of adding human feedback to an AI Gateway request using the Cloudflare API. You will learn how to retrieve the relevant request logs, and submit feedback using the API.
 
@@ -41,13 +43,13 @@ In the example below, the `cf-aig-log-id` is `01JADMCQQQBWH3NXZ5GCRN98DP`.
 
 ```json
 {
-  "status": "success",
-  "headers": {
-    "cf-aig-log-id": "01JADMCQQQBWH3NXZ5GCRN98DP"
-  },
-  "data": {
-    "response": "Sample response data"
-  }
+	"status": "success",
+	"headers": {
+		"cf-aig-log-id": "01JADMCQQQBWH3NXZ5GCRN98DP"
+	},
+	"data": {
+		"response": "Sample response data"
+	}
 }
 ```
 
@@ -63,39 +65,37 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `AI Gateway Write`
 * `AI Gateway Read`
 
-**List Gateway Logs**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
 {
-  "result": [
-    {
-      "id": "01JADMCQQQBWH3NXZ5GCRN98DP",
-      "cached": true,
-      "created_at": "2019-08-24T14:15:22Z",
-      "custom_cost": true,
-      "duration": 0,
-      "id": "string",
-      "metadata": "string",
-      "model": "string",
-      "model_type": "string",
-      "path": "string",
-      "provider": "string",
-      "request_content_type": "string",
-      "request_type": "string",
-      "response_content_type": "string",
-      "status_code": 0,
-      "step": 0,
-      "success": true,
-      "tokens_in": 0,
-      "tokens_out": 0
-    }
-  ]
+	"result": [
+		{
+			"id": "01JADMCQQQBWH3NXZ5GCRN98DP",
+			"cached": true,
+			"created_at": "2019-08-24T14:15:22Z",
+			"custom_cost": true,
+			"duration": 0,
+			"id": "string",
+			"metadata": "string",
+			"model": "string",
+			"model_type": "string",
+			"path": "string",
+			"provider": "string",
+			"request_content_type": "string",
+			"request_type": "string",
+			"response_content_type": "string",
+			"status_code": 0,
+			"step": 0,
+			"success": true,
+			"tokens_in": 0,
+			"tokens_out": 0
+		}
+	]
 }
 ```
 
@@ -103,21 +103,18 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gatew
 
 You can also retrieve the `cf-aig-log-id` using a binding, which streamlines the process. Here's how to retrieve the log ID directly:
 
-**JavaScript**
-
 ```js
 const resp = await env.AI.run(
-  "@cf/meta/llama-3-8b-instruct",
-  {
-    prompt: "tell me a joke",
-  },
-  {
-    gateway: {
-      id: "my_gateway_id",
-    },
-  },
+	"@cf/meta/llama-3-8b-instruct",
+	{
+		prompt: "tell me a joke",
+	},
+	{
+		gateway: {
+			id: "my_gateway_id",
+		},
+	},
 );
-
 
 const myLogId = env.AI.aiGatewayLogId;
 ```
@@ -135,22 +132,20 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `AI Gateway Write`
 
-**Patch Gateway Log**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs/$ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "feedback": 1
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"feedback": 1
+	}'
 ```
 
 If you had negative feedback, adjust the body of the request to be `-1`.
 
 ```json
 {
-  "feedback": -1
+	"feedback": -1
 }
 ```
 
@@ -161,7 +156,14 @@ You can verify the feedback submission in two ways:
 * **Through the [Cloudflare dashboard  ↗](https://dash.cloudflare.com)**: check the updated feedback on the AI Gateway interface.
 * **Through the API**: Send another GET request to retrieve the updated log entry and confirm the feedback has been recorded.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/#page","headline":"Add Human Feedback using API · Cloudflare AI Gateway docs","description":"Submit human feedback on AI Gateway request logs using the Cloudflare API.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/evaluations/","name":"Evaluations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/evaluations/add-human-feedback-api/","name":"Add Human Feedback using API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/#page","headline":"Add Human Feedback using API · Cloudflare AI Gateway docs","description":"Submit human feedback on AI Gateway request logs using the Cloudflare API.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

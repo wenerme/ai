@@ -1,16 +1,18 @@
 ---
-title: Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 description: This tutorial explains how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers. You may want to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 
-# Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers and Cloudflare Image Resizing. You may want to generate a custom YouTube thumbnail to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.
 
@@ -41,7 +43,7 @@ Cloudflare Images allows you to store, resize, optimize and deliver images in a 
 To upload an image using the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Transformations** page.
-[ Go to **Transformations** ](https://dash.cloudflare.com/?to=/:account/images/transformations)
+[ Go to **Transformations** ↗ ](https://dash.cloudflare.com/?to=/:account/images/transformations)
 2. Use **Quick Upload** to either drag and drop an image or click to browse and choose a file from your local files.
 3. After the image is uploaded, view it using the generated URL.
 
@@ -66,22 +68,22 @@ You will then receive a response similar to this:
 
 ```json
 {
-  "result": {
-    "id": "2cdc28f0-017a-49c4-9ed7-87056c83901",
-    "filename": "image.jpeg",
-    "metadata": {
-      "key": "value"
-    },
-    "uploaded": "2022-01-31T16:39:28.458Z",
-    "requireSignedURLs": false,
-    "variants": [
-      "https://imagedelivery.net/Vi7wi5KSItxGFsWRG2Us6Q/2cdc28f0-017a-49c4-9ed7-87056c83901/public",
-      "https://imagedelivery.net/Vi7wi5KSItxGFsWRG2Us6Q/2cdc28f0-017a-49c4-9ed7-87056c83901/thumbnail"
-    ]
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "2cdc28f0-017a-49c4-9ed7-87056c83901",
+		"filename": "image.jpeg",
+		"metadata": {
+			"key": "value"
+		},
+		"uploaded": "2022-01-31T16:39:28.458Z",
+		"requireSignedURLs": false,
+		"variants": [
+			"https://imagedelivery.net/Vi7wi5KSItxGFsWRG2Us6Q/2cdc28f0-017a-49c4-9ed7-87056c83901/public",
+			"https://imagedelivery.net/Vi7wi5KSItxGFsWRG2Us6Q/2cdc28f0-017a-49c4-9ed7-87056c83901/thumbnail"
+		]
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -113,12 +115,10 @@ You will now make a few changes to the files in your project directory.
 use worker::*;
 mod utils;
 
-
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
    // Optionally, get more helpful error messages written to the console in the case of a panic.
    utils::set_panic_hook();
-
 
    let router = Router::new();
    router
@@ -141,12 +141,10 @@ use text_to_png::{TextPng, TextRenderer};
 use worker::*;
 mod utils;
 
-
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
    // Optionally, get more helpful error messages written to the console in the case of a panic.
    utils::set_panic_hook();
-
 
    let router = Router::new();
    router
@@ -163,12 +161,10 @@ use text_to_png::{TextPng, TextRenderer};
 use worker::*;
 mod utils;
 
-
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
    // Optionally, get more helpful error messages written to the console in the case of a panic.
    utils::set_panic_hook();
-
 
    let router = Router::new();
    router
@@ -176,7 +172,6 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
        .run(req, env)
        .await
 }
-
 
 async fn handle_slash(text: String) -> Result<Response> {}
 ```
@@ -188,12 +183,10 @@ use text_to_png::{TextPng, TextRenderer};
 use worker::*;
 mod utils;
 
-
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
    // Optionally, get more helpful error messages written to the console in the case of a panic.
    utils::set_panic_hook();
-
 
    let router = Router::new();
    router
@@ -202,11 +195,9 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
        .await
 }
 
-
 async fn handle_slash(text: String) -> Result<Response> {
   let renderer = TextRenderer::try_new_with_ttf_font_data(include_bytes!("../assets/Inter-Bold.ttf"))
     .expect("Example font is definitely loadable");
-
 
   let text_png: TextPng = renderer.render_text_to_png_data(text.replace("+", " "), 60, "003682").unwrap();
 }
@@ -219,12 +210,10 @@ use text_to_png::{TextPng, TextRenderer};
 use worker::*;
 mod utils;
 
-
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
    // Optionally, get more helpful error messages written to the console in the case of a panic.
    utils::set_panic_hook();
-
 
   let router = Router::new();
     router
@@ -239,11 +228,9 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
         .await
 }
 
-
 async fn handle_slash(text: String) -> Result<Response> {
   let renderer = TextRenderer::try_new_with_ttf_font_data(include_bytes!("../assets/Inter-Bold.ttf"))
     .expect("Example font is definitely loadable");
-
 
   let text_png: TextPng = renderer.render_text_to_png_data(text.replace("+", " "), 60, "003682").unwrap();
 }
@@ -256,12 +243,10 @@ use text_to_png::{TextPng, TextRenderer};
 use worker::*;
 mod utils;
 
-
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
    // Optionally, get more helpful error messages written to the console in the case of a panic.
    utils::set_panic_hook();
-
 
    let router = Router::new();
     router
@@ -276,18 +261,14 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
         .await
 }
 
-
 async fn handle_slash(text: String) -> Result<Response> {
   let renderer = TextRenderer::try_new_with_ttf_font_data(include_bytes!("../assets/Inter-Bold.ttf"))
     .expect("Example font is definitely loadable");
 
-
   let text_png: TextPng = renderer.render_text_to_png_data(text.replace("+", " "), 60, "003682").unwrap();
-
 
   let mut headers = Headers::new();
   headers.set("content-type", "image/png")?;
-
 
   Ok(Response::from_bytes(text_png.data)?.with_headers(headers))
 }
@@ -299,18 +280,14 @@ The final `lib.rs` file should look as follows. Find the full code as an example
 use text_to_png::{TextPng, TextRenderer};
 use worker::*;
 
-
 mod utils;
-
 
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
     // Optionally, get more helpful error messages written to the console in the case of a panic.
     utils::set_panic_hook();
 
-
     let router = Router::new();
-
 
     router
         .get_async("/", |req, _| async move {
@@ -324,11 +301,9 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
         .await
 }
 
-
 async fn handle_slash(text: String) -> Result<Response> {
     let renderer = TextRenderer::try_new_with_ttf_font_data(include_bytes!("../assets/Inter-Bold.ttf"))
     .expect("Example font is definitely loadable");
-
 
     let text = if text.len() > 128 {
         "Nope".into()
@@ -336,16 +311,12 @@ async fn handle_slash(text: String) -> Result<Response> {
         text
     };
 
-
     let text = urlencoding::decode(&text).map_err(|_| worker::Error::BadEncoding)?;
-
 
     let text_png: TextPng = renderer.render_text_to_png_data(text.replace("+", " "), 60, "003682").unwrap();
 
-
     let mut headers = Headers::new();
     headers.set("content-type", "image/png")?;
-
 
     Ok(Response::from_bytes(text_png.data)?.with_headers(headers))
 }
@@ -367,19 +338,12 @@ Adding a query parameter with custom text, you should receive:
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-13073)
-* [  wrangler.toml ](#tab-panel-13074)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "worker-to-text"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "worker-to-text"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -428,20 +392,18 @@ cd thumbnail-image
 
 This will create a new Worker project named `thumbnail-image`. In the `src/index.js` file, add the following code block:
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.pathname === "/original-image") {
-      const image = await fetch(
-        `https://imagedelivery.net/${env.CLOUDFLARE_ACCOUNT_HASH}/${IMAGE_ID}/public`,
-      );
-      return image;
-    }
-    return new Response("Image Resizing with a Worker");
-  },
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		if (url.pathname === "/original-image") {
+			const image = await fetch(
+				`https://imagedelivery.net/${env.CLOUDFLARE_ACCOUNT_HASH}/${IMAGE_ID}/public`,
+			);
+			return image;
+		}
+		return new Response("Image Resizing with a Worker");
+	},
 };
 ```
 
@@ -453,58 +415,49 @@ Run your Worker and go to the `/original-image` route to review your image.
 
 You will now use [Cloudflare image transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/), with the `fetch` method, to add your dynamic text image as an overlay on top of your background image. Start by displaying the resulting image on a different route. Call the new route `/thumbnail`.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.pathname === "/original-image") {
-      const image = await fetch(
-        `https://imagedelivery.net/${env.CLOUDFLARE_ACCOUNT_HASH}/${IMAGE_ID}/public`,
-      );
-      return image;
-    }
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		if (url.pathname === "/original-image") {
+			const image = await fetch(
+				`https://imagedelivery.net/${env.CLOUDFLARE_ACCOUNT_HASH}/${IMAGE_ID}/public`,
+			);
+			return image;
+		}
 
+		if (url.pathname === "/thumbnail") {
+		}
 
-    if (url.pathname === "/thumbnail") {
-    }
-
-
-    return new Response("Image Resizing with a Worker");
-  },
+		return new Response("Image Resizing with a Worker");
+	},
 };
 ```
 
 Next, use the `fetch` method to apply the image transformation changes on top of the background image. The overlay options are nested in `options.cf.image`.
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+	async fetch(request, env) {
+		const url = new URL(request.url);
 
+		if (url.pathname === "/original-image") {
+			const image = await fetch(
+				`https://imagedelivery.net/${env.CLOUDFLARE_ACCOUNT_HASH}/${IMAGE_ID}/public`,
+			);
+			return image;
+		}
 
-    if (url.pathname === "/original-image") {
-      const image = await fetch(
-        `https://imagedelivery.net/${env.CLOUDFLARE_ACCOUNT_HASH}/${IMAGE_ID}/public`,
-      );
-      return image;
-    }
+		if (url.pathname === "/thumbnail") {
+			fetch(imageURL, {
+				cf: {
+					image: {},
+				},
+			});
+		}
 
-
-    if (url.pathname === "/thumbnail") {
-      fetch(imageURL, {
-        cf: {
-          image: {},
-        },
-      });
-    }
-
-
-    return new Response("Image Resizing with a Worker");
-  },
+		return new Response("Image Resizing with a Worker");
+	},
 };
 ```
 
@@ -518,38 +471,34 @@ Add your background image to an assets directory on GitHub and push your changes
 
 Replace the `imageURL` value with the copied remote URL.
 
-**JavaScript**
-
 ```js
 if (url.pathname === "/thumbnail") {
-  const imageURL =
-    "https://github.com/lauragift21/social-image-demo/blob/1ed9044463b891561b7438ecdecbdd9da48cdb03/assets/cover.png?raw=true";
-  fetch(imageURL, {
-    cf: {
-      image: {},
-    },
-  });
+	const imageURL =
+		"https://github.com/lauragift21/social-image-demo/blob/1ed9044463b891561b7438ecdecbdd9da48cdb03/assets/cover.png?raw=true";
+	fetch(imageURL, {
+		cf: {
+			image: {},
+		},
+	});
 }
 ```
 
 Next, add overlay options in the image object. Resize the image to the preferred width and height for YouTube thumbnails and use the [draw](https://developers.cloudflare.com/images/optimization/draw-overlays/) option to add overlay text using the deployed URL of your `text-to-image` Worker.
 
-**JavaScript**
-
 ```js
 fetch(imageURL, {
-  cf: {
-    image: {
-      width: 1280,
-      height: 720,
-      draw: [
-        {
-          url: "https://text-to-image.examples.workers.dev",
-          left: 40,
-        },
-      ],
-    },
-  },
+	cf: {
+		image: {
+			width: 1280,
+			height: 720,
+			draw: [
+				{
+					url: "https://text-to-image.examples.workers.dev",
+					left: 40,
+				},
+			],
+		},
+	},
 });
 ```
 
@@ -557,19 +506,12 @@ Image transformations can only be tested when you deploy your Worker.
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-13075)
-* [  wrangler.toml ](#tab-panel-13076)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "thumbnail-image"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "thumbnail-image"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -592,29 +534,27 @@ You will now make text applied dynamic. Making your text dynamic will allow you 
 
 To add dynamic text, append any text attached to the `/thumbnail` URL using query parameters and pass it down to the `text-to-image` Worker URL as a parameter.
 
-**JavaScript**
-
 ```js
 for (const title of url.searchParams.values()) {
-  try {
-    const editedImage = await fetch(imageURL, {
-      cf: {
-        image: {
-          width: 1280,
-          height: 720,
-          draw: [
-            {
-              url: `https://text-to-image.examples.workers.dev/?${title}`,
-              left: 50,
-            },
-          ],
-        },
-      },
-    });
-    return editedImage;
-  } catch (error) {
-    console.log(error);
-  }
+	try {
+		const editedImage = await fetch(imageURL, {
+			cf: {
+				image: {
+					width: 1280,
+					height: 720,
+					draw: [
+						{
+							url: `https://text-to-image.examples.workers.dev/?${title}`,
+							left: 50,
+						},
+					],
+				},
+			},
+		});
+		return editedImage;
+	} catch (error) {
+		console.log(error);
+	}
 }
 ```
 
@@ -628,7 +568,14 @@ By completing this tutorial, you have successfully made a custom YouTube thumbna
 
 In this tutorial, you learned how to use Cloudflare Workers and Cloudflare image transformations to generate custom YouTube thumbnails. To learn more about Cloudflare Workers and image transformations, refer to [Resize an image with a Worker](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/#page","headline":"Generate YouTube thumbnails with Workers and Cloudflare Image Resizing · Cloudflare Workers docs","description":"This tutorial explains how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers. You may want to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.","url":"https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Rust"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/","name":"Generate YouTube thumbnails with Workers and Cloudflare Image Resizing"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/#page","headline":"Generate YouTube thumbnails with Workers and Cloudflare Image Resizing · Cloudflare Workers docs","description":"This tutorial explains how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers. You may want to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.","url":"https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Rust"]}
 ```

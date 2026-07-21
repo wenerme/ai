@@ -1,23 +1,25 @@
 ---
-title: Create a URL rewrite rule in the dashboard
 description: Create URL rewrite rules in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a URL rewrite rule in the dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a URL rewrite rule in the dashboard
 
-# Create a URL rewrite rule in the dashboard
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the [Rules examples gallery](https://developers.cloudflare.com/rules/transform/examples/?operation=Rewrite+URL) for examples of rule definitions.
 
 To create a rule:
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **URL Rewrite Rule**.
 3. (Optional) Select one of the rule templates that address common use cases. Then, review and adjust the proposed rule configuration.
 4. Enter a descriptive name for the rule in **Rule name**.
@@ -59,7 +61,14 @@ The **Request URL** value is only used to match the incoming request with a rule
 
 To validate URL rewrite rule matches, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/). To validate rewritten URLs, check your origin server.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/#page","headline":"Create a URL rewrite rule in the dashboard · Cloudflare Rules docs","description":"Create URL rewrite rules in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/url-rewrite/create-dashboard/","name":"Create a URL rewrite rule in the dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/#page","headline":"Create a URL rewrite rule in the dashboard · Cloudflare Rules docs","description":"Create URL rewrite rules in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}
 ```

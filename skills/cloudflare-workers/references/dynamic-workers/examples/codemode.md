@@ -1,16 +1,18 @@
 ---
-title: Code Mode Example
 description: Project management chat app demonstrating code-as-tool. The LLM writes and executes JavaScript to orchestrate multiple tools in a single Dynamic Worker sandbox.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Code Mode Example
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Code Mode Example
 
-# Code Mode Example
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/examples/codemode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This example shows how to use the [@cloudflare/codemode ↗](https://www.npmjs.com/package/@cloudflare/codemode) library with the [Agents SDK ↗](https://www.npmjs.com/package/agents) to build an agent where the LLM writes code to orchestrate tool calls, instead of calling them one at a time. This approach, called [Code Mode ↗](https://blog.cloudflare.com/code-mode/), reduces tokens spent by up to 80%, returns better results, and avoids bloating the context window.
 
@@ -49,32 +51,23 @@ The flow:
 * `console.log` output is captured and returned alongside the result
 * Each execution gets its own Worker instance with a 30-second timeout
 
-* [  JavaScript ](#tab-panel-9152)
-* [  TypeScript ](#tab-panel-9153)
-
-**JavaScript**
-
 ```js
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
 
-
 const executor = new DynamicWorkerExecutor({
-  loader: env.LOADER, // WorkerLoader binding from wrangler.jsonc
-  timeout: 30000, // default: 30s
-  globalOutbound: null, // null = fetch blocked
+	loader: env.LOADER, // WorkerLoader binding from wrangler.jsonc
+	timeout: 30000, // default: 30s
+	globalOutbound: null, // null = fetch blocked
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
 
-
 const executor = new DynamicWorkerExecutor({
-  loader: env.LOADER, // WorkerLoader binding from wrangler.jsonc
-  timeout: 30000, // default: 30s
-  globalOutbound: null, // null = fetch blocked
+	loader: env.LOADER, // WorkerLoader binding from wrangler.jsonc
+	timeout: 30000, // default: 30s
+	globalOutbound: null, // null = fetch blocked
 });
 ```
 
@@ -86,36 +79,25 @@ const executor = new DynamicWorkerExecutor({
 * Puts those types in the tool's description, so the LLM sees a single tool with parameter `{ code: string }` and a description that includes the full typed API surface.
 * On execution, normalizes the LLM's code (strips markdown fences, wraps bare statements in async functions, auto-returns the last expression), then passes it to the executor.
 
-* [  JavaScript ](#tab-panel-9154)
-* [  TypeScript ](#tab-panel-9155)
-
-**JavaScript**
-
 ```js
 import { createCodeTool } from "@cloudflare/codemode/ai";
 
-
 const codemode = createCodeTool({
-  tools: myTools, // Record<string, tool()> with Zod schemas
-  executor, // DynamicWorkerExecutor
+	tools: myTools, // Record<string, tool()> with Zod schemas
+	executor, // DynamicWorkerExecutor
 });
-
 
 // The LLM sees: one tool called "codemode" with input { code: string }
 // The description includes TypeScript types for all your tools
 ```
 
-**TypeScript**
-
 ```ts
 import { createCodeTool } from "@cloudflare/codemode/ai";
 
-
 const codemode = createCodeTool({
-  tools: myTools, // Record<string, tool()> with Zod schemas
-  executor, // DynamicWorkerExecutor
+	tools: myTools, // Record<string, tool()> with Zod schemas
+	executor, // DynamicWorkerExecutor
 });
-
 
 // The LLM sees: one tool called "codemode" with input { code: string }
 // The description includes TypeScript types for all your tools
@@ -123,7 +105,14 @@ const codemode = createCodeTool({
 
 The LLM writes an async arrow function. `createCodeTool` normalizes it and hands it to the executor. The executor builds a Worker module with a `codemode` proxy, runs the code, and returns `{ code, result, logs }`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/codemode/#page","headline":"Code Mode Example · Cloudflare Dynamic Workers docs","description":"Project management chat app demonstrating code-as-tool. The LLM writes and executes JavaScript to orchestrate multiple tools in a single Dynamic Worker sandbox.","url":"https://developers.cloudflare.com/dynamic-workers/examples/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","AI Agents","JavaScript","TypeScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/dynamic-workers/examples/codemode/","name":"Code Mode Example"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/examples/codemode/#page","headline":"Code Mode Example · Cloudflare Dynamic Workers docs","description":"Project management chat app demonstrating code-as-tool. The LLM writes and executes JavaScript to orchestrate multiple tools in a single Dynamic Worker sandbox.","url":"https://developers.cloudflare.com/dynamic-workers/examples/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","AI Agents","JavaScript","TypeScript"]}
 ```

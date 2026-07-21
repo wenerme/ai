@@ -1,16 +1,18 @@
 ---
-title: Set up Private Network Load Balancing with Client-to-Tunnel
 description: Load balance WARP client traffic to private origins via Tunnel.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Set up Private Network Load Balancing with Client-to-Tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up Private Network Load Balancing with Client-to-Tunnel
 
-# Set up Private Network Load Balancing with Client-to-Tunnel
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use Private Network Load Balancing to distribute Cloudflare One Client traffic to private hostnames and IPs connected via [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 
@@ -63,9 +65,6 @@ Load balancer pools are logical groupings of endpoints, typically organized by p
 
 Pools can be created using either the Cloudflare dashboard or the API.
 
-* [ Dashboard ](#tab-panel-10193)
-* [ API ](#tab-panel-10194)
-
 To create a pool using the dashboard, refer to the [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) documentation.
 
 Endpoint IP address limitations
@@ -84,29 +83,27 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Load Balancing: Monitors and Pools Write`
 
-**Patch Pool**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools/$POOL_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "origins": [
-        {
-            "name": "server-1",
-            "address": "10.0.0.1",
-            "enabled": true,
-            "weight": 1,
-            "virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
-        }
-    ]
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"origins": [
+				{
+						"name": "server-1",
+						"address": "10.0.0.1",
+						"enabled": true,
+						"weight": 1,
+						"virtual_network_id": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
+				}
+		]
+	}'
 ```
 
 ## 2\. Create a private load balancer
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[ Go to **Load Balancing** ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select **Create a Load Balancer**.
 3. Select **Private Load Balancer**.
 4. On the next step you can choose to associate this load balancer with either:
@@ -149,7 +146,14 @@ If you want your load balancer and its endpoints to be transparently accessible 
 
 Requests to the hostname will now resolve to your private load balancer.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/#page","headline":"Set up Private Network Load Balancing with Client-to-Tunnel · Cloudflare Load Balancing docs","description":"Load balance WARP client traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/private-network/","name":"Private Network Load Balancing"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/private-network/warp-to-tunnel/","name":"Set up Private Network Load Balancing with Client-to-Tunnel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/#page","headline":"Set up Private Network Load Balancing with Client-to-Tunnel · Cloudflare Load Balancing docs","description":"Load balance WARP client traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Microfrontends
 description: Split a single application into independently deployable frontends, using a router worker and service bindings
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Microfrontends
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Microfrontends
 
-# Microfrontends
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Microfrontends let you split a single application into smaller, independently deployable units that render as one cohesive application. Different teams using different technologies can develop, test, and deploy each microfrontend.
 
@@ -58,12 +60,12 @@ Example `ROUTES` configuration:
 
 ```json
 {
-  "routes": [
-    { "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },
-    { "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },
-    { "path": "/", "binding": "MICROFRONTEND_HOME" }
-  ],
-  "smoothTransitions": true
+	"routes": [
+		{ "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },
+		{ "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },
+		{ "path": "/", "binding": "MICROFRONTEND_HOME" }
+	],
+	"smoothTransitions": true
 }
 ```
 
@@ -81,20 +83,15 @@ When a request comes in for `/app-a/dashboard`, the router:
 
 The router includes path matching logic that supports:
 
-**TypeScript**
-
 ```typescript
 // Static paths
 { "path": "/dashboard" }
 
-
 // Dynamic parameters
 { "path": "/users/:id" }
 
-
 // Wildcard matching (zero or more segments)
 { "path": "/docs/:path*" }
-
 
 // Required segments (one or more segments)
 { "path": "/api/:path+" }
@@ -128,16 +125,14 @@ The rewriter handles these attributes across all HTML elements:
 
 The router only rewrites paths that start with configured asset prefixes to avoid breaking external URLs:
 
-**JavaScript**
-
 ```javascript
 // Default asset prefixes
 const DEFAULT_ASSET_PREFIXES = [
-  "/assets/",
-  "/static/",
-  "/build/",
-  "/_astro/",
-  "/fonts/",
+	"/assets/",
+	"/static/",
+	"/build/",
+	"/_astro/",
+	"/fonts/",
 ];
 ```
 
@@ -153,12 +148,11 @@ The router also rewrites CSS files to ensure `url()` references work correctly. 
 
 ```css
 .hero {
-  background: url(/assets/hero.jpg);
+	background: url(/assets/hero.jpg);
 }
 
-
 .icon {
-  background: url("/static/icon.svg");
+	background: url("/static/icon.svg");
 }
 ```
 
@@ -166,12 +160,11 @@ The router rewrites it to:
 
 ```css
 .hero {
-  background: url(/app-a/assets/hero.jpg);
+	background: url(/app-a/assets/hero.jpg);
 }
 
-
 .icon {
-  background: url("/app-a/static/icon.svg");
+	background: url("/app-a/static/icon.svg");
 }
 ```
 
@@ -199,11 +192,11 @@ For Chromium-based browsers, the router uses the **Speculation Rules API** \- a 
 
 ```json
 {
-  "prefetch": [
-    {
-      "urls": ["/app1", "/app2", "/dashboard"]
-    }
-  ]
+	"prefetch": [
+		{
+			"urls": ["/app1", "/app2", "/dashboard"]
+		}
+	]
 }
 ```
 
@@ -215,11 +208,11 @@ To enable smooth transitions, set `"smoothTransitions": true` in your `ROUTES` c
 
 ```json
 {
-  "routes": [
-    { "path": "/app-a", "binding": "MICROFRONTEND_A" },
-    { "path": "/app-b", "binding": "MICROFRONTEND_B" }
-  ],
-  "smoothTransitions": true
+	"routes": [
+		{ "path": "/app-a", "binding": "MICROFRONTEND_A" },
+		{ "path": "/app-b", "binding": "MICROFRONTEND_B" }
+	],
+	"smoothTransitions": true
 }
 ```
 
@@ -227,17 +220,17 @@ The router automatically injects CSS into HTML responses:
 
 ```css
 @supports (view-transition-name: none) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: 0.3s;
-    animation-timing-function: ease-in-out;
-  }
-  main {
-    view-transition-name: main-content;
-  }
-  nav {
-    view-transition-name: navigation;
-  }
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 0.3s;
+		animation-timing-function: ease-in-out;
+	}
+	main {
+		view-transition-name: main-content;
+	}
+	nav {
+		view-transition-name: navigation;
+	}
 }
 ```
 
@@ -250,11 +243,6 @@ To add a new microfrontend to your application after initial setup:
 1. **Create and deploy the new microfrontend worker**
 Deploy your new microfrontend as a separate Worker. This can be a [framework application](https://developers.cloudflare.com/workers/framework-guides/) (Next.js, Astro, etc.) or a static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 2. **Add a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) in your router's Wrangler configuration file**
-
-  * [  wrangler.jsonc ](#tab-panel-12654)
-  * [  wrangler.toml ](#tab-panel-12655)
-
-**JSONC**
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -266,8 +254,6 @@ Deploy your new microfrontend as a separate Worker. This can be a [framework app
   ]
 }
 ```
-
-**TOML**
 ```toml
 [[services]]
 binding = "MICROFRONTEND_C"
@@ -277,12 +263,12 @@ service = "my-new-microfrontend"
 Add your new route to the `ROUTES` configuration:
 ```json
 {
-  "routes": [
-    { "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },
-    { "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },
-    { "path": "/app-c", "binding": "MICROFRONTEND_C", "preload": true },
-    { "path": "/", "binding": "MICROFRONTEND_HOME" }
-  ]
+	"routes": [
+		{ "path": "/app-a", "binding": "MICROFRONTEND_A", "preload": true },
+		{ "path": "/app-b", "binding": "MICROFRONTEND_B", "preload": true },
+		{ "path": "/app-c", "binding": "MICROFRONTEND_C", "preload": true },
+		{ "path": "/", "binding": "MICROFRONTEND_HOME" }
+	]
 }
 ```
 4. **Redeploy the router worker**
@@ -300,24 +286,17 @@ If you only need to work on one of the microfrontends, you can run the others re
 
 For each microfrontend you want to run remotely while in local dev, configure its service binding with the remote flag:
 
-* [  wrangler.jsonc ](#tab-panel-12656)
-* [  wrangler.toml ](#tab-panel-12657)
-
-**JSONC**
-
 ```jsonc
 {
 "services": [
-  {
-  "binding": "<BINDING_NAME>",
-  "service": "<WORKER_NAME>",
-  "remote": true
-  }
+	{
+	"binding": "<BINDING_NAME>",
+	"service": "<WORKER_NAME>",
+	"remote": true
+	}
 ]
 }
 ```
-
-**TOML**
 
 ```toml
 [[services]]
@@ -338,7 +317,14 @@ When you deploy a microfrontend worker, the router automatically routes requests
 
 To deploy to production, you can use [custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) for your router worker, and configure [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) for continuous deployment from your Git repository.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/#page","headline":"Microfrontends · Cloudflare Workers docs","description":"Split a single application into independently deployable frontends, using a router worker and service bindings","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/framework-guides/web-apps/","name":"Web applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/framework-guides/web-apps/microfrontends/","name":"Microfrontends"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/#page","headline":"Microfrontends · Cloudflare Workers docs","description":"Split a single application into independently deployable frontends, using a router worker and service bindings","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

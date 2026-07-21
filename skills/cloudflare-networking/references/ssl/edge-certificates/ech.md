@@ -1,16 +1,18 @@
 ---
-title: ECH Protocol
 description: Encrypt the SNI field with Encrypted Client Hello for improved privacy.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: ECH Protocol
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  ECH Protocol
 
-# ECH Protocol
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/ech/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ECH stands for [Encrypted Client Hello ↗](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/16/). It is a protocol extension in the context of Transport Layer Security (TLS). ECH encrypts part of the handshake and masks the Server Name Indication (SNI) that is used to negotiate a TLS session. This means that whenever a user visits a website on Cloudflare that has ECH enabled, intermediaries will be able to see that you are visiting a website on Cloudflare, but they will not be able to determine which one.
 
@@ -48,7 +50,7 @@ For more details about ECH protocol technology, refer to our [introductory blog 
 ECH is enabled by default on Free zones. Other plans can turn it on or off following the steps below.
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Encrypted ClientHello (ECH)**, change the setting to **Enabled**.
 
 ## Enterprise network applicability
@@ -61,7 +63,14 @@ The most reliable way is via the local or recursive DNS resolver itself, by drop
 
 The second way to disable ECH is via a network canary domain. In particular, your network’s DNS resolver can return a “no error no answer” or an NXDOMAIN response to queries made to the `use-application-dns.net` [canary domain ↗](https://support.mozilla.org/en-US/kb/canary-domain-use-application-dnsnet). This will prevent browsers, such as Firefox from using ECH. For more information, see Firefox's [frequently asked questions page ↗](https://support.mozilla.org/en-US/kb/faq-encrypted-client-hello#w%5Fhow-will-ech-interact-with-dohs-opt-outs) for Encrypted Client Hello.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/ech/#page","headline":"ECH Protocol · Cloudflare SSL/TLS docs","description":"Encrypt the SNI field with Encrypted Client Hello for improved privacy.","url":"https://developers.cloudflare.com/ssl/edge-certificates/ech/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/ech/","name":"ECH Protocol"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/ech/#page","headline":"ECH Protocol · Cloudflare SSL/TLS docs","description":"Encrypt the SNI field with Encrypted Client Hello for improved privacy.","url":"https://developers.cloudflare.com/ssl/edge-certificates/ech/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: What is clientless access?
 description: Understand secure browser-based access without software.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: What is clientless access?
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  What is clientless access?
 
-# What is clientless access?
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Clientless access is a deployment option of a [Zero Trust Network Access (ZTNA) ↗](https://www.cloudflare.com/learning/access-management/what-is-ztna/) service that provides secure access to internal applications without requiring end users to install any software. Users access corporate resources like intranet web apps, SSH terminals, and Windows servers through RDP from their web browser. Clientless access is commonly used to provide internal, [least-privilege access ↗](https://www.cloudflare.com/learning/access-management/principle-of-least-privilege/) to users on unmanaged devices. Users may include third-party contractors, suppliers, and partners, or employees using personal mobile phones as part of an organization's bring-your-own-device (BYOD) policy.
 
@@ -38,7 +40,14 @@ In contrast, Cloudflare is a leading [reverse proxy ↗](https://www.cloudflare.
 
 Clientless access accelerates user onboarding for your admins, and it makes private apps feel just like SaaS apps for your end users. Many organizations roll out clientless access use cases toward the start of their larger SASE architecture journey as a “quick win” to develop momentum for a longer [VPN replacement](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/) project or security modernization initiative.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/#page","headline":"What is clientless access? · Cloudflare Learning Paths","description":"Understand secure browser-based access without software.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/clientless-access/concepts/what-is-clientless-access/","name":"What is clientless access?"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/#page","headline":"What is clientless access? · Cloudflare Learning Paths","description":"Understand secure browser-based access without software.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

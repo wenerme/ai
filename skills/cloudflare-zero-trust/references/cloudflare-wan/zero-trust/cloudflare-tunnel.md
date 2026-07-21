@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Tunnel
 description: Connect WAN sites with Cloudflare Tunnel.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cloudflare Tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Tunnel
 
-# Cloudflare Tunnel
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare WAN (formerly Magic WAN) can work together with [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to provide easy access between your networks and applications.
 
@@ -84,13 +86,20 @@ To verify that a `cloudflared` tunnel works correctly with your Cloudflare WAN c
 2. Browse to an IP address or hostname that is reachable through a Cloudflare Tunnel private network route, such as the example destination `10.1.2.3`.
 3. Confirm that the application loads as expected. If it does, Cloudflare Tunnel is handling the traffic as configured.
 
-Run `traceroute`
+Run <code>traceroute</code>
 
 If you connect through [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/), [IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
 
 Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel · Cloudflare WAN docs","description":"Connect WAN sites with Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/zero-trust/","name":"Cloudflare One integration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/zero-trust/cloudflare-tunnel/","name":"Cloudflare Tunnel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel · Cloudflare WAN docs","description":"Connect WAN sites with Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

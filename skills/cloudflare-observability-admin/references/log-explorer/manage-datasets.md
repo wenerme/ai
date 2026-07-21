@@ -1,16 +1,18 @@
 ---
-title: Manage datasets
 description: Enable or disable Log Explorer datasets.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage datasets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage datasets
 
-# Manage datasets
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/log-explorer/manage-datasets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Log Explorer allows you to enable or disable which datasets are available to query in Log Search.
 
@@ -56,7 +58,7 @@ Log Explorer currently supports the following datasets:
 In order for Log Explorer to begin storing logs, you need to enable the desired datasets. You can do this via the dashboard or the API.
 
 1. In the Cloudflare dashboard, go to the **Log Explorer** \> **Manage datasets** page.
-[ Go to **Manage datasets** ](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
+[ Go to **Manage datasets** ↗ ](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
 2. Select **Add dataset** to select the datasets you want to query.
 3. Choose a dataset and then a zone. Then, select **Add**. You can always return to this page to enable more datasets or manage your existing ones.
 
@@ -78,18 +80,18 @@ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/datasets
 
 ```json
 {
-  "result": {
-    "dataset": "http_requests",
-    "object_type": "zone",
-    "object_id": "<ZONE ID>",
-    "created_at": "2025-06-03T14:33:16Z",
-    "updated_at": "2025-06-03T14:33:16Z",
-    "dataset_id": "01973635f7e273a1964a02f4d4502499",
-    "enabled": true
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"dataset": "http_requests",
+		"object_type": "zone",
+		"object_id": "<ZONE ID>",
+		"created_at": "2025-06-03T14:33:16Z",
+		"updated_at": "2025-06-03T14:33:16Z",
+		"dataset_id": "01973635f7e273a1964a02f4d4502499",
+		"enabled": true
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -103,7 +105,14 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/da
 }'
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/manage-datasets/#page","headline":"Manage datasets · Cloudflare Log Explorer docs","description":"Enable or disable Log Explorer datasets.","url":"https://developers.cloudflare.com/log-explorer/manage-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/manage-datasets/","name":"Manage datasets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/manage-datasets/#page","headline":"Manage datasets · Cloudflare Log Explorer docs","description":"Enable or disable Log Explorer datasets.","url":"https://developers.cloudflare.com/log-explorer/manage-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

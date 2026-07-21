@@ -1,16 +1,18 @@
 ---
-title: Instant Logs
 description: Stream live traffic logs from the dashboard or CLI.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Instant Logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Instant Logs
 
-# Instant Logs
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/instant-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Instant Logs allows Cloudflare customers to access a live stream of the traffic for their domain from the Cloudflare dashboard or from a command-line interface (CLI). Seeing data in real time allows you to investigate an attack, troubleshoot, debug or test out changes made to your network. Instant Logs is lightweight, simple to use and does not require any additional setup.
 
@@ -23,7 +25,7 @@ Instant Logs allows Cloudflare customers to access a live stream of the traffic 
 ## Instant Logs via Cloudflare Dashboard
 
 1. In the Cloudflare dashboard, go to the **Instant Logs** page.
-[ Go to **Instant Logs** ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/instant-logs)
+[ Go to **Instant Logs** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/instant-logs)
 2. Select **Start streaming**.
 3. (optional) Select **Add filter** to narrow down the events to be shown.
 
@@ -72,18 +74,16 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Logs Read`
 
-**Create Instant Logs job**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/edge/jobs" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-    "sample": 100,
-    "filter": "",
-    "kind": "instant-logs"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
+		"sample": 100,
+		"filter": "",
+		"kind": "instant-logs"
+	}'
 ```
 
 Response:
@@ -159,7 +159,14 @@ If either of these limits are reached, the logs stream will automatically stop.
 
 If you have any feature requests or notice any bugs, share your feedback directly with us by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/instant-logs/#page","headline":"Instant Logs · Cloudflare Logs docs","description":"Stream live traffic logs from the dashboard or CLI.","url":"https://developers.cloudflare.com/logs/instant-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/instant-logs/","name":"Instant Logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/instant-logs/#page","headline":"Instant Logs · Cloudflare Logs docs","description":"Stream live traffic logs from the dashboard or CLI.","url":"https://developers.cloudflare.com/logs/instant-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

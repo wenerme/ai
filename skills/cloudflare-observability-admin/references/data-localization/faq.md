@@ -1,16 +1,18 @@
 ---
-title: FAQs
 description: Answers to common questions about the Data Localization Suite and GDPR compliance.
-image: https://developers.cloudflare.com/zt-preview.png
+title: FAQs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQs
 
-# FAQs
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Are DLP and DLS the same?
 
@@ -70,7 +72,14 @@ These options only offer L3/L4 DDoS protection (network-layer and transport-laye
 
 This is typically caused by dynamic network routing. Based on Internet conditions that vary over time, your connection may be routed to a data center that is physically outside your configured region. This can be based on a variety of factors, including latency and network congestion. Enabling [Out of region access](https://developers.cloudflare.com/data-localization/metadata-boundary/out-of-region-access/) allows requests arriving in the United States to pull Customer Logs from the European Union and vice-versa. The analytics are still exclusively stored in the CMB configured region.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/faq/#page","headline":"FAQs · Cloudflare Data Localization Suite docs","description":"Answers to common questions about the Data Localization Suite and GDPR compliance.","url":"https://developers.cloudflare.com/data-localization/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/faq/","name":"FAQs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/faq/#page","headline":"FAQs · Cloudflare Data Localization Suite docs","description":"Answers to common questions about the Data Localization Suite and GDPR compliance.","url":"https://developers.cloudflare.com/data-localization/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

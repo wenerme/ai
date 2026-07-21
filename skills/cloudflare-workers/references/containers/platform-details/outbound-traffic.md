@@ -1,16 +1,18 @@
 ---
-title: Handle outbound traffic
 description: Intercept and handle outbound HTTP from containers using Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Handle outbound traffic
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Handle outbound traffic
 
-# Handle outbound traffic
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Outbound handlers let you intercept and modify HTTP traffic from a container with trusted code.
 
@@ -26,14 +28,11 @@ Use them to:
 
 Use `enableInternet = false` to block public internet access by default:
 
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  enableInternet = false;
+	enableInternet = false;
 }
 ```
 
@@ -57,40 +56,32 @@ When `allowedHosts` is set, it becomes a deny-by-default allowlist. Any host or 
 
 By default, a Container will allow internet access, and you can set `deniedHosts` to disallow specific hosts or IPs:
 
-**JavaScript**
-
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
 export { ContainerProxy };
 
-
 export class MyContainer extends Container {
-  // Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
-  interceptHttps = true;
-  deniedHosts = ["some-nefarious-website.com", "141.101.64.0/18"];
+	// Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
+	interceptHttps = true;
+	deniedHosts = ["some-nefarious-website.com", "141.101.64.0/18"];
 }
 ```
 
 You can also disable internet access by default, but allow specific hosts and IPs:
 
-**JavaScript**
-
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
 export { ContainerProxy };
 
-
 export class MyContainer extends Container {
-  // Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
-  interceptHttps = true;
+	// Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
+	interceptHttps = true;
 
+	// default internet access to off unless overridden by 'allowedHosts' or outbound proxy
+	enableInternet = false;
 
-  // default internet access to off unless overridden by 'allowedHosts' or outbound proxy
-  enableInternet = false;
-
-
-  // overrides enableInternet = false
-  allowedHosts = ["allowed.com"];
+	// overrides enableInternet = false
+	allowedHosts = ["allowed.com"];
 }
 ```
 
@@ -100,24 +91,20 @@ Outbound handlers are programmable egress proxies that run on the same machine a
 
 Use `outbound` to intercept all HTTP and HTTPS traffic:
 
-**JavaScript**
-
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
 export { ContainerProxy };
 
-
 export class MyContainer extends Container {
-  interceptHttps = true;
+	interceptHttps = true;
 }
 
-
 MyContainer.outbound = async (request, env, ctx) => {
-  if (request.method !== "GET") {
-    console.log(`Blocked ${request.method} to ${request.url}`);
-    return new Response("Method Not Allowed", { status: 405 });
-  }
-  return fetch(request);
+	if (request.method !== "GET") {
+		console.log(`Blocked ${request.method} to ${request.url}`);
+		return new Response("Method Not Allowed", { status: 405 });
+	}
+	return fetch(request);
 };
 ```
 
@@ -127,23 +114,19 @@ HTTP requests to the outbound handler remain secure because they run on the same
 
 Use `outboundByHost` to map specific domain names or IP addresses to proxy functions:
 
-**JavaScript**
-
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
 export { ContainerProxy };
 
-
 export class MyContainer extends Container {
-  interceptHttps = true;
+	interceptHttps = true;
 }
 
-
 MyContainer.outboundByHost = {
-  "my.worker": async (request, env, ctx) => {
-    // Run arbitrary Workers logic from this hostname
-    return await someWorkersFunction(request.body);
-  },
+	"my.worker": async (request, env, ctx) => {
+		// Run arbitrary Workers logic from this hostname
+		return await someWorkersFunction(request.body);
+	},
 };
 ```
 
@@ -155,21 +138,18 @@ Calls to `http://my.worker` from the container invoke the handler, which runs in
 
 Because outbound handlers run in the Workers runtime — outside the container sandbox — they can hold secrets that the container itself never sees. The container makes a plain HTTP request, and the handler attaches the credential before forwarding it to the upstream service.
 
-**JavaScript**
-
 ```js
 export class MyContainer extends Container {
-  // Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
-  interceptHttps = true;
+	// Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
+	interceptHttps = true;
 }
 
-
 MyContainer.outboundByHost = {
-  "github.com": (request, env, ctx) => {
-    const requestWithAuth = new Request(request);
-    requestWithAuth.headers.set("x-auth-token", env.SECRET);
-    return fetch(requestWithAuth);
-  },
+	"github.com": (request, env, ctx) => {
+		const requestWithAuth = new Request(request);
+		requestWithAuth.headers.set("x-auth-token", env.SECRET);
+		return fetch(requestWithAuth);
+	},
 };
 ```
 
@@ -181,24 +161,20 @@ This is especially useful for agentic workloads where you cannot fully trust the
 
 Here, `ctx.containerId` looks up a per-instance key from KV:
 
-**JavaScript**
-
 ```js
 export class MyContainer extends Container {
-  // Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
-  interceptHttps = true;
+	// Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
+	interceptHttps = true;
 }
 
-
 MyContainer.outboundByHost = {
-  "my-internal-vcs.dev": async (request, env, ctx) => {
-    const authKey = await env.KEYS.get(ctx.containerId);
+	"my-internal-vcs.dev": async (request, env, ctx) => {
+		const authKey = await env.KEYS.get(ctx.containerId);
 
-
-    const requestWithAuth = new Request(request);
-    requestWithAuth.headers.set("x-auth-token", authKey);
-    return fetch(requestWithAuth);
-  },
+		const requestWithAuth = new Request(request);
+		requestWithAuth.headers.set("x-auth-token", authKey);
+		return fetch(requestWithAuth);
+	},
 };
 ```
 
@@ -206,18 +182,15 @@ MyContainer.outboundByHost = {
 
 By default, HTTPS traffic is not intercepted by outbound handlers. To opt in you must set the `interceptHttps` attribute.
 
-**JavaScript**
-
 ```js
 export class MyContainer extends Container {
-  // Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
-  interceptHttps = true;
+	// Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
+	interceptHttps = true;
 }
 
-
 MyContainer.outbound = (req, env, ctx) => {
-  // All HTTP(S) requests will trigger this hook.
-  return fetch(req);
+	// All HTTP(S) requests will trigger this hook.
+	return fetch(req);
 };
 ```
 
@@ -231,92 +204,75 @@ For HTTPS interception to work, you must trust the CA file. The CA is ephemeral 
 
 If your base image does not already include the trust-store tooling, install the distro's `ca-certificates` package in your image first.
 
-* [ Debian/Ubuntu ](#tab-panel-8549)
-* [ Alpine ](#tab-panel-8550)
-* [ Fedora/RHEL ](#tab-panel-8551)
-* [ Arch ](#tab-panel-8552)
-
-**JavaScript**
-
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
 export { ContainerProxy };
 
-
 export class MyContainer extends Container {
-  interceptHttps = true;
-  entrypoint = [
-    "sh",
-    "-lc",
-    [
-      "cp /etc/cloudflare/certs/cloudflare-containers-ca.crt /usr/local/share/ca-certificates/cloudflare-containers-ca.crt",
-      "update-ca-certificates",
-      "exec node server.js",
-    ].join(" && "),
-  ];
+	interceptHttps = true;
+	entrypoint = [
+		"sh",
+		"-lc",
+		[
+			"cp /etc/cloudflare/certs/cloudflare-containers-ca.crt /usr/local/share/ca-certificates/cloudflare-containers-ca.crt",
+			"update-ca-certificates",
+			"exec node server.js",
+		].join(" && "),
+	];
 }
 ```
 
-**JavaScript**
-
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
 export { ContainerProxy };
 
-
 export class MyContainer extends Container {
-  interceptHttps = true;
-  entrypoint = [
-    "sh",
-    "-lc",
-    [
-      "cp /etc/cloudflare/certs/cloudflare-containers-ca.crt /usr/local/share/ca-certificates/cloudflare-containers-ca.crt",
-      "update-ca-certificates",
-      "exec node server.js",
-    ].join(" && "),
-  ];
+	interceptHttps = true;
+	entrypoint = [
+		"sh",
+		"-lc",
+		[
+			"cp /etc/cloudflare/certs/cloudflare-containers-ca.crt /usr/local/share/ca-certificates/cloudflare-containers-ca.crt",
+			"update-ca-certificates",
+			"exec node server.js",
+		].join(" && "),
+	];
 }
 ```
 
-**JavaScript**
-
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
 export { ContainerProxy };
 
-
 export class MyContainer extends Container {
-  interceptHttps = true;
-  entrypoint = [
-    "sh",
-    "-lc",
-    [
-      "cp /etc/cloudflare/certs/cloudflare-containers-ca.crt /etc/pki/ca-trust/source/anchors/cloudflare-containers-ca.crt",
-      "update-ca-trust",
-      "exec node server.js",
-    ].join(" && "),
-  ];
+	interceptHttps = true;
+	entrypoint = [
+		"sh",
+		"-lc",
+		[
+			"cp /etc/cloudflare/certs/cloudflare-containers-ca.crt /etc/pki/ca-trust/source/anchors/cloudflare-containers-ca.crt",
+			"update-ca-trust",
+			"exec node server.js",
+		].join(" && "),
+	];
 }
 ```
 
-**JavaScript**
-
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
 export { ContainerProxy };
 
-
 export class MyContainer extends Container {
-  interceptHttps = true;
-  entrypoint = [
-    "sh",
-    "-lc",
-    [
-      "cp /etc/cloudflare/certs/cloudflare-containers-ca.crt /etc/ca-certificates/trust-source/anchors/cloudflare-containers-ca.crt",
-      "trust extract-compat",
-      "exec node server.js",
-    ].join(" && "),
-  ];
+	interceptHttps = true;
+	entrypoint = [
+		"sh",
+		"-lc",
+		[
+			"cp /etc/cloudflare/certs/cloudflare-containers-ca.crt /etc/ca-certificates/trust-source/anchors/cloudflare-containers-ca.crt",
+			"trust extract-compat",
+			"exec node server.js",
+		].join(" && "),
+	];
 }
 ```
 
@@ -342,43 +298,34 @@ You can also manage runtime policy with `setOutboundByHosts()`, `setAllowedHosts
 
 This lets a trusted Worker hold credentials without exposing them to an untrusted container:
 
-**JavaScript**
-
 ```js
 export class MyContainer extends Container {
-  // Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
-  interceptHttps = true;
+	// Make sure the container trusts /etc/cloudflare/certs/cloudflare-containers-ca.crt
+	interceptHttps = true;
 }
 
-
 MyContainer.outboundHandlers = {
-  authenticatedGithub: async (request, env, ctx) => {
-    const githubToken = env.GITHUB_TOKEN;
-    return authenticateGitHttpsRequest(request, githubToken, ctx.containerId);
-  },
+	authenticatedGithub: async (request, env, ctx) => {
+		const githubToken = env.GITHUB_TOKEN;
+		return authenticateGitHttpsRequest(request, githubToken, ctx.containerId);
+	},
 };
 ```
 
 Apply handlers to hosts programmatically from your Worker:
 
-**JavaScript**
-
 ```js
 async setUpContainer(req, env) {
   const container = await env.MY_CONTAINER.getByName("my-instance");
 
-
   // Give the container access to github.com on a specific host during setup
   await container.setOutboundByHost("github.com", "authenticatedGithub");
 
-
-  // do something with github.com on your container...
+	// do something with github.com on your container...
 }
-
 
 async removeAccessToGithub(req, env) {
   const container = await env.MY_CONTAINER.getByName("my-instance");
-
 
   // Remove access to Github
   await container.removeOutboundByHost("github.com");
@@ -400,19 +347,15 @@ Requests are evaluated in this order:
 
 To configure outbound interception directly on `ctx.container`, use `interceptOutboundHttp` for a specific hostname glob, IP, or CIDR range, or `interceptAllOutboundHttp` for all traffic. Both accept a `WorkerEntrypoint`.
 
-**JavaScript**
-
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
 
-
 export class MyOutboundWorker extends WorkerEntrypoint {
-  fetch(request) {
-    // Inspect, modify, or deny the request before passing it on
-    return fetch(request);
-  }
+	fetch(request) {
+		// Inspect, modify, or deny the request before passing it on
+		return fetch(request);
+	}
 }
-
 
 // Inside your Container DurableObject
 this.ctx.container.start({ enableInternet: false });
@@ -422,30 +365,24 @@ await this.ctx.container.interceptAllOutboundHttp(worker);
 
 You can call these methods before or after starting the container, and even while connections are open. In-flight TCP connections pick up the new handler automatically — no connections are dropped.
 
-**JavaScript**
-
 ```js
 // Intercept a specific CIDR range
 await this.ctx.container.interceptOutboundHttp("203.0.113.0/24", worker);
 // Intercept by hostname
 this.ctx.container.interceptOutboundHttp("foo.com", worker);
 
-
 // Update the handler while the container is running
 const updated = this.ctx.exports.MyOutboundWorker({
-  props: { phase: "post-install" },
+	props: { phase: "post-install" },
 });
 await this.ctx.container.interceptOutboundHttp("203.0.113.0/24", updated);
 ```
 
 For HTTPS, `interceptOutboundHttps` works the same way as `interceptOutboundHttp`.
 
-**JavaScript**
-
 ```js
 // Intercept a specific hostname
 this.ctx.container.interceptOutboundHttps("foo.com", worker);
-
 
 // Intercept all traffic
 this.ctx.container.interceptOutboundHttps("*", worker);
@@ -464,7 +401,14 @@ The `Container` class calls these methods automatically when you use the functio
 * [Environment variables and secrets](https://developers.cloudflare.com/containers/platform-details/environment-variables/) — Configure secrets and environment variables
 * [Durable Object interface](https://developers.cloudflare.com/durable-objects/api/container/) — Full `ctx.container` API reference
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/#page","headline":"Handle outbound traffic · Cloudflare Containers docs","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/platform-details/","name":"Platform Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/platform-details/outbound-traffic/","name":"Handle outbound traffic"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/#page","headline":"Handle outbound traffic · Cloudflare Containers docs","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

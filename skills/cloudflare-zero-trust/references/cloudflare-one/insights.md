@@ -1,16 +1,18 @@
 ---
-title: Insights
 description: Insights resources and guides for Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Insights
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Insights
 
-# Insights
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One offers observability tools to monitor and troubleshoot your environment:
 
@@ -60,7 +62,14 @@ Users may report problems like slow or failing connections to internal apps.
 2. Check [Logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/) for failed authentication attempts, blocked requests, or unexpected policy matches.
 3. Use [DEX](https://developers.cloudflare.com/cloudflare-one/insights/dex/) to diagnose device- or network-level causes with [synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) and [device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/#page","headline":"Insights · Cloudflare One docs","description":"Insights resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/#page","headline":"Insights · Cloudflare One docs","description":"Insights resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

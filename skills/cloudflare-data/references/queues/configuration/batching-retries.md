@@ -1,16 +1,18 @@
 ---
-title: Batching, Retries and Delays
 description: Configure message batching, retry behavior, and delivery delays for Cloudflare Queues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Batching, Retries and Delays
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Batching, Retries and Delays
 
-# Batching, Retries and Delays
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/batching-retries/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Batching
 
@@ -59,43 +61,32 @@ You can acknowledge individual messages within a batch by explicitly acknowledgi
 
 To explicitly acknowledge a message as delivered, call the `ack()` method on the message.
 
-* [  JavaScript ](#tab-panel-10431)
-* [  TypeScript ](#tab-panel-10432)
-* [  Python ](#tab-panel-10433)
-
-**index.js**
-
 ```js
 export default {
-  async queue(batch, env, ctx) {
-    for (const msg of batch.messages) {
-      // TODO: do something with the message
-      // Explicitly acknowledge the message as delivered
-      msg.ack();
-    }
-  },
+	async queue(batch, env, ctx) {
+		for (const msg of batch.messages) {
+			// TODO: do something with the message
+			// Explicitly acknowledge the message as delivered
+			msg.ack();
+		}
+	},
 };
 ```
 
-**index.ts**
-
 ```ts
 export default {
-  async queue(batch, env, ctx): Promise<void> {
-    for (const msg of batch.messages) {
-      // TODO: do something with the message
-      // Explicitly acknowledge the message as delivered
-      msg.ack();
-    }
-  },
+	async queue(batch, env, ctx): Promise<void> {
+		for (const msg of batch.messages) {
+			// TODO: do something with the message
+			// Explicitly acknowledge the message as delivered
+			msg.ack();
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def queue(self, batch):
@@ -107,41 +98,30 @@ class Default(WorkerEntrypoint):
 
 You can also call `retry()` to explicitly force a message to be redelivered in a subsequent batch. This is referred to as "negative acknowledgement". This can be particularly useful when you want to process the rest of the messages in that batch without throwing an error that would force the entire batch to be redelivered.
 
-* [  JavaScript ](#tab-panel-10434)
-* [  TypeScript ](#tab-panel-10435)
-* [  Python ](#tab-panel-10436)
-
-**index.js**
-
 ```js
 export default {
-  async queue(batch, env, ctx) {
-    for (const msg of batch.messages) {
-      // TODO: do something with the message that fails
-      msg.retry();
-    }
-  },
+	async queue(batch, env, ctx) {
+		for (const msg of batch.messages) {
+			// TODO: do something with the message that fails
+			msg.retry();
+		}
+	},
 };
 ```
 
-**index.ts**
-
 ```ts
 export default {
-  async queue(batch, env, ctx): Promise<void> {
-    for (const msg of batch.messages) {
-      // TODO: do something with the message that fails
-      msg.retry();
-    }
-  },
+	async queue(batch, env, ctx): Promise<void> {
+		for (const msg of batch.messages) {
+			// TODO: do something with the message that fails
+			msg.retry();
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def queue(self, batch):
@@ -190,52 +170,36 @@ Configuring delivery and retry delays via the `wrangler` CLI or when [developing
 
 To delay a message or batch of messages when sending to a queue, you can provide a `delaySeconds` parameter when sending a message.
 
-* [  JavaScript ](#tab-panel-10437)
-* [  TypeScript ](#tab-panel-10438)
-* [  Python ](#tab-panel-10439)
-
-**index.js**
-
 ```js
 // Delay a singular message by 600 seconds (10 minutes)
 await env.YOUR_QUEUE.send(message, { delaySeconds: 600 });
 
-
 // Delay a batch of messages by 300 seconds (5 minutes)
 await env.YOUR_QUEUE.sendBatch(messages, { delaySeconds: 300 });
-
 
 // Do not delay this message.
 // If there is a global delay configured on the queue, ignore it.
 await env.YOUR_QUEUE.sendBatch(messages, { delaySeconds: 0 });
 ```
-
-**index.ts**
 
 ```ts
 // Delay a singular message by 600 seconds (10 minutes)
 await env.YOUR_QUEUE.send(message, { delaySeconds: 600 });
 
-
 // Delay a batch of messages by 300 seconds (5 minutes)
 await env.YOUR_QUEUE.sendBatch(messages, { delaySeconds: 300 });
-
 
 // Do not delay this message.
 // If there is a global delay configured on the queue, ignore it.
 await env.YOUR_QUEUE.sendBatch(messages, { delaySeconds: 0 });
 ```
 
-**Python**
-
 ```python
 # Delay a singular message by 600 seconds (10 minutes)
 await env.YOUR_QUEUE.send(message, delaySeconds=600)
 
-
 # Delay a batch of messages by 300 seconds (5 minutes)
 await env.YOUR_QUEUE.sendBatch(messages, delaySeconds=300)
-
 
 # Do not delay this message.
 # If there is a global delay configured on the queue, ignore it.
@@ -255,43 +219,32 @@ When [consuming messages from a queue](https://developers.cloudflare.com/queues/
 
 To delay an individual message within a batch:
 
-* [  JavaScript ](#tab-panel-10440)
-* [  TypeScript ](#tab-panel-10441)
-* [  Python ](#tab-panel-10442)
-
-**index.js**
-
 ```js
 export default {
-  async queue(batch, env, ctx) {
-    for (const msg of batch.messages) {
-      // Mark for retry and delay a singular message
-      // by 3600 seconds (1 hour)
-      msg.retry({ delaySeconds: 3600 });
-    }
-  },
+	async queue(batch, env, ctx) {
+		for (const msg of batch.messages) {
+			// Mark for retry and delay a singular message
+			// by 3600 seconds (1 hour)
+			msg.retry({ delaySeconds: 3600 });
+		}
+	},
 };
 ```
 
-**index.ts**
-
 ```ts
 export default {
-  async queue(batch, env, ctx): Promise<void> {
-    for (const msg of batch.messages) {
-      // Mark for retry and delay a singular message
-      // by 3600 seconds (1 hour)
-      msg.retry({ delaySeconds: 3600 });
-    }
-  },
+	async queue(batch, env, ctx): Promise<void> {
+		for (const msg of batch.messages) {
+			// Mark for retry and delay a singular message
+			// by 3600 seconds (1 hour)
+			msg.retry({ delaySeconds: 3600 });
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def queue(self, batch):
@@ -303,39 +256,28 @@ class Default(WorkerEntrypoint):
 
 To delay a batch of messages:
 
-* [  JavaScript ](#tab-panel-10443)
-* [  TypeScript ](#tab-panel-10444)
-* [  Python ](#tab-panel-10445)
-
-**index.js**
-
 ```js
 export default {
-  async queue(batch, env, ctx) {
-    // Mark for retry and delay a batch of messages
-    // by 600 seconds (10 minutes)
-    batch.retryAll({ delaySeconds: 600 });
-  },
+	async queue(batch, env, ctx) {
+		// Mark for retry and delay a batch of messages
+		// by 600 seconds (10 minutes)
+		batch.retryAll({ delaySeconds: 600 });
+	},
 };
 ```
 
-**index.ts**
-
 ```ts
 export default {
-  async queue(batch, env, ctx): Promise<void> {
-    // Mark for retry and delay a batch of messages
-    // by 600 seconds (10 minutes)
-    batch.retryAll({ delaySeconds: 600 });
-  },
+	async queue(batch, env, ctx): Promise<void> {
+		// Mark for retry and delay a batch of messages
+		// by 600 seconds (10 minutes)
+		batch.retryAll({ delaySeconds: 600 });
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
-**Python**
-
 ```python
 from workers import WorkerEntrypoint
-
 
 class Default(WorkerEntrypoint):
     async def queue(self, batch):
@@ -353,7 +295,6 @@ Delays can be configured via the `wrangler` CLI:
 # Delay any messages that are retried by 60 seconds (1 minute) by default.
 npx wrangler@latest queues consumer worker add $QUEUE-NAME $WORKER_SCRIPT_NAME --retry-delay-secs=60
 
-
 # Pull-based consumers
 # Delay any messages that are retried by 60 seconds (1 minute) by default.
 npx wrangler@latest queues consumer http add $QUEUE-NAME --retry-delay-secs=60
@@ -361,39 +302,31 @@ npx wrangler@latest queues consumer http add $QUEUE-NAME --retry-delay-secs=60
 
 Delays can also be configured in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) with the `delivery_delay` setting for producers (when sending) and/or the `retry_delay` (when retrying) per-consumer:
 
-* [  wrangler.jsonc ](#tab-panel-10429)
-* [  wrangler.toml ](#tab-panel-10430)
-
-**JSONC**
-
 ```jsonc
 {
-  "queues": {
-    "producers": [
-      {
-        "binding": "<BINDING_NAME>",
-        "queue": "<QUEUE-NAME>",
-        "delivery_delay": 60 // delay every message delivery by 1 minute
-      }
-    ],
-    "consumers": [
-      {
-        "queue": "my-queue",
-        "retry_delay": 300 // delay any retried message by 5 minutes before re-attempting delivery
-      }
-    ]
-  }
+	"queues": {
+		"producers": [
+			{
+				"binding": "<BINDING_NAME>",
+				"queue": "<QUEUE-NAME>",
+				"delivery_delay": 60 // delay every message delivery by 1 minute
+			}
+		],
+		"consumers": [
+			{
+				"queue": "my-queue",
+				"retry_delay": 300 // delay any retried message by 5 minutes before re-attempting delivery
+			}
+		]
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [[queues.producers]]
 binding = "<BINDING_NAME>"
 queue = "<QUEUE-NAME>"
 delivery_delay = 60
-
 
 [[queues.consumers]]
 queue = "my-queue"
@@ -420,30 +353,20 @@ Each message delivered to a consumer includes an `attempts` property that tracks
 
 For example, to generate an [exponential backoff ↗](https://en.wikipedia.org/wiki/Exponential%5Fbackoff) for a message, you can create a helper function that calculates this for you:
 
-* [  JavaScript ](#tab-panel-10446)
-* [  TypeScript ](#tab-panel-10447)
-* [  Python ](#tab-panel-10448)
-
-**index.js**
-
 ```js
 function calculateExponentialBackoff(attempts, baseDelaySeconds) {
-  return baseDelaySeconds ** attempts;
+	return baseDelaySeconds ** attempts;
 }
 ```
-
-**index.ts**
 
 ```ts
 function calculateExponentialBackoff(
-  attempts: number,
-  baseDelaySeconds: number,
+	attempts: number,
+	baseDelaySeconds: number,
 ): number {
-  return baseDelaySeconds ** attempts;
+	return baseDelaySeconds ** attempts;
 }
 ```
-
-**Python**
 
 ```python
 def calculate_exponential_backoff(attempts, base_delay_seconds):
@@ -452,60 +375,46 @@ def calculate_exponential_backoff(attempts, base_delay_seconds):
 
 In your consumer, you then pass the value of `msg.attempts` and your desired delay factor as the argument to `delaySeconds` when calling `retry()` on an individual message:
 
-* [  JavaScript ](#tab-panel-10449)
-* [  TypeScript ](#tab-panel-10450)
-* [  Python ](#tab-panel-10451)
-
-**index.js**
-
 ```js
 const BASE_DELAY_SECONDS = 30;
 
-
 export default {
-  async queue(batch, env, ctx) {
-    for (const msg of batch.messages) {
-      // Mark for retry with exponential backoff
-      msg.retry({
-        delaySeconds: calculateExponentialBackoff(
-          msg.attempts,
-          BASE_DELAY_SECONDS,
-        ),
-      });
-    }
-  },
+	async queue(batch, env, ctx) {
+		for (const msg of batch.messages) {
+			// Mark for retry with exponential backoff
+			msg.retry({
+				delaySeconds: calculateExponentialBackoff(
+					msg.attempts,
+					BASE_DELAY_SECONDS,
+				),
+			});
+		}
+	},
 };
 ```
-
-**index.ts**
 
 ```ts
 const BASE_DELAY_SECONDS = 30;
 
-
 export default {
-  async queue(batch, env, ctx): Promise<void> {
-    for (const msg of batch.messages) {
-      // Mark for retry with exponential backoff
-      msg.retry({
-        delaySeconds: calculateExponentialBackoff(
-          msg.attempts,
-          BASE_DELAY_SECONDS,
-        ),
-      });
-    }
-  },
+	async queue(batch, env, ctx): Promise<void> {
+		for (const msg of batch.messages) {
+			// Mark for retry with exponential backoff
+			msg.retry({
+				delaySeconds: calculateExponentialBackoff(
+					msg.attempts,
+					BASE_DELAY_SECONDS,
+				),
+			});
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
-
-**Python**
 
 ```python
 from workers import WorkerEntrypoint
 
-
 BASE_DELAY_SECONDS = 30
-
 
 class Default(WorkerEntrypoint):
     async def queue(self, batch):
@@ -526,7 +435,14 @@ class Default(WorkerEntrypoint):
 * Learn more about [How Queues Works](https://developers.cloudflare.com/queues/reference/how-queues-works/).
 * Understand the [metrics available](https://developers.cloudflare.com/queues/observability/metrics/) for your queues, including backlog and delayed message counts.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/batching-retries/#page","headline":"Batching, Retries and Delays · Cloudflare Queues docs","description":"Configure message batching, retry behavior, and delivery delays for Cloudflare Queues.","url":"https://developers.cloudflare.com/queues/configuration/batching-retries/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/configuration/batching-retries/","name":"Batching, Retries and Delays"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/batching-retries/#page","headline":"Batching, Retries and Delays · Cloudflare Queues docs","description":"Configure message batching, retry behavior, and delivery delays for Cloudflare Queues.","url":"https://developers.cloudflare.com/queues/configuration/batching-retries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

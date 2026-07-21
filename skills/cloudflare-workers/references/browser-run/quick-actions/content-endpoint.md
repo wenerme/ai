@@ -1,16 +1,18 @@
 ---
-title: /content - Fetch HTML
 description: Capture fully rendered HTML from a webpage after JavaScript execution using the Browser Run /content endpoint.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: /content - Fetch HTML
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  /content - Fetch HTML
 
-# /content - Fetch HTML
+Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The `/content` endpoint instructs the browser to navigate to a website and capture the fully rendered HTML of a page, including the `head` section, after JavaScript execution. This is ideal for capturing content from JavaScript-heavy or interactive websites.
 
@@ -43,10 +45,6 @@ You must provide either `url` or `html`:
 
 ### Fetch rendered HTML from a URL
 
-* [ curl ](#tab-panel-7558)
-* [ TypeScript SDK ](#tab-panel-7559)
-* [ Workers binding ](#tab-panel-7560)
-
 Go to `https://developers.cloudflare.com/` and return the rendered HTML.
 
 ```bash
@@ -56,40 +54,32 @@ curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browse
   -d '{"url": "https://developers.cloudflare.com/"}'
 ```
 
-**TypeScript**
-
 ```typescript
 import Cloudflare from "cloudflare";
 
-
 const client = new Cloudflare({
-  apiToken: process.env["CLOUDFLARE_API_TOKEN"],
+	apiToken: process.env["CLOUDFLARE_API_TOKEN"],
 });
-
 
 const content = await client.browserRendering.content.create({
-  account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
-  url: "https://developers.cloudflare.com/",
+	account_id: process.env["CLOUDFLARE_ACCOUNT_ID"],
+	url: "https://developers.cloudflare.com/",
 });
-
 
 console.log(content);
 ```
 
-**TypeScript**
-
 ```typescript
 interface Env {
-  BROWSER: BrowserRun;
+	BROWSER: BrowserRun;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    return await env.BROWSER.quickAction("content", {
-      url: "https://developers.cloudflare.com/",
-    });
-  },
+	async fetch(request, env): Promise<Response> {
+		return await env.BROWSER.quickAction("content", {
+			url: "https://developers.cloudflare.com/",
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -111,7 +101,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
       "url": "https://cloudflare.com/",
       "rejectResourceTypes": ["image"],
       "rejectRequestPattern": ["/^.*\\.(css)"]
-    }'
+		}'
 ```
 
 Many more options exist, like setting HTTP headers using `setExtraHTTPHeaders`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/content/methods/create/) for all available parameters.
@@ -124,10 +114,10 @@ The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `ne
 
 ```json
 {
-  "url": "https://example.com",
-  "gotoOptions": {
-    "waitUntil": "networkidle0"
-  }
+	"url": "https://example.com",
+	"gotoOptions": {
+		"waitUntil": "networkidle0"
+	}
 }
 ```
 
@@ -145,7 +135,14 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 
 If you have questions or encounter an error, see the [Browser Run FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-run/faq/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/#page","headline":"/content - Fetch HTML · Cloudflare Browser Run docs","description":"Capture fully rendered HTML from a webpage after JavaScript execution using the Browser Run /content endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/quick-actions/content-endpoint/","name":"/content - Fetch HTML"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/#page","headline":"/content - Fetch HTML · Cloudflare Browser Run docs","description":"Capture fully rendered HTML from a webpage after JavaScript execution using the Browser Run /content endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

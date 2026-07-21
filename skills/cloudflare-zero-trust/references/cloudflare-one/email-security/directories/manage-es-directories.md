@@ -1,16 +1,18 @@
 ---
-title: Manage Email security directories
 description: Manage Email security directories in Email Security.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Manage Email security directories
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage Email security directories
 
-# Manage Email security directories
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-es-directories/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can manage your Email security directory by editing and deleting added users.
 
@@ -62,7 +64,14 @@ To delete multiple users from the registry at once:
 1. Select the users you want to delete.
 2. Select the **Action** dropdown list > **Delete**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-es-directories/#page","headline":"Manage Email security directories · Cloudflare One docs","description":"Manage Email security directories in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-es-directories/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/email-security/","name":"Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/email-security/directories/","name":"Directories"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/email-security/directories/manage-es-directories/","name":"Manage Email security directories"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-es-directories/#page","headline":"Manage Email security directories · Cloudflare One docs","description":"Manage Email security directories in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/directories/manage-es-directories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

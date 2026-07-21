@@ -39,37 +39,38 @@ Update the system instructions used by the model in this session
 const event = {
   type: "session.update",
   session: {
-      type: "realtime",
-      model: "gpt-realtime-2.1",
-      // Lock the output to audio (set to ["text"] if you want text without audio)
-      output_modalities: ["audio"],
-      audio: {
-        input: {
-          format: {
-            type: "audio/pcm",
-            rate: 24000,
-          },
-          turn_detection: {
-            type: "semantic_vad"
-          }
+    type: "realtime",
+    model: "gpt-realtime-2.1",
+    // Lock the output to audio (set to ["text"] if you want text without audio)
+    output_modalities: ["audio"],
+    audio: {
+      input: {
+        format: {
+          type: "audio/pcm",
+          rate: 24000,
         },
-        output: {
-          format: {
-            type: "audio/pcm",
-          },
-          voice: "marin",
-        }
+        turn_detection: {
+          type: "semantic_vad",
+        },
       },
-      // Use a server-stored prompt by ID. Optionally pin a version and pass variables.
-      prompt: {
-        id: "pmpt_123",          // your stored prompt ID
-        version: "89",           // optional: pin a specific version
-        variables: {
-          city: "Paris"          // example variable used by your prompt
-        }
+      output: {
+        format: {
+          type: "audio/pcm",
+        },
+        voice: "marin",
       },
-      // You can still set direct session fields; these override prompt fields if they overlap:
-      instructions: "Speak clearly and briefly. Confirm understanding before taking actions."
+    },
+    // Use a server-stored prompt by ID. Optionally pin a version and pass variables.
+    prompt: {
+      id: "pmpt_123", // your stored prompt ID
+      version: "89", // optional: pin a specific version
+      variables: {
+        city: "Paris", // example variable used by your prompt
+      },
+    },
+    // You can still set direct session fields; these override prompt fields if they overlap:
+    instructions:
+      "Speak clearly and briefly. Confirm understanding before taking actions.",
   },
 };
 
@@ -155,8 +156,8 @@ const event = {
       {
         type: "input_text",
         text: "What Prince album sold the most copies?",
-      }
-    ]
+      },
+    ],
   },
 };
 
@@ -190,7 +191,7 @@ Generate a text-only response
 const event = {
   type: "response.create",
   response: {
-    output_modalities: [ "text" ]
+    output_modalities: ["text"],
   },
 };
 
@@ -214,8 +215,9 @@ When the response is completely finished, the server will emit the [`response.do
 Listen for response.done to see the final results
 
 ```javascript
-function handleEvent(e) {
-  const serverEvent = JSON.parse(e.data);
+function handleEvent(message) {
+  const data = "data" in message ? message.data : message.toString();
+  const serverEvent = JSON.parse(data);
   if (serverEvent.type === "response.done") {
     console.log(serverEvent.response.output[0]);
   }
@@ -426,8 +428,8 @@ The format of the input chunks can be configured either for the entire session, 
 Append audio input bytes to the conversation
 
 ```javascript
-import fs from 'fs';
-import decodeAudio from 'audio-decode';
+import fs from "fs";
+import decodeAudio from "audio-decode";
 
 // Converts Float32Array of audio data to PCM16 ArrayBuffer
 function floatTo16BitPCM(float32Array) {
@@ -442,9 +444,9 @@ function floatTo16BitPCM(float32Array) {
 }
 
 // Converts a Float32Array to base64-encoded PCM16 data
-base64EncodeAudio(float32Array) {
+function base64EncodeAudio(float32Array) {
   const arrayBuffer = floatTo16BitPCM(float32Array);
-  let binary = '';
+  let binary = "";
   let bytes = new Uint8Array(arrayBuffer);
   const chunkSize = 0x8000; // 32KB chunk size
   for (let i = 0; i < bytes.length; i += chunkSize) {
@@ -457,24 +459,26 @@ base64EncodeAudio(float32Array) {
 // Fills the audio buffer with the contents of three files,
 // then asks the model to generate a response.
 const files = [
-  './path/to/sample1.wav',
-  './path/to/sample2.wav',
-  './path/to/sample3.wav'
+  "fixtures/sample1.wav",
+  "fixtures/sample2.wav",
+  "fixtures/sample3.wav",
 ];
 
 for (const filename of files) {
   const audioFile = fs.readFileSync(filename);
   const audioBuffer = await decodeAudio(audioFile);
-  const channelData = audioBuffer.getChannelData(0);
+  const channelData = audioBuffer.channelData[0];
   const base64Chunk = base64EncodeAudio(channelData);
-  ws.send(JSON.stringify({
-    type: 'input_audio_buffer.append',
-    audio: base64Chunk
-  }));
-});
+  ws.send(
+    JSON.stringify({
+      type: "input_audio_buffer.append",
+      audio: base64Chunk,
+    })
+  );
+}
 
-ws.send(JSON.stringify({type: 'input_audio_buffer.commit'}));
-ws.send(JSON.stringify({type: 'response.create'}));
+ws.send(JSON.stringify({ type: "input_audio_buffer.commit" }));
+ws.send(JSON.stringify({ type: "response.create" }));
 ```
 
 ```python
@@ -580,9 +584,9 @@ The format of the output chunks can be configured either for the entire session,
 Listen for response.output_audio.delta events
 
 ```javascript
-function handleEvent(e) {
-  const serverEvent = JSON.parse(e.data);
-  if (serverEvent.type === "response.audio.delta") {
+function handleEvent(message) {
+  const serverEvent = JSON.parse(message.toString());
+  if (serverEvent.type === "response.output_audio.delta") {
     // Access Base64-encoded audio chunks
     // console.log(serverEvent.delta);
   }
@@ -595,9 +599,9 @@ ws.on("message", handleEvent);
 ```python
 def on_message(ws, message):
     server_event = json.loads(message)
-    if server_event.type == "response.audio.delta":
+    if server_event["type"] == "response.output_audio.delta":
         # Access Base64-encoded audio chunks:
-        # print(server_event.delta)
+        # print(server_event["delta"])
 ```
 
 
@@ -678,7 +682,7 @@ const event = {
     metadata: { topic: "classification" },
 
     // Set any other available response fields
-    output_modalities: [ "text" ],
+    output_modalities: ["text"],
     instructions: prompt,
   },
 };
@@ -718,8 +722,9 @@ Now, when you listen for the [`response.done`](https://developers.openai.com/api
 Create an out-of-band model response
 
 ```javascript
-function handleEvent(e) {
-  const serverEvent = JSON.parse(e.data);
+function handleEvent(message) {
+  const data = "data" in message ? message.data : message.toString();
+  const serverEvent = JSON.parse(data);
   if (
     serverEvent.type === "response.done" &&
     serverEvent.response.metadata?.topic === "classification"
@@ -765,7 +770,7 @@ const event = {
   response: {
     conversation: "none",
     metadata: { topic: "pizza" },
-    output_modalities: [ "text" ],
+    output_modalities: ["text"],
 
     // Create a custom input array for this request with whatever context
     // is appropriate
@@ -773,7 +778,7 @@ const event = {
       // potentially include existing conversation items:
       {
         type: "item_reference",
-        id: "some_conversation_item_id"
+        id: "some_conversation_item_id",
       },
       {
         type: "message",

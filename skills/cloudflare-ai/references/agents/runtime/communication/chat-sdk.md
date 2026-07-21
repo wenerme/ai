@@ -1,16 +1,18 @@
 ---
-title: Chat SDK
 description: Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Chat SDK
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Chat SDK
 
-# Chat SDK
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use `agents/chat-sdk` when you run the [Chat SDK ↗](https://chat-sdk.dev/) inside an Agent. The first integration helper is a Chat SDK `StateAdapter` that stores state in Agents sub-agents.
 
@@ -44,44 +46,33 @@ bun add agents chat
 
 Create a parent Agent that owns your Chat SDK runtime. Pass `createChatSdkState()` as the Chat SDK `state` option.
 
-* [  JavaScript ](#tab-panel-6387)
-* [  TypeScript ](#tab-panel-6388)
-
-**JavaScript**
-
 ```js
 import { Agent } from "agents";
 import { createChatSdkState } from "agents/chat-sdk";
 import { Chat } from "chat";
 import { createTelegramAdapter } from "@chat-adapter/telegram";
 
-
 export { ChatSdkStateAgent } from "agents/chat-sdk";
 
-
 export class MessengerAgent extends Agent {
-  chat;
+	chat;
 
+	onStart() {
+		const telegram = createTelegramAdapter({
+			botToken: this.env.TELEGRAM_BOT_TOKEN,
+			mode: "webhook",
+			userName: "my_bot",
+		});
 
-  onStart() {
-    const telegram = createTelegramAdapter({
-      botToken: this.env.TELEGRAM_BOT_TOKEN,
-      mode: "webhook",
-      userName: "my_bot",
-    });
-
-
-    this.chat = new Chat({
-      adapters: { telegram },
-      userName: "my_bot",
-      state: createChatSdkState(),
-      concurrency: { strategy: "burst", debounceMs: 600 },
-    });
-  }
+		this.chat = new Chat({
+			adapters: { telegram },
+			userName: "my_bot",
+			state: createChatSdkState(),
+			concurrency: { strategy: "burst", debounceMs: 600 },
+		});
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Agent } from "agents";
@@ -89,44 +80,35 @@ import { createChatSdkState } from "agents/chat-sdk";
 import { Chat } from "chat";
 import { createTelegramAdapter } from "@chat-adapter/telegram";
 
-
 export { ChatSdkStateAgent } from "agents/chat-sdk";
 
-
 export class MessengerAgent extends Agent<Env> {
-  private chat!: Chat;
+	private chat!: Chat;
 
+	onStart() {
+		const telegram = createTelegramAdapter({
+			botToken: this.env.TELEGRAM_BOT_TOKEN,
+			mode: "webhook",
+			userName: "my_bot",
+		});
 
-  onStart() {
-    const telegram = createTelegramAdapter({
-      botToken: this.env.TELEGRAM_BOT_TOKEN,
-      mode: "webhook",
-      userName: "my_bot",
-    });
-
-
-    this.chat = new Chat({
-      adapters: { telegram },
-      userName: "my_bot",
-      state: createChatSdkState(),
-      concurrency: { strategy: "burst", debounceMs: 600 },
-    });
-  }
+		this.chat = new Chat({
+			adapters: { telegram },
+			userName: "my_bot",
+			state: createChatSdkState(),
+			concurrency: { strategy: "burst", debounceMs: 600 },
+		});
+	}
 }
 ```
 
 Add the parent Agent to your Durable Object migration:
 
-* [  wrangler.jsonc ](#tab-panel-6377)
-* [  wrangler.toml ](#tab-panel-6378)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -149,18 +131,14 @@ Add the parent Agent to your Durable Object migration:
 }
 ```
 
-**TOML**
-
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = ["nodejs_compat"]
-
 
 [[durable_objects.bindings]]
 class_name = "MessengerAgent"
 name = "MessengerAgent"
-
 
 [[migrations]]
 new_sqlite_classes = ["MessengerAgent"]
@@ -188,63 +166,47 @@ Unknown keys use the adapter's default shard name, `default`.
 
 Use `shardKey` to control how thread IDs map to state sub-agent names:
 
-* [  JavaScript ](#tab-panel-6379)
-* [  TypeScript ](#tab-panel-6380)
-
-**JavaScript**
-
 ```js
 const state = createChatSdkState({
-  shardKey(threadId) {
-    return threadId.split(":").slice(0, 2).join(":");
-  },
+	shardKey(threadId) {
+		return threadId.split(":").slice(0, 2).join(":");
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const state = createChatSdkState({
-  shardKey(threadId) {
-    return threadId.split(":").slice(0, 2).join(":");
-  },
+	shardKey(threadId) {
+		return threadId.split(":").slice(0, 2).join(":");
+	},
 });
 ```
 
 Use `keyShard` when an adapter stores non-thread-shaped keys that should still route to a provider-specific shard:
 
-* [  JavaScript ](#tab-panel-6385)
-* [  TypeScript ](#tab-panel-6386)
-
-**JavaScript**
-
 ```js
 const state = createChatSdkState({
-  keyShard(key) {
-    if (!key.startsWith("dedupe:telegram:")) {
-      return undefined;
-    }
+	keyShard(key) {
+		if (!key.startsWith("dedupe:telegram:")) {
+			return undefined;
+		}
 
-
-    const chatId = key.slice("dedupe:telegram:".length).split(":")[0];
-    return chatId ? `telegram:${chatId}` : undefined;
-  },
+		const chatId = key.slice("dedupe:telegram:".length).split(":")[0];
+		return chatId ? `telegram:${chatId}` : undefined;
+	},
 });
 ```
 
-**TypeScript**
-
 ```ts
 const state = createChatSdkState({
-  keyShard(key) {
-    if (!key.startsWith("dedupe:telegram:")) {
-      return undefined;
-    }
+	keyShard(key) {
+		if (!key.startsWith("dedupe:telegram:")) {
+			return undefined;
+		}
 
-
-    const chatId = key.slice("dedupe:telegram:".length).split(":")[0];
-    return chatId ? `telegram:${chatId}` : undefined;
-  },
+		const chatId = key.slice("dedupe:telegram:".length).split(":")[0];
+		return chatId ? `telegram:${chatId}` : undefined;
+	},
 });
 ```
 
@@ -256,34 +218,23 @@ Returning `undefined` falls back to the built-in key sharder and then to the def
 
 Creates a Chat SDK `StateAdapter` backed by a `ChatSdkStateAgent` sub-agent.
 
-* [  JavaScript ](#tab-panel-6383)
-* [  TypeScript ](#tab-panel-6384)
-
-**JavaScript**
-
 ```js
 import { createChatSdkState } from "agents/chat-sdk";
 
-
 export { ChatSdkStateAgent } from "agents/chat-sdk";
 
-
 const state = createChatSdkState({
-  // parent: this // Optional. Defaults to the current Agent from getCurrentAgent().
+	// parent: this // Optional. Defaults to the current Agent from getCurrentAgent().
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { createChatSdkState } from "agents/chat-sdk";
 
-
 export { ChatSdkStateAgent } from "agents/chat-sdk";
 
-
 const state = createChatSdkState({
-  // parent: this // Optional. Defaults to the current Agent from getCurrentAgent().
+	// parent: this // Optional. Defaults to the current Agent from getCurrentAgent().
 });
 ```
 
@@ -301,16 +252,9 @@ Options:
 
 The sub-agent class that stores state in SQLite. Export it from your Worker entry point so the runtime can create it.
 
-* [  JavaScript ](#tab-panel-6381)
-* [  TypeScript ](#tab-panel-6382)
-
-**JavaScript**
-
 ```js
 export { ChatSdkStateAgent } from "agents/chat-sdk";
 ```
-
-**TypeScript**
 
 ```ts
 export { ChatSdkStateAgent } from "agents/chat-sdk";
@@ -347,9 +291,18 @@ Physical cleanup is lazy. `ChatSdkStateAgent` schedules one cleanup callback for
 
 ## Example
 
-[ Chat SDK messenger example ](https://github.com/cloudflare/agents/tree/main/examples/chat-sdk-messenger) Build a Telegram messenger bot with Chat SDK state in sub-agents, burst/debounce concurrency, and Think-backed AI replies running in managed fibers.
+### [ Chat SDK messenger example ](https://github.com/cloudflare/agents/tree/main/examples/chat-sdk-messenger)
+
+ Build a Telegram messenger bot with Chat SDK state in sub-agents, burst/debounce concurrency, and Think-backed AI replies running in managed fibers.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/#page","headline":"Chat SDK · Cloudflare Agents docs","description":"Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.","url":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/runtime/","name":"Runtime"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/runtime/communication/","name":"Communication"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/runtime/communication/chat-sdk/","name":"Chat SDK"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/#page","headline":"Chat SDK · Cloudflare Agents docs","description":"Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.","url":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

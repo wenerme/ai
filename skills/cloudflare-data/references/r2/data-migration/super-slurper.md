@@ -1,16 +1,18 @@
 ---
-title: Super Slurper
 description: Copy objects from other cloud providers to R2 in a one-off bulk migration job.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Super Slurper
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Super Slurper
 
-# Super Slurper
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-migration/super-slurper/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Super Slurper allows you to quickly and easily copy objects from other cloud providers to an R2 bucket of your choice.
 
@@ -29,7 +31,7 @@ For migration use cases that do not meet the above criteria, we recommend using 
 ## Use Super Slurper to migrate data to R2
 
 1. In the Cloudflare dashboard, go to the **R2 data migration** page.
-[ Go to **Data migration** ](https://dash.cloudflare.com/?to=/:account/r2/slurper)
+[ Go to **Data migration** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/slurper)
 2. Select **Migrate files**.
 3. Select the source cloud storage provider that you will be migrating data from.
 4. Enter your source bucket name and associated credentials and select **Next**.
@@ -90,14 +92,14 @@ To create credentials with the correct permissions:
 
 ```json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": ["s3:Get*", "s3:List*"],
-      "Resource": ["arn:aws:s3:::<BUCKET_NAME>", "arn:aws:s3:::<BUCKET_NAME>/*"]
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": ["s3:Get*", "s3:List*"],
+			"Resource": ["arn:aws:s3:::<BUCKET_NAME>", "arn:aws:s3:::<BUCKET_NAME>/*"]
+		}
+	]
 }
 ```
 
@@ -145,7 +147,14 @@ Objects stored using AWS S3 [archival storage classes ↗](https://aws.amazon.co
 * Files stored using S3 Glacier tiers (not including Glacier Instant Retrieval) will be skipped and logged in the migration log.
 * Files stored using S3 Intelligent Tiering and placed in Deep Archive tier will be skipped and logged in the migration log.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/super-slurper/#page","headline":"Super Slurper · Cloudflare R2 docs","description":"Copy objects from other cloud providers to R2 in a one-off bulk migration job.","url":"https://developers.cloudflare.com/r2/data-migration/super-slurper/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-migration/","name":"Data migration"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-migration/super-slurper/","name":"Super Slurper"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/super-slurper/#page","headline":"Super Slurper · Cloudflare R2 docs","description":"Copy objects from other cloud providers to R2 in a one-off bulk migration job.","url":"https://developers.cloudflare.com/r2/data-migration/super-slurper/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

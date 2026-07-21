@@ -13,8 +13,8 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    input: "Write a one-sentence bedtime story about a unicorn."
+  model: "gpt-5.6",
+  input: "Write a one-sentence bedtime story about a unicorn.",
 });
 
 console.log(response.output_text);
@@ -207,10 +207,10 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    reasoning: { effort: "low" },
-    instructions: "${semicolonsDevMsg}",
-    input: "${semicolonsPrompt}",
+  model: "gpt-5.6",
+  reasoning: { effort: "low" },
+  instructions: "Talk like a pirate.",
+  input: "Are semicolons optional in JavaScript?",
 });
 
 console.log(response.output_text);
@@ -252,18 +252,18 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    reasoning: { effort: "low" },
-    input: [
-        {
-            role: "developer",
-            content: "${semicolonsDevMsg}"
-        },
-        {
-            role: "user",
-            content: "${semicolonsPrompt}",
-        },
-    ],
+  model: "gpt-5.6",
+  reasoning: { effort: "low" },
+  input: [
+    {
+      role: "developer",
+      content: "Talk like a pirate.",
+    },
+    {
+      role: "user",
+      content: "Are semicolons optional in JavaScript?",
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -409,12 +409,12 @@ import fs from "fs/promises";
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const instructions = await fs.readFile("prompt.txt", "utf-8");
+const instructions = await fs.readFile("fixtures/prompt.txt", "utf-8");
 
 const response = await client.responses.create({
-    model: "gpt-5.6",
-    instructions,
-    input: "How would I declare a variable for a last name?",
+  model: "gpt-5.6",
+  instructions,
+  input: "How would I declare a variable for a last name?",
 });
 
 console.log(response.output_text);

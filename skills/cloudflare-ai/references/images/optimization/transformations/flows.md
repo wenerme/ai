@@ -1,16 +1,18 @@
 ---
-title: Create transformation flows
 description: Flows let you automatically apply image optimization to requests on your zone.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Create transformation flows
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create transformation flows
 
-# Create transformation flows
+Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/transformations/flows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Define automated rules to optimize remote images without writing any code or changing your existing URLs.
 
@@ -141,7 +143,14 @@ To learn how `width=auto` works, refer to our guide on [serving responsive image
 
 Select **Save** on the side panel to add your custom flow, then select **Save** on your list of flows to turn on your flow.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/flows/#page","headline":"Create transformation flows · Cloudflare Images docs","description":"Flows let you automatically apply image optimization to requests on your zone.","url":"https://developers.cloudflare.com/images/optimization/transformations/flows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/flows/","name":"Create transformation flows"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/flows/#page","headline":"Create transformation flows · Cloudflare Images docs","description":"Flows let you automatically apply image optimization to requests on your zone.","url":"https://developers.cloudflare.com/images/optimization/transformations/flows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

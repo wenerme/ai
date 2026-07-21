@@ -1,16 +1,18 @@
 ---
-title: Metrics and analytics
 description: View R2 storage and operations metrics via the dashboard or GraphQL Analytics API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics and analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics and analytics
 
-# Metrics and analytics
+Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/platform/metrics-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 R2 exposes analytics that allow you to inspect the requests and storage of the buckets in your account.
 
@@ -60,7 +62,7 @@ Therefore, if you want to query metrics about a bucket which has a specified jur
 Per-bucket analytics for R2 are available in the Cloudflare dashboard. To view current and historical metrics for a bucket:
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select the **Metrics** tab.
 
@@ -78,34 +80,32 @@ To query the volume of each operation type on a bucket for a given time period y
 
 ```graphql
 query R2VolumeExample(
-  $accountTag: string!
-  $startDate: Time
-  $endDate: Time
-  $bucketName: string
+	$accountTag: string!
+	$startDate: Time
+	$endDate: Time
+	$bucketName: string
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      r2OperationsAdaptiveGroups(
-        limit: 10000
-        filter: {
-          datetime_geq: $startDate
-          datetime_leq: $endDate
-          bucketName: $bucketName
-        }
-      ) {
-        sum {
-          requests
-        }
-        dimensions {
-          actionType
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			r2OperationsAdaptiveGroups(
+				limit: 10000
+				filter: {
+					datetime_geq: $startDate
+					datetime_leq: $endDate
+					bucketName: $bucketName
+				}
+			) {
+				sum {
+					requests
+				}
+				dimensions {
+					actionType
+				}
+			}
+		}
+	}
 }
 ```
-
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASgJgGoHsA2IC2YCiAPAQ0wAc0wAKAKBhgBICBjBlEAOwBcAVAgcwC4YAZ3YQAlqx4BCanWEEI7ACIF2YAZ1HYZtMKwAmy1es1htAIxAMA1mHYA5ImqEjxPSgEoYAbxkA3UWAA7pDeMjSMzGzsguQAZqJoqhACXjARLBzc-HTpUVkwAL6ePjSlMBAIAPLEkCqiKKyCAIJ6BMTsor5gAOIQLMQxYWUwaJqi7AIAjAAMs9NDZfGJkCkLw62qHdgA+jxgwAK0cgqGpsPrKrYm22QHdLoGl2tlFta2DtiHrzb2js+Fa2K-0EWFC5zKEH24GEgn+BX+ehMjXqjTB4PCDA6DU4UBqcLW8LKhIBBSAA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0RrEQFMsQATAAYBANgC0QgOzjhyAIwBWTEPkqALAC0GIHvAAmXXv2FjJMuQLWqN2xgCNYEANY9EpMAFs+2AEoBRAAUAGXx-CgB1KmQACQoAZWRfKlIAcRAAXyA)
 
 The `bucketName` field can be removed to get an account level overview of operations. The volume of operations can be broken down even further by adding more dimensions to the query.
 
@@ -115,40 +115,45 @@ To query the storage of a bucket over a given time period you can run a query as
 
 ```graphql
 query R2StorageExample(
-  $accountTag: string!
-  $startDate: Time
-  $endDate: Time
-  $bucketName: string
+	$accountTag: string!
+	$startDate: Time
+	$endDate: Time
+	$bucketName: string
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      r2StorageAdaptiveGroups(
-        limit: 10000
-        filter: {
-          datetime_geq: $startDate
-          datetime_leq: $endDate
-          bucketName: $bucketName
-        }
-        orderBy: [datetime_DESC]
-      ) {
-        max {
-          objectCount
-          uploadCount
-          payloadSize
-          metadataSize
-        }
-        dimensions {
-          datetime
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			r2StorageAdaptiveGroups(
+				limit: 10000
+				filter: {
+					datetime_geq: $startDate
+					datetime_leq: $endDate
+					bucketName: $bucketName
+				}
+				orderBy: [datetime_DESC]
+			) {
+				max {
+					objectCount
+					uploadCount
+					payloadSize
+					metadataSize
+				}
+				dimensions {
+					datetime
+				}
+			}
+		}
+	}
 }
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBASgJgMoBcD2ECGBzMBRAD0wFsAHAGzAAoAoGGAEkwGNm0QA7FAFRwC4YAZxQQAlh2wBCOo2GYIKACKYUYAd1HEwMhmA4ATZavWbt9BgCMQzANZgUAORJqhI8dhoBKGAG8ZAN1EwAHdIXxl6FjZOFEEqADNRclUIAR8YKPYuXmwBJlYsnhwYAF9vP3pKmAhkdCxcAEF9TFIUUX8wAHEIdlI4iKqYck1RFAEARgAGacmBqsTkyDS5webVNq0AfVxgPLkFIzNBqrX7U03KXcY9QxUj4-orW3snLTynu0dnFfoSn5gMPpIAAhKACADapw2YE2ijwSAAwgBdFblf7ETAEcIPSpoCwAKzAzBQCMK-3oIAoaEw+lJMXJMFImCg5Gp+iQogAXvcHloUDSVJgOdz-n8cfpTBxBKI0FLsTiYFDTKKVmLKmq-iUgA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0RrEQFMsQATAAYBANgC0QgOzjhyAIwBWTEPkqALAC0GIHvAAmXXv2FjJMuQLWqN2xgCNYEANY9EpMAFs+2AEoBRAAUAGXx-CgB1KmQACQoAZWRfKlIAcRAAXyA)
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare R2 docs","description":"View R2 storage and operations metrics via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/r2/platform/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/metrics-analytics/","name":"Metrics and analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/metrics-analytics/#page","headline":"Metrics and analytics · Cloudflare R2 docs","description":"View R2 storage and operations metrics via the dashboard or GraphQL Analytics API.","url":"https://developers.cloudflare.com/r2/platform/metrics-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

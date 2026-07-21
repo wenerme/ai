@@ -494,20 +494,20 @@ Example response:
 ```json
 [
   {
-    "name": "query_graph",
-    "description": "Execute graph queries to find nodes, traverse relationships...",
+    "name": "list_commands",
+    "description": "List the Orbit commands that can be invoked...",
     "parameters": {
       "type": "object",
-      "required": ["query"],
-      "properties": {"query": {"type": "object"}}
+      "properties": {"command_names": {"type": "array"}}
     }
   },
   {
-    "name": "get_graph_schema",
-    "description": "List the GitLab Knowledge Graph schema...",
+    "name": "invoke_command",
+    "description": "Invoke an Orbit command such as query_graph or get_graph_schema...",
     "parameters": {
       "type": "object",
-      "properties": {"expand_nodes": {"type": "array"}}
+      "required": ["command_name"],
+      "properties": {"command_name": {"type": "string"}, "parameters": {"type": "object"}}
     }
   }
 ]

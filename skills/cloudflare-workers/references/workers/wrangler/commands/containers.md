@@ -1,16 +1,18 @@
 ---
-title: Containers
 description: Wrangler commands for interacting with Cloudflare's Container Platform.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Containers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Containers
 
-# Containers
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/containers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Interact with [Containers](https://developers.cloudflare.com/containers/) using Wrangler.
 
@@ -22,14 +24,14 @@ Build a Container image from a Dockerfile.
 wrangler containers build [PATH] [OPTIONS]
 ```
 
-* `PATH` ` string ` optional
+* `PATH` ` string `optional
   * Path for the directory containing the Dockerfile to build.
-* `-t, --tag` ` string ` required
+* `-t, --tag` ` string `required
   * Name and optionally a tag (format: "name:tag").
-* `--path-to-docker` ` string ` optional
+* `--path-to-docker` ` string `optional
   * Path to your docker binary if it's not on `$PATH`.
   * Default: "docker"
-* `-p, --push` ` boolean ` optional
+* `-p, --push` ` boolean `optional
   * Push the built image to Cloudflare's managed registry.
   * Default: false
 
@@ -41,7 +43,7 @@ Delete a Container (application).
 wrangler containers delete <CONTAINER_ID> [OPTIONS]
 ```
 
-* `CONTAINER_ID` ` string ` required
+* `CONTAINER_ID` ` string `required
   * The ID of the Container to delete.
 
 ### `images`
@@ -56,9 +58,9 @@ List images in your containers registry.
 wrangler containers images list [OPTIONS]
 ```
 
-* `--filter` ` string ` optional
+* `--filter` ` string `optional
   * Regex to filter results.
-* `--json` ` boolean ` optional
+* `--json` ` boolean `optional
   * Return output as clean JSON.
   * Default: false
 
@@ -70,7 +72,7 @@ Remove an image from your containers registry.
 wrangler containers images delete [IMAGE] [OPTIONS]
 ```
 
-* `IMAGE` ` string ` required
+* `IMAGE` ` string `required
   * Image to delete of the form `IMAGE:TAG`
 
 ### `registries`
@@ -85,7 +87,7 @@ List registries your containers are able to use.
 wrangler containers registries list [OPTIONS]
 ```
 
-* `--json` ` boolean ` optional
+* `--json` ` boolean `optional
   * Return output as clean JSON.
   * Default: false
 
@@ -97,17 +99,17 @@ Configure a new registry for your account.
 wrangler containers registries configure [DOMAIN] [OPTIONS]
 ```
 
-* `DOMAIN` ` string ` required
+* `DOMAIN` ` string `required
   * Domain to configure for the registry.
-* `--dockerhub-username` ` string ` optional
+* `--dockerhub-username` ` string `optional
   * The Docker Hub username to authenticate with. Use with the `docker.io` domain. The secret is a Docker Hub personal access token.
-* `--aws-access-key-id` ` string ` optional
+* `--aws-access-key-id` ` string `optional
   * The AWS access key ID to authenticate with. Use with an Amazon ECR domain. The secret is the matching AWS secret access key.
-* `--gar-email` ` string ` optional
+* `--gar-email` ` string `optional
   * The Google service account email to authenticate with. Use with a `*-docker.pkg.dev` domain.
-* `--secret-store-id` ` string ` optional
+* `--secret-store-id` ` string `optional
   * The ID of the secret store to use to store the registry credentials
-* `--secret-name` ` string ` optional
+* `--secret-name` ` string `optional
   * The name Wrangler should store the registry credentials under
 
 The credential flags are mutually exclusive. Use the one that matches the registry you are configuring.
@@ -122,7 +124,7 @@ Remove a registry configuration from your account.
 wrangler containers registries delete [DOMAIN] [OPTIONS]
 ```
 
-* `DOMAIN` ` string ` required
+* `DOMAIN` ` string `required
   * domain of the registry to delete
 
 #### `registries credentials`
@@ -133,11 +135,11 @@ Generate temporary credentials to push or pull images from the Cloudflare manage
 wrangler containers registries credentials [OPTIONS]
 ```
 
-* `--push` ` boolean ` optional
+* `--push` ` boolean `optional
   * Generate credentials with push permission.
-* `--pull` ` boolean ` optional
+* `--pull` ` boolean `optional
   * Generate credentials with pull permission.
-* `--expiration-minutes` ` number ` optional
+* `--expiration-minutes` ` number `optional
   * How long the credentials should be valid for (in minutes).
   * Default: 15
 
@@ -151,7 +153,7 @@ Get information about a specific Container, including top-level details and a li
 wrangler containers info <CONTAINER_ID> [OPTIONS]
 ```
 
-* `CONTAINER_ID` ` string ` required
+* `CONTAINER_ID` ` string `required
   * The ID of the Container to get information about.
 
 ### `instances`
@@ -166,12 +168,12 @@ Use the `--json` flag to return output as a flat JSON array. Each element contai
 wrangler containers instances <APPLICATION_ID> [OPTIONS]
 ```
 
-* `APPLICATION_ID` ` string ` required
+* `APPLICATION_ID` ` string `required
   * The UUID of the application to list instances for. Use `wrangler containers list` to find application IDs.
-* `--per-page` ` number ` optional
+* `--per-page` ` number `optional
   * Number of instances per page.
   * Default: 25
-* `--json` ` boolean ` optional
+* `--json` ` boolean `optional
   * Return output as clean JSON.
   * Default: false
 
@@ -195,14 +197,14 @@ wrangler containers instances 12345678-abcd-1234-abcd-123456789abc --json
 
 ```json
 [
-  {
-    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "name": "worker-12",
-    "state": "running",
-    "location": "sfo06",
-    "version": 3,
-    "created": "2025-06-01T12:00:00Z"
-  }
+	{
+		"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "worker-12",
+		"state": "running",
+		"location": "sfo06",
+		"version": 3,
+		"created": "2025-06-01T12:00:00Z"
+	}
 ]
 ```
 
@@ -222,9 +224,9 @@ Push a tagged image to a Cloudflare managed registry, which is automatically int
 wrangler containers push [TAG] [OPTIONS]
 ```
 
-* `TAG` ` string ` required
+* `TAG` ` string `required
   * The name and tag of the container image to push.
-* `--path-to-docker` ` string ` optional
+* `--path-to-docker` ` string `optional
   * Path to your docker binary if it's not on `$PATH`.
   * Default: "docker"
 
@@ -242,10 +244,17 @@ You can also specify a command to run, instead of the default shell. For example
 wrangler containers ssh <INSTANCE_ID> -- ls -al
 ```
 
-* `INSTANCE_ID` ` string ` required
+* `INSTANCE_ID` ` string `required
   * The ID of the Container instance to SSH into.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/containers/#page","headline":"Containers · Cloudflare Workers docs","description":"Wrangler commands for interacting with Cloudflare's Container Platform.","url":"https://developers.cloudflare.com/workers/wrangler/commands/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/containers/","name":"Containers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/containers/#page","headline":"Containers · Cloudflare Workers docs","description":"Wrangler commands for interacting with Cloudflare's Container Platform.","url":"https://developers.cloudflare.com/workers/wrangler/commands/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

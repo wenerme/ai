@@ -1,16 +1,18 @@
 ---
-title: Packet captures
 description: Capture and analyze network packets.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Packet captures
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Packet captures
 
-# Packet captures
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports two types of packet captures (PCAPs): **full** and **sample**. A packet capture records raw network traffic data so you can inspect it offline in tools like Wireshark. Full packet captures are the default.
 
@@ -37,7 +39,14 @@ Before starting a full packet capture, make sure you have a cloud storage bucket
 * [ PCAPs bucket setup ](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/)
 * [ Collect PCAPs ](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/#page","headline":"Packet captures · Cloudflare Network Firewall docs","description":"Capture and analyze network packets.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/packet-captures/","name":"Packet captures"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/#page","headline":"Packet captures · Cloudflare Network Firewall docs","description":"Capture and analyze network packets.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: CLI
 description: Set up and deploy your first Cloudflare Worker using Wrangler, the command-line interface.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: CLI
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  CLI
 
-# CLI
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/get-started/guide/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Set up and deploy your first Worker with Wrangler, the Cloudflare Developer Platform CLI.
 
@@ -116,13 +118,11 @@ With your new project generated and running, you can begin to write and edit you
 
 Find the `src/index.js` file. `index.js` will be populated with the code below:
 
-**Original index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello World!");
+	},
 };
 ```
 
@@ -130,25 +130,21 @@ Code explanation
 
 This code block consists of a few different parts.
 
-**Updated index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello World!");
+	},
 };
 ```
 
 `export default` is JavaScript syntax required for defining [JavaScript modules ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#default%5Fexports%5Fversus%5Fnamed%5Fexports). Your Worker has to have a default export of an object, with properties corresponding to the events your Worker should handle.
 
-**index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello World!");
+	},
 };
 ```
 
@@ -156,13 +152,11 @@ This [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/ha
 
 Additionally, the `fetch` handler will always be passed three parameters: [request, env and context](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
 
-**index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello World!");
+	},
 };
 ```
 
@@ -170,13 +164,11 @@ The Workers runtime expects `fetch` handlers to return a `Response` object or a 
 
 Replace the content in your current `index.js` file with the content below, which changes the text output.
 
-**index.js**
-
 ```js
 export default {
-  async fetch(request, env, ctx) {
-    return new Response("Hello Worker!");
-  },
+	async fetch(request, env, ctx) {
+		return new Response("Hello Worker!");
+	},
 };
 ```
 
@@ -217,7 +209,14 @@ To do more:
 * Learn how to [test and debug](https://developers.cloudflare.com/workers/testing/) your Workers.
 * Read about [Workers limits and pricing](https://developers.cloudflare.com/workers/platform/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/get-started/guide/#page","headline":"Get started - CLI · Cloudflare Workers docs","description":"Set up and deploy your first Cloudflare Worker using Wrangler, the command-line interface.","url":"https://developers.cloudflare.com/workers/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/get-started/","name":"Getting started"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/get-started/guide/","name":"CLI"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/get-started/guide/#page","headline":"Get started - CLI · Cloudflare Workers docs","description":"Set up and deploy your first Cloudflare Worker using Wrangler, the command-line interface.","url":"https://developers.cloudflare.com/workers/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

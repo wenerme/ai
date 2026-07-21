@@ -1,16 +1,18 @@
 ---
-title: ReadableStream BYOBReader
 description: Use ReadableStreamBYOBReader in Workers to read streamed data into your own buffer.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: ReadableStream BYOBReader
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  ReadableStream BYOBReader
 
-# ReadableStream BYOBReader
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -19,8 +21,6 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 An instance of `ReadableStreamBYOBReader` is functionally identical to [ReadableStreamDefaultReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreamdefaultreader/) with the exception of the `read` method.
 
 A `ReadableStreamBYOBReader` is not instantiated via its constructor. Rather, it is retrieved from a [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/):
-
-**JavaScript**
 
 ```js
 const { readable, writable } = new TransformStream();
@@ -63,7 +63,14 @@ In practice, the Workers team has found that `read` typically fills only 1% of t
 * [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/)
 * [Background about BYOB readers in the Streams API WHATWG specification ↗](https://streams.spec.whatwg.org/#byob-readers)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/#page","headline":"ReadableStreamBYOBReader · Cloudflare Workers docs","description":"Use ReadableStreamBYOBReader in Workers to read streamed data into your own buffer.","url":"https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/streams/","name":"Streams"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/streams/readablestreambyobreader/","name":"ReadableStream BYOBReader"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/#page","headline":"ReadableStreamBYOBReader · Cloudflare Workers docs","description":"Use ReadableStreamBYOBReader in Workers to read streamed data into your own buffer.","url":"https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

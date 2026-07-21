@@ -1,16 +1,18 @@
 ---
-title: Historical (2023)
 description: Changes to WAF managed rulesets done in 2023.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Historical (2023)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Historical (2023)
 
-# Historical (2023)
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/change-log/historical-2023/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 | Ruleset             | Rule ID      | Legacy Rule ID | Description                                                                                                                                                       | Change Date           | Old Action | New Action |
 | ------------------- | ------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ---------- | ---------- |
@@ -89,7 +91,12 @@ image: https://developers.cloudflare.com/core-services-preview.png
 | Cloudflare OWASP    | ...fc25d2f1f | N/A            | Upgrading Cloudflare OWASP to version 3.3.4                                                                                                                       | 2023-01-16            | N/A        | N/A        |
 | Cloudflare Specials | ...b604fb62  | 100551B        | Microsoft Exchange SSRF and RCE vulnerability 2 - CVE:CVE-2022-41040, CVE:CVE-2022-41082                                                                          | 2023-01-09            | N/A        | Block      |
 
+Was this helpful?
+
+YesNo
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/historical-2023/#page","headline":"Historical (2023) · Cloudflare Web Application Firewall (WAF) docs","description":"Changes to WAF managed rulesets done in 2023.","url":"https://developers.cloudflare.com/waf/change-log/historical-2023/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/historical-2023/","name":"Historical (2023)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/historical-2023/#page","headline":"Historical (2023) · Cloudflare Web Application Firewall (WAF) docs","description":"Changes to WAF managed rulesets done in 2023.","url":"https://developers.cloudflare.com/waf/change-log/historical-2023/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

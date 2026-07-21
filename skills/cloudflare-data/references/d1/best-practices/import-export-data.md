@@ -1,16 +1,18 @@
 ---
-title: Import and export data
 description: Import existing SQLite tables into D1 or export a D1 database for local use.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Import and export data
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Import and export data
 
-# Import and export data
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/best-practices/import-export-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to import existing SQLite tables and their data directly, enabling you to migrate existing data into D1 quickly and easily. This can be useful when migrating applications to use Workers and D1, or when you want to prototype a schema locally before importing it to your D1 database(s).
 
@@ -32,9 +34,9 @@ For example, consider the following `users_export.sql` schema & values, which in
 
 ```sql
 CREATE TABLE IF NOT EXISTS users (
-  id VARCHAR(50),
-  full_name VARCHAR(50),
-  created_on DATE
+	id VARCHAR(50),
+	full_name VARCHAR(50),
+	created_on DATE
 );
 INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCN9519NRVXWTPG0V0BF', 'Catlaina Harbar', '2022-08-20 05:39:52');
 INSERT INTO users (id, full_name, created_on) VALUES ('01GREFXCNBYBGX2GC6ZGY9FMP4', 'Hube Bilverstone', '2022-12-15 21:56:13');
@@ -98,8 +100,8 @@ Once you have run the above command, you will need to edit the output SQL file t
 2. Remove the following table creation statement (if present):
 ```sql
 CREATE TABLE _cf_KV (
-   key TEXT PRIMARY KEY,
-   value BLOB
+ 	key TEXT PRIMARY KEY,
+ 	value BLOB
 ) WITHOUT ROWID;
 ```
 
@@ -205,7 +207,14 @@ Refer to the [foreign key documentation](https://developers.cloudflare.com/d1/sq
 * Learn how to [use the D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) from within a Worker.
 * Understand how [database migrations work](https://developers.cloudflare.com/d1/reference/migrations/) with D1.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/import-export-data/#page","headline":"Import and export data · Cloudflare D1 docs","description":"Import existing SQLite tables into D1 or export a D1 database for local use.","url":"https://developers.cloudflare.com/d1/best-practices/import-export-data/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/import-export-data/","name":"Import and export data"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/import-export-data/#page","headline":"Import and export data · Cloudflare D1 docs","description":"Import existing SQLite tables into D1 or export a D1 database for local use.","url":"https://developers.cloudflare.com/d1/best-practices/import-export-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

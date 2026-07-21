@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Browser Run (formerly Browser Rendering) allows you to programmatically control a headless browser, enabling you to do things like take screenshots, generate PDFs, and perform automated browser tasks. This guide will help you choose the right integration method and get you started with your first project.
 
@@ -33,9 +35,6 @@ Browser Run offers two categories of integration methods:
 ## Quick Actions
 
 Quick Actions can be used via the REST API or directly from a Cloudflare Worker using a browser binding.
-
-* [ REST API ](#tab-panel-7529)
-* [ Workers binding ](#tab-panel-7530)
 
 ### Prerequisites
 
@@ -91,38 +90,30 @@ For setup, select the following options:
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with a browser [binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings):
 
-* [  wrangler.jsonc ](#tab-panel-7523)
-* [  wrangler.toml ](#tab-panel-7524)
-
-**JSONC**
-
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "browser-quick-action",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-20",
+  "compatibility_date": "2026-07-21",
   "browser": {
     "binding": "BROWSER"
   }
 }
 ```
 
-**TOML**
-
 ```toml
 name = "browser-quick-action"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [browser]
 binding = "BROWSER"
 ```
 
-Warning
+Caution
 
 Using the `.quickAction()` method requires a `compatibility_date` of `2026-03-24` or later.
 
@@ -130,35 +121,27 @@ Using the `.quickAction()` method requires a `compatibility_date` of `2026-03-24
 
 Replace the contents of `src/index.ts` with the following:
 
-* [  JavaScript ](#tab-panel-7525)
-* [  TypeScript ](#tab-panel-7526)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    return await env.BROWSER.quickAction("screenshot", {
-      url: "https://example.com",
-    });
-  },
+	async fetch(request, env) {
+		return await env.BROWSER.quickAction("screenshot", {
+			url: "https://example.com",
+		});
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 interface Env {
-  BROWSER: BrowserRun;
+	BROWSER: BrowserRun;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    return await env.BROWSER.quickAction("screenshot", {
-      url: "https://example.com",
-    });
-  },
+	async fetch(request, env): Promise<Response> {
+		return await env.BROWSER.quickAction("screenshot", {
+			url: "https://example.com",
+		});
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -270,46 +253,37 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-7527)
-* [  wrangler.toml ](#tab-panel-7528)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "browser-worker",
-  "main": "src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": ["nodejs_compat"],
-  "browser": {
-    "binding": "MYBROWSER"
-  },
-  "kv_namespaces": [
-    {
-      "binding": "BROWSER_KV_DEMO",
-      "id": "22cf855786094a88a6906f8edac425cd",
-      "preview_id": "e1f8b68b68d24381b57071445f96e623"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "browser-worker",
+	"main": "src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": ["nodejs_compat"],
+	"browser": {
+		"binding": "MYBROWSER"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "BROWSER_KV_DEMO",
+			"id": "22cf855786094a88a6906f8edac425cd",
+			"preview_id": "e1f8b68b68d24381b57071445f96e623"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "browser-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [browser]
 binding = "MYBROWSER"
-
 
 [[kv_namespaces]]
 binding = "BROWSER_KV_DEMO"
@@ -319,88 +293,78 @@ preview_id = "e1f8b68b68d24381b57071445f96e623"
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-7521)
-* [  TypeScript ](#tab-panel-7522)
-
 Update `src/index.js` with your Worker code:
-
-**JavaScript**
 
 ```js
 import puppeteer from "@cloudflare/puppeteer";
 
-
 export default {
-  async fetch(request, env) {
-    const { searchParams } = new URL(request.url);
-    let url = searchParams.get("url");
-    let img;
-    if (url) {
-      url = new URL(url).toString(); // normalize
-      img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
-      if (img === null) {
-        const browser = await puppeteer.launch(env.MYBROWSER);
-        const page = await browser.newPage();
-        await page.goto(url);
-        img = await page.screenshot();
-        await env.BROWSER_KV_DEMO.put(url, img, {
-          expirationTtl: 60 * 60 * 24,
-        });
-        await browser.close();
-      }
-      return new Response(img, {
-        headers: {
-          "content-type": "image/jpeg",
-        },
-      });
-    } else {
-      return new Response("Please add an ?url=https://example.com/ parameter");
-    }
-  },
+	async fetch(request, env) {
+		const { searchParams } = new URL(request.url);
+		let url = searchParams.get("url");
+		let img;
+		if (url) {
+			url = new URL(url).toString(); // normalize
+			img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
+			if (img === null) {
+				const browser = await puppeteer.launch(env.MYBROWSER);
+				const page = await browser.newPage();
+				await page.goto(url);
+				img = await page.screenshot();
+				await env.BROWSER_KV_DEMO.put(url, img, {
+					expirationTtl: 60 * 60 * 24,
+				});
+				await browser.close();
+			}
+			return new Response(img, {
+				headers: {
+					"content-type": "image/jpeg",
+				},
+			});
+		} else {
+			return new Response("Please add an ?url=https://example.com/ parameter");
+		}
+	},
 };
 ```
 
 Update `src/index.ts` with your Worker code:
 
-**TypeScript**
-
 ```ts
 import puppeteer from "@cloudflare/puppeteer";
 
-
 interface Env {
-  MYBROWSER: Fetcher;
-  BROWSER_KV_DEMO: KVNamespace;
+	MYBROWSER: Fetcher;
+	BROWSER_KV_DEMO: KVNamespace;
 }
 
-
 export default {
-  async fetch(request, env): Promise<Response> {
-    const { searchParams } = new URL(request.url);
-    let url = searchParams.get("url");
-    let img: Buffer;
-    if (url) {
-      url = new URL(url).toString(); // normalize
-      img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
-      if (img === null) {
-        const browser = await puppeteer.launch(env.MYBROWSER);
-        const page = await browser.newPage();
-        await page.goto(url);
-        img = (await page.screenshot()) as Buffer;
-        await env.BROWSER_KV_DEMO.put(url, img, {
-          expirationTtl: 60 * 60 * 24,
-        });
-        await browser.close();
-      }
-      return new Response(img, {
-        headers: {
-          "content-type": "image/jpeg",
-        },
-      });
-    } else {
-      return new Response("Please add an ?url=https://example.com/ parameter");
-    }
-  },
+	async fetch(request, env): Promise<Response> {
+		const { searchParams } = new URL(request.url);
+		let url = searchParams.get("url");
+		let img: Buffer;
+		if (url) {
+			url = new URL(url).toString(); // normalize
+			img = await env.BROWSER_KV_DEMO.get(url, { type: "arrayBuffer" });
+			if (img === null) {
+				const browser = await puppeteer.launch(env.MYBROWSER);
+				const page = await browser.newPage();
+				await page.goto(url);
+				img = (await page.screenshot()) as Buffer;
+				await env.BROWSER_KV_DEMO.put(url, img, {
+					expirationTtl: 60 * 60 * 24,
+				});
+				await browser.close();
+			}
+			return new Response(img, {
+				headers: {
+					"content-type": "image/jpeg",
+				},
+			});
+		} else {
+			return new Response("Please add an ?url=https://example.com/ parameter");
+		}
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -441,7 +405,14 @@ To take your first screenshot, go to the following URL:
 
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started · Cloudflare Browser Run docs","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started · Cloudflare Browser Run docs","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

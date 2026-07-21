@@ -1,16 +1,18 @@
 ---
-title: Managed rulesets
 description: Deploy and manage WAF managed rulesets at the account level.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Managed rulesets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Managed rulesets
 
-# Managed rulesets
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/account/managed-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -44,9 +46,6 @@ This configuration gives you additional protection by enabling PL3 rules, but wi
 
 The second rule logs any matches for PL4 rules, the most strict set of rules in the ruleset, so that it does not affect live traffic. You could use this configuration to understand which traffic would be affected by PL4 rules.
 
-* [ Dashboard ](#tab-panel-11948)
-* [ API ](#tab-panel-11949)
-
 1. Deploy the Cloudflare OWASP Core Ruleset by following the [dashboard instructions](https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-dashboard/#deploy-a-managed-ruleset), customizing the ruleset behavior using these settings:
 
   * **OWASP Anomaly Score Threshold**: _Medium - 40 and higher_
@@ -69,58 +68,56 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account WAF Write`
 * `Account Rulesets Write`
 
-**Create an account ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "My ruleset",
-    "description": "Entry point ruleset for WAF managed rulesets (account)",
-    "kind": "root",
-    "phase": "http_request_firewall_managed",
-    "rules": [
-        {
-            "action": "execute",
-            "action_parameters": {
-                "id": "4814384a9e5d4991b9815dcfc25d2f1f",
-                "overrides": {
-                    "categories": [
-                        {
-                            "category": "paranoia-level-4",
-                            "enabled": false
-                        }
-                    ],
-                    "rules": [
-                        {
-                            "id": "6179ae15870a4bb7b2d480d4843b323c",
-                            "action": "managed_challenge"
-                        }
-                    ]
-                }
-            },
-            "expression": "cf.zone.plan eq \"ENT\"",
-            "description": "Execute OWASP ruleset at PL3 with Managed Challenge action"
-        },
-        {
-            "action": "execute",
-            "action_parameters": {
-                "id": "4814384a9e5d4991b9815dcfc25d2f1f",
-                "overrides": {
-                    "rules": [
-                        {
-                            "id": "6179ae15870a4bb7b2d480d4843b323c",
-                            "action": "log"
-                        }
-                    ]
-                }
-            },
-            "expression": "cf.zone.plan eq \"ENT\"",
-            "description": "Execute OWASP ruleset at PL4 with Log action"
-        }
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "My ruleset",
+		"description": "Entry point ruleset for WAF managed rulesets (account)",
+		"kind": "root",
+		"phase": "http_request_firewall_managed",
+		"rules": [
+				{
+						"action": "execute",
+						"action_parameters": {
+								"id": "4814384a9e5d4991b9815dcfc25d2f1f",
+								"overrides": {
+										"categories": [
+												{
+														"category": "paranoia-level-4",
+														"enabled": false
+												}
+										],
+										"rules": [
+												{
+														"id": "6179ae15870a4bb7b2d480d4843b323c",
+														"action": "managed_challenge"
+												}
+										]
+								}
+						},
+						"expression": "cf.zone.plan eq \"ENT\"",
+						"description": "Execute OWASP ruleset at PL3 with Managed Challenge action"
+				},
+				{
+						"action": "execute",
+						"action_parameters": {
+								"id": "4814384a9e5d4991b9815dcfc25d2f1f",
+								"overrides": {
+										"rules": [
+												{
+														"id": "6179ae15870a4bb7b2d480d4843b323c",
+														"action": "log"
+												}
+										]
+								}
+						},
+						"expression": "cf.zone.plan eq \"ENT\"",
+						"description": "Execute OWASP ruleset at PL4 with Log action"
+				}
+		]
+	}'
 ```
 
 ## Customize the behavior of managed rulesets
@@ -136,7 +133,14 @@ Important
 
 Ruleset overrides and tag overrides apply to both existing and _future_ rules in the managed ruleset. If you want to override existing rules only, you must use rule overrides.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/managed-rulesets/#page","headline":"Managed rulesets · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy and manage WAF managed rulesets at the account level.","url":"https://developers.cloudflare.com/waf/account/managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/account/","name":"Account-level WAF configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/account/managed-rulesets/","name":"Managed rulesets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/managed-rulesets/#page","headline":"Managed rulesets · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy and manage WAF managed rulesets at the account level.","url":"https://developers.cloudflare.com/waf/account/managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

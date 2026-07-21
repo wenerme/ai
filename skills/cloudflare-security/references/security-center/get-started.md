@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Use Security Insights to scan your account for misconfigurations and vulnerabilities.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Security Center scans your Cloudflare account configuration and identifies potential security risks, misconfigurations, and vulnerabilities across your domains. This guide covers the initial setup.
 
@@ -30,13 +32,13 @@ You can decide to stop a scan, and restart a scan later.
 To disable scans:
 
 1. In the Cloudflare dashboard, go to the **Security Insights** page.
-[ Go to **Security insights** ](https://dash.cloudflare.com/?to=/:account/security-center)
+[ Go to **Security insights** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Go to **Disable Security Center scans**, select **Disable scans**.
 
 To restart a scan:
 
 1. In the Cloudflare dashboard, go to the **Security Insights** page.
-[ Go to **Security insights** ](https://dash.cloudflare.com/?to=/:account/security-center)
+[ Go to **Security insights** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Select **Scan now**.
 
 ### Start a new scan
@@ -44,7 +46,7 @@ To restart a scan:
 To manually start a scan:
 
 1. In the Cloudflare dashboard, go to the **Security insights** page.
-[ Go to **Security insights** ](https://dash.cloudflare.com/?to=/:account/security-center)
+[ Go to **Security insights** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center)
 2. Select **Scan now**.
 
 Note
@@ -63,7 +65,14 @@ Cloudflare performs scans automatically for all accounts and zones by default. O
 
 For more details, refer to [How it works](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/get-started/#page","headline":"Get started · Cloudflare Security Center docs","description":"Use Security Insights to scan your account for misconfigurations and vulnerabilities.","url":"https://developers.cloudflare.com/security-center/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/get-started/#page","headline":"Get started · Cloudflare Security Center docs","description":"Use Security Insights to scan your account for misconfigurations and vulnerabilities.","url":"https://developers.cloudflare.com/security-center/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

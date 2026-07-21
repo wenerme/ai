@@ -1,16 +1,18 @@
 ---
-title: Exposed IP addresses
 description: Understand and resolve warnings about DNS records that expose your origin server IP address.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Exposed IP addresses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Exposed IP addresses
 
-# Exposed IP addresses
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When your DNS records are [proxied](https://developers.cloudflare.com/dns/proxy-status/), Cloudflare speeds up and protects your site.
 
@@ -51,7 +53,14 @@ To mitigate this risk:
 * Analyze the impact of hosting multiple services on the same origin server in cases when you cannot avoid having DNS-only records.
 * Proxy all records that share the same origin IP address as your apex domain and can be safely proxied through Cloudflare.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/#page","headline":"Exposed IP addresses · Cloudflare DNS docs","description":"Understand and resolve warnings about DNS records that expose your origin server IP address.","url":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Proxying"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/troubleshooting/exposed-ip-address/","name":"Exposed IP addresses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/#page","headline":"Exposed IP addresses · Cloudflare DNS docs","description":"Understand and resolve warnings about DNS records that expose your origin server IP address.","url":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Proxying"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Packet captures
 description: Request, monitor, and download packet captures to diagnose network issues.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Packet captures
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Packet captures
 
-# Packet captures
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Packet captures record network traffic flowing through Cloudflare's network so you can analyze individual packets for troubleshooting or security investigations. The output is contained within one or more files in PCAP format, which you can open in tools like [Wireshark ↗](https://www.wireshark.org/).
 
@@ -42,11 +44,8 @@ For help determining which data center to select for a packet capture, go to [ht
 
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes (1 GB).
 
-* [ Dashboard ](#tab-panel-7862)
-* [ API ](#tab-panel-7863)
-
 1. In the Cloudflare dashboard, go to the **Network health** page.
-[ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[ Go to **Network health** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 2. Go to the **Diagnostics** tab.
 3. In **Network packet captures**, select **Start a capture**.
 4. Choose the type of capture you want to perform, and select **Next**.
@@ -65,8 +64,6 @@ For full PCAP requests, refer to the required parameters listed at [Create full 
 The full PCAP request endpoint also contains optional fields you can use to limit the amount of packets captured. Both full and sample packet requests contain an optional `filter_v1` parameter you can use to filter packets by IPv4 Source address, for example. For a full list of the filter options, refer to the [API reference](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/methods/create/).
 
 Leave `filter_v1` empty to collect all packets without any filtering.
-
-**Full PCAP example request**
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
@@ -87,26 +84,24 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 While the collection is in progress, the response returns the `status` field as `pending`. You must wait for the PCAP collection to complete before downloading the file. When the PCAP is ready to download, the status changes to `success`.
 
-**Full PCAP example response**
-
 ```json
 {
-  "result": {
-    "id": "7d7c88382f0b4d5daa9587aa45a1a877",
-    "submitted": "2022-06-02T18:38:22.269047Z",
-    "filter_v1": {},
-    "time_limit": 300,
-    "status": "pending",
-    "type": "full",
-    "system": "magic-transit",
-    "packet_limit": 10000,
-    "byte_limit": 100000000,
-    "colo": "ORD",
-    "destination_conf": "gs://<bucket-name>" // Ensure you use a bucket that you created and registered in the Cloudflare dashboard
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "7d7c88382f0b4d5daa9587aa45a1a877",
+		"submitted": "2022-06-02T18:38:22.269047Z",
+		"filter_v1": {},
+		"time_limit": 300,
+		"status": "pending",
+		"type": "full",
+		"system": "magic-transit",
+		"packet_limit": 10000,
+		"byte_limit": 100000000,
+		"colo": "ORD",
+		"destination_conf": "gs://<bucket-name>" // Ensure you use a bucket that you created and registered in the Cloudflare dashboard
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -119,8 +114,6 @@ Note
 The API uses `"type": "simple"` for sample captures. Use `simple` as the type value in your API requests.
 
 Leave `filter_v1` empty to collect all packets without any filtering.
-
-**Sample PCAP example request**
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
@@ -144,36 +137,31 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 The response is a JSON body that contains the details of the job running to build the packet capture. The response contains a unique identifier for the packet capture request along with the details sent in the request.
 
-**Sample PCAP example response**
-
 ```json
 {
-  "result": {
-    "id": "6d1f0aac13cd40e3900d29f5dd0e8a2b",
-    "submitted": "2021-12-20T17:29:20.641845Z",
-    "filter_v1": {
-      "source_address": "1.2.3.4",
-      "source_port": 123,
-      "destination_address": "5.6.7.8",
-      "destination_port": 80,
-      "protocol": 6
-    },
-    "time_limit": 60,
-    "status": "pending",
-    "packets_remaining": 0,
-    "type": "simple",
-    "system": "magic-transit"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "6d1f0aac13cd40e3900d29f5dd0e8a2b",
+		"submitted": "2021-12-20T17:29:20.641845Z",
+		"filter_v1": {
+			"source_address": "1.2.3.4",
+			"source_port": 123,
+			"destination_address": "5.6.7.8",
+			"destination_port": 80,
+			"protocol": 6
+		},
+		"time_limit": 60,
+		"status": "pending",
+		"packets_remaining": 0,
+		"type": "simple",
+		"system": "magic-transit"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
 ## Check packet capture status
-
-* [ Dashboard ](#tab-panel-7858)
-* [ API ](#tab-panel-7859)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Go to the **Diagnostics** tab.
@@ -189,29 +177,27 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id} 
 
 The response will be similar to the one received when requesting a PCAP collection.
 
-**Sample PCAP example result**
-
 ```json
 {
-  "result": {
-    "id": "6d1f0aac13cd40e3900d29f5dd0e8a2b",
-    "submitted": "2021-12-20T17:29:20.641845Z",
-    "filter_v1": {
-      "source_address": "1.2.3.4",
-      "source_port": 123,
-      "destination_address": "5.6.7.8",
-      "destination_port": 80,
-      "protocol": 6
-    },
-    "time_limit": 120,
-    "status": "success",
-    "packets_remaining": 0,
-    "type": "simple",
-    "system": "magic-transit"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"id": "6d1f0aac13cd40e3900d29f5dd0e8a2b",
+		"submitted": "2021-12-20T17:29:20.641845Z",
+		"filter_v1": {
+			"source_address": "1.2.3.4",
+			"source_port": 123,
+			"destination_address": "5.6.7.8",
+			"destination_port": 80,
+			"protocol": 6
+		},
+		"time_limit": 120,
+		"status": "success",
+		"packets_remaining": 0,
+		"type": "simple",
+		"system": "magic-transit"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
@@ -224,9 +210,6 @@ The capture status displays one of the following options:
 ## Download packet captures
 
 After your request finishes processing, you can download your packet captures.
-
-* [ Dashboard ](#tab-panel-7860)
-* [ API ](#tab-panel-7861)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. In **Packet captures**, select **Start a capture**.
@@ -253,18 +236,13 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-7864)
-* [ API ](#tab-panel-7865)
-
 1. In the Cloudflare dashboard, go to the **Network health** page.
-[ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[ Go to **Network health** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 2. Go to the **Diagnostics** tab.
 
 The list of packet captures associated with your account displays under **Network packet captures**.
 
 To view a list of sent requests, use the following command:
-
-**List request example**
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
@@ -274,29 +252,34 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 The response returns an array that includes up to 50 sent requests, which includes completed and ongoing requests.
 
-**List response example**
-
 ```json
 {
-  "result": [
-    {
-      "id": "43adab5adeca4dab9c51f4b7f70f2ec3",
-      "submitted": "2021-12-15T03:04:09.277394Z",
-      "filter_v1": {},
-      "time_limit": 120,
-      "status": "success",
-      "packets_remaining": 0,
-      "type": "simple",
-      "system": "magic-transit"
-    }
-  ],
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": [
+		{
+			"id": "43adab5adeca4dab9c51f4b7f70f2ec3",
+			"submitted": "2021-12-15T03:04:09.277394Z",
+			"filter_v1": {},
+			"time_limit": 120,
+			"status": "success",
+			"packets_remaining": 0,
+			"type": "simple",
+			"system": "magic-transit"
+		}
+	],
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/#page","headline":"Packet captures · Cloudflare One docs","description":"Request, monitor, and download packet captures to diagnose network issues.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/network-visibility/","name":"Network visibility"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/","name":"Diagnostics"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/","name":"Packet captures"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/#page","headline":"Packet captures · Cloudflare One docs","description":"Request, monitor, and download packet captures to diagnose network issues.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

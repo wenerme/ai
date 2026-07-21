@@ -1,16 +1,18 @@
 ---
-title: aws-sdk-js
 description: Configure the AWS SDK for JavaScript v2 to work with Cloudflare R2.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: aws-sdk-js
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  aws-sdk-js
 
-# aws-sdk-js
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
@@ -19,21 +21,17 @@ If you are interested in the newer version of the AWS JavaScript SDK visit this 
 
 JavaScript or TypeScript users may continue to use the [aws-sdk ↗](https://www.npmjs.com/package/aws-sdk) npm package as per normal. You must pass in the R2 configuration credentials when instantiating your `S3` service client:
 
-**TypeScript**
-
 ```ts
 import S3 from "aws-sdk/clients/s3.js";
 
-
 const s3 = new S3({
-  // Provide your Cloudflare account ID
-  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-  accessKeyId: `${ACCESS_KEY_ID}`,
-  secretAccessKey: `${SECRET_ACCESS_KEY}`,
-  signatureVersion: "v4",
+	// Provide your Cloudflare account ID
+	endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+	// Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+	accessKeyId: `${ACCESS_KEY_ID}`,
+	secretAccessKey: `${SECRET_ACCESS_KEY}`,
+	signatureVersion: "v4",
 });
-
 
 console.log(await s3.listBuckets().promise());
 //=> {
@@ -46,7 +44,6 @@ console.log(await s3.listBuckets().promise());
 //=>     ID: '...'
 //=>   }
 //=> }
-
 
 console.log(await s3.listObjects({ Bucket: "my-bucket" }).promise());
 //=> {
@@ -79,26 +76,24 @@ console.log(await s3.listObjects({ Bucket: "my-bucket" }).promise());
 
 You can also generate presigned links that can be used to share public read or write access to a bucket temporarily.
 
-**TypeScript**
-
 ```ts
 // Use the expires property to determine how long the presigned link is valid.
 console.log(
 await s3.getSignedUrlPromise("getObject", {
-  Bucket: "my-bucket",
-  Key: "dog.png",
-  Expires: 3600,
+	Bucket: "my-bucket",
+	Key: "dog.png",
+	Expires: 3600,
 }),
 );
 // You can also create links for operations such as putObject to allow temporary write access to a specific key.
 // Specify ContentType to restrict uploads to a specific file type.
 console.log(
-  await s3.getSignedUrlPromise("putObject", {
-    Bucket: "my-bucket",
-    Key: "dog.png",
-    Expires: 3600,
-    ContentType: "image/png",
-  }),
+	await s3.getSignedUrlPromise("putObject", {
+		Bucket: "my-bucket",
+		Key: "dog.png",
+		Expires: 3600,
+		ContentType: "image/png",
+	}),
 );
 ```
 
@@ -136,14 +131,12 @@ When generating presigned URLs for uploads, you can limit abuse and misuse by:
 
 Then generate a presigned URL with a Content-Type restriction:
 
-**TypeScript**
-
 ```ts
 const putUrl = await s3.getSignedUrlPromise("putObject", {
-  Bucket: "my-bucket",
-  Key: "user-upload.png",
-  Expires: 3600,
-  ContentType: "image/png",
+	Bucket: "my-bucket",
+	Key: "user-upload.png",
+	Expires: 3600,
+	ContentType: "image/png",
 });
 ```
 
@@ -152,7 +145,14 @@ When a client uses this presigned URL, they must:
 * Make the request from an allowed origin (enforced by CORS)
 * Include the `Content-Type: image/png` header (enforced by the signature)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js/#page","headline":"aws-sdk-js · Cloudflare R2 docs","description":"Configure the AWS SDK for JavaScript v2 to work with Cloudflare R2.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/aws-sdk-js/","name":"aws-sdk-js"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js/#page","headline":"aws-sdk-js · Cloudflare R2 docs","description":"Configure the AWS SDK for JavaScript v2 to work with Cloudflare R2.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

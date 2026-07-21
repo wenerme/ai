@@ -1,16 +1,18 @@
 ---
-title: Custom fonts
 description: Learn how to add custom fonts to Browser Run for use in screenshots and PDFs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Custom fonts
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Custom fonts
 
-# Custom fonts
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/features/custom-fonts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Browser Run uses a managed Chromium environment that includes a [standard set of pre-installed fonts](https://developers.cloudflare.com/browser-run/reference/supported-fonts/). When you generate a screenshot or PDF, text is rendered using the fonts available in this environment. If your page specifies a font that is not pre-installed, Chromium will automatically fall back to a similar supported font.
 
@@ -29,25 +31,19 @@ The examples below use [Puppeteer](https://developers.cloudflare.com/browser-run
 
 ### From a CDN URL
 
-* [  JavaScript ](#tab-panel-7511)
-* [  TypeScript ](#tab-panel-7512)
-
 Example with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and a CDN source:
-
-**JavaScript**
 
 ```js
 const browser = await puppeteer.launch(env.MYBROWSER);
 const page = await browser.newPage();
 await page.addStyleTag({
-  content: `
+	content: `
     @font-face {
       font-family: 'CustomFont';
       src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');
       font-weight: normal;
       font-style: normal;
     }
-
 
     body {
       font-family: 'CustomFont', sans-serif;
@@ -58,20 +54,17 @@ await page.addStyleTag({
 
 Example with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and a CDN source:
 
-**TypeScript**
-
 ```ts
 const browser = await puppeteer.launch(env.MYBROWSER);
 const page = await browser.newPage();
 await page.addStyleTag({
-  content: `
+	content: `
     @font-face {
       font-family: 'CustomFont';
       src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');
       font-weight: normal;
       font-style: normal;
     }
-
 
     body {
       font-family: 'CustomFont', sans-serif;
@@ -84,25 +77,19 @@ await page.addStyleTag({
 
 The following examples use [Playwright](https://developers.cloudflare.com/browser-run/playwright/), but this method works the same way with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/).
 
-* [  JavaScript ](#tab-panel-7513)
-* [  TypeScript ](#tab-panel-7514)
-
 Example with a Base64-encoded data source:
-
-**JavaScript**
 
 ```js
 const browser = await playwright.launch(env.MYBROWSER);
 const page = await browser.newPage();
 await page.addStyleTag({
-  content: `
+	content: `
     @font-face {
       font-family: 'CustomFont';
       src: url('data:font/woff2;base64,<BASE64_STRING>') format('woff2');
       font-weight: normal;
       font-style: normal;
     }
-
 
     body {
       font-family: 'CustomFont', sans-serif;
@@ -113,20 +100,17 @@ await page.addStyleTag({
 
 Example with a Base64-encoded data source:
 
-**TypeScript**
-
 ```ts
 const browser = await playwright.launch(env.MYBROWSER);
 const page = await browser.newPage();
 await page.addStyleTag({
-  content: `
+	content: `
     @font-face {
       font-family: 'CustomFont';
       src: url('data:font/woff2;base64,<BASE64_STRING>') format('woff2');
       font-weight: normal;
       font-style: normal;
     }
-
 
     body {
       font-family: 'CustomFont', sans-serif;
@@ -139,40 +123,33 @@ await page.addStyleTag({
 
 When connecting via [CDP](https://developers.cloudflare.com/browser-run/cdp/), you connect to the browser using a WebSocket endpoint instead of a Workers Binding. Once connected, you use `page.addStyleTag()` the same way as the examples above.
 
-**JavaScript**
-
 ```js
 import puppeteer from "puppeteer-core";
-
 
 const ACCOUNT_ID = "your-account-id";
 const API_TOKEN = "your-api-token";
 
-
 // Create a browser session via CDP
 const response = await fetch(
-  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser`,
-  {
-    method: "POST",
-    headers: { Authorization: `Bearer ${API_TOKEN}` },
-  },
+	`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser`,
+	{
+		method: "POST",
+		headers: { Authorization: `Bearer ${API_TOKEN}` },
+	},
 );
 const { webSocketDebuggerUrl } = await response.json();
 
-
 // Connect Puppeteer to the session
 const browser = await puppeteer.connect({
-  browserWSEndpoint: webSocketDebuggerUrl,
-  headers: { Authorization: `Bearer ${API_TOKEN}` },
+	browserWSEndpoint: webSocketDebuggerUrl,
+	headers: { Authorization: `Bearer ${API_TOKEN}` },
 });
-
 
 const page = await browser.newPage();
 
-
 // Add a custom font — same as with Workers Bindings
 await page.addStyleTag({
-  content: `
+	content: `
     @font-face {
       font-family: 'CustomFont';
       src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');
@@ -180,17 +157,14 @@ await page.addStyleTag({
       font-style: normal;
     }
 
-
     body {
       font-family: 'CustomFont', sans-serif;
     }
   `,
 });
 
-
 // Take a screenshot, generate a PDF, etc.
 await page.goto("https://example.com");
-
 
 browser.disconnect();
 ```
@@ -235,7 +209,14 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 For more details on using `addStyleTag` with Quick Actions, refer to [Customize CSS and embed custom JavaScript](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/#customize-css-and-embed-custom-javascript).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/custom-fonts/#page","headline":"Custom fonts · Cloudflare Browser Run docs","description":"Learn how to add custom fonts to Browser Run for use in screenshots and PDFs.","url":"https://developers.cloudflare.com/browser-run/features/custom-fonts/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/features/custom-fonts/","name":"Custom fonts"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/custom-fonts/#page","headline":"Custom fonts · Cloudflare Browser Run docs","description":"Learn how to add custom fonts to Browser Run for use in screenshots and PDFs.","url":"https://developers.cloudflare.com/browser-run/features/custom-fonts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,22 +1,27 @@
 ---
-title: flux-2-dev
 description: FLUX.2 [dev] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: flux-2-dev
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)
 
 #  flux-2-dev
 
-Text-to-Image • Black Forest Labs
+ Text-to-Image • Black Forest Labs
 
-`@cf/black-forest-labs/flux-2-dev`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` @cf/black-forest-labs/flux-2-dev `
+
+* Cloudflare-hosted
+* Partner
 
 FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.
 
@@ -26,61 +31,7 @@ FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate h
 | Partner           | Yes                                                                                   |
 | Unit Pricing      | $0.00021 per input 512x512 tile, per step, $0.00041 per output 512x512 tile, per step |
 
-## Usage
-
-* [  TypeScript ](#tab-panel-2374)
-* [  curl ](#tab-panel-2375)
-
-```ts
-export interface Env {
-  AI: Ai;
-}
-
-
-export default {
-  async fetch(request, env): Promise<Response> {
-    const form = new FormData();
-    form.append('prompt', 'a sunset with a dog');
-    form.append('width', '1024');
-    form.append('height', '1024');
-
-
-    // FormData doesn't expose its serialized body or boundary. Passing it to a
-    // Request (or Response) constructor serializes it and generates the Content-Type
-    // header with the boundary, which is required for the server to parse the multipart fields.
-    const formResponse = new Response(form);
-    const formStream = formResponse.body;
-    const formContentType = formResponse.headers.get('content-type')!;
-
-
-    const resp = await env.AI.run("@cf/black-forest-labs/flux-2-dev", {
-      multipart: {
-        body: formStream,
-        contentType: formContentType
-      }
-    });
-
-
-    return Response.json(resp);
-  },
-} satisfies ExportedHandler<Env>;
-```
-
-```sh
-curl --request POST \
-  --url 'https://api.cloudflare.com/client/v4/accounts/{ACCOUNT}/ai/run/@cf/black-forest-labs/flux-2-dev' \
-  --header 'Authorization: Bearer {TOKEN}' \
-  --header 'Content-Type: multipart/form-data' \
-  --form 'prompt=a sunset at the alps' \
-  --form steps=25 \
-  --form width=1024 \
-  --form height=1024
-```
-
 ## Parameters
-
-* [ Input ](#tab-panel-2376)
-* [ Output ](#tab-panel-2377)
 
 ▶multipart{}
 
@@ -92,11 +43,18 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-input.json "Download")
+Input [ ](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-input.json "Download")
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux-2-dev/schema-output.json "Download")
+Output [ ](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-dev/schema-output.json "Download")
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/#page","headline":"flux-2-dev (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[dev] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.","url":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/#page","headline":"flux-2-dev (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[dev] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.","url":"https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

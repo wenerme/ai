@@ -1,16 +1,18 @@
 ---
-title: Domains ranking
 description: Retrieve Cloudflare Radar domain rankings based on 1.1.1.1 DNS queries, including ordered top 100 lists and bucket datasets up to one million domains.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Domains ranking
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Domains ranking
 
-# Domains ranking
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare regularly generates a domain ranking based on DNS queries to [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/), Cloudflare's public DNS resolver. Refer to the [blog post ↗](https://blog.cloudflare.com/radar-domain-rankings/) for a deep dive. In short, Cloudflare generates two types of listings:
 
@@ -34,31 +36,31 @@ curl "https://api.cloudflare.com/client/v4/radar/ranking/top?name=top&limit=5" \
   "errors": [],
   "result": {
     "top_0": [
-      {
-        "rank": 1,
-        "domain": "google.com"
-      },
-      {
-        "rank": 2,
-        "domain": "googleapis.com"
-      },
-      {
-        "rank": 3,
-        "domain": "facebook.com"
-      },
-      {
-        "rank": 4,
-        "domain": "gstatic.com"
-      },
-      {
-        "rank": 5,
-        "domain": "apple.com"
-      }
+			{
+				"rank": 1,
+				"domain": "google.com"
+			},
+			{
+				"rank": 2,
+				"domain": "googleapis.com"
+			},
+			{
+				"rank": 3,
+				"domain": "facebook.com"
+			},
+			{
+				"rank": 4,
+				"domain": "gstatic.com"
+			},
+			{
+				"rank": 5,
+				"domain": "apple.com"
+			}
     ]
   },
-  "meta": {
-    // ...
-  }
+	"meta": {
+		// ...
+	}
 }
 ```
 
@@ -80,24 +82,24 @@ curl "https://api.cloudflare.com/client/v4/radar/datasets?limit=10&datasetType=R
   "success": true,
   "errors": [],
   "result": {
-    "datasets": [
-      {
-        "id": 213,
-        "title": "Top 1000000 ranking domains",
-        "description": "Unordered top 1000000 from 2023-01-02 to 2023-01-09",
-        "type": "RANKING_BUCKET",
-        "tags": [
-          "GLOBAL",
-          "top_1000000"
-        ],
-        "meta": {
-          "top": 1000000
-        },
-        "alias": "ranking_top_1000000"
-      },
-      // ...
-    ]
-  }
+		"datasets": [
+			{
+				"id": 213,
+				"title": "Top 1000000 ranking domains",
+				"description": "Unordered top 1000000 from 2023-01-02 to 2023-01-09",
+				"type": "RANKING_BUCKET",
+				"tags": [
+					"GLOBAL",
+					"top_1000000"
+				],
+				"meta": {
+					"top": 1000000
+				},
+				"alias": "ranking_top_1000000"
+			},
+			// ...
+		]
+	}
 }
 ```
 
@@ -119,10 +121,10 @@ curl "https://api.cloudflare.com/client/v4/radar/datasets/download" \
   "success": true,
   "errors": [],
   "result": {
-    "dataset": {
-      "url": "https://example.com/download"
-    }
-  }
+		"dataset": {
+			"url": "https://example.com/download"
+		}
+	}
 }
 ```
 
@@ -154,7 +156,14 @@ a2z.com
 
 Refer to [Investigate outages](https://developers.cloudflare.com/radar/investigate/outages/) to get data from outages occurring around the world.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/#page","headline":"Domains ranking · Cloudflare Radar docs","description":"Retrieve Cloudflare Radar domain rankings based on 1.1.1.1 DNS queries, including ordered top 100 lists and bucket datasets up to one million domains.","url":"https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/investigate/","name":"Investigate"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/investigate/domain-ranking-datasets/","name":"Domains ranking"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/#page","headline":"Domains ranking · Cloudflare Radar docs","description":"Retrieve Cloudflare Radar domain rankings based on 1.1.1.1 DNS queries, including ordered top 100 lists and bucket datasets up to one million domains.","url":"https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

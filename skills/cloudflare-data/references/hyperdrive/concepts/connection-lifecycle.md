@@ -1,16 +1,18 @@
 ---
-title: Connection lifecycle
 description: Understand how connections are managed between Workers, Hyperdrive, and your origin database.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Connection lifecycle
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Connection lifecycle
 
-# Connection lifecycle
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Understanding how connections work between Workers, Hyperdrive, and your origin database is essential for building efficient applications with Hyperdrive.
 
@@ -43,28 +45,23 @@ When your Worker finishes processing a request, the database client is automatic
 
 You do **not** need to call `client.end()`, `sql.end()`, `connection.end()` (or similar) to clean up database clients. Workers-to-Hyperdrive connections are automatically cleaned up when the request or invocation ends, including when a [Workflow](https://developers.cloudflare.com/workflows/) or [Queue consumer](https://developers.cloudflare.com/queues/) completes, or when a [Durable Object](https://developers.cloudflare.com/durable-objects/) hibernates or is evicted when idle.
 
-**TypeScript**
-
 ```ts
 import { Client } from "pg";
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const client = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
-    await client.connect();
+	async fetch(request, env, ctx): Promise<Response> {
+		const client = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
+		await client.connect();
 
+		const result = await client.query("SELECT * FROM pg_tables");
 
-    const result = await client.query("SELECT * FROM pg_tables");
-
-
-    // No need to call client.end() — Hyperdrive automatically cleans
-    // up the client connection when the request ends. The underlying
-    // pooled connection to your origin database remains open for reuse.
-    return Response.json(result.rows);
-  },
+		// No need to call client.end() — Hyperdrive automatically cleans
+		// up the client connection when the request ends. The underlying
+		// pooled connection to your origin database remains open for reuse.
+		return Response.json(result.rows);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -74,70 +71,57 @@ You should always create database clients inside your request handlers (`fetch`,
 
 Do not create database clients or connection pools in the global scope. Instead, create a new client inside each handler invocation — Hyperdrive's connection pool ensures this is fast:
 
-* [  JavaScript ](#tab-panel-9428)
-* [  TypeScript ](#tab-panel-9429)
-
-**index.js**
-
 ```js
 import { Client } from "pg";
-
 
 // 🔴 Bad: Client created in the global scope persists across requests.
 // Workers do not allow I/O across request contexts, so this client
 // becomes stale and subsequent queries will throw hard errors.
 const globalClient = new Client({
-  connectionString: env.HYPERDRIVE.connectionString,
+	connectionString: env.HYPERDRIVE.connectionString,
 });
 await globalClient.connect();
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // ✅ Good: Client created inside the handler, scoped to this request.
-    // Hyperdrive pools the underlying connection to your origin database,
-    // so creating a new client per request is fast and reliable.
-    const client = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
-    await client.connect();
+	async fetch(request, env, ctx) {
+		// ✅ Good: Client created inside the handler, scoped to this request.
+		// Hyperdrive pools the underlying connection to your origin database,
+		// so creating a new client per request is fast and reliable.
+		const client = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
+		await client.connect();
 
-
-    const result = await client.query("SELECT * FROM pg_tables");
-    return Response.json(result.rows);
-  },
+		const result = await client.query("SELECT * FROM pg_tables");
+		return Response.json(result.rows);
+	},
 };
 ```
-
-**index.ts**
 
 ```ts
 import { Client } from "pg";
 
-
 // 🔴 Bad: Client created in the global scope persists across requests.
 // Workers do not allow I/O across request contexts, so this client
 // becomes stale and subsequent queries will throw hard errors.
 const globalClient = new Client({
-  connectionString: env.HYPERDRIVE.connectionString,
+	connectionString: env.HYPERDRIVE.connectionString,
 });
 await globalClient.connect();
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // ✅ Good: Client created inside the handler, scoped to this request.
-    // Hyperdrive pools the underlying connection to your origin database,
-    // so creating a new client per request is fast and reliable.
-    const client = new Client({
-      connectionString: env.HYPERDRIVE.connectionString,
-    });
-    await client.connect();
+	async fetch(request, env, ctx): Promise<Response> {
+		// ✅ Good: Client created inside the handler, scoped to this request.
+		// Hyperdrive pools the underlying connection to your origin database,
+		// so creating a new client per request is fast and reliable.
+		const client = new Client({
+			connectionString: env.HYPERDRIVE.connectionString,
+		});
+		await client.connect();
 
-
-    const result = await client.query("SELECT * FROM pg_tables");
-    return Response.json(result.rows);
-  },
+		const result = await client.query("SELECT * FROM pg_tables");
+		return Response.json(result.rows);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -147,7 +131,7 @@ export default {
 
 Unlike regular Workers, [Durable Objects](https://developers.cloudflare.com/durable-objects/) can maintain state across multiple requests. If you keep a database client open in a Durable Object, the connection will remain allocated from Hyperdrive's connection pool. Long-lived Durable Objects can exhaust available connections if many objects keep connections open simultaneously.
 
-Warning
+Caution
 
 Be careful when maintaining persistent database connections in Durable Objects. Each open connection consumes resources from Hyperdrive's connection pool, which could impact other parts of your application. Close connections when not actively in use, use connection timeouts, and limit the number of Durable Objects that maintain database connections.
 
@@ -168,7 +152,14 @@ Refer to [Limits](https://developers.cloudflare.com/hyperdrive/platform/limits/)
 * [Limits](https://developers.cloudflare.com/hyperdrive/platform/limits/)
 * [Durable Objects](https://developers.cloudflare.com/durable-objects/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/#page","headline":"Connection lifecycle · Cloudflare Hyperdrive docs","description":"Understand how connections are managed between Workers, Hyperdrive, and your origin database.","url":"https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/hyperdrive/","name":"Hyperdrive"}},{"@type":"ListItem","position":3,"item":{"@id":"/hyperdrive/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/hyperdrive/concepts/connection-lifecycle/","name":"Connection lifecycle"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/#page","headline":"Connection lifecycle · Cloudflare Hyperdrive docs","description":"Understand how connections are managed between Workers, Hyperdrive, and your origin database.","url":"https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

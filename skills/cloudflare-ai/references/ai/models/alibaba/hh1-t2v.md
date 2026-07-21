@@ -1,38 +1,38 @@
 ---
-title: HappyHorse 1.0 T2V
 description: Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text prompt with configurable resolution, aspect ratio, and duration (3-15s).
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: HappyHorse 1.0 T2V
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.C3THgr9s.svg)
 
 #  HappyHorse 1.0 T2V
 
-Text-to-Video • Alibaba
+ Text-to-Video • Alibaba
 
-`alibaba/hh1-t2v`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` alibaba/hh1-t2v `
+
+* Third-party
+* Zero data retention
 
 Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text prompt with configurable resolution, aspect ratio, and duration (3-15s).
 
-| Model Info          |                                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                              |
-| More information    | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                           |
-| Zero data retention | Yes                                                                                                               |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-t2v) |
+| Model Info          |                                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                               |
+| More information    | [link ↗](https://modelstudio.console.alibabacloud.com/)                                                            |
+| Zero data retention | Yes                                                                                                                |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-t2v) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-16)
-* [ cURL ](#tab-panel-17)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -54,9 +54,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-14)
-* [ Raw response ](#tab-panel-15)
-
 ```json
 {
   "gatewayMetadata": {
@@ -72,11 +69,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Vertical 1080P**  — Vertical 9:16 output at 1080P for social media
-
-* [ TypeScript ](#tab-panel-22)
-* [ cURL ](#tab-panel-23)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -106,9 +98,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-18)
-* [ Raw response ](#tab-panel-19)
-
 ```json
 {
   "gatewayMetadata": {
@@ -122,11 +111,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Reproducible Output**  — Use a fixed seed for reproducibility
-
-* [ TypeScript ](#tab-panel-24)
-* [ cURL ](#tab-panel-25)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -158,9 +142,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-20)
-* [ Raw response ](#tab-panel-21)
-
 ```json
 {
   "gatewayMetadata": {
@@ -174,9 +155,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-26)
-* [ Output ](#tab-panel-27)
 
 prompt
 
@@ -212,7 +190,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/schema-inp
 
 Output [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/#page","headline":"HappyHorse 1.0 T2V (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text prompt with configurable resolution, aspect ratio, and duration (3-15s).","url":"https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/#page","headline":"HappyHorse 1.0 T2V (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text prompt with configurable resolution, aspect ratio, and duration (3-15s).","url":"https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

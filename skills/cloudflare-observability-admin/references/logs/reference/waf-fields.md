@@ -1,16 +1,18 @@
 ---
-title: WAF fields
 description: Review WAF action and rule field values in logs.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: WAF fields
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WAF fields
 
-# WAF fields
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/reference/waf-fields/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Web Application Firewall (WAF) contains rules managed by Cloudflare to block requests that contain malicious content.
 
@@ -32,7 +34,14 @@ The values of these fields are subject to change by Cloudflare at any time and a
 * WAFFlags
 * WAFMatchedVar
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/reference/waf-fields/#page","headline":"WAF fields · Cloudflare Logs docs","description":"Review WAF action and rule field values in logs.","url":"https://developers.cloudflare.com/logs/reference/waf-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/logs/reference/waf-fields/","name":"WAF fields"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/reference/waf-fields/#page","headline":"WAF fields · Cloudflare Logs docs","description":"Review WAF action and rule field values in logs.","url":"https://developers.cloudflare.com/logs/reference/waf-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

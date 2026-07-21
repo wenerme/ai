@@ -102,8 +102,6 @@ You can also make sure that all members were exported by checking the `project_m
 
 ### Compatibility
 
-- Support for JSON-formatted project file exports [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/389888) in GitLab 15.11.
-
 Project file exports are in NDJSON format.
 
 You can import project file exports that were exported from a version of GitLab up to two
@@ -185,7 +183,7 @@ specific project item is exported:
 
 1. Check the [`exporters` array](https://gitlab.com/gitlab-org/gitlab/-/blob/b819a6aa6d53573980dd9ee4a1bfe597d69e88e5/app/services/projects/import_export/export_service.rb#L24).
 1. Check the [`project/import_export.yml`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/import_export/project/import_export.yml)
-   file for projects for your GitLab version. For example, <https://gitlab.com/gitlab-org/gitlab/-/blob/16-8-stable-ee/lib/gitlab/import_export/project/import_export.yml> for GitLab 16.8.
+   file for projects for your GitLab version. For example, <https://gitlab.com/gitlab-org/gitlab/-/blob/19-2-stable-ee/lib/gitlab/import_export/project/import_export.yml> for GitLab 19.2.
 
 For a quick overview, items that are exported include:
 
@@ -194,18 +192,18 @@ For a quick overview, items that are exported include:
 - Project configuration, excluding integrations
 - Issues
   - Issue comments
-  - Issue iterations ([introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/96184) in GitLab 15.4)
-  - Issue resource state events ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/291983) in GitLab 15.4)
-  - Issue resource milestone events ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/291983) in GitLab 15.4)
-  - Issue resource iteration events ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/291983) in GitLab 15.4)
+  - Issue iterations
+  - Issue resource state events
+  - Issue resource milestone events
+  - Issue resource iteration events
 - Merge requests
   - Merge request diffs
   - Merge request comments
-  - Merge request resource state events ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/291983) in GitLab 15.4)
-  - Merge request multiple assignees ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/339520) in GitLab 15.3)
-  - Merge request reviewers ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/339520) in GitLab 15.3)
-  - Merge request approvers ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/339520) in GitLab 15.3)
-- Commit comments ([introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/391601) in GitLab 15.10)
+  - Merge request resource state events
+  - Merge request multiple assignees
+  - Merge request reviewers
+  - Merge request approvers
+- Commit comments
 - Labels
 - Milestones
 - Snippets
@@ -263,8 +261,6 @@ You can import a project and its data. The amount of data you can import depends
 > may be possible for an attacker to steal your sensitive data.
 
 #### Prerequisites
-
-- Requirement for Maintainer role instead of Developer role introduced in GitLab 16.0 and backported to GitLab 15.11.1 and GitLab 15.10.5.
 
 - You must have [exported the project and its data](#export-a-project-and-its-data).
 - Compare GitLab versions and ensure you are importing to a GitLab version that is the same or later
@@ -374,8 +370,6 @@ The maximum import file size depends on whether you import to GitLab Self-Manage
 
 ### Compatibility
 
-- Support for JSON-formatted project file exports [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/383682) in GitLab 15.8.
-
 Group file exports are in NDJSON format.
 
 You can import group file exports that were exported from a version of GitLab up to two
@@ -393,7 +387,7 @@ For example:
 The [`import_export.yml`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/import_export/group/import_export.yml)
 file for groups lists items exported and imported when migrating groups using file exports. View this file in the branch
 for your version of GitLab to check which items can be imported to the destination GitLab instance. For example,
-[`import_export.yml` on the `16-8-stable-ee` branch](https://gitlab.com/gitlab-org/gitlab/-/blob/16-8-stable-ee/lib/gitlab/import_export/group/import_export.yml).
+[`import_export.yml` on the `19-2-stable-ee` branch](https://gitlab.com/gitlab-org/gitlab/-/blob/19-2-stable-ee/lib/gitlab/import_export/group/import_export.yml).
 
 Group items that are exported include:
 
@@ -403,10 +397,10 @@ Group items that are exported include:
 - Badges
 - Subgroups (including all the aforementioned data)
 - Epics
-  - Epic resource state events. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/291983) in GitLab 15.4.
+  - Epic resource state events.
 - Events
 - [Wikis](../wiki/group.md)
-- Iterations cadences. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/95372) in GitLab 15.4.
+- Iterations cadences.
 
 ### Group items that are not exported
 

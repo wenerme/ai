@@ -1,16 +1,18 @@
 ---
-title: GitHub Actions
 description: Integrate Workers development into your existing GitHub Actions workflows.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: GitHub Actions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  GitHub Actions
 
-# GitHub Actions
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy Workers with [GitHub Actions ↗](https://github.com/marketplace/actions/deploy-to-cloudflare-workers-with-wrangler). Here is how you can set up your GitHub Actions workflow.
 
@@ -27,7 +29,7 @@ To find your Cloudflare account ID, refer to [Find account and zone IDs](https:/
 To create an API token to authenticate Wrangler in your CI job:
 
 1. In the Cloudflare dashboard, go to the **Account API tokens** page.
-[ Go to **Account API tokens** ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
 3. Under **Permission policies**, open the **Custom** dropdown and select **Edit Cloudflare Workers**.
 4. Customize your token name.
@@ -45,7 +47,7 @@ To set up your CI/CD:
 * `CLOUDFLARE_ACCOUNT_ID`: Set to the [Cloudflare account ID](#cloudflare-account-id) for the account on which you want to deploy your Worker.
 * `CLOUDFLARE_API_TOKEN`: Set to the [Cloudflare API token you generated](#api-token).
 
-Warning
+Caution
 
 Don't store the value of `CLOUDFLARE_API_TOKEN` in your repository, as it gives access to deploy Workers on your account. Instead, you should utilize your CI/CD provider's support for storing secrets.
 
@@ -54,8 +56,6 @@ Don't store the value of `CLOUDFLARE_API_TOKEN` in your repository, as it gives 
 ### GitHub Actions
 
 Cloudflare provides [an official action ↗](https://github.com/cloudflare/wrangler-action) for deploying Workers. Refer to the following example workflow which deploys your Worker on push to the `main` branch.
-
-**YAML**
 
 ```yaml
 name: Deploy Worker
@@ -76,7 +76,14 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/#page","headline":"GitHub Actions · Cloudflare Workers docs","description":"Integrate Workers development into your existing GitHub Actions workflows.","url":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/ci-cd/","name":"CI/CD"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/ci-cd/external-cicd/","name":"External CI/CD"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/ci-cd/external-cicd/github-actions/","name":"GitHub Actions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/#page","headline":"GitHub Actions · Cloudflare Workers docs","description":"Integrate Workers development into your existing GitHub Actions workflows.","url":"https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Changelog
 description: Recent changes and updates to Cloudflare Pages.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Changelog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Changelog
 
-# Changelog
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/platform/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/pages/platform/changelog/index.xml)
 
@@ -207,7 +209,14 @@ This functionality requires Wrangler v2.0.11 or higher.
 **Added branch alias to PR comments**
 * PR comments for Pages previews now include the branch alias.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/pages/platform/changelog/#page","headline":"Changelog · Cloudflare Pages docs","description":"Recent changes and updates to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/platform/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/platform/changelog/","name":"Changelog"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/pages/platform/changelog/#page","headline":"Changelog · Cloudflare Pages docs","description":"Recent changes and updates to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/platform/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

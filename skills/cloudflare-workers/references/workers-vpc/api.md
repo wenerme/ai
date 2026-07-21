@@ -1,16 +1,18 @@
 ---
-title: Workers Binding API
 description: API reference for VPC Service and VPC Network bindings in Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Binding API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Binding API
 
-# Workers Binding API
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 VPC bindings provide APIs for accessing private services from your Worker. Both [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) and [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) expose a `fetch()` method for HTTP traffic. VPC Networks also expose a `connect()` method for raw TCP connections. The difference between binding types is in routing scope, not in API surface.
 
@@ -34,8 +36,6 @@ A VPC Network binding grants access to any service reachable through the bound C
 ## fetch()
 
 Makes an HTTP request to the private service through the bound Cloudflare Tunnel or Cloudflare Mesh. Available on both VPC Service and VPC Network bindings.
-
-**JavaScript**
 
 ```js
 const response = await env.MY_BINDING.fetch(resource, options);
@@ -64,85 +64,72 @@ The following examples apply to both VPC Service and VPC Network bindings.
 
 #### Basic GET request
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const privateRequest = new Request(
-      "http://internal-api.company.local/users",
-    );
-    const response = await env.MY_BINDING.fetch(privateRequest);
-    const users = await response.json();
+	async fetch(request, env) {
+		const privateRequest = new Request(
+			"http://internal-api.company.local/users",
+		);
+		const response = await env.MY_BINDING.fetch(privateRequest);
+		const users = await response.json();
 
-
-    return new Response(JSON.stringify(users), {
-      headers: { "Content-Type": "application/json" },
-    });
-  },
+		return new Response(JSON.stringify(users), {
+			headers: { "Content-Type": "application/json" },
+		});
+	},
 };
 ```
 
 #### POST request with body
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const privateRequest = new Request(
-      "http://internal-api.company.local/users",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${env.API_TOKEN}`,
-        },
-        body: JSON.stringify({
-          name: "John Doe",
-          email: "john@example.com",
-        }),
-      },
-    );
+	async fetch(request, env) {
+		const privateRequest = new Request(
+			"http://internal-api.company.local/users",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${env.API_TOKEN}`,
+				},
+				body: JSON.stringify({
+					name: "John Doe",
+					email: "john@example.com",
+				}),
+			},
+		);
 
+		const response = await env.MY_BINDING.fetch(privateRequest);
 
-    const response = await env.MY_BINDING.fetch(privateRequest);
+		if (!response.ok) {
+			return new Response("Failed to create user", { status: response.status });
+		}
 
-
-    if (!response.ok) {
-      return new Response("Failed to create user", { status: response.status });
-    }
-
-
-    const user = await response.json();
-    return new Response(JSON.stringify(user), {
-      headers: { "Content-Type": "application/json" },
-    });
-  },
+		const user = await response.json();
+		return new Response(JSON.stringify(user), {
+			headers: { "Content-Type": "application/json" },
+		});
+	},
 };
 ```
 
 #### Request with HTTPS and IP address
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const privateRequest = new Request("https://10.0.1.50/api/data");
-    const response = await env.MY_BINDING.fetch(privateRequest);
+	async fetch(request, env) {
+		const privateRequest = new Request("https://10.0.1.50/api/data");
+		const response = await env.MY_BINDING.fetch(privateRequest);
 
-
-    return response;
-  },
+		return response;
+	},
 };
 ```
 
 ## connect()
 
 Opens a raw TCP connection to a private destination through the bound Cloudflare Tunnel or Cloudflare Mesh. Available on VPC Network bindings only.
-
-**JavaScript**
 
 ```js
 const socket = await env.MY_BINDING.connect(address);
@@ -164,44 +151,36 @@ Note
 
 #### Connect to a private Redis instance
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const socket = await env.MY_BINDING.connect("10.0.1.50:6379");
+	async fetch(request, env) {
+		const socket = await env.MY_BINDING.connect("10.0.1.50:6379");
 
+		const writer = socket.writable.getWriter();
+		await writer.write(new TextEncoder().encode("PING\r\n"));
+		await writer.close();
 
-    const writer = socket.writable.getWriter();
-    await writer.write(new TextEncoder().encode("PING\r\n"));
-    await writer.close();
-
-
-    return new Response(socket.readable);
-  },
+		return new Response(socket.readable);
+	},
 };
 ```
 
 #### Connect using a SocketAddress object
 
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const socket = await env.MY_BINDING.connect({
-      hostname: "10.0.1.50",
-      port: 6379,
-    });
+	async fetch(request, env) {
+		const socket = await env.MY_BINDING.connect({
+			hostname: "10.0.1.50",
+			port: 6379,
+		});
 
+		const writer = socket.writable.getWriter();
+		await writer.write(new TextEncoder().encode("PING\r\n"));
+		await writer.close();
 
-    const writer = socket.writable.getWriter();
-    await writer.write(new TextEncoder().encode("PING\r\n"));
-    await writer.close();
-
-
-    return new Response(socket.readable);
-  },
+		return new Response(socket.readable);
+	},
 };
 ```
 
@@ -215,7 +194,14 @@ To bind a VPC Service or VPC Network in a Worker, your user needs `Connectivity 
 * Configure [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
 * Refer to [usage examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/api/#page","headline":"Workers Binding API · Cloudflare Workers VPC","description":"API reference for VPC Service and VPC Network bindings in Workers.","url":"https://developers.cloudflare.com/workers-vpc/api/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/api/","name":"Workers Binding API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/api/#page","headline":"Workers Binding API · Cloudflare Workers VPC","description":"API reference for VPC Service and VPC Network bindings in Workers.","url":"https://developers.cloudflare.com/workers-vpc/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

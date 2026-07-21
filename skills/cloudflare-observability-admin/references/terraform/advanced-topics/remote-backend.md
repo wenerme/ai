@@ -1,16 +1,18 @@
 ---
-title: Remote R2 backend
 description: Store Terraform state files remotely using Cloudflare R2 as an S3-compatible backend.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Remote R2 backend
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Remote R2 backend
 
-# Remote R2 backend
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare R2](https://developers.cloudflare.com/r2/) and [Terraform remote backends ↗](https://developer.hashicorp.com/terraform/language/settings/backends/remote) can interact with each other to provide a seamless experience for Terraform state management.
 
@@ -21,9 +23,6 @@ Cloudflare R2 is an object storage service that provides a highly available, sca
 ### Create R2 bucket
 
 Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), [API](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/create/), or [Account View Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/new) create an [R2 Bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/).
-
-* [ Wrangler ](#tab-panel-11775)
-* [ API ](#tab-panel-11776)
 
 ```sh
 wrangler r2 bucket create <YOUR_BUCKET_NAME>
@@ -94,7 +93,14 @@ variable "account_id" { default = "<YOUR_ACCOUNT_ID>" }
 
 After updating your `cloudflare.tf` file you can issue the `terraform init -reconfigure` command to migrate from a local state to [remote state ↗](https://developer.hashicorp.com/terraform/language/state/remote).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/#page","headline":"Remote R2 backend · Cloudflare Terraform docs","description":"Store Terraform state files remotely using Cloudflare R2 as an S3-compatible backend.","url":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/advanced-topics/","name":"Advanced topics"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/advanced-topics/remote-backend/","name":"Remote R2 backend"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/#page","headline":"Remote R2 backend · Cloudflare Terraform docs","description":"Store Terraform state files remotely using Cloudflare R2 as an S3-compatible backend.","url":"https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

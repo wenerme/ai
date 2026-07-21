@@ -1,16 +1,18 @@
 ---
-title: Wrangler commands
 description: Wrangler CLI commands for creating and managing Workers VPC services.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Wrangler commands
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Wrangler commands
 
-# Wrangler commands
+Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following [Wrangler commands](https://developers.cloudflare.com/workers/wrangler/) allow you to manage Workers VPC services.
 
@@ -18,20 +20,18 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-12162)
-* [  pnpm ](#tab-panel-12163)
-* [  yarn ](#tab-panel-12164)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler vpc service create [NAME]
 ```
 
-```sh
-pnpm wrangler vpc service create [NAME]
+```
+yarn wrangler vpc service create [NAME]
 ```
 
-```sh
-yarn wrangler vpc service create [NAME]
+```
+pnpm wrangler vpc service create [NAME]
 ```
 
 * `[NAME]` ` string ` required
@@ -84,20 +84,18 @@ Use a specific auth profile
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-12165)
-* [  pnpm ](#tab-panel-12166)
-* [  yarn ](#tab-panel-12167)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler vpc service delete [SERVICE-ID]
 ```
 
-```sh
-pnpm wrangler vpc service delete [SERVICE-ID]
+```
+yarn wrangler vpc service delete [SERVICE-ID]
 ```
 
-```sh
-yarn wrangler vpc service delete [SERVICE-ID]
+```
+pnpm wrangler vpc service delete [SERVICE-ID]
 ```
 
 * `[SERVICE-ID]` ` string ` required
@@ -128,20 +126,18 @@ Use a specific auth profile
 
 Get a VPC service
 
-* [  npm ](#tab-panel-12168)
-* [  pnpm ](#tab-panel-12169)
-* [  yarn ](#tab-panel-12170)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler vpc service get [SERVICE-ID]
 ```
 
-```sh
-pnpm wrangler vpc service get [SERVICE-ID]
+```
+yarn wrangler vpc service get [SERVICE-ID]
 ```
 
-```sh
-yarn wrangler vpc service get [SERVICE-ID]
+```
+pnpm wrangler vpc service get [SERVICE-ID]
 ```
 
 * `[SERVICE-ID]` ` string ` required
@@ -172,20 +168,18 @@ Use a specific auth profile
 
 List VPC services
 
-* [  npm ](#tab-panel-12171)
-* [  pnpm ](#tab-panel-12172)
-* [  yarn ](#tab-panel-12173)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler vpc service list
 ```
 
-```sh
-pnpm wrangler vpc service list
+```
+yarn wrangler vpc service list
 ```
 
-```sh
-yarn wrangler vpc service list
+```
+pnpm wrangler vpc service list
 ```
 
 Global flags
@@ -213,20 +207,18 @@ Use a specific auth profile
 
 Update a VPC service
 
-* [  npm ](#tab-panel-12174)
-* [  pnpm ](#tab-panel-12175)
-* [  yarn ](#tab-panel-12176)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler vpc service update [SERVICE-ID]
 ```
 
-```sh
-pnpm wrangler vpc service update [SERVICE-ID]
+```
+yarn wrangler vpc service update [SERVICE-ID]
 ```
 
-```sh
-yarn wrangler vpc service update [SERVICE-ID]
+```
+pnpm wrangler vpc service update [SERVICE-ID]
 ```
 
 * `[SERVICE-ID]` ` string ` required
@@ -277,7 +269,14 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` ` string `
 Use a specific auth profile
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Workers VPC","description":"Wrangler CLI commands for creating and managing Workers VPC services.","url":"https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/reference/wrangler-commands/","name":"Wrangler commands"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/#page","headline":"Wrangler commands · Cloudflare Workers VPC","description":"Wrangler CLI commands for creating and managing Workers VPC services.","url":"https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Define foreign keys
 description: Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Define foreign keys
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Define foreign keys
 
-# Define foreign keys
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/sql-api/foreign-keys/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 D1 supports defining and enforcing foreign key constraints across tables in a database.
 
@@ -36,10 +38,8 @@ To defer foreign key enforcement, set `PRAGMA defer_foreign_keys = on` at the st
 -- Defer foreign key enforcement in this transaction.
 PRAGMA defer_foreign_keys = on
 
-
 -- Run your CREATE TABLE or ALTER TABLE / COLUMN statements
 ALTER TABLE users ...
-
 
 -- This is implicit if not set by the end of the transaction.
 PRAGMA defer_foreign_keys = off
@@ -68,7 +68,6 @@ CREATE TABLE users (
     name TEXT,
     metadata TEXT
 )
-
 
 CREATE TABLE orders (
     order_id INTEGER PRIMARY KEY,
@@ -106,7 +105,6 @@ CREATE TABLE users (
     email_address TEXT,
 )
 
-
 CREATE TABLE scores (
     score_id INTEGER PRIMARY KEY,
     game TEXT,
@@ -122,7 +120,14 @@ CREATE TABLE scores (
 * Learn how to [use the D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) from within a Worker.
 * Understand how [database migrations work](https://developers.cloudflare.com/d1/reference/migrations/) with D1.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/#page","headline":"Define foreign keys · Cloudflare D1 docs","description":"Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.","url":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/sql-api/","name":"SQL API"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/sql-api/foreign-keys/","name":"Define foreign keys"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/#page","headline":"Define foreign keys · Cloudflare D1 docs","description":"Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.","url":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

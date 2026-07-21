@@ -1,16 +1,18 @@
 ---
-title: Terraform configuration examples
 description: Configure malicious upload detection using Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Terraform configuration examples
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Terraform configuration examples
 
-# Terraform configuration examples
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/malicious-uploads/terraform-examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following Terraform configuration examples address common scenarios for managing, configuring, and using WAF content scanning.
 
@@ -24,8 +26,8 @@ Use the `cloudflare_content_scanning` resource to enable content scanning for a 
 
 ```terraform
 resource "cloudflare_content_scanning" "zone_content_scanning_example" {
-  zone_id = var.cloudflare_zone_id
-  enabled = true
+	zone_id = var.cloudflare_zone_id
+	enabled = true
 }
 ```
 
@@ -48,9 +50,6 @@ This example adds a [custom rule](https://developers.cloudflare.com/waf/custom-r
 
 To use the [cf.waf.content\_scan.has\_malicious\_obj](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content%5Fscan.has%5Fmalicious%5Fobj/) field you must [enable content scanning](#enable-waf-content-scanning).
 
-* [ Terraform (v5) ](#tab-panel-11995)
-* [ Terraform (v4) ](#tab-panel-11996)
-
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
@@ -66,7 +65,6 @@ resource "cloudflare_ruleset" "zone_custom_firewall_malicious_uploads" {
   description = ""
   kind        = "zone"
   phase       = "http_request_firewall_custom"
-
 
   rules = [{
     ref         = "block_malicious_uploads"
@@ -85,7 +83,6 @@ resource "cloudflare_ruleset" "zone_custom_firewall_malicious_uploads" {
   kind        = "zone"
   phase       = "http_request_firewall_custom"
 
-
   rules {
     ref         = "block_malicious_uploads"
     description = "Block requests uploading malicious content objects"
@@ -99,7 +96,14 @@ resource "cloudflare_ruleset" "zone_custom_firewall_malicious_uploads" {
 
 For additional Terraform configuration examples, refer to [WAF custom rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/terraform-examples/#page","headline":"Terraform configuration examples · Cloudflare Web Application Firewall (WAF) docs","description":"Configure malicious upload detection using Terraform.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/terraform-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/malicious-uploads/","name":"Malicious uploads detection"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/malicious-uploads/terraform-examples/","name":"Terraform configuration examples"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/terraform-examples/#page","headline":"Terraform configuration examples · Cloudflare Web Application Firewall (WAF) docs","description":"Configure malicious upload detection using Terraform.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/terraform-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

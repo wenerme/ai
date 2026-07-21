@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a feature flag in Flagship and evaluate it inside a Cloudflare Worker.
 
@@ -29,23 +31,16 @@ In this example, you will create a boolean flag called `new-checkout` that contr
 
 Add the Flagship binding in your Wrangler configuration file so your Worker can evaluate flags through a binding.
 
-* [  wrangler.jsonc ](#tab-panel-9282)
-* [  wrangler.toml ](#tab-panel-9283)
-
-**JSONC**
-
 ```jsonc
 {
-  "flagship": [
-    {
-      "binding": "FLAGS",
-      "app_id": "<APP_ID>",
-    },
-  ],
+	"flagship": [
+		{
+			"binding": "FLAGS",
+			"app_id": "<APP_ID>",
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[flagship]]
@@ -61,58 +56,45 @@ After updating the Wrangler configuration, run `npx wrangler types` to generate 
 
 Use the `env.FLAGS` binding to evaluate the flag. The binding provides type-safe methods that return the flag value and fall back to the default you provide if evaluation fails.
 
-* [  JavaScript ](#tab-panel-9284)
-* [  TypeScript ](#tab-panel-9285)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const userId = url.searchParams.get("userId") ?? "anonymous";
+	async fetch(request, env) {
+		const url = new URL(request.url);
+		const userId = url.searchParams.get("userId") ?? "anonymous";
 
+		const showNewCheckout = await env.FLAGS.getBooleanValue(
+			"new-checkout",
+			false,
+			{ userId },
+		);
 
-    const showNewCheckout = await env.FLAGS.getBooleanValue(
-      "new-checkout",
-      false,
-      { userId },
-    );
+		if (showNewCheckout) {
+			return new Response("Welcome to the new checkout experience!");
+		}
 
-
-    if (showNewCheckout) {
-      return new Response("Welcome to the new checkout experience!");
-    }
-
-
-    return new Response("Standard checkout.");
-  },
+		return new Response("Standard checkout.");
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
-    const userId = url.searchParams.get("userId") ?? "anonymous";
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const url = new URL(request.url);
+		const userId = url.searchParams.get("userId") ?? "anonymous";
 
+		const showNewCheckout = await env.FLAGS.getBooleanValue(
+			"new-checkout",
+			false,
+			{ userId },
+		);
 
-    const showNewCheckout = await env.FLAGS.getBooleanValue(
-      "new-checkout",
-      false,
-      { userId },
-    );
+		if (showNewCheckout) {
+			return new Response("Welcome to the new checkout experience!");
+		}
 
-
-    if (showNewCheckout) {
-      return new Response("Welcome to the new checkout experience!");
-    }
-
-
-    return new Response("Standard checkout.");
-  },
+		return new Response("Standard checkout.");
+	},
 };
 ```
 
@@ -160,126 +142,95 @@ bun add @cloudflare/flagship @openfeature/server-sdk
 
 Evaluate flags using the OpenFeature client:
 
-* [ With binding ](#tab-panel-9290)
-* [ With app ID ](#tab-panel-9291)
-
 Pass the Flagship binding directly to the provider. This avoids additional HTTP overhead and is the recommended approach inside a Worker. The binding handles authentication automatically.
-
-* [  JavaScript ](#tab-panel-9288)
-* [  TypeScript ](#tab-panel-9289)
-
-**JavaScript**
 
 ```js
 import { OpenFeature } from "@openfeature/server-sdk";
 import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 
-
 export default {
-  async fetch(request, env) {
-    await OpenFeature.setProviderAndWait(
-      new FlagshipServerProvider({ binding: env.FLAGS }),
-    );
+	async fetch(request, env) {
+		await OpenFeature.setProviderAndWait(
+			new FlagshipServerProvider({ binding: env.FLAGS }),
+		);
 
+		const client = OpenFeature.getClient();
 
-    const client = OpenFeature.getClient();
+		const showNewCheckout = await client.getBooleanValue(
+			"new-checkout",
+			false,
+			{ targetingKey: "user-42" },
+		);
 
-
-    const showNewCheckout = await client.getBooleanValue(
-      "new-checkout",
-      false,
-      { targetingKey: "user-42" },
-    );
-
-
-    return new Response(
-      showNewCheckout ? "New checkout!" : "Standard checkout.",
-    );
-  },
+		return new Response(
+			showNewCheckout ? "New checkout!" : "Standard checkout.",
+		);
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 import { OpenFeature } from "@openfeature/server-sdk";
 import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 
-
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    await OpenFeature.setProviderAndWait(
-      new FlagshipServerProvider({ binding: env.FLAGS }),
-    );
+	async fetch(request: Request, env: Env): Promise<Response> {
+		await OpenFeature.setProviderAndWait(
+			new FlagshipServerProvider({ binding: env.FLAGS }),
+		);
 
+		const client = OpenFeature.getClient();
 
-    const client = OpenFeature.getClient();
+		const showNewCheckout = await client.getBooleanValue(
+			"new-checkout",
+			false,
+			{ targetingKey: "user-42" },
+		);
 
-
-    const showNewCheckout = await client.getBooleanValue(
-      "new-checkout",
-      false,
-      { targetingKey: "user-42" },
-    );
-
-
-    return new Response(
-      showNewCheckout ? "New checkout!" : "Standard checkout.",
-    );
-  },
+		return new Response(
+			showNewCheckout ? "New checkout!" : "Standard checkout.",
+		);
+	},
 };
 ```
 
 Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship Evaluate permission.
 
-* [  JavaScript ](#tab-panel-9286)
-* [  TypeScript ](#tab-panel-9287)
-
-**JavaScript**
-
 ```js
 import { OpenFeature } from "@openfeature/server-sdk";
 import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 
-
 await OpenFeature.setProviderAndWait(
-  new FlagshipServerProvider({
-    appId: "<APP_ID>",
-    accountId: "<ACCOUNT_ID>",
-    authToken: "<API_TOKEN>",
-  }),
+	new FlagshipServerProvider({
+		appId: "<APP_ID>",
+		accountId: "<ACCOUNT_ID>",
+		authToken: "<API_TOKEN>",
+	}),
 );
-
 
 const client = OpenFeature.getClient();
 
-
 const showNewCheckout = await client.getBooleanValue("new-checkout", false, {
-  targetingKey: "user-42",
+	targetingKey: "user-42",
 });
 ```
-
-**TypeScript**
 
 ```ts
 import { OpenFeature } from "@openfeature/server-sdk";
 import { FlagshipServerProvider } from "@cloudflare/flagship/server";
 
-
 await OpenFeature.setProviderAndWait(
-  new FlagshipServerProvider({
-    appId: "<APP_ID>",
-    accountId: "<ACCOUNT_ID>",
-    authToken: "<API_TOKEN>",
-  }),
+	new FlagshipServerProvider({
+		appId: "<APP_ID>",
+		accountId: "<ACCOUNT_ID>",
+		authToken: "<API_TOKEN>",
+	}),
 );
-
 
 const client = OpenFeature.getClient();
 
-
 const showNewCheckout = await client.getBooleanValue("new-checkout", false, {
-  targetingKey: "user-42",
+	targetingKey: "user-42",
 });
 ```
 
@@ -293,7 +244,14 @@ Refer to the [SDK documentation](https://developers.cloudflare.com/flagship/sdk/
 * Read about [percentage rollouts](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/) for gradual feature releases.
 * Refer to the [Flagship API reference](https://developers.cloudflare.com/flagship/reference/api-reference/) to manage Flagship programmatically.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/get-started/#page","headline":"Get started · Cloudflare Flagship docs","description":"Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.","url":"https://developers.cloudflare.com/flagship/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/get-started/#page","headline":"Get started · Cloudflare Flagship docs","description":"Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.","url":"https://developers.cloudflare.com/flagship/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

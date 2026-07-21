@@ -1,16 +1,18 @@
 ---
-title: Set up and use a Prisma Postgres database
 description: This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Set up and use a Prisma Postgres database
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Set up and use a Prisma Postgres database
 
-# Set up and use a Prisma Postgres database
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Prisma Postgres ↗](https://www.prisma.io/postgres) is a managed, serverless PostgreSQL database. It supports features like connection pooling, caching, real-time subscriptions, and query optimization recommendations.
 
@@ -46,13 +48,11 @@ cd ./prisma-postgres-worker
 
 Your initial `src/index.ts` file currently contains a simple request handler:
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    return new Response("Hello World!");
-  },
+	async fetch(request, env, ctx): Promise<Response> {
+		return new Response("Hello World!");
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -164,36 +164,30 @@ mv .env .dev.vars
 
 Open the `schema.prisma` file in the `prisma` folder and add the following `User` model to your database:
 
-**prisma/schema.prisma**
-
 ```prisma
 generator client {
   provider = "prisma-client-js"
 }
-
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-
 model User {
   id  Int @id @default(autoincrement())
   email String
-  name   String
+	name 	String
 }
 ```
 
 Next, add the following helper scripts to the `scripts` section of your `package.json`:
 
-**package.json**
-
 ```json
 "scripts": {
   "migrate": "dotenv -e .dev.vars -- npx prisma migrate dev",
-  "generate": "dotenv -e .dev.vars -- npx prisma generate --no-engine",
-  "studio": "dotenv -e .dev.vars -- npx prisma studio",
+	"generate": "dotenv -e .dev.vars -- npx prisma generate --no-engine",
+	"studio": "dotenv -e .dev.vars -- npx prisma studio",
   // Additional worker scripts...
 }
 ```
@@ -212,51 +206,43 @@ After these steps are complete, Prisma ORM is fully set up and connected to your
 
 Modify the `src/index.ts` file and replace its contents with the following code:
 
-**src/index.ts**
-
 ```ts
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 
-
 export interface Env {
-  DATABASE_URL: string;
+	DATABASE_URL: string;
 }
 
-
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    const path = new URL(request.url).pathname;
-    if (path === "/favicon.ico")
-      return new Response("Resource not found", {
-        status: 404,
-        headers: {
-          "Content-Type": "text/plain",
-        },
-      });
+	async fetch(request, env, ctx): Promise<Response> {
+		const path = new URL(request.url).pathname;
+		if (path === "/favicon.ico")
+			return new Response("Resource not found", {
+				status: 404,
+				headers: {
+					"Content-Type": "text/plain",
+				},
+			});
 
+		const prisma = new PrismaClient({
+			datasourceUrl: env.DATABASE_URL,
+		}).$extends(withAccelerate());
 
-    const prisma = new PrismaClient({
-      datasourceUrl: env.DATABASE_URL,
-    }).$extends(withAccelerate());
+		const user = await prisma.user.create({
+			data: {
+				email: `Jon${Math.ceil(Math.random() * 1000)}@gmail.com`,
+				name: "Jon Doe",
+			},
+		});
 
+		const userCount = await prisma.user.count();
 
-    const user = await prisma.user.create({
-      data: {
-        email: `Jon${Math.ceil(Math.random() * 1000)}@gmail.com`,
-        name: "Jon Doe",
-      },
-    });
-
-
-    const userCount = await prisma.user.count();
-
-
-    return new Response(`\
+		return new Response(`\
 Created new user: ${user.name} (${user.email}).
 Number of users in the database: ${userCount}.
-    `);
-  },
+		`);
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -315,7 +301,14 @@ To enhance your application further:
 
 To see how to build a real-time application with Cloudflare Workers and Prisma Postgres, read [this ↗](https://www.prisma.io/docs/guides/prisma-postgres-realtime-on-cloudflare) guide.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/#page","headline":"Set up and use a Prisma Postgres database · Cloudflare Workers docs","description":"This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.","url":"https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL","Prisma ORM","PostgreSQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/using-prisma-postgres-with-workers/","name":"Set up and use a Prisma Postgres database"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/#page","headline":"Set up and use a Prisma Postgres database · Cloudflare Workers docs","description":"This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.","url":"https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL","Prisma ORM","PostgreSQL"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Dynamic advertisement
 description: Advertise and withdraw IP prefixes on demand through the API or dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Dynamic advertisement
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Dynamic advertisement
 
-# Dynamic advertisement
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Dynamic advertisement allows you to control when Cloudflare announces your IP prefixes via BGP. When a prefix is advertised, Cloudflare announces it to the Internet so that traffic destined for those IPs can be routed to Cloudflare. When a prefix is withdrawn, Cloudflare stops announcing it — traffic will then follow whatever other BGP routes exist for that prefix.
 
@@ -20,7 +22,14 @@ When using the API, you can authorize the call with your email and API key or cr
 
 Both the API and the Cloudflare dashboard support [prefix delegations](https://developers.cloudflare.com/byoip/concepts/prefix-delegations/), which allow other Cloudflare accounts to interact with your prefix. The effect of a delegation is service-specific.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/#page","headline":"Dynamic advertisement · Cloudflare BYOIP docs","description":"Advertise and withdraw IP prefixes on demand through the API or dashboard.","url":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/concepts/dynamic-advertisement/","name":"Dynamic advertisement"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/#page","headline":"Dynamic advertisement · Cloudflare BYOIP docs","description":"Advertise and withdraw IP prefixes on demand through the API or dashboard.","url":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

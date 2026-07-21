@@ -1,16 +1,18 @@
 ---
-title: Proxy DNS records
 description: Proxy DNS records through Cloudflare.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Proxy DNS records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Proxy DNS records
 
-# Proxy DNS records
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/proxy-dns-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The first - and often easiest - step of DDoS protection is making sure your DNS records are [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare.
 
@@ -72,7 +74,14 @@ Then, [update your Cloudflare DNS records](https://developers.cloudflare.com/dns
 
 ![Proxy status affects how Cloudflare treats traffic intended for specific DNS records](https://developers.cloudflare.com/_astro/proxy-status-screenshot.uxgurbGi_2igVHO.webp)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/proxy-dns-records/#page","headline":"Proxy DNS records · Cloudflare Learning Paths","description":"Proxy DNS records through Cloudflare.","url":"https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/proxy-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/prevent-ddos-attacks/baseline/","name":"Baseline DDoS protection"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/prevent-ddos-attacks/baseline/proxy-dns-records/","name":"Proxy DNS records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/proxy-dns-records/#page","headline":"Proxy DNS records · Cloudflare Learning Paths","description":"Proxy DNS records through Cloudflare.","url":"https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/proxy-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

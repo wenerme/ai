@@ -1,16 +1,18 @@
 ---
-title: Sample terms
 description: Example Terms of Service language for restricting AI bots and data scraping.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Sample terms
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sample terms
 
-# Sample terms
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/reference/sample-terms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare recommends that customers consider updating their Terms of Service to address bots specifically related to Artificial Intelligence (AI) training and data scraping. The text below provides an informational example of the kind of language that could be added to a website's terms of use.
 
@@ -24,7 +26,14 @@ This language is provided for informational purposes only. It does not constitut
 
 This is an illustrative example of language that can be included in a website's terms to put AI providers on notice that they are not authorized to use automated means to scrape content from your website for purposes of training or otherwise contributing to their AI models or systems, unless you have expressly permitted them to do so in your `robots.txt` file.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/sample-terms/#page","headline":"Sample terms · Cloudflare bot solutions docs","description":"Example Terms of Service language for restricting AI bots and data scraping.","url":"https://developers.cloudflare.com/bots/reference/sample-terms/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/reference/sample-terms/","name":"Sample terms"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/sample-terms/#page","headline":"Sample terms · Cloudflare bot solutions docs","description":"Example Terms of Service language for restricting AI bots and data scraping.","url":"https://developers.cloudflare.com/bots/reference/sample-terms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

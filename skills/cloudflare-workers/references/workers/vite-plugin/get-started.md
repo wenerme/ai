@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Get started with the Vite plugin
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/vite-plugin/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -18,20 +20,18 @@ This guide demonstrates creating a standalone Worker from scratch. If you would 
 
 ## Start with a basic `package.json`
 
-**package.json**
-
 ```json
 {
-  "name": "cloudflare-vite-get-started",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "npm run build && vite preview",
-    "deploy": "npm run build && wrangler deploy"
-  }
+	"name": "cloudflare-vite-get-started",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "npm run build && vite preview",
+		"deploy": "npm run build && wrangler deploy"
+	}
 }
 ```
 
@@ -61,15 +61,12 @@ bun add -d vite @cloudflare/vite-plugin wrangler
 
 ## Create your Vite config file and include the Cloudflare plugin
 
-**vite.config.ts**
-
 ```ts
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 
-
 export default defineConfig({
-  plugins: [cloudflare()],
+	plugins: [cloudflare()],
 });
 ```
 
@@ -79,28 +76,21 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ## Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-13107)
-* [  wrangler.toml ](#tab-panel-13108)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "cloudflare-vite-get-started",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "main": "./src/index.ts"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "cloudflare-vite-get-started",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"main": "./src/index.ts"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-get-started"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 main = "./src/index.ts"
 ```
 
@@ -110,13 +100,11 @@ For more information about the Worker configuration, see [Configuration](https:/
 
 ## Create your Worker entry file
 
-**src/index.ts**
-
 ```ts
 export default {
-  fetch() {
-    return new Response(`Running in ${navigator.userAgent}!`);
-  },
+	fetch() {
+		return new Response(`Running in ${navigator.userAgent}!`);
+	},
 };
 ```
 
@@ -126,7 +114,14 @@ A request to this Worker will return **'Running in Cloudflare-Workers!'**, demon
 
 You can now start the Vite development server (`npm run dev`), build the application (`npm run build`), preview the built application (`npm run preview`), and deploy to Cloudflare (`npm run deploy`).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/get-started/#page","headline":"Get started · Cloudflare Workers docs","description":"Get started with the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/get-started/#page","headline":"Get started · Cloudflare Workers docs","description":"Get started with the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

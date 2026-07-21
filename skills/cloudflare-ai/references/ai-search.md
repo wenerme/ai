@@ -1,16 +1,18 @@
 ---
-title: Overview
 description: Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Overview
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Overview
 
-# Overview
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The search primitive for your applications and agents.
 
@@ -38,51 +40,51 @@ You can use AI Search for:
 
 ## Features
 
-###  Automated indexing
+[Automated indexing](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/)
 
 Automatically and continuously index your data source, keeping your content fresh without manual reprocessing.
 
-[ View indexing ](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/)
+ View indexing
 
-###  Metadata filtering
+[Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/)
 
 Define custom metadata fields and filter search results by category, version, language, or any attribute you define.
 
-[ Add filters ](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/)
+ Add filters
 
-###  Hybrid search
+[Hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
 
 Combine semantic and keyword matching in the same query for more accurate results.
 
-[ Configure hybrid search ](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
+ Configure hybrid search
 
-###  MCP and UI snippets
+[MCP and UI snippets](https://developers.cloudflare.com/ai-search/api/search/mcp/)
 
 Every instance includes a built-in MCP endpoint for AI agents and embeddable search components for your website.
 
-[ Connect agents ](https://developers.cloudflare.com/ai-search/api/search/mcp/)
+ Connect agents
 
 ---
 
 ## Related products
 
-**[Workers AI](https://developers.cloudflare.com/workers-ai/)**
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
 
 Run machine learning models, powered by serverless GPUs, on Cloudflare's global network.
 
-**[AI Gateway](https://developers.cloudflare.com/ai-gateway/)**
+[AI Gateway](https://developers.cloudflare.com/ai-gateway/)
 
 Observe and control your AI applications with caching, rate limiting, request retries, model fallback, and more.
 
-**[Vectorize](https://developers.cloudflare.com/vectorize/)**
+[Vectorize](https://developers.cloudflare.com/vectorize/)
 
 Build full-stack AI applications with Vectorize, Cloudflare's vector database.
 
-**[Workers](https://developers.cloudflare.com/workers/)**
+[Workers](https://developers.cloudflare.com/workers/)
 
 Build serverless applications and deploy instantly across the globe for exceptional performance, reliability, and scale.
 
-**[R2](https://developers.cloudflare.com/r2/)**
+[R2](https://developers.cloudflare.com/r2/)
 
 Store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services.
 
@@ -90,19 +92,26 @@ Store large amounts of unstructured data without the costly egress bandwidth fee
 
 ## More resources
 
-[Get started](https://developers.cloudflare.com/ai-search/get-started/)
+### [ Get started ](https://developers.cloudflare.com/ai-search/get-started/)
 
 Create your first AI Search instance and run your first query.
 
-[Developer Discord](https://discord.cloudflare.com)
+### [ Developer Discord ](https://discord.cloudflare.com)
 
 Connect with the Workers community on Discord to ask questions, share what you are building, and discuss the platform with other developers.
 
-[@CloudflareDev](https://x.com/cloudflaredev)
+### [ @CloudflareDev ](https://x.com/cloudflaredev)
 
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Workers.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/#page","headline":"Cloudflare AI Search · Cloudflare AI Search docs","description":"Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.","url":"https://developers.cloudflare.com/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/#page","headline":"Cloudflare AI Search · Cloudflare AI Search docs","description":"Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.","url":"https://developers.cloudflare.com/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

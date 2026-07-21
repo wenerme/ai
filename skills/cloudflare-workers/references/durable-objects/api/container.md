@@ -1,16 +1,18 @@
 ---
-title: Durable Object Container
 description: Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Durable Object Container
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Durable Object Container
 
-# Durable Object Container
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/container/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
@@ -20,39 +22,29 @@ The low-level API documented on this page is available on `this.ctx.container` i
 
 Because the `Container` class extends `DurableObject`, you also have access to [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) via `this.ctx.storage`, [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and all other Durable Object APIs.
 
-* [  JavaScript ](#tab-panel-8888)
-* [  TypeScript ](#tab-panel-8889)
-
-**index.js**
-
 ```js
 export class MyDurableObject extends DurableObject {
-  constructor(ctx, env) {
-    super(ctx, env);
+	constructor(ctx, env) {
+		super(ctx, env);
 
-
-    // boot the container when starting the DO
-    this.ctx.blockConcurrencyWhile(async () => {
-      this.ctx.container.start();
-    });
-  }
+		// boot the container when starting the DO
+		this.ctx.blockConcurrencyWhile(async () => {
+			this.ctx.container.start();
+		});
+	}
 }
 ```
 
-**index.ts**
-
 ```ts
 export class MyDurableObject extends DurableObject {
-  constructor(ctx: DurableObjectState, env: Env) {
-    super(ctx, env);
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
 
-
-      // boot the container when starting the DO
-      this.ctx.blockConcurrencyWhile(async () => {
-        this.ctx.container.start();
+    	// boot the container when starting the DO
+    	this.ctx.blockConcurrencyWhile(async () => {
+    		this.ctx.container.start();
     });
     }
-
 
 }
 ```
@@ -63,10 +55,8 @@ export class MyDurableObject extends DurableObject {
 
 `running` returns `true` if the container is currently running. It does not ensure that the container has fully started and ready to accept requests.
 
-**JavaScript**
-
 ```js
-  this.ctx.container.running;
+	this.ctx.container.running;
 ```
 
 ## Methods
@@ -75,15 +65,13 @@ export class MyDurableObject extends DurableObject {
 
 `start` boots a container. This method does not block until the container is fully started. You may want to confirm the container is ready to accept requests before using it.
 
-**JavaScript**
-
 ```js
 this.ctx.container.start({
-  env: {
-    FOO: "bar",
-  },
-  enableInternet: false,
-  entrypoint: ["node", "server.js"],
+	env: {
+		FOO: "bar",
+	},
+	enableInternet: false,
+	entrypoint: ["node", "server.js"],
 });
 ```
 
@@ -104,8 +92,6 @@ this.ctx.container.start({
 
 The following example calls `this.ctx.container.exec()` inside a class extending `Container` from `@cloudflare/containers`. In RPC methods, check `this.ctx.container.running` and call `await this.start()` when needed. You can also use the `onStart()` hook to run any series of commands whenever the Container starts.
 
-**TypeScript**
-
 ```ts
 exec(
   cmd: string[],
@@ -117,58 +103,45 @@ The `exec` operation starts the executable directly with the provided arguments.
 
 The following RPC method starts the Container before executing a command:
 
-* [  JavaScript ](#tab-panel-8890)
-* [  TypeScript ](#tab-panel-8891)
-
-**JavaScript**
-
 ```js
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async runCommand() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async runCommand() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["node", "--version"]);
+		const output = await process.output();
 
-    const process = await this.ctx.container.exec(["node", "--version"]);
-    const output = await process.output();
-
-
-    return {
-      pid: process.pid,
-      exitCode: output.exitCode,
-      stdout: new TextDecoder().decode(output.stdout),
-    };
-  }
+		return {
+			pid: process.pid,
+			exitCode: output.exitCode,
+			stdout: new TextDecoder().decode(output.stdout),
+		};
+	}
 }
 ```
-
-**TypeScript**
 
 ```ts
 import { Container } from "@cloudflare/containers";
 
-
 export class MyContainer extends Container {
-  async runCommand() {
-    if (!this.ctx.container.running) {
-      await this.start();
-    }
+	async runCommand() {
+		if (!this.ctx.container.running) {
+			await this.start();
+		}
 
+		const process = await this.ctx.container.exec(["node", "--version"]);
+		const output = await process.output();
 
-    const process = await this.ctx.container.exec(["node", "--version"]);
-    const output = await process.output();
-
-
-    return {
-      pid: process.pid,
-      exitCode: output.exitCode,
-      stdout: new TextDecoder().decode(output.stdout),
-    };
-  }
+		return {
+			pid: process.pid,
+			exitCode: output.exitCode,
+			stdout: new TextDecoder().decode(output.stdout),
+		};
+	}
 }
 ```
 
@@ -217,8 +190,6 @@ For task-oriented examples, refer to [Execute commands](https://developers.cloud
 
 `destroy` stops the container and optionally returns a custom error message to the `monitor()` error callback.
 
-**JavaScript**
-
 ```js
 this.ctx.container.destroy("Manually Destroyed");
 ```
@@ -234,8 +205,6 @@ this.ctx.container.destroy("Manually Destroyed");
 ### `signal`
 
 `signal` sends an IPC signal to the container, such as SIGKILL or SIGTERM. This is useful for stopping the container gracefully or forcefully.
-
-**JavaScript**
 
 ```js
 const SIGTERM = 15;
@@ -254,31 +223,26 @@ this.ctx.container.signal(SIGTERM);
 
 `getTcpPort` returns a TCP port from the container. This can be used to communicate with the container over TCP and HTTP.
 
-**JavaScript**
-
 ```js
 const port = this.ctx.container.getTcpPort(8080);
 const res = await port.fetch("http://container/set-state", {
-  body: initialState,
-  method: "POST",
+	body: initialState,
+	method: "POST",
 });
 ```
-
-**JavaScript**
 
 ```js
 const conn = this.ctx.container.getTcpPort(8080).connect("10.0.0.1:8080");
 await conn.opened;
 
-
 try {
-  if (request.body) {
-    await request.body.pipeTo(conn.writable);
-  }
-  return new Response(conn.readable);
+	if (request.body) {
+		await request.body.pipeTo(conn.writable);
+	}
+	return new Response(conn.readable);
 } catch (err) {
-  console.error("Request body piping failed:", err);
-  return new Response("Failed to proxy request body", { status: 502 });
+	console.error("Request body piping failed:", err);
+	return new Response("Failed to proxy request body", { status: 502 });
 }
 ```
 
@@ -294,26 +258,22 @@ try {
 
 `monitor` returns a promise that resolves when a container exits and errors if a container errors. This is useful for setting up callbacks to handle container status changes in your Workers code.
 
-**JavaScript**
-
 ```js
 class MyContainer extends DurableObject {
-  constructor(ctx, env) {
-    super(ctx, env);
-    function onContainerExit() {
-      console.log("Container exited");
-    }
+	constructor(ctx, env) {
+		super(ctx, env);
+		function onContainerExit() {
+			console.log("Container exited");
+		}
 
+		// the "err" value can be customized by the destroy() method
+		async function onContainerError(err) {
+			console.log("Container errored", err);
+		}
 
-    // the "err" value can be customized by the destroy() method
-    async function onContainerError(err) {
-      console.log("Container errored", err);
-    }
-
-
-    this.ctx.container.start();
-    this.ctx.container.monitor().then(onContainerExit).catch(onContainerError);
-  }
+		this.ctx.container.start();
+		this.ctx.container.monitor().then(onContainerExit).catch(onContainerError);
+	}
 }
 ```
 
@@ -329,23 +289,17 @@ class MyContainer extends DurableObject {
 
 `interceptOutboundHttp` routes outbound HTTP requests matching a hostname, hostname glob, IP address, IP:port, or CIDR range through a `WorkerEntrypoint`. Can be called before or after starting the container. Open connections pick up the new handler without being dropped.
 
-**JavaScript**
-
 ```js
 const worker = this.ctx.exports.MyWorker({ props: { message: "hello" } });
-
 
 // Match a specific hostname
 this.ctx.container.interceptOutboundHttp("api.example.com", worker);
 
-
 // Match a hostname glob pattern
 this.ctx.container.interceptOutboundHttp("*.example.com", worker);
 
-
 // Match an IP:port
 await this.ctx.container.interceptOutboundHttp("15.0.0.1:80", worker);
-
 
 // Match a CIDR range (IPv4 and IPv6)
 await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
@@ -363,8 +317,6 @@ await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
 ### `interceptAllOutboundHttp`
 
 `interceptAllOutboundHttp` routes all outbound HTTP requests from the container through a `WorkerEntrypoint`, regardless of destination.
-
-**JavaScript**
 
 ```js
 await this.ctx.container.interceptAllOutboundHttp(worker);
@@ -384,19 +336,14 @@ await this.ctx.container.interceptAllOutboundHttp(worker);
 
 Supports glob patterns where `*` matches any sequence of characters.
 
-**JavaScript**
-
 ```js
 const worker = this.ctx.exports.MyWorker({ props: {} });
-
 
 // Match a specific hostname
 this.ctx.container.interceptOutboundHttps("api.example.com", worker);
 
-
 // Match a hostname glob pattern
 this.ctx.container.interceptOutboundHttps("*.example.com", worker);
-
 
 // Intercept all HTTPS traffic
 this.ctx.container.interceptOutboundHttps("*", worker);
@@ -419,7 +366,14 @@ this.ctx.container.interceptOutboundHttps("*", worker);
 * [SQLite storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) — persist state across container restarts
 * [Durable Objects](https://developers.cloudflare.com/durable-objects/) — the underlying platform that powers Containers
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/container/#page","headline":"Durable Object Container · Cloudflare Durable Objects docs","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/durable-objects/api/container/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/container/","name":"Durable Object Container"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/container/#page","headline":"Durable Object Container · Cloudflare Durable Objects docs","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/durable-objects/api/container/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

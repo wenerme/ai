@@ -1,16 +1,18 @@
 ---
-title: Create a custom ruleset using the API
 description: Create account-level custom rulesets using the Rulesets API.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a custom ruleset using the API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a custom ruleset using the API
 
-# Create a custom ruleset using the API
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/account/custom-rulesets/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -42,25 +44,23 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Account WAF Write`
 * `Account Rulesets Write`
 
-**Create an account ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "",
-    "kind": "custom",
-    "name": "My custom ruleset",
-    "rules": [
-        {
-            "description": "Challenge web traffic (not /api)",
-            "expression": "not starts_with(http.request.uri.path, \"/api/\")",
-            "action": "managed_challenge"
-        }
-    ],
-    "phase": "http_request_firewall_custom"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "",
+		"kind": "custom",
+		"name": "My custom ruleset",
+		"rules": [
+				{
+						"description": "Challenge web traffic (not /api)",
+						"expression": "not starts_with(http.request.uri.path, \"/api/\")",
+						"action": "managed_challenge"
+				}
+		],
+		"phase": "http_request_firewall_custom"
+	}'
 ```
 
 Save the ruleset ID in the response for the next step.
@@ -76,30 +76,28 @@ At least one of the following [token permissions](https://developers.cloudflare.
   * `Account WAF Read`
   * `Account Rulesets Read`
   * `Account Rulesets Write`
-
-**Get an account entry point ruleset**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 ```json
 {
-  "result": {
-    "description": "Account-level phase entry point",
-    "id": "<RULESET_ID>",
-    "kind": "root",
-    "last_updated": "2024-03-16T15:40:08.202335Z",
-    "name": "root",
-    "phase": "http_request_firewall_custom",
-    "rules": [
-      // ...
-    ],
-    "version": "9"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
+	"result": {
+		"description": "Account-level phase entry point",
+		"id": "<RULESET_ID>",
+		"kind": "root",
+		"last_updated": "2024-03-16T15:40:08.202335Z",
+		"name": "root",
+		"phase": "http_request_firewall_custom",
+		"rules": [
+			// ...
+		],
+		"version": "9"
+	},
+	"success": true,
+	"errors": [],
+	"messages": []
 }
 ```
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the custom ruleset. By default, the rule will be added at the end of the list of rules already in the ruleset.
@@ -108,50 +106,46 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Account WAF Write`
   * `Account Rulesets Write`
-
-**Create an account ruleset rule**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "Execute custom ruleset",
-    "expression": "(cf.zone.plan eq \"ENT\")",
-    "action": "execute",
-    "action_parameters": {
-        "id": "<CUSTOM_RULESET_ID>"
-    },
-    "enabled": true
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "Execute custom ruleset",
+		"expression": "(cf.zone.plan eq \"ENT\")",
+		"action": "execute",
+		"action_parameters": {
+				"id": "<CUSTOM_RULESET_ID>"
+		},
+		"enabled": true
+	}'
 ```
-Warning
+Caution
 At the account level, you can only apply custom rulesets to incoming traffic of zones on an Enterprise plan. To enforce this requirement, you must include `cf.zone.plan eq "ENT"` in the expression of the `execute` rule deploying the custom ruleset.
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the custom ruleset for all incoming requests of Enterprise zones in your account.
 Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
   * `Account WAF Write`
   * `Account Rulesets Write`
-
-**Create an account ruleset**
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "description": "",
-    "kind": "root",
-    "name": "Account-level phase entry point",
-    "rules": [
-        {
-            "action": "execute",
-            "expression": "(cf.zone.plan eq \"ENT\")",
-            "action_parameters": {
-                "id": "<CUSTOM_RULESET_ID>"
-            }
-        }
-    ],
-    "phase": "http_request_firewall_custom"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"description": "",
+		"kind": "root",
+		"name": "Account-level phase entry point",
+		"rules": [
+				{
+						"action": "execute",
+						"expression": "(cf.zone.plan eq \"ENT\")",
+						"action_parameters": {
+								"id": "<CUSTOM_RULESET_ID>"
+						}
+				}
+		],
+		"phase": "http_request_firewall_custom"
+	}'
 ```
 
 ## Next steps
@@ -171,7 +165,14 @@ For instructions on creating a custom ruleset at the zone level via API, refer t
 
 For more information on working with custom rulesets, refer to [Work with custom rulesets](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) in the Ruleset Engine documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/custom-rulesets/create-api/#page","headline":"Create a WAF custom ruleset using the API · Cloudflare Web Application Firewall (WAF) docs","description":"Create account-level custom rulesets using the Rulesets API.","url":"https://developers.cloudflare.com/waf/account/custom-rulesets/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/account/","name":"Account-level WAF configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/account/custom-rulesets/","name":"Custom rulesets (account level)"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/account/custom-rulesets/create-api/","name":"Create a custom ruleset using the API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/custom-rulesets/create-api/#page","headline":"Create a WAF custom ruleset using the API · Cloudflare Web Application Firewall (WAF) docs","description":"Create account-level custom rulesets using the Rulesets API.","url":"https://developers.cloudflare.com/waf/account/custom-rulesets/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

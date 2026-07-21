@@ -1,16 +1,18 @@
 ---
-title: Protect an R2 Bucket with Cloudflare Access
 description: You can secure access to R2 buckets using Cloudflare Access, which allows you to only allow specific users, groups or applications within your organization to access objects within a bucket.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Protect an R2 Bucket with Cloudflare Access
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Protect an R2 Bucket with Cloudflare Access
 
-# Protect an R2 Bucket with Cloudflare Access
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can secure access to R2 buckets using [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
 
@@ -48,14 +50,14 @@ Ensure that your policies only allow the users within your organization that nee
 
 ## 3\. Connect a custom domain
 
-Warning
+Caution
 
 You should create an Access application before connecting a custom domain to your bucket, as connecting a custom domain will otherwise make your bucket public by default.
 
 You will need to [connect a custom domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#connect-a-bucket-to-a-custom-domain) to your bucket in order to configure it as an Access application. Make sure the custom domain **is the same domain** you entered when configuring your Access policy.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Settings**.
 4. Under **Custom Domains**, select **Add**.
@@ -78,7 +80,14 @@ If you cannot authenticate or receive a block page after authenticating, check t
 * Understand how to use [pre-signed URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/) to issue time-limited and prefix-restricted access to objects for users not within your organization.
 * Review the [documentation on using API tokens to authenticate](https://developers.cloudflare.com/r2/api/tokens/) against R2 buckets.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/cloudflare-access/#page","headline":"Protect an R2 Bucket with Cloudflare Access · Cloudflare R2 docs","description":"You can secure access to R2 buckets using Cloudflare Access, which allows you to only allow specific users, groups or applications within your organization to access objects within a bucket.","url":"https://developers.cloudflare.com/r2/tutorials/cloudflare-access/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/tutorials/cloudflare-access/","name":"Protect an R2 Bucket with Cloudflare Access"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/cloudflare-access/#page","headline":"Protect an R2 Bucket with Cloudflare Access · Cloudflare R2 docs","description":"You can secure access to R2 buckets using Cloudflare Access, which allows you to only allow specific users, groups or applications within your organization to access objects within a bucket.","url":"https://developers.cloudflare.com/r2/tutorials/cloudflare-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

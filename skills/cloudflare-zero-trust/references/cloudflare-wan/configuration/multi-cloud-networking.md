@@ -1,16 +1,18 @@
 ---
-title: Configure cloud on-ramps
 description: Use Multi-Cloud Networking to quickly and easily discover resources on your cloud provider, and configure them automatically.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Configure cloud on-ramps
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure cloud on-ramps
 
-# Configure cloud on-ramps
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) allows you to create on-ramps from your cloud networks to Cloudflare WAN (formerly Magic WAN). Cloudflare will create virtual private network (VPN) tunnels between Cloudflare WAN and your cloud provider, configuring both sides of the connection on your behalf. Cloudflare orchestrates the cloud provider's native VPN functionality, without requiring deployment of any additional compute virtual machines (VMs).
 
@@ -43,7 +45,7 @@ Refer to [Reference](https://developers.cloudflare.com/multi-cloud-networking/re
 Choose this option if you have a single VPC in your cloud to connect to Cloudflare WAN. To set up a single-VPC on-ramp:
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select **Add new on-ramp**.
 4. Go to **Connect an existing VPC to Cloudflare** \> **Select**.
@@ -78,7 +80,7 @@ When you configure a hub on-ramp, Cloudflare always manages the VPN tunnel betwe
 #### Connect to an existing hub
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select **Add new on-ramp**.
 4. Go to **Connect an existing hub to Cloudflare** \> **Select**.
@@ -109,7 +111,7 @@ You have successfully created your Cloudflare WAN on-ramp. However, on-ramp crea
 #### Create a new hub
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select **Add new on-ramp**.
 4. Go to **Create a new hub & connect it to Cloudflare** \> **Select**.
@@ -157,14 +159,14 @@ The download will contain two files:
 
 If you intend to plan and apply the downloaded configuration using Terraform, you will need to use the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/) (in addition to the Terraform provider for the on-ramp's cloud service provider). Use your Cloudflare [Global API Key](https://developers.cloudflare.com/fundamentals/api/get-started/keys/), not an API Token.
 
-Warning
+Caution
 
 Do not deploy the on-ramp using both Cloudflare and Terraform. If you plan to deploy your on-ramp with Cloudflare (meaning you are both planning to create an on-ramp and applying an on-ramp), Cloudflare creates resources that will result in conflicts when you run Terraform (and vice versa). The Cloudflare dashboard will warn you if it detects you might encounter a conflict.
 
 #### Download Terraform configuration for a new on-ramp
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. In **Cloud on-ramps**, select **Add new on-ramp** and begin the **Create a Cloudflare WAN cloud on-ramp** workflow following the standard steps.
 4. After the **Configure route propagation** step, select **View download options** instead of selecting **Continue**.
@@ -176,7 +178,7 @@ Do not deploy the on-ramp using both Cloudflare and Terraform. If you plan to de
 #### Download Terraform configuration for an existing on-ramp
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. In **Cloud on-ramps**, find the on-ramp you want to download > select the three dots > **Download as Terraform**.
 
@@ -191,7 +193,7 @@ After setting up your on-ramps, you need to update your network security groups 
 ### Edit a Cloudflare WAN cloud on-ramp
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select the on-ramp you want to edit.
 4. Select **Edit** in the side panel.
@@ -200,13 +202,13 @@ After setting up your on-ramps, you need to update your network security groups 
 
   1. Select **Save and review** after making changes.
   2. Review your settings, and select **Approve changes**.
-  Warning
+  Caution
   If you uncheck any of the Propagation settings, you will have to manually configure Cloudflare WAN or your cloud provider to ensure successful communication between them. Refer to the [How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section of Cloudflare WAN, or consult the documentation for your cloud provider for more information.
 
 ### Delete a Cloudflare WAN cloud on-ramp
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select the on-ramp you want to delete.
 4. Select **Edit** in the side panel.
@@ -228,7 +230,7 @@ By default, Cloudflare installs the following summarized routes in your cloud ro
 To override the defaults with custom prefixes:
 
 1. Go to the **Routes** page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **WAN configuration**.
 3. Scroll to **Propagated routes to cloud networks**.
 4. Delete the prefixes, and enter your custom ones.
@@ -243,12 +245,19 @@ To install a default route to send all traffic to Cloudflare WAN, enter `0.0.0.0
 You can view estimated costs associated with your cloud resources in the Cloudflare dashboard.
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. In **Cloud on-ramps**, find the cloud on-ramp for which you want to check the estimated costs > select the three dots > **Associated Resources**.
 4. In the **Associated Resources** page, you can view the estimated monthly costs for all the resources associated with the on-ramp you chose. You can also search for a specific resource using the search box.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/#page","headline":"Configure cloud on-ramps · Cloudflare WAN docs","description":"Use Multi-Cloud Networking to quickly and easily discover resources on your cloud provider, and configure them automatically.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/multi-cloud-networking/","name":"Configure cloud on-ramps"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/#page","headline":"Configure cloud on-ramps · Cloudflare WAN docs","description":"Use Multi-Cloud Networking to quickly and easily discover resources on your cloud provider, and configure them automatically.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

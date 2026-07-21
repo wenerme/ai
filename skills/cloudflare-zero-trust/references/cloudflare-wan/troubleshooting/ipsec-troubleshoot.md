@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot IPsec tunnels
 description: Troubleshoot IPsec tunnel issues.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Troubleshoot IPsec tunnels
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot IPsec tunnels
 
-# Troubleshoot IPsec tunnels
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose IPsec tunnel issues (also called connectors in the Cloudflare dashboard), from initial establishment through ongoing operation. Use the following sections to identify your symptom and find the appropriate solution.
 
@@ -43,7 +45,7 @@ Verify your parameters match Cloudflare's supported values. For the complete lis
 Authentication failures in Phase 1 indicate a PSK mismatch. To resolve:
 
 1. Go to **Connectors** and select your tunnel.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select **Generate new PSK**.
 3. Copy the new PSK exactly — do not add extra spaces or characters.
 4. Update your tunnel endpoint with the new PSK.
@@ -129,13 +131,20 @@ Use IPsec logs to monitor tunnel activity during the key-exchange phase of the I
 ### Set up an IPsec Logpush job
 
 1. Go to the **Logpush** page.
-[ Go to **Logpush** ](https://dash.cloudflare.com/?to=/:account/logs)
+[ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush job**.
 3. Select **IPsec logs** as your dataset.
 
 Refer to the [Logpush documentation](https://developers.cloudflare.com/logs/logpush/) for more information about features, including the [available fields](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec%5Flogs/) in the dataset.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/#page","headline":"Troubleshoot IPsec tunnels · Cloudflare WAN docs","description":"Troubleshoot IPsec tunnel issues.","url":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/troubleshooting/ipsec-troubleshoot/","name":"Troubleshoot IPsec tunnels"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/#page","headline":"Troubleshoot IPsec tunnels · Cloudflare WAN docs","description":"Troubleshoot IPsec tunnel issues.","url":"https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

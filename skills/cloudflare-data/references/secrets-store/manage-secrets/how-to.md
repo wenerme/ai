@@ -1,16 +1,18 @@
 ---
-title: How to
 description: Create, update, duplicate, and delete secrets using the dashboard, API, or Wrangler.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How to
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/secrets-store/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How to
 
-# How to
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the sections below to learn about common actions you might want to take when managing your data in Secrets Store.
 
@@ -22,11 +24,8 @@ You must have a [Super Administrator or Secrets Store Admin role](https://develo
 
 ## Create a secret
 
-* [ Dashboard ](#tab-panel-11402)
-* [ API ](#tab-panel-11403)
-
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Select **Create secret**.
 3. Fill in the required fields. Note that, once the secret is saved, the secret value will no longer be available for viewing.
 4. (Optional) Select **Add additional secret** to create more than one secret at a time.
@@ -41,42 +40,37 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Secrets Store Write`
 
-**Create a secret**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \
-  --request POST \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-  --json '[
-    {
-        "name": "<MY_SECRET_NAME>",
-        "value": "<SECRET_VALUE>",
-        "scopes": [
-            "workers"
-        ],
-        "comment": ""
-    },
-    {
-        "name": "<MY_SECRET_NAME_2>",
-        "value": "<SECRET_VALUE>",
-        "scopes": [
-            "workers"
-        ],
-        "comment": ""
-    }
-  ]'
+	--request POST \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--json '[
+		{
+				"name": "<MY_SECRET_NAME>",
+				"value": "<SECRET_VALUE>",
+				"scopes": [
+						"workers"
+				],
+				"comment": ""
+		},
+		{
+				"name": "<MY_SECRET_NAME_2>",
+				"value": "<SECRET_VALUE>",
+				"scopes": [
+						"workers"
+				],
+				"comment": ""
+		}
+	]'
 ```
 
 ## Duplicate a secret
 
 Duplicate a secret to keep the same secret value but change name, scope, or comments.
 
-* [ Dashboard ](#tab-panel-11396)
-* [ API ](#tab-panel-11397)
-
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Search for the secret you would like to duplicate within the existing secrets list.
 3. Select the three dots next to the secret and choose **Duplicate**.
 4. Edit the **Secret name**, **Permission scope**, or **Comment**, according to your needs.
@@ -101,17 +95,14 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/sto
 
 Edit a secret to replace an existing value with a new one.
 
-Warning
+Caution
 
 This action will cause the replacement in all services using the secret.
 
 You can also edit the secret **Permission scope** and **Comment**.
 
-* [ Dashboard ](#tab-panel-11398)
-* [ API ](#tab-panel-11399)
-
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Search for the secret you would like to edit within the existing secrets list.
 3. Select the three dots next to the secret and choose **Edit**.
 4. Edit the available fields according to your needs and select **Save** to confirm.
@@ -132,15 +123,12 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$
 
 ## Delete a secret
 
-Warning
+Caution
 
 Before deleting a secret, make sure it is not deployed in your [Workers applications ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/) or [AI gateways ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway).
 
-* [ Dashboard ](#tab-panel-11400)
-* [ API ](#tab-panel-11401)
-
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Search for the secret you would like to delete within the existing secrets list.
 3. Select the three dots next to the secret and choose **Delete**.
 4. Type in the secret name and select **Delete** to confirm.
@@ -152,16 +140,21 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Secrets Store Write`
 
-**Delete a secret**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets/$SECRET_ID" \
-  --request DELETE \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--request DELETE \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#page","headline":"How to · Cloudflare Secrets Store docs","description":"Create, update, duplicate, and delete secrets using the dashboard, API, or Wrangler.","url":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/secrets-store/","name":"Secrets Store"}},{"@type":"ListItem","position":3,"item":{"@id":"/secrets-store/manage-secrets/","name":"Manage account secrets"}},{"@type":"ListItem","position":4,"item":{"@id":"/secrets-store/manage-secrets/how-to/","name":"How to"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#page","headline":"How to · Cloudflare Secrets Store docs","description":"Create, update, duplicate, and delete secrets using the dashboard, API, or Wrangler.","url":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

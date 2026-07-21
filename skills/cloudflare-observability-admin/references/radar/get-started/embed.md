@@ -1,16 +1,18 @@
 ---
-title: Share a Radar chart
 description: Download Cloudflare Radar charts as PNG images or embed interactive charts in your website.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Share a Radar chart
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Share a Radar chart
 
-# Share a Radar chart
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/get-started/embed/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Radar allows you to download an image of a chart, as well as embed interactive cards of most charts into your own web pages.
 
@@ -32,7 +34,14 @@ Charts supporting this feature will have a share icon next to its description.
 
 **Note**: Your current selections, such as date range, location, autonomous system (ASN), and visible series, will be reflected in the shared chart.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/embed/#page","headline":"Share a Radar chart · Cloudflare Radar docs","description":"Download Cloudflare Radar charts as PNG images or embed interactive charts in your website.","url":"https://developers.cloudflare.com/radar/get-started/embed/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/radar/","name":"Radar"}},{"@type":"ListItem","position":3,"item":{"@id":"/radar/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/radar/get-started/embed/","name":"Share a Radar chart"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/embed/#page","headline":"Share a Radar chart · Cloudflare Radar docs","description":"Download Cloudflare Radar charts as PNG images or embed interactive charts in your website.","url":"https://developers.cloudflare.com/radar/get-started/embed/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

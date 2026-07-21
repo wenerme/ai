@@ -1,16 +1,18 @@
 ---
-title: Configure the Worker
 description: Use a Worker to keep your identity provider public keys updated for JWT validation.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure the Worker
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure the Worker
 
-# Configure the Worker
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use a Worker to automatically keep your identity provider’s latest public key in the JWT validation configuration.
 
@@ -32,8 +34,6 @@ Find your Identity Provider’s URL and fetch the keys using `curl` and `jq`. Yo
 Note
 
 The keys listed below are for example purposes only and must not be used in your production environment, as they will never match the keys used by your identity provider to sign JWTs.
-
-**Query the JWKs endpoint**
 
 ```sh
 curl https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/certs -s | jq .keys
@@ -73,8 +73,6 @@ Identity provider URLs can typically be accessed at a known URL specific to your
 7. Select **Create** \> **Deploy**.
 8. In the Worker settings, go to **Variables** and add an environment variable named `CF_API_TOKEN` with the value of the API token that you have created.
 9. In the Worker Triggers, assign a [cron trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) to the Worker. Cloudflare recommends a frequent update interval to ensure you always have the latest keys and that an immediate key rotation by your identity provider causes minimal downtime.
-
-**JavaScript example code**
 ```js
 /**
 * Update Token Validation Credentials
@@ -112,14 +110,14 @@ var url = "https://cfdata.cloudflareaccess.com/cdn-cgi/access/certs"; // JWKs
 * @returns {string} credentials
 */
 async function fetchCredentials() {
-  var requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
-  const keys = await fetch(url, requestOptions)
-    .then((e) => e.json())
-    .then((e) => e.keys);
-  return JSON.stringify({ keys: keys });
+	var requestOptions = {
+		method: "GET",
+		redirect: "follow",
+	};
+	const keys = await fetch(url, requestOptions)
+		.then((e) => e.json())
+		.then((e) => e.keys);
+	return JSON.stringify({ keys: keys });
 }
 /**
 * updateCredentials updates Token Configuration credentials using the Cloudflare API.
@@ -129,49 +127,56 @@ async function fetchCredentials() {
 * @returns {string} Cloudflare API response from the update request
 */
 async function updateCredentials(bearer) {
-  // Cloudflare API endpoint for credentials update
-  const url = `https://api.cloudflare.com/client/v4/zones/${zone_id}/token_validation/config/${token_config_id}/credentials`;
-  const init = {
-    body: await fetchCredentials(),
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${bearer}`,
-      "content-type": "application/json;charset=UTF-8",
-    },
-  };
-  const response = await fetch(url, init);
-  return response.text();
+	// Cloudflare API endpoint for credentials update
+	const url = `https://api.cloudflare.com/client/v4/zones/${zone_id}/token_validation/config/${token_config_id}/credentials`;
+	const init = {
+		body: await fetchCredentials(),
+		method: "PUT",
+		headers: {
+			Authorization: `Bearer ${bearer}`,
+			"content-type": "application/json;charset=UTF-8",
+		},
+	};
+	const response = await fetch(url, init);
+	return response.text();
 }
 // Export a default object containing event handlers
 export default {
-  /**
-  * fetch handles requests made directly to the Worker.
-  *
-  */
-  async fetch(request, env, ctx) {
-    let responseBody = "";
-    if (request.method === "GET") {
-      responseBody = await fetchCredentials();
-    } else if (request.method === "POST") {
-      responseBody = await updateCredentials(env.CF_API_TOKEN);
-    }
-    return new Response(responseBody, {
-      headers: { "content-type": "application/json;charset=UTF-8" },
-    });
-  },
-  /**
-  * scheduled is the handler for cron triggers.
-  *
-  * For details, refer to https://developers.cloudflare.com/workers/configuration/cron-triggers/
-  *
-  */
-  async scheduled(request, env, ctx) {
-    ctx.waitUntil(updateCredentials(env.CF_API_TOKEN));
-  },
+	/**
+	* fetch handles requests made directly to the Worker.
+	*
+	*/
+	async fetch(request, env, ctx) {
+		let responseBody = "";
+		if (request.method === "GET") {
+			responseBody = await fetchCredentials();
+		} else if (request.method === "POST") {
+			responseBody = await updateCredentials(env.CF_API_TOKEN);
+		}
+		return new Response(responseBody, {
+			headers: { "content-type": "application/json;charset=UTF-8" },
+		});
+	},
+	/**
+	* scheduled is the handler for cron triggers.
+	*
+	* For details, refer to https://developers.cloudflare.com/workers/configuration/cron-triggers/
+	*
+	*/
+	async scheduled(request, env, ctx) {
+		ctx.waitUntil(updateCredentials(env.CF_API_TOKEN));
+	},
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/#page","headline":"Configure the Worker for JWT validation · Cloudflare API Shield docs","description":"Use a Worker to keep your identity provider public keys updated for JWT validation.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","JavaScript"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/jwt-validation/","name":"JSON Web Tokens validation"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/jwt-validation/jwt-worker/","name":"Configure the Worker"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/#page","headline":"Configure the Worker for JWT validation · Cloudflare API Shield docs","description":"Use a Worker to keep your identity provider public keys updated for JWT validation.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","JavaScript"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Trigger Workflows
 description: Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Trigger Workflows
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Trigger Workflows
 
-# Trigger Workflows
+Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can trigger Workflows both programmatically and via the Workflows APIs, including:
 
@@ -37,42 +39,34 @@ New to Workflows? Start with the [Workflows tutorial](https://developers.cloudfl
 
 To bind to a Workflow from your Workers code, you need to define a [binding](https://developers.cloudflare.com/workers/wrangler/configuration/) to a specific Workflow. For example, to bind to the Workflow defined in the [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/), you would configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the below:
 
-* [  wrangler.jsonc ](#tab-panel-14021)
-* [  wrangler.toml ](#tab-panel-14022)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "workflows-tutorial",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "workflows": [
-    {
-      // The name of the Workflow
-      "name": "workflows-tutorial",
-      // The binding name, which must be a valid JavaScript variable name.  This will
-      // be how you call (run) your Workflow from your other Workers handlers or
-      // scripts.
-      "binding": "MY_WORKFLOW",
-      // Must match the class defined in your code that extends the Workflow class
-      "class_name": "MyWorkflow"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "workflows-tutorial",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"workflows": [
+		{
+			// The name of the Workflow
+			"name": "workflows-tutorial",
+			// The binding name, which must be a valid JavaScript variable name.  This will
+			// be how you call (run) your Workflow from your other Workers handlers or
+			// scripts.
+			"binding": "MY_WORKFLOW",
+			// Must match the class defined in your code that extends the Workflow class
+			"class_name": "MyWorkflow"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "workflows-tutorial"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -86,38 +80,30 @@ The `binding = "MY_WORKFLOW"` line defines the JavaScript variable that our Work
 
 If you want to create Workflow instances on a recurring interval, add a `schedules` array (up to 100 cron expressions per account) to the Workflow binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-14023)
-* [  wrangler.toml ](#tab-panel-14024)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "workflows-tutorial",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "workflows": [
-    {
-      "name": "workflows-tutorial",
-      "binding": "MY_WORKFLOW",
-      "class_name": "MyWorkflow",
-      "schedules": ["0 * * * *"]
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "workflows-tutorial",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"workflows": [
+		{
+			"name": "workflows-tutorial",
+			"binding": "MY_WORKFLOW",
+			"class_name": "MyWorkflow",
+			"schedules": ["0 * * * *"]
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "workflows-tutorial"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -130,16 +116,14 @@ Each matching cron expression creates a new Workflow instance automatically. Use
 
 Scheduled instances include the matching cron expression and scheduled trigger time on `event.schedule`:
 
-**TypeScript**
-
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint<Env> {
-  async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {
-    if (event.schedule) {
-      console.log(event.schedule.cron);
-      console.log(new Date(event.schedule.scheduledTime));
-    }
-  }
+	async run(event: WorkflowEvent<unknown>, step: WorkflowStep) {
+		if (event.schedule) {
+			console.log(event.schedule.cron);
+			console.log(new Date(event.schedule.scheduledTime));
+		}
+	}
 }
 ```
 
@@ -153,39 +137,34 @@ The following example shows how you can manage Workflows from within a Worker, i
 * Creating (triggering) a new Workflow instance
 * Returning the status of a given instance ID
 
-**src/index.ts**
-
 ```ts
 interface Env {
-  MY_WORKFLOW: Workflow;
+	MY_WORKFLOW: Workflow;
 }
 
-
 export default {
-  async fetch(req: Request, env: Env) {
-    // Get instanceId from query parameters
-    const instanceId = new URL(req.url).searchParams.get("instanceId");
+	async fetch(req: Request, env: Env) {
+		// Get instanceId from query parameters
+		const instanceId = new URL(req.url).searchParams.get("instanceId");
 
+		// If an ?instanceId=<id> query parameter is provided, fetch the status
+		// of an existing Workflow by its ID.
+		if (instanceId) {
+			let instance = await env.MY_WORKFLOW.get(instanceId);
+			return Response.json({
+				status: await instance.status(),
+			});
+		}
 
-    // If an ?instanceId=<id> query parameter is provided, fetch the status
-    // of an existing Workflow by its ID.
-    if (instanceId) {
-      let instance = await env.MY_WORKFLOW.get(instanceId);
-      return Response.json({
-        status: await instance.status(),
-      });
-    }
-
-
-    // Else, create a new instance of our Workflow, passing in any (optional)
-    // params and return the ID.
-    const newId = crypto.randomUUID();
-    let instance = await env.MY_WORKFLOW.create({ id: newId });
-    return Response.json({
-      id: instance.id,
-      details: await instance.status(),
-    });
-  },
+		// Else, create a new instance of our Workflow, passing in any (optional)
+		// params and return the ID.
+		const newId = crypto.randomUUID();
+		let instance = await env.MY_WORKFLOW.create({ id: newId });
+		return Response.json({
+			id: instance.id,
+			details: await instance.status(),
+		});
+	},
 };
 ```
 
@@ -193,16 +172,12 @@ export default {
 
 You can inspect the status of any running Workflow instance by calling `status` against a specific instance ID. This allows you to programmatically inspect whether an instance is queued (waiting to be scheduled), actively running, paused, or errored.
 
-**TypeScript**
-
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
 let status = await instance.status(); // Returns an InstanceStatus
 ```
 
 The possible values of status are as follows:
-
-**TypeScript**
 
 ```ts
   status:
@@ -219,16 +194,16 @@ The possible values of status are as follows:
     name: string,
     message: string
   };
-  output?: unknown;
-  rollback:
-    | {
-        outcome: "complete" | "failed";
-        error: {
-          name: string,
-          message: string,
-        } | null,
-      }
-    | null;
+	output?: unknown;
+	rollback:
+		| {
+				outcome: "complete" | "failed";
+				error: {
+					name: string,
+					message: string,
+				} | null,
+		  }
+		| null;
 ```
 
 If your Workflow registers rollback handlers on `step.do()`, inspect `rollback` after the instance finishes to see whether the compensating steps completed successfully. While rollback is actively running, the Workers API continues to return `status: "running"`.
@@ -236,8 +211,6 @@ If your Workflow registers rollback handlers on `step.do()`, inspect `rollback` 
 ### Explicitly pause a Workflow
 
 You can explicitly pause a Workflow instance (and later resume it) by calling `pause` against a specific instance ID.
-
-**TypeScript**
 
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
@@ -248,8 +221,6 @@ await instance.pause(); // Returns Promise<void>
 
 You can resume a paused Workflow instance by calling `resume` against a specific instance ID.
 
-**TypeScript**
-
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
 await instance.resume(); // Returns Promise<void>
@@ -257,7 +228,7 @@ await instance.resume(); // Returns Promise<void>
 
 Calling `resume` on an instance that is not currently paused will have no effect.
 
-Warning
+Caution
 
 If you have reached the maximum concurrent instances for your Workflow, resuming an instance may not restart it immediately. The instance will be queued until a concurrency slot becomes available.
 
@@ -265,16 +236,12 @@ If you have reached the maximum concurrent instances for your Workflow, resuming
 
 You can stop/terminate a Workflow instance by calling `terminate` against a specific instance ID.
 
-**TypeScript**
-
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
 await instance.terminate(); // Returns Promise<void>
 ```
 
 To run registered rollback handlers before terminating, pass `rollback: true`:
-
-**TypeScript**
 
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
@@ -293,8 +260,6 @@ Once stopped/terminated, the Workflow instance _cannot_ be resumed.
 
 ### Restart a Workflow
 
-**TypeScript**
-
 ```ts
 let instance = await env.MY_WORKFLOW.get("abc-123");
 await instance.restart(); // Returns Promise<void>
@@ -308,66 +273,55 @@ To restart an instance from a specific step instead of the beginning, refer to [
 
 You can create a new Workflow instance from within a step of another Workflow. The parent Workflow will not block waiting for the child Workflow to complete — it continues execution immediately after the child instance is successfully created.
 
-* [  JavaScript ](#tab-panel-14025)
-* [  TypeScript ](#tab-panel-14026)
-
-**JavaScript**
-
 ```js
 export class ParentWorkflow extends WorkflowEntrypoint {
-  async run(event, step) {
-    // Perform initial work
-    const result = await step.do("initial processing", async () => {
-      // ... processing logic
-      return { fileKey: "output.pdf" };
-    });
+	async run(event, step) {
+		// Perform initial work
+		const result = await step.do("initial processing", async () => {
+			// ... processing logic
+			return { fileKey: "output.pdf" };
+		});
 
+		// Trigger a child workflow for additional processing
+		const childInstance = await step.do("trigger child workflow", async () => {
+			return await this.env.CHILD_WORKFLOW.create({
+				id: `child-${event.instanceId}`,
+				params: { fileKey: result.fileKey },
+			});
+		});
 
-    // Trigger a child workflow for additional processing
-    const childInstance = await step.do("trigger child workflow", async () => {
-      return await this.env.CHILD_WORKFLOW.create({
-        id: `child-${event.instanceId}`,
-        params: { fileKey: result.fileKey },
-      });
-    });
-
-
-    // Parent continues immediately - not blocked by child workflow
-    await step.do("continue with other work", async () => {
-      console.log(`Started child workflow: ${childInstance.id}`);
-      // This runs right away, regardless of child workflow status
-    });
-  }
+		// Parent continues immediately - not blocked by child workflow
+		await step.do("continue with other work", async () => {
+			console.log(`Started child workflow: ${childInstance.id}`);
+			// This runs right away, regardless of child workflow status
+		});
+	}
 }
 ```
 
-**TypeScript**
-
 ```ts
 export class ParentWorkflow extends WorkflowEntrypoint<Env, Params> {
-  async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
-    // Perform initial work
-    const result = await step.do("initial processing", async () => {
-      // ... processing logic
-      return { fileKey: "output.pdf" };
-    });
+	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+		// Perform initial work
+		const result = await step.do("initial processing", async () => {
+			// ... processing logic
+			return { fileKey: "output.pdf" };
+		});
 
+		// Trigger a child workflow for additional processing
+		const childInstance = await step.do("trigger child workflow", async () => {
+			return await this.env.CHILD_WORKFLOW.create({
+				id: `child-${event.instanceId}`,
+				params: { fileKey: result.fileKey },
+			});
+		});
 
-    // Trigger a child workflow for additional processing
-    const childInstance = await step.do("trigger child workflow", async () => {
-      return await this.env.CHILD_WORKFLOW.create({
-        id: `child-${event.instanceId}`,
-        params: { fileKey: result.fileKey },
-      });
-    });
-
-
-    // Parent continues immediately - not blocked by child workflow
-    await step.do("continue with other work", async () => {
-      console.log(`Started child workflow: ${childInstance.id}`);
-      // This runs right away, regardless of child workflow status
-    });
-  }
+		// Parent continues immediately - not blocked by child workflow
+		await step.do("continue with other work", async () => {
+			console.log(`Started child workflow: ${childInstance.id}`);
+			// This runs right away, regardless of child workflow status
+		});
+	}
 }
 ```
 
@@ -381,7 +335,14 @@ Refer to the [Workflows REST API documentation](https://developers.cloudflare.co
 
 Refer to the [CLI quick start](https://developers.cloudflare.com/workflows/get-started/guide/) to learn more about how to manage and trigger Workflows via the command-line.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows · Cloudflare Workflows docs","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/trigger-workflows/","name":"Trigger Workflows"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows · Cloudflare Workflows docs","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

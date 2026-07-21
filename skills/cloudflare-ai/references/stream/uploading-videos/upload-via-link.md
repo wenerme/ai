@@ -1,16 +1,18 @@
 ---
-title: Upload with a link
 description: Upload videos to Cloudflare Stream by providing an HTTP link to a file in cloud storage.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Upload with a link
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Upload with a link
 
-# Upload with a link
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you have videos stored in a cloud storage bucket (R2, S3, GCS) or hosted by a service that exposes a download link, you can pass its URL. Stream will fetch the file on your behalf.
 
@@ -18,76 +20,60 @@ Note
 
 Google Drive share links are _not_ recommended for this purpose. They are prone to rate limiting and access restrictions imposed by Google that may prevent Stream from downloading the file.
 
-* [ REST API ](#tab-panel-11691)
-* [ Workers Binding API ](#tab-panel-11692)
-
-* [ cURL ](#tab-panel-11687)
-* [ TypeScript ](#tab-panel-11688)
-
 Make a `POST` request to the Stream API using the link to your video.
 
 ```bash
-    curl \
-    --data '{"url":"https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4","meta":{"name":"My First Stream Video"}}' \
-    --header "Authorization: Bearer <API_TOKEN>" \
-    https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy
+		curl \
+		--data '{"url":"https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4","meta":{"name":"My First Stream Video"}}' \
+		--header "Authorization: Bearer <API_TOKEN>" \
+		https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy
 ```
-
-**TypeScript**
 
 ```ts
 const client = new Cloudflare({
-  apiEmail: process.env['CLOUDFLARE_EMAIL'], // This is the default and can be omitted
-  apiKey: process.env['CLOUDFLARE_API_KEY'], // This is the default and can be omitted
+	apiEmail: process.env['CLOUDFLARE_EMAIL'], // This is the default and can be omitted
+	apiKey: process.env['CLOUDFLARE_API_KEY'], // This is the default and can be omitted
 });
 
-
 const video = await client.stream.copy.create({
-  account_id: '<ACCOUNT_ID>',
-  url: 'https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4',
+	account_id: '<ACCOUNT_ID>',
+	url: 'https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4',
 });
 ```
 
 See the full Stream [REST API and SDK reference](https://developers.cloudflare.com/api/resources/stream/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 
-* [ index.ts ](#tab-panel-11689)
-* [ wrangler.jsonc ](#tab-panel-11690)
-
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    // upload a video with a link
-    const videoDetails = await env.STREAM.upload(
-      "https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4",
-      // (optional) attach metadata
-      { meta: { name: "My First Stream Video" } }
-    );
+	async fetch(request, env, ctx): Promise<Response> {
+		// upload a video with a link
+		const videoDetails = await env.STREAM.upload(
+			"https://pub-2da57dbfcf5f4369863991d59747d686.r2.dev/acadia.mp4",
+			// (optional) attach metadata
+			{ meta: { name: "My First Stream Video" } }
+		);
 
-
-    // return a Workers response
-    return new Response(
-      JSON.stringify(videoDetails),
-    );
-  },
-
+		// return a Workers response
+		return new Response(
+			JSON.stringify(videoDetails),
+		);
+	},
 
 } satisfies ExportedHandler<{ STREAM: StreamBinding }>;
 ```
 
 ```json
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "<ENTER_WORKER_NAME>",
-  "main": "src/index.ts",
-  "compatibility_date": "2026-04-14",
-  "observability": {
-    "enabled": true
-  },
-  "stream": {
-    "binding": "STREAM"
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "<ENTER_WORKER_NAME>",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-04-14",
+	"observability": {
+		"enabled": true
+	},
+	"stream": {
+		"binding": "STREAM"
+	}
 }
 ```
 
@@ -148,7 +134,14 @@ After the video is uploaded, you can use the video `uid` shown in the example re
 
 If you are using your own player or rendering the video in a mobile app, refer to [using your own player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/#page","headline":"Upload with a link · Cloudflare Stream docs","description":"Upload videos to Cloudflare Stream by providing an HTTP link to a file in cloud storage.","url":"https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/uploading-videos/","name":"Upload videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/uploading-videos/upload-via-link/","name":"Upload with a link"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/#page","headline":"Upload with a link · Cloudflare Stream docs","description":"Upload videos to Cloudflare Stream by providing an HTTP link to a file in cloud storage.","url":"https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

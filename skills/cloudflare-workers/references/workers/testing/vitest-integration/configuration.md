@@ -1,40 +1,39 @@
 ---
-title: Configuration
 description: Vitest configuration specific to the Workers integration.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration
 
-# Configuration
+Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides additional configuration on top of Vitest's usual options using the `cloudflareTest()` Vite plugin.
 
 An example configuration would be:
 
-**TypeScript**
-
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      wrangler: {
-        configPath: "./wrangler.jsonc",
-      },
-    }),
-  ],
+	plugins: [
+		cloudflareTest({
+			wrangler: {
+				configPath: "./wrangler.jsonc",
+			},
+		}),
+	],
 });
 ```
 
-Warning
+Caution
 
 Custom Vitest `environment`s or `runner`s are not supported when using the Workers Vitest integration.
 
@@ -48,19 +47,16 @@ A Vite plugin that configures Vitest to use the Workers integration with the cor
 
 It also accepts an optionally-`async` function returning `options`.
 
-**TypeScript**
-
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest({
-      // Refer to CloudflareTestOptions...
-    }),
-  ],
+	plugins: [
+		cloudflareTest({
+			// Refer to CloudflareTestOptions...
+		}),
+	],
 });
 ```
 
@@ -68,29 +64,25 @@ export default defineConfig({
 
 Exported from `@cloudflare/vitest-pool-workers/config`. Creates a Pages ASSETS binding that serves files inside the `assetsPath`. This is required if you use `createPagesEventContext()` to test your **Pages Functions**. Refer to the [Pages recipe](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) for a full example.
 
-**TypeScript**
-
 ```ts
 import path from "node:path";
 import { buildPagesASSETSBinding, cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest(async () => {
-      const assetsPath = path.join(__dirname, "public");
+	plugins: [
+		cloudflareTest(async () => {
+			const assetsPath = path.join(__dirname, "public");
 
-
-      return {
-        miniflare: {
-          serviceBindings: {
-            ASSETS: await buildPagesASSETSBinding(assetsPath),
-          },
-        },
-      };
-    }),
-  ],
+			return {
+				miniflare: {
+					serviceBindings: {
+						ASSETS: await buildPagesASSETSBinding(assetsPath),
+					},
+				},
+			};
+		}),
+	],
 });
 ```
 
@@ -98,32 +90,28 @@ export default defineConfig({
 
 Exported from `@cloudflare/vitest-pool-workers/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [applyD1Migrations()](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗](https://vitest.dev/config/#setupfiles) to apply migrations. Refer to the [D1 recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/d1) for an example project using migrations.
 
-**TypeScript**
-
 ```ts
 import path from "node:path";
 import { cloudflareTest, readD1Migrations } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest(async () => {
-      const migrationsPath = path.join(__dirname, "migrations");
-      const migrations = await readD1Migrations(migrationsPath);
+	plugins: [
+		cloudflareTest(async () => {
+			const migrationsPath = path.join(__dirname, "migrations");
+			const migrations = await readD1Migrations(migrationsPath);
 
-
-      return {
-        miniflare: {
-          // Add a test-only binding for migrations, so we can apply them in a setup file
-          bindings: { TEST_MIGRATIONS: migrations },
-        },
-      };
-    }),
-  ],
-  test: {
-    setupFiles: ["./test/apply-migrations.ts"],
-  },
+			return {
+				miniflare: {
+					// Add a test-only binding for migrations, so we can apply them in a setup file
+					bindings: { TEST_MIGRATIONS: migrations },
+				},
+			};
+		}),
+	],
+	test: {
+		setupFiles: ["./test/apply-migrations.ts"],
+	},
 });
 ```
 
@@ -158,46 +146,41 @@ You can pass an `async` function to `cloudflareTest()` that receives an `inject`
 
 Illustrative example
 
-**TypeScript**
-
 ```ts
 // env.d.ts
 declare module "vitest" {
-  interface ProvidedContext {
-    port: number;
-  }
+	interface ProvidedContext {
+		port: number;
+	}
 }
-
 
 // global-setup.ts
 import type { GlobalSetupContext } from "vitest/node";
 export default function ({ provide }: GlobalSetupContext) {
-  // Runs inside Node.js, could start server here...
-  provide("port", 1337);
-  return () => {
-    /* ...then teardown here */
-  };
+	// Runs inside Node.js, could start server here...
+	provide("port", 1337);
+	return () => {
+		/* ...then teardown here */
+	};
 }
-
 
 // vitest.config.ts
 import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 import { defineConfig } from "vitest/config";
 
-
 export default defineConfig({
-  plugins: [
-    cloudflareTest(({ inject }) => ({
-      miniflare: {
-        hyperdrives: {
-          DATABASE: `postgres://user:pass@example.com:${inject("port")}/db`,
-        },
-      },
-    })),
-  ],
-  test: {
-    globalSetup: ["./global-setup.ts"],
-  },
+	plugins: [
+		cloudflareTest(({ inject }) => ({
+			miniflare: {
+				hyperdrives: {
+					DATABASE: `postgres://user:pass@example.com:${inject("port")}/db`,
+				},
+			},
+		})),
+	],
+	test: {
+		globalSetup: ["./global-setup.ts"],
+	},
 });
 ```
 
@@ -205,16 +188,21 @@ export default defineConfig({
 
 Sourceless `WorkerOptions` type without `script`, `scriptPath`, or `modules` properties. Refer to the Miniflare [WorkerOptions ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions) type for more details.
 
-**TypeScript**
-
 ```ts
 type SourcelessWorkerOptions = Omit<
-  WorkerOptions,
-  "script" | "scriptPath" | "modules" | "modulesRoot"
+	WorkerOptions,
+	"script" | "scriptPath" | "modules" | "modulesRoot"
 >;
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/configuration/","name":"Configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

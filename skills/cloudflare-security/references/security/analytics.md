@@ -1,16 +1,18 @@
 ---
-title: Security Analytics (new dashboard)
 description: Security Analytics shows information about all incoming HTTP requests or mitigated requests (rule matches).
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Security Analytics (new dashboard)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Security Analytics (new dashboard)
 
-# Security Analytics (new dashboard)
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Security Analytics shows information about all incoming HTTP requests or only about requests mitigated by Cloudflare.
 
@@ -18,7 +20,7 @@ Use Security Analytics as your starting point to understand and analyze traffic 
 
 To access Security Analytics in the new security dashboard, go to the **Analytics** page.
 
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 
 By default, Security Analytics queries filter on `requestSource = 'eyeball'`, which represents requests from end users. Note that requests from Cloudflare Workers (subrequests) are not visible in Security Analytics.
 
@@ -55,7 +57,14 @@ Note
 
 The **Events** tab corresponds to the [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) page in the previous dashboard navigation structure.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/analytics/#page","headline":"Security Analytics (new dashboard) · Security dashboard docs","description":"Security Analytics shows information about all incoming HTTP requests or mitigated requests (rule matches).","url":"https://developers.cloudflare.com/security/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/analytics/","name":"Security Analytics (new dashboard)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/analytics/#page","headline":"Security Analytics (new dashboard) · Security dashboard docs","description":"Security Analytics shows information about all incoming HTTP requests or mitigated requests (rule matches).","url":"https://developers.cloudflare.com/security/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

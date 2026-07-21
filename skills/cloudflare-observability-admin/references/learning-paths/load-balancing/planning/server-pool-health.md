@@ -1,16 +1,18 @@
 ---
-title: Server and pool health
 description: Customize server and pool health thresholds.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Server and pool health
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Server and pool health
 
-# Server and pool health
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/load-balancing/planning/server-pool-health/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 As discussed before, a monitor issues health checks periodically to evaluate the health of each server within a pool.
 
@@ -69,7 +71,7 @@ Three health monitor probes per region are sent to each endpoint in the associat
 
 Three health monitor probes are sent from each specified region within the pool configuration.
 
-Warning
+Caution
 
 Because of how Cloudflare checks health from [multiple regions](#health-monitor-regions), adding multiple regions — or choosing to check health from **All Data Centers** — can send a lot of traffic to your endpoint.
 
@@ -126,7 +128,14 @@ This pool is meant to be the pool of last resort, meaning that its health is not
 
 Fallback pools are important because traffic still might be coming to your load balancer even when all the pools are unreachable (disabled or unhealthy). Your load balancer needs somewhere to route this traffic, so it will send it to the fallback pool.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/planning/server-pool-health/#page","headline":"Server and pool health · Cloudflare Learning Paths","description":"Customize server and pool health thresholds.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/planning/server-pool-health/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/planning/","name":"Planning your load balancer"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/load-balancing/planning/server-pool-health/","name":"Server and pool health"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/load-balancing/planning/server-pool-health/#page","headline":"Server and pool health · Cloudflare Learning Paths","description":"Customize server and pool health thresholds.","url":"https://developers.cloudflare.com/learning-paths/load-balancing/planning/server-pool-health/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

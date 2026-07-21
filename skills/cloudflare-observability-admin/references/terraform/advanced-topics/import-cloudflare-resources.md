@@ -1,16 +1,18 @@
 ---
-title: Import Cloudflare resources
 description: The Cloudflare Terraform tool is available in the Terraform ME repository. To use it, you must first install the Terraform app on your Mac or Linux system. You must then import Cloudflare resources individually by providing their IDs and names.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Import Cloudflare resources
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Import Cloudflare resources
 
-# Import Cloudflare resources
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 An important point to understand about Terraform is that it can only manage configuration it created or was explicitly told about after the fact. The reason for this limitation is that Terraform expects to be authoritative for the resources it manages. It relies on two types of files to understand what resources it controls and what state they are in. Terraform determines when and how to make changes from the following:
 
@@ -98,7 +100,6 @@ resource "cloudflare_record" "terraform_managed_resource_3c0b456bc2aa443089c5f40
     zone_id = "1109d899a5ff5fd74bc01e581693685b"
 }
 
-
 resource "cloudflare_record" "terraform_managed_resource_5e10399a590a45279f09aa8fb1163354" {
     name    = "www"
     type    = "CNAME"
@@ -108,7 +109,6 @@ resource "cloudflare_record" "terraform_managed_resource_5e10399a590a45279f09aa8
     zone_id = "1109d899a5ff5fd74bc01e581693685b"
 }
 
-
 resource "cloudflare_record" "terraform_managed_resource_de1cb74bae184b569bb7f83fefe72248" {
     name    = "a123"
     type    = "NS"
@@ -117,7 +117,6 @@ resource "cloudflare_record" "terraform_managed_resource_de1cb74bae184b569bb7f83
     value   = "rafe.ns.cloudflare.com"
     zone_id = "1109d899a5ff5fd74bc01e581693685b"
 }
-
 
 resource "cloudflare_record" "terraform_managed_resource_5799bb01054843eea726758f935d2aa2" {
     name    = "a123"
@@ -140,9 +139,7 @@ Terraform used the selected providers to generate the following execution plan.
 Resource actions are indicated with the following symbols:
   + create
 
-
 Terraform will perform the following actions:
-
 
   # cloudflare_record.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31 will be created
   + resource "cloudflare_record" "terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31" {
@@ -161,7 +158,6 @@ Terraform will perform the following actions:
       + zone_id     = "1109d899a5ff5fd74bc01e581693685b"
     }
 
-
   # cloudflare_record.terraform_managed_resource_5e10399a590a45279f09aa8fb1163354 will be created
   + resource "cloudflare_record" "terraform_managed_resource_5e10399a590a45279f09aa8fb1163354" {
       + id          = (known after apply)
@@ -178,7 +174,6 @@ Terraform will perform the following actions:
       + value       = "mitigateddos.net"
       + zone_id     = "1109d899a5ff5fd74bc01e581693685b"
     }
-
 
   # cloudflare_record.terraform_managed_resource_de1cb74bae184b569bb7f83fefe72248 will be created
   + resource "cloudflare_record" "terraform_managed_resource_de1cb74bae184b569bb7f83fefe72248" {
@@ -197,7 +192,6 @@ Terraform will perform the following actions:
       + zone_id     = "1109d899a5ff5fd74bc01e581693685b"
     }
 
-
   # cloudflare_record.terraform_managed_resource_5799bb01054843eea726758f935d2aa2 will be created
   + resource "cloudflare_record" "terraform_managed_resource_5799bb01054843eea726758f935d2aa2" {
       + id          = (known after apply)
@@ -215,12 +209,9 @@ Terraform will perform the following actions:
       + zone_id     = "1109d899a5ff5fd74bc01e581693685b"
     }
 
-
 Plan: 4 to add, 0 to change, 0 to destroy.
 
-
 ------------------------------------------------------------------------
-
 
 Note: You didn't use the -out option to save this plan, so Terraform can't
 guarantee to take exactly these actions if you run "terraform apply" now.
@@ -261,9 +252,7 @@ cloudflare_record.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: I
   Imported cloudflare_record [id=3c0b456bc2aa443089c5f40f45f51b31]
 cloudflare_record.terraform_managed_resource_3c0b456bc2aa443089c5f40f45f51b31: Refreshing state... [id=3c0b456bc2aa443089c5f40f45f51b31]
 
-
 Import successful!
-
 
 The resources that were imported are shown above. These resources are now in
 your Terraform state and will henceforth be managed by Terraform.
@@ -279,9 +268,7 @@ cloudflare_record.terraform_managed_resource_5e10399a590a45279f09aa8fb1163354: I
   Imported cloudflare_record [id=d09d916d059aa9fc8cb54bdd49deea5f]
 cloudflare_record.terraform_managed_resource_5e10399a590a45279f09aa8fb1163354: Refreshing state... [id=d09d916d059aa9fc8cb54bdd49deea5f]
 
-
 Import successful!
-
 
 The resources that were imported are shown above. These resources are now in
 your Terraform state and will henceforth be managed by Terraform.
@@ -297,9 +284,7 @@ cloudflare_record.terraform_managed_resource_de1cb74bae184b569bb7f83fefe72248: I
   Imported cloudflare_record [id=8d6ec0d02c5b22212ff673782c816ef8]
 cloudflare_record.terraform_managed_resource_de1cb74bae184b569bb7f83fefe72248: Refreshing state... [id=8d6ec0d02c5b22212ff673782c816ef8]
 
-
 Import successful!
-
 
 The resources that were imported are shown above. These resources are now in
 your Terraform state and will henceforth be managed by Terraform.
@@ -315,9 +300,7 @@ cloudflare_record.terraform_managed_resource_5799bb01054843eea726758f935d2aa2: I
   Imported cloudflare_record [id=3766b952a2dda4c47e71952aeef33c77]
 cloudflare_record.terraform_managed_resource_5799bb01054843eea726758f935d2aa2: Refreshing state... [id=3766b952a2dda4c47e71952aeef33c77]
 
-
 Import successful!
-
 
 The resources that were imported are shown above. These resources are now in
 your Terraform state and will henceforth be managed by Terraform.
@@ -333,7 +316,14 @@ terraform plan | grep changes
 No changes. Infrastructure is up-to-date.
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/#page","headline":"Import Cloudflare resources · Cloudflare Terraform docs","description":"The Cloudflare Terraform tool is available in the Terraform ME repository. To use it, you must first install the Terraform app on your Mac or Linux system. You must then import Cloudflare resources individually by providing their IDs and names.","url":"https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/advanced-topics/","name":"Advanced topics"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/advanced-topics/import-cloudflare-resources/","name":"Import Cloudflare resources"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/#page","headline":"Import Cloudflare resources · Cloudflare Terraform docs","description":"The Cloudflare Terraform tool is available in the Terraform ME repository. To use it, you must first install the Terraform app on your Mac or Linux system. You must then import Cloudflare resources individually by providing their IDs and names.","url":"https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

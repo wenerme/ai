@@ -1,38 +1,38 @@
 ---
-title: Recraft V4.1 Utility Pro
 description: Recraft V4.1 Utility Pro is a general-purpose text-to-image model producing high-resolution 2048px+ output for a wide range of production and print use cases.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Recraft V4.1 Utility Pro
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)
 
 #  Recraft V4.1 Utility Pro
 
-Text-to-Image • Recraft
+ Text-to-Image • Recraft
 
-`recraft/recraftv4-1-utility-pro`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` recraft/recraftv4-1-utility-pro `
+
+* Third-party
+* Zero data retention
 
 Recraft V4.1 Utility Pro is a general-purpose text-to-image model producing high-resolution 2048px+ output for a wide range of production and print use cases.
 
-| Model Info          |                                                                                                                                   |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                            |
-| More information    | [link ↗](https://www.recraft.ai/)                                                                                                 |
-| Zero data retention | Yes                                                                                                                               |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-utility-pro) |
+| Model Info          |                                                                                                                                    |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                             |
+| More information    | [link ↗](https://www.recraft.ai/)                                                                                                  |
+| Zero data retention | Yes                                                                                                                                |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1-utility-pro) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-1894)
-* [ cURL ](#tab-panel-1895)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -57,9 +57,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1892)
-* [ Raw response ](#tab-panel-1893)
-
 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/print-ready-illustration.png)
 
 ```json
@@ -77,11 +74,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Large Format Art**  — Large canvas general-purpose image
-
-* [ TypeScript ](#tab-panel-1898)
-* [ cURL ](#tab-panel-1899)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -108,9 +100,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1896)
-* [ Raw response ](#tab-panel-1897)
-
 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/large-format-art.png)
 
 ```json
@@ -126,11 +115,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Marketing Asset**  — High-resolution marketing visual with controlled colors
-
-* [ TypeScript ](#tab-panel-1906)
-* [ cURL ](#tab-panel-1907)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -185,9 +169,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1900)
-* [ Raw response ](#tab-panel-1901)
-
 ![Marketing Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/marketing-asset.png)
 
 ```json
@@ -203,11 +184,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Technical Diagram**  — High-resolution technical or infographic illustration
-
-* [ TypeScript ](#tab-panel-1904)
-* [ cURL ](#tab-panel-1905)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -232,9 +208,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-1902)
-* [ Raw response ](#tab-panel-1903)
-
 ![Technical Diagram](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-1-utility-pro/technical-diagram.png)
 
 ```json
@@ -250,9 +223,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-1908)
-* [ Output ](#tab-panel-1909)
 
 prompt
 
@@ -284,7 +254,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utilit
 
 Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro/#page","headline":"Recraft V4.1 Utility Pro (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4.1 Utility Pro is a general-purpose text-to-image model producing high-resolution 2048px+ output for a wide range of production and print use cases.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro/#page","headline":"Recraft V4.1 Utility Pro (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4.1 Utility Pro is a general-purpose text-to-image model producing high-resolution 2048px+ output for a wide range of production and print use cases.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

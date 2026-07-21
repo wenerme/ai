@@ -1,18 +1,20 @@
 ---
-title: Miniflare
 description: Simulate and test Cloudflare Workers locally with Miniflare, a fully-local development simulator.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Miniflare
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Miniflare
 
-# Miniflare
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 This documentation describes the Miniflare API, which is only relevant for advanced use cases. Instead, most users should use [Wrangler](https://developers.cloudflare.com/workers/wrangler) to build, run & deploy their Workers locally
 
@@ -21,7 +23,7 @@ This documentation describes the Miniflare API, which is only relevant for advan
 * 🎉 **Fun:** develop Workers easily with detailed logging, file watching and pretty error pages supporting source maps.
 * 🔋 **Full-featured:** supports most Workers features, including KV, Durable Objects, WebSockets, modules and more.
 * ⚡ **Fully-local:** test and develop Workers without an Internet connection. Reload code on change quickly.
-[ Get Started ](https://developers.cloudflare.com/workers/testing/miniflare/get-started) [ GitHub ](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare) [ NPM ](https://npmjs.com/package/miniflare)
+[ Get Started ](https://developers.cloudflare.com/workers/testing/miniflare/get-started)[ GitHub ](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare)[ NPM ](https://npmjs.com/package/miniflare)
 
 ---
 
@@ -36,7 +38,14 @@ If you find something that doesn't behave as it does in the production Workers e
 * [ Migrations ](https://developers.cloudflare.com/workers/testing/miniflare/migrations/) :  Review migration guides for specific versions of Miniflare.
 * [ Storage ](https://developers.cloudflare.com/workers/testing/miniflare/storage/) :  Configure and manage local storage simulators in Miniflare for Workers bindings like KV, R2, and D1\.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/testing/miniflare/#page","headline":"Miniflare · Cloudflare Workers docs","description":"Simulate and test Cloudflare Workers locally with Miniflare, a fully-local development simulator.","url":"https://developers.cloudflare.com/workers/testing/miniflare/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/testing/miniflare/#page","headline":"Miniflare · Cloudflare Workers docs","description":"Simulate and test Cloudflare Workers locally with Miniflare, a fully-local development simulator.","url":"https://developers.cloudflare.com/workers/testing/miniflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

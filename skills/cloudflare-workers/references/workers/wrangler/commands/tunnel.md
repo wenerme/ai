@@ -1,16 +1,18 @@
 ---
-title: Tunnel
 description: Wrangler commands for managing Cloudflare Tunnels.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Tunnel
 
-# Tunnel
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Manage [Cloudflare Tunnels](https://developers.cloudflare.com/tunnel/) directly from Wrangler. Create, run, and manage tunnels that securely connect your local services to Cloudflare's network — no public IPs required.
 
@@ -28,7 +30,7 @@ Create a new remotely managed [Cloudflare Tunnel](https://developers.cloudflare.
 wrangler tunnel create <NAME>
 ```
 
-* `NAME` ` string ` required
+* `NAME` ` string `required
   * A name for your tunnel. Must be unique within your account.
 
 Tunnels created via Wrangler are always **remotely managed** — configure them in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/tunnels) or via the API.
@@ -44,7 +46,6 @@ Creating tunnel "my-app"
 Created tunnel.
 ID: f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
 Name: my-app
-
 
 To run this tunnel, configure its ingress rules in the Cloudflare dashboard, then run:
    wrangler tunnel run f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
@@ -69,12 +70,12 @@ Delete a Cloudflare Tunnel from your account.
 wrangler tunnel delete <TUNNEL> [OPTIONS]
 ```
 
-* `TUNNEL` ` string ` required
+* `TUNNEL` ` string `required
   * The name or UUID of the tunnel to delete.
-* `--force` ` boolean ` optional
+* `--force` ` boolean `optional
   * Skip the confirmation prompt.
 
-Warning
+Caution
 
 Deleting a tunnel is permanent and cannot be undone. Any active connections through the tunnel will be terminated.
 
@@ -107,7 +108,7 @@ Display details about a Cloudflare Tunnel, including its ID, name, status, and c
 wrangler tunnel info <TUNNEL>
 ```
 
-* `TUNNEL` ` string ` required
+* `TUNNEL` ` string `required
   * The name or UUID of the tunnel to inspect.
 
 ```sh
@@ -151,7 +152,6 @@ npx wrangler tunnel list
 ```sh
 Listing Cloudflare Tunnels
 
-
 ID                                   Name       Status    Created
 f70ff985-a4ef-4643-bbbc-4a0ed4fc8415 my-app     healthy   2025-01-15T10:30:00Z
 550e8400-e29b-41d4-a716-446655440000 api-tunnel inactive  2025-01-10T15:45:00Z
@@ -176,11 +176,11 @@ Run a Cloudflare Tunnel using the [cloudflared](https://developers.cloudflare.co
 wrangler tunnel run [TUNNEL] [OPTIONS]
 ```
 
-* `TUNNEL` ` string ` optional
+* `TUNNEL` ` string `optional
   * The name or UUID of the tunnel to run. Required unless `--token` is provided.
-* `--token` ` string ` optional
+* `--token` ` string `optional
   * A tunnel token to use directly. Skips API authentication.
-* `--log-level` ` string ` (default: info) optional
+* `--log-level` ` string `(default: info) optional
   * Log level for `cloudflared`. Does not affect Wrangler logs (controlled by `WRANGLER_LOG`). One of: `debug`, `info`, `warn`, `error`, `fatal`.
 
 Named tunnels are **remotely managed** — configure ingress rules (which local services to expose) in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/tunnels) or via the API before running the tunnel.
@@ -224,7 +224,7 @@ Start a free, temporary tunnel without a Cloudflare account using [Quick Tunnels
 wrangler tunnel quick-start <URL>
 ```
 
-* `URL` ` string ` required
+* `URL` ` string `required
   * The local URL to expose (for example, `http://localhost:8080`).
 
 The tunnel is assigned a random `*.trycloudflare.com` subdomain and lasts for the duration of the process.
@@ -251,7 +251,14 @@ The following global flags work on every command:
 * `--cwd` ` string `
   * Run as if Wrangler was started in the specified directory instead of the current working directory.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/tunnel/#page","headline":"Tunnel · Cloudflare Workers docs","description":"Wrangler commands for managing Cloudflare Tunnels.","url":"https://developers.cloudflare.com/workers/wrangler/commands/tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/tunnel/","name":"Tunnel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/tunnel/#page","headline":"Tunnel · Cloudflare Workers docs","description":"Wrangler commands for managing Cloudflare Tunnels.","url":"https://developers.cloudflare.com/workers/wrangler/commands/tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

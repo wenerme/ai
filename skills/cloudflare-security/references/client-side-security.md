@@ -1,16 +1,18 @@
 ---
-title: Client-side security
 description: Cloudflare's client-side security is a comprehensive client-side security and privacy solution that allows you to ensure the safety of your website visitors' browsing environment.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Client-side security
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Client-side security
 
-# Client-side security
+Last updated Jul 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Ensures the safety and privacy of your website visitors' browsing environment.
 
@@ -26,41 +28,41 @@ Learn how to [get started](https://developers.cloudflare.com/client-side-securit
 
 ## Features
 
-###  Resource monitoring
+[Resource monitoring](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/)
 
 Displays information about client-side resources loaded in your domain's pages.
 
-[ Monitor client-side resources ](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/)
+ Monitor client-side resources
 
-###  Page attribution
+[Page attribution](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details)
 
 Find in which page a resource first appeared, and view a list of the latest occurrences of the resource in your pages.
 
-[ Find resource occurrences ](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details)
+ Find resource occurrences
 
-###  Malicious script detection
+[Malicious script detection](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/)
 
 Detects malicious scripts in your pages using threat intelligence and machine learning.
 
-[ Review malicious scripts ](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/)
+ Review malicious scripts
 
-###  Code change detection
+[Code change detection](https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/)
 
 Detects any changes in the scripts loaded in your pages.
 
-[ Review changed scripts ](https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/)
+ Review changed scripts
 
-###  Alerts
+[Alerts](https://developers.cloudflare.com/client-side-security/alerts/)
 
 Receive notifications about newly detected scripts, scripts loaded from unknown domains, new scripts considered malicious, or code changes in your existing scripts.
 
-[ Use Alerts ](https://developers.cloudflare.com/client-side-security/alerts/)
+ Use Alerts
 
-###  Content security rules
+[Content security rules](https://developers.cloudflare.com/client-side-security/rules/)
 
 Content security rules define allowed resources on your websites. Use content security rules to enforce an allowlist of resources, effectively blocking resources not included in your rules.
 
-[ Use Content security rules ](https://developers.cloudflare.com/client-side-security/rules/)
+ Use Content security rules
 
 ## Availability
 
@@ -81,7 +83,14 @@ Content security rules define allowed resources on your websites. Use content se
 
 The Page Shield add-on is now Client-Side Security Advanced. The features and entitlements are unchanged.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/client-side-security/#page","headline":"Overview · Client-side security docs","description":"Cloudflare's client-side security is a comprehensive client-side security and privacy solution that allows you to ensure the safety of your website visitors' browsing environment.","url":"https://developers.cloudflare.com/client-side-security/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/client-side-security/#page","headline":"Overview · Client-side security docs","description":"Cloudflare's client-side security is a comprehensive client-side security and privacy solution that allows you to ensure the safety of your website visitors' browsing environment.","url":"https://developers.cloudflare.com/client-side-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

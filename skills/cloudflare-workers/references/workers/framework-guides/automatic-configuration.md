@@ -1,16 +1,18 @@
 ---
-title: Deploy an existing project
 description: Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Deploy an existing project
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Deploy an existing project
 
-# Deploy an existing project
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler can automatically detect your framework and configure your project for Cloudflare Workers. This allows you to deploy existing projects with a single command, without manually setting up configuration files or installing adapters.
 
@@ -59,44 +61,35 @@ When automatic configuration runs, the following files may be created or modifie
 
 A new Wrangler configuration file is created with settings appropriate for your framework:
 
-* [  wrangler.jsonc ](#tab-panel-12646)
-* [  wrangler.toml ](#tab-panel-12647)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "my-project",
-  "main": "dist/_worker.js/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": ["nodejs_compat"],
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "dist",
-  },
-  "observability": {
-    "enabled": true,
-  },
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "my-project",
+	"main": "dist/_worker.js/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": ["nodejs_compat"],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "dist",
+	},
+	"observability": {
+		"enabled": true,
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "node_modules/wrangler/config-schema.json"
 name = "my-project"
 main = "dist/_worker.js/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [assets]
 binding = "ASSETS"
 directory = "dist"
-
 
 [observability]
 enabled = true
@@ -110,11 +103,11 @@ New scripts are added to your `package.json`:
 
 ```json
 {
-  "scripts": {
-    "deploy": "npm run build && wrangler deploy",
-    "preview": "npm run build && wrangler dev",
-    "cf-typegen": "wrangler types"
-  }
+	"scripts": {
+		"deploy": "npm run build && wrangler deploy",
+		"preview": "npm run build && wrangler dev",
+		"cf-typegen": "wrangler types"
+	}
 }
 ```
 
@@ -265,7 +258,14 @@ Support for monorepos and npm/yarn/pnpm workspaces is currently limited. Wrangle
 
 If you encounter issues, report them in the [Wrangler GitHub repository ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project · Cloudflare Workers docs","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/framework-guides/","name":"Framework guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/framework-guides/automatic-configuration/","name":"Deploy an existing project"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project · Cloudflare Workers docs","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

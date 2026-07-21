@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up SSL/TLS encryption between visitors, Cloudflare, and your origin server.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Set up encrypted connections for your domain by choosing a certificate, selecting an encryption mode, and enforcing HTTPS.
 
@@ -65,7 +67,14 @@ After you have chosen your encryption mode and enforced HTTPS connections, evalu
 * [Authenticated origin pull](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/): Ensure all requests to your origin server originate from the Cloudflare network.
 * [Notifications](https://developers.cloudflare.com/notifications/notification-available/): Set up alerts related to certificate validation status, issuance, renewal, and expiration.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/get-started/#page","headline":"Get started with SSL/TLS · Cloudflare SSL/TLS docs","description":"Set up SSL/TLS encryption between visitors, Cloudflare, and your origin server.","url":"https://developers.cloudflare.com/ssl/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/get-started/#page","headline":"Get started with SSL/TLS · Cloudflare SSL/TLS docs","description":"Set up SSL/TLS encryption between visitors, Cloudflare, and your origin server.","url":"https://developers.cloudflare.com/ssl/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

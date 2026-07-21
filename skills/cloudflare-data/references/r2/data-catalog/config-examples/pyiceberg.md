@@ -1,16 +1,18 @@
 ---
-title: PyIceberg
 description: Connect PyIceberg to R2 Data Catalog to create and query Iceberg tables in Python.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: PyIceberg
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  PyIceberg
 
-# PyIceberg
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/config-examples/pyiceberg/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below is an example of using [PyIceberg ↗](https://py.iceberg.apache.org/) to connect to R2 Data Catalog.
 
@@ -23,19 +25,15 @@ Below is an example of using [PyIceberg ↗](https://py.iceberg.apache.org/) to 
 
 ## Example usage
 
-**Python**
-
 ```py
 import pyarrow as pa
 from pyiceberg.catalog.rest import RestCatalog
 from pyiceberg.exceptions import NamespaceAlreadyExistsError
 
-
 # Define catalog connection details (replace variables)
 WAREHOUSE = "<WAREHOUSE>"
 TOKEN = "<TOKEN>"
 CATALOG_URI = "<CATALOG_URI>"
-
 
 # Connect to R2 Data Catalog
 catalog = RestCatalog(
@@ -45,17 +43,14 @@ catalog = RestCatalog(
     token=TOKEN,
 )
 
-
 # Create default namespace
 catalog.create_namespace("default")
-
 
 # Create simple PyArrow table
 df = pa.table({
     "id": [1, 2, 3],
     "name": ["Alice", "Bob", "Charlie"],
 })
-
 
 # Create an Iceberg table
 test_table = ("default", "my_table")
@@ -65,7 +60,14 @@ table = catalog.create_table(
 )
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/pyiceberg/#page","headline":"PyIceberg · Cloudflare R2 docs","description":"Connect PyIceberg to R2 Data Catalog to create and query Iceberg tables in Python.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/pyiceberg/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/pyiceberg/","name":"PyIceberg"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/pyiceberg/#page","headline":"PyIceberg · Cloudflare R2 docs","description":"Connect PyIceberg to R2 Data Catalog to create and query Iceberg tables in Python.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/pyiceberg/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

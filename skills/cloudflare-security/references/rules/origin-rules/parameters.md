@@ -1,16 +1,18 @@
 ---
-title: Origin Rules API parameter reference
 description: Configurable parameters for origin rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Origin Rules API parameter reference
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Origin Rules API parameter reference
 
-# Origin Rules API parameter reference
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/origin-rules/parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Create [different overrides](https://developers.cloudflare.com/rules/origin-rules/features/) by including different action parameters in the `action_parameters` field:
 
@@ -74,7 +76,14 @@ The same origin rule can have different types of overrides. For example, a singl
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/parameters/#page","headline":"Origin Rules API parameter reference · Cloudflare Rules docs","description":"Configurable parameters for origin rules.","url":"https://developers.cloudflare.com/rules/origin-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/origin-rules/","name":"Origin Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/origin-rules/parameters/","name":"Origin Rules API parameter reference"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/parameters/#page","headline":"Origin Rules API parameter reference · Cloudflare Rules docs","description":"Configurable parameters for origin rules.","url":"https://developers.cloudflare.com/rules/origin-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

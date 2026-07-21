@@ -1,16 +1,18 @@
 ---
-title: Metrics and analytics
 description: Query R2 Data Catalog metrics for Iceberg REST API operations and table maintenance jobs via the GraphQL Analytics API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Metrics and analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Metrics and analytics
 
-# Metrics and analytics
+Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/observability/metrics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 R2 Data Catalog exposes metrics that allow you to monitor Iceberg REST API requests and table maintenance jobs (compaction and snapshot expiration) across your warehouses.
 
@@ -95,35 +97,35 @@ This query returns the total number of Iceberg REST API requests and total reque
 
 ```graphql
 query CatalogDataOperations(
-  $accountTag: String!
-  $warehouseName: String!
-  $datetimeStart: Time!
-  $datetimeEnd: Time!
+	$accountTag: String!
+	$warehouseName: String!
+	$datetimeStart: Time!
+	$datetimeEnd: Time!
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      r2CatalogDataOperationsAdaptiveGroups(
-        limit: 10000
-        filter: {
-          warehouseName: $warehouseName
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-        }
-      ) {
-        count
-        dimensions {
-          operation
-        }
-        sum {
-          requestBodyBytes
-          requestDurationMs
-        }
-        avg {
-          requestDurationMs
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			r2CatalogDataOperationsAdaptiveGroups(
+				limit: 10000
+				filter: {
+					warehouseName: $warehouseName
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+				}
+			) {
+				count
+				dimensions {
+					operation
+				}
+				sum {
+					requestBodyBytes
+					requestDurationMs
+				}
+				avg {
+					requestDurationMs
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -133,33 +135,33 @@ This query returns request duration percentiles for a specific warehouse, which 
 
 ```graphql
 query CatalogLatencyPercentiles(
-  $accountTag: String!
-  $warehouseName: String!
-  $datetimeStart: Time!
-  $datetimeEnd: Time!
+	$accountTag: String!
+	$warehouseName: String!
+	$datetimeStart: Time!
+	$datetimeEnd: Time!
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      r2CatalogDataOperationsAdaptiveGroups(
-        limit: 10000
-        filter: {
-          warehouseName: $warehouseName
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-        }
-      ) {
-        count
-        dimensions {
-          operation
-        }
-        quantiles {
-          requestDurationMsP50
-          requestDurationMsP90
-          requestDurationMsP99
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			r2CatalogDataOperationsAdaptiveGroups(
+				limit: 10000
+				filter: {
+					warehouseName: $warehouseName
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+				}
+			) {
+				count
+				dimensions {
+					operation
+				}
+				quantiles {
+					requestDurationMsP50
+					requestDurationMsP90
+					requestDurationMsP99
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -169,37 +171,37 @@ This query returns a summary of compaction and snapshot expiration jobs for a sp
 
 ```graphql
 query CatalogMaintenanceMetrics(
-  $accountTag: String!
-  $warehouseName: String!
-  $datetimeStart: Time!
-  $datetimeEnd: Time!
+	$accountTag: String!
+	$warehouseName: String!
+	$datetimeStart: Time!
+	$datetimeEnd: Time!
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      r2CatalogTableMaintenanceAdaptiveGroups(
-        limit: 10000
-        filter: {
-          warehouseName: $warehouseName
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-        }
-      ) {
-        count
-        dimensions {
-          jobType
-          tableName
-          success
-        }
-        sum {
-          filesProcessed
-          filesOutput
-          inputBytes
-          outputBytes
-          jobDurationMs
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			r2CatalogTableMaintenanceAdaptiveGroups(
+				limit: 10000
+				filter: {
+					warehouseName: $warehouseName
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+				}
+			) {
+				count
+				dimensions {
+					jobType
+					tableName
+					success
+				}
+				sum {
+					filesProcessed
+					filesOutput
+					inputBytes
+					outputBytes
+					jobDurationMs
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -209,29 +211,29 @@ You can narrow results to a specific Iceberg operation or table. For example, to
 
 ```graphql
 query CatalogFilterByOperation(
-  $accountTag: String!
-  $datetimeStart: Time!
-  $datetimeEnd: Time!
+	$accountTag: String!
+	$datetimeStart: Time!
+	$datetimeEnd: Time!
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      r2CatalogDataOperationsAdaptiveGroups(
-        limit: 10000
-        filter: {
-          warehouseName: "my-warehouse"
-          operation: "load-table"
-          tableName: "my_table"
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-        }
-      ) {
-        count
-        sum {
-          requestDurationMs
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			r2CatalogDataOperationsAdaptiveGroups(
+				limit: 10000
+				filter: {
+					warehouseName: "my-warehouse"
+					operation: "load-table"
+					tableName: "my_table"
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+				}
+			) {
+				count
+				sum {
+					requestDurationMs
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -239,29 +241,29 @@ To query only failed maintenance jobs:
 
 ```graphql
 query CatalogFailedMaintenanceJobs(
-  $accountTag: String!
-  $datetimeStart: Time!
-  $datetimeEnd: Time!
+	$accountTag: String!
+	$datetimeStart: Time!
+	$datetimeEnd: Time!
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      r2CatalogTableMaintenanceAdaptiveGroups(
-        limit: 10000
-        filter: {
-          warehouseName: "my-warehouse"
-          success: 0
-          datetime_geq: $datetimeStart
-          datetime_leq: $datetimeEnd
-        }
-      ) {
-        count
-        dimensions {
-          jobType
-          tableName
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			r2CatalogTableMaintenanceAdaptiveGroups(
+				limit: 10000
+				filter: {
+					warehouseName: "my-warehouse"
+					success: 0
+					datetime_geq: $datetimeStart
+					datetime_leq: $datetimeEnd
+				}
+			) {
+				count
+				dimensions {
+					jobType
+					tableName
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -271,31 +273,38 @@ To query metrics across all warehouses on an account, omit the `warehouseName` f
 
 ```graphql
 query CatalogAllWarehouses(
-  $accountTag: String!
-  $datetimeStart: Time!
-  $datetimeEnd: Time!
+	$accountTag: String!
+	$datetimeStart: Time!
+	$datetimeEnd: Time!
 ) {
-  viewer {
-    accounts(filter: { accountTag: $accountTag }) {
-      r2CatalogDataOperationsAdaptiveGroups(
-        limit: 10000
-        filter: { datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd }
-      ) {
-        count
-        dimensions {
-          warehouseName
-          operation
-        }
-        sum {
-          requestDurationMs
-        }
-      }
-    }
-  }
+	viewer {
+		accounts(filter: { accountTag: $accountTag }) {
+			r2CatalogDataOperationsAdaptiveGroups(
+				limit: 10000
+				filter: { datetime_geq: $datetimeStart, datetime_leq: $datetimeEnd }
+			) {
+				count
+				dimensions {
+					warehouseName
+					operation
+				}
+				sum {
+					requestDurationMs
+				}
+			}
+		}
+	}
 }
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/observability/metrics/#page","headline":"Metrics and analytics · Cloudflare R2 docs","description":"Query R2 Data Catalog metrics for Iceberg REST API operations and table maintenance jobs via the GraphQL Analytics API.","url":"https://developers.cloudflare.com/r2/data-catalog/observability/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/observability/","name":"Observability"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/observability/metrics/","name":"Metrics and analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/observability/metrics/#page","headline":"Metrics and analytics · Cloudflare R2 docs","description":"Query R2 Data Catalog metrics for Iceberg REST API operations and table maintenance jobs via the GraphQL Analytics API.","url":"https://developers.cloudflare.com/r2/data-catalog/observability/metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

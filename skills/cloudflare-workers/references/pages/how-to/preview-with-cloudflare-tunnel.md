@@ -1,16 +1,18 @@
 ---
-title: Preview Local Projects with Cloudflare Tunnel
 description: Use Cloudflare Tunnel to share locally running Pages projects over a public URL.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Preview Local Projects with Cloudflare Tunnel
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Preview Local Projects with Cloudflare Tunnel
 
-# Preview Local Projects with Cloudflare Tunnel
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) runs a lightweight daemon (`cloudflared`) in your infrastructure that establishes outbound connections (Tunnels) between your origin web server and the Cloudflare global network. In practical terms, you can use Cloudflare Tunnel to allow remote access to services running on your local machine. It is an alternative to popular tools like [Ngrok ↗](https://ngrok.com), and provides free, long-running tunnels via the [TryCloudflare](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/) service.
 
@@ -69,7 +71,14 @@ Cloudflare Tunnel can be configured in a variety of ways and can be used beyond 
 
 Finally, by incorporating Cloudflare Access, you can provide [secure access to your tunnels](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) without exposing your entire server, or compromising on security. Refer to the [Cloudflare for Teams documentation](https://developers.cloudflare.com/cloudflare-one/) to learn more about what you can do with Cloudflare's entire suite of Zero Trust tools.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/#page","headline":"Preview Local Projects with Cloudflare Tunnel · Cloudflare Pages docs","description":"Use Cloudflare Tunnel to share locally running Pages projects over a public URL.","url":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/how-to/preview-with-cloudflare-tunnel/","name":"Preview Local Projects with Cloudflare Tunnel"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/#page","headline":"Preview Local Projects with Cloudflare Tunnel · Cloudflare Pages docs","description":"Use Cloudflare Tunnel to share locally running Pages projects over a public URL.","url":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -52,10 +52,6 @@ To improve your Service Desk project's security, you should:
 
 ## Customize emails sent to external participants
 
-- `UNSUBSCRIBE_URL`, `SYSTEM_HEADER`, `SYSTEM_FOOTER`, and `ADDITIONAL_TEXT` placeholders [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/285512) in GitLab 15.9.
-- `%{ISSUE_DESCRIPTION}` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/223751) in GitLab 16.0.
-- `%{ISSUE_URL}` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/408793) in GitLab 16.1.
-
 An email is sent to external participants when:
 
 - A requester submits a new ticket by emailing Service Desk.
@@ -122,9 +118,7 @@ To keep your emails on brand, you can create a custom new note email template. T
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/344819) in GitLab 15.9.
-
-Instance administrators can add a header, footer or additional text to the GitLab instance and apply
+Instance administrators can add a header, footer, or additional text to the GitLab instance and apply
 them to all emails sent from GitLab. If you're using a custom `thank_you.md`, `new_participant.md` or `new_note.md`, to include
 this content, add `%{SYSTEM_HEADER}`, `%{SYSTEM_FOOTER}`, or `%{ADDITIONAL_TEXT}` to your templates.
 
@@ -160,10 +154,7 @@ Behind the scenes, Service Desk works by the special Support Bot user creating t
 This user isn't a [billable user](../../../subscriptions/manage_seats.md#criteria-for-non-billable-users),
 so it does not count toward the license limit count.
 
-In GitLab 16.0 and earlier, comments generated from Service Desk emails show `GitLab Support Bot`
-as the author. In [GitLab 16.1 and later](https://gitlab.com/gitlab-org/gitlab/-/issues/226995),
-these comments show the email of the user who sent the email.
-This feature only applies to comments made in GitLab 16.1 and later.
+Comments generated from Service Desk emails show the email of the user who sent the email.
 
 ### Change the Support Bot's display name
 
@@ -203,8 +194,6 @@ To disable this setting:
 
 ## Reopen tickets when an external participant comments
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/8549) in GitLab 16.7
-
 You can configure GitLab to reopen closed tickets when an external participant adds
 a new comment on a ticket by email. This also adds an internal comment that mentions
 the assignees of the ticket and creates to-do items for them.
@@ -227,12 +216,6 @@ To enable this setting:
 ## Custom email address
 
 - Status: Beta
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/329990) in GitLab 16.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `service_desk_custom_email`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/387003) in GitLab 16.4.
-- Ability to select the SMTP authentication method [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/429680) in GitLab 16.6.
-- [Feature flag `service_desk_custom_email` removed](https://gitlab.com/gitlab-org/gitlab/-/issues/387003) in GitLab 16.7.
-- Local network allowed for SMTP host on GitLab Self-Managed [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/435206) in GitLab 16.7.
 
 Configure a custom email address to show as the sender of your support communication.
 Maintain brand identity and instill confidence among support requesters with a domain they recognize.
@@ -550,7 +533,7 @@ In [Microsoft 365 admin center](https://admin.microsoft.com/Adminportal/Home#/ho
 
    1. From the menu in the upper-right corner, select **View account** and [browse to **Security Info**](https://mysignins.microsoft.com/security-info).
 
-   1. Select **Add sign-in method** and select a method that works for you (authenticator app, phone or email).
+   1. Select **Add sign-in method** and select a method that works for you (authenticator app, phone, or email).
    1. Follow the instructions on the screen.
 
 1. On the [**Security Info**](https://mysignins.microsoft.com/security-info) page,
@@ -664,14 +647,6 @@ To configure a custom mailbox for Service Desk with IMAP, add the following snip
 
 ### Linux package (Omnibus)
 
-> [!note]
-> In GitLab 15.3 and later, Service Desk uses `webhook` (internal API call) by default instead of enqueuing a Sidekiq job.
-> To use `webhook` on a Linux package installation running GitLab 15.3, you must generate a secret file.
-> For more information, see [merge request 5927](https://gitlab.com/gitlab-org/omnibus-gitlab/-/merge_requests/5927).
-> In GitLab 15.4, reconfiguring a Linux package installation generates this secret file automatically, so no
-> secret file configuration setting is needed.
-> For more information, see [issue 1462](https://gitlab.com/gitlab-com/gl-infra/scalability/-/issues/1462).
-
 ```ruby
 gitlab_rails['service_desk_email_enabled'] = true
 gitlab_rails['service_desk_email_address'] = "project_contact+%{key}@gmail.com"
@@ -710,8 +685,6 @@ The configuration options are the same as for configuring
 [incoming email](../../../administration/incoming_email.md#set-it-up).
 
 #### Use encrypted credentials
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/108279) in GitLab 15.9.
 
 Instead of having the Service Desk email credentials stored in plaintext in the configuration files, you can optionally
 use an encrypted file for the incoming email credentials.
@@ -834,8 +807,6 @@ see [Helm IMAP secrets](https://docs.gitlab.com/charts/installation/secrets/#ima
    ```
 
 #### Microsoft Graph
-
-- [Introduced for self-compiled (source) installs](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/116494) in GitLab 15.11.
 
 `service_desk_email` can be configured to read Microsoft Exchange Online mailboxes with the Microsoft
 Graph API instead of IMAP. Set up an OAuth 2.0 application for Microsoft Graph
@@ -1129,7 +1100,7 @@ or completely separately.
 
 1. GitLab offers two methods to transport emails from `mail_room` to the GitLab
    application. You can configure the `delivery_method` for each email setting individually:
-   1. Recommended: `webhook` (default in GitLab 15.3 and later) sends the email payload with an API POST request to your GitLab
+   1. Recommended (default): `webhook` sends the email payload with an API POST request to your GitLab
       application. It uses a shared token to authenticate. If you choose this method,
       make sure the `mail_room` process can access the API endpoint and distribute the shared
       token across all application nodes.

@@ -1,16 +1,18 @@
 ---
-title: Cloudflare DMARC Management
 description: Stop brand impersonation.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare DMARC Management
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dmarc-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare DMARC Management
 
-# Cloudflare DMARC Management
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dmarc-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Stop brand impersonation.
 
@@ -32,15 +34,22 @@ DMARC Management is available to all Cloudflare customers with [Cloudflare DNS](
 
 ## Related products
 
-**[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)**
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
 
 Protect your email inbox with Email security.
 
-**[Cloudflare DNS](https://developers.cloudflare.com/dns/)**
+[Cloudflare DNS](https://developers.cloudflare.com/dns/)
 
 Fast, resilient and easy-to-manage DNS service.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dmarc-management/#page","headline":"Overview · Cloudflare DMARC Management docs","description":"Stop brand impersonation.","url":"https://developers.cloudflare.com/dmarc-management/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Phishing"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dmarc-management/","name":"DMARC Management"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dmarc-management/#page","headline":"Overview · Cloudflare DMARC Management docs","description":"Stop brand impersonation.","url":"https://developers.cloudflare.com/dmarc-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Phishing"]}
 ```

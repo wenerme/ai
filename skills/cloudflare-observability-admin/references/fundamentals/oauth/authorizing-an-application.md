@@ -1,16 +1,18 @@
 ---
-title: Authorizing an application
 description: Learn more about what it means to authorize a third-party application on Cloudflare
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Authorizing an application
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Authorizing an application
 
-# Authorizing an application
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -30,7 +32,7 @@ When a third-party application requests access to your Cloudflare account, you w
 Application authorizations may be viewed and revoked at any time from the profile page on the Cloudflare dashboard.
 
 1. Log in to the Cloudflare dashboard.
-2. [ Go to **Manage OAuth authorizations** ](https://dash.cloudflare.com/?to=/profile/access-management/authorization)
+2. [ Go to **Manage OAuth authorizations** ↗ ](https://dash.cloudflare.com/?to=/profile/access-management/authorization)
 3. View the list of applications you have authorized.
   * If you wish to revoke access to an application, click the “Revoke” button for that row
 
@@ -40,11 +42,18 @@ If an account is not available for selection during the consent flow, it may be 
 
 Account administrators can restrict OAuth applications from accessing account resources via **Manage Account** \> **Members > Settings > Public OAuth App access**.
 
-Warning
+Caution
 
 This will not prevent existing authorizations account members may already have in place, and will only prevent new authorizations from accessing account resources.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/#page","headline":"Authorizing an application · Cloudflare Fundamentals docs","description":"Learn more about what it means to authorize a third-party application on Cloudflare","url":"https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/oauth/","name":"OAuth Applications on Cloudflare"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/oauth/authorizing-an-application/","name":"Authorizing an application"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/#page","headline":"Authorizing an application · Cloudflare Fundamentals docs","description":"Learn more about what it means to authorize a third-party application on Cloudflare","url":"https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Cloudflare as identity provider
 description: Use Cloudflare as an identity provider for Access policies, allowing authentication based on Cloudflare account membership.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Cloudflare as identity provider
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare as identity provider
 
-# Cloudflare as identity provider
+Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access can use Cloudflare itself as an identity provider, allowing you to build Access policies that match on Cloudflare account membership. This is useful for scenarios where you want to restrict access to users who are members of a specific Cloudflare account, without requiring a third-party identity provider.
 
@@ -19,9 +21,6 @@ When a user authenticates through the Cloudflare identity provider, Access verif
 For newly created Zero Trust organizations, Cloudflare adds this identity provider automatically as the default login method, with **Restrict to account members** enabled. You do not need to set it up manually. The following steps describe how to add or reconfigure it.
 
 ## Set up Cloudflare as an identity provider
-
-* [ Dashboard ](#tab-panel-7870)
-* [ API ](#tab-panel-7871)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -36,19 +35,17 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Organizations, Identity Providers, and Groups Write`
 
-**Add an Access identity provider**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_providers" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Cloudflare",
-    "type": "cloudflare",
-    "config": {
-        "restrict_to_account_members": true
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Cloudflare",
+		"type": "cloudflare",
+		"config": {
+				"restrict_to_account_members": true
+		}
+	}'
 ```
 
 ## Configuration options
@@ -68,7 +65,14 @@ After configuring Cloudflare as an identity provider, you can use the **Cloudfla
 
 This is useful for cross-account access scenarios where you need to grant access to users from a different Cloudflare account.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/#page","headline":"Cloudflare as identity provider · Cloudflare One docs","description":"Use Cloudflare as an identity provider for Access policies, allowing authentication based on Cloudflare account membership.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/cloudflare/","name":"Cloudflare as identity provider"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/#page","headline":"Cloudflare as identity provider · Cloudflare One docs","description":"Use Cloudflare as an identity provider for Access policies, allowing authentication based on Cloudflare account membership.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Getting started
 description: Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Getting started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Getting started
 
-# Getting started
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will deploy a Worker that can make requests to one or more Containers in response to end-user requests. In this example, each container runs a small webserver written in Go.
 
@@ -124,38 +126,31 @@ Now that you've deployed your first container, let's explain what is happening i
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-8537)
-* [  wrangler.toml ](#tab-panel-8538)
-
-**JSONC**
-
 ```jsonc
 {
-  "containers": [
-    {
-      "max_instances": 10,
-      "class_name": "MyContainer",
-      "image": "./Dockerfile",
-    },
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MY_CONTAINER",
-        "class_name": "MyContainer",
-      },
-    ],
-  },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["MyContainer"],
-    },
-  ],
+	"containers": [
+		{
+			"max_instances": 10,
+			"class_name": "MyContainer",
+			"image": "./Dockerfile",
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MY_CONTAINER",
+				"class_name": "MyContainer",
+			},
+		],
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["MyContainer"],
+		},
+	],
 }
 ```
-
-**TOML**
 
 ```toml
 [[containers]]
@@ -163,11 +158,9 @@ max_instances = 10
 class_name = "MyContainer"
 image = "./Dockerfile"
 
-
 [[durable_objects.bindings]]
 name = "MY_CONTAINER"
 class_name = "MyContainer"
-
 
 [[migrations]]
 tag = "v1"
@@ -189,11 +182,10 @@ In the example you just deployed, it is a simple Golang server that responds to 
 
 ```go
 func handler(w http.ResponseWriter, r *http.Request) {
-  message := os.Getenv("MESSAGE")
-  instanceId := os.Getenv("CLOUDFLARE_DEPLOYMENT_ID")
+	message := os.Getenv("MESSAGE")
+	instanceId := os.Getenv("CLOUDFLARE_DEPLOYMENT_ID")
 
-
-  fmt.Fprintf(w, "Hi, I'm a container and this is my message: %s, and my instance ID is: %s", message, instanceId)
+	fmt.Fprintf(w, "Hi, I'm a container and this is my message: %s, and my instance ID is: %s", message, instanceId)
 }
 ```
 
@@ -207,8 +199,6 @@ After deploying the example code, to deploy a different image, you can replace t
 
 First note `MyContainer` which extends the [Container ↗](https://github.com/cloudflare/containers) class:
 
-**JavaScript**
-
 ```js
 export class MyContainer extends Container {
   defaultPort = 8080;
@@ -217,16 +207,13 @@ export class MyContainer extends Container {
     MESSAGE: 'I was passed in via the container class!',
   };
 
-
   override onStart() {
     console.log('Container successfully started');
   }
 
-
   override onStop() {
     console.log('Container successfully shut down');
   }
-
 
   override onError(error: unknown) {
     console.log('Container error:', error);
@@ -250,21 +237,17 @@ Refer to the [Container class reference](https://developers.cloudflare.com/conta
 When a request enters Cloudflare, your Worker's [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) is invoked. This is the code that handles the incoming request. The fetch handler in the example code, launches containers in two ways, on different routes:
 
 * Making requests to `/container/` passes requests to a new container for each path. This is done by spinning up a new Container instance. You may note that the first request to a new path takes longer than subsequent requests, this is because a new container is booting.
-
-**JavaScript**
 ```js
 if (pathname.startsWith("/container")) {
-  const container = env.MY_CONTAINER.getByName(pathname);
-  return await container.fetch(request);
+	const container = env.MY_CONTAINER.getByName(pathname);
+	return await container.fetch(request);
 }
 ```
 * Making requests to `/lb` will load balance requests across several containers. This uses a simple `getRandom` helper method, which picks an ID at random from a set number (in this case 3), then routes to that Container instance. You can replace this with any routing or load balancing logic you choose to implement:
-
-**JavaScript**
 ```js
 if (pathname.startsWith("/lb")) {
-  const container = await getRandom(env.MY_CONTAINER, 3);
-  return await container.fetch(request);
+	const container = await getRandom(env.MY_CONTAINER, 3);
+	return await container.fetch(request);
 }
 ```
 
@@ -298,7 +281,14 @@ To do more:
 * Review our [examples](https://developers.cloudflare.com/containers/examples/) for more inspiration
 * Review the [Frequently Asked Questions](https://developers.cloudflare.com/containers/faq/) for current platform behavior and limitations
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Getting started · Cloudflare Containers docs","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/get-started/","name":"Getting started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Getting started · Cloudflare Containers docs","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

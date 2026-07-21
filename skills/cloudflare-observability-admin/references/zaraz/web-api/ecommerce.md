@@ -1,16 +1,18 @@
 ---
-title: E-commerce
 description: Send e-commerce events like purchases and cart updates through Zaraz.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: E-commerce
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  E-commerce
 
-# E-commerce
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/web-api/ecommerce/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use `zaraz.ecommerce()` anywhere inside the `<body>` tag of a page.
 
@@ -29,7 +31,7 @@ It is crucial you follow the guidelines set by third-party tools, such as Google
 You do not need to map e-commerce events to triggers. Zaraz automatically forwards data using the right format to the tools with e-commerce support.
 
 1. In the Cloudflare dashboard, go to the **Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Enable **E-commerce tracking**.
 3. Select **Save**.
 4. Go to **Zaraz** \> **Tools Configuration** \> **Third-party tools**.
@@ -43,8 +45,6 @@ E-commerce tracking is now enabled. If you add additional tools to your website 
 ## Add e-commerce tracking to your website
 
 After enabling e-commerce tracking on your Zaraz dashboard, you need to add `zaraz.ecommerce()` to the `<body>` element of your website:
-
-**JavaScript**
 
 ```js
 zaraz.ecommerce("Event Name", { parameters });
@@ -119,125 +119,122 @@ To create a complete tracking event, you need to add an event and one or more pa
 
 ### Product viewed
 
-**JavaScript**
-
 ```js
 zaraz.ecommerce("Product Viewed", {
-  product_id: "999555321",
-  sku: "2671033",
-  category: "T-shirts",
-  name: "V-neck T-shirt",
-  brand: "Cool Brand",
-  variant: "White",
-  price: 14.99,
-  currency: "usd",
-  value: 18.99,
+	product_id: "999555321",
+	sku: "2671033",
+	category: "T-shirts",
+	name: "V-neck T-shirt",
+	brand: "Cool Brand",
+	variant: "White",
+	price: 14.99,
+	currency: "usd",
+	value: 18.99,
 });
 ```
 
 ### Product List Viewed
 
-**JavaScript**
-
 ```js
 zaraz.ecommerce("Product List Viewed", {
-  products: [
-    {
-      product_id: "999555321",
-      sku: "2671033",
-      category: "T-shirts",
-      name: "V-neck T-shirt",
-      brand: "Cool Brand",
-      variant: "White",
-      price: 14.99,
-      currency: "usd",
-      value: 18.99,
-      position: 1,
-    },
-    {
-      product_id: "999555322",
-      sku: "2671034",
-      category: "T-shirts",
-      name: "T-shirt",
-      brand: "Cool Brand",
-      variant: "Pink",
-      price: 10.99,
-      currency: "usd",
-      value: 16.99,
-      position: 2,
-    },
-  ],
+	products: [
+		{
+			product_id: "999555321",
+			sku: "2671033",
+			category: "T-shirts",
+			name: "V-neck T-shirt",
+			brand: "Cool Brand",
+			variant: "White",
+			price: 14.99,
+			currency: "usd",
+			value: 18.99,
+			position: 1,
+		},
+		{
+			product_id: "999555322",
+			sku: "2671034",
+			category: "T-shirts",
+			name: "T-shirt",
+			brand: "Cool Brand",
+			variant: "Pink",
+			price: 10.99,
+			currency: "usd",
+			value: 16.99,
+			position: 2,
+		},
+	],
 });
 ```
 
 ### Product added
 
-**JavaScript**
-
 ```js
 zaraz.ecommerce("Product Added", {
-  product_id: "999555321",
-  sku: "2671033",
-  category: "T-shirts",
-  name: "V-neck T-shirt",
-  brand: "Cool Brand",
-  variant: "White",
-  price: 14.99,
-  currency: "usd",
-  quantity: 1,
-  coupon: "SUMMER-SALE",
-  position: 2,
+	product_id: "999555321",
+	sku: "2671033",
+	category: "T-shirts",
+	name: "V-neck T-shirt",
+	brand: "Cool Brand",
+	variant: "White",
+	price: 14.99,
+	currency: "usd",
+	quantity: 1,
+	coupon: "SUMMER-SALE",
+	position: 2,
 });
 ```
 
 ### Checkout Step Viewed
 
-**JavaScript**
-
 ```js
 zaraz.ecommerce("Checkout Step Viewed", {
-  step: 1,
+	step: 1,
 });
 ```
 
 ### Order completed
 
-**JavaScript**
-
 ```js
 zaraz.ecommerce("Order Completed", {
-  checkout_id: "616727740",
-  order_id: "817286897056801",
-  affiliation: "affiliate.com",
-  total: 30.0,
-  revenue: 20.0,
-  shipping: 3,
-  tax: 2,
-  discount: 5,
-  coupon: "winter-sale",
-  currency: "USD",
-  products: [
-    {
-      product_id: "999666321",
-      sku: "8251511",
-      name: "Boy’s shorts",
-      price: 10,
-      quantity: 2,
-      category: "shorts",
-    },
-    {
-      product_id: "742566131",
-      sku: "7251567",
-      name: "Blank T-shirt",
-      price: 5,
-      quantity: 2,
-      category: "T-shirts",
-    },
-  ],
+	checkout_id: "616727740",
+	order_id: "817286897056801",
+	affiliation: "affiliate.com",
+	total: 30.0,
+	revenue: 20.0,
+	shipping: 3,
+	tax: 2,
+	discount: 5,
+	coupon: "winter-sale",
+	currency: "USD",
+	products: [
+		{
+			product_id: "999666321",
+			sku: "8251511",
+			name: "Boy’s shorts",
+			price: 10,
+			quantity: 2,
+			category: "shorts",
+		},
+		{
+			product_id: "742566131",
+			sku: "7251567",
+			name: "Blank T-shirt",
+			price: 5,
+			quantity: 2,
+			category: "T-shirts",
+		},
+	],
 });
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/web-api/ecommerce/#page","headline":"zaraz.ecommerce · Cloudflare Zaraz docs","description":"Send e-commerce events like purchases and cart updates through Zaraz.","url":"https://developers.cloudflare.com/zaraz/web-api/ecommerce/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/web-api/","name":"Web API"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/web-api/ecommerce/","name":"E-commerce"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/web-api/ecommerce/#page","headline":"zaraz.ecommerce · Cloudflare Zaraz docs","description":"Send e-commerce events like purchases and cart updates through Zaraz.","url":"https://developers.cloudflare.com/zaraz/web-api/ecommerce/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

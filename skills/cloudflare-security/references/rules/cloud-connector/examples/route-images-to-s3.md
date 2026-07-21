@@ -1,23 +1,25 @@
 ---
-title: Route /images to an S3 Bucket
 description: Route requests with a URI path starting with `/images` to a specific AWS S3 bucket using Cloud Connector.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Route /images to an S3 Bucket
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Route /images to an S3 Bucket
+#  Route /images to an S3 Bucket
 
 Route requests with a URI path starting with `/images` to a specific AWS S3 bucket using Cloud Connector.
+
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-s3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To route requests to `/images` on your domain to an AWS S3 bucket:
 
 1. In the Cloudflare dashboard, go to the **Cloud Connector** page.
-[ Go to **Cloud Connector** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)
+[ Go to **Cloud Connector** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)
 2. Select **Amazon S3** as your [cloud provider](https://developers.cloudflare.com/rules/cloud-connector/providers/).
 3. Enter the bucket URL. You can structure the URL in two ways:
 
@@ -37,7 +39,14 @@ Replace `<YOUR_HOSTNAME>` with desired hostname.
 
 This setup will route all traffic matching `http*://<YOUR_HOSTNAME>/images/*` (HTTPS and HTTP requests) to your S3 bucket. Make sure to replace `<YOUR_HOSTNAME>` with your actual hostname and adjust the example paths according to your setup.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-s3/#page","headline":"Route /images to an S3 Bucket · Cloudflare Rules docs","description":"Route requests with a URI path starting with /images to a specific AWS S3 bucket using Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-s3/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","S3"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/cloud-connector/","name":"Cloud Connector"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/cloud-connector/examples/","name":"Cloud Connector examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/cloud-connector/examples/route-images-to-s3/","name":"Route /images to an S3 Bucket"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-s3/#page","headline":"Route /images to an S3 Bucket · Cloudflare Rules docs","description":"Route requests with a URI path starting with /images to a specific AWS S3 bucket using Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-s3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","S3"]}
 ```

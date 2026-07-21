@@ -1,16 +1,18 @@
 ---
-title: Email routing rules and addresses
 description: Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Email routing rules and addresses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Email routing rules and addresses
 
-# Email routing rules and addresses
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 In Email Routing, a routing rule pairs an email pattern with a destination — either a verified email address or a Worker. You can route emails to either:
 
@@ -31,7 +33,7 @@ You can also send to verified destination addresses directly through the [REST A
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **Compute** \> **Email Service** \> **Email Routing** \> **Destination Addresses**.
-[ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 3. Under **Destination addresses**, enter the email address you want to use as a destination in the inline form and submit it.
 4. Cloudflare sends a verification email to that address. Open the email and select **Verify email address** to activate it.
 
@@ -49,7 +51,7 @@ Deleting a destination address automatically disables all routing rules that use
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account and domain.
 2. Go to **Compute** \> **Email Service** \> **Email Routing** \> **Routing Rules**.
-[ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 3. Select **Create routing rule**.
 4. In **Email pattern**, enter the local part of the email address you want to use (for example, `my-new-email`), and select your domain.
 5. In the **Action** drop-down menu, choose what this routing rule should do. Refer to [Routing rule actions](#routing-rule-actions) for more information.
@@ -74,7 +76,7 @@ To prevent spamming unintended recipients, all routing rules are automatically d
 ### Disable a routing rule
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select **Routing Rules**.
 3. Identify the routing rule you want to pause, and toggle the status button to **Disabled**.
 
@@ -87,7 +89,7 @@ Renaming a Worker removes the binding between that Worker and any routes that po
 ### Edit a routing rule
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select **Routing Rules**.
 3. Identify the routing rule you want to edit, and select **Edit**.
 4. Make the appropriate changes to the rule.
@@ -99,7 +101,7 @@ Renaming a Worker removes the binding between that Worker and any routes that po
 3. Identify the routing rule you want to delete.
 4. Select **Delete** and confirm the action.
 
-Warning
+Caution
 
 Deleting a routing rule permanently removes it. Emails matching its pattern will no longer be routed. If you want to temporarily stop routing without deleting the rule, refer to [Disable a routing rule](#disable-a-routing-rule).
 
@@ -110,7 +112,7 @@ When you enable this feature, Email Routing forwards every email sent to your do
 To enable the catch-all rule:
 
 1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Routing**.
-[ Go to **Email Routing** ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+[ Go to **Email Routing** ↗ ](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 2. Select **Routing Rules**.
 3. Enable **Catch-all rule**, so it shows as **Active**.
 4. In the **Action** drop-down menu, select what to do with these emails. Refer to [Routing rule actions](#routing-rule-actions) for more information.
@@ -133,7 +135,14 @@ If a routing rule for `user+detail@example.com` already exists, it takes precede
 * [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — manage DNS records for Email Routing.
 * [Email routing examples](https://developers.cloudflare.com/email-service/examples/email-routing/) — advanced patterns including spam filtering and email storage.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#page","headline":"Email routing rules and addresses · Cloudflare Email Service docs","description":"Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/configuration/email-routing-addresses/","name":"Email routing rules and addresses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#page","headline":"Email routing rules and addresses · Cloudflare Email Service docs","description":"Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

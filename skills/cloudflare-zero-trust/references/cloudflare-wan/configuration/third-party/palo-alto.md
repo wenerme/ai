@@ -1,16 +1,18 @@
 ---
-title: Palo Alto Networks NGFW
 description: Connect Palo Alto Networks NGFW to Cloudflare WAN.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Palo Alto Networks NGFW
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Palo Alto Networks NGFW
 
-# Palo Alto Networks NGFW
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/palo-alto/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -227,7 +229,6 @@ If you want to assign the tunnel interfaces to a Security Zone in this step, the
 set network interface tunnel units tunnel.1 ip cf-wan-ipsec-vti-01-local
 set network interface tunnel units tunnel.1 interface-management-profile allow_ping
 
-
 set network interface tunnel units tunnel.2 ip cf-wan-ipsec-vti-02-local
 set network interface tunnel units tunnel.2 interface-management-profile allow_ping
 ```
@@ -328,7 +329,6 @@ set network ike gateway cf-wan-ike-gw-01 protocol-common fragmentation enable no
 set network ike gateway cf-wan-ike-gw-01 peer-address ip cf_wan_anycast_01
 set network ike gateway cf-wan-ike-gw-01 local-id type fqdn id "bf6c493d03<REDACTED>.ipsec.cloudflare.com"
 
-
 set network ike gateway cf-wan-ike-gw-02 authentication pre-shared-key key "Cloudflare-WAN-T2-PSK-1234!"
 set network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-ppk enabled no
 set network ike gateway cf-wan-ike-gw-02 protocol ikev2 pq-ppk negotiation-mode preferred
@@ -423,7 +423,6 @@ set network tunnel ipsec cf-wan-ipsec-tun-01 auto-key ipsec-crypto-profile ipsec
 set network tunnel ipsec cf-wan-ipsec-tun-01 tunnel-monitor enable no
 set network tunnel ipsec cf-wan-ipsec-tun-01 tunnel-interface tunnel.1
 set network tunnel ipsec cf-wan-ipsec-tun-01 anti-replay no
-
 
 set network tunnel ipsec cf-wan-ipsec-tun-02 auto-key ike-gateway cf-wan-ike-gw-02
 set network tunnel ipsec cf-wan-ipsec-tun-02 auto-key ipsec-crypto-profile ipsec-aes256cbc-sha256-dh20
@@ -637,7 +636,6 @@ Use [show ↗](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/admi
 ```txt
 admin@panfw01> show vpn ike-sa
 
-
 IKEv2 SAs
 Gateway ID      Peer-Address       Gateway Name       Role SN    Algorithm             Established     Expiration      Xt Child  ST
 ----------      ------------       ------------       ---- --    ---------             -----------     ----------      -- -----  --
@@ -652,7 +650,6 @@ Gateway Name                   TnID     Tunnel                     ID       Pare
 cf-wan-ike-gw-01               1        cf-wan-ipsec-tun-01        452741   97       Init B7D055D3 4CB26B43 00000001 Mature
 cf-wan-ike-gw-02               2        cf-wan-ipsec-tun-02        452742   98       Init B4629A07 165D416C 00000001 Mature
 
-
 Show IKEv2 SA: Total 2 gateways found. 2 ike sa found.
 ```
 
@@ -663,13 +660,10 @@ Use [test ↗](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/admi
 ```txt
 admin@panfw01> test vpn ike-sa gateway cf-wan-ike-gw-01
 
-
 Start time: Mar.30 21:23:23
 Initiate 1 IKE SA.
 
-
 admin@panfw01> test vpn ike-sa gateway cf-wan-ike-gw-02
-
 
 Start time: Mar.30 21:23:24
 Initiate 1 IKE SA.
@@ -678,13 +672,10 @@ Initiate 1 IKE SA.
 ```txt
 admin@panfw01> test vpn ipsec-sa tunnel cf-wan-ipsec-tun-01
 
-
 Start time: Mar.30 21:26:50
 Initiate 1 IPSec SA for tunnel cf-wan-ipsec-tun-01.
 
-
 admin@panfw01> test vpn ipsec-sa tunnel cf-wan-ipsec-tun-02
-
 
 Start time: Mar.30 21:26:52
 Initiate 1 IPSec SA for tunnel cf-wan-ipsec-tun-02.
@@ -699,7 +690,14 @@ Initiate 1 IPSec SA for tunnel cf-wan-ipsec-tun-02.
 
 * [How to troubleshoot IPSec VPN connectivity issues ↗](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClivCAC)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/palo-alto/#page","headline":"Palo Alto Networks Next-Generation Firewall · Cloudflare WAN docs","description":"Connect Palo Alto Networks NGFW to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/palo-alto/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/configuration/third-party/","name":"Third-party integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-wan/configuration/third-party/palo-alto/","name":"Palo Alto Networks NGFW"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/palo-alto/#page","headline":"Palo Alto Networks Next-Generation Firewall · Cloudflare WAN docs","description":"Connect Palo Alto Networks NGFW to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/palo-alto/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

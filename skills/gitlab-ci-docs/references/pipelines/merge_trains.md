@@ -307,11 +307,7 @@ You can also use the [projects API](../../api/projects.md), or the
 ## Enforce merge trains
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597962) in GitLab 19.2 [with a feature flag](../../administration/feature_flags/_index.md) named `merge_train_enforcement`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 
 By default, users with permission to merge can bypass the merge train and merge directly,
 for example with **Merge immediately** or a direct API request.

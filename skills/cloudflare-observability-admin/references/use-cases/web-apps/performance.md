@@ -1,16 +1,18 @@
 ---
-title: Optimize performance
 description: Accelerate your application with caching, smart routing, and edge optimization.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Optimize performance
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Optimize performance
 
-# Optimize performance
+Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/web-apps/performance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Slow page loads increase bounce rates and reduce conversions. Cloudflare accelerates your application with edge caching, Argo Smart Routing to avoid congested network paths, and automatic asset optimization that improves Core Web Vitals scores.
 
@@ -48,7 +50,14 @@ Build and deploy serverless applications on Cloudflare's global network. [Learn 
 3. [Enable Speed optimizations](https://developers.cloudflare.com/speed/optimization/)
 4. [Rewrite HTML at the edge with HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/performance/#page","headline":"Optimize performance · Cloudflare use cases","description":"Accelerate your application with caching, smart routing, and edge optimization.","url":"https://developers.cloudflare.com/use-cases/web-apps/performance/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/web-apps/","name":"Web sites and web apps"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/web-apps/performance/","name":"Optimize performance"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/performance/#page","headline":"Optimize performance · Cloudflare use cases","description":"Accelerate your application with caching, smart routing, and edge optimization.","url":"https://developers.cloudflare.com/use-cases/web-apps/performance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

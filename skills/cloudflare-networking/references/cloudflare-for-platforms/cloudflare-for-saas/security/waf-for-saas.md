@@ -1,16 +1,18 @@
 ---
-title: WAF for SaaS
 description: Apply custom rules, rate limiting, and managed rulesets per custom hostname.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: WAF for SaaS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WAF for SaaS
 
-# WAF for SaaS
+Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/) allows you to create additional security measures through Cloudflare. As a SaaS provider, you can link custom rules, rate limiting rules, and managed rules to your custom hostnames. This provides more control to keep your domains safe from malicious traffic.
 
@@ -29,18 +31,16 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Create Custom Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "hostname": "<CUSTOM_HOSTNAME>",
-    "ssl": {
-        "wildcard": false
-    }
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"hostname": "<CUSTOM_HOSTNAME>",
+		"ssl": {
+				"wildcard": false
+		}
+	}'
 ```
 
 ## 1\. Associate custom metadata to a custom hostname
@@ -57,12 +57,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `SSL and Certificates Write`
 * `SSL and Certificates Read`
 
-**List Custom Hostnames**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
-  --request GET \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 1. Plan your [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/). It is fully customizable. In the example below, we have chosen the tag `"security_level"` to which we expect to assign three values (low, medium, and high).
@@ -78,18 +76,16 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `SSL and Certificates Write`
 
-**Edit Custom Hostname**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUSTOM_HOSTNAME_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "custom_metadata": {
-        "customer_id": "12345",
-        "security_level": "low"
-    }
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"custom_metadata": {
+				"customer_id": "12345",
+				"security_level": "low"
+		}
+	}'
 ```
 
 This assigns custom metadata to your custom hostname so that it has a security tag associated with its ID.
@@ -124,41 +120,46 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Logs Write`
 * `Logs Write`
 
-**Update a zone entry point ruleset**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_ratelimit/entrypoint" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "rules": [
-        {
-            "action": "block",
-            "ratelimit": {
-                "characteristics": [
-                    "cf.colo.id",
-                    "ip.src"
-                ],
-                "period": 10,
-                "requests_per_period": 2,
-                "mitigation_timeout": 60
-            },
-            "expression": "lookup_json_string(cf.hostname.metadata, \"security_level\") eq \"low\" and http.request.uri contains \"login\""
-        }
-    ]
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rules": [
+				{
+						"action": "block",
+						"ratelimit": {
+								"characteristics": [
+										"cf.colo.id",
+										"ip.src"
+								],
+								"period": 10,
+								"requests_per_period": 2,
+								"mitigation_timeout": 60
+						},
+						"expression": "lookup_json_string(cf.hostname.metadata, \"security_level\") eq \"low\" and http.request.uri contains \"login\""
+				}
+		]
+	}'
 ```
 
 To build rules through the dashboard:
 
 1. In the Cloudflare dashboard, go to the **WAF** page.
-[ Go to **WAF** ](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+[ Go to **WAF** ↗ ](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Follow the instructions on the dashboard specific to custom rules, rate limiting rules, or managed rules, depending on your security goal.
 3. Once the rule is active, you should see it under the applicable tab (custom rules, rate limiting, or managed rules).
-Warning
+Caution
 This API call will replace any existing rate limiting rules in the zone.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/#page","headline":"WAF for SaaS · Cloudflare for Platforms docs","description":"Apply custom rules, rate limiting, and managed rulesets per custom hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/","name":"Cloudflare for SaaS"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/security/","name":"Security"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/","name":"WAF for SaaS"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/#page","headline":"WAF for SaaS · Cloudflare for Platforms docs","description":"Apply custom rules, rate limiting, and managed rulesets per custom hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

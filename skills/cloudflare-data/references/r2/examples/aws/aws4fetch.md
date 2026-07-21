@@ -1,16 +1,18 @@
 ---
-title: aws4fetch
 description: Configure aws4fetch to sign requests to Cloudflare R2 using the S3-compatible API.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: aws4fetch
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  aws4fetch
 
-# aws4fetch
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/aws/aws4fetch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
@@ -19,22 +21,17 @@ JavaScript or TypeScript users may continue to use the [aws4fetch ↗](https://w
 
 You must pass in the R2 configuration credentials when instantiating your `S3` service client:
 
-**TypeScript**
-
 ```ts
 import { AwsClient } from "aws4fetch";
-
 
 // Provide your Cloudflare account ID
 const R2_URL = `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`;
 
-
 const client = new AwsClient({
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-  accessKeyId: ACCESS_KEY_ID,
-  secretAccessKey: SECRET_ACCESS_KEY,
+	// Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+	accessKeyId: ACCESS_KEY_ID,
+	secretAccessKey: SECRET_ACCESS_KEY,
 });
-
 
 const ListBucketsResult = await client.fetch(R2_URL);
 console.log(await ListBucketsResult.text());
@@ -55,9 +52,8 @@ console.log(await ListBucketsResult.text());
 //     </Owner>
 // </ListAllMyBucketsResult>
 
-
 const ListObjectsV2Result = await client.fetch(
-  `${R2_URL}/my-bucket?list-type=2`,
+	`${R2_URL}/my-bucket?list-type=2`,
 );
 console.log(await ListObjectsV2Result.text());
 // <ListBucketResult>
@@ -86,52 +82,47 @@ console.log(await ListObjectsV2Result.text());
 
 You can also generate presigned links that can be used to share public read or write access to a bucket temporarily.
 
-**TypeScript**
-
 ```ts
 import { AwsClient } from "aws4fetch";
 
-
 const client = new AwsClient({
-  service: "s3", // Required by SDK but not used by R2
-  region: "auto", // Required by SDK but not used by R2
-  // Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
-  accessKeyId: ACCESS_KEY_ID,
-  secretAccessKey: SECRET_ACCESS_KEY,
+	service: "s3", // Required by SDK but not used by R2
+	region: "auto", // Required by SDK but not used by R2
+	// Retrieve your S3 API credentials for your R2 bucket via API tokens (see: https://developers.cloudflare.com/r2/api/tokens)
+	accessKeyId: ACCESS_KEY_ID,
+	secretAccessKey: SECRET_ACCESS_KEY,
 });
-
 
 // Provide your Cloudflare account ID
 const R2_URL = `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`;
 
-
 // Use the `X-Amz-Expires` query param to determine how long the presigned link is valid.
 console.log(
-  (
-    await client.sign(
-      new Request(`${R2_URL}/my-bucket/dog.png?X-Amz-Expires=${3600}`),
-      {
-        aws: { signQuery: true },
-      },
-    )
-  ).url.toString(),
+	(
+		await client.sign(
+			new Request(`${R2_URL}/my-bucket/dog.png?X-Amz-Expires=${3600}`),
+			{
+				aws: { signQuery: true },
+			},
+		)
+	).url.toString(),
 );
 // You can also create links for operations such as PutObject to allow temporary write access to a specific key.
 // Specify Content-Type header to restrict uploads to a specific file type.
 console.log(
-  (
-    await client.sign(
-      new Request(`${R2_URL}/my-bucket/dog.png?X-Amz-Expires=${3600}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "image/png",
-        },
-      }),
-      {
-        aws: { signQuery: true },
-      },
-    )
-  ).url.toString(),
+	(
+		await client.sign(
+			new Request(`${R2_URL}/my-bucket/dog.png?X-Amz-Expires=${3600}`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "image/png",
+				},
+			}),
+			{
+				aws: { signQuery: true },
+			},
+		)
+	).url.toString(),
 );
 ```
 
@@ -169,19 +160,17 @@ When generating presigned URLs for uploads, you can limit abuse and misuse by:
 
 Then generate a presigned URL with a Content-Type restriction:
 
-**TypeScript**
-
 ```ts
 const signedRequest = await client.sign(
-  new Request(`${R2_URL}/my-bucket/user-upload.png?X-Amz-Expires=${3600}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "image/png",
-    },
-  }),
-  {
-    aws: { signQuery: true },
-  },
+	new Request(`${R2_URL}/my-bucket/user-upload.png?X-Amz-Expires=${3600}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "image/png",
+		},
+	}),
+	{
+		aws: { signQuery: true },
+	},
 );
 const putUrl = signedRequest.url.toString();
 ```
@@ -191,7 +180,14 @@ When a client uses this presigned URL, they must:
 * Make the request from an allowed origin (enforced by CORS)
 * Include the `Content-Type: image/png` header (enforced by the signature)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws4fetch/#page","headline":"aws4fetch · Cloudflare R2 docs","description":"Configure aws4fetch to sign requests to Cloudflare R2 using the S3-compatible API.","url":"https://developers.cloudflare.com/r2/examples/aws/aws4fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/aws4fetch/","name":"aws4fetch"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws4fetch/#page","headline":"aws4fetch · Cloudflare R2 docs","description":"Configure aws4fetch to sign requests to Cloudflare R2 using the S3-compatible API.","url":"https://developers.cloudflare.com/r2/examples/aws/aws4fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

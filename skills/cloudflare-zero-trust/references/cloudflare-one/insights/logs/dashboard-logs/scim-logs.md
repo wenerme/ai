@@ -1,16 +1,18 @@
 ---
-title: SCIM provisioning logs
 description: Reference information for SCIM provisioning logs in Zero Trust analytics.
-image: https://developers.cloudflare.com/zt-preview.png
+title: SCIM provisioning logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  SCIM provisioning logs
 
-# SCIM provisioning logs
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 SCIM (System for Cross-domain Identity Management) activity logs allow administrators to audit how [SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) events in an identity provider (such as create, update, and delete) affect a user's identity and group membership in Zero Trust. You can compare your Zero Trust SCIM logs with your identity provider's SCIM logs to track how identity data is shared between the two services and pinpoint the source of any provisioning errors.
 
@@ -40,7 +42,14 @@ SCIM provisioning logs show the following information for each inbound SCIM requ
 * **Request body**: HTTP request body containing the data that was added, modified, or removed
 * **JSON log**: SCIM request log in JSON format
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/#page","headline":"SCIM provisioning logs · Cloudflare One docs","description":"Reference information for SCIM provisioning logs in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SCIM"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/","name":"Dashboard logs"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/scim-logs/","name":"SCIM provisioning logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/#page","headline":"SCIM provisioning logs · Cloudflare One docs","description":"Reference information for SCIM provisioning logs in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SCIM"]}
 ```

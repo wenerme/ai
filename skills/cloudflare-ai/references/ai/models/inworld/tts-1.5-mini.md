@@ -1,38 +1,38 @@
 ---
-title: Inworld TTS 1.5 Mini
 description: Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Inworld TTS 1.5 Mini
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Inworld logo](https://developers.cloudflare.com/_astro/inworld.BDwMAXI2.svg)
 
 #  Inworld TTS 1.5 Mini
 
-Text-to-Speech • Inworld
+ Text-to-Speech • Inworld
 
-`inworld/tts-1.5-mini`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` inworld/tts-1.5-mini `
+
+* Third-party
+* Zero data retention
 
 Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.
 
-| Model Info          |                                                                                                                        |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://inworld.ai/terms)                                                                                     |
-| More information    | [link ↗](https://inworld.ai/)                                                                                          |
-| Zero data retention | Yes                                                                                                                    |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-mini) |
+| Model Info          |                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://inworld.ai/terms)                                                                                      |
+| More information    | [link ↗](https://inworld.ai/)                                                                                           |
+| Zero data retention | Yes                                                                                                                     |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-mini) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-858)
-* [ cURL ](#tab-panel-859)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -64,9 +64,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-854)
-* [ Raw response ](#tab-panel-855)
-
 ```json
 {
   "gatewayMetadata": {
@@ -82,11 +79,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Fast Speech**  — Speed up speech for quick playback
-
-* [ TypeScript ](#tab-panel-862)
-* [ cURL ](#tab-panel-863)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -120,9 +112,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-856)
-* [ Raw response ](#tab-panel-857)
-
 ```json
 {
   "gatewayMetadata": {
@@ -136,11 +125,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Low Latency**  — Minimize latency by disabling text normalization
-
-* [ TypeScript ](#tab-panel-864)
-* [ cURL ](#tab-panel-865)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -174,9 +158,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-860)
-* [ Raw response ](#tab-panel-861)
-
 ```json
 {
   "gatewayMetadata": {
@@ -190,9 +171,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-866)
-* [ Output ](#tab-panel-867)
 
 text
 
@@ -240,7 +218,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schem
 
 Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/#page","headline":"Inworld TTS 1.5 Mini (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/#page","headline":"Inworld TTS 1.5 Mini (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

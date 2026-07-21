@@ -1,16 +1,18 @@
 ---
-title: Choose the Right Text Generation Model
 description: There's a wide range of text generation models available through Workers AI. In an effort to aid you in your journey of finding the right model, this notebook will help you get to know your options in a speed dating type of scenario.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Choose the Right Text Generation Model
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Choose the Right Text Generation Model
 
-# Choose the Right Text Generation Model
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A great way to explore the models that are available to you on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
 
@@ -26,8 +28,6 @@ The good news is that on the [Workers AI Text Generation](https://developers.clo
 
 In an effort to aid you in your journey of finding the right model, this notebook will help you get to know your options in a speed dating type of scenario.
 
-**Python**
-
 ```python
 import sys
 !{sys.executable} -m pip install requests python-dotenv
@@ -42,21 +42,15 @@ Requirement already satisfied: urllib3<3,>=1.21.1 in ./venv/lib/python3.12/site-
 Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.12/site-packages (from requests) (2023.11.17)
 ```
 
-**Python**
-
 ```python
 import os
 from getpass import getpass
 from timeit import default_timer as timer
 
-
 from IPython.display import display, Image, Markdown, Audio
-
 
 import requests
 ```
-
-**Python**
 
 ```python
 %load_ext dotenv
@@ -74,8 +68,6 @@ CLOUDFLARE_API_TOKEN="YOUR-TOKEN"
 CLOUDFLARE_ACCOUNT_ID="YOUR-ACCOUNT-ID"
 ```
 
-**Python**
-
 ```python
 if "CLOUDFLARE_API_TOKEN" in os.environ:
     api_token = os.environ["CLOUDFLARE_API_TOKEN"]
@@ -83,16 +75,12 @@ else:
     api_token = getpass("Enter your Cloudflare API Token")
 ```
 
-**Python**
-
 ```python
 if "CLOUDFLARE_ACCOUNT_ID" in os.environ:
     account_id = os.environ["CLOUDFLARE_ACCOUNT_ID"]
 else:
     account_id = getpass("Enter your account id")
 ```
-
-**Python**
 
 ```python
 # Given a set of models and questions, display in the cell each response to the question, from each model
@@ -123,7 +111,6 @@ def speed_date(models, questions):
                 print(ex)
                 print(inference)
 
-
         display(Markdown("\n\n---"))
 ```
 
@@ -132,8 +119,6 @@ def speed_date(models, questions):
 Who better to tell you about the specific models than themselves?!
 
 The timing here is specific to the entire completion, but remember all Text Generation models on [Workers AI support streaming](https://developers.cloudflare.com/workers-ai/models/).
-
-**Python**
 
 ```python
 models = [
@@ -144,12 +129,10 @@ models = [
     "@hf/thebloke/llama-2-13b-chat-awq",
 ]
 
-
 questions = [
     "What are the top 3 tasks where you excel? Please keep things brief.",
     "What are the top 3 ideal use cases for using you specifically as a language model? Please keep things brief.",
 ]
-
 
 speed_date(models, questions)
 ```
@@ -280,14 +263,11 @@ _Generated in 10.28 seconds_
 
 Even though not every model bragged about how good they were at this, you'll find most can handle both translation and localization at some level. Please change the models, phrases, to your needs.
 
-**Python**
-
 ```python
 proud_translator_models = [
     "@hf/thebloke/neural-chat-7b-v3-1-awq",
     "@hf/thebloke/mistral-7b-instruct-v0.1-awq"
 ]
-
 
 phrases = [
     "Excuse me, which way to the restroom?",
@@ -295,14 +275,11 @@ phrases = [
     "I am so stoked and pumped to see this work with slang! It should be killer and rad."
 ]
 
-
 languages = ["Spanish", "French", "British Slang", "Heavy New York accent from the Bronx"]
-
 
 questions = [f"""Translate "{phrase}" from "English" to "{language}" """
              for phrase in phrases
              for language in languages]
-
 
 speed_date(proud_translator_models, questions)
 ```
@@ -481,8 +458,6 @@ _Generated in 1.51 seconds_
 
 Again, most models are relatively good at this, but I've pulled out those that specifically purported to be good at retrieving and summarizing.
 
-**Python**
-
 ```python
 proud_summarizers = [
     "@hf/thebloke/llama-2-13b-chat-awq",
@@ -490,13 +465,11 @@ proud_summarizers = [
     "@hf/thebloke/openhermes-2.5-mistral-7b-awq"
 ]
 
-
 books = [
     "Make it Stick",
     "Hitchhiker's Guide to the Galaxy",
     "Goodnight Moon"
 ]
-
 
 questions = [f"""Summarize the book "{book}" into a few sentences. Ensure to include the author and the year it was published. """
              for book in books]
@@ -587,8 +560,6 @@ _Generated in 4.66 seconds_
 
 Your needs here will vary, so please make use of changing the questions.
 
-**Python**
-
 ```python
 proud_content_creator_models = [
     "@hf/thebloke/mistral-7b-instruct-v0.1-awq",
@@ -596,13 +567,11 @@ proud_content_creator_models = [
     "@hf/thebloke/llama-2-13b-chat-awq",
 ]
 
-
 questions = [
     "I'm writing a fictional story that is set in the near future. It's a love story about star crossed lovers. I need a name for the lead characters and why they can't be together, give me your most creative suggestion. Only one please.",
     "I want to create a new tech product that helps keep cables arranged. Can you help me come up with a title and a tagline? Only your best suggestion please.",
     "Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point."
 ]
-
 
 speed_date(proud_content_creator_models, questions)
 ```
@@ -728,20 +697,16 @@ _Generated in 10.24 seconds_
 
 Workers AI provides models that are specific for [Text Classification](https://developers.cloudflare.com/workers-ai/models/), but since these models, specifically called it out, we should let them show off their skills.
 
-**Python**
-
 ```python
 proud_classifiers = [
     "@hf/thebloke/openhermes-2.5-mistral-7b-awq",
     "@hf/thebloke/mistral-7b-instruct-v0.1-awq"
 ]
 
-
 sentiment_prompt_template = """
 Classify the text into neutral, negative, or positive
 Text: {text}
 Sentiment: """
-
 
 comments = [
     "Wow there are a ton of text generation models on Cloudflare Workers AI!",
@@ -750,7 +715,6 @@ comments = [
     "The challenging thing about using native open source models is that they are all configured a little differently",
     "Thankfully Cloudflare Workers AI has made a standard interface that lets me get reliable, low-latency inference. So quick too!"
 ]
-
 
 sentiment_questions = [sentiment_prompt_template.format(text=comment) for comment in comments]
 
@@ -832,7 +796,14 @@ _Generated in 1.93 seconds_
 
 ---
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/#page","headline":"Choose the Right Text Generation Model · Cloudflare Workers AI docs","description":"There's a wide range of text generation models available through Workers AI. In an effort to aid you in your journey of finding the right model, this notebook will help you get to know your options in a speed dating type of scenario.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Python"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/","name":"Choose the Right Text Generation Model"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/#page","headline":"Choose the Right Text Generation Model · Cloudflare Workers AI docs","description":"There's a wide range of text generation models available through Workers AI. In an effort to aid you in your journey of finding the right model, this notebook will help you get to know your options in a speed dating type of scenario.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Python"]}
 ```

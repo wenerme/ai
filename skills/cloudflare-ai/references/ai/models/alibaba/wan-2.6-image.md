@@ -1,38 +1,38 @@
 ---
-title: Wan 2.6 Image
 description: Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Wan 2.6 Image
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.C3THgr9s.svg)
 
 #  Wan 2.6 Image
 
-Text-to-Image • Alibaba
+ Text-to-Image • Alibaba
 
-`alibaba/wan-2.6-image`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` alibaba/wan-2.6-image `
+
+* Third-party
+* Zero data retention
 
 Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions.
 
-| Model Info          |                                                                                                                         |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                    |
-| More information    | [link ↗](https://wan.video/)                                                                                            |
-| Zero data retention | Yes                                                                                                                     |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.6-image) |
+| Model Info          |                                                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                     |
+| More information    | [link ↗](https://wan.video/)                                                                                             |
+| Zero data retention | Yes                                                                                                                      |
+| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.6-image) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-100)
-* [ cURL ](#tab-panel-101)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -54,9 +54,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-98)
-* [ Raw response ](#tab-panel-99)
-
 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png)
 
 ```json
@@ -74,11 +71,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Custom Dimensions**  — Specify image size in WxH format
-
-* [ TypeScript ](#tab-panel-104)
-* [ cURL ](#tab-panel-105)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -105,9 +97,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-102)
-* [ Raw response ](#tab-panel-103)
-
 ![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png)
 
 ```json
@@ -123,11 +112,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Square Format**  — Square image for social media or product photos
-
-* [ TypeScript ](#tab-panel-108)
-* [ cURL ](#tab-panel-109)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -154,9 +138,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-106)
-* [ Raw response ](#tab-panel-107)
-
 ![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png)
 
 ```json
@@ -172,11 +153,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Negative Prompt**  — Guide generation away from unwanted elements
-
-* [ TypeScript ](#tab-panel-112)
-* [ cURL ](#tab-panel-113)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -202,9 +178,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-110)
-* [ Raw response ](#tab-panel-111)
-
 ![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png)
 
 ```json
@@ -220,11 +193,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Portrait Format**  — Tall vertical image for portraits
-
-* [ TypeScript ](#tab-panel-116)
-* [ cURL ](#tab-panel-117)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -250,9 +218,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-114)
-* [ Raw response ](#tab-panel-115)
-
 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png)
 
 ```json
@@ -268,9 +233,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-118)
-* [ Output ](#tab-panel-119)
 
 prompt
 
@@ -294,7 +256,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/sche
 
 Output [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/#page","headline":"Wan 2.6 Image (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions.","url":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/#page","headline":"Wan 2.6 Image (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions.","url":"https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

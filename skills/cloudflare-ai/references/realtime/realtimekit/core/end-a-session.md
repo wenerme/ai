@@ -1,16 +1,18 @@
 ---
-title: End a session
 description: End a RealtimeKit session for all participants and stop active recordings.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: End a session
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  End a session
 
-# End a session
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisites
 
@@ -27,35 +29,27 @@ WebMobile
 ReactWeb ComponentsAngular
 
 1. Check that the local participant has permission to remove participants.
-
-**TypeScript**
 ```ts
 const canEndSession = meeting.self.permissions.kickParticipant === true;
 if (!canEndSession) {
-  // Disable the "End meeting/session" control in your UI.
-  // You can also show a message to explain why the action is not available.
+	// Disable the "End meeting/session" control in your UI.
+	// You can also show a message to explain why the action is not available.
 }
 ```
-
-**TypeScript**
 ```ts
 const canEndSession = meeting.self.permissions.kickParticipant === true;
 if (!canEndSession) {
-  // Disable the "End meeting/session" control in your UI.
-  // You can also show a message to explain why the action is not available.
+	// Disable the "End meeting/session" control in your UI.
+	// You can also show a message to explain why the action is not available.
 }
 ```
-
-**TypeScript**
 ```ts
 const canEndSession = meeting.self.permissions.kickParticipant === true;
 if (!canEndSession) {
-  // Disable the "End meeting/session" control in your UI.
-  // You can also show a message to explain why the action is not available.
+	// Disable the "End meeting/session" control in your UI.
+	// You can also show a message to explain why the action is not available.
 }
 ```
-
-**Kotlin**
 ```kotlin
 val canEndSession = meeting.localUser.permissions.host.canKickParticipant
 if (!canEndSession) {
@@ -63,8 +57,6 @@ if (!canEndSession) {
     // You can also show a message to explain why the action is not available.
 }
 ```
-
-**Swift**
 ```swift
 let canEndSession = meeting.localUser.permissions.host.canKickParticipant
 if !canEndSession {
@@ -72,8 +64,6 @@ if !canEndSession {
     // You can also show a message to explain why the action is not available.
 }
 ```
-
-**Dart**
 ```dart
 final canEndSession = meeting.localUser.permissions.host.canKickParticipant;
 if (!canEndSession) {
@@ -81,64 +71,54 @@ if (!canEndSession) {
   // You can also show a message to explain why the action is not available.
 }
 ```
-
-**JavaScript**
 ```javascript
 const canEndSession = meeting.self.permissions.kickParticipant === true;
 if (!canEndSession) {
-  // Disable the "End meeting/session" control in your UI.
-  // You can also show a message to explain why the action is not available.
+	// Disable the "End meeting/session" control in your UI.
+	// You can also show a message to explain why the action is not available.
 }
 ```
 2. End the session by removing all participants.
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.
-
-**TypeScript**
 ```ts
 try {
-  await meeting.participants.kickAll();
+	await meeting.participants.kickAll();
 } catch (err) {
-  if (err?.code === 1201) {
-    // The participant does not have permission to end the session.
-    // Update your UI to indicate that the action is not allowed.
-    return;
-  }
-  throw err;
+	if (err?.code === 1201) {
+		// The participant does not have permission to end the session.
+		// Update your UI to indicate that the action is not allowed.
+		return;
+	}
+	throw err;
 }
 ```
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.
-
-**TypeScript**
 ```ts
 try {
-  await meeting.participants.kickAll();
+	await meeting.participants.kickAll();
 } catch (err) {
-  if (err?.code === 1201) {
-    // The participant does not have permission to end the session.
-    // Update your UI to indicate that the action is not allowed.
-    return;
-  }
-  throw err;
+	if (err?.code === 1201) {
+		// The participant does not have permission to end the session.
+		// Update your UI to indicate that the action is not allowed.
+		return;
+	}
+	throw err;
 }
 ```
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.
-
-**TypeScript**
 ```ts
 try {
-  await meeting.participants.kickAll();
+	await meeting.participants.kickAll();
 } catch (err) {
-  if (err?.code === 1201) {
-    // The participant does not have permission to end the session.
-    // Update your UI to indicate that the action is not allowed.
-    return;
-  }
-  throw err;
+	if (err?.code === 1201) {
+		// The participant does not have permission to end the session.
+		// Update your UI to indicate that the action is not allowed.
+		return;
+	}
+	throw err;
 }
 ```
 If the participant does not have the required permission, `kickAll()` returns a `HostError`.
-
-**Kotlin**
 ```kotlin
 val error: HostError? = meeting.participants.kickAll()
 if (error != null) {
@@ -153,8 +133,6 @@ if (error != null) {
 }
 ```
 If the participant does not have the required permission, `kickAll()` returns a `HostError`.
-
-**Swift**
 ```swift
 let error: HostError? = meeting.participants.kickAll()
 if let error = error {
@@ -170,8 +148,6 @@ if let error = error {
     // Successfully initiated session end
 }
 ```
-
-**Dart**
 ```dart
 meeting.participants.kickAll(onResult: (error) {
   if (error != null) {
@@ -183,54 +159,44 @@ meeting.participants.kickAll(onResult: (error) {
 });
 ```
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.
-
-**JavaScript**
 ```javascript
 try {
-  await meeting.participants.kickAll();
+	await meeting.participants.kickAll();
 } catch (err) {
-  if (err?.code === 1201) {
-    // The participant does not have permission to end the session.
-    // Update your UI to indicate that the action is not allowed.
-    return;
-  }
-  throw err;
+	if (err?.code === 1201) {
+		// The participant does not have permission to end the session.
+		// Update your UI to indicate that the action is not allowed.
+		return;
+	}
+	throw err;
 }
 ```
 3. Listen for the session end event.
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.
-
-**TypeScript**
 ```ts
 meeting.self.on("roomLeft", ({ state }) => {
-  if (state === "ended") {
-    // Update your UI to show that the meeting session has ended.
-  }
+	if (state === "ended") {
+		// Update your UI to show that the meeting session has ended.
+	}
 });
 ```
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.
-
-**TypeScript**
 ```ts
 meeting.self.on("roomLeft", ({ state }) => {
-  if (state === "ended") {
-    // Update your UI to show that the meeting session has ended.
-  }
+	if (state === "ended") {
+		// Update your UI to show that the meeting session has ended.
+	}
 });
 ```
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.
-
-**TypeScript**
 ```ts
 meeting.self.on("roomLeft", ({ state }) => {
-  if (state === "ended") {
-    // Update your UI to show that the meeting session has ended.
-  }
+	if (state === "ended") {
+		// Update your UI to show that the meeting session has ended.
+	}
 });
 ```
 When the session ends, all participants leave the session. You can subscribe to the event listeners to handle the session end.
-
-**Kotlin**
 ```kotlin
 meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {
     override fun onMeetingEnded() {
@@ -239,8 +205,6 @@ meeting.addMeetingRoomEventListener(object : RtkMeetingRoomEventListener {
 })
 ```
 When the session ends, all participants leave the session. You can subscribe to the event listeners to handle the session end.
-
-**Swift**
 ```swift
 // Implement the delegate method
 extension MeetingViewModel: RtkMeetingRoomEventListener {
@@ -251,8 +215,6 @@ extension MeetingViewModel: RtkMeetingRoomEventListener {
 meeting.addMeetingRoomEventListener(self)
 ```
 When the session ends, all participants leave the session. You can subscribe to the event listeners to handle the session end.
-
-**Dart**
 ```dart
 class MeetingRoomListener extends RtkMeetingRoomEventListener {
   @override
@@ -264,13 +226,11 @@ class MeetingRoomListener extends RtkMeetingRoomEventListener {
 meeting.addMeetingRoomEventListener(MeetingRoomListener());
 ```
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.
-
-**JavaScript**
 ```javascript
 meeting.self.on("roomLeft", ({ state }) => {
-  if (state === "ended") {
-    // Update your UI to show that the meeting session has ended.
-  }
+	if (state === "ended") {
+		// Update your UI to show that the meeting session has ended.
+	}
 });
 ```
 
@@ -288,12 +248,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Realtime Admin`
 * `Realtime`
 
-**Kick all participants**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings/$MEETING_ID/active-session/kick-all" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ### Listen for session end events with webhooks
@@ -306,19 +264,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Realtime Admin`
 * `Realtime`
 
-**Add a webhook**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Session ended webhook",
-    "url": "<YOUR_WEBHOOK_URL>",
-    "events": [
-        "meeting.ended"
-    ]
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Session ended webhook",
+		"url": "<YOUR_WEBHOOK_URL>",
+		"events": [
+				"meeting.ended"
+		]
+	}'
 ```
 
 ## Disable a meeting
@@ -331,15 +287,13 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Realtime Admin`
 * `Realtime`
 
-**Update a meeting**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings/$MEETING_ID" \
-  --request PATCH \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "status": "INACTIVE"
-  }'
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"status": "INACTIVE"
+	}'
 ```
 
 ## Next steps
@@ -347,7 +301,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$AP
 * Review how presets control permissions in [Preset](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/).
 * Review the possible values of the local participant room state in [Local Participant](https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#state-properties/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/#page","headline":"End a session · Cloudflare Realtime docs","description":"End a RealtimeKit session for all participants and stop active recordings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/end-a-session/","name":"End a session"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/#page","headline":"End a session · Cloudflare Realtime docs","description":"End a RealtimeKit session for all participants and stop active recordings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

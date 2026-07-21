@@ -1,16 +1,18 @@
 ---
-title: Local Domain Fallback
 description: Local Domain Fallback in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Local Domain Fallback
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Local Domain Fallback
 
-# Local Domain Fallback
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare Zero Trust excludes common top-level domains, used for local resolution, from being sent to Gateway for processing. These top-level domains are resolved by the local DNS resolver configured for the device on its primary interface.
 
@@ -46,7 +48,7 @@ To view the domains subject to Local Domain Fallback:
 
 On this page, you will see a list of domains excluded from Gateway. You can [add](#add-a-domain) or [remove](#delete-a-domain) domains from the list at any time.
 
-Warning
+Caution
 
 Local Domain Fallback configuration only impacts where DNS requests get resolved, not the flow of traffic destined to those domains. If you want to prevent traffic from being sent to a specific domain or IP address, you must add those domains or IPs to your [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration.
 
@@ -59,9 +61,6 @@ To view the fallback domains applied to a device, you can:
 ### Add a domain
 
 To add a domain to the Local Domain Fallback list:
-
-* [ Dashboard ](#tab-panel-8113)
-* [ Terraform (v5) ](#tab-panel-8114)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
@@ -76,12 +75,10 @@ A Local Domain Fallback list is scoped to a specific [device profile](https://de
 
   * `Zero Trust Write`
 2. (Optional) Create a list of domains that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:
-
-**local-domains.local.tf**
 ```tf
 locals {
-  default_local_domains = [
-    # Default Local Domain Fallback entries recommended by Cloudflare
+	default_local_domains = [
+		# Default Local Domain Fallback entries recommended by Cloudflare
     {
   suffix = "corp"
 },
@@ -124,28 +121,26 @@ locals {
 {
   suffix = "test"
 }
-  ]
+	]
 }
 ```
 3. To configure Local Domain Fallback for the default device profile, use the [cloudflare\_zero\_trust\_device\_default\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile%5Flocal%5Fdomain%5Ffallback) resource. To configure Local Domain Fallback for a custom device profile, use[cloudflare\_zero\_trust\_device\_custom\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile%5Flocal%5Fdomain%5Ffallback). For example:
-
-**device-profiles.tf**
 ```tf
 resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example" {
-  account_id = var.cloudflare_account_id
-  policy_id  = cloudflare_zero_trust_device_custom_profile.example.id
-  domains = concat(
-    # Global entries
-    local.default_local_domains,
-    # Profile-specific entries
-    [
-      {
-      suffix = "example.com"
-      description = "Domain for local development"
-      dns_server = ["1.1.1.1", "192.168.0.1"]
-      }
-    ]
-  )
+	account_id = var.cloudflare_account_id
+	policy_id  = cloudflare_zero_trust_device_custom_profile.example.id
+	domains = concat(
+		# Global entries
+		local.default_local_domains,
+		# Profile-specific entries
+		[
+			{
+			suffix = "example.com"
+			description = "Domain for local development"
+			dns_server = ["1.1.1.1", "192.168.0.1"]
+			}
+		]
+	)
 }
 ```
 
@@ -183,7 +178,14 @@ By default, Warp sends [reverse DNS queries ↗](https://www.cloudflare.com/lear
 * [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) \- Control which traffic goes through the Cloudflare One Client by including or excluding specific IPs or domains.
 * [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) \- Learn which IPs, domains, and ports to allow so users can deploy and connect the Cloudflare One Client successfully behind a firewall.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#page","headline":"Local Domain Fallback · Cloudflare One docs","description":"Local Domain Fallback in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/","name":"Configure the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/","name":"Route traffic"}},{"@type":"ListItem","position":8,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/","name":"Local Domain Fallback"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#page","headline":"Local Domain Fallback · Cloudflare One docs","description":"Local Domain Fallback in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

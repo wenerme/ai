@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Connect your network privately to Cloudflare
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-interconnect/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-interconnect/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 BGP architecture and resiliency
 
@@ -151,7 +153,7 @@ To connect to AWS Direct Connect:
 #### Google Cloud Interconnect
 
 1. In the Cloudflare dashboard, go to **Interconnects**.
-[ Go to **Interconnects** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
+[ Go to **Interconnects** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
 2. Select **Create an interconnect**.
 3. Under **Cloud Interconnect**, select **Create new**.
 4. Under **Google Integration**, select **Select integration**.
@@ -177,7 +179,14 @@ After you have configured your Google Cloud Interconnect, you will need to add r
   * Add [custom learned routes to Cloud Router ↗](https://cloud.google.com/network-connectivity/docs/router/how-to/configure-custom-learned-routes).
   * Use the BGP session. Reach out to your account team to request a list of one or more prefixes to advertise, and specify the interconnect ID you want to advertise over.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/get-started/#page","headline":"Get started · Cloudflare Network Interconnect docs","description":"Connect your network privately to Cloudflare","url":"https://developers.cloudflare.com/network-interconnect/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","GCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-interconnect/","name":"Network Interconnect"}},{"@type":"ListItem","position":3,"item":{"@id":"/network-interconnect/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/get-started/#page","headline":"Get started · Cloudflare Network Interconnect docs","description":"Connect your network privately to Cloudflare","url":"https://developers.cloudflare.com/network-interconnect/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","GCP"]}
 ```

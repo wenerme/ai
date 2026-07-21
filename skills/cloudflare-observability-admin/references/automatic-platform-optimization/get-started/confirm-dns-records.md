@@ -1,28 +1,37 @@
 ---
-title: Confirm DNS records
 description: Verify your DNS records are correct before enabling APO.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Confirm DNS records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Confirm DNS records
 
-# Confirm DNS records
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Before you change your nameservers, confirm your DNS records are displaying correctly.
 
 1. In the Cloudflare dashboard, go to the DNS **Records** page.
-[ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. To add a record, select **Add record**.
 3. To edit an existing record, select **Edit** for the appropriate record.
 4. After making your changes, select **Save**.
 
 After you confirm your DNS records, [change your nameservers](https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/#page","headline":"Confirm DNS records · Cloudflare Automatic Platform Optimization docs","description":"Verify your DNS records are correct before enabling APO.","url":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/automatic-platform-optimization/","name":"Automatic Platform Optimization"}},{"@type":"ListItem","position":3,"item":{"@id":"/automatic-platform-optimization/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/automatic-platform-optimization/get-started/confirm-dns-records/","name":"Confirm DNS records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/#page","headline":"Confirm DNS records · Cloudflare Automatic Platform Optimization docs","description":"Verify your DNS records are correct before enabling APO.","url":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

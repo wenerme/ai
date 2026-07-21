@@ -1,16 +1,18 @@
 ---
-title: Subdomain setup
 description: Add a subdomain as a standalone zone in Cloudflare.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Subdomain setup
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Subdomain setup
 
-# Subdomain setup
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you use a subdomain setup, you can manage the [Cloudflare configurations](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) for one or more subdomains separately from those associated with your apex domain. This means that, on your [account homepage ↗](https://dash.cloudflare.com/?to=/:account/), you would find websites like `example.com` or `blog.example.com` listed as separate zones.
 
@@ -54,7 +56,14 @@ If you have both a parent zone (for example, `example.com`) and a child subdomai
 
 This is normal DNS behavior — recursive resolvers query the parent zone first to get the referral (NS records) pointing to the child zone's nameservers. These referral queries appear in the parent zone's analytics even though the authoritative answer comes from the child zone.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/#page","headline":"Subdomain setup · Cloudflare DNS docs","description":"Add a subdomain as a standalone zone in Cloudflare.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/subdomain-setup/","name":"Subdomain setup"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/#page","headline":"Subdomain setup · Cloudflare DNS docs","description":"Add a subdomain as a standalone zone in Cloudflare.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

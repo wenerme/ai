@@ -1,16 +1,18 @@
 ---
-title: Vite Environments
 description: Vite environments and the Vite plugin
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Vite Environments
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Vite Environments
 
-# Vite Environments
+Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [Vite Environment API ↗](https://vite.dev/guide/api-environment), released in Vite 6, is the key feature that enables the Cloudflare Vite plugin to integrate Vite directly with the Workers runtime. It is not necessary to understand all the intricacies of the Environment API as an end user, but it is useful to have a high-level understanding.
 
@@ -28,47 +30,37 @@ The default Vite environment name for a Worker is always the top-level Worker na
 
 In the following example we have a Worker named `my-worker` that is associated with a Vite environment named `my_worker`. We use the Vite config to set global constant replacements for this environment:
 
-* [  wrangler.jsonc ](#tab-panel-13117)
-* [  wrangler.toml ](#tab-panel-13118)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-worker",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "main": "./src/index.ts"
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-worker",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"main": "./src/index.ts"
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 main = "./src/index.ts"
 ```
-
-**vite.config.ts**
 
 ```ts
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 
-
 export default defineConfig({
-  environments: {
-    my_worker: {
-      define: {
-        __APP_VERSION__: JSON.stringify("v1.0.0"),
-      },
-    },
-  },
-  plugins: [cloudflare()],
+	environments: {
+		my_worker: {
+			define: {
+				__APP_VERSION__: JSON.stringify("v1.0.0"),
+			},
+		},
+	},
+	plugins: [cloudflare()],
 });
 ```
 
@@ -80,22 +72,26 @@ The default behavior of using the Worker name as the environment name is appropr
 
 If you are using the Cloudflare Vite plugin with [TanStack Start ↗](https://tanstack.com/start/) or [React Router v8 ↗](https://reactrouter.com/), then your Worker is used for server-side rendering and tightly integrated with the framework. To support this, you should assign it to the `ssr` environment by setting `viteEnvironment.name` in the plugin config.
 
-**vite.config.ts**
-
 ```ts
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { reactRouter } from "@react-router/dev/vite";
 
-
 export default defineConfig({
-  plugins: [cloudflare({ viteEnvironment: { name: "ssr" } }), reactRouter()],
+	plugins: [cloudflare({ viteEnvironment: { name: "ssr" } }), reactRouter()],
 });
 ```
 
 This merges the Worker's environment configuration with the framework's SSR configuration and ensures that the Worker is included as part of the framework's build output.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/#page","headline":"Vite Environments · Cloudflare Workers docs","description":"Vite environments and the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/vite-plugin/reference/vite-environments/","name":"Vite Environments"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/#page","headline":"Vite Environments · Cloudflare Workers docs","description":"Vite environments and the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

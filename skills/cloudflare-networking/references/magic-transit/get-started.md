@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up Magic Transit to protect your network infrastructure.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Before you can begin using Magic Transit, complete the following onboarding steps. Cloudflare can significantly accelerate this timeline during active-attack scenarios.
 
@@ -57,36 +59,27 @@ The LOA must be a PDF. Transit providers may reject the LOA if it is a JPG or PN
 
 ### Example of a Letter of Agency
 
-**Letter of Agency template**
-
 ```txt
 [COMPANY LETTERHEAD]
 
-
 LETTER OF AGENCY ("LOA")
-
 
 [DATE]
 
 
 To whom it may concern:
 
-
 [COMPANY NAME] (the "Company") authorizes Cloudflare, Inc. with AS13335 to advertise the following IP address blocks / originating ASNs:
 
-
 - - - - - - - - - - - - - - - - - - -
 [Subnet & Originating ASN]
 [Subnet & Originating ASN]
 [Subnet & Originating ASN]
 - - - - - - - - - - - - - - - - - - -
-
 
 As a representative of the Company that is the owner of the aforementioned IP address blocks / originating ASNs, I hereby declare that I am authorized to sign this LOA on the Company’s behalf.
 
-
 Should you have any questions please email me at [E-MAIL ADDRESS], or call: [TELEPHONE NUMBER]
-
 
 Regards,
 
@@ -198,7 +191,7 @@ Once pre-flight checks are completed, Cloudflare unlocks your prefixes for you t
 
 If you are using a Cloudflare IP, you do not need to advertise your prefixes.
 
-Warning
+Caution
 
 You must [put the appropriate MSS clamps](#set-maximum-segment-size) in place before [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) changes are made. Failure to apply an MSS clamp can result in dropped packets and hard-to-debug connectivity issues.
 
@@ -216,7 +209,14 @@ After your prefixes are advertised, configure your DDoS protection settings:
 1. Review and customize your [DDoS protection](https://developers.cloudflare.com/magic-transit/ddos/) settings, including [network-layer DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/).
 2. If your network handles TCP traffic, enable [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/). If your network receives DNS over UDP traffic, enable [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/). These systems provide stateful analysis beyond the managed rulesets.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/get-started/#page","headline":"Get started · Cloudflare Magic Transit docs","description":"Set up Magic Transit to protect your network infrastructure.","url":"https://developers.cloudflare.com/magic-transit/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/get-started/#page","headline":"Get started · Cloudflare Magic Transit docs","description":"Set up Magic Transit to protect your network infrastructure.","url":"https://developers.cloudflare.com/magic-transit/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

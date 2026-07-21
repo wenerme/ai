@@ -1,16 +1,18 @@
 ---
-title: Historical (2022)
 description: Changes to WAF managed rulesets done in 2022.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Historical (2022)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Historical (2022)
 
-# Historical (2022)
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/change-log/historical-2022/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 | Ruleset                         | Rule ID     | Legacy Rule ID | Description                                                                                                                                                                   | Change Date           | Old Action | New Action |
 | ------------------------------- | ----------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ---------- | ---------- |
@@ -124,7 +126,12 @@ image: https://developers.cloudflare.com/core-services-preview.png
 | Cloudflare Specials             | ...dc29b753 | 100515B        | Log4j Body Obfuscation                                                                                                                                                        | 2022-02-14            | N/A        | Block      |
 | Cloudflare Specials             | ...69fe1e0d | 100700         | Apache SSRF vulnerability CVE-2021-40438                                                                                                                                      | 2022-01-24            | N/A        | Block      |
 
+Was this helpful?
+
+YesNo
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/historical-2022/#page","headline":"Historical (2022) · Cloudflare Web Application Firewall (WAF) docs","description":"Changes to WAF managed rulesets done in 2022.","url":"https://developers.cloudflare.com/waf/change-log/historical-2022/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/historical-2022/","name":"Historical (2022)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/historical-2022/#page","headline":"Historical (2022) · Cloudflare Web Application Firewall (WAF) docs","description":"Changes to WAF managed rulesets done in 2022.","url":"https://developers.cloudflare.com/waf/change-log/historical-2022/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

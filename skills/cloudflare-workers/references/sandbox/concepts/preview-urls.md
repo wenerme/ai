@@ -1,29 +1,28 @@
 ---
-title: Preview URLs
 description: Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Preview URLs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Preview URLs
 
-# Preview URLs
+Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/concepts/preview-urls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 # Quick deployment
 
 For quick preview deployments we recommend using [Cloudflare Tunnel ↗](https://developers.cloudflare.com/tunnel/) to generate preview URLs to your web services. These work across local development, workers.dev and production usage.
-
-**TypeScript**
 
 ```ts
 await sandbox.startProcess("python -m http.server 8000");
 const tunnel = await sandbox.tunnels.get(8000);
 console.log(tunnel.url);
 // https://acute-llama-dancing-roundly.trycloudflare.app
-
 
 // Request will be routed directly to the webserver running on the sandbox.
 const req = await fetch(`${tunnel.url}/api/users`); // => GET http://localhost:8000/api/users
@@ -51,16 +50,12 @@ Preview URLs work in local development without configuration. For production, yo
 
 Preview URLs provide public HTTPS access to services running inside sandboxes. When you expose a port, you get a unique URL that proxies requests to your service.
 
-**TypeScript**
-
 ```typescript
 // Extract hostname from request
 const { hostname } = new URL(request.url);
 
-
 await sandbox.startProcess("python -m http.server 8000");
 const exposed = await sandbox.exposePort(8000, { hostname });
-
 
 console.log(exposed.url);
 // Production: https://8000-sandbox-id-abc123random4567.yourdomain.com
@@ -82,8 +77,6 @@ console.log(exposed.url);
 
 When no custom token is specified, a random 16-character token is generated:
 
-**TypeScript**
-
 ```typescript
 const exposed = await sandbox.exposePort(8000, { hostname });
 // https://8000-sandbox-id-abc123random4567.yourdomain.com
@@ -95,12 +88,10 @@ URLs with auto-generated tokens change when you unexpose and re-expose a port.
 
 For production deployments or shared URLs, specify a custom token to maintain consistency across container restarts:
 
-**TypeScript**
-
 ```typescript
 const stable = await sandbox.exposePort(8000, {
-  hostname,
-  token: "api_v1",
+	hostname,
+	token: "api_v1",
 });
 // https://8000-sandbox-id-api_v1.yourdomain.com
 // Same URL every time ✓
@@ -125,8 +116,6 @@ Preview URLs extract the sandbox ID from the hostname to route requests. Since h
 
 **The problem**: If you create a sandbox with `"MyProject-123"`, it exists as a Durable Object with that exact ID. But the preview URL routes to `"myproject-123"` (lowercased from the hostname). These are different Durable Objects, so your sandbox is unreachable via preview URL.
 
-**TypeScript**
-
 ```typescript
 // Problem scenario
 const sandbox = getSandbox(env.Sandbox, "MyProject-123");
@@ -138,11 +127,9 @@ await sandbox.exposePort(8080, { hostname });
 
 **The solution**: Use `normalizeId: true` to lowercase IDs when creating sandboxes:
 
-**TypeScript**
-
 ```typescript
 const sandbox = getSandbox(env.Sandbox, "MyProject-123", {
-  normalizeId: true,
+	normalizeId: true,
 });
 // Durable Object ID: "myproject-123" (lowercased)
 // Preview URL: 8080-myproject-123-token123.yourdomain.com
@@ -157,25 +144,20 @@ Without `normalizeId: true`, `exposePort()` throws an error when the ID contains
 
 You must call `proxyToSandbox()` first in your Worker's fetch handler to route preview URL requests:
 
-**TypeScript**
-
 ```typescript
 import { proxyToSandbox, getSandbox } from "@cloudflare/sandbox";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 export default {
-  async fetch(request, env) {
-    // Handle preview URL routing first
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
+	async fetch(request, env) {
+		// Handle preview URL routing first
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
 
-
-    // Your application routes
-    // ...
-  },
+		// Your application routes
+		// ...
+	},
 };
 ```
 
@@ -185,20 +167,15 @@ Requests flow: Browser → Your Worker → Durable Object (sandbox) → Your Ser
 
 Expose multiple services simultaneously:
 
-**TypeScript**
-
 ```typescript
 // Extract hostname from request
 const { hostname } = new URL(request.url);
 
-
 await sandbox.startProcess("node api.js"); // Port 3000
 await sandbox.startProcess("node admin.js"); // Port 3001
 
-
 const api = await sandbox.exposePort(3000, { hostname, name: "api" });
 const admin = await sandbox.exposePort(3001, { hostname, name: "admin" });
-
 
 // Each gets its own URL with unique tokens:
 // https://3000-abc123-random16chars01.yourdomain.com
@@ -224,28 +201,23 @@ const admin = await sandbox.exposePort(3001, { hostname, name: "admin" });
 
 Preview URLs support WebSocket connections. When a WebSocket upgrade request hits an exposed port, the routing layer automatically handles the connection handshake.
 
-**TypeScript**
-
 ```typescript
 // Extract hostname from request
 const { hostname } = new URL(request.url);
-
 
 // Start a WebSocket server
 await sandbox.startProcess("bun run ws-server.ts 8080");
 const { url } = await sandbox.exposePort(8080, { hostname });
 
-
 // Clients connect using WebSocket protocol
 // Browser: new WebSocket('wss://8080-abc123-token123.yourdomain.com')
 
-
 // Your Worker routes automatically
 export default {
-  async fetch(request, env) {
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
-  },
+	async fetch(request, env) {
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
+	},
 };
 ```
 
@@ -253,7 +225,7 @@ For custom routing scenarios where your Worker needs to control which sandbox or
 
 ## Security
 
-Warning
+Caution
 
 Preview URLs are publicly accessible by default, but require a valid access token that is generated when you expose a port.
 
@@ -268,14 +240,10 @@ Preview URLs are publicly accessible by default, but require a valid access toke
 
 For additional security, implement authentication within your application:
 
-**Python**
-
 ```python
 from flask import Flask, request, abort
 
-
 app = Flask(__name__)
-
 
 @app.route('/data')
 def get_data():
@@ -294,21 +262,16 @@ This adds a second layer of security on top of the URL token.
 
 Check if service is running and listening:
 
-**TypeScript**
-
 ```typescript
 // 1. Is service running?
 const processes = await sandbox.listProcesses();
 
-
 // 2. Is port exposed?
 const ports = await sandbox.getExposedPorts();
-
 
 // 3. Is service binding to 0.0.0.0 (not 127.0.0.1)?
 // Good:
 app.run((host = "0.0.0.0"), (port = 3000));
-
 
 // Bad (localhost only):
 app.run((host = "127.0.0.1"), (port = 3000));
@@ -327,7 +290,6 @@ When using `wrangler dev`, you must expose ports in your Dockerfile:
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:0.3.3
 
-
 # Required for local development
 EXPOSE 3000
 EXPOSE 8080
@@ -345,7 +307,14 @@ This is **only required for local development**. In production, all container po
 * [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs as an alternative for development
 * [Security Model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Security best practices
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/#page","headline":"Preview URLs · Cloudflare Sandbox SDK docs","description":"Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.","url":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/concepts/preview-urls/","name":"Preview URLs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/#page","headline":"Preview URLs · Cloudflare Sandbox SDK docs","description":"Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.","url":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

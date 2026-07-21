@@ -1,16 +1,18 @@
 ---
-title: Transport modes
 description: Configure how Sandbox SDK communicates between Durable Objects and containers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Transport modes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Transport modes
 
-# Transport modes
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/configuration/transport/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Configure how the Sandbox SDK communicates with containers using transport modes.
 
@@ -41,8 +43,6 @@ RPC transport establishes a single persistent connection to the container and mu
 
 **Example with HTTP transport (4 subrequests):**
 
-**TypeScript**
-
 ```typescript
 await sandbox.exec("python setup.py");
 await sandbox.writeFile("/app/config.json", config);
@@ -51,8 +51,6 @@ const result = await sandbox.readFile("/app/output.txt");
 ```
 
 **Same code with RPC transport (1 subrequest):**
-
-**TypeScript**
 
 ```typescript
 // Identical code - transport is configured via environment variable
@@ -63,8 +61,6 @@ const result = await sandbox.readFile("/app/output.txt");
 ```
 
 RPC transport also removes the [32 MiB limitation](https://developers.cloudflare.com/workers/runtime-apis/rpc/#limitations) that the HTTP transport has. Pass a `ReadableStream` instance to the `writeFile()` method.
-
-**JavaScript**
 
 ```js
 const req = await fetch("https://example.com/archive.tar.gz");
@@ -83,54 +79,44 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-11099)
-* [  wrangler.toml ](#tab-panel-11100)
-
-**JSONC**
-
 ```jsonc
 {
-  "name": "my-sandbox-worker",
-  "main": "src/index.ts",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "vars": {
-    "SANDBOX_TRANSPORT": "rpc"
-  },
-  "containers": [
-    {
-      "class_name": "Sandbox",
-      "image": "./Dockerfile",
-    },
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "class_name": "Sandbox",
-        "name": "Sandbox",
-      },
-    ],
-  },
+	"name": "my-sandbox-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"vars": {
+		"SANDBOX_TRANSPORT": "rpc"
+	},
+	"containers": [
+		{
+			"class_name": "Sandbox",
+			"image": "./Dockerfile",
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "Sandbox",
+				"name": "Sandbox",
+			},
+		],
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-20"
-
+compatibility_date = "2026-07-21"
 
 [vars]
 SANDBOX_TRANSPORT = "rpc"
 
-
 [[containers]]
 class_name = "Sandbox"
 image = "./Dockerfile"
-
 
 [[durable_objects.bindings]]
 class_name = "Sandbox"
@@ -191,20 +177,13 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-11093)
-* [  wrangler.toml ](#tab-panel-11094)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "SANDBOX_TRANSPORT": "rpc"
-  },
+	"vars": {
+		"SANDBOX_TRANSPORT": "rpc"
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -221,20 +200,13 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-11095)
-* [  wrangler.toml ](#tab-panel-11096)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    // Remove SANDBOX_TRANSPORT or set to "http"
-  },
+	"vars": {
+		// Remove SANDBOX_TRANSPORT or set to "http"
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 vars = { }
@@ -248,20 +220,13 @@ Using the `rpc` transport requires version 0.9.1 or newer. If you are using an o
 
 Set the `SANDBOX_TRANSPORT` variable to `"rpc"`:
 
-* [  wrangler.jsonc ](#tab-panel-11097)
-* [  wrangler.toml ](#tab-panel-11098)
-
-**JSONC**
-
 ```jsonc
 {
-  "vars": {
-    "SANDBOX_TRANSPORT": "rpc"
-  },
+	"vars": {
+		"SANDBOX_TRANSPORT": "rpc"
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [vars]
@@ -275,7 +240,14 @@ SANDBOX_TRANSPORT = "rpc"
 * [Workers subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) \- Understanding subrequest limits
 * [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) \- How Sandbox SDK components communicate
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/transport/#page","headline":"Transport modes · Cloudflare Sandbox SDK docs","description":"Configure how Sandbox SDK communicates between Durable Objects and containers.","url":"https://developers.cloudflare.com/sandbox/configuration/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/configuration/transport/","name":"Transport modes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/transport/#page","headline":"Transport modes · Cloudflare Sandbox SDK docs","description":"Configure how Sandbox SDK communicates between Durable Objects and containers.","url":"https://developers.cloudflare.com/sandbox/configuration/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

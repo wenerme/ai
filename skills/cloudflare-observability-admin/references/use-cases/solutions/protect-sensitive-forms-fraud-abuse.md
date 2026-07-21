@@ -1,16 +1,18 @@
 ---
-title: Protect your forms from spam and abuse (Free, Pro, and Business)
 description: Block spam submissions, fake account creation, and card testing on your web forms using a layered defense.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Protect your forms from spam and abuse (Free, Pro, and Business)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Protect your forms from spam and abuse (Free, Pro, and Business)
 
-# Protect your forms from spam and abuse (Free, Pro, and Business)
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Contact, registration, and checkout forms are common targets for automated abuse. This guide covers form protection: verifying that visitors are human, limiting repeated submissions, and blocking known attack patterns. The core workflow uses features available on all plans. Pro and Business plan features are included as callouts.
 
@@ -27,7 +29,7 @@ Adding Turnstile involves three steps: create a widget in the dashboard, add the
 ### Create a Turnstile widget
 
 1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
+[ Go to **Turnstile** ↗ ](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget**.
 3. Fill out the required information:
 
@@ -53,7 +55,6 @@ Add the Turnstile script and widget `div` element to each form you want to prote
   <button type="submit">Submit</button>
 </form>
 
-
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 ```
 
@@ -65,11 +66,8 @@ Server-side validation is required. The client-side widget alone does not protec
 
 Call the Siteverify API before processing any form submission:
 
-**server.js**
-
 ```js
 const SECRET_KEY = "<YOUR-SECRET-KEY>";
-
 
 async function validateTurnstile(token, remoteip) {
   try {
@@ -85,7 +83,6 @@ async function validateTurnstile(token, remoteip) {
         }),
       },
     );
-
 
     const result = await response.json();
     return result;
@@ -109,7 +106,7 @@ Some abuse scripts skip the browser entirely and POST directly to your form endp
 Before creating a rate limiting rule, check the normal submission rate for your form endpoints. Your rate limit threshold should be above this baseline to avoid blocking legitimate traffic.
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. In the **Traffic** tab, select a time period with non-peak traffic, or with the lowest visitor activity.
 3. Use the **Add filter** button to narrow results to your form endpoint traffic.
 4. Note the typical request rate per IP address. Your rate limit should be above this baseline.
@@ -125,7 +122,7 @@ The **Request rate analysis** tab in Security Analytics displays request rate di
 Create a rule that limits how many times a single IP address can submit to your form endpoint within a given period. Adjust the path, threshold, and period for your site.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Rate limiting rules**.
 3. Enter a name for the rule (for example, "Rate limit contact form submissions").
 4. Under **When incoming requests match**, select **Edit expression** and enter: `(http.request.uri.path eq "/contact" and http.request.method eq "POST")`
@@ -153,7 +150,7 @@ Rate limiting alone does not catch targeted attack patterns like SQL injection o
 Create a custom rule that challenges POST requests to your form endpoints from sources that are not verified bots.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Enter a name for the rule (for example, "Challenge spam form submissions").
 4. Under **When incoming requests match**, select **Edit expression** and enter:
@@ -175,11 +172,8 @@ The [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-r
 
 Bot Fight Mode challenges requests that match known bot patterns across your entire domain. It is available on all plans and requires no configuration beyond turning it on.
 
-* [  New dashboard ](#tab-panel-11868)
-* [ Old dashboard ](#tab-panel-11869)
-
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
@@ -203,7 +197,7 @@ After deploying Turnstile, rate limiting rules, and Application Security rules, 
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) shows requests that Cloudflare security products acted on or flagged, including blocks, challenges, and skips. Filter by your form endpoint paths to see what is being blocked and what is getting through. A high volume of blocked or challenged requests to your form paths confirms the rules are active.
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Use the **Add filter** button to narrow results to your form endpoint traffic.
 4. Review the sampled logs. For each event, check:
@@ -228,7 +222,7 @@ If a third-party script is injected into your form page, it can exfiltrate submi
 To enable monitoring:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Turn on **Continuous script monitoring**.
 
@@ -257,7 +251,14 @@ After enabling, review detected scripts on the **Web assets** page under the **C
 
 * [Get started with client-side security](https://developers.cloudflare.com/client-side-security/get-started/) — enable monitoring and review detected scripts
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/#page","headline":"Protect your forms from spam and abuse (Free, Pro, and Business) · Cloudflare use cases","description":"Block spam submissions, fake account creation, and card testing on your web forms using a layered defense.","url":"https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/solutions/","name":"Solution guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/solutions/protect-sensitive-forms-fraud-abuse/","name":"Protect your forms from spam and abuse (Free, Pro, and Business)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/#page","headline":"Protect your forms from spam and abuse (Free, Pro, and Business) · Cloudflare use cases","description":"Block spam submissions, fake account creation, and card testing on your web forms using a layered defense.","url":"https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

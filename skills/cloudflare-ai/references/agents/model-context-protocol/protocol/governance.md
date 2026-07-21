@@ -1,16 +1,18 @@
 ---
-title: MCP governance
 description: Control which MCP servers your organization uses and enforce access policies with Cloudflare Access.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: MCP governance
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  MCP governance
 
-# MCP governance
+Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/governance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Model Context Protocol (MCP) allows Large Language Models (LLMs) to interact with proprietary data and internal tools. However, as MCP adoption grows, organizations face security risks from "Shadow MCP", where employees run unmanaged local MCP servers against sensitive internal resources. MCP governance means that administrators have control over which MCP servers are used in the organization, who can use them, and under what conditions.
 
@@ -32,7 +34,14 @@ To maintain a modern security posture, Cloudflare recommends the use of [remote 
 
 You can [build your remote MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) directly on Cloudflare Workers. When both your [MCP server portal](#mcp-server-portals) and remote MCP servers run on Cloudflare's network, requests stay on the same infrastructure, minimizing latency and maximizing performance.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/governance/#page","headline":"MCP governance · Cloudflare Agents docs","description":"Control which MCP servers your organization uses and enforce access policies with Cloudflare Access.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/governance/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/model-context-protocol/","name":"Model Context Protocol (MCP)"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/model-context-protocol/protocol/","name":"Protocol"}},{"@type":"ListItem","position":5,"item":{"@id":"/agents/model-context-protocol/protocol/governance/","name":"MCP governance"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/governance/#page","headline":"MCP governance · Cloudflare Agents docs","description":"Control which MCP servers your organization uses and enforce access policies with Cloudflare Access.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/governance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

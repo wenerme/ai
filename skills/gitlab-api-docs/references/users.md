@@ -1,6 +1,6 @@
 # Users API
 
-The GitLab Users API can create, modify, search and delete user accounts. It also supports admin operations and SCIM provisioning.
+The GitLab Users API can create, modify, search, and delete user accounts. It also supports admin operations and SCIM provisioning.
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
@@ -16,7 +16,6 @@ Takes [pagination parameters](rest/_index.md#offset-based-pagination) `page` and
 
 ### As a regular user
 
-- Keyset pagination [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/419556) in GitLab 16.5.
 - `saml_provider_id` attribute removed in GitLab 18.2.
 
 ```plaintext
@@ -141,10 +140,6 @@ GET /users?without_project_bots=true
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- The `created_by` field in the response was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/93092) in GitLab 15.6.
-- The `scim_identities` field in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/324247) in GitLab 16.1.
-- The `auditors` field in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/418023) in GitLab 16.2.
-- The `email_reset_offered_at` field in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/137610) in GitLab 16.7.
 - The `email_reset_offered_at` field in the response was [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197491) in GitLab 18.3.
 
 ```plaintext
@@ -404,8 +399,6 @@ Example response:
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- The `created_by` field in the response was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/93092) in GitLab 15.6.
-- The `email_reset_offered_at` field in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/137610) in GitLab 16.7.
 - The `email_reset_offered_at` field in the response was [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197491) in GitLab 18.3.
 
 Retrieves a single user as an administrator.
@@ -614,8 +607,6 @@ Users on [GitLab Premium or Ultimate](https://about.gitlab.com/pricing/) also se
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- The `created_by` field in the response was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/93092) in GitLab 15.6.
-- The `email_reset_offered_at` field in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/137610) in GitLab 16.7.
 - The `email_reset_offered_at` field in the response was [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197491) in GitLab 18.3.
 
 Retrieves your user details, or the details of another user.
@@ -692,8 +683,6 @@ parameters:
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- Ability to create an auditor user was [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/366404) in GitLab 15.3.
-
 Creates a user.
 
 Prerequisites:
@@ -718,7 +707,7 @@ Supported attributes:
 | `email`                              | Yes      | The email of the user       |
 | `password`                           | Conditionally | The password for the user. Required if `force_random_password` or `reset_password` are not defined. If either `force_random_password` or `reset_password` are defined, those settings take priority. |
 | `admin`                              | No       | User is an administrator. Valid values are `true` or `false`. Defaults to false. |
-| `auditor`                            | No       | User is an auditor. Valid values are `true` or `false`. Defaults to false. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/366404) in GitLab 15.3. Premium and Ultimate only. |
+| `auditor`                            | No       | User is an auditor. Valid values are `true` or `false`. Defaults to false. Premium and Ultimate only. |
 | `avatar`                             | No       | Image file for user's avatar |
 | `bio`                                | No       | User's biography |
 | `can_create_group`                   | No       | User can create top-level groups - true or false |
@@ -753,8 +742,6 @@ Supported attributes:
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- Ability to modify an auditor user was [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/366404) in GitLab 15.3.
-
 Modify an existing user.
 
 Prerequisites:
@@ -773,12 +760,12 @@ Supported attributes:
 | Attribute                            | Required | Description |
 |:-------------------------------------|:---------|:------------|
 | `admin`                              | No       | User is an administrator. Valid values are `true` or `false`. Defaults to false. |
-| `auditor`                            | No       | User is an auditor. Valid values are `true` or `false`. Defaults to false. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/366404) in GitLab 15.3.(default) Premium and Ultimate only. |
+| `auditor`                            | No       | User is an auditor. Valid values are `true` or `false`. Defaults to false. Premium and Ultimate only. |
 | `avatar`                             | No       | Image file for user's avatar |
 | `bio`                                | No       | User's biography |
 | `can_create_group`                   | No       | User can create groups - true or false |
 | `color_scheme_id`                    | No       | User's color scheme for the file viewer (for more information, see the [user preference documentation](../user/profile/preferences.md#change-the-syntax-highlighting-theme) for more information) |
-| `commit_email`                       | No       | User's commit email. Set to `_private` to use the private commit email. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/375148) in GitLab 15.5. |
+| `commit_email`                       | No       | User's commit email. Set to `_private` to use the private commit email. |
 | `email`                              | No       | The email of the user |
 | `extern_uid`                         | No       | External UID |
 | `external`                           | No       | Flags the user as external - true or false (default) |
@@ -796,7 +783,7 @@ Supported attributes:
 | `pronouns`                           | No       | Pronouns    |
 | `provider`                           | No       | External provider name |
 | `public_email`                       | No       | Public email of the user (must be already verified) |
-| `shared_runners_minutes_limit`       | No       | Can be set by administrators only. Maximum number of monthly compute minutes for this user. Can be `nil` (default; inherit system default), `0` (unlimited) or `> 0`. Premium and Ultimate only. |
+| `shared_runners_minutes_limit`       | No       | Can be set by administrators only. Maximum number of monthly compute minutes for this user. Can be `nil` (default; inherit system default), `0` (unlimited), or `> 0`. Premium and Ultimate only. |
 | `skip_reconfirmation`                | No       | Skip reconfirmation - true or false (default) |
 | `theme_id`                           | No       | GitLab theme for the user (for more information, see the [user preference documentation](../user/profile/preferences.md#change-the-navigation-theme) for more information) |
 | `twitter`                            | No       | X (formerly Twitter) account |
@@ -1275,8 +1262,6 @@ Returns:
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/295260) in GitLab 15.2.
 
 Prerequisites:
 

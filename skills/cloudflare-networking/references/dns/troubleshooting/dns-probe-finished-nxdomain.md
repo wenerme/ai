@@ -1,16 +1,18 @@
 ---
-title: DNS_PROBE_FINISHED_NXDOMAIN
 description: Learn how to fix the DNS_PROBE_FINISHED_NXDOMAIN browser error, which indicates the domain does not exist.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: DNS_PROBE_FINISHED_NXDOMAIN
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DNS\_PROBE\_FINISHED\_NXDOMAIN
 
-# DNS\_PROBE\_FINISHED\_NXDOMAIN
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you or your visitors experience `DNS_PROBE_FINISHED_NXDOMAIN` errors after you [activate your domain on Cloudflare](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/), review your DNS records in Cloudflare.
 
@@ -38,7 +40,14 @@ Note
 
 For additional troubleshooting help, refer to the [Community troubleshooting guide ↗](https://community.cloudflare.com/t/community-tip-fixing-the-dns-probe-finished-nxdomain-error/42818).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/#page","headline":"Fix DNS_PROBE_FINISHED_NXDOMAIN · Cloudflare DNS docs","description":"Learn how to fix the DNS\\_PROBE\\_FINISHED\\_NXDOMAIN browser error, which indicates the domain does not exist.","url":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/troubleshooting/dns-probe-finished-nxdomain/","name":"DNS_PROBE_FINISHED_NXDOMAIN"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/#page","headline":"Fix DNS_PROBE_FINISHED_NXDOMAIN · Cloudflare DNS docs","description":"Learn how to fix the DNS\\_PROBE\\_FINISHED\\_NXDOMAIN browser error, which indicates the domain does not exist.","url":"https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

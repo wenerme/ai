@@ -1,20 +1,22 @@
 ---
-title: WAF changelog overview
 description: Overview of WAF changelog, scheduled changes, and historical updates.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: WAF changelog overview
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  WAF changelog overview
 
-# WAF changelog overview
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/change-log/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The [WAF changelog](https://developers.cloudflare.com/waf/change-log/changelog/) provides information about changes to [managed rulesets](https://developers.cloudflare.com/waf/managed-rules/) and general updates to WAF protection.
 
-[ View changelog ](https://developers.cloudflare.com/waf/change-log/changelog/) [ View scheduled changes ](https://developers.cloudflare.com/waf/change-log/scheduled-changes/) [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
+[ View changelog ](https://developers.cloudflare.com/waf/change-log/changelog/)[ View scheduled changes ](https://developers.cloudflare.com/waf/change-log/scheduled-changes/)[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
 ## Changelog for managed rulesets
 
@@ -38,7 +40,7 @@ Cloudflare may also add rules in disabled mode on the same release cycle. These 
 
 For new vulnerabilities, Cloudflare may release rules outside the regular seven-day cycle. These are emergency releases.
 
-Warning
+Caution
 
 [Ruleset overrides and tag overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) apply to existing and **future** rules in a managed ruleset. This means overrides you configure today will automatically apply to rules added in regular and emergency releases.
 
@@ -48,7 +50,14 @@ If you notice a new or updated rule generating an increased volume of security e
 
 The [changelog](https://developers.cloudflare.com/waf/change-log/changelog/) also includes general updates to WAF protection that are not specific to managed rulesets.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/waf/change-log/#page","headline":"Overview of the WAF changelog · Cloudflare Web Application Firewall (WAF) docs","description":"Overview of WAF changelog, scheduled changes, and historical updates.","url":"https://developers.cloudflare.com/waf/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/waf/change-log/#page","headline":"Overview of the WAF changelog · Cloudflare Web Application Firewall (WAF) docs","description":"Overview of WAF changelog, scheduled changes, and historical updates.","url":"https://developers.cloudflare.com/waf/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

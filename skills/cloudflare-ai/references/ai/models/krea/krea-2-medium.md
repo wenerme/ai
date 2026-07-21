@@ -1,37 +1,36 @@
 ---
-title: Krea 2 Medium
 description: Smaller, faster, more cost-efficient. Extensive post-training makes outputs especially stable and consistent across generations. Strongest on illustration, anime, painting, and other expressive or artistic styles.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Krea 2 Medium
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
  k
 
 #  Krea 2 Medium
 
-Text-to-Image • krea
+ Text-to-Image • krea
 
-`krea/krea-2-medium`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` krea/krea-2-medium `
+
+* Third-party
 
 Smaller, faster, more cost-efficient. Extensive post-training makes outputs especially stable and consistent across generations. Strongest on illustration, anime, painting, and other expressive or artistic styles.
 
-| Model Info        |                                                                                                                      |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.krea.ai/terms)                                                                                  |
-| More information  | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium)                                                      |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/krea/krea-2-medium) |
+| Model Info        |                                                                                                                       |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.krea.ai/terms)                                                                                   |
+| More information  | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium)                                                       |
+| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/krea/krea-2-medium) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-898)
-* [ cURL ](#tab-panel-899)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -59,9 +58,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-896)
-* [ Raw response ](#tab-panel-897)
-
 ![Default](https://examples.aig.cloudflare.com/krea/krea-2-medium/default.png)
 
 ```json
@@ -77,9 +73,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-900)
-* [ Output ](#tab-panel-901)
 
 prompt
 
@@ -135,7 +128,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium/schema-
 
 Output [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/krea/krea-2-medium/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium/#page","headline":"Krea 2 Medium (krea) · Cloudflare AI docs · Cloudflare AI docs","description":"Smaller, faster, more cost-efficient. Extensive post-training makes outputs especially stable and consistent across generations. Strongest on illustration, anime, painting, and other expressive or artistic styles.","url":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium/#page","headline":"Krea 2 Medium (krea) · Cloudflare AI docs · Cloudflare AI docs","description":"Smaller, faster, more cost-efficient. Extensive post-training makes outputs especially stable and consistent across generations. Strongest on illustration, anime, painting, and other expressive or artistic styles.","url":"https://developers.cloudflare.com/ai/models/krea/krea-2-medium/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

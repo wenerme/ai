@@ -1,16 +1,18 @@
 ---
-title: DLP
 description: DLP for Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: DLP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  DLP
 
-# DLP
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to troubleshoot common issues with Data Loss Prevention (DLP).
 
@@ -19,9 +21,6 @@ Use this guide to troubleshoot common issues with Data Loss Prevention (DLP).
 DLP not inspecting or blocking content is the most common issue reported. If you have configured a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/) but it fails to inspect or block traffic, the cause is almost always that the traffic is not being decrypted. To use DLP to scan the content of HTTPS requests, you must turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/).
 
 To turn on TLS decryption:
-
-* [ Dashboard ](#tab-panel-8365)
-* [ Terraform (v5) ](#tab-panel-8366)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -32,12 +31,12 @@ To turn on TLS decryption:
 2. Configure the `tls_decrypt` argument in [cloudflare\_zero\_trust\_gateway\_settings ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fsettings):
 ```tf
 resource "cloudflare_zero_trust_gateway_settings" "team_name" {
-  account_id = var.cloudflare_account_id
-  settings = {
-    tls_decrypt = {
-      enabled = true
-    }
-  }
+	account_id = var.cloudflare_account_id
+	settings = {
+		tls_decrypt = {
+			enabled = true
+		}
+	}
 }
 ```
 
@@ -97,7 +96,14 @@ For more information, refer to the full DLP documentation.
 
 [ DLP troubleshooting ❯ ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/#page","headline":"DLP · Cloudflare One docs","description":"DLP for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/troubleshooting/dlp/","name":"DLP"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/#page","headline":"DLP · Cloudflare One docs","description":"DLP for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

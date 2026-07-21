@@ -1,16 +1,18 @@
 ---
-title: Known limitations
 description: Reference information for Known limitations in Browser Isolation.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Known limitations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Known limitations
 
-# Known limitations
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below, you will find information regarding the current limitations for Browser Isolation.
 
@@ -84,7 +86,14 @@ Browser Isolation is not compatible with [self-hosted private applications](http
 
 To use Browser Isolation for an application on a private IP address with a non-`443` port, configure a [private network application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/) instead.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/#page","headline":"Known limitations - Browser Isolation · Cloudflare One docs","description":"Reference information for Known limitations in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/remote-browser-isolation/","name":"Remote browser isolation"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/remote-browser-isolation/known-limitations/","name":"Known limitations"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/#page","headline":"Known limitations - Browser Isolation · Cloudflare One docs","description":"Reference information for Known limitations in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Web Assets
 description: Discover operations in applications proxied through Cloudflare and use that context to protect important traffic.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Web Assets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Web Assets
 
-# Web Assets
+Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/web-assets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Web Assets automatically discovers operations in web applications proxied through Cloudflare. Operation context helps you define security protections against application-specific functionalities.
 
@@ -18,7 +20,7 @@ For example, discovering operations that receive LLM prompts so [AI Security for
 
 To access Web Assets in the Cloudflare dashboard, go to the **Web Assets** page.
 
-[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 
 ## Definition of an operation
 
@@ -66,11 +68,18 @@ Custom labels let you organize operations for your own workflows. They do not re
 
 Security detections can use Web Assets to focus on the operations where their signals matter. For example, [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) uses the `cf-llm` managed label to scan requests to AI-powered operations. For more information, refer to [Define security protections](https://developers.cloudflare.com/security/web-assets/define-security-protections/).
 
-Related API Shield features
+### Related API Shield features
 
 Web Assets focuses on HTTP request operations. For API-specific protections such as schema validation, schema learning, mutual TLS, and JWT validation, refer to [API Shield](https://developers.cloudflare.com/api-shield/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/#page","headline":"Web Assets · Security dashboard docs","description":"Discover operations in applications proxied through Cloudflare and use that context to protect important traffic.","url":"https://developers.cloudflare.com/security/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security/","name":"Security dashboard"}},{"@type":"ListItem","position":3,"item":{"@id":"/security/web-assets/","name":"Web Assets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/#page","headline":"Web Assets · Security dashboard docs","description":"Discover operations in applications proxied through Cloudflare and use that context to protect important traffic.","url":"https://developers.cloudflare.com/security/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Page load time
 description: Page load time metrics collected by Web Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Page load time
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Page load time
 
-# Page load time
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Page load time summary gives you an overview of how long your web page takes to load, broken down by area. To access Page load time:
 
@@ -63,7 +65,14 @@ The time between navigation and when the browser renders the first pixels to the
 
 Time when the browser renders the first bit of content from the DOM.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/#page","headline":"Page load time · Cloudflare Web Analytics docs","description":"Page load time metrics collected by Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/data-metrics/","name":"Data and metrics"}},{"@type":"ListItem","position":4,"item":{"@id":"/web-analytics/data-metrics/page-load-time-summary/","name":"Page load time"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/#page","headline":"Page load time · Cloudflare Web Analytics docs","description":"Page load time metrics collected by Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

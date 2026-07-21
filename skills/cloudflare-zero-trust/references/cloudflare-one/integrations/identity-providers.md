@@ -1,16 +1,18 @@
 ---
-title: Identity providers
 description: Identity providers in Zero Trust integrations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Identity providers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Identity providers
 
-# Identity providers
+Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One integrates with your organization's identity provider to apply Cloudflare One and Secure Web Gateway policies. If you work with partners, contractors, or other organizations, you can integrate multiple identity providers simultaneously.
 
@@ -26,9 +28,6 @@ Cloudflare One supports social identity providers that do not require administra
 
 ## Set up IdPs in Cloudflare One
 
-* [ Dashboard ](#tab-panel-7868)
-* [ Terraform (v5) ](#tab-panel-7869)
-
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.
 3. Select the identity provider you want to add.
@@ -43,15 +42,15 @@ Each identity provider will have different required fields for you to fill in. S
 2. Add an identity provider to Cloudflare One using the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource. For example, to add a Microsoft Entra ID integration:
 ```tf
 resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {
-  account_id = var.cloudflare_account_id
-  name       = "Entra ID example"
-  type       = "azureAD"
-  config      = {
-    client_id                  = var.entra_id_client_id
-    client_secret              = var.entra_id_client_secret
-    directory_id               = var.entra_id_directory_id
-    support_groups             = true
-    }
+	account_id = var.cloudflare_account_id
+	name       = "Entra ID example"
+	type       = "azureAD"
+	config 		 = {
+		client_id                  = var.entra_id_client_id
+		client_secret              = var.entra_id_client_secret
+		directory_id               = var.entra_id_directory_id
+		support_groups             = true
+		}
 }
 ```
 Each identity provider integration has different required attributes. You will need to obtain these attribute values from your identity provider. For more information, refer to the [IdP-specific documentation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
@@ -80,7 +79,14 @@ If your provider is not connected, another window will open in your browser. Alo
 
 We recommend that you use our dashboard to configure your identity providers. However, if you would like to use the [Cloudflare API ↗](https://api.cloudflare.com/), each of the identity provider topics covered here include an example API configuration snippet as well.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#page","headline":"Identity providers · Cloudflare One docs","description":"Identity providers in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#page","headline":"Identity providers · Cloudflare One docs","description":"Identity providers in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 ```

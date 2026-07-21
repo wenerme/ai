@@ -1,16 +1,18 @@
 ---
-title: Security model
 description: Understand the Workers security architecture, including V8 isolate sandboxing and Spectre mitigations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Security model
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Security model
 
-# Security model
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/reference/security-model/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This article includes an overview of Cloudflare security architecture, and then addresses two frequently asked about issues: V8 bugs and Spectre.
 
@@ -270,8 +272,6 @@ Supporting native code would limit choice in future mitigation techniques. There
 
 In Workers, you can get the current time using the JavaScript Date API by calling `Date.now()`. However, the time value returned is not the current time. `Date.now()` returns the time of the last I/O. It does not advance during code execution. For example, if an attacker writes:
 
-**JavaScript**
-
 ```js
 let start = Date.now();
 for (let i = 0; i < 1e6; i++) {
@@ -324,7 +324,14 @@ In general, because Workers are fundamentally preemptible (unlike containers or 
 
 Cloudflare sees this as an ongoing investment — not something that will ever be done.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/security-model/#page","headline":"Security model · Cloudflare Workers docs","description":"Understand the Workers security architecture, including V8 isolate sandboxing and Spectre mitigations.","url":"https://developers.cloudflare.com/workers/reference/security-model/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/reference/security-model/","name":"Security model"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/reference/security-model/#page","headline":"Security model · Cloudflare Workers docs","description":"Understand the Workers security architecture, including V8 isolate sandboxing and Spectre mitigations.","url":"https://developers.cloudflare.com/workers/reference/security-model/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

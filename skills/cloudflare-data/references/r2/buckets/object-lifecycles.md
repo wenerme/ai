@@ -1,16 +1,18 @@
 ---
-title: Object lifecycles
 description: Configure retention and storage class transition rules for objects in R2 buckets.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Object lifecycles
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Object lifecycles
 
-# Object lifecycles
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/buckets/object-lifecycles/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Object lifecycles determine the retention period of objects uploaded to your bucket and allow you to specify when objects should transition from Standard storage to Infrequent Access storage.
 
@@ -37,7 +39,7 @@ When you create an object lifecycle rule, you can specify which prefix you would
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Locate and select your bucket from the list.
 3. From the bucket page, select **Settings**.
 4. Under **Object Lifecycle Rules**, select **Add rule**.
@@ -67,88 +69,84 @@ The JSON file should be in the format of the request body of the [put object lif
 
 Below is an example of configuring a lifecycle configuration (a collection of lifecycle rules) with different sets of rules for different potential use cases.
 
-**Configure the S3 client to interact with R2**
-
 ```js
 const client = new S3({
-  endpoint: "https://<account_id>.r2.cloudflarestorage.com",
-  credentials: {
-    accessKeyId: "<access_key_id>",
-    secretAccessKey: "<access_key_secret>",
-  },
-  region: "auto",
+	endpoint: "https://<account_id>.r2.cloudflarestorage.com",
+	credentials: {
+		accessKeyId: "<access_key_id>",
+		secretAccessKey: "<access_key_secret>",
+	},
+	region: "auto",
 });
 ```
 
-**Set the lifecycle configuration for a bucket**
-
 ```javascript
 await client
-  .putBucketLifecycleConfiguration({
-    Bucket: "testBucket",
-    LifecycleConfiguration: {
-      Rules: [
-        // Example: deleting objects on a specific date
-        // Delete 2019 documents in 2024
-        {
-          ID: "Delete 2019 Documents",
-          Status: "Enabled",
-          Filter: {
-            Prefix: "2019/",
-          },
-          Expiration: {
-            Date: new Date("2024-01-01"),
-          },
-        },
-        // Example: transitioning objects to Infrequent Access storage by age
-        // Transition objects older than 30 days to Infrequent Access storage
-        {
-          ID: "Transition Objects To Infrequent Access",
-          Status: "Enabled",
-          Transitions: [
-            {
-              Days: 30,
-              StorageClass: "STANDARD_IA",
-            },
-          ],
-        },
-        // Example: deleting objects by age
-        // Delete logs older than 90 days
-        {
-          ID: "Delete Old Logs",
-          Status: "Enabled",
-          Filter: {
-            Prefix: "logs/",
-          },
-          Expiration: {
-            Days: 90,
-          },
-        },
-        // Example: abort all incomplete multipart uploads after a week
-        {
-          ID: "Abort Incomplete Multipart Uploads",
-          Status: "Enabled",
-          AbortIncompleteMultipartUpload: {
-            DaysAfterInitiation: 7,
-          },
-        },
-        // Example: abort user multipart uploads after a day
-        {
-          ID: "Abort User Incomplete Multipart Uploads",
-          Status: "Enabled",
-          Filter: {
-            Prefix: "useruploads/",
-          },
-          AbortIncompleteMultipartUpload: {
-            // For uploads matching the prefix, this rule will take precedence
-            // over the one above due to its earlier expiration.
-            DaysAfterInitiation: 1,
-          },
-        },
-      ],
-    },
-  })
-  .promise();
+	.putBucketLifecycleConfiguration({
+		Bucket: "testBucket",
+		LifecycleConfiguration: {
+			Rules: [
+				// Example: deleting objects on a specific date
+				// Delete 2019 documents in 2024
+				{
+					ID: "Delete 2019 Documents",
+					Status: "Enabled",
+					Filter: {
+						Prefix: "2019/",
+					},
+					Expiration: {
+						Date: new Date("2024-01-01"),
+					},
+				},
+				// Example: transitioning objects to Infrequent Access storage by age
+				// Transition objects older than 30 days to Infrequent Access storage
+				{
+					ID: "Transition Objects To Infrequent Access",
+					Status: "Enabled",
+					Transitions: [
+						{
+							Days: 30,
+							StorageClass: "STANDARD_IA",
+						},
+					],
+				},
+				// Example: deleting objects by age
+				// Delete logs older than 90 days
+				{
+					ID: "Delete Old Logs",
+					Status: "Enabled",
+					Filter: {
+						Prefix: "logs/",
+					},
+					Expiration: {
+						Days: 90,
+					},
+				},
+				// Example: abort all incomplete multipart uploads after a week
+				{
+					ID: "Abort Incomplete Multipart Uploads",
+					Status: "Enabled",
+					AbortIncompleteMultipartUpload: {
+						DaysAfterInitiation: 7,
+					},
+				},
+				// Example: abort user multipart uploads after a day
+				{
+					ID: "Abort User Incomplete Multipart Uploads",
+					Status: "Enabled",
+					Filter: {
+						Prefix: "useruploads/",
+					},
+					AbortIncompleteMultipartUpload: {
+						// For uploads matching the prefix, this rule will take precedence
+						// over the one above due to its earlier expiration.
+						DaysAfterInitiation: 1,
+					},
+				},
+			],
+		},
+	})
+	.promise();
 ```
 
 ## Get lifecycle rules for your bucket
@@ -163,30 +161,26 @@ npx wrangler r2 bucket lifecycle list <BUCKET_NAME>
 
 ### S3 API
 
-**JavaScript**
-
 ```js
 import S3 from "aws-sdk/clients/s3.js";
 
-
 // Configure the S3 client to talk to R2.
 const client = new S3({
-  endpoint: "https://<account_id>.r2.cloudflarestorage.com",
-  credentials: {
-    accessKeyId: "<access_key_id>",
-    secretAccessKey: "<access_key_secret>",
-  },
-  region: "auto",
+	endpoint: "https://<account_id>.r2.cloudflarestorage.com",
+	credentials: {
+		accessKeyId: "<access_key_id>",
+		secretAccessKey: "<access_key_secret>",
+	},
+	region: "auto",
 });
-
 
 // Get lifecycle configuration for bucket
 console.log(
-  await client
-    .getBucketLifecycleConfiguration({
-      Bucket: "bucketName",
-    })
-    .promise(),
+	await client
+		.getBucketLifecycleConfiguration({
+			Bucket: "bucketName",
+		})
+		.promise(),
 );
 ```
 
@@ -195,7 +189,7 @@ console.log(
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Locate and select your bucket from the list.
 3. From the bucket page, select **Settings**.
 4. Under **Object lifecycle rules**, select the rules you would like to delete.
@@ -211,32 +205,35 @@ npx wrangler r2 bucket lifecycle remove <BUCKET_NAME> --id <RULE_ID>
 
 ### S3 API
 
-**JavaScript**
-
 ```js
 import S3 from "aws-sdk/clients/s3.js";
 
-
 // Configure the S3 client to talk to R2.
 const client = new S3({
-  endpoint: "https://<account_id>.r2.cloudflarestorage.com",
-  credentials: {
-    accessKeyId: "<access_key_id>",
-    secretAccessKey: "<access_key_secret>",
-  },
-  region: "auto",
+	endpoint: "https://<account_id>.r2.cloudflarestorage.com",
+	credentials: {
+		accessKeyId: "<access_key_id>",
+		secretAccessKey: "<access_key_secret>",
+	},
+	region: "auto",
 });
-
 
 // Delete lifecycle configuration for bucket
 await client
-  .deleteBucketLifecycle({
-    Bucket: "bucketName",
-  })
-  .promise();
+	.deleteBucketLifecycle({
+		Bucket: "bucketName",
+	})
+	.promise();
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/#page","headline":"Object lifecycles · Cloudflare R2 docs","description":"Configure retention and storage class transition rules for objects in R2 buckets.","url":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/buckets/","name":"Buckets"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/buckets/object-lifecycles/","name":"Object lifecycles"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/#page","headline":"Object lifecycles · Cloudflare R2 docs","description":"Configure retention and storage class transition rules for objects in R2 buckets.","url":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

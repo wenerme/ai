@@ -1,16 +1,18 @@
 ---
-title: Application Library
 description: Application Library in Zero Trust.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Application Library
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Application Library
 
-# Application Library
+Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Application Library allows users to manage their SaaS applications in Cloudflare One by consolidating views across all relevant products: [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Cloud Access Security Broker (CASB)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). The App Library provides visibility and control for available applications, as well as the ability to view categorized hostnames and manage configuration for Access for SaaS and Gateway policies. For example, you can use the App Library to review how Gateway uses specific hostnames to match against application traffic.
 
@@ -131,7 +133,14 @@ Automated results are supplemented with manual review to maintain transparency a
 
 If you believe one of the Application confidence scores is incorrect or have additional evidence that should be considered in the scoring process, contact `app-confidence-scores@cloudflare.com`. Include relevant documentation or evidence that supports your assessment to help us review and update the score accordingly.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/#page","headline":"Application Library · Cloudflare One docs","description":"Application Library in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/app-library/","name":"Application Library"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/#page","headline":"Application Library · Cloudflare One docs","description":"Application Library in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

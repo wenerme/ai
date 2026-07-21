@@ -1,18 +1,20 @@
 ---
-title: Cache using fetch
 description: Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cache using fetch
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Cache using fetch
+#  Cache using fetch
 
 Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.
+
+Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/examples/cache-using-fetch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
@@ -20,88 +22,71 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-12483)
-* [  TypeScript ](#tab-panel-12484)
-* [  Hono ](#tab-panel-12485)
-* [  Python ](#tab-panel-12486)
-* [  Rust ](#tab-panel-12487)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request) {
-    const url = new URL(request.url);
-    // Only use the path for the cache key, removing query strings
-    // and always store using HTTPS, for example, https://www.example.com/file-uri-here
-    const someCustomKey = `https://${url.hostname}${url.pathname}`;
-    let response = await fetch(request, {
-      cf: {
-        // Always cache this fetch regardless of content type
-        // for a max of 5 seconds before revalidating the resource
-        cacheTtl: 5,
-        cacheEverything: true,
-        //Enterprise only feature, see Cache API for other plans
-        cacheKey: someCustomKey,
-      },
-    });
-    // Reconstruct the Response object to make its headers mutable.
-    response = new Response(response.body, response);
-    // Set cache control headers to cache on browser for 25 minutes
-    response.headers.set("Cache-Control", "max-age=1500");
-    return response;
-  },
+	async fetch(request) {
+		const url = new URL(request.url);
+		// Only use the path for the cache key, removing query strings
+		// and always store using HTTPS, for example, https://www.example.com/file-uri-here
+		const someCustomKey = `https://${url.hostname}${url.pathname}`;
+		let response = await fetch(request, {
+			cf: {
+				// Always cache this fetch regardless of content type
+				// for a max of 5 seconds before revalidating the resource
+				cacheTtl: 5,
+				cacheEverything: true,
+				//Enterprise only feature, see Cache API for other plans
+				cacheKey: someCustomKey,
+			},
+		});
+		// Reconstruct the Response object to make its headers mutable.
+		response = new Response(response.body, response);
+		// Set cache control headers to cache on browser for 25 minutes
+		response.headers.set("Cache-Control", "max-age=1500");
+		return response;
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    const url = new URL(request.url);
-    // Only use the path for the cache key, removing query strings
-    // and always store using HTTPS, for example, https://www.example.com/file-uri-here
-    const someCustomKey = `https://${url.hostname}${url.pathname}`;
-    let response = await fetch(request, {
-      cf: {
-        // Always cache this fetch regardless of content type
-        // for a max of 5 seconds before revalidating the resource
-        cacheTtl: 5,
-        cacheEverything: true,
-        //Enterprise only feature, see Cache API for other plans
-        cacheKey: someCustomKey,
-      },
-    });
-    // Reconstruct the Response object to make its headers mutable.
-    response = new Response(response.body, response);
-    // Set cache control headers to cache on browser for 25 minutes
-    response.headers.set("Cache-Control", "max-age=1500");
-    return response;
-  },
+	async fetch(request): Promise<Response> {
+		const url = new URL(request.url);
+		// Only use the path for the cache key, removing query strings
+		// and always store using HTTPS, for example, https://www.example.com/file-uri-here
+		const someCustomKey = `https://${url.hostname}${url.pathname}`;
+		let response = await fetch(request, {
+			cf: {
+				// Always cache this fetch regardless of content type
+				// for a max of 5 seconds before revalidating the resource
+				cacheTtl: 5,
+				cacheEverything: true,
+				//Enterprise only feature, see Cache API for other plans
+				cacheKey: someCustomKey,
+			},
+		});
+		// Reconstruct the Response object to make its headers mutable.
+		response = new Response(response.body, response);
+		// Set cache control headers to cache on browser for 25 minutes
+		response.headers.set("Cache-Control", "max-age=1500");
+		return response;
+	},
 } satisfies ExportedHandler;
 ```
-
-**TypeScript**
 
 ```ts
 import { Hono } from 'hono';
 
-
 type Bindings = {};
 
-
 const app = new Hono<{ Bindings: Bindings }>();
-
 
 app.all('*', async (c) => {
   const url = new URL(c.req.url);
 
-
   // Only use the path for the cache key, removing query strings
   // and always store using HTTPS, for example, https://www.example.com/file-uri-here
   const someCustomKey = `https://${url.hostname}${url.pathname}`;
-
 
   // Fetch the request with custom cache settings
   let response = await fetch(c.req.raw, {
@@ -115,38 +100,29 @@ app.all('*', async (c) => {
     },
   });
 
-
   // Reconstruct the Response object to make its headers mutable
   response = new Response(response.body, response);
-
 
   // Set cache control headers to cache on browser for 25 minutes
   response.headers.set("Cache-Control", "max-age=1500");
 
-
   return response;
 });
 
-
 export default app;
 ```
-
-**Python**
 
 ```py
 from workers import WorkerEntrypoint, Response, fetch
 from urllib.parse import urlparse
 
-
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         url = urlparse(request.url)
 
-
         # Only use the path for the cache key, removing query strings
         # and always store using HTTPS, for example, https://www.example.com/file-uri-here
         some_custom_key = f"https://{url.hostname}{url.path}"
-
 
         response = await fetch(
             request,
@@ -160,14 +136,11 @@ class Default(WorkerEntrypoint):
             },
         )
 
-
         # Reconstruct the Response object to make its headers mutable
         new_response = Response(response.body, headers=dict(response.headers))
 
-
         # Set cache control headers to cache on browser for 25 minutes
         new_response.headers["Cache-Control"] = "max-age=1500"
-
 
         return new_response
 ```
@@ -175,11 +148,9 @@ class Default(WorkerEntrypoint):
 ```rs
 use worker::*;
 
-
 #[event(fetch)]
 async fn fetch(req: Request, _env: Env, _ctx: Context) -> Result<Response> {
     let url = req.url()?;
-
 
     // Only use the path for the cache key, removing query strings
     // and always store using HTTPS, for example, https://www.example.com/file-uri-here
@@ -188,7 +159,6 @@ async fn fetch(req: Request, _env: Env, _ctx: Context) -> Result<Response> {
         host = url.host_str().unwrap(),
         path = url.path()
     );
-
 
     let request = Request::new_with_init(
         url.as_str(),
@@ -208,9 +178,7 @@ async fn fetch(req: Request, _env: Env, _ctx: Context) -> Result<Response> {
         },
     )?;
 
-
     let mut response = Fetch::Request(request).send().await?;
-
 
     // Set cache control headers to cache on browser for 25 minutes
     let _ = response.headers_mut().set("Cache-Control", "max-age=1500");
@@ -219,8 +187,6 @@ async fn fetch(req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 ```
 
 ## Caching HTML resources
-
-**JavaScript**
 
 ```js
 // Force Cloudflare to cache an asset
@@ -237,8 +203,6 @@ This feature is available only to Enterprise customers.
 
 A request's cache key is what determines if two requests are the same for caching purposes. If a request has the same cache key as some previous request, then Cloudflare can serve the same cached response for both. For more about cache keys, refer to the [Create custom cache keys](https://developers.cloudflare.com/cache/how-to/cache-keys/#create-custom-cache-keys) documentation.
 
-**JavaScript**
-
 ```js
 // Set cache key for this request to "some-string".
 fetch(event.request, { cf: { cacheKey: "some-string" } });
@@ -246,72 +210,54 @@ fetch(event.request, { cf: { cacheKey: "some-string" } });
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-12488)
-* [  TypeScript ](#tab-panel-12489)
-* [  Hono ](#tab-panel-12490)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request) {
-    let url = new URL(request.url);
+	async fetch(request) {
+		let url = new URL(request.url);
 
+		if (Math.random() < 0.5) {
+			url.hostname = "example.s3.amazonaws.com";
+		} else {
+			url.hostname = "example.storage.googleapis.com";
+		}
 
-    if (Math.random() < 0.5) {
-      url.hostname = "example.s3.amazonaws.com";
-    } else {
-      url.hostname = "example.storage.googleapis.com";
-    }
-
-
-    let newRequest = new Request(url, request);
-    return fetch(newRequest, {
-      cf: { cacheKey: request.url },
-    });
-  },
+		let newRequest = new Request(url, request);
+		return fetch(newRequest, {
+			cf: { cacheKey: request.url },
+		});
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    let url = new URL(request.url);
+	async fetch(request): Promise<Response> {
+		let url = new URL(request.url);
 
+		if (Math.random() < 0.5) {
+			url.hostname = "example.s3.amazonaws.com";
+		} else {
+			url.hostname = "example.storage.googleapis.com";
+		}
 
-    if (Math.random() < 0.5) {
-      url.hostname = "example.s3.amazonaws.com";
-    } else {
-      url.hostname = "example.storage.googleapis.com";
-    }
-
-
-    let newRequest = new Request(url, request);
-    return fetch(newRequest, {
-      cf: { cacheKey: request.url },
-    });
-  },
+		let newRequest = new Request(url, request);
+		return fetch(newRequest, {
+			cf: { cacheKey: request.url },
+		});
+	},
 } satisfies ExportedHandler;
 ```
-
-**TypeScript**
 
 ```ts
 import { Hono } from 'hono';
 
-
 type Bindings = {};
 
-
 const app = new Hono<{ Bindings: Bindings }>();
-
 
 app.all('*', async (c) => {
   const originalUrl = c.req.url;
   const url = new URL(originalUrl);
-
 
   // Randomly select a storage backend
   if (Math.random() < 0.5) {
@@ -320,17 +266,14 @@ app.all('*', async (c) => {
     url.hostname = "example.storage.googleapis.com";
   }
 
-
   // Create a new request to the selected backend
   const newRequest = new Request(url, c.req.raw);
-
 
   // Fetch using the original URL as the cache key
   return fetch(newRequest, {
     cf: { cacheKey: originalUrl },
   });
 });
-
 
 export default app;
 ```
@@ -343,70 +286,61 @@ Use `cf.vary` when an origin returns a `Vary` header and you want a Worker subre
 
 For Vary behavior details, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/). For the full request init object, refer to [cf.vary](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cfvary-property).
 
-* [  JavaScript ](#tab-panel-12493)
-* [  TypeScript ](#tab-panel-12494)
-
-**src/index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    return fetch(request, {
-      cf: {
-        vary: {
-          default: { action: "bypass" },
-          headers: {
-            accept: {
-              action: "normalize",
-              media_types: ["text/html", "application/json"],
-            },
-            "accept-language": {
-              action: "normalize",
-              languages: ["en", "fr", "de"],
-            },
-          },
-        },
-      },
-    });
-  },
+	async fetch(request) {
+		return fetch(request, {
+			cf: {
+				vary: {
+					default: { action: "bypass" },
+					headers: {
+						accept: {
+							action: "normalize",
+							media_types: ["text/html", "application/json"],
+						},
+						"accept-language": {
+							action: "normalize",
+							languages: ["en", "fr", "de"],
+						},
+					},
+				},
+			},
+		});
+	},
 };
 ```
 
-**src/index.ts**
-
 ```ts
 export default {
-  async fetch(request): Promise<Response> {
-    return fetch(request, {
-      cf: {
-        vary: {
-          default: { action: "bypass" },
-          headers: {
-            accept: {
-              action: "normalize",
-              media_types: ["text/html", "application/json"],
-            },
-            "accept-language": {
-              action: "normalize",
-              languages: ["en", "fr", "de"],
-            },
-          },
-        },
-      },
-    });
-  },
+	async fetch(request): Promise<Response> {
+		return fetch(request, {
+			cf: {
+				vary: {
+					default: { action: "bypass" },
+					headers: {
+						accept: {
+							action: "normalize",
+							media_types: ["text/html", "application/json"],
+						},
+						"accept-language": {
+							action: "normalize",
+							languages: ["en", "fr", "de"],
+						},
+					},
+				},
+			},
+		});
+	},
 } satisfies ExportedHandler;
 ```
 
 ## Override based on origin response code
 
-**JavaScript**
-
 ```js
 // Force response to be cached for 86400 seconds for 200 status
 // codes, 1 second for 404, and do not cache 500 errors.
 fetch(request, {
-  cf: { cacheTtlByStatus: { "200-299": 86400, 404: 1, "500-599": 0 } },
+	cf: { cacheTtlByStatus: { "200-299": 86400, 404: 1, "500-599": 0 } },
 });
 ```
 
@@ -418,120 +352,108 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-12491)
-* [  Service Worker ](#tab-panel-12492)
-
-**index.js**
-
 ```js
 export default {
-  async fetch(request) {
-    // Instantiate new URL to make it mutable
-    const newRequest = new URL(request.url);
+	async fetch(request) {
+		// Instantiate new URL to make it mutable
+		const newRequest = new URL(request.url);
 
+		const customCacheKey = `${newRequest.hostname}${newRequest.pathname}`;
+		const queryCacheKey = `${newRequest.hostname}${newRequest.pathname}${newRequest.search}`;
 
-    const customCacheKey = `${newRequest.hostname}${newRequest.pathname}`;
-    const queryCacheKey = `${newRequest.hostname}${newRequest.pathname}${newRequest.search}`;
+		// Different asset types usually have different caching strategies. Most of the time media content such as audio, videos and images that are not user-generated content would not need to be updated often so a long TTL would be best. However, with HLS streaming, manifest files usually are set with short TTLs so that playback will not be affected, as this files contain the data that the player would need. By setting each caching strategy for categories of asset types in an object within an array, you can solve complex needs when it comes to media content for your application
 
+		const cacheAssets = [
+			{
+				asset: "video",
+				key: customCacheKey,
+				regex:
+					/(.*\/Video)|(.*\.(m4s|mp4|ts|avi|mpeg|mpg|mkv|bin|webm|vob|flv|m2ts|mts|3gp|m4v|wmv|qt))/,
+				info: 0,
+				ok: 31556952,
+				redirects: 30,
+				clientError: 10,
+				serverError: 0,
+			},
+			{
+				asset: "image",
+				key: queryCacheKey,
+				regex:
+					/(.*\/Images)|(.*\.(jpg|jpeg|png|bmp|pict|tif|tiff|webp|gif|heif|exif|bat|bpg|ppm|pgn|pbm|pnm))/,
+				info: 0,
+				ok: 3600,
+				redirects: 30,
+				clientError: 10,
+				serverError: 0,
+			},
+			{
+				asset: "frontEnd",
+				key: queryCacheKey,
+				regex: /^.*\.(css|js)/,
+				info: 0,
+				ok: 3600,
+				redirects: 30,
+				clientError: 10,
+				serverError: 0,
+			},
+			{
+				asset: "audio",
+				key: customCacheKey,
+				regex:
+					/(.*\/Audio)|(.*\.(flac|aac|mp3|alac|aiff|wav|ogg|aiff|opus|ape|wma|3gp))/,
+				info: 0,
+				ok: 31556952,
+				redirects: 30,
+				clientError: 10,
+				serverError: 0,
+			},
+			{
+				asset: "directPlay",
+				key: customCacheKey,
+				regex: /.*(\/Download)/,
+				info: 0,
+				ok: 31556952,
+				redirects: 30,
+				clientError: 10,
+				serverError: 0,
+			},
+			{
+				asset: "manifest",
+				key: customCacheKey,
+				regex: /^.*\.(m3u8|mpd)/,
+				info: 0,
+				ok: 3,
+				redirects: 2,
+				clientError: 1,
+				serverError: 0,
+			},
+		];
 
-    // Different asset types usually have different caching strategies. Most of the time media content such as audio, videos and images that are not user-generated content would not need to be updated often so a long TTL would be best. However, with HLS streaming, manifest files usually are set with short TTLs so that playback will not be affected, as this files contain the data that the player would need. By setting each caching strategy for categories of asset types in an object within an array, you can solve complex needs when it comes to media content for your application
+		const { asset, regex, ...cache } =
+			cacheAssets.find(({ regex }) => newRequest.pathname.match(regex)) ?? {};
 
+		const newResponse = await fetch(request, {
+			cf: {
+				cacheKey: cache.key,
+				polish: false,
+				cacheEverything: true,
+				cacheTtlByStatus: {
+					"100-199": cache.info,
+					"200-299": cache.ok,
+					"300-399": cache.redirects,
+					"400-499": cache.clientError,
+					"500-599": cache.serverError,
+				},
+				cacheTags: ["static"],
+			},
+		});
 
-    const cacheAssets = [
-      {
-        asset: "video",
-        key: customCacheKey,
-        regex:
-          /(.*\/Video)|(.*\.(m4s|mp4|ts|avi|mpeg|mpg|mkv|bin|webm|vob|flv|m2ts|mts|3gp|m4v|wmv|qt))/,
-        info: 0,
-        ok: 31556952,
-        redirects: 30,
-        clientError: 10,
-        serverError: 0,
-      },
-      {
-        asset: "image",
-        key: queryCacheKey,
-        regex:
-          /(.*\/Images)|(.*\.(jpg|jpeg|png|bmp|pict|tif|tiff|webp|gif|heif|exif|bat|bpg|ppm|pgn|pbm|pnm))/,
-        info: 0,
-        ok: 3600,
-        redirects: 30,
-        clientError: 10,
-        serverError: 0,
-      },
-      {
-        asset: "frontEnd",
-        key: queryCacheKey,
-        regex: /^.*\.(css|js)/,
-        info: 0,
-        ok: 3600,
-        redirects: 30,
-        clientError: 10,
-        serverError: 0,
-      },
-      {
-        asset: "audio",
-        key: customCacheKey,
-        regex:
-          /(.*\/Audio)|(.*\.(flac|aac|mp3|alac|aiff|wav|ogg|aiff|opus|ape|wma|3gp))/,
-        info: 0,
-        ok: 31556952,
-        redirects: 30,
-        clientError: 10,
-        serverError: 0,
-      },
-      {
-        asset: "directPlay",
-        key: customCacheKey,
-        regex: /.*(\/Download)/,
-        info: 0,
-        ok: 31556952,
-        redirects: 30,
-        clientError: 10,
-        serverError: 0,
-      },
-      {
-        asset: "manifest",
-        key: customCacheKey,
-        regex: /^.*\.(m3u8|mpd)/,
-        info: 0,
-        ok: 3,
-        redirects: 2,
-        clientError: 1,
-        serverError: 0,
-      },
-    ];
+		const response = new Response(newResponse.body, newResponse);
 
-
-    const { asset, regex, ...cache } =
-      cacheAssets.find(({ regex }) => newRequest.pathname.match(regex)) ?? {};
-
-
-    const newResponse = await fetch(request, {
-      cf: {
-        cacheKey: cache.key,
-        polish: false,
-        cacheEverything: true,
-        cacheTtlByStatus: {
-          "100-199": cache.info,
-          "200-299": cache.ok,
-          "300-399": cache.redirects,
-          "400-499": cache.clientError,
-          "500-599": cache.serverError,
-        },
-        cacheTags: ["static"],
-      },
-    });
-
-
-    const response = new Response(newResponse.body, newResponse);
-
-
-    // For debugging purposes
-    response.headers.set("debug", JSON.stringify(cache));
-    return response;
-  },
+		// For debugging purposes
+		response.headers.set("debug", JSON.stringify(cache));
+		return response;
+	},
 };
 ```
 
@@ -539,120 +461,111 @@ Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-**index.js**
-
 ```js
 addEventListener("fetch", (event) => {
-  return event.respondWith(handleRequest(event.request));
+	return event.respondWith(handleRequest(event.request));
 });
 
-
 async function handleRequest(request) {
-  // Instantiate new URL to make it mutable
-  const newRequest = new URL(request.url);
+	// Instantiate new URL to make it mutable
+	const newRequest = new URL(request.url);
 
+	// Set `const` to be used in the array later on
+	const customCacheKey = `${newRequest.hostname}${newRequest.pathname}`;
+	const queryCacheKey = `${newRequest.hostname}${newRequest.pathname}${newRequest.search}`;
 
-  // Set `const` to be used in the array later on
-  const customCacheKey = `${newRequest.hostname}${newRequest.pathname}`;
-  const queryCacheKey = `${newRequest.hostname}${newRequest.pathname}${newRequest.search}`;
+	// Set all variables needed to manipulate Cloudflare's cache using the fetch API in the `cf` object. You will be passing these variables in the objects down below.
+	const cacheAssets = [
+		{
+			asset: "video",
+			key: customCacheKey,
+			regex:
+				/(.*\/Video)|(.*\.(m4s|mp4|ts|avi|mpeg|mpg|mkv|bin|webm|vob|flv|m2ts|mts|3gp|m4v|wmv|qt))/,
+			info: 0,
+			ok: 31556952,
+			redirects: 30,
+			clientError: 10,
+			serverError: 0,
+		},
+		{
+			asset: "image",
+			key: queryCacheKey,
+			regex:
+				/(.*\/Images)|(.*\.(jpg|jpeg|png|bmp|pict|tif|tiff|webp|gif|heif|exif|bat|bpg|ppm|pgn|pbm|pnm))/,
+			info: 0,
+			ok: 3600,
+			redirects: 30,
+			clientError: 10,
+			serverError: 0,
+		},
+		{
+			asset: "frontEnd",
+			key: queryCacheKey,
+			regex: /^.*\.(css|js)/,
+			info: 0,
+			ok: 3600,
+			redirects: 30,
+			clientError: 10,
+			serverError: 0,
+		},
+		{
+			asset: "audio",
+			key: customCacheKey,
+			regex:
+				/(.*\/Audio)|(.*\.(flac|aac|mp3|alac|aiff|wav|ogg|aiff|opus|ape|wma|3gp))/,
+			info: 0,
+			ok: 31556952,
+			redirects: 30,
+			clientError: 10,
+			serverError: 0,
+		},
+		{
+			asset: "directPlay",
+			key: customCacheKey,
+			regex: /.*(\/Download)/,
+			info: 0,
+			ok: 31556952,
+			redirects: 30,
+			clientError: 10,
+			serverError: 0,
+		},
+		{
+			asset: "manifest",
+			key: customCacheKey,
+			regex: /^.*\.(m3u8|mpd)/,
+			info: 0,
+			ok: 3,
+			redirects: 2,
+			clientError: 1,
+			serverError: 0,
+		},
+	];
 
+	// the `.find` method is used to find elements in an array (`cacheAssets`), in this case, `regex`, which can passed to the .`match` method to match on file extensions to cache, since they are many media types in the array. If you want to add more types, update the array. Refer to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for more information.
+	const { asset, regex, ...cache } =
+		cacheAssets.find(({ regex }) => newRequest.pathname.match(regex)) ?? {};
 
-  // Set all variables needed to manipulate Cloudflare's cache using the fetch API in the `cf` object. You will be passing these variables in the objects down below.
-  const cacheAssets = [
-    {
-      asset: "video",
-      key: customCacheKey,
-      regex:
-        /(.*\/Video)|(.*\.(m4s|mp4|ts|avi|mpeg|mpg|mkv|bin|webm|vob|flv|m2ts|mts|3gp|m4v|wmv|qt))/,
-      info: 0,
-      ok: 31556952,
-      redirects: 30,
-      clientError: 10,
-      serverError: 0,
-    },
-    {
-      asset: "image",
-      key: queryCacheKey,
-      regex:
-        /(.*\/Images)|(.*\.(jpg|jpeg|png|bmp|pict|tif|tiff|webp|gif|heif|exif|bat|bpg|ppm|pgn|pbm|pnm))/,
-      info: 0,
-      ok: 3600,
-      redirects: 30,
-      clientError: 10,
-      serverError: 0,
-    },
-    {
-      asset: "frontEnd",
-      key: queryCacheKey,
-      regex: /^.*\.(css|js)/,
-      info: 0,
-      ok: 3600,
-      redirects: 30,
-      clientError: 10,
-      serverError: 0,
-    },
-    {
-      asset: "audio",
-      key: customCacheKey,
-      regex:
-        /(.*\/Audio)|(.*\.(flac|aac|mp3|alac|aiff|wav|ogg|aiff|opus|ape|wma|3gp))/,
-      info: 0,
-      ok: 31556952,
-      redirects: 30,
-      clientError: 10,
-      serverError: 0,
-    },
-    {
-      asset: "directPlay",
-      key: customCacheKey,
-      regex: /.*(\/Download)/,
-      info: 0,
-      ok: 31556952,
-      redirects: 30,
-      clientError: 10,
-      serverError: 0,
-    },
-    {
-      asset: "manifest",
-      key: customCacheKey,
-      regex: /^.*\.(m3u8|mpd)/,
-      info: 0,
-      ok: 3,
-      redirects: 2,
-      clientError: 1,
-      serverError: 0,
-    },
-  ];
+	const newResponse = await fetch(request, {
+		cf: {
+			cacheKey: cache.key,
+			polish: false,
+			cacheEverything: true,
+			cacheTtlByStatus: {
+				"100-199": cache.info,
+				"200-299": cache.ok,
+				"300-399": cache.redirects,
+				"400-499": cache.clientError,
+				"500-599": cache.serverError,
+			},
+			cacheTags: ["static"],
+		},
+	});
 
+	const response = new Response(newResponse.body, newResponse);
 
-  // the `.find` method is used to find elements in an array (`cacheAssets`), in this case, `regex`, which can passed to the .`match` method to match on file extensions to cache, since they are many media types in the array. If you want to add more types, update the array. Refer to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for more information.
-  const { asset, regex, ...cache } =
-    cacheAssets.find(({ regex }) => newRequest.pathname.match(regex)) ?? {};
-
-
-  const newResponse = await fetch(request, {
-    cf: {
-      cacheKey: cache.key,
-      polish: false,
-      cacheEverything: true,
-      cacheTtlByStatus: {
-        "100-199": cache.info,
-        "200-299": cache.ok,
-        "300-399": cache.redirects,
-        "400-499": cache.clientError,
-        "500-599": cache.serverError,
-      },
-      cacheTags: ["static"],
-    },
-  });
-
-
-  const response = new Response(newResponse.body, newResponse);
-
-
-  // For debugging purposes
-  response.headers.set("debug", JSON.stringify(cache));
-  return response;
+	// For debugging purposes
+	response.headers.set("debug", JSON.stringify(cache));
+	return response;
 }
 ```
 
@@ -660,14 +573,19 @@ async function handleRequest(request) {
 
 The `cache` mode can be set in `fetch` options. Currently Workers only support the `no-store` and `no-cache` mode for controlling the cache. When `no-store` is supplied the cache is bypassed on the way to the origin and the request is not cacheable. When `no-cache` is supplied the cache is forced to revalidate the currently cached response with the origin.
 
-**JavaScript**
-
 ```js
 fetch(request, { cache: 'no-store'});
 fetch(request, { cache: 'no-cache'});
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/#page","headline":"Cache using fetch · Cloudflare Workers docs","description":"Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.","url":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching","Middleware","JavaScript","TypeScript","Python","Rust"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/cache-using-fetch/","name":"Cache using fetch"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/#page","headline":"Cache using fetch · Cloudflare Workers docs","description":"Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.","url":"https://developers.cloudflare.com/workers/examples/cache-using-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching","Middleware","JavaScript","TypeScript","Python","Rust"]}
 ```

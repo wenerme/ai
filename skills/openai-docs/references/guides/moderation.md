@@ -30,7 +30,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=[
         {
             "role": "user",
@@ -56,7 +56,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-5.5",
+  model: "gpt-5.6",
   input: [
     {
       role: "user",
@@ -69,6 +69,12 @@ const response = await client.responses.create({
 
 const inputModeration = response.moderation.input;
 const outputModeration = response.moderation.output;
+if (inputModeration.type === "error") {
+  throw new Error(inputModeration.message);
+}
+if (outputModeration.type === "error") {
+  throw new Error(outputModeration.message);
+}
 
 console.log(inputModeration.flagged);
 console.log(outputModeration.flagged);

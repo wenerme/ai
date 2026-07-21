@@ -23,12 +23,12 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: [
-        { role: "user", content: "knock knock." },
-        { role: "assistant", content: "Who's there?" },
-        { role: "user", content: "Orange." },
-    ],
+  model: "gpt-5.6",
+  input: [
+    { role: "user", content: "knock knock." },
+    { role: "assistant", content: "Who's there?" },
+    { role: "user", content: "Orange." },
+  ],
 });
 
 console.log(response.output_text);
@@ -71,33 +71,34 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
+/** @type {OpenAI.Responses.ResponseInput} */
 let history = [
-    {
-        role: "user",
-        content: "tell me a joke",
-    },
+  {
+    role: "user",
+    content: "tell me a joke",
+  },
 ];
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: history,
-    store: false,
+  model: "gpt-5.6",
+  input: history,
+  store: false,
 });
 
 console.log(response.output_text);
 
 // Add all response output items, including reasoning items, to the history
-history = [...history, ...response.output];
+history.push(...response.output);
 
 history.push({
-    role: "user",
-    content: "tell me another",
+  role: "user",
+  content: "tell me another",
 });
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-5.6",
-    input: history,
-    store: false,
+  model: "gpt-5.6",
+  input: history,
+  store: false,
 });
 
 console.log(secondResponse.output_text);
@@ -185,18 +186,18 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "tell me a joke",
-    store: true,
+  model: "gpt-5.6",
+  input: "tell me a joke",
+  store: true,
 });
 
 console.log(response.output_text);
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-5.6",
-    previous_response_id: response.id,
-    input: [{"role": "user", "content": "explain why this is funny."}],
-    store: true,
+  model: "gpt-5.6",
+  previous_response_id: response.id,
+  input: [{ role: "user", content: "explain why this is funny." }],
+  store: true,
 });
 
 console.log(secondResponse.output_text);
@@ -232,18 +233,18 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5.6",
-    input: "tell me a joke",
-    store: true,
+  model: "gpt-5.6",
+  input: "tell me a joke",
+  store: true,
 });
 
 console.log(response.output_text);
 
 const secondResponse = await openai.responses.create({
-    model: "gpt-5.6",
-    previous_response_id: response.id,
-    input: [{"role": "user", "content": "explain why this is funny."}],
-    store: true,
+  model: "gpt-5.6",
+  previous_response_id: response.id,
+  input: [{ role: "user", content: "explain why this is funny." }],
+  store: true,
 });
 
 console.log(secondResponse.output_text);

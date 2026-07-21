@@ -1,16 +1,18 @@
 ---
-title: Logs Engine
 description: Store logs in R2 and query them directly.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Logs Engine
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Logs Engine
 
-# Logs Engine
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/r2-log-retrieval/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Logs Engine gives you the ability to store your logs in R2 and query them directly.
 
@@ -159,7 +161,14 @@ Which datasets is Logs Engine compatible with?
 
 The retrieval API is compatible with all the datasets we support. The full list is available on the [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) section.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/r2-log-retrieval/#page","headline":"Logs Engine · Cloudflare Logs docs","description":"Store logs in R2 and query them directly.","url":"https://developers.cloudflare.com/logs/r2-log-retrieval/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/logs/","name":"Logs"}},{"@type":"ListItem","position":3,"item":{"@id":"/logs/r2-log-retrieval/","name":"Logs Engine"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/r2-log-retrieval/#page","headline":"Logs Engine · Cloudflare Logs docs","description":"Store logs in R2 and query them directly.","url":"https://developers.cloudflare.com/logs/r2-log-retrieval/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

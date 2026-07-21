@@ -1,16 +1,18 @@
 ---
-title: OpenTelemetry
 description: Export Privacy Proxy metrics and traces to your observability platform using the OpenTelemetry Protocol (OTLP).
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: OpenTelemetry
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-proxy/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  OpenTelemetry
 
-# OpenTelemetry
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy exports telemetry data using the [OpenTelemetry Protocol (OTLP) ↗](https://opentelemetry.io/docs/specs/otlp/). You can configure an endpoint to receive this data and forward it to your observability platform.
 
@@ -86,16 +88,12 @@ To visualize Privacy Proxy metrics in Grafana:
 2. Export metrics from the collector to Prometheus.
 3. Create Grafana dashboards using Prometheus as a data source.
 
-**Example Prometheus queries**
-
 ```txt
 # Request rate over time
 rate(privacy_proxy_requests_total[5m])
 
-
 # 95th percentile connection latency
 histogram_quantile(0.95, rate(privacy_proxy_connect_latency_seconds_bucket[5m]))
-
 
 # Error rate
 sum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privacy_proxy_requests_total[5m]))
@@ -108,7 +106,14 @@ sum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privac
 * [OpenTelemetry documentation ↗](https://opentelemetry.io/docs/) — Learn more about OpenTelemetry concepts and configuration.
 * [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) — Query metrics programmatically via Cloudflare's GraphQL API.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/#page","headline":"OpenTelemetry · Cloudflare Privacy Proxy docs","description":"Export Privacy Proxy metrics and traces to your observability platform using the OpenTelemetry Protocol (OTLP).","url":"https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/reference/metrics/","name":"Observability"}},{"@type":"ListItem","position":5,"item":{"@id":"/privacy-proxy/reference/metrics/opentelemetry/","name":"OpenTelemetry"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/#page","headline":"OpenTelemetry · Cloudflare Privacy Proxy docs","description":"Export Privacy Proxy metrics and traces to your observability platform using the OpenTelemetry Protocol (OTLP).","url":"https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

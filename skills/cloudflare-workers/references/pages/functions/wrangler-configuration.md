@@ -1,18 +1,20 @@
 ---
-title: Configuration
 description: Configure Pages Functions settings using a Wrangler configuration file or the Cloudflare dashboard.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Configuration
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configuration
 
-# Configuration
+Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/functions/wrangler-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
-Warning
+Caution
 
 If your project contains an existing Wrangler file that you [previously used for local development](https://developers.cloudflare.com/pages/functions/local-development/), make sure you verify that it matches your project settings in the Cloudflare dashboard before opting-in to deploy your Pages project with the Wrangler configuration file. Instead of writing your Wrangler file by hand, Cloudflare recommends using [npx wrangler pages download config](#projects-without-existing-wrangler-file) to download your current project settings into a Wrangler file.
 
@@ -35,53 +37,43 @@ Using the Wrangler configuration file to configure your Pages project allows you
 
 ## Example Wrangler file
 
-* [  wrangler.jsonc ](#tab-panel-10289)
-* [  wrangler.toml ](#tab-panel-10290)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-pages-app",
-  "pages_build_output_dir": "./dist",
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "<NAMESPACE_ID>"
-    }
-  ],
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "northwind-demo",
-      "database_id": "<DATABASE_ID>"
-    }
-  ],
-  "vars": {
-    "API_KEY": "1234567asdf"
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-pages-app",
+	"pages_build_output_dir": "./dist",
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "<NAMESPACE_ID>"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "northwind-demo",
+			"database_id": "<DATABASE_ID>"
+		}
+	],
+	"vars": {
+		"API_KEY": "1234567asdf"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-pages-app"
 pages_build_output_dir = "./dist"
 
-
 [[kv_namespaces]]
 binding = "KV"
 id = "<NAMESPACE_ID>"
-
 
 [[d1_databases]]
 binding = "DB"
 database_name = "northwind-demo"
 database_id = "<DATABASE_ID>"
-
 
 [vars]
 API_KEY = "1234567asdf"
@@ -107,23 +99,16 @@ Before you could use the Wrangler configuration file to define your preview and 
 
 If you have been using a Wrangler configuration file for local development, you may already have a file in your Pages project that looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-10285)
-* [  wrangler.toml ](#tab-panel-10286)
-
-**JSONC**
-
 ```jsonc
 {
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "<NAMESPACE_ID>"
-    }
-  ]
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "<NAMESPACE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[kv_namespaces]]
@@ -147,10 +132,6 @@ You can continue to use your Wrangler file for local development without migrati
 ### Projects without existing Wrangler file
 
 If you have an existing Pages project with configuration set up via the Cloudflare dashboard and do not have an existing Wrangler file in your Project, run the `wrangler pages download config` command in your Pages project directory. The `wrangler pages download config` command will download your existing Cloudflare dashboard configuration and generate a valid Wrangler file in your Pages project directory.
-
-* [ npm ](#tab-panel-10282)
-* [ yarn ](#tab-panel-10283)
-* [ pnpm ](#tab-panel-10284)
 
 ```sh
 npx wrangler pages download config <PROJECT_NAME>
@@ -191,40 +172,32 @@ With a Wrangler configuration file, you can quickly set configuration across you
 
 The Wrangler configuration file applies locally when using `wrangler pages dev`. This means that you can test out configuration changes quickly without a need to login to the Cloudflare dashboard. Refer to the following config file for an example:
 
-* [  wrangler.jsonc ](#tab-panel-10287)
-* [  wrangler.toml ](#tab-panel-10288)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-pages-app",
-  "pages_build_output_dir": "./dist",
-  // Set this to today's date
-  "compatibility_date": "2026-07-20",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "<NAMESPACE_ID>"
-    }
-  ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-pages-app",
+	"pages_build_output_dir": "./dist",
+	// Set this to today's date
+	"compatibility_date": "2026-07-21",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "<NAMESPACE_ID>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-pages-app"
 pages_build_output_dir = "./dist"
 # Set this to today's date
-compatibility_date = "2026-07-20"
+compatibility_date = "2026-07-21"
 compatibility_flags = [ "nodejs_compat" ]
-
 
 [[kv_namespaces]]
 binding = "KV"
@@ -273,62 +246,51 @@ Unlike [Workers Environments](https://developers.cloudflare.com/workers/wrangler
 
 Refer to the following Wrangler configuration file for an example of how to override preview deployment configuration:
 
-* [  wrangler.jsonc ](#tab-panel-10291)
-* [  wrangler.toml ](#tab-panel-10292)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-pages-site",
-  "pages_build_output_dir": "./dist",
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "<NAMESPACE_ID>"
-    }
-  ],
-  "vars": {
-    "API_KEY": "1234567asdf"
-  },
-  "env": {
-    "preview": {
-      "kv_namespaces": [
-        {
-          "binding": "KV",
-          "id": "<PREVIEW_NAMESPACE_ID>"
-        }
-      ],
-      "vars": {
-        "API_KEY": "8901234bfgd"
-      }
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-pages-site",
+	"pages_build_output_dir": "./dist",
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "<NAMESPACE_ID>"
+		}
+	],
+	"vars": {
+		"API_KEY": "1234567asdf"
+	},
+	"env": {
+		"preview": {
+			"kv_namespaces": [
+				{
+					"binding": "KV",
+					"id": "<PREVIEW_NAMESPACE_ID>"
+				}
+			],
+			"vars": {
+				"API_KEY": "8901234bfgd"
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-pages-site"
 pages_build_output_dir = "./dist"
 
-
 [[kv_namespaces]]
 binding = "KV"
 id = "<NAMESPACE_ID>"
 
-
 [vars]
 API_KEY = "1234567asdf"
-
 
 [[env.preview.kv_namespaces]]
 binding = "KV"
 id = "<PREVIEW_NAMESPACE_ID>"
-
 
 [env.preview.vars]
 API_KEY = "8901234bfgd"
@@ -338,62 +300,51 @@ If you deployed this file via `wrangler pages deploy`, `name`, `pages_build_outp
 
 If you wanted to have configuration values apply to local and preview, but override production, your file would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-10295)
-* [  wrangler.toml ](#tab-panel-10296)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-pages-site",
-  "pages_build_output_dir": "./dist",
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "<NAMESPACE_ID>"
-    }
-  ],
-  "vars": {
-    "API_KEY": "1234567asdf"
-  },
-  "env": {
-    "production": {
-      "kv_namespaces": [
-        {
-          "binding": "KV",
-          "id": "<PRODUCTION_NAMESPACE_ID>"
-        }
-      ],
-      "vars": {
-        "API_KEY": "8901234bfgd"
-      }
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-pages-site",
+	"pages_build_output_dir": "./dist",
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "<NAMESPACE_ID>"
+		}
+	],
+	"vars": {
+		"API_KEY": "1234567asdf"
+	},
+	"env": {
+		"production": {
+			"kv_namespaces": [
+				{
+					"binding": "KV",
+					"id": "<PRODUCTION_NAMESPACE_ID>"
+				}
+			],
+			"vars": {
+				"API_KEY": "8901234bfgd"
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-pages-site"
 pages_build_output_dir = "./dist"
 
-
 [[kv_namespaces]]
 binding = "KV"
 id = "<NAMESPACE_ID>"
 
-
 [vars]
 API_KEY = "1234567asdf"
-
 
 [[env.production.kv_namespaces]]
 binding = "KV"
 id = "<PRODUCTION_NAMESPACE_ID>"
-
 
 [env.production.vars]
 API_KEY = "8901234bfgd"
@@ -401,82 +352,69 @@ API_KEY = "8901234bfgd"
 
 You can always be explicit and override both preview and production:
 
-* [  wrangler.jsonc ](#tab-panel-10297)
-* [  wrangler.toml ](#tab-panel-10298)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-pages-site",
-  "pages_build_output_dir": "./dist",
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "<NAMESPACE_ID>"
-    }
-  ],
-  "vars": {
-    "API_KEY": "1234567asdf"
-  },
-  "env": {
-    "preview": {
-      "kv_namespaces": [
-        {
-          "binding": "KV",
-          "id": "<PREVIEW_NAMESPACE_ID>"
-        }
-      ],
-      "vars": {
-        "API_KEY": "8901234bfgd"
-      }
-    },
-    "production": {
-      "kv_namespaces": [
-        {
-          "binding": "KV",
-          "id": "<PRODUCTION_NAMESPACE_ID>"
-        }
-      ],
-      "vars": {
-        "API_KEY": "6567875fvgt"
-      }
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-pages-site",
+	"pages_build_output_dir": "./dist",
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "<NAMESPACE_ID>"
+		}
+	],
+	"vars": {
+		"API_KEY": "1234567asdf"
+	},
+	"env": {
+		"preview": {
+			"kv_namespaces": [
+				{
+					"binding": "KV",
+					"id": "<PREVIEW_NAMESPACE_ID>"
+				}
+			],
+			"vars": {
+				"API_KEY": "8901234bfgd"
+			}
+		},
+		"production": {
+			"kv_namespaces": [
+				{
+					"binding": "KV",
+					"id": "<PRODUCTION_NAMESPACE_ID>"
+				}
+			],
+			"vars": {
+				"API_KEY": "6567875fvgt"
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-pages-site"
 pages_build_output_dir = "./dist"
 
-
 [[kv_namespaces]]
 binding = "KV"
 id = "<NAMESPACE_ID>"
 
-
 [vars]
 API_KEY = "1234567asdf"
-
 
 [[env.preview.kv_namespaces]]
 binding = "KV"
 id = "<PREVIEW_NAMESPACE_ID>"
 
-
 [env.preview.vars]
 API_KEY = "8901234bfgd"
-
 
 [[env.production.kv_namespaces]]
 binding = "KV"
 id = "<PRODUCTION_NAMESPACE_ID>"
-
 
 [env.production.vars]
 API_KEY = "6567875fvgt"
@@ -486,19 +424,19 @@ API_KEY = "6567875fvgt"
 
 Inheritable keys are configurable at the top-level, and can be inherited (or overridden) by environment-specific configuration.
 
-* `name` ` string ` required
+* `name` ` string `required
 
   * The name of your Pages project. Alphanumeric and dashes only.
-* `pages_build_output_dir` ` string ` required
+* `pages_build_output_dir` ` string `required
 
   * The path to your project's build output folder. For example: `./dist`.
-* `compatibility_date` ` string ` required
+* `compatibility_date` ` string `required
 
   * A date in the form `yyyy-mm-dd`, which will be used to determine which version of the Workers runtime is used. Refer to [Compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
 * `compatibility_flags` string\[\] optional
 
   * A list of flags that enable features from upcoming features of the Workers runtime, usually used together with `compatibility_date`. Refer to [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
-* `send_metrics` ` boolean ` optional
+* `send_metrics` ` boolean `optional
 
   * Whether Wrangler should send usage data to Cloudflare for this project. Defaults to `true`. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
 * `limits` Limits optional
@@ -517,51 +455,41 @@ Non-inheritable keys are configurable at the top-level, but, if any one non-inhe
 
 For example, this configuration will not work:
 
-* [  wrangler.jsonc ](#tab-panel-10293)
-* [  wrangler.toml ](#tab-panel-10294)
-
-**JSONC**
-
 ```jsonc
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-pages-site",
-  "pages_build_output_dir": "./dist",
-  "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "<NAMESPACE_ID>"
-    }
-  ],
-  "vars": {
-    "API_KEY": "1234567asdf"
-  },
-  "env": {
-    "production": {
-      "vars": {
-        "API_KEY": "8901234bfgd"
-      }
-    }
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "my-pages-site",
+	"pages_build_output_dir": "./dist",
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "<NAMESPACE_ID>"
+		}
+	],
+	"vars": {
+		"API_KEY": "1234567asdf"
+	},
+	"env": {
+		"production": {
+			"vars": {
+				"API_KEY": "8901234bfgd"
+			}
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-pages-site"
 pages_build_output_dir = "./dist"
 
-
 [[kv_namespaces]]
 binding = "KV"
 id = "<NAMESPACE_ID>"
 
-
 [vars]
 API_KEY = "1234567asdf"
-
 
 [env.production.vars]
 API_KEY = "8901234bfgd"
@@ -571,37 +499,37 @@ API_KEY = "8901234bfgd"
 
 This will work for local development, but will fail to validate when you try to deploy.
 
-* `vars` ` object ` optional
+* `vars` ` object `optional
 
   * A map of environment variables to set when deploying your Function. Refer to [Environment variables](https://developers.cloudflare.com/pages/functions/bindings/#environment-variables).
-* `d1_databases` ` object ` optional
+* `d1_databases` ` object `optional
 
   * A list of D1 databases that your Function should be bound to. Refer to [D1 databases](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases).
-* `durable_objects` ` object ` optional
+* `durable_objects` ` object `optional
 
   * A list of Durable Objects that your Function should be bound to. Refer to [Durable Objects](https://developers.cloudflare.com/pages/functions/bindings/#durable-objects).
-* `hyperdrive` ` object ` optional
+* `hyperdrive` ` object `optional
 
   * Specifies Hyperdrive configs that your Function should be bound to. Refer to [Hyperdrive](https://developers.cloudflare.com/pages/functions/bindings/#r2-buckets).
-* `kv_namespaces` ` object ` optional
+* `kv_namespaces` ` object `optional
 
   * A list of KV namespaces that your Function should be bound to. Refer to [KV namespaces](https://developers.cloudflare.com/pages/functions/bindings/#kv-namespaces).
-* `queues.producers` ` object ` optional
+* `queues.producers` ` object `optional
 
   * Specifies Queues Producers that are bound to this Function. Refer to [Queues Producers](https://developers.cloudflare.com/queues/get-started/#4-set-up-your-producer-worker).
-* `r2_buckets` ` object ` optional
+* `r2_buckets` ` object `optional
 
   * A list of R2 buckets that your Function should be bound to. Refer to [R2 buckets](https://developers.cloudflare.com/pages/functions/bindings/#r2-buckets).
-* `vectorize` ` object ` optional
+* `vectorize` ` object `optional
 
   * A list of Vectorize indexes that your Function should be bound to. Refer to [Vectorize indexes](https://developers.cloudflare.com/vectorize/get-started/intro/#3-bind-your-worker-to-your-index).
-* `services` ` object ` optional
+* `services` ` object `optional
 
   * A list of service bindings that your Function should be bound to. Refer to [service bindings](https://developers.cloudflare.com/pages/functions/bindings/#service-bindings).
-* `analytics_engine_datasets` ` object ` optional
+* `analytics_engine_datasets` ` object `optional
 
   * Specifies analytics engine datasets that are bound to this Function. Refer to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/get-started/).
-* `ai` ` object ` optional
+* `ai` ` object `optional
 
   * Specifies an AI binding to this Function. Refer to [Workers AI](https://developers.cloudflare.com/pages/functions/bindings/#workers-ai).
 
@@ -630,7 +558,7 @@ When using Wrangler in the default local development mode, files will be written
 
 * Configure Durable Object namespace bindings via your [Wrangler file](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects) the same way they are configured with Cloudflare Workers.
 
-Warning
+Caution
 
 You must create a Durable Object Worker and bind it to your Pages project using the Cloudflare dashboard or your Pages project's [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/). You cannot create and deploy a Durable Object within a Pages project.
 
@@ -727,7 +655,14 @@ When used in your Pages Functions projects, your Wrangler file is the source of 
 
 If you decide that you do not want to use a Wrangler configuration file for configuration, you can safely delete it and create a new deployment. Configuration values from your last deployment will still apply and you will be able to edit them from the dashboard.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/wrangler-configuration/#page","headline":"Configuration · Cloudflare Pages docs","description":"Configure Pages Functions settings using a Wrangler configuration file or the Cloudflare dashboard.","url":"https://developers.cloudflare.com/pages/functions/wrangler-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/wrangler-configuration/","name":"Configuration"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/wrangler-configuration/#page","headline":"Configuration · Cloudflare Pages docs","description":"Configure Pages Functions settings using a Wrangler configuration file or the Cloudflare dashboard.","url":"https://developers.cloudflare.com/pages/functions/wrangler-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

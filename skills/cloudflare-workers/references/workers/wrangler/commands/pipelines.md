@@ -1,16 +1,18 @@
 ---
-title: Pipelines
 description: Wrangler commands for managing Cloudflare Pipelines.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Pipelines
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Pipelines
 
-# Pipelines
+Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Manage your [Pipelines](https://developers.cloudflare.com/pipelines/) using Wrangler.
 
@@ -20,20 +22,18 @@ For `get` commands in the Pipelines namespace (`pipelines get`, `pipelines strea
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-13405)
-* [  pnpm ](#tab-panel-13406)
-* [  yarn ](#tab-panel-13407)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines setup
 ```
 
-```sh
-pnpm wrangler pipelines setup
+```
+yarn wrangler pipelines setup
 ```
 
-```sh
-yarn wrangler pipelines setup
+```
+pnpm wrangler pipelines setup
 ```
 
 * `--name` ` string `
@@ -64,20 +64,18 @@ Use a specific auth profile
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-13408)
-* [  pnpm ](#tab-panel-13409)
-* [  yarn ](#tab-panel-13410)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines create [PIPELINE]
 ```
 
-```sh
-pnpm wrangler pipelines create [PIPELINE]
+```
+yarn wrangler pipelines create [PIPELINE]
 ```
 
-```sh
-yarn wrangler pipelines create [PIPELINE]
+```
+pnpm wrangler pipelines create [PIPELINE]
 ```
 
 * `[PIPELINE]` ` string ` required
@@ -112,20 +110,18 @@ Use a specific auth profile
 
 List all pipelines
 
-* [  npm ](#tab-panel-13411)
-* [  pnpm ](#tab-panel-13412)
-* [  yarn ](#tab-panel-13413)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines list
 ```
 
-```sh
-pnpm wrangler pipelines list
+```
+yarn wrangler pipelines list
 ```
 
-```sh
-yarn wrangler pipelines list
+```
+pnpm wrangler pipelines list
 ```
 
 * `--page` ` number ` default: 1
@@ -160,20 +156,18 @@ Use a specific auth profile
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-13414)
-* [  pnpm ](#tab-panel-13415)
-* [  yarn ](#tab-panel-13416)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines get [PIPELINE]
 ```
 
-```sh
-pnpm wrangler pipelines get [PIPELINE]
+```
+yarn wrangler pipelines get [PIPELINE]
 ```
 
-```sh
-yarn wrangler pipelines get [PIPELINE]
+```
+pnpm wrangler pipelines get [PIPELINE]
 ```
 
 * `[PIPELINE]` ` string ` required
@@ -206,20 +200,18 @@ Use a specific auth profile
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-13417)
-* [  pnpm ](#tab-panel-13418)
-* [  yarn ](#tab-panel-13419)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines update [PIPELINE]
 ```
 
-```sh
-pnpm wrangler pipelines update [PIPELINE]
+```
+yarn wrangler pipelines update [PIPELINE]
 ```
 
-```sh
-yarn wrangler pipelines update [PIPELINE]
+```
+pnpm wrangler pipelines update [PIPELINE]
 ```
 
 * `[PIPELINE]` ` string ` required
@@ -274,20 +266,18 @@ Use a specific auth profile
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-13420)
-* [  pnpm ](#tab-panel-13421)
-* [  yarn ](#tab-panel-13422)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines delete [PIPELINE]
 ```
 
-```sh
-pnpm wrangler pipelines delete [PIPELINE]
+```
+yarn wrangler pipelines delete [PIPELINE]
 ```
 
-```sh
-yarn wrangler pipelines delete [PIPELINE]
+```
+pnpm wrangler pipelines delete [PIPELINE]
 ```
 
 * `[PIPELINE]` ` string ` required
@@ -320,20 +310,18 @@ Use a specific auth profile
 
 Create a new stream
 
-* [  npm ](#tab-panel-13423)
-* [  pnpm ](#tab-panel-13424)
-* [  yarn ](#tab-panel-13425)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines streams create [STREAM]
 ```
 
-```sh
-pnpm wrangler pipelines streams create [STREAM]
+```
+yarn wrangler pipelines streams create [STREAM]
 ```
 
-```sh
-yarn wrangler pipelines streams create [STREAM]
+```
+pnpm wrangler pipelines streams create [STREAM]
 ```
 
 * `[STREAM]` ` string ` required
@@ -372,20 +360,18 @@ Use a specific auth profile
 
 List all streams
 
-* [  npm ](#tab-panel-13426)
-* [  pnpm ](#tab-panel-13427)
-* [  yarn ](#tab-panel-13428)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines streams list
 ```
 
-```sh
-pnpm wrangler pipelines streams list
+```
+yarn wrangler pipelines streams list
 ```
 
-```sh
-yarn wrangler pipelines streams list
+```
+pnpm wrangler pipelines streams list
 ```
 
 * `--page` ` number ` default: 1
@@ -422,20 +408,18 @@ Use a specific auth profile
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-13429)
-* [  pnpm ](#tab-panel-13430)
-* [  yarn ](#tab-panel-13431)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines streams get [STREAM]
 ```
 
-```sh
-pnpm wrangler pipelines streams get [STREAM]
+```
+yarn wrangler pipelines streams get [STREAM]
 ```
 
-```sh
-yarn wrangler pipelines streams get [STREAM]
+```
+pnpm wrangler pipelines streams get [STREAM]
 ```
 
 * `[STREAM]` ` string ` required
@@ -468,20 +452,18 @@ Use a specific auth profile
 
 Delete a stream
 
-* [  npm ](#tab-panel-13432)
-* [  pnpm ](#tab-panel-13433)
-* [  yarn ](#tab-panel-13434)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines streams delete [STREAM]
 ```
 
-```sh
-pnpm wrangler pipelines streams delete [STREAM]
+```
+yarn wrangler pipelines streams delete [STREAM]
 ```
 
-```sh
-yarn wrangler pipelines streams delete [STREAM]
+```
+pnpm wrangler pipelines streams delete [STREAM]
 ```
 
 * `[STREAM]` ` string ` required
@@ -514,20 +496,18 @@ Use a specific auth profile
 
 Create a new sink
 
-* [  npm ](#tab-panel-13435)
-* [  pnpm ](#tab-panel-13436)
-* [  yarn ](#tab-panel-13437)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines sinks create [SINK]
 ```
 
-```sh
-pnpm wrangler pipelines sinks create [SINK]
+```
+yarn wrangler pipelines sinks create [SINK]
 ```
 
-```sh
-yarn wrangler pipelines sinks create [SINK]
+```
+pnpm wrangler pipelines sinks create [SINK]
 ```
 
 * `[SINK]` ` string ` required
@@ -586,20 +566,18 @@ Use a specific auth profile
 
 List all sinks
 
-* [  npm ](#tab-panel-13438)
-* [  pnpm ](#tab-panel-13439)
-* [  yarn ](#tab-panel-13440)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines sinks list
 ```
 
-```sh
-pnpm wrangler pipelines sinks list
+```
+yarn wrangler pipelines sinks list
 ```
 
-```sh
-yarn wrangler pipelines sinks list
+```
+pnpm wrangler pipelines sinks list
 ```
 
 * `--page` ` number ` default: 1
@@ -636,20 +614,18 @@ Use a specific auth profile
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-13441)
-* [  pnpm ](#tab-panel-13442)
-* [  yarn ](#tab-panel-13443)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines sinks get [SINK]
 ```
 
-```sh
-pnpm wrangler pipelines sinks get [SINK]
+```
+yarn wrangler pipelines sinks get [SINK]
 ```
 
-```sh
-yarn wrangler pipelines sinks get [SINK]
+```
+pnpm wrangler pipelines sinks get [SINK]
 ```
 
 * `[SINK]` ` string ` required
@@ -682,20 +658,18 @@ Use a specific auth profile
 
 Delete a sink
 
-* [  npm ](#tab-panel-13444)
-* [  pnpm ](#tab-panel-13445)
-* [  yarn ](#tab-panel-13446)
+ npm  yarn  pnpm
 
-```sh
+```
 npx wrangler pipelines sinks delete [SINK]
 ```
 
-```sh
-pnpm wrangler pipelines sinks delete [SINK]
+```
+yarn wrangler pipelines sinks delete [SINK]
 ```
 
-```sh
-yarn wrangler pipelines sinks delete [SINK]
+```
+pnpm wrangler pipelines sinks delete [SINK]
 ```
 
 * `[SINK]` ` string ` required
@@ -724,7 +698,14 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` ` string `
 Use a specific auth profile
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#page","headline":"Pipelines · Cloudflare Workers docs","description":"Wrangler commands for managing Cloudflare Pipelines.","url":"https://developers.cloudflare.com/workers/wrangler/commands/pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/wrangler/","name":"Wrangler"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/wrangler/commands/","name":"Commands"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/wrangler/commands/pipelines/","name":"Pipelines"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#page","headline":"Pipelines · Cloudflare Workers docs","description":"Wrangler commands for managing Cloudflare Pipelines.","url":"https://developers.cloudflare.com/workers/wrangler/commands/pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

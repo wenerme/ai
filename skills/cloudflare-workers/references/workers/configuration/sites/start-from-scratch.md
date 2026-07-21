@@ -1,16 +1,18 @@
 ---
-title: Start from scratch
 description: Create a new Workers Sites project from scratch with Wrangler.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Start from scratch
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Start from scratch
 
-# Start from scratch
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers Static Assets Instead
 
@@ -47,52 +49,31 @@ The template project contains the following files and directories:
 ## Customize the `wrangler.jsonc` file:
 
 * Change the `name` property to the name of your project:
-
-  * [  wrangler.jsonc ](#tab-panel-12387)
-  * [  wrangler.toml ](#tab-panel-12388)
-
-**JSONC**
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-site"
 }
 ```
-
-**TOML**
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-site"
 ```
 * Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:
-
-  * [  wrangler.jsonc ](#tab-panel-12389)
-  * [  wrangler.toml ](#tab-panel-12390)
-
-**JSONC**
 ```jsonc
 {
   "compatibility_date": "yyyy-mm-dd"
 }
 ```
-
-**TOML**
 ```toml
 compatibility_date = "yyyy-mm-dd"
 ```
 * Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:
-
-  * [  wrangler.jsonc ](#tab-panel-12391)
-  * [  wrangler.toml ](#tab-panel-12392)
-
-**JSONC**
 ```jsonc
 {
   "route": "https://example.com/*"
 }
 ```
-
-**TOML**
 ```toml
 route = "https://example.com/*"
 ```
@@ -101,7 +82,14 @@ Refer to the documentation on [Routes](https://developers.cloudflare.com/workers
 
 Learn more about [configuring your project](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from scratch · Cloudflare Workers docs","description":"Create a new Workers Sites project from scratch with Wrangler.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/sites/","name":"Workers Sites"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/configuration/sites/start-from-scratch/","name":"Start from scratch"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Start from scratch · Cloudflare Workers docs","description":"Create a new Workers Sites project from scratch with Wrangler.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

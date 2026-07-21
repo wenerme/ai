@@ -1,16 +1,18 @@
 ---
-title: Unexpected DNS records
 description: Identify and remove unexpected DNS records.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Unexpected DNS records
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Unexpected DNS records
 
-# Unexpected DNS records
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Additional records after import
 
@@ -121,7 +123,7 @@ If you want to avoid a `_dc-mx` or `dc-#####` response, you must address the und
 `mail.example.com A 192.0.2.1`
 `example.com A 203.0.113.1`
 
-Warning
+Caution
 
 If your mail server resides on the same IP as your web server, your MX record will expose your origin IP address, since it is not hidden behind the Cloudflare proxy.
 
@@ -143,7 +145,14 @@ In this circumstance, purge your public DNS cache via these methods:
 * [Purge your DNS cache at Google ↗](https://developers.google.com/speed/public-dns/cache)
 * [Purge your DNS cache locally ↗](https://docs.cpanel.net/knowledge-base/dns/how-to-clear-your-dns-cache/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/#page","headline":"Unexpected DNS records · Cloudflare DNS docs","description":"Identify and remove unexpected DNS records.","url":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/troubleshooting/unexpected-dns-records/","name":"Unexpected DNS records"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/#page","headline":"Unexpected DNS records · Cloudflare DNS docs","description":"Identify and remove unexpected DNS records.","url":"https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

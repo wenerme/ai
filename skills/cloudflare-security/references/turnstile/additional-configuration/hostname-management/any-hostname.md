@@ -1,16 +1,18 @@
 ---
-title: Any Hostname (Enterprise only)
 description: Allow Turnstile widgets on any hostname with Enterprise plans.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Any Hostname (Enterprise only)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Any Hostname (Enterprise only)
 
-# Any Hostname (Enterprise only)
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Any Hostname feature removes the requirement to specify hostnames during widget creation, allowing widgets to function on any domain.
 
@@ -24,8 +26,6 @@ To reduce security risks when using Any Hostname, monitor widget usage through [
 
 When using the Any Hostname feature, it is essential to implement additional validation in your server-side code to maintain security controls. Always validate the `hostname` field in Siteverify responses.
 
-**Example response**
-
 ```js
 async function validateTurnstileWithHostname(token, expectedHostnames = []) {
   const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
@@ -37,14 +37,11 @@ async function validateTurnstileWithHostname(token, expectedHostnames = []) {
     })
   });
 
-
   const result = await response.json();
-
 
   if (!result.success) {
     return { valid: false, error: 'Token validation failed' };
   }
-
 
   // Additional hostname validation when using Any Hostname
   if (expectedHostnames.length > 0 && !expectedHostnames.includes(result.hostname)) {
@@ -54,7 +51,6 @@ async function validateTurnstileWithHostname(token, expectedHostnames = []) {
       hostname: result.hostname
     };
   }
-
 
   return { valid: true, data: result };
 }
@@ -83,7 +79,14 @@ The Any Hostname feature is particularly valuable for customers with:
 * Multi-tenant applications such as SaaS platforms serving multiple customer domains.
 * Development environments that test across various staging and development domains.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/#page","headline":"Any Hostname (Enterprise only) · Cloudflare Turnstile docs","description":"Allow Turnstile widgets on any hostname with Enterprise plans.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/additional-configuration/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/additional-configuration/hostname-management/","name":"Hostname management"}},{"@type":"ListItem","position":5,"item":{"@id":"/turnstile/additional-configuration/hostname-management/any-hostname/","name":"Any Hostname (Enterprise only)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/#page","headline":"Any Hostname (Enterprise only) · Cloudflare Turnstile docs","description":"Allow Turnstile widgets on any hostname with Enterprise plans.","url":"https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

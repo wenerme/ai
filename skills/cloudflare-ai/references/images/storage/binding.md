@@ -1,16 +1,18 @@
 ---
-title: Manage hosted images with Workers
 description: Use the Images binding to upload, list, retrieve, update, and delete hosted images from a Worker.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Manage hosted images with Workers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage hosted images with Workers
 
-# Manage hosted images with Workers
+Last updated Jun 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/storage/binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Images](https://developers.cloudflare.com/images/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -26,20 +28,13 @@ Hosted image operations require a [paid Images plan with storage](https://develo
 
 To bind Images to your Worker, add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-9715)
-* [  wrangler.toml ](#tab-panel-9716)
-
-**JSONC**
-
 ```jsonc
 {
-  "images": {
-    "binding": "IMAGES", // available in your Worker on env.IMAGES
-  },
+	"images": {
+		"binding": "IMAGES", // available in your Worker on env.IMAGES
+	},
 }
 ```
-
-**TOML**
 
 ```toml
 [images]
@@ -108,50 +103,39 @@ Deletes an image. Returns `true` if the image was deleted or `false` if no image
 
 ### Upload an image from a request body
 
-* [  JavaScript ](#tab-panel-9717)
-* [  TypeScript ](#tab-panel-9718)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    if (!request.body) {
-      return new Response("Missing body", { status: 400 });
-    }
+	async fetch(request, env) {
+		if (!request.body) {
+			return new Response("Missing body", { status: 400 });
+		}
 
+		const image = await env.IMAGES.hosted.upload(request.body, {
+			filename: "upload.jpg",
+			metadata: { source: "worker" },
+			requireSignedURLs: false,
+		});
 
-    const image = await env.IMAGES.hosted.upload(request.body, {
-      filename: "upload.jpg",
-      metadata: { source: "worker" },
-      requireSignedURLs: false,
-    });
-
-
-    return Response.json(image);
-  },
+		return Response.json(image);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    if (!request.body) {
-      return new Response("Missing body", { status: 400 });
-    }
+	async fetch(request, env) {
+		if (!request.body) {
+			return new Response("Missing body", { status: 400 });
+		}
 
+		const image = await env.IMAGES.hosted.upload(request.body, {
+			filename: "upload.jpg",
+			metadata: { source: "worker" },
+			requireSignedURLs: false,
+		});
 
-    const image = await env.IMAGES.hosted.upload(request.body, {
-      filename: "upload.jpg",
-      metadata: { source: "worker" },
-      requireSignedURLs: false,
-    });
-
-
-    return Response.json(image);
-  },
+		return Response.json(image);
+	},
 };
 ```
 
@@ -159,223 +143,173 @@ export default {
 
 Set `encoding: "base64"` and the binding will decode the body for you before uploading.
 
-* [  JavaScript ](#tab-panel-9721)
-* [  TypeScript ](#tab-panel-9722)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    if (!request.body) {
-      return new Response("Missing body", { status: 400 });
-    }
+	async fetch(request, env) {
+		if (!request.body) {
+			return new Response("Missing body", { status: 400 });
+		}
 
+		const image = await env.IMAGES.hosted.upload(request.body, {
+			encoding: "base64",
+			filename: "upload.png",
+		});
 
-    const image = await env.IMAGES.hosted.upload(request.body, {
-      encoding: "base64",
-      filename: "upload.png",
-    });
-
-
-    return Response.json(image);
-  },
+		return Response.json(image);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    if (!request.body) {
-      return new Response("Missing body", { status: 400 });
-    }
+	async fetch(request, env) {
+		if (!request.body) {
+			return new Response("Missing body", { status: 400 });
+		}
 
+		const image = await env.IMAGES.hosted.upload(request.body, {
+			encoding: "base64",
+			filename: "upload.png",
+		});
 
-    const image = await env.IMAGES.hosted.upload(request.body, {
-      encoding: "base64",
-      filename: "upload.png",
-    });
-
-
-    return Response.json(image);
-  },
+		return Response.json(image);
+	},
 };
 ```
 
 ### List images with pagination
 
-* [  JavaScript ](#tab-panel-9725)
-* [  TypeScript ](#tab-panel-9726)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    let cursor;
-    const ids = [];
+	async fetch(request, env) {
+		let cursor;
+		const ids = [];
 
+		do {
+			const page = await env.IMAGES.hosted.list({ limit: 100, cursor });
+			ids.push(...page.images.map((image) => image.id));
+			cursor = page.cursor;
+		} while (cursor);
 
-    do {
-      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });
-      ids.push(...page.images.map((image) => image.id));
-      cursor = page.cursor;
-    } while (cursor);
-
-
-    return Response.json({ count: ids.length, ids });
-  },
+		return Response.json({ count: ids.length, ids });
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    let cursor: string | undefined;
-    const ids: string[] = [];
+	async fetch(request, env) {
+		let cursor: string | undefined;
+		const ids: string[] = [];
 
+		do {
+			const page = await env.IMAGES.hosted.list({ limit: 100, cursor });
+			ids.push(...page.images.map((image) => image.id));
+			cursor = page.cursor;
+		} while (cursor);
 
-    do {
-      const page = await env.IMAGES.hosted.list({ limit: 100, cursor });
-      ids.push(...page.images.map((image) => image.id));
-      cursor = page.cursor;
-    } while (cursor);
-
-
-    return Response.json({ count: ids.length, ids });
-  },
+		return Response.json({ count: ids.length, ids });
+	},
 };
 ```
 
 ### Get the details for a single image
 
-* [  JavaScript ](#tab-panel-9719)
-* [  TypeScript ](#tab-panel-9720)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();
-    if (!details) {
-      return new Response("Not found", { status: 404 });
-    }
-    return Response.json(details);
-  },
+	async fetch(request, env) {
+		const details = await env.IMAGES.hosted.image("IMAGE_ID").details();
+		if (!details) {
+			return new Response("Not found", { status: 404 });
+		}
+		return Response.json(details);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const details = await env.IMAGES.hosted.image("IMAGE_ID").details();
-    if (!details) {
-      return new Response("Not found", { status: 404 });
-    }
-    return Response.json(details);
-  },
+	async fetch(request, env) {
+		const details = await env.IMAGES.hosted.image("IMAGE_ID").details();
+		if (!details) {
+			return new Response("Not found", { status: 404 });
+		}
+		return Response.json(details);
+	},
 };
 ```
 
 ### Stream the original bytes for an image
 
-* [  JavaScript ](#tab-panel-9723)
-* [  TypeScript ](#tab-panel-9724)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
-    if (!bytes) {
-      return new Response("Not found", { status: 404 });
-    }
-    return new Response(bytes);
-  },
+	async fetch(request, env) {
+		const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
+		if (!bytes) {
+			return new Response("Not found", { status: 404 });
+		}
+		return new Response(bytes);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
-    if (!bytes) {
-      return new Response("Not found", { status: 404 });
-    }
-    return new Response(bytes);
-  },
+	async fetch(request, env) {
+		const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
+		if (!bytes) {
+			return new Response("Not found", { status: 404 });
+		}
+		return new Response(bytes);
+	},
 };
 ```
 
 ### Update image metadata
 
-* [  JavaScript ](#tab-panel-9727)
-* [  TypeScript ](#tab-panel-9728)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({
-      metadata: { reviewed: true },
-    });
-    return Response.json(updated);
-  },
+	async fetch(request, env) {
+		const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({
+			metadata: { reviewed: true },
+		});
+		return Response.json(updated);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({
-      metadata: { reviewed: true },
-    });
-    return Response.json(updated);
-  },
+	async fetch(request, env) {
+		const updated = await env.IMAGES.hosted.image("IMAGE_ID").update({
+			metadata: { reviewed: true },
+		});
+		return Response.json(updated);
+	},
 };
 ```
 
 ### Delete an image
 
-* [  JavaScript ](#tab-panel-9729)
-* [  TypeScript ](#tab-panel-9730)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();
-    return new Response(deleted ? "Deleted" : "Not found", {
-      status: deleted ? 200 : 404,
-    });
-  },
+	async fetch(request, env) {
+		const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();
+		return new Response(deleted ? "Deleted" : "Not found", {
+			status: deleted ? 200 : 404,
+		});
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();
-    return new Response(deleted ? "Deleted" : "Not found", {
-      status: deleted ? 200 : 404,
-    });
-  },
+	async fetch(request, env) {
+		const deleted = await env.IMAGES.hosted.image("IMAGE_ID").delete();
+		return new Response(deleted ? "Deleted" : "Not found", {
+			status: deleted ? 200 : 404,
+		});
+	},
 };
 ```
 
@@ -383,56 +317,45 @@ export default {
 
 This example fetches an image from a remote URL, uploads it into your Images account, and returns the first variant URL.
 
-* [  JavaScript ](#tab-panel-9731)
-* [  TypeScript ](#tab-panel-9732)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const upstream = await fetch("https://example.com/photo.jpg");
-    if (!upstream.ok || !upstream.body) {
-      return new Response("Upstream fetch failed", { status: 502 });
-    }
+	async fetch(request, env) {
+		const upstream = await fetch("https://example.com/photo.jpg");
+		if (!upstream.ok || !upstream.body) {
+			return new Response("Upstream fetch failed", { status: 502 });
+		}
 
+		const image = await env.IMAGES.hosted.upload(upstream.body, {
+			filename: "photo.jpg",
+			metadata: { source: "example.com" },
+		});
 
-    const image = await env.IMAGES.hosted.upload(upstream.body, {
-      filename: "photo.jpg",
-      metadata: { source: "example.com" },
-    });
-
-
-    return Response.json({
-      id: image.id,
-      variant: image.variants[0],
-    });
-  },
+		return Response.json({
+			id: image.id,
+			variant: image.variants[0],
+		});
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const upstream = await fetch("https://example.com/photo.jpg");
-    if (!upstream.ok || !upstream.body) {
-      return new Response("Upstream fetch failed", { status: 502 });
-    }
+	async fetch(request, env) {
+		const upstream = await fetch("https://example.com/photo.jpg");
+		if (!upstream.ok || !upstream.body) {
+			return new Response("Upstream fetch failed", { status: 502 });
+		}
 
+		const image = await env.IMAGES.hosted.upload(upstream.body, {
+			filename: "photo.jpg",
+			metadata: { source: "example.com" },
+		});
 
-    const image = await env.IMAGES.hosted.upload(upstream.body, {
-      filename: "photo.jpg",
-      metadata: { source: "example.com" },
-    });
-
-
-    return Response.json({
-      id: image.id,
-      variant: image.variants[0],
-    });
-  },
+		return Response.json({
+			id: image.id,
+			variant: image.variants[0],
+		});
+	},
 };
 ```
 
@@ -444,19 +367,19 @@ Returned by operations that retrieve, create, or update an image.
 
 * `id` ` string `
   * The unique identifier for the image.
-* `filename` ` string ` optional
+* `filename` ` string `optional
   * The original filename supplied at upload time.
-* `uploaded` ` string ` optional
+* `uploaded` ` string `optional
   * The date and time the image was uploaded, as an ISO 8601 string.
 * `requireSignedURLs` ` boolean `
   * Whether signed URLs are required to access this image. Refer to [Serve private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/).
-* `meta` ` Record<string, unknown> ` optional
+* `meta` ` Record<string, unknown> `optional
   * User-supplied metadata associated with the image.
 * `variants` ` Array<string> `
   * Fully-formed URLs for each variant configured on your account. Refer to [Create variants](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/).
-* `draft` ` boolean ` optional
+* `draft` ` boolean `optional
   * Whether the image is in a draft state (no bytes uploaded yet). Drafts are typically only seen on accounts using [Direct Creator Uploads](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/).
-* `creator` ` string ` optional
+* `creator` ` string `optional
   * A user-defined identifier for the image creator.
 
 ### ImageList
@@ -465,7 +388,7 @@ Returned by [list()](#listoptions).
 
 * `images` ` Array<ImageMetadata> `
   * The images in this page of results.
-* `cursor` ` string ` optional
+* `cursor` ` string `optional
   * A continuation token to pass to the next `list()` call. Only present when there are more results.
 * `listComplete` ` boolean `
   * `true` when there are no further pages, `false` otherwise.
@@ -495,7 +418,14 @@ The mock is only suitable for local development. To exercise the real Images ser
 * [Upload via the REST API](https://developers.cloudflare.com/images/storage/upload-images/methods/) — The equivalent HTTP API.
 * [Manage hosted images](https://developers.cloudflare.com/images/storage/manage-images/) — Dashboard and API workflows for managing stored images.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/binding/#page","headline":"Manage hosted images with Workers · Cloudflare Images docs","description":"Use the Images binding to upload, list, retrieve, update, and delete hosted images from a Worker.","url":"https://developers.cloudflare.com/images/storage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/storage/","name":"Storage"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/storage/binding/","name":"Manage hosted images with Workers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/binding/#page","headline":"Manage hosted images with Workers · Cloudflare Images docs","description":"Use the Images binding to upload, list, retrieve, update, and delete hosted images from a Worker.","url":"https://developers.cloudflare.com/images/storage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Changelog
 description: Track the latest updates and changes to Security Center features.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Changelog
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Changelog
 
-# Changelog
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/security-center.xml)
 
@@ -401,7 +403,7 @@ Cloudforce One subscribers can try it now in [Application Security > Threat Inte
 
 Cloudflare's new **Application Security report**, currently in Closed Beta, is now available in the dashboard.
 
-[ Go to **Security reports** ](https://dash.cloudflare.com/?to=/:account/security-center/reports)
+[ Go to **Security reports** ↗ ](https://dash.cloudflare.com/?to=/:account/security-center/reports)
 
 The reports are generated monthly and provide cyber security insights trends for all of the Enterprise zones in your Cloudflare account.
 
@@ -477,7 +479,14 @@ Learn more in the [Security Center documentation](https://developers.cloudflare.
 
 * Customers can now archive multiple Security Insights at the same time. Go to **Security Center** \> **Security Insights** and select the insights to archive.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/security-center/changelog/#page","headline":"Changelog · Cloudflare Security Center docs","description":"Track the latest updates and changes to Security Center features.","url":"https://developers.cloudflare.com/security-center/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/changelog/","name":"Changelog"}}]}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/security-center/changelog/#page","headline":"Changelog · Cloudflare Security Center docs","description":"Track the latest updates and changes to Security Center features.","url":"https://developers.cloudflare.com/security-center/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

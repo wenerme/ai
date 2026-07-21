@@ -1,16 +1,18 @@
 ---
-title: Workers Logs
 description: Store, filter, and analyze log data emitted from Cloudflare Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Workers Logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Workers Logs
 
-# Workers Logs
+Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Workers Logs lets you automatically collect, store, filter, and analyze logging data emitted from Cloudflare Workers. Data is written to your Cloudflare Account, and you can query it in the dashboard for each of your Workers. All newly created Workers will come with the observability setting enabled by default.
 
@@ -28,11 +30,6 @@ Minimum required Wrangler version: 3.78.6\. Check your version by running `wrang
 
 You must add the observability setting for your Worker to write logs to Workers Logs. Add the following setting to your Worker's Wrangler file and redeploy your Worker.
 
-* [  wrangler.jsonc ](#tab-panel-12744)
-* [  wrangler.toml ](#tab-panel-12745)
-
-**JSONC**
-
 ```jsonc
 {
   "observability": {
@@ -41,8 +38,6 @@ You must add the observability setting for your Worker to write logs to Workers 
   }
 }
 ```
-
-**TOML**
 
 ```toml
 [observability]
@@ -56,11 +51,6 @@ head_sampling_rate = 1
 
 [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) allow you to deploy the same Worker application with different configurations. For example, you may want to configure a different `head_sampling_rate` to staging and production. To configure observability for an environment named `staging`: 1\. Add the following configuration below `[env.staging]`
 
-* [  wrangler.jsonc ](#tab-panel-12748)
-* [  wrangler.toml ](#tab-panel-12749)
-
-**JSONC**
-
 ```jsonc
 {
   "env": {
@@ -73,8 +63,6 @@ head_sampling_rate = 1
   }
 }
 ```
-
-**TOML**
 
 ```toml
 [env.staging.observability]
@@ -90,7 +78,7 @@ head_sampling_rate = 1
 Access logs for your Worker from the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your **Worker**.
 3. Select **Observability**.
 
@@ -118,22 +106,15 @@ In the Workers Logs UI, logs are presented with a localized timestamp and a mess
 
 Invocation logs can be disabled in wrangler by adding the `invocation_logs = false` configuration.
 
-* [  wrangler.jsonc ](#tab-panel-12746)
-* [  wrangler.toml ](#tab-panel-12747)
-
-**JSONC**
-
 ```jsonc
 {
-  "observability": {
-    "logs": {
-      "invocation_logs": false
-    }
-  }
+	"observability": {
+		"logs": {
+			"invocation_logs": false
+		}
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [observability.logs]
@@ -157,25 +138,18 @@ By default a Worker will emit [invocation logs](https://developers.cloudflare.co
 
 You can also add custom logs throughout your code. Any `console.log` statements within your Worker will be visible in Workers Logs. The following example demonstrates a custom `console.log` within a Worker request handler.
 
-* [  Module Worker ](#tab-panel-12742)
-* [  Service Worker ](#tab-panel-12743)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request) {
-    const { cf } = request;
-    const { city, country } = cf;
+	async fetch(request) {
+		const { cf } = request;
+		const { city, country } = cf;
 
+		console.log(`Request came from city: ${city} in country: ${country}`);
 
-    console.log(`Request came from city: ${city} in country: ${country}`);
-
-
-    return new Response("Hello worker!", {
-      headers: { "content-type": "text/plain" },
-    });
-  },
+		return new Response("Hello worker!", {
+			headers: { "content-type": "text/plain" },
+		});
+	},
 };
 ```
 
@@ -183,29 +157,24 @@ Service Workers are deprecated
 
 Service Workers are deprecated, but still supported. We recommend using [Module Workers](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) instead. New features may not be supported for Service Workers.
 
-**JavaScript**
-
 ```js
 addEventListener("fetch", (event) => {
-  event.respondWith(handleRequest(event.request));
+	event.respondWith(handleRequest(event.request));
 });
-
 
 /**
  * Respond with hello worker text
  * @param {Request} request
  */
 async function handleRequest(request) {
-  const { cf } = request;
-  const { city, country } = cf;
+	const { cf } = request;
+	const { city, country } = cf;
 
+	console.log(`Request came from city: ${city} in country: ${country}`);
 
-  console.log(`Request came from city: ${city} in country: ${country}`);
-
-
-  return new Response("Hello worker!", {
-    headers: { "content-type": "text/plain" },
-  });
+	return new Response("Hello worker!", {
+		headers: { "content-type": "text/plain" },
+	});
 }
 ```
 
@@ -217,21 +186,14 @@ Head-based sampling allows you to log a percentage of incoming requests to your 
 
 To enable head-based sampling, set `head_sampling_rate` within the observability configuration. The valid range is from 0 to 1, where 0 indicates zero out of one hundred requests are logged, and 1 indicates every request is logged. If `head_sampling_rate` is unspecified, it is configured to a default value of 1 (100%). In the example below, `head_sampling_rate` is set to 0.01, which means one out of every one hundred requests is logged.
 
-* [  wrangler.jsonc ](#tab-panel-12750)
-* [  wrangler.toml ](#tab-panel-12751)
-
-**JSONC**
-
 ```jsonc
 {
-  "observability": {
-    "enabled": true,
-    "head_sampling_rate": 0.01 // 1% sampling rate
-  }
+	"observability": {
+		"enabled": true,
+		"head_sampling_rate": 0.01 // 1% sampling rate
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [observability]
@@ -284,7 +246,14 @@ A Worker serves 1 billion requests per month. Each request emits 1 invocation lo
 | **Logs**  | $108.00       | ((1,000,000,000 requests per month \* 2 logs per request \* 10% sample) - 20,000,000 included logs) / 1,000,000 \* $0.60 |
 | **Total** | $108.00       |                                                                                                                          |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/#page","headline":"Workers Logs · Cloudflare Workers docs","description":"Store, filter, and analyze log data emitted from Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/observability/logs/workers-logs/","name":"Workers Logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/#page","headline":"Workers Logs · Cloudflare Workers docs","description":"Store, filter, and analyze log data emitted from Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot Page Rules - Billing and subscription
 description: Resolve billing and subscription issues with Page Rules.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshoot Page Rules - Billing and subscription
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot Page Rules - Billing and subscription
 
-# Troubleshoot Page Rules - Billing and subscription
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/page-rules/troubleshooting/billing-and-subscription/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -27,7 +29,7 @@ No, you cannot buy additional Page Rules. You will need to [migrate to modern Ru
 To cancel a purchase:
 
 1. In the Cloudflare dashboard, go to the **Billing** page.
-[ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
+[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to **Subscriptions**.
 3. Find the associated website (listed in alphabetical order) and select **Edit**.
 4. For **Additional page rules**, change the amount to your previous value. If you are over your current limit, you may have to delete existing page rules (paused or active).
@@ -43,7 +45,14 @@ You will be billed for and have access to your additional Page Rules until the e
 
 Your plan will adjust at the start of your next billing cycle. For more details, refer to our [billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/troubleshooting/billing-and-subscription/#page","headline":"Troubleshoot Page Rules - Billing and subscription · Cloudflare Rules docs","description":"Resolve billing and subscription issues with Page Rules.","url":"https://developers.cloudflare.com/rules/page-rules/troubleshooting/billing-and-subscription/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/page-rules/","name":"Page Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/page-rules/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/page-rules/troubleshooting/billing-and-subscription/","name":"Troubleshoot Page Rules - Billing and subscription"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/troubleshooting/billing-and-subscription/#page","headline":"Troubleshoot Page Rules - Billing and subscription · Cloudflare Rules docs","description":"Resolve billing and subscription issues with Page Rules.","url":"https://developers.cloudflare.com/rules/page-rules/troubleshooting/billing-and-subscription/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Durability
 description: R2 is designed for 99.999999999% annual durability using replication and erasure coding.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Durability
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Durability
 
-# Durability
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/reference/durability/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 R2 is designed to provide 99.999999999% (eleven 9s) of annual durability. This means that if you store 10,000,000 objects on R2, you can expect to lose an object once every 10,000 years on average.
 
@@ -29,7 +31,14 @@ R2's durability is built on multiple layers of redundancy and data protection:
 * Durability does not prevent intentional or accidental deletion of data. Use [bucket locks](https://developers.cloudflare.com/r2/buckets/bucket-locks/) and/or bucket-scoped [API tokens](https://developers.cloudflare.com/r2/api/tokens/) to limit access to data.
 * Durability is also distinct from [consistency](https://developers.cloudflare.com/r2/reference/consistency/), which describes how reads and writes are reflected in the system's state (e.g. eventual consistency vs. strong consistency).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/durability/#page","headline":"Durability · Cloudflare R2 docs","description":"R2 is designed for 99.999999999% annual durability using replication and erasure coding.","url":"https://developers.cloudflare.com/r2/reference/durability/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/reference/durability/","name":"Durability"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/durability/#page","headline":"Durability · Cloudflare R2 docs","description":"R2 is designed for 99.999999999% annual durability using replication and erasure coding.","url":"https://developers.cloudflare.com/r2/reference/durability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

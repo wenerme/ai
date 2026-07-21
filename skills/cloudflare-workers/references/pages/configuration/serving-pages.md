@@ -1,16 +1,18 @@
 ---
-title: Serving Pages
 description: Learn how Cloudflare Pages handles route matching, 404 behavior, SPA rendering, and caching.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Serving Pages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Serving Pages
 
-# Serving Pages
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/serving-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages includes a number of defaults for serving your Pages sites. This page details some of those decisions, so you can understand how Pages works, and how you might want to override some of the default behaviors.
 
@@ -60,8 +62,6 @@ We will insert assets into the cache on a per-data center basis. Assets have a t
 
 By default, Pages automatically adds several [HTTP response headers ↗](https://developer.mozilla.org/en-US/docs/Glossary/Response%5Fheader) when serving assets, including:
 
-**Headers always added**
-
 ```txt
 Access-Control-Allow-Origin: *
 Cf-Ray: $CLOUDFLARE_RAY_ID
@@ -76,17 +76,13 @@ Note
 
 The [Cf-Ray](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) header is unique to Cloudflare.
 
-**Headers sometimes added**
-
 ```txt
 // if the asset has been encoded
 Cache-Control: no-transform
 Content-Encoding: $CONTENT_ENCODING
 
-
 // if the asset is cacheable (the request does not have an `Authorization` or `Range` header)
 Cache-Control: public, max-age=0, must-revalidate
-
 
 // if requesting the asset over a preview URL
 X-Robots-Tag: noindex
@@ -94,7 +90,14 @@ X-Robots-Tag: noindex
 
 To modify the headers added by Cloudflare Pages - perhaps to add [Early Hints](https://developers.cloudflare.com/pages/configuration/early-hints/) \- update the [\_headers file](https://developers.cloudflare.com/pages/configuration/headers/) in your project.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/serving-pages/#page","headline":"Serving Pages · Cloudflare Pages docs","description":"Learn how Cloudflare Pages handles route matching, 404 behavior, SPA rendering, and caching.","url":"https://developers.cloudflare.com/pages/configuration/serving-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/configuration/serving-pages/","name":"Serving Pages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/serving-pages/#page","headline":"Serving Pages · Cloudflare Pages docs","description":"Learn how Cloudflare Pages handles route matching, 404 behavior, SPA rendering, and caching.","url":"https://developers.cloudflare.com/pages/configuration/serving-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: 3rd Party Integrations
 description: Connect to third-party databases such as Supabase, Turso and PlanetScale)
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: 3rd Party Integrations
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  3rd Party Integrations
 
-# 3rd Party Integrations
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/databases/third-party-integrations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -37,7 +39,14 @@ You can connect to multiple databases by configuring separate sets of secrets fo
 * [ Upstash ](https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/)
 * [ Xata ](https://developers.cloudflare.com/workers/databases/third-party-integrations/xata/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/#page","headline":"3rd Party Integrations · Cloudflare Workers docs","description":"Connect to third-party databases such as Supabase, Turso and PlanetScale)","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/databases/","name":"Databases"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/databases/third-party-integrations/","name":"3rd Party Integrations"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/#page","headline":"3rd Party Integrations · Cloudflare Workers docs","description":"Connect to third-party databases such as Supabase, Turso and PlanetScale)","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

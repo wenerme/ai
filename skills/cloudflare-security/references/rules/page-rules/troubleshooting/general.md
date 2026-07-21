@@ -1,16 +1,18 @@
 ---
-title: Troubleshoot Page Rules - General
 description: Resolve common issues with Page Rules configuration.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Troubleshoot Page Rules - General
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshoot Page Rules - General
 
-# Troubleshoot Page Rules - General
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -42,7 +44,14 @@ If you do so, the `$2` placeholder reference a wildcard that does not exist anym
 
 Update the page rule and remove the reference `$2` to the second wildcard. If there is only one wildcard, then you can only use `$1`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/#page","headline":"Troubleshoot Page Rules - General · Cloudflare Rules docs","description":"Resolve common issues with Page Rules configuration.","url":"https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/page-rules/","name":"Page Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/page-rules/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/page-rules/troubleshooting/general/","name":"Troubleshoot Page Rules - General"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/#page","headline":"Troubleshoot Page Rules - General · Cloudflare Rules docs","description":"Resolve common issues with Page Rules configuration.","url":"https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

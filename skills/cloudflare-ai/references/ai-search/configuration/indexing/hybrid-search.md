@@ -1,16 +1,18 @@
 ---
-title: Hybrid search
 description: Combine vector and keyword search in AI Search for broader, more accurate retrieval results.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Hybrid search
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Hybrid search
 
-# Hybrid search
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Hybrid search runs vector and keyword search in parallel and merges the results. It requires [keyword search](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) to be enabled. For an overview of search modes, refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/).
 
@@ -18,16 +20,14 @@ Hybrid search runs vector and keyword search in parallel and merges the results.
 
 Set both `index_method.vector` and `index_method.keyword` to `true`:
 
-**TypeScript**
-
 ```ts
 const instance = await env.AI_SEARCH.create({
-  id: "my-instance",
-  index_method: {
-    vector: true,
-    keyword: true,
-  },
-  fusion_method: "rrf",
+	id: "my-instance",
+	index_method: {
+		vector: true,
+		keyword: true,
+	},
+	fusion_method: "rrf",
 });
 ```
 
@@ -62,20 +62,17 @@ Override search settings on individual requests using `ai_search_options.retriev
 | retrieval\_type | "vector", "keyword", or "hybrid" | Force a specific search mode. Must be compatible with index\_method. |
 | fusion\_method  | "rrf" or "max"                   | Override the fusion method.                                          |
 
-**TypeScript**
-
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
 
-
 const results = await instance.search({
-  messages: [{ role: "user", content: "What is Cloudflare?" }],
-  ai_search_options: {
-    retrieval: {
-      retrieval_type: "hybrid",
-      fusion_method: "rrf",
-    },
-  },
+	messages: [{ role: "user", content: "What is Cloudflare?" }],
+	ai_search_options: {
+		retrieval: {
+			retrieval_type: "hybrid",
+			fusion_method: "rrf",
+		},
+	},
 });
 ```
 
@@ -100,7 +97,14 @@ When hybrid search is active, each chunk includes a `scoring_details` object:
 
 Instances with keyword search enabled support up to 500,000 files per instance on the Workers Paid tier, compared to 1,000,000 for vector-only instances. Refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/) for the full list of limits.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/#page","headline":"Hybrid search · Cloudflare AI Search docs","description":"Combine vector and keyword search in AI Search for broader, more accurate retrieval results.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/indexing/","name":"Indexing"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-search/configuration/indexing/hybrid-search/","name":"Hybrid search"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/#page","headline":"Hybrid search · Cloudflare AI Search docs","description":"Combine vector and keyword search in AI Search for broader, more accurate retrieval results.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

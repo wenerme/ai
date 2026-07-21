@@ -1,16 +1,18 @@
 ---
-title: Control waiting room traffic
 description: Manage active user limits and queueing behavior.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Control waiting room traffic
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Control waiting room traffic
 
-# Control waiting room traffic
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To change whether and how traffic reaches a waiting room, update the values for **Enabled**, **Queue All**, and **Queueing Method** on your waiting room.
 
@@ -59,7 +61,14 @@ Only new visitors will be queued. Active users that are already on your website 
 
 For more details about queueing method, refer to [Queueing methods](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/#page","headline":"Control waiting room traffic · Cloudflare Waiting Room docs","description":"Manage active user limits and queueing behavior.","url":"https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/control-waiting-room/","name":"Control waiting room traffic"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/#page","headline":"Control waiting room traffic · Cloudflare Waiting Room docs","description":"Manage active user limits and queueing behavior.","url":"https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

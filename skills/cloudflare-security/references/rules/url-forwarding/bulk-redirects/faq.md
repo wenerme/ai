@@ -1,16 +1,18 @@
 ---
-title: Bulk Redirects FAQ
 description: Answers to common questions about Bulk Redirects.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Bulk Redirects FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bulk Redirects FAQ
 
-# Bulk Redirects FAQ
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to the most commonly asked questions regarding Bulk Redirects.
 
@@ -49,7 +51,14 @@ If your [Bulk Redirect List](https://developers.cloudflare.com/rules/url-forward
 
 For example, to delete a list with 1,000,000 items, you would need to issue at least 10 API requests.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/faq/#page","headline":"Bulk Redirects FAQ · Cloudflare Rules docs","description":"Answers to common questions about Bulk Redirects.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/faq/","name":"Bulk Redirects FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/faq/#page","headline":"Bulk Redirects FAQ · Cloudflare Rules docs","description":"Answers to common questions about Bulk Redirects.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

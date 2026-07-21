@@ -1,16 +1,18 @@
 ---
-title: Markdown for Agents
 description: Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Markdown for Agents
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Markdown for Agents
 
-# Markdown for Agents
+Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## What is Markdown for Agents
 
@@ -33,35 +35,28 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-9422)
-* [  TypeScript ](#tab-panel-9423)
-
-**JavaScript**
-
 ```js
 const r = await fetch(
-  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,
-  {
-    headers: {
-      Accept: "text/markdown",
-    },
-  },
+	`https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,
+	{
+		headers: {
+			Accept: "text/markdown",
+		},
+	},
 );
 const tokenCount = r.headers.get("x-markdown-tokens");
 const originalTokenCount = r.headers.get("x-original-tokens");
 const markdown = await r.text();
 ```
 
-**TypeScript**
-
 ```ts
 const r = await fetch(
-  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,
-  {
-    headers: {
-      Accept: "text/markdown",
-    },
-  },
+	`https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,
+	{
+		headers: {
+			Accept: "text/markdown",
+		},
+	},
 );
 const tokenCount = r.headers.get("x-markdown-tokens");
 const originalTokenCount = r.headers.get("x-original-tokens");
@@ -82,14 +77,11 @@ x-markdown-tokens: 725
 x-original-tokens: 12345
 content-signal: ai-train=yes, search=yes, ai-input=yes
 
-
 ---
 title: Markdown for Agents · Cloudflare Agents docs
 ---
 
-
 ## What is Markdown for Agents
-
 
 Markdown has quickly become the lingua franca for agents and AI systems
 as a whole. The format’s explicit structure makes it ideal for AI processing,
@@ -153,9 +145,7 @@ description: A short summary of the page.
 image: https://example.com/cover.png
 ---
 
-
 # Page heading
-
 
 ...
 ```
@@ -173,22 +163,17 @@ Example output:
 ```markdown
 ... main markdown content ...
 
-
 ```json
 {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Article Title",
-  "author": { "@type": "Person", "name": "Jane Doe" }
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"headline": "Article Title",
+	"author": { "@type": "Person", "name": "Jane Doe" }
 }
 ```
 ```
 
 ## How to enable
-
-* [ Dashboard ](#tab-panel-9419)
-* [ API ](#tab-panel-9420)
-* [ Custom Hostnames ](#tab-panel-9421)
 
 To enable Markdown for Agents for your zone in the dashboard:
 
@@ -214,8 +199,6 @@ You will need to create an API token with the Zone Settings edit permissions ena
 
 Example:
 
-**Enable Markdown for Agents**
-
 ```bash
 curl -X PATCH 'https://api.cloudflare.com/client/v4/zones/{zone_tag}/settings/content_converter' \
   --header 'Content-Type: application/json' \
@@ -225,8 +208,6 @@ curl -X PATCH 'https://api.cloudflare.com/client/v4/zones/{zone_tag}/settings/co
 ### Enable for specific subdomains or paths
 
 To enable Markdown for Agents for specific subdomains or paths instead of your entire zone, create a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-api/):
-
-**Enable Markdown for Agents for a subdomain**
 
 ```bash
 curl --request PUT \
@@ -326,7 +307,14 @@ If you’re building AI systems that require arbitrary document conversion from 
 * Workers AI [AI.toMarkdown()](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) supports multiple document types and summarization.
 * The Browser Run [/markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) endpoint supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/#page","headline":"Markdown for Agents · Cloudflare Fundamentals docs","description":"Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.","url":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/markdown-for-agents/","name":"Markdown for Agents"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/#page","headline":"Markdown for Agents · Cloudflare Fundamentals docs","description":"Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.","url":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

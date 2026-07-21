@@ -1,16 +1,18 @@
 ---
-title: How Workers interact with Cache Rules
 description: How Workers interact with Cache Rules execution.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: How Workers interact with Cache Rules
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  How Workers interact with Cache Rules
 
-# How Workers interact with Cache Rules
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 When you use both [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) and [Workers](https://developers.cloudflare.com/workers/) on the same request, the Worker's cache settings take priority — but only when the required [compatibility flags](#compatibility-flags) are enabled.
 
@@ -55,7 +57,14 @@ A Cache Rule bypasses cache for `example.com/foo`. A Worker with a compatibility
 
 Similarly, if you use the Cache API and your compatibility date is before `2025-04-19`, `cache_api_compat_flags` is not active. Even if you manually add `cache_api_request_cf_overrides_cache_rules` to your configuration, it has no effect because the Cache API does not recognize compatibility flags without `cache_api_compat_flags`.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/#page","headline":"How Workers interact with Cache Rules · Cloudflare Cache (CDN) docs","description":"How Workers interact with Cache Rules execution.","url":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/interaction-cloudflare-products/","name":"Interaction with Cloudflare products"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/interaction-cloudflare-products/workers-cache-rules/","name":"How Workers interact with Cache Rules"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/#page","headline":"How Workers interact with Cache Rules · Cloudflare Cache (CDN) docs","description":"How Workers interact with Cache Rules execution.","url":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

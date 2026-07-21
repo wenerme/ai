@@ -1,16 +1,18 @@
 ---
-title: Configure routes
 description: Magic Transit uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. If you are connected through CNI with Dataplane v2, you also have access to BGP peering (beta).
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure routes
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure routes
 
-# Configure routes
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Magic Transit Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Magic Transit Virtual Network routing table through static route configuration or routes learned from BGP peering (beta) (available over CNI with Dataplane v2, as well as IPsec and GRE tunnels).
 
@@ -32,11 +34,8 @@ The dashboard **Routes** page shows the routes for all of your connectors — in
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-10220)
-* [ API ](#tab-panel-10221)
-
 1. Go to **Routes** page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. From the **Routes** tab, select **Create route**, then choose **WAN** as the route type.
 1. Enter a descriptive name for your route in **Description**.
 2. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
@@ -52,7 +51,7 @@ Cloudflare routing applies longest-prefix match. A more specific static route (l
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Create a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/routes/methods/create/) to create one or more static routes.
 
@@ -64,28 +63,26 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-**Create a Route**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "nexthop": "<IP_NEXT_HOP>",
-    "prefix": "<YOUR_IP_PREFIX>",
-    "priority": 0,
-    "id": "023e105f4ecef8ad9ca31a8372d0c353",
-    "description": "<ROUTE_DESCRIPTION>",
-    "scope": {
-        "colo_names": [
-            "den01"
-        ],
-        "colo_regions": [
-            "APAC"
-        ]
-    },
-    "weight": 0
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"nexthop": "<IP_NEXT_HOP>",
+		"prefix": "<YOUR_IP_PREFIX>",
+		"priority": 0,
+		"id": "023e105f4ecef8ad9ca31a8372d0c353",
+		"description": "<ROUTE_DESCRIPTION>",
+		"scope": {
+				"colo_names": [
+						"den01"
+				],
+				"colo_regions": [
+						"APAC"
+				]
+		},
+		"weight": 0
+	}'
 ```
 
 ```json
@@ -128,9 +125,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-10222)
-* [ API ](#tab-panel-10223)
-
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
 1. Enter the updated route information.
@@ -139,7 +133,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Create a `PUT` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/routes/methods/update/) to update one or more static routes.
 
@@ -151,28 +145,26 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-**Update Route**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \
-  --request PUT \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "nexthop": "<IP_NEXT_HOP>",
-    "prefix": "<YOUR_IP_PREFIX>",
-    "priority": 0,
-    "id": "023e105f4ecef8ad9ca31a8372d0c353",
-    "description": "<ROUTE_DESCRIPTION>",
-    "scope": {
-        "colo_names": [
-            "den01"
-        ],
-        "colo_regions": [
-            "APAC"
-        ]
-    },
-    "weight": 0
-  }'
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"nexthop": "<IP_NEXT_HOP>",
+		"prefix": "<YOUR_IP_PREFIX>",
+		"priority": 0,
+		"id": "023e105f4ecef8ad9ca31a8372d0c353",
+		"description": "<ROUTE_DESCRIPTION>",
+		"scope": {
+				"colo_names": [
+						"den01"
+				],
+				"colo_regions": [
+						"APAC"
+				]
+		},
+		"weight": 0
+	}'
 ```
 
 ```json
@@ -214,16 +206,13 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-10218)
-* [ API ](#tab-panel-10219)
-
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
 1. Confirm the action by selecting the checkbox and select **Delete**.
 
 Note
 
-You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+ You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Create a `DELETE` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/routes/methods/delete/) to delete a static route.
 
@@ -235,12 +224,10 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Magic WAN Write`
 * `Magic Transit Write`
 
-**Delete Route**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$ROUTE_ID" \
-  --request DELETE \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -300,7 +287,7 @@ If you are setting up BGP over IPsec or GRE tunnels you cannot change this value
 To set this ASN:
 
 1. Go to the Routes page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Select **WAN configuration**.
 2. In **CF Account ASN**, enter Cloudflare's ASN.
 3. Select **Update**.
@@ -326,11 +313,11 @@ Note
 BGP over CNI is in closed beta and is not currently available to new customers. If you are interested in BGP peering over CNI, contact your account team.
 
 1. Go to the Routes page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Select **WAN configuration**.
 2. In **CF Account ASN**, enter Cloudflare's ASN, and select **Update**.
 3. Go to **Interconnects**.
-[ Go to **Interconnects** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
+[ Go to **Interconnects** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
 1. Locate the CNI interconnect with Dataplane v2 to configure with BGP > select the **three dots** next to it > **Configure BGP**.
 2. In **Customer device ASN**, enter the ASN for your network.
 3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
@@ -343,11 +330,11 @@ BGP over CNI is in closed beta and is not currently available to new customers. 
 #### Set up BGP for IPsec/GRE tunnels
 
 1. Go to the Routes page.
-[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Select **WAN configuration**.
 2. In **CF Account ASN**, enter Cloudflare's ASN, and select **Update**.
 3. Go to **Connectors**.
-[ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. In **IPsec/GRE tunnels**, locate the tunnel you want to configure with BGP > select the **three dots** next to it > **Configure BGP**.
 2. In **Customer device ASN**, enter the ASN for your network.
 3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
@@ -363,17 +350,24 @@ If you are configuring BGP peering for a tunnel (GRE or IPsec) you must be aware
 
 * Your Customer Premises Equipment (CPE) must initiate the BGP peering session. Cloudflare will not initiate.
 * Your BGP speaker must peer with the tunnel's IPv4 interface address. Your CPE may use any IPv4 address for its side of the peering connection; it does not need to use the other address from the `/31` or `/30` interface subnet.
-Warning
+Caution
 If the tunnel is to an Azure VPN gateway, the tunnel interface address must not be in the link-local range. Azure will not initiate BGP sessions to peers using link-local addresses. Use an RFC 1918 address for your tunnel interface address instead.
 * Hold time must be greater than 0 seconds (BGP `KEEPALIVE` messages are required). Cloudflare recommends at least 45 seconds. Cloudflare advertises a hold time of 90 seconds for GRE/IPsec tunnels. If you set a value greater than 90 seconds, the negotiated hold time will be 90 seconds, according to the standard way BGP has of negotiating hold times.
 * Connect retry time should be low (for example, five or 10 seconds).
 * Your CPE may advertise up to 5,000 prefixes on one BGP session.
 * MD5 authentication is optional. You can use a maximum of 80 characters. Supported characters include `` a-zA-Z0-9'!@#$%^&*()+[]{}<>/.,;:_-~`= \\| ``
-Warning
+Caution
 MD5 authentication is not a valid security mechanism. The MD5 key is not treated as a secret value. This is only supported for preventing misconfiguration, not for defending against malicious attacks.
 When MD5 is enabled, you cannot use Telnet to test BGP connectivity (Telnet does not support TCP MD5 authentication).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#page","headline":"Configure routes · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. If you are connected through CNI with Dataplane v2, you also have access to BGP peering (beta).","url":"https://developers.cloudflare.com/magic-transit/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/how-to/configure-routes/","name":"Configure routes"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#page","headline":"Configure routes · Cloudflare Magic Transit docs","description":"Magic Transit uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. If you are connected through CNI with Dataplane v2, you also have access to BGP peering (beta).","url":"https://developers.cloudflare.com/magic-transit/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

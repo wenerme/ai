@@ -1,16 +1,18 @@
 ---
-title: Posture logs
 description: Monitor the results of device posture checks performed on your users' devices.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Posture logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Posture logs
 
-# Posture logs
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Posture logs show the results of [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) — security requirements such as OS version, disk encryption, or endpoint protection status — reported by the Cloudflare One Client. Use these logs to identify which devices are passing or failing your organization's posture requirements and to troubleshoot individual check results.
 
@@ -49,7 +51,14 @@ Enterprise users can generate more detailed logs with [Logpush](https://develope
 | **Expected values** | Values required to pass the device posture check. Compare with **Received values** to diagnose why a device failed.                                                                                                                                                                                                                                  |
 | **Received values** | Actual values detected on the device by the Cloudflare One Client or service provider.                                                                                                                                                                                                                                                               |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/#page","headline":"Posture logs · Cloudflare One docs","description":"Monitor the results of device posture checks performed on your users' devices.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/","name":"Dashboard logs"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/posture-logs/","name":"Posture logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/#page","headline":"Posture logs · Cloudflare One docs","description":"Monitor the results of device posture checks performed on your users' devices.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

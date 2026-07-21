@@ -1,16 +1,18 @@
 ---
-title: Storing user generated content
 description: Store user-generated content in R2 for fast, secure, and cost-effective architecture.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Storing user generated content
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Storing user generated content
 
-# Storing user generated content
+Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -92,7 +94,14 @@ This architecture ensures that content is stored, processed, and delivered **fas
 * [Event notifications for storage reference architecture](https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/)
 * [Why choose Cloudflare R2 vs Amazon S3 ↗](https://www.cloudflare.com/pg-cloudflare-r2-vs-aws-s3/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/#page","headline":"Storing user generated content · Cloudflare Reference Architecture docs","description":"Store user-generated content in R2 for fast, secure, and cost-effective architecture.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/storage/","name":"Storage"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/storage/storing-user-generated-content/","name":"Storing user generated content"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/#page","headline":"Storing user generated content · Cloudflare Reference Architecture docs","description":"Store user-generated content in R2 for fast, secure, and cost-effective architecture.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

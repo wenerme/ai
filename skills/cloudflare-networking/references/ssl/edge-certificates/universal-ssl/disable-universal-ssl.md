@@ -1,16 +1,18 @@
 ---
-title: Disable Universal SSL certificates
 description: Turn off Universal SSL certificates for your domain.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Disable Universal SSL certificates
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Disable Universal SSL certificates
 
-# Disable Universal SSL certificates
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Some customers may need to manage their own SSL certificates or rely on specific Certificate Authorities.
 
@@ -40,13 +42,10 @@ If you disable Universal SSL, you may experience errors with the following scena
 
 Before you disable Universal SSL/TLS, make sure you have [uploaded a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) or purchased [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to protect your domain.
 
-* [ Dashboard ](#tab-panel-11482)
-* [ API ](#tab-panel-11483)
-
 To disable Universal SSL in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Disable Universal SSL**, select **Disable Universal SSL**.
 3. Read the warnings in the **Acknowledgement**.
 4. Select **I Understand** and select **Confirm**.
@@ -55,18 +54,22 @@ To disable Universal SSL with the Cloudflare API, send a [PATCH](https://develop
 
 ## Re-enable Universal SSL
 
-* [ Dashboard ](#tab-panel-11484)
-* [ API ](#tab-panel-11485)
-
 To re-enable Universal SSL in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Disable Universal SSL**, select **Enable Universal SSL**.
 
 To re-enable Universal SSL with the Cloudflare API, send a [PATCH](https://developers.cloudflare.com/api/resources/ssl/subresources/universal/subresources/settings/methods/edit/) request and include the `"enabled": true` parameter.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/#page","headline":"Disable Universal SSL certificates · Cloudflare SSL/TLS docs","description":"Turn off Universal SSL certificates for your domain.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/universal-ssl/","name":"Universal SSL"}},{"@type":"ListItem","position":5,"item":{"@id":"/ssl/edge-certificates/universal-ssl/disable-universal-ssl/","name":"Disable Universal SSL certificates"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/#page","headline":"Disable Universal SSL certificates · Cloudflare SSL/TLS docs","description":"Turn off Universal SSL certificates for your domain.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

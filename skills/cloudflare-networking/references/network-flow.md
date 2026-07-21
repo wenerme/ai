@@ -1,16 +1,18 @@
 ---
-title: Network Flow
 description: Analyze network traffic with NetFlow, sFlow, and IPFIX data.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Network Flow
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Network Flow
 
-# Network Flow
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Improve your network and cloud traffic visibility. Customers with public IPs can also detect DDoS attacks based on their traffic flows. Formerly Magic Network Monitoring.
 
@@ -30,47 +32,54 @@ Refer to [Get started](https://developers.cloudflare.com/network-flow/get-starte
 
 ## Features
 
-###  Rules
+[Rules](https://developers.cloudflare.com/network-flow/rules/)
 
 Create rules to set thresholds for network traffic volume and receive alerts when thresholds are exceeded.
 
-[ Use Rules ](https://developers.cloudflare.com/network-flow/rules/)
+ Use Rules
 
-###  Magic Transit integration
+[Magic Transit integration](https://developers.cloudflare.com/network-flow/magic-transit-integration/)
 
 Magic Transit On Demand customers can automatically enable DDoS mitigation when the service detects a DDoS attack.
 
-[ Use Magic Transit integration ](https://developers.cloudflare.com/network-flow/magic-transit-integration/)
+ Use Magic Transit integration
 
-###  Rule notifications
+[Rule notifications](https://developers.cloudflare.com/network-flow/rules/rule-notifications/)
 
 Configure email, webhook, or PagerDuty notifications to receive alerts when rule thresholds are exceeded.
 
-[ Use Rule notifications ](https://developers.cloudflare.com/network-flow/rules/rule-notifications/)
+ Use Rule notifications
 
 ---
 
 ## Related products
 
-**[Magic Transit](https://developers.cloudflare.com/magic-transit/)**
+[Magic Transit](https://developers.cloudflare.com/magic-transit/)
 
 Mitigates L7, L4, and L3 DDoS attacks when combined with Network Flow and Magic Transit on-demand.
 
-**[DDoS Protection](https://developers.cloudflare.com/ddos-protection/)**
+[DDoS Protection](https://developers.cloudflare.com/ddos-protection/)
 
 Provides HTTP DDoS attack protection for zones onboarded to Cloudflare in addition to L3 and L4 DDoS attack protection.
 
-**[Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)**
+[Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 
 Connects your network infrastructure directly with Cloudflare - rather than using the public Internet - for a more reliable and secure experience.
 
 ## More resources
 
-[Discord](https://discord.com/invite/cloudflaredev)
+### [ Discord ](https://discord.com/invite/cloudflaredev)
 
 Connect with the Network Flow community on Discord to ask questions, and share feedback.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-flow/#page","headline":"Overview · Cloudflare Network Flow docs","description":"Analyze network traffic with NetFlow, sFlow, and IPFIX data.","url":"https://developers.cloudflare.com/network-flow/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network-flow/","name":"Network Flow"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-flow/#page","headline":"Overview · Cloudflare Network Flow docs","description":"Analyze network traffic with NetFlow, sFlow, and IPFIX data.","url":"https://developers.cloudflare.com/network-flow/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

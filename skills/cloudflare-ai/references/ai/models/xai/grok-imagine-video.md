@@ -1,37 +1,36 @@
 ---
-title: Grok Imagine Video
 description: xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Grok Imagine Video
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)
 
 #  Grok Imagine Video
 
-Text-to-Video • xAI
+ Text-to-Video • xAI
 
-`xai/grok-imagine-video`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` xai/grok-imagine-video `
+
+* Third-party
 
 xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).
 
-| Model Info        |                                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                            |
-| More information  | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video)                                                         |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video) |
+| Model Info        |                                                                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                             |
+| More information  | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video)                                                          |
+| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-2234)
-* [ cURL ](#tab-panel-2235)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -61,9 +60,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2230)
-* [ Raw response ](#tab-panel-2231)
-
 ```json
 {
   "state": "Completed",
@@ -79,11 +75,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ## Examples
 
 **Portrait Video**  — Vertical video for social media
-
-* [ TypeScript ](#tab-panel-2238)
-* [ cURL ](#tab-panel-2239)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -113,9 +104,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2232)
-* [ Raw response ](#tab-panel-2233)
-
 ```json
 {
   "state": "Completed",
@@ -129,11 +117,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 **Cinematic Landscape**  — Widescreen cinematic shot at extended duration
-
-* [ TypeScript ](#tab-panel-2240)
-* [ cURL ](#tab-panel-2241)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -164,9 +147,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-* [ Output ](#tab-panel-2236)
-* [ Raw response ](#tab-panel-2237)
-
 ```json
 {
   "state": "Completed",
@@ -180,9 +160,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 ```
 
 ## Parameters
-
-* [ Input ](#tab-panel-2242)
-* [ Output ](#tab-panel-2243)
 
 \_operation
 
@@ -238,7 +215,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/sch
 
 Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/#page","headline":"Grok Imagine Video (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/#page","headline":"Grok Imagine Video (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's video generation model. Generates, edits, and extends videos from text and image inputs with native synchronized audio including dialogue, sound effects, and music. Supports multiple creative modes (normal, fun, custom).","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

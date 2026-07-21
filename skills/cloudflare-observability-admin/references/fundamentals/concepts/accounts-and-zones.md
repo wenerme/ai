@@ -1,16 +1,18 @@
 ---
-title: Accounts, zones, and profiles
 description: Understand how Cloudflare organizes resources into user profiles, accounts, and zones, and where settings and products apply.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Accounts, zones, and profiles
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Accounts, zones, and profiles
 
-# Accounts, zones, and profiles
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Within the Cloudflare ecosystem, there are three organizing concepts that control where specific settings live: user profiles, accounts, and zones.
 
@@ -66,7 +68,14 @@ Once you are within a zone, items within the sidebar will be zone-related produc
 
 1. Similar to [DNS zones ↗](https://www.cloudflare.com/learning/dns/glossary/dns-zone/), but with additional capabilities. [↩](#user-content-fnref-1)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#page","headline":"Accounts, zones, and profiles · Cloudflare Fundamentals docs","description":"Understand how Cloudflare organizes resources into user profiles, accounts, and zones, and where settings and products apply.","url":"https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/concepts/accounts-and-zones/","name":"Accounts, zones, and profiles"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#page","headline":"Accounts, zones, and profiles · Cloudflare Fundamentals docs","description":"Understand how Cloudflare organizes resources into user profiles, accounts, and zones, and where settings and products apply.","url":"https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

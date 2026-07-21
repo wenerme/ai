@@ -1,16 +1,18 @@
 ---
-title: Build a code review bot
 description: Clone repositories, analyze code with Claude, and post review comments to GitHub PRs.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Build a code review bot
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Build a code review bot
 
-# Build a code review bot
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Build a GitHub bot that responds to pull requests, clones the repository in a sandbox, uses Claude to analyze code changes, and posts review comments.
 
@@ -80,223 +82,197 @@ bun add @anthropic-ai/sdk @octokit/rest
 
 Replace `src/index.ts`:
 
-**TypeScript**
-
 ```typescript
 import { getSandbox, proxyToSandbox, type Sandbox } from "@cloudflare/sandbox";
 import { Octokit } from "@octokit/rest";
 import Anthropic from "@anthropic-ai/sdk";
 
-
 export { Sandbox } from "@cloudflare/sandbox";
 
-
 interface Env {
-  Sandbox: DurableObjectNamespace<Sandbox>;
-  GITHUB_TOKEN: string;
-  ANTHROPIC_API_KEY: string;
-  WEBHOOK_SECRET: string;
+	Sandbox: DurableObjectNamespace<Sandbox>;
+	GITHUB_TOKEN: string;
+	ANTHROPIC_API_KEY: string;
+	WEBHOOK_SECRET: string;
 }
-
 
 export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    const proxyResponse = await proxyToSandbox(request, env);
-    if (proxyResponse) return proxyResponse;
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
 
+		const url = new URL(request.url);
 
-    const url = new URL(request.url);
+		if (url.pathname === "/webhook" && request.method === "POST") {
+			const signature = request.headers.get("x-hub-signature-256");
+			const contentType = request.headers.get("content-type") || "";
+			const body = await request.text();
 
+			// Verify webhook signature
+			if (
+				!signature ||
+				!(await verifySignature(body, signature, env.WEBHOOK_SECRET))
+			) {
+				return Response.json({ error: "Invalid signature" }, { status: 401 });
+			}
 
-    if (url.pathname === "/webhook" && request.method === "POST") {
-      const signature = request.headers.get("x-hub-signature-256");
-      const contentType = request.headers.get("content-type") || "";
-      const body = await request.text();
+			const event = request.headers.get("x-github-event");
 
+			// Parse payload (GitHub can send as JSON or form-encoded)
+			let payload;
+			if (contentType.includes("application/json")) {
+				payload = JSON.parse(body);
+			} else {
+				// Handle form-encoded payload
+				const params = new URLSearchParams(body);
+				payload = JSON.parse(params.get("payload") || "{}");
+			}
 
-      // Verify webhook signature
-      if (
-        !signature ||
-        !(await verifySignature(body, signature, env.WEBHOOK_SECRET))
-      ) {
-        return Response.json({ error: "Invalid signature" }, { status: 401 });
-      }
+			// Handle opened and reopened PRs
+			if (
+				event === "pull_request" &&
+				(payload.action === "opened" || payload.action === "reopened")
+			) {
+				console.log(`Starting review for PR #${payload.pull_request.number}`);
+				// Use waitUntil to ensure the review completes even after response is sent
+				ctx.waitUntil(
+					reviewPullRequest(payload, env).catch(console.error),
+				);
+				return Response.json({ message: "Review started" });
+			}
 
+			return Response.json({ message: "Event ignored" });
+		}
 
-      const event = request.headers.get("x-github-event");
-
-
-      // Parse payload (GitHub can send as JSON or form-encoded)
-      let payload;
-      if (contentType.includes("application/json")) {
-        payload = JSON.parse(body);
-      } else {
-        // Handle form-encoded payload
-        const params = new URLSearchParams(body);
-        payload = JSON.parse(params.get("payload") || "{}");
-      }
-
-
-      // Handle opened and reopened PRs
-      if (
-        event === "pull_request" &&
-        (payload.action === "opened" || payload.action === "reopened")
-      ) {
-        console.log(`Starting review for PR #${payload.pull_request.number}`);
-        // Use waitUntil to ensure the review completes even after response is sent
-        ctx.waitUntil(
-          reviewPullRequest(payload, env).catch(console.error),
-        );
-        return Response.json({ message: "Review started" });
-      }
-
-
-      return Response.json({ message: "Event ignored" });
-    }
-
-
-    return new Response(
-      "Code Review Bot\n\nConfigure GitHub webhook to POST /webhook",
-    );
-  },
+		return new Response(
+			"Code Review Bot\n\nConfigure GitHub webhook to POST /webhook",
+		);
+	},
 };
 
-
 async function verifySignature(
-  payload: string,
-  signature: string,
-  secret: string,
+	payload: string,
+	signature: string,
+	secret: string,
 ): Promise<boolean> {
-  const encoder = new TextEncoder();
-  const key = await crypto.subtle.importKey(
-    "raw",
-    encoder.encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"],
-  );
+	const encoder = new TextEncoder();
+	const key = await crypto.subtle.importKey(
+		"raw",
+		encoder.encode(secret),
+		{ name: "HMAC", hash: "SHA-256" },
+		false,
+		["sign"],
+	);
 
+	const signatureBytes = await crypto.subtle.sign(
+		"HMAC",
+		key,
+		encoder.encode(payload),
+	);
+	const expected =
+		"sha256=" +
+		Array.from(new Uint8Array(signatureBytes))
+			.map((b) => b.toString(16).padStart(2, "0"))
+			.join("");
 
-  const signatureBytes = await crypto.subtle.sign(
-    "HMAC",
-    key,
-    encoder.encode(payload),
-  );
-  const expected =
-    "sha256=" +
-    Array.from(new Uint8Array(signatureBytes))
-      .map((b) => b.toString(16).padStart(2, "0"))
-      .join("");
-
-
-  return signature === expected;
+	return signature === expected;
 }
 
-
 async function reviewPullRequest(payload: any, env: Env): Promise<void> {
-  const pr = payload.pull_request;
-  const repo = payload.repository;
-  const octokit = new Octokit({ auth: env.GITHUB_TOKEN });
-  const sandbox = getSandbox(env.Sandbox, `review-${pr.number}`);
+	const pr = payload.pull_request;
+	const repo = payload.repository;
+	const octokit = new Octokit({ auth: env.GITHUB_TOKEN });
+	const sandbox = getSandbox(env.Sandbox, `review-${pr.number}`);
 
+	try {
+		// Post initial comment
+		console.log("Posting initial comment...");
+		await octokit.issues.createComment({
+			owner: repo.owner.login,
+			repo: repo.name,
+			issue_number: pr.number,
+			body: "Code review in progress...",
+		});
+		// Clone repository
+		console.log("Cloning repository...");
+		const cloneUrl = `https://${env.GITHUB_TOKEN}@github.com/${repo.owner.login}/${repo.name}.git`;
+		await sandbox.exec(
+			`git clone --depth=1 --branch=${pr.head.ref} ${cloneUrl} /workspace/repo`,
+		);
 
-  try {
-    // Post initial comment
-    console.log("Posting initial comment...");
-    await octokit.issues.createComment({
-      owner: repo.owner.login,
-      repo: repo.name,
-      issue_number: pr.number,
-      body: "Code review in progress...",
-    });
-    // Clone repository
-    console.log("Cloning repository...");
-    const cloneUrl = `https://${env.GITHUB_TOKEN}@github.com/${repo.owner.login}/${repo.name}.git`;
-    await sandbox.exec(
-      `git clone --depth=1 --branch=${pr.head.ref} ${cloneUrl} /workspace/repo`,
-    );
+		// Get changed files
+		console.log("Fetching changed files...");
+		const comparison = await octokit.repos.compareCommits({
+			owner: repo.owner.login,
+			repo: repo.name,
+			base: pr.base.sha,
+			head: pr.head.sha,
+		});
 
+		const files = [];
+		for (const file of (comparison.data.files || []).slice(0, 5)) {
+			if (file.status !== "removed") {
+				const content = await sandbox.readFile(
+					`/workspace/repo/${file.filename}`,
+				);
+				files.push({
+					path: file.filename,
+					patch: file.patch || "",
+					content: content.content,
+				});
+			}
+		}
 
-    // Get changed files
-    console.log("Fetching changed files...");
-    const comparison = await octokit.repos.compareCommits({
-      owner: repo.owner.login,
-      repo: repo.name,
-      base: pr.base.sha,
-      head: pr.head.sha,
-    });
-
-
-    const files = [];
-    for (const file of (comparison.data.files || []).slice(0, 5)) {
-      if (file.status !== "removed") {
-        const content = await sandbox.readFile(
-          `/workspace/repo/${file.filename}`,
-        );
-        files.push({
-          path: file.filename,
-          patch: file.patch || "",
-          content: content.content,
-        });
-      }
-    }
-
-
-    // Generate review with Claude
-    console.log(`Analyzing ${files.length} files with Claude...`);
-    const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
-    const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-5",
-      max_tokens: 2048,
-      messages: [
-        {
-          role: "user",
-          content: `Review this PR:
-
+		// Generate review with Claude
+		console.log(`Analyzing ${files.length} files with Claude...`);
+		const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+		const response = await anthropic.messages.create({
+			model: "claude-sonnet-4-5",
+			max_tokens: 2048,
+			messages: [
+				{
+					role: "user",
+					content: `Review this PR:
 
 Title: ${pr.title}
-
 
 Changed files:
 ${files.map((f) => `File: ${f.path}\nDiff:\n${f.patch}\n\nContent:\n${f.content.substring(0, 1000)}`).join("\n\n")}
 
-
 Provide a brief code review focusing on bugs, security, and best practices.`,
-        },
-      ],
-    });
+				},
+			],
+		});
 
+		const review =
+			response.content[0]?.type === "text"
+				? response.content[0].text
+				: "No review generated";
 
-    const review =
-      response.content[0]?.type === "text"
-        ? response.content[0].text
-        : "No review generated";
-
-
-    // Post review comment
-    console.log("Posting review...");
-    await octokit.issues.createComment({
-      owner: repo.owner.login,
-      repo: repo.name,
-      issue_number: pr.number,
-      body: `## Code Review\n\n${review}\n\n---\n*Generated by Claude*`,
-    });
-    console.log("Review complete!");
-  } catch (error: any) {
-    console.error("Review failed:", error);
-    await octokit.issues.createComment({
-      owner: repo.owner.login,
-      repo: repo.name,
-      issue_number: pr.number,
-      body: `Review failed: ${error.message}`,
-    });
-  } finally {
-    await sandbox.destroy();
-  }
+		// Post review comment
+		console.log("Posting review...");
+		await octokit.issues.createComment({
+			owner: repo.owner.login,
+			repo: repo.name,
+			issue_number: pr.number,
+			body: `## Code Review\n\n${review}\n\n---\n*Generated by Claude*`,
+		});
+		console.log("Review complete!");
+	} catch (error: any) {
+		console.error("Review failed:", error);
+		await octokit.issues.createComment({
+			owner: repo.owner.login,
+			repo: repo.name,
+			issue_number: pr.number,
+			body: `Review failed: ${error.message}`,
+		});
+	} finally {
+		await sandbox.destroy();
+	}
 }
 ```
 
@@ -386,10 +362,8 @@ Then set your production secrets:
 # GitHub token (needs repo permissions)
 npx wrangler secret put GITHUB_TOKEN
 
-
 # Anthropic API key
 npx wrangler secret put ANTHROPIC_API_KEY
-
 
 # Webhook secret (use the same value from .dev.vars)
 npx wrangler secret put WEBHOOK_SECRET
@@ -419,7 +393,14 @@ A GitHub code review bot that:
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Manage long-running sandbox operations
 * [GitHub Apps ↗](https://docs.github.com/en/apps) \- Build a proper GitHub App
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/#page","headline":"Build a code review bot · Cloudflare Sandbox SDK docs","description":"Clone repositories, analyze code with Claude, and post review comments to GitHub PRs.","url":"https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/tutorials/code-review-bot/","name":"Build a code review bot"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/#page","headline":"Build a code review bot · Cloudflare Sandbox SDK docs","description":"Clone repositories, analyze code with Claude, and post review comments to GitHub PRs.","url":"https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

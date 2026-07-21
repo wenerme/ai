@@ -1,16 +1,18 @@
 ---
-title: Rate limiting rules configuration using Terraform
 description: Create and configure Cloudflare rate limiting rules at the zone or account level using Terraform.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rate limiting rules configuration using Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rate limiting rules configuration using Terraform
 
-# Rate limiting rules configuration using Terraform
+Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This page provides examples of creating [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) in a zone or account using Terraform.
 
@@ -45,9 +47,6 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example creates a rate limiting rule in zone with ID `<ZONE_ID>` blocking traffic that exceeds the configured rate:
 
-* [ Terraform (v5) ](#tab-panel-11743)
-* [ Terraform (v4) ](#tab-panel-11744)
-
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
@@ -63,7 +62,6 @@ resource "cloudflare_ruleset" "zone_rl" {
   description = ""
   kind        = "zone"
   phase       = "http_ratelimit"
-
 
   rules = [{
     ref         = "rate_limit_api_requests_ip"
@@ -87,7 +85,6 @@ resource "cloudflare_ruleset" "zone_rl" {
   description = ""
   kind        = "zone"
   phase       = "http_ratelimit"
-
 
   rules {
     ref         = "rate_limit_api_requests_ip"
@@ -120,9 +117,6 @@ Notes
 
 This example defines a [custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) with a single rate limiting rule in account with ID `<ACCOUNT_ID>` that blocks traffic for the `/api/` path exceeding the configured rate. The second `cloudflare_ruleset` resource defines an `execute` rule that deploys the custom ruleset for traffic addressed at `example.com`.
 
-* [ Terraform (v5) ](#tab-panel-11745)
-* [ Terraform (v4) ](#tab-panel-11746)
-
 Required API token permissions
 
 All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
@@ -140,7 +134,6 @@ resource "cloudflare_ruleset" "account_rl" {
   kind        = "custom"
   phase       = "http_ratelimit"
 
-
   rules = [{
     ref         = "rate_limit_api_ip"
     description = "Rate limit API requests by IP"
@@ -155,7 +148,6 @@ resource "cloudflare_ruleset" "account_rl" {
   }]
 }
 
-
 # Account-level entry point ruleset for the 'http_ratelimit' phase
 resource "cloudflare_ruleset" "account_rl_entrypoint" {
   account_id  = var.cloudflare_account_id
@@ -164,9 +156,7 @@ resource "cloudflare_ruleset" "account_rl_entrypoint" {
   kind        = "root"
   phase       = "http_ratelimit"
 
-
   depends_on = [cloudflare_ruleset.account_rl]
-
 
   rules = [{
     # Deploy the previously defined custom ruleset containing a rate limiting rule
@@ -189,7 +179,6 @@ resource "cloudflare_ruleset" "account_rl" {
   kind        = "custom"
   phase       = "http_ratelimit"
 
-
   rules {
     ref         = "rate_limit_api_ip"
     description = "Rate limit API requests by IP"
@@ -204,7 +193,6 @@ resource "cloudflare_ruleset" "account_rl" {
   }
 }
 
-
 # Account-level entry point ruleset for the 'http_ratelimit' phase
 resource "cloudflare_ruleset" "account_rl_entrypoint" {
   account_id  = "<ACCOUNT_ID>"
@@ -213,9 +201,7 @@ resource "cloudflare_ruleset" "account_rl_entrypoint" {
   kind        = "root"
   phase       = "http_ratelimit"
 
-
   depends_on = [cloudflare_ruleset.account_rl]
-
 
   rules {
     # Deploy the previously defined custom ruleset containing a rate limiting rule
@@ -240,9 +226,6 @@ This example creates a rate limiting rule in zone with ID `<ZONE_ID>` with:
 * A custom counting expression that includes a response field (`http.response.code`).
 * A custom JSON response for rate limited requests.
 
-* [ Terraform (v5) ](#tab-panel-11747)
-* [ Terraform (v4) ](#tab-panel-11748)
-
 Required API token permissions
 
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
@@ -258,7 +241,6 @@ resource "cloudflare_ruleset" "zone_rl_custom_response" {
   description = ""
   kind        = "zone"
   phase       = "http_ratelimit"
-
 
   rules = [{
     ref         = "rate_limit_example_com_status_404"
@@ -291,7 +273,6 @@ resource "cloudflare_ruleset" "zone_rl_custom_response" {
   kind        = "zone"
   phase       = "http_ratelimit"
 
-
   rules {
     ref         = "rate_limit_example_com_status_404"
     description = "Rate limit requests to www.example.com when exceeding the threshold of 404 responses on /status/"
@@ -318,8 +299,14 @@ resource "cloudflare_ruleset" "zone_rl_custom_response" {
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/#page","headline":"Rate limiting rules configuration using Terraform · Cloudflare Terraform docs","description":"Create and configure Cloudflare rate limiting rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/rate-limiting-rules/","name":"Rate limiting rules configuration using Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/#page","headline":"Rate limiting rules configuration using Terraform · Cloudflare Terraform docs","description":"Create and configure Cloudflare rate limiting rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

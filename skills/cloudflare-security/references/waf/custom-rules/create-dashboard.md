@@ -1,22 +1,21 @@
 ---
-title: Create a custom rule in the dashboard
 description: Create WAF custom rules in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create a custom rule in the dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create a custom rule in the dashboard
 
-# Create a custom rule in the dashboard
-
-* [  New dashboard ](#tab-panel-11952)
-* [ Old dashboard ](#tab-panel-11953)
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**. To duplicate an existing rule, select the three dots next to it > **Duplicate**.
 3. Enter a descriptive name for the rule in **Rule name**.
 ![Custom rule creation page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/firewall-custom-rule-create.tVXiVklq_1Tgdjc.webp)
@@ -56,7 +55,14 @@ The custom response has three settings:
 * **With response code**: Choose an HTTP status code for the response, in the range 400-499\. The default response code is 403.
 * **Response body**: The body of the response. Configure a valid body according to the response type you selected. The maximum field size is 2 KB.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#page","headline":"Create a custom rule in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create WAF custom rules in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/custom-rules/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/create-dashboard/","name":"Create a custom rule in the dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#page","headline":"Create a custom rule in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create WAF custom rules in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/custom-rules/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

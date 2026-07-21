@@ -1,16 +1,18 @@
 ---
-title: Browser-rendered terminal
 description: Browser-rendered terminal in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Browser-rendered terminal
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Browser-rendered terminal
 
-# Browser-rendered terminal
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare can render SSH, VNC, and RDP applications in a browser without the need for client software or end-user configuration changes. For SSH and VNC, user email prefixes must match their username on the server. RDP leverages your existing Windows usernames and passwords for authenticating to the Windows server; Cloudflare does not manage any credentials on the Windows server.
 
@@ -52,7 +54,14 @@ Cloudflare's browser-rendered SSH terminal supports the following Key Exchange (
 
 For browser-rendered SSH connections to work, you may need to update the `sshd_config` file on your server to accept these algorithms.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/#page","headline":"Browser-rendered terminal · Cloudflare One docs","description":"Browser-rendered terminal in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","RDP"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/non-http/","name":"Non-HTTP applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/non-http/browser-rendering/","name":"Browser-rendered terminal"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/#page","headline":"Browser-rendered terminal · Cloudflare One docs","description":"Browser-rendered terminal in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","RDP"]}
 ```

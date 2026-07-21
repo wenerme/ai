@@ -1,16 +1,18 @@
 ---
-title: Manage IRR entries
 description: Create and maintain IRR entries for your IP prefixes.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Manage IRR entries
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Manage IRR entries
 
-# Manage IRR entries
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You must keep your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/) entries up to date so that it is public information that Cloudflare has permission to advertise your prefix or prefixes, and to ensure that your traffic can be properly routed on the Internet.
 
@@ -76,8 +78,6 @@ WHOIS output example
 
 The `<IRR entry section>` in the WHOIS output shows the correct IRR entry information for the specified network. In this example, the network prefix is `1.1.1.0/24`, and the output includes the route, origin ASN, and route registry, which in this example is APNIC:
 
-**Example**
-
 ```txt
 user@xxt32z conduit-qs-config % whois -h rr.ntt.net 1.1.1.0/24
 route:          1.1.1.0/24
@@ -91,7 +91,6 @@ origin:         AS13335
 mnt-by:         MAINT-NTTCOM-RPKI
 changed:        job@ntt.net 20200913
 source:         RPKI  # Trust Anchor: apnic
-
 
 <IRR entry section>
 route:          1.1.1.0/24
@@ -107,7 +106,14 @@ Note
 
 WHOIS output also shows the RPKI entry information for prefix IP addresses. When your WHOIS output only contains an RPKI entry, you must add the IRR entry.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/#page","headline":"Manage IRR entries · Cloudflare BYOIP docs","description":"Create and maintain IRR entries for your IP prefixes.","url":"https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/byoip/concepts/irr-entries/","name":"Internet Routing Registry (IRR)"}},{"@type":"ListItem","position":5,"item":{"@id":"/byoip/concepts/irr-entries/best-practices/","name":"Manage IRR entries"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/#page","headline":"Manage IRR entries · Cloudflare BYOIP docs","description":"Create and maintain IRR entries for your IP prefixes.","url":"https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

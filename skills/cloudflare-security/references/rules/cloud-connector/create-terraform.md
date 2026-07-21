@@ -1,16 +1,18 @@
 ---
-title: Configure Cloud Connector rules using Terraform
 description: Create Cloud Connector rules using the Terraform Cloudflare provider.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Configure Cloud Connector rules using Terraform
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Configure Cloud Connector rules using Terraform
 
-# Configure Cloud Connector rules using Terraform
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/cloud-connector/create-terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can create Cloud Connector rules using the [Terraform Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest).
 
@@ -34,7 +36,6 @@ The following example Terraform configuration creates Cloud Connector rules for 
 resource "cloudflare_cloud_connector_rules" "cloud_connector_rules" {
   zone_id = "<ZONE_ID>"
 
-
   rules {
     description = "Route /data to GCP bucket"
     enabled     = true
@@ -44,7 +45,6 @@ resource "cloudflare_cloud_connector_rules" "cloud_connector_rules" {
       host = "mystorage.storage.googleapis.com"
     }
   }
-
 
   rules {
     description = "Route /resources to AWS bucket"
@@ -56,7 +56,6 @@ resource "cloudflare_cloud_connector_rules" "cloud_connector_rules" {
     }
   }
 
-
   rules {
     description = "Route /files to Azure bucket"
     enabled     = true
@@ -66,7 +65,6 @@ resource "cloudflare_cloud_connector_rules" "cloud_connector_rules" {
       host = "mystorage.blob.core.windows.net"
     }
   }
-
 
   rules {
     description = "Route /images to R2 bucket"
@@ -84,7 +82,14 @@ resource "cloudflare_cloud_connector_rules" "cloud_connector_rules" {
 
 Refer to the [Terraform Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for more information on the `cloudflare_cloud_connector_rules` resource.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/create-terraform/#page","headline":"Configure Cloud Connector rules using Terraform · Cloudflare Rules docs","description":"Create Cloud Connector rules using the Terraform Cloudflare provider.","url":"https://developers.cloudflare.com/rules/cloud-connector/create-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","AWS","Azure"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/cloud-connector/","name":"Cloud Connector"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/cloud-connector/create-terraform/","name":"Configure Cloud Connector rules using Terraform"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/create-terraform/#page","headline":"Configure Cloud Connector rules using Terraform · Cloudflare Rules docs","description":"Create Cloud Connector rules using the Terraform Cloudflare provider.","url":"https://developers.cloudflare.com/rules/cloud-connector/create-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform","AWS","Azure"]}
 ```

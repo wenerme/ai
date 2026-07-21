@@ -1,16 +1,18 @@
 ---
-title: Rule groups
 description: How Rule groups works in Access.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Rule groups
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rule groups
 
-# Rule groups
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A rule group is a collection of Access rules that can be configured once and then quickly applied across many Access policies. Rule groups use the same [rule types](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#rule-types) and [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) shown in the Access policy builder.
 
@@ -21,9 +23,6 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 ## Create a rule group
 
 To create an Access rule group:
-
-* [ Dashboard ](#tab-panel-7823)
-* [ API ](#tab-panel-7824)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.
@@ -43,31 +42,29 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Organizations, Identity Providers, and Groups Write`
 
-**Create an Access group**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Lisbon-team",
-    "include": [
-        {
-            "geo": {
-                "country_code": "PT"
-            }
-        }
-    ],
-    "exclude": [],
-    "require": [
-        {
-            "email_domain": {
-                "domain": "team.com"
-            }
-        }
-    ],
-    "is_default": false
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Lisbon-team",
+		"include": [
+				{
+						"geo": {
+								"country_code": "PT"
+						}
+				}
+		],
+		"exclude": [],
+		"require": [
+				{
+						"email_domain": {
+								"domain": "team.com"
+						}
+				}
+		],
+		"is_default": false
+	}'
 ```
 
 You can now add this group to an Access policy using the _Rule groups_ selector.
@@ -86,7 +83,14 @@ If adding more than one IP address or range to a rule group, use an Include rule
 
 You can create a rule group that consists of countries to allow or block. Access will treat the countries in the Include rule with an OR logical operator. When building policies for an Access application, you can assign this rule group to a Require policy to require at least one of the countries inside of the group. For an example policy, refer to [Require rules with OR operators](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#require-rules-with-or-operators).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/#page","headline":"Rule groups · Cloudflare One docs","description":"How Rule groups works in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/policies/","name":"Policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/policies/groups/","name":"Rule groups"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/#page","headline":"Rule groups · Cloudflare One docs","description":"How Rule groups works in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

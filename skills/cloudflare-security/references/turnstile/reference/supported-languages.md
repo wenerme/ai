@@ -1,16 +1,18 @@
 ---
-title: Supported languages
 description: Languages supported by Cloudflare Turnstile widgets.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Supported languages
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supported languages
 
-# Supported languages
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/reference/supported-languages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile supports `auto` (default), which uses the visitor's browser language if it is supported. You can also explicitly set the widget's language using the [client-side configuration attribute](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations) to one listed on the table below:
 
@@ -62,7 +64,14 @@ You can also submit feedback on a translation error via [this form ↗](https://
 | Ukrainian (Ukraine)              | uk-ua                    | uk                       |
 | Vietnamese (Vietnam)             | vi-vn                    | vi                       |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/supported-languages/#page","headline":"Supported languages · Cloudflare Turnstile docs","description":"Languages supported by Cloudflare Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/supported-languages/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Localization"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/reference/supported-languages/","name":"Supported languages"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/reference/supported-languages/#page","headline":"Supported languages · Cloudflare Turnstile docs","description":"Languages supported by Cloudflare Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/reference/supported-languages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Localization"]}
 ```

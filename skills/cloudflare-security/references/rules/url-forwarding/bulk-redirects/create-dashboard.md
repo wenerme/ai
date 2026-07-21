@@ -1,16 +1,18 @@
 ---
-title: Create Bulk Redirects in the dashboard
 description: Create Bulk Redirects in the Cloudflare dashboard.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Create Bulk Redirects in the dashboard
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Create Bulk Redirects in the dashboard
 
-# Create Bulk Redirects in the dashboard
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 To create Bulk Redirects in the Cloudflare dashboard you must:
 
@@ -31,7 +33,7 @@ Bulk Redirects require that the incoming traffic for the hostname referenced in 
 ## 1\. Create a Bulk Redirect List
 
 1. In the Cloudflare dashboard, go to the **Bulk redirects** page.
-[ Go to **Bulk redirects** ](https://dash.cloudflare.com/?to=/:account/bulk-redirects)
+[ Go to **Bulk redirects** ↗ ](https://dash.cloudflare.com/?to=/:account/bulk-redirects)
 2. Under **Bulk Redirect Lists**, select **Create Bulk Redirect List**.
 3. Enter a list name and description, and select **Next**.
 4. You can import a CSV file containing several URL redirects or enter URL redirects one at a time in the dashboard.
@@ -64,7 +66,7 @@ Cloudflare will apply the following rules when you add items to an existing list
 1. (Optional) If you are not using the Bulk Redirect List creation wizard according to the instructions in the previous section:
 
   1. In the Cloudflare dashboard, go to the **Bulk redirects** page.
-  [ Go to **Bulk redirects** ](https://dash.cloudflare.com/?to=/:account/bulk-redirects)
+  [ Go to **Bulk redirects** ↗ ](https://dash.cloudflare.com/?to=/:account/bulk-redirects)
   2. Select **Create Bulk Redirect Rule**.
 2. In **Rule name**, enter a descriptive name for the rule.
 3. Select the Bulk Redirect List you previously created.
@@ -72,7 +74,14 @@ Cloudflare will apply the following rules when you add items to an existing list
 5. To save and deploy the Bulk Redirect Rule, select **Save and Deploy**. If you are not ready to deploy your rule, select **Save as Draft**.
 If you are matching a hostname in your rule expression, you may be prompted to create a proxied DNS record for that hostname. Refer to [Troubleshooting](https://developers.cloudflare.com/rules/reference/troubleshooting/#this-rule-may-not-apply-to-your-traffic) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/#page","headline":"Create Bulk Redirects in the dashboard · Cloudflare Rules docs","description":"Create Bulk Redirects in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/create-dashboard/","name":"Create Bulk Redirects in the dashboard"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/#page","headline":"Create Bulk Redirects in the dashboard · Cloudflare Rules docs","description":"Create Bulk Redirects in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

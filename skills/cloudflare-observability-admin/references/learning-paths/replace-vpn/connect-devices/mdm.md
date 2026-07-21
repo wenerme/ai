@@ -1,16 +1,18 @@
 ---
-title: MDM deployment
 description: Deploy the device client via MDM.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: MDM deployment
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  MDM deployment
 
-# MDM deployment
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/mdm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Organizations can deploy and manage the Cloudflare One Client (formerly WARP) across their fleet of devices in two complementary ways:
 
@@ -41,7 +43,14 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 
 When you create your organization, Cloudflare automatically adds the [Cloudflare identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) as your default login method, so your users can sign in with their Cloudflare account credentials right away. You can add a [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) or connect a [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) at any time.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/mdm/#page","headline":"MDM deployment · Cloudflare Learning Paths","description":"Deploy the device client via MDM.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/mdm/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/connect-devices/","name":"Connect user devices"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/connect-devices/mdm/","name":"MDM deployment"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/mdm/#page","headline":"MDM deployment · Cloudflare Learning Paths","description":"Deploy the device client via MDM.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/mdm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

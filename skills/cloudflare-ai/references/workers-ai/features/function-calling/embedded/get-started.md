@@ -1,16 +1,18 @@
 ---
-title: Get Started
 description: Set up and deploy your first Workers AI project with embedded function calling.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Get Started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get Started
 
-# Get Started
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through setting up and deploying your first Workers AI project with embedded function calling. You will use Workers, a Workers AI binding, the [ai-utils package ↗](https://github.com/cloudflare/ai-utils), and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network with embedded function calling.
 
@@ -44,111 +46,101 @@ bun add @cloudflare/ai-utils
 
 Update the `index.ts` file in your application directory with the following code:
 
-* [  JavaScript ](#tab-panel-12100)
-* [  TypeScript ](#tab-panel-12101)
-
-**index.js**
-
 ```js
 import { runWithTools } from "@cloudflare/ai-utils";
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // Define function
-    const sum = (args) => {
-      const { a, b } = args;
-      return Promise.resolve((a + b).toString());
-    };
-    // Run AI inference with function calling
-    const response = await runWithTools(
-      env.AI,
-      // Model with function calling support
-      "@hf/nousresearch/hermes-2-pro-mistral-7b",
-      {
-        // Messages
-        messages: [
-          {
-            role: "user",
-            content: "What the result of 123123123 + 10343030?",
-          },
-        ],
-        // Definition of available tools the AI model can leverage
-        tools: [
-          {
-            name: "sum",
-            description: "Sum up two numbers and returns the result",
-            parameters: {
-              type: "object",
-              properties: {
-                a: { type: "number", description: "the first number" },
-                b: { type: "number", description: "the second number" },
-              },
-              required: ["a", "b"],
-            },
-            // reference to previously defined function
-            function: sum,
-          },
-        ],
-      },
-    );
-    return new Response(JSON.stringify(response));
-  },
+	async fetch(request, env, ctx) {
+		// Define function
+		const sum = (args) => {
+			const { a, b } = args;
+			return Promise.resolve((a + b).toString());
+		};
+		// Run AI inference with function calling
+		const response = await runWithTools(
+			env.AI,
+			// Model with function calling support
+			"@hf/nousresearch/hermes-2-pro-mistral-7b",
+			{
+				// Messages
+				messages: [
+					{
+						role: "user",
+						content: "What the result of 123123123 + 10343030?",
+					},
+				],
+				// Definition of available tools the AI model can leverage
+				tools: [
+					{
+						name: "sum",
+						description: "Sum up two numbers and returns the result",
+						parameters: {
+							type: "object",
+							properties: {
+								a: { type: "number", description: "the first number" },
+								b: { type: "number", description: "the second number" },
+							},
+							required: ["a", "b"],
+						},
+						// reference to previously defined function
+						function: sum,
+					},
+				],
+			},
+		);
+		return new Response(JSON.stringify(response));
+	},
 };
 ```
-
-**index.ts**
 
 ```ts
 import { runWithTools } from "@cloudflare/ai-utils";
 
-
 type Env = {
-  AI: Ai;
+	AI: Ai;
 };
 
-
 export default {
-  async fetch(request, env, ctx) {
-    // Define function
-    const sum = (args: { a: number; b: number }): Promise<string> => {
-      const { a, b } = args;
-      return Promise.resolve((a + b).toString());
-    };
-    // Run AI inference with function calling
-    const response = await runWithTools(
-      env.AI,
-      // Model with function calling support
-      "@hf/nousresearch/hermes-2-pro-mistral-7b",
-      {
-        // Messages
-        messages: [
-          {
-            role: "user",
-            content: "What the result of 123123123 + 10343030?",
-          },
-        ],
-        // Definition of available tools the AI model can leverage
-        tools: [
-          {
-            name: "sum",
-            description: "Sum up two numbers and returns the result",
-            parameters: {
-              type: "object",
-              properties: {
-                a: { type: "number", description: "the first number" },
-                b: { type: "number", description: "the second number" },
-              },
-              required: ["a", "b"],
-            },
-            // reference to previously defined function
-            function: sum,
-          },
-        ],
-      },
-    );
-    return new Response(JSON.stringify(response));
-  },
+	async fetch(request, env, ctx) {
+		// Define function
+		const sum = (args: { a: number; b: number }): Promise<string> => {
+			const { a, b } = args;
+			return Promise.resolve((a + b).toString());
+		};
+		// Run AI inference with function calling
+		const response = await runWithTools(
+			env.AI,
+			// Model with function calling support
+			"@hf/nousresearch/hermes-2-pro-mistral-7b",
+			{
+				// Messages
+				messages: [
+					{
+						role: "user",
+						content: "What the result of 123123123 + 10343030?",
+					},
+				],
+				// Definition of available tools the AI model can leverage
+				tools: [
+					{
+						name: "sum",
+						description: "Sum up two numbers and returns the result",
+						parameters: {
+							type: "object",
+							properties: {
+								a: { type: "number", description: "the first number" },
+								b: { type: "number", description: "the second number" },
+							},
+							required: ["a", "b"],
+						},
+						// reference to previously defined function
+						function: sum,
+					},
+				],
+			},
+		);
+		return new Response(JSON.stringify(response));
+	},
 } satisfies ExportedHandler<Env>;
 ```
 
@@ -182,7 +174,14 @@ Embedded function calling runs Workers AI inference requests. Standard charges f
 
 For more details, refer to [API reference](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/api-reference/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/#page","headline":"Get Started · Cloudflare Workers AI docs","description":"Set up and deploy your first Workers AI project with embedded function calling.","url":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/function-calling/","name":"Function calling"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/function-calling/embedded/","name":"Embedded"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers-ai/features/function-calling/embedded/get-started/","name":"Get Started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/#page","headline":"Get Started · Cloudflare Workers AI docs","description":"Set up and deploy your first Workers AI project with embedded function calling.","url":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

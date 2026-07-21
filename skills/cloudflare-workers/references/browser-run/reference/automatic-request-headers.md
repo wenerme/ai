@@ -1,16 +1,18 @@
 ---
-title: Automatic request headers
 description: Review the headers Cloudflare automatically attaches to every Browser Run request, including User-Agent and bot detection identifiers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Automatic request headers
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Automatic request headers
 
-# Automatic request headers
+Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare automatically attaches headers to every request made through Browser Run. These headers make it easy for destination servers to identify that these requests came from Cloudflare.
 
@@ -57,7 +59,14 @@ Browser Run uses different bot detection IDs depending on the method. [Quick Act
 
 If you are attempting to scan your own zone and want Browser Run to access your website freely without your bot protection configuration interfering, you can create a WAF skip rule to [allowlist Browser Run](https://developers.cloudflare.com/browser-run/faq/#can-i-allowlist-browser-run-on-my-own-website).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#page","headline":"Automatic request headers · Cloudflare Browser Run docs","description":"Review the headers Cloudflare automatically attaches to every Browser Run request, including User-Agent and bot detection identifiers.","url":"https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-run/","name":"Browser Run"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-run/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-run/reference/automatic-request-headers/","name":"Automatic request headers"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#page","headline":"Automatic request headers · Cloudflare Browser Run docs","description":"Review the headers Cloudflare automatically attaches to every Browser Run request, including User-Agent and bot detection identifiers.","url":"https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

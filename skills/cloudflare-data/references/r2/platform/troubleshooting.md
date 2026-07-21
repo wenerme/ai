@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting
 description: Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Troubleshooting
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting
 
-# Troubleshooting
+Last updated Jun 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/platform/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Troubleshooting 403 / CORS issues with R2
 
@@ -90,17 +92,24 @@ In the Cloudflare dashboard, you can choose to view objects with `/` in the name
 
 For example, an object named `example/object` will be displayed as below.
 
-* Directoryexample
+* example
   * object
 
 Object names which end with `/` will cause the Cloudflare dashboard to render the object as a folder with an unnamed object inside.
 
 For example, uploading an object named `example/` into an R2 bucket will be displayed as below.
 
-* Directoryexample
+* example
   * `This object is unnamed`
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/troubleshooting/#page","headline":"Troubleshooting · Cloudflare R2 docs","description":"Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.","url":"https://developers.cloudflare.com/r2/platform/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/troubleshooting/","name":"Troubleshooting"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/troubleshooting/#page","headline":"Troubleshooting · Cloudflare R2 docs","description":"Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.","url":"https://developers.cloudflare.com/r2/platform/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

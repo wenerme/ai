@@ -1,16 +1,18 @@
 ---
-title: Types
 description: TypeScript type definitions for the Flagship binding, including Flagship, FlagshipEvaluationContext, and FlagshipEvaluationDetails.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Types
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Types
 
-# Types
+Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/binding/types/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Flagship binding uses the following TypeScript types. These are available from the `@cloudflare/workers-types` package after running `npx wrangler types`.
 
@@ -18,11 +20,9 @@ The Flagship binding uses the following TypeScript types. These are available fr
 
 The binding type. Each Flagship binding in your Wrangler configuration is typed as `Flagship` on the `Env` interface.
 
-**TypeScript**
-
 ```ts
 interface Env {
-  FLAGS: Flagship;
+	FLAGS: Flagship;
 }
 ```
 
@@ -32,8 +32,6 @@ Refer to the [methods reference](https://developers.cloudflare.com/flagship/bind
 
 A record of attribute names to values passed for [targeting rules](https://developers.cloudflare.com/flagship/targeting/). Use this to provide user attributes such as user ID, country, or plan type.
 
-**TypeScript**
-
 ```ts
 type FlagshipEvaluationContext = Record<string, string | number | boolean>;
 ```
@@ -42,15 +40,13 @@ type FlagshipEvaluationContext = Record<string, string | number | boolean>;
 
 Returned by the `*Details` methods. Contains the evaluated value and metadata about how Flagship resolved the flag.
 
-**TypeScript**
-
 ```ts
 interface FlagshipEvaluationDetails<T> {
-  flagKey: string;
-  value: T;
-  variant?: string;
-  reason?: string;
-  errorCode?: string;
+	flagKey: string;
+	value: T;
+	variant?: string;
+	reason?: string;
+	errorCode?: string;
 }
 ```
 
@@ -64,7 +60,14 @@ interface FlagshipEvaluationDetails<T> {
 
 Refer to [evaluation reasons and error codes](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/) for the full list of possible values.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/types/#page","headline":"Types · Cloudflare Flagship docs","description":"TypeScript type definitions for the Flagship binding, including Flagship, FlagshipEvaluationContext, and FlagshipEvaluationDetails.","url":"https://developers.cloudflare.com/flagship/binding/types/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/binding/","name":"Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/binding/types/","name":"Types"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/types/#page","headline":"Types · Cloudflare Flagship docs","description":"TypeScript type definitions for the Flagship binding, including Flagship, FlagshipEvaluationContext, and FlagshipEvaluationDetails.","url":"https://developers.cloudflare.com/flagship/binding/types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Security model
 description: Sandbox SDK uses VM-level isolation, input validation, and network controls to run untrusted code safely.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Security model
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Security model
 
-# Security model
+Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/concepts/security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The Sandbox SDK is built on [Containers](https://developers.cloudflare.com/containers/), which run each sandbox in its own VM for strong isolation.
 
@@ -35,12 +37,9 @@ All code within a single sandbox shares resources:
 
 For complete isolation, use separate sandboxes per user:
 
-**TypeScript**
-
 ```typescript
 // Good - Each user in separate sandbox
 const userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
-
 
 // Bad - Users sharing one sandbox
 const shared = getSandbox(env.Sandbox, 'shared');
@@ -53,19 +52,15 @@ const shared = getSandbox(env.Sandbox, 'shared');
 
 Always validate user input before using it in commands:
 
-**TypeScript**
-
 ```typescript
 // Dangerous - user input directly in command
 const filename = userInput;
 await sandbox.exec(`cat ${filename}`);
 // User could input: "file.txt; rm -rf /"
 
-
 // Safe - validate input
 const filename = userInput.replace(/[^a-zA-Z0-9._-]/g, '');
 await sandbox.exec(`cat ${filename}`);
-
 
 // Better - use file API
 await sandbox.writeFile('/tmp/input', userInput);
@@ -78,8 +73,6 @@ await sandbox.exec('cat /tmp/input');
 
 Sandbox IDs provide basic access control but aren't cryptographically secure. Add application-level authentication:
 
-**TypeScript**
-
 ```typescript
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -87,7 +80,6 @@ export default {
     if (!userId) {
       return new Response('Unauthorized', { status: 401 });
     }
-
 
     // User can only access their sandbox
     const sandbox = getSandbox(env.Sandbox, userId);
@@ -102,8 +94,6 @@ Preview URLs include randomly generated tokens. Anyone with the URL can access t
 
 To revoke access, unexpose the port:
 
-**TypeScript**
-
 ```typescript
 await sandbox.unexposePort(8080);
 ```
@@ -112,29 +102,22 @@ await sandbox.unexposePort(8080);
 
 Quick tunnels (`sandbox.tunnels.get(port)`) return a `*.trycloudflare.com` URL with a random hostname assigned by Cloudflare — there is no separate access token. The hostname itself is the access control: anyone who knows the URL can reach the service. To revoke access, destroy the tunnel:
 
-**TypeScript**
-
 ```typescript
 await sandbox.tunnels.destroy(8080);
 ```
 
 URLs do not survive a container restart, so a restart effectively rotates the hostname. As with preview URLs, add application-level authentication for any sensitive service. See the [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) for details.
 
-**Python**
-
 ```python
 from flask import Flask, request, abort
 import os
 
-
 app = Flask(__name__)
-
 
 def check_auth():
     token = request.headers.get('Authorization')
     if token != f"Bearer {os.environ['AUTH_TOKEN']}":
         abort(401)
-
 
 @app.route('/api/data')
 def get_data():
@@ -146,14 +129,11 @@ def get_data():
 
 Use environment variables, not hardcoded secrets:
 
-**TypeScript**
-
 ```typescript
 // Bad - hardcoded in file
 await sandbox.writeFile('/workspace/config.js', `
   const API_KEY = 'sk_live_abc123';
 `);
-
 
 // Good - use environment variables
 await sandbox.startProcess('node app.js', {
@@ -164,8 +144,6 @@ await sandbox.startProcess('node app.js', {
 ```
 
 Clean up temporary sensitive data:
-
-**TypeScript**
 
 ```typescript
 try {
@@ -207,15 +185,11 @@ This pattern is useful when accessing GitHub for private repository operations, 
 
 **Use separate sandboxes for isolation**:
 
-**TypeScript**
-
 ```typescript
 const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 ```
 
 **Validate all inputs**:
-
-**TypeScript**
 
 ```typescript
 const safe = input.replace(/[^a-zA-Z0-9._-]/g, '');
@@ -224,8 +198,6 @@ await sandbox.exec(`command ${safe}`);
 
 **Use environment variables for secrets**:
 
-**TypeScript**
-
 ```typescript
 await sandbox.startProcess('node app.js', {
   env: { API_KEY: env.API_KEY }
@@ -233,8 +205,6 @@ await sandbox.startProcess('node app.js', {
 ```
 
 **Clean up temporary resources**:
-
-**TypeScript**
 
 ```typescript
 try {
@@ -250,7 +220,14 @@ try {
 * [Containers architecture](https://developers.cloudflare.com/containers/platform-details/architecture/) \- Underlying platform security
 * [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Resource management
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/security/#page","headline":"Security model · Cloudflare Sandbox SDK docs","description":"Sandbox SDK uses VM-level isolation, input validation, and network controls to run untrusted code safely.","url":"https://developers.cloudflare.com/sandbox/concepts/security/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/concepts/security/","name":"Security model"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/security/#page","headline":"Security model · Cloudflare Sandbox SDK docs","description":"Sandbox SDK uses VM-level isolation, input validation, and network controls to run untrusted code safely.","url":"https://developers.cloudflare.com/sandbox/concepts/security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Rule phase interactions
 description: Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Rule phase interactions
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Rule phase interactions
 
-# Rule phase interactions
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare evaluates request processing features in [phases](https://developers.cloudflare.com/ruleset-engine/about/phases/). A rule that appears correct in isolation can behave differently when another product has already modified or terminated the request.
 
@@ -85,7 +87,14 @@ When a WAF decision looks incorrect:
 4. Review whether a managed rule still ran after a custom rule match.
 5. Use [Trace](https://developers.cloudflare.com/rules/trace-request/) when available to confirm the actual phase-by-phase result.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/#page","headline":"Rule phase interactions · Cloudflare Web Application Firewall (WAF) docs","description":"Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.","url":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/troubleshooting/phase-interactions/","name":"Rule phase interactions"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/#page","headline":"Rule phase interactions · Cloudflare Web Application Firewall (WAF) docs","description":"Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.","url":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

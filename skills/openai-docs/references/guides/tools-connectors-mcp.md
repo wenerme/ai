@@ -56,7 +56,8 @@ const resp = await client.responses.create({
     {
       type: "mcp",
       server_label: "dmcp",
-      server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
+      server_description:
+        "A Dungeons and Dragons MCP server to assist with dice rolling.",
       server_url: "https://dmcp-server.deno.dev/mcp",
       require_approval: "never",
     },
@@ -361,14 +362,17 @@ const client = new OpenAI();
 
 const resp = await client.responses.create({
   model: "gpt-5.6",
-  tools: [{
-    type: "mcp",
-    server_label: "dmcp",
-    server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
-    server_url: "https://dmcp-server.deno.dev/mcp",
-    require_approval: "never",
-    allowed_tools: ["roll"],
-  }],
+  tools: [
+    {
+      type: "mcp",
+      server_label: "dmcp",
+      server_description:
+        "A Dungeons and Dragons MCP server to assist with dice rolling.",
+      server_url: "https://dmcp-server.deno.dev/mcp",
+      require_approval: "never",
+      allowed_tools: ["roll"],
+    },
+  ],
   input: "Roll 2d4+1",
 });
 
@@ -489,19 +493,25 @@ const client = new OpenAI();
 
 const resp = await client.responses.create({
   model: "gpt-5.6",
-  tools: [{
-    type: "mcp",
-    server_label: "dmcp",
-    server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
-    server_url: "https://dmcp-server.deno.dev/mcp",
-    require_approval: "always",
-  }],
+  tools: [
+    {
+      type: "mcp",
+      server_label: "dmcp",
+      server_description:
+        "A Dungeons and Dragons MCP server to assist with dice rolling.",
+      server_url: "https://dmcp-server.deno.dev/mcp",
+      require_approval: "always",
+    },
+  ],
   previous_response_id: "resp_682d498bdefc81918b4a6aa477bfafd904ad1e533afccbfa",
-  input: [{
-    type: "mcp_approval_response",
-    approve: true,
-    approval_request_id: "mcpr_682d498e3bd4819196a0ce1664f8e77b04ad1e533afccbfa"
-  }],
+  input: [
+    {
+      type: "mcp_approval_response",
+      approve: true,
+      approval_request_id:
+        "mcpr_682d498e3bd4819196a0ce1664f8e77b04ad1e533afccbfa",
+    },
+  ],
 });
 
 console.log(resp.output_text);
@@ -605,12 +615,13 @@ const resp = await client.responses.create({
       server_url: "https://mcp.deepwiki.com/mcp",
       require_approval: {
         never: {
-          tool_names: ["ask_question", "read_wiki_structure"]
-        }
-      }
+          tool_names: ["ask_question", "read_wiki_structure"],
+        },
+      },
     },
   ],
-  input: "What transport protocols does the 2025-03-26 version of the MCP spec (modelcontextprotocol/modelcontextprotocol) support?",
+  input:
+    "What transport protocols does the 2025-03-26 version of the MCP spec (modelcontextprotocol/modelcontextprotocol) support?",
 });
 
 console.log(resp.output_text);
@@ -701,9 +712,9 @@ const resp = await client.responses.create({
       type: "mcp",
       server_label: "stripe",
       server_url: "https://mcp.stripe.com",
-      authorization: "$STRIPE_OAUTH_ACCESS_TOKEN"
-    }
-  ]
+      authorization: "$STRIPE_OAUTH_ACCESS_TOKEN",
+    },
+  ],
 });
 
 console.log(resp.output_text);

@@ -1,16 +1,18 @@
 ---
-title: Account analytics (beta)
 description: View aggregated metrics across all account domains.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Account analytics (beta)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Account analytics (beta)
 
-# Account analytics (beta)
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare account analytics lets you access a wide range of aggregated metrics from all the sites under a specific Cloudflare account.
 
@@ -24,7 +26,7 @@ For general information about all of Cloudflare's analytics offerings, refer to 
 
 To view metrics for your site, in the Cloudflare dashboard, go to the **Account Analytics** page.
 
-[ Go to **Account analytics** ](https://dash.cloudflare.com/?to=/:account/analytics)
+[ Go to **Account analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/analytics)
 
 Once it loads, the Account Analytics app displays a collection of categorized charts with aggregated metrics for your account. To understand the various metrics available, refer to _Review your account metrics_ below.
 
@@ -89,7 +91,14 @@ These statistics show the percentage of traffic that is encrypted using a specif
 
 These statistics show the number of requests based on the resource content type.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/#page","headline":"Account analytics (beta) · Cloudflare Analytics docs","description":"View aggregated metrics across all account domains.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/account-and-zone-analytics/","name":"Account and zone analytics"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/account-and-zone-analytics/account-analytics/","name":"Account analytics (beta)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/#page","headline":"Account analytics (beta) · Cloudflare Analytics docs","description":"View aggregated metrics across all account domains.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

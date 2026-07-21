@@ -1,16 +1,18 @@
 ---
-title: Troubleshooting guide
 description: Troubleshoot common R2 SQL errors including query structure, type, and timeout issues.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Troubleshooting guide
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Troubleshooting guide
 
-# Troubleshooting guide
+Last updated May 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers potential errors and limitations you may encounter when using R2 SQL. R2 SQL is in open beta, and supported functionality will evolve and change over time.
 
@@ -25,7 +27,6 @@ This guide covers potential errors and limitations you may encounter when using 
 ```sql
 -- Invalid - Missing FROM clause
 SELECT user_id WHERE status = 200;
-
 
 -- Valid
 SELECT user_id
@@ -138,7 +139,6 @@ LIMIT 20
 -- Invalid - JSON path operators not supported
 SELECT * FROM my_namespace.requests WHERE json_data->>'level' = 'error'
 
-
 -- Valid - Filter on the entire JSON column
 SELECT * FROM my_namespace.logs WHERE json_data IS NOT NULL LIMIT 100
 ```
@@ -170,7 +170,6 @@ SELECT * FROM my_namespace.products WHERE pricing['price'] > 50 LIMIT 100
 -- Invalid - Out of range
 SELECT * FROM my_namespace.events LIMIT 50000
 
-
 -- Valid
 SELECT * FROM my_namespace.events LIMIT 10000
 ```
@@ -187,14 +186,12 @@ SELECT * FROM my_namespace.events LIMIT 10000
 -- Invalid - Pagination not supported
 SELECT * FROM my_namespace.events LIMIT 100 OFFSET 200
 
-
 -- Valid - Use cursor-based pagination with ORDER BY and WHERE
 -- Page 1
 SELECT * FROM my_namespace.events
 WHERE timestamp >= '2024-01-01'
 ORDER BY timestamp
 LIMIT 100
-
 
 -- Page 2 - Use the last timestamp from the previous page
 SELECT * FROM my_namespace.events
@@ -263,7 +260,14 @@ WHERE timestamp > '2024-01-01' AND status = 200
 ```
 5. **Enable compaction**: Enable compaction in R2 Data Catalog to reduce the number of small files scanned per query.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/troubleshooting/#page","headline":"Troubleshooting guide · R2 SQL docs","description":"Troubleshoot common R2 SQL errors including query structure, type, and timeout issues.","url":"https://developers.cloudflare.com/r2-sql/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/troubleshooting/","name":"Troubleshooting guide"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/troubleshooting/#page","headline":"Troubleshooting guide · R2 SQL docs","description":"Troubleshoot common R2 SQL errors including query structure, type, and timeout issues.","url":"https://developers.cloudflare.com/r2-sql/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 ```

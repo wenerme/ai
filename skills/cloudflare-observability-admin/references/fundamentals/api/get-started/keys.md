@@ -1,16 +1,18 @@
 ---
-title: Get Global API key (legacy)
 description: Retrieve or change your Cloudflare Global API key, a legacy authentication method with full account access.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get Global API key (legacy)
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get Global API key (legacy)
 
-# Get Global API key (legacy)
+Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/get-started/keys/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Global API key is the previous authorization scheme for interacting with the Cloudflare API. When possible, use [API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) instead of Global API key.
 
@@ -36,7 +38,7 @@ For these reasons, Global API key is not recommended for new customers. Current 
 To retrieve your Global API key:
 
 1. In the Cloudflare dashboard and select **User Profile** \> **API Tokens**.
-[ Go to **Account API tokens** ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. In the **API Keys** section, click `View` button of **Global API Key**.
 
 ## Change your Global API key
@@ -44,12 +46,19 @@ To retrieve your Global API key:
 If your API key might be compromised, change your API key:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
+[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **My Profile** \> **API Tokens**.
 3. In the **API Keys** section, find your key.
 4. Select **Change**.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/get-started/keys/#page","headline":"Get Global API key (legacy) · Cloudflare Fundamentals docs","description":"Retrieve or change your Cloudflare Global API key, a legacy authentication method with full account access.","url":"https://developers.cloudflare.com/fundamentals/api/get-started/keys/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/get-started/","name":"Get started"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/get-started/keys/","name":"Get Global API key (legacy)"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/get-started/keys/#page","headline":"Get Global API key (legacy) · Cloudflare Fundamentals docs","description":"Retrieve or change your Cloudflare Global API key, a legacy authentication method with full account access.","url":"https://developers.cloudflare.com/fundamentals/api/get-started/keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

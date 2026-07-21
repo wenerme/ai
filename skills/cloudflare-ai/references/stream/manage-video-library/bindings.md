@@ -1,16 +1,18 @@
 ---
-title: Bind to Workers API
 description: A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Bind to Workers API
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Bind to Workers API
 
-# Bind to Workers API
+Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/manage-video-library/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Stream](https://developers.cloudflare.com/stream/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -28,20 +30,13 @@ The Stream binding is enabled on a per-Worker basis.
 
 To bind Stream to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-11625)
-* [  wrangler.toml ](#tab-panel-11626)
-
-**JSONC**
-
 ```jsonc
 {
-  "stream": {
-    "binding": "STREAM"
-  }
+	"stream": {
+		"binding": "STREAM"
+	}
 }
 ```
-
-**TOML**
 
 ```toml
 [stream]
@@ -182,420 +177,329 @@ Delete a watermark profile. Returns `Promise<void>`.
 
 ### Upload a video from a URL
 
-* [  JavaScript ](#tab-panel-11627)
-* [  TypeScript ](#tab-panel-11628)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const video = await env.STREAM.upload("https://example.com/video.mp4", {
-      creator: "user-123",
-      meta: { category: "tutorial" },
-      allowedOrigins: ["example.com"],
-    });
-    return Response.json(video);
-  },
+	async fetch(request, env) {
+		const video = await env.STREAM.upload("https://example.com/video.mp4", {
+			creator: "user-123",
+			meta: { category: "tutorial" },
+			allowedOrigins: ["example.com"],
+		});
+		return Response.json(video);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const video = await env.STREAM.upload("https://example.com/video.mp4", {
-      creator: "user-123",
-      meta: { category: "tutorial" },
-      allowedOrigins: ["example.com"],
-    });
-    return Response.json(video);
-  },
+	async fetch(request, env) {
+		const video = await env.STREAM.upload("https://example.com/video.mp4", {
+			creator: "user-123",
+			meta: { category: "tutorial" },
+			allowedOrigins: ["example.com"],
+		});
+		return Response.json(video);
+	},
 };
 ```
 
 ### Create a direct upload
 
-* [  JavaScript ](#tab-panel-11629)
-* [  TypeScript ](#tab-panel-11630)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const directUpload = await env.STREAM.createDirectUpload({
-      maxDurationSeconds: 300,
-      creator: "user-123",
-      meta: { source: "browser-upload" },
-    });
-    return Response.json(directUpload);
-  },
+	async fetch(request, env) {
+		const directUpload = await env.STREAM.createDirectUpload({
+			maxDurationSeconds: 300,
+			creator: "user-123",
+			meta: { source: "browser-upload" },
+		});
+		return Response.json(directUpload);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const directUpload = await env.STREAM.createDirectUpload({
-      maxDurationSeconds: 300,
-      creator: "user-123",
-      meta: { source: "browser-upload" },
-    });
-    return Response.json(directUpload);
-  },
+	async fetch(request, env) {
+		const directUpload = await env.STREAM.createDirectUpload({
+			maxDurationSeconds: 300,
+			creator: "user-123",
+			meta: { source: "browser-upload" },
+		});
+		return Response.json(directUpload);
+	},
 };
 ```
 
 ### List videos
 
-* [  JavaScript ](#tab-panel-11633)
-* [  TypeScript ](#tab-panel-11634)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const videos = await env.STREAM.videos.list({
-      limit: 10,
-      after: "2025-01-01T00:00:00Z",
-    });
-    return Response.json(videos);
-  },
+	async fetch(request, env) {
+		const videos = await env.STREAM.videos.list({
+			limit: 10,
+			after: "2025-01-01T00:00:00Z",
+		});
+		return Response.json(videos);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const videos = await env.STREAM.videos.list({
-      limit: 10,
-      after: "2025-01-01T00:00:00Z",
-    });
-    return Response.json(videos);
-  },
+	async fetch(request, env) {
+		const videos = await env.STREAM.videos.list({
+			limit: 10,
+			after: "2025-01-01T00:00:00Z",
+		});
+		return Response.json(videos);
+	},
 };
 ```
 
 ### Get video details
 
-* [  JavaScript ](#tab-panel-11631)
-* [  TypeScript ](#tab-panel-11632)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const videoDetails = await env.STREAM.video("VIDEO_ID").details();
-    return Response.json(videoDetails);
-  },
+	async fetch(request, env) {
+		const videoDetails = await env.STREAM.video("VIDEO_ID").details();
+		return Response.json(videoDetails);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const videoDetails = await env.STREAM.video("VIDEO_ID").details();
-    return Response.json(videoDetails);
-  },
+	async fetch(request, env) {
+		const videoDetails = await env.STREAM.video("VIDEO_ID").details();
+		return Response.json(videoDetails);
+	},
 };
 ```
 
 ### Update video metadata
 
-* [  JavaScript ](#tab-panel-11637)
-* [  TypeScript ](#tab-panel-11638)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const videoDetails = await env.STREAM.video("VIDEO_ID").update({
-      meta: { category: "updated-tutorial" },
-      allowedOrigins: ["example.com", "*.example.com"],
-    });
-    return Response.json(videoDetails);
-  },
+	async fetch(request, env) {
+		const videoDetails = await env.STREAM.video("VIDEO_ID").update({
+			meta: { category: "updated-tutorial" },
+			allowedOrigins: ["example.com", "*.example.com"],
+		});
+		return Response.json(videoDetails);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const videoDetails = await env.STREAM.video("VIDEO_ID").update({
-      meta: { category: "updated-tutorial" },
-      allowedOrigins: ["example.com", "*.example.com"],
-    });
-    return Response.json(videoDetails);
-  },
+	async fetch(request, env) {
+		const videoDetails = await env.STREAM.video("VIDEO_ID").update({
+			meta: { category: "updated-tutorial" },
+			allowedOrigins: ["example.com", "*.example.com"],
+		});
+		return Response.json(videoDetails);
+	},
 };
 ```
 
 ### Delete a video
 
-* [  JavaScript ](#tab-panel-11635)
-* [  TypeScript ](#tab-panel-11636)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    await env.STREAM.video("VIDEO_ID").delete();
-    return new Response("Video deleted", { status: 200 });
-  },
+	async fetch(request, env) {
+		await env.STREAM.video("VIDEO_ID").delete();
+		return new Response("Video deleted", { status: 200 });
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    await env.STREAM.video("VIDEO_ID").delete();
-    return new Response("Video deleted", { status: 200 });
-  },
+	async fetch(request, env) {
+		await env.STREAM.video("VIDEO_ID").delete();
+		return new Response("Video deleted", { status: 200 });
+	},
 };
 ```
 
 ### Generate a signed URL token
 
-* [  JavaScript ](#tab-panel-11639)
-* [  TypeScript ](#tab-panel-11640)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const token = await env.STREAM.video("VIDEO_ID").generateToken();
-    return Response.json({ token });
-  },
+	async fetch(request, env) {
+		const token = await env.STREAM.video("VIDEO_ID").generateToken();
+		return Response.json({ token });
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const token = await env.STREAM.video("VIDEO_ID").generateToken();
-    return Response.json({ token });
-  },
+	async fetch(request, env) {
+		const token = await env.STREAM.video("VIDEO_ID").generateToken();
+		return Response.json({ token });
+	},
 };
 ```
 
 ### Upload captions
 
-* [  JavaScript ](#tab-panel-11643)
-* [  TypeScript ](#tab-panel-11644)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const captionResponse = await fetch("https://example.com/captions-en.vtt");
-    const caption = await env.STREAM.video("VIDEO_ID").captions.upload(
-      "en",
-      captionResponse.body,
-    );
-    return Response.json(caption);
-  },
+	async fetch(request, env) {
+		const captionResponse = await fetch("https://example.com/captions-en.vtt");
+		const caption = await env.STREAM.video("VIDEO_ID").captions.upload(
+			"en",
+			captionResponse.body,
+		);
+		return Response.json(caption);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const captionResponse = await fetch("https://example.com/captions-en.vtt");
-    const caption = await env.STREAM.video("VIDEO_ID").captions.upload(
-      "en",
-      captionResponse.body,
-    );
-    return Response.json(caption);
-  },
+	async fetch(request, env) {
+		const captionResponse = await fetch("https://example.com/captions-en.vtt");
+		const caption = await env.STREAM.video("VIDEO_ID").captions.upload(
+			"en",
+			captionResponse.body,
+		);
+		return Response.json(caption);
+	},
 };
 ```
 
 ### Generate AI captions
 
-* [  JavaScript ](#tab-panel-11641)
-* [  TypeScript ](#tab-panel-11642)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const caption = await env.STREAM.video("VIDEO_ID").captions.generate("en");
-    return Response.json(caption);
-  },
+	async fetch(request, env) {
+		const caption = await env.STREAM.video("VIDEO_ID").captions.generate("en");
+		return Response.json(caption);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const caption = await env.STREAM.video("VIDEO_ID").captions.generate("en");
-    return Response.json(caption);
-  },
+	async fetch(request, env) {
+		const caption = await env.STREAM.video("VIDEO_ID").captions.generate("en");
+		return Response.json(caption);
+	},
 };
 ```
 
 ### List and delete captions
 
-* [  JavaScript ](#tab-panel-11645)
-* [  TypeScript ](#tab-panel-11646)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const video = env.STREAM.video("VIDEO_ID");
-    const captions = await video.captions.list();
-    await video.captions.delete("en");
-    return Response.json(captions);
-  },
+	async fetch(request, env) {
+		const video = env.STREAM.video("VIDEO_ID");
+		const captions = await video.captions.list();
+		await video.captions.delete("en");
+		return Response.json(captions);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const video = env.STREAM.video("VIDEO_ID");
-    const captions = await video.captions.list();
-    await video.captions.delete("en");
-    return Response.json(captions);
-  },
+	async fetch(request, env) {
+		const video = env.STREAM.video("VIDEO_ID");
+		const captions = await video.captions.list();
+		await video.captions.delete("en");
+		return Response.json(captions);
+	},
 };
 ```
 
 ### Generate and list downloads
 
-* [  JavaScript ](#tab-panel-11647)
-* [  TypeScript ](#tab-panel-11648)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const video = env.STREAM.video("VIDEO_ID");
-    const downloads = await video.downloads.generate();
-    const audioDownloads = await video.downloads.generate("audio");
-    const allDownloads = await video.downloads.get();
-    return Response.json({ downloads, audioDownloads, allDownloads });
-  },
+	async fetch(request, env) {
+		const video = env.STREAM.video("VIDEO_ID");
+		const downloads = await video.downloads.generate();
+		const audioDownloads = await video.downloads.generate("audio");
+		const allDownloads = await video.downloads.get();
+		return Response.json({ downloads, audioDownloads, allDownloads });
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const video = env.STREAM.video("VIDEO_ID");
-    const downloads = await video.downloads.generate();
-    const audioDownloads = await video.downloads.generate("audio");
-    const allDownloads = await video.downloads.get();
-    return Response.json({ downloads, audioDownloads, allDownloads });
-  },
+	async fetch(request, env) {
+		const video = env.STREAM.video("VIDEO_ID");
+		const downloads = await video.downloads.generate();
+		const audioDownloads = await video.downloads.generate("audio");
+		const allDownloads = await video.downloads.get();
+		return Response.json({ downloads, audioDownloads, allDownloads });
+	},
 };
 ```
 
 ### Create a watermark profile
 
-* [  JavaScript ](#tab-panel-11651)
-* [  TypeScript ](#tab-panel-11652)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const watermark = await env.STREAM.watermarks.generate(
-      "https://example.com/watermark.png",
-      {
-        name: "My Watermark",
-        opacity: 0.5,
-        position: "lowerRight",
-        padding: 0.05,
-        scale: 0.1,
-      },
-    );
-    return Response.json(watermark);
-  },
+	async fetch(request, env) {
+		const watermark = await env.STREAM.watermarks.generate(
+			"https://example.com/watermark.png",
+			{
+				name: "My Watermark",
+				opacity: 0.5,
+				position: "lowerRight",
+				padding: 0.05,
+				scale: 0.1,
+			},
+		);
+		return Response.json(watermark);
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const watermark = await env.STREAM.watermarks.generate(
-      "https://example.com/watermark.png",
-      {
-        name: "My Watermark",
-        opacity: 0.5,
-        position: "lowerRight",
-        padding: 0.05,
-        scale: 0.1,
-      },
-    );
-    return Response.json(watermark);
-  },
+	async fetch(request, env) {
+		const watermark = await env.STREAM.watermarks.generate(
+			"https://example.com/watermark.png",
+			{
+				name: "My Watermark",
+				opacity: 0.5,
+				position: "lowerRight",
+				padding: 0.05,
+				scale: 0.1,
+			},
+		);
+		return Response.json(watermark);
+	},
 };
 ```
 
 ### List and delete watermark profiles
 
-* [  JavaScript ](#tab-panel-11649)
-* [  TypeScript ](#tab-panel-11650)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    const watermarks = await env.STREAM.watermarks.list();
-    const watermark = await env.STREAM.watermarks.get("WATERMARK_ID");
-    await env.STREAM.watermarks.delete("WATERMARK_ID");
-    return Response.json({ watermarks, watermark });
-  },
+	async fetch(request, env) {
+		const watermarks = await env.STREAM.watermarks.list();
+		const watermark = await env.STREAM.watermarks.get("WATERMARK_ID");
+		await env.STREAM.watermarks.delete("WATERMARK_ID");
+		return Response.json({ watermarks, watermark });
+	},
 };
 ```
 
-**TypeScript**
-
 ```ts
 export default {
-  async fetch(request, env) {
-    const watermarks = await env.STREAM.watermarks.list();
-    const watermark = await env.STREAM.watermarks.get("WATERMARK_ID");
-    await env.STREAM.watermarks.delete("WATERMARK_ID");
-    return Response.json({ watermarks, watermark });
-  },
+	async fetch(request, env) {
+		const watermarks = await env.STREAM.watermarks.list();
+		const watermark = await env.STREAM.watermarks.get("WATERMARK_ID");
+		await env.STREAM.watermarks.delete("WATERMARK_ID");
+		return Response.json({ watermarks, watermark });
+	},
 };
 ```
 
@@ -641,7 +545,7 @@ export default {
 * `size` ` number `
 
   * The size of the video in bytes.
-* `preview` ` string ` optional
+* `preview` ` string `optional
 
   * The preview URL for the video.
 * `allowedOrigins` ` Array<string> `
@@ -677,7 +581,7 @@ export default {
 * `watermark` ` StreamWatermark | null `
 
   * The watermark applied to the video, if any. Refer to [StreamWatermark](#streamwatermark).
-* `liveInputId` ` string | null ` optional
+* `liveInputId` ` string | null `optional
 
   * The live input ID associated with the video, if any.
 * `clippedFromId` ` string | null `
@@ -694,10 +598,10 @@ Processing status information for a video.
 * `state` ` string `
 
   * The current processing state.
-* `step` ` string ` optional
+* `step` ` string `optional
 
   * The current processing step.
-* `pctComplete` ` string ` optional
+* `pctComplete` ` string `optional
 
   * The percent complete as a string.
 * `errorReasonCode` ` string `
@@ -756,7 +660,7 @@ Returned by `createDirectUpload()`. Contains the upload URL and video identifier
 
 Represents a caption or subtitle track for a video.
 
-* `generated` ` boolean ` optional
+* `generated` ` boolean `optional
 
   * Whether the caption was generated via AI.
 * `label` ` string `
@@ -765,7 +669,7 @@ Represents a caption or subtitle track for a video.
 * `language` ` string `
 
   * The language tag in BCP 47 format.
-* `status` ` 'ready' | 'inprogress' | 'error' ` optional
+* `status` ` 'ready' | 'inprogress' | 'error' `optional
 
   * The status of a generated caption.
 
@@ -773,10 +677,10 @@ Represents a caption or subtitle track for a video.
 
 An object with download type keys. Each key is optional and only present if that download type has been created.
 
-* `default` ` StreamDownload ` optional
+* `default` ` StreamDownload `optional
 
   * The default video download. Only present if this download type has been created. Refer to [StreamDownload](#streamdownload).
-* `audio` ` StreamDownload ` optional
+* `audio` ` StreamDownload `optional
 
   * The audio-only download. Only present if this download type has been created. Refer to [StreamDownload](#streamdownload).
 
@@ -790,7 +694,7 @@ Represents a generated download for a video.
 * `status` ` StreamDownloadStatus `
 
   * The status of a generated download.
-* `url` ` string ` optional
+* `url` ` string `optional
 
   * The URL to access the generated download.
 
@@ -864,25 +768,25 @@ The type of download to generate.
 
 Parameters for uploading a video from a URL.
 
-* `allowedOrigins` ` Array<string> ` optional
+* `allowedOrigins` ` Array<string> `optional
 
   * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
-* `creator` ` string ` optional
+* `creator` ` string `optional
 
   * A user-defined identifier for the media creator.
-* `meta` ` Record<string, string> ` optional
+* `meta` ` Record<string, string> `optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `requireSignedURLs` ` boolean ` optional
+* `requireSignedURLs` ` boolean `optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `scheduledDeletion` ` string | null ` optional
+* `scheduledDeletion` ` string | null `optional
 
   * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
-* `thumbnailTimestampPct` ` number ` optional
+* `thumbnailTimestampPct` ` number `optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video.
-* `watermarkId` ` string ` optional
+* `watermarkId` ` string `optional
 
   * The identifier for the watermark profile.
 
@@ -893,28 +797,28 @@ Parameters for creating a direct upload.
 * `maxDurationSeconds` ` number `
 
   * The maximum duration in seconds for a video upload.
-* `expiry` ` string ` optional
+* `expiry` ` string `optional
 
   * The date and time after upload when videos will not be accepted.
-* `creator` ` string ` optional
+* `creator` ` string `optional
 
   * A user-defined identifier for the media creator.
-* `meta` ` Record<string, string> ` optional
+* `meta` ` Record<string, string> `optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `allowedOrigins` ` Array<string> ` optional
+* `allowedOrigins` ` Array<string> `optional
 
   * Lists the origins allowed to display the video.
-* `requireSignedURLs` ` boolean ` optional
+* `requireSignedURLs` ` boolean `optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `thumbnailTimestampPct` ` number ` optional
+* `thumbnailTimestampPct` ` number `optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration.
-* `scheduledDeletion` ` string | null ` optional
+* `scheduledDeletion` ` string | null `optional
 
   * The date and time at which the video will be deleted. Include `null` to remove a scheduled deletion.
-* `watermark` ` StreamDirectUploadWatermark ` optional
+* `watermark` ` StreamDirectUploadWatermark `optional
 
   * The watermark profile to apply. Refer to [StreamDirectUploadWatermark](#streamdirectuploadwatermark).
 
@@ -930,25 +834,25 @@ Watermark configuration for a direct upload.
 
 Parameters for updating a video.
 
-* `allowedOrigins` ` Array<string> ` optional
+* `allowedOrigins` ` Array<string> `optional
 
   * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
-* `creator` ` string ` optional
+* `creator` ` string `optional
 
   * A user-defined identifier for the media creator.
-* `maxDurationSeconds` ` number ` optional
+* `maxDurationSeconds` ` number `optional
 
   * The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
-* `meta` ` Record<string, string> ` optional
+* `meta` ` Record<string, string> `optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `requireSignedURLs` ` boolean ` optional
+* `requireSignedURLs` ` boolean `optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `scheduledDeletion` ` string | null ` optional
+* `scheduledDeletion` ` string | null `optional
 
   * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
-* `thumbnailTimestampPct` ` number ` optional
+* `thumbnailTimestampPct` ` number `optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video.
 
@@ -956,19 +860,19 @@ Parameters for updating a video.
 
 Parameters for listing videos.
 
-* `limit` ` number ` optional
+* `limit` ` number `optional
 
   * The maximum number of videos to return.
-* `before` ` string ` optional
+* `before` ` string `optional
 
   * Return videos created before this timestamp (RFC3339/RFC3339Nano).
-* `beforeComp` ` StreamPaginationComparison ` optional
+* `beforeComp` ` StreamPaginationComparison `optional
 
   * Comparison operator for the `before` field. Defaults to `lt`. Refer to [StreamPaginationComparison](#streampaginationcomparison).
-* `after` ` string ` optional
+* `after` ` string `optional
 
   * Return videos created after this timestamp (RFC3339/RFC3339Nano).
-* `afterComp` ` StreamPaginationComparison ` optional
+* `afterComp` ` StreamPaginationComparison `optional
 
   * Comparison operator for the `after` field. Defaults to `gte`. Refer to [StreamPaginationComparison](#streampaginationcomparison).
 
@@ -987,19 +891,19 @@ Comparison operators for pagination queries.
 
 Parameters for creating a watermark profile.
 
-* `name` ` string ` optional
+* `name` ` string `optional
 
   * A short description of the watermark profile.
-* `opacity` ` number ` optional
+* `opacity` ` number `optional
 
   * The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
-* `padding` ` number ` optional
+* `padding` ` number `optional
 
   * The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length.
-* `scale` ` number ` optional
+* `scale` ` number `optional
 
   * The size of the image relative to the overall size of the video. `0.0` indicates no scaling, and `1.0` fills the entire video.
-* `position` ` StreamWatermarkPosition ` optional
+* `position` ` StreamWatermarkPosition `optional
 
   * The location of the image. Refer to [StreamWatermarkPosition](#streamwatermarkposition).
 
@@ -1029,48 +933,48 @@ The following error subtypes may be thrown:
 
 Use a `try...catch` block to handle errors:
 
-* [  JavaScript ](#tab-panel-11653)
-* [  TypeScript ](#tab-panel-11654)
-
-**JavaScript**
-
 ```js
 export default {
-  async fetch(request, env) {
-    try {
-      const videoDetails = await env.STREAM.upload(
-        "https://example.com/video.mp4",
-      );
-      return Response.json(videoDetails);
-    } catch (e) {
-      if (e instanceof Error) {
-        return new Response(`Stream error: ${e.message}`, { status: 500 });
-      }
-      throw e;
-    }
-  },
+	async fetch(request, env) {
+		try {
+			const videoDetails = await env.STREAM.upload(
+				"https://example.com/video.mp4",
+			);
+			return Response.json(videoDetails);
+		} catch (e) {
+			if (e instanceof Error) {
+				return new Response(`Stream error: ${e.message}`, { status: 500 });
+			}
+			throw e;
+		}
+	},
 };
 ```
-
-**TypeScript**
 
 ```ts
 export default {
-  async fetch(request, env) {
-    try {
-      const videoDetails = await env.STREAM.upload("https://example.com/video.mp4");
-      return Response.json(videoDetails);
-    } catch (e) {
-      if (e instanceof Error) {
-        return new Response(`Stream error: ${e.message}`, { status: 500 });
-      }
-      throw e;
-    }
-  },
+	async fetch(request, env) {
+		try {
+			const videoDetails = await env.STREAM.upload("https://example.com/video.mp4");
+			return Response.json(videoDetails);
+		} catch (e) {
+			if (e instanceof Error) {
+				return new Response(`Stream error: ${e.message}`, { status: 500 });
+			}
+			throw e;
+		}
+	},
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.","url":"https://developers.cloudflare.com/stream/manage-video-library/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/manage-video-library/","name":"Manage videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/manage-video-library/bindings/","name":"Bind to Workers API"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.","url":"https://developers.cloudflare.com/stream/manage-video-library/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

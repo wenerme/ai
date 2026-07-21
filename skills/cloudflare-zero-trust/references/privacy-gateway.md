@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Privacy Gateway
 description: Privacy Gateway is a managed Oblivious HTTP (OHTTP) relay service that hides client IP addresses from application backends.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Cloudflare Privacy Gateway
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Cloudflare Privacy Gateway
 
-# Cloudflare Privacy Gateway
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Implements the Oblivious HTTP IETF standard to improve client privacy.
 
@@ -30,25 +32,32 @@ Privacy Gateway is currently in closed beta – available to select privacy-orie
 
 ## Features
 
-###  Get started
+[Get started](https://developers.cloudflare.com/privacy-gateway/get-started/)
 
 Learn how to set up Privacy Gateway for your application.
 
-[ Get started ](https://developers.cloudflare.com/privacy-gateway/get-started/)
+ Get started
 
-###  Legal
+[Legal](https://developers.cloudflare.com/privacy-gateway/reference/legal/)
 
 Learn about the different parties and data shared in Privacy Gateway.
 
-[ Learn more ](https://developers.cloudflare.com/privacy-gateway/reference/legal/)
+ Learn more
 
-###  Metrics
+[Metrics](https://developers.cloudflare.com/privacy-gateway/reference/metrics/)
 
 Learn about how to query Privacy Gateway metrics.
 
-[ Learn more ](https://developers.cloudflare.com/privacy-gateway/reference/metrics/)
+ Learn more
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-gateway/#page","headline":"Overview · Cloudflare Privacy Gateway docs","description":"Privacy Gateway is a managed Oblivious HTTP (OHTTP) relay service that hides client IP addresses from application backends.","url":"https://developers.cloudflare.com/privacy-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-gateway/","name":"Privacy Gateway"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-gateway/#page","headline":"Overview · Cloudflare Privacy Gateway docs","description":"Privacy Gateway is a managed Oblivious HTTP (OHTTP) relay service that hides client IP addresses from application backends.","url":"https://developers.cloudflare.com/privacy-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

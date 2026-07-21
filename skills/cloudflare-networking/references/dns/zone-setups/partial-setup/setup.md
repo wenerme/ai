@@ -1,16 +1,18 @@
 ---
-title: Setup
 description: A CNAME setup (also known as partial) allows you to use Cloudflare's reverse proxy while maintaining your primary and authoritative DNS provider.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Setup
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Setup
 
-# Setup
+Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 A CNAME setup (also known as partial setup) allows you to use [Cloudflare's reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) while maintaining your primary and authoritative DNS provider.
 
@@ -33,9 +35,6 @@ If your domain is sensitive to downtime, instead of using Universal SSL, conside
 
 ## 1\. Convert your zone and review DNS records
 
-* [ Dashboard ](#tab-panel-8836)
-* [ API ](#tab-panel-8837)
-
 Make sure you have the correct plan
 
 Make sure your zone is on the Business or Enterprise plan. If you have Free or Pro, the options mentioned below will not be displayed.
@@ -53,19 +52,17 @@ At least one of the following [token permissions](https://developers.cloudflare.
 * `Zone Zone Edit`
 * `Zone DNS Edit`
 
-**Create Zone**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "example.com",
-    "account": {
-        "id": "YOUR_ACCOUNT_ID"
-    },
-    "type": "partial"
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "example.com",
+		"account": {
+				"id": "YOUR_ACCOUNT_ID"
+		},
+		"type": "partial"
+	}'
 ```
 
 ## 2\. Verify ownership for your domain
@@ -109,7 +106,14 @@ www.example.com CNAME www.example.com.cdn.cloudflare.net
 
 If you are preparing a conversion from CNAME setup (partial) to primary setup (full), or if you have a more specific use case, you can use the [Create DNS Record](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) API endpoint to create DNS records of any supported type.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#page","headline":"Set up a partial zone (CNAME setup) · Cloudflare DNS docs","description":"A CNAME setup (also known as partial) allows you to use Cloudflare's reverse proxy while maintaining your primary and authoritative DNS provider.","url":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/partial-setup/","name":"CNAME setup (Partial)"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/partial-setup/setup/","name":"Setup"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#page","headline":"Set up a partial zone (CNAME setup) · Cloudflare DNS docs","description":"A CNAME setup (also known as partial) allows you to use Cloudflare's reverse proxy while maintaining your primary and authoritative DNS provider.","url":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Access authentication logs
 description: Use Access authentication logs to review authentication events and requests to protected URI paths and infrastructure targets.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Access authentication logs
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Access authentication logs
 
-# Access authentication logs
+Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Access authentication logs help you track who accessed your protected applications, when they accessed them, and whether they were allowed in. Use these logs to investigate suspicious login attempts, audit user activity, or troubleshoot access issues.
 
@@ -35,9 +37,6 @@ Authentication logs do not capture the user's actions during a self-hosted or Sa
 
 #### View Access authentication logs
 
-* [ Dashboard ](#tab-panel-7850)
-* [ API ](#tab-panel-7851)
-
 To view logs for identity-based authentication events:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs**.
@@ -56,35 +55,31 @@ Required API token permissions
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
 * `Access: Audit Logs Read`
 
-**Get Access authentication logs**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/logs/access_requests?limit=25&direction=desc&since=2020-07-01T05%3A20%3A00Z&until=2020-10-01T05%3A20%3A00Z" \
-  --request GET \
-  --header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-  --header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--request GET \
+	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
 ```
-
-**Response**
 
 ```json
 {
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": [
-    {
-      "user_email": "michelle@example.com",
-      "ip_address": "198.41.129.166",
-      "app_uid": "df7e2w5f-02b7-4d9d-af26-8d1988fca630",
-      "app_domain": "test.example.com/admin",
-      "action": "login",
-      "connection": "saml",
-      "allowed": false,
-      "created_at": "2014-01-01T05:20:00.12345Z",
-      "ray_id": "187d944c61940c77"
-    }
-  ]
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": [
+		{
+			"user_email": "michelle@example.com",
+			"ip_address": "198.41.129.166",
+			"app_uid": "df7e2w5f-02b7-4d9d-af26-8d1988fca630",
+			"app_domain": "test.example.com/admin",
+			"action": "login",
+			"connection": "saml",
+			"allowed": false,
+			"created_at": "2014-01-01T05:20:00.12345Z",
+			"ray_id": "187d944c61940c77"
+		}
+	]
 }
 ```
 
@@ -172,7 +167,14 @@ In addition to the HTTP request fields available in Cloudflare Enterprise loggin
 
 Keep in mind that Access does not log all interactions. Per-request audit logs can indicate that a specific user visited `domain.com/admin` and then `domain.com/admin/panel`, but the logs only capture interactions that result in a new HTTP request. Purely client-side interactions that do not generate server requests are not logged.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#page","headline":"Access authentication logs · Cloudflare One docs","description":"Use Access authentication logs to review authentication events and requests to protected URI paths and infrastructure targets.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/logs/","name":"Logs"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/","name":"Dashboard logs"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/","name":"Access authentication logs"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#page","headline":"Access authentication logs · Cloudflare One docs","description":"Use Access authentication logs to review authentication events and requests to protected URI paths and infrastructure targets.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

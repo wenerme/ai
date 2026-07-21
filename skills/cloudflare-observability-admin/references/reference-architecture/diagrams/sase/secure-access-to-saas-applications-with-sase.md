@@ -1,16 +1,18 @@
 ---
-title: Secure access to SaaS applications with SASE
 description: Cloudflare's SASE platform offers the ability to bring a more Zero Trust orientated approach to securing SaaS applications. Centralized policies, based on device posture, identity attributes and granular network location can be applied across one or many Saas applications.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Secure access to SaaS applications with SASE
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Secure access to SaaS applications with SASE
 
-# Secure access to SaaS applications with SASE
+Last updated Feb 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/sase/secure-access-to-saas-applications-with-sase/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -112,7 +114,14 @@ Cloudflare's SASE platform allows organizations to centralize security policy fo
 * [Designing ZTNA access policies for Cloudflare Access](https://developers.cloudflare.com/reference-architecture/design-guides/designing-ztna-access-policies/)
 * [Access to private apps without having to deploy client agents](https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/secure-access-to-saas-applications-with-sase/#page","headline":"Secure access to SaaS applications with SASE · Cloudflare Reference Architecture docs","description":"Cloudflare's SASE platform offers the ability to bring a more Zero Trust orientated approach to securing SaaS applications. Centralized policies, based on device posture, identity attributes and granular network location can be applied across one or many Saas applications.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/secure-access-to-saas-applications-with-sase/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/diagrams/","name":"Reference Architecture Diagrams"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/diagrams/sase/","name":"Secure Access Service Edge (SASE)"}},{"@type":"ListItem","position":5,"item":{"@id":"/reference-architecture/diagrams/sase/secure-access-to-saas-applications-with-sase/","name":"Secure access to SaaS applications with SASE"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/secure-access-to-saas-applications-with-sase/#page","headline":"Secure access to SaaS applications with SASE · Cloudflare Reference Architecture docs","description":"Cloudflare's SASE platform offers the ability to bring a more Zero Trust orientated approach to securing SaaS applications. Centralized policies, based on device posture, identity attributes and granular network location can be applied across one or many Saas applications.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/secure-access-to-saas-applications-with-sase/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

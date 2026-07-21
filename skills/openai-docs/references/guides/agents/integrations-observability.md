@@ -62,7 +62,8 @@ import { Agent, MCPServerStdio, run } from "@openai/agents";
 
 const server = new MCPServerStdio({
   name: "Filesystem MCP Server",
-  fullCommand: "npx -y @modelcontextprotocol/server-filesystem ./sample_files",
+  fullCommand:
+    "npx -y @modelcontextprotocol/server-filesystem fixtures/sample_files",
 });
 
 await server.connect();

@@ -1,16 +1,18 @@
 ---
-title: Common policies
 description: Reference information for Common policies in Cloudflare One.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Common policies
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Common policies
 
-# Common policies
+Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following DLP policies are commonly used to secure sensitive data in uploaded and downloaded files. They are built as [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector.
 
@@ -31,32 +33,27 @@ The following example logs any upload or download that matches your enabled [Fin
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-7846)
-* [ API ](#tab-panel-7847)
-
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |
 | Upload File Types   | in       | _Microsoft Office Word Document (docx)_ | And   | Block  |
 | Download File Types | in       | _PDF (pdf)_                             |       |        |
 
-**Create a Zero Trust Gateway rule**
-
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
-  --request POST \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --json '{
-    "name": "Block file types",
-    "description": "Block the upload or download of files based on their type",
-    "enabled": true,
-    "action": "block",
-    "filters": [
-        "http"
-    ],
-    "traffic": "any(http.upload.file.types[*] in {\"docx\"}) and any(http.download.file.types[*] in {\"pdf\"})",
-    "identity": "",
-    "device_posture": ""
-  }'
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Block file types",
+		"description": "Block the upload or download of files based on their type",
+		"enabled": true,
+		"action": "block",
+		"filters": [
+				"http"
+		],
+		"traffic": "any(http.upload.file.types[*] in {\"docx\"}) and any(http.download.file.types[*] in {\"pdf\"})",
+		"identity": "",
+		"device_posture": ""
+	}'
 ```
 
 For more information on what file formats DLP can scan, refer to [Supported file types](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types).
@@ -100,7 +97,14 @@ In your [DLP logs](https://developers.cloudflare.com/cloudflare-one/data-loss-pr
 | Application | in          | _Google Drive_          | And   |        |
 | Domain      | not in list | _Do not DLP - SSN_      |       |        |
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/#page","headline":"Common DLP policies · Cloudflare One docs","description":"Reference information for Common policies in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/data-loss-prevention/dlp-policies/","name":"Scan HTTP traffic"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/","name":"Common policies"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/#page","headline":"Common DLP policies · Cloudflare One docs","description":"Reference information for Common policies in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Logging"]}
 ```

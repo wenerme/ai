@@ -1,16 +1,18 @@
 ---
-title: Sequence Analytics
 description: Track the order of API requests over time to discover user journeys and sequences.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Sequence Analytics
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Sequence Analytics
 
-# Sequence Analytics
+Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/sequence-analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Sequence Analytics tracks the order of API endpoint requests over time, allowing you to discover how users interact with your API. Sequence Analytics groups and highlights important user journeys (sequences) across your API. You can enforce preferred sequences using [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/).
 
@@ -61,7 +63,14 @@ Sequence Analytics currently requires a session identifier and operations that A
 
 Sequences are currently limited to nine operations in length.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/#page","headline":"Sequence Analytics · Cloudflare API Shield docs","description":"Track the order of API requests over time to discover user journeys and sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/sequence-analytics/","name":"Sequence Analytics"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/#page","headline":"Sequence Analytics · Cloudflare API Shield docs","description":"Track the order of API requests over time to discover user journeys and sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Supported fields and operators
 description: Fields and operators for load balancing rule expressions.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Supported fields and operators
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Supported fields and operators
 
-# Supported fields and operators
+Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The fields that are supported by load balancing rules depend on whether Cloudflare proxies the traffic going through your load balancer or not.
 
@@ -84,7 +86,14 @@ If your traffic is not proxied through Cloudflare, you have access to all the fi
 
 For examples and usage, refer to [Operators and grouping symbols](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) in the Rules language documentation.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/#page","headline":"Supported fields and operators · Cloudflare Load Balancing docs","description":"Fields and operators for load balancing rule expressions.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/additional-options/","name":"Additional configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/additional-options/load-balancing-rules/","name":"Custom load balancing rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/load-balancing/additional-options/load-balancing-rules/reference/","name":"Supported fields and operators"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/#page","headline":"Supported fields and operators · Cloudflare Load Balancing docs","description":"Fields and operators for load balancing rule expressions.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

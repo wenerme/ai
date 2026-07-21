@@ -1,16 +1,18 @@
 ---
-title: Get started
 description: Set up and access Network Analytics.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Get started
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Get started
 
-# Get started
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Name your dataset and add it to your Worker
 
@@ -20,23 +22,16 @@ Note
 
 You do not need to manually create a dataset in the Cloudflare dashboard. Workers Analytics Engine datasets are created automatically the first time you write to them after defining the binding in your Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-7322)
-* [  wrangler.toml ](#tab-panel-7323)
-
-**JSONC**
-
 ```jsonc
 {
-  "analytics_engine_datasets": [
-    {
-      "binding": "<BINDING_NAME>",
-      "dataset": "<DATASET_NAME>"
-    }
-  ]
+	"analytics_engine_datasets": [
+		{
+			"binding": "<BINDING_NAME>",
+			"dataset": "<DATASET_NAME>"
+		}
+	]
 }
 ```
-
-**TOML**
 
 ```toml
 [[analytics_engine_datasets]]
@@ -47,8 +42,6 @@ dataset = "<DATASET_NAME>"
 ## 2\. Write data points from your Worker
 
 You can write data points to your Worker by calling the `writeDataPoint()` method that is exposed on the binding that you just created.
-
-**JavaScript**
 
 ```js
 async fetch(request, env) {
@@ -150,7 +143,14 @@ Refer to [Querying Workers Analytics Engine from Grafana](https://developers.clo
 * [ Pricing ](https://developers.cloudflare.com/analytics/analytics-engine/pricing/)
 * [ Limits ](https://developers.cloudflare.com/analytics/analytics-engine/limits/)
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/get-started/#page","headline":"Get started with Workers Analytics Engine · Cloudflare Analytics docs","description":"Set up and access Network Analytics.","url":"https://developers.cloudflare.com/analytics/analytics-engine/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/analytics/","name":"Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/analytics/analytics-engine/","name":"Workers Analytics Engine"}},{"@type":"ListItem","position":4,"item":{"@id":"/analytics/analytics-engine/get-started/","name":"Get started"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/get-started/#page","headline":"Get started with Workers Analytics Engine · Cloudflare Analytics docs","description":"Set up and access Network Analytics.","url":"https://developers.cloudflare.com/analytics/analytics-engine/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

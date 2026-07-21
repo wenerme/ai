@@ -1,16 +1,18 @@
 ---
-title: FAQ
 description: Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: FAQ
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  FAQ
 
-# FAQ
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Stream
 
@@ -90,7 +92,7 @@ Content-Security-Policy: connect-src 'self' *.videodelivery.net *.cloudflarestre
 
 To ensure **only** videos from **your** Cloudflare Stream account can be played on your website, replace `*` in `*.cloudflarestream.com` and `*.videodelivery.net` in the examples above with `customer-<CODE>`, replacing `<CODE>` with your unique customer code. To find your unique customer code in the Cloudflare dashboard, go to the **Stream** page.
 
-[ Go to **Videos** ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 This code is unique to your Cloudflare Account.
 
@@ -102,7 +104,14 @@ If you are using thumbnails, you can use [animated thumbnails](https://developer
 
 If multiple players are on the same page, you can lazy load any players that are not visible in the initial viewport. For more information about lazy loading, refer to [Mozilla's lazy loading documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#lazy).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/faq/#page","headline":"Frequently asked questions about Cloudflare Stream · Cloudflare Stream docs","description":"Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.","url":"https://developers.cloudflare.com/stream/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/faq/","name":"FAQ"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/faq/#page","headline":"Frequently asked questions about Cloudflare Stream · Cloudflare Stream docs","description":"Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.","url":"https://developers.cloudflare.com/stream/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

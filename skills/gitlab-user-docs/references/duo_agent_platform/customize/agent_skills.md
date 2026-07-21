@@ -58,9 +58,9 @@ GitLab Duo supports the following types of skills:
 - For GitLab Duo Chat in your local environment, install and configure one of the following:
   - For project-level skills:
     - [GitLab for VS Code](../../../editor_extensions/visual_studio_code/setup.md) 6.71.4 or later.
-    - [GitLab Duo CLI](../../gitlab_duo_cli/_index.md#set-up-the-gitlab-duo-cli) 8.73.0 or later.
+    - [GitLab Duo CLI](../../gitlab_duo_cli/set_up.md) 8.73.0 or later.
   - For user-level skills:
-    - [GitLab Duo CLI](../../gitlab_duo_cli/_index.md#set-up-the-gitlab-duo-cli) 8.83.0 or later.
+    - [GitLab Duo CLI](../../gitlab_duo_cli/set_up.md) 8.83.0 or later.
 - For project-level skills with custom flows, update the flow's configuration file to access the
   `workspace_agent_skills` context passed from the executor:
 

@@ -1,16 +1,18 @@
 ---
-title: Web Bot Auth
 description: Verify bot identity using cryptographic HTTP message signatures.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Web Bot Auth
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Web Bot Auth
 
-# Web Bot Auth
+Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for [verified bots and agents](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
 
@@ -125,7 +127,7 @@ Use components with only ASCII values
 
 Cloudflare currently does not support `bs` or `sf` parameter designed to serialize non-ASCII values into ASCII equivalents.
 
-`Content-Digest` header
+\`Content-Digest\` header
 
 If you wish to sign your [message content ↗](https://www.rfc-editor.org/rfc/rfc9421#name-message-content) using a `Content-Digest` header, note that you should only do so if there is zero risk of a message being altered on the way to Cloudflare.
 
@@ -150,7 +152,7 @@ Construct a [Signature-Input header ↗](https://www.rfc-editor.org/rfc/rfc9421#
 | created                      | This should be equal to a Unix timestamp associated with when the message was sent by your application.                                                                                                                                               |
 | expires                      | This should be equal to a Unix timestamp associated with when Cloudflare should no longer attempt to verify the message. A short expires reduces the likelihood of replay attacks, and Cloudflare recommends choosing suitable short-lived intervals. |
 
-`nonce`
+\`nonce\`
 
 The `nonce` parameter allows you to supply a `nonce` to prevent attackers from replaying past messages against a server.
 
@@ -267,7 +269,14 @@ You may wish to refer to the following resources.
 * Cloudflare's [web-bot-auth library in Rust ↗](https://crates.io/crates/web-bot-auth).
 * Cloudflare's [web-bot-auth npm package in Typescript ↗](https://www.npmjs.com/package/web-bot-auth).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/reference/bot-verification/","name":"Bot verification methods"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/reference/bot-verification/web-bot-auth/","name":"Web Bot Auth"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 ```

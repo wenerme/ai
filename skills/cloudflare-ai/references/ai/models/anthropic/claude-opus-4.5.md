@@ -1,40 +1,40 @@
 ---
-title: Claude Opus 4.5
 description: Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Claude Opus 4.5
+image: https://developers.cloudflare.com/og-docs.png
 ---
 
-> Documentation Index
-> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
-> Use this file to discover all available pages before exploring further.
+[Skip to content ](#main-content)
 
-[Skip to content](#%5Ftop)
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
 #  Claude Opus 4.5
 
-Text Generation • Anthropic
+ Text Generation • Anthropic
 
-`anthropic/claude-opus-4.5`
+Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+
+` anthropic/claude-opus-4.5 `
+
+* Third-party
+* Zero data retention
 
 Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.
 
-| Model Info                                                                 |                                                                                                                             |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                              |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                         |
-| Request formats                                                            | Anthropic Messages                                                                                                          |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
+| Model Info                                                                  |                                                                                                                              |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                               |
+| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
+| More information                                                            | [link ↗](https://www.anthropic.com/claude/opus)                                                                              |
+| Zero data retention                                                         | Yes                                                                                                                          |
+| Request formats                                                             | Anthropic Messages                                                                                                           |
+| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
 
 ## Usage
-
-* [ TypeScript ](#tab-panel-186)
-* [ cURL ](#tab-panel-187)
-
-**TypeScript**
 
 ```ts
 const response = await env.AI.run(
@@ -62,9 +62,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-190)
-* [ Raw response ](#tab-panel-191)
 
 The three laws of thermodynamics are:
 
@@ -105,11 +102,6 @@ There's also sometimes a **Zeroth Law** mentioned, which states that if two syst
 
 **With System Message**  — Using a system message to set context
 
-* [ TypeScript ](#tab-panel-188)
-* [ cURL ](#tab-panel-189)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.5',
@@ -140,9 +132,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.3
 }'
 ```
-
-* [ Output ](#tab-panel-194)
-* [ Raw response ](#tab-panel-195)
 
 # Reading JSON Files in Python
 
@@ -232,11 +221,6 @@ The result is typically a Python dictionary or list that you can work with norma
 
 **Multi-turn Conversation**  — Continuing a conversation with context
 
-* [ TypeScript ](#tab-panel-198)
-* [ cURL ](#tab-panel-199)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.5',
@@ -282,9 +266,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-200)
-* [ Raw response ](#tab-panel-201)
 
 Here are some great stops depending on your route:
 
@@ -336,11 +317,6 @@ How much time do you have for the trip? That'll help me narrow down recommendati
 
 **Creative Writing**  — Higher temperature for creative output
 
-* [ TypeScript ](#tab-panel-192)
-* [ cURL ](#tab-panel-193)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.5',
@@ -374,9 +350,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "temperature": 0.8
 }'
 ```
-
-* [ Output ](#tab-panel-202)
-* [ Raw response ](#tab-panel-203)
 
 # The Cartographer's Last Note
 
@@ -423,11 +396,6 @@ And below it, in handwriting that definitely wasn't the victim's: *You're early.
 
 **Streaming Response**  — Enable streaming for real-time output
 
-* [ TypeScript ](#tab-panel-196)
-* [ cURL ](#tab-panel-197)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.5',
@@ -456,9 +424,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   "stream": true
 }'
 ```
-
-* [ Output ](#tab-panel-206)
-* [ Raw response ](#tab-panel-207)
 
 # Understanding Recursion
 
@@ -669,11 +634,6 @@ Think of Russian nesting dolls 🪆 — you keep opening smaller dolls until you
 
 **Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
-* [ TypeScript ](#tab-panel-204)
-* [ cURL ](#tab-panel-205)
-
-**TypeScript**
-
 ```ts
 const response = await env.AI.run(
   'anthropic/claude-opus-4.5',
@@ -714,9 +674,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
   ]
 }'
 ```
-
-* [ Output ](#tab-panel-208)
-* [ Raw response ](#tab-panel-209)
 
 Based on the search results, here are the top Cloudflare news stories from this week:
 
@@ -927,9 +884,6 @@ Based on the search results, here are the top Cloudflare news stories from this 
 
 ## Parameters
 
-* [ Input ](#tab-panel-210)
-* [ Output ](#tab-panel-211)
-
 ▶messages\[\]
 
 `array`required
@@ -996,7 +950,14 @@ Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/
 
 Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-output.json "Download")
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/#page","headline":"Claude Opus 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/#page","headline":"Claude Opus 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

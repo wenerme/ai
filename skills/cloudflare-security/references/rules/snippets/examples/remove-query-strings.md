@@ -1,52 +1,54 @@
 ---
-title: Remove query strings before sending request to origin
 description: Remove certain query strings from a request before passing to the origin.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Remove query strings before sending request to origin
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Remove query strings before sending request to origin
+#  Remove query strings before sending request to origin
 
 Remove certain query strings from a request before passing to the origin.
 
-**JavaScript**
+Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/snippets/examples/remove-query-strings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ```js
 export default {
-  async fetch(request) {
-    // Define the query strings you want to remove
-    const queryStringsToRemove = ["utm_source", "utm_medium", "utm_campaign"];
+	async fetch(request) {
+		// Define the query strings you want to remove
+		const queryStringsToRemove = ["utm_source", "utm_medium", "utm_campaign"];
 
+		// Get the URL from the request
+		const url = new URL(request.url);
 
-    // Get the URL from the request
-    const url = new URL(request.url);
+		// Remove the specified query strings
+		queryStringsToRemove.forEach((query) => {
+			url.searchParams.delete(query);
+		});
 
+		// Create a new request with the modified URL
+		const modifiedRequest = new Request(url, request);
 
-    // Remove the specified query strings
-    queryStringsToRemove.forEach((query) => {
-      url.searchParams.delete(query);
-    });
+		// Pass the modified request to the origin
+		const response = await fetch(modifiedRequest);
 
-
-    // Create a new request with the modified URL
-    const modifiedRequest = new Request(url, request);
-
-
-    // Pass the modified request to the origin
-    const response = await fetch(modifiedRequest);
-
-
-    return response;
-  },
+		return response;
+	},
 };
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/remove-query-strings/#page","headline":"Remove query strings before sending request to origin · Cloudflare Rules docs","description":"Remove certain query strings from a request before passing to the origin.","url":"https://developers.cloudflare.com/rules/snippets/examples/remove-query-strings/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Request modification"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/examples/","name":"Snippets examples"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/snippets/examples/remove-query-strings/","name":"Remove query strings before sending request to origin"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/remove-query-strings/#page","headline":"Remove query strings before sending request to origin · Cloudflare Rules docs","description":"Remove certain query strings from a request before passing to the origin.","url":"https://developers.cloudflare.com/rules/snippets/examples/remove-query-strings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Request modification"]}
 ```

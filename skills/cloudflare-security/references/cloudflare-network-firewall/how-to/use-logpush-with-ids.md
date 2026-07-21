@@ -1,16 +1,18 @@
 ---
-title: Use Logpush with IDS
 description: Send IDS events to Logpush destinations.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Use Logpush with IDS
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Use Logpush with IDS
 
-# Use Logpush with IDS
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 You can use Logpush with Cloudflare Network Firewall (formerly Magic Firewall) IDS to log detected risks:
 
@@ -24,7 +26,14 @@ You can use Logpush with Cloudflare Network Firewall (formerly Magic Firewall) I
 * When creating the Logpush job, the dataset field should equal `magic_ids_detections`.
 * Timestamps by default are unixnano. Consult the [Logpush Options docs](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#options) to learn what format you can choose that will be compatible with your destination and/or expectations. Note that all options must be added _after_ all fields you want from the Logpush job, akin to URL parameters.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/#page","headline":"Use Logpush with IDS · Cloudflare Network Firewall docs","description":"Send IDS events to Logpush destinations.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/how-to/use-logpush-with-ids/","name":"Use Logpush with IDS"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/#page","headline":"Use Logpush with IDS · Cloudflare Network Firewall docs","description":"Send IDS events to Logpush destinations.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

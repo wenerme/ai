@@ -1,18 +1,20 @@
 ---
-title: Publish to a Queue via HTTP
 description: Publish to a Queue directly via HTTP and Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Publish to a Queue via HTTP
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
-# Publish to a Queue via HTTP
+#  Publish to a Queue via HTTP
 
 Publish to a Queue directly via HTTP.
+
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 The following example shows you how to publish messages to a Queue from any HTTP client, using a Cloudflare API token to authenticate.
 
@@ -42,7 +44,14 @@ This will issue a HTTP POST request, and if successful, return a HTTP 200 with a
 
 For full documentation about the HTTP Push API, refer to the [Cloudflare API documentation ↗](https://developers.cloudflare.com/api/resources/queues/subresources/messages/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/#page","headline":"Queues - Publish Directly via HTTP · Cloudflare Queues docs","description":"Publish to a Queue directly via HTTP and Workers.","url":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/examples/publish-to-a-queue-via-http/","name":"Publish to a Queue via HTTP"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/#page","headline":"Queues - Publish Directly via HTTP · Cloudflare Queues docs","description":"Publish to a Queue directly via HTTP and Workers.","url":"https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

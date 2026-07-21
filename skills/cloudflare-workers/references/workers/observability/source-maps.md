@@ -1,16 +1,18 @@
 ---
-title: Source maps and stack traces
 description: Adding source maps and generating stack traces for Workers.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Source maps and stack traces
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Source maps and stack traces
 
-# Source maps and stack traces
+Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/source-maps/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 [Stack traces ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
 
@@ -22,18 +24,11 @@ Source maps translate compiled and minified code back to the original code that 
 
 To enable source maps, add the following to your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-12754)
-* [  wrangler.toml ](#tab-panel-12755)
-
-**JSONC**
-
 ```jsonc
 {
-  "upload_source_maps": true
+	"upload_source_maps": true
 }
 ```
-
-**TOML**
 
 ```toml
 upload_source_maps = true
@@ -73,7 +68,7 @@ Consider a simple project. `src/index.ts` serves as the entrypoint of the applic
 
 * wrangler.jsonc
 * tsconfig.json
-* Directorysrc
+* src
   * calculator.ts
   * index.ts
 
@@ -93,7 +88,14 @@ With **source maps uploaded**: all methods reference the correct files and line 
 * [Real-time logs](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/) \- Learn how to capture Workers logs in real-time.
 * [RPC error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) \- Learn how exceptions are handled over RPC (Remote Procedure Call).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces · Cloudflare Workers docs","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/observability/source-maps/","name":"Source maps and stack traces"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces · Cloudflare Workers docs","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

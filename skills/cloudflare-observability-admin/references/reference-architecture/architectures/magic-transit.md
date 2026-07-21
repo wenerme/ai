@@ -1,16 +1,18 @@
 ---
-title: Magic Transit Reference Architecture
 description: This reference architecture describes the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Magic Transit Reference Architecture
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Magic Transit Reference Architecture
 
-# Magic Transit Reference Architecture
+Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -191,7 +193,14 @@ Cloudflare offers comprehensive network services to connect and protect on-premi
 
 If you would like to learn more about Magic Transit, Cloudflare WAN, or Cloudflare Network Firewall, [contact us for a demo ↗](https://www.cloudflare.com/magic-transit/).
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/#page","headline":"Magic Transit Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture describes the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.","url":"https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/reference-architecture/","name":"Reference Architecture"}},{"@type":"ListItem","position":3,"item":{"@id":"/reference-architecture/architectures/","name":"Reference Architectures"}},{"@type":"ListItem","position":4,"item":{"@id":"/reference-architecture/architectures/magic-transit/","name":"Magic Transit Reference Architecture"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/#page","headline":"Magic Transit Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture describes the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.","url":"https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,16 +1,18 @@
 ---
-title: Choose a connection method
 description: Compare Cloudflare Mesh and Tunnel options.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Choose a connection method
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Choose a connection method
 
-# Choose a connection method
+Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 There are [multiple ways](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks) to onramp traffic from your private networks to Cloudflare. This page covers the two software-based methods commonly used for VPN replacement: Cloudflare Mesh and Cloudflare Tunnel. Both involve installing lightweight software on a host machine in your network to create a secure connection to Cloudflare's global network.
 
@@ -55,7 +57,14 @@ Use [Cloudflare Mesh](https://developers.cloudflare.com/learning-paths/replace-v
 
 Both methods can be used together. For example, use Tunnel for straightforward user-to-application access and add Mesh nodes where you need bidirectional or site-to-site connectivity.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/#page","headline":"Choose a connection method · Cloudflare Learning Paths","description":"Compare Cloudflare Mesh and Tunnel options.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/","name":"Connect your private network"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/connection-methods/","name":"Choose a connection method"}}]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/#page","headline":"Choose a connection method · Cloudflare Learning Paths","description":"Compare Cloudflare Mesh and Tunnel options.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/connection-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

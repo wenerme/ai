@@ -1,16 +1,18 @@
 ---
-title: Reserved IP addresses
 description: Reference information for Reserved IP addresses in Zero Trust networking.
-image: https://developers.cloudflare.com/zt-preview.png
+title: Reserved IP addresses
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content ](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
+#  Reserved IP addresses
 
-# Reserved IP addresses
+Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare reserves several IPv4 and IPv6 ranges for internal routing and service functionality. These ranges are drawn from the CGNAT address space (`100.64.0.0/10`). To avoid routing conflicts, your Cloudflare Tunnel, Cloudflare Mesh, or WAN routes should not include subsets of these reserved ranges. Broader routes that contain a reserved range, such as `0.0.0.0/0`, are unaffected because longest-prefix match ensures the reserved ranges still take priority.
 
@@ -81,7 +83,7 @@ Cloudflare recommends adding back the IPs that are not explicitly used for Cloud
 
 You can use the calculator below to determine which IP ranges to add back based on the Cloudflare One features you use. For example, if your deployment requires [Gateway initial resolved IPs](#gateway-initial-resolved-ips) (`100.80.0.0/16`) and [device IPs](#device-ips) (`100.96.0.0/12`), delete `100.64.0.0/10` from Split Tunnels and add back `100.64.0.0/12`, `100.81.0.0/16`, `100.82.0.0/15`, `100.84.0.0/14`, `100.88.0.0/13`, and `100.112.0.0/12`.
 
-**Base CIDR:** **Subtracted CIDRs:**
+Base CIDRSubtracted CIDRs
 
 Calculate
 
@@ -89,7 +91,14 @@ Calculate
 
 In **Include IPs and domains** mode, only traffic for the included routes is sent to Cloudflare. You must explicitly add the reserved IP ranges that your deployment depends on. For example, if you use [hostname routing or egress policy host selectors](#gateway-initial-resolved-ips), add `100.80.0.0/16` to your Split Tunnels include list.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#page","headline":"Reserved IP addresses · Cloudflare One docs","description":"Reference information for Reserved IP addresses in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/zt-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/routes/","name":"Routes"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/routes/reserved-ips/","name":"Reserved IP addresses"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#page","headline":"Reserved IP addresses · Cloudflare One docs","description":"Reference information for Reserved IP addresses in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
 ```
